@@ -26,13 +26,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileReader;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -43,13 +39,10 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private YaskiReferensiKecamatan propinsi=new YaskiReferensiKecamatan(null,false);
     private int i=0;
-    private RestTemplate rest;
-    private HttpHeaders headers ;
-    private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
-    private JsonNode nameNode;
     private JsonNode response;
+    private FileReader myObj;;
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -175,7 +168,7 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Kelurahan YASKI ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Kelurahan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -361,35 +354,24 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            requestEntity = new HttpEntity(headers);
-            rest=new RestTemplate();
-            root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/kecamatan/"+KdProp.getText()+"/kelurahan", HttpMethod.GET, requestEntity, String.class).getBody());
-            nameNode = root.path("status");
-            if(nameNode.asText().equals("ok")){
-                Valid.tabelKosong(tabMode);
-                response = root.path("data");
-                if(response.isArray()){
-                    i=1;
-                    for(JsonNode list:response){
-                        if(list.path("id_kel").asText().toLowerCase().contains(poli.toLowerCase())||
-                                list.path("nama").asText().toLowerCase().contains(poli.toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                i+".",list.path("id_kel").asText(),list.path("nama").asText()
-                            });
-                        }
+            myObj = new FileReader("./cache/kelurahan.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("kelurahan");
+            if(response.isArray()){
+                i=1;
+                for(JsonNode list:response){
+                    if(list.path("nama").asText().toLowerCase().contains(poli.toLowerCase())&&list.path("id_kecamatan").asText().equals(KdProp.getText())){
+                        tabMode.addRow(new Object[]{
+                            i+".",list.path("id").asText(),list.path("nama").asText()
+                        });
                         i++;
                     }
                 }
-            }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
-            }   
+            }
+            myObj.close();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
-            if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
-            }
         }
     }    
 
@@ -400,5 +382,6 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
     public void setPropinsi(String KdProp,String NmProp){
         this.KdProp.setText(KdProp);
         this.NmProp.setText(NmProp);
+        tampil("");
     }
 }

@@ -47,6 +47,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private Date date = new Date();
+    private String norawatibu="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -421,7 +422,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -435,7 +436,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -555,7 +556,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         TPasien.setBounds(309, 10, 309, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -588,7 +589,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 70, 71, 23);
 
-        Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IYA", "TIDAK" }));
+        Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TIDAK", "IYA" }));
         Deku.setName("Deku"); // NOI18N
         Deku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1041,7 +1042,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
                 param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));   
                 param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));   
                 param.put("parameter","%"+TCari.getText().trim()+"%");   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReport("rptDataHAIs.jasper",param,"::[ Data HAIs Pasien ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1383,11 +1384,11 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     }
 
     private void isRawat() {
-         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat='"+TNoRw.getText()+"' ",TNoRM);
+         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
     }
 
     private void isPsien() {
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
+        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
     }
     
     public void setNoRm(String norwt, Date tgl1, Date tgl2) {
@@ -1399,7 +1400,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         isPsien();              
         ChkInput.setSelected(true);
         isForm();
-        Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",Kamar,TNoRw.getText());
+        norawatibu=Sequel.cariIsi("select ranap_gabung.no_rawat from ranap_gabung where ranap_gabung.no_rawat2=?",TNoRw.getText());
+        if(!norawatibu.equals("")){
+            Kamar.setText(Sequel.cariIsi("select ifnull(kamar_inap.kd_kamar,'') from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc limit 1",norawatibu));
+        }else{
+            Kamar.setText(Sequel.cariIsi("select ifnull(kamar_inap.kd_kamar,'') from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc limit 1",TNoRw.getText()));
+        }
     }
     
     private void isForm(){

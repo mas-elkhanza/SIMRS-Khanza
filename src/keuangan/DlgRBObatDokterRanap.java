@@ -22,7 +22,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgRBObatDokterRanap extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -34,7 +34,7 @@ public class DlgRBObatDokterRanap extends javax.swing.JDialog {
     private ResultSet rsdokter,rstanggal,rspasien,rsobat; 
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private int i=0,a=0;
     private double subtotal=0,ttlbiaya=0,embalase=0,ttlembalase=0,tuslah=0,ttltuslah=0;
     private String pilihancarabayar="",jumlah,total,emb,tsl;
@@ -406,7 +406,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(i=0;i<tabMode.getRowCount();i++){  
                 jumlah="";
                 try {
@@ -432,12 +432,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 } catch (Exception e) {
                     tsl="";
                 }
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"','"+
-                                jumlah+"','"+total+"','"+emb+"','"+tsl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Obat Perdokter Poli"); 
+                                jumlah+"','"+total+"','"+emb+"','"+tsl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Obat Perdokter Poli"); 
             }
                         
             Map<String, Object> param = new HashMap<>();
@@ -447,8 +447,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRBObatPerdokterRanap.jasper","report","[ Rekap Obat Dokter Perpasien Ralan ]",param);
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptRBObatPerdokterRanap.jasper","report","[ Rekap Obat Dokter Perpasien Ralan ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -473,12 +473,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", nmdokter,kddokter.getText()); 
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", nmdokter,kddokter.getText()); 
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", nmdokter,kddokter.getText()); 
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);

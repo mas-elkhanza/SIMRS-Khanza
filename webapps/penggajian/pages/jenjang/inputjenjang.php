@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputJenjang&action=TAMBAH>| Input Data |</a>
@@ -10,28 +8,28 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode        =str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL;
+                $action      = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode        = validTeks(str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL);
                 if($action == "TAMBAH"){
-                    $kode      = str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL;
+                    $kode      = validTeks(str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL);
                     $nama      = "";
                     $tnj       = "";
                     $indek     = "";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT * FROM jnj_jabatan WHERE kode='$kode'";
-                    $hasil        = bukaquery($_sql);
-                    $baris        = mysqli_fetch_row($hasil);
-                    $kode         = $baris[0];
-                    $nama         = $baris[1];
-                    $tnj          = $baris[2];
-                    $indek        = $baris[3];
+                    $_sql      = "SELECT * FROM jnj_jabatan WHERE jnj_jabatan.kode='$kode'";
+                    $hasil     = bukaquery($_sql);
+                    $baris     = mysqli_fetch_row($hasil);
+                    $kode      = $baris[0];
+                    $nama      = $baris[1];
+                    $tnj       = $baris[2];
+                    $indek     = $baris[3];
                 }
                 echo"<input type=hidden name=kode value=$kode><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode Jenjang</td><td width="">:</td>
-                    <td width="67%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="10" maxlength="5">
+                    <td width="67%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="10" maxlength="5" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -58,11 +56,11 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode    = trim($_POST['kode']);
-                    $nama    = trim($_POST['nama']);
-                    $tnj     = trim($_POST['tnj']);
-                    $indek   = trim($_POST['indek']);
-                    if ((!empty($kode))&&(!empty($nama))&&(!empty($tnj))&&(!empty($indek))) {
+                    $kode    = validTeks(trim($_POST['kode']));
+                    $nama    = validTeks(trim($_POST['nama']));
+                    $tnj     = validangka(trim($_POST['tnj']));
+                    $indek   = validangka(trim($_POST['indek']));
+                    if ((isset($kode))&&(isset($nama))&&(isset($tnj))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" jnj_jabatan "," '$kode','$nama','$tnj','$indek' ", " Tunjangan Jabatan " );
@@ -73,7 +71,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListJenjang'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($kode))||(empty($nama))||(empty($tnj))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

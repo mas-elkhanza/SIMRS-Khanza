@@ -30,17 +30,15 @@ import org.springframework.http.MediaType;
  * @author windiartonugroho
  */
 public class frmUtama extends javax.swing.JFrame {
-    private  Properties prop = new Properties();
     private  Connection koneksi=koneksiDB.condb();
     private  sekuel Sequel=new sekuel();
-    private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select kode_ppk from setting");
+    private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select setting.kode_ppk from setting");
     private  BPJSApiAplicare api=new BPJSApiAplicare();
     private  HttpHeaders headers;
     private  HttpEntity requestEntity;
     private  ObjectMapper mapper= new ObjectMapper();
     private  JsonNode root;
     private  JsonNode nameNode;
-    private  JsonNode response;
     private  PreparedStatement ps;
     private  ResultSet rs;
 
@@ -49,12 +47,6 @@ public class frmUtama extends javax.swing.JFrame {
      */
     public frmUtama() {
         initComponents();
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIAPLICARE");	
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-        }
         
         this.setSize(390,340);
         
@@ -171,13 +163,13 @@ public class frmUtama extends javax.swing.JFrame {
                 String jam = nol_jam + Integer.toString(nilai_jam);
                 String menit = nol_menit + Integer.toString(nilai_menit);
                 String detik = nol_detik + Integer.toString(nilai_detik);
-                TeksArea.append(jam+":"+menit+":"+detik+"\n");
                 if(menit.equals("01")&&detik.equals("01")){
                     if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
                         TeksArea.setText("");
                     }
                         
                     try {
+                        koneksi=koneksiDB.condb();
                         TeksArea.append("Memulai update aplicare\n");
                         ps=koneksi.prepareStatement(
                                 "select aplicare_ketersediaan_kamar.kode_kelas_aplicare,aplicare_ketersediaan_kamar.kd_bangsal," +
@@ -209,9 +201,6 @@ public class frmUtama extends javax.swing.JFrame {
                                     //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                                     nameNode = root.path("metadata");
-                                    //System.out.println("code : "+nameNode.path("code").asText());
-                                    //System.out.println("message : "+nameNode.path("message").asText());
-                                    response = root.path("response");
                                     TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
                                 }catch (Exception ex) {
                                     System.out.println("Notifikasi Bridging : "+ex);

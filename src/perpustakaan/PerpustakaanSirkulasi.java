@@ -1043,7 +1043,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptPeminjamanPerpustakaan.jasper","report","::[ Data Peminjaman Koleksi Perpustakaan ]::","select perpustakaan_peminjaman.no_inventaris,perpustakaan_inventaris.kode_buku,perpustakaan_buku.judul_buku,perpustakaan_penerbit.nama_penerbit,"+
                        "perpustakaan_pengarang.nama_pengarang,perpustakaan_buku.thn_terbit,perpustakaan_buku.isbn,perpustakaan_kategori.nama_kategori,"+
                        "perpustakaan_jenis_buku.nama_jenis,perpustakaan_peminjaman.no_anggota,perpustakaan_anggota.nama_anggota,perpustakaan_peminjaman.tgl_pinjam,"+
@@ -1283,9 +1283,9 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
 private void TNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNIPKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select nama from petugas where nip=?",TNmPetugas,TNIP.getText());
+        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",TNmPetugas,TNIP.getText());
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select nama from petugas where nip=?",TNmPetugas,TNIP.getText());
+        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",TNmPetugas,TNIP.getText());
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
@@ -1550,7 +1550,7 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
             BtnIn.setEnabled(akses.getpeminjaman_perpustakaan());
             BtnOut.setEnabled(akses.getpeminjaman_perpustakaan());
             TNIP.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", TNmPetugas,TNIP.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", TNmPetugas,TNIP.getText());
         } 
     }
     

@@ -589,7 +589,7 @@ public class MasterTriaseMacamKasus extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from master_triase_macam_kasus where kode_kasus like ? or macam_kasus like ? order by kode_kasus");
+            ps=koneksi.prepareStatement("select * from master_triase_macam_kasus where master_triase_macam_kasus.kode_kasus like ? or master_triase_macam_kasus.macam_kasus like ? order by master_triase_macam_kasus.kode_kasus");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

@@ -36,6 +36,8 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
+        LoadHTML2.setEditable(true);
+        LoadHTML2.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -46,6 +48,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        LoadHTML2.setDocument(doc);
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -96,8 +99,11 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
+        TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
+        Scroll1 = new widget.ScrollPane();
+        LoadHTML2 = new widget.editorpane();
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -111,7 +117,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -227,6 +233,17 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabRawat.setName("TabRawat"); // NOI18N
+        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabRawatMouseClicked(evt);
+            }
+        });
+
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -234,7 +251,18 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         LoadHTML.setName("LoadHTML"); // NOI18N
         Scroll.setViewportView(LoadHTML);
 
-        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
+        TabRawat.addTab("Riwayat Batch", Scroll);
+
+        Scroll1.setName("Scroll1"); // NOI18N
+        Scroll1.setOpaque(true);
+
+        LoadHTML2.setBorder(null);
+        LoadHTML2.setName("LoadHTML2"); // NOI18N
+        Scroll1.setViewportView(LoadHTML2);
+
+        TabRawat.addTab("Stok Batch", Scroll1);
+
+        internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -253,28 +281,46 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                    ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:9px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                     ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
-            File f = new File("rl4b.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                            "<tr class='isi2'>"+
-                                "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>DATA KEADAAN MORBIDITAS PASIEN RAWAT JALAN RUMAH SAKIT PENYEBAB KECELAKAN<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
-                                "</td>"+
-                           "</tr>"+
-                        "</table>")
-            );
+            File f = new File("riwayatbatch.html");            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));   
+            if(TabRawat.getSelectedIndex()==0){
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='1400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA RIWAYAT BATCH<br>PERIODE BARANG DATANG "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+            }else if(TabRawat.getSelectedIndex()==1){
+                bw.write(LoadHTML2.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='850px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA RIWAYAT BATCH<br>PERIODE BARANG DATANG "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+            }
+                
             bw.close();                         
             Desktop.getDesktop().browse(f.toURI());
         } catch (Exception e) {
@@ -303,7 +349,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-    prosesCari();
+    TabRawatMouseClicked(null);
 }//GEN-LAST:event_btnCariActionPerformed
 
 private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyPressed
@@ -320,7 +366,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            btnCariActionPerformed(null);
+            TabRawatMouseClicked(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             btnCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -332,7 +378,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        btnCariActionPerformed(null);
+        TabRawatMouseClicked(null);
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -342,6 +388,14 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             Valid.pindah(evt, btnCari, TCari);
         }
     }//GEN-LAST:event_BtnAllKeyPressed
+
+    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
+        if(TabRawat.getSelectedIndex()==0){
+            prosesCari();
+        }else if(TabRawat.getSelectedIndex()==1){
+            prosesCari2();
+        }
+    }//GEN-LAST:event_TabRawatMouseClicked
 
     /**
     * @param args the command line arguments
@@ -365,8 +419,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.Button BtnPrint;
     private widget.TextBox Kd2;
     private widget.editorpane LoadHTML;
+    private widget.editorpane LoadHTML2;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;
+    private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.Button btnCari;
@@ -402,7 +459,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Beli Luar</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Jual Bebas</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jml.Beli</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jumlah</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Sisa</td>"+
                 "</tr>"
             );   
@@ -470,7 +527,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from penjualan inner join detailjual inner join databarang inner join bangsal inner join petugas "+
                                 "on penjualan.nota_jual=detailjual.nota_jual and databarang.kode_brng=detailjual.kode_brng "+
                                 "and penjualan.kd_bangsal=bangsal.kd_bangsal and penjualan.nip=petugas.nip "+
-                                "where detailjual.no_batch='"+rs.getString("no_batch")+"' and detailjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where penjualan.status='Sudah Dibayar' and detailjual.kode_brng='"+rs.getString("kode_brng")+"' and detailjual.no_batch='"+rs.getString("no_batch")+"' and detailjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -522,7 +579,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang inner join bangsal "+
                                 "on databarang.kode_brng=detail_pemberian_obat.kode_brng and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat and "+
                                 "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
-                                "where detail_pemberian_obat.no_batch='"+rs.getString("no_batch")+"' and detail_pemberian_obat.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where detail_pemberian_obat.kode_brng='"+rs.getString("kode_brng")+"' and detail_pemberian_obat.no_batch='"+rs.getString("no_batch")+"' and detail_pemberian_obat.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -564,6 +621,51 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     
+                    //pengambilan UTD
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select utd_pengambilan_medis.jml,utd_pengambilan_medis.tanggal, "+
+                                "utd_pengambilan_medis.kd_bangsal_dr,bangsal.nm_bangsal,utd_pengambilan_medis.keterangan "+
+                                "from utd_pengambilan_medis inner join bangsal "+
+                                "on utd_pengambilan_medis.kd_bangsal_dr=bangsal.kd_bangsal "+
+                                "where utd_pengambilan_medis.kode_brng='"+rs.getString("kode_brng")+"' and utd_pengambilan_medis.no_batch='"+rs.getString("no_batch")+"' and utd_pengambilan_medis.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top' align='right'>Pengambilan UTD :</td>"+
+                                    "<td valign='top' colspan='18'>"+
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
+                                           "<tr class='isi'>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='10%'>Tanggal</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='5%'>Jumlah</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Asal Stok</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='10%'>Keterangan</td>"+
+                                           "</tr>");
+                                           rs2.beforeFirst();
+                                           while(rs2.next()){
+                                               htmlContent.append(
+                                                "<tr>"+
+                                                   "<td valign='top' align='center'>"+rs2.getString("tanggal")+"</td>"+
+                                                   "<td valign='top' align='center'>(-) "+rs2.getDouble("jml")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("kd_bangsal_dr")+" "+rs2.getString("nm_bangsal")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("keterangan")+"</td>"+
+                                                "</tr>");
+                                           }
+                            htmlContent.append(
+                                        "</table>"+
+                                    "</td>"+
+                                "</tr>");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    
                     //retur jual
                     try {
                         rs2=koneksi.prepareStatement(
@@ -572,7 +674,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from returjual inner join detreturjual inner join databarang inner join bangsal inner join petugas inner join pasien "+
                                 "on returjual.no_retur_jual=detreturjual.no_retur_jual and databarang.kode_brng=detreturjual.kode_brng "+
                                 "and returjual.kd_bangsal=bangsal.kd_bangsal and returjual.nip=petugas.nip and returjual.no_rkm_medis=pasien.no_rkm_medis "+
-                                "where detreturjual.no_batch='"+rs.getString("no_batch")+"' and detreturjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where detreturjual.kode_brng='"+rs.getString("kode_brng")+"' and detreturjual.no_batch='"+rs.getString("no_batch")+"' and detreturjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -624,7 +726,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from piutang inner join detailpiutang inner join databarang inner join bangsal inner join petugas "+
                                 "on piutang.nota_piutang=detailpiutang.nota_piutang and databarang.kode_brng=detailpiutang.kode_brng "+
                                 "and piutang.kd_bangsal=bangsal.kd_bangsal and piutang.nip=petugas.nip "+
-                                "where detailpiutang.no_batch='"+rs.getString("no_batch")+"' and detailpiutang.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where detailpiutang.kode_brng='"+rs.getString("kode_brng")+"' and detailpiutang.no_batch='"+rs.getString("no_batch")+"' and detailpiutang.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -676,7 +778,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from returpiutang inner join detreturpiutang inner join databarang inner join bangsal inner join petugas inner join pasien "+
                                 "on returpiutang.no_retur_piutang=detreturpiutang.no_retur_piutang and databarang.kode_brng=detreturpiutang.kode_brng "+
                                 "and returpiutang.kd_bangsal=bangsal.kd_bangsal and returpiutang.nip=petugas.nip and returpiutang.no_rkm_medis=pasien.no_rkm_medis "+
-                                "where detreturpiutang.no_batch='"+rs.getString("no_batch")+"' and detreturpiutang.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where detreturpiutang.kode_brng='"+rs.getString("kode_brng")+"' and detreturpiutang.no_batch='"+rs.getString("no_batch")+"' and detreturpiutang.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -728,7 +830,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from returbeli inner join detreturbeli inner join databarang inner join bangsal inner join petugas inner join datasuplier "+
                                 "on returbeli.no_retur_beli=detreturbeli.no_retur_beli and databarang.kode_brng=detreturbeli.kode_brng "+
                                 "and returbeli.kd_bangsal=bangsal.kd_bangsal and returbeli.nip=petugas.nip and returbeli.kode_suplier=datasuplier.kode_suplier "+
-                                "where detreturbeli.no_batch='"+rs.getString("no_batch")+"' and detreturbeli.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where detreturbeli.kode_brng='"+rs.getString("kode_brng")+"' and detreturbeli.no_batch='"+rs.getString("no_batch")+"' and detreturbeli.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -787,6 +889,132 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             LoadHTML.setText(
                     "<html>"+
                       "<table width='1400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());
+        
+    }
+    
+    private void prosesCari2() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='head'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>No.Batch</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Kode Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='230px'>Nama Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>Satuan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Datang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Kadaluarsa</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Asal Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='95px'>No.Faktur</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jumlah</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Sisa</td>"+
+                "</tr>"
+            );   
+            
+            ps=koneksi.prepareStatement(
+                    "select data_batch.no_batch,data_batch.kode_brng,databarang.nama_brng,"+
+                    "databarang.kode_sat,data_batch.tgl_beli,data_batch.tgl_kadaluarsa,"+
+                    "data_batch.asal,data_batch.no_faktur,data_batch.h_beli,data_batch.ralan,"+
+                    "data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,data_batch.utama,"+
+                    "data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"+
+                    "data_batch.karyawan,data_batch.jumlahbeli,data_batch.sisa from databarang "+
+                    "inner join data_batch on data_batch.kode_brng=databarang.kode_brng where "+
+                    "data_batch.tgl_beli between ? and ? and data_batch.no_batch like ? or "+
+                    "data_batch.tgl_beli between ? and ? and data_batch.kode_brng like ? or "+
+                    "data_batch.tgl_beli between ? and ? and databarang.nama_brng like ? or "+
+                    "data_batch.tgl_beli between ? and ? and data_batch.asal like ? or "+
+                    "data_batch.tgl_beli between ? and ? and data_batch.no_faktur like ? order by data_batch.tgl_beli");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='left'>"+rs.getString("no_batch")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("kode_brng")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nama_brng")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("kode_sat")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("tgl_beli")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("tgl_kadaluarsa")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("asal")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("no_faktur")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getDouble("jumlahbeli")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getDouble("sisa")+"</td>"+
+                        "</tr>");
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select gudangbarang.stok,bangsal.nm_bangsal from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal "+
+                                "where gudangbarang.kode_brng='"+rs.getString("kode_brng")+"' and gudangbarang.no_batch='"+rs.getString("no_batch")+"' "+
+                                "and gudangbarang.no_faktur='"+rs.getString("no_faktur")+"' and gudangbarang.stok>0").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' align='left' colspan='2'>&nbsp;</td>"+
+                                    "<td valign='middle' bgcolor='#fdfff9' align='center' colspan='7'>Ruang/Posisi Stok/Depo</td>"+
+                                    "<td valign='middle' bgcolor='#fdfff9' align='center'>Stok</td>"+
+                                "</tr>"
+                            );
+                            
+                            rs2.beforeFirst();
+                            while(rs2.next()){
+                               htmlContent.append(
+                                    "<tr class='isi'>"+
+                                       "<td valign='middle' align='left' colspan='2'>&nbsp;</td>"+
+                                       "<td valign='top' colspan='7'>"+rs2.getString("nm_bangsal")+"</td>"+
+                                       "<td valign='top' align='center'>"+rs2.getDouble("stok")+"</td>"+
+                                    "</tr>"
+                               );
+                            }
+                            
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' align='left' colspan='11'><hr></td>"+
+                                "</tr>"
+                            );
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            LoadHTML2.setText(
+                    "<html>"+
+                      "<table width='850px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");

@@ -28,7 +28,7 @@
         <?php
                 echo "";
                 $action      =$_GET['action'];
-                $keyword     =$_GET['keyword'];
+                $keyword     =validTeks($_GET['keyword']);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
@@ -42,9 +42,8 @@
             <div align="center"><input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;"></div><br>
         <div style="width: 598px; height: 400px; overflow: auto;">
     <?php
-        $awal=$_GET['awal'];
         $keyword=trim($_POST['keyword']);
-
+        $keyword= validTeks($keyword);
         if (empty($awal)) $awal=0;
         $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
@@ -109,15 +108,16 @@
 			 $hasil2        = bukaquery($_sql2);
 			 $baris2        = mysqli_fetch_row($hasil2);
 			 $jmlmsk         = $baris2[0];
-			 if($baris[23]==-1){
+			 if($baris["wajibmasuk"]==-1){
 			     $jmlmsk=0;
-			 }else if($baris[23]==-2){
+			 }else if($baris["wajibmasuk"]==-2){
 			     $jmlmsk=$baris2[1]-4;
-			 }else if($baris[23]!=0){
-			     $jmlmsk=$baris[23];
-			 }else if(!($baris[23]==0)){
+			 }else if($baris["wajibmasuk"]!=0){
+			     $jmlmsk=$baris["wajibmasuk"];
+			 }else if(!($baris["wajibmasuk"]==0)){
 			     $jmlmsk=$baris2[0];
 			 }
+                         
                          $gb="-";
                          if($baris["photo"]=="pages/pegawai/photo/"){
                             $gb="-";                            

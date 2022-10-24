@@ -1217,7 +1217,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));   
                 param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));   
                 param.put("parameter","%"+TCari.getText().trim()+"%");   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReport("rptDataInsidenKeselamatanPasien.jasper",param,"::[ Data Insiden Keselamatan Pasien ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1333,7 +1333,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
     private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",namapetugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",namapetugas,nip.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             DetikLapor.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1817,11 +1817,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }
 
     private void isRawat() {
-         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat='"+TNoRw.getText()+"' ",TNoRM);
+         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
     }
 
     private void isPsien() {
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
+        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
     }
     
     public void setNoRm(String norwt, Date tgl1, Date tgl2,String unit) {
@@ -1856,7 +1856,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getinsiden_keselamatan_pasien()); 
         if(akses.getjml2()>=1){
             nip.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?",namapetugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",namapetugas,nip.getText());
         }            
     }
 

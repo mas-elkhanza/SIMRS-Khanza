@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>MyKlinik</comment>
+<entry key="GATEWAYNAME">Motorola.COM3</entry>
+<entry key="PORT">COM3</entry>
+<entry key="BAUDRATE">57600</entry>
+<entry key="MERKHP">Motorola</entry>
+<entry key="TIPEHP">C380</entry>
+</properties>
+

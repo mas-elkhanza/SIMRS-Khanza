@@ -10,7 +10,7 @@
  date_default_timezone_set("Asia/Bangkok");
  $tanggal= mktime(date("m"),date("d"),date("Y"));
  $jam=date("H:i");
- $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+ $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
 ?>
 <!DOCTYPE html>
 <html>

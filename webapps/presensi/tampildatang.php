@@ -5,9 +5,7 @@
     <div class="entry">    
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" enctype=multipart/form-data>
         <?php
-                antisqlinjection("?page=TampilDatang");
-                echo "";                
-                $keyword      =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $keyword      =cleankar(isset($_GET['keyword'])?$_GET['keyword']:NULL);
                 echo "<input type=hidden name=keyword value=$keyword>";
         ?>
             <table width="100%" align="center">
@@ -62,7 +60,8 @@
             $urut="temporary_presensi.durasi desc";
         }
         
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift,
                 temporary_presensi.jam_datang, temporary_presensi.jam_pulang, temporary_presensi.status, 
                 temporary_presensi.keterlambatan, temporary_presensi.durasi, temporary_presensi.photo  from pegawai 

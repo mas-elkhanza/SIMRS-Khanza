@@ -11,15 +11,19 @@
 
 package simrskhanza;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +40,6 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariPoli2 extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
@@ -44,6 +47,13 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private String hari="";
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -81,25 +91,24 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
         }
     }
-    private DlgPoli poli=new DlgPoli(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -132,7 +141,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Unit/Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Unit/Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -263,7 +272,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        tampil2();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -299,18 +308,6 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
-    private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        poli.emptTeks();
-        poli.isCek();
-        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        poli.setLocationRelativeTo(internalFrame1);
-        poli.setAlwaysOnTop(false);
-        poli.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());   
-        
-    }//GEN-LAST:event_BtnTambahActionPerformed
-
     private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -325,6 +322,19 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         emptTeks();
     }//GEN-LAST:event_formWindowActivated
+
+    private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPoli poli=new DlgPoli(null,false);
+        poli.emptTeks();
+        poli.isCek();
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setLocationRelativeTo(internalFrame1);
+        poli.setAlwaysOnTop(false);
+        poli.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+
+    }//GEN-LAST:event_BtnTambahActionPerformed
 
     /**
     * @param args the command line arguments
@@ -360,12 +370,15 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {
+            file=new File("./cache/poli2.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
             ps=koneksi.prepareStatement(
                     "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama "+
                     "from poliklinik inner join jadwal inner join dokter on poliklinik.kd_poli=jadwal.kd_poli "+
                     "and dokter.kd_dokter=jadwal.kd_dokter "+
-                    "where poliklinik.status='1' and jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
-                    "poliklinik.status='1' and jadwal.hari_kerja=? and poliklinik.nm_poli like ? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
+                    "where poliklinik.status='1' and jadwal.hari_kerja=? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
             try{                
                 switch (day) {
                     case 1:
@@ -393,12 +406,10 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                         break;
                 }
                 ps.setString(1,hari);
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,hari);
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery(); 
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                    iyem=iyem+"{\"KodeUnit\":\""+rs.getString(1)+"\",\"NamaUnit\":\""+rs.getString(2)+"\",\"RegistrasiBaru\":\""+rs.getString(3)+"\",\"RegistrasiLama\":\""+rs.getString(4)+"\"},";
                 }  
             }catch(Exception ex){
                 System.out.println(ex);
@@ -409,7 +420,11 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }     
+            }  
+            fileWriter.write("{\"poli\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -434,4 +449,26 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         cal.setTime(tanggal);
         day=cal.get(Calendar.DAY_OF_WEEK);
     }
+    
+    private void tampil2() {
+        try {
+            myObj = new FileReader("./cache/poli2.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("poli");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeUnit").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaUnit").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            list.path("KodeUnit").asText(),list.path("NamaUnit").asText(),list.path("RegistrasiBaru").asText(),list.path("RegistrasiLama").asText()
+                        });
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    } 
 }

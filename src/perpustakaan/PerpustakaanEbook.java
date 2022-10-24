@@ -176,6 +176,8 @@ public class PerpustakaanEbook extends javax.swing.JDialog {
                                     Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/ebook/pages/upload/","ebook/").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/ebook/pages/upload/","ebook/"));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("action=Keluar")){
+                                    dispose();
                                 }
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);

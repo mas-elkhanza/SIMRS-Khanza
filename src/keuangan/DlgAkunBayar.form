@@ -71,7 +71,6 @@
           <SubComponents>
             <Component class="widget.Table" name="tbJadwal">
               <Properties>
-                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                 <Property name="name" type="java.lang.String" value="tbJadwal" noResource="true"/>
               </Properties>
@@ -382,6 +381,7 @@
             </Component>
             <Component class="widget.TextBox" name="kdrek">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="null"/>
                 </Property>

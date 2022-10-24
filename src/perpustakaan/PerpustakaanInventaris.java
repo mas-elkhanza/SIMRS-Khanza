@@ -945,30 +945,44 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReportqry("rptInventarisPerpustakaan.jasper","report","::[ Data Inventaris Perpustakaan ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
-                   "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
-                   "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
-                   "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
-                   "from perpustakaan_inventaris inner join perpustakaan_buku inner join perpustakaan_ruang "+
-                   "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
-                   "on perpustakaan_buku.kode_buku=perpustakaan_buku.kode_buku and perpustakaan_buku.kode_pengarang=perpustakaan_pengarang.kode_pengarang "+
-                   "and perpustakaan_buku.id_kategori=perpustakaan_kategori.id_kategori and perpustakaan_buku.id_jenis=perpustakaan_jenis_buku.id_jenis "+
-                   "and perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_inventaris.kd_ruang=perpustakaan_ruang.kd_ruang "+
-                   "where perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.kode_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.no_inventaris like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.asal_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.tgl_pengadaan like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.status_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_ruang.nm_ruang like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.jml_halaman like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_pengarang.nama_pengarang like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.thn_terbit like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.isbn like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_jenis_buku.nama_jenis like '%"+TCari.getText().trim()+"%' order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris",param);
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                if(TCari.getText().equals("")&&nm_ruangcari.getText().equals("")){
+                    Valid.MyReportqry("rptInventarisPerpustakaan.jasper","report","::[ Data Inventaris Perpustakaan ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+                       "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
+                       "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
+                       "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
+                       "from perpustakaan_inventaris inner join perpustakaan_buku inner join perpustakaan_ruang "+
+                       "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
+                       "on perpustakaan_buku.kode_buku=perpustakaan_buku.kode_buku and perpustakaan_buku.kode_pengarang=perpustakaan_pengarang.kode_pengarang "+
+                       "and perpustakaan_buku.id_kategori=perpustakaan_kategori.id_kategori and perpustakaan_buku.id_jenis=perpustakaan_jenis_buku.id_jenis "+
+                       "and perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_inventaris.kd_ruang=perpustakaan_ruang.kd_ruang "+
+                       "order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris",param);
+                }else{
+                    Valid.MyReportqry("rptInventarisPerpustakaan.jasper","report","::[ Data Inventaris Perpustakaan ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+                       "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
+                       "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
+                       "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
+                       "from perpustakaan_inventaris inner join perpustakaan_buku inner join perpustakaan_ruang "+
+                       "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
+                       "on perpustakaan_buku.kode_buku=perpustakaan_buku.kode_buku and perpustakaan_buku.kode_pengarang=perpustakaan_pengarang.kode_pengarang "+
+                       "and perpustakaan_buku.id_kategori=perpustakaan_kategori.id_kategori and perpustakaan_buku.id_jenis=perpustakaan_jenis_buku.id_jenis "+
+                       "and perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_inventaris.kd_ruang=perpustakaan_ruang.kd_ruang "+
+                       "where perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.kode_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.no_inventaris like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.asal_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.tgl_pengadaan like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_inventaris.status_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_ruang.nm_ruang like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.jml_halaman like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_pengarang.nama_pengarang like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.thn_terbit like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_buku.isbn like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+nm_ruangcari.getText().trim()+"%' and perpustakaan_jenis_buku.nama_jenis like '%"+TCari.getText().trim()+"%' order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris",param);
+                }
+                    
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1129,29 +1143,42 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs()); 
-            Valid.MyReportqry("rptBarcodeInventaris.jasper","report","::[ Data Barang ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
-                   "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
-                   "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
-                   "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
-                   "from perpustakaan_inventaris inner join perpustakaan_buku inner join perpustakaan_ruang "+
-                   "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
-                   "on perpustakaan_buku.kode_buku=perpustakaan_buku.kode_buku and perpustakaan_buku.kode_pengarang=perpustakaan_pengarang.kode_pengarang "+
-                   "and perpustakaan_buku.id_kategori=perpustakaan_kategori.id_kategori and perpustakaan_buku.id_jenis=perpustakaan_jenis_buku.id_jenis "+
-                   "and perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_inventaris.kd_ruang=perpustakaan_ruang.kd_ruang "+
-                   "where perpustakaan_buku.kode_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_inventaris.no_inventaris like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_inventaris.asal_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_inventaris.tgl_pengadaan like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_inventaris.status_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_ruang.nm_ruang like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_buku.jml_halaman like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_pengarang.nama_pengarang like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_buku.thn_terbit like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_buku.isbn like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' "+
-                    "or perpustakaan_jenis_buku.nama_jenis like '%"+TCari.getText().trim()+"%' order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris",param);            
+            if(TCari.getText().equals("")&&nm_ruangcari.getText().equals("")){
+                Valid.MyReportqry("rptBarcodePerpustakaan.jasper","report","::[ Data Barang ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+                       "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
+                       "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
+                       "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
+                       "from perpustakaan_inventaris inner join perpustakaan_buku inner join perpustakaan_ruang "+
+                       "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
+                       "on perpustakaan_buku.kode_buku=perpustakaan_buku.kode_buku and perpustakaan_buku.kode_pengarang=perpustakaan_pengarang.kode_pengarang "+
+                       "and perpustakaan_buku.id_kategori=perpustakaan_kategori.id_kategori and perpustakaan_buku.id_jenis=perpustakaan_jenis_buku.id_jenis "+
+                       "and perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_inventaris.kd_ruang=perpustakaan_ruang.kd_ruang "+
+                       "order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris",param);           
+            }else{
+                Valid.MyReportqry("rptBarcodePerpustakaan.jasper","report","::[ Data Barang ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+                       "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
+                       "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
+                       "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
+                       "from perpustakaan_inventaris inner join perpustakaan_buku inner join perpustakaan_ruang "+
+                       "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
+                       "on perpustakaan_buku.kode_buku=perpustakaan_buku.kode_buku and perpustakaan_buku.kode_pengarang=perpustakaan_pengarang.kode_pengarang "+
+                       "and perpustakaan_buku.id_kategori=perpustakaan_kategori.id_kategori and perpustakaan_buku.id_jenis=perpustakaan_jenis_buku.id_jenis "+
+                       "and perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_inventaris.kd_ruang=perpustakaan_ruang.kd_ruang "+
+                       "where perpustakaan_buku.kode_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_inventaris.no_inventaris like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_inventaris.asal_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_inventaris.tgl_pengadaan like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_inventaris.status_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_ruang.nm_ruang like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_buku.jml_halaman like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_buku.judul_buku like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_pengarang.nama_pengarang like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_buku.thn_terbit like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_buku.isbn like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' "+
+                        "or perpustakaan_jenis_buku.nama_jenis like '%"+TCari.getText().trim()+"%' order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris",param);           
+            }    
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_ppBarcodeBtnPrintActionPerformed
@@ -1255,7 +1282,19 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     public void tampil() {
         try {
             Valid.tabelKosong(tabMode);
-            ps=koneksi.prepareStatement("select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+            if(TCari.getText().equals("")&&nm_ruangcari.getText().equals("")){
+                ps=koneksi.prepareStatement("select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+                        "perpustakaan_penerbit.nama_penerbit, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn,"+
+                        "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan,"+
+                        "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
+                        "from perpustakaan_inventaris inner join perpustakaan_buku inner join perpustakaan_penerbit inner join perpustakaan_ruang "+
+                        "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
+                        "on perpustakaan_buku.kode_penerbit=perpustakaan_penerbit.kode_penerbit and perpustakaan_buku.kode_pengarang=perpustakaan_pengarang.kode_pengarang "+
+                        "and perpustakaan_buku.id_kategori=perpustakaan_kategori.id_kategori and perpustakaan_buku.id_jenis=perpustakaan_jenis_buku.id_jenis "+
+                        "and perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_inventaris.kd_ruang=perpustakaan_ruang.kd_ruang "+
+                        " order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris");
+            }else{
+                ps=koneksi.prepareStatement("select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
                         "perpustakaan_penerbit.nama_penerbit, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn,"+
                         "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan,"+
                         "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
@@ -1278,35 +1317,40 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
                          "or perpustakaan_ruang.nm_ruang like ? and perpustakaan_buku.isbn like ? "+
                          "or perpustakaan_ruang.nm_ruang like ? and perpustakaan_kategori.nama_kategori like ? "+
                          "or perpustakaan_ruang.nm_ruang like ? and perpustakaan_jenis_buku.nama_jenis like ? order by perpustakaan_buku.kode_buku,perpustakaan_inventaris.no_inventaris");
-            try{            
-                ps.setString(1,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(14,"%"+TCari.getText().trim()+"%");
-                ps.setString(15,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(16,"%"+TCari.getText().trim()+"%");
-                ps.setString(17,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(22,"%"+TCari.getText().trim()+"%");
-                ps.setString(23,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(26,"%"+TCari.getText().trim()+"%");
-                ps.setString(27,"%"+nm_ruangcari.getText().trim()+"%");
-                ps.setString(28,"%"+TCari.getText().trim()+"%");
+            }
+                
+            try{ 
+                if(TCari.getText().equals("")&&nm_ruangcari.getText().equals("")){}else{
+                    ps.setString(1,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(14,"%"+TCari.getText().trim()+"%");
+                    ps.setString(15,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps.setString(17,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(19,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps.setString(21,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(22,"%"+TCari.getText().trim()+"%");
+                    ps.setString(23,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps.setString(25,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(26,"%"+TCari.getText().trim()+"%");
+                    ps.setString(27,"%"+nm_ruangcari.getText().trim()+"%");
+                    ps.setString(28,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 nilai_inven=0;
                 while(rs.next()){

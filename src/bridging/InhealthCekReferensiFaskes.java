@@ -44,7 +44,6 @@ import org.springframework.web.client.RestTemplate;
  */
 public final class InhealthCekReferensiFaskes extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
@@ -243,15 +242,14 @@ public final class InhealthCekReferensiFaskes extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -262,8 +260,8 @@ public final class InhealthCekReferensiFaskes extends javax.swing.JDialog {
             //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariInhealthReferensiFaskes.jasper","report","[ Pencarian Referensi Faskes ]",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptCariInhealthReferensiFaskes.jasper","report","[ Pencarian Referensi Faskes ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -326,11 +324,10 @@ public final class InhealthCekReferensiFaskes extends javax.swing.JDialog {
 
     public void tampil(String faskes) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/ProviderRujukan";	
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/ProviderRujukan";	
 	    HttpHeaders headers = new HttpHeaders();            
             headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                             "\"kodeprovider\": \""+kodeppk+"\"," +
                             "\"keyword\": \""+faskes+"\"" +
                          "}";

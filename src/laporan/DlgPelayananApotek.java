@@ -307,16 +307,24 @@ public final class DlgPelayananApotek extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));   
-            param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));   
-            param.put("parameter","%"+TCari.getText().trim()+"%");    
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             param.put("limabelas",""+limabelas);  
             param.put("rata",""+Valid.SetAngka6(lamajam/(i-1)));  
             param.put("tigapuluh",""+tigapuluh);  
             param.put("satujam",""+satujam);  
             param.put("lebihsatujam",""+lebihsatujam);  
-            Valid.MyReport("rptPelayananApotek.jasper",param,"::[ Laporan Data Pelayanan Apotek ]::");
+            
+            Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
+
+            for(int i=0;i<tabMode.getRowCount();i++){  
+                Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                    ""+i,tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
+                    tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
+                    tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),"","","","","","","","","","","","",
+                    "","","","","","","","","","","","","","","","",akses.getalamatip()
+                });
+            }
+            Valid.MyReportqry("rptPelayananApotek.jasper","report","::[ Laporan Data Pelayanan Apotek ]::","select * from temporary_resep where temporary_resep.temp37='"+akses.getalamatip()+"' order by temporary_resep.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -448,6 +456,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tigapuluh=0;
             satujam=0;
             lebihsatujam=0;
+            lamajam=0;
+            i=1;
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rkm_medis,pasien.nm_pasien,dokter.nm_dokter,poliklinik.nm_poli," +
                 "resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_obat.tgl_perawatan,resep_obat.jam," +
@@ -457,27 +467,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                 "and reg_periksa.kd_poli=poliklinik.kd_poli " +
                 "and reg_periksa.no_rawat=resep_obat.no_rawat "+
-                "where resep_obat.tgl_peresepan between ? and ? and poliklinik.nm_poli like ? or " +
-                "resep_obat.tgl_peresepan between ? and ? and dokter.nm_dokter like ? or " +
-                "resep_obat.tgl_peresepan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
-                "resep_obat.tgl_peresepan between ? and ? and pasien.nm_pasien like ?  "+
+                "where resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_perawatan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? "+
+                "and (poliklinik.nm_poli like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?)  "+
                 "order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
-                i=1;   
-                lamajam=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
@@ -494,27 +494,65 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }else if(rs.getDouble(9)>60){
                         lebihsatujam++;
                     }
-                }                 
-                
-                if(lamajam>0){
-                    tabMode.addRow(new Object[]{
-                        "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(lamajam/(i-1))
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","","0 - 15 Menit",": ","","","",""+limabelas
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","",">30 - <=60 Menit",": ","","","",""+satujam
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","",">60 Menit",": ","","","",""+lebihsatujam
-                    });
-                }                    
+                }                        
             } catch (Exception e) {
-                System.out.println("laporan.DlgPelayananRalan.tampil() : "+e);
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }      
+            
+            ps=koneksi.prepareStatement(
+                "select reg_periksa.no_rkm_medis,pasien.nm_pasien,dokter.nm_dokter,poliklinik.nm_poli," +
+                "permintaan_stok_obat_pasien.tgl_permintaan,permintaan_stok_obat_pasien.jam,permintaan_stok_obat_pasien.tgl_validasi,permintaan_stok_obat_pasien.jam_validasi," +
+                "round(TIME_TO_SEC(concat(permintaan_stok_obat_pasien.tgl_permintaan,' ',permintaan_stok_obat_pasien.jam))-(TIME_TO_SEC(concat(permintaan_stok_obat_pasien.tgl_validasi,' ',permintaan_stok_obat_pasien.jam_validasi)))/60,2) as durasi " +
+                "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join permintaan_stok_obat_pasien " +
+                "on reg_periksa.kd_dokter=dokter.kd_dokter " +
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+                "and reg_periksa.kd_poli=poliklinik.kd_poli " +
+                "and reg_periksa.no_rawat=permintaan_stok_obat_pasien.no_rawat "+
+                "where permintaan_stok_obat_pasien.tgl_validasi<>'0000-00-00' and permintaan_stok_obat_pasien.tgl_permintaan between ? and ? and poliklinik.nm_poli like ? or " +
+                "permintaan_stok_obat_pasien.tgl_validasi<>'0000-00-00' and permintaan_stok_obat_pasien.tgl_permintaan between ? and ? and dokter.nm_dokter like ? or " +
+                "permintaan_stok_obat_pasien.tgl_validasi<>'0000-00-00' and permintaan_stok_obat_pasien.tgl_permintaan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
+                "permintaan_stok_obat_pasien.tgl_validasi<>'0000-00-00' and permintaan_stok_obat_pasien.tgl_permintaan between ? and ? and pasien.nm_pasien like ?  "+
+                "order by permintaan_stok_obat_pasien.tgl_permintaan,permintaan_stok_obat_pasien.jam");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5)+" "+rs.getString(6),rs.getString(7)+" "+rs.getString(8),rs.getString(9)
+                    });
+                    i++;
+                    lamajam=lamajam+rs.getDouble(9);
+                    if(rs.getDouble(9)<=15){
+                        limabelas++;
+                    }else if((rs.getDouble(9)>15)&&(rs.getDouble(9)<=30)){
+                        tigapuluh++;
+                    }else if((rs.getDouble(9)>30)&&(rs.getDouble(9)<=60)){
+                        satujam++;
+                    }else if(rs.getDouble(9)>60){
+                        lebihsatujam++;
+                    }
+                }                        
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -523,6 +561,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.close();
                 }
             }
+                
+            if(lamajam>0){
+                tabMode.addRow(new Object[]{
+                    "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(lamajam/(i-1))
+                });
+                tabMode.addRow(new Object[]{
+                    "","","0 - 15 Menit",": ","","","",""+limabelas
+                });
+                tabMode.addRow(new Object[]{
+                    "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
+                });
+                tabMode.addRow(new Object[]{
+                    "","",">30 - <=60 Menit",": ","","","",""+satujam
+                });
+                tabMode.addRow(new Object[]{
+                    "","",">60 Menit",": ","","","",""+lebihsatujam
+                });
+            } 
             this.setCursor(Cursor.getDefaultCursor());
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

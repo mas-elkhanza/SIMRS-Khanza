@@ -447,7 +447,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
             param.put("shift",CmbStatus.getSelectedItem().toString());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReport("rptPaymentPoint.jasper","report","::[ Payment Point ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -647,17 +647,17 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                                 }
                                 if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
                                     if(rsjamshift.getString("shift").equals("Pagi")){
-                                        pagi=pagi+rs.getDouble("jumlah_bayar");
+                                        pagi=pagi+Math.round(rs.getDouble("jumlah_bayar"));
                                     }else if(rsjamshift.getString("shift").equals("Siang")){
-                                        siang=siang+rs.getDouble("jumlah_bayar");
+                                        siang=siang+Math.round(rs.getDouble("jumlah_bayar"));
                                     }else if(rsjamshift.getString("shift").equals("Sore")){
-                                        sore=sore+rs.getDouble("jumlah_bayar");
+                                        sore=sore+Math.round(rs.getDouble("jumlah_bayar"));
                                     }else if(rsjamshift.getString("shift").equals("Malam")){
-                                        malam=malam+rs.getDouble("jumlah_bayar");
+                                        malam=malam+Math.round(rs.getDouble("jumlah_bayar"));
                                     }
-                                    all=all+rs.getDouble("jumlah_bayar");
+                                    all=all+Math.round(rs.getDouble("jumlah_bayar"));
                                     tabMode.addRow(new Object[]{
-                                        i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),petugas
+                                        i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),Math.round(rs.getDouble("jumlah_bayar")),petugas
                                     });
                                 }                                    
                             }else if(rsjamshift.getString("shift").equals(CmbStatus.getSelectedItem().toString())){
@@ -670,17 +670,17 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                                 }
                                 if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
                                     if(rsjamshift.getString("shift").equals("Pagi")){
-                                        pagi=pagi+rs.getDouble("jumlah_bayar");
+                                        pagi=pagi+Math.round(rs.getDouble("jumlah_bayar"));
                                     }else if(rsjamshift.getString("shift").equals("Siang")){
-                                        siang=siang+rs.getDouble("jumlah_bayar");
+                                        siang=siang+Math.round(rs.getDouble("jumlah_bayar"));
                                     }else if(rsjamshift.getString("shift").equals("Sore")){
-                                        sore=sore+rs.getDouble("jumlah_bayar");
+                                        sore=sore+Math.round(rs.getDouble("jumlah_bayar"));
                                     }else if(rsjamshift.getString("shift").equals("Malam")){
-                                        malam=malam+rs.getDouble("jumlah_bayar");
+                                        malam=malam+Math.round(rs.getDouble("jumlah_bayar"));
                                     }
-                                    all=all+rs.getDouble("jumlah_bayar");
+                                    all=all+Math.round(rs.getDouble("jumlah_bayar"));
                                     tabMode.addRow(new Object[]{
-                                        i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),petugas
+                                        i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),Math.round(rs.getDouble("jumlah_bayar")),petugas
                                     });
                                 }                                    
                             }

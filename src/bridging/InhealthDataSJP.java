@@ -359,7 +359,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         
         try{
             KdPPK.setText(Sequel.cariIsi("select kode_ppkinhealth from setting")); 
-            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));           
+            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));           
         }catch(Exception e){
             System.out.println(e);
         }
@@ -1402,7 +1402,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReport("rptBridgingDaftar.jasper","report","::[ Data Bridging SEP ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1526,7 +1526,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                         TglLahir.setText(root.path("TGLLAHIR").asText().substring(0,11));
                         KdPpkRujukan.setText(root.path("KODEPROVIDER").asText());
                         NmPpkRujukan.setText(root.path("NAMAPROVIDER").asText());
-                        jkel=Sequel.cariIsi("select jk from pasien where no_rkm_medis=?",TNoRM.getText());
+                        jkel=Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText());
                         JK.setText(jkel.replaceAll("P","PEREMPUAN").replaceAll("L","LAKI-LAKI"));
                     }else {
                         emptTeks();
@@ -1556,6 +1556,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            param.put("logo",Sequel.cariGambar("select inhealth from gambar")); 
             if(JenisPelayanan.getSelectedIndex()==0){
                 Valid.MyReport("rptBridgingSJP.jasper","report","::[ Cetak SJP ]::",param);
             }else{
@@ -1940,7 +1941,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     }
 
     private void isRawat() {
-        Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());  
+        Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",TNoRM,TNoRw.getText());  
         TNoRM.setText(TNoRM.getText());
         Catatan.setText("-");
     }

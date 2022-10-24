@@ -7,10 +7,10 @@
     </head>
     <body>
    <?php
-        $keyword=$_GET['keyword'];
-        $_sql = "SELECT kode_evaluasi,nama_evaluasi,indek FROM evaluasi_kinerja where kode_evaluasi like '%".$keyword."%' or nama_evaluasi like '%".$keyword."%' ORDER BY indek desc";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysqli_num_rows($hasil);
+        $keyword = validTeks($_GET['keyword']);
+        $_sql    = "SELECT evaluasi_kinerja.kode_evaluasi,evaluasi_kinerja.nama_evaluasi,evaluasi_kinerja.indek FROM evaluasi_kinerja where evaluasi_kinerja.kode_evaluasi like '%".$keyword."%' or evaluasi_kinerja.nama_evaluasi like '%".$keyword."%' ORDER BY evaluasi_kinerja.indek desc";
+        $hasil   = bukaquery($_sql);
+        $jumlah  = mysqli_num_rows($hasil);
         $no=1;
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -23,13 +23,22 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-								<td>$no</td>  
+				<td>$no</td>  
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                                 <td>$baris[2]</td>   
                              </tr>";$no++;
                     }
             echo "</table>";
+        }else {
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>					   
+                        <td width='10%'><div align='center'>Proses</div></td>
+                        <td width='20%'><div align='center'>Kode</div></td>
+                        <td width='48%'><div align='center'>Evaluasi Kinerja</div></td>
+                        <td width='20%'><div align='center'>Index</div></td>
+                    </tr>
+                 </table>";
         } 
     ?>
     </body>

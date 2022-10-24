@@ -885,7 +885,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
             Biaya.setText(""+Sequel.cariIsiAngka("select registrasilama from poliklinik where kd_poli=?",kodepoli));
         }
         LblKdDokter.setText(kddokter);
-        LblDokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter));
+        LblDokter.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter));
         Tanggal.setDate(new Date());
         LblTanggal.setText(Tanggal.getSelectedItem().toString());
         LblJam.setText(Sequel.cariIsi("select current_time()"));

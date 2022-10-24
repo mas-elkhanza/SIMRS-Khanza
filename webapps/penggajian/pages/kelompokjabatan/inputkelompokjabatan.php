@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputKelompokJabatan&action=TAMBAH>| Input Data |</a>
@@ -10,14 +8,14 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode_kelompok     =str_replace("_"," ",isset($_GET['kode_kelompok'])?$_GET['kode_kelompok']:NULL);
+                $action         = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode_kelompok  = validTeks(str_replace("_"," ",isset($_GET['kode_kelompok'])?$_GET['kode_kelompok']:NULL));
                 if($action == "TAMBAH"){
-                    $kode_kelompok       = str_replace("_"," ",isset($_GET['kode_kelompok']))?str_replace("_"," ",$_GET['kode_kelompok']):NULL;
-                    $nama_kelompok        = "";
-                    $indek      ="";
+                    $kode_kelompok  = validTeks(str_replace("_"," ",isset($_GET['kode_kelompok'])?$_GET['kode_kelompok']:NULL));
+                    $nama_kelompok  = "";
+                    $indek          = "";
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT * FROM kelompok_jabatan WHERE kode_kelompok='$kode_kelompok'";
+                    $_sql           = "SELECT * FROM kelompok_jabatan WHERE kelompok_jabatan.kode_kelompok='$kode_kelompok'";
                     $hasil          = bukaquery($_sql);
                     $baris          = mysqli_fetch_row($hasil);
                     $kode_kelompok  = $baris[0];
@@ -29,7 +27,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode</td><td width="">:</td>
-                    <td width="67%"><input name="kode_kelompok" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_kelompok;?>" size="10" maxlength="3">
+                    <td width="67%"><input name="kode_kelompok" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_kelompok;?>" size="10" maxlength="3" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -50,10 +48,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode_kelompok    = trim($_POST['kode_kelompok']);
-                    $nama_kelompok    = trim($_POST['nama_kelompok']);
-                    $indek   = trim($_POST['indek']);
-                    if ((!empty($kode_kelompok))&&(!empty($nama_kelompok))&&(!empty($indek))) {
+                    $kode_kelompok    = validTeks(trim($_POST['kode_kelompok']));
+                    $nama_kelompok    = validTeks(trim($_POST['nama_kelompok']));
+                    $indek            = validangka(trim($_POST['indek']));
+                    if ((isset($kode_kelompok))&&(isset($nama_kelompok))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" kelompok_jabatan "," '$kode_kelompok','$nama_kelompok','$indek' ", " kelompok jabatan " );
@@ -64,7 +62,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListKelompokJabatan'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($kode_kelompok))||(empty($nama_kelompok))||(empty($indek))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

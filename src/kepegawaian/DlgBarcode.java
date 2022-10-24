@@ -529,7 +529,7 @@ public final class DlgBarcode extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReport("rptBarcode.jasper","report","::[ Kartu Barcode ]::",param);
             }else if(! TCari.getText().trim().equals("")){                
                 Map<String, Object> param = new HashMap<>();
@@ -540,7 +540,7 @@ public final class DlgBarcode extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptBarcode.jasper","report","::[ Kartu Barcode ]::","select pegawai.id, "+
                                 "pegawai.nik,"+
                                 "pegawai.nama,"+

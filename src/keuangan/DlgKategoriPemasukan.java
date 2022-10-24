@@ -119,24 +119,14 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgKategoriPemasukan")){
                     if(rekening.getTabel().getSelectedRow()!= -1){  
                         if(pilihan==1){
-                            if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("R")&&
-                                rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("K")){
-                                KdAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                                NmAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
-                                KdAkun.requestFocus();
-                            }else{
-                                JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe R dan Balance K..!!");
-                            }                            
+                            KdAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                            NmAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
+                            KdAkun.requestFocus();                       
                         }else if(pilihan==2){
-                            if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
-                                rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
-                                KdKontraAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                                NmKontraAKun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
-                                KdAkun.requestFocus();
-                            }else{
-                                JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe N dan Balance D..!!");
-                            }                                
-                        }                         
+                            KdKontraAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                            NmKontraAKun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
+                            KdKontraAkun.requestFocus();                               
+                        }                          
                     }                 
                 }
             }
@@ -671,14 +661,14 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
-                                tabMode.getValueAt(i,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekening Tahun"); 
+                                tabMode.getValueAt(i,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekening Tahun"); 
             }
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",akses.getnamars());
@@ -687,8 +677,8 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptKategoriPemasukanLain.jasper","report","::[ Kategori Pemasukan Lain ]::",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptKategoriPemasukanLain.jasper","report","::[ Kategori Pemasukan Lain ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -929,10 +919,10 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
     
     public void isCek(){
         asalform=akses.getform();       
-        BtnSimpan.setEnabled(akses.getpemasukan_lain());
-        BtnBatal.setEnabled(akses.getpemasukan_lain());
-        BtnEdit.setEnabled(akses.getpemasukan_lain());
-        BtnHapus.setEnabled(akses.getpemasukan_lain());
-        BtnPrint.setEnabled(akses.getpemasukan_lain());      
+        BtnSimpan.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnBatal.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnEdit.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnHapus.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnPrint.setEnabled(akses.getkategori_pemasukan_lain());      
     }
 }

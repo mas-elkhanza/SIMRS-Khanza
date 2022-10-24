@@ -15,13 +15,13 @@
         <?php
                 antisqlinjection("?page=ListPesan");
                 echo "";                
-                $action       =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword      =isset($_GET['keyword'])?$_GET['keyword']:NULL;
-                $Thnawal      =isset($_GET['Thnawal'])?$_GET['Thnawal']:NULL;                
+                $action       = isset($_GET['action'])?$_GET['action']:NULL;
+                $keyword      = validTeks(isset($_GET['keyword'])?$_GET['keyword']:NULL);
+                $Thnawal      = validTeks(isset($_GET['Thnawal'])?$_GET['Thnawal']:NULL);                
                 if($Thnawal==""){
                     $Thnawal=date('Y');
                 }                
-                $Blnawal      =isset($_GET['Blnawal'])?$_GET['Blnawal']:NULL;
+                $Blnawal      = validTeks(isset($_GET['Blnawal'])?$_GET['Blnawal']:NULL);
                 if($Blnawal==""){
                     $Blnawal=date('m');
                 } 
@@ -64,7 +64,7 @@
     <?php
        
               
-        $order=cleankar(isset($_GET['order']))?cleankar($_GET['order']):NULL;
+        $order= validTeks(isset($_GET['order']))?cleankar($_GET['order']):NULL;
         if (empty($order)) $order=1;
         
         $urut="pegawai.nik asc";
@@ -104,24 +104,25 @@
         
         $BtnCari=isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
         if (isset($BtnCari)) {      
-              $keyword=trim($_POST['keyword']);
-              $Thnawal=trim($_POST['Thnawal']);
-              $Blnawal=trim($_POST['Blnawal']);           
+              $keyword= validTeks(trim($_POST['keyword']));
+              $Thnawal= validTeks(trim($_POST['Thnawal']));
+              $Blnawal= validTeks(trim($_POST['Blnawal']));           
               
               echo "<meta http-equiv='refresh' content='1;URL=?page=Cari&Thnawal=$Thnawal&Blnawal=$Blnawal&keyword=$keyword'>";
         }
-        $say =" rekap_presensi.jam_datang like '%$Thnawal-$Blnawal%'"; 
-        $_sql = "SELECT pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift,
-                rekap_presensi.jam_datang, rekap_presensi.jam_pulang, rekap_presensi.status, 
-                rekap_presensi.keterlambatan, rekap_presensi.durasi,rekap_presensi.keterangan,
-                rekap_presensi.photo  from pegawai 
-                inner join rekap_presensi on pegawai.id=rekap_presensi.id                 
-                where  $say and pegawai.nik like '%".$keyword."%' or
-                $say and pegawai.nama like '%".$keyword."%' or
-                $say and rekap_presensi.shift like '%".$keyword."%' or
-                $say and rekap_presensi.jam_datang like '%".$keyword."%' or
-                $say and rekap_presensi.status like '%".$keyword."%' or
-                $say and rekap_presensi.keterlambatan like '%".$keyword."%' order by $urut,rekap_presensi.jam_datang   ";                 
+        $keyword    = validTeks($keyword);
+        $say        = " rekap_presensi.jam_datang like '%$Thnawal-$Blnawal%'"; 
+        $_sql       = "SELECT pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift,
+                        rekap_presensi.jam_datang, rekap_presensi.jam_pulang, rekap_presensi.status, 
+                        rekap_presensi.keterlambatan, rekap_presensi.durasi,rekap_presensi.keterangan,
+                        rekap_presensi.photo  from pegawai 
+                        inner join rekap_presensi on pegawai.id=rekap_presensi.id                 
+                        where  $say and pegawai.nik like '%".$keyword."%' or
+                        $say and pegawai.nama like '%".$keyword."%' or
+                        $say and rekap_presensi.shift like '%".$keyword."%' or
+                        $say and rekap_presensi.jam_datang like '%".$keyword."%' or
+                        $say and rekap_presensi.status like '%".$keyword."%' or
+                        $say and rekap_presensi.keterlambatan like '%".$keyword."%' order by $urut,rekap_presensi.jam_datang   ";                 
 
        
         $hasil=bukaquery($_sql);

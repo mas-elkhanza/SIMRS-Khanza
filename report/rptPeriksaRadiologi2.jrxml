@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="594" pageHeight="842" columnWidth="521" leftMargin="56" rightMargin="17" topMargin="20" bottomMargin="20" uuid="ede88e92-d6b6-42f5-a55b-70a4e79ca682">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="206"/>
@@ -38,7 +38,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="234" splitType="Stretch">
+		<band height="254" splitType="Stretch">
 			<textField>
 				<reportElement x="2" y="14" width="520" height="25" forecolor="#000000" backcolor="#00FF00" uuid="0e4afb60-bd9b-47e3-a60a-14c1bf8cb57b"/>
 				<textElement textAlignment="Center">
@@ -346,13 +346,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="1" y="233" width="520" height="1" uuid="a890f08b-c107-4a23-9855-0d38fcb98f92"/>
+				<reportElement x="1" y="253" width="520" height="1" uuid="5a2e606f-5ab2-45f6-800b-281ebb185273"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="189" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="adc59708-63d9-411b-b3e2-34b96d64d4cb"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="189" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="1e571cc6-d03e-4568-a689-0589d8ca5596"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -360,15 +360,15 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="99" y="189" width="175" height="15" uuid="45969449-69e3-4ceb-a553-e6ba42bd3fde"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="99" y="191" width="422" height="44" uuid="91072ddc-389d-48c4-8c13-e00933222482"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pemeriksaan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="189" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="04f0247a-6dfc-4e98-9916-bc2dccbf8abf"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="189" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="67939fb7-14b7-40f8-b512-7e23821a93e1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -376,7 +376,7 @@
 				<text><![CDATA[Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="217" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="bb948413-7d3f-4269-83da-73221491e8d8"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="237" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="dca089de-4cc9-41c7-acde-bad427a46d02"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -384,7 +384,7 @@
 				<text><![CDATA[Hasil Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="217" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="9cd133fa-ebd8-45e6-9fcf-4a587e8f4112"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="237" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="b7e07bd2-609a-423b-bb90-3eb2255d4ca9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -408,7 +408,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="3" y="2" width="516" height="15" uuid="d9087621-bc7c-47bc-9b45-1f318123d1d3"/>
+				<reportElement positionType="Float" x="3" y="2" width="516" height="15" uuid="d9087621-bc7c-47bc-9b45-1f318123d1d3"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -483,13 +483,21 @@
 				<text><![CDATA[Penanggung Jawab]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="2" y="22" width="210" height="57" isRemoveLineWhenBlank="true" uuid="cef030b5-e26f-4744-950f-135382231ff4">
+				<reportElement x="2" y="22" width="209" height="66" isRemoveLineWhenBlank="true" uuid="cef030b5-e26f-4744-950f-135382231ff4">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="89" width="208" height="15" uuid="4c95fb0f-10f7-4f73-b0b8-7f194a14f28e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{penjab}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

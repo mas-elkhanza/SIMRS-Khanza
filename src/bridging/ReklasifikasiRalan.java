@@ -33,7 +33,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingRalan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -46,7 +47,7 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2,pspenyakit,psprosedur;
     private ResultSet rs,rs2;
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private double all=0,Laborat=0,Radiologi=0,Obat=0,Ralan_Dokter=0,Ralan_Dokter_paramedis=0,Ralan_Paramedis=0,Tambahan=0,Potongan=0,Registrasi=0,
                     ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlRegistrasi=0,untungrugiinacbg=0,
                    Operasi=0,ttlOperasi=0,kebidanan=0,operasi2=0,tarifincabg=0,ttltarifincabg=0,ttluntungrugiinacbg=0,ttlkebidanan=0;
@@ -430,10 +431,9 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary2");
+            Sequel.queryu("delete from temporary2 where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){  
-                    Sequel.menyimpan("temporary2","'0','"+
+                    Sequel.menyimpan("temporary2","'"+r+"','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
@@ -525,7 +525,7 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,89).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,90).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,91).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,92).toString().replaceAll("'","`")+"','','','','','','','',''","data");
+                                    tabMode.getValueAt(r,92).toString().replaceAll("'","`")+"','','','','','','','','"+akses.getalamatip()+"'","data");
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -535,8 +535,8 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptReklasifikasiRalan.jasper","report","::[ Reklasifikasi Ralan ]::",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptReklasifikasiRalan.jasper","report","::[ Reklasifikasi Ralan ]::","select * from temporary2 where temporary2.temp100='"+akses.getalamatip()+"' order by temporary2.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

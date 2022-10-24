@@ -3,16 +3,18 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baristahun   = mysqli_fetch_row($hasil);
-   $tahun        = $baristahun[0];
-   $bln_leng     = strlen($baristahun[1]);
-   $hari         = $baristahun[2];
-   $bulan        = "0";
-   $bulanindex   = $baristahun[1];
+   $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
+   $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
+   $bln_leng  = strlen($blnini);
+   $bulan     = "0";
    if ($bln_leng==1){
-    	$bulan="0".$baristahun[1];
+       $bulan="0".$blnini;
    }else{
-	$bulan=$baristahun[1];
+       $bulan=$blnini;
    }
+
+   $bulanindex = empty($baristahun[1])?date("m"):$baristahun[1];
 
 ?>
 <html>

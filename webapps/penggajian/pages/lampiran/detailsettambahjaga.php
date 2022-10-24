@@ -9,14 +9,14 @@
             <?php
                 echo "";
                 $action     =isset($_GET['action'])?$_GET['action']:NULL;
-                $tnj        =isset($_GET['tnj'])?$_GET['tnj']:NULL;
-                $pendidikan =isset($_GET['pendidikan'])?$_GET['pendidikan']:NULL;
+                $tnj        =validTeks(isset($_GET['tnj'])?$_GET['tnj']:NULL);
+                $pendidikan =validTeks(isset($_GET['pendidikan'])?$_GET['pendidikan']:NULL);
                 echo "<input type=hidden name=pendidikan  value=$pendidikan><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
-                    <td width="31%" >Besar tunjangan</td><td width="">:</td>
-                    <td width="67%">Rp <input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $tnj;?>" size="20" maxlength="15">
+                    <td width="31%" >Besar Tunjangan</td><td width="">:</td>
+                    <td width="67%">Rp <input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $tnj;?>" size="20" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -41,16 +41,16 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $tnj                =trim($_POST['tnj']);
-                    $pendidikan         =trim($_POST['pendidikan']);
-                    if (!empty($pendidikan)) {
+                    $tnj                = validangka(trim($_POST['tnj']));
+                    $pendidikan         = validTeks(trim($_POST['pendidikan']));
+                    if (isset($pendidikan)) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" set_jgtambah  ","'$tnj','$pendidikan'", " Set tambah jaga " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputSetTambahJaga&action=TAMBAH&pendidikan='$pendidikan'>";
                                 break;
                         }
-                    }else if (empty($pendidikan)){
+                    }else {
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -61,7 +61,6 @@
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
 
-                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Proses</div></td>
@@ -82,7 +81,6 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data set tambah jaga masih kosong !";}
         ?>
         </div>
         </form>

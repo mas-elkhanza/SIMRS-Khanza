@@ -283,8 +283,8 @@ public class GrafikPasienHAIsBulan extends javax.swing.JDialog {
     private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint3ActionPerformed
         DefaultCategoryDataset dcd = new DefaultCategoryDataset();
         try {                
-            rs = koneksi.prepareStatement("select DATE_FORMAT(data_HAIs.tanggal, '%y-%m'),count(DATE_FORMAT(data_HAIs.tanggal, '%y-%m')) as jumlah "+
-                "from data_HAIs where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by DATE_FORMAT(data_HAIs.tanggal, '%y-%m')").executeQuery();
+            rs = koneksi.prepareStatement("select DATE_FORMAT(data_HAIs.tanggal, '%Y-%m'),count(distinct data_HAIs.no_rawat) as jumlah "+
+                "from data_HAIs where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by DATE_FORMAT(data_HAIs.tanggal, '%Y-%m')").executeQuery();
             while(rs.next()) {
                 dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
             }
@@ -319,9 +319,9 @@ public class GrafikPasienHAIsBulan extends javax.swing.JDialog {
 
     private void BtnPrint4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint4ActionPerformed
        grafiksql2 kas=new grafiksql2("Grafik Pasien HAIs Per Bulan Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),
-               "select DATE_FORMAT(data_HAIs.tanggal, '%y-%m'),count(DATE_FORMAT(data_HAIs.tanggal, '%y-%m')) as jumlah from data_HAIs "+
+               "select DATE_FORMAT(data_HAIs.tanggal, '%Y-%m'),count(distinct data_HAIs.no_rawat) as jumlah from data_HAIs "+
                "where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' "+
-               "group by DATE_FORMAT(data_HAIs.tanggal, '%y-%m')","Bulan");
+               "group by DATE_FORMAT(data_HAIs.tanggal, '%Y-%m')","Bulan");
        kas.setSize(Scroll.getWidth(),Scroll.getHeight());  
        kas.setModal(true);
        kas.setAlwaysOnTop(true);
@@ -336,8 +336,8 @@ public class GrafikPasienHAIsBulan extends javax.swing.JDialog {
     private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint5ActionPerformed
         DefaultPieDataset dpd = new DefaultPieDataset();
         try {                
-            rs = koneksi.prepareStatement("select DATE_FORMAT(data_HAIs.tanggal, '%y-%m'),count(DATE_FORMAT(data_HAIs.tanggal, '%y-%m')) as jumlah "+
-                "from data_HAIs where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by DATE_FORMAT(data_HAIs.tanggal, '%y-%m')").executeQuery();
+            rs = koneksi.prepareStatement("select DATE_FORMAT(data_HAIs.tanggal, '%Y-%m'),count(distinct data_HAIs.no_rawat) as jumlah "+
+                "from data_HAIs where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by DATE_FORMAT(data_HAIs.tanggal, '%Y-%m')").executeQuery();
             while(rs.next()) {
                 dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
             }
@@ -382,7 +382,7 @@ public class GrafikPasienHAIsBulan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("periode","Periode "+Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());  
-            param.put("logo",Sequel.cariGambar("select logo from setting"));  
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
             Sequel.queryu("truncate table temporary_grafik");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                     Sequel.menyimpan("temporary_grafik","'0','"+
@@ -433,8 +433,9 @@ public class GrafikPasienHAIsBulan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select DATE_FORMAT(data_HAIs.tanggal, '%y-%m'),count(DATE_FORMAT(data_HAIs.tanggal, '%y-%m')) as jumlah "+
-                "from data_HAIs where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by DATE_FORMAT(data_HAIs.tanggal, '%y-%m')");
+            ps=koneksi.prepareStatement(
+                "select DATE_FORMAT(data_HAIs.tanggal, '%Y-%m'),count(distinct data_HAIs.no_rawat) "+
+                "from data_HAIs where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by DATE_FORMAT(data_HAIs.tanggal, '%Y-%m')");
             try {
                 rs=ps.executeQuery();
                 total=0;

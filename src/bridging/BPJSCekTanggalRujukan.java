@@ -46,9 +46,9 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private int i=0;
-    private String URL="",link="",norm="",statussep="",statuspasien="";
+    private String URL="",link="",norm="",statussep="",statuspasien="",utc="";
     private final Properties prop = new Properties();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -665,22 +665,25 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/Rujukan/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
             requestEntity = new HttpEntity(headers);
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response").path("rujukan");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_rujukan=?",list.path("noKunjungan").asText());
+                        statussep=Sequel.cariIsi("select bridging_sep.no_sep from bridging_sep where bridging_sep.no_rujukan=?",list.path("noKunjungan").asText());
                         switch (cmbStatus.getSelectedItem().toString()) {
                             case "Semua":
-                                norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                 statuspasien="Baru";
                                 if(!norm.equals("")){
                                     statuspasien="Lama";
@@ -710,7 +713,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 break;
                             case "Sudah Terbit":
                                 if(!statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";
@@ -742,7 +745,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }   break;
                             case "Belum Terbit":
                                 if(statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";
@@ -793,22 +796,25 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/Rujukan/RS/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 	    requestEntity = new HttpEntity(headers);
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response").path("rujukan");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_rujukan=?",list.path("noKunjungan").asText());
+                        statussep=Sequel.cariIsi("select bridging_sep.no_sep from bridging_sep where bridging_sep.no_rujukan=?",list.path("noKunjungan").asText());
                         switch (cmbStatus.getSelectedItem().toString()) {
                             case "Semua":
-                                norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                 statuspasien="Baru";
                                 if(!norm.equals("")){
                                     statuspasien="Lama";
@@ -838,7 +844,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 break;
                             case "Sudah Terbit":
                                 if(!statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";
@@ -870,7 +876,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }   break;
                             case "Belum Terbit":
                                 if(statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";

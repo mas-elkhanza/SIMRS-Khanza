@@ -3,16 +3,18 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baristahun   = mysqli_fetch_row($hasil);
-   $tahun        = $baristahun[0];
-   $bln_leng     = strlen($baristahun[1]);
-   $hari         = $baristahun[2];
-   $bulan        = "0";
-   $bulanindex   = $baristahun[1];
+   $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
+   $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
+   $bln_leng  = strlen($blnini);
+   $bulan     = "0";
    if ($bln_leng==1){
-    	$bulan="0".$baristahun[1];
+       $bulan="0".$blnini;
    }else{
-	$bulan=$baristahun[1];
+       $bulan=$blnini;
    }
+
+   $bulanindex = empty($baristahun[1])?date("m"):$baristahun[1];
 
 ?>
 <html>
@@ -22,7 +24,7 @@
     <body>
 	
    <?php
-        $id=$_GET['id'];
+        $id=validTeks($_GET['id']);
         
         $_sqlthnini  = "SELECT DAY(LAST_DAY('$tahun-$bulan-01')) ";
         $hasilthnini = bukaquery($_sqlthnini);
@@ -39,12 +41,12 @@
                        and pegawai.departemen=departemen.dep_id where id='$id' ";
         $hasil       = bukaquery($_sql);
         $data        = mysqli_fetch_array($hasil);
-        $nik         = $data[0];
-        $nama        = $data[1];
-        $status      = $data[2]; 
-        $pendidikan  = $data[3]; 
-        $masker      = $data[4];  
-        $departemen  = $data[5];
+        @$nik         = $data[0];
+        @$nama        = $data[1];
+        @$status      = $data[2]; 
+        @$pendidikan  = $data[3]; 
+        @$masker      = $data[4];  
+        @$departemen  = $data[5];
         
         $gapok=0;           
         $wajibmasuk=0;
@@ -91,8 +93,8 @@
         $_sql3     = "SELECT sum(jml) FROM tambahjaga where id='$id' and tgl between '$thnlalu' and '$thnini' ";
         $hasil3    = bukaquery($_sql3);
         $data3     = mysqli_fetch_array($hasil3);
-        $tmbhn     = $data3[0];
-        $nmasuk    = $tmbhn/12;
+        @$tmbhn     = $data3[0];
+        @$nmasuk    = $tmbhn/12;
         
         if(($status=="FT")||($status=="T")||($status=="CPT")||($status=="CK")||($status=="CT")){
                     $_sqlgp    = "SELECT `gapok1`, `kenaikan`, `maksimal`

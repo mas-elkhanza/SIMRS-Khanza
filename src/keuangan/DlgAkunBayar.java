@@ -10,7 +10,6 @@
  */
 
 package keuangan;
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -26,7 +25,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -170,15 +168,6 @@ public class DlgAkunBayar extends javax.swing.JDialog {
         });  
         
         emptTeks();
-        
-        try {
-            ps=koneksi.prepareStatement(
-                    "select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
-                    "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
-                    "where akun_bayar.nama_bayar like ? or rekening.nm_rek like ? order by akun_bayar.nama_bayar");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
     
 
@@ -228,14 +217,13 @@ public class DlgAkunBayar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJadwal.setAutoCreateRowSorter(true);
         tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -458,6 +446,7 @@ public class DlgAkunBayar extends javax.swing.JDialog {
         panelBiasa1.add(nmrek);
         nmrek.setBounds(186, 42, 389, 23);
 
+        kdrek.setEditable(false);
         kdrek.setHighlighter(null);
         kdrek.setName("kdrek"); // NOI18N
         kdrek.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -626,7 +615,7 @@ public class DlgAkunBayar extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptAkunBayar.jasper","report","::[ Akun Bayar ]::","select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
                     "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
                     "where akun_bayar.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
@@ -779,21 +768,35 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{           
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{
-                    false,rs.getString(1),rs.getString(2),
-                    rs.getString(3),rs.getDouble(4)
-                });
+        try{
+            ps=koneksi.prepareStatement(
+                    "select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
+                    "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
+                    "where akun_bayar.nama_bayar like ? or rekening.nm_rek like ? order by akun_bayar.nama_bayar");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),
+                        rs.getString(3),rs.getDouble(4)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
 
@@ -814,6 +817,5 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ppn.setText(tabMode.getValueAt(row,4).toString());
         }
     }
-    
     
 }

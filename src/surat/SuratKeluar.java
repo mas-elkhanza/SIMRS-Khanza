@@ -89,7 +89,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==1){
                             try {
-                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
                             }
@@ -101,7 +101,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==1){
                             try {
-                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
                             }
@@ -113,7 +113,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==1){
                             try {
-                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
                             }
@@ -307,12 +307,12 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
                         if (newState == Worker.State.SUCCEEDED) {
                             try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("surat/pages")){
+                                if(engine.getLocation().contains("surat/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("pages/upload/pages/upload","pages/upload"));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().contains("Keluar")){
                                     dispose();    
                                 }
                             } catch (Exception ex) {
@@ -403,7 +403,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     if (engine.getLoadWorker().getState() == FAILED) {
                         SwingUtilities.invokeLater(() -> {
                             JOptionPane.showMessageDialog(
-                                    internalFrame2,
+                                    internalFrame3,
                                     (value != null) ?
                                             engine.getLocation() + "\n" + value.getMessage() :
                                             engine.getLocation() + "\nUnexpected Catatan.",
@@ -425,12 +425,12 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
                         if (newState == Worker.State.SUCCEEDED) {
                             try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("surat/pages")){
+                                if(engine.getLocation().contains("surat/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("pages/upload/pages/upload","pages/upload"));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().contains("Keluar")){
                                     dispose();    
                                 }
                             } catch (Exception ex) {
@@ -765,14 +765,14 @@ public final class SuratKeluar extends javax.swing.JDialog {
         switch (TabRawat.getSelectedIndex()) {
             case 0:                
                 try {
-                    loadURLInput("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login4.php?act=login&usere=admin&passwordte=akusayangsamakamu");  
+                    loadURLInput("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login4.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");  
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }               
                 break;
             case 1:
                 try {
-                    loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                    loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }

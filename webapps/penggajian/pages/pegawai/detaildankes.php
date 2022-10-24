@@ -1,11 +1,11 @@
 
 
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bulan         =$baris[1];
+   $_sql      = "SELECT * FROM set_tahun";
+   $hasil     = bukaquery($_sql);
+   $baris     = mysqli_fetch_row($hasil);
+   $tahun     = empty($baris[0])?date("Y"):$baris[0];
+   $bulan     = empty($baris[1])?date("m"):$baris[1];
 
 ?>
 <div id="post">
@@ -14,7 +14,7 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
+                $id                 =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 				$_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil =bukaquery($_sql);
@@ -23,12 +23,12 @@
                 $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                 $hasilnext        	= bukaquery($_sqlnext);
                 $barisnext        	= mysqli_fetch_row($hasilnext);
-                $next                   = $barisnext[0];
+                @$next              = $barisnext[0];
 
                 $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                 $hasilprev        	= bukaquery($_sqlprev);
                 $barisprev        	= mysqli_fetch_row($hasilprev);
-                $prev                   = $barisprev[0];
+                @$prev              = $barisprev[0];
                 
                 if(empty($next)){
                     $next=$prev;
@@ -57,7 +57,7 @@
                 <tr class="head">
                     <td width="31%" >Tanggal Ambil</td><td width="">:</td>
                     <td width="67%">
-                        <select name="TglAmbil" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="TglAmbil" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                              <?php
                                 loadTgl2();
                              ?>
@@ -88,27 +88,25 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id           =trim($_POST['id']);
-                    $TglAmbil     =trim($_POST['TglAmbil']);
-                    $BlnAmbil     =trim($_POST['BlnAmbil']);
-                    $ktg          =trim($_POST['ktg']);
-                    $dankes       =trim($_POST['dankes']);
-                    if ((!empty($id))&&(!empty($dankes))) {
+                    $id           = validTeks(trim($_POST['id']));
+                    $TglAmbil     = validTeks(trim($_POST['TglAmbil']));
+                    $BlnAmbil     = validTeks(trim($_POST['BlnAmbil']));
+                    $ktg          = validTeks(trim($_POST['ktg']));
+                    $dankes       = validangka(trim($_POST['dankes']));
+                    if ((isset($id))&&(isset($dankes))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" ambil_dankes "," '$id','$tahun-$BlnAmbil-$TglAmbil','$ktg','$dankes'", " Ambil Dankes " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=SisaDankes&action=TAMBAH&id=$id'>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($dankes))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
             ?>
             <div style="width: 100%; height: 400px; overflow: auto;">
             <?php
-                $awal=isset($_GET['awal'])?$_GET['awal']:NULL;
-                if (empty($awal)) $awal=0;
                 $_sql = "SELECT id,tanggal,ktg,dankes from ambil_dankes  where id='$id' and tanggal like '%$tahun%' ORDER BY dankes ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
@@ -144,7 +142,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" ambil_dankes "," id ='".$_GET['id']."' and tanggal ='".$_GET['tanggal']."'","?act=SisaDankes&action=TAMBAH&id=$id");
+                Hapus(" ambil_dankes "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."'","?act=SisaDankes&action=TAMBAH&id=$id");
             }
 
         if(mysqli_num_rows($hasil)!=0) {

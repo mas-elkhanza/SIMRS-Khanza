@@ -33,9 +33,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgPasien;
-import simrskhanza.DlgReg;
+import simrskhanza.DlgCariPasien;
 
 /**
  *
@@ -45,9 +43,9 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private int i=0;
-    private DlgPasien pasien=new DlgPasien(null,false);
-    private BPJSApi api=new BPJSApi();
-    private String URL="",link="";
+    private DlgCariPasien pasien=new DlgCariPasien(null,false);
+    private ApiBPJS api=new ApiBPJS();
+    private String URL="",link="",utc="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -117,10 +115,10 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(pasien.getTable().getSelectedRow()!= -1){                   
-                    if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString().equals("")){
+                    if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),19).toString().equals("")){
                         JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
                     }else{
-                        NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString());
+                        NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),19).toString());
                     }                            
                 }  
             }
@@ -499,15 +497,18 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
-            URL = link+"/monitoring/HistoriPelayanan/NoKartu/"+nomorrujukan+"/tglAwal/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(DTPCari2.getSelectedItem()+"");	
+            URL = link+"/monitoring/HistoriPelayanan/NoKartu/"+nomorrujukan+"/tglMulai/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(DTPCari2.getSelectedItem()+"");	
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response").path("histori");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("histori");
+                //response = root.path("response").path("histori");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){

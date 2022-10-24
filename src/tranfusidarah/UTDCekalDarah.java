@@ -12,7 +12,6 @@
 package tranfusidarah;
 
 import kepegawaian.DlgCariPetugas;
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -27,7 +26,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,7 +57,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         setSize(628,674);
 
 
-        Object[] row={"Nomor","Nama Pendonor","Alamat","No.Telp","Tanggal","Dinas","NIP","Petugas Cekal","Keterangan"};
+        Object[] row={"Nomor","No.ID","Nama Pendonor","No.Telp","Tanggal","Dinas","NIP","Petugas Cekal","Keterangan"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,13 +70,13 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         for (int i = 0; i < 9; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(93);
             }else if(i==1){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(70);
             }else if(i==2){
                 column.setPreferredWidth(150);
             }else if(i==3){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(88);
             }else if(i==4){
                 column.setPreferredWidth(80);
             }else if(i==5){
@@ -186,12 +184,12 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         NoDonor = new widget.TextBox();
         jLabel8 = new widget.Label();
         jLabel4 = new widget.Label();
-        Nama = new widget.TextBox();
+        IDPendonor = new widget.TextBox();
         Keterangan = new widget.TextBox();
         jLabel9 = new widget.Label();
         Telp = new widget.TextBox();
         TanggalCekal = new widget.Tanggal();
-        Alamat = new widget.TextBox();
+        Nama = new widget.TextBox();
         jLabel5 = new widget.Label();
         KodePetugas = new widget.TextBox();
         btnDokter = new widget.Button();
@@ -209,7 +207,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pencekalan Darah Donor ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pencekalan Darah Donor ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -381,7 +379,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -395,7 +393,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -482,11 +480,16 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 42, 77, 23);
 
-        Nama.setEditable(false);
-        Nama.setHighlighter(null);
-        Nama.setName("Nama"); // NOI18N
-        FormInput.add(Nama);
-        Nama.setBounds(80, 42, 173, 23);
+        IDPendonor.setEditable(false);
+        IDPendonor.setHighlighter(null);
+        IDPendonor.setName("IDPendonor"); // NOI18N
+        IDPendonor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDPendonorActionPerformed(evt);
+            }
+        });
+        FormInput.add(IDPendonor);
+        IDPendonor.setBounds(80, 42, 125, 23);
 
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -515,7 +518,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         Telp.setBounds(617, 42, 110, 23);
 
         TanggalCekal.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCekal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        TanggalCekal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2020" }));
         TanggalCekal.setDisplayFormat("dd-MM-yyyy");
         TanggalCekal.setName("TanggalCekal"); // NOI18N
         TanggalCekal.setOpaque(false);
@@ -527,11 +530,11 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         FormInput.add(TanggalCekal);
         TanggalCekal.setBounds(388, 12, 95, 23);
 
-        Alamat.setEditable(false);
-        Alamat.setHighlighter(null);
-        Alamat.setName("Alamat"); // NOI18N
-        FormInput.add(Alamat);
-        Alamat.setBounds(255, 42, 360, 23);
+        Nama.setEditable(false);
+        Nama.setHighlighter(null);
+        Nama.setName("Nama"); // NOI18N
+        FormInput.add(Nama);
+        Nama.setBounds(207, 42, 408, 23);
 
         jLabel5.setText("Petugas :");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -629,7 +632,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
 }//GEN-LAST:event_TelpKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(NoDonor.getText().trim().equals("")||Nama.getText().trim().equals("")){
+        if(NoDonor.getText().trim().equals("")||IDPendonor.getText().trim().equals("")){
             Valid.textKosong(NoDonor,"Pendonor");
         }else if(NamaPetugas.getText().trim().equals("")||KodePetugas.getText().trim().equals("")){
             Valid.textKosong(KodePetugas,"Petugas Pemeriksa");
@@ -687,7 +690,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(NoDonor.getText().trim().equals("")||Nama.getText().trim().equals("")){
+        if(NoDonor.getText().trim().equals("")||IDPendonor.getText().trim().equals("")){
             Valid.textKosong(NoDonor,"Pendonor");
         }else if(NamaPetugas.getText().trim().equals("")||KodePetugas.getText().trim().equals("")){
             Valid.textKosong(KodePetugas,"Petugas Pemeriksa");
@@ -732,24 +735,38 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
-                    "select utd_cekal_darah.no_donor,utd_donor.nama,utd_donor.alamat,utd_donor.no_telp,"+
-                    "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
-                    "petugas.nama as petugas,utd_cekal_darah.keterangan from utd_cekal_darah inner join utd_donor inner join petugas "+
-                    "on utd_cekal_darah.no_donor=utd_donor.no_donor and utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.no_donor like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_donor.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_donor.alamat like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.dinas like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.keterangan like '%"+TCari.getText().trim()+"%' order by utd_cekal_darah.tanggal",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            if(TCari.getText().equals("")){
+                Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
+                        "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
+                        "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
+                        "petugas.nama as namapetugas,utd_cekal_darah.keterangan "+
+                        "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
+                        "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
+                        "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by utd_cekal_darah.tanggal",param);
+            }else{
+                Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
+                        "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
+                        "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
+                        "petugas.nama as namapetugas,utd_cekal_darah.keterangan "+
+                        "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
+                        "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
+                        "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.no_donor like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_pendonor.nama like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_donor.no_pendonor like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.dinas like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.keterangan like '%"+TCari.getText().trim()+"%' order by utd_cekal_darah.tanggal",param);
+            }
+                
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -824,7 +841,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
 
 private void KodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePetugasKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",NamaPetugas,KodePetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NamaPetugas,KodePetugas.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{            
@@ -855,6 +872,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void IDPendonorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDPendonorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDPendonorActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -872,7 +893,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox Alamat;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -886,6 +906,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Dinas;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox IDPendonor;
     private widget.TextBox Keterangan;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
@@ -918,37 +939,58 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {        
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement(
-                    "select utd_cekal_darah.no_donor,utd_donor.nama,utd_donor.alamat,utd_donor.no_telp,"+
+            if(TCari.getText().equals("")){
+                ps=koneksi.prepareStatement(
+                    "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
                     "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
-                    "petugas.nama,utd_cekal_darah.keterangan from utd_cekal_darah inner join utd_donor inner join petugas "+
-                    "on utd_cekal_darah.no_donor=utd_donor.no_donor and utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
+                    "petugas.nama,utd_cekal_darah.keterangan "+
+                    "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
+                    "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
+                    "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
+                    "utd_cekal_darah.tanggal between ? and ? order by utd_cekal_darah.tanggal"
+                );
+            }else{
+                ps=koneksi.prepareStatement(
+                    "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
+                    "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
+                    "petugas.nama,utd_cekal_darah.keterangan "+
+                    "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
+                    "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
+                    "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
                     "utd_cekal_darah.tanggal between ? and ? and utd_cekal_darah.no_donor like ? or "+
-                    "utd_cekal_darah.tanggal between ? and ? and utd_donor.nama like ? or "+
-                    "utd_cekal_darah.tanggal between ? and ? and utd_donor.alamat like ? or "+
+                    "utd_cekal_darah.tanggal between ? and ? and utd_donor.no_pendonor like ? or "+
+                    "utd_cekal_darah.tanggal between ? and ? and utd_pendonor.nama like ? or "+
                     "utd_cekal_darah.tanggal between ? and ? and petugas.nama like ? or "+
                     "utd_cekal_darah.tanggal between ? and ? and utd_cekal_darah.dinas like ? or "+
                     "utd_cekal_darah.tanggal between ? and ? and utd_cekal_darah.keterangan like ? order by utd_cekal_darah.tanggal"
-            );
+                );
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")){
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                    ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
@@ -976,8 +1018,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     public void emptTeks() {
         NoDonor.setText("");
+        IDPendonor.setText("");
         Nama.setText("");
-        Alamat.setText("");
         Telp.setText("");
         Keterangan.setText("");
         KodePetugas.setText("");
@@ -989,8 +1031,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
             NoDonor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            Nama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            Alamat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            IDPendonor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            Nama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             Telp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Valid.SetTgl(TanggalCekal,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             Dinas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
@@ -1002,8 +1044,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     public void setDarah(String nodonor,String nama,String alamat,String telp) {
         NoDonor.setText(nodonor);
-        Nama.setText(nama);
-        Alamat.setText(alamat);
+        IDPendonor.setText(nama);
+        Nama.setText(alamat);
         Telp.setText(telp);
         TCari.setText(nodonor);
         ChkInput.setSelected(true);
@@ -1031,7 +1073,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnPrint.setEnabled(akses.getutd_cekal_darah());
         if(akses.getjml2()>=1){
             KodePetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NamaPetugas,KodePetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NamaPetugas,KodePetugas.getText());
         }    
     }
 

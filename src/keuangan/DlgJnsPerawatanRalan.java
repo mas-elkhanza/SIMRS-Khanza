@@ -37,7 +37,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgKtgPerawatan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -254,7 +254,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
     
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
     public DlgCariPoli poli=new DlgCariPoli(null,false);
-    public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -1119,20 +1119,17 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReportqry("rptJnsPrw.jasper","report","::[ Data Tarif Perawatan ]::","select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan.material,jns_perawatan.bhp,jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,"+
-                   "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,jns_perawatan.kso,jns_perawatan.menejemen  "+
-                   "from jns_perawatan inner join kategori_perawatan inner join penjab inner join poliklinik  "+
-                   "on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori "+
-                   "and poliklinik.kd_poli=jns_perawatan.kd_poli "+
-                   "and penjab.kd_pj=jns_perawatan.kd_pj where "+
-                    "jns_perawatan.status='1' and jns_perawatan.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan.status='1' and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan.status='1' and kategori_perawatan.nm_kategori like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan.status='1' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan.status='1' and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%'  "+
-                    "order by jns_perawatan.kd_jenis_prw",param);            
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                Valid.MyReportqry("rptJnsPrw.jasper","report","::[ Data Tarif Perawatan ]::",
+                   "select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan.material,jns_perawatan.bhp,jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,jns_perawatan.kso,jns_perawatan.menejemen,"+
+                   "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,penjab.png_jawab,poliklinik.nm_poli "+
+                   "from jns_perawatan inner join kategori_perawatan on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori "+
+                   "inner join penjab on penjab.kd_pj=jns_perawatan.kd_pj "+
+                   "inner join poliklinik on poliklinik.kd_poli=jns_perawatan.kd_poli "+
+                   "where jns_perawatan.status='1' "+(TCari.getText().trim().equals("")?"":"and (jns_perawatan.kd_jenis_prw like '%"+TCari.getText().trim()+"%' "+
+                   "or jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or kategori_perawatan.nm_kategori like '%"+TCari.getText().trim()+"%' "+
+                   "or penjab.png_jawab like '%"+TCari.getText().trim()+"%' or poliklinik.nm_poli like '%"+TCari.getText().trim()+"%')")+"order by jns_perawatan.kd_jenis_prw",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1393,22 +1390,19 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             ps=koneksi.prepareStatement("select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
                        "jns_perawatan.material,jns_perawatan.bhp,jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,jns_perawatan.kso,jns_perawatan.menejemen,"+
                        "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,penjab.png_jawab,poliklinik.nm_poli "+
-                       "from jns_perawatan inner join kategori_perawatan inner join penjab inner join poliklinik  "+
-                       "on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori "+
-                       "and poliklinik.kd_poli=jns_perawatan.kd_poli "+
-                       "and penjab.kd_pj=jns_perawatan.kd_pj where "+
-                        "jns_perawatan.status='1' and jns_perawatan.kd_jenis_prw like ? or "+
-                        "jns_perawatan.status='1' and jns_perawatan.nm_perawatan like ? or "+
-                        "jns_perawatan.status='1' and kategori_perawatan.nm_kategori like ? or "+
-                        "jns_perawatan.status='1' and penjab.png_jawab like ? or "+
-                        "jns_perawatan.status='1' and poliklinik.nm_poli like ?  "+
-                        "order by jns_perawatan.kd_jenis_prw");
+                       "from jns_perawatan inner join kategori_perawatan on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori "+
+                       "inner join penjab on penjab.kd_pj=jns_perawatan.kd_pj "+
+                       "inner join poliklinik on poliklinik.kd_poli=jns_perawatan.kd_poli "+
+                       "where jns_perawatan.status='1' "+(TCari.getText().trim().equals("")?"":"and (jns_perawatan.kd_jenis_prw like ? or jns_perawatan.nm_perawatan like ? "+
+                       "or kategori_perawatan.nm_kategori like ? or penjab.png_jawab like ? or poliklinik.nm_poli like ?)")+"order by jns_perawatan.kd_jenis_prw");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

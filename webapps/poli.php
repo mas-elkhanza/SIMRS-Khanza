@@ -40,7 +40,7 @@
        </object>
      </noscript>
      <?php
-		$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+		$setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
 		echo "   
 		   <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
 			  <tr>
@@ -105,7 +105,7 @@
 
 		while ($data = mysqli_fetch_array ($hasil)){
 			echo "<tr class='isi7' >
-                                <td align='left'><font size='5' color='#BB00BB' face='Tahoma'><a href='antrian.php?kd_poli=".str_replace(" ","_",$data['kd_poli'])."&kd_dokter=".str_replace(" ","_",$data['kd_dokter'])."'>".$data['nm_dokter']."</a></font></td>
+                                <td align='left'><font size='5' color='#BB00BB' face='Tahoma'><a href='antrian.php?iyem=".encrypt_decrypt("{\"kd_poli\":\"".$data['kd_poli']."\",\"kd_dokter\":\"".$data['kd_dokter']."\"}","e")."'>".$data['nm_dokter']."</a></font></td>
                                 <td align='center'><font size='5' color='gray' face='Tahoma'>".$data['nm_poli']."</font></td>
                                 <td align='center'><font color='#DDDD00' size='5'  face='Tahoma'>".$data['jam_mulai']."</font></td>
                                 <td align='center'><font color='gren' size='5'  face='Tahoma'>".$data['jam_selesai']."</font></td>

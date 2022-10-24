@@ -9,13 +9,13 @@
             <?php
                 echo "";
                 $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $tnj      =isset($_GET['tnj'])?$_GET['tnj']:NULL;
+                $tnj      =validTeks(isset($_GET['tnj'])?$_GET['tnj']:NULL);
                 echo "<input type=hidden name=tnj  value=$tnj><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
-                    <td width="31%" >Besar tunjangan</td><td width="">:</td>
-                    <td width="67%">Rp <input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $tnj;?>" size="20" maxlength="15">
+                    <td width="31%" >Besar Tunjangan</td><td width="">:</td>
+                    <td width="67%">Rp <input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $tnj;?>" size="20" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -24,15 +24,15 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $tnj                =trim($_POST['tnj']);
-                    if (!empty($tnj)) {
+                    $tnj                = validangka(trim($_POST['tnj']));
+                    if (isset($tnj)) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" set_lemburhb   ","'$tnj'", " Set lebur hari biasa " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputSetLemburHB&action=TAMBAH&tnj='$tnj'>";
                                 break;
                         }
-                    }else if (empty($tnj)){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -43,7 +43,6 @@
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
 
-                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Proses</div></td>
@@ -62,7 +61,6 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data set lebur hari biasa masih kosong !";}
         ?>
         </div>
         </form>

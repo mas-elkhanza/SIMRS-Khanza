@@ -29,12 +29,12 @@ public class DlgRekapPermintaanNonMedis extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private int i=0,z=0;
     private boolean[] pilihan;
     private String[] kodebarang,namabarang,satuan,jenis,jumlah,kodesat;
     private double harga=0,jml=0;
-    private DlgSuratPemesananNonMedis form=new DlgSuratPemesananNonMedis(null,false);    
+    private IPSRSSuratPemesanan form=new IPSRSSuratPemesanan(null,false);    
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -193,7 +193,7 @@ public class DlgRekapPermintaanNonMedis extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ringkasan Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -429,8 +429,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRekapPermintaanNonMedis.jasper",param,"::[ Laporan Rekap Permintaan Barang Non Medis ]::");
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReport("rptRekapPermintaanNonMedis.jasper",param,"::[ Laporan Ringkasan Permintaan Barang Non Medis ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

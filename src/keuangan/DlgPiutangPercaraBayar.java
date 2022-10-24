@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgPiutangPercaraBayar extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -31,8 +31,7 @@ public class DlgPiutangPercaraBayar extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private PreparedStatement pspenjab,pspiutang;
     private ResultSet rspenjab,rspiutang; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0,a=0;
     private double ttlpiutang=0,ttlsisapiutang,subttlpiutang,subttlsisapiutang;
     private String carabayar="",stringpiutang="",stringsisapiutang="";
@@ -356,7 +355,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(i=0;i<tabMode.getRowCount();i++){  
                 stringpiutang="";
                 try {
@@ -370,12 +369,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 } catch (Exception e) {
                     stringsisapiutang="";
                 }
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
                                 stringpiutang+"','"+stringsisapiutang+"','"+
-                                tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Piutang Per Cara Bayar"); 
+                                tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Piutang Per Cara Bayar"); 
             }
                         
             Map<String, Object> param = new HashMap<>();
@@ -385,8 +384,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPiutangPerCaraBayar.jasper","report","[ Piutang Per Cara Bayar ]",param);
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptPiutangPerCaraBayar.jasper","report","[ Piutang Per Cara Bayar ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

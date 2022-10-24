@@ -265,7 +265,7 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting"));  
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
             Valid.MyReportqry("rptSms.jasper","report","::[ Data SMS Masuk ]::",
                 "select * from sms where tgl_sms between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and sms_masuk like '%"+TCari.getText().trim()+"%' or "+
                             "tgl_sms between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and no_hp like '%"+TCari.getText().trim()+"%' or "+

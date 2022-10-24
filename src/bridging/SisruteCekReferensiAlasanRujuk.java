@@ -43,7 +43,7 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private SisruteApi api=new SisruteApi();
+    private ApiKemenkesSisrute api=new ApiKemenkesSisrute();
     private String URL="",link="",idrs="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
@@ -248,14 +248,13 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -266,8 +265,8 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
             //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSisruteReferensiAlasanRujuk.jasper","report","[ Pencarian Referensi Alasan Rujuk ]",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptCariSisruteReferensiAlasanRujuk.jasper","report","[ Pencarian Referensi Alasan Rujuk ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -330,14 +329,13 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
 
     public void tampil(String faskes) {
         try {
-            Valid.tabelKosong(tabMode);
             URL = link+"/referensi/alasanrujukan";
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",idrs);
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	    headers.add("X-signature",api.getHmac()); 
-	    headers.add("Content-type","application/json");             
-	    headers.add("Content-length",null); 	
+	   headers.add("X-cons-id",idrs);
+	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	   headers.add("X-signature",api.getHmac()); 
+	   headers.add("Content-type","application/json");             
+	   headers.add("Content-length",null); 	
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("status");

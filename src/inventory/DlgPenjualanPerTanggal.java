@@ -47,8 +47,8 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private PreparedStatement ps,ps2;
-    private ResultSet rs,rs2;
+    private PreparedStatement ps;
+    private ResultSet rs;
     private String dateString,dayOfWeek,hari,lokasi="";
     private double h1=0,h2=0,h3=0,h4=0,h5=0,h6=0,h7=0,h8=0,h9=0,h10=0,h11=0,h12=0,h13=0,
                    h14=0,h15=0,h16=0,h17=0,h18=0,h19=0,h20=0,h21=0,h22=0,h23=0,h24=0,h25=0,h26=0,h27=0,h28=0,h29=0,h30=0,h31=0 ;
@@ -566,7 +566,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
         jenis.isCek();
-        jenis.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         jenis.setLocationRelativeTo(internalFrame1);
         jenis.setAlwaysOnTop(false);
         jenis.setVisible(true);
@@ -574,7 +574,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void BtnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKategoriActionPerformed
         kategori.isCek();
-        kategori.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        kategori.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         kategori.setLocationRelativeTo(internalFrame1);
         kategori.setAlwaysOnTop(false);
         kategori.setVisible(true);
@@ -582,7 +582,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void BtnGolonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganActionPerformed
         golongan.isCek();
-        golongan.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        golongan.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         golongan.setLocationRelativeTo(internalFrame1);
         golongan.setAlwaysOnTop(false);
         golongan.setVisible(true);
@@ -605,11 +605,9 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
-            int row=tabMode.getRowCount();
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,4).toString()+"','"+
@@ -644,7 +642,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,33).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,34).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,35).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','',''","Rekap Presensi"); 
+                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','','"+akses.getalamatip()+"'","Rekap Presensi"); 
             }
             
             Map<String, Object> param = new HashMap<>();   
@@ -655,7 +653,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("periode","01 - 31 BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("jd1","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")");
                 param.put("jd2","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")");
                 param.put("jd3","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")");
@@ -688,10 +686,10 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
                 if(lokasi.equals("")){
-                    Valid.MyReport("rptPenjualanPerTanggal.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::",param);            
+                    Valid.MyReportqry("rptPenjualanPerTanggal.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                 }else if(!lokasi.equals("")){                    
                     param.put("bangsal",lokasi);
-                    Valid.MyReport("rptPenjualanPerTanggal2.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::",param);            
+                    Valid.MyReportqry("rptPenjualanPerTanggal2.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                 }
                                          
         }
@@ -708,7 +706,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void ppLokasiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLokasiBtnPrintActionPerformed
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
     }//GEN-LAST:event_ppLokasiBtnPrintActionPerformed
@@ -847,23 +845,16 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 + " inner join jenis inner join golongan_barang inner join kategori_barang "
                 + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
                 + " and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "
-                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.kode_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.nama_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and kodesatuan.satuan like ? "
+                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? "
+                + " and (databarang.kode_brng like ? or databarang.nama_brng like ? or kodesatuan.satuan like ?) "
                 + " order by databarang.nama_brng");
             try {
                 ps.setString(1,"%"+nmjns.getText().trim()+"%");
                 ps.setString(2,"%"+nmkategori.getText().trim()+"%");
                 ps.setString(3,"%"+nmgolongan.getText().trim()+"%");
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmjns.getText().trim()+"%");
-                ps.setString(6,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(7,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmjns.getText().trim()+"%");
-                ps.setString(10,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(11,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
@@ -1011,23 +1002,16 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 + " inner join jenis inner join golongan_barang inner join kategori_barang "
                 + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
                 + " and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "
-                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.kode_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.nama_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and kodesatuan.satuan like ? "
+                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? "
+                + " and (databarang.kode_brng like ? or databarang.nama_brng like ? or kodesatuan.satuan like ?) "
                 + " order by databarang.nama_brng");
             try {
                 ps.setString(1,"%"+nmjns.getText().trim()+"%");
                 ps.setString(2,"%"+nmkategori.getText().trim()+"%");
                 ps.setString(3,"%"+nmgolongan.getText().trim()+"%");
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmjns.getText().trim()+"%");
-                ps.setString(6,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(7,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmjns.getText().trim()+"%");
-                ps.setString(10,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(11,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
@@ -1128,14 +1112,14 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
         return Sequel.cariIsiAngka("select sum(detailjual.jumlah)"+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng='"+kodebarang+"' and penjualan.tgl_jual=?",tanggal);
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng='"+kodebarang+"' and penjualan.tgl_jual=?",tanggal);
     }
     
     private double JmlObat(String tanggal,String kodebarang,String lokasi){
         return Sequel.cariIsiAngka("select sum(detailjual.jumlah)"+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng='"+kodebarang+"' and kd_bangsal='"+lokasi+"' and penjualan.tgl_jual=?",tanggal);
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng='"+kodebarang+"' and kd_bangsal='"+lokasi+"' and penjualan.tgl_jual=?",tanggal);
     }
     
 }

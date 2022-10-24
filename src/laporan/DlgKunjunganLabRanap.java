@@ -38,7 +38,7 @@ import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -57,7 +57,7 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0,laki=0,per=0,jmldiagnosa=0,jmlnolab=0;   
     private String umurlk="",umurpr="",kddiangnosa="",diagnosa="",no_lab="",tindakan="";
     /** Creates new form DlgLhtBiaya
@@ -834,26 +834,29 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
             }
              
             param.put("tanggal",Tgl2.getDate());   
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){ 
-                Sequel.menyimpan("temporary","'0','"+
-                    tabMode.getValueAt(r,0).toString()+"','"+
-                    tabMode.getValueAt(r,1).toString()+"','"+
-                    tabMode.getValueAt(r,2).toString()+"','"+
-                    tabMode.getValueAt(r,3).toString()+"','"+
-                    tabMode.getValueAt(r,4).toString()+"','"+
-                    tabMode.getValueAt(r,5).toString()+"','"+
-                    tabMode.getValueAt(r,6).toString()+"','"+
-                    tabMode.getValueAt(r,7).toString()+"','"+
-                    tabMode.getValueAt(r,8).toString()+"','"+
-                    tabMode.getValueAt(r,9).toString()+"','"+
-                    tabMode.getValueAt(r,10).toString()+"','"+
-                    tabMode.getValueAt(r,11).toString()+"','"+
-                    tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran"
-                );
+                try {
+                    Sequel.menyimpan("temporary","'"+r+"','"+
+                        tabMode.getValueAt(r,0).toString()+"','"+
+                        tabMode.getValueAt(r,1).toString()+"','"+
+                        tabMode.getValueAt(r,2).toString()+"','"+
+                        tabMode.getValueAt(r,3).toString()+"','"+
+                        tabMode.getValueAt(r,4).toString()+"','"+
+                        tabMode.getValueAt(r,5).toString()+"','"+
+                        tabMode.getValueAt(r,6).toString()+"','"+
+                        tabMode.getValueAt(r,7).toString()+"','"+
+                        tabMode.getValueAt(r,8).toString()+"','"+
+                        tabMode.getValueAt(r,9).toString()+"','"+
+                        tabMode.getValueAt(r,10).toString()+"','"+
+                        tabMode.getValueAt(r,11).toString()+"','"+
+                        tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran"
+                    );
+                } catch (Exception e) {
+                }
             }
                
-            Valid.MyReport("rptKunjunganLabRanap.jasper","report","::[ Laporan Kunjungan Laboratorium Rawat Jalan ]::",param);
+            Valid.MyReportqry("rptKunjunganLabRanap.jasper","report","::[ Laporan Kunjungan Laboratorium Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1246,6 +1249,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ps2.close();
                         }
                     }    
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select trim(jns_perawatan_lab.nm_perawatan) from detail_periksa_labpa inner join jns_perawatan_lab "+
+                        "on jns_perawatan_lab.kd_jenis_prw=detail_periksa_labpa.kd_jenis_prw where "+
+                        "detail_periksa_labpa.no_rawat=? and detail_periksa_labpa.tgl_periksa=? and detail_periksa_labpa.jam=? ");
+                    try {
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        ps2.setString(2,rs.getString("tgl_periksa"));
+                        ps2.setString(3,rs.getString("jam"));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            tindakan=rs2.getString(1)+","+tindakan;
+                        }                        
+                    } catch (Exception e) {
+                        System.out.println("Notif :"+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    } 
                     
                     if(tindakan.endsWith(",")){
                         tindakan = tindakan.substring(0,tindakan.length() - 1);

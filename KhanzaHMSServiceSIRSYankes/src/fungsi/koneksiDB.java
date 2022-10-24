@@ -27,7 +27,7 @@ public class koneksiDB {
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull");
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                 connection=dataSource.getConnection();       
@@ -55,7 +55,18 @@ public class koneksiDB {
                         "  Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki \n"+
                         "                                                                           ");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
+                System.out.println("Notif : "+e);
+                try {
+                    if(connection.isClosed()){
+                        prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;cachePrepStmts=true");
+                        dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
+                        dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
+                        connection=dataSource.getConnection();  
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
+                }
             }
         }
         return connection;        
@@ -215,6 +226,26 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=prop.getProperty("ALARMRSISRUTE");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMBOOKINGPERIKSA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMBOOKINGPERIKSA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMPENGADUANPASIEN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMPENGADUANPASIEN");
         }catch(Exception e){
             var=""; 
         }
@@ -421,6 +452,36 @@ public class koneksiDB {
         return var;
     }
     
+    public static String URLAPICORONA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPICORONA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IDCORONA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("IDCORONA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSCORONA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSCORONA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String URLAPISITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -554,7 +615,7 @@ public class koneksiDB {
     public static String TOKENINHEALTH(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("TOKENINHEALTH");
+            var=EnkripsiAES.decrypt(prop.getProperty("TOKENINHEALTH"));
         }catch(Exception e){
             var=""; 
         }
@@ -701,4 +762,71 @@ public class koneksiDB {
         return var;
     }
     
+    public static String HOSTWSLICA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("HOSTWSLICA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KEYWSLICA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("KEYWSLICA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String DEPOAKTIFOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("DEPOAKTIFOBAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String STOKKOSONGRESEP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("STOKKOSONGRESEP");
+        }catch(Exception e){
+            var="no"; 
+        }
+        return var;
+    }
+    
+    public static String HPPFARMASI(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            if(prop.getProperty("HPPFARMASI").equals("h_beli")){
+                var="h_beli";
+            }else{
+                var="dasar";
+            }
+        }catch(Exception e){
+            var="dasar"; 
+        }
+        return var;
+    }
+    
+    public static String HPPTOKO(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            if(prop.getProperty("HPPTOKO").equals("h_beli")){
+                var="h_beli";
+            }else{
+                var="dasar";
+            }
+        }catch(Exception e){
+            var="dasar"; 
+        }
+        return var;
+    }
 }

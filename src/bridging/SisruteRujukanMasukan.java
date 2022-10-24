@@ -55,7 +55,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0,nilai_detik,rujukanbaru=0;
     private String pilihan="",alarm="",URL="",link="",norm="",statusreg="",statuspasien="",norujuk="",nol_detik,detik;
-    private SisruteApi api=new SisruteApi();
+    private ApiKemenkesSisrute api=new ApiKemenkesSisrute();
     private BackgroundMusic music;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private HttpHeaders headers;
@@ -754,46 +754,45 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
-                tabMode.getValueAt(r,0).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,20).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,21).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,22).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,23).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,24).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,25).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,26).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,27).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,28).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,29).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,30).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,31).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,32).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,33).toString().replaceAll("'","`")+"','"+
-                tabMode.getValueAt(r,34).toString().replaceAll("'","`")+"','',''","Rekap Harian Pengadaan Ipsrs"); 
+                Sequel.menyimpan("temporary","'"+r+"','"+
+                    tabMode.getValueAt(r,0).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,20).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,21).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,22).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,23).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,24).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,25).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,26).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,27).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,28).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,29).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,30).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,31).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,32).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,33).toString().replaceAll("'","`")+"','"+
+                    tabMode.getValueAt(r,34).toString().replaceAll("'","`")+"','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -803,8 +802,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSisruteRujukanMasuk.jasper","report","[ Pencarian Rujukan Masuk Sisrute ]",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptCariSisruteRujukanMasuk.jasper","report","[ Pencarian Rujukan Masuk Sisrute ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         } 
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -993,11 +992,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode);
             URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",idrs);
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	    headers.add("X-signature",api.getHmac()); 
-	    headers.add("Content-type","application/json");             
-	    headers.add("Content-length",null); 
+	   headers.add("X-cons-id",idrs);
+	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	   headers.add("X-signature",api.getHmac()); 
+	   headers.add("Content-type","application/json");             
+	   headers.add("Content-length",null); 
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("status");
@@ -1018,7 +1017,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         if(!norm.equals("")){
                             statuspasien="Lama";
                         }else{
-                            norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",list.path("PASIEN").path("NO_KARTU_JKN").asText());
+                            norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta=?",list.path("PASIEN").path("NO_KARTU_JKN").asText());
                             if(!norm.equals("")){
                                 statuspasien="Lama";
                             }

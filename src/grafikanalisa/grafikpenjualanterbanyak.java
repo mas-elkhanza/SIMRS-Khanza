@@ -21,10 +21,11 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -46,6 +47,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author Via
  */
 public class grafikpenjualanterbanyak extends JDialog {
+    private static PreparedStatement ps;
+    private static ResultSet rs;
+    private static Connection koneksi=koneksiDB.condb();
     /**
            * Creates a new demo instance.
            *
@@ -81,16 +85,27 @@ public class grafikpenjualanterbanyak extends JDialog {
           DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###"); 
 
             try {
-                Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery("SELECT databarang.nama_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual inner join databarang "+
-                        " on penjualan.nota_jual=detailjual.nota_jual and detailjual.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailjual.jumlah) desc limit 10");
-                while (rs.next()) {
-                    String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
-                    double njop=rs.getDouble(2);
-                    double jml=rs.getDouble(3);
+                ps=koneksi.prepareStatement("SELECT databarang.nama_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
+                        "inner join databarang on detailjual.kode_brng=databarang.kode_brng where penjualan.status='Sudah Dibayar' and "+symbol+" group by databarang.nama_brng order by sum(detailjual.jumlah) desc limit 10");
+                try {
+                    rs = ps.executeQuery();
+                    while (rs.next()) {
+                        String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
+                        double njop=rs.getDouble(2);
+                        double jml=rs.getDouble(3);
 
-                    //result.addValue(njop, series1,tksbr);
-                    result.addValue(jml, series2,tksbr);
+                        //result.addValue(njop, series1,tksbr);
+                        result.addValue(jml, series2,tksbr);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
                 }
             } catch (SQLException e) {
                 System.out.println("Notifikasi : " + e);
@@ -111,17 +126,27 @@ public class grafikpenjualanterbanyak extends JDialog {
              DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
 
              try {
-                Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery(
-                        "SELECT databarang.nama_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual inner join databarang "+
-                        " on penjualan.nota_jual=detailjual.nota_jual and detailjual.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailjual.jumlah) desc limit 10");
-                while (rs.next()) {
-                    String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
-                    double njop=rs.getDouble(2);
-                    double jml=rs.getDouble(3);
+                ps=koneksi.prepareStatement("SELECT databarang.nama_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
+                        "inner join databarang on detailjual.kode_brng=databarang.kode_brng where penjualan.status='Sudah Dibayar' and "+symbol+" group by databarang.nama_brng order by sum(detailjual.jumlah) desc limit 10");
+                rs = ps.executeQuery();
+                try{
+                    while (rs.next()) {
+                        String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
+                        double njop=rs.getDouble(2);
+                        double jml=rs.getDouble(3);
 
-                    result.addValue(njop, series1,tksbr);
-                    //result.addValue(jml, series2,tksbr);
+                        result.addValue(njop, series1,tksbr);
+                        //result.addValue(jml, series2,tksbr);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
                 }
             } catch (SQLException e) {
                 System.out.println("Notifikasi : " + e);

@@ -48,15 +48,15 @@ public class DlgIndustriFarmasi extends javax.swing.JDialog {
         for (i = 0; i < 5; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(250);
             }else if(i==2){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(250);
             }else if(i==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(110);
             }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(90);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -619,7 +619,7 @@ public class DlgIndustriFarmasi extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptIndustriFarmasi.jasper","report","::[ Data Industri Farmasi ]::",sql,param);            
         }
         this.setCursor(Cursor.getDefaultCursor());

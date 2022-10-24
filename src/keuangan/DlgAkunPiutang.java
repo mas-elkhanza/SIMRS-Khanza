@@ -32,7 +32,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -46,7 +46,7 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** Creates new form DlgJadwal
      * @param parent
@@ -54,9 +54,6 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
     public DlgAkunPiutang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        this.setLocation(8,1);
-        setSize(628,674);
 
         Object[] row={"P","Nama Akun","Kode Rekening","Nama Rekening","Cara Bayar","Kode Bayar"};
         tabMode=new DefaultTableModel(null,row){
@@ -263,14 +260,13 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Akun Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Akun Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJadwal.setAutoCreateRowSorter(true);
         tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -493,6 +489,7 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
         panelBiasa1.add(nmrek);
         nmrek.setBounds(186, 42, 389, 23);
 
+        kdrek.setEditable(false);
         kdrek.setHighlighter(null);
         kdrek.setName("kdrek"); // NOI18N
         kdrek.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -678,7 +675,7 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptAkunPiutang.jasper","report","::[ Akun Piutang ]::","select akun_piutang.nama_bayar,akun_piutang.kd_rek,rekening.nm_rek,penjab.png_jawab,penjab.kd_pj "+
                     "from akun_piutang inner join rekening inner join penjab on akun_piutang.kd_rek=rekening.kd_rek "+
                     "and akun_piutang.kd_pj=penjab.kd_pj where akun_piutang.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
@@ -752,9 +749,7 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
 }//GEN-LAST:event_tbJadwalKeyPressed
 
 private void kdrekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdrekKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",nmrek,kdrek.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPoliActionPerformed(null);
         }else{            
             Valid.pindah(evt,kdrek,BtnSimpan);
@@ -884,7 +879,6 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         LCount.setText(""+b);
     }
 
-
     public void emptTeks() {
        nmrek.setText("");
        kdrek.setText("");
@@ -903,6 +897,17 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             nmpnj.setText(tabMode.getValueAt(row,4).toString());
             kdpnj.setText(tabMode.getValueAt(row,5).toString());
         }
+    }
+    
+    public JTable getTable(){
+        return tbJadwal;
+    }
+    
+    public void isCek(){
+        BtnSimpan.setEnabled(akses.getakun_piutang());
+        BtnHapus.setEnabled(akses.getakun_piutang());
+        BtnEdit.setEnabled(akses.getakun_piutang());
+        BtnPrint.setEnabled(akses.getakun_piutang());
     }
     
     

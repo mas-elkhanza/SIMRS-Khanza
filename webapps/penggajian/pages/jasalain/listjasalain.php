@@ -3,14 +3,8 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-		$bulan=$baris[1];
-   }
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 
 <div id="post">
@@ -20,33 +14,30 @@
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-                echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
-                echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
+            $action  = isset($_GET['action'])?$_GET['action']:NULL;
+            $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
+            $keyword = validTeks($keyword);
+            echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" />
+                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
             </table><br>
-    <div style="width: 100%; height: 80%; overflow: auto;">
+            <div style="width: 100%; height: 80%; overflow: auto;">
     <?php
-        
-	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
-
-        $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
-		        pegawai.departemen,sum(bsr_jasa)
+         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
+                pegawai.departemen,sum(bsr_jasa)
                 FROM jasa_lain right OUTER JOIN pegawai
-				ON jasa_lain.id=pegawai.id and thn='".$tahun."'
-                                and bln='".$bulan."'
-				where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
-				pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and pegawai.departemen like '%".$keyword."%' 
-				group by pegawai.id order by pegawai.id ASC ";
+                ON jasa_lain.id=pegawai.id and thn='".$tahun."'
+                and bln='".$bulan."'
+                where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
+                pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' or
+                pegawai.stts_aktif<>'KELUAR' and pegawai.departemen like '%".$keyword."%' 
+                group by pegawai.id order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         $ttljm=0;
@@ -74,11 +65,21 @@
                              </tr>";
                     }
             echo "</table>";           
-        } else {echo "Data Jasa lain masih kosong !";}
+        } else {
+            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='9%'><div align='center'>Proses</div></td>
+                        <td width='11%'><div align='center'>NIP</div></td>
+                        <td width='45%'><div align='center'>Nama</div></td>
+                        <td width='15%'><div align='center'>Depart</div></td>
+                        <td width='20%'><div align='center'>Total Jasa lain</div></td>
+                    </tr>
+                </table>";
+        }
 
     ?>
-    </div>
-	</form>
+            </div>
+        </form>
     <?php
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

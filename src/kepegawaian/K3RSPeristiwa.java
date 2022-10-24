@@ -66,7 +66,6 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private LocalDate birthday;
     private Period p;
-    private long p2;
 
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -184,7 +183,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        NoLaporan.setDocument(new batasInput((byte)15).getKata(NoLaporan));
+        NoLaporan.setDocument(new batasInput((byte)20).getKata(NoLaporan));
         Kronologi.setDocument(new batasInput((int)300).getKata(Kronologi));
         KondisiTidakAman.setDocument(new batasInput((int)100).getKata(KondisiTidakAman));
         TindakanTidakAman.setDocument(new batasInput((int)100).getKata(TindakanTidakAman));
@@ -2274,7 +2273,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());  
             param.put("periode",DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")); 
             param.put("parameter","%"+TCari.getText().trim()+"%"); 
@@ -3513,7 +3512,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             NIKK3.setEditable(false);
             btnTIMK3.setEnabled(false);
             NIKK3.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NmPetugasK3,NIKK3.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugasK3,NIKK3.getText());
         }   
         BtnSimpan.setEnabled(akses.getperistiwa_k3rs());
         BtnHapus.setEnabled(akses.getperistiwa_k3rs());

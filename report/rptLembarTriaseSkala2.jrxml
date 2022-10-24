@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0bf46801-580a-469b-99ba-e103c2a475e1">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -41,7 +41,7 @@
 	<parameter name="plan" class="java.lang.String"/>
 	<parameter name="tanggaltriase" class="java.sql.Date"/>
 	<parameter name="jamtriase" class="java.lang.String"/>
-	<parameter name="petugas" class="java.lang.String"/>
+	<parameter name="pegawai" class="java.lang.String"/>
 	<parameter name="finger" class="java.lang.String"/>
 	<parameter name="tandavital" class="java.lang.String"/>
 	<parameter name="catatan" class="java.lang.String"/>
@@ -828,7 +828,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Nama Petugas]]></text>
+				<text><![CDATA[Dokter/Petugas Jaga IGD]]></text>
 			</staticText>
 			<textField>
 				<reportElement mode="Transparent" x="180" y="74" width="200" height="50" forecolor="#000000" backcolor="#F0F0DC" uuid="0d38c6ea-447e-4b8a-9eb8-6c25a094e0ef">
@@ -838,7 +838,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{petugas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{pegawai}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="127" width="556" height="1" uuid="3fb3b8da-e6fd-4f7e-827c-29315f2c0957">

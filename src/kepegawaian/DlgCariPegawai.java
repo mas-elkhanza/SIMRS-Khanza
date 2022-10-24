@@ -1,16 +1,19 @@
 package kepegawaian;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -22,11 +25,17 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariPegawai extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -50,27 +59,53 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         for (int i = 0; i < 24; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(170);
             }else if(i==2){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             }else if(i==3){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(130);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
             }else if(i==7){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(60);
             }else if(i==8){
                 column.setPreferredWidth(100);
             }else if(i==9){
+                column.setPreferredWidth(110);
+            }else if(i==10){
+                column.setPreferredWidth(130);
+            }else if(i==11){
+                column.setPreferredWidth(110);
+            }else if(i==12){
+                column.setPreferredWidth(65);
+            }else if(i==13){
+                column.setPreferredWidth(150);
+            }else if(i==14){
+                column.setPreferredWidth(90);
+            }else if(i==15){
+                column.setPreferredWidth(65);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(70);
+            }else if(i==18){
+                column.setPreferredWidth(90);
+            }else if(i==19){
                 column.setPreferredWidth(100);
-            }else{
-                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setPreferredWidth(60);
+            }else if(i==21){
+                column.setPreferredWidth(70);
+            }else if(i==22){
+                column.setPreferredWidth(80);
+            }else if(i==23){
+                column.setPreferredWidth(120);
             }
         }
         
@@ -81,19 +116,19 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -257,7 +292,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        tampil2();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -294,7 +329,14 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/pegawai.iyem")<8){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
@@ -342,82 +384,27 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     private void tampil() {  
         Valid.tabelKosong(tabMode);
         try{
+            file=new File("./cache/pegawai.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
             ps=koneksi.prepareStatement("select nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,"+
                  "npwp, pendidikan, tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,"+
                  "indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,no_ktp from pegawai "+
-                 "where stts_aktif<>'KELUAR' and nik like ? or "+
-                 "stts_aktif<>'KELUAR' and nama like ? or "+
-                 "stts_aktif<>'KELUAR' and jk like ? or "+
-                 "stts_aktif<>'KELUAR' and jbtn like ? or "+
-                 "stts_aktif<>'KELUAR' and jnj_jabatan like ? or "+
-                 "stts_aktif<>'KELUAR' and departemen like ? or "+
-                 "stts_aktif<>'KELUAR' and bidang like ? or "+
-                 "stts_aktif<>'KELUAR' and stts_wp like ? or "+
-                 "stts_aktif<>'KELUAR' and stts_kerja like ? or "+
-                 "stts_aktif<>'KELUAR' and npwp like ? or "+
-                 "stts_aktif<>'KELUAR' and pendidikan like ? or "+
-                 "stts_aktif<>'KELUAR' and gapok like ? or "+
-                 "stts_aktif<>'KELUAR' and tmp_lahir like ? or "+
-                 "stts_aktif<>'KELUAR' and tgl_lahir like ? or "+
-                 "stts_aktif<>'KELUAR' and alamat like ? or "+
-                 "stts_aktif<>'KELUAR' and kota like ? or "+
-                 "stts_aktif<>'KELUAR' and mulai_kerja like ? or "+
-                 "stts_aktif<>'KELUAR' and ms_kerja like ? or "+
-                 "stts_aktif<>'KELUAR' and indexins like ? or "+
-                 "stts_aktif<>'KELUAR' and bpd like ? or "+
-                 "stts_aktif<>'KELUAR' and rekening like ? or "+
-                 "stts_aktif<>'KELUAR' and stts_aktif like ? "+
-                 "order by id ASC ");
+                 "where stts_aktif<>'KELUAR' order by id ASC ");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+TCari.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,"%"+TCari.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,"%"+TCari.getText().trim()+"%");
-                ps.setString(14,"%"+TCari.getText().trim()+"%");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,"%"+TCari.getText().trim()+"%");
-                ps.setString(17,"%"+TCari.getText().trim()+"%");
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,"%"+TCari.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                                   rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   rs.getString(6),
-                                   rs.getString(7),
-                                   rs.getString(8),
-                                   rs.getString(9),
-                                   rs.getString(10),
-                                   rs.getString(11),
-                                   rs.getString(12),
-                                   rs.getString(13),
-                                   rs.getString(14),
-                                   rs.getString(15),
-                                   rs.getString(16),
-                                   rs.getString(17),
-                                   rs.getString(18),
-                                   rs.getString(19),
-                                   rs.getString(20),
-                                   rs.getString(21),
-                                   rs.getString(22),
-                                   rs.getString(23),
-                                   rs.getString(24)});
+                       rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),
+                       rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
+                       rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24)
+                    });
+                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"Nama\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"Jabatan\":\""+rs.getString(4)+"\",\"KodeJenjang\":\""+rs.getString(5)+"\","+
+                               "\"Departemen\":\""+rs.getString(6)+"\",\"Bidang\":\""+rs.getString(7)+"\",\"Status\":\""+rs.getString(8)+"\",\"StatusKaryawan\":\""+rs.getString(9)+"\",\"NPWP\":\""+rs.getString(10)+"\","+
+                               "\"Pendidikan\":\""+rs.getString(11)+"\",\"TmpLahir\":\""+rs.getString(12)+"\",\"TglLahir\":\""+rs.getString(13)+"\",\"Alamat\":\""+rs.getString(14).replaceAll("\"","")+"\",\"Kota\":\""+rs.getString(15).replaceAll("\"","")+"\","+
+                               "\"MulaiKerja\":\""+rs.getString(16)+"\",\"KodeMsKerja\":\""+rs.getString(17)+"\",\"KodeIndex\":\""+rs.getString(18)+"\",\"BPD\":\""+rs.getString(19)+"\",\"Rekening\":\""+rs.getString(20)+"\","+
+                               "\"SttsAktif\":\""+rs.getString(21)+"\",\"WajibMasuk\":\""+rs.getString(22)+"\",\"MulaiKontrak\":\""+rs.getString(23)+"\",\"NoKTP\":\""+rs.getString(24)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println("Note : "+e);
@@ -428,8 +415,12 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }            
-        }catch(SQLException e){
+            }  
+            fileWriter.write("{\"pegawai\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -443,5 +434,26 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     public JTable getTable(){
         return tbKamar;
     }
+    
+    private void tampil2() {
+        try {
+            myObj = new FileReader("./cache/pegawai.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("pegawai");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NIP").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Nama").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jabatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Bidang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Departemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            list.path("NIP").asText(),list.path("Nama").asText(),list.path("JK").asText(),list.path("Jabatan").asText(),list.path("KodeJenjang").asText(),list.path("Departemen").asText(),list.path("Bidang").asText(),list.path("Status").asText(),list.path("StatusKaryawan").asText(),list.path("NPWP").asText(),list.path("Pendidikan").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("Alamat").asText(),list.path("Kota").asText(),list.path("MulaiKerja").asText(),list.path("KodeMsKerja").asText(),list.path("KodeIndex").asText(),list.path("BPD").asText(),list.path("Rekening").asText(),list.path("SttsAktif").asText(),list.path("WajibMasuk").asText(),list.path("MulaiKontrak").asText(),list.path("NoKTP").asText()
+                        });
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+    } 
 
 }

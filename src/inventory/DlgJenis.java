@@ -622,7 +622,7 @@ public final class DlgJenis extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptJenis.jasper","report","::[ Data Jenis ]::","select kdjns, nama, keterangan "+
                 " from jenis where  kdjns like '%"+TCari.getText().trim()+"%' or "+
                 " nama like '%"+TCari.getText().trim()+"%' or "+

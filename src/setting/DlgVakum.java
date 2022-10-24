@@ -11,18 +11,31 @@
 
 package setting;
 
+import fungsi.WarnaTable;
+import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
+import fungsi.validasi;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author user_one
  */
 public class DlgVakum extends javax.swing.JDialog {
-    private final sekuel Sequel=new sekuel();
-    private final Connection koneksi=koneksiDB.condb();
+    private final DefaultTableModel tabMode;
+    private Connection koneksi=koneksiDB.condb();
+    private validasi Valid=new validasi();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private int i=0;
 
     /** Creates new form DlgVakum
      * @param parent
@@ -30,7 +43,32 @@ public class DlgVakum extends javax.swing.JDialog {
     public DlgVakum(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(790,480);
+        tabMode=new DefaultTableModel(null,new Object[]{"P","Nama Tabel"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+
+        
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        
+        tbAdmin.setModel(tabMode);
+        tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbAdmin.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tbAdmin.getColumnModel().getColumn(1).setPreferredWidth(760);
+        tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
     }
 
     /** This method is called from within the constructor to
@@ -42,2827 +80,317 @@ public class DlgVakum extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup = new javax.swing.JPopupMenu();
+        ppBersihkan = new javax.swing.JMenuItem();
+        ppCentang = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
-        panelBiasa1 = new widget.PanelBiasa();
-        BtnICD105 = new usu.widget.ButtonGlass();
-        BtnICD112 = new usu.widget.ButtonGlass();
-        BtnICD86 = new usu.widget.ButtonGlass();
-        BtnICD67 = new usu.widget.ButtonGlass();
-        BtnICD101 = new usu.widget.ButtonGlass();
-        BtnICD26 = new usu.widget.ButtonGlass();
-        BtnICD92 = new usu.widget.ButtonGlass();
-        BtnICD93 = new usu.widget.ButtonGlass();
-        BtnICD29 = new usu.widget.ButtonGlass();
-        BtnICD108 = new usu.widget.ButtonGlass();
-        BtnICD113 = new usu.widget.ButtonGlass();
-        BtnICD46 = new usu.widget.ButtonGlass();
-        BtnICD40 = new usu.widget.ButtonGlass();
-        BtnICD34 = new usu.widget.ButtonGlass();
-        BtnICD21 = new usu.widget.ButtonGlass();
-        BtnICD96 = new usu.widget.ButtonGlass();
-        BtnICD17 = new usu.widget.ButtonGlass();
-        BtnICD25 = new usu.widget.ButtonGlass();
-        BtnICD104 = new usu.widget.ButtonGlass();
-        BtnICD115 = new usu.widget.ButtonGlass();
-        BtnICD111 = new usu.widget.ButtonGlass();
-        BtnICD35 = new usu.widget.ButtonGlass();
-        BtnICD76 = new usu.widget.ButtonGlass();
-        BtnICD2 = new usu.widget.ButtonGlass();
-        BtnICD100 = new usu.widget.ButtonGlass();
-        BtnICD48 = new usu.widget.ButtonGlass();
-        BtnICD99 = new usu.widget.ButtonGlass();
-        BtnICD45 = new usu.widget.ButtonGlass();
-        BtnICD55 = new usu.widget.ButtonGlass();
-        BtnICD70 = new usu.widget.ButtonGlass();
-        BtnICD102 = new usu.widget.ButtonGlass();
-        BtnICD33 = new usu.widget.ButtonGlass();
-        BtnICD90 = new usu.widget.ButtonGlass();
-        BtnICD80 = new usu.widget.ButtonGlass();
-        BtnICD110 = new usu.widget.ButtonGlass();
-        BtnICD9 = new usu.widget.ButtonGlass();
-        BtnICD114 = new usu.widget.ButtonGlass();
-        BtnICD71 = new usu.widget.ButtonGlass();
-        BtnICD42 = new usu.widget.ButtonGlass();
-        BtnICD18 = new usu.widget.ButtonGlass();
-        BtnICD75 = new usu.widget.ButtonGlass();
-        BtnICD54 = new usu.widget.ButtonGlass();
-        BtnICD47 = new usu.widget.ButtonGlass();
-        BtnICD41 = new usu.widget.ButtonGlass();
-        BtnICD72 = new usu.widget.ButtonGlass();
-        BtnICD56 = new usu.widget.ButtonGlass();
-        BtnICD107 = new usu.widget.ButtonGlass();
-        BtnICD1 = new usu.widget.ButtonGlass();
-        BtnICD94 = new usu.widget.ButtonGlass();
-        BtnICD3 = new usu.widget.ButtonGlass();
-        BtnICD16 = new usu.widget.ButtonGlass();
-        BtnICD106 = new usu.widget.ButtonGlass();
-        BtnICD13 = new usu.widget.ButtonGlass();
-        BtnICD60 = new usu.widget.ButtonGlass();
-        BtnICD117 = new usu.widget.ButtonGlass();
-        BtnICD23 = new usu.widget.ButtonGlass();
-        BtnICD61 = new usu.widget.ButtonGlass();
-        BtnICD36 = new usu.widget.ButtonGlass();
-        BtnICD37 = new usu.widget.ButtonGlass();
-        BtnICD38 = new usu.widget.ButtonGlass();
-        BtnICD39 = new usu.widget.ButtonGlass();
-        BtnICD30 = new usu.widget.ButtonGlass();
-        BtnICD68 = new usu.widget.ButtonGlass();
-        BtnICD59 = new usu.widget.ButtonGlass();
-        BtnICD88 = new usu.widget.ButtonGlass();
-        BtnICD = new usu.widget.ButtonGlass();
-        BtnICD19 = new usu.widget.ButtonGlass();
-        BtnICD20 = new usu.widget.ButtonGlass();
-        BtnICD24 = new usu.widget.ButtonGlass();
-        BtnICD62 = new usu.widget.ButtonGlass();
-        BtnICD22 = new usu.widget.ButtonGlass();
-        BtnICD79 = new usu.widget.ButtonGlass();
-        BtnICD27 = new usu.widget.ButtonGlass();
-        BtnICD74 = new usu.widget.ButtonGlass();
-        BtnICD103 = new usu.widget.ButtonGlass();
-        BtnICD4 = new usu.widget.ButtonGlass();
-        BtnICD5 = new usu.widget.ButtonGlass();
-        BtnICD6 = new usu.widget.ButtonGlass();
-        BtnICD7 = new usu.widget.ButtonGlass();
-        BtnICD8 = new usu.widget.ButtonGlass();
-        BtnICD43 = new usu.widget.ButtonGlass();
-        BtnICD87 = new usu.widget.ButtonGlass();
-        BtnICD15 = new usu.widget.ButtonGlass();
-        BtnICD14 = new usu.widget.ButtonGlass();
-        BtnICD64 = new usu.widget.ButtonGlass();
-        BtnICD63 = new usu.widget.ButtonGlass();
-        BtnICD65 = new usu.widget.ButtonGlass();
-        BtnICD66 = new usu.widget.ButtonGlass();
-        BtnICD109 = new usu.widget.ButtonGlass();
-        BtnICD95 = new usu.widget.ButtonGlass();
-        BtnICD49 = new usu.widget.ButtonGlass();
-        BtnICD51 = new usu.widget.ButtonGlass();
-        BtnICD50 = new usu.widget.ButtonGlass();
-        BtnICD73 = new usu.widget.ButtonGlass();
-        BtnICD11 = new usu.widget.ButtonGlass();
-        BtnICD12 = new usu.widget.ButtonGlass();
-        BtnICD53 = new usu.widget.ButtonGlass();
-        BtnICD98 = new usu.widget.ButtonGlass();
-        BtnICD97 = new usu.widget.ButtonGlass();
-        BtnICD77 = new usu.widget.ButtonGlass();
-        BtnICD31 = new usu.widget.ButtonGlass();
-        BtnICD32 = new usu.widget.ButtonGlass();
-        BtnICD69 = new usu.widget.ButtonGlass();
-        BtnICD57 = new usu.widget.ButtonGlass();
-        BtnICD58 = new usu.widget.ButtonGlass();
-        BtnICD52 = new usu.widget.ButtonGlass();
-        BtnICD116 = new usu.widget.ButtonGlass();
-        BtnICD89 = new usu.widget.ButtonGlass();
-        BtnICD10 = new usu.widget.ButtonGlass();
-        BtnICD28 = new usu.widget.ButtonGlass();
-        BtnICD78 = new usu.widget.ButtonGlass();
-        BtnICD83 = new usu.widget.ButtonGlass();
-        BtnICD85 = new usu.widget.ButtonGlass();
-        BtnICD84 = new usu.widget.ButtonGlass();
-        BtnICD81 = new usu.widget.ButtonGlass();
-        BtnICD82 = new usu.widget.ButtonGlass();
-        BtnICD44 = new usu.widget.ButtonGlass();
-        BtnICD91 = new usu.widget.ButtonGlass();
+        Scroll = new widget.ScrollPane();
+        tbAdmin = new widget.Table();
+        jPanel1 = new javax.swing.JPanel();
+        panelGlass7 = new widget.panelisi();
+        jLabel6 = new widget.Label();
+        TCari = new widget.TextBox();
+        BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
         panelGlass1 = new widget.panelisi();
-        button1 = new widget.Button();
         jLabel12 = new widget.Label();
         jLabel11 = new widget.Label();
+        BtnKeluar = new widget.Button();
+        BtnHapus = new widget.Button();
+        jLabel13 = new widget.Label();
+
+        Popup.setName("Popup"); // NOI18N
+
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        ppBersihkan.setText("Hilangkan Centang");
+        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkan.setName("ppBersihkan"); // NOI18N
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBersihkan);
+
+        ppCentang.setBackground(new java.awt.Color(255, 255, 254));
+        ppCentang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppCentang.setForeground(new java.awt.Color(50, 50, 50));
+        ppCentang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppCentang.setText("Centang Semua");
+        ppCentang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppCentang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppCentang.setName("ppCentang"); // NOI18N
+        ppCentang.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppCentang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppCentangActionPerformed(evt);
+            }
+        });
+        Popup.add(ppCentang);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan klik tombol untuk menghapus isi table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan centang pada kolom pertama dan klik tombol hapus ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setToolTipText("");
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelBiasa1.setName("panelBiasa1"); // NOI18N
-        panelBiasa1.setLayout(new java.awt.GridLayout(0, 7, 2, 2));
+        Scroll.setComponentPopupMenu(Popup);
+        Scroll.setName("Scroll"); // NOI18N
+        Scroll.setOpaque(true);
 
-        BtnICD105.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD105.setForeground(new java.awt.Color(50,50,50));
-        BtnICD105.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD105.setText("Akun Bayar");
-        BtnICD105.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD105.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD105.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD105.setName("BtnICD105"); // NOI18N
-        BtnICD105.setRoundRect(true);
-        BtnICD105.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD105ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD105);
-
-        BtnICD112.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD112.setForeground(new java.awt.Color(50,50,50));
-        BtnICD112.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD112.setText("Akun Piutang");
-        BtnICD112.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD112.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD112.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD112.setName("BtnICD112"); // NOI18N
-        BtnICD112.setRoundRect(true);
-        BtnICD112.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD112ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD112);
-
-        BtnICD86.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD86.setForeground(new java.awt.Color(50,50,50));
-        BtnICD86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD86.setText("Akun Rekening");
-        BtnICD86.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD86.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD86.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD86.setName("BtnICD86"); // NOI18N
-        BtnICD86.setRoundRect(true);
-        BtnICD86.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD86ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD86);
-
-        BtnICD67.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD67.setForeground(new java.awt.Color(50,50,50));
-        BtnICD67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD67.setText("Barang Non Medis");
-        BtnICD67.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD67.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD67.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD67.setName("BtnICD67"); // NOI18N
-        BtnICD67.setRoundRect(true);
-        BtnICD67.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD67ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD67);
-
-        BtnICD101.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD101.setForeground(new java.awt.Color(50,50,50));
-        BtnICD101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD101.setText("Barcode Parkir");
-        BtnICD101.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD101.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD101.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD101.setName("BtnICD101"); // NOI18N
-        BtnICD101.setRoundRect(true);
-        BtnICD101.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD101ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD101);
-
-        BtnICD26.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD26.setForeground(new java.awt.Color(50,50,50));
-        BtnICD26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD26.setText("Barcode Presensi");
-        BtnICD26.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD26.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD26.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD26.setName("BtnICD26"); // NOI18N
-        BtnICD26.setRoundRect(true);
-        BtnICD26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD26ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD26);
-
-        BtnICD92.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD92.setForeground(new java.awt.Color(50,50,50));
-        BtnICD92.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD92.setText("Biaya Harian");
-        BtnICD92.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD92.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD92.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD92.setName("BtnICD92"); // NOI18N
-        BtnICD92.setRoundRect(true);
-        BtnICD92.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD92ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD92);
-
-        BtnICD93.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD93.setForeground(new java.awt.Color(50,50,50));
-        BtnICD93.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD93.setText("Biaya Sekali Masuk");
-        BtnICD93.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD93.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD93.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD93.setName("BtnICD93"); // NOI18N
-        BtnICD93.setRoundRect(true);
-        BtnICD93.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD93ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD93);
-
-        BtnICD29.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD29.setForeground(new java.awt.Color(50,50,50));
-        BtnICD29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD29.setText("Bidang Pegawai");
-        BtnICD29.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD29.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD29.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD29.setName("BtnICD29"); // NOI18N
-        BtnICD29.setRoundRect(true);
-        BtnICD29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD29ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD29);
-
-        BtnICD108.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD108.setForeground(new java.awt.Color(50,50,50));
-        BtnICD108.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD108.setText("Bridging SEP");
-        BtnICD108.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD108.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD108.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD108.setName("BtnICD108"); // NOI18N
-        BtnICD108.setRoundRect(true);
-        BtnICD108.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD108ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD108);
-
-        BtnICD113.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD113.setForeground(new java.awt.Color(50,50,50));
-        BtnICD113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD113.setText("Catatan Pasien");
-        BtnICD113.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD113.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD113.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD113.setName("BtnICD113"); // NOI18N
-        BtnICD113.setRoundRect(true);
-        BtnICD113.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD113ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD113);
-
-        BtnICD46.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD46.setForeground(new java.awt.Color(50,50,50));
-        BtnICD46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD46.setText("Daftar Kasift");
-        BtnICD46.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD46.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD46.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD46.setName("BtnICD46"); // NOI18N
-        BtnICD46.setRoundRect(true);
-        BtnICD46.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD46ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD46);
-
-        BtnICD40.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD40.setForeground(new java.awt.Color(50,50,50));
-        BtnICD40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD40.setText("Data Pegawai");
-        BtnICD40.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD40.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD40.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD40.setName("BtnICD40"); // NOI18N
-        BtnICD40.setRoundRect(true);
-        BtnICD40.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD40ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD40);
-
-        BtnICD34.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD34.setForeground(new java.awt.Color(50,50,50));
-        BtnICD34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD34.setText("Departemen Pegawai");
-        BtnICD34.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD34.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD34.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD34.setName("BtnICD34"); // NOI18N
-        BtnICD34.setRoundRect(true);
-        BtnICD34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD34ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD34);
-
-        BtnICD21.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD21.setForeground(new java.awt.Color(50,50,50));
-        BtnICD21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD21.setText("Deposit Pasien");
-        BtnICD21.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD21.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD21.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD21.setName("BtnICD21"); // NOI18N
-        BtnICD21.setRoundRect(true);
-        BtnICD21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD21ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD21);
-
-        BtnICD96.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD96.setForeground(new java.awt.Color(50,50,50));
-        BtnICD96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD96.setText("Diagnosa Pasien");
-        BtnICD96.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD96.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD96.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD96.setName("BtnICD96"); // NOI18N
-        BtnICD96.setRoundRect(true);
-        BtnICD96.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD96ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD96);
-
-        BtnICD17.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD17.setForeground(new java.awt.Color(50,50,50));
-        BtnICD17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD17.setText("Diet Pasien");
-        BtnICD17.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD17.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD17.setName("BtnICD17"); // NOI18N
-        BtnICD17.setRoundRect(true);
-        BtnICD17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD17ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD17);
-
-        BtnICD25.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD25.setForeground(new java.awt.Color(50,50,50));
-        BtnICD25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD25.setText("Dokter");
-        BtnICD25.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD25.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD25.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD25.setName("BtnICD25"); // NOI18N
-        BtnICD25.setRoundRect(true);
-        BtnICD25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD25ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD25);
-
-        BtnICD104.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD104.setForeground(new java.awt.Color(50,50,50));
-        BtnICD104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD104.setText("DPJP Ranap");
-        BtnICD104.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD104.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD104.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD104.setName("BtnICD104"); // NOI18N
-        BtnICD104.setRoundRect(true);
-        BtnICD104.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD104ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD104);
-
-        BtnICD115.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD115.setForeground(new java.awt.Color(50,50,50));
-        BtnICD115.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD115.setText("Golongan Barang");
-        BtnICD115.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD115.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD115.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD115.setName("BtnICD115"); // NOI18N
-        BtnICD115.setRoundRect(true);
-        BtnICD115.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD115ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD115);
-
-        BtnICD111.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD111.setForeground(new java.awt.Color(50,50,50));
-        BtnICD111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD111.setText("INACBG Klaim Baru");
-        BtnICD111.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD111.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD111.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD111.setName("BtnICD111"); // NOI18N
-        BtnICD111.setRoundRect(true);
-        BtnICD111.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD111ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD111);
-
-        BtnICD35.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD35.setForeground(new java.awt.Color(50,50,50));
-        BtnICD35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD35.setText("Insentif Pegawai");
-        BtnICD35.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD35.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD35.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD35.setName("BtnICD35"); // NOI18N
-        BtnICD35.setRoundRect(true);
-        BtnICD35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD35ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD35);
-
-        BtnICD76.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD76.setForeground(new java.awt.Color(50,50,50));
-        BtnICD76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD76.setText("Inventaris");
-        BtnICD76.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD76.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD76.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD76.setName("BtnICD76"); // NOI18N
-        BtnICD76.setRoundRect(true);
-        BtnICD76.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD76ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD76);
-
-        BtnICD2.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD2.setForeground(new java.awt.Color(50,50,50));
-        BtnICD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD2.setText("Jadwal Dokter");
-        BtnICD2.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD2.setName("BtnICD2"); // NOI18N
-        BtnICD2.setRoundRect(true);
-        BtnICD2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD2ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD2);
-
-        BtnICD100.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD100.setForeground(new java.awt.Color(50,50,50));
-        BtnICD100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD100.setText("Jadwal Pegawai");
-        BtnICD100.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD100.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD100.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD100.setName("BtnICD100"); // NOI18N
-        BtnICD100.setRoundRect(true);
-        BtnICD100.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD100ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD100);
-
-        BtnICD48.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD48.setForeground(new java.awt.Color(50,50,50));
-        BtnICD48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD48.setText("Jam Jaga Pegawai");
-        BtnICD48.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD48.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD48.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD48.setName("BtnICD48"); // NOI18N
-        BtnICD48.setRoundRect(true);
-        BtnICD48.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD48ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD48);
-
-        BtnICD99.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD99.setForeground(new java.awt.Color(50,50,50));
-        BtnICD99.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD99.setText("Jam Presensi");
-        BtnICD99.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD99.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD99.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD99.setName("BtnICD99"); // NOI18N
-        BtnICD99.setRoundRect(true);
-        BtnICD99.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD99ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD99);
-
-        BtnICD45.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD45.setForeground(new java.awt.Color(50,50,50));
-        BtnICD45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD45.setText("Jasa Lain Pegawai");
-        BtnICD45.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD45.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD45.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD45.setName("BtnICD45"); // NOI18N
-        BtnICD45.setRoundRect(true);
-        BtnICD45.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD45ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD45);
-
-        BtnICD55.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD55.setForeground(new java.awt.Color(50,50,50));
-        BtnICD55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD55.setText("Jenis Barang");
-        BtnICD55.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD55.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD55.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD55.setName("BtnICD55"); // NOI18N
-        BtnICD55.setRoundRect(true);
-        BtnICD55.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD55ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD55);
-
-        BtnICD70.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD70.setForeground(new java.awt.Color(50,50,50));
-        BtnICD70.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD70.setText("Jenis Inventaris");
-        BtnICD70.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD70.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD70.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD70.setName("BtnICD70"); // NOI18N
-        BtnICD70.setRoundRect(true);
-        BtnICD70.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD70ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD70);
-
-        BtnICD102.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD102.setForeground(new java.awt.Color(50,50,50));
-        BtnICD102.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD102.setText("Jenis Parkir");
-        BtnICD102.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD102.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD102.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD102.setName("BtnICD102"); // NOI18N
-        BtnICD102.setRoundRect(true);
-        BtnICD102.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD102ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD102);
-
-        BtnICD33.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD33.setForeground(new java.awt.Color(50,50,50));
-        BtnICD33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD33.setText("Jenjang Jabatan");
-        BtnICD33.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD33.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD33.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD33.setName("BtnICD33"); // NOI18N
-        BtnICD33.setRoundRect(true);
-        BtnICD33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD33ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD33);
-
-        BtnICD90.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD90.setForeground(new java.awt.Color(50,50,50));
-        BtnICD90.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD90.setText("Jurnal Akuntansi");
-        BtnICD90.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD90.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD90.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD90.setName("BtnICD90"); // NOI18N
-        BtnICD90.setRoundRect(true);
-        BtnICD90.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD90ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD90);
-
-        BtnICD80.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD80.setForeground(new java.awt.Color(50,50,50));
-        BtnICD80.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD80.setText("Kamar");
-        BtnICD80.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD80.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD80.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD80.setName("BtnICD80"); // NOI18N
-        BtnICD80.setRoundRect(true);
-        BtnICD80.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD80ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD80);
-
-        BtnICD110.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD110.setForeground(new java.awt.Color(50,50,50));
-        BtnICD110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD110.setText("Kamar Aplicare");
-        BtnICD110.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD110.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD110.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD110.setName("BtnICD110"); // NOI18N
-        BtnICD110.setRoundRect(true);
-        BtnICD110.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD110ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD110);
-
-        BtnICD9.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD9.setForeground(new java.awt.Color(50,50,50));
-        BtnICD9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD9.setText("Kamar Inap");
-        BtnICD9.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD9.setName("BtnICD9"); // NOI18N
-        BtnICD9.setRoundRect(true);
-        BtnICD9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD9ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD9);
-
-        BtnICD114.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD114.setForeground(new java.awt.Color(50,50,50));
-        BtnICD114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD114.setText("Kategori Barang");
-        BtnICD114.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD114.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD114.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD114.setName("BtnICD114"); // NOI18N
-        BtnICD114.setRoundRect(true);
-        BtnICD114.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD114ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD114);
-
-        BtnICD71.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD71.setForeground(new java.awt.Color(50,50,50));
-        BtnICD71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD71.setText("Kategori Inventaris");
-        BtnICD71.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD71.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD71.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD71.setName("BtnICD71"); // NOI18N
-        BtnICD71.setRoundRect(true);
-        BtnICD71.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD71ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD71);
-
-        BtnICD42.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD42.setForeground(new java.awt.Color(50,50,50));
-        BtnICD42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD42.setText("Keanggotaan Pegawai");
-        BtnICD42.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD42.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD42.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD42.setName("BtnICD42"); // NOI18N
-        BtnICD42.setRoundRect(true);
-        BtnICD42.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD42ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD42);
-
-        BtnICD18.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD18.setForeground(new java.awt.Color(50,50,50));
-        BtnICD18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD18.setText("Kelahiran Bayi");
-        BtnICD18.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD18.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD18.setName("BtnICD18"); // NOI18N
-        BtnICD18.setRoundRect(true);
-        BtnICD18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD18ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD18);
-
-        BtnICD75.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD75.setForeground(new java.awt.Color(50,50,50));
-        BtnICD75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD75.setText("Koleksi Inventaris");
-        BtnICD75.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD75.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD75.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD75.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD75.setName("BtnICD75"); // NOI18N
-        BtnICD75.setRoundRect(true);
-        BtnICD75.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD75ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD75);
-
-        BtnICD54.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD54.setForeground(new java.awt.Color(50,50,50));
-        BtnICD54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD54.setText("Konversi Satuan");
-        BtnICD54.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD54.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD54.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD54.setName("BtnICD54"); // NOI18N
-        BtnICD54.setRoundRect(true);
-        BtnICD54.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD54ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD54);
-
-        BtnICD47.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD47.setForeground(new java.awt.Color(50,50,50));
-        BtnICD47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD47.setText("Koperasi Pegawai");
-        BtnICD47.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD47.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD47.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD47.setName("BtnICD47"); // NOI18N
-        BtnICD47.setRoundRect(true);
-        BtnICD47.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD47ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD47);
-
-        BtnICD41.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD41.setForeground(new java.awt.Color(50,50,50));
-        BtnICD41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD41.setText("Lembur Pegawai");
-        BtnICD41.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD41.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD41.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD41.setName("BtnICD41"); // NOI18N
-        BtnICD41.setRoundRect(true);
-        BtnICD41.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD41ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD41);
-
-        BtnICD72.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD72.setForeground(new java.awt.Color(50,50,50));
-        BtnICD72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD72.setText("Merk Inventaris");
-        BtnICD72.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD72.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD72.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD72.setName("BtnICD72"); // NOI18N
-        BtnICD72.setRoundRect(true);
-        BtnICD72.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD72ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD72);
-
-        BtnICD56.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD56.setForeground(new java.awt.Color(50,50,50));
-        BtnICD56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD56.setText("Obat, Alkes & BHP");
-        BtnICD56.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD56.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD56.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD56.setName("BtnICD56"); // NOI18N
-        BtnICD56.setRoundRect(true);
-        BtnICD56.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD56ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD56);
-
-        BtnICD107.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD107.setForeground(new java.awt.Color(50,50,50));
-        BtnICD107.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD107.setText("Obat BHP OK");
-        BtnICD107.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD107.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD107.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD107.setName("BtnICD107"); // NOI18N
-        BtnICD107.setRoundRect(true);
-        BtnICD107.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD107ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD107);
-
-        BtnICD1.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD1.setForeground(new java.awt.Color(50,50,50));
-        BtnICD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD1.setText("Obat Penyakit");
-        BtnICD1.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD1.setName("BtnICD1"); // NOI18N
-        BtnICD1.setRoundRect(true);
-        BtnICD1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD1ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD1);
-
-        BtnICD94.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD94.setForeground(new java.awt.Color(50,50,50));
-        BtnICD94.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD94.setText("Penyakit PD3I");
-        BtnICD94.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD94.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD94.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD94.setName("BtnICD94"); // NOI18N
-        BtnICD94.setRoundRect(true);
-        BtnICD94.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD94ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD94);
-
-        BtnICD3.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD3.setForeground(new java.awt.Color(50,50,50));
-        BtnICD3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD3.setText("Pasien");
-        BtnICD3.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD3.setName("BtnICD3"); // NOI18N
-        BtnICD3.setRoundRect(true);
-        BtnICD3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD3ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD3);
-
-        BtnICD16.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD16.setForeground(new java.awt.Color(50,50,50));
-        BtnICD16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD16.setText("Pasien Meninggal");
-        BtnICD16.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD16.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD16.setName("BtnICD16"); // NOI18N
-        BtnICD16.setRoundRect(true);
-        BtnICD16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD16ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD16);
-
-        BtnICD106.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD106.setForeground(new java.awt.Color(50,50,50));
-        BtnICD106.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD106.setText("Pemasukan Lain-Lain");
-        BtnICD106.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD106.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD106.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD106.setName("BtnICD106"); // NOI18N
-        BtnICD106.setRoundRect(true);
-        BtnICD106.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD106ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD106);
-
-        BtnICD13.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD13.setForeground(new java.awt.Color(50,50,50));
-        BtnICD13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD13.setText("Pemberian Obat");
-        BtnICD13.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD13.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD13.setName("BtnICD13"); // NOI18N
-        BtnICD13.setRoundRect(true);
-        BtnICD13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD13ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD13);
-
-        BtnICD60.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD60.setForeground(new java.awt.Color(50,50,50));
-        BtnICD60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD60.setText("Pemesanan Obat & BHP");
-        BtnICD60.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD60.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD60.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD60.setName("BtnICD60"); // NOI18N
-        BtnICD60.setRoundRect(true);
-        BtnICD60.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD60ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD60);
-
-        BtnICD117.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD117.setForeground(new java.awt.Color(50,50,50));
-        BtnICD117.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD117.setText("Pemesanan Non Medis");
-        BtnICD117.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD117.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD117.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD117.setName("BtnICD117"); // NOI18N
-        BtnICD117.setRoundRect(true);
-        BtnICD117.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD117ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD117);
-
-        BtnICD23.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD23.setForeground(new java.awt.Color(50,50,50));
-        BtnICD23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD23.setText("Peminjaman Berkas RM");
-        BtnICD23.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD23.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD23.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD23.setName("BtnICD23"); // NOI18N
-        BtnICD23.setRoundRect(true);
-        BtnICD23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD23ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD23);
-
-        BtnICD61.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD61.setForeground(new java.awt.Color(50,50,50));
-        BtnICD61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD61.setText("Penjualan Obat & BHP");
-        BtnICD61.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD61.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD61.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD61.setName("BtnICD61"); // NOI18N
-        BtnICD61.setRoundRect(true);
-        BtnICD61.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD61ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD61);
-
-        BtnICD36.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD36.setForeground(new java.awt.Color(50,50,50));
-        BtnICD36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD36.setText("Pendapatan Akte");
-        BtnICD36.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD36.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD36.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD36.setName("BtnICD36"); // NOI18N
-        BtnICD36.setRoundRect(true);
-        BtnICD36.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD36ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD36);
-
-        BtnICD37.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD37.setForeground(new java.awt.Color(50,50,50));
-        BtnICD37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD37.setText("Pendapatan Resume");
-        BtnICD37.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD37.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD37.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD37.setName("BtnICD37"); // NOI18N
-        BtnICD37.setRoundRect(true);
-        BtnICD37.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD37ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD37);
-
-        BtnICD38.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD38.setForeground(new java.awt.Color(50,50,50));
-        BtnICD38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD38.setText("Pendapatan Tuslah");
-        BtnICD38.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD38.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD38.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD38.setName("BtnICD38"); // NOI18N
-        BtnICD38.setRoundRect(true);
-        BtnICD38.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD38ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD38);
-
-        BtnICD39.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD39.setForeground(new java.awt.Color(50,50,50));
-        BtnICD39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD39.setText("Pendapatan Warung");
-        BtnICD39.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD39.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD39.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD39.setName("BtnICD39"); // NOI18N
-        BtnICD39.setRoundRect(true);
-        BtnICD39.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD39ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD39);
-
-        BtnICD30.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD30.setForeground(new java.awt.Color(50,50,50));
-        BtnICD30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD30.setText("Pendidikan Pegawai");
-        BtnICD30.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD30.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD30.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD30.setName("BtnICD30"); // NOI18N
-        BtnICD30.setRoundRect(true);
-        BtnICD30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD30ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD30);
-
-        BtnICD68.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD68.setForeground(new java.awt.Color(50,50,50));
-        BtnICD68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD68.setText("Pengadaan Barang Non Medis");
-        BtnICD68.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD68.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD68.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD68.setName("BtnICD68"); // NOI18N
-        BtnICD68.setRoundRect(true);
-        BtnICD68.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD68ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD68);
-
-        BtnICD59.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD59.setForeground(new java.awt.Color(50,50,50));
-        BtnICD59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD59.setText("Pengadaan Obat & BHP");
-        BtnICD59.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD59.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD59.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD59.setName("BtnICD59"); // NOI18N
-        BtnICD59.setRoundRect(true);
-        BtnICD59.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD59ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD59);
-
-        BtnICD88.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD88.setForeground(new java.awt.Color(50,50,50));
-        BtnICD88.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD88.setText("Pengeluaran Harian");
-        BtnICD88.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD88.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD88.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD88.setName("BtnICD88"); // NOI18N
-        BtnICD88.setRoundRect(true);
-        BtnICD88.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD88ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD88);
-
-        BtnICD.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD.setForeground(new java.awt.Color(50,50,50));
-        BtnICD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD.setText("Penyakit");
-        BtnICD.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD.setName("BtnICD"); // NOI18N
-        BtnICD.setRoundRect(true);
-        BtnICD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICDActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD);
-
-        BtnICD19.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD19.setForeground(new java.awt.Color(50,50,50));
-        BtnICD19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD19.setText("Periksa Lab");
-        BtnICD19.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD19.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD19.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD19.setName("BtnICD19"); // NOI18N
-        BtnICD19.setRoundRect(true);
-        BtnICD19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD19ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD19);
-
-        BtnICD20.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD20.setForeground(new java.awt.Color(50,50,50));
-        BtnICD20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD20.setText("Periksa Radiologi");
-        BtnICD20.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD20.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD20.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD20.setName("BtnICD20"); // NOI18N
-        BtnICD20.setRoundRect(true);
-        BtnICD20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD20ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD20);
-
-        BtnICD24.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD24.setForeground(new java.awt.Color(50,50,50));
-        BtnICD24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD24.setText("Petugas");
-        BtnICD24.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD24.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD24.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD24.setName("BtnICD24"); // NOI18N
-        BtnICD24.setRoundRect(true);
-        BtnICD24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD24ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD24);
-
-        BtnICD62.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD62.setForeground(new java.awt.Color(50,50,50));
-        BtnICD62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD62.setText("Piutang Obat & BHP");
-        BtnICD62.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD62.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD62.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD62.setName("BtnICD62"); // NOI18N
-        BtnICD62.setRoundRect(true);
-        BtnICD62.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD62ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD62);
-
-        BtnICD22.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD22.setForeground(new java.awt.Color(50,50,50));
-        BtnICD22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD22.setText("Piutang Pasien");
-        BtnICD22.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD22.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD22.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD22.setName("BtnICD22"); // NOI18N
-        BtnICD22.setRoundRect(true);
-        BtnICD22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD22ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD22);
-
-        BtnICD79.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD79.setForeground(new java.awt.Color(50,50,50));
-        BtnICD79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD79.setText("Potongan Biaya");
-        BtnICD79.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD79.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD79.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD79.setName("BtnICD79"); // NOI18N
-        BtnICD79.setRoundRect(true);
-        BtnICD79.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD79ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD79);
-
-        BtnICD27.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD27.setForeground(new java.awt.Color(50,50,50));
-        BtnICD27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD27.setText("Presensi Pegawai");
-        BtnICD27.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD27.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD27.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD27.setName("BtnICD27"); // NOI18N
-        BtnICD27.setRoundRect(true);
-        BtnICD27.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD27ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD27);
-
-        BtnICD74.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD74.setForeground(new java.awt.Color(50,50,50));
-        BtnICD74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD74.setText("Produsen Inventaris");
-        BtnICD74.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD74.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD74.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD74.setName("BtnICD74"); // NOI18N
-        BtnICD74.setRoundRect(true);
-        BtnICD74.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD74ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD74);
-
-        BtnICD103.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD103.setForeground(new java.awt.Color(50,50,50));
-        BtnICD103.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD103.setText("Rekap Parkir");
-        BtnICD103.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD103.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD103.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD103.setName("BtnICD103"); // NOI18N
-        BtnICD103.setRoundRect(true);
-        BtnICD103.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD103ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD103);
-
-        BtnICD4.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD4.setForeground(new java.awt.Color(50,50,50));
-        BtnICD4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD4.setText("Registrasi");
-        BtnICD4.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD4.setName("BtnICD4"); // NOI18N
-        BtnICD4.setRoundRect(true);
-        BtnICD4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD4ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD4);
-
-        BtnICD5.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD5.setForeground(new java.awt.Color(50,50,50));
-        BtnICD5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD5.setText("Ralan Dokter");
-        BtnICD5.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD5.setName("BtnICD5"); // NOI18N
-        BtnICD5.setRoundRect(true);
-        BtnICD5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD5ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD5);
-
-        BtnICD6.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD6.setForeground(new java.awt.Color(50,50,50));
-        BtnICD6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD6.setText("Ralan Paramedis");
-        BtnICD6.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD6.setName("BtnICD6"); // NOI18N
-        BtnICD6.setRoundRect(true);
-        BtnICD6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD6ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD6);
-
-        BtnICD7.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD7.setForeground(new java.awt.Color(50,50,50));
-        BtnICD7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD7.setText("Ranap Dokter");
-        BtnICD7.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD7.setName("BtnICD7"); // NOI18N
-        BtnICD7.setRoundRect(true);
-        BtnICD7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD7ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD7);
-
-        BtnICD8.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD8.setForeground(new java.awt.Color(50,50,50));
-        BtnICD8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD8.setText("Ranap Paramedis");
-        BtnICD8.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD8.setName("BtnICD8"); // NOI18N
-        BtnICD8.setRoundRect(true);
-        BtnICD8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD8ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD8);
-
-        BtnICD43.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD43.setForeground(new java.awt.Color(50,50,50));
-        BtnICD43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD43.setText("Potongan Gaji");
-        BtnICD43.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD43.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD43.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD43.setName("BtnICD43"); // NOI18N
-        BtnICD43.setRoundRect(true);
-        BtnICD43.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD43ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD43);
-
-        BtnICD87.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD87.setForeground(new java.awt.Color(50,50,50));
-        BtnICD87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD87.setText("Rekening Tahun");
-        BtnICD87.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD87.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD87.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD87.setName("BtnICD87"); // NOI18N
-        BtnICD87.setRoundRect(true);
-        BtnICD87.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD87ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD87);
-
-        BtnICD15.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD15.setForeground(new java.awt.Color(50,50,50));
-        BtnICD15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD15.setText("Resep Obat");
-        BtnICD15.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD15.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD15.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD15.setName("BtnICD15"); // NOI18N
-        BtnICD15.setRoundRect(true);
-        BtnICD15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD15ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD15);
-
-        BtnICD14.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD14.setForeground(new java.awt.Color(50,50,50));
-        BtnICD14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD14.setText("Resep Pulang");
-        BtnICD14.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD14.setName("BtnICD14"); // NOI18N
-        BtnICD14.setRoundRect(true);
-        BtnICD14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD14ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD14);
-
-        BtnICD64.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD64.setForeground(new java.awt.Color(50,50,50));
-        BtnICD64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD64.setText("Retur Dari Pembeli");
-        BtnICD64.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD64.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD64.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD64.setName("BtnICD64"); // NOI18N
-        BtnICD64.setRoundRect(true);
-        BtnICD64.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD64ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD64);
-
-        BtnICD63.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD63.setForeground(new java.awt.Color(50,50,50));
-        BtnICD63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD63.setText("Retur Ke Suplier");
-        BtnICD63.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD63.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD63.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD63.setName("BtnICD63"); // NOI18N
-        BtnICD63.setRoundRect(true);
-        BtnICD63.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD63ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD63);
-
-        BtnICD65.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD65.setForeground(new java.awt.Color(50,50,50));
-        BtnICD65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD65.setText("Retur Obat Ranap");
-        BtnICD65.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD65.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD65.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD65.setName("BtnICD65"); // NOI18N
-        BtnICD65.setRoundRect(true);
-        BtnICD65.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD65ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD65);
-
-        BtnICD66.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD66.setForeground(new java.awt.Color(50,50,50));
-        BtnICD66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD66.setText("Retur Piutang Pasien");
-        BtnICD66.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD66.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD66.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD66.setName("BtnICD66"); // NOI18N
-        BtnICD66.setRoundRect(true);
-        BtnICD66.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD66ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD66);
-
-        BtnICD109.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD109.setForeground(new java.awt.Color(50,50,50));
-        BtnICD109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD109.setText("Riwayat Obat, Alkes & BHP");
-        BtnICD109.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD109.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD109.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD109.setName("BtnICD109"); // NOI18N
-        BtnICD109.setRoundRect(true);
-        BtnICD109.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD109ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD109);
-
-        BtnICD95.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD95.setForeground(new java.awt.Color(50,50,50));
-        BtnICD95.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD95.setText("Riwayat Gaji");
-        BtnICD95.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD95.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD95.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD95.setName("BtnICD95"); // NOI18N
-        BtnICD95.setRoundRect(true);
-        BtnICD95.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD95ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD95);
-
-        BtnICD49.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD49.setForeground(new java.awt.Color(50,50,50));
-        BtnICD49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD49.setText("Riwayat Jabatan");
-        BtnICD49.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD49.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD49.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD49.setName("BtnICD49"); // NOI18N
-        BtnICD49.setRoundRect(true);
-        BtnICD49.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD49ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD49);
-
-        BtnICD51.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD51.setForeground(new java.awt.Color(50,50,50));
-        BtnICD51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD51.setText("Riwayat Pelatihan & Kgt.Ilmiah");
-        BtnICD51.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD51.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD51.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD51.setName("BtnICD51"); // NOI18N
-        BtnICD51.setRoundRect(true);
-        BtnICD51.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD51ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD51);
-
-        BtnICD50.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD50.setForeground(new java.awt.Color(50,50,50));
-        BtnICD50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD50.setText("Riwayat Pendidikan");
-        BtnICD50.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD50.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD50.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD50.setName("BtnICD50"); // NOI18N
-        BtnICD50.setRoundRect(true);
-        BtnICD50.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD50ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD50);
-
-        BtnICD73.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD73.setForeground(new java.awt.Color(50,50,50));
-        BtnICD73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD73.setText("Ruang Rumah Sakit");
-        BtnICD73.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD73.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD73.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD73.setName("BtnICD73"); // NOI18N
-        BtnICD73.setRoundRect(true);
-        BtnICD73.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD73ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD73);
-
-        BtnICD11.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD11.setForeground(new java.awt.Color(50,50,50));
-        BtnICD11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD11.setText("Rujukan Keluar");
-        BtnICD11.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD11.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD11.setName("BtnICD11"); // NOI18N
-        BtnICD11.setRoundRect(true);
-        BtnICD11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD11ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD11);
-
-        BtnICD12.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD12.setForeground(new java.awt.Color(50,50,50));
-        BtnICD12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD12.setText("Rujukan Masuk");
-        BtnICD12.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD12.setName("BtnICD12"); // NOI18N
-        BtnICD12.setRoundRect(true);
-        BtnICD12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD12ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD12);
-
-        BtnICD53.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD53.setForeground(new java.awt.Color(50,50,50));
-        BtnICD53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD53.setText("Satuan Barang");
-        BtnICD53.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD53.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD53.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD53.setName("BtnICD53"); // NOI18N
-        BtnICD53.setRoundRect(true);
-        BtnICD53.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD53ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD53);
-
-        BtnICD98.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD98.setForeground(new java.awt.Color(50,50,50));
-        BtnICD98.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD98.setText("Sms Masuk");
-        BtnICD98.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD98.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD98.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD98.setName("BtnICD98"); // NOI18N
-        BtnICD98.setRoundRect(true);
-        BtnICD98.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD98ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD98);
-
-        BtnICD97.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD97.setForeground(new java.awt.Color(50,50,50));
-        BtnICD97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD97.setText("Sidik Jari");
-        BtnICD97.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD97.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD97.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD97.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD97.setName("BtnICD97"); // NOI18N
-        BtnICD97.setRoundRect(true);
-        BtnICD97.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD97ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD97);
-
-        BtnICD77.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD77.setForeground(new java.awt.Color(50,50,50));
-        BtnICD77.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD77.setText("Sirkulasi Inventaris");
-        BtnICD77.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD77.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD77.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD77.setName("BtnICD77"); // NOI18N
-        BtnICD77.setRoundRect(true);
-        BtnICD77.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD77ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD77);
-
-        BtnICD31.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD31.setForeground(new java.awt.Color(50,50,50));
-        BtnICD31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD31.setText("Status Kerja");
-        BtnICD31.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD31.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD31.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD31.setName("BtnICD31"); // NOI18N
-        BtnICD31.setRoundRect(true);
-        BtnICD31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD31ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD31);
-
-        BtnICD32.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD32.setForeground(new java.awt.Color(50,50,50));
-        BtnICD32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD32.setText("Status WP");
-        BtnICD32.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD32.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD32.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD32.setName("BtnICD32"); // NOI18N
-        BtnICD32.setRoundRect(true);
-        BtnICD32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD32ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD32);
-
-        BtnICD69.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD69.setForeground(new java.awt.Color(50,50,50));
-        BtnICD69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD69.setText("Stok Keluar Barang Non Medis");
-        BtnICD69.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD69.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD69.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD69.setName("BtnICD69"); // NOI18N
-        BtnICD69.setRoundRect(true);
-        BtnICD69.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD69ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD69);
-
-        BtnICD57.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD57.setForeground(new java.awt.Color(50,50,50));
-        BtnICD57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD57.setText("Stok Opname Obat & BHP");
-        BtnICD57.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD57.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD57.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD57.setName("BtnICD57"); // NOI18N
-        BtnICD57.setRoundRect(true);
-        BtnICD57.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD57ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD57);
-
-        BtnICD58.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD58.setForeground(new java.awt.Color(50,50,50));
-        BtnICD58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD58.setText("Stok Obat Pasien");
-        BtnICD58.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD58.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD58.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD58.setName("BtnICD58"); // NOI18N
-        BtnICD58.setRoundRect(true);
-        BtnICD58.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD58ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD58);
-
-        BtnICD52.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD52.setForeground(new java.awt.Color(50,50,50));
-        BtnICD52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD52.setText("Suplier Medis");
-        BtnICD52.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD52.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD52.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD52.setName("BtnICD52"); // NOI18N
-        BtnICD52.setRoundRect(true);
-        BtnICD52.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD52ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD52);
+        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAdmin.setComponentPopupMenu(Popup);
+        tbAdmin.setName("tbAdmin"); // NOI18N
+        Scroll.setViewportView(tbAdmin);
 
-        BtnICD116.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD116.setForeground(new java.awt.Color(50,50,50));
-        BtnICD116.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD116.setText("Suplier Non Medis");
-        BtnICD116.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD116.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD116.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD116.setName("BtnICD116"); // NOI18N
-        BtnICD116.setRoundRect(true);
-        BtnICD116.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD116ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD116);
+        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        BtnICD89.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD89.setForeground(new java.awt.Color(50,50,50));
-        BtnICD89.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD89.setText("Tagihan Masuk");
-        BtnICD89.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD89.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD89.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD89.setName("BtnICD89"); // NOI18N
-        BtnICD89.setRoundRect(true);
-        BtnICD89.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD89ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD89);
+        jPanel1.setName("jPanel1"); // NOI18N
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        BtnICD10.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD10.setForeground(new java.awt.Color(50,50,50));
-        BtnICD10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD10.setText("Tagihan Operasi");
-        BtnICD10.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD10.setName("BtnICD10"); // NOI18N
-        BtnICD10.setRoundRect(true);
-        BtnICD10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD10ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD10);
+        panelGlass7.setName("panelGlass7"); // NOI18N
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        BtnICD28.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD28.setForeground(new java.awt.Color(50,50,50));
-        BtnICD28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD28.setText("Tahun & Bulan Gaji");
-        BtnICD28.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD28.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD28.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD28.setName("BtnICD28"); // NOI18N
-        BtnICD28.setRoundRect(true);
-        BtnICD28.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD28ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD28);
+        jLabel6.setText("Key Word :");
+        jLabel6.setName("jLabel6"); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel6.setRequestFocusEnabled(false);
+        panelGlass7.add(jLabel6);
 
-        BtnICD78.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD78.setForeground(new java.awt.Color(50,50,50));
-        BtnICD78.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD78.setText("Tambahan Biaya");
-        BtnICD78.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD78.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD78.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD78.setName("BtnICD78"); // NOI18N
-        BtnICD78.setRoundRect(true);
-        BtnICD78.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD78ActionPerformed(evt);
+        TCari.setName("TCari"); // NOI18N
+        TCari.setPreferredSize(new java.awt.Dimension(430, 23));
+        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCariKeyPressed(evt);
             }
         });
-        panelBiasa1.add(BtnICD78);
+        panelGlass7.add(TCari);
 
-        BtnICD83.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD83.setForeground(new java.awt.Color(50,50,50));
-        BtnICD83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD83.setText("Tarif Lab");
-        BtnICD83.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD83.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD83.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD83.setName("BtnICD83"); // NOI18N
-        BtnICD83.setRoundRect(true);
-        BtnICD83.addActionListener(new java.awt.event.ActionListener() {
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setMnemonic('1');
+        BtnCari.setToolTipText("Alt+1");
+        BtnCari.setName("BtnCari"); // NOI18N
+        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD83ActionPerformed(evt);
+                BtnCariActionPerformed(evt);
             }
         });
-        panelBiasa1.add(BtnICD83);
-
-        BtnICD85.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD85.setForeground(new java.awt.Color(50,50,50));
-        BtnICD85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD85.setText("Tarif Operasi");
-        BtnICD85.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD85.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD85.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD85.setName("BtnICD85"); // NOI18N
-        BtnICD85.setRoundRect(true);
-        BtnICD85.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD85ActionPerformed(evt);
+        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariKeyPressed(evt);
             }
-        });
-        panelBiasa1.add(BtnICD85);
-
-        BtnICD84.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD84.setForeground(new java.awt.Color(50,50,50));
-        BtnICD84.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD84.setText("Tarif Radiologi");
-        BtnICD84.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD84.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD84.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD84.setName("BtnICD84"); // NOI18N
-        BtnICD84.setRoundRect(true);
-        BtnICD84.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD84ActionPerformed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BtnCariKeyReleased(evt);
             }
         });
-        panelBiasa1.add(BtnICD84);
+        panelGlass7.add(BtnCari);
 
-        BtnICD81.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD81.setForeground(new java.awt.Color(50,50,50));
-        BtnICD81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD81.setText("Tarif Ralan");
-        BtnICD81.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD81.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD81.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD81.setName("BtnICD81"); // NOI18N
-        BtnICD81.setRoundRect(true);
-        BtnICD81.addActionListener(new java.awt.event.ActionListener() {
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('2');
+        BtnAll.setToolTipText("Alt+2");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD81ActionPerformed(evt);
+                BtnAllActionPerformed(evt);
             }
         });
-        panelBiasa1.add(BtnICD81);
-
-        BtnICD82.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD82.setForeground(new java.awt.Color(50,50,50));
-        BtnICD82.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD82.setText("Tarif Ranap");
-        BtnICD82.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD82.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD82.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD82.setName("BtnICD82"); // NOI18N
-        BtnICD82.setRoundRect(true);
-        BtnICD82.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD82ActionPerformed(evt);
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
             }
         });
-        panelBiasa1.add(BtnICD82);
+        panelGlass7.add(BtnAll);
 
-        BtnICD44.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD44.setForeground(new java.awt.Color(50,50,50));
-        BtnICD44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD44.setText("Tunjangan");
-        BtnICD44.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD44.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD44.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD44.setName("BtnICD44"); // NOI18N
-        BtnICD44.setRoundRect(true);
-        BtnICD44.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD44ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD44);
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass7.add(jLabel7);
 
-        BtnICD91.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD91.setForeground(new java.awt.Color(50,50,50));
-        BtnICD91.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD91.setText("Tracker Login");
-        BtnICD91.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
-        BtnICD91.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnICD91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnICD91.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnICD91.setName("BtnICD91"); // NOI18N
-        BtnICD91.setRoundRect(true);
-        BtnICD91.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICD91ActionPerformed(evt);
-            }
-        });
-        panelBiasa1.add(BtnICD91);
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelGlass7.add(LCount);
 
-        internalFrame1.add(panelBiasa1, java.awt.BorderLayout.CENTER);
+        jPanel1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
         panelGlass1.setName("panelGlass1"); // NOI18N
         panelGlass1.setPreferredSize(new java.awt.Dimension(790, 57));
         panelGlass1.setLayout(null);
 
-        button1.setMnemonic('K');
-        button1.setText("Keluar");
-        button1.setToolTipText("Alt+K");
-        button1.setName("button1"); // NOI18N
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-        panelGlass1.add(button1);
-        button1.setBounds(710, 10, 100, 30);
-
-        jLabel12.setText("berelasi juga ikut terhapus. Lakukan backup data terlebih dulu sebelum menghapus isi table");
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Lakukan backup data terlebih dulu sebelum menghapus isi table.");
         jLabel12.setName("jLabel12"); // NOI18N
         panelGlass1.add(jLabel12);
-        jLabel12.setBounds(10, 25, 660, 14);
+        jLabel12.setBounds(120, 35, 550, 14);
 
-        jLabel11.setText("Berhati-hatilah dalam menghapus isi table. Terdapat relasi antar table, ketika Anda menghapus suatu table maka di table yang");
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Terdapat relasi antar table, ketika Anda menghapus suatu table maka di table yang berelasi juga ikut terhapus.");
         jLabel11.setName("jLabel11"); // NOI18N
         panelGlass1.add(jLabel11);
-        jLabel11.setBounds(10, 10, 690, 14);
+        jLabel11.setBounds(120, 20, 550, 14);
 
-        internalFrame1.add(panelGlass1, java.awt.BorderLayout.PAGE_END);
+        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar.setMnemonic('K');
+        BtnKeluar.setText("Keluar");
+        BtnKeluar.setToolTipText("Alt+K");
+        BtnKeluar.setIconTextGap(3);
+        BtnKeluar.setName("BtnKeluar"); // NOI18N
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluarActionPerformed(evt);
+            }
+        });
+        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKeluarKeyPressed(evt);
+            }
+        });
+        panelGlass1.add(BtnKeluar);
+        BtnKeluar.setBounds(680, 10, 100, 30);
+
+        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapus.setMnemonic('H');
+        BtnHapus.setText("Hapus");
+        BtnHapus.setToolTipText("Alt+H");
+        BtnHapus.setIconTextGap(3);
+        BtnHapus.setName("BtnHapus"); // NOI18N
+        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusActionPerformed(evt);
+            }
+        });
+        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHapusKeyPressed(evt);
+            }
+        });
+        panelGlass1.add(BtnHapus);
+        BtnHapus.setBounds(10, 10, 100, 30);
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Berhati-hatilah dalam menghapus isi table.");
+        jLabel13.setName("jLabel13"); // NOI18N
+        panelGlass1.add(jLabel13);
+        jLabel13.setBounds(120, 5, 550, 14);
+
+        jPanel1.add(panelGlass1, java.awt.BorderLayout.CENTER);
+
+        internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         dispose();
-}//GEN-LAST:event_button1ActionPerformed
-
-    private void BtnICDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICDActionPerformed
-        hapus("Penyakit","Diagnosa Penyakit, Obat Penyakit, Penyakit PD3I","penyakit");
-}//GEN-LAST:event_BtnICDActionPerformed
-
-    private void BtnICD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD1ActionPerformed
-        hapus("Obat Penyakit","lain","obat_penyakit");
-    }//GEN-LAST:event_BtnICD1ActionPerformed
-
-    private void BtnICD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD2ActionPerformed
-        hapus("Jadwal Praktek","lain","jadwal");
-    }//GEN-LAST:event_BtnICD2ActionPerformed
-
-    private void BtnICD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD3ActionPerformed
-        hapus("Catatan Pasien","lain","catatan_pasien"); 
-        hapus("Pasien Meninggal","lain","pasien_mati");  
-        hapus("Peminjaman Berkas","lain","peminjaman_berkas"); 
-        hapus("Piutang Obat Pasien","lain","piutang"); 
-        hapus("Booking Registrasi","lain","booking_registrasi");
-        hapus("SKDP BPJS","lain","skdp_bpjs");
-        hapus("Pasien","Registrasi Periksa, Pasien Meninggal, Peminjaman Berkas, Piutang Obat,\nPenjualan Obat, Piutang Pasien, Catatan Pasien","pasien");
-    }//GEN-LAST:event_BtnICD3ActionPerformed
-
-    private void BtnICD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD4ActionPerformed
-        hapus("Rujukan Keluar","lain","rujuk");   
-        hapus("Booking Operasi","lain","booking_operasi");   
-        hapus("Bridging SEP","lain","bridging_sep");   
-        hapus("Bridging Inhealth","lain","bridging_inhealth");
-        hapus("Rujukan Masuk","lain","rujuk_masuk");
-        hapus("Insiden Keselamatan Pasien","lain ","insiden_keselamatan_pasien");
-        hapus("Piutang Pasien","lain","piutang_pasien");
-        hapus("Bayar Piutang Pasien","lain","bayar_piutang");
-        hapus("DPJP Ranap","lain","dpjp_ranap");
-        hapus("Detail Nota Rawat Jalan","lain","detail_nota_jalan");
-        hapus("Nota Rawat Jalan","lain","nota_jalan");
-        hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
-        hapus("Detail Nota Rawat Inap","lain","detail_nota_inap");
-        hapus("Nota Rawat Inap","lain","nota_inap");        
-        hapus("Tindakan Rawat Jalan Dokter","lain","rawat_jl_dr");  
-        hapus("Tindakan Rawat Jalan Paramedis","lain","rawat_jl_pr"); 
-        hapus("Tindakan Rawat Jalan Dokter & Paramedis","lain","rawat_jl_drpr"); 
-        hapus("Tindakan Rawat Inap Dokter","lain","rawat_inap_dr");  
-        hapus("Tindakan Rawat Inap Paramedis","lain","rawat_inap_pr"); 
-        hapus("Tindakan Rawat Inap Dokter & Paramedis","lain","rawat_inap_drpr");         
-        hapus("Berkas Digital Perawata","lain","berkas_digital_perawatan");       
-        hapus("Pemeriksaan Radiologi","lain","periksa_radiologi");            
-        hapus("Beri BHP Radiologi","lain","beri_bhp_radiologi");            
-        hapus("Gambar Radiologi","lain","gambar_radiologi");              
-        hapus("Hasil Radiologi","lain","hasil_radiologi");             
-        hapus("Tambahan Biaya","lain","tambahan_biaya");              
-        hapus("Potongan Biaya","lain","pengurangan_biaya");  
-        hapus("Pemeriksaan Laborat","lain","periksa_lab");     
-        hapus("Detail Pemeriksaan Laborat","lain","detail_periksa_lab"); 
-        hapus("Diagnosa Pasien","lain","diagnosa_pasien"); 
-        hapus("Diet Pasien","lain","detail_beri_diet"); 
-        hapus("Ranap Gabung","lain","ranap_gabung"); 
-        hapus("Stok Obat Pasien Ranap","lain","stok_obat_pasien"); 
-        hapus("Resep Pulang Pasien","lain","resep_pulang"); 
-        hapus("Operasi","lain","operasi"); 
-        hapus("Obat Racikan","lain","obat_racikan"); 
-        hapus("Detail Obat Racikan","lain","detail_obat_racikan");  
-        hapus("Resep Obat","lain","resep_obat");         
-        hapus("Billing","lain","billing");             
-        hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan"); 
-        hapus("Pemeriksaan Obstetri Ranap","lain","pemeriksaan_obstetri_ranap"); 
-        hapus("Pemeriksaan Ginekologi Ralan","lain","pemeriksaan_ginekologi_ralan"); 
-        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap"); 
-        hapus("Booking Operasi","lain","booking_operasi");  
-        hapus("Pendaftaran Via PCare","lain","pcare_pendaftaran");  
-        hapus("Saran Kesan Lab","lain","saran_kesan_lab");         
-        hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
-                "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
-    }//GEN-LAST:event_BtnICD4ActionPerformed
-
-    private void BtnICD5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD5ActionPerformed
-        hapus("Tindakan Ralan Dokter","lain","rawat_jl_dr");
-        hapus("Tindakan Ralan Dokter & Petugas","lain","rawat_jl_drpr");
-    }//GEN-LAST:event_BtnICD5ActionPerformed
-
-    private void BtnICD6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD6ActionPerformed
-        hapus("Tindakan Ralan Paramedis","lain","rawat_jl_pr");
-    }//GEN-LAST:event_BtnICD6ActionPerformed
-
-    private void BtnICD7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD7ActionPerformed
-        hapus("Tindakan Ranap Dokter","lain","rawat_inap_dr");
-        hapus("Tindakan Ranap Dokter & Perawat","lain","rawat_inap_drpr");
-    }//GEN-LAST:event_BtnICD7ActionPerformed
-
-    private void BtnICD8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD8ActionPerformed
-        hapus("Tindakan Ranap Paramedis","lain","rawat_inap_pr");
-    }//GEN-LAST:event_BtnICD8ActionPerformed
-
-    private void BtnICD9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD9ActionPerformed
-        hapus("Ranap Gabung","lain","ranap_gabung");
-        hapus("Kamar Inap","lain","kamar_inap");
-    }//GEN-LAST:event_BtnICD9ActionPerformed
-
-    private void BtnICD10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD10ActionPerformed
-        hapus("Tagihan Operasi","lain","operasi");
-        hapus("Obat Operasi","lain","beri_obat_operasi");
-    }//GEN-LAST:event_BtnICD10ActionPerformed
-
-    private void BtnICD11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD11ActionPerformed
-        hapus("Rujukan Keluar","lain","rujuk");
-    }//GEN-LAST:event_BtnICD11ActionPerformed
-
-    private void BtnICD12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD12ActionPerformed
-        hapus("Rujukan Masuk","lain","rujuk_masuk");
-    }//GEN-LAST:event_BtnICD12ActionPerformed
-
-    private void BtnICD13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD13ActionPerformed
-        hapus("Pemberian Obat","lain","detail_pemberian_obat");
-        hapus("Tagihan Obat Langsung","lain","tagihan_obat_langsung");
-        hapus("Obat Racikan","lain","obat_racikan");
-        hapus("Detail Obat Racikan","lain","_detail_obat_racikan");
-    }//GEN-LAST:event_BtnICD13ActionPerformed
-
-    private void BtnICD14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD14ActionPerformed
-        hapus("Resep Pulang","lain","resep_pulang");
-    }//GEN-LAST:event_BtnICD14ActionPerformed
-
-    private void BtnICD15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD15ActionPerformed
-        hapus("Resep Obat","lain","resep_obat");
-    }//GEN-LAST:event_BtnICD15ActionPerformed
-
-    private void BtnICD16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD16ActionPerformed
-        hapus("Pasien Meninggal","lain","pasien_mati");
-    }//GEN-LAST:event_BtnICD16ActionPerformed
-
-    private void BtnICD17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD17ActionPerformed
-        hapus("Diet Pasien","lain","detail_beri_diet");
-    }//GEN-LAST:event_BtnICD17ActionPerformed
-
-    private void BtnICD18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD18ActionPerformed
-        hapus("Kelahiran Bayi","lain","pasien_bayi");
-    }//GEN-LAST:event_BtnICD18ActionPerformed
-
-    private void BtnICD19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD19ActionPerformed
-        hapus("Periksa Lab","lain","periksa_lab");
-        hapus("Detail Periksa Lab","lain","detail_periksa_lab");
-    }//GEN-LAST:event_BtnICD19ActionPerformed
-
-    private void BtnICD20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD20ActionPerformed
-        hapus("Periksa Radiologi","lain","periksa_radiologi");
-        hapus("BHP Periksa Radiologi","lain","beri_bhp_radiologi");
-    }//GEN-LAST:event_BtnICD20ActionPerformed
-
-    private void BtnICD21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD21ActionPerformed
-        hapus("Deposit Pasien","lain","deposit");
-    }//GEN-LAST:event_BtnICD21ActionPerformed
-
-    private void BtnICD22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD22ActionPerformed
-        hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
-        hapus("Piutang Pasien","lain","piutang_pasien");
-        hapus("Bayar Piutang Pasien","lain","bayar_piutang");
-    }//GEN-LAST:event_BtnICD22ActionPerformed
-
-    private void BtnICD23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD23ActionPerformed
-        hapus("Peminjaman Berkas RM","lain","peminjaman_berkas");
-    }//GEN-LAST:event_BtnICD23ActionPerformed
-
-    private void BtnICD24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD24ActionPerformed
-        hapus("Surat Pemesanan Non Medis","lain","surat_pemesanan_non_medis");
-        hapus("Surat Pemesanan Medis","lain","surat_pemesanan_medis");
-        hapus("Pemesanan Barang Non Medis","lain ","ipsrspemesanan");
-        hapus("Insiden Keselamatan Pasien","lain ","insiden_keselamatan_pasien");
-        hapus("Pengadaan Barang Non Medis","lain ","ipsrspembelian");
-        hapus("Bayar Pemesanan Obat/Alkes/BHP","lain ","bayar_pemesanan");
-        hapus("Pemesanan Barang Medis","lain ","pemesanan");
-        hapus("Pengadaan Barang Medis","lain ","pembelian");
-        hapus("Petugas","Sirkulasi Inventaris, Ralan Paramedis, Ranap Paramedis,\nPeriksa Radiologi, Periksa Laboratorium, Pengadaan & Stok Keluar Barang Non Medis"+
-                ", Pengadaan Obat & BHP, Pemesanan Obat & BHP,\nPenjualan Obat & BHP, Piutang Obat & BHP,Retur Ke Suplier, Retur Piutang Pasien, Retus Dari Pembeli ","petugas");
-    }//GEN-LAST:event_BtnICD24ActionPerformed
-
-    private void BtnICD25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD25ActionPerformed
-        hapus("Resep Obat","lain","resep_obat");
-        hapus("Penanggung Jawab Lab & Radiologi","lain","set_pjlab");
-        hapus("Booking Operasi","lain","booking_operasi");
-        hapus("Booking Registrasi","lain","booking_registrasi");
-        hapus("SKDP BPJS","lain","skdp_bpjs");
-        hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
-    }//GEN-LAST:event_BtnICD25ActionPerformed
-
-    private void BtnICD26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD26ActionPerformed
-        hapus("Barcode Presensi","lain","barcode");
-    }//GEN-LAST:event_BtnICD26ActionPerformed
-
-    private void BtnICD27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD27ActionPerformed
-        hapus("Presensi Pegawai","lain","presensi");
-        hapus("Presensi Pegawai","lain","temporary_presensi");
-        hapus("Presensi Pegawai","lain","rekap_presensi");
-    }//GEN-LAST:event_BtnICD27ActionPerformed
-
-    private void BtnICD28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD28ActionPerformed
-        hapus("Tahun & Bulan Gaji","lain","set_tahun");
-        hapus("Hari Libur Tahun & Bulan Gaji","lain","set_hari_libur");
-    }//GEN-LAST:event_BtnICD28ActionPerformed
-
-    private void BtnICD29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD29ActionPerformed
-        hapus("Bidang Pegawai","Pegawai","bidang");
-    }//GEN-LAST:event_BtnICD29ActionPerformed
-
-    private void BtnICD30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD30ActionPerformed
-        hapus("Set Jaga Tambah","lain ","set_jgtambah");
-        hapus("Pendidikan Pegawai","Pegawai, Set Tambah Jaga ","pendidikan");
-    }//GEN-LAST:event_BtnICD30ActionPerformed
-
-    private void BtnICD31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD31ActionPerformed
-        hapus("Status Kerja","Pegawai","stts_kerja");
-    }//GEN-LAST:event_BtnICD31ActionPerformed
-
-    private void BtnICD32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD32ActionPerformed
-        hapus("Status WP","Pegawai","stts_wp");
-    }//GEN-LAST:event_BtnICD32ActionPerformed
-
-    private void BtnICD33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD33ActionPerformed
-        hapus("Jenjang Jabatan","Pegawai","jnj_jabatan");
-    }//GEN-LAST:event_BtnICD33ActionPerformed
-
-    private void BtnICD34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD34ActionPerformed
-        hapus("Index Referensi Total","lain","indextotal");
-        hapus("Index Referensi Insentif","lain","indekref");
-        hapus("Departemen","Pegawai","departemen");
-    }//GEN-LAST:event_BtnICD34ActionPerformed
-
-    private void BtnICD35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD35ActionPerformed
-        hapus("Insentif","lain","set_insentif");
-        hapus("Index Insentif","lain","indexins");
-    }//GEN-LAST:event_BtnICD35ActionPerformed
-
-    private void BtnICD36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD36ActionPerformed
-        hapus("Pendapatan Akte","Lain","set_akte");
-        hapus("Pembagian Akte","Lain","pembagian_akte");
-    }//GEN-LAST:event_BtnICD36ActionPerformed
-
-    private void BtnICD37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD37ActionPerformed
-        hapus("Pendapatan Resume","Lain","set_resume");
-        hapus("Pembagian Resume","lain","pembagian_resume");
-    }//GEN-LAST:event_BtnICD37ActionPerformed
-
-    private void BtnICD38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD38ActionPerformed
-        hapus("Pendapatan Tuslah","lain","set_tuslah");
-        hapus("Pembagian Tuslah","lain","pembagian_tuslah");
-    }//GEN-LAST:event_BtnICD38ActionPerformed
-
-    private void BtnICD39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD39ActionPerformed
-        hapus("Pendapatan Warung","lain","set_warung");
-        hapus("Pembagian Warung","lain","pembagian_warung");
-    }//GEN-LAST:event_BtnICD39ActionPerformed
-
-    private void BtnICD40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD40ActionPerformed
-        hapus("Pendapatan Resume","Lain","set_resume");
-        hapus("Pembagian Resume","lain","pembagian_resume");
-        hapus("Pendapatan Akte","Lain","set_akte");
-        hapus("Pembagian Akte","Lain","pembagian_akte");
-        hapus("Resep Obat","lain","resep_obat");
-        hapus("Booking Operasi","lain","booking_operasi");
-        hapus("Booking Registrasi","lain","booking_registrasi");
-        hapus("SKDP BPJS","lain","skdp_bpjs");
-        hapus("Penanggung Jawab Lab & Radiologi","lain","set_pjlab");
-        hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
-        hapus("Pendapatan Warung","lain","set_warung");
-        hapus("Pembagian Warung","lain","pembagian_warung");
-        hapus("Pembagian Tuslah","lain","pembagian_tuslah");
-        hapus("Presensi Pegawai","lain","presensi");
-        hapus("Presensi Pegawai","lain","temporary_presensi");
-        hapus("Presensi Pegawai","lain","rekap_presensi");
-        hapus("Jadwal Pegawai","lain","jadwal_pegawai");
-        hapus("Jadwal Tambahan Pegawai","lain","jadwal_tambahan");
-        hapus("Barcode Presensi","lain","barcode");
-        hapus("Ketidakhadiran Pegawai","lain","ketidakhadiran");
-        hapus("Tambahan Rawat Jalan","lain","rawatjalan");
-        hapus("Ambil Dana Kesehatan","lain","ambil_dankes");
-        hapus("Tambahan Tindakan","lain","tindakan");
-        hapus("Tambahan Jaga","lain","tambahjaga");
-        hapus("Jasa Lain","lain","jasa_lain");
-        hapus("Potongan Gaji","lain","potongan");
-        hapus("Jaga Malam","lain","jgmlm");
-        hapus("Jumlah Pasien Ditangani Dokter","lain","jumpasien");
-        hapus("Riwayat Jabatan","lain","riwayat_jabatan");
-        hapus("Riwayat Kenaikan Gaji","lain","riwayat_naik_gaji");
-        hapus("Riwayat Pendidikan","lain","riwayat_pendidikan");
-        hapus("Riwayat Penghargaan","lain","riwayat_penghargaan");
-        hapus("Riwayat Penelitian","lain","riwayat_penelitian");
-        hapus("Angsuran Koperasi","lain","angsuran_koperasi");
-        hapus("Riwayat Kegiatan Ilmiah & Pelatihan","lain","riwayat_seminar");
-        hapus("Peminjaman Koperasi","lain","peminjaman_koperasi");
-        hapus("Penerima Tunjangan Bulanan","lain","pnm_tnj_bulanan");
-        hapus("Penerima Tunjangan Harian","lain","pnm_tnj_harian");
-        hapus("Data Pegawai","Petugas, Dokter,\nPembagian Resume, Pendapatan Tuslah, "+
-                "Pendapatan Warung, Pendapatan Akte, Barcode Presensi,\nLembur Pegawai, "+
-                "Presensi Pegawai, Pendapatan Resume, Pendapatan Tuslah, Pendapatan Warung,\nSidik Jari Pegawai, Jadwal Pegawai, Jasa Lain Pegawai","pegawai");
-    }//GEN-LAST:event_BtnICD40ActionPerformed
-
-    private void BtnICD41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD41ActionPerformed
-        hapus("Lembur Pegawai","lain","presensi");        
-    }//GEN-LAST:event_BtnICD41ActionPerformed
-
-    private void BtnICD42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD42ActionPerformed
-        hapus("Keanggotaan","lain","keanggotaan");
-        hapus("Status Jamsostek","lain","jamsostek");
-        hapus("Status Koperasi","lain","koperasi");
-    }//GEN-LAST:event_BtnICD42ActionPerformed
-
-    private void BtnICD43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD43ActionPerformed
-        hapus("Potongan Gaji","lain","potongan");
-    }//GEN-LAST:event_BtnICD43ActionPerformed
-
-    private void BtnICD44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD44ActionPerformed
-        hapus("Penerima Tunjangan Bulanan","lain","pnm_tnj_bulanan");
-        hapus("Penerima Tunjangan Harian","lain","pnm_tnj_harian");
-        hapus("Master Tunjangan Bulanan","lain","master_tunjangan_bulanan");
-        hapus("Master Tunjangan Harian","lain","master_tunjangan_harian");
-    }//GEN-LAST:event_BtnICD44ActionPerformed
-
-    private void BtnICD45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD45ActionPerformed
-        hapus("Jasa Lain","lain","jasa_lain");
-    }//GEN-LAST:event_BtnICD45ActionPerformed
-
-    private void BtnICD46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD46ActionPerformed
-        hapus("Daftar Kasift","lain","kasift");
-    }//GEN-LAST:event_BtnICD46ActionPerformed
-
-    private void BtnICD47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD47ActionPerformed
-        hapus("Angsuran Koperasi","lain","angsuran_koperasi");
-        hapus("Peminjaman Koperasi","lain","peminjaman_koperasi");
-    }//GEN-LAST:event_BtnICD47ActionPerformed
-
-    private void BtnICD48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD48ActionPerformed
-        hapus("Jam Jaga Departemen","lain","jam_jaga");
-    }//GEN-LAST:event_BtnICD48ActionPerformed
-
-    private void BtnICD49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD49ActionPerformed
-        hapus("Riwayat Jabatan","lain","riwayat_jabatan");
-    }//GEN-LAST:event_BtnICD49ActionPerformed
-
-    private void BtnICD50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD50ActionPerformed
-        hapus("Riwayat Pendidikan","lain","riwayat_pendidikan");
-    }//GEN-LAST:event_BtnICD50ActionPerformed
-
-    private void BtnICD51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD51ActionPerformed
-        hapus("Kegiatan Ilmiah & Pelatihan","lain","riwayat_seminar");
-    }//GEN-LAST:event_BtnICD51ActionPerformed
-
-    private void BtnICD52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD52ActionPerformed
-        hapus("Surat Pemesanan Medis","lain","surat_pemesanan_medis");
-        hapus("Data Pemesanan Medis","lain","pemesanan");
-        hapus("Data Pengadaan Barang Medis","lain","pembelian");
-        hapus("Data Suplier Medis","lain","datasuplier");
-    }//GEN-LAST:event_BtnICD52ActionPerformed
-
-    private void BtnICD53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD53ActionPerformed
-        hapus("Satuan Barang","\nData Obat, Konversi Satuan, Barang Non Medis,Obat BHP OK","kodesatuan");
-    }//GEN-LAST:event_BtnICD53ActionPerformed
-
-    private void BtnICD54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD54ActionPerformed
-        hapus("Konversi Satuan","lain","konver_sat");
-    }//GEN-LAST:event_BtnICD54ActionPerformed
-
-    private void BtnICD55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD55ActionPerformed
-        hapus("Set Penjualan","lain","setpenjualan");
-        hapus("Jenis Barang","lain","jenis");
-    }//GEN-LAST:event_BtnICD55ActionPerformed
-
-    private void BtnICD56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD56ActionPerformed
-        hapus("Mutasi Barang","lain","mutasibarang");  
-        hapus("Gudang Barang","lain","gudangbarang");   
-        hapus("Obat, Alkes & BHP","\nObat Penyakit, Pemberian Obat, Resep Pulang, Pengadaan Obat,\nPemesanan Obat, Retur Dari Pasien, Retur Ke Suplier,\nPiutang Pasien, Retur Piutang","databarang");
-    }//GEN-LAST:event_BtnICD56ActionPerformed
-
-    private void BtnICD57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD57ActionPerformed
-        hapus("Stok Opname Obat, Alkes & BHP","lain","opname");
-    }//GEN-LAST:event_BtnICD57ActionPerformed
-
-    private void BtnICD58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD58ActionPerformed
-        hapus("Stok Obat Pasien","lain","stok_obat_pasien");
-    }//GEN-LAST:event_BtnICD58ActionPerformed
-
-    private void BtnICD59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD59ActionPerformed
-        hapus("Pengadaan Obat & BHP","lain","detailbeli");
-        hapus("Pengadaan Obat & BHP","lain","pembelian");        
-    }//GEN-LAST:event_BtnICD59ActionPerformed
-
-    private void BtnICD60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD60ActionPerformed
-        hapus("Bayar Pemesanan Obat/Alkes/BHP","lain ","bayar_pemesanan");
-        hapus("Pemesanan Obat & BHP","lain","detailpesan");
-        hapus("Pemesanan Obat & BHP","lain","pemesanan");
-    }//GEN-LAST:event_BtnICD60ActionPerformed
-
-    private void BtnICD61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD61ActionPerformed
-        hapus("Penjualan Obat & BHP","lain","penjualan");
-    }//GEN-LAST:event_BtnICD61ActionPerformed
-
-    private void BtnICD62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD62ActionPerformed
-        hapus("Piutang Obat & BHP","lain","piutang");
-    }//GEN-LAST:event_BtnICD62ActionPerformed
-
-    private void BtnICD63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD63ActionPerformed
-        hapus("Retur Ke Suplier","lain","returbeli");
-    }//GEN-LAST:event_BtnICD63ActionPerformed
-
-    private void BtnICD64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD64ActionPerformed
-        hapus("Retur Dari Pembeli","lain","returjual");
-    }//GEN-LAST:event_BtnICD64ActionPerformed
-
-    private void BtnICD65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD65ActionPerformed
-        hapus("Retur Obat Ranap","lain","returpasien");
-    }//GEN-LAST:event_BtnICD65ActionPerformed
-
-    private void BtnICD66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD66ActionPerformed
-        hapus("Retur Piutang Pasien","lain","returpiutang");
-    }//GEN-LAST:event_BtnICD66ActionPerformed
-
-    private void BtnICD67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD67ActionPerformed
-        hapus("Barang Non Medis","Pengadaan & Stok Keluar Barang Non Medis","ipsrsbarang");
-    }//GEN-LAST:event_BtnICD67ActionPerformed
-
-    private void BtnICD68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD68ActionPerformed
-        hapus("Pengadaan Barang Non Medis","lain","ipsrspembelian");
-    }//GEN-LAST:event_BtnICD68ActionPerformed
-
-    private void BtnICD69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD69ActionPerformed
-        hapus("Stok Keluar Barang Non Medis","lain","ipsrspengeluaran");
-    }//GEN-LAST:event_BtnICD69ActionPerformed
-
-    private void BtnICD70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD70ActionPerformed
-        hapus("Jenis Inventaris","Koleksi Inventaris","inventaris_jenis");
-    }//GEN-LAST:event_BtnICD70ActionPerformed
-
-    private void BtnICD71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD71ActionPerformed
-        hapus("Kategori Inventaris","Koleksi Inventaris","inventaris_kategori");
-    }//GEN-LAST:event_BtnICD71ActionPerformed
-
-    private void BtnICD72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD72ActionPerformed
-        hapus("Merk Inventaris","Koleksi Inventaris","inventaris_merk");
-    }//GEN-LAST:event_BtnICD72ActionPerformed
-
-    private void BtnICD73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD73ActionPerformed
-        hapus("Ruang Rumah Sakit","Inventaris","inventaris_ruang");
-    }//GEN-LAST:event_BtnICD73ActionPerformed
-
-    private void BtnICD74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD74ActionPerformed
-        hapus("Produsen","Koleksi Inventaris","inventaris_produsen");
-    }//GEN-LAST:event_BtnICD74ActionPerformed
-
-    private void BtnICD75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD75ActionPerformed
-        hapus("Koleksi","Inventaris","inventaris_barang");
-    }//GEN-LAST:event_BtnICD75ActionPerformed
-
-    private void BtnICD76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD76ActionPerformed
-        hapus("Inventaris","Sirkulasi Inventaris","inventaris");
-    }//GEN-LAST:event_BtnICD76ActionPerformed
-
-    private void BtnICD77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD77ActionPerformed
-        hapus("Sirkulasi Inventaris","lain","inventaris_peminjaman");
-    }//GEN-LAST:event_BtnICD77ActionPerformed
-
-    private void BtnICD78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD78ActionPerformed
-        hapus("Tambahan Biaya","lain","tambahan_biaya");
-    }//GEN-LAST:event_BtnICD78ActionPerformed
-
-    private void BtnICD79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD79ActionPerformed
-        hapus("Potongan Biaya","lain","pengurangan_biaya");
-    }//GEN-LAST:event_BtnICD79ActionPerformed
-
-    private void BtnICD80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD80ActionPerformed
-        hapus("Set Harga Kamar","lain","set_harga_kamar");  
-        hapus("Kamar","Kamar Inap","kamar");
-        hapus("Gudang Barang","lain","gudangbarang");    
-        hapus("Stok Opname","lain","opname");                
-        hapus("Set Lokasi Obat","lain","set_lokasi");
-        hapus("Mutasi Barang","lain","mutasibarang");   
-        hapus("Riwayat Obat, Alkes & BHP","lain","riwayat_barang_medis");        
-        hapus("Bangsal","Kamar, Gudang Barang,\nStok Opname, Set Lokasi Obat, Mutasi Barang","bangsal");
-    }//GEN-LAST:event_BtnICD80ActionPerformed
-
-    private void BtnICD81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD81ActionPerformed
-        hapus("Tarif Ralan","Ralan Dokter, Ralan Paramedis","jns_perawatan");
-    }//GEN-LAST:event_BtnICD81ActionPerformed
-
-    private void BtnICD82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD82ActionPerformed
-        hapus("Tarif Ranap","Ranap Dokter, Ranap Paramedis","jns_perawatan_inap");
-    }//GEN-LAST:event_BtnICD82ActionPerformed
-
-    private void BtnICD83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD83ActionPerformed
-        hapus("Tarif Lab","Periksa Laborat","jns_perawatan_lab");
-        hapus("Template Laboratorium","Detail Periksa Laborat","template_laboratorium");
-    }//GEN-LAST:event_BtnICD83ActionPerformed
-
-    private void BtnICD84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD84ActionPerformed
-        hapus("Tarif Radiologi","Periksa Radiologi","jns_perawatan_radiologi");
-    }//GEN-LAST:event_BtnICD84ActionPerformed
-
-    private void BtnICD85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD85ActionPerformed
-        hapus("Tarif Operasi","Tagihan Operasi","paket_operasi");
-    }//GEN-LAST:event_BtnICD85ActionPerformed
-
-    private void BtnICD86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD86ActionPerformed
-        hapus("Akun Piutang","Jurnal Akuntansi","akun_piutang");
-        hapus("Akun Bayar","Jurnal Akuntansi","akun_bayar");
-        hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");        
-        hapus("Subrekening","Lain","subrekening");
-        hapus("Kategori Pemasukan Lain-Lain","Rekening Tahun","kategori_pemasukan_lain");
-        hapus("Kategori Pengeluaran Harian","Rekening Tahun","kategori_pengeluaran_harian");
-        hapus("Akun Rekening","Rekening Tahun","rekening");
-    }//GEN-LAST:event_BtnICD86ActionPerformed
-
-    private void BtnICD87ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD87ActionPerformed
-        hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");
-    }//GEN-LAST:event_BtnICD87ActionPerformed
-
-    private void BtnICD88ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD88ActionPerformed
-        hapus("Pengeluaran Harian","lain","pengeluaran_harian");
-    }//GEN-LAST:event_BtnICD88ActionPerformed
-
-    private void BtnICD89ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD89ActionPerformed
-        hapus("Nota Rawat Jalan","lain","nota_jalan");
-        hapus("Detail Nota Rawat Jalan","lain","detail_nota_jalan");
-        hapus("Nota Rawat Inap","lain","nota_inap");
-        hapus("Tagihan Masuk","lain","billing");
-        hapus("Tagihan Masuk","lain","tagihan_sadewa");
-    }//GEN-LAST:event_BtnICD89ActionPerformed
-
-    private void BtnICD90ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD90ActionPerformed
-        hapus("Jurnal Akuntansi","lain","jurnal");
-    }//GEN-LAST:event_BtnICD90ActionPerformed
-
-    private void BtnICD91ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD91ActionPerformed
-        hapus("Tracker Login","lain","tracker");
-    }//GEN-LAST:event_BtnICD91ActionPerformed
-
-    private void BtnICD92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD92ActionPerformed
-        hapus("Biaya Harian","lain","biaya_harian");
-    }//GEN-LAST:event_BtnICD92ActionPerformed
-
-    private void BtnICD93ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD93ActionPerformed
-        hapus("Biaya Sekali Masuk","lain","biaya_sekali");
-    }//GEN-LAST:event_BtnICD93ActionPerformed
-
-    private void BtnICD94ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD94ActionPerformed
-        hapus("Penyakit PD3I","lain","penyakit_pd3i");
-    }//GEN-LAST:event_BtnICD94ActionPerformed
-
-    private void BtnICD95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD95ActionPerformed
-        hapus("Riwayat Gaji","lain","riwayat_naik_gaji");
-    }//GEN-LAST:event_BtnICD95ActionPerformed
-
-    private void BtnICD96ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD96ActionPerformed
-        hapus("Diagnosa Pasien","lain","diagnosa_pasien");
-    }//GEN-LAST:event_BtnICD96ActionPerformed
-
-    private void BtnICD97ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD97ActionPerformed
-        hapus("Sidik Jari Pegawai","lain","sidikjari");
-    }//GEN-LAST:event_BtnICD97ActionPerformed
-
-    private void BtnICD98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD98ActionPerformed
-        hapus("Sms Masuk","lain","sms");
-    }//GEN-LAST:event_BtnICD98ActionPerformed
-
-    private void BtnICD99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD99ActionPerformed
-        hapus("Jam Presensi","lain","jam_masuk");
-    }//GEN-LAST:event_BtnICD99ActionPerformed
-
-    private void BtnICD100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD100ActionPerformed
-        hapus("Jadwal Pegawai","lain","jadwal_pegawai");
-    }//GEN-LAST:event_BtnICD100ActionPerformed
-
-    private void BtnICD101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD101ActionPerformed
-        hapus("Barcode Parkir","Rekap Parkir","parkir_barcode");
-    }//GEN-LAST:event_BtnICD101ActionPerformed
-
-    private void BtnICD102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD102ActionPerformed
-        hapus("Jenis Parkir","Rekap Parkir","parkir_jenis");
-    }//GEN-LAST:event_BtnICD102ActionPerformed
-
-    private void BtnICD103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD103ActionPerformed
-        hapus("Rekap Parkir","Lain","parkir");
-    }//GEN-LAST:event_BtnICD103ActionPerformed
-
-    private void BtnICD104ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD104ActionPerformed
-        hapus("DPJP Ranap","lain","dpjp_ranap");
-    }//GEN-LAST:event_BtnICD104ActionPerformed
-
-    private void BtnICD105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD105ActionPerformed
-        hapus("Jual Bebas BHP/Obat","lain","penjualan");
-        hapus("Akun Bayar","Pengadaan Barang, Billing, Penjualan, Pemesanan, dll","akun_bayar");
-    }//GEN-LAST:event_BtnICD105ActionPerformed
-
-    private void BtnICD106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD106ActionPerformed
-        hapus("Pemasukan Lain-Lain","lain","pemasukan_lain");
-    }//GEN-LAST:event_BtnICD106ActionPerformed
-
-    private void BtnICD107ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD107ActionPerformed
-        hapus("Obat BHP OK","lain","obatbhp_ok"); 
-    }//GEN-LAST:event_BtnICD107ActionPerformed
-
-    private void BtnICD108ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD108ActionPerformed
-        hapus("Bridging SEP","lain","bridging_sep"); 
-    }//GEN-LAST:event_BtnICD108ActionPerformed
-
-    private void BtnICD109ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD109ActionPerformed
-        hapus("Riwayat Obat, Alkes & BHP","lain","riwayat_barang_medis"); 
-    }//GEN-LAST:event_BtnICD109ActionPerformed
-
-    private void BtnICD110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD110ActionPerformed
-        hapus("Ketersediaan Kamar Aplicare","lain","aplicare_ketersediaan_kamar");
-    }//GEN-LAST:event_BtnICD110ActionPerformed
-
-    private void BtnICD111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD111ActionPerformed
-        hapus("INACBG Klaim Baru","lain","inacbg_klaim_baru");
-    }//GEN-LAST:event_BtnICD111ActionPerformed
-
-    private void BtnICD112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD112ActionPerformed
-        hapus("Akun Piutang","lain","akun_piutang");
-    }//GEN-LAST:event_BtnICD112ActionPerformed
-
-    private void BtnICD113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD113ActionPerformed
-        hapus("Catatan Pasien","lain","catatan_pasien"); 
-    }//GEN-LAST:event_BtnICD113ActionPerformed
-
-    private void BtnICD114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD114ActionPerformed
-        hapus("Kategori Barang","Data Obat/Alkes/BHP","kategori_barang");
-    }//GEN-LAST:event_BtnICD114ActionPerformed
-
-    private void BtnICD115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD115ActionPerformed
-        hapus("Golongan Barang","Data Obat/Alkes/BHP","golongan_barang");
-    }//GEN-LAST:event_BtnICD115ActionPerformed
-
-    private void BtnICD116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD116ActionPerformed
-        hapus("Surat Pemesanan Non Medis","lain","surat_pemesanan_non_medis");
-        hapus("Data Pemesanan Non Medis","lain","ipsrspemesanan");
-        hapus("Data Pengadaan Barang Non Medis","lain","ipsrspembelian");
-        hapus("Data Suplier Non Medis","lain","ipsrssuplier");
-    }//GEN-LAST:event_BtnICD116ActionPerformed
-
-    private void BtnICD117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD117ActionPerformed
-        hapus("Bayar Pemesanan Non Medis","lain ","bayar_pemesanan_non_medis");
-        hapus("Pemesanan Non Medis","lain","ipsrsdetailpesan");
-        hapus("Pemesanan Non Medis","lain","ipsrspemesanan");
-    }//GEN-LAST:event_BtnICD117ActionPerformed
+    }//GEN-LAST:event_BtnKeluarActionPerformed
+
+    private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            dispose();
+        }else{Valid.pindah(evt,BtnHapus,BtnKeluar);}
+    }//GEN-LAST:event_BtnKeluarKeyPressed
+
+    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
+        for(i=0;i<tbAdmin.getRowCount();i++){ 
+            if(tbAdmin.getValueAt(i,0).toString().equals("true")){
+                hapus(tbAdmin.getValueAt(i,1).toString());
+            }
+        } 
+        for(i=0;i<tbAdmin.getRowCount();i++){ 
+            tbAdmin.setValueAt(false,i,0);
+        }
+    }//GEN-LAST:event_BtnHapusActionPerformed
+
+    private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnHapusActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnKeluar, BtnKeluar);
+        }
+    }//GEN-LAST:event_BtnHapusKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tampil();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            BtnCariActionPerformed(null);
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            BtnCari.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnKeluar.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            tbAdmin.requestFocus();
+        }
+    }//GEN-LAST:event_TCariKeyPressed
+
+    private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        tampil();
+    }//GEN-LAST:event_BtnCariActionPerformed
+
+    private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnCariActionPerformed(null);
+        }else{
+            Valid.pindah(evt, TCari, BtnAll);
+        }
+    }//GEN-LAST:event_BtnCariKeyPressed
+
+    private void BtnCariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCariKeyReleased
+
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        TCari.setText("");
+        tampil();
+        TCari.requestFocus();
+    }//GEN-LAST:event_BtnAllActionPerformed
+
+    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            TCari.setText("");
+            tampil();
+        }else{
+            Valid.pindah(evt, BtnCari,TCari);
+        }
+    }//GEN-LAST:event_BtnAllKeyPressed
+
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        for(i=0;i<tbAdmin.getRowCount();i++){
+            tbAdmin.setValueAt(false,i,0);
+        }
+    }//GEN-LAST:event_ppBersihkanActionPerformed
+
+    private void ppCentangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppCentangActionPerformed
+        for(i=0;i<tbAdmin.getRowCount();i++){
+            tbAdmin.setValueAt(true,i,0);
+        }
+    }//GEN-LAST:event_ppCentangActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2881,188 +409,65 @@ public class DlgVakum extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private usu.widget.ButtonGlass BtnICD;
-    private usu.widget.ButtonGlass BtnICD1;
-    private usu.widget.ButtonGlass BtnICD10;
-    private usu.widget.ButtonGlass BtnICD100;
-    private usu.widget.ButtonGlass BtnICD101;
-    private usu.widget.ButtonGlass BtnICD102;
-    private usu.widget.ButtonGlass BtnICD103;
-    private usu.widget.ButtonGlass BtnICD104;
-    private usu.widget.ButtonGlass BtnICD105;
-    private usu.widget.ButtonGlass BtnICD106;
-    private usu.widget.ButtonGlass BtnICD107;
-    private usu.widget.ButtonGlass BtnICD108;
-    private usu.widget.ButtonGlass BtnICD109;
-    private usu.widget.ButtonGlass BtnICD11;
-    private usu.widget.ButtonGlass BtnICD110;
-    private usu.widget.ButtonGlass BtnICD111;
-    private usu.widget.ButtonGlass BtnICD112;
-    private usu.widget.ButtonGlass BtnICD113;
-    private usu.widget.ButtonGlass BtnICD114;
-    private usu.widget.ButtonGlass BtnICD115;
-    private usu.widget.ButtonGlass BtnICD116;
-    private usu.widget.ButtonGlass BtnICD117;
-    private usu.widget.ButtonGlass BtnICD12;
-    private usu.widget.ButtonGlass BtnICD13;
-    private usu.widget.ButtonGlass BtnICD14;
-    private usu.widget.ButtonGlass BtnICD15;
-    private usu.widget.ButtonGlass BtnICD16;
-    private usu.widget.ButtonGlass BtnICD17;
-    private usu.widget.ButtonGlass BtnICD18;
-    private usu.widget.ButtonGlass BtnICD19;
-    private usu.widget.ButtonGlass BtnICD2;
-    private usu.widget.ButtonGlass BtnICD20;
-    private usu.widget.ButtonGlass BtnICD21;
-    private usu.widget.ButtonGlass BtnICD22;
-    private usu.widget.ButtonGlass BtnICD23;
-    private usu.widget.ButtonGlass BtnICD24;
-    private usu.widget.ButtonGlass BtnICD25;
-    private usu.widget.ButtonGlass BtnICD26;
-    private usu.widget.ButtonGlass BtnICD27;
-    private usu.widget.ButtonGlass BtnICD28;
-    private usu.widget.ButtonGlass BtnICD29;
-    private usu.widget.ButtonGlass BtnICD3;
-    private usu.widget.ButtonGlass BtnICD30;
-    private usu.widget.ButtonGlass BtnICD31;
-    private usu.widget.ButtonGlass BtnICD32;
-    private usu.widget.ButtonGlass BtnICD33;
-    private usu.widget.ButtonGlass BtnICD34;
-    private usu.widget.ButtonGlass BtnICD35;
-    private usu.widget.ButtonGlass BtnICD36;
-    private usu.widget.ButtonGlass BtnICD37;
-    private usu.widget.ButtonGlass BtnICD38;
-    private usu.widget.ButtonGlass BtnICD39;
-    private usu.widget.ButtonGlass BtnICD4;
-    private usu.widget.ButtonGlass BtnICD40;
-    private usu.widget.ButtonGlass BtnICD41;
-    private usu.widget.ButtonGlass BtnICD42;
-    private usu.widget.ButtonGlass BtnICD43;
-    private usu.widget.ButtonGlass BtnICD44;
-    private usu.widget.ButtonGlass BtnICD45;
-    private usu.widget.ButtonGlass BtnICD46;
-    private usu.widget.ButtonGlass BtnICD47;
-    private usu.widget.ButtonGlass BtnICD48;
-    private usu.widget.ButtonGlass BtnICD49;
-    private usu.widget.ButtonGlass BtnICD5;
-    private usu.widget.ButtonGlass BtnICD50;
-    private usu.widget.ButtonGlass BtnICD51;
-    private usu.widget.ButtonGlass BtnICD52;
-    private usu.widget.ButtonGlass BtnICD53;
-    private usu.widget.ButtonGlass BtnICD54;
-    private usu.widget.ButtonGlass BtnICD55;
-    private usu.widget.ButtonGlass BtnICD56;
-    private usu.widget.ButtonGlass BtnICD57;
-    private usu.widget.ButtonGlass BtnICD58;
-    private usu.widget.ButtonGlass BtnICD59;
-    private usu.widget.ButtonGlass BtnICD6;
-    private usu.widget.ButtonGlass BtnICD60;
-    private usu.widget.ButtonGlass BtnICD61;
-    private usu.widget.ButtonGlass BtnICD62;
-    private usu.widget.ButtonGlass BtnICD63;
-    private usu.widget.ButtonGlass BtnICD64;
-    private usu.widget.ButtonGlass BtnICD65;
-    private usu.widget.ButtonGlass BtnICD66;
-    private usu.widget.ButtonGlass BtnICD67;
-    private usu.widget.ButtonGlass BtnICD68;
-    private usu.widget.ButtonGlass BtnICD69;
-    private usu.widget.ButtonGlass BtnICD7;
-    private usu.widget.ButtonGlass BtnICD70;
-    private usu.widget.ButtonGlass BtnICD71;
-    private usu.widget.ButtonGlass BtnICD72;
-    private usu.widget.ButtonGlass BtnICD73;
-    private usu.widget.ButtonGlass BtnICD74;
-    private usu.widget.ButtonGlass BtnICD75;
-    private usu.widget.ButtonGlass BtnICD76;
-    private usu.widget.ButtonGlass BtnICD77;
-    private usu.widget.ButtonGlass BtnICD78;
-    private usu.widget.ButtonGlass BtnICD79;
-    private usu.widget.ButtonGlass BtnICD8;
-    private usu.widget.ButtonGlass BtnICD80;
-    private usu.widget.ButtonGlass BtnICD81;
-    private usu.widget.ButtonGlass BtnICD82;
-    private usu.widget.ButtonGlass BtnICD83;
-    private usu.widget.ButtonGlass BtnICD84;
-    private usu.widget.ButtonGlass BtnICD85;
-    private usu.widget.ButtonGlass BtnICD86;
-    private usu.widget.ButtonGlass BtnICD87;
-    private usu.widget.ButtonGlass BtnICD88;
-    private usu.widget.ButtonGlass BtnICD89;
-    private usu.widget.ButtonGlass BtnICD9;
-    private usu.widget.ButtonGlass BtnICD90;
-    private usu.widget.ButtonGlass BtnICD91;
-    private usu.widget.ButtonGlass BtnICD92;
-    private usu.widget.ButtonGlass BtnICD93;
-    private usu.widget.ButtonGlass BtnICD94;
-    private usu.widget.ButtonGlass BtnICD95;
-    private usu.widget.ButtonGlass BtnICD96;
-    private usu.widget.ButtonGlass BtnICD97;
-    private usu.widget.ButtonGlass BtnICD98;
-    private usu.widget.ButtonGlass BtnICD99;
-    private widget.Button button1;
+    private widget.Button BtnAll;
+    private widget.Button BtnCari;
+    private widget.Button BtnHapus;
+    private widget.Button BtnKeluar;
+    private widget.Label LCount;
+    private javax.swing.JPopupMenu Popup;
+    private widget.ScrollPane Scroll;
+    private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
-    private widget.PanelBiasa panelBiasa1;
+    private widget.Label jLabel13;
+    private widget.Label jLabel6;
+    private widget.Label jLabel7;
+    private javax.swing.JPanel jPanel1;
     private widget.panelisi panelGlass1;
+    private widget.panelisi panelGlass7;
+    private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppCentang;
+    private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
-    public void hapus(String pesan,String pesan2,String nm_table){
-        int jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau menghapus data "+pesan+" ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
+    public void hapus(String nm_table){
+        int jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau menghapus isi tabel "+nm_table+" ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if(jawab==JOptionPane.YES_OPTION){
                 try{                    
                     koneksi.prepareStatement("delete from "+nm_table).executeUpdate();
+                    JOptionPane.showMessageDialog(null,"Proses hapus tabel "+nm_table+" selesai..!!!!");
                 }catch(Exception e){
-                    System.out.println("Notifikasi : "+e);
-                    if(e.toString().contains("rawat_jl_dr")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Ralan Dokter...!!!!");
-                    }else if(e.toString().contains("rawat_jl_drpr")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Ralan Dokter...!!!!");
-                    }else if(e.toString().contains("rawat_jl_pr")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Ralan Paramedis...!!!!");
-                    }else if(e.toString().contains("rujuk_masuk")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Rujukan Masuk...!!!!");
-                    }else if(e.toString().contains("diagnosa_pasien")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Diagnosa Pasien...!!!!");
-                    }else if(e.toString().contains("detail_periksa_lab")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Periksa Lab...!!!!");
-                    }else if(e.toString().contains("operasi")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Tagihan Operasi...!!!!");
-                    }else if(e.toString().contains("pengurangan_biaya")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Potongan Biaya...!!!!");
-                    }else if(e.toString().contains("resep_pulang")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Resep Pulang...!!!!");
-                    }else if(e.toString().contains("tagihan_obat_langsung")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Pemberian Obat...!!!!");
-                    }else if(e.toString().contains("beri_bhp_radiologi")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Periksa Radiologi...!!!!");
-                    }else if(e.toString().contains("billing")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Tagihan Masuk...!!!!");
-                    }else if(e.toString().contains("detail_beri_diet")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Diet Pasien...!!!!");
-                    }else if(e.toString().contains("stok_obat_pasien")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Stok Obat Pasien...!!!!");
-                    }else if(e.toString().contains("piutang_pasien")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Piutang Pasien...!!!!");
-                    }else if(e.toString().contains("piutang_pasien")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Piutang Pasien...!!!!");
-                    }else if(e.toString().contains("penjualan")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Penjualan Obat & BHP...!!!!");
-                    }else if(e.toString().contains("piutang")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Piutang Obat & BHP...!!!!");
-                    }else if(e.toString().contains("detailbeli")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Pengadaan Obat & BHP...!!!!");
-                    }else if(e.toString().contains("detailpesan")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Pemesanan Obat & BHP...!!!!");
-                    }else if(e.toString().contains("opname")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Stok Opname Obat, Alkes & BHP...!!!!");
-                    }else if(e.toString().contains("obat_penyakit")){
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table Obat Penyakit...!!!!");
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, Gagal dihapus. Ada sebagian data "+pesan+" yang masih dipakai di table "+pesan2+"...!!!!");
-                    }   
-                    
+                    JOptionPane.showMessageDialog(null,"Maaf, gagal menghapus tabel "+nm_table+". "+e);
                 }
             }
+    }
+    
+    private void tampil() {
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement("show tables;");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if(rs.getString(1).toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,rs.getString(1)});
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Bangsal : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+             
+            LCount.setText(""+tabMode.getRowCount());
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }
     }
 }

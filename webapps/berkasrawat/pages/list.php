@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div align="center" class="link">
             <a href=?act=MasterBerkas&action=TAMBAH>| Master Berkas |</a>
@@ -6,34 +11,39 @@
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-                echo "";
-                $tahunawal      =isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL;
-                $bulanawal      =isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL;
-                $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
-                $tahunakhir     =isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL;
-                $bulanakhir     =isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL;
-                $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;  
-                $action         =isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat       =isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
-                $keyword        =str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-                $carabayar      =str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL;
-                $poli           =str_replace("_"," ",isset($_GET['poli']))?str_replace("_"," ",$_GET['poli']):NULL;
+            $action = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
+            $cari   = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+            $cari   = json_decode(encrypt_decrypt($cari,"d"),true); 
+            if (isset($cari["tahunawal"])) {
+                $tahunawal      = validTeks(isset($cari['tahunawal'])?$cari['tahunawal']:NULL);
+                $bulanawal      = validTeks(isset($cari['bulanawal'])?$cari['bulanawal']:NULL);
+                $tanggalawal    = validTeks(isset($cari['tanggalawal'])?$cari['tanggalawal']:NULL);
+                $tahunakhir     = validTeks(isset($cari['tahunakhir'])?$cari['tahunakhir']:NULL);
+                $bulanakhir     = validTeks(isset($cari['bulanakhir'])?$cari['bulanakhir']:NULL);
+                $tanggalakhir   = validTeks(isset($cari['tanggalakhir'])?$cari['tanggalakhir']:NULL);  
+                $no_rawat       = validTeks(isset($cari['no_rawat'])?$cari['no_rawat']:NULL);
+                $status         = validTeks(isset($cari['status'])?$cari['status']:NULL);  
+                $keyword        = validTeks(str_replace("_"," ",isset($cari['keyword']))?str_replace("_"," ",$cari['keyword']):NULL);
+                $carabayar      = validTeks(str_replace("_"," ",isset($cari['carabayar']))?str_replace("_"," ",$cari['carabayar']):NULL);
+                $poli           = validTeks(str_replace("_"," ",isset($cari['poli']))?str_replace("_"," ",$cari['poli']):NULL);
                 echo "<input type=hidden name=carabayar value=$carabayar><input type=hidden name=poli value=$poli><input type=hidden name=keyword value=$keyword>";
+            }
         ?>
     <div style="width: 100%; height: 80.4%; overflow: auto;">
     <?php        
 	$BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
         if (isset($BtnCari)) {      
-                $tahunawal      =trim($_POST['tahunawal']);
-                $bulanawal      =trim($_POST['bulanawal']);
-                $tanggalawal    =trim($_POST['tanggalawal']);
-                $tahunakhir     =trim($_POST['tahunakhir']);
-                $bulanakhir     =trim($_POST['bulanakhir']);
-                $tanggalakhir   =trim($_POST['tanggalakhir']);    
-                $carabayar      =trim($_POST['carabayar']);
-                $keyword        =trim($_POST['keyword']);
-                $poli           =trim($_POST['poli']);
-                $action         ="no";
+                $tahunawal      = validTeks(trim($_POST['tahunawal']));
+                $bulanawal      = validTeks(trim($_POST['bulanawal']));
+                $tanggalawal    = validTeks(trim($_POST['tanggalawal']));
+                $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
+                $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
+                $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));    
+                $carabayar      = validTeks(trim($_POST['carabayar']));
+                $keyword        = validTeks(trim($_POST['keyword']));
+                $status         = validTeks(trim($_POST['status']));
+                $poli           = validTeks(trim($_POST['poli']));
+                $action         = "no";
         }
         if(empty($tahunawal)){
             $tahunawal=date('Y');
@@ -53,7 +63,7 @@
         if(empty($tanggalakhir)){
             $tanggalakhir=date('d');
         }     
-
+        
         $_sql = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                 reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
                 pasien.umur,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,
@@ -61,17 +71,17 @@
                 from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
                 on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
                 and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli  where  
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_reg like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rawat like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.tgl_registrasi like '%".$keyword."%' or
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.kd_dokter like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  dokter.nm_dokter like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rkm_medis like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.status_lanjut like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.almt_pj like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  pasien.nm_pasien like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  poliklinik.nm_poli like '%".$keyword."%' or 
-                poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  penjab.png_jawab like '%".$keyword."%' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc ";
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_reg like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rawat like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.tgl_registrasi like '%".$keyword."%' or
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.kd_dokter like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  dokter.nm_dokter like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rkm_medis like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.status_lanjut like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.almt_pj like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  pasien.nm_pasien like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  poliklinik.nm_poli like '%".$keyword."%' or 
+                reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  penjab.png_jawab like '%".$keyword."%' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         if(mysqli_num_rows($hasil)!=0) {
@@ -86,11 +96,11 @@
                         echo "<tr class='isi'>
                                <td valign='midle'>
                                     <center>
-                                        <a href=?act=Detail&action=TAMBAH&no_rawat=".$baris["no_rawat"].">[Detail Berkas]</a>
+                                        <a href=?act=Detail&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".$baris["no_rawat"]."\"}","e").">[Detail Berkas]</a>
                                     </center>
                                     <br>
                                     <center>
-                                        <a href=?act=List&keyword=".str_replace(" ","_",$keyword)."&carabayar=".str_replace(" ","_",$carabayar)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=GABUNG&no_rawat=".$baris["no_rawat"].">[Gabung PDF]</a>
+                                        <a href=?act=List&iyem=".encrypt_decrypt("{\"keyword\":\"".str_replace(" ","_",$keyword)."\",\"carabayar\":\"".str_replace(" ","_",$carabayar)."\",\"poli\":\"".str_replace(" ","_",$poli)."\",\"tahunawal\":\"".$tahunawal."\",\"bulanawal\":\"".$bulanawal."\",\"tanggalawal\":\"".$tanggalawal."\",\"tahunakhir\":\"".$tahunakhir."\",\"bulanakhir\":\"".$bulanakhir."\",\"tanggalakhir\":\"".$tanggalakhir."\",\"no_rawat\":\"".$baris["no_rawat"]."\"}","e")."&action=GABUNG>[Gabung PDF]</a>
                                     </center>
                                </td>
                                <td bgcolor='#FF0040' valign='top'>
@@ -146,14 +156,15 @@
                            </tr>";
                     }
             echo "</table>";           
-        } else {echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                        <tr class='head'>
-                            <td width='7%'><div align='center'>Proses</div></td>
-                            <td width='30%'><div align='center'>Data Pasien</div></td>
-                            <td width='30%'><div align='center'>Registrasi</div></td>
-                            <td width='33%'><div align='center'>Berkas Digital</div></td>
-                        </tr>
-                      </table>";        
+        } else {
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='7%'><div align='center'>Proses</div></td>
+                        <td width='30%'><div align='center'>Data Pasien</div></td>
+                        <td width='30%'><div align='center'>Registrasi</div></td>
+                        <td width='33%'><div align='center'>Berkas Digital</div></td>
+                    </tr>
+                  </table>";        
         }        
         
         $BtnKeluar=isset($_POST['BtnKeluar'])?$_POST['BtnKeluar']:NULL;
@@ -164,10 +175,10 @@
         if ($action=="GABUNG") { 
             HapusAll("temppanggilnorawat");
             Tambah3(" temppanggilnorawat "," '$no_rawat'");
-            echo "<meta http-equiv='refresh' content='1;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&carabayar=".str_replace(" ","_",$carabayar)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";                 
+            echo "<meta http-equiv='refresh' content='1;URL=?act=List&iyem=".encrypt_decrypt("{\"keyword\":\"".str_replace(" ","_",$keyword)."\",\"carabayar\":\"".str_replace(" ","_",$carabayar)."\",\"poli\":\"".str_replace(" ","_",$poli)."\",\"tahunawal\":\"".$tahunawal."\",\"bulanawal\":\"".$bulanawal."\",\"tanggalawal\":\"".$tanggalawal."\",\"tahunakhir\":\"".$tahunakhir."\",\"bulanakhir\":\"".$bulanakhir."\",\"tanggalakhir\":\"".$tanggalakhir."\"}","e")."&action=no'>";                 
         }else{
             if($action!="no"){                 
-                echo "<meta http-equiv='refresh' content='1;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&carabayar=".str_replace(" ","_",$carabayar)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";                 
+                echo "<meta http-equiv='refresh' content='1;URL=?act=List&iyem=".encrypt_decrypt("{\"keyword\":\"".str_replace(" ","_",$keyword)."\",\"carabayar\":\"".str_replace(" ","_",$carabayar)."\",\"poli\":\"".str_replace(" ","_",$poli)."\",\"tahunawal\":\"".$tahunawal."\",\"bulanawal\":\"".$bulanawal."\",\"tanggalawal\":\"".$tanggalawal."\",\"tahunakhir\":\"".$tahunakhir."\",\"bulanakhir\":\"".$bulanakhir."\",\"tanggalakhir\":\"".$tanggalakhir."\"}","e")."&action=no'>";                 
             }
         }
     ?>
@@ -227,9 +238,9 @@
                         </select>
                         &nbsp;&nbsp;
                         Cara Bayar : 
-                        <select name="carabayar" class="text4">
+                        <select name="carabayar" class="text5">
                             <?php
-                                $_sql = "SELECT png_jawab FROM penjab  ORDER BY png_jawab";
+                                $_sql = "SELECT penjab.png_jawab FROM penjab  ORDER BY penjab.png_jawab";
                                 $hasil=bukaquery($_sql);
                                 if(!empty($carabayar)){
                                     echo "<option value='$carabayar'>$carabayar</option>";
@@ -240,6 +251,8 @@
                                 }
                             ?>
                         </select>
+                        &nbsp;&nbsp;
+                        Record : <?php echo $jumlah; ?>
                     </td>
                 </tr>
                 <tr class="head3">
@@ -247,7 +260,7 @@
                         Unit/Poli : 
                         <select name="poli" class="text5">
                             <?php
-                                $_sql = "SELECT nm_poli FROM poliklinik  ORDER BY nm_poli";
+                                $_sql = "SELECT poliklinik.nm_poli FROM poliklinik  ORDER BY poliklinik.nm_poli";
                                 $hasil=bukaquery($_sql);
                                 if(!empty($poli)){
                                     echo "<option value='$poli'>$poli</option>";
@@ -259,9 +272,15 @@
                             ?>
                         </select>
                         &nbsp;&nbsp;
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="24" maxlength="250" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="30" maxlength="200" pattern="[a-zA-Z0-9-]{1,200}" title=" a-zA-Z0-9- (Maksimal 200 karakter)" autocomplete="off" autofocus />
+                        &nbsp;&nbsp;
+                        Status : 
+                        <select name="status" class="text">
+                            <option value=''>Semua</option>";
+                            <option value='Ralan'>Ralan</option>";
+                            <option value='Ranap'>Ranap</option>";
+                        </select>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />&nbsp;&nbsp;&nbsp;&nbsp;
-                        Record : <?php echo $jumlah; ?>&nbsp;&nbsp;&nbsp;&nbsp;
                         <input name=BtnKeluar type=submit class="button" value="&nbsp;&nbsp;&nbsp;Keluar&nbsp;&nbsp;&nbsp;" />
                     </td>
                 </tr>

@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
@@ -32,7 +32,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private final Jurnal jur=new Jurnal();
     private final Connection koneksi=koneksiDB.condb();
     private final Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private int i=0,c=0;
     private String pilihancarabayar="",tglkeluar="",namaruangan="",dpjp="";    
     private PreparedStatement psreg,pskamar,pstindakan;
@@ -1266,7 +1266,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 pskamar.close();
                             } 
                         }
-                        dpjp=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",rsreg.getString("no_rawat"));
+                        dpjp=Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",rsreg.getString("no_rawat"));
                         if(dpjp.equals("")){
                             dpjp=rsreg.getString("nm_dokter");
                         }
@@ -1602,8 +1602,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
                                         rsreg.getString("tgl_registrasi"),tglkeluar,
                                         dpjp,rstindakan.getString("nm_dokter"),
-                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anestesi")),
-                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anak")),
+                                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rstindakan.getString("dokter_anestesi")),
+                                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rstindakan.getString("dokter_anak")),
                                         rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),rsreg.getString("nm_poli"),
                                         namaruangan,rstindakan.getString("nm_perawatan"),
                                         rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
@@ -1618,8 +1618,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
                                         rsreg.getString("tgl_registrasi"),tglkeluar,
                                         dpjp,rstindakan.getString("nm_dokter"),
-                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anestesi")),
-                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anak")),
+                                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rstindakan.getString("dokter_anestesi")),
+                                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rstindakan.getString("dokter_anak")),
                                         rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Operasi",
                                         namaruangan,rstindakan.getString("nm_perawatan"),
                                         rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),

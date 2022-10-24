@@ -253,7 +253,6 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
         panelGlass11.add(CmbDetik);
         CmbDetik.setBounds(521, 40, 62, 23);
 
-        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setSelected(true);
         ChkJln.setBorderPainted(true);
         ChkJln.setBorderPaintedFlat(true);
@@ -368,15 +367,15 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
     public void setNoRm(String norwt,String tanggal,String jam) {        
         try {
             TNoRw.setText(norwt);
-            Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
+            Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",TNoRM,TNoRw.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",TPasien,TNoRM.getText());
             this.tanggal=tanggal;
             this.jam=jam;
             ps=koneksi.prepareStatement(
                     "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai,template_laboratorium.satuan,detail_periksa_lab.nilai_rujukan,"+
                     "detail_periksa_lab.keterangan,detail_periksa_lab.kd_jenis_prw "+
                     "from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                    "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=?");
+                    "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=? order by template_laboratorium.urut");
             try {
                 ps.setString(1,TNoRw.getText());
                 ps.setString(2,tanggal);
@@ -385,7 +384,7 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                          "   "+rs.getString("Pemeriksaan"),rs.getString("nilai"),rs.getString("satuan"),
-                        rs.getString("nilai_rujukan"),"",rs.getString("id_template"),rs.getString("kd_jenis_prw")
+                        rs.getString("nilai_rujukan"),rs.getString("keterangan"),rs.getString("id_template"),rs.getString("kd_jenis_prw")
                     });
                 } 
             } catch (Exception e) {

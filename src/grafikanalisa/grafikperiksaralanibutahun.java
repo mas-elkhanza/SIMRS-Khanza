@@ -65,7 +65,7 @@ public class grafikperiksaralanibutahun extends JDialog {
     public static CategoryDataset createDataset1(String symbol) { //data grafik nilai K dan D
 
           DefaultCategoryDataset result = new DefaultCategoryDataset();
-          String series1 = "Periksa Pertahun";
+          String series1 = "Registrasi Pertahun";
           
             try {
                 Statement stat = koneksiDB.condb().createStatement();
@@ -84,7 +84,7 @@ public class grafikperiksaralanibutahun extends JDialog {
 
         public static CategoryDataset createDataset2(String symbol) {//grafik volume
             DefaultCategoryDataset result = new DefaultCategoryDataset();
-            String series1 = "Periksa Pertahun";
+            String series1 = "Registrasi Pertahun";
             try {
                 Statement stat = koneksiDB.condb().createStatement();
                 ResultSet rs = stat.executeQuery(symbol);
@@ -122,7 +122,7 @@ public class grafikperiksaralanibutahun extends JDialog {
                      renderer2);
              subplot2.setDomainGridlinesVisible(true);
 
-             CategoryAxis domainAxis = new CategoryAxis("Periksa Pertahun");
+             CategoryAxis domainAxis = new CategoryAxis("Registrasi Pertahun");
              CombinedDomainCategoryPlot plot = new CombinedDomainCategoryPlot(domainAxis);
              plot.add(subplot1,2 );
              plot.add(subplot2,1 );

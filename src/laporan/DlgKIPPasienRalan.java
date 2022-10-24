@@ -293,7 +293,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File f = new File("kipralan.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                        "<table width='"+(1700+(70*kolom))+"' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                        "<table width='"+(1750+(70*kolom))+"' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -426,6 +426,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10px' rowspan='3'>NO.</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px' rowspan='3'>NO.R.M.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px' rowspan='3'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px' rowspan='3'>NIK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px' rowspan='3'>TGL.MASUK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px' colspan='18'>GOLONGAN UMUR</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
@@ -497,9 +499,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             );    
             
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,reg_periksa.stts,diagnosa_pasien.status_penyakit, "+
-                    "reg_periksa.kd_pj from reg_periksa inner join diagnosa_pasien inner join pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut='Ralan' and diagnosa_pasien.status='Ralan' and diagnosa_pasien.prioritas='1' and "+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.tgl_registrasi,reg_periksa.no_rawat,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,reg_periksa.stts,diagnosa_pasien.status_penyakit, "+
+                    "reg_periksa.kd_pj from reg_periksa inner join diagnosa_pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.tgl_registrasi between ? and ? "+
+                    "and reg_periksa.status_lanjut='Ralan' and diagnosa_pasien.status='Ralan' and diagnosa_pasien.prioritas='1' and "+
                     "diagnosa_pasien.kd_penyakit=? order by reg_periksa.tgl_registrasi");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -644,7 +648,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     }
                     
                     diagnosa="";
-                    ps2=koneksi.prepareStatement("select 	kd_penyakit from diagnosa_pasien where status='Ralan' and prioritas>1 and no_rawat=?");    
+                    ps2=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.status='Ralan' and diagnosa_pasien.prioritas>1 and diagnosa_pasien.no_rawat=?");    
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
@@ -673,6 +677,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("no_ktp")+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
                             "<td valign='middle' align='center'>"+sthr0s6l+"</td>"+
                             "<td valign='middle' align='center'>"+sthr0s6p+"</td>"+
@@ -728,7 +734,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             if((i-1)>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                        "<td valign='middle' align='right' colspan='3'>Total : </td>"+
+                        "<td valign='middle' align='right' colspan='5'>Total : </td>"+
                         "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
                         "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
                         "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
@@ -766,7 +772,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             
             LoadHTML.setText(
                     "<html>"+
-                      "<table width='"+(1700+(70*kolom))+"px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='"+(1750+(70*kolom))+"px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");

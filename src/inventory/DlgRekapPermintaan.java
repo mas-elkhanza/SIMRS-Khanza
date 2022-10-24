@@ -34,7 +34,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
     private boolean[] pilihan;
     private String[] kodebarang,namabarang,satuan,jenis,jumlah,kodesat;
     private double harga=0,jml=0;
-    private DlgSuratPemesanan form=new DlgSuratPemesanan(null,false);    
+    private InventorySuratPemesanan form=new InventorySuratPemesanan(null,false);    
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -43,7 +43,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"P","Kode Barang","Nama Barang","Satuan","Jenis","Jumlah","Kode Sat"};
+        Object[] row={"P","Kode Barang","Nama Barang","Satuan","Jenis","Jumlah","Kode Sat","Isi Besar"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -54,7 +54,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
              }
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -69,7 +69,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0;i < 7; i++) {
+        for (i = 0;i < 8; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -83,7 +83,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==5){
                 column.setPreferredWidth(60);
-            }else if(i==6){
+            }else {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }
@@ -193,7 +193,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Permintaan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ringkasan Permintaan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -429,8 +429,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRekapPermintaan.jasper",param,"::[ Laporan Rekap Permintaan Obat/Alkes/BHP Medis ]::");
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReport("rptRekapPermintaan.jasper",param,"::[ Laporan Ringkasan Permintaan Obat/Alkes/BHP Medis ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -544,7 +544,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         tbDokter.getValueAt(i,1).toString(),
                         tbDokter.getValueAt(i,2).toString(),
                         tbDokter.getValueAt(i,6).toString(),
-                        harga,(jml*harga),0,0,(jml*harga),jml
+                        harga,(jml*harga),0,0,(jml*harga),jml,
+                        Double.parseDouble(tbDokter.getValueAt(i,7).toString()),1
                     });
                 }
             }
@@ -653,7 +654,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             
             ps=koneksi.prepareStatement(
                     "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as jenis,"+
-                    "sum(detail_permintaan_medis.jumlah) as jumlah,databarang.kode_sat from databarang inner join kodesatuan "+
+                    "sum(detail_permintaan_medis.jumlah) as jumlah,databarang.kode_sat,databarang.isi from databarang inner join kodesatuan "+
                     "inner join jenis inner join detail_permintaan_medis inner join permintaan_medis "+
                     "on databarang.kode_brng=detail_permintaan_medis.kode_brng and databarang.kode_sat=kodesatuan.kode_sat "+
                     "and databarang.kdjns=jenis.kdjns and detail_permintaan_medis.no_permintaan=permintaan_medis.no_permintaan "+
@@ -679,7 +680,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     tabMode.addRow(new Object[]{
                         false,rs.getString("kode_brng"),rs.getString("nama_brng"),
                         rs.getString("satuan"),rs.getString("jenis"),
-                        rs.getString("jumlah"),rs.getString("kode_sat")
+                        rs.getString("jumlah"),rs.getString("kode_sat"),rs.getString("isi")
                     });          
                 } 
             } catch (Exception e) {

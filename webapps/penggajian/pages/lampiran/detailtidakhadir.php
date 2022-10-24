@@ -2,15 +2,16 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $blncari=$baris[1];
-   $bulan="0";
+   $baristahun   = mysqli_fetch_row($hasil);
+   $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
+   $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
+   $bln_leng  = strlen($blnini);
+   $bulan     = "0";
    if ($bln_leng==1){
-    	$bulan="0".$baris[1];
+       $bulan="0".$blnini;
    }else{
-		$bulan=$baris[1]; 
+       $bulan=$blnini;
    }
 ?>
 <div id="post">
@@ -19,25 +20,25 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
-                $tgl                =$tahun."-".$bulan."-1";
-                $jns                =isset($_GET['jns'])?$_GET['jns']:NULL;
-                $ktg                =isset($_GET['ktg'])?$_GET['ktg']:NULL;
-                $jml                =isset($_GET['jml'])?$_GET['jml']:NULL;
+                $id                 =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
+                $tgl                =$tahun."-".$bulan."-01";
+                $jns                =validTeks(isset($_GET['jns'])?$_GET['jns']:NULL);
+                $ktg                =validTeks(isset($_GET['ktg'])?$_GET['ktg']:NULL);
+                $jml                =validTeks(isset($_GET['jml'])?$_GET['jml']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=tgl value=$tgl><input type=hidden name=action value=$action>";
-		$_sql = "SELECT nik,nama FROM pegawai where id='$id'";
+		        $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
                 $baris = mysqli_fetch_row($hasil);
 
                 $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    @$next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
+                    @$prev               = $barisprev[0];
 
                     if(empty($prev)){
                         $prev=$next;
@@ -57,16 +58,16 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >NIP</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[0];?></td>
+                    <td width="67%"><?php echo @$baris[0];?></td>
                 </tr>
-		<tr class="head">
+		        <tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[1];?></td>
+                    <td width="67%"><?php echo @$baris[1];?></td>
                 </tr>
                 <tr class="head">
                     <td width="25%" >Ketidakhadiran</td><td width="">:</td>
                     <td width="75%">
-                        <select name="jns" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="jns" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                             <!-- <option id='TxtIsi1' value=' '>- Jenis Kelamin -</option> -->
                             <option id='TxtIsi1' value='A'>A</option>
                             <option id='TxtIsi1' value='S'>S</option>
@@ -93,19 +94,19 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
+                    $id                 =validTeks(trim($_POST['id']));
                     $tgl                =$tahun."-".$bulan."-1";
-                    $ktg                =trim($_POST['ktg']);
-                    $jns                =trim($_POST['jns']);
-                    $jml                =trim($_POST['jml']);
-                    if ((!empty($id))&&(!empty($tgl))&&(!empty($jns))) {
+                    $ktg                = validTeks(trim($_POST['ktg']));
+                    $jns                = validTeks(trim($_POST['jns']));
+                    $jml                = validangka(trim($_POST['jml']));
+                    if ((isset($id))&&(isset($tgl))&&(isset($jns))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" ketidakhadiran "," '$tgl','$id','$jns','$ktg','$jml'", " ketidakhadiran " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputTidakHadir&action=TAMBAH&id=$id'>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($tgl))||(empty($jns))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -122,7 +123,6 @@
                 $ttlc=0;
                 $ttli=0;
 
-                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Proses</div></td>
@@ -158,13 +158,12 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data ketidakhadiran masih kosong !";}
         ?>
         </div>
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" ketidakhadiran"," id ='".$_GET['id']."' and tgl ='".$_GET['tgl']."' and jns ='".$_GET['jns']."'","?act=InputTidakHadir&action=TAMBAH&id=$id");
+                Hapus(" ketidakhadiran"," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."' and jns ='".validTeks($_GET['jns'])."'","?act=InputTidakHadir&action=TAMBAH&id=$id");
             }
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

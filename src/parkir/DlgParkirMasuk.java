@@ -717,7 +717,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
                 param.put("propinsirs",var.getpropinsirs());
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReport("rptKamarInap.jasper","report","::[ Data Kamar Inap Pasien ]::",sql,param);*/
 
         }
@@ -829,7 +829,7 @@ private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
 private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",NmPetugas,KdPetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPetugas,KdPetugas.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }else{
@@ -1072,7 +1072,7 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             BtnHapus.setEnabled(akses.getparkir_in());
             BtnPrint.setEnabled(akses.getparkir_in());
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?",NmPetugas,KdPetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPetugas,KdPetugas.getText());
         }else{
             KdPetugas.setEditable(true);
             NmPetugas.setEnabled(true);

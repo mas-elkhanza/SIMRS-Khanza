@@ -7,53 +7,33 @@
     </head>
     <body>
    <?php
-        $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;
+        $keyword      = isset($_GET['keyword'])?$_GET['keyword']:NULL;
+        $keyword      = validTeks($keyword);
         $_sql         = "SELECT * FROM set_tahun";
         $hasil        = bukaquery($_sql);
         $baris        = mysqli_fetch_row($hasil);
-        $tahun        = $baris[0];
-        $bulan        = $baris[1];
-        $_sql = "SELECT pegawai.id, 
-		        pegawai.nik,
-				pegawai.nama,
-				pegawai.departemen,
-				keanggotaan.koperasi, 
-				keanggotaan.jamsostek, 				 
-				keanggotaan.bpjs,
-				potongan.bpjs, 
-				potongan.jamsostek, 
-				potongan.dansos, 
-				potongan.simwajib, 
-				potongan.angkop, 
-				potongan.angla, 
-				potongan.telpri, 
-				potongan.pajak, 
-				potongan.pribadi, 
-				potongan.lain, 
-				potongan.ktg
-				FROM keanggotaan, potongan
-				RIGHT OUTER JOIN pegawai ON potongan.id = pegawai.id
-				AND tahun like '%".$tahun."%'  and bulan like '%".$bulan."%' 
-				WHERE pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.nik like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.nama like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.departemen like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.koperasi like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.bpjs like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.jamsostek like '%".$keyword."%'
-				order by pegawai.id ASC ";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysqli_num_rows($hasil);
-        $bpjs=0;
-        $jamsos=0;
-        $dansos=0;
-        $simwa=0;
-        $angkop=0;
-        $angla=0;
-        $telpri=0;
-        $pajak=0;
-        $pribadi=0;
-        $jml=0;
-        $lain=0;
+        $tahun        = empty($baris[0])?date("Y"):$baris[0];
+        $bulan        = empty($baris[1])?date("m"):$baris[1];
+        $_sql         = "SELECT pegawai.id,pegawai.nik,pegawai.nama,pegawai.departemen,keanggotaan.koperasi,keanggotaan.jamsostek,keanggotaan.bpjs,
+                        potongan.bpjs,potongan.jamsostek,potongan.dansos,potongan.simwajib,potongan.angkop,potongan.angla,potongan.telpri,potongan.pajak, 
+                        potongan.pribadi,potongan.lain,potongan.ktg FROM keanggotaan inner join pegawai on keanggotaan.id=pegawai.id 
+                        inner join potongan on pegawai.id=potongan.id WHERE potongan.tahun like '%".$tahun."%' and potongan.bulan like '%".$bulan."%' 
+                        and pegawai.stts_aktif<>'KELUAR' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen 
+                        like '%".$keyword."%' or keanggotaan.koperasi like '%".$keyword."%' or keanggotaan.bpjs like '%".$keyword."%' or 
+                        keanggotaan.jamsostek like '%".$keyword."%') order by pegawai.id ASC ";
+        $hasil        = bukaquery($_sql);
+        $jumlah       = mysqli_num_rows($hasil);
+        $bpjs         = 0;
+        $jamsos       = 0;
+        $dansos       = 0;
+        $simwa        = 0;
+        $angkop       = 0;
+        $angla        = 0;
+        $telpri       = 0;
+        $pajak        = 0;
+        $pribadi      = 0;
+        $jml          = 0;
+        $lain         = 0;
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <caption><h3><font color='999999'>Laporan Potongan Gaji Tahun ".$tahun." Bulan ".$bulan."</font></h3></caption>
@@ -112,6 +92,30 @@
                              </tr>";
                     }
             echo "</table>";
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <caption><h3><font color='999999'>Laporan Potongan Gaji Tahun ".$tahun." Bulan ".$bulan."</font></h3></caption>
+                    <tr class='head'>
+                        <td width='100px'><div align='center'>NIP</div></td>
+                        <td width='250px'><div align='center'>Nama</div></td>
+			<td width='100px'><div align='center'>Departemen</div></td>
+                        <td width='80px'><div align='center'>Anggota Koperasi</div></td>
+                        <td width='80px'><div align='center'>Anggota Jamsostek</div></td>
+                        <td width='80px'><div align='center'>Anggota BPJS</div></td>
+                        <td width='100px'><div align='center'>BPJS</div></td>
+                        <td width='100px'><div align='center'>Jamsostek</div></td>
+                        <td width='100px'><div align='center'>Dana Sosial</div></td>
+                        <td width='100px'><div align='center'>Simpanan Wajib</div></td>
+                        <td width='100px'><div align='center'>Angsuran Koperasi</div></td>
+                        <td width='100px'><div align='center'>Angsuran Lain</div></td>
+                        <td width='100px'><div align='center'>Telepon Pribadi</div></td>
+                        <td width='100px'><div align='center'>Pajak</div></td>
+                        <td width='100px'><div align='center'>Pribadi</div></td>
+                        <td width='100px'><div align='center'>Lain-Lain</div></td>
+                        <td width='100px'><div align='center'>Total Potongan</div></td>
+                        <td width='200px'><div align='center'>Keterangan</div></td>
+                    </tr>
+                </table>";
         }
         echo("<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                   <tr class='head'>

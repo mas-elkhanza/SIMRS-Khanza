@@ -5,9 +5,7 @@
     <div class="entry">    
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" enctype=multipart/form-data>
         <?php
-                antisqlinjection("?page=TampilPulang");
-                echo "";                
-                $keyword      =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $keyword      =cleankar(isset($_GET['keyword'])?$_GET['keyword']:NULL);
                 echo "<input type=hidden name=keyword value=$keyword>";
         ?>
             <table width="100%" align="center">
@@ -68,6 +66,7 @@
         $tgl          = $barisbar[0];
         
         $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift,
                 rekap_presensi.jam_datang, rekap_presensi.jam_pulang, rekap_presensi.status, 
                 rekap_presensi.keterlambatan, rekap_presensi.durasi,rekap_presensi.keterangan,
@@ -120,7 +119,7 @@
                                 <td valign='Top'>$baris[7]</td>         
                                 <td valign='Top'>$baris[8]</td>        
                                 <td valign='Top'>$baris[9]<br/>
-                                    <a href=?page=GantiKeterangan&pageion=UBAH&id=".str_replace(" ","_",$baris[0]).">[Ubah]</a>
+                                    <a href=?page=GantiKeterangan&pageion=UBAH&id=".str_replace(" ","_",$baris[0])."&jam_datang=".str_replace(" ","_",$baris[4]).">[Ubah]</a>
                                 </td>       
                                 <td valign='Top' align='center'>$gb</a></td>                          
                              </tr>";$i++;

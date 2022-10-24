@@ -38,7 +38,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import keuangan.DlgCariPerawatanRalan;
 import keuangan.DlgJnsPerawatanRalan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -52,7 +52,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgJnsPerawatanRalan datatindakan=new DlgJnsPerawatanRalan(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** Creates new form DlgObatPenyakit
      * @param parent
@@ -1118,7 +1118,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     Valid.MyReportqry("rptOtoRalan.jasper","report","::[ Data Tindakan Otomatis Dokter Ralan ]::","select set_otomatis_tindakan_ralan.kd_dokter,dokter.nm_dokter, set_otomatis_tindakan_ralan.kd_jenis_prw,jns_perawatan.nm_perawatan "+
                    "from set_otomatis_tindakan_ralan inner join dokter inner join jns_perawatan on  "+
                    "set_otomatis_tindakan_ralan.kd_dokter=dokter.kd_dokter and "+

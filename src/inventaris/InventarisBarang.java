@@ -283,7 +283,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
     private InventarisProdusen produsen=new InventarisProdusen(null,false); 
     private InventarisMerk merk=new InventarisMerk(null,false); 
     private InventarisKategori kategori=new InventarisKategori(null,false);
-    private InventarisJenis jenis=new InventarisJenis(null,false); 
+    public InventarisJenis jenis=new InventarisJenis(null,false); 
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -351,7 +351,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Koleksi Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Koleksi Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -938,7 +938,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());  
-                param.put("logo",Sequel.cariGambar("select logo from setting"));  
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
                 param.put("parameter","%"+TCari.getText().trim()+"%");  
                 Valid.MyReport("rptBarangInventaris.jasper","report","::[ Data Koleksi Barang ]::",param);
         }
@@ -1199,7 +1199,7 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.ComboBox thn_produksi;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         String sql="select inventaris_barang.kode_barang, inventaris_barang.nama_barang, inventaris_barang.jml_barang, "+
                    "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn,"+
                    "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis from inventaris_barang inner join inventaris_produsen "+

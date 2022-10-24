@@ -529,7 +529,7 @@ public final class SuratKlasifikasi extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReport("rptSuratKlasifikasi.jasper",param,"::[ Laporan Klasifikasi Surat ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());

@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputPencapaianKinerja&action=TAMBAH>| Input Data |</a>
@@ -10,26 +8,26 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode_pencapaian     =str_replace("_"," ",isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL);
+                $action             = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode_pencapaian    = validTeks(str_replace("_"," ",isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL));
                 if($action == "TAMBAH"){
-                    $kode_pencapaian       = str_replace("_"," ",isset($_GET['kode_pencapaian']))?str_replace("_"," ",$_GET['kode_pencapaian']):NULL;
-                    $nama_pencapaian        = "";
-                    $indek      ="";
+                    $kode_pencapaian  = validTeks(str_replace("_"," ",isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL));
+                    $nama_pencapaian  = "";
+                    $indek            = "";
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT * FROM pencapaian_kinerja WHERE kode_pencapaian='$kode_pencapaian'";
-                    $hasil          = bukaquery($_sql);
-                    $baris          = mysqli_fetch_row($hasil);
+                    $_sql             = "SELECT * FROM pencapaian_kinerja WHERE kode_pencapaian='$kode_pencapaian'";
+                    $hasil            = bukaquery($_sql);
+                    $baris            = mysqli_fetch_row($hasil);
                     $kode_pencapaian  = $baris[0];
                     $nama_pencapaian  = $baris[1];
-                    $indek          = $baris[2];
+                    $indek            = $baris[2];
                 }
                 echo"<input type=hidden name=kode_pencapaian value=$kode_pencapaian><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode</td><td width="">:</td>
-                    <td width="67%"><input name="kode_pencapaian" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_pencapaian;?>" size="10" maxlength="3">
+                    <td width="67%"><input name="kode_pencapaian" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_pencapaian;?>" size="10" maxlength="3" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -50,10 +48,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode_pencapaian    = trim($_POST['kode_pencapaian']);
-                    $nama_pencapaian    = trim($_POST['nama_pencapaian']);
-                    $indek   = trim($_POST['indek']);
-                    if ((!empty($kode_pencapaian))&&(!empty($nama_pencapaian))&&(!empty($indek))) {
+                    $kode_pencapaian    = validTeks(trim($_POST['kode_pencapaian']));
+                    $nama_pencapaian    = validTeks(trim($_POST['nama_pencapaian']));
+                    $indek              = validangka(trim($_POST['indek']));
+                    if ((isset($kode_pencapaian))&&(isset($nama_pencapaian))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" pencapaian_kinerja "," '$kode_pencapaian','$nama_pencapaian','$indek' ", " pencapaian index " );
@@ -64,7 +62,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPencapaianKinerja'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($kode_pencapaian))||(empty($nama_pencapaian))||(empty($indek))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

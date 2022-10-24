@@ -2,9 +2,9 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bulan         =$baris[1];
+   $baristahun   = mysqli_fetch_row($hasil);
+   $tahun        = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $bulan        = empty($baristahun[1])?date("m"):$baristahun[1];
 
 ?>
 <div id="post">
@@ -13,11 +13,11 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
+                $id                 =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 $thn                =$tahun;
                 $bln                =$bulan;
-                $bsr_jasa           =isset($_GET['bsr_jasa'])?$_GET['bsr_jasa']:NULL;
-                $ktg                =isset($_GET['ktg'])?$_GET['ktg']:NULL;
+                $bsr_jasa           =validangka(isset($_GET['bsr_jasa'])?$_GET['bsr_jasa']:NULL);
+                $ktg                =validTeks(isset($_GET['ktg'])?$_GET['ktg']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 		$_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
@@ -74,11 +74,11 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
-                    $thn                =$tahun;
-                    $bln                =$bulan;
-                    $bsr_jasa           =trim($_POST['bsr_jasa']);
-                    $ktg                =trim($_POST['ktg']);
+                    $id                 = validTeks(trim($_POST['id']));
+                    $thn                = $tahun;
+                    $bln                = $bulan;
+                    $bsr_jasa           = validangka(trim($_POST['bsr_jasa']));
+                    $ktg                = validTeks(trim($_POST['ktg']));
                     if ((!empty($id))&&(!empty($bsr_jasa))) {
                         switch($action) {
                             case "TAMBAH":
@@ -128,8 +128,8 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" jasa_lain "," id ='".$_GET['id']."' and thn ='".$_GET['thn']."'
-                       and bln ='".$_GET['bln']."' and bsr_jasa ='".$_GET['bsr_jasa']."'","?act=InputJasaLain&action=TAMBAH&id=$id");
+                Hapus(" jasa_lain "," id ='".validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."'
+                       and bln ='".validTeks($_GET['bln'])."' and bsr_jasa ='".validTeks($_GET['bsr_jasa'])."'","?act=InputJasaLain&action=TAMBAH&id=$id");
             }
 
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

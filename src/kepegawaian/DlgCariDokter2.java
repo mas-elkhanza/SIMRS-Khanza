@@ -11,21 +11,26 @@
 
 package kepegawaian;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -37,7 +42,6 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariDokter2 extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
@@ -45,6 +49,13 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private String hari="",poli="";
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -121,7 +132,6 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
             });
         }
     }
-    public DlgDokter dokter=new DlgDokter(null,false);
     
 
 
@@ -337,6 +347,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //nm_dokter.setModal(true);
+        DlgDokter dokter=new DlgDokter(null,false);
         dokter.emptTeks();
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
@@ -385,25 +396,17 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {
+            file=new File("./cache/dokter2.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
             ps=koneksi.prepareStatement(
                 "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir, "+
                 "dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
                 "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek,jadwal.kuota "+
                 "from dokter inner join spesialis inner join jadwal inner join poliklinik "+
                 "on dokter.kd_sps=spesialis.kd_sps and dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
-                "where jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.kd_dokter like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.nm_dokter like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.jk like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.tmp_lahir like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.tgl_lahir like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.gol_drh like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.agama like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.almt_tgl like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.no_telp like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.stts_nikah like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and spesialis.nm_sps like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.alumni like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.no_ijn_praktek like ? order by dokter.nm_dokter");
+                "where jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' order by dokter.nm_dokter");
             try{
                 if(day==1){
                     hari="AKHAD";
@@ -422,60 +425,16 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                 }
                 ps.setString(1,hari);
                 ps.setString(2,poli);
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,hari);
-                ps.setString(5,poli);
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,hari);
-                ps.setString(8,poli);
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,hari);
-                ps.setString(11,poli);
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,hari);
-                ps.setString(14,poli);
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,hari);
-                ps.setString(17,poli);
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,hari);
-                ps.setString(20,poli);
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,hari);
-                ps.setString(23,poli);
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,hari);
-                ps.setString(26,poli);
-                ps.setString(27,"%"+TCari.getText().trim()+"%");
-                ps.setString(28,hari);
-                ps.setString(29,poli);
-                ps.setString(30,"%"+TCari.getText().trim()+"%");
-                ps.setString(31,hari);
-                ps.setString(32,poli);
-                ps.setString(33,"%"+TCari.getText().trim()+"%");
-                ps.setString(34,hari);
-                ps.setString(35,poli);
-                ps.setString(36,"%"+TCari.getText().trim()+"%");
-                ps.setString(37,hari);
-                ps.setString(38,poli);
-                ps.setString(39,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    String[] data={rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   rs.getString(6),
-                                   rs.getString(7),
-                                   rs.getString(8),
-                                   rs.getString(9),
-                                   rs.getString(10),
-                                   rs.getString(11),
-                                   rs.getString(12),
-                                   rs.getString(13),
-                                   rs.getString(14)};
-                    tabMode.addRow(data);
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),rs.getString(9),
+                        rs.getString(10),rs.getString(11),rs.getString(12),
+                        rs.getString(13),rs.getString(14)
+                    });
+                    iyem=iyem+"{\"KodeDokter\":\""+rs.getString(1)+"\",\"NamaDokter\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4).replaceAll("\"","")+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"AlamatTinggal\":\""+rs.getString(8).replaceAll("\"","")+"\",\"NoTelp\":\""+rs.getString(9)+"\",\"SttsNikah\":\""+rs.getString(10)+"\",\"Spesialis\":\""+rs.getString(11)+"\",\"Alumni\":\""+rs.getString(12).replaceAll("\"","")+"\",\"NoIjinPraktek\":\""+rs.getString(13)+"\",\"Kuota\":\""+rs.getString(14)+"\"},";
                 }
             }catch(SQLException e){
                 System.out.println("Notifikasi : "+e);
@@ -488,11 +447,14 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            fileWriter.write("{\"dokter\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void setPoli(String namapoli){
@@ -515,4 +477,25 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
         cal.setTime(tanggal);
         day=cal.get(Calendar.DAY_OF_WEEK);
     }
+    
+    private void tampil2() {
+        try {
+            myObj = new FileReader("./cache/dokter2.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("dokter");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Spesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            list.path("KodeDokter").asText(),list.path("NamaDokter").asText(),list.path("JK").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("GD").asText(),list.path("Agama").asText(),list.path("AlamatTinggal").asText(),list.path("NoTelp").asText(),list.path("SttsNikah").asText(),list.path("Spesialis").asText(),list.path("Alumni").asText(),list.path("NoIjinPraktek").asText(),list.path("Kuota").asText()
+                        });
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+    } 
 }

@@ -1,5 +1,4 @@
 package simrskhanza;
-import inventory.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -8,12 +7,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -619,7 +616,7 @@ public class DlgPerusahaan extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptPerusahaan.jasper","report","::[ Data Instansi/Perusahaan ]::",sql,param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -835,7 +832,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Telp.setText("0");
         
         Kd.requestFocus();
-        Valid.autoNomer("perusahaan_pasien","S",4,Kd);
+        Valid.autoNomer("perusahaan_pasien","I",4,Kd);
     }
 
     private void getData() {

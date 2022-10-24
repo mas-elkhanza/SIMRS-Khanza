@@ -11,8 +11,6 @@ import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -46,10 +44,13 @@ import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.export.JRExporterContext;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
+import widget.Button;
+import widget.ComboBox;
+import widget.Tanggal;
+import widget.TextArea;
+import java.io.File;
 /**
  *
  * @author Owner
@@ -68,9 +69,11 @@ public final class validasi {
     private final DecimalFormat df7 = new DecimalFormat("######.#"); 
     private PreparedStatement ps;
     private ResultSet rs;
+    private File file;
     private final Calendar now = Calendar.getInstance();
     private final int year=(now.get(Calendar.YEAR));
-    private static final Properties prop = new Properties();  
+    private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
+                         "tujuh","delapan","sembilan","sepuluh","sebelas"};
     
     public validasi(){
         super();
@@ -472,6 +475,57 @@ public final class validasi {
             System.out.println("Notifikasi : "+e);
         }
     }
+    
+    public int hariAkhad(int month,int year){ 
+        j=0; 
+        Calendar calendar=Calendar.getInstance(); 
+        calendar.set(year, month-1,1); 
+        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); 
+        
+        for(i=1;i<=days;i++) { 
+            calendar.set(year, month-1, i); 
+            int day=calendar.get(Calendar.DAY_OF_WEEK); 
+            if(day==1){
+                j++ ;
+            }  
+        } 
+        
+        return j; 
+    } 
+    
+    public int jumlahHari(int month,int year){ 
+        Calendar calendar=Calendar.getInstance(); 
+        calendar.set(year, month-1,1); 
+        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); 
+        return days; 
+    } 
+    
+    public void loadCombo(JComboBox cmb,String query){
+        cmb.removeAllItems();
+        try {
+            ps=connect.prepareStatement(query);
+            try{
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    String item=rs.getString(1);
+                    cmb.addItem(item);
+                    a++;
+                }          
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
 
     public void LoadTahun(JComboBox cmb){        
         cmb.removeAllItems();
@@ -763,7 +817,39 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JTextField kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JTextArea kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JTextField kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JButton kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -771,13 +857,53 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JComboBox kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JComboBox kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JTextField kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JTextArea kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
         }
     }
 
+    public void pindah2(KeyEvent evt, TextArea kiri, ComboBox kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(KeyEvent evt, Tanggal kiri, Button kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();
@@ -821,7 +947,7 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JButton kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -883,6 +1009,14 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
+    
+    public void pindah(KeyEvent evt, Button kiri, TextArea kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
 
     public void pindah(java.awt.event.KeyEvent evt,JDateTimePicker kiri,JTextField kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -936,17 +1070,15 @@ public final class validasi {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();                                
         try{ 
-            Properties prop = new Properties();
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(os.contains("win")) {
-                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
             }else if (os.contains("mac")) {
-                rt.exec( "open " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "open " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
             }else if (os.contains("nix") || os.contains("nux")) {
                 String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
-                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");
+                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/").append(url).append( "\" ");
                 rt.exec(new String[] { "sh", "-c", cmd.toString() });
             } 
         }catch (Exception e){
@@ -958,8 +1090,6 @@ public final class validasi {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();                                
         try{ 
-            Properties prop = new Properties();
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(os.contains("win")) {
                 rt.exec( "rundll32 url.dll,FileProtocolHandler "+url);
             }else if (os.contains("mac")) {
@@ -978,9 +1108,7 @@ public final class validasi {
     
     public void printUrl(String url) throws URISyntaxException{
         try{
-           Properties prop = new Properties();
-           prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
+           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+url)));  
         }catch (Exception e) {
            System.out.println(e);
         }
@@ -989,7 +1117,7 @@ public final class validasi {
     public void SetTgl(DefaultTableModel tabMode,JTable table,JDateTimePicker dtp,int i){
         j=table.getSelectedRow();
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString());
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString().replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -997,6 +1125,7 @@ public final class validasi {
     }
     
     public String SetTgl(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2);
@@ -1005,7 +1134,18 @@ public final class validasi {
         return s;
     }
     
+    public String SetTglJam(String original){
+        original=original.replaceAll("'","");
+        s = "";
+        try {
+            s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2)+" "+original.substring(11,19);
+        }catch (Exception e) {
+        }   
+        return s;
+    }
+    
     public String SetTgl3(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(8,10)+"-"+original.substring(5,7)+"-"+original.substring(0,4);
@@ -1025,7 +1165,7 @@ public final class validasi {
     
     public void SetTgl(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1034,7 +1174,7 @@ public final class validasi {
     
     public void SetTgl2(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1043,11 +1183,21 @@ public final class validasi {
     
     public Date SetTgl2(String tgl){
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            return dtpa;
         } catch (ParseException ex) {
            return new Date();
         }
+    }
+    
+    public String SetTgl4(String original){
+        original=original.replaceAll("'","");
+        s = "";
+        try {
+            s=original.substring(6,10)+original.substring(3,5)+original.substring(0,2);
+        }catch (Exception e) {
+        }   
+        return s;
     }
     
     public void textKosong(JTextField teks,String pesan){
@@ -1124,6 +1274,21 @@ public final class validasi {
         return x;
     }
     
+    public int SetInteger(String txt){
+        int x;   
+        try {
+            if(txt.equals("")){
+                x=0;
+            }else{
+                x=Integer.parseInt(txt);
+            }
+        } catch (Exception e) {
+            x=0;
+        }
+            
+        return x;
+    }
+    
     public double roundUp(double number, int multiple) {
         if(PEMBULATANHARGAOBAT.equals("yes")){
             result = multiple;
@@ -1140,5 +1305,62 @@ public final class validasi {
             return Math.round(number);
         }
     }
-       
+    
+    public String terbilang(double angka){
+        if(angka<12)
+        {
+          return nomina[(int)angka];
+        }
+        
+        if(angka>=12 && angka <=19)
+        {
+            return nomina[(int)angka%10] +" belas ";
+        }
+        
+        if(angka>=20 && angka <=99)
+        {
+            return nomina[(int)angka/10] +" puluh "+nomina[(int)angka%10];
+        }
+        
+        if(angka>=100 && angka <=199)
+        {
+            return "seratus "+ terbilang(angka%100);
+        }
+        
+        if(angka>=200 && angka <=999)
+        {
+            return nomina[(int)angka/100]+" ratus "+terbilang(angka%100);
+        }
+        
+        if(angka>=1000 && angka <=1999)
+        {
+            return "seribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 2000 && angka <=999999)
+        {
+            return terbilang((int)angka/1000)+" ribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 1000000 && angka <=999999999)
+        {
+            return terbilang((int)angka/1000000)+" juta "+ terbilang(angka%1000000);
+        }
+        
+        return "";
+    }  
+    
+    public int daysOld(String path) {
+        file=new File(path);
+        if (file.lastModified() < 1)
+            return 0;
+        return milliToDay(Calendar.getInstance().getTimeInMillis() - file.lastModified());
+    }
+
+    /**
+     * Converts milliseconds to days
+     */
+    public static int milliToDay(long milli) {
+        return (int) ((double) milli / (1000 * 24 * 60 * 60));
+    }
 }

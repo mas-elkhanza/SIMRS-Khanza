@@ -699,7 +699,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptKomponenDarah.jasper","report","::[ Data Komponen Darah ]::",
                     "select * from utd_komponen_darah where kode like '%"+TCari.getText().trim()+"%' or nama like '%"+TCari.getText().trim()+"%' order by nama",param);            
             this.setCursor(Cursor.getDefaultCursor());

@@ -2,9 +2,9 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun        = $baris[0];
-   $bulan        = $baris[1];
+   $baristahun   = mysqli_fetch_row($hasil);
+   $tahun        = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $bulan        = empty($baristahun[1])?date("m"):$baristahun[1];
 ?>
 <div id="post">
     <div class="entry">
@@ -12,8 +12,8 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
-                $jml                =isset($_GET['jml'])?$_GET['jml']:NULL;
+                $id                 =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
+                $jml                = validangka(isset($_GET['jml'])?$_GET['jml']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 		$_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
@@ -64,8 +64,8 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
-                    $jml                =trim($_POST['jml']);
+                    $id                 =validTeks(trim($_POST['id']));
+                    $jml                = validangka(trim($_POST['jml']));
                     if ((!empty($id))&&(!empty($jml))) {
                         switch($action) {
                             case "TAMBAH":
@@ -113,7 +113,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus("  jumpasien "," id ='".$_GET['id']."' and thn ='".$_GET['thn']."' and bln ='".$_GET['bln']."'","?act=InputPasien&action=TAMBAH&id=$id");
+                Hapus("  jumpasien "," id ='".validTeks($_GET['id'])."' and thn ='".validTeks($_GET['thn'])."' and bln ='".validTeks($_GET['bln'])."'","?act=InputPasien&action=TAMBAH&id=$id");
             }
 
         ?>

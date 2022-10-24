@@ -2,7 +2,6 @@ package surat;
 
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
@@ -12,15 +11,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Properties;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker;
+import javafx.concurrent.Worker.State;
 import static javafx.concurrent.Worker.State.FAILED;
 import javafx.embed.swing.JFXPanel;
 import javafx.print.PageLayout;
@@ -56,14 +50,8 @@ public final class SuratMasuk extends javax.swing.JDialog {
     private final JTextField txtURLInput = new JTextField();
     private final JProgressBar progressBar = new JProgressBar();
     private final JLabel lblStatus = new JLabel();
-    private final Properties prop = new Properties(); 
     private WebEngine engine;
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2;
-    private ResultSet rs,rs2;
-    private int i=0,i2=0;
+    private final validasi Valid=new validasi();
     private SuratRuang ruang=new SuratRuang(null,false);
     private SuratStatus status=new SuratStatus(null,false);
     private SuratBalas balas=new SuratBalas(null,false);
@@ -74,11 +62,6 @@ public final class SuratMasuk extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initComponents2();
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));                                
-        } catch (Exception e) {
-        }
-        
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -225,7 +208,110 @@ public final class SuratMasuk extends javax.swing.JDialog {
         internalFrame2.add(jfxPanelinput, BorderLayout.CENTER);
     }
     
-     private void createScene() {        
+    private void createScene() {        
+        Platform.runLater(new Runnable() {
+
+            public void run() {
+                WebView view = new WebView();
+                
+                engine = view.getEngine();
+                engine.setJavaScriptEnabled(true);
+                
+                engine.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
+                    @Override
+                    public WebEngine call(PopupFeatures p) {
+                        Stage stage = new Stage(StageStyle.TRANSPARENT);
+                        return view.getEngine();
+                    }
+                });
+                
+                engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        SuratMasuk.this.setTitle(newValue);
+                    });
+                });
+                
+                
+                engine.setOnStatusChanged((final WebEvent<String> event) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        lblStatus.setText(event.getData());
+                    });
+                });
+                
+                
+                engine.getLoadWorker().workDoneProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldValue, final Number newValue) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        progressBar.setValue(newValue.intValue());
+                    });                                                   
+                });
+                
+                engine.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
+                    if (engine.getLoadWorker().getState() == FAILED) {
+                        SwingUtilities.invokeLater(() -> {
+                            JOptionPane.showMessageDialog(
+                                    internalFrame3,
+                                    (value != null) ?
+                                            engine.getLocation() + "\n" + value.getMessage() :
+                                            engine.getLocation() + "\nUnexpected Catatan.",
+                                    "Loading Catatan...",
+                                    JOptionPane.ERROR_MESSAGE);
+                        });
+                    }
+                });
+                
+                
+                engine.locationProperty().addListener((ObservableValue<? extends String> ov, String oldValue, final String newValue) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        txtURL.setText(newValue);
+                    });
+                });
+                
+                engine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+                    @Override
+                    public void changed(ObservableValue ov, State oldState, State newState) {
+                        if (newState == State.SUCCEEDED) {
+                            try {
+                                if(engine.getLocation().contains("surat/pages")){
+                                    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("pages/upload/pages/upload","pages/upload"));
+                                    engine.executeScript("history.back()");
+                                    setCursor(Cursor.getDefaultCursor());
+                                }else if(engine.getLocation().contains("Keluar")){
+                                    dispose();    
+                                }
+                            }catch (Exception ex) {
+                                System.out.println("Notifikasi : "+ex);
+                            }
+                        } 
+                    }
+                });
+                
+                jfxPanel.setScene(new Scene(view));
+            }
+        });
+    }
+    
+ 
+    public void loadURL(String url) {  
+        try {
+            createScene();
+        } catch (Exception e) {
+        }
+        
+        Platform.runLater(() -> {
+            try {
+                engine.load(url);
+            }catch (Exception exception) {
+                engine.load(url);
+            }
+        });        
+    }    
+    
+    public void CloseScane(){
+        Platform.setImplicitExit(false);
+    }
+    
+    private void createSceneInput() {        
         Platform.runLater(new Runnable() {
 
             public void run() {
@@ -283,138 +369,20 @@ public final class SuratMasuk extends javax.swing.JDialog {
                     });
                 });
                 
-                engine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
+                engine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
                     @Override
-                    public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
-                        if (newState == Worker.State.SUCCEEDED) {
+                    public void changed(ObservableValue ov, State oldState, State newState) {
+                        if (newState == State.SUCCEEDED) {
                             try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("surat/pages")){
+                                if(engine.getLocation().contains("surat/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("pages/upload/pages/upload","pages/upload"));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().contains("Keluar")){
                                     dispose();    
                                 }
-                            } catch (Exception ex) {
-                                System.out.println("Notifikasi : "+ex);
-                            }
-                        } 
-                    }
-                });
-                
-                jfxPanel.setScene(new Scene(view));
-            }
-        });
-    }
- 
-    public void loadURL(String url) {  
-        try {
-            createScene();
-        } catch (Exception e) {
-        }
-        
-        Platform.runLater(() -> {
-            try {
-                engine.load(url);
-            }catch (Exception exception) {
-                engine.load(url);
-            }
-        });        
-    }    
-    
-    public void CloseScane(){
-        Platform.setImplicitExit(false);
-    }
-    
-    public void print(final Node node) {
-        Printer printer = Printer.getDefaultPrinter();
-        PageLayout pageLayout = printer.createPageLayout(Paper.NA_LETTER, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
-        double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
-        double scaleY = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
-        node.getTransforms().add(new Scale(scaleX, scaleY));
-
-        PrinterJob job = PrinterJob.createPrinterJob();
-        if (job != null) {
-            boolean success = job.printPage(node);
-            if (success) {
-                job.endJob();
-            }
-        }
-    }
-    
-    private void createSceneInput() {        
-        Platform.runLater(new Runnable() {
-
-            public void run() {
-                WebView view = new WebView();
-                
-                engine = view.getEngine();
-                engine.setJavaScriptEnabled(true);
-                
-                engine.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
-                    @Override
-                    public WebEngine call(PopupFeatures p) {
-                        Stage stage = new Stage(StageStyle.TRANSPARENT);
-                        return view.getEngine();
-                    }
-                });
-                
-                engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
-                    SwingUtilities.invokeLater(() -> {
-                        SuratMasuk.this.setTitle(newValue);
-                    });
-                });
-                
-                
-                engine.setOnStatusChanged((final WebEvent<String> event) -> {
-                    SwingUtilities.invokeLater(() -> {
-                        lblStatus.setText(event.getData());
-                    });
-                });
-                
-                
-                engine.getLoadWorker().workDoneProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldValue, final Number newValue) -> {
-                    SwingUtilities.invokeLater(() -> {
-                        progressBar.setValue(newValue.intValue());
-                    });                                                   
-                });
-                
-                engine.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
-                    if (engine.getLoadWorker().getState() == FAILED) {
-                        SwingUtilities.invokeLater(() -> {
-                            JOptionPane.showMessageDialog(
-                                    internalFrame2,
-                                    (value != null) ?
-                                            engine.getLocation() + "\n" + value.getMessage() :
-                                            engine.getLocation() + "\nUnexpected Catatan.",
-                                    "Loading Catatan...",
-                                    JOptionPane.ERROR_MESSAGE);
-                        });
-                    }
-                });
-                
-                
-                engine.locationProperty().addListener((ObservableValue<? extends String> ov, String oldValue, final String newValue) -> {
-                    SwingUtilities.invokeLater(() -> {
-                        txtURLInput.setText(newValue);
-                    });
-                });
-                
-                engine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
-                    @Override
-                    public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
-                        if (newState == Worker.State.SUCCEEDED) {
-                            try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("surat/pages")){
-                                    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
-                                    engine.executeScript("history.back()");
-                                    setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
-                                    dispose();    
-                                }
-                            } catch (Exception ex) {
+                            }catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
                             }
                         } 
@@ -746,14 +714,14 @@ public final class SuratMasuk extends javax.swing.JDialog {
         switch (TabRawat.getSelectedIndex()) {
             case 0:                
                 try {
-                    loadURLInput("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu");  
+                    loadURLInput("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"surat/login2.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");  
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }               
                 break;
             case 1:
                 try {
-                    loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                    loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"surat/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
