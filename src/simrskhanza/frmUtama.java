@@ -1582,6 +1582,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir6 = new javax.swing.JMenuItem();
         MnPenyerahanResep = new javax.swing.JMenuItem();
         MnPersetujuanPenolakanTindakan = new javax.swing.JMenuItem();
+        MnPernyataanAPS = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         DlgLogin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -1795,7 +1796,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/10/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/10/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7954,6 +7955,20 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu7.add(MnPersetujuanPenolakanTindakan);
+
+        MnPernyataanAPS.setBackground(new java.awt.Color(255, 255, 254));
+        MnPernyataanAPS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPernyataanAPS.setForeground(new java.awt.Color(50, 90, 40));
+        MnPernyataanAPS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
+        MnPernyataanAPS.setText("Penyataan Pulang Atas Permintaan Sendiri");
+        MnPernyataanAPS.setName("MnPernyataanAPS"); // NOI18N
+        MnPernyataanAPS.setPreferredSize(new java.awt.Dimension(275, 30));
+        MnPernyataanAPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPernyataanAPSActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnPernyataanAPS);
 
         MenuBar.add(jMenu7);
 
@@ -14304,6 +14319,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnInfoLaborat3ActionPerformed
 
+    private void MnPernyataanAPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPernyataanAPSActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("pulangaps/login.php?usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnPernyataanAPSActionPerformed
+
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -19255,6 +19276,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnPengajuanCutiPegawai;
     private javax.swing.JMenuItem MnPenyerahanResep;
+    private javax.swing.JMenuItem MnPernyataanAPS;
     private javax.swing.JMenuItem MnPersetujuanPenolakanTindakan;
     private javax.swing.JMenuItem MnRekapBulanan;
     private javax.swing.JMenuItem MnRekapBulanan1;
