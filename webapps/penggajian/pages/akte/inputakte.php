@@ -35,19 +35,19 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Pendapatan Akte</td><td width="">:</td>
-                    <td width="67%">Rp.<input name="pendapatan_akte" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_akte;?>" size="30" maxlength="15" autofocus>
+                    <td width="67%">Rp.<input name="pendapatan_akte" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_akte;?>" size="30" maxlength="15" pattern="[0-9-]{1,15}" title=" 0-9- (Maksimal 15 karakter)" autocomplete="off" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Prosentase RS</td><td width="">:</td>
-                    <td width="67%"><input name="persen_rs" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $persen_rs;?>" size="10" maxlength="6" />%
+                    <td width="67%"><input name="persen_rs" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $persen_rs;?>" size="10" maxlength="6" pattern="[0-9-]{1,6}" title=" 0-9- (Maksimal 6 karakter)" autocomplete="off"/>%
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Prosentase Kry</td><td width="">:</td>
-                    <td width="67%"><input name="persen_kry" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $persen_kry;?>" size="10" maxlength="6" />%
+                    <td width="67%"><input name="persen_kry" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $persen_kry;?>" size="10" maxlength="6" pattern="[0-9-]{1,6}" title=" 0-9- (Maksimal 6 karakter)" autocomplete="off"/>%
                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

@@ -78,7 +78,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <body>
         <center>
-            Proses Pengambilan Persetujuan Penerima Informasi Sudah Selesai ..!! <br/>
+            Proses pengambilan persetujuan Pembuat Pernyataan/Penerima Informasi sudah selesai ..!! <br/>
             Silahkan lanjutkan untuk Pengambilan Saksi 1 Keluarga<br/>
             <a href='../login2.php?usere=<?=USERHYBRIDWEB;?>&passwordte=<?=PASHYBRIDWEB;?>&nopernyataan=<?=$nopernyataan;?>' class='btn btn-secondary' >Lanjutkan</a>
         </center>

@@ -111,7 +111,8 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-danger"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5><br/>
+        <h5 class="text-danger"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5>
+        <h7 class="text-danger"><center>Tanggal <?=$tanggal?></center></h7><br/>
         <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nopernyataan" value="<?=$nopernyataan;?>">
             <h7 class="text-danger">
@@ -222,7 +223,7 @@
                 Melalui penyataan ini segala resiko dan yang kemungkinan terjadi sebagai akibat dari pengambilan keputusan ini menjadi tanggung jawab saya pribadi dan keluarga
             </h7>
             <br/><br/>
-            <h7 class="text-danger"><center>Yang membuat pernyataan</center></h7>
+            <h7 class="text-danger"><center>Yang Membuat Pernyataan</center></h7>
             <div class="row">
                 <div class="col-md-6">
                     <div id="my_camera"></div>
@@ -234,7 +235,7 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
-                    <input type="button" class="btn btn-warning" value="Ya, Saya sebagai Penerima Informasi" onClick="take_snapshot()">
+                    <input type="button" class="btn btn-warning" value="Ya, Saya sebagai pembuat pernyataan" onClick="take_snapshot()">
                     <button class="btn btn-danger">Simpan</button>
                 </div>
             </div>

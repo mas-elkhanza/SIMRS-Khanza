@@ -6,7 +6,6 @@
 <div id="post">        
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype="multipart/form-data">
         <?php
-            echo "<br>";
             $action             = isset($_GET['action'])?$_GET['action']:NULL;
             $keyword            = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
             $kode_ebook         = validTeks(str_replace("_"," ",isset($_GET['kode_ebook']))?str_replace("_"," ",$_GET['kode_ebook']):NULL);

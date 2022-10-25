@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div class="entry">        
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
@@ -133,7 +138,7 @@
         }
         if ($action=="HAPUS") {      
             unlink($_GET['berkas']);
-            Hapus(" berkas_pegawai "," nik ='". validTeks($_GET['nik'])."' and kode_berkas ='".validTeks($_GET['kode'])."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori));
+            Hapus(" berkas_pegawai "," nik ='".validTeks($_GET['nik'])."' and kode_berkas ='".validTeks($_GET['kode'])."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori));
         }
     ?>
     </div>   
