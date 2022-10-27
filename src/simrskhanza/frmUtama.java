@@ -795,6 +795,7 @@ import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
+import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMUjiFungsiKFR;
@@ -19228,6 +19229,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPerencanaanPemulanganActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPerencanaanPemulangan aplikasi=new RMPerencanaanPemulangan(this,false);
+        aplikasi.isCek();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19884,7 +19898,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
-            btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri;
+            btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan;
     
     public void isWall(){
         try{            
@@ -23164,6 +23178,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_pre_anestesi()==true){
                 Panelmenu.add(btnPenilaianPreAnastesi);
+                jmlmenu++;
+            }
+            
+            if(akses.getperencanaan_pemulangan()==true){
+                Panelmenu.add(btnPerencanaanPemulangan);
                 jmlmenu++;
             }
             
@@ -27509,6 +27528,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_pre_anestesi()==true){
             Panelmenu.add(btnPenilaianPreAnastesi);
+            jmlmenu++;
+        }
+        
+        if(akses.getperencanaan_pemulangan()==true){
+            Panelmenu.add(btnPerencanaanPemulangan);
             jmlmenu++;
         }
         
@@ -33114,6 +33138,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getperencanaan_pemulangan()==true){
+            if(btnPerencanaanPemulangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPerencanaanPemulangan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getuji_fungsi_kfr()==true){
             if(btnUjiFungsiKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUjiFungsiKFR);
@@ -38036,7 +38067,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPreAnastesi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianPreAnastesi.addActionListener(this::btnPenilaianPreAnastesiActionPerformed);
         
-        
         btnPersetujuanPulangAtasPermintanSendiri = new widget.ButtonBig();
         btnPersetujuanPulangAtasPermintanSendiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5947112_clinic_doctor_healthcare_hospital_medical_icon.png"))); 
         btnPersetujuanPulangAtasPermintanSendiri.setText("Pulang Atas Permintaan Sendiri");
@@ -38044,6 +38074,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPersetujuanPulangAtasPermintanSendiri.setName("btnPersetujuanPulangAtasPermintanSendiri");
         btnPersetujuanPulangAtasPermintanSendiri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPersetujuanPulangAtasPermintanSendiri.addActionListener(this::btnPersetujuanPulangAtasPermintanSendiriActionPerformed);
+        
+        btnPerencanaanPemulangan = new widget.ButtonBig();
+        btnPerencanaanPemulangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141469_coronavirus_covid_covid19_hospital_infected_icon.png"))); 
+        btnPerencanaanPemulangan.setText("Perencanaan Pemulangan");
+        btnPerencanaanPemulangan.setIconTextGap(0);
+        btnPerencanaanPemulangan.setName("btnPerencanaanPemulangan");
+        btnPerencanaanPemulangan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerencanaanPemulangan.addActionListener(this::btnPerencanaanPemulanganActionPerformed);
     }
     
 }
