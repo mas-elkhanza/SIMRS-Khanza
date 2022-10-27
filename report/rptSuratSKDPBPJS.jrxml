@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="297" pageHeight="421" columnWidth="257" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0e3c01d9-59ec-4393-9ff9-059810afe1e1">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -11,6 +11,7 @@
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="finger" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select * from temporary_booking_registrasi order by no asc]]>
 	</queryString>
@@ -353,7 +354,7 @@
 				<textFieldExpression><![CDATA["Tanggal "+$F{temp10}+" di "+$F{temp17}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="129" y="298" width="128" height="12" uuid="9a26df3b-d135-41c6-bfce-69d5ae540e07"/>
+				<reportElement x="129" y="285" width="128" height="12" uuid="9a26df3b-d135-41c6-bfce-69d5ae540e07"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -361,7 +362,7 @@
 				<textFieldExpression><![CDATA[$P{kotars}+","]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="129" y="311" width="128" height="12" uuid="155cf285-becc-407c-9469-cea25b8f3b05"/>
+				<reportElement x="129" y="297" width="128" height="12" uuid="155cf285-becc-407c-9469-cea25b8f3b05"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -431,6 +432,14 @@
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="55">
 					<jr:codeExpression><![CDATA[$F{temp12}]]></jr:codeExpression>
 				</jr:barbecue>
+			</componentElement>
+			<componentElement>
+				<reportElement x="130" y="308" width="126" height="59" isRemoveLineWhenBlank="true" uuid="90cc79d6-50ba-4c11-ba1c-ce50ce469f87">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
 			</componentElement>
 		</band>
 	</detail>

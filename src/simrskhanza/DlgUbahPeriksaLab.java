@@ -242,7 +242,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                                 "bagian_rs,bhp,bagian_perujuk,bagian_dokter,bagian_laborat,kso,menejemen from template_laboratorium where kd_jenis_prw=? order by id_template");
             pstampil4=koneksi.prepareStatement("select id_template, Pemeriksaan, satuan, nilai_rujukan_pa,biaya_item, "+
                                 "bagian_rs,bhp,bagian_perujuk,bagian_dokter,bagian_laborat,kso,menejemen from template_laboratorium where kd_jenis_prw=? order by id_template");
-            pscariperawatan=koneksi.prepareStatement("select kd_jenis_prw from template_laboratorium where id_template=?");
+            pscariperawatan=koneksi.prepareStatement("select template_laboratorium.kd_jenis_prw from template_laboratorium where template_laboratorium.id_template=?");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -945,7 +945,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                         if(sukses==true){
                             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                                 if((!tbPemeriksaan.getValueAt(i,6).toString().equals(""))&&tbPemeriksaan.getValueAt(i,0).toString().equals("true")){                                
-                                    pscariperawatan=koneksi.prepareStatement("select kd_jenis_prw from template_laboratorium where id_template=?");
+                                    pscariperawatan=koneksi.prepareStatement("select template_laboratorium.kd_jenis_prw from template_laboratorium where template_laboratorium.id_template=?");
                                     try {
                                         pscariperawatan.setString(1,tbPemeriksaan.getValueAt(i,6).toString());
                                         rscari=pscariperawatan.executeQuery();

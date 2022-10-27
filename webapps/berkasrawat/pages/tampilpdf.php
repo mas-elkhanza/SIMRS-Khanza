@@ -1,5 +1,6 @@
 <?php
      require_once("../../conf/conf.php");
+     session_start();
      header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
      header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
      header("Cache-Control: no-store, no-cache, must-revalidate"); 
@@ -17,7 +18,7 @@
     <?php
         $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
         $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
-        if (isset($norawat["no_rawat"])) {
+        if (isset($norawat["no_rawat"])&&isset($_SESSION['ses_vedika'])) {
             $no_rawat = $norawat["no_rawat"];
             $_sql2 = "SELECT berkas_digital_perawatan.no_rawat,berkas_digital_perawatan.kode, 
                       master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file 
@@ -35,6 +36,8 @@
                         </td>
                       </tr>";
             }
+        }else{
+            exit(header("Location:../index.php"));
         }
     ?>                                
     </table>    

@@ -1,9 +1,9 @@
 <?php	
-    session_start();
-    require_once "conf/command.php";
-    if (cekSessiAdmin()){
-        $_SESSION["ses_kunjung"]="ses_kunjung";
-    }
-    session_destroy();
-    header("Location:index.php");
+     session_start();
+     $_SESSION["ses_admin_berkas_rawat"]=null;
+     unset($_SESSION["ses_admin_berkas_rawat"]); 
+     $_SESSION["ses_vedika"]=null;
+     unset($_SESSION["ses_vedika"]); 
+     session_destroy();
+     exit(header("Location:index.php"));
 ?>

@@ -720,7 +720,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                     param.put("antrian",NoReg);
                     param.put("nama",NamaPasien);
                     param.put("norm",NoRm);
-                    param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",NoRm));
+                    param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",NoRm));
                     param.put("dokter",NamaDokter);
                     param.put("no_rawat",NoRawat);
                     param.put("bayar",NamaBayar);
@@ -742,7 +742,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                     param.put("antrian",NoReg);
                     param.put("nama",NamaPasien);
                     param.put("norm",NoRm);
-                    param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",NoRm));
+                    param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",NoRm));
                     param.put("dokter",NamaDokter);
                     param.put("no_rawat",NoRawat);
                     param.put("bayar",NamaBayar);

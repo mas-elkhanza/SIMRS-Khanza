@@ -1573,7 +1573,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         kddokter.setText("");
         this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());
         
-        norawatibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",norwt);
+        norawatibu=Sequel.cariIsi("select ranap_gabung.no_rawat from ranap_gabung where ranap_gabung.no_rawat2=?",norwt);
         if(!norawatibu.equals("")){
             this.kd_bangsal=Sequel.cariIsi(
                     "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+

@@ -8,7 +8,7 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
-            $_SESSION['ses_admin']="admin";
+            $_SESSION['ses_admin_casemix']="admin";
             $codernik= validTeks($_GET['codernik']);
             if(($_GET['page']=="KlaimBaruOtomatis")){
                 $url = "index.php?act=KlaimBaruOtomatis&codernik=".$codernik;	
@@ -21,7 +21,7 @@
             session_start();
             session_destroy();
             if (cekSessiAdmin()){
-                session_unregister("ses_admin");
+                session_unregister("ses_admin_casemix");
             }
             $url = "index.php?act=HomeAdmin";
         }

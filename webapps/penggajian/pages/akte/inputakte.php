@@ -1,9 +1,13 @@
 <?php
-   $_sql    = "SELECT * FROM set_tahun";
-   $hasil   = bukaquery($_sql);
-   $baris   = mysqli_fetch_row($hasil);
-   $tahun   = empty($baris[0])?date("Y"):$baris[0];
-   $bulan   = empty($baris[1])?date("m"):$baris[1];
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+    
+    $_sql    = "SELECT * FROM set_tahun";
+    $hasil   = bukaquery($_sql);
+    $baris   = mysqli_fetch_row($hasil);
+    $tahun   = empty($baris[0])?date("Y"):$baris[0];
+    $bulan   = empty($baris[1])?date("m"):$baris[1];
 ?>
 
 <div id="post">
@@ -14,18 +18,10 @@
     <div class="entry">
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                $action              = isset($_GET['action'])?$_GET['action']:NULL;
-                $pendapatan_akte     = validTeks(str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL);
-                if($action == "TAMBAH"){
-                    $pendapatan_akte = validTeks(str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL);
-                    $persen_rs       = "";
-                    $bagian_rs       = "";
-                    $persen_kry      = "";
-                    $bagian_kry      = "";
-                }else if($action == "UBAH"){
-                    $_sql               = "SELECT pendapatan_akte,persen_rs,
-                                            bagian_rs,persen_kry,bagian_kry
-                                            FROM set_akte WHERE tahun='$tahun' and bulan='$bulan'";
+                $action          = isset($_GET['action'])?$_GET['action']:NULL;
+                $pendapatan_akte = 0;
+                if($action == "UBAH"){
+                    $_sql               = "SELECT set_akte.pendapatan_akte,set_akte.persen_rs,set_akte.bagian_rs,set_akte.persen_kry,set_akte.bagian_kry FROM set_akte WHERE set_akte.tahun='$tahun' and set_akte.bulan='$bulan'";
                     $hasil              = bukaquery($_sql);
                     $baris              = mysqli_fetch_row($hasil);
                     $pendapatan_akte    = $baris[0];
@@ -39,19 +35,19 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Pendapatan Akte</td><td width="">:</td>
-                    <td width="67%">Rp.<input name="pendapatan_akte" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_akte;?>" size="30" maxlength="15" autofocus>
+                    <td width="67%">Rp.<input name="pendapatan_akte" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_akte;?>" size="30" maxlength="15" pattern="[0-9-]{1,15}" title=" 0-9- (Maksimal 15 karakter)" autocomplete="off" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Prosentase RS</td><td width="">:</td>
-                    <td width="67%"><input name="persen_rs" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $persen_rs;?>" size="10" maxlength="6" />%
+                    <td width="67%"><input name="persen_rs" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $persen_rs;?>" size="10" maxlength="6" pattern="[0-9-]{1,6}" title=" 0-9- (Maksimal 6 karakter)" autocomplete="off"/>%
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Prosentase Kry</td><td width="">:</td>
-                    <td width="67%"><input name="persen_kry" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $persen_kry;?>" size="10" maxlength="6" />%
+                    <td width="67%"><input name="persen_kry" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $persen_kry;?>" size="10" maxlength="6" pattern="[0-9-]{1,6}" title=" 0-9- (Maksimal 6 karakter)" autocomplete="off"/>%
                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

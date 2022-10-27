@@ -61,7 +61,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama",
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama",
             "Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu","Riwayat Penggunaan Obat","Alergi","TD","Nadi","RR","Suhu","BB","TB",
             "Nyeri","Status Nutrisi","Kondisi Umum","Keterangan Lokalis","Laboratorium","Radiolgi","Tes Pendengaran","Penunjang Lainnya",
             "Diagnosis Kerja","Diagnosis Banding","Permasalahan","Terapi/Pengobatan","Tindakan/Rencana Pengobatan","Tatalaksana Lainnya",
@@ -1665,7 +1665,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Nama Pasien</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tgl.Lahir</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Kode Dokter</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Nama Dokter</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'>Tanggal</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Anamnesis</b></td>"+

@@ -194,6 +194,8 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
+        label10 = new widget.Label();
+        LCount2 = new widget.Label();
         jLabel10 = new javax.swing.JLabel();
         LCount = new javax.swing.JLabel();
         BtnPrint = new widget.Button();
@@ -326,20 +328,31 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         });
         panelGlass5.add(BtnAll);
 
+        label10.setText("Record :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(label10);
+
+        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount2.setText("0");
+        LCount2.setName("LCount2"); // NOI18N
+        LCount2.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelGlass5.add(LCount2);
+
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(50, 50, 50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Belum Dibayar :");
         jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(100, 23));
+        jLabel10.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass5.add(jLabel10);
 
-        LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        LCount.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         LCount.setForeground(new java.awt.Color(50, 50, 50));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(180, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass5.add(LCount);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -407,7 +420,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
 
         label19.setText("Cara Bayar :");
         label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(75, 23));
+        label19.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label19);
 
         kdpenjab.setName("kdpenjab"); // NOI18N
@@ -703,6 +716,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
     private javax.swing.JLabel LCount;
+    private widget.Label LCount2;
     private javax.swing.JMenuItem MnDetailCicilan;
     private javax.swing.JMenuItem MnDetailPiutang;
     private widget.ScrollPane Scroll;
@@ -714,6 +728,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JLabel jLabel10;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;
+    private widget.Label label10;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
@@ -781,8 +796,9 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
                 }
             }
             
+            LCount2.setText(""+tabMode.getRowCount());
             LCount.setText(Valid.SetAngka(sisapiutang));
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
     }

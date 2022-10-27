@@ -8,13 +8,13 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
-            $_SESSION['ses_admin']="admin";
+            $_SESSION['ses_admin_monitoring']="admin";
             $url = "index.php?act=List&statusdata=Semua";			
         }else{
             session_start();
             session_destroy();
             if (cekSessiAdmin()){
-                session_unregister("ses_admin");
+                session_unregister("ses_admin_monitoring");
             }
             $url = "index.php?act=HomeAdmin";
         }

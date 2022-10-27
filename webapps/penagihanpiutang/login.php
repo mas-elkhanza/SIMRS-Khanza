@@ -8,14 +8,14 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
-            $_SESSION['ses_admin']= "admin";
+            $_SESSION['ses_admin_penagihanpiutang']= "admin";
             $_SESSION['notagihan']= validTeks($_GET['notagihan']);
             $url = "index.php?act=Kamera";			
         }else{
             session_start();
             session_destroy();
             if (cekSessiAdmin()){
-                session_unregister("ses_admin");
+                session_unregister("ses_admin_penagihanpiutang");
             }
             $url = "index.php?act=Home";
         }

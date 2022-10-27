@@ -140,10 +140,10 @@
     
     $BtnSimpan = isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
     if (isset($BtnSimpan)) {
-        $penjab     = isset($_POST['penjab'])?$_POST['penjab']:NULL;
-        $kd_poli    = isset($_POST['kd_poli'])?$_POST['kd_poli']:NULL;
-        $tanggal    = isset($_POST['tanggal'])?$_POST['tanggal']:NULL;
-        $kd_dokter  = isset($_POST['kd_dokter'])?$_POST['kd_dokter']:NULL;
+        $penjab     = cleankar(isset($_POST['penjab'])?$_POST['penjab']:NULL);
+        $kd_poli    = cleankar(isset($_POST['kd_poli'])?$_POST['kd_poli']:NULL);
+        $tanggal    = cleankar(isset($_POST['tanggal'])?$_POST['tanggal']:NULL);
+        $kd_dokter  = cleankar(isset($_POST['kd_dokter'])?$_POST['kd_dokter']:NULL);
         if ((!empty($penjab))&&(!empty($kd_poli))&&(!empty($tanggal))&&(!empty($kd_dokter))) {
             $nourut = "";
             switch (URUTNOREG) {

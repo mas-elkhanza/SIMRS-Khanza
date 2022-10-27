@@ -61,7 +61,7 @@
                                         unset($_SESSION['Capcay']);
                                         $usere      = cleankar($_POST['norme']);
                                         $passworde  = cleankar2($_POST['passworde']);
-                                        if(getOne2("select count(*) from personal_pasien where no_rkm_medis='$usere' and password=aes_encrypt('$passworde','windi')")>0){
+                                        if(getOne2("select count(*) from personal_pasien where md5(no_rkm_medis)=md5('$usere') and password=aes_encrypt('$passworde','windi')")>0){
                                             $_SESSION["ses_pasien"]= encrypt_decrypt($usere,"e");
                                             exit(header("Location:index.php"));
                                         }else{

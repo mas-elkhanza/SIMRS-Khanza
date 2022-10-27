@@ -84,7 +84,7 @@
             <table width="100%" align="center" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr class="head3">					
                     <td width="430px">
-                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="250" pattern="[A-Z0-9-]{1,250}" title=" A-Z0-9- (Maksimal 250 karakter)" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="250" pattern="[a-zA-Z0-9-]{1,250}" title=" a-zA-Z0-9- (Maksimal 250 karakter)" autocomplete="off" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />
                     </td>
                     <td width="140px" >Record : <?php echo $jumlah; ?> </td>

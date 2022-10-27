@@ -2,13 +2,8 @@
         session_start();
 	session_destroy();
 	require_once "conf/command.php";
-	if (cekSessiAdmin())
-	{
-	    session_unregister("ses_admin");
-	}
-        if (cekSessiPegawai())
-	{
-	    session_unregister("ses_pegawai");
+	if (cekSessiAdmin()){
+	    session_unregister("ses_admin_kepegawaian");
 	}
 	header("Location:index.php");
 	

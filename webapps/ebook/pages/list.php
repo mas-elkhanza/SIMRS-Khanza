@@ -6,11 +6,10 @@
 <div id="post">        
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype="multipart/form-data">
         <?php
-            echo "<br>";
             $action             = isset($_GET['action'])?$_GET['action']:NULL;
             $keyword            = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
             $kode_ebook         = validTeks(str_replace("_"," ",isset($_GET['kode_ebook']))?str_replace("_"," ",$_GET['kode_ebook']):NULL);
-            $kode_ebook2        ="";
+            $kode_ebook2        = "";
             $judul_ebook        = "";
             $jml_halaman        = "";
             $kode_penerbit      = "";
@@ -22,7 +21,7 @@
             if($action == "TAMBAH"){
                 $max                = getOne("select ifnull(MAX(CONVERT(RIGHT(perpustakaan_ebook.kode_ebook,7),signed)),0)+1 from perpustakaan_ebook");
                 $kode_ebook         = "E".sprintf("%07s", $max);
-                $kode_ebook2        ="";
+                $kode_ebook2        = "";
                 $judul_ebook        = "";
                 $jml_halaman        = "";
                 $kode_penerbit      = "";
@@ -55,7 +54,7 @@
             <tr class="isi2">
                 <td width="15%" >Kode Ebook</td>
                 <td width="35%">
-                    :&nbsp;<input name="kode_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_ebook;?>" size="20" maxlength="10" pattern="[A-Z0-9-]{1,10}" title=" A-Z0-9- (Maksimal 10 karakter)" autocomplete="off" required autofocus>
+                    :&nbsp;<input name="kode_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_ebook;?>" size="20" maxlength="10" pattern="[a-zA-Z0-9-]{1,10}" title=" a-zA-Z0-9- (Maksimal 10 karakter)" autocomplete="off" required autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                 </td>
                 <td width="15%" >Pengarang</td>
@@ -78,7 +77,7 @@
             <tr class="isi2">
                 <td width="15%" >Judul Ebook</td>
                 <td width="35%">
-                    :&nbsp;<input name="judul_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $judul_ebook;?>" size="50" maxlength="200" pattern="[A-Z0-9-]{1,200}" title=" A-Z0-9- (Maksimal 200 karakter)" autocomplete="off" required>
+                    :&nbsp;<input name="judul_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $judul_ebook;?>" size="50" maxlength="200" pattern="[a-zA-Z0-9-]{1,200}" title=" a-zA-Z0-9- (Maksimal 200 karakter)" autocomplete="off" required>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                 </td>
                 <td width="15%" >Tahun Terbit</td>

@@ -131,7 +131,7 @@
                         <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
-		        <tr class="head">
+		<tr class="head">
                     <td width="25%" >Jabatan</td><td width="">:</td>
                     <td width="75%"><input name="jbtn" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="<?php echo isset($jbtn)?$jbtn:NULL;?>" size="30" maxlength="25">
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>

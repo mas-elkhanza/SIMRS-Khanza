@@ -14,7 +14,7 @@
                 if (isset($norawat["no_rawat"])) {
                     $no_rawat = $norawat["no_rawat"];
                 }else{
-                    $no_rawat = "Ciluk Ba";
+                    exit(header("Location:../index.php"));
                 }
                 
                 $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,

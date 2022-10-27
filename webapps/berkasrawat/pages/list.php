@@ -156,14 +156,15 @@
                            </tr>";
                     }
             echo "</table>";           
-        } else {echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                        <tr class='head'>
-                            <td width='7%'><div align='center'>Proses</div></td>
-                            <td width='30%'><div align='center'>Data Pasien</div></td>
-                            <td width='30%'><div align='center'>Registrasi</div></td>
-                            <td width='33%'><div align='center'>Berkas Digital</div></td>
-                        </tr>
-                      </table>";        
+        } else {
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='7%'><div align='center'>Proses</div></td>
+                        <td width='30%'><div align='center'>Data Pasien</div></td>
+                        <td width='30%'><div align='center'>Registrasi</div></td>
+                        <td width='33%'><div align='center'>Berkas Digital</div></td>
+                    </tr>
+                  </table>";        
         }        
         
         $BtnKeluar=isset($_POST['BtnKeluar'])?$_POST['BtnKeluar']:NULL;

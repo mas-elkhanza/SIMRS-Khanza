@@ -55,15 +55,39 @@
         $save=str_replace("--","",$save);
         $save=str_replace("/*","",$save);
         $save=str_replace("*/","",$save);
-        $save=str_replace("#","",$save);
         $save=str_replace("text/html","",$save);
-        $save=str_replace("base64","",$save);
         $save=str_replace("<script>","",$save);
         $save=str_replace("</script>","",$save);
         $save=str_replace("<noscript>","",$save);
         $save=str_replace("</noscript>","",$save);
         $save=str_replace("<img","",$save);
         $save=str_replace("document","",$save);
+        $save=str_replace(" from ","",$save);
+        $save=str_replace("concat","",$save);
+        $save=str_replace("union","",$save);
+        $save=str_replace("base64","",$save);
+        $save=str_replace("//","",$save);
+        $save=str_replace("*","",$save);
+        $save=str_replace("}","",$save);
+        $save=str_replace("$","",$save);
+        $save=str_replace("{","",$save);
+        $save=str_replace("@","",$save);
+        $save=str_replace("[","",$save);
+        $save=str_replace("]","",$save);
+        $save=str_replace("(","",$save);
+        $save=str_replace(")","",$save);
+        $save=str_replace("|","",$save);
+        $save=str_replace(",","",$save);
+        $save=str_replace("<","",$save);
+        $save=str_replace(">","",$save);
+        $save=str_replace(":","",$save);
+        $save=str_replace("+","",$save);
+        $save=str_replace("^","",$save);
+        $save=str_replace("#","",$save);
+        $save=str_replace("!","",$save);
+        $save=str_replace("='","",$save);
+        $save=str_replace("=/","",$save);
+        $save=str_replace("=","",$save);
         return $save;
     }
     
@@ -76,13 +100,37 @@
         $save=str_replace("/*","",$save);
         $save=str_replace("*/","",$save);
         $save=str_replace("text/html","",$save);
-        $save=str_replace("base64","",$save);
         $save=str_replace("<script>","",$save);
         $save=str_replace("</script>","",$save);
         $save=str_replace("<noscript>","",$save);
         $save=str_replace("</noscript>","",$save);
         $save=str_replace("<img","",$save);
         $save=str_replace("document","",$save);
+        $save=str_replace(" from ","",$save);
+        $save=str_replace("concat","",$save);
+        $save=str_replace("union","",$save);
+        $save=str_replace("base64","",$save);
+        $save=str_replace("//","",$save);
+        $save=str_replace("*","",$save);
+        $save=str_replace("}","",$save);
+        $save=str_replace("$","",$save);
+        $save=str_replace("{","",$save);
+        $save=str_replace("@","",$save);
+        $save=str_replace("[","",$save);
+        $save=str_replace("]","",$save);
+        $save=str_replace("(","",$save);
+        $save=str_replace(")","",$save);
+        $save=str_replace("|","",$save);
+        $save=str_replace(",","",$save);
+        $save=str_replace("<","",$save);
+        $save=str_replace(">","",$save);
+        $save=str_replace(":","",$save);
+        $save=str_replace("+","",$save);
+        $save=str_replace("^","",$save);
+        $save=str_replace("!","",$save);
+        $save=str_replace("='","",$save);
+        $save=str_replace("=/","",$save);
+        $save=str_replace("=","",$save);
         return $save;
     }
     
@@ -200,7 +248,7 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (mysqli_error($konektor)."hmmmmmmm.....??????????");
+        or die (mysqli_error($konektor)/*"Silahkan hubungi administrator..!"*/);
         mysqli_close($konektor);
         return $result;
     }
@@ -530,6 +578,19 @@
             else
             $i=$thn;                        
             echo "<option value=$i>$i</option>";
+        }
+    }
+    
+    function loadThn5(){
+        $thnini=date('Y');
+        //echo "<option>-&nbsp</option>";
+        for($thn=$thnini+15; $thn>=$thnini; $thn--){
+                $thn_leng=strlen($thn);
+                if ($thn_leng==1)
+                $i="0".$thn;
+                else
+                $i=$thn;
+                echo "<option value=$i>$i</option>";
         }
     }
 

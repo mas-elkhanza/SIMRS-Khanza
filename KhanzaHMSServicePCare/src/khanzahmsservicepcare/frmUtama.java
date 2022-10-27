@@ -501,12 +501,12 @@ public class frmUtama extends javax.swing.JFrame {
                                                     try {
                                                         headerscari = new HttpHeaders();
                                                         headerscari.setContentType(MediaType.TEXT_PLAIN);
-                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headerscari.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                                         utc=String.valueOf(api.GetUTCdatetimeAsString());
-                                                        headers.add("X-timestamp",utc);            
-                                                        headers.add("X-signature",api.getHmac());
-                                                        headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                                                        headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
+                                                        headerscari.add("X-timestamp",utc);            
+                                                        headerscari.add("X-signature",api.getHmac());
+                                                        headerscari.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        headerscari.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                         if(ChkRujukLanjut.isSelected()==false){
                                                             diagnosa2="null";
                                                             if(!KdDiagnosa2.getText().equals("")){
@@ -644,12 +644,12 @@ public class frmUtama extends javax.swing.JFrame {
                                 TeksArea.append("No.Rawat : "+rs.getString("no_rawat")+" ditemukan, proses mengirim kunjungan ke server PCare BPJS.. "+"\n");
                                 headerscari = new HttpHeaders();
                                 headerscari.setContentType(MediaType.TEXT_PLAIN);
-                                headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                headerscari.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                 utc=String.valueOf(api.GetUTCdatetimeAsString());
-                                headers.add("X-timestamp",utc);            
-                                headers.add("X-signature",api.getHmac());
-                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
+                                headerscari.add("X-timestamp",utc);            
+                                headerscari.add("X-signature",api.getHmac());
+                                headerscari.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                headerscari.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                 requestJson ="{" +
                                                 "\"noKunjungan\": null," +
                                                 "\"noKartu\": \""+rs.getString("noKartu")+"\"," +

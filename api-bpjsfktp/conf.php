@@ -56,6 +56,12 @@
         return $result;
     }
 
+    function bukaquery3($sql){
+        $konektor = bukakoneksi();
+        mysqli_query($konektor,$sql);
+        mysqli_close($konektor);
+    }
+    
     function getOne2($sql) {
         $hasil = bukaquery2($sql);
         list($result) = mysqli_fetch_array($hasil);
@@ -387,7 +393,82 @@
         $save=str_replace("--","",$save);
         $save=str_replace("/*","",$save);
         $save=str_replace("*/","",$save);
+        $save=str_replace("text/html","",$save);
+        $save=str_replace("<script>","",$save);
+        $save=str_replace("</script>","",$save);
+        $save=str_replace("<noscript>","",$save);
+        $save=str_replace("</noscript>","",$save);
+        $save=str_replace("<img","",$save);
+        $save=str_replace("document","",$save);
+        $save=str_replace(" from ","",$save);
+        $save=str_replace("concat","",$save);
+        $save=str_replace("union","",$save);
+        $save=str_replace("base64","",$save);
+        $save=str_replace("//","",$save);
+        $save=str_replace("*","",$save);
+        $save=str_replace("}","",$save);
+        $save=str_replace("$","",$save);
+        $save=str_replace("{","",$save);
+        $save=str_replace("@","",$save);
+        $save=str_replace("[","",$save);
+        $save=str_replace("]","",$save);
+        $save=str_replace("(","",$save);
+        $save=str_replace(")","",$save);
+        $save=str_replace("|","",$save);
+        $save=str_replace(",","",$save);
+        $save=str_replace("<","",$save);
+        $save=str_replace(">","",$save);
+        $save=str_replace(":","",$save);
+        $save=str_replace("+","",$save);
+        $save=str_replace("^","",$save);
         $save=str_replace("#","",$save);
+        $save=str_replace("!","",$save);
+        $save=str_replace("='","",$save);
+        $save=str_replace("=/","",$save);
+        $save=str_replace("=","",$save);
+        return $save;
+    }
+    
+    function validTeks2($data){
+        $save=str_replace("'","",$data);
+        $save=str_replace("\\","",$save);
+        $save=str_replace(";","",$save);
+        $save=str_replace("`","",$save);
+        $save=str_replace("--","",$save);
+        $save=str_replace("/*","",$save);
+        $save=str_replace("*/","",$save);
+        $save=str_replace("text/html","",$save);
+        $save=str_replace("<script>","",$save);
+        $save=str_replace("</script>","",$save);
+        $save=str_replace("<noscript>","",$save);
+        $save=str_replace("</noscript>","",$save);
+        $save=str_replace("<img","",$save);
+        $save=str_replace("document","",$save);
+        $save=str_replace(" from ","",$save);
+        $save=str_replace("concat","",$save);
+        $save=str_replace("union","",$save);
+        $save=str_replace("base64","",$save);
+        $save=str_replace("//","",$save);
+        $save=str_replace("*","",$save);
+        $save=str_replace("}","",$save);
+        $save=str_replace("$","",$save);
+        $save=str_replace("{","",$save);
+        $save=str_replace("@","",$save);
+        $save=str_replace("[","",$save);
+        $save=str_replace("]","",$save);
+        $save=str_replace("(","",$save);
+        $save=str_replace(")","",$save);
+        $save=str_replace("|","",$save);
+        $save=str_replace(",","",$save);
+        $save=str_replace("<","",$save);
+        $save=str_replace(">","",$save);
+        $save=str_replace("+","",$save);
+        $save=str_replace("^","",$save);
+        $save=str_replace("#","",$save);
+        $save=str_replace("!","",$save);
+        $save=str_replace("='","",$save);
+        $save=str_replace("=/","",$save);
+        $save=str_replace("=","",$save);
         return $save;
     }
     
