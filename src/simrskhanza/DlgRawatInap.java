@@ -64,6 +64,7 @@ import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
+import rekammedis.RMPerencanaanPemulangan;
 
 /**
  *
@@ -1239,6 +1240,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnPenilaianPreOperasi = new widget.Button();
         BtnPenilaianPreAnestesi = new widget.Button();
         BtnPenilaianPsikolog = new widget.Button();
+        BtnPerencanaanPemulangan = new widget.Button();
 
         BagianRS.setEditable(false);
         BagianRS.setText("0");
@@ -3724,6 +3726,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPenilaianPsikolog);
+
+        BtnPerencanaanPemulangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPerencanaanPemulangan.setText("Perencanaan Pemulangan");
+        BtnPerencanaanPemulangan.setFocusPainted(false);
+        BtnPerencanaanPemulangan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPerencanaanPemulangan.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPerencanaanPemulangan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPerencanaanPemulangan.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPerencanaanPemulangan.setName("BtnPerencanaanPemulangan"); // NOI18N
+        BtnPerencanaanPemulangan.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnPerencanaanPemulangan.setRoundRect(false);
+        BtnPerencanaanPemulangan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPerencanaanPemulanganActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPerencanaanPemulangan);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -6396,6 +6415,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnPenilaianPreAnestesiActionPerformed
 
+    private void BtnPerencanaanPemulanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPerencanaanPemulanganActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPerencanaanPemulangan form=new RMPerencanaanPemulangan(null,false);
+            form.isCek();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.emptTeks();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPerencanaanPemulanganActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6443,6 +6479,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPenilaianPreAnestesi;
     private widget.Button BtnPenilaianPreOperasi;
     private widget.Button BtnPenilaianPsikolog;
+    private widget.Button BtnPerencanaanPemulangan;
     private widget.Button BtnPermintaanLab;
     private widget.Button BtnPermintaanRad;
     private widget.Button BtnPermintaanResepPulang;
@@ -7235,6 +7272,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnPenilaianPreAnestesi.setVisible(akses.getpenilaian_pre_anestesi()); 
         if(akses.getpenilaian_pre_anestesi()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPerencanaanPemulangan.setVisible(akses.getperencanaan_pemulangan()); 
+        if(akses.getperencanaan_pemulangan()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(150,(tinggi+10)));
