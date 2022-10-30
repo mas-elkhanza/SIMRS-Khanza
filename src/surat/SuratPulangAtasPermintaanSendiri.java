@@ -1560,12 +1560,12 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(430,HEIGHT));
-            TabData.setVisible(true);  
+            FormPhoto.setVisible(true);  
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){    
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
-            TabData.setVisible(false);  
+            FormPhoto.setVisible(false);  
             ChkAccor.setVisible(true);
         }
     }

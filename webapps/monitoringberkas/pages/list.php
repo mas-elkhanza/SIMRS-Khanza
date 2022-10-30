@@ -1046,7 +1046,7 @@
                             ?>
                         </select>
                         &nbsp;&nbsp;
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="47" maxlength="250" pattern="[a-zA-Z0-9-]{1,250}" title=" a-zA-Z0-9- (Maksimal 250 karakter)" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="47" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />&nbsp;&nbsp;&nbsp;
                         Record : <input name="record" class="text6" type="text" value="<?php echo $i;?>" size="5" maxlength="5" />&nbsp;&nbsp;
                         <input name=BtnKeluar type=submit class="button" value="&nbsp;&nbsp;&nbsp;Keluar&nbsp;&nbsp;&nbsp;" />
