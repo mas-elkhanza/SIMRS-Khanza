@@ -192,7 +192,7 @@ public final class akses {
             master_rencana_keperawatan_mata=false,master_rencana_keperawatan_igd=false,master_masalah_keperawatan_psikiatri=false,master_rencana_keperawatan_psikiatri=false,
             penilaian_awal_keperawatan_psikiatri=false,pemantauan_pews_anak=false,surat_pulang_atas_permintaan_sendiri=false,template_hasil_radiologi=false,
             laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false,
-            perencanaan_pemulangan=false;
+            perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1091,6 +1091,7 @@ public final class akses {
                         akses.penilaian_pre_operasi=true;
                         akses.penilaian_pre_anestesi=true;
                         akses.perencanaan_pemulangan=true;
+                        akses.penilaian_lanjutan_resiko_jatuh_dewasa=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1973,6 +1974,7 @@ public final class akses {
                         akses.penilaian_pre_operasi=rs2.getBoolean("penilaian_pre_operasi");
                         akses.penilaian_pre_anestesi=rs2.getBoolean("penilaian_pre_anestesi");
                         akses.perencanaan_pemulangan=rs2.getBoolean("perencanaan_pemulangan");
+                        akses.penilaian_lanjutan_resiko_jatuh_dewasa=rs2.getBoolean("penilaian_lanjutan_resiko_jatuh_dewasa");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2853,6 +2855,7 @@ public final class akses {
                         akses.penilaian_pre_operasi=false;
                         akses.penilaian_pre_anestesi=false;
                         akses.perencanaan_pemulangan=false;
+                        akses.penilaian_lanjutan_resiko_jatuh_dewasa=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3790,4 +3793,5 @@ public final class akses {
     public static boolean getpenilaian_pre_operasi(){return akses.penilaian_pre_operasi;}
     public static boolean getpenilaian_pre_anestesi(){return akses.penilaian_pre_anestesi;}
     public static boolean getperencanaan_pemulangan(){return akses.perencanaan_pemulangan;}
+    public static boolean getpenilaian_lanjutan_resiko_jatuh_dewasa(){return akses.penilaian_lanjutan_resiko_jatuh_dewasa;}
 }   

@@ -5,6 +5,8 @@
  */
 package simrskhanza;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.UIManager;
 import usu.widget.util.WidgetUtilities;
 
 /**
@@ -22,7 +24,7 @@ public class SIMRSKhanza {
            frmUtama utama=frmUtama.getInstance();
            utama.isWall();
            utama.setVisible(true);
-        });
+        }); 
     }
     
 }
