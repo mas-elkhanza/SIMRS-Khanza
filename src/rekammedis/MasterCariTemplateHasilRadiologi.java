@@ -321,6 +321,7 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
+        form.emptTeks();
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
         
