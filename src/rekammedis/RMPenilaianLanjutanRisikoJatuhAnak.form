@@ -66,7 +66,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Penilaian Lanjutan Risiko Jatuh Pasien Dewasa (Skala Morse) ]::">
+            <TitledBorder title="::[ Penilaian Lanjutan Risiko Jatuh Pasien Anak ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -426,7 +426,7 @@
             <Property name="name" type="java.lang.String" value="PanelInput" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[192, 466]"/>
+              <Dimension value="[192, 496]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -904,44 +904,35 @@
                     <Component class="widget.Label" name="jLabel57">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Skala Morse :"/>
+                        <Property name="text" type="java.lang.String" value="Skala Humpty Dumpty :"/>
                         <Property name="name" type="java.lang.String" value="jLabel57" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="14" y="70" width="80" height="23"/>
+                          <AbsoluteConstraints x="14" y="70" width="130" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel217">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="1. Riwayat Jatuh (1 Tahun Terakhir)"/>
+                        <Property name="text" type="java.lang.String" value="1. Umur"/>
                         <Property name="name" type="java.lang.String" value="jLabel217" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="90" width="260" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel219">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Skala :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel219" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="280" y="90" width="80" height="23"/>
+                          <AbsoluteConstraints x="34" y="90" width="200" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.ComboBox" name="SkalaResiko1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Tidak"/>
-                            <StringItem index="1" value="Ya"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="0 - 3 Tahun"/>
+                            <StringItem index="1" value="3 - 7 Tahun"/>
+                            <StringItem index="2" value="7 - 13 Tahun"/>
+                            <StringItem index="3" value="&gt; 13 Tahun"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko1" noResource="true"/>
@@ -952,18 +943,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="364" y="90" width="280" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel218">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Nilai :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel218" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="90" width="70" height="23"/>
+                          <AbsoluteConstraints x="244" y="90" width="500" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -975,30 +955,19 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="729" y="90" width="60" height="23"/>
+                          <AbsoluteConstraints x="749" y="90" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel220">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="2. Diagnosis Sekunder (&#x2265; 2 Diagnosis Medis)"/>
+                        <Property name="text" type="java.lang.String" value="2. Jenis Kelamin"/>
                         <Property name="name" type="java.lang.String" value="jLabel220" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="120" width="260" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel221">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Skala :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel221" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="280" y="120" width="80" height="23"/>
+                          <AbsoluteConstraints x="34" y="120" width="200" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1006,8 +975,8 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
-                            <StringItem index="0" value="Tidak"/>
-                            <StringItem index="1" value="Ya"/>
+                            <StringItem index="0" value="Laki-laki"/>
+                            <StringItem index="1" value="Perempuan"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko2" noResource="true"/>
@@ -1018,18 +987,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="364" y="120" width="280" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel222">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Nilai :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel222" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="120" width="70" height="23"/>
+                          <AbsoluteConstraints x="244" y="120" width="500" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1041,40 +999,30 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="729" y="120" width="60" height="23"/>
+                          <AbsoluteConstraints x="749" y="120" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel223">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="3. Alat Bantu"/>
+                        <Property name="text" type="java.lang.String" value="3. Diagnosa"/>
                         <Property name="name" type="java.lang.String" value="jLabel223" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="150" width="260" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel224">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Skala :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel224" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="280" y="150" width="80" height="23"/>
+                          <AbsoluteConstraints x="34" y="150" width="200" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.ComboBox" name="SkalaResiko3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="3">
-                            <StringItem index="0" value="Tidak Ada/Kursi Roda/Perawat/Tirah Baring"/>
-                            <StringItem index="1" value="Tongkat/Alat Penopang"/>
-                            <StringItem index="2" value="Berpegangan Pada Perabot"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="Kelainan Neurologi"/>
+                            <StringItem index="1" value="Perubahan Dalam Oksigen(Masalah Saluran Nafas, Dehidrasi, Anemia, Anoreksia / Sakit Kepala, Dll)"/>
+                            <StringItem index="2" value="Kelainan Psikis / Perilaku"/>
+                            <StringItem index="3" value="Diagnosa Lain"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko3" noResource="true"/>
@@ -1085,18 +1033,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="364" y="150" width="280" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel225">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Nilai :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel225" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="150" width="70" height="23"/>
+                          <AbsoluteConstraints x="244" y="150" width="500" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1108,39 +1045,29 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="729" y="150" width="60" height="23"/>
+                          <AbsoluteConstraints x="749" y="150" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel226">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="4. Terpasang Infuse"/>
+                        <Property name="text" type="java.lang.String" value="4. Gangguan Kognitif"/>
                         <Property name="name" type="java.lang.String" value="jLabel226" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="180" width="260" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel227">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Skala :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel227" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="280" y="180" width="80" height="23"/>
+                          <AbsoluteConstraints x="34" y="180" width="200" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.ComboBox" name="SkalaResiko4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Tidak"/>
-                            <StringItem index="1" value="Ya"/>
+                          <StringArray count="3">
+                            <StringItem index="0" value="Tidak Sadar Terhadap Keterbatasan"/>
+                            <StringItem index="1" value="Lupa Keterbatasan"/>
+                            <StringItem index="2" value="Mengetahui Kemampuan Diri"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko4" noResource="true"/>
@@ -1151,18 +1078,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="364" y="180" width="280" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel228">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Nilai :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel228" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="180" width="70" height="23"/>
+                          <AbsoluteConstraints x="244" y="180" width="500" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1174,40 +1090,30 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="729" y="180" width="60" height="23"/>
+                          <AbsoluteConstraints x="749" y="180" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel229">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="5. Gaya Berjalan"/>
+                        <Property name="text" type="java.lang.String" value="5. Faktor Lingkungan"/>
                         <Property name="name" type="java.lang.String" value="jLabel229" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="210" width="260" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel230">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Skala :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel230" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="280" y="210" width="80" height="23"/>
+                          <AbsoluteConstraints x="34" y="210" width="200" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.ComboBox" name="SkalaResiko5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="3">
-                            <StringItem index="0" value="Normal/Tirah Baring/Imobilisasi"/>
-                            <StringItem index="1" value="Lemah"/>
-                            <StringItem index="2" value="Terganggu"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="Riwayat Jatuh Dari Tempat Tidur Saat Bayi/Anak"/>
+                            <StringItem index="1" value="Pasien Menggunakan Alat Bantu/Box/Mebel"/>
+                            <StringItem index="2" value="Pasien Berada Di Tempat Tidur"/>
+                            <StringItem index="3" value="Di Luar Ruang Rawat"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko5" noResource="true"/>
@@ -1218,18 +1124,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="364" y="210" width="280" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel231">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Nilai :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel231" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="210" width="70" height="23"/>
+                          <AbsoluteConstraints x="244" y="210" width="500" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1241,39 +1136,29 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="729" y="210" width="60" height="23"/>
+                          <AbsoluteConstraints x="749" y="210" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel232">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="6. Status Mental"/>
+                        <Property name="text" type="java.lang.String" value="6. Efek Obat Penenang/Operasi/Anastesi"/>
                         <Property name="name" type="java.lang.String" value="jLabel232" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="240" width="260" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel233">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Skala :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel233" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="280" y="240" width="80" height="23"/>
+                          <AbsoluteConstraints x="34" y="240" width="210" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.ComboBox" name="SkalaResiko6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Sadar Akan Kemampuan Diri Sendiri"/>
-                            <StringItem index="1" value="Sering Lupa Akan Keterbatasan Yang Dimiliki"/>
+                          <StringArray count="3">
+                            <StringItem index="0" value="Dalam 24 Jam"/>
+                            <StringItem index="1" value="Dalam 48 Jam"/>
+                            <StringItem index="2" value="&gt; 48 Jam"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko6" noResource="true"/>
@@ -1284,18 +1169,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="364" y="240" width="280" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="widget.Label" name="jLabel234">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Nilai :"/>
-                        <Property name="name" type="java.lang.String" value="jLabel234" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="240" width="70" height="23"/>
+                          <AbsoluteConstraints x="244" y="240" width="500" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1307,20 +1181,20 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="729" y="240" width="60" height="23"/>
+                          <AbsoluteConstraints x="749" y="240" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="TingkatResiko">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar"/>
+                        <Property name="text" type="java.lang.String" value="Tingkat Resiko : Risiko Tinggi (&gt;=12), Tindakan : Intervensi risiko jatuh tinggi(pasang gelang warna kuning)"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="name" type="java.lang.String" value="TingkatResiko" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="270" width="640" height="23"/>
+                          <AbsoluteConstraints x="34" y="300" width="640" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1331,7 +1205,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="270" width="70" height="23"/>
+                          <AbsoluteConstraints x="675" y="300" width="70" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1343,7 +1217,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="729" y="270" width="60" height="23"/>
+                          <AbsoluteConstraints x="749" y="300" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1355,7 +1229,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="14" y="300" width="80" height="23"/>
+                          <AbsoluteConstraints x="14" y="330" width="80" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1370,7 +1244,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="320" width="755" height="43"/>
+                          <AbsoluteConstraints x="34" y="350" width="755" height="43"/>
                         </Constraint>
                       </Constraints>
 
@@ -1401,7 +1275,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="14" y="370" width="80" height="23"/>
+                          <AbsoluteConstraints x="14" y="400" width="80" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1416,7 +1290,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="34" y="390" width="755" height="43"/>
+                          <AbsoluteConstraints x="34" y="420" width="755" height="43"/>
                         </Constraint>
                       </Constraints>
 
@@ -1481,7 +1355,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="0" y="300" width="810" height="1"/>
+                          <AbsoluteConstraints x="0" y="330" width="810" height="1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1504,7 +1378,52 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="0" y="370" width="810" height="1"/>
+                          <AbsoluteConstraints x="0" y="400" width="810" height="1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel233">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="7. Penggunaan Obat"/>
+                        <Property name="name" type="java.lang.String" value="jLabel233" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="34" y="270" width="210" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.ComboBox" name="SkalaResiko7">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Bermacam-macam Obat Yang Digunakan : Obat Sedative (Kecuali Pasien ICU Yang Menggunakan sedasi dan paralisis), Hipnotik, Barbiturat, Fenoti-Azin, Antidepresan, Laksans/Diuretika,Narkotik"/>
+                            <StringItem index="1" value="Salah Satu Dari Pengobatan Di Atas"/>
+                            <StringItem index="2" value="Pengobatan Lain"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="SkalaResiko7" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SkalaResiko7ItemStateChanged"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SkalaResiko7KeyPressed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="244" y="270" width="500" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.TextBox" name="NilaiResiko7">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
+                        <Property name="name" type="java.lang.String" value="NilaiResiko7" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="749" y="270" width="40" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
