@@ -1084,6 +1084,18 @@
                                 </Property>
                               </Properties>
                             </Component>
+                            <Component class="widget.CekBox" name="chkAsuhanLanjutanRisikoJatuhAnak">
+                              <Properties>
+                                <Property name="selected" type="boolean" value="true"/>
+                                <Property name="text" type="java.lang.String" value="Lanjutan Risiko Jatuh Anak"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="chkAsuhanLanjutanRisikoJatuhAnak" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[245, 22]"/>
+                                </Property>
+                              </Properties>
+                            </Component>
                             <Component class="widget.CekBox" name="chkMonitoringGizi">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>

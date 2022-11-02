@@ -426,16 +426,16 @@
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss">
-				<reportElement positionType="Float" x="2" y="0" width="81" height="36" uuid="e45c241b-0ddf-46c8-9c14-441abf008377">
+				<reportElement positionType="Float" x="2" y="0" width="81" height="130" uuid="e45c241b-0ddf-46c8-9c14-441abf008377">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="230" y="0" width="266" height="10" uuid="8ccda384-6ed4-4843-8596-bf675bb62e18"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -443,7 +443,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[": "+$F{penilaian_jatuhmorse_skala1}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="500" y="0" width="48" height="10" uuid="a81a96e5-b43b-4fc6-9133-c930b2a533cd"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -486,7 +486,7 @@
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="230" y="13" width="266" height="10" uuid="030540f6-cf84-4b98-a8ee-37406c66a1e8"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -494,7 +494,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[": "+$F{penilaian_jatuhmorse_skala2}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="230" y="26" width="266" height="10" uuid="d07f21d4-ebb4-457e-b6b0-8d04ec2089a8"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -502,7 +502,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[": "+$F{penilaian_jatuhmorse_skala3}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="500" y="13" width="48" height="10" uuid="d9ba85d1-bb41-4221-8ce3-287684c151f4"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -510,7 +510,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{penilaian_jatuhmorse_nilai2}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="500" y="26" width="48" height="10" uuid="28ba0b62-5c41-48fd-ab87-e765cab19ae4"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -548,7 +548,7 @@
 				</textElement>
 				<text><![CDATA[3. Alat Bantu]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="500" y="78" width="48" height="10" uuid="1ae01361-7587-4c10-82f1-2106d9bbf4a1"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -594,7 +594,7 @@
 				</textElement>
 				<text><![CDATA[6. Status Mental]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="230" y="39" width="266" height="10" uuid="fdf601c4-38c6-4269-9870-de4e8925dd1b"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -602,7 +602,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[": "+$F{penilaian_jatuhmorse_skala4}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="230" y="52" width="266" height="10" uuid="3db58146-9272-41d5-9a28-6f6119b8ecfb"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -610,7 +610,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[": "+$F{penilaian_jatuhmorse_skala5}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="230" y="65" width="266" height="10" uuid="5d317f74-87ec-4351-aa31-87f3d355533c"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -618,7 +618,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[": "+$F{penilaian_jatuhmorse_skala6}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="500" y="65" width="48" height="10" uuid="eb7f016b-4db7-43d6-9fe6-f9beb895cc16"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -626,7 +626,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{penilaian_jatuhmorse_nilai6}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="500" y="52" width="48" height="10" uuid="8cda1d5f-434c-4d8b-a136-1b90c31836c0"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -634,7 +634,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{penilaian_jatuhmorse_nilai5}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="500" y="39" width="48" height="10" uuid="4c3fe349-467e-4ab0-b126-69d68dd54d22"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -642,7 +642,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{penilaian_jatuhmorse_nilai4}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="88" y="90" width="460" height="20" uuid="68809d68-0de2-4433-a202-9715d92be571"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
@@ -650,7 +650,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Hasil Skrining : "+$F{hasil_skrining}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement positionType="Float" x="88" y="113" width="460" height="20" uuid="b67e9aaf-7270-4df2-b506-a25a309555aa"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
