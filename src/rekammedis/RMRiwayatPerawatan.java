@@ -13234,7 +13234,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center' valign='middle' rowspan='7'>"+w+"</td>"+
                                     "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>Riwayat Jatuh (1 Tahun Terakhir)</td>"+
-                                    "<td valign='top'>"+rs2.getString("penilaian_jatuhmorse_skala1")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_skala1")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_nilai1")+"</td>"+
                                     "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("hasil_skrining")+"</td>"+
                                     "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("saran")+"</td>"+
