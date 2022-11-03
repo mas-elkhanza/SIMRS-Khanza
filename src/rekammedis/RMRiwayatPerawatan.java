@@ -10893,13 +10893,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='20%' border='0'>Tanggal</td><td border='0'>:</td><td width='79%' border='0'>"+rs2.getString("tanggal")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='20%' border='0'>Antropometri</td><td border='0'>:</td><td width='79%' border='0'>BB : "+rs2.getString("antropometri_bb")+" (Kg), TB : "+rs2.getString("antropometri_tb")+" (Cm), IMT : "+rs2.getString("antropometri_imt")+" (Kg/Cm), LiLA : "+rs2.getString("antropometri_lla")+" (Cm), TL : "+rs2.getString("antropometri_tl")+" (Cm), ULNA : "+rs2.getString("antropometri_ulna")+" (Cm), BB Ideal : "+rs2.getString("antropometri_bbideal")+" (Kg), BB/U : "+rs2.getString("antropometri_bbperu")+" (%), TB/U : "+rs2.getString("antropometri_tbperu")+" (%), BB/TB : "+rs2.getString("antropometri_bbpertb")+" (%), LiLA/U : "+rs2.getString("antropometri_llaperu")+" (%)</td>"+
+                                              "<td width='20%' border='0'>Antropometri</td><td border='0'>:</td><td width='79%' border='0'>BB : "+rs2.getString("antropometri_bb")+" (Kg), TB : "+rs2.getString("antropometri_tb")+" (Cm), IMT : "+rs2.getString("antropometri_imt")+" (Kg/Cm), LiLA : "+rs2.getString("antropometri_lla")+" (Cm), TL : "+rs2.getString("antropometri_tl")+" (Cm), ULNA : "+rs2.getString("antropometri_ulna")+" (Cm), BB Ideal : "+rs2.getString("antropometri_bbideal")+" (Kg), BB/U : "+rs2.getString("antropometri_bbperu")+" (SD), TB/U : "+rs2.getString("antropometri_tbperu")+" (SD), BB/TB : "+rs2.getString("antropometri_bbpertb")+" (SD), LiLA/U : "+rs2.getString("antropometri_llaperu")+" (SD)</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                               "<td width='20%' border='0'>Biokimia</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("biokimia")+"</td>"+
+                                               "<td width='20%' border='0'>Biokimia</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("biokimia").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                             "<td width='20%' border='0'>Fisik/Klinis</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("fisik_klinis")+"</td>"+
+                                             "<td width='20%' border='0'>Fisik/Klinis</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("fisik_klinis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                              "<td width='20%' border='0'>Riwayat Gizi</td><td border='0'>:</td><td width='79%' border='0'><br>"+
@@ -10934,13 +10934,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                              "<td width='20%' border='0'>Riwayat Personal</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("riwayat_personal")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                             "<td width='20%' border='0'>Diagnosis Gizi</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("diagnosis")+"</td>"+
+                                             "<td width='20%' border='0'>Diagnosis Gizi</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("diagnosis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                             "<td width='20%' border='0'>Intervensi Gizi</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("intervensi_gizi")+"</td>"+
+                                             "<td width='20%' border='0'>Intervensi Gizi</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("intervensi_gizi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                             "<td width='20%' border='0'>Monitoring & Evaluasi</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("monitoring_evaluasi")+"</td>"+
+                                             "<td width='20%' border='0'>Monitoring & Evaluasi</td><td border='0'>:</td><td width='79%' border='0'> "+rs2.getString("monitoring_evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='20%' border='0'>Petugas</td><td border='0'>:</td><td width='79%' border='0'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
@@ -13250,8 +13250,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center' valign='middle'>Riwayat Jatuh (1 Tahun Terakhir)</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_skala1")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_nilai1")+"</td>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("hasil_skrining")+"</td>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("saran")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("hasil_skrining").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("saran").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
                                     "<td valign='top' align='center' valign='middle'>Diagnosis Sekunder (≥ 2 Diagnosis Medis)</td>"+
@@ -13347,8 +13347,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center' valign='middle'>Umur</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_humptydumpty_skala1")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_humptydumpty_nilai2")+"</td>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='8'>"+rs2.getString("hasil_skrining")+"</td>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='8'>"+rs2.getString("saran")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='8'>"+rs2.getString("hasil_skrining").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='8'>"+rs2.getString("saran").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
                                     "<td valign='top' align='center' valign='middle'>Jenis Kelamin</td>"+
