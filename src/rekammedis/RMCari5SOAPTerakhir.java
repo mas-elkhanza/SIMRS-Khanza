@@ -141,7 +141,7 @@ public final class RMCari5SOAPTerakhir extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setName("tbKamar"); // NOI18N
-        tbKamar.setRowHeight(75);
+        tbKamar.setRowHeight(85);
         tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbKamarKeyPressed(evt);
