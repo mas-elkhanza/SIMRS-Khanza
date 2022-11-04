@@ -63,9 +63,9 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
             "Riwayat Penggunakan Obat","Riwayat Alergi","Kondisi Umum","TD(mmHg)","Nadi(x/menit)","Suhu","RR(x/menit)","Tulang Belakang","Kepala","Keterangan Kepala","Thoraks","Keterangan Thoraks",
-            "Abdomen","Keterangan Abdomen","Ekstremitas","Keterangan Ekstremitas","Integument Kebersihan","Integument Warna","Integument Kelembaban","Integument Gangguan","Lainnya","Kondisi Sosial",
-            "Status Psikologis (GDS)","Status Kognitif (MMSE)","Status Nutrisi (MNA)","Skrinning Risiko Jatuh (OMS)","Status Fungsional (ADL: BARTHEL INDEX)","Laboratorium","Radiologi","Pemeriksaan",
-            "Diagnosis","Diagnosis Banding","Permasalahan","Terapi","Tindakan","Edukasi"
+            "Abdomen","Keterangan Abdomen","Ekstremitas","Keterangan Ekstremitas","In.Kebersihan","In.Warna","In.Kelembaban","In.Gangguan","Lainnya","Kondisi Sosial","Status Psikologis (GDS)",
+            "Status Kognitif (MMSE)","Status Nutrisi (MNA)","Skrinning Risiko Jatuh (OMS)","Status Fungsional (ADL: BARTHEL INDEX)","Laboratorium","Radiologi","Pemeriksaan","Diagnosis",
+            "Diagnosis Banding","Permasalahan","Terapi","Tindakan","Edukasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -74,7 +74,7 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 45; i++) {
+        for (i = 0; i < 49; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -111,13 +111,69 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
             }else if(i==16){
                 column.setPreferredWidth(60);
             }else if(i==17){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(76);
             }else if(i==18){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(34);
             }else if(i==19){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(68);
             }else if(i==20){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(88);
+            }else if(i==21){
+                column.setPreferredWidth(83);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(83);
+            }else if(i==24){
+                column.setPreferredWidth(150);
+            }else if(i==25){
+                column.setPreferredWidth(83);
+            }else if(i==26){
+                column.setPreferredWidth(150);
+            }else if(i==27){
+                column.setPreferredWidth(83);
+            }else if(i==28){
+                column.setPreferredWidth(150);
+            }else if(i==29){
+                column.setPreferredWidth(75);
+            }else if(i==30){
+                column.setPreferredWidth(53);
+            }else if(i==31){
+                column.setPreferredWidth(80);
+            }else if(i==32){
+                column.setPreferredWidth(71);
+            }else if(i==33){
+                column.setPreferredWidth(150);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(150);
+            }else if(i==36){
+                column.setPreferredWidth(150);
+            }else if(i==37){
+                column.setPreferredWidth(150);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(150);
+            }else if(i==40){
+                column.setPreferredWidth(200);
+            }else if(i==41){
+                column.setPreferredWidth(200);
+            }else if(i==42){
+                column.setPreferredWidth(200);
+            }else if(i==43){
+                column.setPreferredWidth(150);
+            }else if(i==44){
+                column.setPreferredWidth(150);
+            }else if(i==45){
+                column.setPreferredWidth(200);
+            }else if(i==46){
+                column.setPreferredWidth(200);
+            }else if(i==47){
+                column.setPreferredWidth(200);
+            }else if(i==48){
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
