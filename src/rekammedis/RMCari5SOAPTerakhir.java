@@ -61,17 +61,17 @@ public final class RMCari5SOAPTerakhir extends javax.swing.JDialog {
             }else if(z==1){
                 column.setPreferredWidth(50);
             }else if(z==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(220);
             }else if(z==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(220);
             }else if(z==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(220);
             }else if(z==5){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(220);
             }else if(z==6){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(220);
             }else if(z==7){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(220);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable4());
@@ -141,7 +141,7 @@ public final class RMCari5SOAPTerakhir extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setName("tbKamar"); // NOI18N
-        tbKamar.setRowHeight(65);
+        tbKamar.setRowHeight(75);
         tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbKamarKeyPressed(evt);

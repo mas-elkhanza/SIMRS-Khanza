@@ -74,7 +74,7 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 38; i++) {
+        for (i = 0; i < 45; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -104,54 +104,6 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
                 column.setPreferredWidth(150);
             }else if(i==13){
                 column.setPreferredWidth(150);
-            }else if(i==14){
-                column.setPreferredWidth(110);
-            }else if(i==15){
-                column.setPreferredWidth(150);
-            }else if(i==16){
-                column.setPreferredWidth(100);
-            }else if(i==17){
-                column.setPreferredWidth(65);
-            }else if(i==18){
-                column.setPreferredWidth(78);
-            }else if(i==19){
-                column.setPreferredWidth(40);
-            }else if(i==20){
-                column.setPreferredWidth(70);
-            }else if(i==21){
-                column.setPreferredWidth(40);
-            }else if(i==22){
-                column.setPreferredWidth(40);
-            }else if(i==23){
-                column.setPreferredWidth(45);
-            }else if(i==24){
-                column.setPreferredWidth(150);
-            }else if(i==25){
-                column.setPreferredWidth(150);
-            }else if(i==26){
-                column.setPreferredWidth(150);
-            }else if(i==27){
-                column.setPreferredWidth(150);
-            }else if(i==28){
-                column.setPreferredWidth(200);
-            }else if(i==29){
-                column.setPreferredWidth(200);
-            }else if(i==30){
-                column.setPreferredWidth(200);
-            }else if(i==31){
-                column.setPreferredWidth(200);
-            }else if(i==32){
-                column.setPreferredWidth(150);
-            }else if(i==33){
-                column.setPreferredWidth(150);
-            }else if(i==34){
-                column.setPreferredWidth(200);
-            }else if(i==35){
-                column.setPreferredWidth(200);
-            }else if(i==36){
-                column.setPreferredWidth(200);
-            }else if(i==37){
-                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -930,7 +882,7 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022 13:00:35" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2022 11:25:51" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1190,7 +1142,7 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         FormInput.add(IntegumentGangguan);
         IntegumentGangguan.setBounds(716, 430, 138, 23);
 
-        IntegumentKelembaban.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal" }));
+        IntegumentKelembaban.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kering", "Lembab" }));
         IntegumentKelembaban.setName("IntegumentKelembaban"); // NOI18N
         IntegumentKelembaban.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1573,7 +1525,7 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1587,7 +1539,7 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2443,15 +2395,16 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_geriatri.tanggal,"+
-                        "penilaian_medis_ralan_geriatri.kd_dokter,penilaian_medis_ralan_geriatri.anamnesis,penilaian_medis_ralan_geriatri.hubungan,penilaian_medis_ralan_geriatri.keluhan_utama,"+
-                        "penilaian_medis_ralan_geriatri.rps,penilaian_medis_ralan_geriatri.rpd,penilaian_medis_ralan_geriatri.rpo,penilaian_medis_ralan_geriatri.alergi,"+
-                        "penilaian_medis_ralan_geriatri.kondisi,penilaian_medis_ralan_geriatri.status,penilaian_medis_ralan_geriatri.td,penilaian_medis_ralan_geriatri.nadi,"+
-                        "penilaian_medis_ralan_geriatri.suhu,penilaian_medis_ralan_geriatri.rr,penilaian_medis_ralan_geriatri.bb,penilaian_medis_ralan_geriatri.nyeri,penilaian_medis_ralan_geriatri.gcs,"+
-                        "penilaian_medis_ralan_geriatri.kepala,penilaian_medis_ralan_geriatri.thoraks,penilaian_medis_ralan_geriatri.abdomen,penilaian_medis_ralan_geriatri.ekstremitas,"+
-                        "penilaian_medis_ralan_geriatri.lainnya,penilaian_medis_ralan_geriatri.lab,penilaian_medis_ralan_geriatri.rad,penilaian_medis_ralan_geriatri.penunjanglain,"+
-                        "penilaian_medis_ralan_geriatri.diagnosis,penilaian_medis_ralan_geriatri.diagnosis2,penilaian_medis_ralan_geriatri.permasalahan,penilaian_medis_ralan_geriatri.terapi,"+
-                        "penilaian_medis_ralan_geriatri.tindakan,penilaian_medis_ralan_geriatri.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_medis_ralan_geriatri.keterangan_thorak,"+
-                        "penilaian_medis_ralan_geriatri.keterangan_abdomen,penilaian_medis_ralan_geriatri.keterangan_ekstremitas "+
+                        "penilaian_medis_ralan_geriatri.kd_dokter,dokter.nm_dokter,penilaian_medis_ralan_geriatri.anamnesis,penilaian_medis_ralan_geriatri.hubungan,penilaian_medis_ralan_geriatri.keluhan_utama,"+
+                        "penilaian_medis_ralan_geriatri.rps,penilaian_medis_ralan_geriatri.rpd,penilaian_medis_ralan_geriatri.rpo,penilaian_medis_ralan_geriatri.alergi,penilaian_medis_ralan_geriatri.tulang_belakang,"+
+                        "penilaian_medis_ralan_geriatri.td,penilaian_medis_ralan_geriatri.nadi,penilaian_medis_ralan_geriatri.suhu,penilaian_medis_ralan_geriatri.rr,penilaian_medis_ralan_geriatri.kondisi_umum,"+
+                        "penilaian_medis_ralan_geriatri.status_psikologis_gds,penilaian_medis_ralan_geriatri.kondisi_sosial,penilaian_medis_ralan_geriatri.status_kognitif_mmse,penilaian_medis_ralan_geriatri.kepala,"+
+                        "penilaian_medis_ralan_geriatri.keterangan_kepala,penilaian_medis_ralan_geriatri.thoraks,penilaian_medis_ralan_geriatri.keterangan_thoraks,penilaian_medis_ralan_geriatri.abdomen,"+
+                        "penilaian_medis_ralan_geriatri.keterangan_abdomen,penilaian_medis_ralan_geriatri.ekstremitas,penilaian_medis_ralan_geriatri.keterangan_ekstremitas,penilaian_medis_ralan_geriatri.Integument_kebersihan,"+
+                        "penilaian_medis_ralan_geriatri.Integument_warna,penilaian_medis_ralan_geriatri.Integument_kelembaban,penilaian_medis_ralan_geriatri.Integument_gangguan_kulit,penilaian_medis_ralan_geriatri.status_fungsional,"+
+                        "penilaian_medis_ralan_geriatri.skrining_jatuh,penilaian_medis_ralan_geriatri.status_nutrisi,penilaian_medis_ralan_geriatri.lainnya,penilaian_medis_ralan_geriatri.lab,penilaian_medis_ralan_geriatri.rad,"+
+                        "penilaian_medis_ralan_geriatri.pemeriksaan,penilaian_medis_ralan_geriatri.diagnosis,penilaian_medis_ralan_geriatri.diagnosis2,penilaian_medis_ralan_geriatri.permasalahan,penilaian_medis_ralan_geriatri.terapi,"+
+                        "penilaian_medis_ralan_geriatri.tindakan,penilaian_medis_ralan_geriatri.edukasi "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_geriatri on reg_periksa.no_rawat=penilaian_medis_ralan_geriatri.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_geriatri.kd_dokter=dokter.kd_dokter where "+
@@ -2459,15 +2412,16 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_geriatri.tanggal,"+
-                        "penilaian_medis_ralan_geriatri.kd_dokter,penilaian_medis_ralan_geriatri.anamnesis,penilaian_medis_ralan_geriatri.hubungan,penilaian_medis_ralan_geriatri.keluhan_utama,"+
-                        "penilaian_medis_ralan_geriatri.rps,penilaian_medis_ralan_geriatri.rpd,penilaian_medis_ralan_geriatri.rpo,penilaian_medis_ralan_geriatri.alergi,"+
-                        "penilaian_medis_ralan_geriatri.kondisi,penilaian_medis_ralan_geriatri.status,penilaian_medis_ralan_geriatri.td,penilaian_medis_ralan_geriatri.nadi,"+
-                        "penilaian_medis_ralan_geriatri.suhu,penilaian_medis_ralan_geriatri.rr,penilaian_medis_ralan_geriatri.bb,penilaian_medis_ralan_geriatri.nyeri,penilaian_medis_ralan_geriatri.gcs,"+
-                        "penilaian_medis_ralan_geriatri.kepala,penilaian_medis_ralan_geriatri.thoraks,penilaian_medis_ralan_geriatri.abdomen,penilaian_medis_ralan_geriatri.ekstremitas,"+
-                        "penilaian_medis_ralan_geriatri.lainnya,penilaian_medis_ralan_geriatri.lab,penilaian_medis_ralan_geriatri.rad,penilaian_medis_ralan_geriatri.penunjanglain,"+
-                        "penilaian_medis_ralan_geriatri.diagnosis,penilaian_medis_ralan_geriatri.diagnosis2,penilaian_medis_ralan_geriatri.permasalahan,penilaian_medis_ralan_geriatri.terapi,"+
-                        "penilaian_medis_ralan_geriatri.tindakan,penilaian_medis_ralan_geriatri.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_medis_ralan_geriatri.keterangan_thorak,"+
-                        "penilaian_medis_ralan_geriatri.keterangan_abdomen,penilaian_medis_ralan_geriatri.keterangan_ekstremitas "+
+                        "penilaian_medis_ralan_geriatri.kd_dokter,dokter.nm_dokter,penilaian_medis_ralan_geriatri.anamnesis,penilaian_medis_ralan_geriatri.hubungan,penilaian_medis_ralan_geriatri.keluhan_utama,"+
+                        "penilaian_medis_ralan_geriatri.rps,penilaian_medis_ralan_geriatri.rpd,penilaian_medis_ralan_geriatri.rpo,penilaian_medis_ralan_geriatri.alergi,penilaian_medis_ralan_geriatri.tulang_belakang,"+
+                        "penilaian_medis_ralan_geriatri.td,penilaian_medis_ralan_geriatri.nadi,penilaian_medis_ralan_geriatri.suhu,penilaian_medis_ralan_geriatri.rr,penilaian_medis_ralan_geriatri.kondisi_umum,"+
+                        "penilaian_medis_ralan_geriatri.status_psikologis_gds,penilaian_medis_ralan_geriatri.kondisi_sosial,penilaian_medis_ralan_geriatri.status_kognitif_mmse,penilaian_medis_ralan_geriatri.kepala,"+
+                        "penilaian_medis_ralan_geriatri.keterangan_kepala,penilaian_medis_ralan_geriatri.thoraks,penilaian_medis_ralan_geriatri.keterangan_thoraks,penilaian_medis_ralan_geriatri.abdomen,"+
+                        "penilaian_medis_ralan_geriatri.keterangan_abdomen,penilaian_medis_ralan_geriatri.ekstremitas,penilaian_medis_ralan_geriatri.keterangan_ekstremitas,penilaian_medis_ralan_geriatri.Integument_kebersihan,"+
+                        "penilaian_medis_ralan_geriatri.Integument_warna,penilaian_medis_ralan_geriatri.Integument_kelembaban,penilaian_medis_ralan_geriatri.Integument_gangguan_kulit,penilaian_medis_ralan_geriatri.status_fungsional,"+
+                        "penilaian_medis_ralan_geriatri.skrining_jatuh,penilaian_medis_ralan_geriatri.status_nutrisi,penilaian_medis_ralan_geriatri.lainnya,penilaian_medis_ralan_geriatri.lab,penilaian_medis_ralan_geriatri.rad,"+
+                        "penilaian_medis_ralan_geriatri.pemeriksaan,penilaian_medis_ralan_geriatri.diagnosis,penilaian_medis_ralan_geriatri.diagnosis2,penilaian_medis_ralan_geriatri.permasalahan,penilaian_medis_ralan_geriatri.terapi,"+
+                        "penilaian_medis_ralan_geriatri.tindakan,penilaian_medis_ralan_geriatri.edukasi "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_geriatri on reg_periksa.no_rawat=penilaian_medis_ralan_geriatri.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_geriatri.kd_dokter=dokter.kd_dokter where "+
@@ -2492,11 +2446,12 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),rs.getString("kondisi"),rs.getString("status"),
-                        rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("bb"),rs.getString("nyeri"),rs.getString("gcs"),rs.getString("kepala")+", "+rs.getString("keterangan_kepala"),
-                        rs.getString("thoraks")+", "+rs.getString("keterangan_thorak"),rs.getString("abdomen")+", "+rs.getString("keterangan_abdomen"),rs.getString("ekstremitas")+", "+rs.getString("keterangan_ekstremitas"),
-                        rs.getString("lainnya"),rs.getString("lab"),rs.getString("rad"),rs.getString("penunjanglain"),rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),
-                        rs.getString("tindakan"),rs.getString("edukasi")
+                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),rs.getString("kondisi_umum"),
+                        rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("tulang_belakang"),rs.getString("kepala"),rs.getString("keterangan_kepala"),rs.getString("thoraks"),
+                        rs.getString("keterangan_thoraks"),rs.getString("abdomen"),rs.getString("keterangan_abdomen"),rs.getString("ekstremitas"),rs.getString("keterangan_ekstremitas"),rs.getString("Integument_kebersihan"),
+                        rs.getString("Integument_warna"),rs.getString("Integument_kelembaban"),rs.getString("Integument_gangguan_kulit"),rs.getString("lainnya"),rs.getString("kondisi_sosial"),rs.getString("status_psikologis_gds"),
+                        rs.getString("status_kognitif_mmse"),rs.getString("status_nutrisi"),rs.getString("skrining_jatuh"),rs.getString("status_fungsional"),rs.getString("lab"),rs.getString("rad"),rs.getString("penunjanglain"),
+                        rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),rs.getString("tindakan"),rs.getString("edukasi")
                     });
                 }
             } catch (Exception e) {

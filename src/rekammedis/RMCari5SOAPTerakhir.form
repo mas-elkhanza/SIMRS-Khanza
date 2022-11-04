@@ -73,7 +73,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="tbKamar" noResource="true"/>
                 <Property name="rowHeight" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="65" type="code"/>
+                  <Connection code="75" type="code"/>
                 </Property>
               </Properties>
               <Events>
