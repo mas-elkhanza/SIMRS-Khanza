@@ -5495,9 +5495,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                           }
                     }                   
                 }else if(i==2){
-                    //if(var.getbilling_ranap()==true){
+                    if(akses.getbilling_ranap()==true){
                         MnBillingActionPerformed(null);
-                    //}                    
+                    }                    
                 }else if(i==3){
                     if(akses.getresep_pulang()==true){
                         MnInputResepActionPerformed(null);
@@ -5601,9 +5601,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                           }
                     }                    
                 }else if(i==2){
-                    //if(var.getbilling_ranap()==true){
+                    if(akses.getbilling_ranap()==true){
                         MnBillingActionPerformed(null);
-                    //}                    
+                    }                    
                 }else if(i==3){
                     if(akses.getresep_pulang()==true){
                         MnInputResepActionPerformed(null);

@@ -57,7 +57,7 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,
             psset_tarif,pssetpj,psrekening;
-    private ResultSet rstindakan,rstampil,rscari,rsset_tarif,rssetpj,rsrekening,rslica;
+    private ResultSet rstindakan,rsset_tarif,rssetpj,rsrekening;
     private boolean[] pilih; 
     private String[] kode,nama,kode2,nama2,diagnosaklinik,makroskopik,mikroskopik,kesimpulan,kesan;
     private double[] total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen;

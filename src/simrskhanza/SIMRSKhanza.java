@@ -5,8 +5,6 @@
  */
 package simrskhanza;
 
-import com.formdev.flatlaf.FlatLightLaf;
-import javax.swing.UIManager;
 import usu.widget.util.WidgetUtilities;
 
 /**
