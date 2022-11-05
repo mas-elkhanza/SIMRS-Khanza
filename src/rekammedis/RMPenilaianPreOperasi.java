@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari tim IT RSUD Prembun
+ * By Mas Elkhanza
  */
 
 

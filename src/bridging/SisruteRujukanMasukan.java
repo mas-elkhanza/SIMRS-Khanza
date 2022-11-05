@@ -1111,7 +1111,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getjml2()>=1){            
             Sequel.cariIsi("select no_ktp from pegawai where nik=?",Nama,akses.getkode());
             BtnPegawai.setEnabled(false);
-            Sequel.cariIsi("select nama from pegawai where nik=?",Nama,akses.getkode());
+            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",Nama,akses.getkode());
         }else{
             BtnPegawai.setEnabled(true);
         }    

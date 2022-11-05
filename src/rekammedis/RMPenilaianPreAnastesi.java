@@ -2367,7 +2367,6 @@ public final class RMPenilaianPreAnastesi extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        TglAsuhan.setDate(new Date());
         Diagnosa.setText("");
         RencanaTindakan.setText("");
         TB.setText("");
