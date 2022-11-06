@@ -802,6 +802,7 @@ import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
+import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMUjiFungsiKFR;
 import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
@@ -19352,6 +19353,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningNutrisiDewasaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningNutrisiDewasa aplikasi=new RMSkriningNutrisiDewasa(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20012,7 +20026,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
-            btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri;
+            btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa;
     
     public void isWall(){
         try{            
@@ -23057,6 +23071,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmonitoring_asuhan_gizi()==true){
                 Panelmenu.add(btnMonitoringAsuhanGizi);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_nutrisi_dewasa()==true){
+                Panelmenu.add(btnSkriningNutrisiDewasa);
                 jmlmenu++;
             }
             
@@ -27429,6 +27448,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnMonitoringAsuhanGizi);
             jmlmenu++;
         } 
+        
+        if(akses.getskrining_nutrisi_dewasa()==true){
+            Panelmenu.add(btnSkriningNutrisiDewasa);
+            jmlmenu++;
+        }
         
         if(akses.gettemplate_hasil_radiologi()==true){
             Panelmenu.add(btnMasterTemplateHasilRadiologi);
@@ -32963,6 +32987,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_nutrisi_dewasa()==true){
+            if(btnSkriningNutrisiDewasa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningNutrisiDewasa);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettemplate_hasil_radiologi()==true){
             if(btnMasterTemplateHasilRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterTemplateHasilRadiologi);
@@ -38296,6 +38327,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianTambahanGeriatri.setName("btnPenilaianTambahanGeriatri");
         btnPenilaianTambahanGeriatri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianTambahanGeriatri.addActionListener(this::btnPenilaianTambahanGeriatriActionPerformed);
+        
+        btnSkriningNutrisiDewasa = new widget.ButtonBig();
+        btnSkriningNutrisiDewasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5980339_eat_food_fruit_healthy_meal_icon.png"))); 
+        btnSkriningNutrisiDewasa.setText("Skrining Nutrisi Pasien Dewasa");
+        btnSkriningNutrisiDewasa.setIconTextGap(0);
+        btnSkriningNutrisiDewasa.setName("btnSkriningNutrisiDewasa");
+        btnSkriningNutrisiDewasa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningNutrisiDewasa.addActionListener(this::btnSkriningNutrisiDewasaActionPerformed);
     }
     
 }

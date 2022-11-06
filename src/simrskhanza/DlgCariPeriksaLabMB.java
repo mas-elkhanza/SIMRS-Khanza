@@ -1782,7 +1782,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
                                 Valid.MyReport("rptPeriksaLab2PermintaanMB.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);  
                             }else{
-                                Valid.MyReport("rptPeriksaLab2MB.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);  
+                                Valid.MyReport("rptPeriksaLabMB2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);  
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -2188,7 +2188,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
                                 Valid.MyReportPDF("rptPeriksaLab2PermintaanMB.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
                             }else{
-                                Valid.MyReportPDF("rptPeriksaLab2MB.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                                Valid.MyReportPDF("rptPeriksaLabMB2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);

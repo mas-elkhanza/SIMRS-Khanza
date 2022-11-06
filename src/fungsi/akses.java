@@ -193,7 +193,7 @@ public final class akses {
             penilaian_awal_keperawatan_psikiatri=false,pemantauan_pews_anak=false,surat_pulang_atas_permintaan_sendiri=false,template_hasil_radiologi=false,
             laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false,
             perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false,penilaian_lanjutan_resiko_jatuh_anak=false,penilaian_awal_medis_ralan_geriatri=false,
-            penilaian_tambahan_pasien_geriatri=false;
+            penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1096,6 +1096,7 @@ public final class akses {
                         akses.penilaian_lanjutan_resiko_jatuh_anak=true;
                         akses.penilaian_awal_medis_ralan_geriatri=true;
                         akses.penilaian_tambahan_pasien_geriatri=true;
+                        akses.skrining_nutrisi_dewasa=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1982,6 +1983,7 @@ public final class akses {
                         akses.penilaian_lanjutan_resiko_jatuh_anak=rs2.getBoolean("penilaian_lanjutan_resiko_jatuh_anak");
                         akses.penilaian_awal_medis_ralan_geriatri=rs2.getBoolean("penilaian_awal_medis_ralan_geriatri");
                         akses.penilaian_tambahan_pasien_geriatri=rs2.getBoolean("penilaian_tambahan_pasien_geriatri");
+                        akses.skrining_nutrisi_dewasa=rs2.getBoolean("skrining_nutrisi_dewasa");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2866,6 +2868,7 @@ public final class akses {
                         akses.penilaian_lanjutan_resiko_jatuh_anak=false;
                         akses.penilaian_awal_medis_ralan_geriatri=false;
                         akses.penilaian_tambahan_pasien_geriatri=false;
+                        akses.skrining_nutrisi_dewasa=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3807,4 +3810,5 @@ public final class akses {
     public static boolean getpenilaian_lanjutan_resiko_jatuh_anak(){return akses.penilaian_lanjutan_resiko_jatuh_anak;}
     public static boolean getpenilaian_awal_medis_ralan_geriatri(){return akses.penilaian_awal_medis_ralan_geriatri;}
     public static boolean getpenilaian_tambahan_pasien_geriatri(){return akses.penilaian_tambahan_pasien_geriatri;}
+    public static boolean getskrining_nutrisi_dewasa(){return akses.skrining_nutrisi_dewasa;}
 }   
