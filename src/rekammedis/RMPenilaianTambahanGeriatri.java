@@ -291,7 +291,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         jLabel22 = new widget.Label();
         MemerlukanAntibitotika = new widget.ComboBox();
         jLabel23 = new widget.Label();
-        Infeksi = new widget.ComboBox();
+        InfeksiDalam = new widget.ComboBox();
         jLabel24 = new widget.Label();
         Immunodefisiensi = new widget.ComboBox();
         jLabel25 = new widget.Label();
@@ -623,7 +623,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2022 16:06:04" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2022 06:50:04" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -842,15 +842,15 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(65, 380, 570, 23);
 
-        Infeksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Infeksi.setName("Infeksi"); // NOI18N
-        Infeksi.addKeyListener(new java.awt.event.KeyAdapter() {
+        InfeksiDalam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        InfeksiDalam.setName("InfeksiDalam"); // NOI18N
+        InfeksiDalam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                InfeksiKeyPressed(evt);
+                InfeksiDalamKeyPressed(evt);
             }
         });
-        FormInput.add(Infeksi);
-        Infeksi.setBounds(644, 380, 80, 23);
+        FormInput.add(InfeksiDalam);
+        InfeksiDalam.setBounds(644, 380, 80, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel24.setText("-  Adanya Riwayat Keluarga Terhadap Immunodefisiensi Primer");
@@ -1133,7 +1133,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1147,7 +1147,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1228,7 +1228,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
                     AsalMasuk.getSelectedItem().toString(),KondisiMasuk.getSelectedItem().toString(),KeteranganKondisiMasuk.getText(),Anamnesis.getSelectedItem().toString(),
                     DiagnosaMedis.getText(),InfeksiTelinga.getSelectedItem().toString(),Sinus.getSelectedItem().toString(),Antibiotik.getSelectedItem().toString(),
                     Pneumonia.getSelectedItem().toString(),Abses.getSelectedItem().toString(),Sariawan.getSelectedItem().toString(),MemerlukanAntibitotika.getSelectedItem().toString(),
-                    Infeksi.getSelectedItem().toString(),Immunodefisiensi.getSelectedItem().toString(),JenisKanker.getSelectedItem().toString(),InfeksiOportunistik.getSelectedItem().toString(),
+                    InfeksiDalam.getSelectedItem().toString(),Immunodefisiensi.getSelectedItem().toString(),JenisKanker.getSelectedItem().toString(),InfeksiOportunistik.getSelectedItem().toString(),
                     IstirahatTidur.getSelectedItem().toString(),KeteranganIstirahat.getText(),PenggunaanObatTidur.getSelectedItem().toString(),KeteranganPenggunaanObatTidur.getText(),
                     Olahraga.getSelectedItem().toString(),KeteranganOlahraga.getText(),Mobilitas.getSelectedItem().toString(),PerawatanDiri.getSelectedItem().toString(),
                     AktivitasSeharihari.getSelectedItem().toString(),NyeriTidakNyaman.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString()
@@ -1282,22 +1282,18 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
-        }else if(RencanaTindakan.getText().trim().equals("")){
-            Valid.textKosong(RencanaTindakan,"Rencana Tindakan");
-        }else if(RencanaTindakan.getText().trim().equals("")){
-            Valid.textKosong(RencanaTindakan,"Rencana Tindakan");
+        }else if(NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(BtnPetugas,"Dokter/Petugas");
+        }else if(DiagnosaMedis.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaMedis,"Diagnosa Medis");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh pegawai yang bersangkutan..!!");
@@ -1306,7 +1302,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1336,39 +1332,37 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
             try{
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_tambahan_geriatri.tanggal,"+
-                        "penilaian_tambahan_geriatri.nik,penilaian_tambahan_geriatri.tanggal_operasi,penilaian_tambahan_geriatri.diagnosa,penilaian_tambahan_geriatri.rencana_tindakan,penilaian_tambahan_geriatri.tb,"+
-                        "penilaian_tambahan_geriatri.bb,penilaian_tambahan_geriatri.td,penilaian_tambahan_geriatri.io2,penilaian_tambahan_geriatri.nadi,penilaian_tambahan_geriatri.pernapasan,penilaian_tambahan_geriatri.suhu,"+
-                        "penilaian_tambahan_geriatri.fisik_cardiovasculer,penilaian_tambahan_geriatri.fisik_paru,penilaian_tambahan_geriatri.fisik_abdomen,penilaian_tambahan_geriatri.fisik_extrimitas,"+
-                        "penilaian_tambahan_geriatri.fisik_endokrin,penilaian_tambahan_geriatri.fisik_ginjal,penilaian_tambahan_geriatri.fisik_obatobatan,penilaian_tambahan_geriatri.fisik_laborat,"+
-                        "penilaian_tambahan_geriatri.fisik_penunjang,penilaian_tambahan_geriatri.riwayat_penyakit_alergiobat,penilaian_tambahan_geriatri.riwayat_penyakit_alergilainnya,"+
-                        "penilaian_tambahan_geriatri.riwayat_penyakit_terapi,penilaian_tambahan_geriatri.riwayat_kebiasaan_merokok,penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_merokok,"+
-                        "penilaian_tambahan_geriatri.riwayat_kebiasaan_alkohol,penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_alkohol,penilaian_tambahan_geriatri.riwayat_kebiasaan_obat,"+
-                        "penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_obat,penilaian_tambahan_geriatri.riwayat_medis_cardiovasculer,penilaian_tambahan_geriatri.riwayat_medis_respiratory,"+
-                        "penilaian_tambahan_geriatri.riwayat_medis_endocrine,penilaian_tambahan_geriatri.riwayat_medis_lainnya,penilaian_tambahan_geriatri.asa,penilaian_tambahan_geriatri.puasa,"+
-                        "penilaian_tambahan_geriatri.rencana_anestesi,penilaian_tambahan_geriatri.rencana_perawatan,penilaian_tambahan_geriatri.catatan_khusus,pegawai.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_tambahan_geriatri on reg_periksa.no_rawat=penilaian_tambahan_geriatri.no_rawat "+
-                        "inner join pegawai on penilaian_tambahan_geriatri.nik=pegawai.nik where "+
-                        "penilaian_tambahan_geriatri.tanggal between ? and ? order by penilaian_tambahan_geriatri.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_tambahan_geriatri.tanggal,"+
+                            "penilaian_tambahan_geriatri.nik,pegawai.nama,penilaian_tambahan_geriatri.asal_masuk,penilaian_tambahan_geriatri.kondisi_masuk,penilaian_tambahan_geriatri.keterangan_kondisi_masuk,"+
+                            "penilaian_tambahan_geriatri.anamnesis,penilaian_tambahan_geriatri.diagnosa_medis,penilaian_tambahan_geriatri.riwayat_immuno_telinga,penilaian_tambahan_geriatri.riwayat_immuno_sinus,"+
+                            "penilaian_tambahan_geriatri.riwayat_immuno_antibiotik,penilaian_tambahan_geriatri.riwayat_immuno_pneumonia,penilaian_tambahan_geriatri.riwayat_immuno_abses,"+
+                            "penilaian_tambahan_geriatri.riwayat_immuno_sariawan,penilaian_tambahan_geriatri.riwayat_immuno_memerlukan_antibiotik,penilaian_tambahan_geriatri.riwayat_immuno_infeksi_dalam,"+
+                            "penilaian_tambahan_geriatri.riwayat_immuno_immunodefisiensi_primer,penilaian_tambahan_geriatri.riwayat_immuno_jenis_kangker,penilaian_tambahan_geriatri.riwayat_immuno_infeksi_oportunistik,"+
+                            "penilaian_tambahan_geriatri.pola_aktifitas_tidur,penilaian_tambahan_geriatri.keterangan_pola_aktifitas_tidur,penilaian_tambahan_geriatri.pola_aktifitas_obat_tidur,"+
+                            "penilaian_tambahan_geriatri.keterangan_pola_aktifitas_obat_tidur,penilaian_tambahan_geriatri.pola_aktifitas_olahraga,penilaian_tambahan_geriatri.keterangan_pola_aktifitas_olahraga,"+
+                            "penilaian_tambahan_geriatri.kualitas_hidup_mobilitas,penilaian_tambahan_geriatri.kualitas_hidup_perawatan_diri,penilaian_tambahan_geriatri.kualitas_hidup_aktifitas_seharihari,"+
+                            "penilaian_tambahan_geriatri.kualitas_hidup_rasa_nyeri,penilaian_tambahan_geriatri.skala_nyeri "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join penilaian_tambahan_geriatri on reg_periksa.no_rawat=penilaian_tambahan_geriatri.no_rawat "+
+                            "inner join pegawai on penilaian_tambahan_geriatri.nik=pegawai.nik where "+
+                            "penilaian_tambahan_geriatri.tanggal between ? and ? order by penilaian_tambahan_geriatri.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_tambahan_geriatri.tanggal,"+
-                        "penilaian_tambahan_geriatri.nik,penilaian_tambahan_geriatri.tanggal_operasi,penilaian_tambahan_geriatri.diagnosa,penilaian_tambahan_geriatri.rencana_tindakan,penilaian_tambahan_geriatri.tb,"+
-                        "penilaian_tambahan_geriatri.bb,penilaian_tambahan_geriatri.td,penilaian_tambahan_geriatri.io2,penilaian_tambahan_geriatri.nadi,penilaian_tambahan_geriatri.pernapasan,penilaian_tambahan_geriatri.suhu,"+
-                        "penilaian_tambahan_geriatri.fisik_cardiovasculer,penilaian_tambahan_geriatri.fisik_paru,penilaian_tambahan_geriatri.fisik_abdomen,penilaian_tambahan_geriatri.fisik_extrimitas,"+
-                        "penilaian_tambahan_geriatri.fisik_endokrin,penilaian_tambahan_geriatri.fisik_ginjal,penilaian_tambahan_geriatri.fisik_obatobatan,penilaian_tambahan_geriatri.fisik_laborat,"+
-                        "penilaian_tambahan_geriatri.fisik_penunjang,penilaian_tambahan_geriatri.riwayat_penyakit_alergiobat,penilaian_tambahan_geriatri.riwayat_penyakit_alergilainnya,"+
-                        "penilaian_tambahan_geriatri.riwayat_penyakit_terapi,penilaian_tambahan_geriatri.riwayat_kebiasaan_merokok,penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_merokok,"+
-                        "penilaian_tambahan_geriatri.riwayat_kebiasaan_alkohol,penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_alkohol,penilaian_tambahan_geriatri.riwayat_kebiasaan_obat,"+
-                        "penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_obat,penilaian_tambahan_geriatri.riwayat_medis_cardiovasculer,penilaian_tambahan_geriatri.riwayat_medis_respiratory,"+
-                        "penilaian_tambahan_geriatri.riwayat_medis_endocrine,penilaian_tambahan_geriatri.riwayat_medis_lainnya,penilaian_tambahan_geriatri.asa,penilaian_tambahan_geriatri.puasa,"+
-                        "penilaian_tambahan_geriatri.rencana_anestesi,penilaian_tambahan_geriatri.rencana_perawatan,penilaian_tambahan_geriatri.catatan_khusus,pegawai.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_tambahan_geriatri on reg_periksa.no_rawat=penilaian_tambahan_geriatri.no_rawat "+
-                        "inner join pegawai on penilaian_tambahan_geriatri.nik=pegawai.nik where "+
-                        "penilaian_tambahan_geriatri.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_tambahan_geriatri.nik like ? or pegawai.nama like ?) order by penilaian_tambahan_geriatri.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_tambahan_geriatri.tanggal,"+
+                            "penilaian_tambahan_geriatri.nik,pegawai.nama,penilaian_tambahan_geriatri.asal_masuk,penilaian_tambahan_geriatri.kondisi_masuk,penilaian_tambahan_geriatri.keterangan_kondisi_masuk,"+
+                            "penilaian_tambahan_geriatri.anamnesis,penilaian_tambahan_geriatri.diagnosa_medis,penilaian_tambahan_geriatri.riwayat_immuno_telinga,penilaian_tambahan_geriatri.riwayat_immuno_sinus,"+
+                            "penilaian_tambahan_geriatri.riwayat_immuno_antibiotik,penilaian_tambahan_geriatri.riwayat_immuno_pneumonia,penilaian_tambahan_geriatri.riwayat_immuno_abses,"+
+                            "penilaian_tambahan_geriatri.riwayat_immuno_sariawan,penilaian_tambahan_geriatri.riwayat_immuno_memerlukan_antibiotik,penilaian_tambahan_geriatri.riwayat_immuno_infeksi_dalam,"+
+                            "penilaian_tambahan_geriatri.riwayat_immuno_immunodefisiensi_primer,penilaian_tambahan_geriatri.riwayat_immuno_jenis_kangker,penilaian_tambahan_geriatri.riwayat_immuno_infeksi_oportunistik,"+
+                            "penilaian_tambahan_geriatri.pola_aktifitas_tidur,penilaian_tambahan_geriatri.keterangan_pola_aktifitas_tidur,penilaian_tambahan_geriatri.pola_aktifitas_obat_tidur,"+
+                            "penilaian_tambahan_geriatri.keterangan_pola_aktifitas_obat_tidur,penilaian_tambahan_geriatri.pola_aktifitas_olahraga,penilaian_tambahan_geriatri.keterangan_pola_aktifitas_olahraga,"+
+                            "penilaian_tambahan_geriatri.kualitas_hidup_mobilitas,penilaian_tambahan_geriatri.kualitas_hidup_perawatan_diri,penilaian_tambahan_geriatri.kualitas_hidup_aktifitas_seharihari,"+
+                            "penilaian_tambahan_geriatri.kualitas_hidup_rasa_nyeri,penilaian_tambahan_geriatri.skala_nyeri "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join penilaian_tambahan_geriatri on reg_periksa.no_rawat=penilaian_tambahan_geriatri.no_rawat "+
+                            "inner join pegawai on penilaian_tambahan_geriatri.nik=pegawai.nik where "+
+                            "penilaian_tambahan_geriatri.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                            "penilaian_tambahan_geriatri.nik like ? or pegawai.nama like ?) order by penilaian_tambahan_geriatri.tanggal");
                 }
 
                 try {
@@ -1383,7 +1377,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
                         ps.setString(5,"%"+TCari.getText()+"%");
                         ps.setString(6,"%"+TCari.getText()+"%");
                         ps.setString(7,"%"+TCari.getText()+"%");
-                    }  
+                    }
                     rs=ps.executeQuery();
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
@@ -1393,46 +1387,36 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Petugas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dokter/Petugas</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Operasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>IO2</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pernapasan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Cardiovasculer</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Paru</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Abdomen</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Extrimitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Endokrin</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Ginjal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Obat-obatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Laborat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen Fisik Penunjang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Alergi Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Alergi Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Terapi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kebiasaan Merokok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml.Rokok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kebiasaan Alkohol</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml.Alko</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penggunaan Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Obat Dikonsumsi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Medis Cardiovasculer</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Medis Respiratory</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Medis Endocrine</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Medis Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Angka ASA</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Mulai Puasa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Perawatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Catatan Khusus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kondisi Masuk</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Kondisi Saat Masuk</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Masuk</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asal Masuk</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Infeksi Telinga Baru</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Infeksi Berat Sinus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Antibiotik Tanpa Dampak</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pneumonia Sebanyak 2</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Abses Berulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Sariawan Yang Menetap</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Antibiotika Intravena</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Infeksi Dalam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Immunodefisiensi Primer</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Kanker</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Infeksi Oportunistik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Perawatan Diri Sendiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Mobilitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Aktivitas Sehari-hari</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nyeri/Tidak Nyaman</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Nyeri Dengan FPS-hv</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Istirahat/Tidur</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Istirahat/Tidur</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penggunaan Obat Tidur</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Penggunaan Obat Tidur</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Olahraga</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Olahraga</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1446,43 +1430,33 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("nik")+"</td>"+
                                "<td valign='top'>"+rs.getString("nama")+"</td>"+
                                "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tanggal_operasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("diagnosa")+"</td>"+
-                               "<td valign='top'>"+rs.getString("rencana_tindakan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tb")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bb")+"</td>"+
-                               "<td valign='top'>"+rs.getString("td")+"</td>"+
-                               "<td valign='top'>"+rs.getString("io2")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nadi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pernapasan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("suhu")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_cardiovasculer")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_paru")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_abdomen")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_extrimitas")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_endokrin")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_ginjal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_obatobatan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_laborat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("fisik_penunjang")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_penyakit_alergiobat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_penyakit_alergilainnya")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_penyakit_terapi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_kebiasaan_merokok")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_kebiasaan_ket_merokok")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_kebiasaan_alkohol")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_kebiasaan_ket_alkohol")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_kebiasaan_obat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_kebiasaan_ket_obat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_medis_cardiovasculer")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_medis_respiratory")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_medis_endocrine")+"</td>"+
-                               "<td valign='top'>"+rs.getString("riwayat_medis_lainnya")+"</td>"+
-                               "<td valign='top'>"+rs.getString("asa")+"</td>"+
-                               "<td valign='top'>"+rs.getString("puasa")+"</td>"+
-                               "<td valign='top'>"+rs.getString("rencana_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("rencana_perawatan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("catatan_khusus")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kondisi_masuk")+"</td>"+
+                               "<td valign='top'>"+rs.getString("keterangan_kondisi_masuk")+"</td>"+
+                               "<td valign='top'>"+rs.getString("anamnesis")+"</td>"+
+                               "<td valign='top'>"+rs.getString("diagnosa_medis")+"</td>"+
+                               "<td valign='top'>"+rs.getString("asal_masuk")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_telinga")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_sinus")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_antibiotik")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_pneumonia")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_abses")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_sariawan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_memerlukan_antibiotik")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_infeksi_dalam")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_immunodefisiensi_primer")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_jenis_kangker")+"</td>"+
+                               "<td valign='top'>"+rs.getString("riwayat_immuno_infeksi_oportunistik")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kualitas_hidup_perawatan_diri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kualitas_hidup_mobilitas")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kualitas_hidup_aktifitas_seharihari")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kualitas_hidup_rasa_nyeri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("skala_nyeri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("pola_aktifitas_tidur")+"</td>"+
+                               "<td valign='top'>"+rs.getString("keterangan_pola_aktifitas_tidur")+"</td>"+
+                               "<td valign='top'>"+rs.getString("pola_aktifitas_obat_tidur")+"</td>"+
+                               "<td valign='top'>"+rs.getString("keterangan_pola_aktifitas_obat_tidur")+"</td>"+
+                               "<td valign='top'>"+rs.getString("pola_aktifitas_olahraga")+"</td>"+
+                               "<td valign='top'>"+rs.getString("keterangan_pola_aktifitas_olahraga")+"</td>"+
                             "</tr>");
                     }
                     LoadHTML.setText(
@@ -1691,7 +1665,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
     }//GEN-LAST:event_InfeksiTelingaKeyPressed
 
     private void SinusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SinusKeyPressed
-        Valid.pindah(evt,Infeksi,Antibiotik);
+        Valid.pindah(evt,InfeksiDalam,Antibiotik);
     }//GEN-LAST:event_SinusKeyPressed
 
     private void AntibiotikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AntibiotikKeyPressed
@@ -1711,15 +1685,15 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
     }//GEN-LAST:event_SariawanKeyPressed
 
     private void MemerlukanAntibitotikaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MemerlukanAntibitotikaKeyPressed
-        Valid.pindah(evt,Sariawan,Infeksi);
+        Valid.pindah(evt,Sariawan,InfeksiDalam);
     }//GEN-LAST:event_MemerlukanAntibitotikaKeyPressed
 
-    private void InfeksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InfeksiKeyPressed
+    private void InfeksiDalamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InfeksiDalamKeyPressed
         Valid.pindah(evt,MemerlukanAntibitotika,Immunodefisiensi);
-    }//GEN-LAST:event_InfeksiKeyPressed
+    }//GEN-LAST:event_InfeksiDalamKeyPressed
 
     private void ImmunodefisiensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImmunodefisiensiKeyPressed
-        Valid.pindah(evt,Infeksi,JenisKanker);
+        Valid.pindah(evt,InfeksiDalam,JenisKanker);
     }//GEN-LAST:event_ImmunodefisiensiKeyPressed
 
     private void JenisKankerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisKankerKeyPressed
@@ -1810,7 +1784,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
     private widget.TextBox DiagnosaMedis;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Immunodefisiensi;
-    private widget.ComboBox Infeksi;
+    private widget.ComboBox InfeksiDalam;
     private widget.ComboBox InfeksiOportunistik;
     private widget.ComboBox InfeksiTelinga;
     private widget.ComboBox IstirahatTidur;
@@ -1992,7 +1966,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         Abses.setSelectedIndex(0);
         Sariawan.setSelectedIndex(0);
         MemerlukanAntibitotika.setSelectedIndex(0);
-        Infeksi.setSelectedIndex(0);
+        InfeksiDalam.setSelectedIndex(0);
         Immunodefisiensi.setSelectedIndex(0);
         JenisKanker.setSelectedIndex(0);
         InfeksiOportunistik.setSelectedIndex(0);
@@ -2018,7 +1992,33 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            DiagnosaMedis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            KondisiMasuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            KeteranganKondisiMasuk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Anamnesis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            DiagnosaMedis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            AsalMasuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            InfeksiTelinga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Sinus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Antibiotik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Pneumonia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Abses.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Sariawan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            MemerlukanAntibitotika.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            InfeksiDalam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Immunodefisiensi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            JenisKanker.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            InfeksiOportunistik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            PerawatanDiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Mobilitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            AktivitasSeharihari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            NyeriTidakNyaman.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            SkalaNyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            IstirahatTidur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            KeteranganIstirahat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            PenggunaanObatTidur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            KeteranganPenggunaanObatTidur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            Olahraga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            KeteranganOlahraga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
@@ -2090,25 +2090,25 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penilaian_tambahan_geriatri","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,nik=?,tanggal_operasi=?,diagnosa=?,rencana_tindakan=?,tb=?,bb=?,td=?,io2=?,nadi=?,"+
-                "pernapasan=?,suhu=?,fisik_cardiovasculer=?,fisik_paru=?,fisik_abdomen=?,fisik_extrimitas=?,fisik_endokrin=?,fisik_ginjal=?,fisik_obatobatan=?,fisik_laborat=?,fisik_penunjang=?,"+
-                "riwayat_penyakit_alergiobat=?,riwayat_penyakit_alergilainnya=?,riwayat_penyakit_terapi=?,riwayat_kebiasaan_merokok=?,riwayat_kebiasaan_ket_merokok=?,riwayat_kebiasaan_alkohol=?,"+
-                "riwayat_kebiasaan_ket_alkohol=?,riwayat_kebiasaan_obat=?,riwayat_kebiasaan_ket_obat=?,riwayat_medis_cardiovasculer=?,riwayat_medis_respiratory=?,riwayat_medis_endocrine=?,"+
-                "riwayat_medis_lainnya=?,asa=?,puasa=?,rencana_anestesi=?,rencana_perawatan=?,catatan_khusus=?",42,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                Valid.SetTgl(TglOperasi.getSelectedItem()+"")+" "+TglOperasi.getSelectedItem().toString().substring(11,19),Diagnosa.getText(),RencanaTindakan.getText(), 
-                TB.getText(),BB.getText(),TD.getText(),IO2.getText(),Nadi.getText(),Pernapasan.getText(),Suhu.getText(),FisikCardio.getText(),FisikParu.getText(),
-                FisikAbdomen.getText(),FisikExtrimitas.getText(),FisikEndokrin.getText(),FisikGinjal.getText(),FisikObat.getText(),FisikLaborat.getText(), 
-                FisikPenunjang.getText(),PenyakitAlergiObat.getText(),PenyakitAlergiLainnya.getText(),PenyakitTerapi.getText(),PenyakitKebiasaanMerokok.getSelectedItem().toString(), 
-                PenyakitKebiasaanJumlahRokok.getText(),PenyakitKebiasaanAlkohol.getSelectedItem().toString(),PenyakitKebiasaanJumlahAlkohol.getText(),
-                PenyakitKebiasaanObat.getSelectedItem().toString(),PenyakitKebiasaanObatDiminum.getText(),MedisCardio.getText(),MedisRespiratory.getText(),MedisEndocrine.getText(),
-                MedisLainnya.getText(),AngkaASA.getSelectedItem().toString(),Valid.SetTgl(TglPuasa.getSelectedItem()+"")+" "+TglPuasa.getSelectedItem().toString().substring(11,19), 
-                RencanaAnestesi.getSelectedItem().toString(),RencanaPerawatan.getText(),CatatanKhusus.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()
+        if(Sequel.mengedittf("penilaian_tambahan_geriatri","no_rawat=?","no_rawat=?,tanggal=?,nik=?,asal_masuk=?,kondisi_masuk=?,keterangan_kondisi_masuk=?,anamnesis=?,diagnosa_medis=?,"+
+                "riwayat_immuno_telinga=?,riwayat_immuno_sinus=?,riwayat_immuno_antibiotik=?,riwayat_immuno_pneumonia=?,riwayat_immuno_abses=?,riwayat_immuno_sariawan=?,"+
+                "riwayat_immuno_memerlukan_antibiotik=?,riwayat_immuno_infeksi_dalam=?,riwayat_immuno_immunodefisiensi_primer=?,riwayat_immuno_jenis_kangker=?,riwayat_immuno_infeksi_oportunistik=?,"+
+                "pola_aktifitas_tidur=?,keterangan_pola_aktifitas_tidur=?,pola_aktifitas_obat_tidur=?,keterangan_pola_aktifitas_obat_tidur=?,pola_aktifitas_olahraga=?,"+
+                "keterangan_pola_aktifitas_olahraga=?,kualitas_hidup_mobilitas=?,kualitas_hidup_perawatan_diri=?,kualitas_hidup_aktifitas_seharihari=?,kualitas_hidup_rasa_nyeri=?,"+
+                "skala_nyeri=?",31,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),
+                AsalMasuk.getSelectedItem().toString(),KondisiMasuk.getSelectedItem().toString(),KeteranganKondisiMasuk.getText(),Anamnesis.getSelectedItem().toString(),
+                DiagnosaMedis.getText(),InfeksiTelinga.getSelectedItem().toString(),Sinus.getSelectedItem().toString(),Antibiotik.getSelectedItem().toString(),
+                Pneumonia.getSelectedItem().toString(),Abses.getSelectedItem().toString(),Sariawan.getSelectedItem().toString(),MemerlukanAntibitotika.getSelectedItem().toString(),
+                InfeksiDalam.getSelectedItem().toString(),Immunodefisiensi.getSelectedItem().toString(),JenisKanker.getSelectedItem().toString(),InfeksiOportunistik.getSelectedItem().toString(),
+                IstirahatTidur.getSelectedItem().toString(),KeteranganIstirahat.getText(),PenggunaanObatTidur.getSelectedItem().toString(),KeteranganPenggunaanObatTidur.getText(),
+                Olahraga.getSelectedItem().toString(),KeteranganOlahraga.getText(),Mobilitas.getSelectedItem().toString(),PerawatanDiri.getSelectedItem().toString(),
+                AktivitasSeharihari.getSelectedItem().toString(),NyeriTidakNyaman.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();
                TabRawat.setSelectedIndex(1);
-        }*/
+        }
     }
 }
