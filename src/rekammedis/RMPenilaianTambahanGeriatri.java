@@ -51,6 +51,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
     private int i=0;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private StringBuilder htmlContent;
+    private String finger="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -347,9 +348,9 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Pre Anestesi");
+        MnPenilaianMedis.setText("Laporan Penilaian Tambahan Pasien Geriatri");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(270, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianMedisActionPerformed(evt);
@@ -1621,22 +1622,21 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptCetakPenilaianPreAnestesi.jasper","report","::[ Laporan Penilaian Pre Anestesi ]::",
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
+            Valid.MyReportqry("rptCetakPenilaianTambahanGeriatri.jasper","report","::[ Laporan Penilaian Tambahan Geriatri ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_tambahan_geriatri.tanggal,"+
-                "penilaian_tambahan_geriatri.nik,DATE_FORMAT(penilaian_tambahan_geriatri.tanggal_operasi,'%d-%m-%Y %H:%m:%s') as tanggal_operasi,penilaian_tambahan_geriatri.diagnosa,"+
-                "penilaian_tambahan_geriatri.rencana_tindakan,penilaian_tambahan_geriatri.tb,penilaian_tambahan_geriatri.bb,penilaian_tambahan_geriatri.td,penilaian_tambahan_geriatri.io2,"+
-                "penilaian_tambahan_geriatri.nadi,penilaian_tambahan_geriatri.pernapasan,penilaian_tambahan_geriatri.suhu,penilaian_tambahan_geriatri.fisik_cardiovasculer,penilaian_tambahan_geriatri.fisik_paru,"+
-                "penilaian_tambahan_geriatri.fisik_abdomen,penilaian_tambahan_geriatri.fisik_extrimitas,penilaian_tambahan_geriatri.fisik_endokrin,penilaian_tambahan_geriatri.fisik_ginjal,"+
-                "penilaian_tambahan_geriatri.fisik_obatobatan,penilaian_tambahan_geriatri.fisik_laborat,penilaian_tambahan_geriatri.fisik_penunjang,penilaian_tambahan_geriatri.riwayat_penyakit_alergiobat,"+
-                "penilaian_tambahan_geriatri.riwayat_penyakit_alergilainnya,penilaian_tambahan_geriatri.riwayat_penyakit_terapi,penilaian_tambahan_geriatri.riwayat_kebiasaan_merokok,"+
-                "penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_merokok,penilaian_tambahan_geriatri.riwayat_kebiasaan_alkohol,penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_alkohol,"+
-                "penilaian_tambahan_geriatri.riwayat_kebiasaan_obat,penilaian_tambahan_geriatri.riwayat_kebiasaan_ket_obat,penilaian_tambahan_geriatri.riwayat_medis_cardiovasculer,"+
-                "penilaian_tambahan_geriatri.riwayat_medis_respiratory,penilaian_tambahan_geriatri.riwayat_medis_endocrine,penilaian_tambahan_geriatri.riwayat_medis_lainnya,"+
-                "penilaian_tambahan_geriatri.asa,DATE_FORMAT(penilaian_tambahan_geriatri.puasa,'%d-%m-%Y %H:%m:%s') as puasa,penilaian_tambahan_geriatri.rencana_anestesi,penilaian_tambahan_geriatri.rencana_perawatan,"+
-                "penilaian_tambahan_geriatri.catatan_khusus,pegawai.nama from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join penilaian_tambahan_geriatri on reg_periksa.no_rawat=penilaian_tambahan_geriatri.no_rawat "+
-                "inner join pegawai on penilaian_tambahan_geriatri.nik=pegawai.nik where penilaian_tambahan_geriatri.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
-                "and penilaian_tambahan_geriatri.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"'",param);
+                "penilaian_tambahan_geriatri.nik,pegawai.nama,penilaian_tambahan_geriatri.asal_masuk,penilaian_tambahan_geriatri.kondisi_masuk,penilaian_tambahan_geriatri.keterangan_kondisi_masuk,"+
+                "penilaian_tambahan_geriatri.anamnesis,penilaian_tambahan_geriatri.diagnosa_medis,penilaian_tambahan_geriatri.riwayat_immuno_telinga,penilaian_tambahan_geriatri.riwayat_immuno_sinus,"+
+                "penilaian_tambahan_geriatri.riwayat_immuno_antibiotik,penilaian_tambahan_geriatri.riwayat_immuno_pneumonia,penilaian_tambahan_geriatri.riwayat_immuno_abses,"+
+                "penilaian_tambahan_geriatri.riwayat_immuno_sariawan,penilaian_tambahan_geriatri.riwayat_immuno_memerlukan_antibiotik,penilaian_tambahan_geriatri.riwayat_immuno_infeksi_dalam,"+
+                "penilaian_tambahan_geriatri.riwayat_immuno_immunodefisiensi_primer,penilaian_tambahan_geriatri.riwayat_immuno_jenis_kangker,penilaian_tambahan_geriatri.riwayat_immuno_infeksi_oportunistik,"+
+                "penilaian_tambahan_geriatri.pola_aktifitas_tidur,penilaian_tambahan_geriatri.keterangan_pola_aktifitas_tidur,penilaian_tambahan_geriatri.pola_aktifitas_obat_tidur,"+
+                "penilaian_tambahan_geriatri.keterangan_pola_aktifitas_obat_tidur,penilaian_tambahan_geriatri.pola_aktifitas_olahraga,penilaian_tambahan_geriatri.keterangan_pola_aktifitas_olahraga,"+
+                "penilaian_tambahan_geriatri.kualitas_hidup_mobilitas,penilaian_tambahan_geriatri.kualitas_hidup_perawatan_diri,penilaian_tambahan_geriatri.kualitas_hidup_aktifitas_seharihari,"+
+                "penilaian_tambahan_geriatri.kualitas_hidup_rasa_nyeri,penilaian_tambahan_geriatri.skala_nyeri from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join penilaian_tambahan_geriatri on reg_periksa.no_rawat=penilaian_tambahan_geriatri.no_rawat inner join pegawai on penilaian_tambahan_geriatri.nik=pegawai.nik "+
+                "where penilaian_tambahan_geriatri.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
