@@ -863,7 +863,7 @@ public final class RMSkriningNutrisiDewasa extends javax.swing.JDialog {
             }
         });
         FormInput.add(SG1);
-        SG1.setBounds(510, 150, 150, 23);
+        SG1.setBounds(530, 150, 130, 23);
 
         Nilai1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "2", "1", "2", "3", "4" }));
         Nilai1.setName("Nilai1"); // NOI18N
@@ -884,7 +884,7 @@ public final class RMSkriningNutrisiDewasa extends javax.swing.JDialog {
         jLabel75.setText("1. Apakah Ada Penurunan Berat Badan Yang Tidak Diinginkan Selama 6 Bulan Terakhir ?");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(45, 150, 440, 23);
+        jLabel75.setBounds(69, 150, 440, 23);
 
         jLabel92.setText("Nilai :");
         jLabel92.setName("jLabel92"); // NOI18N
@@ -895,7 +895,7 @@ public final class RMSkriningNutrisiDewasa extends javax.swing.JDialog {
         jLabel43.setText("2. Apakah Nafsu Makan Berkurang Karena Tidak Nafsu Makan ?");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(45, 180, 440, 23);
+        jLabel43.setBounds(69, 180, 440, 23);
 
         SG2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SG2.setName("SG2"); // NOI18N
@@ -910,7 +910,7 @@ public final class RMSkriningNutrisiDewasa extends javax.swing.JDialog {
             }
         });
         FormInput.add(SG2);
-        SG2.setBounds(510, 180, 150, 23);
+        SG2.setBounds(530, 180, 130, 23);
 
         jLabel69.setText("Nilai :");
         jLabel69.setName("jLabel69"); // NOI18N
@@ -944,7 +944,7 @@ public final class RMSkriningNutrisiDewasa extends javax.swing.JDialog {
         jLabel44.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(45, 210, 440, 23);
+        jLabel44.setBounds(69, 210, 440, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
