@@ -19366,6 +19366,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHasilPemeriksaanUSGActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningNutrisiDewasa aplikasi=new RMSkriningNutrisiDewasa(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20026,7 +20039,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
-            btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa;
+            btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG;
     
     public void isWall(){
         try{            
@@ -23221,6 +23234,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
                 Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_pemeriksaan_usg()==true){
+                Panelmenu.add(btnHasilPemeriksaanUSG);
                 jmlmenu++;
             }
             
@@ -27596,6 +27614,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
             Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+            jmlmenu++;
+        }
+        
+        if(akses.gethasil_pemeriksaan_usg()==true){
+            Panelmenu.add(btnHasilPemeriksaanUSG);
             jmlmenu++;
         }
         
@@ -33197,6 +33220,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gethasil_pemeriksaan_usg()==true){
+            if(btnHasilPemeriksaanUSG.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHasilPemeriksaanUSG);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_medis_ralan_tht()==true){
             if(btnPenilaianAwalMedisRalanTHT.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisRalanTHT);
@@ -38335,6 +38365,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningNutrisiDewasa.setName("btnSkriningNutrisiDewasa");
         btnSkriningNutrisiDewasa.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningNutrisiDewasa.addActionListener(this::btnSkriningNutrisiDewasaActionPerformed);
+        
+        btnHasilPemeriksaanUSG = new widget.ButtonBig();
+        btnHasilPemeriksaanUSG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/375263_scan_scans_ultra sound_ultrasound_icon.png"))); 
+        btnHasilPemeriksaanUSG.setText("Hasil Pemeriksaan USG");
+        btnHasilPemeriksaanUSG.setIconTextGap(0);
+        btnHasilPemeriksaanUSG.setName("btnHasilPemeriksaanUSG");
+        btnHasilPemeriksaanUSG.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHasilPemeriksaanUSG.addActionListener(this::btnHasilPemeriksaanUSGActionPerformed);
     }
     
 }
