@@ -313,6 +313,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPerencanaanPemulangan = new widget.CekBox();
         chkUjiFungsiKFR = new widget.CekBox();
         chkHemodialisa = new widget.CekBox();
+        chkSkriningNutrisiDewasa = new widget.CekBox();
         chkSkriningGiziLanjut = new widget.CekBox();
         chkAsuhanGizi = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhDewasa = new widget.CekBox();
@@ -958,6 +959,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkHemodialisa.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkHemodialisa);
 
+        chkSkriningNutrisiDewasa.setSelected(true);
+        chkSkriningNutrisiDewasa.setText("Skrining Nutrisi Dewasa");
+        chkSkriningNutrisiDewasa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningNutrisiDewasa.setName("chkSkriningNutrisiDewasa"); // NOI18N
+        chkSkriningNutrisiDewasa.setOpaque(false);
+        chkSkriningNutrisiDewasa.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningNutrisiDewasa);
+
         chkSkriningGiziLanjut.setSelected(true);
         chkSkriningGiziLanjut.setText("Skrining Gizi Lanjut");
         chkSkriningGiziLanjut.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1598,6 +1607,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanLanjutanRisikoJatuhAnak.setSelected(true);
             chkAsuhanMedisRalanGeriatri.setSelected(true);
             chkAsuhanTambahanGeriatri.setSelected(true);
+            chkSkriningNutrisiDewasa.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1667,6 +1677,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanLanjutanRisikoJatuhAnak.setSelected(false);
             chkAsuhanMedisRalanGeriatri.setSelected(false);
             chkAsuhanTambahanGeriatri.setSelected(false);
+            chkSkriningNutrisiDewasa.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1800,6 +1811,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkResume;
     private widget.CekBox chkSemua;
     private widget.CekBox chkSkriningGiziLanjut;
+    private widget.CekBox chkSkriningNutrisiDewasa;
     private widget.CekBox chkTambahanBiaya;
     private widget.CekBox chkTindakanRalanDokter;
     private widget.CekBox chkTindakanRalanDokterParamedis;
@@ -10816,6 +10828,95 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
     private void menampilkanGizi(String norawat) {
         try {
+            //menampilkan skrining nutrisi dewasa
+            if(chkSkriningNutrisiDewasa.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select skrining_nutrisi_dewasa.tanggal,skrining_nutrisi_dewasa.td,skrining_nutrisi_dewasa.hr,skrining_nutrisi_dewasa.rr,skrining_nutrisi_dewasa.suhu,"+
+                            "skrining_nutrisi_dewasa.bb,skrining_nutrisi_dewasa.tbpb,skrining_nutrisi_dewasa.spo2,skrining_nutrisi_dewasa.alergi,"+
+                            "skrining_nutrisi_dewasa.sg1,skrining_nutrisi_dewasa.nilai1,skrining_nutrisi_dewasa.sg2,skrining_nutrisi_dewasa.nilai2,"+
+                            "skrining_nutrisi_dewasa.total_hasil,skrining_nutrisi_dewasa.nip,petugas.nama from skrining_nutrisi_dewasa "+
+                            "inner join petugas on skrining_nutrisi_dewasa.nip=petugas.nip where skrining_nutrisi_dewasa.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Skrining Nutrisi Pasien Dewasa</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='70%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "TANDA VITAL :"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>BB : "+rs2.getString("bb")+" Kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB/PB : "+rs2.getString("tbpb")+" Cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TD : "+rs2.getString("td")+" mmHg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HR : "+rs2.getString("hr")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RR : "+rs2.getString("rr")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Suhu : "+rs2.getString("suhu")+" °C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpO2 : "+rs2.getString("spo2")+" %</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Alergi : "+rs2.getString("alergi")+" %</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "SKRINING GIZI AWAL DENGAN MST(MALNUTRITION SCREENING TOOL) BAGI PERAWAT :"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='65%' bgcolor='#FFFAF8' align='center'>Parameter</td>"+
+                                              "<td valign='top' width='25%' bgcolor='#FFFAF8' align='center'>Pilihan</td>"+
+                                              "<td valign='top' width='10%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>1. Apakah Ada Penurunan Berat Badan Yang Tidak Diinginkan Selama 6 Bulan Terakhir ?</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("sg1")+"</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("nilai1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>2. Apakah Nafsu Makan Berkurang Karena Tidak Nafsu Makan ?</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("sg2")+"</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("nilai2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='center' colspan='2'>Total Skor</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("total_hasil")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                       "<br>"+
+                                       "<i>Bila Skor >= 2, Pasien Beresiko Malnutrisi, Konsul Ke Ahli Gizi</i>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+            
             if(chkSkriningGiziLanjut.isSelected()==true){
                 try {
                     rs2=koneksi.prepareStatement(
