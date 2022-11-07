@@ -9,7 +9,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="2021-03-30 07:14:55"/>
+            <StringItem index="0" value="2022-11-07 11:45:18"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
@@ -647,7 +647,7 @@
                         <StringItem index="16" value="0016 Infeksi"/>
                         <StringItem index="17" value="0017 Luka Bakar"/>
                         <StringItem index="18" value="0018 NAPZA"/>
-                        <StringItem index="19" value="&apos;0019 Isolasi Air Borne"/>
+                        <StringItem index="19" value="0019 Isolasi Air Borne"/>
                         <StringItem index="20" value="0020 Isolasi TB MDR"/>
                         <StringItem index="21" value="0021 Kulit dan Kelamin"/>
                         <StringItem index="22" value="0022 Isolasi Imunitas menurun"/>

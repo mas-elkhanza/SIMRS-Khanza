@@ -216,7 +216,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Master Masalah Keperawatan Psikiatri","[L]Master Rencana Keperawatan Psikiatri","[L]Penilaian Awal Keperawatan Ralan Psikiatri","[L]Pemantauan PEWS Pasien Anak",
                 "[O]Pulang Atas Permintaan Sendiri","[L]Master Template Hasil Radiologi","[I]Laporan Bulanan IRJ","[L]Master Template Pemeriksaan","[A]Periksa Lab MB",
                 "[A]Ubah Petugas Lab MB","[L]Penilaian Pre Operasi","[L]Penilaian Pre Anestesi","[L]Perencanaan Pemulangan","[L]Penilaian Lanjutan Risiko Jatuh Dewasa",
-                "[L]Penilaian Lanjutan Risiko Jatuh Anak","[L]Penilaian Awal Medis Ralan Geriatri","[L]Penilaian Tambahan Pasien Geriatri","[L]Skrining Nutrisi Pasien Dewasa"
+                "[L]Penilaian Lanjutan Risiko Jatuh Anak","[L]Penilaian Awal Medis Ralan Geriatri","[L]Penilaian Tambahan Pasien Geriatri","[L]Skrining Nutrisi Pasien Dewasa",
+                "[L]Skrining Nutrisi Pasien Lansia","[L]Hasil Pemeriksaan USG"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -472,7 +473,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 884;i++) {
+        for (i = 0; i < 886;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2578,6 +2579,12 @@ public class DlgUser extends javax.swing.JDialog {
                 case 883:
                     column.setPreferredWidth(170);
                     break;
+                case 884:
+                    column.setPreferredWidth(163);
+                    break;
+                case 885:
+                    column.setPreferredWidth(133);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3079,7 +3086,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -4005,7 +4012,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_lanjutan_resiko_jatuh_anak='"+tbUser.getValueAt(i,880).toString()+"',"+
                     "penilaian_awal_medis_ralan_geriatri='"+tbUser.getValueAt(i,881).toString()+"',"+
                     "penilaian_tambahan_pasien_geriatri='"+tbUser.getValueAt(i,882).toString()+"',"+
-                    "skrining_nutrisi_dewasa='"+tbUser.getValueAt(i,883).toString()+"'");
+                    "skrining_nutrisi_dewasa='"+tbUser.getValueAt(i,883).toString()+"',"+
+                    "skrining_nutrisi_lansia='"+tbUser.getValueAt(i,884).toString()+"',"+
+                    "hasil_pemeriksaan_usg='"+tbUser.getValueAt(i,885).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4971,7 +4980,9 @@ public class DlgUser extends javax.swing.JDialog {
                                         "penilaian_lanjutan_resiko_jatuh_anak='"+tbUser.getValueAt(barisdicopy,880).toString()+"',"+
                                         "penilaian_awal_medis_ralan_geriatri='"+tbUser.getValueAt(barisdicopy,881).toString()+"',"+
                                         "penilaian_tambahan_pasien_geriatri='"+tbUser.getValueAt(barisdicopy,882).toString()+"',"+
-                                        "skrining_nutrisi_dewasa='"+tbUser.getValueAt(barisdicopy,883).toString()+"'");
+                                        "skrining_nutrisi_dewasa='"+tbUser.getValueAt(barisdicopy,883).toString()+"',"+
+                                        "skrining_nutrisi_lansia='"+tbUser.getValueAt(barisdicopy,884).toString()+"',"+
+                                        "hasil_pemeriksaan_usg='"+tbUser.getValueAt(barisdicopy,885).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5347,7 +5358,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.master_masalah_keperawatan_psikiatri,user.master_rencana_keperawatan_psikiatri,user.penilaian_awal_keperawatan_psikiatri,user.pemantauan_pews_anak,"+
                 "user.surat_pulang_atas_permintaan_sendiri,user.template_hasil_radiologi,user.laporan_bulanan_irj,user.template_pemeriksaan,user.pemeriksaan_lab_mb,"+
                 "user.ubah_petugas_lab_mb,user.penilaian_pre_operasi,user.penilaian_pre_anestesi,user.perencanaan_pemulangan,user.penilaian_lanjutan_resiko_jatuh_dewasa,"+
-                "user.penilaian_lanjutan_resiko_jatuh_anak,user.penilaian_awal_medis_ralan_geriatri,user.penilaian_tambahan_pasien_geriatri,user.skrining_nutrisi_dewasa from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.penilaian_lanjutan_resiko_jatuh_anak,user.penilaian_awal_medis_ralan_geriatri,user.penilaian_tambahan_pasien_geriatri,user.skrining_nutrisi_dewasa,"+
+                "user.skrining_nutrisi_lansia,user.hasil_pemeriksaan_usg from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6243,7 +6255,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_lanjutan_resiko_jatuh_anak"),
                                rs.getBoolean("penilaian_awal_medis_ralan_geriatri"),
                                rs.getBoolean("penilaian_tambahan_pasien_geriatri"),
-                               rs.getBoolean("skrining_nutrisi_dewasa")
+                               rs.getBoolean("skrining_nutrisi_dewasa"),
+                               rs.getBoolean("skrining_nutrisi_lansia"),
+                               rs.getBoolean("hasil_pemeriksaan_usg")
                             });
                         }   
                     } catch (Exception e) {
@@ -7128,7 +7142,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_lanjutan_resiko_jatuh_anak"),
                            rs.getBoolean("penilaian_awal_medis_ralan_geriatri"),
                            rs.getBoolean("penilaian_tambahan_pasien_geriatri"),
-                           rs.getBoolean("skrining_nutrisi_dewasa")
+                           rs.getBoolean("skrining_nutrisi_dewasa"),
+                           rs.getBoolean("skrining_nutrisi_lansia"),
+                           rs.getBoolean("hasil_pemeriksaan_usg")
                         });
                     }                                             
                  }
