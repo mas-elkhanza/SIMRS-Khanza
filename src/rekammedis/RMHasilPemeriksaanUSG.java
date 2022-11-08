@@ -310,7 +310,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Pre Operasi");
+        MnPenilaianMedis.setText("Formulir Hasil Pemeriksaan USG");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +324,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG Kebidanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(467, 500));
@@ -1110,23 +1110,31 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
             try{
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                        "hasil_pemeriksaan_usg.kd_dokter,hasil_pemeriksaan_usg.ringkasan_klinik,hasil_pemeriksaan_usg.pemeriksaan_fisik,hasil_pemeriksaan_usg.pemeriksaan_diagnostik,"+
-                        "hasil_pemeriksaan_usg.diagnosa_pre_operasi,hasil_pemeriksaan_usg.rencana_tindakan_bedah,hasil_pemeriksaan_usg.hal_hal_yang_perludi_persiapkan,"+
-                        "hasil_pemeriksaan_usg.terapi_pre_operasi,dokter.nm_dokter from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                        "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_pemeriksaan_usg.tanggal between ? and ? order by hasil_pemeriksaan_usg.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
+                            "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
+                            "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
+                            "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
+                            "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
+                            "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
+                            "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
+                            "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
+                            "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
+                            "hasil_pemeriksaan_usg.tanggal between ? and ? order by hasil_pemeriksaan_usg.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                        "hasil_pemeriksaan_usg.kd_dokter,hasil_pemeriksaan_usg.ringkasan_klinik,hasil_pemeriksaan_usg.pemeriksaan_fisik,hasil_pemeriksaan_usg.pemeriksaan_diagnostik,"+
-                        "hasil_pemeriksaan_usg.diagnosa_pre_operasi,hasil_pemeriksaan_usg.rencana_tindakan_bedah,hasil_pemeriksaan_usg.hal_hal_yang_perludi_persiapkan,"+
-                        "hasil_pemeriksaan_usg.terapi_pre_operasi,dokter.nm_dokter from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                        "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_pemeriksaan_usg.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "hasil_pemeriksaan_usg.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
+                            "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
+                            "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
+                            "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
+                            "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
+                            "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
+                            "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
+                            "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
+                            "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
+                            "hasil_pemeriksaan_usg.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                            "hasil_pemeriksaan_usg.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg.tanggal");
                 }
 
                 try {
@@ -1141,26 +1149,36 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                         ps.setString(5,"%"+TCari.getText()+"%");
                         ps.setString(6,"%"+TCari.getText()+"%");
                         ps.setString(7,"%"+TCari.getText()+"%");
-                    }  
+                    } 
                     rs=ps.executeQuery();
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Ringkasan Klinik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Pemeriksaan Fisik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Pemeriksaan Diagnostik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Diagnosa Pre Operasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Rencana Tindakan Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Hal-hal Yang Perlu Dipersiapkan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Terapi Pre Operasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kiriman Dari</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Klinis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>HTA</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Prestasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>GS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CRL</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>DBP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>FL</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>AC</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TBJ</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Usia Kehamilan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Plasenta Berimplatansi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Derajat Maturitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Air Ketuban</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Peluang Sex</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Indeks Cairan Ketuban (ICK)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelainan Kongenital Mayor</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesimpulan</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1170,22 +1188,32 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
                                "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
                                "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
                                "<td valign='top'>"+rs.getString("kd_dokter")+"</td>"+
                                "<td valign='top'>"+rs.getString("nm_dokter")+"</td>"+
                                "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ringkasan_klinik")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan_fisik")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan_diagnostik")+"</td>"+
-                               "<td valign='top'>"+rs.getString("diagnosa_pre_operasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("rencana_tindakan_bedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hal_hal_yang_perludi_persiapkan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("terapi_pre_operasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kiriman_dari")+"</td>"+
+                               "<td valign='top'>"+rs.getString("diagnosa_klinis")+"</td>"+
+                               "<td valign='top'>"+rs.getString("hta")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jenis_prestasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kantong_gestasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("ukuran_bokongkepala")+"</td>"+
+                               "<td valign='top'>"+rs.getString("diameter_biparietal")+"</td>"+
+                               "<td valign='top'>"+rs.getString("panjang_femur")+"</td>"+
+                               "<td valign='top'>"+rs.getString("lingkar_abdomen")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tafsiran_berat_janin")+"</td>"+
+                               "<td valign='top'>"+rs.getString("usia_kehamilan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("plasenta_berimplatansi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("derajat_maturitas")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jumlah_air_ketuban")+"</td>"+
+                               "<td valign='top'>"+rs.getString("peluang_sex")+"</td>"+
+                               "<td valign='top'>"+rs.getString("indek_cairan_ketuban")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kelainan_kongenital")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kesimpulan")+"</td>"+
                             "</tr>");
                     }
                     LoadHTML.setText(
                         "<html>"+
-                          "<table width='2890px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>"
@@ -1206,11 +1234,11 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                     );
                     bg.close();
 
-                    File f = new File("DataPenilaianAwalMedisRalan.html");            
+                    File f = new File("DataHasilPemeriksaanUSG.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='2890px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1346,17 +1374,20 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianPreOperasi.jasper","report","::[ Laporan Penilaian Pre Operasi ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                "hasil_pemeriksaan_usg.kd_dokter,hasil_pemeriksaan_usg.ringkasan_klinik,hasil_pemeriksaan_usg.pemeriksaan_fisik,hasil_pemeriksaan_usg.pemeriksaan_diagnostik,"+
-                "hasil_pemeriksaan_usg.diagnosa_pre_operasi,hasil_pemeriksaan_usg.rencana_tindakan_bedah,hasil_pemeriksaan_usg.hal_hal_yang_perludi_persiapkan,"+
-                "hasil_pemeriksaan_usg.terapi_pre_operasi,dokter.nm_dokter from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+            Valid.MyReportqry("rptCetakHasilPemeriksaanUSG.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
+                "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
+                "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
+                "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
+                "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
+                "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
+                "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
+                "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
-                "and hasil_pemeriksaan_usg.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"'",param);
+                "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
