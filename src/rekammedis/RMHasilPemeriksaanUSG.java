@@ -1632,10 +1632,25 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            /*"No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis",
-            "HTA","Jenis Prestasi","GS","CRL","DBP","FL","AC","TBJ","Usia Kehamilan","Plasenta Berimplatansi","Derajat Maturitas","Air Ketuban",
-            "Peluang Sex","Indeks Cairan Ketuban (ICK)","Kelainan Kongenital Mayor","Kesimpulan"*/
+            KirimanDari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            DiagnosaKlinis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            HTA.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            JenisPrestasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            UkuranKantong.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            UkuranBokong.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            DiameterBiparietal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            PanjangFemur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            LingkarAbdomen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            TafsiranBerat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            UsiaKehamilan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Plasenta.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            DerajatMaturitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            JumlahAir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            PeluangSex.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            IndexCairan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Kelainan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
 
