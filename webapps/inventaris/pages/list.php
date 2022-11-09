@@ -1,6 +1,8 @@
 <?php
     if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
+            exit(header("Location:../index.php"));
+        }
     }
 ?>
 <div id="post">
@@ -22,7 +24,7 @@
                     <tr class="head">
                         <td width="31%" >File/Gambar</td><td width="">:</td>
                         <td width="67%">
-                            <input name="gambar" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=file id="TxtIsi1" value="<?php echo $gambar;?>" size="50" maxlength="500" />
+                            <input name="gambar" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=file id="TxtIsi1" value="<?php echo $gambar;?>" size="50" maxlength="500" accept="image/jpeg,image/jpg"/>
                             <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>        
@@ -34,14 +36,17 @@
                 if (isset($BtnSimpan)) {
                     $no_inventaris = validTeks(trim($_POST['no_inventaris']));
                     $gambar        = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
-                    move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
-                    
-                    if ((!empty($no_inventaris))&&(!empty($gambar))) {
-                        Tambah(" inventaris_gambar "," '$no_inventaris','$gambar'", " Gambar Inventaris " );
-                        echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_inventaris=$no_inventaris'>";                              
-                    }else if ((empty($no_inventaris))||(empty($gambar))){
-                        echo 'Semua field harus isi..!!!';
-                    }
+                    if((strtolower(substr($gambar,-3))=="jpg")||(strtolower(substr($gambar,-4))=="jpeg")){
+                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                        if ((!empty($no_inventaris))&&(!empty($gambar))) {
+                            Tambah(" inventaris_gambar "," '$no_inventaris','$gambar'", " Gambar Inventaris " );
+                            echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_inventaris=$no_inventaris'>";                              
+                        }else if ((empty($no_inventaris))||(empty($gambar))){
+                            echo 'Semua field harus isi..!!!';
+                        }
+                    }else{
+                        echo "Berkas harus JPEG/JPG";
+                    }  
                 }
             ?>
             <div style="width: 100%; height: 78%; overflow: auto;">

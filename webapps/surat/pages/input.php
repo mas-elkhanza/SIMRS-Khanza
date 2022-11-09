@@ -1,3 +1,10 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+?>
 <div id="post">
     <div class="entry">        
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
@@ -232,7 +239,7 @@
                         </td>
                         <td width="15%" >File Berkas(PDF/JPG)</td>
                         <td width="35%">
-                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi20'));" type=file id="TxtIsi20" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
+                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi20'));" type=file id="TxtIsi20" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="image/jpeg,image/jpg"/>
                             <span id="MsgIsi20" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -264,16 +271,20 @@
                     $max        = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_masuk where tgl_terima='$tgl_terima'");
                     $no_urut    = "SM".str_replace("-","",$tgl_terima).sprintf("%03s", $max);
                     $dokumen    = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                    if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($asal))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_terima))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
-                        switch($action) {
-                            case "TAMBAH":
-                                Tambah(" surat_masuk "," '$no_urut','$no_surat','$asal','$tujuan','$tgl_surat','$perihal','$tgl_terima','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
-                                break;
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                        if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($asal))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_terima))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
+                            switch($action) {
+                                case "TAMBAH":
+                                    Tambah(" surat_masuk "," '$no_urut','$no_surat','$asal','$tujuan','$tgl_surat','$perihal','$tgl_terima','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " );
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
+                                    break;
+                            }
+                        }else{
+                            echo 'Semua field harus isi..!!!';
                         }
                     }else{
-                        echo 'Semua field harus isi..!!!';
+                        echo "Berkas harus JPEG/JPG";
                     }
                 }
             ?>

@@ -1,6 +1,8 @@
 <?php
     if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
+            exit(header("Location:../index.php"));
+        }
     }
 ?>
 <div id="post">        
@@ -151,9 +153,9 @@
                 <td width="15%" >File Ebook</td>
                 <td width="35%">
                 <?php if($action == "UBAH"){ ?>
-                        :&nbsp;<input name="berkas" class="text" type="file" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200">
+                        :&nbsp;<input name="berkas" class="text" type="file" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200" accept="application/pdf">
                 <?php }else{ ?>
-                        :&nbsp;<input name="berkas" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type="file" id="TxtIsi9" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200">
+                        :&nbsp;<input name="berkas" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type="file" id="TxtIsi9" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200" accept="application/pdf">
                         <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
                 <?php } ?>
                 </td>
@@ -173,8 +175,6 @@
                 $id_kategori        = validTeks(trim($_POST['id_kategori']));
                 $thn_terbit         = validTeks(trim($_POST['thn_terbit']));
                 $berkas             = validTeks(str_replace(" ","_","pages/upload/".$_FILES['berkas']['name']));
-                move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
-
                 if ((!empty($kode_ebook))&&(!empty($judul_ebook))&&(!empty($jml_halaman))&&(!empty($kode_penerbit))&&(!empty($kode_pengarang))&&(!empty($id_jenis))&&(!empty($id_kategori))&&(!empty($berkas))) {
                     switch($action) {
                         case "TAMBAH":
