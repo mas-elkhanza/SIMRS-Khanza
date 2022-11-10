@@ -785,7 +785,7 @@
                             $nourut         = "";
 
                             if($setrm["tahun"]=="Yes"){
-                                $awalantahun=date("yy");
+                                $awalantahun=date("y");
                             }else{
                                 $awalantahun="";
                             }

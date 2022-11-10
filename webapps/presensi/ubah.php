@@ -16,7 +16,7 @@
                 echo "";
                 $action     = isset($_GET['action'])?$_GET['action']:NULL;
                 $id         = validTeks(isset($_GET['id'])?str_replace("_"," ",$_GET['id']):NULL);
-                $jam_datang = validTeks(isset($_GET['jam_datang'])?str_replace("_"," ",$_GET['jam_datang']):NULL);
+                $jam_datang = validTeks2(isset($_GET['jam_datang'])?str_replace("_"," ",$_GET['jam_datang']):NULL);
 				$keterangan = "";
                 if($action == "TAMBAH"){
                     $id      = validTeks($_GET['id']);

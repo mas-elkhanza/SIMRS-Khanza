@@ -111,119 +111,119 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-danger"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5>
-        <h7 class="text-danger"><center>Tanggal <?=$tanggal?></center></h7><br/>
+        <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5>
+        <h7 class="text-dark"><center>Tanggal <?=$tanggal?></center></h7><br/>
         <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nopernyataan" value="<?=$nopernyataan;?>">
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 Apabila pasien berusia dibawah 18 tahun atau tidak dapat memberikan persetujuan karena alasan lain (**) tidak dapat menandatangani surat pernyataan ini, 
                 Pihak rumah sakit dapat mengambil kebijakan dengan memperoleh tanda tangan dari orang tua, pasangan, anggota keluarga terdekat atau wali pasien.<br/> 
                 (**) Sebutkan alasan lainnya : <?=$alasan_diwakilkan_penerima_informasi?> <br/><br/>
                 Yang bertanda tangan di bawah ini saya :
             </h7>
-            <table class="default" width="100%">
-                <tr class="text-danger">
+            <table class="default" width="100%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+                <tr class="text-dark">
                     <td width="30%">Nama</td>
                     <td width="70%">: <?=$penerima_informasi;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Jenis Kelamin</td>
                     <td width="75%">: <?=$jk_penerima_informasi;?> &nbsp;&nbsp;&nbsp;&nbsp;Tanggal Lahir : <?=$tanggal_lahir_penerima_informasi;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Alamat</td>
                     <td width="75%">: <?=$alamat_penerima_informasi;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Hubungan dengan pasien</td>
                     <td width="75%">: <?=$hubungan_penerima_informasi;?></td>
                 </tr>
             </table>
             <br/>
-            <h7 class="text-danger">
-                Dengan ini menyatakan <select name="pilihansetuju" class="text-danger"><option value='Persetujuan'>Persetujuan</option><option value='Penolakan'>Penolakan</option></select> untuk dapat dilakukan tindakan kedokteran berupa : 
+            <h7 class="text-dark">
+                Dengan ini menyatakan <select name="pilihansetuju" class="text-dark"><option value='Persetujuan'>Persetujuan</option><option value='Penolakan'>Penolakan</option></select> untuk dapat dilakukan tindakan kedokteran berupa : 
             </h7>
-            <table class="default" width="100%">
-                <tr class="text-danger">
+            <table class="default" width="100%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+                <tr class="text-dark">
                     <td width="30%">Tindakan Kedokteran</td>
                     <td width="60%">: <?=$tindakan;?></td>
                     <td width="10%"><input type="checkbox" name="tindakan_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Diagnosa</td>
                     <td width="60%">: <?=$diagnosa;?></td>
                     <td width="10%"><input type="checkbox" name="diagnosa_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Indikasi Tindakan</td>
                     <td width="60%">: <?=$indikasi_tindakan;?></td>
                     <td width="10%"><input type="checkbox" name="indikasi_tindakan_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Tata Cara</td>
                     <td width="60%">: <?=$tata_cara;?></td>
                     <td width="10%"><input type="checkbox" name="tata_cara_konfirmasi"></td>
                 </tr> 
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Tujuan</td>
                     <td width="60%">: <?=$tujuan;?></td>
                     <td width="10%"><input type="checkbox" name="tujuan_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Risiko</td>
                     <td width="60%">: <?=$risiko;?></td>
                     <td width="10%"><input type="checkbox" name="risiko_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Komplikasi</td>
                     <td width="60%">: <?=$komplikasi;?></td>
                     <td width="10%"><input type="checkbox" name="komplikasi_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Prognosis</td>
                     <td width="60%">: <?=$prognosis;?></td>
                     <td width="10%"><input type="checkbox" name="prognosis_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Alternatif & Resikonya</td>
                     <td width="60%">: <?=$alternatif_dan_risikonya;?></td>
                     <td width="10%"><input type="checkbox" name="alternatif_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Lain-lain</td>
                     <td width="60%">: <?=$lain_lain;?></td>
                     <td width="10%"><input type="checkbox" name="lain_lain_konfirmasi"></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="30%">Biaya</td>
                     <td width="60%">: <?=$biaya;?></td>
                     <td width="10%"><input type="checkbox" name="biaya_konfirmasi"></td>
                 </tr>
             </table>
             <br/>
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 Terhadap Pasien : 
             </h7>
-            <table class="default" width="100%">
-                <tr class="text-danger">
+            <table class="default" width="100%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+                <tr class="text-dark">
                     <td width="30%">Nama Pasien</td>
                     <td width="70%">: <?=$nm_pasien;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Nomor Rekam Medis</td>
                     <td width="75%">: <?=$no_rkm_medis;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Jenis Kelamin</td>
                     <td width="75%">: <?=$jk;?> &nbsp;&nbsp;&nbsp;&nbsp;Tanggal Lahir : <?=$tgl_lahir;?></td>
                 </tr>
             </table>
             <br/>
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 Melalui penyataan ini segala resiko dan yang kemungkinan terjadi sebagai akibat dari pengambilan keputusan ini menjadi tanggung jawab saya pribadi dan keluarga
             </h7>
             <br/><br/>
-            <h7 class="text-danger"><center>Yang Membuat Pernyataan</center></h7>
+            <h7 class="text-dark"><center>Yang Membuat Pernyataan</center></h7>
             <div class="row">
                 <div class="col-md-6">
                     <div id="my_camera"></div>

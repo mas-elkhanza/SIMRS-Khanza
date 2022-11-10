@@ -1,3 +1,10 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/riwayatgaji/berkas/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+?>
 <div id="entry">       
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
@@ -85,7 +92,7 @@
                 </td>
                 <td width="17%" >Makalah/Berkas Penelitian</td><td width="">:</td>
                 <td width="31%">
-                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" type=file id="TxtIsi8" value="<?php echo $dokumen;?>" size="40" maxlength="255" />
+                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" type=file id="TxtIsi8" value="<?php echo $dokumen;?>" size="40" maxlength="255" accept="application/pdf"/>
                     <span id="MsgIsi8" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr> 

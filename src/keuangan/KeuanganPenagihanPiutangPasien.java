@@ -911,8 +911,8 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
         tbBelumLunas.setComponentPopupMenu(jPopupMenu1);
         tbBelumLunas.setName("tbBelumLunas"); // NOI18N
         tbBelumLunas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbBelumLunasMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbBelumLunasMouseReleased(evt);
             }
         });
         tbBelumLunas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -934,6 +934,9 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbBelumDitagihkanMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbBelumDitagihkanMouseReleased(evt);
+            }
         });
         tbBelumDitagihkan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -950,14 +953,6 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tbBelumLunasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumLunasMouseClicked
-        if(tabMode.getRowCount()!=0){
-            if(tbBelumLunas.getSelectedColumn()==0){
-                getdata();
-            }
-        }
-}//GEN-LAST:event_tbBelumLunasMouseClicked
 
     private void tbBelumLunasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBelumLunasKeyPressed
         if(tabMode.getRowCount()!=0){
@@ -1215,6 +1210,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     }                    
                 }
 
+                getdata();
                 Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
@@ -1268,6 +1264,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     }                    
                 }
 
+                getdata2();
                 Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
@@ -1410,11 +1407,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void tbBelumDitagihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumDitagihkanMouseClicked
-        if(tabMode2.getRowCount()!=0){
-            if(tbBelumDitagihkan.getSelectedColumn()==0){
-                getdata2();
-            }
-        }
+        
     }//GEN-LAST:event_tbBelumDitagihkanMouseClicked
 
     private void tbBelumDitagihkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBelumDitagihkanKeyPressed
@@ -1424,6 +1417,22 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
         }
     }//GEN-LAST:event_tbBelumDitagihkanKeyPressed
+
+    private void tbBelumLunasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumLunasMouseReleased
+        if(tabMode.getRowCount()!=0){
+            if(tbBelumLunas.getSelectedColumn()==0){
+                getdata();
+            }
+        }
+    }//GEN-LAST:event_tbBelumLunasMouseReleased
+
+    private void tbBelumDitagihkanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumDitagihkanMouseReleased
+        if(tabMode2.getRowCount()!=0){
+            if(tbBelumDitagihkan.getSelectedColumn()==0){
+                getdata2();
+            }
+        }
+    }//GEN-LAST:event_tbBelumDitagihkanMouseReleased
 
     /**
     * @param args the command line arguments
@@ -1967,7 +1976,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     
     private void getdata2() {
         if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
-            tbBelumLunas.setValueAt(false,tbBelumLunas.getSelectedRow(),0);
+            tbBelumDitagihkan.setValueAt(false,tbBelumDitagihkan.getSelectedRow(),0);
             JOptionPane.showMessageDialog(null,"Silahkan pilih penjamin terlebih dahulu");
         }else{
             total=0;

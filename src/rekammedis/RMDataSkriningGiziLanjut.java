@@ -52,7 +52,6 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private double ttlskor=0,jmlskor=0;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";

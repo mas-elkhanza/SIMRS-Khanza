@@ -80,83 +80,83 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-danger"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Penyataan Pulang Atas Permintaan Sendiri No. <?=$nopernyataan;?></center></h5>
-        <h7 class="text-danger"><center>Tanggal <?=$tgl_pulang;?></center></h7><br/>
+        <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>Penyataan Pulang Atas Permintaan Sendiri No. <?=$nopernyataan;?></center></h5>
+        <h7 class="text-dark"><center>Tanggal <?=$tgl_pulang;?></center></h7><br/>
         <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nopernyataan" value="<?=$nopernyataan;?>">
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 Saya yang membuat pernyataan di bawah ini :
             </h7>
-            <table class="default" width="100%">
-                <tr class="text-danger">
+            <table class="default" width="100%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+                <tr class="text-dark">
                     <td width="25%">Nama</td>
                     <td width="70%">: <?=$nama_pj;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Jenis Kelamin</td>
                     <td width="75%">: <?=$jkpj;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Tanggal Lahir</td>
                     <td width="75%">: <?=$lahir;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Umur</td>
                     <td width="75%">: <?=$umur;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Alamat</td>
                     <td width="75%">: <?=$alamat;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Hubungan Dengan Pasien</td>
                     <td width="75%">: <?=$hubungan;?></td>
                 </tr>
             </table>
             <br/>
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 Terhadap Pasien : 
             </h7>
-            <table class="default" width="100%">
-                <tr class="text-danger">
+            <table class="default" width="100%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+                <tr class="text-dark">
                     <td width="25%">Nama Pasien</td>
                     <td width="70%">: <?=$nm_pasien;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Nomor Rekam Medis</td>
                     <td width="75%">: <?=$no_rkm_medis;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Jenis Kelamin</td>
                     <td width="75%">: <?=$jk;?></td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="25%">Tanggal Lahir</td>
                     <td width="75%">: <?=$tgl_lahir;?></td>
                 </tr>
             </table>
             <br/>
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 Dengan ini menyatakan bahwa : 
             </h7>
             <br/>
-            <table class="default" width="100%">
-                <tr class="text-danger">
+            <table class="default" width="100%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+                <tr class="text-dark">
                     <td width="2%" valign="top">1.</td>
                     <td width="98%" valign="top" align="justify">Dengan sadar tanpa paksaan dari pihak manapun meminta kepada pihak <?=$namars?> untuk PULANG ATAS PERMINTAAN SENDIRI yang merupakan hak saya/pasien dengan Alasan/Pindah Rawat "<?=$rs_pilihan?>"</td>
                 </tr>
-                <tr class="text-danger">
+                <tr class="text-dark">
                     <td width="2%" valign="top">2.</td>
                     <td width="98%" valign="top" align="justify">Saya telah memahami sepenuhnya penjelasan yang diberikan oleh pihak <?=$namars?> mengenai penyakit saya/pasien dan kemungkinan/konsekuensi terburuk atas keputusan yang saya ambil dan saya siap bertanggung jawab atas keputusan saya tersebut dan saya tidak akan menuntut pihak <?=$namars?>.</td>
                 </tr>
             </table>
             <br/>
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 Demikian pernyataan ini saya buat dengan sesungguhnya untuk dipergunakan sebagaimana mestinya.
             </h7>
             <br/>
             <br/>
-            <h7 class="text-danger"><center>Yang Membuat Pernyataan</center></h7>
+            <h7 class="text-dark"><center>Yang Membuat Pernyataan</center></h7>
             <div class="row">
                 <div class="col-md-6">
                     <div id="my_camera"></div>

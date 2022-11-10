@@ -9672,6 +9672,10 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         BtnJabatanTNI.setEnabled(false);
         BtnPangkatTNI.setEnabled(false);
         PanelAccor.setVisible(false);
+        kdkel="";
+        kdkec="";
+        kdkab="";
+        kdprop="";
         autoNomor();
         TNm.requestFocus();
     }

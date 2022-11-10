@@ -1326,7 +1326,7 @@ private void tgl_permintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
             BtnEdit.setEnabled(akses.getperbaikan_inventaris());
             BtnPrint.setEnabled(akses.getperbaikan_inventaris());
             nip.setText(akses.getkode());
-            Sequel.cariIsi("select nama from pegawai where nik=?", nama_petugas,nip.getText());
+            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nama_petugas,nip.getText());
         } 
         TCari.requestFocus();
     }

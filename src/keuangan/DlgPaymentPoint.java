@@ -636,7 +636,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                         rs=ps.executeQuery();
                         i=1;
                         while(rs.next()){                            
-                            petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                            petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                             if(CmbStatus.getSelectedItem().toString().equals("Semua")){
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                                 if(nonota.equals("")){

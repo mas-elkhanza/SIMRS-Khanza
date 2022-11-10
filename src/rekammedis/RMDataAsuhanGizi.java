@@ -156,13 +156,13 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         TBPerU.setDocument(new batasInput((byte)5).getKata(TBPerU));
         BBPerTB.setDocument(new batasInput((byte)5).getKata(BBPerTB));
         LiLAPerU.setDocument(new batasInput((byte)5).getKata(LiLAPerU));
-        Biokimia.setDocument(new batasInput((int)100).getKata(Biokimia));
-        FisikKlinis.setDocument(new batasInput((int)100).getKata(FisikKlinis));
+        Biokimia.setDocument(new batasInput((int)1000).getKata(Biokimia));
+        FisikKlinis.setDocument(new batasInput((int)1000).getKata(FisikKlinis));
         RiwayatPersonal.setDocument(new batasInput((int)100).getKata(RiwayatPersonal));
         PolaMakan.setDocument(new batasInput((int)100).getKata(PolaMakan));
-        DiagnosisGizi.setDocument(new batasInput((int)500).getKata(DiagnosisGizi));
-        IntervensiGizi.setDocument(new batasInput((int)500).getKata(IntervensiGizi));
-        Monitoring.setDocument(new batasInput((int)100).getKata(Monitoring));
+        DiagnosisGizi.setDocument(new batasInput((int)1000).getKata(DiagnosisGizi));
+        IntervensiGizi.setDocument(new batasInput((int)1000).getKata(IntervensiGizi));
+        Monitoring.setDocument(new batasInput((int)1000).getKata(Monitoring));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -342,17 +342,12 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         LiLAPerU = new widget.TextBox();
         jLabel35 = new widget.Label();
         jLabel36 = new widget.Label();
-        Biokimia = new widget.TextBox();
         jLabel37 = new widget.Label();
-        FisikKlinis = new widget.TextBox();
         PolaMakan = new widget.TextBox();
         jLabel38 = new widget.Label();
-        DiagnosisGizi = new widget.TextBox();
         jLabel40 = new widget.Label();
         jLabel41 = new widget.Label();
-        IntervensiGizi = new widget.TextBox();
         jLabel42 = new widget.Label();
-        Monitoring = new widget.TextBox();
         jLabel39 = new widget.Label();
         jLabel43 = new widget.Label();
         jLabel44 = new widget.Label();
@@ -378,6 +373,16 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         jLabel51 = new widget.Label();
         jLabel50 = new widget.Label();
         RiwayatPersonal = new widget.TextBox();
+        scrollPane1 = new widget.ScrollPane();
+        FisikKlinis = new widget.TextArea();
+        scrollPane2 = new widget.ScrollPane();
+        Biokimia = new widget.TextArea();
+        scrollPane3 = new widget.ScrollPane();
+        Monitoring = new widget.TextArea();
+        scrollPane4 = new widget.ScrollPane();
+        IntervensiGizi = new widget.TextArea();
+        scrollPane5 = new widget.ScrollPane();
+        DiagnosisGizi = new widget.TextArea();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -566,7 +571,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -580,7 +585,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -670,7 +675,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 555));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 755));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -704,7 +709,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label14);
-        label14.setBounds(0, 520, 130, 23);
+        label14.setBounds(0, 720, 130, 23);
 
         KdPetugas.setEditable(false);
         KdPetugas.setName("KdPetugas"); // NOI18N
@@ -715,13 +720,13 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             }
         });
         FormInput.add(KdPetugas);
-        KdPetugas.setBounds(134, 520, 130, 23);
+        KdPetugas.setBounds(134, 720, 130, 23);
 
         NmPetugas.setEditable(false);
         NmPetugas.setName("NmPetugas"); // NOI18N
         NmPetugas.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmPetugas);
-        NmPetugas.setBounds(266, 520, 300, 23);
+        NmPetugas.setBounds(266, 720, 300, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -739,7 +744,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter);
-        BtnDokter.setBounds(569, 520, 28, 23);
+        BtnDokter.setBounds(569, 720, 28, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -956,7 +961,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         BBPerU.setBounds(693, 120, 60, 23);
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("%");
+        jLabel29.setText("SD");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
         jLabel29.setBounds(756, 120, 30, 23);
@@ -977,7 +982,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         TBPerU.setBounds(164, 150, 60, 23);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel31.setText("%");
+        jLabel31.setText("SD");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
         jLabel31.setBounds(227, 150, 30, 23);
@@ -998,7 +1003,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         BBPerTB.setBounds(344, 150, 60, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel33.setText("%");
+        jLabel33.setText("SD");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
         jLabel33.setBounds(407, 150, 30, 23);
@@ -1019,7 +1024,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         LiLAPerU.setBounds(520, 150, 60, 23);
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel35.setText("%");
+        jLabel35.setText("SD");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
         jLabel35.setBounds(583, 150, 50, 23);
@@ -1029,30 +1034,10 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         FormInput.add(jLabel36);
         jLabel36.setBounds(0, 70, 130, 23);
 
-        Biokimia.setFocusTraversalPolicyProvider(true);
-        Biokimia.setName("Biokimia"); // NOI18N
-        Biokimia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BiokimiaKeyPressed(evt);
-            }
-        });
-        FormInput.add(Biokimia);
-        Biokimia.setBounds(134, 180, 645, 23);
-
         jLabel37.setText("Fisik/Klinis :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(0, 210, 130, 23);
-
-        FisikKlinis.setFocusTraversalPolicyProvider(true);
-        FisikKlinis.setName("FisikKlinis"); // NOI18N
-        FisikKlinis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                FisikKlinisKeyPressed(evt);
-            }
-        });
-        FormInput.add(FisikKlinis);
-        FisikKlinis.setBounds(134, 210, 645, 23);
+        jLabel37.setBounds(0, 250, 130, 23);
 
         PolaMakan.setFocusTraversalPolicyProvider(true);
         PolaMakan.setName("PolaMakan"); // NOI18N
@@ -1062,212 +1047,182 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             }
         });
         FormInput.add(PolaMakan);
-        PolaMakan.setBounds(164, 370, 615, 23);
+        PolaMakan.setBounds(164, 450, 615, 23);
 
         jLabel38.setText("Riwayat Personal :");
         jLabel38.setName("jLabel38"); // NOI18N
         FormInput.add(jLabel38);
-        jLabel38.setBounds(0, 400, 130, 23);
-
-        DiagnosisGizi.setFocusTraversalPolicyProvider(true);
-        DiagnosisGizi.setName("DiagnosisGizi"); // NOI18N
-        DiagnosisGizi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisGiziKeyPressed(evt);
-            }
-        });
-        FormInput.add(DiagnosisGizi);
-        DiagnosisGizi.setBounds(134, 430, 645, 23);
+        jLabel38.setBounds(0, 480, 130, 23);
 
         jLabel40.setText("Diagnosis Gizi :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(0, 430, 130, 23);
+        jLabel40.setBounds(0, 510, 130, 23);
 
         jLabel41.setText("Intervensi Gizi :");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
-        jLabel41.setBounds(0, 460, 130, 23);
-
-        IntervensiGizi.setFocusTraversalPolicyProvider(true);
-        IntervensiGizi.setName("IntervensiGizi"); // NOI18N
-        IntervensiGizi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                IntervensiGiziKeyPressed(evt);
-            }
-        });
-        FormInput.add(IntervensiGizi);
-        IntervensiGizi.setBounds(134, 460, 645, 23);
+        jLabel41.setBounds(0, 580, 130, 23);
 
         jLabel42.setText("Monitoring & Evaluasi :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(0, 490, 130, 23);
-
-        Monitoring.setFocusTraversalPolicyProvider(true);
-        Monitoring.setName("Monitoring"); // NOI18N
-        Monitoring.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MonitoringKeyPressed(evt);
-            }
-        });
-        FormInput.add(Monitoring);
-        Monitoring.setBounds(134, 490, 645, 23);
+        jLabel42.setBounds(0, 650, 130, 23);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel39.setText("Telur");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(165, 280, 170, 23);
+        jLabel39.setBounds(165, 360, 170, 23);
 
         jLabel43.setText("Riwayat Gizi :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(0, 240, 130, 23);
+        jLabel43.setBounds(0, 320, 130, 23);
 
         jLabel44.setText("Pola Makan :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(0, 370, 160, 23);
+        jLabel44.setBounds(0, 450, 160, 23);
 
         buttonGroup1.add(TelurYa);
         TelurYa.setText("Ya");
         TelurYa.setName("TelurYa"); // NOI18N
         TelurYa.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(TelurYa);
-        TelurYa.setBounds(340, 280, 45, 23);
+        TelurYa.setBounds(340, 360, 45, 23);
 
         buttonGroup1.add(TelurTidak);
         TelurTidak.setSelected(true);
         TelurTidak.setText("Tidak");
         TelurTidak.setName("TelurTidak"); // NOI18N
         FormInput.add(TelurTidak);
-        TelurTidak.setBounds(390, 280, 60, 23);
+        TelurTidak.setBounds(390, 360, 60, 23);
 
         buttonGroup2.add(SusuTidak);
         SusuTidak.setSelected(true);
         SusuTidak.setText("Tidak");
         SusuTidak.setName("SusuTidak"); // NOI18N
         FormInput.add(SusuTidak);
-        SusuTidak.setBounds(390, 300, 60, 23);
+        SusuTidak.setBounds(390, 380, 60, 23);
 
         buttonGroup2.add(SusuYa);
         SusuYa.setText("Ya");
         SusuYa.setName("SusuYa"); // NOI18N
         SusuYa.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(SusuYa);
-        SusuYa.setBounds(340, 300, 45, 23);
+        SusuYa.setBounds(340, 380, 45, 23);
 
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel45.setText("Susu sapi dan produk olahannya");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
-        jLabel45.setBounds(165, 300, 170, 23);
+        jLabel45.setBounds(165, 380, 170, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel46.setText("Kacang kedelai / tanah");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(165, 320, 170, 23);
+        jLabel46.setBounds(165, 400, 170, 23);
 
         buttonGroup3.add(KacangYa);
         KacangYa.setText("Ya");
         KacangYa.setName("KacangYa"); // NOI18N
         KacangYa.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(KacangYa);
-        KacangYa.setBounds(340, 320, 45, 23);
+        KacangYa.setBounds(340, 400, 45, 23);
 
         buttonGroup3.add(KacangTidak);
         KacangTidak.setSelected(true);
         KacangTidak.setText("Tidak");
         KacangTidak.setName("KacangTidak"); // NOI18N
         FormInput.add(KacangTidak);
-        KacangTidak.setBounds(390, 320, 60, 23);
+        KacangTidak.setBounds(390, 400, 60, 23);
 
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel47.setText("Gluten / gandum");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(165, 340, 170, 23);
+        jLabel47.setBounds(165, 420, 170, 23);
 
         buttonGroup4.add(GlutenYa);
         GlutenYa.setText("Ya");
         GlutenYa.setName("GlutenYa"); // NOI18N
         GlutenYa.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(GlutenYa);
-        GlutenYa.setBounds(340, 340, 45, 23);
+        GlutenYa.setBounds(340, 420, 45, 23);
 
         buttonGroup4.add(GlutenTidak);
         GlutenTidak.setSelected(true);
         GlutenTidak.setText("Tidak");
         GlutenTidak.setName("GlutenTidak"); // NOI18N
         FormInput.add(GlutenTidak);
-        GlutenTidak.setBounds(390, 340, 60, 23);
+        GlutenTidak.setBounds(390, 420, 60, 23);
 
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel48.setText("Udang");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(545, 280, 100, 23);
+        jLabel48.setBounds(545, 360, 100, 23);
 
         buttonGroup5.add(UdangYa);
         UdangYa.setText("Ya");
         UdangYa.setName("UdangYa"); // NOI18N
         UdangYa.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(UdangYa);
-        UdangYa.setBounds(650, 280, 45, 23);
+        UdangYa.setBounds(650, 360, 45, 23);
 
         buttonGroup5.add(UdangTidak);
         UdangTidak.setSelected(true);
         UdangTidak.setText("Tidak");
         UdangTidak.setName("UdangTidak"); // NOI18N
         FormInput.add(UdangTidak);
-        UdangTidak.setBounds(700, 280, 60, 23);
+        UdangTidak.setBounds(700, 360, 60, 23);
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel49.setText("Ikan");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(545, 300, 100, 23);
+        jLabel49.setBounds(545, 380, 100, 23);
 
         buttonGroup6.add(IkanYa);
         IkanYa.setText("Ya");
         IkanYa.setName("IkanYa"); // NOI18N
         IkanYa.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(IkanYa);
-        IkanYa.setBounds(650, 300, 45, 23);
+        IkanYa.setBounds(650, 380, 45, 23);
 
         buttonGroup6.add(IkanTidak);
         IkanTidak.setSelected(true);
         IkanTidak.setText("Tidak");
         IkanTidak.setName("IkanTidak"); // NOI18N
         FormInput.add(IkanTidak);
-        IkanTidak.setBounds(700, 300, 60, 23);
+        IkanTidak.setBounds(700, 380, 60, 23);
 
         buttonGroup7.add(HazelnutYa);
         HazelnutYa.setText("Ya");
         HazelnutYa.setName("HazelnutYa"); // NOI18N
         HazelnutYa.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(HazelnutYa);
-        HazelnutYa.setBounds(650, 320, 45, 23);
+        HazelnutYa.setBounds(650, 400, 45, 23);
 
         buttonGroup7.add(HazelnutTidak);
         HazelnutTidak.setSelected(true);
         HazelnutTidak.setText("Tidak");
         HazelnutTidak.setName("HazelnutTidak"); // NOI18N
         FormInput.add(HazelnutTidak);
-        HazelnutTidak.setBounds(700, 320, 60, 23);
+        HazelnutTidak.setBounds(700, 400, 60, 23);
 
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel51.setText("Hazelnut / almont");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(545, 320, 100, 23);
+        jLabel51.setBounds(545, 400, 100, 23);
 
         jLabel50.setText("Alergi Makanan :");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
-        jLabel50.setBounds(0, 260, 160, 23);
+        jLabel50.setBounds(0, 340, 160, 23);
 
         RiwayatPersonal.setFocusTraversalPolicyProvider(true);
         RiwayatPersonal.setName("RiwayatPersonal"); // NOI18N
@@ -1277,7 +1232,92 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             }
         });
         FormInput.add(RiwayatPersonal);
-        RiwayatPersonal.setBounds(134, 400, 645, 23);
+        RiwayatPersonal.setBounds(134, 480, 645, 23);
+
+        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane1.setName("scrollPane1"); // NOI18N
+
+        FisikKlinis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        FisikKlinis.setColumns(20);
+        FisikKlinis.setRows(5);
+        FisikKlinis.setName("FisikKlinis"); // NOI18N
+        FisikKlinis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FisikKlinisKeyPressed(evt);
+            }
+        });
+        scrollPane1.setViewportView(FisikKlinis);
+
+        FormInput.add(scrollPane1);
+        scrollPane1.setBounds(134, 250, 645, 63);
+
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane2.setName("scrollPane2"); // NOI18N
+
+        Biokimia.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Biokimia.setColumns(20);
+        Biokimia.setRows(5);
+        Biokimia.setName("Biokimia"); // NOI18N
+        Biokimia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BiokimiaKeyPressed(evt);
+            }
+        });
+        scrollPane2.setViewportView(Biokimia);
+
+        FormInput.add(scrollPane2);
+        scrollPane2.setBounds(134, 180, 645, 63);
+
+        scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane3.setName("scrollPane3"); // NOI18N
+
+        Monitoring.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Monitoring.setColumns(20);
+        Monitoring.setRows(5);
+        Monitoring.setName("Monitoring"); // NOI18N
+        Monitoring.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MonitoringKeyPressed(evt);
+            }
+        });
+        scrollPane3.setViewportView(Monitoring);
+
+        FormInput.add(scrollPane3);
+        scrollPane3.setBounds(134, 650, 645, 63);
+
+        scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane4.setName("scrollPane4"); // NOI18N
+
+        IntervensiGizi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        IntervensiGizi.setColumns(20);
+        IntervensiGizi.setRows(5);
+        IntervensiGizi.setName("IntervensiGizi"); // NOI18N
+        IntervensiGizi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IntervensiGiziKeyPressed(evt);
+            }
+        });
+        scrollPane4.setViewportView(IntervensiGizi);
+
+        FormInput.add(scrollPane4);
+        scrollPane4.setBounds(134, 580, 645, 63);
+
+        scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane5.setName("scrollPane5"); // NOI18N
+
+        DiagnosisGizi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        DiagnosisGizi.setColumns(20);
+        DiagnosisGizi.setRows(5);
+        DiagnosisGizi.setName("DiagnosisGizi"); // NOI18N
+        DiagnosisGizi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DiagnosisGiziKeyPressed(evt);
+            }
+        });
+        scrollPane5.setViewportView(DiagnosisGizi);
+
+        FormInput.add(scrollPane5);
+        scrollPane5.setBounds(134, 510, 645, 63);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1722,14 +1762,6 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         Valid.pindah(evt,BBPerU,BBPerTB);
     }//GEN-LAST:event_TBPerUKeyPressed
 
-    private void BiokimiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiokimiaKeyPressed
-        Valid.pindah(evt,LiLAPerU,FisikKlinis);
-    }//GEN-LAST:event_BiokimiaKeyPressed
-
-    private void FisikKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikKlinisKeyPressed
-        Valid.pindah(evt,Biokimia,PolaMakan);
-    }//GEN-LAST:event_FisikKlinisKeyPressed
-
     private void PolaMakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaMakanKeyPressed
         Valid.pindah(evt,FisikKlinis,RiwayatPersonal);
     }//GEN-LAST:event_PolaMakanKeyPressed
@@ -1738,17 +1770,25 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         Valid.pindah(evt,PolaMakan,DiagnosisGizi);
     }//GEN-LAST:event_RiwayatPersonalKeyPressed
 
-    private void DiagnosisGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisGiziKeyPressed
-        Valid.pindah(evt,RiwayatPersonal,IntervensiGizi);
-    }//GEN-LAST:event_DiagnosisGiziKeyPressed
+    private void FisikKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikKlinisKeyPressed
+        Valid.pindah2(evt,Biokimia,PolaMakan);
+    }//GEN-LAST:event_FisikKlinisKeyPressed
 
-    private void IntervensiGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntervensiGiziKeyPressed
-        Valid.pindah(evt,DiagnosisGizi,Monitoring);
-    }//GEN-LAST:event_IntervensiGiziKeyPressed
+    private void BiokimiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiokimiaKeyPressed
+        Valid.pindah2(evt,LiLAPerU,FisikKlinis);
+    }//GEN-LAST:event_BiokimiaKeyPressed
 
     private void MonitoringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MonitoringKeyPressed
-        Valid.pindah(evt,IntervensiGizi,BtnDokter);
+        Valid.pindah2(evt,IntervensiGizi,BtnDokter);
     }//GEN-LAST:event_MonitoringKeyPressed
+
+    private void IntervensiGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntervensiGiziKeyPressed
+        Valid.pindah2(evt,DiagnosisGizi,Monitoring);
+    }//GEN-LAST:event_IntervensiGiziKeyPressed
+
+    private void DiagnosisGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisGiziKeyPressed
+        Valid.pindah2(evt,RiwayatPersonal,IntervensiGizi);
+    }//GEN-LAST:event_DiagnosisGiziKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1771,7 +1811,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.TextBox BBIdeal;
     private widget.TextBox BBPerTB;
     private widget.TextBox BBPerU;
-    private widget.TextBox Biokimia;
+    private widget.TextArea Biokimia;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1785,8 +1825,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.TextBox DiagnosaMasukRanap;
-    private widget.TextBox DiagnosisGizi;
-    private widget.TextBox FisikKlinis;
+    private widget.TextArea DiagnosisGizi;
+    private widget.TextArea FisikKlinis;
     private widget.PanelBiasa FormInput;
     private widget.RadioButton GlutenTidak;
     private widget.RadioButton GlutenYa;
@@ -1795,7 +1835,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.TextBox IMT;
     private widget.RadioButton IkanTidak;
     private widget.RadioButton IkanYa;
-    private widget.TextBox IntervensiGizi;
+    private widget.TextArea IntervensiGizi;
     private widget.TextBox Jk;
     private widget.RadioButton KacangTidak;
     private widget.RadioButton KacangYa;
@@ -1804,7 +1844,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.TextBox LiLA;
     private widget.TextBox LiLAPerU;
     private javax.swing.JMenuItem MnAsuhanGizi;
-    private widget.TextBox Monitoring;
+    private widget.TextArea Monitoring;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox PolaMakan;
@@ -1888,6 +1928,11 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
+    private widget.ScrollPane scrollPane1;
+    private widget.ScrollPane scrollPane2;
+    private widget.ScrollPane scrollPane3;
+    private widget.ScrollPane scrollPane4;
+    private widget.ScrollPane scrollPane5;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
