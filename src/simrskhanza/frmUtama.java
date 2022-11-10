@@ -804,6 +804,7 @@ import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSkriningNutrisiDewasa;
+import rekammedis.RMSkriningNutrisiLansia;
 import rekammedis.RMUjiFungsiKFR;
 import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
@@ -19381,6 +19382,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningNutrisiLansiaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningNutrisiLansia aplikasi=new RMSkriningNutrisiLansia(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20041,7 +20055,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
-            btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG;
+            btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
+            btnSkriningNutrisiLansia;
     
     public void isWall(){
         try{            
@@ -23091,6 +23106,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_nutrisi_dewasa()==true){
                 Panelmenu.add(btnSkriningNutrisiDewasa);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_nutrisi_lansia()==true){
+                Panelmenu.add(btnSkriningNutrisiLansia);
                 jmlmenu++;
             }
             
@@ -27471,6 +27491,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_nutrisi_dewasa()==true){
             Panelmenu.add(btnSkriningNutrisiDewasa);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_nutrisi_lansia()==true){
+            Panelmenu.add(btnSkriningNutrisiLansia);
             jmlmenu++;
         }
         
@@ -33019,6 +33044,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_nutrisi_lansia()==true){
+            if(btnSkriningNutrisiLansia.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningNutrisiLansia);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettemplate_hasil_radiologi()==true){
             if(btnMasterTemplateHasilRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterTemplateHasilRadiologi);
@@ -38375,6 +38407,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilPemeriksaanUSG.setName("btnHasilPemeriksaanUSG");
         btnHasilPemeriksaanUSG.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilPemeriksaanUSG.addActionListener(this::btnHasilPemeriksaanUSGActionPerformed);
+        
+        btnSkriningNutrisiLansia = new widget.ButtonBig();
+        btnSkriningNutrisiLansia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5994849_food_health_hot_meal_restaurant_icon.png"))); 
+        btnSkriningNutrisiLansia.setText("Skrining Nutrisi Pasien Lansia");
+        btnSkriningNutrisiLansia.setIconTextGap(0);
+        btnSkriningNutrisiLansia.setName("btnSkriningNutrisiLansia");
+        btnSkriningNutrisiLansia.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningNutrisiLansia.addActionListener(this::btnSkriningNutrisiLansiaActionPerformed);
     }
     
 }
