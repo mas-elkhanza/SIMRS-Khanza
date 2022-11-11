@@ -1317,15 +1317,12 @@
                     <Component class="widget.Label" name="jLabel44">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Bila Skor &gt;= 2, Pasien Beresiko Malnutrisi, Konsul Ke Ahli Gizi"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="11" style="2"/>
-                        </Property>
+                        <Property name="text" type="java.lang.String" value="Hasil Skrining :"/>
                         <Property name="name" type="java.lang.String" value="jLabel44" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="40" y="360" width="440" height="23"/>
+                          <AbsoluteConstraints x="44" y="360" width="100" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1679,6 +1676,18 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="44" y="300" width="400" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.Label" name="LabelSkrining">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Status Gizi Normal"/>
+                        <Property name="name" type="java.lang.String" value="LabelSkrining" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="124" y="360" width="380" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>

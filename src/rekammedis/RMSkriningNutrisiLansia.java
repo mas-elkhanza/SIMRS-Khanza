@@ -295,6 +295,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         R2 = new widget.RadioButton();
         jLabel48 = new widget.Label();
         jLabel49 = new widget.Label();
+        LabelSkrining = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -966,11 +967,10 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         TotalHasil.setBounds(729, 360, 60, 23);
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel44.setText("Bila Skor >= 2, Pasien Beresiko Malnutrisi, Konsul Ke Ahli Gizi");
-        jLabel44.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel44.setText("Hasil Skrining :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(40, 360, 440, 23);
+        jLabel44.setBounds(44, 360, 100, 23);
 
         Nilai1.setEditable(false);
         Nilai1.setText("0");
@@ -1169,6 +1169,12 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
         jLabel49.setBounds(44, 300, 400, 23);
+
+        LabelSkrining.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LabelSkrining.setText("Status Gizi Normal");
+        LabelSkrining.setName("LabelSkrining"); // NOI18N
+        FormInput.add(LabelSkrining);
+        LabelSkrining.setBounds(124, 360, 380, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1542,7 +1548,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
 
     private void SG2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG2ItemStateChanged
         Nilai2.setText(SG2.getSelectedIndex()+"");
-        TotalHasil.setText(""+(Integer.parseInt(Nilai1.getText())+Integer.parseInt(Nilai2.getText())));
+        isTotal();
     }//GEN-LAST:event_SG2ItemStateChanged
 
     private void SG2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG2KeyPressed
@@ -1574,7 +1580,8 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void SG3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG3ItemStateChanged
-        // TODO add your handling code here:
+        Nilai3.setText(SG3.getSelectedIndex()+"");
+        isTotal();
     }//GEN-LAST:event_SG3ItemStateChanged
 
     private void SG3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG3KeyPressed
@@ -1582,7 +1589,8 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }//GEN-LAST:event_SG3KeyPressed
 
     private void SG4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG4ItemStateChanged
-        // TODO add your handling code here:
+        Nilai4.setText(SG4.getSelectedIndex()+"");
+        isTotal();
     }//GEN-LAST:event_SG4ItemStateChanged
 
     private void SG4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG4KeyPressed
@@ -1590,7 +1598,8 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }//GEN-LAST:event_SG4KeyPressed
 
     private void SG6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG6ItemStateChanged
-        // TODO add your handling code here:
+        Nilai6.setText(SG6.getSelectedIndex()+"");
+        isTotal();
     }//GEN-LAST:event_SG6ItemStateChanged
 
     private void SG6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG6KeyPressed
@@ -1598,7 +1607,8 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }//GEN-LAST:event_SG6KeyPressed
 
     private void SG5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG5ItemStateChanged
-        // TODO add your handling code here:
+        Nilai5.setText(SG5.getSelectedIndex()+"");
+        isTotal();
     }//GEN-LAST:event_SG5ItemStateChanged
 
     private void SG5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG5KeyPressed
@@ -1606,7 +1616,12 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }//GEN-LAST:event_SG5KeyPressed
 
     private void SG7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG7ItemStateChanged
-        // TODO add your handling code here:
+        if(SG7.getSelectedIndex()==0){
+            Nilai7.setText("0");
+        }else{
+            Nilai7.setText("3");
+        }
+        isTotal();
     }//GEN-LAST:event_SG7ItemStateChanged
 
     private void SG7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG7KeyPressed
@@ -1650,6 +1665,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
+    private widget.Label LabelSkrining;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningNutrisi;
     private widget.TextBox Nilai1;
@@ -1992,7 +2008,18 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
 
     private void isTotal() {
         try {
-            TotalHasil.setText(""+(Integer.parseInt(Nilai1.getText())+Integer.parseInt(Nilai2.getText())));
+            if(R1.isSelected()==true){
+                TotalHasil.setText(""+(Integer.parseInt(Nilai1.getText())+Integer.parseInt(Nilai2.getText())+Integer.parseInt(Nilai3.getText())+Integer.parseInt(Nilai4.getText())+Integer.parseInt(Nilai5.getText())+Integer.parseInt(Nilai6.getText())));
+            }else{
+                TotalHasil.setText(""+(Integer.parseInt(Nilai1.getText())+Integer.parseInt(Nilai2.getText())+Integer.parseInt(Nilai3.getText())+Integer.parseInt(Nilai4.getText())+Integer.parseInt(Nilai5.getText())+Integer.parseInt(Nilai7.getText())));
+            }
+            if((Integer.parseInt(TotalHasil.getText())>=12)&&(Integer.parseInt(TotalHasil.getText())<=14)){
+                LabelSkrining.setText("Status Gizi Normal");
+            }else if((Integer.parseInt(TotalHasil.getText())>=8)&&(Integer.parseInt(TotalHasil.getText())<=11)){
+                LabelSkrining.setText("Beresiko Malnutrisi");
+            }else if((Integer.parseInt(TotalHasil.getText())>=0)&&(Integer.parseInt(TotalHasil.getText())<=7)){
+                LabelSkrining.setText("Malnutrisi");
+            }
         } catch (Exception e) {
         }
     }
