@@ -1220,7 +1220,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         }else if(SpO2.getText().trim().equals("")){
             Valid.textKosong(SpO2,"SpO2");
         }else{
-            if(Sequel.menyimpantf("skrining_nutrisi_dewasa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
+            if(Sequel.menyimpantf("skrining_nutrisi_lansia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
                 Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),TotalHasil.getText(),KdPetugas.getText()
@@ -1348,46 +1348,46 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
             " ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_dewasa.tanggal,"+
-                    "skrining_nutrisi_dewasa.td,skrining_nutrisi_dewasa.hr,skrining_nutrisi_dewasa.rr,skrining_nutrisi_dewasa.suhu,"+
-                    "skrining_nutrisi_dewasa.bb,skrining_nutrisi_dewasa.tbpb,skrining_nutrisi_dewasa.spo2,skrining_nutrisi_dewasa.alergi,"+
-                    "skrining_nutrisi_dewasa.sg1,skrining_nutrisi_dewasa.nilai1,skrining_nutrisi_dewasa.sg2,skrining_nutrisi_dewasa.nilai2,"+
-                    "skrining_nutrisi_dewasa.total_hasil,skrining_nutrisi_dewasa.nip,petugas.nama,pasien.jk from skrining_nutrisi_dewasa "+
-                    "inner join reg_periksa on skrining_nutrisi_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
+                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_dewasa.nip=petugas.nip where "+
-                    "skrining_nutrisi_dewasa.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_nutrisi_dewasa.alergi like ? or skrining_nutrisi_dewasa.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_nutrisi_dewasa.tanggal "
+                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
+                    "skrining_nutrisi_lansia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_nutrisi_lansia.alergi like ? or skrining_nutrisi_lansia.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_nutrisi_lansia.tanggal "
             */
             
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptDataSkriningNutrisiDewasa.jasper","report","::[ Data Skrining Gizi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_dewasa.tanggal,"+
-                    "skrining_nutrisi_dewasa.td,skrining_nutrisi_dewasa.hr,skrining_nutrisi_dewasa.rr,skrining_nutrisi_dewasa.suhu,"+
-                    "skrining_nutrisi_dewasa.bb,skrining_nutrisi_dewasa.tbpb,skrining_nutrisi_dewasa.spo2,skrining_nutrisi_dewasa.alergi,"+
-                    "skrining_nutrisi_dewasa.sg1,skrining_nutrisi_dewasa.nilai1,skrining_nutrisi_dewasa.sg2,skrining_nutrisi_dewasa.nilai2,"+
-                    "skrining_nutrisi_dewasa.total_hasil,skrining_nutrisi_dewasa.nip,petugas.nama,pasien.jk from skrining_nutrisi_dewasa "+
-                    "inner join reg_periksa on skrining_nutrisi_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
+                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_dewasa.nip=petugas.nip where "+
-                    "skrining_nutrisi_dewasa.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "order by skrining_nutrisi_dewasa.tanggal",param);
+                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
+                    "skrining_nutrisi_lansia.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
+                    "order by skrining_nutrisi_lansia.tanggal",param);
             }else{
                 Valid.MyReportqry("rptDataSkriningNutrisiDewasa.jasper","report","::[ Data Skrining Gizi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_dewasa.tanggal,"+
-                    "skrining_nutrisi_dewasa.td,skrining_nutrisi_dewasa.hr,skrining_nutrisi_dewasa.rr,skrining_nutrisi_dewasa.suhu,"+
-                    "skrining_nutrisi_dewasa.bb,skrining_nutrisi_dewasa.tbpb,skrining_nutrisi_dewasa.spo2,skrining_nutrisi_dewasa.alergi,"+
-                    "skrining_nutrisi_dewasa.sg1,skrining_nutrisi_dewasa.nilai1,skrining_nutrisi_dewasa.sg2,skrining_nutrisi_dewasa.nilai2,"+
-                    "skrining_nutrisi_dewasa.total_hasil,skrining_nutrisi_dewasa.nip,petugas.nama,pasien.jk from skrining_nutrisi_dewasa "+
-                    "inner join reg_periksa on skrining_nutrisi_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
+                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_dewasa.nip=petugas.nip where "+
-                    "skrining_nutrisi_dewasa.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
+                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
+                    "skrining_nutrisi_lansia.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
                     "and (reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or skrining_nutrisi_dewasa.alergi like '%"+TCari.getText().trim()+"%' or "+
-                    "skrining_nutrisi_dewasa.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by skrining_nutrisi_dewasa.tanggal ",param);
+                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or skrining_nutrisi_lansia.alergi like '%"+TCari.getText().trim()+"%' or "+
+                    "skrining_nutrisi_lansia.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
+                    "order by skrining_nutrisi_lansia.tanggal ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1518,14 +1518,14 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningNutrisiDewasa.jasper","report","::[ Formulir Skrining Nutrisi Pasien Dewasa ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_dewasa.tanggal,"+
-                    "skrining_nutrisi_dewasa.td,skrining_nutrisi_dewasa.hr,skrining_nutrisi_dewasa.rr,skrining_nutrisi_dewasa.suhu,"+
-                    "skrining_nutrisi_dewasa.bb,skrining_nutrisi_dewasa.tbpb,skrining_nutrisi_dewasa.spo2,skrining_nutrisi_dewasa.alergi,"+
-                    "skrining_nutrisi_dewasa.sg1,skrining_nutrisi_dewasa.nilai1,skrining_nutrisi_dewasa.sg2,skrining_nutrisi_dewasa.nilai2,"+
-                    "skrining_nutrisi_dewasa.total_hasil,skrining_nutrisi_dewasa.nip,petugas.nama,pasien.jk from skrining_nutrisi_dewasa "+
-                    "inner join reg_periksa on skrining_nutrisi_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
+                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_dewasa.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
 
@@ -1755,28 +1755,28 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_dewasa.tanggal,"+
-                    "skrining_nutrisi_dewasa.td,skrining_nutrisi_dewasa.hr,skrining_nutrisi_dewasa.rr,skrining_nutrisi_dewasa.suhu,"+
-                    "skrining_nutrisi_dewasa.bb,skrining_nutrisi_dewasa.tbpb,skrining_nutrisi_dewasa.spo2,skrining_nutrisi_dewasa.alergi,"+
-                    "skrining_nutrisi_dewasa.sg1,skrining_nutrisi_dewasa.nilai1,skrining_nutrisi_dewasa.sg2,skrining_nutrisi_dewasa.nilai2,"+
-                    "skrining_nutrisi_dewasa.total_hasil,skrining_nutrisi_dewasa.nip,petugas.nama,pasien.jk from skrining_nutrisi_dewasa "+
-                    "inner join reg_periksa on skrining_nutrisi_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
+                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_dewasa.nip=petugas.nip where "+
-                    "skrining_nutrisi_dewasa.tanggal between ? and ? order by skrining_nutrisi_dewasa.tanggal ");
+                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
+                    "skrining_nutrisi_lansia.tanggal between ? and ? order by skrining_nutrisi_lansia.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_dewasa.tanggal,"+
-                    "skrining_nutrisi_dewasa.td,skrining_nutrisi_dewasa.hr,skrining_nutrisi_dewasa.rr,skrining_nutrisi_dewasa.suhu,"+
-                    "skrining_nutrisi_dewasa.bb,skrining_nutrisi_dewasa.tbpb,skrining_nutrisi_dewasa.spo2,skrining_nutrisi_dewasa.alergi,"+
-                    "skrining_nutrisi_dewasa.sg1,skrining_nutrisi_dewasa.nilai1,skrining_nutrisi_dewasa.sg2,skrining_nutrisi_dewasa.nilai2,"+
-                    "skrining_nutrisi_dewasa.total_hasil,skrining_nutrisi_dewasa.nip,petugas.nama,pasien.jk from skrining_nutrisi_dewasa "+
-                    "inner join reg_periksa on skrining_nutrisi_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
+                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_dewasa.nip=petugas.nip where "+
-                    "skrining_nutrisi_dewasa.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_nutrisi_dewasa.alergi like ? or skrining_nutrisi_dewasa.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_nutrisi_dewasa.tanggal ");
+                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
+                    "skrining_nutrisi_lansia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_nutrisi_lansia.alergi like ? or skrining_nutrisi_lansia.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_nutrisi_lansia.tanggal ");
             }
                 
             try {
@@ -1844,6 +1844,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         SG7.setSelectedIndex(0);
         Nilai7.setText("0");
         TotalHasil.setText("0");
+        LabelSkrining.setText("Status Gizi Normal");
         BB.requestFocus();
     } 
 
@@ -1914,10 +1915,10 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_nutrisi_dewasa());
-        BtnHapus.setEnabled(akses.getskrining_nutrisi_dewasa());
-        BtnEdit.setEnabled(akses.getskrining_nutrisi_dewasa());
-        BtnPrint.setEnabled(akses.getskrining_nutrisi_dewasa()); 
+        BtnSimpan.setEnabled(akses.getskrining_nutrisi_lansia());
+        BtnHapus.setEnabled(akses.getskrining_nutrisi_lansia());
+        BtnEdit.setEnabled(akses.getskrining_nutrisi_lansia());
+        BtnPrint.setEnabled(akses.getskrining_nutrisi_lansia()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1984,7 +1985,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        Sequel.mengedit("skrining_nutrisi_dewasa","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,nilai2=?,"+
+        Sequel.mengedit("skrining_nutrisi_lansia","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,nilai2=?,"+
             "total_hasil=?,nip=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
@@ -1996,7 +1997,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_nutrisi_dewasa where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_nutrisi_lansia where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tampil();
