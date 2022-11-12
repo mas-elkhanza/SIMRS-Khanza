@@ -14,6 +14,7 @@ encoding/rptHasilRad.jrxml=UTF-8
 encoding/rptItemResep.jrxml=UTF-8
 encoding/rptItemResepPenjualan.jrxml=UTF-8
 encoding/rptJMRanapDokter.jrxml=UTF-8
+encoding/rptKartuBerobat.jrxml=UTF-8
 encoding/rptLabelDiet.jrxml=UTF-8
 encoding/rptLabelDiet2.jrxml=UTF-8
 encoding/rptLembarKeluarMasuk3.jrxml=UTF-8

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>New Data Adapter 1</name><driver>org.mariadb.jdbc.Driver</driver><username>root</username><password></password><savePassword>true</savePassword><url>jdbc:mariadb://localhost:3306/khanza_rsi</url><database></database><serverAddress></serverAddress></jdbcDataAdapter>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>New Data Adapter 1</name><driver>org.mariadb.jdbc.Driver</driver><username>root</username><password></password><savePassword>true</savePassword><url>jdbc:mariadb://localhost:3306/khanza</url><database></database><serverAddress></serverAddress></jdbcDataAdapter>

@@ -8,4 +8,36 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>rptBridgingDaftar_1.jrxml</name>
+			<type>1</type>
+			<location>E:/Khanza master build 2021/SIMRS-Khanza-2021.02.09/report/rptBridgingDaftar.jrxml</location>
+		</link>
+		<link>
+			<name>rptBridgingSEP2_1.jrxml</name>
+			<type>1</type>
+			<location>E:/Khanza master build 2021/SIMRS-Khanza-master/report/rptBridgingSEP2.jrxml</location>
+		</link>
+		<link>
+			<name>rptBridgingSEP2_2.jrxml</name>
+			<type>1</type>
+			<location>C:/Users/RSUI HA/Documents/rptBridgingSEP2.jrxml</location>
+		</link>
+		<link>
+			<name>rptBridgingSEP_1.jrxml</name>
+			<type>1</type>
+			<location>E:/Khanza master build 2021/SIMRS-Khanza-2021.02.09/report/rptBridgingSEP.jrxml</location>
+		</link>
+		<link>
+			<name>rptBridgingSEP_2.jrxml</name>
+			<type>1</type>
+			<location>E:/Khanza master build 2021/SIMRS-Khanza-master/report/rptBridgingSEP.jrxml</location>
+		</link>
+		<link>
+			<name>rptBridgingSEP_3.jrxml</name>
+			<type>1</type>
+			<location>C:/Users/RSUI HA/Documents/rptBridgingSEP.jrxml</location>
+		</link>
+	</linkedResources>
 </projectDescription>

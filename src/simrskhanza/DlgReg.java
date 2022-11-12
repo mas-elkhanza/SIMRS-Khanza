@@ -219,6 +219,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         this.setLocation(8, 1);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        BtnEdit.setVisible(false);
 //        setSize(885, 660); // setSize(885, 674);
 //        setSize(screenSize.width, screenSize.height);
 
@@ -6124,10 +6125,10 @@ public final class DlgReg extends javax.swing.JDialog {
                 if (tbPetugas.getSelectedRow() > -1) {
                     if (akses.getedit_registrasi() == true) {
                         Sequel.queryu2(
-                                "update reg_periksa set no_rawat=?,no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
+                                "update reg_periksa set no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
                                 + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
-                                16,
-                                new String[]{TNoRw.getText(), TNoReg.getText(),
+                                15,
+                                new String[]{TNoReg.getText(),
                                     Valid.SetDateToString(DTPReg.getDate()),
                                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                     + CmbDetik.getSelectedItem(),
@@ -6151,10 +6152,10 @@ public final class DlgReg extends javax.swing.JDialog {
                             TCari.requestFocus();
                         } else {
                             Sequel.queryu2(
-                                    "update reg_periksa set no_rawat=?,no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
+                                    "update reg_periksa set no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
                                     + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
-                                    16,
-                                    new String[]{TNoRw.getText(), TNoReg.getText(),
+                                    15,
+                                    new String[]{TNoReg.getText(),
                                         Valid.SetDateToString(DTPReg.getDate()),
                                         CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                         + CmbDetik.getSelectedItem(),
@@ -6173,10 +6174,10 @@ public final class DlgReg extends javax.swing.JDialog {
             if (tbPetugas.getSelectedRow() > -1) {
                 if (akses.getedit_registrasi() == true) {
                     Sequel.queryu2(
-                            "update reg_periksa set no_rawat=?,no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
+                            "update reg_periksa set no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
                             + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
-                            16,
-                            new String[]{TNoRw.getText(), TNoReg.getText(),
+                            15,
+                            new String[]{TNoReg.getText(),
                                 Valid.SetDateToString(DTPReg.getDate()),
                                 CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                 + CmbDetik.getSelectedItem(),
@@ -6200,10 +6201,10 @@ public final class DlgReg extends javax.swing.JDialog {
                         TCari.requestFocus();
                     } else {
                         Sequel.queryu2(
-                                "update reg_periksa set no_rawat=?,no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
+                                "update reg_periksa set no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
                                 + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
-                                16,
-                                new String[]{TNoRw.getText(), TNoReg.getText(),
+                                15,
+                                new String[]{TNoReg.getText(),
                                     Valid.SetDateToString(DTPReg.getDate()),
                                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                     + CmbDetik.getSelectedItem(),
