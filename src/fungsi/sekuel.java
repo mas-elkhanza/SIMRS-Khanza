@@ -922,6 +922,7 @@ public final class sekuel {
      */
     public void mengedit(String table, String acuan_field, String update) {
         try {
+//            System.out.println("update " + table + " set " + update + " where " + acuan_field);
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
             try {
                 ps.executeUpdate();
@@ -985,6 +986,7 @@ public final class sekuel {
      */
     public void mengedit(String table, String acuan_field, String update, int i, String[] a) {
         try {
+//            System.out.println("update " + table + " set " + update + " where " + acuan_field);
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
             try {
                 for (angka = 1; angka <= i; angka++) {
@@ -1024,6 +1026,7 @@ public final class sekuel {
      */
     public void mengedit2(String table, String acuan_field, String update, int i, String[] a) {
         try {
+//            System.out.println("update " + table + " set " + update + " where " + acuan_field);
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
             try {
                 for (angka = 1; angka <= i; angka++) {
@@ -1102,7 +1105,8 @@ public final class sekuel {
      */
     public boolean mengedittf(String table, String acuan_field, String update, int i, String[] a) {
         bool = true;
-        try {System.out.println("update " + table + " set " + update + " where " + acuan_field);
+        try {
+//            System.out.println("update " + table + " set " + update + " where " + acuan_field);
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
             try {
                 for (angka = 1; angka <= i; angka++) {
@@ -1357,7 +1361,7 @@ public final class sekuel {
      */
     public boolean queryu2tf(String qry, int i, String[] a) {
         bool = false;
-        System.out.println("Query: "+qry);
+//        System.out.println("Query: "+qry);
         try {
             try {
                 ps = connect.prepareStatement(qry);
@@ -1782,6 +1786,7 @@ public final class sekuel {
      */
     public String cariIsi(String sql) {
         dicari = "";
+        System.out.println("SQL="+sql);
         try {
             ps = connect.prepareStatement(sql);
             try {
