@@ -496,7 +496,7 @@
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nilai1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nilai2}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="5" y="305" width="364" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="f7d479dc-296b-4c62-ac48-d592d43f1674"/>

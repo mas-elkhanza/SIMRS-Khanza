@@ -13,12 +13,16 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +36,9 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -49,6 +56,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
+    private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -61,7 +69,9 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
             "BB(Kg)","TB/PB(Cm)","TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu","SpO2","Alergi",
-            "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor"
+            "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Skrining Gizi 3","Nilai 3",
+            "Skrining Gizi 4","Nilai 4","Skrining Gizi 5","Nilai 5","Skrining Gizi 6","Nilai 6",
+            "Total Skor","Hasil Skrining"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -71,7 +81,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 21; i++) {
+        for (i = 0; i < 30; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -106,15 +116,33 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
             }else if(i==15){
                 column.setPreferredWidth(150);
             }else if(i==16){
-                column.setPreferredWidth(78);
+                column.setPreferredWidth(160);
             }else if(i==17){
                 column.setPreferredWidth(39);
             }else if(i==18){
-                column.setPreferredWidth(78);
+                column.setPreferredWidth(160);
             }else if(i==19){
                 column.setPreferredWidth(39);
             }else if(i==20){
+                column.setPreferredWidth(160);
+            }else if(i==21){
+                column.setPreferredWidth(39);
+            }else if(i==22){
+                column.setPreferredWidth(78);
+            }else if(i==23){
+                column.setPreferredWidth(39);
+            }else if(i==24){
+                column.setPreferredWidth(160);
+            }else if(i==25){
+                column.setPreferredWidth(39);
+            }else if(i==26){
+                column.setPreferredWidth(100);
+            }else if(i==27){
+                column.setPreferredWidth(39);
+            }else if(i==28){
                 column.setPreferredWidth(57);
+            }else if(i==29){
+                column.setPreferredWidth(95);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -180,6 +208,24 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm();
         
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
+        
         jam();
     }
 
@@ -196,6 +242,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSkriningNutrisi = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -303,7 +350,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         MnSkriningNutrisi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSkriningNutrisi.setForeground(new java.awt.Color(50, 50, 50));
         MnSkriningNutrisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningNutrisi.setText("Formulir Skrining Nutrisi Pasien Dewasa");
+        MnSkriningNutrisi.setText("Formulir Skrining Nutrisi Pasien Lansia");
         MnSkriningNutrisi.setName("MnSkriningNutrisi"); // NOI18N
         MnSkriningNutrisi.setPreferredSize(new java.awt.Dimension(260, 26));
         MnSkriningNutrisi.addActionListener(new java.awt.event.ActionListener() {
@@ -312,6 +359,9 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnSkriningNutrisi);
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -588,7 +638,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 383));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 393));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -968,6 +1018,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel44.setText("Hasil Skrining :");
+        jLabel44.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
         jLabel44.setBounds(44, 360, 100, 23);
@@ -1165,13 +1216,14 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel48.setBounds(44, 270, 180, 23);
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel49.setText("F. Indeks Masa Tubuh (IMT) (Berat Badan Dalam kg)/(Tinggi Badan Dalam m²)");
+        jLabel49.setText("F. Indeks Masa Tubuh (IMT)");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
         jLabel49.setBounds(44, 300, 400, 23);
 
         LabelSkrining.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LabelSkrining.setText("Status Gizi Normal");
+        LabelSkrining.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         LabelSkrining.setName("LabelSkrining"); // NOI18N
         FormInput.add(LabelSkrining);
         LabelSkrining.setBounds(124, 360, 380, 23);
@@ -1220,14 +1272,29 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         }else if(SpO2.getText().trim().equals("")){
             Valid.textKosong(SpO2,"SpO2");
         }else{
-            if(Sequel.menyimpantf("skrining_nutrisi_lansia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
-                Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),TotalHasil.getText(),KdPetugas.getText()
-            })==true){
-                tampil();
-                emptTeks();
-            }  
+            if(R1.isSelected()==true){
+                if(Sequel.menyimpantf("skrining_nutrisi_lansia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
+                    Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),SG3.getSelectedItem().toString(),Nilai3.getText(),SG4.getSelectedItem().toString(),
+                    Nilai4.getText(),SG5.getSelectedItem().toString(),Nilai5.getText(),SG6.getSelectedItem().toString(),Nilai6.getText(),TotalHasil.getText(),
+                    LabelSkrining.getText(),KdPetugas.getText()
+                })==true){
+                    tampil();
+                    emptTeks();
+                } 
+            }else{
+                if(Sequel.menyimpantf("skrining_nutrisi_lansia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
+                    Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),SG3.getSelectedItem().toString(),Nilai3.getText(),SG4.getSelectedItem().toString(),
+                    Nilai4.getText(),SG5.getSelectedItem().toString(),Nilai5.getText(),SG7.getSelectedItem().toString(),Nilai7.getText(),TotalHasil.getText(),
+                    LabelSkrining.getText(),KdPetugas.getText()
+                })==true){
+                    tampil();
+                    emptTeks();
+                }
+            } 
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1336,59 +1403,174 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            /*
-            " ");
-            }else{
-                ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
-                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
-                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
-                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
-                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
-                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
-                    "skrining_nutrisi_lansia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_nutrisi_lansia.alergi like ? or skrining_nutrisi_lansia.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_nutrisi_lansia.tanggal "
-            */
-            
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataSkriningNutrisiDewasa.jasper","report","::[ Data Skrining Gizi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
-                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
-                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
-                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
-                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
-                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
-                    "skrining_nutrisi_lansia.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "order by skrining_nutrisi_lansia.tanggal",param);
-            }else{
-                Valid.MyReportqry("rptDataSkriningNutrisiDewasa.jasper","report","::[ Data Skrining Gizi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
-                    "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
-                    "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
-                    "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
-                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
-                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
-                    "skrining_nutrisi_lansia.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "and (reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or skrining_nutrisi_lansia.alergi like '%"+TCari.getText().trim()+"%' or "+
-                    "skrining_nutrisi_lansia.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by skrining_nutrisi_lansia.tanggal ",param);
-            }  
+            try{
+                if(TCari.getText().trim().equals("")){
+                    ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                        "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                        "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                        "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                        "skrining_nutrisi_lansia.sg3,skrining_nutrisi_lansia.nilai3,skrining_nutrisi_lansia.sg4,skrining_nutrisi_lansia.nilai4,"+
+                        "skrining_nutrisi_lansia.sg5,skrining_nutrisi_lansia.nilai5,skrining_nutrisi_lansia.sg6,skrining_nutrisi_lansia.nilai6,"+
+                        "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.skor_nutrisi,skrining_nutrisi_lansia.nip,petugas.nama,"+
+                        "pasien.jk from skrining_nutrisi_lansia inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip "+
+                        "where skrining_nutrisi_lansia.tanggal between ? and ? order by skrining_nutrisi_lansia.tanggal ");
+                }else{
+                    ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
+                        "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
+                        "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
+                        "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
+                        "skrining_nutrisi_lansia.sg3,skrining_nutrisi_lansia.nilai3,skrining_nutrisi_lansia.sg4,skrining_nutrisi_lansia.nilai4,"+
+                        "skrining_nutrisi_lansia.sg5,skrining_nutrisi_lansia.nilai5,skrining_nutrisi_lansia.sg6,skrining_nutrisi_lansia.nilai6,"+
+                        "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.skor_nutrisi,skrining_nutrisi_lansia.nip,petugas.nama,"+
+                        "pasien.jk from skrining_nutrisi_lansia inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip "+
+                        "where skrining_nutrisi_lansia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                        "pasien.nm_pasien like ? or skrining_nutrisi_lansia.alergi like ? or skrining_nutrisi_lansia.nip like ? or petugas.nama like ?) "+
+                        "order by skrining_nutrisi_lansia.tanggal ");
+                }
+
+                try {
+                    if(TCari.getText().trim().equals("")){
+                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    }else{
+                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                        ps.setString(3,"%"+TCari.getText()+"%");
+                        ps.setString(4,"%"+TCari.getText()+"%");
+                        ps.setString(5,"%"+TCari.getText()+"%");
+                        ps.setString(6,"%"+TCari.getText()+"%");
+                        ps.setString(7,"%"+TCari.getText()+"%");
+                        ps.setString(8,"%"+TCari.getText()+"%");
+                    }
+                    rs=ps.executeQuery();
+                    htmlContent = new StringBuilder();
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Petugas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Petugas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB(Kg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TB/PB(Cm)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>HR(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SpO2</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alergi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 1</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 1</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 2</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 2</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 3</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 3</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 4</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 4</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 5</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 5</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 6</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 6</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total Skor</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hasil Skrining</b></td>"+
+                        "</tr>"
+                    );
+                    while(rs.next()){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
+                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nip")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
+                               "<td valign='top'>"+rs.getString("bb")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tbpb")+"</td>"+
+                               "<td valign='top'>"+rs.getString("td")+"</td>"+
+                               "<td valign='top'>"+rs.getString("hr")+"</td>"+
+                               "<td valign='top'>"+rs.getString("rr")+"</td>"+
+                               "<td valign='top'>"+rs.getString("suhu")+"</td>"+
+                               "<td valign='top'>"+rs.getString("spo2")+"</td>"+
+                               "<td valign='top'>"+rs.getString("alergi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("sg1")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nilai1")+"</td>"+
+                               "<td valign='top'>"+rs.getString("sg2")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nilai2")+"</td>"+
+                               "<td valign='top'>"+rs.getString("sg3")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nilai3")+"</td>"+
+                               "<td valign='top'>"+rs.getString("sg4")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nilai4")+"</td>"+
+                               "<td valign='top'>"+rs.getString("sg5")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nilai5")+"</td>"+
+                               "<td valign='top'>"+rs.getString("sg6")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nilai6")+"</td>"+
+                               "<td valign='top'>"+rs.getString("total_hasil")+"</td>"+
+                               "<td valign='top'>"+rs.getString("skor_nutrisi")+"</td>"+
+                            "</tr>");
+                    }
+                    LoadHTML.setText(
+                        "<html>"+
+                          "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                           htmlContent.toString()+
+                          "</table>"+
+                        "</html>"
+                    );
+
+                    File g = new File("file2.css");            
+                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                    bg.write(
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                    );
+                    bg.close();
+
+                    File f = new File("DataPenilaianAwalMedisRalan.html");            
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi2'>"+
+                                        "<td valign='top' align='center'>"+
+                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                            "<font size='2' face='Tahoma'>DATA SKRINING NUTRISI PASIEN LANSIA<br><br></font>"+        
+                                        "</td>"+
+                                   "</tr>"+
+                                "</table>")
+                    );
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1517,15 +1699,17 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningNutrisiDewasa.jasper","report","::[ Formulir Skrining Nutrisi Pasien Dewasa ]::",
+            Valid.MyReportqry("rptFormulirSkriningNutrisiLansia.jasper","report","::[ Formulir Skrining Nutrisi Pasien Lansia ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
                     "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
                     "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
                     "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
-                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
-                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "skrining_nutrisi_lansia.sg3,skrining_nutrisi_lansia.nilai3,skrining_nutrisi_lansia.sg4,skrining_nutrisi_lansia.nilai4,"+
+                    "skrining_nutrisi_lansia.sg5,skrining_nutrisi_lansia.nilai5,skrining_nutrisi_lansia.sg6,skrining_nutrisi_lansia.nilai6,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.skor_nutrisi,skrining_nutrisi_lansia.nip,petugas.nama,"+
+                    "pasien.jk from skrining_nutrisi_lansia inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip "+
+                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
 
@@ -1666,6 +1850,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.Label LabelSkrining;
+    private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningNutrisi;
     private widget.TextBox Nilai1;
@@ -1759,22 +1944,24 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
                     "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
                     "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
                     "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
-                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
-                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
-                    "skrining_nutrisi_lansia.tanggal between ? and ? order by skrining_nutrisi_lansia.tanggal ");
+                    "skrining_nutrisi_lansia.sg3,skrining_nutrisi_lansia.nilai3,skrining_nutrisi_lansia.sg4,skrining_nutrisi_lansia.nilai4,"+
+                    "skrining_nutrisi_lansia.sg5,skrining_nutrisi_lansia.nilai5,skrining_nutrisi_lansia.sg6,skrining_nutrisi_lansia.nilai6,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.skor_nutrisi,skrining_nutrisi_lansia.nip,petugas.nama,"+
+                    "pasien.jk from skrining_nutrisi_lansia inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip "+
+                    "where skrining_nutrisi_lansia.tanggal between ? and ? order by skrining_nutrisi_lansia.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_lansia.tanggal,"+
                     "skrining_nutrisi_lansia.td,skrining_nutrisi_lansia.hr,skrining_nutrisi_lansia.rr,skrining_nutrisi_lansia.suhu,"+
                     "skrining_nutrisi_lansia.bb,skrining_nutrisi_lansia.tbpb,skrining_nutrisi_lansia.spo2,skrining_nutrisi_lansia.alergi,"+
                     "skrining_nutrisi_lansia.sg1,skrining_nutrisi_lansia.nilai1,skrining_nutrisi_lansia.sg2,skrining_nutrisi_lansia.nilai2,"+
-                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.nip,petugas.nama,pasien.jk from skrining_nutrisi_lansia "+
-                    "inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip where "+
-                    "skrining_nutrisi_lansia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "skrining_nutrisi_lansia.sg3,skrining_nutrisi_lansia.nilai3,skrining_nutrisi_lansia.sg4,skrining_nutrisi_lansia.nilai4,"+
+                    "skrining_nutrisi_lansia.sg5,skrining_nutrisi_lansia.nilai5,skrining_nutrisi_lansia.sg6,skrining_nutrisi_lansia.nilai6,"+
+                    "skrining_nutrisi_lansia.total_hasil,skrining_nutrisi_lansia.skor_nutrisi,skrining_nutrisi_lansia.nip,petugas.nama,"+
+                    "pasien.jk from skrining_nutrisi_lansia inner join reg_periksa on skrining_nutrisi_lansia.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_lansia.nip=petugas.nip "+
+                    "where skrining_nutrisi_lansia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or skrining_nutrisi_lansia.alergi like ? or skrining_nutrisi_lansia.nip like ? or petugas.nama like ?) "+
                     "order by skrining_nutrisi_lansia.tanggal ");
             }
@@ -1800,7 +1987,9 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("bb"),rs.getString("tbpb"),rs.getString("td"),
                         rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("alergi"),rs.getString("sg1"),
-                        rs.getString("nilai1"),rs.getString("sg2"),rs.getString("nilai2"),rs.getString("total_hasil")
+                        rs.getString("nilai1"),rs.getString("sg2"),rs.getString("nilai2"),rs.getString("sg3"),rs.getString("nilai3"),rs.getString("sg4"),
+                        rs.getString("nilai4"),rs.getString("sg5"),rs.getString("nilai5"),rs.getString("sg6"),rs.getString("nilai6"),rs.getString("total_hasil"),
+                        rs.getString("skor_nutrisi")
                     });
                 }
             } catch (Exception e) {
@@ -1869,7 +2058,24 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
             Nilai1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             SG2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             Nilai2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            SG3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Nilai3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            SG4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Nilai4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            SG5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Nilai5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString().toLowerCase().contains("lingkar")){
+                R2.setSelected(true);
+                SG7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+                Nilai7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            }else{
+                R1.setSelected(true);
+                SG6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+                Nilai6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            }
+                
+            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            LabelSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -1895,7 +2101,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>638){
+            if(internalFrame1.getHeight()>588){
                 ChkInput.setVisible(false);
                 PanelInput.setPreferredSize(new Dimension(WIDTH,416));
                 FormInput.setVisible(true);      
@@ -1985,13 +2191,26 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        Sequel.mengedit("skrining_nutrisi_lansia","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,nilai2=?,"+
-            "total_hasil=?,nip=?",17,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
-                Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),TotalHasil.getText(),KdPetugas.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        });
+        if(R1.isSelected()==true){
+            Sequel.mengedit("skrining_nutrisi_lansia","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,"+
+                    "nilai2=?,sg3=?,nilai3=?,sg4=?,nilai4=?,sg5=?,nilai5=?,sg6=?,nilai6=?,total_hasil=?,skor_nutrisi=?,nip=?",26,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
+                    Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),SG3.getSelectedItem().toString(),Nilai3.getText(),SG4.getSelectedItem().toString(),
+                    Nilai4.getText(),SG5.getSelectedItem().toString(),Nilai5.getText(),SG6.getSelectedItem().toString(),Nilai6.getText(),TotalHasil.getText(),
+                    LabelSkrining.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            });
+        }else{
+            Sequel.mengedit("skrining_nutrisi_lansia","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,"+
+                    "nilai2=?,sg3=?,nilai3=?,sg4=?,nilai4=?,sg5=?,nilai5=?,sg6=?,nilai6=?,total_hasil=?,skor_nutrisi=?,nip=?",26,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
+                    Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),SG3.getSelectedItem().toString(),Nilai3.getText(),SG4.getSelectedItem().toString(),
+                    Nilai4.getText(),SG5.getSelectedItem().toString(),Nilai5.getText(),SG7.getSelectedItem().toString(),Nilai7.getText(),TotalHasil.getText(),
+                    LabelSkrining.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            });
+        }
+            
         if(tabMode.getRowCount()!=0){tampil();}
         emptTeks();
     }

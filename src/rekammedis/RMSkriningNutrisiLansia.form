@@ -25,7 +25,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Skrining Nutrisi Pasien Dewasa"/>
+            <Property name="text" type="java.lang.String" value="Formulir Skrining Nutrisi Pasien Lansia"/>
             <Property name="name" type="java.lang.String" value="MnSkriningNutrisi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 26]"/>
@@ -38,6 +38,14 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+    <Component class="widget.editorpane" name="LoadHTML">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="LoadHTML" noResource="true"/>
+      </Properties>
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -503,7 +511,7 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="FormInput" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 383]"/>
+                      <Dimension value="[100, 393]"/>
                     </Property>
                   </Properties>
 
@@ -1318,6 +1326,9 @@
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Hasil Skrining :"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="2"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="jLabel44" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1670,7 +1681,7 @@
                     <Component class="widget.Label" name="jLabel49">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="F. Indeks Masa Tubuh (IMT) (Berat Badan Dalam kg)/(Tinggi Badan Dalam m&#xb2;)"/>
+                        <Property name="text" type="java.lang.String" value="F. Indeks Masa Tubuh (IMT)"/>
                         <Property name="name" type="java.lang.String" value="jLabel49" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1683,6 +1694,9 @@
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Status Gizi Normal"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="2"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="LabelSkrining" noResource="true"/>
                       </Properties>
                       <Constraints>
