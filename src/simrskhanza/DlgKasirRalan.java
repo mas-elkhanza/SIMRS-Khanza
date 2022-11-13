@@ -228,7 +228,15 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 column.setPreferredWidth(95);
             }
         }
-        tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTableKasirRalan());
+        try {
+            if(koneksiDB.AKTIFKANWARNARALAN()=="yes"){
+                tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTableKasirRalan());
+            }else{
+                tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTable());
+            }
+        } catch (Exception e) {
+            tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTable());
+        }
         
         tabModekasir2=new DefaultTableModel(null,new String[]{
             "Kd.Dokter","Dokter Rujukan","Nomer RM","Pasien",

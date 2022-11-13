@@ -167,7 +167,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             master_rencana_keperawatan_gigi=false,master_rencana_keperawatan_mata=false,master_rencana_keperawatan_igd=false,master_masalah_keperawatan_psikiatri=false,master_rencana_keperawatan_psikiatri=false,
             penilaian_awal_keperawatan_psikiatri=false,pemantauan_pews_anak=false,surat_pulang_atas_permintaan_sendiri=false,template_hasil_radiologi=false,laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,
             ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false,perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false,penilaian_lanjutan_resiko_jatuh_anak=false,
-            penilaian_awal_medis_ralan_geriatri=false,penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false;
+            penilaian_awal_medis_ralan_geriatri=false,penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -757,7 +757,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         master_rencana_keperawatan_gigi=false;master_rencana_keperawatan_mata=false;master_rencana_keperawatan_igd=false;master_masalah_keperawatan_psikiatri=false;master_rencana_keperawatan_psikiatri=false;
         penilaian_awal_keperawatan_psikiatri=false;pemantauan_pews_anak=false;surat_pulang_atas_permintaan_sendiri=false;template_hasil_radiologi=false;laporan_bulanan_irj=false;template_pemeriksaan=false;pemeriksaan_lab_mb=false;
         ubah_petugas_lab_mb=false;penilaian_pre_operasi=false;penilaian_pre_anestesi=false;perencanaan_pemulangan=false;penilaian_lanjutan_resiko_jatuh_dewasa=false;penilaian_lanjutan_resiko_jatuh_anak=false;
-        penilaian_awal_medis_ralan_geriatri=false;penilaian_tambahan_pasien_geriatri=false;skrining_nutrisi_dewasa=false;skrining_nutrisi_lansia=false;hasil_pemeriksaan_usg=false;
+        penilaian_awal_medis_ralan_geriatri=false;penilaian_tambahan_pasien_geriatri=false;skrining_nutrisi_dewasa=false;skrining_nutrisi_lansia=false;hasil_pemeriksaan_usg=false;skrining_nutrisi_anak=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -956,7 +956,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.surat_pulang_atas_permintaan_sendiri,user.template_hasil_radiologi,user.laporan_bulanan_irj,user.template_pemeriksaan,user.pemeriksaan_lab_mb,"+
                 "user.ubah_petugas_lab_mb,user.penilaian_pre_operasi,user.penilaian_pre_anestesi,user.perencanaan_pemulangan,user.penilaian_lanjutan_resiko_jatuh_dewasa,"+
                 "user.penilaian_lanjutan_resiko_jatuh_anak,user.penilaian_awal_medis_ralan_geriatri,user.penilaian_tambahan_pasien_geriatri,user.skrining_nutrisi_dewasa,"+
-                "user.skrining_nutrisi_lansia,user.hasil_pemeriksaan_usg from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.skrining_nutrisi_lansia,user.hasil_pemeriksaan_usg,user.skrining_nutrisi_anak from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1056,7 +1056,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     jumlah_pengunjung_ralan_tni=rs.getBoolean("jumlah_pengunjung_ralan_tni");laporan_penyakit_tni=rs.getBoolean("laporan_penyakit_tni");catatan_keperawatan_ranap=rs.getBoolean("catatan_keperawatan_ranap");master_rencana_keperawatan_gigi=rs.getBoolean("master_rencana_keperawatan_gigi");master_rencana_keperawatan_mata=rs.getBoolean("master_rencana_keperawatan_mata");master_rencana_keperawatan_igd=rs.getBoolean("master_rencana_keperawatan_igd");master_masalah_keperawatan_psikiatri=rs.getBoolean("master_masalah_keperawatan_psikiatri");
                     master_rencana_keperawatan_psikiatri=rs.getBoolean("master_rencana_keperawatan_psikiatri");penilaian_awal_keperawatan_psikiatri=rs.getBoolean("penilaian_awal_keperawatan_psikiatri");pemantauan_pews_anak=rs.getBoolean("pemantauan_pews_anak");surat_pulang_atas_permintaan_sendiri=rs.getBoolean("surat_pulang_atas_permintaan_sendiri");template_hasil_radiologi=rs.getBoolean("template_hasil_radiologi");laporan_bulanan_irj=rs.getBoolean("laporan_bulanan_irj");template_pemeriksaan=rs.getBoolean("template_pemeriksaan");pemeriksaan_lab_mb=rs.getBoolean("pemeriksaan_lab_mb");
                     ubah_petugas_lab_mb=rs.getBoolean("ubah_petugas_lab_mb");penilaian_pre_operasi=rs.getBoolean("penilaian_pre_operasi");penilaian_pre_anestesi=rs.getBoolean("penilaian_pre_anestesi");perencanaan_pemulangan=rs.getBoolean("perencanaan_pemulangan");penilaian_lanjutan_resiko_jatuh_dewasa=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_dewasa");penilaian_lanjutan_resiko_jatuh_anak=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_anak");penilaian_awal_medis_ralan_geriatri=rs.getBoolean("penilaian_awal_medis_ralan_geriatri");penilaian_tambahan_pasien_geriatri=rs.getBoolean("penilaian_tambahan_pasien_geriatri");
-                    skrining_nutrisi_dewasa=rs.getBoolean("skrining_nutrisi_dewasa");skrining_nutrisi_lansia=rs.getBoolean("skrining_nutrisi_lansia");hasil_pemeriksaan_usg=rs.getBoolean("hasil_pemeriksaan_usg");
+                    skrining_nutrisi_dewasa=rs.getBoolean("skrining_nutrisi_dewasa");skrining_nutrisi_lansia=rs.getBoolean("skrining_nutrisi_lansia");hasil_pemeriksaan_usg=rs.getBoolean("hasil_pemeriksaan_usg");skrining_nutrisi_anak=rs.getBoolean("skrining_nutrisi_anak");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -3695,6 +3695,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[L]Hasil Pemeriksaan USG".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[L]Hasil Pemeriksaan USG",hasil_pemeriksaan_usg});
+        }
+        
+        if("[L]Skrining Nutrisi Pasien Anak".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[L]Skrining Nutrisi Pasien Anak",skrining_nutrisi_anak});
         }
 
         if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7238,6 +7242,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Hasil Pemeriksaan USG".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hasil_pemeriksaan_usg='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Skrining Nutrisi Pasien Anak".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","skrining_nutrisi_anak='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
