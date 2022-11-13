@@ -19395,6 +19395,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningNutrisiAnakActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20056,7 +20060,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
-            btnSkriningNutrisiLansia;
+            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak;
     
     public void isWall(){
         try{            
@@ -23111,6 +23115,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_nutrisi_lansia()==true){
                 Panelmenu.add(btnSkriningNutrisiLansia);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_nutrisi_anak()==true){
+                Panelmenu.add(btnSkriningNutrisiAnak);
                 jmlmenu++;
             }
             
@@ -27496,6 +27505,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_nutrisi_lansia()==true){
             Panelmenu.add(btnSkriningNutrisiLansia);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_nutrisi_anak()==true){
+            Panelmenu.add(btnSkriningNutrisiAnak);
             jmlmenu++;
         }
         
@@ -33051,6 +33065,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_nutrisi_anak()==true){
+            if(btnSkriningNutrisiAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningNutrisiAnak);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettemplate_hasil_radiologi()==true){
             if(btnMasterTemplateHasilRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterTemplateHasilRadiologi);
@@ -38415,6 +38436,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningNutrisiLansia.setName("btnSkriningNutrisiLansia");
         btnSkriningNutrisiLansia.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningNutrisiLansia.addActionListener(this::btnSkriningNutrisiLansiaActionPerformed);
+        
+        btnSkriningNutrisiAnak = new widget.ButtonBig();
+        btnSkriningNutrisiAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141442_covid19_food_health_eat hot food and use serving spoon_virus transmission_icon.png"))); 
+        btnSkriningNutrisiAnak.setText("Skrining Nutrisi Pasien Anak");
+        btnSkriningNutrisiAnak.setIconTextGap(0);
+        btnSkriningNutrisiAnak.setName("btnSkriningNutrisiAnak");
+        btnSkriningNutrisiAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningNutrisiAnak.addActionListener(this::btnSkriningNutrisiAnakActionPerformed);
     }
     
 }
