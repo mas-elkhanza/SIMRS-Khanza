@@ -229,7 +229,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         }
         try {
-            if(koneksiDB.AKTIFKANWARNARALAN()=="yes"){
+            if(koneksiDB.AKTIFKANWARNARALAN().equals("yes")){
                 tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTableKasirRalan());
             }else{
                 tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTable());

@@ -976,7 +976,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel92.setText("Nilai :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(655, 150, 70, 23);
+        jLabel92.setBounds(675, 150, 50, 23);
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel43.setText("B. Penurunan Berat Badan Selama 3 Bulan Terakhir");
@@ -1002,7 +1002,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel69.setText("Nilai :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(655, 180, 70, 23);
+        jLabel69.setBounds(675, 180, 50, 23);
 
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
@@ -1061,7 +1061,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel70.setText("Nilai :");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
-        jLabel70.setBounds(655, 210, 70, 23);
+        jLabel70.setBounds(675, 210, 50, 23);
 
         Nilai3.setEditable(false);
         Nilai3.setText("0");
@@ -1073,7 +1073,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel71.setText("Nilai :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
-        jLabel71.setBounds(655, 240, 70, 23);
+        jLabel71.setBounds(675, 240, 50, 23);
 
         Nilai4.setEditable(false);
         Nilai4.setText("0");
@@ -1127,7 +1127,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel72.setText("Nilai :");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
-        jLabel72.setBounds(655, 270, 70, 23);
+        jLabel72.setBounds(675, 270, 50, 23);
 
         Nilai5.setEditable(false);
         Nilai5.setText("0");
@@ -1164,7 +1164,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel74.setText("Nilai :");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(655, 300, 70, 23);
+        jLabel74.setBounds(675, 300, 50, 23);
 
         Nilai6.setEditable(false);
         Nilai6.setText("0");
@@ -1183,7 +1183,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         jLabel76.setText("Nilai :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(655, 330, 70, 23);
+        jLabel76.setBounds(675, 330, 50, 23);
 
         SG7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lingkar Betis < 31", "Lingkar Betis >= 31" }));
         SG7.setName("SG7"); // NOI18N
@@ -1540,7 +1540,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
                     );
                     bg.close();
 
-                    File f = new File("DataPenilaianAwalMedisRalan.html");            
+                    File f = new File("DataSkriningNutrisiLansia.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
