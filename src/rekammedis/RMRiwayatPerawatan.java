@@ -320,6 +320,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkHemodialisa = new widget.CekBox();
         chkSkriningNutrisiDewasa = new widget.CekBox();
         chkSkriningNutrisiLansia = new widget.CekBox();
+        chkSkriningNutrisiAnak = new widget.CekBox();
         chkSkriningGiziLanjut = new widget.CekBox();
         chkMonitoringGizi = new widget.CekBox();
         chkBerkasDigital = new widget.CekBox();
@@ -585,7 +586,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1667));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1697));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1016,6 +1017,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningNutrisiLansia.setOpaque(false);
         chkSkriningNutrisiLansia.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSkriningNutrisiLansia);
+
+        chkSkriningNutrisiAnak.setSelected(true);
+        chkSkriningNutrisiAnak.setText("Skrining Nutrisi Anak");
+        chkSkriningNutrisiAnak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningNutrisiAnak.setName("chkSkriningNutrisiAnak"); // NOI18N
+        chkSkriningNutrisiAnak.setOpaque(false);
+        chkSkriningNutrisiAnak.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningNutrisiAnak);
 
         chkSkriningGiziLanjut.setSelected(true);
         chkSkriningGiziLanjut.setText("Skrining Gizi Lanjut");
@@ -1628,6 +1637,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningNutrisiDewasa.setSelected(true);
             chkHasilPemeriksaanUSG.setSelected(true);
             chkSkriningNutrisiLansia.setSelected(true);
+            chkSkriningNutrisiAnak.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1700,6 +1710,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningNutrisiDewasa.setSelected(false);
             chkHasilPemeriksaanUSG.setSelected(false);
             chkSkriningNutrisiLansia.setSelected(false);
+            chkSkriningNutrisiAnak.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1834,6 +1845,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkResume;
     private widget.CekBox chkSemua;
     private widget.CekBox chkSkriningGiziLanjut;
+    private widget.CekBox chkSkriningNutrisiAnak;
     private widget.CekBox chkSkriningNutrisiDewasa;
     private widget.CekBox chkSkriningNutrisiLansia;
     private widget.CekBox chkTambahanBiaya;
@@ -11153,6 +11165,110 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                        "<br>"+
                                        "<i>Hasil Skrining : "+rs2.getString("skor_nutrisi")+"</i>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+            
+            //menampilkan skrining nutrisi anak
+            if(chkSkriningNutrisiAnak.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
+                            "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
+                            "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
+                            "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
+                            "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
+                            "skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien,skrining_nutrisi_anak.tanggal "+
+                            "from skrining_nutrisi_anak inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
+                            "where skrining_nutrisi_anak.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Skrining Nutrisi Pasien Anak</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='70%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "TANDA VITAL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>BB : "+rs2.getString("bb")+" Kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB/PB : "+rs2.getString("tbpb")+" Cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TD : "+rs2.getString("td")+" mmHg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HR : "+rs2.getString("hr")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RR : "+rs2.getString("rr")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Suhu : "+rs2.getString("suhu")+" °C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpO2 : "+rs2.getString("spo2")+" %</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Alergi : "+rs2.getString("alergi")+" %</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "SKRINING GIZI AWAL DENGAN STRONG-KIDS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='75%' bgcolor='#FFFAF8' align='center'>Parameter</td>"+
+                                              "<td valign='top' width='15%' bgcolor='#FFFAF8' align='center'>Pilihan</td>"+
+                                              "<td valign='top' width='10%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>1. Apakah pasien tampak kurus?</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("sg1")+"</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("nilai1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>2. Apakah terdapat penurunan berat badan selama satu bulan terakhir? (berdasarkan penilaian objektif data berat badan bila ada atau untuk bayi < 1 tahun ; berat badan tidak naik selama 3 bulan terakhir)</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("sg2")+"</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("nilai2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>3. Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari dalam seminggu terakhir; Asupan makanan berkurang selama 1 minggu terakhir</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("sg3")+"</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("nilai3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>4. Apakah terdapat penyakit atau keadaan yang menyebabkan pasien beresiko mengalami malnutrisi?</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("sg4")+"</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("nilai4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='center' colspan='2'>Total Skor</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("total_hasil")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                       "<br>"+
+                                       "<i>Hasil Skrining : "+rs2.getString("skor_nutrisi")+"</i>"+
+                                       "<br><br>"+
+                                       "Diketahui Dietisien/Dilaporkan Kepada Dokter ? "+rs2.getString("diketahui_dietisien")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jam dilaporkan : "+rs2.getString("keterangan_diketahui_dietisien")+
                                     "</td>"+
                                  "</tr>"
                             ); 
