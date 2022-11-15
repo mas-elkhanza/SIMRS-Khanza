@@ -1248,7 +1248,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
 
     public void isCek(){
