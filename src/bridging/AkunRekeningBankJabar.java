@@ -72,11 +72,11 @@ public class AkunRekeningBankJabar extends javax.swing.JDialog {
         for (int i = 0; i < 3; i++) {
             TableColumn column = tbSpesialis.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(75);
             }else if(i==1){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(320);
             }else if(i==2){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(90);
             }
         }
 
