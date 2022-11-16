@@ -14,7 +14,6 @@
         global $db_hostname;
         return $db_hostname;
     }
-    
 
     function  bukakoneksi(){
      	global $db_hostname, $db_username, $db_password, $db_name;
@@ -176,6 +175,103 @@
         return $save;
     }
     
+    function validTeks4($data,$panjang){
+        $save="";
+        if(strlen($data)>$panjang){
+            header('Location: https://www.google.com');
+        }else{
+            $save=str_replace("'","",$data);
+            $save=str_replace("\\","",$save);
+            $save=str_replace(";","",$save);
+            $save=str_replace("`","",$save);
+            $save=str_replace("--","",$save);
+            $save=str_replace("/*","",$save);
+            $save=str_replace("*/","",$save);
+            $save=str_replace("text/html","",$save);
+            $save=str_replace("<script>","",$save);
+            $save=str_replace("</script>","",$save);
+            $save=str_replace("<noscript>","",$save);
+            $save=str_replace("</noscript>","",$save);
+            $save=str_replace("<img","",$save);
+            $save=str_replace("document","",$save);
+            $save=str_replace(" from ","",$save);
+            $save=str_replace("concat","",$save);
+            $save=str_replace("union","",$save);
+            $save=str_replace("base64","",$save);
+            $save=str_replace("//","",$save);
+            $save=str_replace("*","",$save);
+            $save=str_replace("}","",$save);
+            $save=str_replace("$","",$save);
+            $save=str_replace("{","",$save);
+            $save=str_replace("@","",$save);
+            $save=str_replace("[","",$save);
+            $save=str_replace("]","",$save);
+            $save=str_replace("(","",$save);
+            $save=str_replace(")","",$save);
+            $save=str_replace("|","",$save);
+            $save=str_replace(",","",$save);
+            $save=str_replace("<","",$save);
+            $save=str_replace(">","",$save);
+            $save=str_replace(":","",$save);
+            $save=str_replace("+","",$save);
+            $save=str_replace("^","",$save);
+            $save=str_replace("#","",$save);
+            $save=str_replace("!","",$save);
+            $save=str_replace("='","",$save);
+            $save=str_replace("=/","",$save);
+            $save=str_replace("=","",$save);
+        }
+        return $save;
+    }
+    
+    function validTeks5($data,$panjang){
+        $save="";
+        if(strlen($data)>$panjang){
+            header('Location: https://www.google.com');
+        }else{
+            $save=str_replace("'","",$data);
+            $save=str_replace("\\","",$save);
+            $save=str_replace(";","",$save);
+            $save=str_replace("`","",$save);
+            $save=str_replace("--","",$save);
+            $save=str_replace("/*","",$save);
+            $save=str_replace("*/","",$save);
+            $save=str_replace("text/html","",$save);
+            $save=str_replace("<script>","",$save);
+            $save=str_replace("</script>","",$save);
+            $save=str_replace("<noscript>","",$save);
+            $save=str_replace("</noscript>","",$save);
+            $save=str_replace("<img","",$save);
+            $save=str_replace("document","",$save);
+            $save=str_replace(" from ","",$save);
+            $save=str_replace("concat","",$save);
+            $save=str_replace("union","",$save);
+            $save=str_replace("base64","",$save);
+            $save=str_replace("//","",$save);
+            $save=str_replace("*","",$save);
+            $save=str_replace("}","",$save);
+            $save=str_replace("$","",$save);
+            $save=str_replace("{","",$save);
+            $save=str_replace("@","",$save);
+            $save=str_replace("[","",$save);
+            $save=str_replace("]","",$save);
+            $save=str_replace("(","",$save);
+            $save=str_replace(")","",$save);
+            $save=str_replace("|","",$save);
+            $save=str_replace(",","",$save);
+            $save=str_replace("<","",$save);
+            $save=str_replace(">","",$save);
+            $save=str_replace("+","",$save);
+            $save=str_replace("^","",$save);
+            $save=str_replace("#","",$save);
+            $save=str_replace("!","",$save);
+            $save=str_replace("='","",$save);
+            $save=str_replace("=/","",$save);
+            $save=str_replace("=","",$save);
+        }
+        return $save;
+    }
+    
     function validangka($angka){
         if (isset($angka)) {
             if(!is_numeric($angka)) {
@@ -290,7 +386,7 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (mysqli_error($konektor)/*"Silahkan hubungi administrator..!"*/);
+        or die (/*mysqli_error($konektor)*/"Silahkan hubungi administrator..!");
         mysqli_close($konektor);
         return $result;
     }

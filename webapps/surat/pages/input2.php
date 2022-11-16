@@ -20,7 +20,7 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Keluar</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15">
+                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15" pattern="[A-Z0-9-]{1,15}" title=" A-Z0-9- (Maksimal 15 karakter)" autocomplete="off" required>
                             <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Ruang Surat</td>
@@ -40,7 +40,7 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Surat</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35">
+                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35" pattern="[a-zA-Z0-9, ./@_]{1,35}" title=" a-zA-Z0-9, ./@_ (Maksimal 35 karakter)" autocomplete="off" required>
                             <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Sifat Surat</td>
@@ -60,12 +60,12 @@
                     <tr class="isi2">
                         <td width="15%" >Tujuan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                         </td>                        
                         <td width="15%" >Lampiran</td>
                         <td width="35%">
-                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" type=text id="TxtIsi12" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" type=text id="TxtIsi12" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi12" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -91,14 +91,14 @@
                         </td>                        
                         <td width="15%" >Tembusan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi13" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
                     <tr class="isi2">
                         <td width="15%" >Perihal</td>
                         <td width="35%">
-                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
                         </td> 
                         <td width="15%" >Deadline Balas</td>
@@ -171,7 +171,7 @@
                         </td>
                         <td width="15%" >Keterangan</td>
                         <td width="35%">
-                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type=text id="TxtIsi16" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type=text id="TxtIsi16" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi16" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>

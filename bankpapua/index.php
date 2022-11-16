@@ -69,9 +69,9 @@
                                 );
                             }
                         } else {
-                            $result = bukaquery("SELECT count(*) FROM pasien WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."'");
+                            $result = bukaquery("SELECT count(*) FROM pasien WHERE no_rkm_medis = '".validTeks4($decode['no_rkm_medis'],20)."'");
                             if (JumlahBaris($result) !== 0) {
-                                $sql2 = "SELECT * FROM tagihan_bpd_papua WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."' AND status_bayar = 'Pending'";
+                                $sql2 = "SELECT * FROM tagihan_bpd_papua WHERE no_rkm_medis = '".validTeks4($decode['no_rkm_medis'],20)."' AND status_bayar = 'Pending'";
                                 $result2 = bukaquery($sql2);
                                 if (JumlahBaris($result2) !== 0) {
                                     while ($data = fetch_array($result2)) {
@@ -163,7 +163,7 @@
                                 );
                             }
                         } else{
-                            $sql = "UPDATE tagihan_bpd_papua SET status_bayar='Sudah',diupdatebank=current_time(),referensi='".validTeks($decode['referensi'])."' WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."' AND no_nota = '".validTeks($decode['no_nota'])."'";
+                            $sql = "UPDATE tagihan_bpd_papua SET status_bayar='Sudah',diupdatebank=current_time(),referensi='".validTeks4($decode['referensi'],30)."' WHERE no_rkm_medis = '".validTeks4($decode['no_rkm_medis'],20)."' AND no_nota = '".validTeks4($decode['no_nota'],20)."'";
                             if(bukaquery($sql)){
                                 $response = array(
                                     'metadata' => array(

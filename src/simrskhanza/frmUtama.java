@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import bridging.AkunRekeningBankJabar;
 import bridging.AkunRekeningBankJateng;
 import bridging.AkunRekeningBankPapua;
 import rekammedis.RMRiwayatPerawatan;
@@ -19409,6 +19410,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAkunRekeningHtHBankJabarActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        AkunRekeningBankJabar form=new AkunRekeningBankJabar(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20070,7 +20082,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
-            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak;
+            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar;
     
     public void isWall(){
         try{            
@@ -22873,6 +22885,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getakun_host_to_host_bank_jateng()==true){
                 Panelmenu.add(btnAkunRekeningHtHBankJateng);
+                jmlmenu++;
+            }
+            
+            if(akses.getakun_host_to_host_bank_jabar()==true){
+                Panelmenu.add(btnAkunRekeningHtHBankJabar);
                 jmlmenu++;
             }
             
@@ -27264,6 +27281,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getakun_host_to_host_bank_jateng()==true){
             Panelmenu.add(btnAkunRekeningHtHBankJateng);
+            jmlmenu++;
+        }
+        
+        if(akses.getakun_host_to_host_bank_jabar()==true){
+            Panelmenu.add(btnAkunRekeningHtHBankJabar);
             jmlmenu++;
         }
         
@@ -32722,6 +32744,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getakun_host_to_host_bank_jateng()==true){
             if(btnAkunRekeningHtHBankJateng.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAkunRekeningHtHBankJateng);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getakun_host_to_host_bank_jabar()==true){
+            if(btnAkunRekeningHtHBankJabar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAkunRekeningHtHBankJabar);
                 jmlmenu++;
             }                
         }
@@ -38454,6 +38483,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningNutrisiAnak.setName("btnSkriningNutrisiAnak");
         btnSkriningNutrisiAnak.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningNutrisiAnak.addActionListener(this::btnSkriningNutrisiAnakActionPerformed);
+        
+        btnAkunRekeningHtHBankJabar = new widget.ButtonBig();
+        btnAkunRekeningHtHBankJabar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bankbjb.png")));
+        btnAkunRekeningHtHBankJabar.setText("Host To Host Bank Jabar");
+        btnAkunRekeningHtHBankJabar.setIconTextGap(0);
+        btnAkunRekeningHtHBankJabar.setName("btnAkunRekeningHtHBankJabar"); 
+        btnAkunRekeningHtHBankJabar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAkunRekeningHtHBankJabar.addActionListener(this::btnAkunRekeningHtHBankJabarActionPerformed);
     }
     
 }

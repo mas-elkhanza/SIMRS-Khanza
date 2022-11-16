@@ -1175,22 +1175,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             try {
                 ps.setString(1,nopermintaan);
                 rs=ps.executeQuery();
-                while(rs.next()){                
-                    tabMode.addRow(new Object[]{rs.getString("jumlah"),rs.getDouble("dasar"),rs.getDouble("total"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),0,0,"",""});
-                } 
-            } catch (Exception e) {
-                System.out.println("Note : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }    
-            
-            for(i=0;i<tbDokter.getRowCount();i++){
-                if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
+                while(rs.next()){            
                     if(aktifkanbatch.equals("yes")){
                         psstok=koneksi.prepareStatement(
                                 "select ifnull(gudangbarang.stok,'0'),data_batch."+hppfarmasi+" as dasar,gudangbarang.no_batch,gudangbarang.no_faktur "+
@@ -1200,13 +1185,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                                 "order by data_batch.tgl_kadaluarsa desc limit 1");
                         try {
                             psstok.setString(1,kddari.getText());
-                            psstok.setString(2,tabMode.getValueAt(i,3).toString());
+                            psstok.setString(2,rs.getString("kode_brng"));
                             rsstok=psstok.executeQuery();
                             if(rsstok.next()){
-                                tbDokter.setValueAt(rsstok.getDouble(1),i,6);
-                                tbDokter.setValueAt(rsstok.getDouble("dasar"),i,1);
-                                tbDokter.setValueAt(rsstok.getString("no_batch"),i,8);
-                                tbDokter.setValueAt(rsstok.getString("no_faktur"),i,9);
+                                tabMode.addRow(new Object[]{
+                                    rs.getString("jumlah"),rsstok.getDouble("dasar"),rs.getDouble("total"),rs.getString("kode_brng"),rs.getString("nama_brng"),
+                                    rs.getString("kode_sat"),rsstok.getDouble(1),0,rsstok.getString("no_batch"),rsstok.getString("no_faktur")
+                                });
+                            }else{
+                                JOptionPane.showMessageDialog(null,"No.Batch & No.Faktur untuk Obat/BHP "+rs.getString("kode_brng")+" "+rs.getString("nama_brng")+" tidak ditemukan.. !!");
                             } 
                         } catch (Exception e) {
                             System.out.println("Note : "+e);
@@ -1228,7 +1215,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             psstok.setString(2,tabMode.getValueAt(i,3).toString());
                             rsstok=psstok.executeQuery();
                             if(rsstok.next()){
-                                tbDokter.setValueAt(rsstok.getDouble(1),i,6);
+                                tabMode.addRow(new Object[]{rs.getString("jumlah"),rs.getDouble("dasar"),rs.getDouble("total"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),rsstok.getDouble(1),0,"",""});
                             } 
                         } catch (Exception e) {
                             System.out.println("Note : "+e);
@@ -1241,9 +1228,17 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }
                         }
                     }
-                }   
-            }
-            
+                } 
+            } catch (Exception e) {
+                System.out.println("Note : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
             isCekStok2();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
