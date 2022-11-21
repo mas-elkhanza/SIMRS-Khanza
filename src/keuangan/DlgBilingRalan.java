@@ -2597,6 +2597,15 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     billing.setAlwaysOnTop(false);
                     billing.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
+                }else if(i==5){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    DlgLhtBankJabar billing=new DlgLhtBankJabar(null,false);
+                    billing.tampil();   
+                    billing.setSize(this.getWidth(),this.getHeight());
+                    billing.setLocationRelativeTo(this);
+                    billing.setAlwaysOnTop(false);
+                    billing.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
                 }  
             }   
     }//GEN-LAST:event_BtnViewActionPerformed

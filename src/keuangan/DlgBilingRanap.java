@@ -2640,7 +2640,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
-            Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng"};
+           Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng","Data Pembayaran HtH BPD Papua","Data Pembayaran HtH BPD Jabar"};
             
             String input;
             int pilih = 0;
@@ -2654,8 +2654,13 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                         pilih=2;
                         break;
                     case "Data Pembayaran HtH BPD Jateng":
-                        pilih=3;
+                        i=3;
                         break;
+                    case "Data Pembayaran HtH BPD Papua":
+                        i=4;
+                        break;
+                    case "Data Pembayaran HtH BPD Jabar":
+                        i=5;
                 }
             }catch(Exception e){
                 pilih=0;
@@ -2681,6 +2686,24 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                 }else if(pilih==3){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgLhtBankJateng billing=new DlgLhtBankJateng(null,false);
+                    billing.tampil();   
+                    billing.setSize(this.getWidth(),this.getHeight());
+                    billing.setLocationRelativeTo(this);
+                    billing.setAlwaysOnTop(false);
+                    billing.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                } else if(i==4){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    DlgLhtBankPapua billing=new DlgLhtBankPapua(null,false);
+                    billing.tampil();   
+                    billing.setSize(this.getWidth(),this.getHeight());
+                    billing.setLocationRelativeTo(this);
+                    billing.setAlwaysOnTop(false);
+                    billing.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else if(i==5){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    DlgLhtBankJabar billing=new DlgLhtBankJabar(null,false);
                     billing.tampil();   
                     billing.setSize(this.getWidth(),this.getHeight());
                     billing.setLocationRelativeTo(this);

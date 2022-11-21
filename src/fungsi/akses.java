@@ -194,7 +194,7 @@ public final class akses {
             laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false,
             perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false,penilaian_lanjutan_resiko_jatuh_anak=false,penilaian_awal_medis_ralan_geriatri=false,
             penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
-            akun_host_to_host_bank_jabar=false;
+            akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1102,6 +1102,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_usg=true;
                         akses.skrining_nutrisi_anak=true;
                         akses.akun_host_to_host_bank_jabar=true;
+                        akses.pembayaran_bank_jabar=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1993,6 +1994,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_usg=rs2.getBoolean("hasil_pemeriksaan_usg");
                         akses.skrining_nutrisi_anak=rs2.getBoolean("skrining_nutrisi_anak");
                         akses.akun_host_to_host_bank_jabar=rs2.getBoolean("akun_host_to_host_bank_jabar");
+                        akses.pembayaran_bank_jabar=rs2.getBoolean("pembayaran_bank_jabar");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2882,6 +2884,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_usg=false;
                         akses.skrining_nutrisi_anak=false;
                         akses.akun_host_to_host_bank_jabar=false;
+                        akses.pembayaran_bank_jabar=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3828,4 +3831,5 @@ public final class akses {
     public static boolean gethasil_pemeriksaan_usg(){return akses.hasil_pemeriksaan_usg;}
     public static boolean getskrining_nutrisi_anak(){return akses.skrining_nutrisi_anak;}
     public static boolean getakun_host_to_host_bank_jabar(){return akses.akun_host_to_host_bank_jabar;}
+    public static boolean getpembayaran_bank_jabar(){return akses.pembayaran_bank_jabar;}
 }   

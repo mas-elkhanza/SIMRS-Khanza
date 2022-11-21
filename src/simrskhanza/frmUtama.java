@@ -673,6 +673,7 @@ import kepegawaian.DlgAuditPenangananDarah;
 import kepegawaian.DlgAuditPenempatanPasien;
 import kepegawaian.DlgAuditPengelolaanLinenKotor;
 import kepegawaian.DlgAuditSterilisasiAlat;
+import keuangan.DlgLhtBankJabar;
 import keuangan.DlgLhtBankPapua;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -19421,6 +19422,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPembayaranBankJabarActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgLhtBankJabar form=new DlgLhtBankJabar(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20082,7 +20094,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
-            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar;
+            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar;
     
     public void isWall(){
         try{            
@@ -22208,6 +22220,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpembayaran_bank_papua()==true){
                Panelmenu.add(btnPembayaranBankPapua); 
+               jmlmenu++;
+            }
+            
+            if(akses.getpembayaran_bank_jabar()==true){
+               Panelmenu.add(btnPembayaranBankJabar); 
                jmlmenu++;
             }
             
@@ -26605,6 +26622,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpembayaran_bank_papua()==true){
            Panelmenu.add(btnPembayaranBankPapua); 
+           jmlmenu++;
+        }
+        
+        if(akses.getpembayaran_bank_jabar()==true){
+           Panelmenu.add(btnPembayaranBankJabar); 
            jmlmenu++;
         }
         
@@ -31799,6 +31821,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpembayaran_bank_papua()==true){
             if(btnPembayaranBankPapua.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranBankPapua); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpembayaran_bank_jabar()==true){
+            if(btnPembayaranBankJabar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranBankJabar); 
                 jmlmenu++;
             }                
         }
@@ -38491,6 +38520,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAkunRekeningHtHBankJabar.setName("btnAkunRekeningHtHBankJabar"); 
         btnAkunRekeningHtHBankJabar.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAkunRekeningHtHBankJabar.addActionListener(this::btnAkunRekeningHtHBankJabarActionPerformed);
+        
+        btnPembayaranBankJabar = new widget.ButtonBig();
+        btnPembayaranBankJabar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_wallet_3440917.png")));
+        btnPembayaranBankJabar.setText("Pembayaran Bank Jabar");
+        btnPembayaranBankJabar.setIconTextGap(0);
+        btnPembayaranBankJabar.setName("btnPembayaranBankJabar"); 
+        btnPembayaranBankJabar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranBankJabar.addActionListener(this::btnPembayaranBankJabarActionPerformed);
     }
     
 }
