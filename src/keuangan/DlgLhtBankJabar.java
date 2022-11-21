@@ -46,7 +46,7 @@ public final class DlgLhtBankJabar extends javax.swing.JDialog {
 
         Object[] rowRwJlDr={
             "No.RM","Nama Pasien","Alamat","J.K.","Umur","Registrasi","No.Nota/Tagihan","Besar Bayar","Referensi ID",
-            "No.Rawat","Status Keperluan","Closing","Status Bayar","Kasir/User","Diverif Bank","Referensi Num"
+            "No.Rawat","Status Keperluan","Closing","Status Bayar","Kasir/User","Diverif Bank","Referensi Number"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
