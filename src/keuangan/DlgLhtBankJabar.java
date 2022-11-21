@@ -405,7 +405,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptHtHBankJabar.jasper","report","::[ Data Pembayaran Bank Jabar ]::",
+            Valid.MyReportqry("rptHtHTagihanBankJabar.jasper","report","::[ Surat Tagihan Pembayaran Bank Jabar ]::",
                "select * from tagihan_bpd_jabar where tagihan_bpd_jabar.no_nota='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString()+"'",param);
             this.setCursor(Cursor.getDefaultCursor());
         }else{
