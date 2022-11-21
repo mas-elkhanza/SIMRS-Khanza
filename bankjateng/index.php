@@ -196,7 +196,7 @@
         echo "Selamat Datang di Web Service Host to Host Bank Jateng ".$instansi['nama_instansi']." ".date('Y');
         echo "\n\n";
         echo "Cara Menggunakan Web Service Host to Host Bank Jateng : \n";
-        echo "1. Mengambil Token, gunakan URL http://ipserverws:port/webapps/bankjateng/index.php?act=token \n";
+        echo "1. Mengambil Token, gunakan URL http://ipserverws:port/bankjateng/index.php?act=token \n";
         echo "   Header gunakan X-User:user yang diberikan RS, X-Pass:pass yang diberikan RS\n";
         echo "   Hasilnya : \n";
         echo '   {'."\n";
@@ -208,7 +208,7 @@
         echo '         "code": 200'."\n";
         echo '      }'."\n";
         echo '   }'."\n\n";
-        echo "2. Memeriksa tagihan pasien, gunakan URL http://ipserverws:port/webapps/bankjateng/index.php?act=tagihan \n";
+        echo "2. Memeriksa tagihan pasien, gunakan URL http://ipserverws:port/bankjateng/index.php?act=tagihan \n";
         echo "   Header gunakan X-Token:token yang diambil sebelumnya\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -237,7 +237,7 @@
         echo '          "code": "00"'."\n";
         echo '      }'."\n";
         echo '   }'."\n\n";
-        echo "3. Update tagihan pasien, gunakan URL http://ipserverws:port/webapps/bankjateng/index.php?act=bayar \n";
+        echo "3. Update tagihan pasien, gunakan URL http://ipserverws:port/bankjateng/index.php?act=bayar \n";
         echo "   Header gunakan X-Token:token yang diambil sebelumnya\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";

@@ -1646,7 +1646,7 @@
         echo "\n\n";
         echo "Cara Menggunakan Web Service Antrean BPJS Mobile JKN FKTL : \n";
         echo "1. Mengambil Token, methode GET \n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/auth \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/auth \n";
         echo "   Header gunakan x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
         echo "   Hasilnya : \n";
         echo '   {'."\n";
@@ -1659,7 +1659,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "2. Menampilkan status atrean poli, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/statusantrean \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/statusantrean \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1688,7 +1688,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "3. Mengambil atrean poli, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/ambilantrean \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/ambilantrean \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1726,7 +1726,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "4. Melakukan checkin poli, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/checkinantrean \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/checkinantrean \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1741,7 +1741,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "5. Membatalkan antrean poli dan hanya bisa dilakukan sebelum pasien checkin, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/batalantrean \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/batalantrean \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1756,7 +1756,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "6. Melihat sisa antrean poli dan hanya bisa dilakukan setelah pasien checkin, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/sisaantrean \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/sisaantrean \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1779,7 +1779,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "7. Melihat Jadwal Operasi RS, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/jadwaloperasirs \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/jadwaloperasirs \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1808,7 +1808,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "8. Melihat Jadwal Operasi Pasien, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/jadwaloperasipasien \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/jadwaloperasipasien \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1834,7 +1834,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "9. Pasien Baru, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/pasienbaru \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/pasienbaru \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";

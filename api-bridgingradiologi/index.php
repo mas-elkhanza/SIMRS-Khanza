@@ -1134,7 +1134,7 @@
         echo "\n\n";
         echo "Cara Menggunakan Web Service Bridging Radiologi : \n";
         echo "1. Mengambil Token, methode GET \n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/auth \n";
+        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/auth \n";
         echo "   Header gunakan x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
         echo "   Hasilnya : \n";
         echo '   {'."\n";
@@ -1147,7 +1147,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "2. Menampilkan daftar hasil pemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/daftarhasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/daftarhasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1192,7 +1192,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "3. Menampilkan data nomor order/nomor rontgen, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/carinomororder \n";
+        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/carinomororder \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1231,7 +1231,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "4. Menghapus hasilpemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/hapushasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/hapushasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1248,7 +1248,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "5. Menambahkan hasil pemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/tambahhasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/tambahhasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1307,7 +1307,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "6. Menambahkan hasil pemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/ubahhasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/ubahhasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
