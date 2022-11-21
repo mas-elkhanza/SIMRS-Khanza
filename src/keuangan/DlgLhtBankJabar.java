@@ -130,6 +130,8 @@ public final class DlgLhtBankJabar extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        cetakkwitansi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -149,6 +151,22 @@ public final class DlgLhtBankJabar extends javax.swing.JDialog {
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
 
+        Popup.setName("Popup"); // NOI18N
+
+        cetakkwitansi.setBackground(new java.awt.Color(255, 255, 254));
+        cetakkwitansi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        cetakkwitansi.setForeground(java.awt.Color.darkGray);
+        cetakkwitansi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        cetakkwitansi.setText("Surat Tagihan Pembayaran Bank Jabar");
+        cetakkwitansi.setName("cetakkwitansi"); // NOI18N
+        cetakkwitansi.setPreferredSize(new java.awt.Dimension(280, 25));
+        cetakkwitansi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cetakkwitansiActionPerformed(evt);
+            }
+        });
+        Popup.add(cetakkwitansi);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -165,6 +183,7 @@ public final class DlgLhtBankJabar extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        tbBangsal.setComponentPopupMenu(Popup);
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
@@ -375,6 +394,25 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void cetakkwitansiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakkwitansiActionPerformed
+        if(tbBangsal.getSelectedRow()>-1){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();                 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptHtHBankJabar.jasper","report","::[ Data Pembayaran Bank Jabar ]::",
+               "select * from tagihan_bpd_jabar where tagihan_bpd_jabar.no_nota='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString()+"'",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+        }
+    }//GEN-LAST:event_cetakkwitansiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -396,11 +434,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private javax.swing.JMenuItem cetakkwitansi;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
     private widget.Label label11;
