@@ -19433,6 +19433,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPernyataanPasienUmumActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratPulangAtasPermintaanSendiri aplikasi=new SuratPulangAtasPermintaanSendiri(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20094,7 +20106,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
-            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar;
+            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum;
     
     public void isWall(){
         try{            
@@ -24187,6 +24199,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_pulang_atas_permintaan_sendiri()==true){
                 Panelmenu.add(btnPersetujuanPulangAtasPermintanSendiri);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_pernyataan_pasien_umum()==true){
+                Panelmenu.add(btnPernyataanPasienUmum);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==15){ 
@@ -28584,6 +28601,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_pulang_atas_permintaan_sendiri()==true){
             Panelmenu.add(btnPersetujuanPulangAtasPermintanSendiri);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_pernyataan_pasien_umum()==true){
+            Panelmenu.add(btnPernyataanPasienUmum);
             jmlmenu++;
         }
 
@@ -34568,6 +34590,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_pernyataan_pasien_umum()==true){
+            if(btnPernyataanPasienUmum.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPernyataanPasienUmum);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -38528,6 +38557,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPembayaranBankJabar.setName("btnPembayaranBankJabar"); 
         btnPembayaranBankJabar.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPembayaranBankJabar.addActionListener(this::btnPembayaranBankJabarActionPerformed);
+        
+        btnPernyataanPasienUmum = new widget.ButtonBig();
+        btnPernyataanPasienUmum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Edit-Male-User.png")));
+        btnPernyataanPasienUmum.setText("Pernyataan Pasien Umum");
+        btnPernyataanPasienUmum.setIconTextGap(0);
+        btnPernyataanPasienUmum.setName("btnPernyataanPasienUmum"); 
+        btnPernyataanPasienUmum.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPernyataanPasienUmum.addActionListener(this::btnPernyataanPasienUmumActionPerformed);
     }
     
 }
