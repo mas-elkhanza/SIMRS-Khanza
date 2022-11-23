@@ -642,7 +642,7 @@ public final class SuratPernyataanPasienUmum extends javax.swing.JDialog {
         FormInput.add(LahirPasien);
         LahirPasien.setBounds(648, 10, 85, 23);
 
-        jLabel18.setText("Petugas/Saksi II Perawat :");
+        jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
         jLabel18.setBounds(180, 40, 140, 23);
