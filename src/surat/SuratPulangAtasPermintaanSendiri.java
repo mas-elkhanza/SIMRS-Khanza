@@ -461,7 +461,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -475,7 +475,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -650,11 +650,6 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         NIP.setEditable(false);
         NIP.setHighlighter(null);
         NIP.setName("NIP"); // NOI18N
-        NIP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NIPKeyPressed(evt);
-            }
-        });
         FormInput.add(NIP);
         NIP.setBounds(324, 40, 120, 23);
 
@@ -692,7 +687,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         jLabel13.setBounds(436, 120, 85, 23);
 
         TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2022" }));
+        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2022" }));
         TglLahir.setDisplayFormat("dd-MM-yyyy");
         TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.setOpaque(false);
@@ -745,7 +740,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         Pilihan.setBounds(433, 70, 300, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1172,18 +1167,6 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
-
-    private void NIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIPKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NamaPetugas,NIP.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            //Detik.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Pilihan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }
-    }//GEN-LAST:event_NIPKeyPressed
 
     private void AlamatPjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatPjKeyPressed
         Valid.pindah(evt,cmbJk,SaksiKeluarga);

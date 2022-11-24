@@ -831,6 +831,7 @@ import surat.SuratKewaspadaanKesehatan;
 import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratMasuk;
+import surat.SuratPernyataanPasienUmum;
 import surat.SuratPersetujuanPenolakanTindakan;
 import surat.SuratPulangAtasPermintaanSendiri;
 import surat.SuratRak;
@@ -19437,7 +19438,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        SuratPulangAtasPermintaanSendiri aplikasi=new SuratPulangAtasPermintaanSendiri(this,false);
+        SuratPernyataanPasienUmum aplikasi=new SuratPernyataanPasienUmum(this,false);
         aplikasi.isCek();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
