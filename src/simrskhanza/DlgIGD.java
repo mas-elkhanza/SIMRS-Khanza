@@ -92,6 +92,7 @@ import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMHemodialisa;
 import rekammedis.RMDeteksiDiniCorona;
+import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPenilaianAwalKeperawatanIGD;
 import rekammedis.RMPenilaianAwalMedisIGD;
@@ -616,6 +617,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPenilaianRisikoJatuhDewasa = new javax.swing.JMenuItem();
         MnPenilaianRisikoJatuhAnak = new javax.swing.JMenuItem();
         MnPenilaianTambahanGeriatri = new javax.swing.JMenuItem();
+        MnKonselingFarmasi = new javax.swing.JMenuItem();
         MnHemodialisa = new javax.swing.JMenuItem();
         MnGizi = new javax.swing.JMenu();
         ppSkriningNutrisiDewasa = new javax.swing.JMenuItem();
@@ -1066,6 +1068,22 @@ public final class DlgIGD extends javax.swing.JDialog {
             }
         });
         MnDataRM.add(MnPenilaianTambahanGeriatri);
+
+        MnKonselingFarmasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnKonselingFarmasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKonselingFarmasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnKonselingFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKonselingFarmasi.setText("Konseling Farmasi");
+        MnKonselingFarmasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnKonselingFarmasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnKonselingFarmasi.setName("MnKonselingFarmasi"); // NOI18N
+        MnKonselingFarmasi.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnKonselingFarmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKonselingFarmasiActionPerformed(evt);
+            }
+        });
+        MnDataRM.add(MnKonselingFarmasi);
 
         MnHemodialisa.setBackground(new java.awt.Color(255, 255, 254));
         MnHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7923,6 +7941,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPernyataanPasienUmumActionPerformed
 
+    private void MnKonselingFarmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKonselingFarmasiActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMKonselingFarmasi form=new RMKonselingFarmasi(null,false);
+                form.isCek();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.emptTeks();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnKonselingFarmasiActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -8031,6 +8071,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnJKRA;
     private javax.swing.JMenuItem MnJadwalOperasi;
     private javax.swing.JMenuItem MnKamarInap;
+    private javax.swing.JMenuItem MnKonselingFarmasi;
     private javax.swing.JMenuItem MnLabelTracker;
     private javax.swing.JMenuItem MnLabelTracker1;
     private javax.swing.JMenuItem MnLabelTracker2;
@@ -8567,6 +8608,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         ppMonitoringAsuhanGizi.setEnabled(akses.getmonitoring_asuhan_gizi()); 
         ppAsuhanGizi.setEnabled(akses.getasuhan_gizi());
         MnPernyataanPasienUmum.setEnabled(akses.getsurat_pernyataan_pasien_umum());
+        MnKonselingFarmasi.setEnabled(akses.getkonseling_farmasi());
     }
     
     private void isNumber(){

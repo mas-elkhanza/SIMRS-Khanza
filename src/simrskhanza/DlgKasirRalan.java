@@ -74,6 +74,7 @@ import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMHemodialisa;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMHasilPemeriksaanUSG;
+import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMMCU;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
@@ -586,7 +587,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPenilaianRisikoJatuhAnak = new javax.swing.JMenuItem();
         MnPenilaianTambahanGeriatri = new javax.swing.JMenuItem();
         MnHasilPemeriksaanUSG = new javax.swing.JMenuItem();
+        MnKonselingFarmasi = new javax.swing.JMenuItem();
         MnDiagnosa = new javax.swing.JMenuItem();
+        MnHemodialisa = new javax.swing.JMenuItem();
         MnGizi = new javax.swing.JMenu();
         ppSkriningNutrisiDewasa = new javax.swing.JMenuItem();
         ppSkriningNutrisiLansia = new javax.swing.JMenuItem();
@@ -594,7 +597,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         ppSkriningGizi = new javax.swing.JMenuItem();
         ppAsuhanGizi = new javax.swing.JMenuItem();
         ppMonitoringAsuhanGizi = new javax.swing.JMenuItem();
-        MnHemodialisa = new javax.swing.JMenuItem();
         ppResume = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
         ppDeteksiDIniCorona = new javax.swing.JMenuItem();
@@ -1444,6 +1446,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         });
         MnDataRM.add(MnHasilPemeriksaanUSG);
 
+        MnKonselingFarmasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnKonselingFarmasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKonselingFarmasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnKonselingFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKonselingFarmasi.setText("Konseling Farmasi");
+        MnKonselingFarmasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnKonselingFarmasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnKonselingFarmasi.setName("MnKonselingFarmasi"); // NOI18N
+        MnKonselingFarmasi.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnKonselingFarmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKonselingFarmasiActionPerformed(evt);
+            }
+        });
+        MnDataRM.add(MnKonselingFarmasi);
+
         MnDiagnosa.setBackground(new java.awt.Color(255, 255, 254));
         MnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDiagnosa.setForeground(new java.awt.Color(50, 50, 50));
@@ -1459,6 +1477,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnDataRM.add(MnDiagnosa);
+
+        MnHemodialisa.setBackground(new java.awt.Color(255, 255, 254));
+        MnHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnHemodialisa.setForeground(new java.awt.Color(50, 50, 50));
+        MnHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnHemodialisa.setText("Hemodialisa");
+        MnHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHemodialisa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHemodialisa.setName("MnHemodialisa"); // NOI18N
+        MnHemodialisa.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnHemodialisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnHemodialisaActionPerformed(evt);
+            }
+        });
+        MnDataRM.add(MnHemodialisa);
 
         MnGizi.setBackground(new java.awt.Color(250, 255, 245));
         MnGizi.setForeground(new java.awt.Color(50, 50, 50));
@@ -1567,22 +1601,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnGizi.add(ppMonitoringAsuhanGizi);
 
         MnDataRM.add(MnGizi);
-
-        MnHemodialisa.setBackground(new java.awt.Color(255, 255, 254));
-        MnHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnHemodialisa.setForeground(new java.awt.Color(50, 50, 50));
-        MnHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnHemodialisa.setText("Hemodialisa");
-        MnHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnHemodialisa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnHemodialisa.setName("MnHemodialisa"); // NOI18N
-        MnHemodialisa.setPreferredSize(new java.awt.Dimension(250, 26));
-        MnHemodialisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnHemodialisaActionPerformed(evt);
-            }
-        });
-        MnDataRM.add(MnHemodialisa);
 
         ppResume.setBackground(new java.awt.Color(255, 255, 254));
         ppResume.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -11661,6 +11679,29 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnPernyataanPasienUmumActionPerformed
 
+    private void MnKonselingFarmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKonselingFarmasiActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            //TNoReg.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMKonselingFarmasi form=new RMKonselingFarmasi(null,false);
+                form.isCek();
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnKonselingFarmasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11801,6 +11842,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnJadwalOperasi1;
     private javax.swing.JMenuItem MnKamarInap;
     private javax.swing.JMenuItem MnKamarInap1;
+    private javax.swing.JMenuItem MnKonselingFarmasi;
     private javax.swing.JMenuItem MnLabelTracker;
     private javax.swing.JMenuItem MnLabelTracker1;
     private javax.swing.JMenuItem MnLabelTracker2;
@@ -12316,6 +12358,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         ppMonitoringAsuhanGizi.setEnabled(akses.getmonitoring_asuhan_gizi()); 
         ppAsuhanGizi.setEnabled(akses.getasuhan_gizi());
         MnPernyataanPasienUmum.setEnabled(akses.getsurat_pernyataan_pasien_umum());
+        MnKonselingFarmasi.setEnabled(akses.getkonseling_farmasi());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);

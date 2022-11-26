@@ -771,6 +771,7 @@ import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMHasilPemeriksaanUSG;
+import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMMCU;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
@@ -19471,7 +19472,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        RMSkriningNutrisiAnak aplikasi=new RMSkriningNutrisiAnak(this,false);
+        RMKonselingFarmasi aplikasi=new RMKonselingFarmasi(this,false);
         aplikasi.isCek();
         aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
