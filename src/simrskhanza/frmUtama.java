@@ -19467,6 +19467,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKonselingFarmasiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningNutrisiAnak aplikasi=new RMSkriningNutrisiAnak(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20129,7 +20142,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
-            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum;
+            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi;
     
     public void isWall(){
         try{            
@@ -23474,6 +23487,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_mcu()==true){
                 Panelmenu.add(btnPenilaianMCU);
+                jmlmenu++;
+            }
+            
+            if(akses.getkonseling_farmasi()==true){
+                Panelmenu.add(btnKonselingFarmasi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){  
@@ -27879,6 +27897,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_mcu()==true){
             Panelmenu.add(btnPenilaianMCU);
+            jmlmenu++;
+        }
+        
+        if(akses.getkonseling_farmasi()==true){
+            Panelmenu.add(btnKonselingFarmasi);
             jmlmenu++;
         }
 
@@ -33570,6 +33593,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getkonseling_farmasi()==true){
+            if(btnKonselingFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKonselingFarmasi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -38588,6 +38618,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPernyataanPasienUmum.setName("btnPernyataanPasienUmum"); 
         btnPernyataanPasienUmum.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPernyataanPasienUmum.addActionListener(this::btnPernyataanPasienUmumActionPerformed);
+        
+        btnKonselingFarmasi = new widget.ButtonBig();
+        btnKonselingFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6771587_diary_education_learning_pencil_school_icon.png")));
+        btnKonselingFarmasi.setText("Konseling Farmasi");
+        btnKonselingFarmasi.setIconTextGap(0);
+        btnKonselingFarmasi.setName("btnKonselingFarmasi"); 
+        btnKonselingFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKonselingFarmasi.addActionListener(this::btnKonselingFarmasiActionPerformed);
     }
     
 }
