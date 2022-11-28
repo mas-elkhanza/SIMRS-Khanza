@@ -177,7 +177,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningNutrisi = new javax.swing.JMenuItem();
+        MnKonselingFarmasi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -237,19 +237,19 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningNutrisi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningNutrisi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningNutrisi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningNutrisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningNutrisi.setText("Formulir Skrining Nutrisi Pasien Dewasa");
-        MnSkriningNutrisi.setName("MnSkriningNutrisi"); // NOI18N
-        MnSkriningNutrisi.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnSkriningNutrisi.addActionListener(new java.awt.event.ActionListener() {
+        MnKonselingFarmasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnKonselingFarmasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKonselingFarmasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnKonselingFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKonselingFarmasi.setText("Formulir KonselingFamasi");
+        MnKonselingFarmasi.setName("MnKonselingFarmasi"); // NOI18N
+        MnKonselingFarmasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnKonselingFarmasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningNutrisiActionPerformed(evt);
+                MnKonselingFarmasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningNutrisi);
+        jPopupMenu1.add(MnKonselingFarmasi);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -599,7 +599,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
         FormInput.add(ChkKejadian);
         ChkKejadian.setBounds(368, 40, 23, 23);
 
-        jLabel18.setText("Petugas :");
+        jLabel18.setText("Apoteker :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
         jLabel18.setBounds(400, 40, 70, 23);
@@ -1083,7 +1083,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,Diagnosa);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningNutrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningNutrisiActionPerformed
+    private void MnKonselingFarmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKonselingFarmasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1103,7 +1103,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on konseling_farmasi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
+    }//GEN-LAST:event_MnKonselingFarmasiActionPerformed
 
     private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
         Valid.pindah(evt,Diagnosa,PernahKonseling);
@@ -1163,7 +1163,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
     private widget.TextArea Keluhan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningNutrisi;
+    private javax.swing.JMenuItem MnKonselingFarmasi;
     private widget.TextBox NmPetugas;
     private widget.TextArea ObatPemakaian;
     private javax.swing.JPanel PanelInput;
@@ -1400,11 +1400,11 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        Sequel.mengedit("konseling_farmasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,diagnosa=?,obat_pemakaian=?,riwayat_alergi=?,keluhan=?,pernah_datang=?,"+
+        Sequel.mengedit("konseling_farmasi","no_rawat=?","no_rawat=?,tanggal=?,diagnosa=?,obat_pemakaian=?,riwayat_alergi=?,keluhan=?,pernah_datang=?,"+
             "tindak_lanjut=?,nip=?",11,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Diagnosa.getText(),ObatPemakaian.getText(),Alergi.getText(),Keluhan.getText(),PernahKonseling.getSelectedItem().toString(),TindakLanjut.getText(),
-                KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()
+                KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         });
         if(tabMode.getRowCount()!=0){tampil();}
         emptTeks();
