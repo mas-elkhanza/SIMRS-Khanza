@@ -1006,6 +1006,29 @@ public final class sekuel {
         return bool;
     }
     
+    public boolean queryutf2(String qry){
+        bool=false;
+        try {
+            ps=connect.prepareStatement(qry);
+            try{                            
+                ps.executeUpdate(); 
+                bool=true;
+             }catch(Exception e){
+                bool=false;
+                System.out.println("Notifikasi : "+e);           
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+            SimpanTrack(qry);
+        } catch (Exception e) {
+            bool=false;
+            System.out.println("Notifikasi : "+e);
+        }
+        return bool;
+    }
+    
     public void queryu(String qry,String parameter){
         try {
             ps=connect.prepareStatement(qry);
