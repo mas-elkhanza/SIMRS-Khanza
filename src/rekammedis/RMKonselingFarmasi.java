@@ -241,9 +241,9 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
         MnKonselingFarmasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKonselingFarmasi.setForeground(new java.awt.Color(50, 50, 50));
         MnKonselingFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKonselingFarmasi.setText("Formulir KonselingFamasi");
+        MnKonselingFarmasi.setText("Formulir Konseling Famasi");
         MnKonselingFarmasi.setName("MnKonselingFarmasi"); // NOI18N
-        MnKonselingFarmasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnKonselingFarmasi.setPreferredSize(new java.awt.Dimension(200, 26));
         MnKonselingFarmasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKonselingFarmasiActionPerformed(evt);
