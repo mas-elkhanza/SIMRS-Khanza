@@ -61,7 +61,7 @@
                                         unset($_SESSION['Capcay']);
                                         $usere      = cleankar($_POST['norme']);
                                         $passworde  = cleankar2($_POST['passworde']);
-                                        if(strlen($usere)>15){
+                                        if(strlen($usere)>30){
                                             header('Location: https://www.google.com');
                                         }else{
                                             if(getOne2("select count(*) from personal_pasien where md5(no_rkm_medis)=md5('$usere') and password=aes_encrypt('$passworde','windi')")>0){
