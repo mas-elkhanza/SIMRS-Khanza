@@ -84,10 +84,10 @@ public class SpriDao implements SpriInterface<Spri> {
         List<Spri> kis = new ArrayList<>();
         try {
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
-                    + "temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan,temp_spri.rujukan,temp_spri.terapi "
+                    + "temp_spri.rencana_perawatan,temp_spri.upf,temp_spri.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan,temp_spri.rujukan,temp_spri.terapi "
                     + " FROM temp_spri "
                     //                    + "inner join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                                        + " inner join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
+//                                        + " inner join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
                     + " where"
                     + " temp_spri.norm like ? and temp_spri.tanggal between ? and ? or "
                     + " temp_spri.kd_dokter like ? and temp_spri.tanggal between ? and ? or "
@@ -150,9 +150,9 @@ public class SpriDao implements SpriInterface<Spri> {
                     //                    + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                     //                    + "pasien.agama,"
                     + "temp_spri.rencana_perawatan,temp_spri.upf,"
-                    + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan,temp_spri.rujukan,temp_spri.terapi "
+                    + "temp_spri.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan,temp_spri.rujukan,temp_spri.terapi "
                     + " FROM temp_spri" //inner join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                                        + " inner join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
+//                                        + " inner join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                     + " where temp_spri.tanggal between ? and ? "
                     + " order by temp_spri.tanggal desc");
 

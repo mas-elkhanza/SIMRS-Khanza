@@ -2,21 +2,22 @@
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subResepPulang" columnCount="2" printOrder="Horizontal" pageWidth="555" pageHeight="200" columnWidth="276" columnSpacing="2" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d143e5d9-80b9-43c4-9ea8-902888bd3059">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<parameter name="no_rawat" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT obat_pulang_resume.aturan_pakai,
 	obat_pulang_resume.nama_brng
 FROM obat_pulang_resume 
 WHERE 
-	 obat_pulang_resume.no_rawat = $P{no_rawat} ]]>
+	 obat_pulang_resume.no_rawat = $P{no_rawat}]]>
 	</queryString>
-	<field name="nama_brng" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="databarang"/>
-	</field>
 	<field name="aturan_pakai" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="aturan_pakai"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="resep_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_pulang_resume"/>
+	</field>
+	<field name="nama_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_pulang_resume"/>
 	</field>
 	<columnHeader>
 		<band height="14" splitType="Immediate">

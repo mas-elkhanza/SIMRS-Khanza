@@ -913,8 +913,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         tabModelRincian = new DefaultTableModel(null,
                 new Object[]{"No.", "No.Rawat", "No.R.M.", "Nama Pasien", "Kd.Tnd", "Perawatan/Tindakan",
                     "Dokter Yg Menangani", "Dokter Pertama", "Tanggal Pulang", "Tanggal Tindakan", "Jam",
-                    "Cara Bayar", "Ruangan", "jml visit", "Tarif Visit", "Visit Dokter", "Total Jumlah"
-//                        , "Tindakan", "Dokter Anestesi", "Ast. Anestesi", "Staff OK", "Staff KB", "Total Jumlah"
+                    "Cara Bayar", "Ruangan", "jml visit", "Tarif Visit", "Visit Dokter","Tindakan", 
+                    "Dokter Anestesi", "Ast. Anestesi", "Staff OK", "Staff KB", "Total Jumlah"
                 }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -925,9 +925,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Double.class, java.lang.Double.class
-//                    , java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
-//                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+//                    , java.lang.Double.class, java.lang.Double.class
             };
 
             @Override
@@ -939,7 +939,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         tbRincianRanap.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbRincianRanap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 17; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbRincianRanap.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(30);
@@ -972,6 +972,14 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             } else if (i == 14) {
                 column.setPreferredWidth(75);
             } else if (i == 15) {
+                column.setPreferredWidth(75);
+            } else if (i == 16) {
+                column.setPreferredWidth(75);
+            } else if (i == 17) {
+                column.setPreferredWidth(75);
+            } else if (i == 18) {
+                column.setPreferredWidth(75);
+            } else if (i == 19) {
                 column.setPreferredWidth(75);
             } else {
                 column.setPreferredWidth(80);
@@ -1712,7 +1720,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -10083,15 +10091,16 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     public void tampil5() {
         Valid.tabelKosong(tabModeRanapDokter);
         try {
-            if (KdDokterRanapDokter.getText().equals("") && NmDokterRanapDokter.getText().equals("")
-                    && KdCaraBayarRanapDokter.getText().equals("") && NmCaraBayarRanapDokter.getText().equals("")
+            if (KdDokterRanapDokter.getText().equals("") 
+                    && KdCaraBayarRanapDokter.getText().equals("") 
                     && TCari.getText().equals("") && cmbStatus.getSelectedItem().equals("Semua")) {
                 ps = koneksi.prepareStatement("select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,"
                         + "pasien.nm_pasien,rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"
                         + "rawat_inap_dr.kd_dokter,dokter.nm_dokter,rawat_inap_dr.tgl_perawatan,"
                         + "rawat_inap_dr.jam_rawat,penjab.png_jawab,"
                         + "ifnull((select bangsal.nm_bangsal from kamar_inap "
-                        + "inner join kamar inner join bangsal on " + "kamar_inap.kd_kamar=kamar.kd_kamar "
+                        + "inner join kamar inner join bangsal on " 
+                        + "kamar_inap.kd_kamar=kamar.kd_kamar "
                         + "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=rawat_inap_dr.no_rawat limit 1),'Ruang Terhapus' ) as ruang , "
                         + "rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,"
                         + "rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat "
@@ -11671,7 +11680,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
     private void tampil11() {
         try {
-            String visit = " jns_perawatan_inap.nm_perawatan like '%Dr. Spesialis%' and ";
+            String visit = " (jns_perawatan_inap.nm_perawatan like '%Visite%' or jns_perawatan_inap.nm_perawatan like '%via Telp%') and ";
             Valid.tabelKosong(tabModelRincian);
             if (cmbStatus.getSelectedItem().toString().equalsIgnoreCase("Sudah Lunas")) {
                 ps = koneksi.prepareStatement("select rawat_inap_drpr.no_rawat, reg_periksa.no_rkm_medis, "
@@ -11802,7 +11811,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
                         + visit
                         + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bangsal.nm_bangsal like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' "
-                        + " GROUP BY kamar_inap.no_rawat "
+                        + " GROUP BY kamar_inap.no_rawat,rawat_inap_drpr.kd_dokter "
                         + " order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat asc"
                 );
             }
@@ -11915,6 +11924,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 double subAsisAnas = 0;
                 double subAsisOp = 0;
                 double subVisit = 0;
+                double subBidan = 0;
                 double subTotal = 0;
 
                 while (rs.next()) {
@@ -11934,7 +11944,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                             + "inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=kamar_inap.no_rawat "
                             + "inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "
                             + "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
-                            + "where kamar_inap.no_rawat='" + rs.getString("no_rawat") + "' and dokter.nm_dokter='" + rs.getString("drvisit") + "' and jns_perawatan_inap.nm_perawatan like '%Dr. Spesialis%'");
+                            + "where kamar_inap.no_rawat='" + rs.getString("no_rawat") + "' and dokter.nm_dokter='" + rs.getString("drvisit") 
+                            + "' and (jns_perawatan_inap.nm_perawatan like '%Visite%' or jns_perawatan_inap.nm_perawatan like '%via telp%')");
                     double tarifVisit = jmlvisit * rs.getDouble("total_byrdrpr");
                     double totaljml = tarifVisit - sepertiga + rs.getDouble("biayaoperator1") + rs.getDouble("biayadokter_anestesi");
 
@@ -11944,6 +11955,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     subDokterAnas += rs.getDouble("biayadokter_anestesi");
                     subAsisAnas += rs.getDouble("biayaasisten_anestesi");
                     subAsisOp += rs.getDouble("biayaasisten_operator1");
+                    subBidan += rs.getDouble("biayabidan");
                     subVisit += jmlvisit;
                     subTotal += totaljml;
 
@@ -11952,7 +11964,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         rs.getString("drvisit"), rs.getString("dokter_pertama"), rs.getString("tgl_keluar"),
                         rs.getString("tgl_perawatan"), rs.getString("jam_rawat"), rs.getString("png_jawab"),
                         kamar_sementara, jmlvisit, tarifVisit,
-                        sepertiga, totaljml
+                        sepertiga, rs.getDouble("biayaoperator1"),rs.getDouble("biayadokter_anestesi"),
+                        rs.getDouble("biayaasisten_anestesi"), rs.getDouble("biayaasisten_operator1"), rs.getDouble("biayabidan"), totaljml
 //                            , rs.getDouble("biayaoperator1"),
 //                        rs.getDouble("biayadokter_anestesi"), rs.getDouble("biayaasisten_anestesi"), rs.getDouble("biayaasisten_operator1"), rs.getDouble("biayabidan"), totaljml
                     });
@@ -11965,7 +11978,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 if (subTotal > 0) {
                     tabModelRincian.addRow(new Object[]{
                         "", "", "", "", "", "", "", "", "", "", "", "", "Jumlah Total :", subVisit,
-                        subTarifVisit, subSepertiga, subTotal
+                        subTarifVisit, subSepertiga,subTindakan, subDokterAnas, subAsisAnas, subAsisOp, subBidan, subTotal
 //                            , subTindakan, subDokterAnas, subAsisAnas, subAsisOp, subBidan, subTotal
                     });
                 }

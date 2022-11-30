@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="935" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9451c5a-7393-4bc7-b9be-2a4c96717701">
 	<property name="ireport.zoom" value="1.2100000000000088"/>
 	<property name="ireport.x" value="0"/>
@@ -89,7 +89,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 	</background>
 	<title>
 		<band height="895">
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="217" width="338" height="14" uuid="a27d2961-6c7f-43c5-a378-7b0bd2108ecb"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -115,7 +115,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				<reportElement x="48" y="18" width="51" height="51" uuid="86927289-62ad-44b7-a385-1e0f7b711f00"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="112" y="56" width="439" height="14" uuid="13df58e6-18e1-4a01-8aec-a51e9dcb05d7"/>
 				<textElement>
 					<font fontName="Tahoma" size="10"/>
@@ -123,7 +123,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="112" y="45" width="439" height="14" uuid="12cb78e7-f2ed-4ac7-9076-fdd1bac117c2"/>
 				<textElement>
 					<font fontName="Tahoma" size="10"/>
@@ -131,7 +131,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="112" y="18" width="439" height="17" uuid="fb02a4f3-dc99-4c69-8150-0817c0b5ed54"/>
 				<textElement>
 					<font fontName="Tahoma" size="14"/>
@@ -139,7 +139,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="112" y="34" width="439" height="14" uuid="9119d967-e0b8-4dd7-90ac-9afe6d6948e6"/>
 				<textElement>
 					<font fontName="Tahoma" size="10"/>
@@ -195,7 +195,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[Umur]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="236" width="86" height="14" uuid="d73063f3-d5e4-47bc-ab21-67cc1e4c7bc5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -203,7 +203,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{umur}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="436" y="236" width="113" height="14" uuid="40a3107b-c52e-478f-8d20-353b05b2f917"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -227,7 +227,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[Jenis Kelamin]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="369" width="340" height="40" uuid="e5f4fe8b-0dcf-43ac-a6a4-ed56a67b4c53"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -251,7 +251,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[Alamat Lengkap & Telepon]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="350" width="287" height="14" uuid="422ced08-5878-4506-b741-64e6aea6438f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -307,7 +307,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="211" y="139" width="287" height="14" uuid="a40d4b02-b81c-445a-a935-8579f225c674"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -337,7 +337,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="255" width="141" height="14" uuid="6212db72-17e5-4784-be8f-4725319c23d2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -345,7 +345,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tmp_lahir}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="352" y="255" width="141" height="14" uuid="7289df3d-372d-469e-8d40-57d64b22ec77"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -385,7 +385,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="436" y="274" width="113" height="14" uuid="f6b2e66a-ff59-433a-ba08-00f92a989e7f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -401,7 +401,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="436" y="293" width="113" height="14" uuid="378b56f2-d1cb-4639-8521-f14cd1c821ec"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -433,7 +433,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="293" width="141" height="14" uuid="2ff3ac2d-5ab4-4bd1-a8b0-1fc339a6d0c9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -457,7 +457,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="436" y="312" width="113" height="14" uuid="35ea620a-45fa-420d-9c38-d98ef70547c1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -481,7 +481,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[Status Kawin]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="312" width="141" height="14" uuid="972a04c8-bc53-4e44-81e6-0f44e7bd0639"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -505,7 +505,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="211" y="331" width="287" height="14" uuid="6b2ef4e2-b1a9-4598-8a5f-77f601025010"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="11" isBold="false"/>
@@ -897,7 +897,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<text><![CDATA[:  Sembuh / Dirujuk / Meninggal < 48 jam / Meninggal > 48 jam]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="228" y="184" width="183" height="29" uuid="a4abc89d-193b-478a-b4d1-bb814340ee42"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="23" isBold="false"/>

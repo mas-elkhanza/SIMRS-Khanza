@@ -28,7 +28,6 @@
 	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
 	<parameter name="dataSourceObat" class="java.util.Collection"/>
 	<parameter name="cari" class="java.lang.String"/>
-	<parameter name="ttd" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[SELECT reg_periksa.tgl_registrasi,
 	reg_periksa.no_rawat,
@@ -39,7 +38,7 @@
 	pasien.alamat,
 	pasien.jk,
 	pasien.namakeluarga,
-	kamar_inap.tgl_masuk,
+    min(kamar_inap.tgl_masuk) as tgl_masuk,
 	kamar_inap.jam_masuk,
 	kamar_inap.diagnosa_awal,
 	bangsal.nm_bangsal,
@@ -63,12 +62,13 @@
 	resume_pasien.kd_diagnosa_sekunder4,
 	resume_pasien.riwayat_penyakit,
 	resume_pasien.penyakit_penyerta,
-	pemeriksaan_ranap.keluhan,
 	resume_pasien.tindakan_perawatan ,
 	resume_pasien.pemeriksaan_fisik ,
-    resume_pasien.alasan_pulang,skdp_bpjs.alasan1,
-    skdp_bpjs.rtl1,
-    no_antrian,tindakan_rs, tgl_kontrol,tgl_pulang,jam_pulang
+    resume_pasien.alasan_pulang,
+    tindakan_rs, 
+    tgl_kontrol,
+    tgl_pulang,
+    jam_pulang
 FROM resume_pasien
 	inner join reg_periksa ON 
 	 resume_pasien.no_rawat = reg_periksa.no_rawat 
@@ -82,11 +82,7 @@ FROM resume_pasien
 	 kamar.kd_kamar = kamar_inap.kd_kamar 
 	inner join bangsal ON 
 	 kamar.kd_bangsal = bangsal.kd_bangsal 
-	left join pemeriksaan_ranap ON 
-	 reg_periksa.no_rawat = pemeriksaan_ranap.no_rawat 
-     left join skdp_bpjs on skdp_bpjs.no_rkm_medis=pasien.no_rkm_medis 
-     left join ttd_dokter ON ttd_dokter.kd_dokter = dokter.kd_dokter 
-    where resume_pasien.tgl_resume between $P{tgl_awal} and $P{tgl_ahir} and resume_pasien.no_rawat like $P{cari}  
+    where resume_pasien.tgl_resume between $P{tgl_awal} and $P{tgl_ahir} and resume_pasien.no_rawat = $P{no_rawat}  
     group by reg_periksa.no_rawat]]>
 	</queryString>
 	<field name="tgl_registrasi" class="java.sql.Date">
@@ -221,10 +217,6 @@ FROM resume_pasien
 		<property name="com.jaspersoft.studio.field.label" value="penyakit_penyerta"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
 	</field>
-	<field name="keluhan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="keluhan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
-	</field>
 	<field name="tindakan_perawatan" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="tindakan_perawatan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
@@ -236,18 +228,6 @@ FROM resume_pasien
 	<field name="alasan_pulang" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="alasan_pulang"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
-	</field>
-	<field name="alasan1" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alasan1"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skdp_bpjs"/>
-	</field>
-	<field name="rtl1" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="rtl1"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skdp_bpjs"/>
-	</field>
-	<field name="no_antrian" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="no_antrian"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skdp_bpjs"/>
 	</field>
 	<field name="tindakan_rs" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="tindakan_rs"/>

@@ -7,7 +7,6 @@
                 <dependency dependsOn="jnlp" target="-post-jar"/>
                 <dependency dependsOn="jnlp" target="jar"/>
             </extension>
-            <extension file="build-native.xml" id="j2sedeploy"/>
         </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>SIMRSKhanza</name>

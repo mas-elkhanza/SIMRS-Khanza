@@ -1625,7 +1625,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }
 
                 if (!noresep.equals("")) {
-                    Sequel.mengedit("resep_obat", "no_resep='" + noresep + "'", "tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "',jam='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "'");
+                    Sequel.mengedit("resep_obat", "no_resep='" + noresep + "'", "tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "',jam='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',validasi='sudah'");
                 }
 
                 if (sukses == true) {
