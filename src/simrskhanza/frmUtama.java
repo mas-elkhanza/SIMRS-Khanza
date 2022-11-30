@@ -715,6 +715,7 @@ import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabMB;
 import permintaan.DlgCariPermintaanLabPA;
+import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRanap;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
@@ -19481,6 +19482,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPelayananInformasiObatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPermintaanPelayananInformasiObat aplikasi=new DlgPermintaanPelayananInformasiObat(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20143,7 +20157,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
-            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi;
+            btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi,
+            btnPelayananInformasiObat;
     
     public void isWall(){
         try{            
@@ -23493,6 +23508,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getkonseling_farmasi()==true){
                 Panelmenu.add(btnKonselingFarmasi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpelayanan_informasi_obat()==true){
+                Panelmenu.add(btnPelayananInformasiObat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){  
@@ -27903,6 +27923,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getkonseling_farmasi()==true){
             Panelmenu.add(btnKonselingFarmasi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpelayanan_informasi_obat()==true){
+            Panelmenu.add(btnPelayananInformasiObat);
             jmlmenu++;
         }
 
@@ -33601,6 +33626,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpelayanan_informasi_obat()==true){
+            if(btnPelayananInformasiObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPelayananInformasiObat);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -38627,6 +38659,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKonselingFarmasi.setName("btnKonselingFarmasi"); 
         btnKonselingFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKonselingFarmasi.addActionListener(this::btnKonselingFarmasiActionPerformed);
+        
+        btnPelayananInformasiObat = new widget.ButtonBig();
+        btnPelayananInformasiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960635_medicines_medicines bottle_bottle_medication_drugs_icon.png")));
+        btnPelayananInformasiObat.setText("Pelayanan Informasi Obat");
+        btnPelayananInformasiObat.setIconTextGap(0);
+        btnPelayananInformasiObat.setName("btnPelayananInformasiObat"); 
+        btnPelayananInformasiObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPelayananInformasiObat.addActionListener(this::btnPelayananInformasiObatActionPerformed);
     }
     
 }
