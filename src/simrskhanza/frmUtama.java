@@ -38661,7 +38661,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKonselingFarmasi.addActionListener(this::btnKonselingFarmasiActionPerformed);
         
         btnPelayananInformasiObat = new widget.ButtonBig();
-        btnPelayananInformasiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960635_medicines_medicines bottle_bottle_medication_drugs_icon.png")));
+        btnPelayananInformasiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960614_medicines_medicine_drug_pill_tablet_icon.png")));
         btnPelayananInformasiObat.setText("Pelayanan Informasi Obat");
         btnPelayananInformasiObat.setIconTextGap(0);
         btnPelayananInformasiObat.setName("btnPelayananInformasiObat"); 

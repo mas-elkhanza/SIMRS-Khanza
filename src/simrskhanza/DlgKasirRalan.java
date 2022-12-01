@@ -11735,8 +11735,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     DlgPermintaanPelayananInformasiObat form=new DlgPermintaanPelayananInformasiObat(null,false);
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    form.setLocationRelativeTo(internalFrame1);               
+                    form.setLocationRelativeTo(internalFrame1);            
+                    form.emptTeks();
                     form.setNoRm(TNoRw.getText(),TNoRMCari.getText(),TPasienCari.getText()); 
+                    form.tampil();
                     form.setVisible(true);
                 } 
             }               

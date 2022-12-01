@@ -13128,6 +13128,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     dlgro.emptTeks();
                                     dlgro.isCek();
                                     dlgro.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien"));
+                                    dlgro.tampil();
                                     dlgro.setVisible(true);
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
@@ -13155,6 +13156,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     dlgro.emptTeks();
                     dlgro.isCek();
                     dlgro.setNoRm(TNoRwCari.getText(),TNoRMCari.getText(),TPasienCari.getText());
+                    dlgro.tampil();
                     dlgro.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }

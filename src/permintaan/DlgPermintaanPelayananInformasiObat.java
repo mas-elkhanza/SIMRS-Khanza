@@ -54,7 +54,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Pertanyaan","Metode",
-                "Penanya","Status Penanya","No.Telp","Jenis Pertanyaan","Ket.Jenis Pertanyaan","Uraian Pertanyaan","Jawaban Pertanyaan",
+                "Penanya","Status Penanya","No.Telp Penanya","Jenis Pertanyaan","Ket.Jenis Pertanyaan","Uraian Pertanyaan","Jawaban Pertanyaan",
                 "Referensi Jawaban","Penyampaian Jawaban","Metode Jawaban","Tanggal Jawaban","NIP","Nama Apoteker"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -82,6 +82,30 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(90);
             }else if(i==7){
+                column.setPreferredWidth(120);
+            }else if(i==8){
+                column.setPreferredWidth(115);
+            }else if(i==9){
+                column.setPreferredWidth(47);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(100);
+            }else if(i==12){
+                column.setPreferredWidth(90);
+            }else if(i==13){
+                column.setPreferredWidth(120);
+            }else if(i==14){
+                column.setPreferredWidth(110);
+            }else if(i==15){
+                column.setPreferredWidth(220);
+            }else if(i==16){
+                column.setPreferredWidth(220);
+            }else if(i==17){
+                column.setPreferredWidth(220);
+            }else if(i==18){
+                column.setPreferredWidth(115);
+            }else if(i==19){
                 column.setPreferredWidth(120);
             }
         }
@@ -869,7 +893,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,NoRw,"pelayanan_informasi_obat","no_rawat");
+        Valid.hapusTable(tabMode,NoPermintaan,"pelayanan_informasi_obat","no_permintaan");
         tampil();
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -1261,25 +1285,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void tampil() {     
         Valid.tabelKosong(tabMode);
         try{ 
-            /*"No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Pertanyaan","Metode",
-                "Penanya","Status Penanya","No.Telp","Jenis Pertanyaan","Ket.Jenis Pertanyaan","Uraian Pertanyaan","Jawaban Pertanyaan",
-                "Referensi Jawaban","Penyampaian Jawaban","Metode Jawaban","Tanggal Jawaban","NIP","Nama Apoteker"*/
             if(R1.isSelected()==true){
                 ps=koneksi.prepareStatement(
-                    "select pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.no_tlp,penjab.png_jawab,poliklinik.nm_poli,dokter.nm_dokter,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.kd_kamar,kamar.kd_bangsal,"+
-                    "bangsal.nm_bangsal,kamar.trf_kamar,pelayanan_informasi_obat.diagnosa,pelayanan_informasi_obat.catatan,reg_periksa.kd_dokter from pelayanan_informasi_obat "+
-                    "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                    "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "inner join kamar on pelayanan_informasi_obat.kd_kamar=kamar.kd_kamar "+
-                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "where pelayanan_informasi_obat.no_rawat not in (select DISTINCT no_rawat from kamar_inap) "+
+                    "select pelayanan_informasi_obat.no_permintaan,pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.metode,pelayanan_informasi_obat.penanya,"+
+                    "pelayanan_informasi_obat.status_penanya,pelayanan_informasi_obat.no_telp_penanya,pelayanan_informasi_obat.jenis_pertanyaan,pelayanan_informasi_obat.keterangan_jenis_pertanyaan,"+
+                    "pelayanan_informasi_obat.uraian_pertanyaan from pelayanan_informasi_obat inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
+                    "where pelayanan_informasi_obat.no_permintaan not in (select DISTINCT jawaban_pio_apoteker.no_permintaan from jawaban_pio_apoteker) "+
                     (TCari.getText().equals("")?"":"and (pelayanan_informasi_obat.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                    "or penjab.png_jawab like ? or poliklinik.nm_poli like ? or dokter.nm_dokter like ? or bangsal.nm_bangsal like ? "+
-                    "or pelayanan_informasi_obat.diagnosa like ?)")+" order by pelayanan_informasi_obat.tanggal");
+                    "or penjab.png_jawab like ? or pelayanan_informasi_obat.no_permintaan like ? or pelayanan_informasi_obat.metode like ? or pelayanan_informasi_obat.penanya like ? "+
+                    "or pelayanan_informasi_obat.status_penanya like ?)")+" order by pelayanan_informasi_obat.tanggal");
                 try {
                     if(!TCari.getText().equals("")){
                         ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -1294,9 +1310,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new String[]{
-                            rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("nm_poli"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("kd_kamar"),
-                            rs.getString("kd_bangsal"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa"),rs.getString("catatan")
+                            rs.getString("no_permintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("metode"),rs.getString("penanya"),rs.getString("status_penanya"),rs.getString("no_telp_penanya"),
+                            rs.getString("jenis_pertanyaan"),rs.getString("keterangan_jenis_pertanyaan"),rs.getString("uraian_pertanyaan"),"","","","","","",""
                         });
                     }
                 } catch (Exception e) {
@@ -1310,23 +1326,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                 }
             }else if(R2.isSelected()==true){
-                ps=koneksi.prepareStatement("select pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.no_tlp,penjab.png_jawab,poliklinik.nm_poli,dokter.nm_dokter,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.kd_kamar,kamar.kd_bangsal,"+
-                    "bangsal.nm_bangsal,kamar.trf_kamar,pelayanan_informasi_obat.diagnosa,pelayanan_informasi_obat.catatan,reg_periksa.kd_dokter from pelayanan_informasi_obat "+
-                    "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                    "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "inner join kamar on pelayanan_informasi_obat.kd_kamar=kamar.kd_kamar "+
-                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "where pelayanan_informasi_obat.no_rawat in (select DISTINCT no_rawat from kamar_inap) and pelayanan_informasi_obat.tanggal between ? and ? "+
+                ps=koneksi.prepareStatement(
+                    "select pelayanan_informasi_obat.no_permintaan,pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.metode,pelayanan_informasi_obat.penanya,"+
+                    "pelayanan_informasi_obat.status_penanya,pelayanan_informasi_obat.no_telp_penanya,pelayanan_informasi_obat.jenis_pertanyaan,pelayanan_informasi_obat.keterangan_jenis_pertanyaan,"+
+                    "pelayanan_informasi_obat.uraian_pertanyaan,jawaban_pio_apoteker.tanggal_jawab,jawaban_pio_apoteker.metode,jawaban_pio_apoteker.penyampaian_jawaban,"+
+                    "jawaban_pio_apoteker.jawaban,jawaban_pio_apoteker.referensi,jawaban_pio_apoteker.nip,petugas.nama from pelayanan_informasi_obat "+
+                    "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_pio_apoteker on jawaban_pio_apoteker.no_permintaan=pelayanan_informasi_obat.no_permintaan "+
+                    "inner join petugas on jawaban_pio_apoteker.nip=petugas.nip where jawaban_pio_apoteker.tanggal_jawab between ? and ? "+
                     (TCari.getText().equals("")?"":"and (pelayanan_informasi_obat.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                    "or penjab.png_jawab like ? or poliklinik.nm_poli like ? or dokter.nm_dokter like ? or bangsal.nm_bangsal like ? "+
-                    "or pelayanan_informasi_obat.diagnosa like ?)")+" order by pelayanan_informasi_obat.tanggal");
+                    "or penjab.png_jawab like ? or pelayanan_informasi_obat.no_permintaan like ? or pelayanan_informasi_obat.metode like ? or pelayanan_informasi_obat.penanya like ? "+
+                    "or pelayanan_informasi_obat.status_penanya like ?)")+" order by pelayanan_informasi_obat.tanggal");
                 try {
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                     if(!TCari.getText().equals("")){
                         ps.setString(3,"%"+TCari.getText().trim()+"%");
                         ps.setString(4,"%"+TCari.getText().trim()+"%");
@@ -1340,10 +1354,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new String[]{
-                            rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("nm_poli"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("kd_kamar"),
-                            rs.getString("kd_bangsal"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa"),
-                            rs.getString("catatan"),rs.getString("kd_dokter")
+                            rs.getString("no_permintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("metode"),rs.getString("penanya"),rs.getString("status_penanya"),rs.getString("no_telp_penanya"),
+                            rs.getString("jenis_pertanyaan"),rs.getString("keterangan_jenis_pertanyaan"),rs.getString("uraian_pertanyaan"),rs.getString("jawaban"),rs.getString("referensi"),rs.getString("penyampaian_jawaban"),
+                            rs.getString("metode"),rs.getString("tanggal_jawab"),rs.getString("nip"),rs.getString("nama")
                         });
                     }
                 } catch (Exception e) {
