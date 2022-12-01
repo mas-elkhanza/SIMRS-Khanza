@@ -53,8 +53,9 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Asal Poli/Unit","Dokter Yang Memeriksa",
-                "Tanggal","No.Bad/Kamar","Kode Bangsal","Kamar Diminta","Tarif Kamar","Diagnosa Awal","Catatan","KodeDokter"
+                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Pertanyaan","Metode",
+                "Penanya","Status Penanya","No.Telp","Jenis Pertanyaan","Ket.Jenis Pertanyaan","Uraian Pertanyaan","Jawaban Pertanyaan",
+                "Referensi Jawaban","Penyampaian Jawaban","Metode Jawaban","Tanggal Jawaban","NIP","Nama Apoteker"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -64,45 +65,24 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 17; i++) {
+        for (i = 0; i < 23; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
             }else if(i==1){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(105);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(70);
             }else if(i==3){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(25);
             }else if(i==5){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(40);
             }else if(i==6){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(90);
             }else if(i==7){
-                column.setPreferredWidth(130);
-            }else if(i==8){
-                column.setPreferredWidth(160);
-            }else if(i==9){
-                column.setPreferredWidth(65);
-            }else if(i==10){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==11){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else if(i==13){
-                column.setPreferredWidth(75);
-            }else if(i==14){
-                column.setPreferredWidth(150);
-            }else if(i==15){
-                column.setPreferredWidth(150);
-            }else if(i==16){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(120);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1281,8 +1261,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void tampil() {     
         Valid.tabelKosong(tabMode);
         try{ 
+            /*"No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Pertanyaan","Metode",
+                "Penanya","Status Penanya","No.Telp","Jenis Pertanyaan","Ket.Jenis Pertanyaan","Uraian Pertanyaan","Jawaban Pertanyaan",
+                "Referensi Jawaban","Penyampaian Jawaban","Metode Jawaban","Tanggal Jawaban","NIP","Nama Apoteker"*/
             if(R1.isSelected()==true){
-                ps=koneksi.prepareStatement("select pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                ps=koneksi.prepareStatement(
+                    "select pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.no_tlp,penjab.png_jawab,poliklinik.nm_poli,dokter.nm_dokter,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.kd_kamar,kamar.kd_bangsal,"+
                     "bangsal.nm_bangsal,kamar.trf_kamar,pelayanan_informasi_obat.diagnosa,pelayanan_informasi_obat.catatan,reg_periksa.kd_dokter from pelayanan_informasi_obat "+
                     "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
