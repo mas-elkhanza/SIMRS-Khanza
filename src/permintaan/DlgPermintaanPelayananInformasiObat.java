@@ -8,6 +8,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,19 +16,23 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import static java.awt.image.ImageObserver.HEIGHT;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 import rekammedis.RMRiwayatPerawatan;
 
@@ -47,6 +52,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
     private boolean aktif=false;
     private BackgroundMusic music;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private StringBuilder htmlContent;
     
 
     /** Creates new form DlgPemberianInfus
@@ -59,7 +65,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Pertanyaan","Metode",
                 "Penanya","Status Penanya","No.Telp Penanya","Jenis Pertanyaan","Ket.Jenis Pertanyaan","Uraian Pertanyaan","Jawaban Pertanyaan",
-                "Referensi Jawaban","Penyampaian Jawaban","Metode Jawaban","Tanggal Jawaban","NIP","Nama Apoteker"
+                "Referensi Jawaban","Penyampaian","Metode Jawaban","Tanggal Jawaban","NIP","Nama Apoteker"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -108,9 +114,15 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
             }else if(i==17){
                 column.setPreferredWidth(220);
             }else if(i==18){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(92);
             }else if(i==19){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(92);
+            }else if(i==20){
+                column.setPreferredWidth(115);
+            }else if(i==21){
+                column.setPreferredWidth(90);
+            }else if(i==22){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -145,9 +157,13 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         } 
         
         try {
-            alarm=koneksiDB.FORMALARMAPOTEK();
+            alarm=koneksiDB.ALARMAPOTEK();
         } catch (Exception e) {
             alarm="no";
+        }
+        
+        if(alarm.equals("yes")){
+            jam();
         }
         
         petugas.addWindowListener(new WindowListener() {
@@ -177,14 +193,27 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         WindowInput.setLocationRelativeTo(null);  
         
         ChkInput.setSelected(false);
-        isForm();
-        
-        if(alarm.equals("yes")){
-            jam();
-        }
-        
+        isForm();        
         ChkAccor.setSelected(false);
         isMenu();
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
  
     /** This method is called from within the constructor to
@@ -201,8 +230,8 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         internalFrame2 = new widget.InternalFrame();
         BtnCloseIn = new widget.Button();
         jLabel19 = new widget.Label();
-        BtnSimpan1 = new widget.Button();
-        BtnBatal1 = new widget.Button();
+        BtnSimpanJawaban = new widget.Button();
+        BtnBatalJawaban = new widget.Button();
         NoPermintaanJawaban = new widget.TextBox();
         label1 = new widget.Label();
         KdPetugas = new widget.TextBox();
@@ -221,6 +250,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         jLabel45 = new widget.Label();
         scrollPane3 = new widget.ScrollPane();
         Jawaban = new widget.TextArea();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -315,42 +345,43 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         internalFrame2.add(jLabel19);
         jLabel19.setBounds(-10, 175, 850, 14);
 
-        BtnSimpan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan1.setMnemonic('S');
-        BtnSimpan1.setText("Simpan");
-        BtnSimpan1.setToolTipText("Alt+S");
-        BtnSimpan1.setName("BtnSimpan1"); // NOI18N
-        BtnSimpan1.addActionListener(new java.awt.event.ActionListener() {
+        BtnSimpanJawaban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpanJawaban.setMnemonic('S');
+        BtnSimpanJawaban.setText("Simpan");
+        BtnSimpanJawaban.setToolTipText("Alt+S");
+        BtnSimpanJawaban.setName("BtnSimpanJawaban"); // NOI18N
+        BtnSimpanJawaban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpan1ActionPerformed(evt);
+                BtnSimpanJawabanActionPerformed(evt);
             }
         });
-        BtnSimpan1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnSimpanJawaban.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpan1KeyPressed(evt);
+                BtnSimpanJawabanKeyPressed(evt);
             }
         });
-        internalFrame2.add(BtnSimpan1);
-        BtnSimpan1.setBounds(14, 195, 100, 30);
+        internalFrame2.add(BtnSimpanJawaban);
+        BtnSimpanJawaban.setBounds(14, 195, 100, 30);
 
-        BtnBatal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
-        BtnBatal1.setMnemonic('B');
-        BtnBatal1.setText("Batal");
-        BtnBatal1.setToolTipText("Alt+B");
-        BtnBatal1.setName("BtnBatal1"); // NOI18N
-        BtnBatal1.addActionListener(new java.awt.event.ActionListener() {
+        BtnBatalJawaban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnBatalJawaban.setMnemonic('B');
+        BtnBatalJawaban.setText("Batal");
+        BtnBatalJawaban.setToolTipText("Alt+B");
+        BtnBatalJawaban.setName("BtnBatalJawaban"); // NOI18N
+        BtnBatalJawaban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBatal1ActionPerformed(evt);
+                BtnBatalJawabanActionPerformed(evt);
             }
         });
-        BtnBatal1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnBatalJawaban.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnBatal1KeyPressed(evt);
+                BtnBatalJawabanKeyPressed(evt);
             }
         });
-        internalFrame2.add(BtnBatal1);
-        BtnBatal1.setBounds(117, 195, 100, 30);
+        internalFrame2.add(BtnBatalJawaban);
+        BtnBatalJawaban.setBounds(117, 195, 100, 30);
 
+        NoPermintaanJawaban.setEditable(false);
         NoPermintaanJawaban.setName("NoPermintaanJawaban"); // NOI18N
         NoPermintaanJawaban.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -360,10 +391,10 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         internalFrame2.add(NoPermintaanJawaban);
         NoPermintaanJawaban.setBounds(99, 20, 130, 23);
 
-        label1.setText("Tanggal Jawab :");
+        label1.setText("Tanggal Jawaban :");
         label1.setName("label1"); // NOI18N
         internalFrame2.add(label1);
-        label1.setBounds(230, 20, 90, 23);
+        label1.setBounds(235, 20, 110, 23);
 
         KdPetugas.setName("KdPetugas"); // NOI18N
         KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -372,17 +403,17 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(KdPetugas);
-        KdPetugas.setBounds(290, 50, 130, 23);
+        KdPetugas.setBounds(295, 50, 130, 23);
 
         label8.setText("Apoteker :");
         label8.setName("label8"); // NOI18N
         internalFrame2.add(label8);
-        label8.setBounds(190, 50, 100, 23);
+        label8.setBounds(221, 50, 70, 23);
 
         NmPetugas.setEditable(false);
         NmPetugas.setName("NmPetugas"); // NOI18N
         internalFrame2.add(NmPetugas);
-        NmPetugas.setBounds(420, 50, 270, 23);
+        NmPetugas.setBounds(427, 50, 270, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('3');
@@ -396,10 +427,10 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(btnPetugas);
-        btnPetugas.setBounds(700, 50, 25, 23);
+        btnPetugas.setBounds(695, 50, 25, 23);
 
         TanggalJawab.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2022 18:30:06" }));
+        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2022 04:40:08" }));
         TanggalJawab.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalJawab.setName("TanggalJawab"); // NOI18N
         TanggalJawab.setOpaque(false);
@@ -409,7 +440,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(TanggalJawab);
-        TanggalJawab.setBounds(324, 20, 130, 23);
+        TanggalJawab.setBounds(349, 20, 130, 23);
 
         jLabel42.setText("Referensi :");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -424,7 +455,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(MetodeJawab);
-        MetodeJawab.setBounds(99, 50, 95, 23);
+        MetodeJawab.setBounds(99, 50, 100, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -441,7 +472,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         scrollPane2.setViewportView(Referensi);
 
         internalFrame2.add(scrollPane2);
-        scrollPane2.setBounds(99, 130, 602, 43);
+        scrollPane2.setBounds(99, 130, 621, 43);
 
         label2.setText("No.Permintaan :");
         label2.setName("label2"); // NOI18N
@@ -456,12 +487,12 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(PenyampaianJawaban);
-        PenyampaianJawaban.setBounds(569, 20, 140, 23);
+        PenyampaianJawaban.setBounds(580, 20, 140, 23);
 
         jLabel43.setText("Penyampaian :");
         jLabel43.setName("jLabel43"); // NOI18N
         internalFrame2.add(jLabel43);
-        jLabel43.setBounds(465, 20, 90, 23);
+        jLabel43.setBounds(486, 20, 90, 23);
 
         jLabel44.setText("Metode Jawab :");
         jLabel44.setName("jLabel44"); // NOI18N
@@ -488,9 +519,12 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         scrollPane3.setViewportView(Jawaban);
 
         internalFrame2.add(scrollPane3);
-        scrollPane3.setBounds(99, 80, 602, 43);
+        scrollPane3.setBounds(99, 80, 621, 43);
 
         WindowInput.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -736,7 +770,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(160, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -759,7 +793,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel25);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -893,7 +927,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         KeteranganJenisPertanyaan.setBounds(468, 110, 150, 23);
 
         TanggalPermintaan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2022 08:11:02" }));
+        TanggalPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2022 04:40:07" }));
         TanggalPermintaan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPermintaan.setName("TanggalPermintaan"); // NOI18N
         TanggalPermintaan.setOpaque(false);
@@ -1127,9 +1161,20 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
                 Metode.getSelectedItem().toString(),Penanya.getText(),StatusPenanya.getSelectedItem().toString(),NoTelp.getText(),JenisPertanyaan.getSelectedItem().toString(),
                 KeteranganJenisPertanyaan.getText(),UraianPertanyaan.getText()
             })==true){
-                
-                tampil();
-                emptTeks();
+                if(akses.getjawaban_pio_apoteker()==true){
+                    i=JOptionPane.showConfirmDialog(null, "Apakah akan langsung diberikan jawaban..????","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if(i==JOptionPane.YES_OPTION){
+                        NoPermintaanJawaban.setText(NoPermintaan.getText());
+                        WindowInput.setAlwaysOnTop(false);
+                        WindowInput.setVisible(true);
+                    }else{
+                        tampil();
+                        emptTeks();
+                    }
+                }else{
+                    tampil();
+                    emptTeks();
+                }   
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1192,55 +1237,266 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Map<String, Object> param = new HashMap<>();    
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            sql="";
-            if(R1.isSelected()==true){
-                sql="select pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.no_tlp,penjab.png_jawab,poliklinik.nm_poli,dokter.nm_dokter,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.kd_kamar,kamar.kd_bangsal,"+
-                    "bangsal.nm_bangsal,kamar.trf_kamar,pelayanan_informasi_obat.diagnosa,pelayanan_informasi_obat.catatan from pelayanan_informasi_obat "+
-                    "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                    "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "inner join kamar on pelayanan_informasi_obat.kd_kamar=kamar.kd_kamar "+
-                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "where pelayanan_informasi_obat.no_rawat not in (select DISTINCT no_rawat from kamar_inap) "+
-                    (TCari.getText().equals("")?"":"and (pelayanan_informasi_obat.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or penjab.png_jawab like '%"+TCari.getText().trim()+"%' or poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' "+
-                    "or pelayanan_informasi_obat.diagnosa like '%"+TCari.getText().trim()+"%')")+" order by pelayanan_informasi_obat.tanggal";
-            }else if(R2.isSelected()==true){
-                sql="select pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.no_tlp,penjab.png_jawab,poliklinik.nm_poli,dokter.nm_dokter,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.kd_kamar,kamar.kd_bangsal,"+
-                    "bangsal.nm_bangsal,kamar.trf_kamar,pelayanan_informasi_obat.diagnosa,pelayanan_informasi_obat.catatan from pelayanan_informasi_obat "+
-                    "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                    "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "inner join kamar on pelayanan_informasi_obat.kd_kamar=kamar.kd_kamar "+
-                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "where pelayanan_informasi_obat.no_rawat in (select DISTINCT no_rawat from kamar_inap) and pelayanan_informasi_obat.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
-                    (TCari.getText().equals("")?"":"and (pelayanan_informasi_obat.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or penjab.png_jawab like '%"+TCari.getText().trim()+"%' or poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' "+
-                    "or pelayanan_informasi_obat.diagnosa like '%"+TCari.getText().trim()+"%')")+" order by pelayanan_informasi_obat.tanggal";
+            try{
+                if(R1.isSelected()==true){
+                    ps=koneksi.prepareStatement(
+                        "select pelayanan_informasi_obat.no_permintaan,pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
+                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.metode,pelayanan_informasi_obat.penanya,"+
+                        "pelayanan_informasi_obat.status_penanya,pelayanan_informasi_obat.no_telp_penanya,pelayanan_informasi_obat.jenis_pertanyaan,pelayanan_informasi_obat.keterangan_jenis_pertanyaan,"+
+                        "pelayanan_informasi_obat.uraian_pertanyaan from pelayanan_informasi_obat inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
+                        "where pelayanan_informasi_obat.no_permintaan not in (select DISTINCT jawaban_pio_apoteker.no_permintaan from jawaban_pio_apoteker) "+
+                        (TCari.getText().equals("")?"":"and (pelayanan_informasi_obat.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
+                        "or penjab.png_jawab like ? or pelayanan_informasi_obat.no_permintaan like ? or pelayanan_informasi_obat.metode like ? or pelayanan_informasi_obat.penanya like ? "+
+                        "or pelayanan_informasi_obat.status_penanya like ?)")+" order by pelayanan_informasi_obat.tanggal");
+                    try {
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Permintaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Umur</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Bayar</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Metode</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Uraian Pertanyaan</b></td>"+
+                            "</tr>"
+                        );
+                        if(!TCari.getText().equals("")){
+                            ps.setString(1,"%"+TCari.getText().trim()+"%");
+                            ps.setString(2,"%"+TCari.getText().trim()+"%");
+                            ps.setString(3,"%"+TCari.getText().trim()+"%");
+                            ps.setString(4,"%"+TCari.getText().trim()+"%");
+                            ps.setString(5,"%"+TCari.getText().trim()+"%");
+                            ps.setString(6,"%"+TCari.getText().trim()+"%");
+                            ps.setString(7,"%"+TCari.getText().trim()+"%");
+                            ps.setString(8,"%"+TCari.getText().trim()+"%");
+                        }
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                   "<td valign='top'>"+rs.getString("no_permintaan")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("jk")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_tlp")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("png_jawab")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("metode")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("penanya")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("status_penanya")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_telp_penanya")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("jenis_pertanyaan")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("keterangan_jenis_pertanyaan")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("uraian_pertanyaan")+"</td>"+
+                                "</tr>");
+                        }
+                        LoadHTML.setText(
+                            "<html>"+
+                              "<table width='1900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                               htmlContent.toString()+
+                              "</table>"+
+                            "</html>"
+                        );
+
+                        File g = new File("file2.css");            
+                        BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                        bg.write(
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                            ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                            ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                            ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                            ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                        );
+                        bg.close();
+
+                        File f = new File("PermintaanInformasiObat.html");            
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                    "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                    "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td valign='top' align='center'>"+
+                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                "<font size='2' face='Tahoma'>DATA PERMINTAAN PELAYANAN INFORMASI OBAT BELUM TERLAYANI<br><br></font>"+        
+                                            "</td>"+
+                                       "</tr>"+
+                                    "</table>")
+                        );
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    } catch (Exception e) {
+                        System.out.println("Notif Kamar : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                }else if(R2.isSelected()==true){
+                    ps=koneksi.prepareStatement(
+                        "select pelayanan_informasi_obat.no_permintaan,pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
+                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.metode,pelayanan_informasi_obat.penanya,"+
+                        "pelayanan_informasi_obat.status_penanya,pelayanan_informasi_obat.no_telp_penanya,pelayanan_informasi_obat.jenis_pertanyaan,pelayanan_informasi_obat.keterangan_jenis_pertanyaan,"+
+                        "pelayanan_informasi_obat.uraian_pertanyaan,jawaban_pio_apoteker.tanggal_jawab,jawaban_pio_apoteker.metode,jawaban_pio_apoteker.penyampaian_jawaban,"+
+                        "jawaban_pio_apoteker.jawaban,jawaban_pio_apoteker.referensi,jawaban_pio_apoteker.nip,petugas.nama from pelayanan_informasi_obat "+
+                        "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_pio_apoteker on jawaban_pio_apoteker.no_permintaan=pelayanan_informasi_obat.no_permintaan "+
+                        "inner join petugas on jawaban_pio_apoteker.nip=petugas.nip where jawaban_pio_apoteker.tanggal_jawab between ? and ? "+
+                        (TCari.getText().equals("")?"":"and (pelayanan_informasi_obat.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
+                        "or penjab.png_jawab like ? or pelayanan_informasi_obat.no_permintaan like ? or pelayanan_informasi_obat.metode like ? or pelayanan_informasi_obat.penanya like ? "+
+                        "or pelayanan_informasi_obat.status_penanya like ?)")+" order by pelayanan_informasi_obat.tanggal");
+                    try {
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Permintaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Umur</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Bayar</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Metode</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Uraian Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jawaban Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Referensi Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penyampaian Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Metode Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Apoteker</b></td>"+
+                            "</tr>"
+                        );
+                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                        if(!TCari.getText().equals("")){
+                            ps.setString(3,"%"+TCari.getText().trim()+"%");
+                            ps.setString(4,"%"+TCari.getText().trim()+"%");
+                            ps.setString(5,"%"+TCari.getText().trim()+"%");
+                            ps.setString(6,"%"+TCari.getText().trim()+"%");
+                            ps.setString(7,"%"+TCari.getText().trim()+"%");
+                            ps.setString(8,"%"+TCari.getText().trim()+"%");
+                            ps.setString(9,"%"+TCari.getText().trim()+"%");
+                            ps.setString(10,"%"+TCari.getText().trim()+"%");
+                        }
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                   "<td valign='top'>"+rs.getString("no_permintaan")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("jk")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_tlp")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("png_jawab")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("metode")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("penanya")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("status_penanya")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("no_telp_penanya")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("jenis_pertanyaan")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("keterangan_jenis_pertanyaan")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("uraian_pertanyaan")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("jawaban")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("referensi")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("penyampaian_jawaban")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("metode")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("tanggal_jawab")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("nip")+"</td>"+
+                                   "<td valign='top'>"+rs.getString("nama")+"</td>"+
+                                "</tr>");
+                        }
+                        LoadHTML.setText(
+                            "<html>"+
+                              "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                               htmlContent.toString()+
+                              "</table>"+
+                            "</html>"
+                        );
+
+                        File g = new File("file2.css");            
+                        BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                        bg.write(
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                            ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                            ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                            ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                            ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                        );
+                        bg.close();
+
+                        File f = new File("PermintaanInformasiObat.html");            
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                    "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                    "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td valign='top' align='center'>"+
+                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                "<font size='2' face='Tahoma'>DATA PERMINTAAN PELAYANAN INFORMASI OBAT BELUM TERLAYANI<br><br></font>"+        
+                                            "</td>"+
+                                       "</tr>"+
+                                    "</table>")
+                        );
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    } catch (Exception e) {
+                        System.out.println("Notif Kamar : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                }
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
             }
-            
-            Valid.MyReportqry("rptPermintaanRawatInap.jasper","report","::[ Data Pemesanan Rawat Inap ]::",sql,param);
-            this.setCursor(Cursor.getDefaultCursor());
         }
+        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -1435,7 +1691,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(tbObat.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
-                resume.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                resume.setNoRm(NoRM.getText(),NmPasien.getText());
                 resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 resume.setLocationRelativeTo(internalFrame1);
                 resume.setVisible(true);
@@ -1483,6 +1739,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_KeteranganJenisPertanyaanKeyPressed
 
     private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
+        petugas.dispose();
         WindowInput.dispose();
     }//GEN-LAST:event_BtnCloseInActionPerformed
 
@@ -1492,28 +1749,60 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else{Valid.pindah(evt, BtnBatal, NoPermintaanJawaban);}
     }//GEN-LAST:event_BtnCloseInKeyPressed
 
-    private void BtnSimpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan1ActionPerformed
-       
-    }//GEN-LAST:event_BtnSimpan1ActionPerformed
-
-    private void BtnSimpan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan1KeyPressed
-        //Valid.pindah(evt,cmbDtk,BtnBatal);
-    }//GEN-LAST:event_BtnSimpan1KeyPressed
-
-    private void BtnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal1ActionPerformed
-        if(NoPermintaanJawaban.isEditable()==true){
-            emptTeks();
-        }else if(NoPermintaanJawaban.isEditable()==false){
-            emptTeks();
-            WindowInput.dispose();
+    private void BtnSimpanJawabanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanJawabanActionPerformed
+        if(NoRw.getText().trim().equals("")||NoRM.getText().trim().equals("")||NmPasien.getText().trim().equals("")){
+            Valid.textKosong(TCari,"Pasien");
+        }else if(NoPermintaan.getText().trim().equals("")){
+            Valid.textKosong(NoPermintaan,"No.Permintaan");
+        }else if(Penanya.getText().trim().equals("")){
+            Valid.textKosong(Penanya,"Penanya");
+        }else if(NoTelp.getText().trim().equals("")){
+            Valid.textKosong(NoTelp,"No.Telp");
+        }else if(UraianPertanyaan.getText().trim().equals("")){
+            Valid.textKosong(UraianPertanyaan,"Uraian Pertanyaan");
+        }else if(NoPermintaanJawaban.getText().trim().equals("")){
+            Valid.textKosong(NoPermintaanJawaban,"No.Permintaan Jawaban");
+        }else if(NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(NmPetugas,"Petugas Apoteker");
+        }else if(Jawaban.getText().trim().equals("")){
+            Valid.textKosong(Jawaban,"Jawaban Apoteker");
+        }else if(Referensi.getText().trim().equals("")){
+            Valid.textKosong(Referensi,"Referensi Jawaban");
+        }else{
+            if(Sequel.menyimpantf("jawaban_pio_apoteker","?,?,?,?,?,?,?",7,new String[]{
+                    NoPermintaan.getText(),Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),
+                    MetodeJawab.getSelectedItem().toString(),PenyampaianJawaban.getSelectedItem().toString(),Jawaban.getText(),Referensi.getText(),
+                    KdPetugas.getText()
+                },"no_permintaan=?","tanggal_jawab=?,metode=?,penyampaian_jawaban=?,jawaban=?,referensi=?,nip=?",7,new String[]{
+                    Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),
+                    MetodeJawab.getSelectedItem().toString(),PenyampaianJawaban.getSelectedItem().toString(),Jawaban.getText(),Referensi.getText(),
+                    KdPetugas.getText(),NoPermintaan.getText()
+                })==true){
+                    tampil();
+                    emptTeks();
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan atau mengedit jawaban pelayanan informasi obat...!!!");
+            }
         }
-    }//GEN-LAST:event_BtnBatal1ActionPerformed
+    }//GEN-LAST:event_BtnSimpanJawabanActionPerformed
 
-    private void BtnBatal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatal1KeyPressed
+    private void BtnSimpanJawabanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanJawabanKeyPressed
+        //Valid.pindah(evt,cmbDtk,BtnBatal);
+    }//GEN-LAST:event_BtnSimpanJawabanKeyPressed
+
+    private void BtnBatalJawabanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalJawabanActionPerformed
+        TanggalJawab.setDate(new Date());
+        PenyampaianJawaban.setSelectedIndex(0);
+        MetodeJawab.setSelectedIndex(0);
+        Jawaban.setText("");
+        Referensi.setText("");
+    }//GEN-LAST:event_BtnBatalJawabanActionPerformed
+
+    private void BtnBatalJawabanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalJawabanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             emptTeks();
         }else{Valid.pindah(evt, BtnSimpan, BtnCloseIn);}
-    }//GEN-LAST:event_BtnBatal1KeyPressed
+    }//GEN-LAST:event_BtnBatalJawabanKeyPressed
 
     private void NoPermintaanJawabanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPermintaanJawabanKeyPressed
         
@@ -1570,7 +1859,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
-    private widget.Button BtnBatal1;
+    private widget.Button BtnBatalJawaban;
     private widget.Button BtnCari;
     private widget.Button BtnCloseIn;
     private widget.Button BtnDokumentasiPIO;
@@ -1581,7 +1870,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnPrint;
     private widget.Button BtnRiwayatPasien;
     private widget.Button BtnSimpan;
-    private widget.Button BtnSimpan1;
+    private widget.Button BtnSimpanJawaban;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
@@ -1593,6 +1882,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdPetugas;
     private widget.TextBox KeteranganJenisPertanyaan;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.ComboBox Metode;
     private widget.ComboBox MetodeJawab;
     private widget.TextBox NmPasien;
@@ -1851,7 +2141,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")){
-                    bookingbaru=Sequel.cariInteger("select count(*) from pelayanan_informasi_obat where no_rawat not in (select DISTINCT no_rawat from kamar_inap) ");
+                    bookingbaru=Sequel.cariInteger("select count(*) from pelayanan_informasi_obat where pelayanan_informasi_obat.no_permintaan not in (select DISTINCT jawaban_pio_apoteker.no_permintaan from jawaban_pio_apoteker) ");
                     if(bookingbaru>0){
                         try {
                             music = new BackgroundMusic("./suara/alarm.mp3");
@@ -1860,7 +2150,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             System.out.println(ex);
                         }
                         
-                        i=JOptionPane.showConfirmDialog(null, "Ada permintaan rawat inap baru, apa mau ditampilkan????","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                        i=JOptionPane.showConfirmDialog(null, "Ada permintaan pelayanan informasi obat baru, apa mau ditampilkan????","Konfirmasi",JOptionPane.YES_NO_OPTION);
                         if(i==JOptionPane.YES_OPTION){
                             R1.setSelected(true);
                             TCari.setText("");
