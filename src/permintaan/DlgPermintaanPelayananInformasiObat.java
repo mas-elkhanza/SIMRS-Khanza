@@ -24,6 +24,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -780,11 +782,6 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
                 DTPCari1ItemStateChanged(evt);
             }
         });
-        DTPCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari1KeyPressed(evt);
-            }
-        });
         panelCari.add(DTPCari1);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -801,11 +798,6 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         DTPCari2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DTPCari2ItemStateChanged(evt);
-            }
-        });
-        DTPCari2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari2KeyPressed(evt);
             }
         });
         panelCari.add(DTPCari2);
@@ -1608,17 +1600,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void DTPCari2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPCari2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DTPCari2KeyPressed
-
     private void DTPCari2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari2ItemStateChanged
         R2.setSelected(true);
     }//GEN-LAST:event_DTPCari2ItemStateChanged
-
-    private void DTPCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPCari1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DTPCari1KeyPressed
 
     private void DTPCari1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari1ItemStateChanged
         R2.setSelected(true);
@@ -1648,39 +1632,40 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnJawabanApotekerActionPerformed
 
     private void BtnDokumentasiPIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokumentasiPIOActionPerformed
-        /*if(tabMode.getRowCount()==0){
+        if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()!= -1){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Map<String, Object> param = new HashMap<>();
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());  
-                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDokter.getText());
-                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+Dokter.getText()+"\nID "+(finger.equals("")?KdDokter.getText():finger)+"\n"+DTPTgl.getSelectedItem()); 
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptSuratPermintaanRawatInap.jasper","report","::[ Surat Permintaan Rawat Inap ]::",
-                        " select pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                        "pasien.no_tlp,penjab.png_jawab,poliklinik.nm_poli,dokter.nm_dokter,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.kd_kamar,kamar.kd_bangsal,"+
-                        "bangsal.nm_bangsal,kamar.trf_kamar,pelayanan_informasi_obat.diagnosa,pelayanan_informasi_obat.catatan,reg_periksa.kd_dokter from pelayanan_informasi_obat "+
-                        "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                        "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                        "inner join kamar on pelayanan_informasi_obat.kd_kamar=kamar.kd_kamar "+
-                        "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                        "where reg_periksa.no_rawat='"+NoRw.getText()+"' ",param);
-                this.setCursor(Cursor.getDefaultCursor());
+                if(!tbObat.getValueAt(tbObat.getSelectedRow(),21).toString().equals("")){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());  
+                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+                    param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString())); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReportqry("rptDokumentasiPelayananInformasiObat.jasper","report","::[ Dokumentasi Pelayanan Informasi Obat ]::",
+                            "select pasien.tgl_lahir,pelayanan_informasi_obat.no_permintaan,pelayanan_informasi_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
+                            "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,pelayanan_informasi_obat.tanggal,pelayanan_informasi_obat.metode,pelayanan_informasi_obat.penanya,"+
+                            "pelayanan_informasi_obat.status_penanya,pelayanan_informasi_obat.no_telp_penanya,pelayanan_informasi_obat.jenis_pertanyaan,pelayanan_informasi_obat.keterangan_jenis_pertanyaan,"+
+                            "pelayanan_informasi_obat.uraian_pertanyaan,jawaban_pio_apoteker.tanggal_jawab,jawaban_pio_apoteker.metode as metodejawab,jawaban_pio_apoteker.penyampaian_jawaban,"+
+                            "jawaban_pio_apoteker.jawaban,jawaban_pio_apoteker.referensi,jawaban_pio_apoteker.nip,petugas.nama from pelayanan_informasi_obat "+
+                            "inner join reg_periksa on pelayanan_informasi_obat.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_pio_apoteker on jawaban_pio_apoteker.no_permintaan=pelayanan_informasi_obat.no_permintaan "+
+                            "inner join petugas on jawaban_pio_apoteker.nip=petugas.nip where pelayanan_informasi_obat.no_permintaan='"+NoPermintaan.getText()+"' ",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, belum ada jawaban apoteker...!!!!");
+                }   
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");
             }
-        }*/
+        }
     }//GEN-LAST:event_BtnDokumentasiPIOActionPerformed
 
     private void BtnRiwayatPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRiwayatPasienActionPerformed
@@ -2082,7 +2067,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             PenyampaianJawaban.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             MetodeJawab.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             Valid.SetTgl2(TanggalPermintaan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Valid.SetTgl2(TanggalPermintaan,tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Valid.SetTgl2(TanggalJawab,tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
         }
     }
     
