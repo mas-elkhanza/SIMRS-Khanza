@@ -1160,10 +1160,12 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
                         WindowInput.setAlwaysOnTop(false);
                         WindowInput.setVisible(true);
                     }else{
+                        R1.setSelected(true);
                         tampil();
                         emptTeks();
                     }
                 }else{
+                    R1.setSelected(true);
                     tampil();
                     emptTeks();
                 }   
@@ -1763,10 +1765,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     MetodeJawab.getSelectedItem().toString(),PenyampaianJawaban.getSelectedItem().toString(),Jawaban.getText(),Referensi.getText(),
                     KdPetugas.getText(),NoPermintaan.getText()
                 })==true){
+                    R2.setSelected(true);
                     tampil();
                     emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan atau mengedit jawaban pelayanan informasi obat...!!!");
+                R1.setSelected(true);
+                tampil();
+                emptTeks();
             }
         }
     }//GEN-LAST:event_BtnSimpanJawabanActionPerformed
