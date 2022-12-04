@@ -1938,6 +1938,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 json="{\"nosep\":\""+data.toString().replaceAll(";","\",\"dibayar\":");
                 json="{\"data\":["+json.substring(0,json.length()-11)+"]}";
                 sc.close();   
+                System.out.println(json);
                 if(!json.equals("")){
                     root = mapper.readTree(json);
                     if(root.path("data").isArray()){
@@ -1956,6 +1957,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 ps.setString(1,list.path("nosep").asText());
                                 rs=ps.executeQuery();
                                 if(rs.next()){
+                                    System.out.println("No.Rawat "+rs.getString("no_rawat")+" Dari No.SEP : "+list.path("nosep").asText());
                                     cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
                                     persenbayar=(( (list.path("dibayar").asDouble()+rs.getDouble("uangmuka")+cicilan) / rs.getDouble("totalpiutang") )*100);
                                     materialralan=0;bhpralan=0;tarif_tindakandrralan=0;tarif_tindakanprralan=0;ksoralan=0;menejemenralan=0;biaya_rawatralan=0;
