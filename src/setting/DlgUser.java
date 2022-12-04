@@ -4047,7 +4047,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "konseling_farmasi='"+tbUser.getValueAt(i,890).toString()+"',"+
                     "pelayanan_informasi_obat='"+tbUser.getValueAt(i,891).toString()+"',"+
                     "jawaban_pio_apoteker='"+tbUser.getValueAt(i,892).toString()+"',"+
-                    "persetujuan_umum='"+tbUser.getValueAt(i,893).toString()+"'");
+                    "surat_persetujuan_umum='"+tbUser.getValueAt(i,893).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -5023,7 +5023,7 @@ public class DlgUser extends javax.swing.JDialog {
                                         "konseling_farmasi='"+tbUser.getValueAt(barisdicopy,890).toString()+"',"+
                                         "pelayanan_informasi_obat='"+tbUser.getValueAt(barisdicopy,891).toString()+"',"+
                                         "jawaban_pio_apoteker='"+tbUser.getValueAt(barisdicopy,892).toString()+"',"+
-                                        "persetujuan_umum='"+tbUser.getValueAt(barisdicopy,893).toString()+"'");
+                                        "surat_persetujuan_umum='"+tbUser.getValueAt(barisdicopy,893).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5401,7 +5401,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.ubah_petugas_lab_mb,user.penilaian_pre_operasi,user.penilaian_pre_anestesi,user.perencanaan_pemulangan,user.penilaian_lanjutan_resiko_jatuh_dewasa,"+
                 "user.penilaian_lanjutan_resiko_jatuh_anak,user.penilaian_awal_medis_ralan_geriatri,user.penilaian_tambahan_pasien_geriatri,user.skrining_nutrisi_dewasa,"+
                 "user.skrining_nutrisi_lansia,user.hasil_pemeriksaan_usg,user.skrining_nutrisi_anak,user.akun_host_to_host_bank_jabar,user.pembayaran_bank_jabar,"+
-                "user.surat_pernyataan_pasien_umum,user.konseling_farmasi,user.pelayanan_informasi_obat,user.jawaban_pio_apoteker,user.persetujuan_umum from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.surat_pernyataan_pasien_umum,user.konseling_farmasi,user.pelayanan_informasi_obat,user.jawaban_pio_apoteker,user.surat_persetujuan_umum from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6307,7 +6307,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("konseling_farmasi"),
                                rs.getBoolean("pelayanan_informasi_obat"),
                                rs.getBoolean("jawaban_pio_apoteker"),
-                               rs.getBoolean("persetujuan_umum")
+                               rs.getBoolean("surat_persetujuan_umum")
                             });
                         }   
                     } catch (Exception e) {
@@ -7202,7 +7202,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("konseling_farmasi"),
                            rs.getBoolean("pelayanan_informasi_obat"),
                            rs.getBoolean("jawaban_pio_apoteker"),
-                           rs.getBoolean("persetujuan_umum")
+                           rs.getBoolean("surat_persetujuan_umum")
                         });
                     }                                             
                  }

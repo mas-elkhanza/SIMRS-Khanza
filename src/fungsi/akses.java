@@ -195,7 +195,7 @@ public final class akses {
             perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false,penilaian_lanjutan_resiko_jatuh_anak=false,penilaian_awal_medis_ralan_geriatri=false,
             penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,
-            jawaban_pio_apoteker=false,persetujuan_umum=false;
+            jawaban_pio_apoteker=false,surat_persetujuan_umum=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1108,7 +1108,7 @@ public final class akses {
                         akses.konseling_farmasi=true;
                         akses.pelayanan_informasi_obat=true;
                         akses.jawaban_pio_apoteker=true;
-                        akses.persetujuan_umum=true;
+                        akses.surat_persetujuan_umum=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2005,7 +2005,7 @@ public final class akses {
                         akses.konseling_farmasi=rs2.getBoolean("konseling_farmasi");
                         akses.pelayanan_informasi_obat=rs2.getBoolean("pelayanan_informasi_obat");
                         akses.jawaban_pio_apoteker=rs2.getBoolean("jawaban_pio_apoteker");
-                        akses.persetujuan_umum=rs2.getBoolean("persetujuan_umum");
+                        akses.surat_persetujuan_umum=rs2.getBoolean("surat_persetujuan_umum");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2900,7 +2900,7 @@ public final class akses {
                         akses.konseling_farmasi=false;
                         akses.pelayanan_informasi_obat=false;
                         akses.jawaban_pio_apoteker=false;
-                        akses.persetujuan_umum=false;
+                        akses.surat_persetujuan_umum=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3852,5 +3852,5 @@ public final class akses {
     public static boolean getkonseling_farmasi(){return akses.konseling_farmasi;}
     public static boolean getpelayanan_informasi_obat(){return akses.pelayanan_informasi_obat;}
     public static boolean getjawaban_pio_apoteker(){return akses.jawaban_pio_apoteker;}
-    public static boolean getpersetujuan_umum(){return akses.persetujuan_umum;}
+    public static boolean getsurat_persetujuan_umum(){return akses.surat_persetujuan_umum;}
 }   

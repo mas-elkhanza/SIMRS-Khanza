@@ -19495,6 +19495,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPersetujuanUmumActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPermintaanPelayananInformasiObat aplikasi=new DlgPermintaanPelayananInformasiObat(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20158,7 +20171,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri,btnPerencanaanPemulangan,btnPenilaianRisikoJatuhDewasa,
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
             btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi,
-            btnPelayananInformasiObat;
+            btnPelayananInformasiObat,btnPersetujuanUmum;
     
     public void isWall(){
         try{            
@@ -24266,6 +24279,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_pernyataan_pasien_umum()==true){
                 Panelmenu.add(btnPernyataanPasienUmum);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_persetujuan_umum()==true){
+                Panelmenu.add(btnPersetujuanUmum);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==15){ 
@@ -28678,6 +28696,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_pernyataan_pasien_umum()==true){
             Panelmenu.add(btnPernyataanPasienUmum);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_persetujuan_umum()==true){
+            Panelmenu.add(btnPersetujuanUmum);
             jmlmenu++;
         }
 
@@ -34683,6 +34706,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_persetujuan_umum()==true){
+            if(btnPersetujuanUmum.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPersetujuanUmum);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -38667,6 +38697,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPelayananInformasiObat.setName("btnPelayananInformasiObat"); 
         btnPelayananInformasiObat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPelayananInformasiObat.addActionListener(this::btnPelayananInformasiObatActionPerformed);
+        
+        btnPersetujuanUmum = new widget.ButtonBig();
+        btnPersetujuanUmum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5868931_architecture_building_coronavirus_hospital_corona_icon.png")));
+        btnPersetujuanUmum.setText("Persetujuan Umum");
+        btnPersetujuanUmum.setIconTextGap(0);
+        btnPersetujuanUmum.setName("btnPersetujuanUmum"); 
+        btnPersetujuanUmum.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPersetujuanUmum.addActionListener(this::btnPersetujuanUmumActionPerformed);
     }
     
 }
