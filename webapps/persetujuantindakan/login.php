@@ -7,7 +7,7 @@
     $url        = "index.php?act=Home";
     if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
         session_start();
-        $_SESSION['ses_admin_persetujuantindakan']="admin";
+        $_SESSION['ses_admin']="admin";
         $url = "index.php?act=Kamera";
     }	
     header("Location:".$url);

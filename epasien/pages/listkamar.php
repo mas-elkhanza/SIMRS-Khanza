@@ -19,7 +19,7 @@
                                <tr class="head">
                                   <td width="20%" align="right"><label for="kamar">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="60%"><input name="kamar" type="text" id="kamar" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" a-zA-Z0-9, ./@_ (Maksimal 20 karakter)" class="form-control" value="" size="65" maxlength="20" autocomplete="off" autofocus/></td>
+                                  <td width="60%"><input name="kamar" type="text" id="kamar" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
                                   <td width="19%" align="left">&nbsp;<input name="BtnKamar" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
@@ -36,19 +36,15 @@
                                <?php 
                                   $kamar      = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
                                   $kamar      = cleankar($kamar);
-                                  if(strlen($kamar)>20){
-                                        header('Location: https://www.google.com');
-                                  }else{
-                                        $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by kamar.kelas");
-                                        while($rsquerykamar = mysqli_fetch_array($querykamar)) {
-                                            echo "<tr>
-                                                    <td align='left'>".$rsquerykamar["kd_kamar"]."</td>
-                                                    <td align='left'>".$rsquerykamar["nm_bangsal"]."</td>
-                                                    <td align='center'>".$rsquerykamar["kelas"]."</td>
-                                                    <td align='center'>".formatDuit($rsquerykamar["trf_kamar"])."</td>
-                                                    <td align='center'>".$rsquerykamar["status"]."</td>
-                                                  </tr>";
-                                        }
+                                  $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by kamar.kelas");
+                                  while($rsquerykamar = mysqli_fetch_array($querykamar)) {
+                                      echo "<tr>
+                                              <td align='left'>".$rsquerykamar["kd_kamar"]."</td>
+                                              <td align='left'>".$rsquerykamar["nm_bangsal"]."</td>
+                                              <td align='center'>".$rsquerykamar["kelas"]."</td>
+                                              <td align='center'>".formatDuit($rsquerykamar["trf_kamar"])."</td>
+                                              <td align='center'>".$rsquerykamar["status"]."</td>
+                                            </tr>";
                                   }
                               ?>
                             </table> 

@@ -17,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 
 public class ApiKemenkesSirs {       
     private String Key,pass;
-    private long millis;
     public ApiKemenkesSirs(){
         try {              
             pass = koneksiDB.PASSSIRS();
@@ -57,11 +56,6 @@ public class ApiKemenkesSirs {
         HttpComponentsClientHttpRequestFactory factory=new HttpComponentsClientHttpRequestFactory();
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
         return new RestTemplate(factory);
-    }
-
-    public long GetUTCdatetimeAsString(){    
-        millis = System.currentTimeMillis();   
-        return millis/1000;
     }
 
 }

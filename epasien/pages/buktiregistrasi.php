@@ -2,6 +2,7 @@
     if(strpos($_SERVER['REQUEST_URI'],"pages")){
         exit(header("Location:../index.php"));
     }
+
     
     $json       = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $json       = json_decode(encrypt_decrypt($json,"d"),true);

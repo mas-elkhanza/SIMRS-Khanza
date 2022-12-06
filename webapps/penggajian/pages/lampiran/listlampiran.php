@@ -1,27 +1,24 @@
+
 <?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-
-    $_sql         = "SELECT * FROM set_tahun";
-    $hasil        = bukaquery($_sql);
-    $baristahun   = mysqli_fetch_row($hasil);
-    $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
-    $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
-    $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
-    $bln_leng  = strlen($blnini);
-    $bulan     = "0";
-    if ($bln_leng==1){
+   $_sql         = "SELECT * FROM set_tahun";
+   $hasil        = bukaquery($_sql);
+   $baristahun   = mysqli_fetch_row($hasil);
+   $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
+   $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
+   $bln_leng  = strlen($blnini);
+   $bulan     = "0";
+   if ($bln_leng==1){
        $bulan="0".$blnini;
-    }else{
+   }else{
        $bulan=$blnini;
-    }
+   }
 
-    $bulanindex = empty($baristahun[1])?date("m"):$baristahun[1];
+   $bulanindex = empty($baristahun[1])?date("m"):$baristahun[1];
 
-    $_sqllibur  = "select `tanggal`, `ktg` from set_hari_libur where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
-    $hasillibur =bukaquery($_sqllibur);
-    $jumlahlibur=mysqli_num_rows($hasillibur);
+   $_sqllibur  = "select `tanggal`, `ktg` from set_hari_libur where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
+   $hasillibur =bukaquery($_sqllibur);
+   $jumlahlibur=mysqli_num_rows($hasillibur);
 ?>
 
 <div id="post">
@@ -45,7 +42,7 @@
         <table width="100%" align="center">
             <tr class="head">
                 <td width="25%" >Keyword</td><td width="">:</td>
-                <td width="74%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,250}" title=" a-zA-Z0-9, ./@_ (Maksimal 250 karakter)" autocomplete="off" autofocus/>
+                <td width="74%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
                     <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                 </td>
             </tr>
@@ -867,19 +864,19 @@
             if(mysqli_num_rows($hasil)!=0) {
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                      <td valign='top'><div align='left'>Data : $jumlah <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan1 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan2 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran3.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan3 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran4.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan4 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran5.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan5 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTransfer.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Transfer1 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTransfer2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Transfer2 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanCash.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Cash1 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanCash2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Cash2 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTHR.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan THR </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTHR2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan THR2 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTHR3.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan THR3 </a>
-                      <a target=_blank href=../penggajian/pages/lampiran/listlampiran2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Browser Penggajian </a></div></td>                        
+                      <td valign='top'><div align='left'>Data : $jumlah <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran.php?&keyword=$keyword>| Laporan1 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran2.php?&keyword=$keyword>| Laporan2 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran3.php?&keyword=$keyword>| Laporan3 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran4.php?&keyword=$keyword>| Laporan4 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanLampiran5.php?&keyword=$keyword>| Laporan5 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTransfer.php?&keyword=$keyword>| Transfer1 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTransfer2.php?&keyword=$keyword>| Transfer2 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanCash.php?&keyword=$keyword>| Cash1 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanCash2.php?&keyword=$keyword>| Cash2 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTHR.php?&keyword=$keyword>| Laporan THR </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTHR2.php?&keyword=$keyword>| Laporan THR2 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/LaporanTHR3.php?&keyword=$keyword>| Laporan THR3 </a>
+                      <a target=_blank href=../penggajian/pages/lampiran/listlampiran2.php?&keyword=$keyword>| Browser Penggajian </a></div></td>                        
                     </tr>     
                  </table>");
             }

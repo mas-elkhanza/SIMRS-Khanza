@@ -1270,7 +1270,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             BtnEdit.setEnabled(akses.getperbaikan_inventaris());
             BtnPrint.setEnabled(akses.getperbaikan_inventaris());
             NIP.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NamaPetugas,NIP.getText());
+            Sequel.cariIsi("select nama from pegawai where nik=?", NamaPetugas,NIP.getText());
         } 
         TCari.requestFocus();
     }

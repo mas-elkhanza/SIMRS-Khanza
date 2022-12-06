@@ -858,7 +858,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022 23:45:33" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021 15:25:13" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1473,8 +1473,9 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
 
         Penunjang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Penunjang.setColumns(20);
-        Penunjang.setRows(40);
+        Penunjang.setRows(5);
         Penunjang.setName("Penunjang"); // NOI18N
+        Penunjang.setPreferredSize(new java.awt.Dimension(102, 52));
         Penunjang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PenunjangKeyPressed(evt);
@@ -1503,8 +1504,9 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
 
         Diagnosis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Diagnosis.setColumns(20);
-        Diagnosis.setRows(40);
+        Diagnosis.setRows(5);
         Diagnosis.setName("Diagnosis"); // NOI18N
+        Diagnosis.setPreferredSize(new java.awt.Dimension(102, 52));
         Diagnosis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DiagnosisKeyPressed(evt);
@@ -1533,8 +1535,9 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
 
         Rencana.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Rencana.setColumns(20);
-        Rencana.setRows(40);
+        Rencana.setRows(5);
         Rencana.setName("Rencana"); // NOI18N
+        Rencana.setPreferredSize(new java.awt.Dimension(102, 52));
         Rencana.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RencanaKeyPressed(evt);
@@ -1592,7 +1595,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1606,7 +1609,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

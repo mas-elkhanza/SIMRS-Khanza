@@ -19,7 +19,7 @@
                                <tr class="head">
                                   <td width="20%" align="right"><label for="poli">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="60%"><input name="poli" type="text" id="poli" class="form-control" value="" size="65" maxlength="20" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" a-zA-Z0-9, ./@_ (Maksimal 20 karakter)" autocomplete="off" autofocus/></td>
+                                  <td width="60%"><input name="poli" type="text" id="poli" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
                                   <td width="19%" align="left">&nbsp;<input name="BtnPoli" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
@@ -34,17 +34,13 @@
                                <?php 
                                   $poli      = trim(isset($_POST['poli']))?trim($_POST['poli']):NULL;
                                   $poli      = cleankar($poli);
-                                  if(strlen($poli)>20){
-                                        header('Location: https://www.google.com');
-                                  }else{
-                                        $querypoli = bukaquery("select nm_poli,registrasi,registrasilama from poliklinik where status='1' ".(isset($poli)?" and (nm_poli like '%$poli%')":"")." order by nm_poli");
-                                        while($rsquerypoli = mysqli_fetch_array($querypoli)) {
-                                            echo "<tr>
-                                                    <td align='left'>".$rsquerypoli["nm_poli"]."</td>
-                                                    <td align='center'>".formatDuit($rsquerypoli["registrasi"])."</td>
-                                                    <td align='center'>".formatDuit($rsquerypoli["registrasilama"])."</td>
-                                                  </tr>";
-                                        }
+                                  $querypoli = bukaquery("select nm_poli,registrasi,registrasilama from poliklinik where status='1' ".(isset($poli)?" and (nm_poli like '%$poli%')":"")." order by nm_poli");
+                                  while($rsquerypoli = mysqli_fetch_array($querypoli)) {
+                                      echo "<tr>
+                                              <td align='left'>".$rsquerypoli["nm_poli"]."</td>
+                                              <td align='center'>".formatDuit($rsquerypoli["registrasi"])."</td>
+                                              <td align='center'>".formatDuit($rsquerypoli["registrasilama"])."</td>
+                                            </tr>";
                                   }
                               ?>
                            </table> 

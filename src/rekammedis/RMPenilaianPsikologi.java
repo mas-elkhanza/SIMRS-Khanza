@@ -1754,6 +1754,8 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
+            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             Dikirimdari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             TujuanPemeriksaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             Informasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());

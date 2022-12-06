@@ -1,8 +1,3 @@
-<?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-?>
 <div id="post">
     <div align="center" class="link">
         <a href=?act=HomeAdmin>| Menu Utama |</a>

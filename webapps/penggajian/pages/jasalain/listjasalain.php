@@ -1,13 +1,10 @@
-<?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
 
-    $_sql         = "SELECT * FROM set_tahun";
-    $hasil        = bukaquery($_sql);
-    $baris        = mysqli_fetch_row($hasil);
-    $tahun        = empty($baris[0])?date("Y"):$baris[0];
-    $bulan        = empty($baris[1])?date("m"):$baris[1];
+<?php
+   $_sql         = "SELECT * FROM set_tahun";
+   $hasil        = bukaquery($_sql);
+   $baris        = mysqli_fetch_row($hasil);
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 
 <div id="post">
@@ -25,7 +22,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,250}" title=" a-zA-Z0-9, ./@_ (Maksimal 20 karakter)" autocomplete="off" autofocus/>
+                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>

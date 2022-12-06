@@ -1,13 +1,9 @@
 <?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-
-    $_sql         = "SELECT * FROM set_tahun";
-    $hasil        = bukaquery($_sql);
-    $baris        = mysqli_fetch_row($hasil);
-    $tahun        = empty($baris[0])?date("Y"):$baris[0];
-    $bulan        = empty($baris[1])?date("m"):$baris[1];
+   $_sql         = "SELECT * FROM set_tahun";
+   $hasil        = bukaquery($_sql);
+   $baris        = mysqli_fetch_row($hasil);
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 <div id="post">
     <div class="entry">
@@ -61,13 +57,13 @@
                 </tr>
                 <tr class="head">
                     <td width="31%" >Besar Jasa</td><td width="">:</td>
-                    <td width="67%">Rp.<input name="bsr_jasa" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $bsr_jasa;?>" size="30" maxlength="15" pattern="[0-9-]{1,15}" title=" 0-9- (Maksimal 15 karakter)" autocomplete="off" autofocus>
+                    <td width="67%">Rp.<input name="bsr_jasa" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $bsr_jasa;?>" size="30" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Keterangan</td><td width="">:</td>
-                    <td width="67%"><input name="ktg" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $ktg;?>" size="50" maxlength="40" pattern="[a-zA-Z0-9, ./@_]{1,40}" title=" a-zA-Z0-9, ./@_ (Maksimal 40 karakter)" autocomplete="off">
+                    <td width="67%"><input name="ktg" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $ktg;?>" size="50" maxlength="40">
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

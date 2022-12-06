@@ -1,13 +1,9 @@
 <?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-    
-    $_sql         = "SELECT * FROM set_tahun";
-    $hasil        = bukaquery($_sql);
-    $baristh      = mysqli_fetch_row($hasil);
-    $tahun        = empty($baristh[0])?date("Y"):$baristh[0];
-    $bulan        = empty($baristh[1])?date("m"):$baristh[1];
+   $_sql         = "SELECT * FROM set_tahun";
+   $hasil        = bukaquery($_sql);
+   $baristh      = mysqli_fetch_row($hasil);
+   $tahun        = empty($baristh[0])?date("Y"):$baristh[0];
+   $bulan        = empty($baristh[1])?date("m"):$baristh[1];
 ?>
 <div id="post">
     <br>
@@ -60,7 +56,7 @@
                 </tr>
                 <tr class="head">
                     <td width="31%" >Porsi Insentif</td><td width="">:</td>
-                    <td width="67%"><input name="persen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $persen;?>" size="10" maxlength="6" pattern="[0-9-]{1,6}" title=" 0-9- (Maksimal 6 karakter)" autocomplete="off"/>%
+                    <td width="67%"><input name="persen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $persen;?>" size="10" maxlength="6" />%
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

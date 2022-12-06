@@ -663,7 +663,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void KdPegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPegKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",NmPeg,KdPeg.getText());     
+            Sequel.cariIsi("select nama from pegawai where nik=?",NmPeg,KdPeg.getText());     
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Status.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){

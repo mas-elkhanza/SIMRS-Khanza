@@ -102,8 +102,8 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        Monitoring.setDocument(new batasInput((int)500).getKata(Monitoring));
-        Evaluasi.setDocument(new batasInput((int)500).getKata(Evaluasi));
+        Monitoring.setDocument(new batasInput((int)60).getKata(Monitoring));
+        Evaluasi.setDocument(new batasInput((int)200).getKata(Evaluasi));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -210,11 +210,9 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         NmPetugas = new widget.TextBox();
         btnPetugas = new widget.Button();
         jLabel24 = new widget.Label();
+        Monitoring = new widget.TextBox();
+        Evaluasi = new widget.TextBox();
         jLabel29 = new widget.Label();
-        scrollPane1 = new widget.ScrollPane();
-        Monitoring = new widget.TextArea();
-        scrollPane2 = new widget.ScrollPane();
-        Evaluasi = new widget.TextArea();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -403,7 +401,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-11-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -417,7 +415,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-11-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -476,10 +474,9 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
-        PanelInput.setToolTipText("");
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 156));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 126));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
@@ -514,7 +511,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 450, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-11-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -625,44 +622,30 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         FormInput.add(jLabel24);
         jLabel24.setBounds(0, 70, 75, 23);
 
-        jLabel29.setText("Evaluasi :");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(400, 70, 70, 23);
-
-        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane1.setName("scrollPane1"); // NOI18N
-
-        Monitoring.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Monitoring.setColumns(20);
-        Monitoring.setRows(5);
+        Monitoring.setHighlighter(null);
         Monitoring.setName("Monitoring"); // NOI18N
         Monitoring.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MonitoringKeyPressed(evt);
             }
         });
-        scrollPane1.setViewportView(Monitoring);
+        FormInput.add(Monitoring);
+        Monitoring.setBounds(79, 70, 312, 23);
 
-        FormInput.add(scrollPane1);
-        scrollPane1.setBounds(79, 70, 312, 53);
-
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane2.setName("scrollPane2"); // NOI18N
-
-        Evaluasi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Evaluasi.setColumns(20);
-        Evaluasi.setRows(5);
+        Evaluasi.setHighlighter(null);
         Evaluasi.setName("Evaluasi"); // NOI18N
         Evaluasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EvaluasiKeyPressed(evt);
             }
         });
-        scrollPane2.setViewportView(Evaluasi);
+        FormInput.add(Evaluasi);
+        Evaluasi.setBounds(474, 70, 312, 23);
 
-        FormInput.add(scrollPane2);
-        scrollPane2.setBounds(474, 70, 312, 53);
+        jLabel29.setText("Evaluasi :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(400, 70, 70, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -967,6 +950,14 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         petugas.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
+    private void MonitoringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MonitoringKeyPressed
+        Valid.pindah(evt,btnPetugas,Evaluasi);
+    }//GEN-LAST:event_MonitoringKeyPressed
+
+    private void EvaluasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EvaluasiKeyPressed
+        Valid.pindah(evt,Monitoring,BtnSimpan);
+    }//GEN-LAST:event_EvaluasiKeyPressed
+
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
         Valid.pindah(evt,Detik,Monitoring);
     }//GEN-LAST:event_btnPetugasKeyPressed
@@ -984,14 +975,6 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
                     "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnAsuhanGiziActionPerformed
-
-    private void MonitoringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MonitoringKeyPressed
-        Valid.pindah2(evt,KdPetugas,Evaluasi);
-    }//GEN-LAST:event_MonitoringKeyPressed
-
-    private void EvaluasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EvaluasiKeyPressed
-        Valid.pindah2(evt,Monitoring,BtnSimpan);
-    }//GEN-LAST:event_EvaluasiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1023,14 +1006,14 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
-    private widget.TextArea Evaluasi;
+    private widget.TextBox Evaluasi;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnAsuhanGizi;
-    private widget.TextArea Monitoring;
+    private widget.TextBox Monitoring;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -1054,8 +1037,6 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private widget.ScrollPane scrollPane1;
-    private widget.ScrollPane scrollPane2;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
@@ -1186,7 +1167,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,156));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,126));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

@@ -1,8 +1,3 @@
-<?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-?>
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputJenjang&action=TAMBAH>| Input Data |</a>
@@ -34,25 +29,25 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode Jenjang</td><td width="">:</td>
-                    <td width="67%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="10" maxlength="5" pattern="[a-zA-Z0-9, ./@_]{1,5}" title=" a-zA-Z0-9, ./@_ (Maksimal 5 karakter)" autocomplete="off" autofocus>
+                    <td width="67%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="10" maxlength="5" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Nama Jenjang</td><td width="">:</td>
-                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="40" maxlength="30" pattern="[a-zA-Z0-9, ./@_]{1,30}" title=" a-zA-Z0-9, ./@_ (Maksimal 30 karakter)" autocomplete="off"/>
+                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="40" maxlength="30" />
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Tnj.Jabatan</td><td width="">:</td>
-                    <td width="67%">Rp.<input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $tnj;?>" size="20" maxlength="15" pattern="[0-9-]{1,15}" title=" 0-9- (Maksimal 15 karakter)" autocomplete="off"/>
+                    <td width="67%">Rp.<input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $tnj;?>" size="20" maxlength="15" />
                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Index</td><td width="">:</td>
-                    <td width="67%"><input name="indek" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="<?php echo $indek;?>" size="10" maxlength="3" pattern="[0-9-]{1,3}" title=" 0-9- (Maksimal 3 karakter)" autocomplete="off"/>
+                    <td width="67%"><input name="indek" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="<?php echo $indek;?>" size="10" maxlength="3" />
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

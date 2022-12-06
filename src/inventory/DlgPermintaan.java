@@ -802,12 +802,12 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             kdgudangTujuan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             BtnSimpan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);

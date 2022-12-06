@@ -58,7 +58,7 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        tabMode=new DefaultTableModel(null,new Object[]{"Risiko Kerja Pegawai","Jumlah","Persentase(%)","Laki-Laki","Laki-Laki(%)","Perempuan","Perempuan(%)"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Resiko Kerja Pegawai","Jumlah","Persentase(%)","Laki-Laki","Laki-Laki(%)","Perempuan","Perempuan(%)"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -121,7 +121,7 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Grafik Pegawai Per Risiko Kerja ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Grafik Pegawai Per Resiko Kerja ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -257,8 +257,8 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
                     }
-                    JFreeChart freeChart = ChartFactory.createBarChart("Grafik Pegawai Per Risiko Kerja","Risiko Kerja","Jumlah Pegawai", dcd, PlotOrientation.VERTICAL,true, true,true); 
-                    ChartFrame cf = new ChartFrame("Grafik Pegawai Per Risiko Kerja",freeChart);
+                    JFreeChart freeChart = ChartFactory.createBarChart("Grafik Pegawai Per Resiko Kerja","Resiko Kerja","Jumlah Pegawai", dcd, PlotOrientation.VERTICAL,true, true,true); 
+                    ChartFrame cf = new ChartFrame("Grafik Pegawai Per Resiko Kerja",freeChart);
                     cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
                     cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
                     cf.setLocationRelativeTo(Scroll);
@@ -281,8 +281,8 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
                     }
-                    JFreeChart freeChart2 = ChartFactory.createBarChart("Grafik Pegawai Per Risiko Kerja","Risiko Kerja","Jumlah Pegawai", dcd2, PlotOrientation.VERTICAL,true, true,true); 
-                    ChartFrame cf2 = new ChartFrame("Grafik Pegawai Per Risiko Kerja",freeChart2);
+                    JFreeChart freeChart2 = ChartFactory.createBarChart("Grafik Pegawai Per Resiko Kerja","Resiko Kerja","Jumlah Pegawai", dcd2, PlotOrientation.VERTICAL,true, true,true); 
+                    ChartFrame cf2 = new ChartFrame("Grafik Pegawai Per Resiko Kerja",freeChart2);
                     cf2.setSize(Scroll.getWidth(),Scroll.getHeight());   
                     cf2.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
                     cf2.setLocationRelativeTo(Scroll);
@@ -305,8 +305,8 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
                     }
-                    JFreeChart freeChart3 = ChartFactory.createBarChart("Grafik Pegawai Per Risiko Kerja","Risiko Kerja","Jumlah Pegawai", dcd3, PlotOrientation.VERTICAL,true, true,true); 
-                    ChartFrame cf3 = new ChartFrame("Grafik Pegawai Per Risiko Kerja",freeChart3);
+                    JFreeChart freeChart3 = ChartFactory.createBarChart("Grafik Pegawai Per Resiko Kerja","Resiko Kerja","Jumlah Pegawai", dcd3, PlotOrientation.VERTICAL,true, true,true); 
+                    ChartFrame cf3 = new ChartFrame("Grafik Pegawai Per Resiko Kerja",freeChart3);
                     cf3.setSize(Scroll.getWidth(),Scroll.getHeight());   
                     cf3.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
                     cf3.setLocationRelativeTo(Scroll);
@@ -337,9 +337,9 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
             pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Pegawai","Jumlah Pegawai Laki-Laki","Jumlah Pegawai Perempuan"},"Jumlah Pegawai");
             switch (pilihan) {
                 case "Jumlah Pegawai":
-                    grafiksql2 kas=new grafiksql2("Grafik Pegawai Per Risiko Kerja",
+                    grafiksql2 kas=new grafiksql2("Grafik Pegawai Per Resiko Kerja",
                             "select concat(resiko_kerja.nama_resiko,'(',resiko_kerja.kode_resiko,')'),count(pegawai.kode_resiko) as jumlah from pegawai inner join resiko_kerja "+
-                            "on resiko_kerja.kode_resiko=pegawai.kode_resiko where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by resiko_kerja.kode_resiko","Risiko Kerja");
+                            "on resiko_kerja.kode_resiko=pegawai.kode_resiko where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by resiko_kerja.kode_resiko","Resiko Kerja");
                     kas.setSize(Scroll.getWidth(),Scroll.getHeight());  
                     kas.setModal(true);
                     kas.setAlwaysOnTop(true);
@@ -347,9 +347,9 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                     kas.setVisible(true);
                     break;
                 case "Jumlah Pegawai Laki-Laki":
-                    grafiksql2 kas2=new grafiksql2("Grafik Pegawai Per Risiko Kerja",
+                    grafiksql2 kas2=new grafiksql2("Grafik Pegawai Per Resiko Kerja",
                             "select concat(resiko_kerja.nama_resiko,'(',resiko_kerja.kode_resiko,')'),count(pegawai.kode_resiko) as jumlah from pegawai inner join resiko_kerja "+
-                            "on resiko_kerja.kode_resiko=pegawai.kode_resiko where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by resiko_kerja.kode_resiko","Risiko Kerja");
+                            "on resiko_kerja.kode_resiko=pegawai.kode_resiko where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by resiko_kerja.kode_resiko","Resiko Kerja");
                     kas2.setSize(Scroll.getWidth(),Scroll.getHeight());  
                     kas2.setModal(true);
                     kas2.setAlwaysOnTop(true);
@@ -357,9 +357,9 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                     kas2.setVisible(true);
                     break;
                 case "Jumlah Pegawai Perempuan":
-                    grafiksql2 kas3=new grafiksql2("Grafik Pegawai Per Risiko Kerja",
+                    grafiksql2 kas3=new grafiksql2("Grafik Pegawai Per Resiko Kerja",
                             "select concat(resiko_kerja.nama_resiko,'(',resiko_kerja.kode_resiko,')'),count(pegawai.kode_resiko) as jumlah from pegawai inner join resiko_kerja "+
-                            "on resiko_kerja.kode_resiko=pegawai.kode_resiko where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by resiko_kerja.kode_resiko","Risiko Kerja");
+                            "on resiko_kerja.kode_resiko=pegawai.kode_resiko where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by resiko_kerja.kode_resiko","Resiko Kerja");
                     kas3.setSize(Scroll.getWidth(),Scroll.getHeight());  
                     kas3.setModal(true);
                     kas3.setAlwaysOnTop(true);
@@ -396,8 +396,8 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                         System.out.println("Notifikasi : " + e);
                     } 
 
-                    JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pegawai Per Risiko Kerja",dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                    ChartFrame cf = new ChartFrame("Grafik Pegawai Per Risiko Kerja",freeChart);
+                    JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pegawai Per Resiko Kerja",dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+                    ChartFrame cf = new ChartFrame("Grafik Pegawai Per Resiko Kerja",freeChart);
                     cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
                     cf.setLocationRelativeTo(Scroll);
                     cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -421,8 +421,8 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                         System.out.println("Notifikasi : " + e);
                     } 
 
-                    JFreeChart freeChart2 = ChartFactory.createPieChart("Grafik Pegawai Per Risiko Kerja",dpd2,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                    ChartFrame cf2 = new ChartFrame("Grafik Pegawai Per Risiko Kerja",freeChart2);
+                    JFreeChart freeChart2 = ChartFactory.createPieChart("Grafik Pegawai Per Resiko Kerja",dpd2,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+                    ChartFrame cf2 = new ChartFrame("Grafik Pegawai Per Resiko Kerja",freeChart2);
                     cf2.setSize(Scroll.getWidth(),Scroll.getHeight());   
                     cf2.setLocationRelativeTo(Scroll);
                     cf2.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -446,8 +446,8 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                         System.out.println("Notifikasi : " + e);
                     } 
 
-                    JFreeChart freeChart3 = ChartFactory.createPieChart("Grafik Pegawai Per Risiko Kerja",dpd3,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                    ChartFrame cf3 = new ChartFrame("Grafik Pegawai Per Risiko Kerja",freeChart3);
+                    JFreeChart freeChart3 = ChartFactory.createPieChart("Grafik Pegawai Per Resiko Kerja",dpd3,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+                    ChartFrame cf3 = new ChartFrame("Grafik Pegawai Per Resiko Kerja",freeChart3);
                     cf3.setSize(Scroll.getWidth(),Scroll.getHeight());   
                     cf3.setLocationRelativeTo(Scroll);
                     cf3.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -492,7 +492,7 @@ public class GrafikPegawaiPerResikoKerja extends javax.swing.JDialog {
                     tabMode.getValueAt(r,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap");
             }
 
-            Valid.MyReport("rptPegawaiPerResikoKerja.jasper","report","::[ Laporan Jumlah Pegawai Per Risiko Kerja ]::",param);
+            Valid.MyReport("rptPegawaiPerResikoKerja.jasper","report","::[ Laporan Jumlah Pegawai Per Resiko Kerja ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

@@ -3492,7 +3492,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
             Sequel.cariIsi("select no_ktp from pegawai where nik=?",KdPetugas,akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",PetugasEntry,akses.getkode());
+            Sequel.cariIsi("select nama from pegawai where nik=?",PetugasEntry,akses.getkode());
         }  
     }
     

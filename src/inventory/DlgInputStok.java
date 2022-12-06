@@ -1377,11 +1377,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 "inner join jenis on databarang.kdjns=jenis.kdjns where data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 1 MONTH) and current_date() "+
                 (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
             try {
-                if(!TCari.getText().trim().equals("")){
-                    pstampil.setString(1,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-                }
+                pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
                 while(rstampil.next()){                            
                     tabMode.addRow(new Object[]{
@@ -1413,11 +1411,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 "inner join jenis on databarang.kdjns=jenis.kdjns where data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 3 MONTH) and current_date() "+
                 (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
             try {
-                if(!TCari.getText().trim().equals("")){
-                    pstampil.setString(1,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-                }
+                pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
                 while(rstampil.next()){                            
                     tabMode.addRow(new Object[]{
@@ -1449,11 +1445,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 "inner join jenis on databarang.kdjns=jenis.kdjns where data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date() "+
                 (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
             try {
-                if(!TCari.getText().trim().equals("")){
-                    pstampil.setString(1,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-                }
+                pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
                 while(rstampil.next()){                            
                     tabMode.addRow(new Object[]{

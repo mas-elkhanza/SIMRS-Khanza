@@ -871,7 +871,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Notif Monitor : "+e);
+                System.out.println("Notif : "+e);
             }finally{
                 if(rs!=null){
                     rs.close();
@@ -880,50 +880,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }   
-            
-            ps=koneksi.prepareStatement(
-                   "select DISTINCT bridging_sep_internal.tglsep as tanggal from bridging_sep_internal where "+
-                   "bridging_sep_internal.tglsep between ? and ? order by bridging_sep_internal.tglsep");
-            try {
-                ps.setString(1,Valid.SetTgl(TglSEP1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(TglSEP2.getSelectedItem()+""));
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    if(JenisPelayanan.getSelectedItem().toString().equals("Semua")){
-                        if(Status.getSelectedItem().toString().equals("Semua")){
-                            MonitorInternal(rs.getString("tanggal"),"1","1");
-                            MonitorInternal(rs.getString("tanggal"),"1","2");
-                            MonitorInternal(rs.getString("tanggal"),"1","3");
-                            MonitorInternal(rs.getString("tanggal"),"2","1");
-                            MonitorInternal(rs.getString("tanggal"),"2","2");
-                            MonitorInternal(rs.getString("tanggal"),"2","3");
-                        }else{
-                            MonitorInternal(rs.getString("tanggal"),"1",Status.getSelectedItem().toString().substring(0,1));
-                            MonitorInternal(rs.getString("tanggal"),"2",Status.getSelectedItem().toString().substring(0,1));
-                        }                            
-                    }else{
-                        if(Status.getSelectedItem().toString().equals("Semua")){
-                            MonitorInternal(rs.getString("tanggal"),JenisPelayanan.getSelectedItem().toString().substring(0,1),"1");
-                            MonitorInternal(rs.getString("tanggal"),JenisPelayanan.getSelectedItem().toString().substring(0,1),"2");
-                            MonitorInternal(rs.getString("tanggal"),JenisPelayanan.getSelectedItem().toString().substring(0,1),"3");
-                            MonitorInternal(rs.getString("tanggal"),JenisPelayanan.getSelectedItem().toString().substring(0,1),"1");
-                            MonitorInternal(rs.getString("tanggal"),JenisPelayanan.getSelectedItem().toString().substring(0,1),"2");
-                            MonitorInternal(rs.getString("tanggal"),JenisPelayanan.getSelectedItem().toString().substring(0,1),"3");
-                        }else{
-                            MonitorInternal(rs.getString("tanggal"),JenisPelayanan.getSelectedItem().toString().substring(0,1),Status.getSelectedItem().toString().substring(0,1));
-                        } 
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("Notif MonitorInternal : "+e);
-            }finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            } 
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -958,7 +914,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 //response = root.path("response");
                 if(response.path("klaim").isArray()){
                     for(JsonNode list:response.path("klaim")){
-                        pssep=koneksi.prepareStatement("select * from bridging_sep where bridging_sep.no_sep=?");
+                        pssep=koneksi.prepareStatement("select * from bridging_sep where no_sep=?");
                         try {
                             pssep.setString(1,list.path("noSEP").asText());
                             rssep=pssep.executeQuery();
@@ -986,79 +942,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 });
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif Detail : "+e);
-                        } finally{
-                            if(rssep!=null){
-                                rssep.close();
-                            }
-                            if(pssep!=null){
-                                pssep.close();
-                            }
-                        }
-                    }
-                }
-            }else {
-                System.out.println(nameNode.path("message").asText());               
-            }
-        } catch (Exception ex) {
-            System.out.println("Notifikasi Peserta : "+ex);
-            if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
-                dispose();
-            }
-        }
-    }
-    
-    private void MonitorInternal(String tanggal,String jenispelayanan,String status){
-        try {
-            URL = link+"/Monitoring/Klaim/Tanggal/"+tanggal+"/JnsPelayanan/"+jenispelayanan+"/Status/"+status;	
-            System.out.println(URL);
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-            utc=String.valueOf(api.GetUTCdatetimeAsString());
-	    headers.add("X-Timestamp",utc);
-	    headers.add("X-Signature",api.getHmac(utc));
-            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-            requestEntity = new HttpEntity(headers);
-            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            nameNode = root.path("metaData");
-            System.out.println("code : "+nameNode.path("code").asText());
-            System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("code").asText().equals("200")){
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                //response = root.path("response");
-                if(response.path("klaim").isArray()){
-                    for(JsonNode list:response.path("klaim")){
-                        pssep=koneksi.prepareStatement("select * from bridging_sep_internal where bridging_sep_internal.no_sep=?");
-                        try {
-                            pssep.setString(1,list.path("noSEP").asText());
-                            rssep=pssep.executeQuery();
-                            while(rssep.next()){
-                                tabMode.addRow(new Object[]{
-                                    rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                                    rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                                    rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),
-                                    rs.getString(13),rs.getString(14),rs.getString(14)+" "+rs.getString(15),rs.getString(16),
-                                    rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
-                                    rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24),
-                                    rs.getString(25),rs.getString(26),rs.getString(27),rs.getString(28),
-                                    rs.getString(29),rs.getString(30),rs.getString(31),
-                                    list.path("Inacbg").path("kode").asText()+" "+list.path("Inacbg").path("nama").asText(),
-                                    list.path("status").asText(),list.path("noFPK").asText(),
-                                    Valid.SetAngka(list.path("biaya").path("byPengajuan").asDouble()),
-                                    Valid.SetAngka(list.path("biaya").path("bySetujui").asDouble()),
-                                    Valid.SetAngka(list.path("biaya").path("byTarifGruper").asDouble()),
-                                    Valid.SetAngka(list.path("biaya").path("byTarifRS").asDouble()),
-                                    Valid.SetAngka(list.path("biaya").path("byTopup").asDouble()),
-                                    Valid.SetAngka(list.path("biaya").path("bySetujui").asDouble()-
-                                            list.path("biaya").path("byTopup").asDouble()-
-                                            list.path("biaya").path("byTarifRS").asDouble())
-                                    
-                                });
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif Detail : "+e);
+                            System.out.println("Notif : "+e);
                         } finally{
                             if(rssep!=null){
                                 rssep.close();

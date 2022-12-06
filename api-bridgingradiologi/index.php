@@ -110,12 +110,12 @@
                                         order_out.link_ris,order_out.link_synapse,order_out.link_mobility,order_out.kode_tindakan,order_out.tindakan_radiologi,
                                         order_out.proyeksi,order_out.kV,order_out.mAS,order_out.FFD,order_out.BSF,order_out.inak,order_out.jml_penyinaran,
                                         order_out.dosis,order_out.statusupdate FROM order_out 
-                                        WHERE order_out.tanggal_order between '".validTeks4($decode['periodeawal'],20)." 00:00:00' and '".validTeks4($decode['periodeakhir'],20)." 23:59:59' 
-                                        and (order_out.no_rm like '%".validTeks4($decode['keyword'],20)."%' or order_out.no_rontgen like '%".validTeks4($decode['keyword'],20)."%' or 
-                                        order_out.no_register like '%".validTeks4($decode['keyword'],20)."%' or order_out.nama_pasien like '%".validTeks4($decode['keyword'],20)."%' or 
-                                        order_out.expertise_finding like '%".validTeks4($decode['keyword'],20)."%' or order_out.expertise_conclusion like '%".validTeks4($decode['keyword'],20)."%' or 
-                                        order_out.dokter_radiolog like '%".validTeks4($decode['keyword'],20)."%' or order_out.kode_tindakan like '%".validTeks4($decode['keyword'],20)."%' or 
-                                        order_out.tindakan_radiologi like '%".validTeks4($decode['keyword'],20)."%') order by order_out.tanggal_order";
+                                        WHERE order_out.tanggal_order between '".validTeks($decode['periodeawal'])." 00:00:00' and '".validTeks($decode['periodeakhir'])." 23:59:59' 
+                                        and (order_out.no_rm like '%".validTeks($decode['keyword'])."%' or order_out.no_rontgen like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.no_register like '%".validTeks($decode['keyword'])."%' or order_out.nama_pasien like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.expertise_finding like '%".validTeks($decode['keyword'])."%' or order_out.expertise_conclusion like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.dokter_radiolog like '%".validTeks($decode['keyword'])."%' or order_out.kode_tindakan like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.tindakan_radiologi like '%".validTeks($decode['keyword'])."%') order by order_out.tanggal_order";
                                 $result2 = bukaquery($sql2);
                                 if (mysqli_num_rows($result2) !== 0) {
                                     while ($data = fetch_array($result2)) {
@@ -1134,7 +1134,7 @@
         echo "\n\n";
         echo "Cara Menggunakan Web Service Bridging Radiologi : \n";
         echo "1. Mengambil Token, methode GET \n";
-        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/auth \n";
+        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/auth \n";
         echo "   Header gunakan x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
         echo "   Hasilnya : \n";
         echo '   {'."\n";
@@ -1147,7 +1147,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "2. Menampilkan daftar hasil pemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/daftarhasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/daftarhasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1192,7 +1192,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "3. Menampilkan data nomor order/nomor rontgen, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/carinomororder \n";
+        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/carinomororder \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1231,7 +1231,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "4. Menghapus hasilpemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/hapushasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/hapushasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1248,7 +1248,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "5. Menambahkan hasil pemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/tambahhasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/tambahhasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -1307,7 +1307,7 @@
         echo '      }'."\n";
         echo '  }'."\n\n";
         echo "6. Menambahkan hasil pemeriksaan, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/api-bridgingradiologi/ubahhasilpemeriksaan \n";
+        echo "   gunakan URL http://ipserverws:port/webapps/api-bridgingradiologi/ubahhasilpemeriksaan \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";

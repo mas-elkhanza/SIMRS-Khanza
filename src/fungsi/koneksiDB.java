@@ -1084,14 +1084,4 @@ public class koneksiDB {
         }
         return var;
     }
-    
-    public static String AKTIFKANWARNARALAN(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("AKTIFKANWARNARALAN");
-        }catch(Exception e){
-            var=""; 
-        }
-        return var;
-    }
 }

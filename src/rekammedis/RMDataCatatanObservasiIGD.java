@@ -3,6 +3,12 @@
  * and open the template in the editor.
  */
 
+/*
+ * DlgDataSkriningGiziLanjut.java
+ * Kontribusi Haris Rochmatullah RS Bhayangkara Nganjuk
+ * Created on 11 November 2020, 20:19:56
+ */
+
 package rekammedis;
 
 import fungsi.WarnaTable;

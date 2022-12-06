@@ -546,7 +546,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2022 16:53:59" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2022 11:08:37" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -4258,7 +4258,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(207,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(205,HEIGHT));
             FormMenu.setVisible(true); 
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){  

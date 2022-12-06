@@ -1,10 +1,4 @@
 <?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        if(!strpos($_SERVER['REQUEST_URI'],"pages/pegawai/photo/")){
-            exit(header("Location:../index.php"));
-        }
-    }
-    
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);

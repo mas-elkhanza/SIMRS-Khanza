@@ -1,8 +1,3 @@
-<?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-?>
 <div id="post">
    <div align="center" class="link">
         <a href=?act=InputBidang&action=TAMBAH>| Input Data |</a>
@@ -28,7 +23,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Bidang</td><td width="">:</td>
-                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $nama;?>" size="30" maxlength="15" pattern="[a-zA-Z0-9, ./@_]{1,15}" title=" a-zA-Z0-9, ./@_ (Maksimal 15 karakter)" autocomplete="off" autofocus>
+                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $nama;?>" size="30" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -46,7 +41,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputBidang&action=TAMBAH'></head><body></body></html>";
                                 break;
                             case "UBAH":
-                                Ubah(" bidang "," nama='$nama' WHERE nama='".validTeks($_GET['nama'])."' ", "bidang");
+                                Ubah(" bidang "," nama='$nama' WHERE nama='".$_GET['nama']."' ", "bidang");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListBidang'></head><body></body></html>";
                                 break;
                         }

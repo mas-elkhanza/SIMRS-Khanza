@@ -1296,7 +1296,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         for(i=0;i<tbObat.getRowCount();i++){ 
-            if(tbObat.getValueAt(i,0).toString().equals("true")&&tbObat.getValueAt(i,23).toString().equals("Belum")){
+            if(tbObat.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{tbObat.getValueAt(i,3).toString()});
                 status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+tbObat.getValueAt(i,3).toString()+"' and kd_poli='"+tbObat.getValueAt(i,8).toString()+"')>0,'Lama','Baru' )");
                 no_rawat=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"+tbObat.getValueAt(i,5).toString()+"' ",tbObat.getValueAt(i,5).toString().replace("-","/")+"/",6); 

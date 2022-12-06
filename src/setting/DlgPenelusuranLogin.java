@@ -529,7 +529,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString(1),Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString(1)),rs.getString(2),rs.getString(3)
+                        rs.getString(1),Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString(1)),rs.getString(2),rs.getString(3)
                     });
                 }
             } catch (Exception e) {
@@ -565,14 +565,14 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                 if(keyword.equals("")){
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
-                            rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
+                            rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
                         });
                     }
                 }else{
                     while(rs.next()){
                         if(rs.getString("sqle").contains(keyword)){
                             tabMode2.addRow(new Object[]{
-                                rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
+                                rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
                             });
                         }
                     }

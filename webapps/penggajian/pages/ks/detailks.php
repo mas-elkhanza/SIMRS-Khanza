@@ -1,8 +1,3 @@
-<?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-?>
 <div id="post">
    <div align="center" class="link">
         <a href=?act=HomeAdmin>| Menu Utama |</a>
@@ -34,14 +29,14 @@
                 </tr>
                 <tr class="head">
                     <td width="25%" >Jml.KS</td><td width="">:</td>
-                    <td width="75%"><input name="jmlks" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $jmlks;?>" size="10" maxlength="10" pattern="[0-9-]{1,10}" title=" 0-9- (Maksimal 10 karakter)" autocomplete="off">
+                    <td width="75%"><input name="jmlks" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $jmlks;?>" size="10" maxlength="10">
                     isi dengan - jika ingin KS mengikuti normal masuk, isi dengan angka masuk jika tidak !!!!
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="25%" >Besar Tunjangan</td><td width="">:</td>
-                    <td width="75%"><input name="bsr" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $bsr;?>" size="15" maxlength="15" pattern="[0-9-]{1,15}" title=" 0-9- (Maksimal 15 karakter)" autocomplete="off">
+                    <td width="75%"><input name="bsr" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo $bsr;?>" size="15" maxlength="15">
                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

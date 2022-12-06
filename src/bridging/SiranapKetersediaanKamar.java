@@ -13,17 +13,11 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import fungsi.akses;
-import fungsi.batasInput;
-import fungsi.koneksiDB;
-import fungsi.sekuel;
-import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -253,7 +247,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2022-11-07 11:44:39" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019-04-30 16:26:33" }));
         Tanggal.setDisplayFormat("yyyy-MM-dd HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -268,7 +262,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Ketersediaan Kamar SIRANAP KEMENKES ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Ketersediaan Kamar SIRANAP KEMENKES ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -626,7 +620,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         FormInput.add(TersediaWanita);
         TersediaWanita.setBounds(676, 72, 50, 23);
 
-        RuangSiranap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0000 Umum", "0001 Anak", "0002 Anak (Luka Bakar)", "0003 Penyakit Dalam", "0004 Kebidanan", "0005 Kandungan", "0006 Bedah", "0007 Kanker", "0008 Mata", "0009 THT", "0010 Paru", "0011 Jantung", "0012 Orthopedi", "0013 Kulit dan Kelamin", "0014 Saraf", "0015 Jiwa", "0016 Infeksi", "0017 Luka Bakar", "0018 NAPZA", "0019 Isolasi Air Borne", "0020 Isolasi TB MDR", "0021 Kulit dan Kelamin", "0022 Isolasi Imunitas menurun", "0023 Isolasi Radioaktif", "0024 ICU/RICU", "0025 NICU", "0026 PICU", "0027 CVCU/ICCU", "0029 HCU", "0030 Kedokteran Nuklir" }));
+        RuangSiranap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0000 Umum", "0001 Anak", "0002 Anak (Luka Bakar)", "0003 Penyakit Dalam", "0004 Kebidanan", "0005 Kandungan", "0006 Bedah", "0007 Kanker", "0008 Mata", "0009 THT", "0010 Paru", "0011 Jantung", "0012 Orthopedi", "0013 Kulit dan Kelamin", "0014 Saraf", "0015 Jiwa", "0016 Infeksi", "0017 Luka Bakar", "0018 NAPZA", "'0019 Isolasi Air Borne", "0020 Isolasi TB MDR", "0021 Kulit dan Kelamin", "0022 Isolasi Imunitas menurun", "0023 Isolasi Radioaktif", "0024 ICU/RICU", "0025 NICU", "0026 PICU", "0027 CVCU/ICCU", "0029 HCU", "0030 Kedokteran Nuklir" }));
         RuangSiranap.setName("RuangSiranap"); // NOI18N
         RuangSiranap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

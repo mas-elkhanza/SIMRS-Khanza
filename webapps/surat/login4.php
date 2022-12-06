@@ -8,13 +8,13 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
-            $_SESSION['ses_admin_suratsurat']="admin";
+            $_SESSION['ses_admin']="admin";
             $url = "index.php?act=Input2&action=TAMBAH";			
         }else{
             session_start();
             session_destroy();
             if (cekSessiAdmin()){
-                session_unregister("ses_admin_suratsurat");
+                session_unregister("ses_admin");
             }
             $url = "index.php?act=HomeAdmin";
         }           

@@ -1341,7 +1341,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2022" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1667,7 +1667,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 160, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2022" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2539,7 +2539,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         jLabel23.setBounds(3, 85, 100, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2022 09:09:27" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022 20:07:25" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -3568,6 +3568,9 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_TNoRegKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        if(no_ktp.equals("Yes")&&(TKtp.getText().trim().length()<p_no_ktp)){
+            TKtp.setText("-");            
+        }
         if(TNo.getText().trim().equals("")){
             Valid.textKosong(TNo,"No.Rekam Medis");
         }else if(TNm.getText().trim().equals("")){
@@ -3718,6 +3721,17 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private void TNoPesertaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoPesertaKeyPressed
         Valid.pindah(evt,Kdpnj,TTlp);
     }//GEN-LAST:event_TNoPesertaKeyPressed
+
+    private void TKtpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKtpKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(Alamat.getText().equals("ALAMAT")){
+                Alamat.setText("");
+            }
+            Alamat.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            Pekerjaan.requestFocus();
+        }
+    }//GEN-LAST:event_TKtpKeyPressed
 
     private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
         
@@ -4140,17 +4154,6 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private void LingkarPerutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LingkarPerutKeyPressed
         Valid.pindah(evt,BeratBadan,Sistole);
     }//GEN-LAST:event_LingkarPerutKeyPressed
-
-    private void TKtpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKtpKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            if(Alamat.getText().equals("ALAMAT")){
-                Alamat.setText("");
-            }
-            Alamat.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Pekerjaan.requestFocus();
-        }
-    }//GEN-LAST:event_TKtpKeyPressed
 
     /**
     * @param args the command line arguments
@@ -5180,12 +5183,12 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));
             }
         
-            Sequel.mengedit("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,jk=?,tmp_lahir=?,"+
+            Sequel.mengedit("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,no_ktp=?,jk=?,tmp_lahir=?,"+
                 "tgl_lahir=?,alamat=?,gol_darah=?,pekerjaan=?,stts_nikah=?,agama=?,tgl_daftar=?,no_tlp=?,umur=?"+
                 ",pnd=?,keluarga=?,namakeluarga=?,kd_pj=?,no_peserta=?,kd_kel=?,kd_kec=?,kd_kab=?,nm_ibu=?,pekerjaanpj=?,"+
                 "alamatpj=?,kelurahanpj=?,kecamatanpj=?,kabupatenpj=?,perusahaan_pasien=?,suku_bangsa=?,bahasa_pasien=?,"+
-                "cacat_fisik=?,email=?,nip=?,kd_prop=?,propinsipj=?",36,
-                new String[]{TNo.getText(),TNm.getText(),CmbJk.getSelectedItem().toString().substring(0,1),TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),
+                "cacat_fisik=?,email=?,nip=?,kd_prop=?,propinsipj=?",37,
+                new String[]{TNo.getText(),TNm.getText(),TKtp.getText(),CmbJk.getSelectedItem().toString().substring(0,1),TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),
                     Alamat.getText(),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                     DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
                     TTlp.getText(),TUmur.getText(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),

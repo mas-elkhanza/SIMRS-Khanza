@@ -1304,7 +1304,7 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2022 15:40:59" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022 00:01:22" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1426,7 +1426,7 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1440,7 +1440,7 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2461,12 +2461,13 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_medis_igd","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,rpk=?,rpo=?,alergi=?,keadaan=?,gcs=?,kesadaran=?,td=?,nadi=?,rr=?,suhu=?,spo=?,bb=?,tb=?,kepala=?,mata=?,gigi=?,leher=?,thoraks=?,abdomen=?,genital=?,ekstremitas=?,ket_fisik=?,ket_lokalis=?,ekg=?,rad=?,lab=?,diagnosis=?,tata=?",37,new String[]{
+        if(Sequel.mengedittf("penilaian_medis_igd","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpk=?,rpd=?,rpo=?,alergi=?,keadaan=?,gcs=?,kesadaran=?,td=?,nadi=?,rr=?,suhu=?,"+
+                "spo=?,bb=?,tb=?,kepala=?,mata=?,gigi=?,leher=?,thoraks=?,abdomen=?,genital=?,ekstremitas=?,ket_fisik=?,ket_lokalis=?,ekg=?,rad=?,lab=?,diagnosis=?,tata=?",37,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
                     KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),GCS.getText(),Kesadaran.getSelectedItem().toString(),TD.getText(),
                     Nadi.getText(),RR.getText(),Suhu.getText(),SPO.getText(),BB.getText(),TB.getText(),Kepala.getSelectedItem().toString(),Mata.getSelectedItem().toString(),Gigi.getSelectedItem().toString(),Leher.getSelectedItem().toString(),
-                    Thoraks.getSelectedItem().toString(),Abdomen.getSelectedItem().toString(),Genital.getSelectedItem().toString(),Ekstremitas.getSelectedItem().toString(),KetFisik.getText(),KetLokalis.getText(),EKG.getText(),
-                    Radiologi.getText(),Laborat.getText(),Diagnosis.getText(),Tatalaksana.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                    Thoraks.getSelectedItem().toString(),Abdomen.getSelectedItem().toString(),Genital.getSelectedItem().toString(),Ekstremitas.getSelectedItem().toString(),KetFisik.getText(),KetLokalis.getText(),
+                    EKG.getText(),Radiologi.getText(),Laborat.getText(),Diagnosis.getText(),Tatalaksana.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();

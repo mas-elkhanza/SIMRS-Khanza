@@ -57,8 +57,8 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $jam_masuk      = validTeks3(trim($_POST['jam_masuk']));  
-                    $barcode        = validTeks(trim($_POST['barcode']));
+                    $jam_masuk      = trim($_POST['jam_masuk']);  
+                    $barcode        = trim($_POST['barcode']);
                     
                     $_sqlbar        = "select id from barcode where barcode='$barcode'";
                     $hasilbar       = bukaquery($_sqlbar);

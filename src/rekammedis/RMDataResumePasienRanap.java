@@ -3,6 +3,12 @@
  * and open the template in the editor.
  */
 
+/*
+ * DlgRujuk.java
+ *
+ * Created on 31 Mei 10, 20:19:56
+ */
+
 package rekammedis;
 
 import fungsi.WarnaTable;

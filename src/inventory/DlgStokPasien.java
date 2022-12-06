@@ -24,7 +24,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
@@ -2077,12 +2076,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         return BtnKeluar;
     }
     
-    public void setNoRm2(String norwt, Date tgl1, Date tgl2) {
-        TCari.setText(norwt);
-        Tgl1.setDate(tgl1);
-        Tgl2.setDate(tgl2);
-        tampil();
-    }
+    
     
     public void isCek(){
         BtnHapus.setEnabled(akses.getstok_obat_pasien());

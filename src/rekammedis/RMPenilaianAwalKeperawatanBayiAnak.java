@@ -1412,7 +1412,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2022 09:17:16" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022 22:09:15" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2372,7 +2372,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         jLabel150.setBounds(40, 1000, 610, 23);
 
         jLabel152.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel152.setText("Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari dalam seminggu terakhir;");
+        jLabel152.setText("Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari salam seminggu terakhir;");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
         jLabel152.setBounds(55, 1075, 610, 23);
@@ -3113,7 +3113,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3127,7 +3127,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

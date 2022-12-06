@@ -2586,7 +2586,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                                     "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
                                                 "</tr>"+
                                                 "<tr class='isi2'>"+
-                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
+                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
                                                 "</tr>"+
                                             "</table>"+
                                         "</td>"
@@ -2842,7 +2842,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                                     "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
                                                 "</tr>"+
                                                 "<tr class='isi2'>"+
-                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
+                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
                                                 "</tr>"+
                                             "</table>"+
                                         "</td>"
@@ -5083,7 +5083,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             btnSekunderPetugas.setEnabled(false);
             PrimerKodePetugas.setText(akses.getkode());
             SekunderKodePetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
+            Sequel.cariIsi("select nama from pegawai where nik=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
             SekunderNamaPetugas.setText(PrimerNamaPetugas.getText());
         } 
     }
@@ -5279,7 +5279,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Nama Dokter/Petugas</td>"+
-                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
+                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
                             "</tr>"
                         );
                         
@@ -5553,7 +5553,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Nama Dokter/Petugas</td>"+
-                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
+                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
                             "</tr>"
                         );
                         

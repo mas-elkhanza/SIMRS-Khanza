@@ -69,9 +69,9 @@
                                 );
                             }
                         } else {
-                            $result = bukaquery("SELECT count(*) FROM pasien WHERE no_rkm_medis = '".validTeks4($decode['no_rkm_medis'],20)."'");
+                            $result = bukaquery("SELECT count(*) FROM pasien WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."'");
                             if (JumlahBaris($result) !== 0) {
-                                $sql2 = "SELECT * FROM tagihan_bpd_jateng WHERE no_rkm_medis = '".validTeks4($decode['no_rkm_medis'],20)."' AND status_bayar = 'Pending'";
+                                $sql2 = "SELECT * FROM tagihan_bpd_jateng WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."' AND status_bayar = 'Pending'";
                                 $result2 = bukaquery($sql2);
                                 if (JumlahBaris($result2) !== 0) {
                                     while ($data = fetch_array($result2)) {
@@ -163,7 +163,7 @@
                                 );
                             }
                         } else{
-                            $sql = "UPDATE tagihan_bpd_jateng SET status_bayar='Sudah',diupdatebank=current_time(),referensi='".validTeks4($decode['referensi'],40)."' WHERE no_rkm_medis = '".validTeks4($decode['no_rkm_medis'],20)."' AND no_nota = '".validTeks4($decode['no_nota'],20)."'";
+                            $sql = "UPDATE tagihan_bpd_jateng SET status_bayar='Sudah',diupdatebank=current_time(),referensi='".validTeks($decode['referensi'])."' WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."' AND no_nota = '".validTeks($decode['no_nota'])."'";
                             if(bukaquery($sql)){
                                 $response = array(
                                     'metadata' => array(
@@ -196,7 +196,7 @@
         echo "Selamat Datang di Web Service Host to Host Bank Jateng ".$instansi['nama_instansi']." ".date('Y');
         echo "\n\n";
         echo "Cara Menggunakan Web Service Host to Host Bank Jateng : \n";
-        echo "1. Mengambil Token, gunakan URL http://ipserverws:port/bankjateng/index.php?act=token \n";
+        echo "1. Mengambil Token, gunakan URL http://ipserverws:port/webapps/bankjateng/index.php?act=token \n";
         echo "   Header gunakan X-User:user yang diberikan RS, X-Pass:pass yang diberikan RS\n";
         echo "   Hasilnya : \n";
         echo '   {'."\n";
@@ -208,7 +208,7 @@
         echo '         "code": 200'."\n";
         echo '      }'."\n";
         echo '   }'."\n\n";
-        echo "2. Memeriksa tagihan pasien, gunakan URL http://ipserverws:port/bankjateng/index.php?act=tagihan \n";
+        echo "2. Memeriksa tagihan pasien, gunakan URL http://ipserverws:port/webapps/bankjateng/index.php?act=tagihan \n";
         echo "   Header gunakan X-Token:token yang diambil sebelumnya\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
@@ -237,7 +237,7 @@
         echo '          "code": "00"'."\n";
         echo '      }'."\n";
         echo '   }'."\n\n";
-        echo "3. Update tagihan pasien, gunakan URL http://ipserverws:port/bankjateng/index.php?act=bayar \n";
+        echo "3. Update tagihan pasien, gunakan URL http://ipserverws:port/webapps/bankjateng/index.php?act=bayar \n";
         echo "   Header gunakan X-Token:token yang diambil sebelumnya\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";

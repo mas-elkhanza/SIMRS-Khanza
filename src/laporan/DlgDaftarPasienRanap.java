@@ -248,7 +248,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     tabMode.getValueAt(r,4).toString()+"','"+
                     tabMode.getValueAt(r,5).toString()+"','"+
                     tabMode.getValueAt(r,6).toString()+"','"+
-                    tabMode.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Daftar Pasien"
+                    tabMode.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"',''","Daftar Pasien"
                 );
             }
                

@@ -73,6 +73,17 @@ public final class DlgRl33 extends javax.swing.JDialog {
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        
+        try {
+            ps=koneksi.prepareStatement(
+                    "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik " +
+                    "where poliklinik.nm_poli like '%gigi%' order by poliklinik.nm_poli");
+            pstindakan=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,count(jns_perawatan.nm_perawatan) from rawat_jl_dr inner join reg_periksa "+
+                    "inner join jns_perawatan on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                    "where reg_periksa.kd_poli=? and reg_periksa.tgl_registrasi between ? and ? and jns_perawatan.nm_perawatan like ? group by jns_perawatan.nm_perawatan ");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }    
 
     /** This method is called from within the constructor to
@@ -377,56 +388,28 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void tampil(){        
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            Valid.tabelKosong(tabMode);  
-            ps=koneksi.prepareStatement(
-                    "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik " +
-                    "where poliklinik.nm_poli like '%gigi%' order by poliklinik.nm_poli");
-            try {
-                rs=ps.executeQuery();
-                i=1;
-                ttl=0;
-                while(rs.next()){
-                    pstindakan=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,count(jns_perawatan.nm_perawatan) from rawat_jl_dr inner join reg_periksa "+
-                        "inner join jns_perawatan on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                        "where reg_periksa.kd_poli=? and reg_periksa.tgl_registrasi between ? and ? and jns_perawatan.nm_perawatan like ? group by jns_perawatan.nm_perawatan ");
-                    try{
-                        pstindakan.setString(1,rs.getString("kd_poli"));
-                        pstindakan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        pstindakan.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        pstindakan.setString(4,"%"+TCari.getText().trim()+"%");
-                        rstindakan=pstindakan.executeQuery();
-                        while(rstindakan.next()){
-                            tabMode.addRow(new Object[]{
-                                i,rstindakan.getString(1),rstindakan.getInt(2)
-                            });
-                            ttl=ttl+rstindakan.getInt(2);
-                            i++;                    
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rstindakan!=null){
-                            rstindakan.close();
-                        }
-                        if(pstindakan!=null){
-                            pstindakan.close();
-                        }
-                    }
-                }
-                if(i>1){
+            Valid.tabelKosong(tabMode);   
+            rs=ps.executeQuery();
+            i=1;
+            ttl=0;
+            while(rs.next()){
+                pstindakan.setString(1,rs.getString("kd_poli"));
+                pstindakan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstindakan.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstindakan.setString(4,"%"+TCari.getText().trim()+"%");
+                rstindakan=pstindakan.executeQuery();
+                while(rstindakan.next()){
                     tabMode.addRow(new Object[]{
-                        "","TOTAL",ttl
+                        i,rstindakan.getString(1),rstindakan.getInt(2)
                     });
+                    ttl=ttl+rstindakan.getInt(2);
+                    i++;                    
                 }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
+            }
+            if(i>1){
+                tabMode.addRow(new Object[]{
+                    "","TOTAL",ttl
+                });
             }
             this.setCursor(Cursor.getDefaultCursor());
         }catch(Exception e){

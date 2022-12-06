@@ -1,8 +1,3 @@
-<?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-?>
 <div id="post">
     <div align="center" class="link">
         <a href=?act=DetailBpjs&action=TAMBAH>| Stts BPJS |</a>
@@ -22,13 +17,13 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Stts Keanggotaan</td><td width="">:</td>
-                    <td width="67%"><input name="stts" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $stts;?>" size="10" maxlength="5" pattern="[a-zA-Z0-9, ./@_]{1,5}" title=" a-zA-Z0-9, ./@_ (Maksimal 5 karakter)" autocomplete="off" autofocus>
+                    <td width="67%"><input name="stts" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $stts;?>" size="10" maxlength="5" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Biaya BPJS</td><td width="">:</td>
-                    <td width="67%">Rp <input name="biaya" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" value="<?php echo $biaya;?>" size="20" maxlength="15" pattern="[0-9-]{1,15}" title=" 0-9- (Maksimal 15 karakter)" autocomplete="off">
+                    <td width="67%">Rp <input name="biaya" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" value="<?php echo $biaya;?>" size="20" maxlength="15">
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

@@ -1,10 +1,3 @@
-<?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
-            exit(header("Location:../index.php"));
-        }
-    }
-?>
 <div id="post">
     <div class="entry">        
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
@@ -20,7 +13,7 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Keluar</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15" pattern="[A-Z0-9-]{1,15}" title=" A-Z0-9- (Maksimal 15 karakter)" autocomplete="off" required>
+                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15">
                             <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Ruang Surat</td>
@@ -40,7 +33,7 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Surat</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35" pattern="[a-zA-Z0-9, ./@_]{1,35}" title=" a-zA-Z0-9, ./@_ (Maksimal 35 karakter)" autocomplete="off" required>
+                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35">
                             <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Sifat Surat</td>
@@ -60,12 +53,12 @@
                     <tr class="isi2">
                         <td width="15%" >Tujuan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
+                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                         </td>                        
                         <td width="15%" >Lampiran</td>
                         <td width="35%">
-                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" type=text id="TxtIsi12" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
+                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" type=text id="TxtIsi12" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi12" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -91,14 +84,14 @@
                         </td>                        
                         <td width="15%" >Tembusan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
+                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi13" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
                     <tr class="isi2">
                         <td width="15%" >Perihal</td>
                         <td width="35%">
-                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
+                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
                         </td> 
                         <td width="15%" >Deadline Balas</td>
@@ -171,7 +164,7 @@
                         </td>
                         <td width="15%" >Keterangan</td>
                         <td width="35%">
-                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type=text id="TxtIsi16" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
+                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type=text id="TxtIsi16" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi16" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -234,7 +227,7 @@
                     <tr class="isi2">
                         <td width="15%" >File Berkas(PDF/JPG)</td>
                         <td width="35%">
-                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" type=file id="TxtIsi19" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="image/jpeg,image/jpg"/>
+                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" type=file id="TxtIsi19" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
                             <span id="MsgIsi19" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -265,20 +258,17 @@
                     $max        = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim='$tgl_kirim'");
                     $no_urut    = "SK".str_replace("-","",$tgl_kirim).sprintf("%03s", $max);
                     $dokumen    = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")){
-                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                        if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_kirim))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
-                            switch($action) {
-                                case "TAMBAH":
-                                    Tambah(" surat_keluar "," '$no_urut','$no_surat','$tujuan','$tgl_surat','$perihal','$tgl_kirim','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " );
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
-                                    break;
-                            }
-                        }else{
-                            echo 'Semua field harus isi..!!!';
+                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                    
+                    if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_kirim))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
+                        switch($action) {
+                            case "TAMBAH":
+                                Tambah(" surat_keluar "," '$no_urut','$no_surat','$tujuan','$tgl_surat','$perihal','$tgl_kirim','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " );
+                                echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
+                                break;
                         }
                     }else{
-                        echo "Berkas harus JPEG/JPG";
+                        echo 'Semua field harus isi..!!!';
                     }
                 }
             ?>

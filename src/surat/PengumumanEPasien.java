@@ -884,7 +884,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
+            Sequel.cariIsi("select nama from pegawai where nik=?", NmPetugas,KdPetugas.getText());
         }  
     }
 }

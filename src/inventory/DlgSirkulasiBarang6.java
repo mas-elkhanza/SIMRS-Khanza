@@ -25,6 +25,8 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -40,9 +42,9 @@ public class DlgSirkulasiBarang6 extends javax.swing.JDialog {
     private DlgCariBangsal bangsal = new DlgCariBangsal(null, false); 
     private double jumlahjual=0,jumlahbeli=0,jumlahpesan=0,jumlahpiutang=0,jumlahutd=0,jumlahkeluar=0,jumlahmutasikeluar=0,
                    jumlahmutasimasuk=0,jumlahretbeli=0,jumlahretjual=0,jumlahretpiut=0,jumlahpasin=0,jumlahrespulang=0,
-                   jumlahhibah=0,stokawal=0,stokakhir=0,totaljual=0,totalbeli=0,totalpesan=0,totalpiutang=0,
+                   jumlahhibah=0,stok=0,stokawal=0,stokakhir=0,totaljual=0,totalbeli=0,totalpesan=0,totalpiutang=0,
                    totalutd=0,totalkeluar=0,totalmutasikeluar=0,totalmutasimasuk=0,totalretbeli=0,totalretjual=0,
-                   totalretpiut=0,totalpasin=0,totalrespulang=0,totalhibah=0,totalstokawal=0,totalstokakhir=0,
+                   totalretpiut=0,totalpasin=0,totalrespulang=0,totalhibah=0,totalstok=0,totalstokawal=0,totalstokakhir=0,
                    ttltotaljual=0,ttltotalbeli=0,ttltotalpesan=0,ttltotalpiutang=0,ttltotalutd=0,ttltotalkeluar=0,ttltotalmutasikeluar=0,
                    ttltotalmutasimasuk=0,ttltotalretbeli=0,ttltotalretjual=0,ttltotalretpiut=0,ttltotalpasin=0,ttltotalrespulang=0,
                    ttltotalhibah=0,ttltotalstokawal=0,ttltotalstokakhir=0,harga=0;
@@ -51,7 +53,7 @@ public class DlgSirkulasiBarang6 extends javax.swing.JDialog {
     private DlgCariGolongan golongan = new DlgCariGolongan(null, false);
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2,rs3;
-    private String tglopname="",hppfarmasi="",pilihan="",tarifdasar="tidak",tampilmin="tidak";
+    private String tglopname="",hppfarmasi="",pilihan="";
     private StringBuilder htmlContent;
     private int i=0;
 
@@ -337,10 +339,7 @@ public class DlgSirkulasiBarang6 extends javax.swing.JDialog {
         ppGrafikPiutangDikit = new javax.swing.JMenuItem();
         ppGrafikResepPaliingBanyak = new javax.swing.JMenuItem();
         ppGrafikResepPaliingSedikit = new javax.swing.JMenuItem();
-        ppTarifDasar = new javax.swing.JMenuItem();
-        ppTarifTransaksi = new javax.swing.JMenuItem();
-        ppTampilkanMinTransaksi = new javax.swing.JMenuItem();
-        ppSembunyikanMinTransaksi = new javax.swing.JMenuItem();
+        ppLokasi = new javax.swing.JMenuItem();
         KdGudang = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -505,69 +504,21 @@ public class DlgSirkulasiBarang6 extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikResepPaliingSedikit);
 
-        ppTarifDasar.setBackground(new java.awt.Color(255, 255, 254));
-        ppTarifDasar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTarifDasar.setForeground(new java.awt.Color(50, 50, 50));
-        ppTarifDasar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppTarifDasar.setText("Gunakan Harga Dasar");
-        ppTarifDasar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppTarifDasar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTarifDasar.setName("ppTarifDasar"); // NOI18N
-        ppTarifDasar.setPreferredSize(new java.awt.Dimension(300, 25));
-        ppTarifDasar.addActionListener(new java.awt.event.ActionListener() {
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
+        ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppLokasi.setForeground(new java.awt.Color(50, 50, 50));
+        ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppLokasi.setText("Tampilkan Per Lokasi");
+        ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppLokasi.setName("ppLokasi"); // NOI18N
+        ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
+        ppLokasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppTarifDasarActionPerformed(evt);
+                ppLokasiBtnPrintActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(ppTarifDasar);
-
-        ppTarifTransaksi.setBackground(new java.awt.Color(255, 255, 254));
-        ppTarifTransaksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTarifTransaksi.setForeground(new java.awt.Color(50, 50, 50));
-        ppTarifTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppTarifTransaksi.setText("Gunakan Harga Sesuai Transaksi");
-        ppTarifTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppTarifTransaksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTarifTransaksi.setName("ppTarifTransaksi"); // NOI18N
-        ppTarifTransaksi.setPreferredSize(new java.awt.Dimension(300, 25));
-        ppTarifTransaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppTarifTransaksiActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppTarifTransaksi);
-
-        ppTampilkanMinTransaksi.setBackground(new java.awt.Color(255, 255, 254));
-        ppTampilkanMinTransaksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanMinTransaksi.setForeground(new java.awt.Color(50, 50, 50));
-        ppTampilkanMinTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppTampilkanMinTransaksi.setText("Tampilkan Transaksi Yang Bernilai Min (-)");
-        ppTampilkanMinTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppTampilkanMinTransaksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanMinTransaksi.setName("ppTampilkanMinTransaksi"); // NOI18N
-        ppTampilkanMinTransaksi.setPreferredSize(new java.awt.Dimension(300, 25));
-        ppTampilkanMinTransaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppTampilkanMinTransaksiActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppTampilkanMinTransaksi);
-
-        ppSembunyikanMinTransaksi.setBackground(new java.awt.Color(255, 255, 254));
-        ppSembunyikanMinTransaksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSembunyikanMinTransaksi.setForeground(new java.awt.Color(50, 50, 50));
-        ppSembunyikanMinTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppSembunyikanMinTransaksi.setText("Sembunyikan Transaksi Yang Bernilai Min (-)");
-        ppSembunyikanMinTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppSembunyikanMinTransaksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSembunyikanMinTransaksi.setName("ppSembunyikanMinTransaksi"); // NOI18N
-        ppSembunyikanMinTransaksi.setPreferredSize(new java.awt.Dimension(300, 25));
-        ppSembunyikanMinTransaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppSembunyikanMinTransaksiActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppSembunyikanMinTransaksi);
+        jPopupMenu1.add(ppLokasi);
 
         KdGudang.setName("KdGudang"); // NOI18N
         KdGudang.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1259,6 +1210,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         grafik.setVisible(true);
     }//GEN-LAST:event_ppGrafikResepPaliingSedikitActionPerformed
 
+    private void ppLokasiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLokasiBtnPrintActionPerformed
+        bangsal.isCek();
+        bangsal.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        bangsal.setLocationRelativeTo(internalFrame1);
+        bangsal.setVisible(true);
+    }//GEN-LAST:event_ppLokasiBtnPrintActionPerformed
+
     private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
         jenis.isCek();
         jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -1296,26 +1254,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         bangsal.setAlwaysOnTop(false);
         bangsal.setVisible(true);
     }//GEN-LAST:event_btnBarang1ActionPerformed
-
-    private void ppTarifDasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTarifDasarActionPerformed
-        tarifdasar="ya";
-        prosesCari();
-    }//GEN-LAST:event_ppTarifDasarActionPerformed
-
-    private void ppTarifTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTarifTransaksiActionPerformed
-        tarifdasar="tidak";
-        prosesCari();
-    }//GEN-LAST:event_ppTarifTransaksiActionPerformed
-
-    private void ppTampilkanMinTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanMinTransaksiActionPerformed
-        tampilmin="ya";
-        prosesCari();
-    }//GEN-LAST:event_ppTampilkanMinTransaksiActionPerformed
-
-    private void ppSembunyikanMinTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSembunyikanMinTransaksiActionPerformed
-        tampilmin="tidak";
-        prosesCari();
-    }//GEN-LAST:event_ppSembunyikanMinTransaksiActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1371,10 +1309,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private javax.swing.JMenuItem ppGrafikResepPaliingSedikit;
     private javax.swing.JMenuItem ppGrafikbeliBanyak;
     private javax.swing.JMenuItem ppGrafikbelidikit;
-    private javax.swing.JMenuItem ppSembunyikanMinTransaksi;
-    private javax.swing.JMenuItem ppTampilkanMinTransaksi;
-    private javax.swing.JMenuItem ppTarifDasar;
-    private javax.swing.JMenuItem ppTarifTransaksi;
+    private javax.swing.JMenuItem ppLokasi;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -1413,11 +1348,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rs2=ps2.executeQuery();
                             while(rs2.next()){
                                 jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;
-                                jumlahretjual=0;jumlahretpiut=0;jumlahpasin=0;stokawal=0;jumlahutd=0;stokakhir=0;
+                                jumlahretjual=0;jumlahretpiut=0;jumlahpasin=0;stok=0;stokawal=0;jumlahutd=0;stokakhir=0;
                                 jumlahkeluar=0;jumlahrespulang=0;jumlahmutasimasuk=0;jumlahmutasikeluar=0;
                                 jumlahhibah=0;totaljual=0;totalbeli=0;totalpesan=0;totalpiutang=0;totalutd=0;totalkeluar=0;
                                 totalmutasikeluar=0;totalmutasimasuk=0;totalretbeli=0;totalretjual=0;totalretpiut=0;
-                                totalpasin=0;totalrespulang=0;totalhibah=0;totalstokawal=0;totalstokakhir=0;harga=0;
+                                totalpasin=0;totalrespulang=0;totalhibah=0;totalstok=0;totalstokawal=0;totalstokakhir=0;harga=0;
                                 tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
                                 
                                 ps3=koneksi.prepareStatement(
@@ -1450,16 +1385,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 if(harga<=0){
                                     harga=rs.getDouble("harga");
                                 }
-                                
-                                if(tampilmin.equals("ya")){
-                                    totalstokawal=harga*stokawal;
-                                }else{
-                                    if(stokawal>0){
-                                        totalstokawal=harga*stokawal;
-                                    }else{
-                                        totalstokawal=0;
-                                    }
-                                }
+                                totalstokawal=harga*stokawal;
                                 
                                 //pembelian 
                                 ps3=koneksi.prepareStatement(
@@ -1475,11 +1401,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahbeli=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalbeli=jumlahbeli*harga;
-                                        }else{
-                                            totalbeli=rs3.getDouble(2);
-                                        }   
+                                        totalbeli=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1506,11 +1428,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahpesan=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalpesan=jumlahpesan*harga;
-                                        }else{
-                                            totalpesan=rs3.getDouble(2);
-                                        }
+                                        totalpesan=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1538,11 +1456,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahjual=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totaljual=jumlahjual*harga;
-                                        }else{
-                                            totaljual=rs3.getDouble(2);
-                                        }
+                                        totaljual=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1570,11 +1484,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahpasin=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalpasin=jumlahpasin*harga;
-                                        }else{
-                                            totalpasin=rs3.getDouble(2);
-                                        }
+                                        totalpasin=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1601,11 +1511,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahpiutang=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalpiutang=jumlahpiutang*harga;
-                                        }else{
-                                            totalpiutang=rs3.getDouble(2);
-                                        }
+                                        totalpiutang=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1632,11 +1538,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahretbeli=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalretbeli=jumlahretbeli*harga;
-                                        }else{
-                                            totalretbeli=rs3.getDouble(2);
-                                        }
+                                        totalretbeli=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1663,11 +1565,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahretjual=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalretjual=jumlahretjual*harga;
-                                        }else{
-                                            totalretjual=rs3.getDouble(2);
-                                        }
+                                        totalretjual=rs3.getDouble(2);
                                     } 
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1694,11 +1592,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahretpiut=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalretpiut=jumlahretpiut*harga;
-                                        }else{
-                                            totalretpiut=rs3.getDouble(2);
-                                        }
+                                        totalretpiut=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1726,11 +1620,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahutd=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalutd=jumlahutd*harga;
-                                        }else{
-                                            totalutd=rs3.getDouble(2);
-                                        }
+                                        totalutd=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1757,11 +1647,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahkeluar=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalkeluar=jumlahkeluar*harga;
-                                        }else{
-                                            totalkeluar=rs3.getDouble(2);
-                                        }
+                                        totalkeluar=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1787,11 +1673,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahrespulang=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalrespulang=jumlahrespulang*harga;
-                                        }else{
-                                            totalrespulang=rs3.getDouble(2);
-                                        }
+                                        totalrespulang=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notifikas Resep Pulang : "+e);
@@ -1817,11 +1699,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahmutasimasuk=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalmutasimasuk=jumlahmutasimasuk*harga;
-                                        }else{
-                                            totalmutasimasuk=rs3.getDouble(2);
-                                        }
+                                        totalmutasimasuk=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notifikas Mutasi Masuk : "+e);
@@ -1846,11 +1724,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahmutasikeluar=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalmutasikeluar=jumlahmutasikeluar*harga;
-                                        }else{
-                                            totalmutasikeluar=rs3.getDouble(2);
-                                        }
+                                        totalmutasikeluar=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notifikas Mutasi Keluar : "+e);
@@ -1877,11 +1751,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs3=ps3.executeQuery();
                                     if(rs3.next()){                    
                                         jumlahhibah=rs3.getDouble(1);
-                                        if(tarifdasar.equals("ya")){
-                                            totalhibah=jumlahhibah*harga;
-                                        }else{
-                                            totalhibah=rs3.getDouble(2);
-                                        }
+                                        totalhibah=rs3.getDouble(2);
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Note : "+e);
@@ -1920,16 +1790,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     }
                                 }
                                 
-                                if(tampilmin.equals("ya")){
-                                    totalstokakhir=harga*stokakhir;
-                                }else{
-                                    if(stokakhir>0){
-                                        totalstokakhir=harga*stokakhir;
-                                    }else{
-                                        totalstokakhir=0;
-                                    }
-                                }
-                                    
+                                totalstokakhir=harga*stokakhir;
                     
                                 if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||(jumlahhibah>0)||(jumlahmutasimasuk>0)||(jumlahmutasikeluar>0)||
                                     (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stokawal>0)||(stokakhir>0)||(jumlahrespulang>0)){

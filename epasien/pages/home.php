@@ -133,7 +133,7 @@
                                <tr class="head">
                                   <td width="20%" align="right"><label for="keyword">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="60%"><input name="keyword" type="text" id="keyword" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" [a-zA-Z0-9, ./@_] (Maksimal 20 karakter) " class="form-control" value="" size="65" maxlength="20" autocomplete="off"/></td>
+                                  <td width="60%"><input name="keyword" type="text" id="keyword" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
                                   <td width="19%" align="left">&nbsp;<input name="BtnKeyword" type=submit class="btn btn-warning" value="Cari"></td>
                                </tr>
                            </table>
