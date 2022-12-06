@@ -19,7 +19,7 @@
                                <tr>
                                   <td width="20%" align="right"><label for="asuransi">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="60%"><input name="asuransi" type="text" id="asuransi" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="60%"><input name="asuransi" type="text" id="asuransi" class="form-control" value="" size="65" maxlength="20" autocomplete="off" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" [a-zA-Z0-9, ./@_]{1,20} " autofocus/></td>
                                   <td width="19%" align="left">&nbsp;<input name="BtnAsuransi" type=submit class="btn btn-warning" value="Cari"/></td>
                                </tr>
                            </table>
@@ -35,15 +35,19 @@
                                <?php 
                                   $asuransi      = trim(isset($_POST['asuransi']))?trim($_POST['asuransi']):NULL;
                                   $asuransi      = cleankar($asuransi);
-                                  $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where status='1' and png_jawab <>'-' and png_jawab not like '%umum%' ".(isset($asuransi)?" and (png_jawab like '%$asuransi%' or nama_perusahaan like '%$asuransi%')":"")." order by png_jawab");
-                                  while($rsqueryasuransi = mysqli_fetch_array($queryasuransi)) {
-                                      echo "<tr>
-                                              <td align='left'>".$rsqueryasuransi["png_jawab"]."</td>
-                                              <td align='left'>".$rsqueryasuransi["nama_perusahaan"]."</td>
-                                              <td align='left'>".$rsqueryasuransi["alamat_asuransi"]."</td>
-                                              <td align='center'>".$rsqueryasuransi["no_telp"]."</td>
-                                            </tr>";
-                                  }
+                                  if(strlen($asuransi)>20){
+                                        header('Location: https://www.google.com');
+                                  }else{
+                                        $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where status='1' and png_jawab <>'-' and png_jawab not like '%umum%' ".(isset($asuransi)?" and (png_jawab like '%$asuransi%' or nama_perusahaan like '%$asuransi%')":"")." order by png_jawab");
+                                        while($rsqueryasuransi = mysqli_fetch_array($queryasuransi)) {
+                                            echo "<tr>
+                                                    <td align='left'>".$rsqueryasuransi["png_jawab"]."</td>
+                                                    <td align='left'>".$rsqueryasuransi["nama_perusahaan"]."</td>
+                                                    <td align='left'>".$rsqueryasuransi["alamat_asuransi"]."</td>
+                                                    <td align='center'>".$rsqueryasuransi["no_telp"]."</td>
+                                                  </tr>";
+                                        }  
+                                  } 
                               ?>
                            </table> 
                          </div>

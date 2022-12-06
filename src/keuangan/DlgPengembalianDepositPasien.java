@@ -591,7 +591,7 @@ public final class DlgPengembalianDepositPasien extends javax.swing.JDialog {
                 all=0;
                 i=1;
                 while(rs.next()){
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
                         all=all+rs.getDouble("besar_pengembalian");
                         tabMode.addRow(new Object[]{

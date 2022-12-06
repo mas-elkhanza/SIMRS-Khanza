@@ -1,3 +1,10 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/riwayatpendidikan/berkas/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+?>
 <div id="entry">        
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
@@ -101,7 +108,7 @@
                 </td>
                 <td width="17%" >Berkas Ijazah</td><td width="">:</td>
                 <td width="31%">
-                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type=file id="TxtIsi9" value="<?php echo $dokumen;?>" size="40" maxlength="255" />
+                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type=file id="TxtIsi9" value="<?php echo $dokumen;?>" size="40" maxlength="255" accept="image/jpeg,image/jpg"/>
                     <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>
@@ -135,7 +142,7 @@
                 if ((!empty($id))&&(!empty($pendidikan))&&(!empty($sekolah))) {
                     switch($action) {
                         case "TAMBAH":
-                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="jpeg")){
+                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")){
                                 move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                                 Tambah(" riwayat_pendidikan "," '$id','$pendidikan','$sekolah','$jurusan','$thn_lulus','$kepala','$pendanaan','$keterangan','$status','$dokumen'", " Riwayat Pendidikan " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPendidikan&action=TAMBAH&id=$id'>";

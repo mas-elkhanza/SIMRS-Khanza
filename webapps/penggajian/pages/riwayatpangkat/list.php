@@ -1,4 +1,7 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
     $action     = isset($_GET['action'])?$_GET['action']:NULL;
     $keyword    = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
     $keyword    = validTeks($keyword);

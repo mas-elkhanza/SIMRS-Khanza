@@ -152,7 +152,6 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-        
     }
 
 
@@ -209,6 +208,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         BtnRefreshPhoto = new widget.Button();
         Scroll4 = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
+        Berakhir = new widget.Label();
 
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
@@ -657,6 +657,11 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
 
         FormPhoto.add(Scroll4, java.awt.BorderLayout.CENTER);
 
+        Berakhir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Berakhir.setName("Berakhir"); // NOI18N
+        Berakhir.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormPhoto.add(Berakhir, java.awt.BorderLayout.PAGE_START);
+
         PanelAccor.add(FormPhoto, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelAccor, java.awt.BorderLayout.EAST);
@@ -836,6 +841,8 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             try {
                 getData();
+                isPhoto();
+                panggilPhoto();
             } catch (java.lang.NullPointerException e) {
             }
         }
@@ -907,9 +914,9 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void btnAmbilPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilPhotoActionPerformed
         if(tbKamar.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.meghapus("penjab_dokumen_kerjasama", "kd_pj",tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString());
-            Sequel.menyimpan2("penjab_dokumen_kerjasama","?,current_date(),''",1,new String[]{tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()});
-            Valid.panggilUrl("dokumenasuransi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&kdpj="+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString().replaceAll(" ","_"));
+            Sequel.meghapus("penjab_dokumen_kerjasama", "kd_pj",tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString());
+            Sequel.menyimpan2("penjab_dokumen_kerjasama","?,current_date(),''",1,new String[]{tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()});
+            Valid.panggilUrl("dokumenasuransi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&kdpj="+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString().replaceAll(" ","_"));
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_btnAmbilPhotoActionPerformed
@@ -937,6 +944,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox AlamatAsuransi;
     private widget.TextBox Attn;
+    private widget.Label Berakhir;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -985,8 +993,8 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp,attn "+
-                    "from penjab where status='1' and (kd_pj like ? or png_jawab like ?) order by png_jawab ");
+                    "select penjab.kd_pj,penjab.png_jawab,penjab.nama_perusahaan,penjab.alamat_asuransi,penjab.no_telp,penjab.attn "+
+                    "from penjab where penjab.status='1' and (penjab.kd_pj like ? or penjab.png_jawab like ?) order by penjab.png_jawab ");
             try{
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1047,6 +1055,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         BtnHapus.setEnabled(akses.getcara_bayar());
         BtnEdit.setEnabled(akses.getcara_bayar());
         BtnPrint.setEnabled(akses.getcara_bayar());
+        btnAmbilPhoto.setEnabled(akses.getcara_bayar());
         if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
@@ -1071,7 +1080,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(internalFrame1.getWidth()-300,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(500,HEIGHT));
             FormPhoto.setVisible(true);  
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){    
@@ -1087,15 +1096,18 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             try {
                 ps=koneksi.prepareStatement("select penjab_dokumen_kerjasama.photo,date_format(penjab_dokumen_kerjasama.kerjasama_berakhir,'%d-%m-%Y') as tanggal from penjab_dokumen_kerjasama where penjab_dokumen_kerjasama.kd_pj=?");
                 try {
-                    ps.setString(1,tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString());
+                    ps.setString(1,tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
+                            Berakhir.setText("");
                             LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML.setText("<html><body><center>Berakhir Pada : "+rs.getString("tanggal")+"<br><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/dokumenasuransi/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-335)+"' height='"+(internalFrame1.getHeight()-265)+"'/></center></body></html>");
+                            Berakhir.setText("Kerjasama Berakhir Pada : "+rs.getString("tanggal"));
+                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/dokumenasuransi/"+rs.getString("photo")+"' alt='photo' width='450' height='550'/></center></body></html>");
                         }  
                     }else{
+                        Berakhir.setText("");
                         LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                     }
                 } catch (Exception e) {

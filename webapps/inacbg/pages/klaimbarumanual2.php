@@ -234,7 +234,7 @@
                 </tr>
                 <tr class="head3">					
                     <td width="690px">
-                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="55" maxlength="200" pattern="[A-Z0-9-]{1,200}" title=" A-Z0-9- (Maksimal 200 karakter)" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="55" maxlength="200" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off" autocomplete="off" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         Record : <?php echo $jumlah; ?>

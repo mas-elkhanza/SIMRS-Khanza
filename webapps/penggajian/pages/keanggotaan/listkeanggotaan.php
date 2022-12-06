@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div class="entry"> 
     <div align="center" class="link">
@@ -17,7 +22,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,250}" title=" a-zA-Z0-9, ./@_ (Maksimal 250 karakter)" autocomplete="off" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
@@ -71,7 +76,7 @@
         <?php      
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td><div align='left'>Data : $jumlah <a target=_blank href=../penggajian/pages/keanggotaan/LaporanKeanggotaan.php?&keyword=$keyword>| Laporan |</a></div></td>                        
+                        <td><div align='left'>Data : $jumlah <a target=_blank href=../penggajian/pages/keanggotaan/LaporanKeanggotaan.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan |</a></div></td>                        
                     </tr>     
                  </table>");
         ?>

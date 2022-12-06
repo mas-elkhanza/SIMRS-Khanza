@@ -15,8 +15,7 @@
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
                 $nonota    =validTeks(str_replace("_"," ",$_GET['nonota']));  
-
-                $_sql = "select piutang.nota_piutang, piutang.tgl_piutang, 
+                $_sql      ="select piutang.nota_piutang, piutang.tgl_piutang, 
                             piutang.nip,petugas.nama, 
                             piutang.no_rkm_medis,piutang.nm_pasien, 
                             piutang.catatan,piutang.jns_jual,piutang.ongkir,piutang.uangmuka,piutang.sisapiutang,

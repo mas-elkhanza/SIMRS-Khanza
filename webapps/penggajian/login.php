@@ -10,10 +10,12 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)&&($level=="admin")){
             session_start();
             $_SESSION['ses_admin_kepegawaian']="admin";
+            $_SESSION["level"]=encrypt_decrypt($level,"e");
             $url = "index.php?act=HomeAdmin";
         }elseif((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)&&($level=="user")){
             session_start();
             $_SESSION['ses_admin_kepegawaian']="paijo";
+            $_SESSION["level"]=encrypt_decrypt($level,"e");
             $url = "index.php?act=HomeAdmin";
         }else{
             session_start();

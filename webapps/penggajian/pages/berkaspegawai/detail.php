@@ -1,3 +1,10 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/berkaspegawai/berkas/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+?>
 <div class="entry">        
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
@@ -22,7 +29,7 @@
                             }
                         ?>
                     </select>
-                    <input name="dokumen" class="text3" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=file id="TxtIsi1" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
+                    <input name="dokumen" class="text3" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=file id="TxtIsi1" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="application/pdf,image/jpeg,image/jpg"/>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tgl.Uploud :
                     <select name="TglUploud" class="text">
@@ -133,7 +140,7 @@
         }
         if ($action=="HAPUS") {      
             unlink($_GET['berkas']);
-            Hapus(" berkas_pegawai "," nik ='". validTeks($_GET['nik'])."' and kode_berkas ='".validTeks($_GET['kode'])."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori));
+            Hapus(" berkas_pegawai "," nik ='".validTeks($_GET['nik'])."' and kode_berkas ='".validTeks($_GET['kode'])."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori));
         }
     ?>
     </div>   

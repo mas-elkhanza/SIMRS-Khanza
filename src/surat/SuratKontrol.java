@@ -46,6 +46,7 @@ public class SuratKontrol extends javax.swing.JDialog {
     private DlgCariPoli2 poli2=new DlgCariPoli2(null,false);
     private String URUTNOREG="",status="",kdpoli="",nmpoli="",noantri="",aktifjadwal="";
     private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+    private String finger="";
     
 
     /** Creates new form DlgPemberianInfus
@@ -91,9 +92,9 @@ public class SuratKontrol extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(150);
             }else if(i==9){
-                column.setPreferredWidth(82);
+                column.setPreferredWidth(115);
             }else if(i==10){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(115);
             }else if(i==11){
                 column.setPreferredWidth(52);
             }else if(i==12){
@@ -1439,6 +1440,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),13).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()));
                 Sequel.queryu("truncate table temporary_booking_registrasi");                
                 Sequel.menyimpan("temporary_booking_registrasi","'0','"+
                     tabMode.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+
@@ -1617,7 +1620,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             "where booking_registrasi.kd_dokter=? and booking_registrasi.tanggal_periksa=? and booking_registrasi.no_rkm_medis=?");
                     try {
                         ps2.setString(1,rs.getString("kd_dokter"));
-                        ps2.setString(2,rs.getString("tanggal_datang"));
+                        ps2.setString(2,rs.getString("tanggal_datang").substring(0,10));
                         ps2.setString(3,rs.getString("no_rkm_medis"));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){
@@ -1706,8 +1709,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Alasan2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             Rtl1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             Rtl2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Valid.SetTgl(TanggalPeriksa,tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Valid.SetTgl(TanggalSurat,tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Valid.SetTgl2(TanggalPeriksa,tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Valid.SetTgl2(TanggalSurat,tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             NoSurat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             NoReg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
@@ -1768,8 +1771,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isBooking(){
         if(Sequel.menyimpantf("skdp_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?","Tahun dan nomor surat",13,new String[]{
              TanggalPeriksa.getSelectedItem().toString().substring(6,10),TNoRM.getText(),Diagnosa.getText(),Terapi.getText(),
-             Alasan1.getText(),Alasan2.getText(),Rtl1.getText(),Rtl2.getText(),Valid.SetTgl(TanggalPeriksa.getSelectedItem()+""),
-             Valid.SetTgl(TanggalSurat.getSelectedItem()+""),NoSurat.getText(),KdDokter.getText(),Status.getSelectedItem().toString()
+             Alasan1.getText(),Alasan2.getText(),Rtl1.getText(),Rtl2.getText(),Valid.SetTgl(TanggalPeriksa.getSelectedItem()+"")+" "+TanggalPeriksa.getSelectedItem().toString().substring(11,19),
+             Valid.SetTgl(TanggalSurat.getSelectedItem()+"")+" "+TanggalSurat.getSelectedItem().toString().substring(11,19),NoSurat.getText(),KdDokter.getText(),Status.getSelectedItem().toString()
          })==true){
              Sequel.menyimpan2("booking_registrasi","?,?,?,?,?,?,?,?,?,?,?","Pasien dan Tanggal",11,new String[]{
                 Valid.SetTgl(TanggalSurat.getSelectedItem()+""),TanggalSurat.getSelectedItem().toString().substring(11,19),TNoRM.getText(),

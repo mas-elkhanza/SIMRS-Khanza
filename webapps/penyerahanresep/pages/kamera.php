@@ -47,27 +47,27 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-danger"><center>Penyerahan Resep Obat Rawat Jalan <?=$noresep;?></center></h5>
-        <table class="default" width="100%">
-            <tr class="text-danger">
+        <h5 class="text-dark"><center>Penyerahan Resep Obat Rawat Jalan <?=$noresep;?></center></h5>
+        <table class="default" width="100%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+            <tr class="text-dark">
                 <td width="15%">Nomor Rawat</td>
                 <td width="35%">: <?=$norawat;?></td>
                 <td width="15%">Umur Pasien</td>
                 <td width="35%">: <?=$umur;?></td>
             </tr>
-            <tr class="text-danger">
+            <tr class="text-dark">
                 <td width="15%">Nomor R.M.</td>
                 <td width="35%">: <?=$no_rkm_medis;?></td>
                 <td width="15%">Tanggal Lahir</td>
                 <td width="35%">: <?=$tgl_lahir;?></td>
             </tr>
-            <tr class="text-danger">
+            <tr class="text-dark">
                 <td width="15%">Nama Pasien</td>
                 <td width="35%">: <?=$nm_pasien;?></td>
                 <td width="15%">Alamat</td>
                 <td width="35%">: <?=$alamat;?></td>
             </tr>
-            <tr class="text-danger">
+            <tr class="text-dark">
                 <td width="15%">Jenis Kelamin</td>
                 <td width="35%">: <?=$jk;?></td>
                 <td width="15%">No.HP/Telp</td>
@@ -76,7 +76,7 @@
         </table>
         <br>
         <table class="default" width='100%' border='1' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-            <tr class="text-danger">
+            <tr class="text-dark">
                 <td width='3%'><div align='center'>No.</div></td>
                 <td width='40%'><div align='center'>Nama Obat</div></td>
                 <td width='17%'><div align='center'>Jumlah</div></td>
@@ -92,7 +92,7 @@
                         resep_obat.no_rawat=detail_pemberian_obat.no_rawat and resep_obat.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and
                         resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode_sat where resep_obat.no_resep='$noresep'");
                 while($barisresepnonracikan = mysqli_fetch_array($resepnonracikan)) {
-                    echo "<tr class='text-danger'>
+                    echo "<tr class='text-dark'>
                             <td align='center'>$i</td>
                             <td align='center'>$barisresepnonracikan[nama_brng]</td>
                             <td align='center'>$barisresepnonracikan[jml] $barisresepnonracikan[satuan]</td>
@@ -107,7 +107,7 @@
                         resep_obat.tgl_perawatan=obat_racikan.tgl_perawatan and resep_obat.jam=obat_racikan.jam and 
                         resep_obat.no_rawat=obat_racikan.no_rawat where resep_obat.no_resep='$noresep'");
                 while($barisresepracikan = mysqli_fetch_array($resepracikan)) {
-                    echo "<tr class='text-danger'>
+                    echo "<tr class='text-dark'>
                             <td align='center'>$i</td>
                             <td align='center'>$barisresepracikan[no_racik] $barisresepracikan[nama_racik] (";
                         $resepdetailracikan=bukaquery("select databarang.nama_brng,detail_pemberian_obat.jml from

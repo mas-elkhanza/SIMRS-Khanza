@@ -71,7 +71,10 @@
             if($corona=="BukanCorona"){
                 $nosep=getOne("select no_sep from inacbg_klaim_baru2 where no_rawat='$norawat'");
                 if(empty($nosep)){
-                    $nosep=getOne("select no_sep from bridging_sep where no_rawat='$norawat'");
+                    $nosep=getOne("select bridging_sep.no_sep from bridging_sep where no_rawat='$norawat' order by MAX(CONVERT(RIGHT(bridging_sep.no_sep,6),signed)) desc limit 1");
+                    if(empty($nosep)){
+                        $nosep=getOne("select bridging_sep_internal.no_sep from bridging_sep_internal where no_rawat='$norawat' order by MAX(CONVERT(RIGHT(bridging_sep_internal.no_sep,6),signed)) desc limit 1");
+                    }
                 }
             }else if($corona=="PasienCorona"){
                 $nosep=getOne("select no_klaim from inacbg_noklaim_corona where no_rawat='$norawat'");

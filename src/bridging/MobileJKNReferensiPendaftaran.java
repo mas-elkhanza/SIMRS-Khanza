@@ -471,7 +471,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         if(tbJnsPerawatan.getSelectedRow()!= -1){
-            if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Batal'",1,new String[]{
+            if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Batal',validasi=now()",1,new String[]{
                 tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
             })==true){
                 Sequel.menyimpan2("referensi_mobilejkn_bpjs_batal","?,?,?,now(),?,?,?",6,new String[]{
@@ -494,7 +494,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCheckinActionPerformed
-        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin'",1,new String[]{
+        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin',validasi=now()",1,new String[]{
             tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
         })==true){
             Sequel.meghapus("referensi_mobilejkn_bpjs_batal","nobooking",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
@@ -511,7 +511,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCheckinKeyPressed
 
     private void BtnBelumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBelumActionPerformed
-        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Belum'",1,new String[]{
+        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Belum',validasi='0000-00-00 00:00:00'",1,new String[]{
             tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
         })==true){
             Sequel.meghapus("referensi_mobilejkn_bpjs_batal","nobooking",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
