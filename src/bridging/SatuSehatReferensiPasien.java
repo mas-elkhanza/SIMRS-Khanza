@@ -37,13 +37,14 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String link="",json="";
+    private String link="",json="",birthDate="",province="",city="",district="",village="",rt="",rw="",line="",postalCode="",gender="",
+                   noktp="",idpasien="",maritalStatus="",name="",phone="",email="";
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
-    private JsonNode response,responsename;
+    private JsonNode response;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -55,7 +56,7 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        tabMode=new DefaultTableModel(null,new String[]{"Kode Praktisi","Nama Praktisi"}){
+        tabMode=new DefaultTableModel(null,new String[]{"Item","Data"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -69,7 +70,7 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(120);
             }else if(i==1){
-                column.setPreferredWidth(460);
+                column.setPreferredWidth(300);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -154,7 +155,7 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
 
         jLabel16.setText("NIK/ID Pasien :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(90, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass6.add(jLabel16);
 
         TCari.setName("TCari"); // NOI18N
@@ -324,22 +325,92 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
     private void tampil(String search) {
         Valid.tabelKosong(tabMode);
         try{
+            birthDate="";province="";city="";district="";village="";rt="";rw="";line="";postalCode="";gender="";noktp="";idpasien="";maritalStatus="";name="";phone="";email="";
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
             requestEntity = new HttpEntity(headers);
-            json=api.getRest().exchange(link+"/Practitioner?identifier=https://fhir.kemkes.go.id/id/nik|"+search, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("Notifikasi : "+link+"/Patient?identifier=https://fhir.kemkes.go.id/id/nik|"+search);
+            json=api.getRest().exchange(link+"/Patient?identifier=https://fhir.kemkes.go.id/id/nik|"+search, HttpMethod.GET, requestEntity, String.class).getBody();
             System.out.println("JSON : "+json);
             root = mapper.readTree(json);
             response = root.path("entry");
-            System.out.println("Notifikasi : "+link);
             for(JsonNode list:response){
-                responsename=list.path("resource").path("name");
-                for(JsonNode list2:responsename){
-                    tabMode.addRow(new String[]{
-                      list.path("resource").path("id").asText(),list2.path("text").asText()
-                    }); 
+                idpasien=list.path("resource").path("id").asText();
+                noktp=search;
+                try{
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                    requestEntity = new HttpEntity(headers);
+                    System.out.println("Notifikasi : "+link+"/Patient/"+idpasien);
+                    json=api.getRest().exchange(link+"/Patient/"+idpasien, HttpMethod.GET, requestEntity, String.class).getBody();
+                    System.out.println("JSON : "+json);
+                    root = mapper.readTree(json);
+                    gender = root.path("gender").asText().toLowerCase().equals("male")?"Laki-laki":"Perempuan";
+                    birthDate = root.path("birthDate").asText();
+                    maritalStatus = root.path("maritalStatus").path("text").asText().toLowerCase().equals("married")?"Menikah":"Belum Menikah";
+                    for(JsonNode listname:root.path("name")){
+                        name=listname.path("text").asText();
+                    }
+                    for(JsonNode listtelecom:root.path("telecom")){
+                        if(listtelecom.path("system").asText().equals("phone")){
+                            phone=listtelecom.path("value").asText();
+                        }
+                        if(listtelecom.path("system").asText().equals("email")){
+                            email=listtelecom.path("value").asText();
+                        }
+                    }
+                    for(JsonNode listaddress:root.path("address")){
+                        line=listaddress.path("line").asText();
+                        postalCode=listaddress.path("postalCode").asText();
+                        for(JsonNode listextension:listaddress.path("extension")){
+                            for(JsonNode listextensionextension:listextension.path("extension")){
+                                if(listextensionextension.path("url").asText().equals("province")){
+                                    province=listextensionextension.path("valueCode").asText();
+                                }
+                                if(listextensionextension.path("url").asText().equals("city")){
+                                    city=listextensionextension.path("valueCode").asText();
+                                }
+                                if(listextensionextension.path("url").asText().equals("district")){
+                                    district=listextensionextension.path("valueCode").asText();
+                                }
+                                if(listextensionextension.path("url").asText().equals("village")){
+                                    village=listextensionextension.path("valueCode").asText();
+                                }
+                                if(listextensionextension.path("url").asText().equals("rt")){
+                                    rt=listextensionextension.path("valueCode").asText();
+                                }
+                                if(listextensionextension.path("url").asText().equals("rw")){
+                                    rw=listextensionextension.path("valueCode").asText();
+                                }
+                            }
+                        }
+                    }
+                }catch(Exception e){
+                    System.out.println("Notifikasi : "+e);
                 }
+                tabMode.addRow(new String[]{
+                    "ID Pasien",": "+idpasien
+                });
+                tabMode.addRow(new String[]{
+                    "Nomor KTP",": "+noktp
+                });
+                tabMode.addRow(new String[]{
+                    "Nama",": "+name
+                });
+                tabMode.addRow(new String[]{
+                    "Tanggal Lahir",": "+birthDate
+                });
+                tabMode.addRow(new String[]{
+                    "Jenis Kelamin",": "+gender
+                });
+                tabMode.addRow(new String[]{
+                    "Status Pernikahan",": "+maritalStatus
+                });
+                tabMode.addRow(new String[]{
+                    "Alamat Rumah",": "+line
+                });
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
@@ -351,7 +422,7 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                 requestEntity = new HttpEntity(headers);
-                json=api.getRest().exchange(link+"/Practitioner/"+search, HttpMethod.GET, requestEntity, String.class).getBody();
+                json=api.getRest().exchange(link+"/Patient/"+search, HttpMethod.GET, requestEntity, String.class).getBody();
                 System.out.println("JSON : "+json);
                 root = mapper.readTree(json);
                 response = root.path("name");
