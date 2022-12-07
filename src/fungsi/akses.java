@@ -195,7 +195,7 @@ public final class akses {
             perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false,penilaian_lanjutan_resiko_jatuh_anak=false,penilaian_awal_medis_ralan_geriatri=false,
             penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,
-            jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false;
+            jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1110,6 +1110,7 @@ public final class akses {
                         akses.jawaban_pio_apoteker=true;
                         akses.surat_persetujuan_umum=true;
                         akses.transfer_pasien_antar_ruang=true;
+                        akses.satu_sehat_referensi_dokter=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2008,6 +2009,7 @@ public final class akses {
                         akses.jawaban_pio_apoteker=rs2.getBoolean("jawaban_pio_apoteker");
                         akses.surat_persetujuan_umum=rs2.getBoolean("surat_persetujuan_umum");
                         akses.transfer_pasien_antar_ruang=rs2.getBoolean("transfer_pasien_antar_ruang");
+                        akses.satu_sehat_referensi_dokter=rs2.getBoolean("satu_sehat_referensi_dokter");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2904,6 +2906,7 @@ public final class akses {
                         akses.jawaban_pio_apoteker=false;
                         akses.surat_persetujuan_umum=false;
                         akses.transfer_pasien_antar_ruang=false;
+                        akses.satu_sehat_referensi_dokter=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3857,4 +3860,5 @@ public final class akses {
     public static boolean getjawaban_pio_apoteker(){return akses.jawaban_pio_apoteker;}
     public static boolean getsurat_persetujuan_umum(){return akses.surat_persetujuan_umum;}
     public static boolean gettransfer_pasien_antar_ruang(){return akses.transfer_pasien_antar_ruang;}
+    public static boolean getsatu_sehat_referensi_dokter(){return akses.satu_sehat_referensi_dokter;}
 }   
