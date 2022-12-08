@@ -568,7 +568,7 @@ public final class DlgIGD extends javax.swing.JDialog {
             IPPRINTERTRACER=koneksiDB.IPPRINTERTRACER();
             URUTNOREG=koneksiDB.URUTNOREG();            
             aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
-            ps3=koneksi.prepareStatement("select * from poliklinik where poliklinik.kd_poli='IGDK'");
+            ps3=koneksi.prepareStatement("select poliklinik.registrasi,poliklinik.registrasilama,poliklinik.kd_poli from poliklinik where poliklinik.kd_poli='IGDK'");
             try {
                 rs=ps3.executeQuery();
                 if(rs.next()){

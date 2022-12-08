@@ -5,8 +5,6 @@
 
 package bridging;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -19,15 +17,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 
 /**
  *
@@ -38,15 +31,6 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String link="",json="",birthDate="",province="",provincename="",city="",cityname="",district="",districtname="",village="",villagename="",rt="",rw="",line="",postalCode="",gender="",
-                   noktp="",idpasien="",maritalStatus="",name="",phone="",email="";
-    private ApiSatuSehat api=new ApiSatuSehat();
-    private HttpHeaders headers ;
-    private HttpEntity requestEntity;
-    private ObjectMapper mapper = new ObjectMapper();
-    private JsonNode root;
-    private JsonNode response;
-    private FileReader dataPropinsi,dataKabupaten,dataKecamatan,dataKelurahan;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -100,36 +84,6 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
                     }
                 }
             });
-        } 
-        
-        try {
-            link=koneksiDB.URLFHIRSATUSEHAT();
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        }  
-        
-        try {
-            dataPropinsi = new FileReader("./cache/propinsi.iyem");
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        } 
-        
-        try {
-            dataKabupaten = new FileReader("./cache/kabupaten.iyem");
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        } 
-        
-        try {
-            dataKecamatan= new FileReader("./cache/kecamatan.iyem");
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        } 
-        
-        try {
-            dataKelurahan= new FileReader("./cache/kelurahan.iyem");
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
         } 
     }
     
@@ -350,280 +304,56 @@ public final class SatuSehatReferensiPasien extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void tampil(String search) {
         Valid.tabelKosong(tabMode);
-        try{
-            birthDate="";province="";provincename="";city="";cityname="";district="";districtname="";village="";villagename="";
-            rt="";rw="";line="";postalCode="";gender="";noktp="";idpasien="";maritalStatus="";name="";phone="";email="";
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-            requestEntity = new HttpEntity(headers);
-            System.out.println("Notifikasi : "+link+"/Patient?identifier=https://fhir.kemkes.go.id/id/nik|"+search);
-            json=api.getRest().exchange(link+"/Patient?identifier=https://fhir.kemkes.go.id/id/nik|"+search, HttpMethod.GET, requestEntity, String.class).getBody();
-            System.out.println("JSON : "+json);
-            root = mapper.readTree(json);
-            for(JsonNode list:root.path("entry")){
-                idpasien=list.path("resource").path("id").asText();
-                noktp=search;
-                try{
-                    headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                    requestEntity = new HttpEntity(headers);
-                    System.out.println("Notifikasi : "+link+"/Patient/"+idpasien);
-                    json=api.getRest().exchange(link+"/Patient/"+idpasien, HttpMethod.GET, requestEntity, String.class).getBody();
-                    System.out.println("JSON : "+json);
-                    root = mapper.readTree(json);
-                    gender = root.path("gender").asText().toLowerCase().equals("male")?"Laki-laki":"Perempuan";
-                    birthDate = root.path("birthDate").asText();
-                    maritalStatus = root.path("maritalStatus").path("text").asText().toLowerCase().equals("married")?"Menikah":"Belum Menikah";
-                    for(JsonNode listname:root.path("name")){
-                        name=listname.path("text").asText();
-                    }
-                    for(JsonNode listtelecom:root.path("telecom")){
-                        if(listtelecom.path("system").asText().equals("phone")){
-                            phone=listtelecom.path("value").asText();
-                        }else if(listtelecom.path("system").asText().equals("email")){
-                            email=listtelecom.path("value").asText();
-                        }
-                    }
-                    for(JsonNode listaddress:root.path("address")){
-                        line=listaddress.path("line").get(0).asText();
-                        postalCode=listaddress.path("postalCode").asText();
-                        for(JsonNode listextension:listaddress.path("extension")){
-                            for(JsonNode listextensionextension:listextension.path("extension")){
-                                if(listextensionextension.path("url").asText().equals("province")){
-                                    province=listextensionextension.path("valueCode").asText();
-                                }else if(listextensionextension.path("url").asText().equals("city")){
-                                    city=listextensionextension.path("valueCode").asText();
-                                }else if(listextensionextension.path("url").asText().equals("district")){
-                                    district=listextensionextension.path("valueCode").asText();
-                                }else if(listextensionextension.path("url").asText().equals("village")){
-                                    village=listextensionextension.path("valueCode").asText();
-                                }else if(listextensionextension.path("url").asText().equals("rt")){
-                                    rt=listextensionextension.path("valueCode").asText();
-                                }else if(listextensionextension.path("url").asText().equals("rw")){
-                                    rw=listextensionextension.path("valueCode").asText();
-                                }
-                            }
-                        }
-                    }
-                }catch(Exception e){
-                    System.out.println("Notifikasi : "+e);
-                }
-                tabMode.addRow(new String[]{
-                    "ID Pasien",": "+idpasien
-                });
-                tabMode.addRow(new String[]{
-                    "Nomor KTP",": "+noktp
-                });
-                tabMode.addRow(new String[]{
-                    "Nama",": "+name
-                });
-                tabMode.addRow(new String[]{
-                    "Tanggal Lahir",": "+birthDate
-                });
-                tabMode.addRow(new String[]{
-                    "Jenis Kelamin",": "+gender
-                });
-                tabMode.addRow(new String[]{
-                    "Status Pernikahan",": "+maritalStatus
-                });
-                tabMode.addRow(new String[]{
-                    "Alamat Rumah",": "+line
-                });
-                tabMode.addRow(new String[]{
-                    "R.T.",": "+rt
-                });
-                tabMode.addRow(new String[]{
-                    "R.W.",": "+rw
-                });
-                response = mapper.readTree(dataKelurahan).path("kelurahan");
-                for(JsonNode listkelurahan:response){
-                    if(listkelurahan.path("id").asText().toLowerCase().equals(village)&&listkelurahan.path("id_kecamatan").asText().equals(district)){
-                        villagename=listkelurahan.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Kelurahan",": "+village+" "+villagename
-                });
-                response = mapper.readTree(dataKecamatan).path("kecamatan");
-                for(JsonNode listkcamatan:response){
-                    if(listkcamatan.path("id").asText().toLowerCase().equals(district)&&listkcamatan.path("id_kabupaten").asText().equals(city)){
-                        districtname=listkcamatan.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Kecamatan",": "+district+" "+districtname
-                });
-                response = mapper.readTree(dataKabupaten).path("kabupaten");
-                for(JsonNode listkabupaten:response){
-                    if(listkabupaten.path("id").asText().toLowerCase().equals(city)&&listkabupaten.path("id_propinsi").asText().equals(province)){
-                        cityname=listkabupaten.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Kabupaten",": "+city+" "+cityname
-                });
-                response = mapper.readTree(dataPropinsi).path("propinsi");
-                for(JsonNode listpropinsi:response){
-                    if(listpropinsi.path("id").asText().toLowerCase().equals(province)){
-                        provincename=listpropinsi.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Propinsi",": "+province+" "+provincename
-                });
-                tabMode.addRow(new String[]{
-                    "Kode P.O.S.",": "+postalCode
-                });
-                tabMode.addRow(new String[]{
-                    "Nomor HP",": "+phone
-                });
-                tabMode.addRow(new String[]{
-                    "E-Mail",": "+email
-                });
-            }
-            
-            if(tabMode.getRowCount()==0){
-                try{
-                    headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
-                    requestEntity = new HttpEntity(headers);
-                    System.out.println("Notifikasi : "+link+"/Patient/"+search);
-                    json=api.getRest().exchange(link+"/Patient/"+search, HttpMethod.GET, requestEntity, String.class).getBody();
-                    System.out.println("JSON : "+json);
-                    root = mapper.readTree(json);
-                    idpasien=search;
-                    gender = root.path("gender").asText().toLowerCase().equals("male")?"Laki-laki":"Perempuan";
-                    birthDate = root.path("birthDate").asText();
-                    maritalStatus = root.path("maritalStatus").path("text").asText().toLowerCase().equals("married")?"Menikah":"Belum Menikah";
-                    for(JsonNode listname:root.path("name")){
-                        name=listname.path("text").asText();
-                    }
-                    for(JsonNode listtelecom:root.path("telecom")){
-                        if(listtelecom.path("system").asText().equals("phone")){
-                            phone=listtelecom.path("value").asText();
-                        }
-                        if(listtelecom.path("system").asText().equals("email")){
-                            email=listtelecom.path("value").asText();
-                        }
-                    }
-                    for(JsonNode listnoktp:root.path("identifier")){
-                        if(listnoktp.path("system").asText().equals("https://fhir.kemkes.go.id/id/nik")){
-                            noktp=listnoktp.path("value").asText();
-                        }
-                    }
-                    for(JsonNode listaddress:root.path("address")){
-                        line=listaddress.path("line").get(0).asText();
-                        postalCode=listaddress.path("postalCode").asText();
-                        for(JsonNode listextension:listaddress.path("extension")){
-                            for(JsonNode listextensionextension:listextension.path("extension")){
-                                if(listextensionextension.path("url").asText().equals("province")){
-                                    province=listextensionextension.path("valueCode").asText();
-                                }
-                                if(listextensionextension.path("url").asText().equals("city")){
-                                    city=listextensionextension.path("valueCode").asText();
-                                }
-                                if(listextensionextension.path("url").asText().equals("district")){
-                                    district=listextensionextension.path("valueCode").asText();
-                                }
-                                if(listextensionextension.path("url").asText().equals("village")){
-                                    village=listextensionextension.path("valueCode").asText();
-                                }
-                                if(listextensionextension.path("url").asText().equals("rt")){
-                                    rt=listextensionextension.path("valueCode").asText();
-                                }
-                                if(listextensionextension.path("url").asText().equals("rw")){
-                                    rw=listextensionextension.path("valueCode").asText();
-                                }
-                            }
-                        }
-                    }
-                }catch(Exception e){
-                    System.out.println("Notifikasi : "+e);
-                }
-                tabMode.addRow(new String[]{
-                    "ID Pasien",": "+idpasien
-                });
-                tabMode.addRow(new String[]{
-                    "Nomor KTP",": "+noktp
-                });
-                tabMode.addRow(new String[]{
-                    "Nama",": "+name
-                });
-                tabMode.addRow(new String[]{
-                    "Tanggal Lahir",": "+birthDate
-                });
-                tabMode.addRow(new String[]{
-                    "Jenis Kelamin",": "+gender
-                });
-                tabMode.addRow(new String[]{
-                    "Status Pernikahan",": "+maritalStatus
-                });
-                tabMode.addRow(new String[]{
-                    "Alamat Rumah",": "+line
-                });
-                tabMode.addRow(new String[]{
-                    "R.T.",": "+rt
-                });
-                tabMode.addRow(new String[]{
-                    "R.W.",": "+rw
-                });
-                response = mapper.readTree(dataKelurahan).path("kelurahan");
-                for(JsonNode listkelurahan:response){
-                    if(listkelurahan.path("id").asText().toLowerCase().equals(village)&&listkelurahan.path("id_kecamatan").asText().equals(district)){
-                        villagename=listkelurahan.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Kelurahan",": "+village+" "+villagename
-                });
-                response = mapper.readTree(dataKecamatan).path("kecamatan");
-                for(JsonNode listkcamatan:response){
-                    if(listkcamatan.path("id").asText().toLowerCase().equals(district)&&listkcamatan.path("id_kabupaten").asText().equals(city)){
-                        districtname=listkcamatan.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Kecamatan",": "+district+" "+districtname
-                });
-                response = mapper.readTree(dataKabupaten).path("kabupaten");
-                for(JsonNode listkabupaten:response){
-                    if(listkabupaten.path("id").asText().toLowerCase().equals(city)&&listkabupaten.path("id_propinsi").asText().equals(province)){
-                        cityname=listkabupaten.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Kabupaten",": "+city+" "+cityname
-                });
-                response = mapper.readTree(dataPropinsi).path("propinsi");
-                for(JsonNode listpropinsi:response){
-                    if(listpropinsi.path("id").asText().toLowerCase().equals(province)){
-                        provincename=listpropinsi.path("nama").asText();
-                    }
-                }
-                tabMode.addRow(new String[]{
-                    "Propinsi",": "+province+" "+provincename
-                });
-                tabMode.addRow(new String[]{
-                    "Kode P.O.S.",": "+postalCode
-                });
-                tabMode.addRow(new String[]{
-                    "Nomor HP",": "+phone
-                });
-                tabMode.addRow(new String[]{
-                    "E-Mail",": "+email
-                });
-                
-            }
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
-        }
-        
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, Belum Ada data di Server Satu Sehat");
-        }
+        SatuSehatCekNIK cekViaSatuSehat=new SatuSehatCekNIK();
+        cekViaSatuSehat.tampil(search);
+        tabMode.addRow(new String[]{
+            "ID Pasien",": "+cekViaSatuSehat.idpasien
+        });
+        tabMode.addRow(new String[]{
+            "Nomor KTP",": "+cekViaSatuSehat.noktp
+        });
+        tabMode.addRow(new String[]{
+            "Nama",": "+cekViaSatuSehat.name
+        });
+        tabMode.addRow(new String[]{
+            "Tanggal Lahir",": "+cekViaSatuSehat.birthDate
+        });
+        tabMode.addRow(new String[]{
+            "Jenis Kelamin",": "+cekViaSatuSehat.gender
+        });
+        tabMode.addRow(new String[]{
+            "Status Pernikahan",": "+cekViaSatuSehat.maritalStatus
+        });
+        tabMode.addRow(new String[]{
+            "Alamat Rumah",": "+cekViaSatuSehat.line
+        });
+        tabMode.addRow(new String[]{
+            "R.T.",": "+cekViaSatuSehat.rt
+        });
+        tabMode.addRow(new String[]{
+            "R.W.",": "+cekViaSatuSehat.rw
+        });
+        tabMode.addRow(new String[]{
+            "Kelurahan",": "+cekViaSatuSehat.village+" "+cekViaSatuSehat.villagename
+        });
+        tabMode.addRow(new String[]{
+            "Kecamatan",": "+cekViaSatuSehat.district+" "+cekViaSatuSehat.districtname
+        });
+        tabMode.addRow(new String[]{
+            "Kabupaten",": "+cekViaSatuSehat.city+" "+cekViaSatuSehat.cityname
+        });
+        tabMode.addRow(new String[]{
+            "Propinsi",": "+cekViaSatuSehat.province+" "+cekViaSatuSehat.provincename
+        });
+        tabMode.addRow(new String[]{
+            "Kode P.O.S.",": "+cekViaSatuSehat.postalCode
+        });
+        tabMode.addRow(new String[]{
+            "Nomor HP",": "+cekViaSatuSehat.phone
+        });
+        tabMode.addRow(new String[]{
+            "E-Mail",": "+cekViaSatuSehat.email
+        });
     }
 
     public JTable getTable(){
