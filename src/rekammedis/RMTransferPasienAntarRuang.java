@@ -264,6 +264,12 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         KeluhanUtama3 = new widget.TextArea();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel34 = new widget.Label();
+        TujuanPemeriksaan2 = new widget.ComboBox();
+        TNoRw5 = new widget.TextBox();
+        jLabel35 = new widget.Label();
+        TujuanPemeriksaan3 = new widget.ComboBox();
+        jLabel36 = new widget.Label();
+        jLabel37 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -479,7 +485,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         FormInput.add(jSeparator14);
         jSeparator14.setBounds(0, 861, 880, 0);
 
-        TujuanPemeriksaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kursi Roda", "Tempat Tidur", "Brankar" }));
+        TujuanPemeriksaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         TujuanPemeriksaan.setName("TujuanPemeriksaan"); // NOI18N
         TujuanPemeriksaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -487,7 +493,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             }
         });
         FormInput.add(TujuanPemeriksaan);
-        TujuanPemeriksaan.setBounds(739, 80, 115, 23);
+        TujuanPemeriksaan.setBounds(775, 330, 80, 23);
 
         jLabel57.setText("Indikasi Pindah :");
         jLabel57.setName("jLabel57"); // NOI18N
@@ -606,7 +612,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw2);
-        TNoRw2.setBounds(169, 80, 150, 23);
+        TNoRw2.setBounds(288, 330, 150, 23);
 
         jLabel13.setText(":");
         jLabel13.setName("jLabel13"); // NOI18N
@@ -633,7 +639,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         FormInput.add(jLabel15);
         jLabel15.setBounds(324, 80, 140, 23);
 
-        TujuanPemeriksaan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kondisi Pasien Stabil", "Kondisi Pasien Tidak Ada Perubahan", "Kondisi Pasien Memburuk", "Fasilitas Kurang Memadai", "Fasilitas Butuh Lebih Baik", "Tenaga Membutuhkan Yang Lebih Ahli", "Tenaga Kurang", "Lain-lain" }));
+        TujuanPemeriksaan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Oksigen Portable", "Infus", "NGT", "Syringe Pump", "Suction", "Kateter Urin" }));
         TujuanPemeriksaan1.setName("TujuanPemeriksaan1"); // NOI18N
         TujuanPemeriksaan1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -641,7 +647,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             }
         });
         FormInput.add(TujuanPemeriksaan1);
-        TujuanPemeriksaan1.setBounds(486, 40, 235, 23);
+        TujuanPemeriksaan1.setBounds(150, 330, 135, 23);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText("Diagnosa Utama");
@@ -674,7 +680,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         jLabel30.setText("Diagnosa Sekunder :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(15, 150, 170, 20);
+        jLabel30.setBounds(15, 150, 170, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -697,7 +703,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         jLabel31.setText("Prosedur Yang Sudah Dilakukan :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(445, 150, 170, 20);
+        jLabel31.setBounds(445, 150, 170, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -734,13 +740,13 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         jLabel32.setText("Obat Yang Telah Diberikan :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
-        jLabel32.setBounds(15, 220, 170, 20);
+        jLabel32.setBounds(15, 220, 170, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel33.setText("Pemeriksaan Penunjang Yang Sudah Dilakukan :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(445, 220, 370, 20);
+        jLabel33.setBounds(445, 220, 370, 23);
 
         scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane3.setName("scrollPane3"); // NOI18N
@@ -783,11 +789,57 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         FormInput.add(jSeparator4);
         jSeparator4.setBounds(0, 320, 880, 1);
 
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel34.setText("Peralatan Yang Menyertai Saat Pindah :");
+        jLabel34.setText("Pasien / Keluarga Mengetahui & Menyetujui Alasan Pemindahan :");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(15, 330, 300, 20);
+        jLabel34.setBounds(441, 330, 330, 23);
+
+        TujuanPemeriksaan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kondisi Pasien Stabil", "Kondisi Pasien Tidak Ada Perubahan", "Kondisi Pasien Memburuk", "Fasilitas Kurang Memadai", "Fasilitas Butuh Lebih Baik", "Tenaga Membutuhkan Yang Lebih Ahli", "Tenaga Kurang", "Lain-lain" }));
+        TujuanPemeriksaan2.setName("TujuanPemeriksaan2"); // NOI18N
+        TujuanPemeriksaan2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TujuanPemeriksaan2KeyPressed(evt);
+            }
+        });
+        FormInput.add(TujuanPemeriksaan2);
+        TujuanPemeriksaan2.setBounds(486, 40, 235, 23);
+
+        TNoRw5.setHighlighter(null);
+        TNoRw5.setName("TNoRw5"); // NOI18N
+        TNoRw5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoRw5KeyPressed(evt);
+            }
+        });
+        FormInput.add(TNoRw5);
+        TNoRw5.setBounds(169, 80, 150, 23);
+
+        jLabel35.setText(":");
+        jLabel35.setName("jLabel35"); // NOI18N
+        FormInput.add(jLabel35);
+        jLabel35.setBounds(131, 330, 15, 23);
+
+        TujuanPemeriksaan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kursi Roda", "Tempat Tidur", "Brankar" }));
+        TujuanPemeriksaan3.setName("TujuanPemeriksaan3"); // NOI18N
+        TujuanPemeriksaan3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TujuanPemeriksaan3KeyPressed(evt);
+            }
+        });
+        FormInput.add(TujuanPemeriksaan3);
+        TujuanPemeriksaan3.setBounds(739, 80, 115, 23);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel36.setText("Peralatan Yang Menyertai");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(15, 330, 130, 23);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel37.setText("Bila Pemberi Persetujuan Adalah Keluarga Pasien, Lengkapi Isian Berikut :");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput.add(jLabel37);
+        jLabel37.setBounds(15, 360, 380, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1345,6 +1397,18 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_KeluhanUtama3KeyPressed
 
+    private void TujuanPemeriksaan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanPemeriksaan2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TujuanPemeriksaan2KeyPressed
+
+    private void TNoRw5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRw5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TNoRw5KeyPressed
+
+    private void TujuanPemeriksaan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanPemeriksaan3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TujuanPemeriksaan3KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1390,6 +1454,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     private widget.TextBox TNoRw2;
     private widget.TextBox TNoRw3;
     private widget.TextBox TNoRw4;
+    private widget.TextBox TNoRw5;
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal TglAsuhan;
@@ -1397,6 +1462,8 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     private widget.TextBox TglLahir;
     private widget.ComboBox TujuanPemeriksaan;
     private widget.ComboBox TujuanPemeriksaan1;
+    private widget.ComboBox TujuanPemeriksaan2;
+    private widget.ComboBox TujuanPemeriksaan3;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -1415,6 +1482,9 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     private widget.Label jLabel32;
     private widget.Label jLabel33;
     private widget.Label jLabel34;
+    private widget.Label jLabel35;
+    private widget.Label jLabel36;
+    private widget.Label jLabel37;
     private widget.Label jLabel57;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
