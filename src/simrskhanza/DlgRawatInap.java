@@ -6655,11 +6655,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             RMPerencanaanPemulangan form=new RMPerencanaanPemulangan(null,false);
             form.isCek();
-            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.emptTeks();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPerencanaanPemulanganActionPerformed
@@ -6672,12 +6672,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             RMPenilaianLanjutanRisikoJatuhDewasa form=new RMPenilaianLanjutanRisikoJatuhDewasa(null,false);
             form.isCek();
-            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.emptTeks();
-            form.tampil();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanResikoJatuhDewasaActionPerformed
@@ -6690,12 +6690,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             RMPenilaianLanjutanRisikoJatuhAnak form=new RMPenilaianLanjutanRisikoJatuhAnak(null,false);
             form.isCek();
-            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.emptTeks();
-            form.tampil();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanResikoJatuhAnakActionPerformed
@@ -6725,12 +6725,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             RMPenilaianTambahanGeriatri form=new RMPenilaianTambahanGeriatri(null,false);
             form.isCek();
-            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-            form.emptTeks();
-            form.tampil();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPenilaianTambahanGeriatriActionPerformed
@@ -6745,10 +6745,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
             form.tampil();
-            form.emptTeks();
-            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSkriningNutrisiDewasaActionPerformed
@@ -6763,10 +6763,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
             form.tampil();
-            form.emptTeks();
-            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnHasilPemeriksaanUSGActionPerformed
@@ -6781,10 +6781,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
             form.tampil();
-            form.emptTeks();
-            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSkriningNutrisiLansiaActionPerformed
@@ -6798,11 +6798,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             RMSkriningNutrisiAnak form=new RMSkriningNutrisiAnak(null,false);
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setVisible(true);
             form.setLocationRelativeTo(internalFrame1);
+            form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
             form.tampil();
-            form.emptTeks();
-            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSkriningNutrisiAnakActionPerformed
@@ -6817,10 +6817,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
             form.tampil();
-            form.emptTeks();
-            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSkriningGiziLanjutActionPerformed
@@ -6835,10 +6835,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
             form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
             form.tampil();
-            form.emptTeks();
-            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnKonselingFarmasiActionPerformed
@@ -6853,10 +6853,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
             form.emptTeks();
             form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());
             form.tampil();
-            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnInformasiObatActionPerformed

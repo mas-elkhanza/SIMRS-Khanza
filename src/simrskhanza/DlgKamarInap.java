@@ -12589,9 +12589,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     resume.emptTeks();
                                     resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                     resume.setLocationRelativeTo(internalFrame1);
+                                    resume.setVisible(true);
                                     resume.setNoRm(rs2.getString("no_rawat2"),new Date());
                                     resume.tampil();
-                                    resume.setVisible(true);
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -12617,9 +12617,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     resume.emptTeks();
                     resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     resume.setLocationRelativeTo(internalFrame1);
+                    resume.setVisible(true);
                     resume.setNoRm(TNoRwCari.getText(),new Date());
                     resume.tampil();
-                    resume.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -12648,6 +12648,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 form.isCek();
                                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
                                 if(R1.isSelected()==true){
                                     form.setNoRm(rs2.getString("no_rawat2"),new Date());
                                 }else if(R2.isSelected()==true){
@@ -12656,7 +12657,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
                                 }
                                 form.emptTeks();
-                                form.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -12681,6 +12681,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
+                    form.setVisible(true);
                     if(R1.isSelected()==true){
                         form.setNoRm(norawat.getText(),new Date());
                     }else if(R2.isSelected()==true){
@@ -12689,7 +12690,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         form.setNoRm(norawat.getText(),DTPCari4.getDate());
                     }   
                     form.emptTeks();
-                    form.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -12705,6 +12705,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianLanjutanRisikoJatuhDewasa form=new RMPenilaianLanjutanRisikoJatuhDewasa(null,false);
                 form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
                 if(R1.isSelected()==true){
                     form.setNoRm(norawat.getText(),new Date());
                 }else if(R2.isSelected()==true){
@@ -12714,9 +12717,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 form.emptTeks();
                 form.tampil();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12731,6 +12731,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMUjiFungsiKFR form=new RMUjiFungsiKFR(null,false);
                 form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
                 if(R1.isSelected()==true){
                     form.setNoRm(norawat.getText(),new Date());
                 }else if(R2.isSelected()==true){
@@ -12740,9 +12743,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 form.emptTeks();
                 form.tampil();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12770,6 +12770,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 form.isCek();
                                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
                                 if(R1.isSelected()==true){
                                     form.setNoRm(rs2.getString("no_rawat2"),new Date());
                                 }else if(R2.isSelected()==true){
@@ -12778,7 +12779,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
                                 }
                                 form.tampil();
-                                form.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -12803,6 +12803,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
+                    form.setVisible(true);
                     if(R1.isSelected()==true){
                         form.setNoRm(norawat.getText(),new Date());
                     }else if(R2.isSelected()==true){
@@ -12811,7 +12812,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         form.setNoRm(norawat.getText(),DTPCari4.getDate());
                     }   
                     form.tampil();
-                    form.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -12827,6 +12827,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianTambahanGeriatri form=new RMPenilaianTambahanGeriatri(null,false);
                 form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
                 if(R1.isSelected()==true){
                     form.setNoRm(norawat.getText(),new Date());
                 }else if(R2.isSelected()==true){
@@ -12836,9 +12839,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 form.emptTeks();
                 form.tampil();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12853,6 +12853,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMSkriningNutrisiDewasa form=new RMSkriningNutrisiDewasa(null,false);
                 form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
                 if(R1.isSelected()==true){
                     form.setNoRm(norawat.getText(),new Date());
                 }else if(R2.isSelected()==true){
@@ -12862,9 +12865,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 form.emptTeks();
                 form.tampil();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12879,6 +12879,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMHasilPemeriksaanUSG form=new RMHasilPemeriksaanUSG(null,false);
                 form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
                 if(R1.isSelected()==true){
                     form.setNoRm(norawat.getText(),new Date());
                 }else if(R2.isSelected()==true){
@@ -12888,9 +12891,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 form.emptTeks();
                 form.tampil();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12905,6 +12905,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMSkriningNutrisiLansia form=new RMSkriningNutrisiLansia(null,false);
                 form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
                 if(R1.isSelected()==true){
                     form.setNoRm(norawat.getText(),new Date());
                 }else if(R2.isSelected()==true){
@@ -12914,9 +12917,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 form.emptTeks();
                 form.tampil();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -12944,6 +12944,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 form.isCek();
                                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
                                 if(R1.isSelected()==true){
                                     form.setNoRm(rs2.getString("no_rawat2"),new Date());
                                 }else if(R2.isSelected()==true){
@@ -12952,7 +12953,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
                                 }
                                 form.tampil();
-                                form.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -12977,6 +12977,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
+                    form.setVisible(true);
                     if(R1.isSelected()==true){
                         form.setNoRm(norawat.getText(),new Date());
                     }else if(R2.isSelected()==true){
@@ -12985,7 +12986,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         form.setNoRm(norawat.getText(),DTPCari4.getDate());
                     }   
                     form.tampil();
-                    form.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -13015,9 +13015,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     resume.emptTeks();
                                     resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                     resume.setLocationRelativeTo(internalFrame1);
+                                    resume.setVisible(true);
                                     resume.setNoRm(rs2.getString("no_rawat2"),new Date());
                                     resume.tampil();
-                                    resume.setVisible(true);
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -13043,9 +13043,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     resume.emptTeks();
                     resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     resume.setLocationRelativeTo(internalFrame1);
+                    resume.setVisible(true);
                     resume.setNoRm(TNoRwCari.getText(),new Date());
                     resume.tampil();
-                    resume.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -13074,6 +13074,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 form.isCek();
                                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
                                 if(R1.isSelected()==true){
                                     form.setNoRm(rs2.getString("no_rawat2"),new Date());
                                 }else if(R2.isSelected()==true){
@@ -13082,7 +13083,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
                                 }
                                 form.tampil();
-                                form.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -13106,6 +13106,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     RMKonselingFarmasi form=new RMKonselingFarmasi(null,false);
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    form.setVisible(true);
                     form.setLocationRelativeTo(internalFrame1);
                     if(R1.isSelected()==true){
                         form.setNoRm(norawat.getText(),new Date());
@@ -13115,7 +13116,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         form.setNoRm(norawat.getText(),DTPCari4.getDate());
                     }   
                     form.tampil();
-                    form.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -13143,11 +13143,11 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     DlgPermintaanPelayananInformasiObat dlgro=new DlgPermintaanPelayananInformasiObat(null,false);
                                     dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                     dlgro.setLocationRelativeTo(internalFrame1);
+                                    dlgro.setVisible(true);
                                     dlgro.emptTeks();
                                     dlgro.isCek();
                                     dlgro.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien"));
                                     dlgro.tampil();
-                                    dlgro.setVisible(true);
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -13171,11 +13171,11 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     DlgPermintaanPelayananInformasiObat dlgro=new DlgPermintaanPelayananInformasiObat(null,false);
                     dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgro.setLocationRelativeTo(internalFrame1);
+                    dlgro.setVisible(true);
                     dlgro.emptTeks();
                     dlgro.isCek();
                     dlgro.setNoRm(TNoRwCari.getText(),TNoRMCari.getText(),TPasienCari.getText());
                     dlgro.tampil();
-                    dlgro.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -13202,12 +13202,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                     SuratPersetujuanUmum resume=new SuratPersetujuanUmum(null,false);
                                     resume.isCek();
-                                    resume.emptTeks();
                                     resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                     resume.setLocationRelativeTo(internalFrame1);
-                                    resume.setNoRm(rs2.getString("no_rawat2"),new Date());
-                                    resume.tampil();
                                     resume.setVisible(true);
+                                    resume.emptTeks();
+                                    resume.setNoRm(TNoRwCari.getText(),new Date());
+                                    resume.tampil();
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -13230,12 +13230,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     SuratPersetujuanUmum resume=new SuratPersetujuanUmum(null,false);
                     resume.isCek();
-                    resume.emptTeks();
                     resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     resume.setLocationRelativeTo(internalFrame1);
+                    resume.setVisible(true);
+                    resume.emptTeks();
                     resume.setNoRm(TNoRwCari.getText(),new Date());
                     resume.tampil();
-                    resume.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
