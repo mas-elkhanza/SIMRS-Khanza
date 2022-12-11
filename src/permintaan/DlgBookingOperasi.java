@@ -29,6 +29,7 @@ import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import simrskhanza.DlgKamarInap;
 import rekammedis.RMRiwayatPerawatan;
+import rekammedis.RMTransferPasienAntarRuang;
 import setting.DlgCariRuangOperasi;
 import simrskhanza.DlgTagihanOperasi;
 
@@ -298,6 +299,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnPreAnastesi = new widget.Button();
         BtnTagihanOperasi = new widget.Button();
         BtnObatBhp = new widget.Button();
+        BtnTransferAntarRuang = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1049,6 +1051,23 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         });
         FormMenu.add(BtnObatBhp);
 
+        BtnTransferAntarRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnTransferAntarRuang.setText("Transfer Antar Ruang");
+        BtnTransferAntarRuang.setFocusPainted(false);
+        BtnTransferAntarRuang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnTransferAntarRuang.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnTransferAntarRuang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnTransferAntarRuang.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnTransferAntarRuang.setName("BtnTransferAntarRuang"); // NOI18N
+        BtnTransferAntarRuang.setPreferredSize(new java.awt.Dimension(140, 23));
+        BtnTransferAntarRuang.setRoundRect(false);
+        BtnTransferAntarRuang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTransferAntarRuangActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnTransferAntarRuang);
+
         ScrollMenu.setViewportView(FormMenu);
 
         PanelAccor.add(ScrollMenu, java.awt.BorderLayout.CENTER);
@@ -1622,6 +1641,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_BtnPreAnastesiActionPerformed
 
+    private void BtnTransferAntarRuangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTransferAntarRuangActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{            
+            if(tbObat.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMTransferPasienAntarRuang form=new RMTransferPasienAntarRuang(null,false);
+                form.isCek();
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");
+            }
+        }
+    }//GEN-LAST:event_BtnTransferAntarRuangActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1657,6 +1697,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnRuangOperasi;
     private widget.Button BtnSimpan;
     private widget.Button BtnTagihanOperasi;
+    private widget.Button BtnTransferAntarRuang;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
@@ -1864,6 +1905,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnPermintaanLab.setVisible(akses.getpermintaan_lab());
         BtnPreAnastesi.setVisible(akses.getpenilaian_pre_anestesi());
         BtnPreOperasi.setVisible(akses.getpenilaian_pre_operasi());
+        BtnTransferAntarRuang.setVisible(akses.gettransfer_pasien_antar_ruang());
     }
 
     private void isMenu(){
