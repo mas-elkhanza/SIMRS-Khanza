@@ -15,8 +15,6 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -48,7 +46,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;
+    private int i=0,pilihan=0;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
     private String finger="";
@@ -1231,11 +1229,6 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         KdPetugasMenyerahkan.setEditable(false);
         KdPetugasMenyerahkan.setName("KdPetugasMenyerahkan"); // NOI18N
         KdPetugasMenyerahkan.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdPetugasMenyerahkan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasMenyerahkanKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugasMenyerahkan);
         KdPetugasMenyerahkan.setBounds(140, 630, 100, 23);
 
@@ -1272,11 +1265,6 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         KdPetugasMenerima.setEditable(false);
         KdPetugasMenerima.setName("KdPetugasMenerima"); // NOI18N
         KdPetugasMenerima.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdPetugasMenerima.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasMenerimaKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugasMenerima);
         KdPetugasMenerima.setBounds(543, 630, 100, 23);
 
@@ -1465,7 +1453,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         }else if(KeluhanUtamaSetelahTransfer.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtamaSetelahTransfer,"Keluhan Utama Setelah Transfer");
         }else{
-            if(Sequel.menyimpantf("penilaian_psikologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,new String[]{
+            if(Sequel.menyimpantf("transfer_pasien_antar_ruang","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TanggalMasuk.getSelectedItem()+"")+" "+TanggalMasuk.getSelectedItem().toString().substring(11,19)
                 })==true){
                     emptTeks();
@@ -1575,23 +1563,23 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             try{
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
+                        "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
-                        "penilaian_psikologi.tanggal between ? and ? order by penilaian_psikologi.tanggal");
+                        "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
+                        "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
+                        "transfer_pasien_antar_ruang.tanggal between ? and ? order by transfer_pasien_antar_ruang.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
+                        "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
-                        "penilaian_psikologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_psikologi.nip like ? or petugas.nama like ?) order by penilaian_psikologi.tanggal");
+                        "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
+                        "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
+                        "transfer_pasien_antar_ruang.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "transfer_pasien_antar_ruang.nip like ? or petugas.nama like ?) order by transfer_pasien_antar_ruang.tanggal");
                 }
 
                 try {
@@ -1822,17 +1810,17 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
             Valid.MyReportqry("rptCetakPenilaianPsikolog.jasper","report","::[ Laporan Penilaian Psikolog ]::",
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
+                        "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where penilaian_psikologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                        "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
+                        "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where transfer_pasien_antar_ruang.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
     private void MenyetujuiPemindahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenyetujuiPemindahanKeyPressed
-        //Valid.pindah(evt,TglAsuhan,Informasi);
+        Valid.pindah(evt,KeteranganPeralatan,NamaMenyetujui);
     }//GEN-LAST:event_MenyetujuiPemindahanKeyPressed
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
@@ -1856,7 +1844,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_KeteranganIndikasiPindahRuangKeyPressed
 
     private void KeteranganPeralatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPeralatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PeralatanMenyertai,MenyetujuiPemindahan);
     }//GEN-LAST:event_KeteranganPeralatanKeyPressed
 
     private void RuangSelanjutnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuangSelanjutnyaKeyPressed
@@ -1864,7 +1852,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_RuangSelanjutnyaKeyPressed
 
     private void PeralatanMenyertaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeralatanMenyertaiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanPenunjang,KeteranganPeralatan);
     }//GEN-LAST:event_PeralatanMenyertaiKeyPressed
 
     private void DiagnosaSekunderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaSekunderKeyPressed
@@ -1900,23 +1888,23 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_MetodePemindahanKeyPressed
 
     private void NamaMenyetujuiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaMenyetujuiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MenyetujuiPemindahan,HubunganMenyetujui);
     }//GEN-LAST:event_NamaMenyetujuiKeyPressed
 
     private void HubunganMenyetujuiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganMenyetujuiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NamaMenyetujui,KeadaanUmumSebelumTransfer);
     }//GEN-LAST:event_HubunganMenyetujuiKeyPressed
 
     private void KeluhanUtamaSebelumTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaSebelumTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,SuhuSebelumTransfer,KeadaanUmumSetelahTransfer);
     }//GEN-LAST:event_KeluhanUtamaSebelumTransferKeyPressed
 
     private void KeadaanUmumSebelumTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmumSebelumTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HubunganMenyetujui,TDSebelumTransfer);
     }//GEN-LAST:event_KeadaanUmumSebelumTransferKeyPressed
 
     private void TDSebelumTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDSebelumTransferKeyPressed
-        //Valid.pindah(evt,Informasi,Nadi);
+        Valid.pindah(evt,KeadaanUmumSebelumTransfer,NadiSebelumTransfer);
     }//GEN-LAST:event_TDSebelumTransferKeyPressed
 
     private void NadiSebelumTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiSebelumTransferKeyPressed
@@ -1928,38 +1916,35 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_RRSebelumTransferKeyPressed
 
     private void SuhuSebelumTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuSebelumTransferKeyPressed
-        //Valid.pindah(evt,RR,GCS);
+        Valid.pindah(evt,RRSebelumTransfer,KeluhanUtamaSebelumTransfer);
     }//GEN-LAST:event_SuhuSebelumTransferKeyPressed
 
     private void KeadaanUmumSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmumSetelahTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeluhanUtamaSebelumTransfer,TDSetelahTransfer);
     }//GEN-LAST:event_KeadaanUmumSetelahTransferKeyPressed
 
     private void TDSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDSetelahTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeadaanUmumSetelahTransfer,NadiSetelahTransfer);
     }//GEN-LAST:event_TDSetelahTransferKeyPressed
 
     private void KeluhanUtamaSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaSetelahTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SuhuSetelahTransfer,BtnDokter);
     }//GEN-LAST:event_KeluhanUtamaSetelahTransferKeyPressed
 
     private void NadiSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiSetelahTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TDSetelahTransfer,RRSetelahTransfer);
     }//GEN-LAST:event_NadiSetelahTransferKeyPressed
 
     private void RRSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRSetelahTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NadiSetelahTransfer,SuhuSetelahTransfer);
     }//GEN-LAST:event_RRSetelahTransferKeyPressed
 
     private void SuhuSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuSetelahTransferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RRSetelahTransfer,KeluhanUtamaSetelahTransfer);
     }//GEN-LAST:event_SuhuSetelahTransferKeyPressed
 
-    private void KdPetugasMenyerahkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasMenyerahkanKeyPressed
-
-    }//GEN-LAST:event_KdPetugasMenyerahkanKeyPressed
-
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
+        pilihan=1;
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
@@ -1968,19 +1953,20 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Rencana,Informasi);
+        Valid.pindah(evt,KeluhanUtamaSetelahTransfer,BtnDokter1);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
-    private void KdPetugasMenerimaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasMenerimaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdPetugasMenerimaKeyPressed
-
     private void BtnDokter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter1ActionPerformed
-        // TODO add your handling code here:
+        pilihan=2;
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
     }//GEN-LAST:event_BtnDokter1ActionPerformed
 
     private void BtnDokter1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokter1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeluhanUtamaSetelahTransfer,BtnSimpan);
     }//GEN-LAST:event_BtnDokter1KeyPressed
 
     /**
@@ -2138,23 +2124,23 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
+                        "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
-                        "penilaian_psikologi.tanggal between ? and ? order by penilaian_psikologi.tanggal");
+                        "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
+                        "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
+                        "transfer_pasien_antar_ruang.tanggal between ? and ? order by transfer_pasien_antar_ruang.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
+                        "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
-                        "penilaian_psikologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_psikologi.nip like ? or petugas.nama like ?) order by penilaian_psikologi.tanggal");
+                        "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
+                        "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
+                        "transfer_pasien_antar_ruang.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "transfer_pasien_antar_ruang.nip like ? or petugas.nama like ?) order by transfer_pasien_antar_ruang.tanggal");
             }
                 
             try {
@@ -2279,20 +2265,20 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_psikologi());
-        BtnHapus.setEnabled(akses.getpenilaian_psikologi());
-        BtnEdit.setEnabled(akses.getpenilaian_psikologi());
-        BtnEdit.setEnabled(akses.getpenilaian_psikologi());
-        /*if(akses.getjml2()>=1){
-            KdPetugas.setEditable(false);
+        BtnSimpan.setEnabled(akses.gettransfer_pasien_antar_ruang());
+        BtnHapus.setEnabled(akses.gettransfer_pasien_antar_ruang());
+        BtnEdit.setEnabled(akses.gettransfer_pasien_antar_ruang());
+        BtnEdit.setEnabled(akses.gettransfer_pasien_antar_ruang());
+        if(akses.getjml2()>=1){
+            KdPetugasMenyerahkan.setEditable(false);
             BtnDokter.setEnabled(false);
-            KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,KdPetugas.getText());
-            if(NmPetugas.getText().equals("")){
-                KdPetugas.setText("");
+            KdPetugasMenyerahkan.setText(akses.getkode());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugasMenyerahkan,KdPetugasMenyerahkan.getText());
+            if(NmPetugasMenyerahkan.getText().equals("")){
+                KdPetugasMenyerahkan.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
-        }   */         
+        }          
     }
     
     public void setTampil(){
@@ -2301,7 +2287,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_psikologi where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from transfer_pasien_antar_ruang where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tampil();
@@ -2312,7 +2298,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penilaian_psikologi","no_rawat=?","no_rawat=?,tanggal=?,nip=?,anamnesis=?,dikirim_dari=?,tujuan_pemeriksaan=?,ket_anamnesis=?,rupa=?,bentuk_tubuh=?,tindakan=?,pakaian=?,ekspresi=?,berbicara=?,penggunaan_kata=?,ciri_menyolok=?,hasil_psikotes=?,kepribadian=?,psikodinamika=?,kesimpulan_psikolog=?",20,new String[]{
+        /*if(Sequel.mengedittf("transfer_pasien_antar_ruang","no_rawat=?","no_rawat=?,tanggal=?,nip=?,anamnesis=?,dikirim_dari=?,tujuan_pemeriksaan=?,ket_anamnesis=?,rupa=?,bentuk_tubuh=?,tindakan=?,pakaian=?,ekspresi=?,berbicara=?,penggunaan_kata=?,ciri_menyolok=?,hasil_psikotes=?,kepribadian=?,psikodinamika=?,kesimpulan_psikolog=?",20,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),Informasi.getSelectedItem().toString(),Dikirimdari.getSelectedItem().toString(),TujuanPemeriksaan.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),
                 Bentuktubuh.getSelectedItem().toString(),Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),
                 Kesimpulanpsikolog.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()

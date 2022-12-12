@@ -455,6 +455,7 @@ import bridging.MobileJKNPembatalanPendaftaran;
 import bridging.MobileJKNReferensiPendaftaran;
 import bridging.PCareCekKartu;
 import bridging.PCareCekReferensiTACC;
+import bridging.SatuSehatMapingOrganisasi;
 import bridging.SatuSehatReferensiPasien;
 import bridging.SatuSehatReferensiPraktisi;
 import grafikanalisa.GrafikHemodialisaPerBulan;
@@ -19569,14 +19570,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnMappingOrganisasiSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
-        /*isTutup();
+        isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        SatuSehatReferensiPasien aplikasi=new SatuSehatReferensiPasien(this,false);
+        SatuSehatMapingOrganisasi aplikasi=new SatuSehatMapingOrganisasi(this,false);
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());*/
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
