@@ -15,6 +15,8 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -170,7 +172,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             });
         }
         
-        /*petugas.addWindowListener(new WindowListener() {
+        petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -178,9 +180,15 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(petugas.getTable().getSelectedRow()!= -1){
-                    KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                    KdPetugas.requestFocus();
+                    if(pilihan==1){
+                        KdPetugasMenyerahkan.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugasMenyerahkan.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        KdPetugasMenyerahkan.requestFocus();
+                    }else{
+                        KdPetugasMenerima.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugasMenerima.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        KdPetugasMenerima.requestFocus();
+                    }
                 }
             }
             @Override
@@ -191,7 +199,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });*/
+        });
         
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
@@ -1453,10 +1461,14 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         }else if(KeluhanUtamaSetelahTransfer.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtamaSetelahTransfer,"Keluhan Utama Setelah Transfer");
         }else{
-            if(Sequel.menyimpantf("transfer_pasien_antar_ruang","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TanggalMasuk.getSelectedItem()+"")+" "+TanggalMasuk.getSelectedItem().toString().substring(11,19)
-                })==true){
-                    emptTeks();
+            if(akses.getkode().equals("Admin Utama")){
+                simpan();
+            }else {
+                if(akses.getkode().equals(KdPetugasMenerima.getText())||akses.getkode().equals(KdPetugasMenyerahkan.getText())){
+                    simpan();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
+                }
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1840,7 +1852,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalPindahKeyPressed
 
     private void KeteranganIndikasiPindahRuangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganIndikasiPindahRuangKeyPressed
-        Valid.pindah2(evt,IndikasiPindah,AsalRuang);
+        Valid.pindah(evt,IndikasiPindah,AsalRuang);
     }//GEN-LAST:event_KeteranganIndikasiPindahRuangKeyPressed
 
     private void KeteranganPeralatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPeralatanKeyPressed
@@ -1928,7 +1940,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_TDSetelahTransferKeyPressed
 
     private void KeluhanUtamaSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaSetelahTransferKeyPressed
-        Valid.pindah(evt,SuhuSetelahTransfer,BtnDokter);
+        Valid.pindah2(evt,SuhuSetelahTransfer,BtnDokter);
     }//GEN-LAST:event_KeluhanUtamaSetelahTransferKeyPressed
 
     private void NadiSetelahTransferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiSetelahTransferKeyPressed
@@ -2268,17 +2280,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         BtnSimpan.setEnabled(akses.gettransfer_pasien_antar_ruang());
         BtnHapus.setEnabled(akses.gettransfer_pasien_antar_ruang());
         BtnEdit.setEnabled(akses.gettransfer_pasien_antar_ruang());
-        BtnEdit.setEnabled(akses.gettransfer_pasien_antar_ruang());
-        if(akses.getjml2()>=1){
-            KdPetugasMenyerahkan.setEditable(false);
-            BtnDokter.setEnabled(false);
-            KdPetugasMenyerahkan.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugasMenyerahkan,KdPetugasMenyerahkan.getText());
-            if(NmPetugasMenyerahkan.getText().equals("")){
-                KdPetugasMenyerahkan.setText("");
-                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
-            }
-        }          
+        BtnPrint.setEnabled(akses.gettransfer_pasien_antar_ruang());
     }
     
     public void setTampil(){
@@ -2307,5 +2309,21 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
                emptTeks();
                TabRawat.setSelectedIndex(1);
         }*/
+    }
+
+    private void simpan() {
+        if(Sequel.menyimpantf("transfer_pasien_antar_ruang","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat & Tanggal Masuk",32,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TanggalMasuk.getSelectedItem()+"")+" "+TanggalMasuk.getSelectedItem().toString().substring(11,19),
+                Valid.SetTgl(TanggalPindah.getSelectedItem()+"")+" "+TanggalPindah.getSelectedItem().toString().substring(11,19),AsalRuang.getText(), 
+                RuangSelanjutnya.getText(),DiagnosaUtama.getText(),DiagnosaSekunder.getText(),IndikasiPindah.getSelectedItem().toString(),KeteranganIndikasiPindahRuang.getText(), 
+                ProsedurDilakukan.getText(),ObatYangDiberikan.getText(),MetodePemindahan.getSelectedItem().toString(),PeralatanMenyertai.getSelectedItem().toString(),
+                KeteranganPeralatan.getText(),PemeriksaanPenunjang.getText(),MenyetujuiPemindahan.getSelectedItem().toString(),NamaMenyetujui.getText(),
+                HubunganMenyetujui.getSelectedItem().toString(),KeluhanUtamaSebelumTransfer.getText(),KeadaanUmumSebelumTransfer.getSelectedItem().toString(),
+                TDSebelumTransfer.getText(),NadiSebelumTransfer.getText(),RRSebelumTransfer.getText(),SuhuSebelumTransfer.getText(),KeluhanUtamaSetelahTransfer.getText(),
+                KeadaanUmumSetelahTransfer.getSelectedItem().toString(),TDSetelahTransfer.getText(),NadiSetelahTransfer.getText(),RRSetelahTransfer.getText(), 
+                SuhuSetelahTransfer.getText(),KdPetugasMenyerahkan.getText(),KdPetugasMenyerahkan.getText()
+            })==true){
+                emptTeks();
+        }
     }
 }

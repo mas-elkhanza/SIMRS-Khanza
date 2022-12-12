@@ -58,7 +58,7 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
-    private JsonNode response,responsename;
+    private JsonNode response;
 
     /** Creates new form DlgJnsPerawatanRalan
      * @param parent
@@ -82,11 +82,11 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
         for (i = 0; i < 3; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(110);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(360);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(230);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -139,6 +139,12 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         }); 
+        
+        try {
+            link=koneksiDB.URLFHIRSATUSEHAT();
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }  
     
     }
 
@@ -459,100 +465,102 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                 json = "{" +
-                            "    \"resourceType\": \"Organization\"," +
-                            "    \"active\": true," +
-                            "    \"identifier\": [" +
-                            "        {" +
-                            "            \"use\": \"official\"," +
-                            "            \"system\": \"http://sys-ids.kemkes.go.id/organization/10000004\"," +
-                            "            \"value\": \"R220001\"" +
-                            "        }" +
-                            "    ]," +
-                            "    \"type\": [" +
-                            "        {" +
-                            "            \"coding\": [" +
-                            "                {" +
-                            "                    \"system\": \"http://terminology.hl7.org/CodeSystem/organization-type\"," +
-                            "                    \"code\": \"dept\"," +
-                            "                    \"display\": \"Hospital Department\"" +
-                            "                }" +
-                            "            ]" +
-                            "        }" +
-                            "    ]," +
-                            "    \"name\": \"Rawat Jalan Terpadu\"," +
-                            "    \"telecom\": [" +
-                            "        {" +
-                            "            \"system\": \"phone\"," +
-                            "            \"value\": \"+6221-783042654\"," +
-                            "            \"use\": \"work\"" +
-                            "        }," +
-                            "        {" +
-                            "            \"system\": \"email\"," +
-                            "            \"value\": \"rs-satusehat@gmail.com\"," +
-                            "            \"use\": \"work\"" +
-                            "        }," +
-                            "        {" +
-                            "            \"system\": \"url\"," +
-                            "            \"value\": \"www.rs-satusehat@gmail.com\"," +
-                            "            \"use\": \"work\"" +
-                            "        }" +
-                            "    ]," +
-                            "    \"address\": [" +
-                            "        {" +
-                            "            \"use\": \"work\"," +
-                            "            \"type\": \"both\"," +
-                            "            \"line\": [" +
-                            "                \"Jalan Jati Asih\"" +
-                            "            ]," +
-                            "            \"city\": \"Jakarta\"," +
-                            "            \"postalCode\": \"55292\"," +
-                            "            \"country\": \"ID\"," +
-                            "            \"extension\": [" +
-                            "                {" +
-                            "                    \"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
-                            "                    \"extension\": [" +
-                            "                        {" +
-                            "                            \"url\": \"province\"," +
-                            "                            \"valueCode\": \"31\"" +
-                            "                        }," +
-                            "                        {" +
-                            "                            \"url\": \"city\"," +
-                            "                            \"valueCode\": \"3171\"" +
-                            "                        }," +
-                            "                        {" +
-                            "                            \"url\": \"district\"," +
-                            "                            \"valueCode\": \"317101\"" +
-                            "                        }," +
-                            "                        {" +
-                            "                            \"url\": \"village\"," +
-                            "                            \"valueCode\": \"31710101\"" +
-                            "                        }" +
-                            "                    ]" +
-                            "                }" +
-                            "            ]" +
-                            "        }" +
-                            "    ]," +
-                            "    \"partOf\": {" +
-                            "        \"reference\": \"Organization/10000004\"" +
-                            "    }" +
-                            "}";
+                            "\"resourceType\": \"Organization\"," +
+                            "\"active\": true," +
+                            "\"identifier\": [" +
+                                "{" +
+                                    "\"use\": \"official\"," +
+                                    "\"system\": \"http://sys-ids.kemkes.go.id/organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                    "\"value\": \""+KodeDepartemen.getText()+"\"" +
+                                "}" +
+                            "]," +
+                            "\"type\": [" +
+                                "{" +
+                                    "\"coding\": [" +
+                                        "{" +
+                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/organization-type\"," +
+                                            "\"code\": \"dept\"," +
+                                            "\"display\": \"Hospital Department\"" +
+                                        "}" +
+                                    "]" +
+                                "}" +
+                            "]," +
+                            "\"name\": \""+NamaDepartemen.getText()+"\"," +
+                            "\"telecom\": [" +
+                                "{" +
+                                    "\"system\": \"phone\"," +
+                                    "\"value\": \""+akses.getkontakrs()+"\"," +
+                                    "\"use\": \"work\"" +
+                                "}," +
+                                "{" +
+                                    "\"system\": \"email\"," +
+                                    "\"value\": \""+akses.getemailrs()+"\"," +
+                                    "\"use\": \"work\"" +
+                                "}," +
+                                "{" +
+                                    "\"system\": \"url\"," +
+                                    "\"value\": \"www."+akses.getemailrs()+"\"," +
+                                    "\"use\": \"work\"" +
+                                "}" +
+                            "]," +
+                            "\"address\": [" +
+                                "{" +
+                                    "\"use\": \"work\"," +
+                                    "\"type\": \"both\"," +
+                                    "\"line\": [" +
+                                        "\""+akses.getalamatrs()+"\"" +
+                                    "]," +
+                                    "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                    "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                    "\"country\": \"ID\"," +
+                                    "\"extension\": [" +
+                                        "{" +
+                                            "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                            "\"extension\": [" +
+                                                "{" +
+                                                    "\"url\": \"province\"," +
+                                                    "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"city\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"district\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"village\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}" +
+                                    "]" +
+                                "}" +
+                            "]," +
+                            "\"partOf\": {" +
+                                "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                            "}" +
+                        "}";
                 System.out.println("Request JSON : "+json);
                 requestEntity = new HttpEntity(json,headers);
                 json=api.getRest().exchange(link+"/Organization", HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println("Result JSON : "+json);
                 root = mapper.readTree(json);
-                response = root.path("entry");
-                System.out.println("Notifikasi : "+link);
-                for(JsonNode list:response){
-                    responsename=list.path("resource").path("name");
-                    for(JsonNode list2:responsename){
-                        tabMode.addRow(new String[]{
-                          list.path("resource").path("id").asText(),list2.path("text").asText()
-                        }); 
+                response = root.path("id");
+                if(!response.asText().equals("")){
+                    if(Sequel.menyimpantf("satu_sehat_mapping_departemen","?,?","Kode Departemen",2,new String[]{
+                            KodeDepartemen.getText(),response.asText()
+                        })==true){
+                        emptTeks();
+                        tampil();
                     }
-                }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
+                } 
             }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+                System.out.println("Notifikasi Bridging : "+e);
+                JOptionPane.showMessageDialog(null,"Error Respon Satu Sehat Kemenkes : "+e);
             }               
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -574,7 +582,7 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_departemen","kd_poli_rs");
+        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_departemen","dep_id");
         tampil();
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -630,7 +638,7 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");
-                Valid.MyReport("rptMapingPoliBPJS.jasper","report","::[ Mapping Departemen/Organisasi & BPJS ]::",param);            
+                Valid.MyReport("rptMapingOrganisasiSatuSehat.jasper","report","::[ Mapping Departemen/Organisasi Satu Sehat Kemenkes ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -750,18 +758,20 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
            ps=koneksi.prepareStatement(
-                   "select satu_sehat_mapping_departemen.kd_poli_rs,poliklinik.nm_poli,satu_sehat_mapping_departemen.kd_poli_bpjs,satu_sehat_mapping_departemen.nm_poli_bpjs "+
-                   "from satu_sehat_mapping_departemen inner join poliklinik on satu_sehat_mapping_departemen.kd_poli_rs=poliklinik.kd_poli where "+
-                   "satu_sehat_mapping_departemen.kd_poli_rs like ? or poliklinik.nm_poli like ? or satu_sehat_mapping_departemen.kd_poli_bpjs like ? or satu_sehat_mapping_departemen.nm_poli_bpjs like ? order by poliklinik.nm_poli");
+                   "select satu_sehat_mapping_departemen.dep_id,departemen.nama,satu_sehat_mapping_departemen.id_organisasi_satusehat "+
+                   "from satu_sehat_mapping_departemen inner join departemen on satu_sehat_mapping_departemen.dep_id=departemen.dep_id "+
+                   (TCari.getText().equals("")?"":"where satu_sehat_mapping_departemen.dep_id like ? or departemen.nama like ? or "+
+                   "satu_sehat_mapping_departemen.id_organisasi_satusehat like ? ")+" order by departemen.nama");
             try {
-                ps.setString(1,"%"+TCari.getText()+"%");
-                ps.setString(2,"%"+TCari.getText()+"%");
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
+                if(!TCari.getText().equals("")){
+                    ps.setString(1,"%"+TCari.getText()+"%");
+                    ps.setString(2,"%"+TCari.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("kd_poli_rs"),rs.getString("nm_poli"),rs.getString("kd_poli_bpjs"),rs.getString("nm_poli_bpjs")
+                        rs.getString("dep_id"),rs.getString("nama"),rs.getString("id_organisasi_satusehat")
                     });
                 }
             } catch (Exception e) {
@@ -803,5 +813,4 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
     public JTable getTable(){
         return tbJnsPerawatan;
     }  
-    
 }
