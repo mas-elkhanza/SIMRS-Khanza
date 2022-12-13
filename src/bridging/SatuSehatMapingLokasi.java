@@ -66,7 +66,9 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Kode Poli","Nama Poli","ID Lokasi Satu Sehat","Kode Departemen","Nama Departemen","ID Organisasi Satu Sehat"}){
+                "Kode Poli","Nama Poli","ID Lokasi Satu Sehat","Kode Departemen","Nama Departemen",
+                "ID Organisasi Satu Sehat","Longitude","Latitude","Altitude"
+            }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbJnsPerawatan.setModel(tabMode);
@@ -74,25 +76,35 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(260);
+                column.setPreferredWidth(200);
             }else if(i==2){
                 column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(260);
+                column.setPreferredWidth(200);
             }else if(i==5){
                 column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(100);
+            }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(100);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         KodeDepartemen.setDocument(new batasInput((byte)5).getKata(KodeDepartemen)); 
+        Longitude.setDocument(new batasInput((byte)30).getKata(Longitude)); 
+        Latitude.setDocument(new batasInput((byte)30).getKata(Latitude)); 
+        Altitude.setDocument(new batasInput((byte)30).getKata(Altitude)); 
+        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));                  
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -150,10 +162,10 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(poli.getTable().getSelectedRow()!= -1){                    
-                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                    KodePoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                    NamaPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
                 }
-                kdpoli.requestFocus();
+                KodePoli.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -206,10 +218,16 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         NamaDepartemen = new widget.TextBox();
         btnDepartemenRS = new widget.Button();
         jLabel5 = new widget.Label();
-        kdpoli = new widget.TextBox();
-        TPoli = new widget.TextBox();
+        KodePoli = new widget.TextBox();
+        NamaPoli = new widget.TextBox();
         btnPoliRS = new widget.Button();
         IDOrganisasi = new widget.TextBox();
+        Longitude = new widget.TextBox();
+        jLabel8 = new widget.Label();
+        jLabel9 = new widget.Label();
+        Latitude = new widget.TextBox();
+        jLabel10 = new widget.Label();
+        Altitude = new widget.TextBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -432,25 +450,25 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 44));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 74));
         FormInput.setLayout(null);
 
         jLabel4.setText("Organisasi :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(283, 10, 70, 23);
+        jLabel4.setBounds(170, 40, 74, 23);
 
         KodeDepartemen.setEditable(false);
         KodeDepartemen.setHighlighter(null);
         KodeDepartemen.setName("KodeDepartemen"); // NOI18N
         FormInput.add(KodeDepartemen);
-        KodeDepartemen.setBounds(357, 10, 50, 23);
+        KodeDepartemen.setBounds(248, 40, 55, 23);
 
         NamaDepartemen.setEditable(false);
         NamaDepartemen.setHighlighter(null);
         NamaDepartemen.setName("NamaDepartemen"); // NOI18N
         FormInput.add(NamaDepartemen);
-        NamaDepartemen.setBounds(409, 10, 140, 23);
+        NamaDepartemen.setBounds(305, 40, 176, 23);
 
         btnDepartemenRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDepartemenRS.setMnemonic('1');
@@ -467,24 +485,24 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnDepartemenRS);
-        btnDepartemenRS.setBounds(705, 10, 28, 23);
+        btnDepartemenRS.setBounds(705, 40, 28, 23);
 
         jLabel5.setText("Unit RS :");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
-        jLabel5.setBounds(0, 10, 56, 23);
+        jLabel5.setBounds(0, 10, 59, 23);
 
-        kdpoli.setEditable(false);
-        kdpoli.setHighlighter(null);
-        kdpoli.setName("kdpoli"); // NOI18N
-        FormInput.add(kdpoli);
-        kdpoli.setBounds(60, 10, 50, 23);
+        KodePoli.setEditable(false);
+        KodePoli.setHighlighter(null);
+        KodePoli.setName("KodePoli"); // NOI18N
+        FormInput.add(KodePoli);
+        KodePoli.setBounds(63, 10, 70, 23);
 
-        TPoli.setEditable(false);
-        TPoli.setHighlighter(null);
-        TPoli.setName("TPoli"); // NOI18N
-        FormInput.add(TPoli);
-        TPoli.setBounds(112, 10, 140, 23);
+        NamaPoli.setEditable(false);
+        NamaPoli.setHighlighter(null);
+        NamaPoli.setName("NamaPoli"); // NOI18N
+        FormInput.add(NamaPoli);
+        NamaPoli.setBounds(135, 10, 195, 23);
 
         btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliRS.setMnemonic('1');
@@ -501,13 +519,43 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPoliRS);
-        btnPoliRS.setBounds(254, 10, 28, 23);
+        btnPoliRS.setBounds(332, 10, 28, 23);
 
         IDOrganisasi.setEditable(false);
         IDOrganisasi.setHighlighter(null);
         IDOrganisasi.setName("IDOrganisasi"); // NOI18N
         FormInput.add(IDOrganisasi);
-        IDOrganisasi.setBounds(551, 10, 152, 23);
+        IDOrganisasi.setBounds(483, 40, 220, 23);
+
+        Longitude.setHighlighter(null);
+        Longitude.setName("Longitude"); // NOI18N
+        FormInput.add(Longitude);
+        Longitude.setBounds(430, 10, 120, 23);
+
+        jLabel8.setText("Longitude :");
+        jLabel8.setName("jLabel8"); // NOI18N
+        FormInput.add(jLabel8);
+        jLabel8.setBounds(357, 10, 69, 23);
+
+        jLabel9.setText("Latitude :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        FormInput.add(jLabel9);
+        jLabel9.setBounds(549, 10, 60, 23);
+
+        Latitude.setHighlighter(null);
+        Latitude.setName("Latitude"); // NOI18N
+        FormInput.add(Latitude);
+        Latitude.setBounds(613, 10, 120, 23);
+
+        jLabel10.setText("Altitude :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        FormInput.add(jLabel10);
+        jLabel10.setBounds(0, 40, 59, 23);
+
+        Altitude.setHighlighter(null);
+        Altitude.setName("Altitude"); // NOI18N
+        FormInput.add(Altitude);
+        Altitude.setBounds(63, 40, 110, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -529,33 +577,31 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(KodeDepartemen.getText().trim().equals("")||NamaDepartemen.getText().trim().equals("")){
             Valid.textKosong(KodeDepartemen,"Departemen/Organisasi");
+        }else if(KodePoli.getText().trim().equals("")||NamaPoli.getText().trim().equals("")){
+            Valid.textKosong(KodeDepartemen,"Poli/Unit");
+        }else if(Longitude.getText().trim().equals("")){
+            Valid.textKosong(Longitude,"Longitude");
+        }else if(Latitude.getText().trim().equals("")){
+            Valid.textKosong(Latitude,"Latitude");
+        }else if(Altitude.getText().trim().equals("")){
+            Valid.textKosong(Altitude,"Altitude");
         }else{
             try{
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                 json = "{" +
-                            "\"resourceType\": \"Organization\"," +
-                            "\"active\": true," +
+                            "\"resourceType\": \"Location\"," +
                             "\"identifier\": [" +
                                 "{" +
-                                    "\"use\": \"official\"," +
-                                    "\"system\": \"http://sys-ids.kemkes.go.id/organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                    "\"value\": \""+KodeDepartemen.getText()+"\"" +
+                                    "\"system\": \"http://sys-ids.kemkes.go.id/location/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                    "\"value\": \""+KodePoli.getText()+"\"" +
                                 "}" +
                             "]," +
-                            "\"type\": [" +
-                                "{" +
-                                    "\"coding\": [" +
-                                        "{" +
-                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/organization-type\"," +
-                                            "\"code\": \"dept\"," +
-                                            "\"display\": \"Hospital Department\"" +
-                                        "}" +
-                                    "]" +
-                                "}" +
-                            "]," +
-                            "\"name\": \""+NamaDepartemen.getText()+"\"," +
+                            "\"status\": \"active\"," +
+                            "\"name\": \""+NamaPoli.getText()+"\"," +
+                            "\"description\": \""+NamaPoli.getText()+"\"," +
+                            "\"mode\": \"instance\"," +
                             "\"telecom\": [" +
                                 "{" +
                                     "\"system\": \"phone\"," +
@@ -573,54 +619,65 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                                     "\"use\": \"work\"" +
                                 "}" +
                             "]," +
-                            "\"address\": [" +
-                                "{" +
-                                    "\"use\": \"work\"," +
-                                    "\"type\": \"both\"," +
-                                    "\"line\": [" +
-                                        "\""+akses.getalamatrs()+"\"" +
-                                    "]," +
-                                    "\"city\": \""+akses.getkabupatenrs()+"\"," +
-                                    "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
-                                    "\"country\": \"ID\"," +
-                                    "\"extension\": [" +
-                                        "{" +
-                                            "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
-                                            "\"extension\": [" +
-                                                "{" +
-                                                    "\"url\": \"province\"," +
-                                                    "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
-                                                "}," +
-                                                "{" +
-                                                    "\"url\": \"city\"," +
-                                                    "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
-                                                "}," +
-                                                "{" +
-                                                    "\"url\": \"district\"," +
-                                                    "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
-                                                "}," +
-                                                "{" +
-                                                    "\"url\": \"village\"," +
-                                                    "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
-                                                "}" +
-                                            "]" +
-                                        "}" +
-                                    "]" +
-                                "}" +
-                            "]," +
-                            "\"partOf\": {" +
-                                "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                            "\"address\": {" +
+                                "\"use\": \"work\"," +
+                                "\"line\": [" +
+                                    "\""+akses.getalamatrs()+"\"" +
+                                "]," +
+                                "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                "\"country\": \"ID\"," +
+                                "\"extension\": [" +
+                                    "{" +
+                                        "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                        "\"extension\": [" +
+                                            "{" +
+                                                "\"url\": \"province\"," +
+                                                "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                            "}," +
+                                            "{" +
+                                                "\"url\": \"city\"," +
+                                                "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                            "}," +
+                                            "{" +
+                                                "\"url\": \"district\"," +
+                                                "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                            "}," +
+                                            "{" +
+                                                "\"url\": \"village\"," +
+                                                "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                            "}" +
+                                        "]" +
+                                    "}" +
+                                "]" +
+                            "}," +
+                            "\"physicalType\": {" +
+                                "\"coding\": [" +
+                                    "{" +
+                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/location-physical-type\"," +
+                                        "\"code\": \"ro\"," +
+                                        "\"display\": \"Room\"" +
+                                    "}" +
+                                "]" +
+                            "}," +
+                            "\"position\": {" +
+                                "\"longitude\": "+Longitude.getText()+"," +
+                                "\"latitude\": "+Latitude.getText()+"," +
+                                "\"altitude\": "+Altitude.getText()+
+                            "}," +
+                            "\"managingOrganization\": {" +
+                                "\"reference\": \"Organization/"+IDOrganisasi.getText()+"\"" +
                             "}" +
                         "}";
                 System.out.println("Request JSON : "+json);
                 requestEntity = new HttpEntity(json,headers);
-                json=api.getRest().exchange(link+"/Organization", HttpMethod.POST, requestEntity, String.class).getBody();
+                json=api.getRest().exchange(link+"/Location", HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println("Result JSON : "+json);
                 root = mapper.readTree(json);
                 response = root.path("id");
                 if(!response.asText().equals("")){
-                    if(Sequel.menyimpantf("satu_sehat_mapping_departemen","?,?","Kode Departemen",2,new String[]{
-                            KodeDepartemen.getText(),response.asText()
+                    if(Sequel.menyimpantf("satu_sehat_mapping_lokasi_ralan","?,?,?,?,?,?","Kode Poli/Unit",6,new String[]{
+                            KodePoli.getText(),IDOrganisasi.getText(),response.asText(),Longitude.getText(),Latitude.getText(),Altitude.getText()
                         })==true){
                         emptTeks();
                         tampil();
@@ -746,7 +803,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                     root = mapper.readTree(json);
                     response = root.path("id");
                     if(!response.asText().equals("")){
-                        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_departemen","dep_id");
+                        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_lokasi_ralan","dep_id");
                         emptTeks();
                         tampil();
                     }else{
@@ -771,6 +828,14 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(KodeDepartemen.getText().trim().equals("")||NamaDepartemen.getText().trim().equals("")){
             Valid.textKosong(KodeDepartemen,"Departemen/Organisasi");
+        }else if(KodePoli.getText().trim().equals("")||NamaPoli.getText().trim().equals("")){
+            Valid.textKosong(KodeDepartemen,"Poli/Unit");
+        }else if(Longitude.getText().trim().equals("")){
+            Valid.textKosong(Longitude,"Longitude");
+        }else if(Latitude.getText().trim().equals("")){
+            Valid.textKosong(Latitude,"Latitude");
+        }else if(Altitude.getText().trim().equals("")){
+            Valid.textKosong(Altitude,"Altitude");
         }else{
             if(tbJnsPerawatan.getSelectedRow()>-1){
                 try{
@@ -863,7 +928,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                     root = mapper.readTree(json);
                     response = root.path("id");
                     if(!response.asText().equals("")){
-                        if(Sequel.mengedittf("satu_sehat_mapping_departemen","dep_id=?","dep_id=?,id_organisasi_satusehat=?",3,new String[]{
+                        if(Sequel.mengedittf("satu_sehat_mapping_lokasi_ralan","dep_id=?","dep_id=?,id_organisasi_satusehat=?",3,new String[]{
                                 KodeDepartemen.getText(),response.asText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                             })==true){
                             emptTeks();
@@ -1015,6 +1080,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Altitude;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1026,20 +1092,25 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.TextBox IDOrganisasi;
     private widget.TextBox KodeDepartemen;
+    private widget.TextBox KodePoli;
     private widget.Label LCount;
+    private widget.TextBox Latitude;
+    private widget.TextBox Longitude;
     private widget.TextBox NamaDepartemen;
+    private widget.TextBox NamaPoli;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.TextBox TPoli;
     private widget.Button btnDepartemenRS;
     private widget.Button btnPoliRS;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel10;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
+    private widget.Label jLabel8;
+    private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private widget.TextBox kdpoli;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbJnsPerawatan;

@@ -1951,7 +1951,7 @@
                         <Property name="text" type="java.lang.String" value="Tgl.Pindah :"/>
                         <Property name="name" type="java.lang.String" value="jLabel19" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[70, 23]"/>
+                          <Dimension value="[68, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -2014,7 +2014,7 @@
                       <Properties>
                         <Property name="name" type="java.lang.String" value="TCari" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[195, 23]"/>
+                          <Dimension value="[197, 23]"/>
                         </Property>
                       </Properties>
                       <Events>

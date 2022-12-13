@@ -75,7 +75,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 30; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -110,9 +110,23 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             }else if(i==15){
                 column.setPreferredWidth(230);
             }else if(i==16){
-                column.setPreferredWidth(230);
+                column.setPreferredWidth(236);
             }else if(i==17){
+                column.setPreferredWidth(134);
+            }else if(i==18){
+                column.setPreferredWidth(165);
+            }else if(i==19){
+                column.setPreferredWidth(127);
+            }else if(i==20){
+                column.setPreferredWidth(180);
+            }else if(i==21){
                 column.setPreferredWidth(100);
+            }else if(i==22){
+                column.setPreferredWidth(110);
+            }else if(i==23){
+                column.setPreferredWidth(50);
+            }else if(i==24){
+                column.setPreferredWidth(50);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1334,7 +1348,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
 
         jLabel19.setText("Tgl.Pindah :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel19.setPreferredSize(new java.awt.Dimension(68, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
@@ -1365,7 +1379,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(195, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(197, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
