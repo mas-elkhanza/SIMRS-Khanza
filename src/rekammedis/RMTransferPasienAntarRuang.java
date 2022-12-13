@@ -75,7 +75,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 38; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -122,11 +122,37 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             }else if(i==21){
                 column.setPreferredWidth(100);
             }else if(i==22){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(107);
             }else if(i==23){
                 column.setPreferredWidth(50);
             }else if(i==24){
                 column.setPreferredWidth(50);
+            }else if(i==25){
+                column.setPreferredWidth(45);
+            }else if(i==26){
+                column.setPreferredWidth(50);
+            }else if(i==27){
+                column.setPreferredWidth(200);
+            }else if(i==28){
+                column.setPreferredWidth(107);
+            }else if(i==29){
+                column.setPreferredWidth(50);
+            }else if(i==30){
+                column.setPreferredWidth(50);
+            }else if(i==31){
+                column.setPreferredWidth(45);
+            }else if(i==32){
+                column.setPreferredWidth(50);
+            }else if(i==33){
+                column.setPreferredWidth(200);
+            }else if(i==34){
+                column.setPreferredWidth(95);
+            }else if(i==35){
+                column.setPreferredWidth(150);
+            }else if(i==36){
+                column.setPreferredWidth(95);
+            }else if(i==37){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2265,6 +2291,14 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
+            /*
+            "No.Rawat"0,"No.RM"1,"Nama Pasien"2,"Tgl.Lahir"3,"J.K."4,"Tanggal Masuk"5,"Tanggal Pindah"6,"Indikasi Pindah"7,"Keterangan Indikasi Pindah"8,
+            "Asal Ruang Rawat / Poliklinik"9,"Ruang Rawat Selanjutnya"10,"Metode Pemindahan"11,"Diagnosa Utama"12,"Diagnosa Sekunder"13,"Prosedur Yang Sudah Dilakukan"14,
+            "Obat Yang Telah Diberikan"14,"Pemeriksaan Penunjang Yang Sudah Dilakukan"15,"Peralatan Yang Menyertai"16,"Keterangan Peralatan Menyertai"17,
+            "Menyetujui Pemindahan"18,"Nama Keluarga/Penanggung Jawab"19,"Hubungan"20,"Keadaan Umum SbT"21,"TD SbT"22,"Nadi SbT"23,"RR SbT"24,"Suhu Sbt"25,
+            "Keluhan Utama Sebelum Transfer"26,"Keadaan Umum StT"27,"TD StT"28,"Nadi StT"29,"RR StT"30,"Suhu Stt"31,"Keluhan Utama Setelah Transfer"32,"NIP Menyerahkan"33,
+            "Petugas Yang Menyerahkan"34,"NIP Menerima"35,"Petugas Yang Menerima"36
+            */
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());

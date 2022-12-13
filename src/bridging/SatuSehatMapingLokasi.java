@@ -66,8 +66,8 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Kode Poli","Nama Poli","ID Lokasi Satu Sehat","Kode Departemen","Nama Departemen",
-                "ID Organisasi Satu Sehat","Longitude","Latitude","Altitude"
+                "Kode Poli","Nama Poli","ID Lokasi Satu Sehat","Longitude","Latitude","Altitude",
+                "Kode Departemen","Nama Departemen","ID Organisasi Satu Sehat"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -79,23 +79,23 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         for (i = 0; i < 9; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(215);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(110);
             }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(110);
             }else if(i==5){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(110);
             }else if(i==6){
                 column.setPreferredWidth(100);
             }else if(i==7){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(180);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(215);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -718,28 +718,18 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                     json = "{" +
-                                "\"resourceType\": \"Organization\"," +
+                                "\"resourceType\": \"Location\"," +
                                 "\"id\": \""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()+"\"," +
-                                "\"active\": false," +
                                 "\"identifier\": [" +
                                     "{" +
-                                        "\"use\": \"official\"," +
-                                        "\"system\": \"http://sys-ids.kemkes.go.id/organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                        "\"value\": \""+KodeDepartemen.getText()+"\"" +
+                                        "\"system\": \"http://sys-ids.kemkes.go.id/location/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"value\": \""+KodePoli.getText()+"\"" +
                                     "}" +
                                 "]," +
-                                "\"type\": [" +
-                                    "{" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/organization-type\"," +
-                                                "\"code\": \"dept\"," +
-                                                "\"display\": \"Hospital Department\"" +
-                                            "}" +
-                                        "]" +
-                                    "}" +
-                                "]," +
-                                "\"name\": \""+NamaDepartemen.getText()+"\"," +
+                                "\"status\": \"inactive\"," +
+                                "\"name\": \""+NamaPoli.getText()+"\"," +
+                                "\"description\": \""+NamaPoli.getText()+"\"," +
+                                "\"mode\": \"instance\"," +
                                 "\"telecom\": [" +
                                     "{" +
                                         "\"system\": \"phone\"," +
@@ -757,57 +747,68 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                                         "\"use\": \"work\"" +
                                     "}" +
                                 "]," +
-                                "\"address\": [" +
-                                    "{" +
-                                        "\"use\": \"work\"," +
-                                        "\"type\": \"both\"," +
-                                        "\"line\": [" +
-                                            "\""+akses.getalamatrs()+"\"" +
-                                        "]," +
-                                        "\"city\": \""+akses.getkabupatenrs()+"\"," +
-                                        "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
-                                        "\"country\": \"ID\"," +
-                                        "\"extension\": [" +
-                                            "{" +
-                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
-                                                "\"extension\": [" +
-                                                    "{" +
-                                                        "\"url\": \"province\"," +
-                                                        "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
-                                                    "}," +
-                                                    "{" +
-                                                        "\"url\": \"city\"," +
-                                                        "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
-                                                    "}," +
-                                                    "{" +
-                                                        "\"url\": \"district\"," +
-                                                        "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
-                                                    "}," +
-                                                    "{" +
-                                                        "\"url\": \"village\"," +
-                                                        "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
-                                                    "}" +
-                                                "]" +
-                                            "}" +
-                                        "]" +
-                                    "}" +
-                                "]," +
-                                "\"partOf\": {" +
-                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                "\"address\": {" +
+                                    "\"use\": \"work\"," +
+                                    "\"line\": [" +
+                                        "\""+akses.getalamatrs()+"\"" +
+                                    "]," +
+                                    "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                    "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                    "\"country\": \"ID\"," +
+                                    "\"extension\": [" +
+                                        "{" +
+                                            "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                            "\"extension\": [" +
+                                                "{" +
+                                                    "\"url\": \"province\"," +
+                                                    "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"city\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"district\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"village\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}" +
+                                    "]" +
+                                "}," +
+                                "\"physicalType\": {" +
+                                    "\"coding\": [" +
+                                        "{" +
+                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/location-physical-type\"," +
+                                            "\"code\": \"ro\"," +
+                                            "\"display\": \"Room\"" +
+                                        "}" +
+                                    "]" +
+                                "}," +
+                                "\"position\": {" +
+                                    "\"longitude\": "+Longitude.getText()+"," +
+                                    "\"latitude\": "+Latitude.getText()+"," +
+                                    "\"altitude\": "+Altitude.getText()+
+                                "}," +
+                                "\"managingOrganization\": {" +
+                                    "\"reference\": \"Organization/"+IDOrganisasi.getText()+"\"" +
                                 "}" +
                             "}";
                     System.out.println("Request JSON : "+json);
                     requestEntity = new HttpEntity(json,headers);
-                    json=api.getRest().exchange(link+"/Organization/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                    json=api.getRest().exchange(link+"/Location/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                     System.out.println("Result JSON : "+json);
                     root = mapper.readTree(json);
                     response = root.path("id");
                     if(!response.asText().equals("")){
-                        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_lokasi_ralan","dep_id");
+                        Valid.hapusTable(tabMode,KodePoli,"satu_sehat_mapping_lokasi_ralan","kd_poli");
                         emptTeks();
                         tampil();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
+                        JOptionPane.showMessageDialog(null,"Gagal melakukan mapping lokasi ke server Satu Sehat Kemenkes");
                     } 
                 }catch(Exception e){
                     System.out.println("Notifikasi Bridging : "+e);
@@ -843,28 +844,18 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                     json = "{" +
-                                "\"resourceType\": \"Organization\"," +
+                                "\"resourceType\": \"Location\"," +
                                 "\"id\": \""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()+"\"," +
-                                "\"active\": true," +
                                 "\"identifier\": [" +
                                     "{" +
-                                        "\"use\": \"official\"," +
-                                        "\"system\": \"http://sys-ids.kemkes.go.id/organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                        "\"value\": \""+KodeDepartemen.getText()+"\"" +
+                                        "\"system\": \"http://sys-ids.kemkes.go.id/location/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"value\": \""+KodePoli.getText()+"\"" +
                                     "}" +
                                 "]," +
-                                "\"type\": [" +
-                                    "{" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/organization-type\"," +
-                                                "\"code\": \"dept\"," +
-                                                "\"display\": \"Hospital Department\"" +
-                                            "}" +
-                                        "]" +
-                                    "}" +
-                                "]," +
-                                "\"name\": \""+NamaDepartemen.getText()+"\"," +
+                                "\"status\": \"active\"," +
+                                "\"name\": \""+NamaPoli.getText()+"\"," +
+                                "\"description\": \""+NamaPoli.getText()+"\"," +
+                                "\"mode\": \"instance\"," +
                                 "\"telecom\": [" +
                                     "{" +
                                         "\"system\": \"phone\"," +
@@ -882,60 +873,71 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                                         "\"use\": \"work\"" +
                                     "}" +
                                 "]," +
-                                "\"address\": [" +
-                                    "{" +
-                                        "\"use\": \"work\"," +
-                                        "\"type\": \"both\"," +
-                                        "\"line\": [" +
-                                            "\""+akses.getalamatrs()+"\"" +
-                                        "]," +
-                                        "\"city\": \""+akses.getkabupatenrs()+"\"," +
-                                        "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
-                                        "\"country\": \"ID\"," +
-                                        "\"extension\": [" +
-                                            "{" +
-                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
-                                                "\"extension\": [" +
-                                                    "{" +
-                                                        "\"url\": \"province\"," +
-                                                        "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
-                                                    "}," +
-                                                    "{" +
-                                                        "\"url\": \"city\"," +
-                                                        "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
-                                                    "}," +
-                                                    "{" +
-                                                        "\"url\": \"district\"," +
-                                                        "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
-                                                    "}," +
-                                                    "{" +
-                                                        "\"url\": \"village\"," +
-                                                        "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
-                                                    "}" +
-                                                "]" +
-                                            "}" +
-                                        "]" +
-                                    "}" +
-                                "]," +
-                                "\"partOf\": {" +
-                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                "\"address\": {" +
+                                    "\"use\": \"work\"," +
+                                    "\"line\": [" +
+                                        "\""+akses.getalamatrs()+"\"" +
+                                    "]," +
+                                    "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                    "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                    "\"country\": \"ID\"," +
+                                    "\"extension\": [" +
+                                        "{" +
+                                            "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                            "\"extension\": [" +
+                                                "{" +
+                                                    "\"url\": \"province\"," +
+                                                    "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"city\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"district\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"url\": \"village\"," +
+                                                    "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}" +
+                                    "]" +
+                                "}," +
+                                "\"physicalType\": {" +
+                                    "\"coding\": [" +
+                                        "{" +
+                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/location-physical-type\"," +
+                                            "\"code\": \"ro\"," +
+                                            "\"display\": \"Room\"" +
+                                        "}" +
+                                    "]" +
+                                "}," +
+                                "\"position\": {" +
+                                    "\"longitude\": "+Longitude.getText()+"," +
+                                    "\"latitude\": "+Latitude.getText()+"," +
+                                    "\"altitude\": "+Altitude.getText()+
+                                "}," +
+                                "\"managingOrganization\": {" +
+                                    "\"reference\": \"Organization/"+IDOrganisasi.getText()+"\"" +
                                 "}" +
                             "}";
                     System.out.println("Request JSON : "+json);
                     requestEntity = new HttpEntity(json,headers);
-                    json=api.getRest().exchange(link+"/Organization/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                    json=api.getRest().exchange(link+"/Location/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                     System.out.println("Result JSON : "+json);
                     root = mapper.readTree(json);
                     response = root.path("id");
                     if(!response.asText().equals("")){
-                        if(Sequel.mengedittf("satu_sehat_mapping_lokasi_ralan","dep_id=?","dep_id=?,id_organisasi_satusehat=?",3,new String[]{
-                                KodeDepartemen.getText(),response.asText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                        if(Sequel.mengedittf("satu_sehat_mapping_lokasi_ralan","kd_poli=?","kd_poli=?,id_organisasi_satusehat=?,id_lokasi_satusehat=?,longitude=?,latitude=?,altittude=?",7,new String[]{
+                                KodePoli.getText(),IDOrganisasi.getText(),response.asText(),Longitude.getText(),Latitude.getText(),Altitude.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                             })==true){
                             emptTeks();
                             tampil();
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
+                        JOptionPane.showMessageDialog(null,"Gagal melakukan mapping lokasi ke server Satu Sehat Kemenkes");
                     } 
                 }catch(Exception e){
                     System.out.println("Notifikasi Bridging : "+e);
@@ -1120,20 +1122,26 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
            ps=koneksi.prepareStatement(
-                   "select satu_sehat_mapping_departemen.dep_id,departemen.nama,satu_sehat_mapping_departemen.id_organisasi_satusehat "+
-                   "from satu_sehat_mapping_departemen inner join departemen on satu_sehat_mapping_departemen.dep_id=departemen.dep_id "+
+                   "select satu_sehat_mapping_lokasi_ralan.kd_poli,poliklinik.nm_poli,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,"+
+                   "satu_sehat_mapping_lokasi_ralan.longitude,satu_sehat_mapping_lokasi_ralan.latitude,satu_sehat_mapping_lokasi_ralan.altittude,"+
+                   "satu_sehat_mapping_departemen.dep_id,departemen.nama,satu_sehat_mapping_lokasi_ralan.id_organisasi_satusehat "+
+                   "from satu_sehat_mapping_lokasi_ralan inner join poliklinik on satu_sehat_mapping_lokasi_ralan.kd_poli=poliklinik.kd_poli "+
+                   "inner join satu_sehat_mapping_departemen on satu_sehat_mapping_lokasi_ralan.id_organisasi_satusehat=satu_sehat_mapping_departemen.id_organisasi_satusehat "+
+                   "inner join departemen on satu_sehat_mapping_departemen.dep_id=departemen.dep_id "+
                    (TCari.getText().equals("")?"":"where satu_sehat_mapping_departemen.dep_id like ? or departemen.nama like ? or "+
-                   "satu_sehat_mapping_departemen.id_organisasi_satusehat like ? ")+" order by departemen.nama");
+                   "poliklinik.nm_poli like ? or satu_sehat_mapping_lokasi_ralan.kd_poli like ?")+" order by departemen.nama");
             try {
                 if(!TCari.getText().equals("")){
                     ps.setString(1,"%"+TCari.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
                     ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("dep_id"),rs.getString("nama"),rs.getString("id_organisasi_satusehat")
+                        rs.getString("kd_poli"),rs.getString("nm_poli"),rs.getString("id_lokasi_satusehat"),rs.getString("longitude"),rs.getString("latitude"),
+                        rs.getString("altittude"),rs.getString("dep_id"),rs.getString("nama"),rs.getString("id_organisasi_satusehat")
                     });
                 }
             } catch (Exception e) {
@@ -1153,6 +1161,11 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
+        KodePoli.setText("");
+        NamaPoli.setText("");
+        Longitude.setText("");
+        Altitude.setText("");
+        Latitude.setText("");
         KodeDepartemen.setText("");
         NamaDepartemen.setText("");
         KodeDepartemen.requestFocus();
@@ -1160,16 +1173,22 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
 
     private void getData() {
        if(tbJnsPerawatan.getSelectedRow()!= -1){
-           KodeDepartemen.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
-           NamaDepartemen.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
+           KodePoli.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+           NamaPoli.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
+           Longitude.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
+           Latitude.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
+           Altitude.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString());
+           KodeDepartemen.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString());
+           NamaDepartemen.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),7).toString());
+           IDOrganisasi.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString());
         }
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_departemen());
-        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_departemen());
-        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_departemen());
-        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_departemen());
+        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_lokasi());
+        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_lokasi());
+        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_lokasi());
+        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_lokasi());
     }
     
     public JTable getTable(){
