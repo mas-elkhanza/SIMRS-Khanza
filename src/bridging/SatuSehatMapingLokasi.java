@@ -27,11 +27,11 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariDepartemen;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import simrskhanza.DlgCariPoli;
 
 /**
  *
@@ -45,7 +45,8 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private DlgCariDepartemen poli=new DlgCariDepartemen(null,false);
+    private SatuSehatCariOrganisasi organisasi=new SatuSehatCariOrganisasi(null,false);
+    private DlgCariPoli poli=new DlgCariPoli(null,false);
     private String link="",json="";
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers ;
@@ -65,7 +66,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Kode Departemen","Nama Departemen","ID Organisasi Satu Sehat"}){
+            "Kode Poli","Nama Poli","ID Lokasi Satu Sehat","Kode Departemen","Nama Departemen","ID Organisasi Satu Sehat"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbJnsPerawatan.setModel(tabMode);
@@ -73,14 +74,20 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 6; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(110);
             }else if(i==1){
-                column.setPreferredWidth(360);
+                column.setPreferredWidth(260);
             }else if(i==2){
-                column.setPreferredWidth(230);
+                column.setPreferredWidth(200);
+            }else if(i==3){
+                column.setPreferredWidth(110);
+            }else if(i==4){
+                column.setPreferredWidth(260);
+            }else if(i==5){
+                column.setPreferredWidth(200);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -111,6 +118,30 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             });
         }  
         
+        organisasi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(organisasi.getTable().getSelectedRow()!= -1){                    
+                    KodeDepartemen.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),0).toString());
+                    NamaDepartemen.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),1).toString());
+                    IDOrganisasi.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),2).toString());
+                }
+                KodeDepartemen.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        }); 
+        
         poli.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -119,10 +150,10 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(poli.getTable().getSelectedRow()!= -1){                    
-                    KodeDepartemen.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                    NamaDepartemen.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
                 }
-                KodeDepartemen.requestFocus();
+                kdpoli.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -174,6 +205,11 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         KodeDepartemen = new widget.TextBox();
         NamaDepartemen = new widget.TextBox();
         btnDepartemenRS = new widget.Button();
+        jLabel5 = new widget.Label();
+        kdpoli = new widget.TextBox();
+        TPoli = new widget.TextBox();
+        btnPoliRS = new widget.Button();
+        IDOrganisasi = new widget.TextBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -399,22 +435,22 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 44));
         FormInput.setLayout(null);
 
-        jLabel4.setText("Departemen :");
+        jLabel4.setText("Organisasi :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 86, 23);
+        jLabel4.setBounds(283, 10, 70, 23);
 
         KodeDepartemen.setEditable(false);
         KodeDepartemen.setHighlighter(null);
         KodeDepartemen.setName("KodeDepartemen"); // NOI18N
         FormInput.add(KodeDepartemen);
-        KodeDepartemen.setBounds(89, 10, 80, 23);
+        KodeDepartemen.setBounds(357, 10, 50, 23);
 
         NamaDepartemen.setEditable(false);
         NamaDepartemen.setHighlighter(null);
         NamaDepartemen.setName("NamaDepartemen"); // NOI18N
         FormInput.add(NamaDepartemen);
-        NamaDepartemen.setBounds(171, 10, 530, 23);
+        NamaDepartemen.setBounds(409, 10, 140, 23);
 
         btnDepartemenRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDepartemenRS.setMnemonic('1');
@@ -431,7 +467,47 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnDepartemenRS);
-        btnDepartemenRS.setBounds(700, 10, 28, 23);
+        btnDepartemenRS.setBounds(705, 10, 28, 23);
+
+        jLabel5.setText("Unit RS :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        FormInput.add(jLabel5);
+        jLabel5.setBounds(0, 10, 56, 23);
+
+        kdpoli.setEditable(false);
+        kdpoli.setHighlighter(null);
+        kdpoli.setName("kdpoli"); // NOI18N
+        FormInput.add(kdpoli);
+        kdpoli.setBounds(60, 10, 50, 23);
+
+        TPoli.setEditable(false);
+        TPoli.setHighlighter(null);
+        TPoli.setName("TPoli"); // NOI18N
+        FormInput.add(TPoli);
+        TPoli.setBounds(112, 10, 140, 23);
+
+        btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPoliRS.setMnemonic('1');
+        btnPoliRS.setToolTipText("Alt+1");
+        btnPoliRS.setName("btnPoliRS"); // NOI18N
+        btnPoliRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPoliRSActionPerformed(evt);
+            }
+        });
+        btnPoliRS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPoliRSKeyPressed(evt);
+            }
+        });
+        FormInput.add(btnPoliRS);
+        btnPoliRS.setBounds(254, 10, 28, 23);
+
+        IDOrganisasi.setEditable(false);
+        IDOrganisasi.setHighlighter(null);
+        IDOrganisasi.setName("IDOrganisasi"); // NOI18N
+        FormInput.add(IDOrganisasi);
+        IDOrganisasi.setBounds(551, 10, 152, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -441,9 +517,9 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDepartemenRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepartemenRSActionPerformed
-        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        poli.setLocationRelativeTo(internalFrame1);
-        poli.setVisible(true);
+        organisasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        organisasi.setLocationRelativeTo(internalFrame1);
+        organisasi.setVisible(true);
 }//GEN-LAST:event_btnDepartemenRSActionPerformed
 
     private void btnDepartemenRSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDepartemenRSKeyPressed
@@ -911,6 +987,17 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbJnsPerawatanKeyReleased
 
+    private void btnPoliRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliRSActionPerformed
+        poli.isCek();
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setLocationRelativeTo(internalFrame1);
+        poli.setVisible(true);
+    }//GEN-LAST:event_btnPoliRSActionPerformed
+
+    private void btnPoliRSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliRSKeyPressed
+
+    }//GEN-LAST:event_btnPoliRSKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -937,17 +1024,22 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox IDOrganisasi;
     private widget.TextBox KodeDepartemen;
     private widget.Label LCount;
     private widget.TextBox NamaDepartemen;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
+    private widget.TextBox TPoli;
     private widget.Button btnDepartemenRS;
+    private widget.Button btnPoliRS;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
+    private widget.TextBox kdpoli;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbJnsPerawatan;
