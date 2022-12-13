@@ -11,15 +11,12 @@
 
 package kepegawaian;
 
-import simrskhanza.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
-import fungsi.akses;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -380,7 +377,8 @@ public final class DlgCariDepartemen extends javax.swing.JDialog {
                     if(list.path("KodeDepartemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDepartemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("KodeDepartemen").asText(),list.path("NamaDepartemen").asText()
-                        });                    }
+                        });                    
+                    }
                 }
             }
             myObj.close();

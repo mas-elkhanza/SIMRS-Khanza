@@ -196,7 +196,7 @@ public final class akses {
             penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,
             jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,
-            satu_sehat_mapping_departemen=false;
+            satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1114,6 +1114,7 @@ public final class akses {
                         akses.satu_sehat_referensi_dokter=true;
                         akses.satu_sehat_referensi_pasien=true;
                         akses.satu_sehat_mapping_departemen=true;
+                        akses.satu_sehat_mapping_lokasi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2015,6 +2016,7 @@ public final class akses {
                         akses.satu_sehat_referensi_dokter=rs2.getBoolean("satu_sehat_referensi_dokter");
                         akses.satu_sehat_referensi_pasien=rs2.getBoolean("satu_sehat_referensi_pasien");
                         akses.satu_sehat_mapping_departemen=rs2.getBoolean("satu_sehat_mapping_departemen");
+                        akses.satu_sehat_mapping_lokasi=rs2.getBoolean("satu_sehat_mapping_lokasi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2914,6 +2916,7 @@ public final class akses {
                         akses.satu_sehat_referensi_dokter=false;
                         akses.satu_sehat_referensi_pasien=false;
                         akses.satu_sehat_mapping_departemen=false;
+                        akses.satu_sehat_mapping_lokasi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3870,4 +3873,5 @@ public final class akses {
     public static boolean getsatu_sehat_referensi_dokter(){return akses.satu_sehat_referensi_dokter;}
     public static boolean getsatu_sehat_referensi_pasien(){return akses.satu_sehat_referensi_pasien;}
     public static boolean getsatu_sehat_mapping_departemen(){return akses.satu_sehat_mapping_departemen;}
+    public static boolean getsatu_sehat_mapping_lokasi(){return akses.satu_sehat_mapping_lokasi;}
 }   

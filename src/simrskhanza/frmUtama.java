@@ -455,6 +455,7 @@ import bridging.MobileJKNPembatalanPendaftaran;
 import bridging.MobileJKNReferensiPendaftaran;
 import bridging.PCareCekKartu;
 import bridging.PCareCekReferensiTACC;
+import bridging.SatuSehatMapingLokasi;
 import bridging.SatuSehatMapingOrganisasi;
 import bridging.SatuSehatReferensiPasien;
 import bridging.SatuSehatReferensiPraktisi;
@@ -19581,6 +19582,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMappingLokasiSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatMapingLokasi aplikasi=new SatuSehatMapingLokasi(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20246,7 +20259,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianRisikoJatuhAnak,btnPenilaianAwalMedisRalanGeriatri,btnPenilaianTambahanGeriatri,btnSkriningNutrisiDewasa,btnHasilPemeriksaanUSG,
             btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi,
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
-            btnMappingOrganisasiSatuSehat;
+            btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat;
     
     public void isWall(){
         try{            
@@ -23084,6 +23097,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_mapping_departemen()==true){
                 Panelmenu.add(btnMappingOrganisasiSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_mapping_lokasi()==true){
+                Panelmenu.add(btnMappingLokasiSatuSehat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -27525,6 +27543,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_mapping_departemen()==true){
             Panelmenu.add(btnMappingOrganisasiSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_mapping_lokasi()==true){
+            Panelmenu.add(btnMappingLokasiSatuSehat);
             jmlmenu++;
         }
 
@@ -33047,6 +33070,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_mapping_departemen()==true){
             if(btnMappingOrganisasiSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMappingOrganisasiSatuSehat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsatu_sehat_mapping_lokasi()==true){
+            if(btnMappingLokasiSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMappingLokasiSatuSehat);
                 jmlmenu++;
             }                
         }
@@ -38880,6 +38910,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMappingOrganisasiSatuSehat.setName("btnMappingOrganisasiSatuSehat"); 
         btnMappingOrganisasiSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMappingOrganisasiSatuSehat.addActionListener(this::btnMappingOrganisasiSatuSehatActionPerformed);
+        
+        btnMappingLokasiSatuSehat = new widget.ButtonBig();
+        btnMappingLokasiSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnMappingLokasiSatuSehat.setText("Mapping Lokasi Satu Sehat");
+        btnMappingLokasiSatuSehat.setIconTextGap(0);
+        btnMappingLokasiSatuSehat.setName("btnMappingLokasiSatuSehat"); 
+        btnMappingLokasiSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMappingLokasiSatuSehat.addActionListener(this::btnMappingLokasiSatuSehatActionPerformed);
     }
     
 }

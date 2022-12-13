@@ -64,7 +64,9 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal Masuk","Tanggal Pindah","Indikasi Pindah","Keterangan Indikasi Pindah",
             "Asal Ruang Rawat / Poliklinik","Ruang Rawat Selanjutnya","Metode Pemindahan","Diagnosa Utama","Diagnosa Sekunder","Prosedur Yang Sudah Dilakukan",
             "Obat Yang Telah Diberikan","Pemeriksaan Penunjang Yang Sudah Dilakukan","Peralatan Yang Menyertai","Keterangan Peralatan Menyertai",
-            "Menyetujui Pemindahan","Nama Keluarga/Penanggung Jawab","Hubungan"
+            "Menyetujui Pemindahan","Nama Keluarga/Penanggung Jawab","Hubungan","Keadaan Umum SbT","TD SbT","Nadi SbT","RR SbT","Suhu Sbt",
+            "Keluhan Utama Sebelum Transfer","Keadaan Umum StT","TD StT","Nadi StT","RR StT","Suhu Stt","Keluhan Utama Setelah Transfer","NIP Menyerahkan",
+            "Petugas Yang Menyerahkan","NIP Menerima","Petugas Yang Menerima"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -86,43 +88,13 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(55);
             }else if(i==5){
-                column.setPreferredWidth(80);
-            }else if(i==6){
-                column.setPreferredWidth(150);
-            }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==6){
+                column.setPreferredWidth(115);
+            }else if(i==7){
+                column.setPreferredWidth(145);
             }else if(i==8){
-                column.setPreferredWidth(72);
-            }else if(i==9){
-                column.setPreferredWidth(62);
-            }else if(i==10){
-                column.setPreferredWidth(85);
-            }else if(i==11){
-                column.setPreferredWidth(165);
-            }else if(i==12){
-                column.setPreferredWidth(71);
-            }else if(i==13){
-                column.setPreferredWidth(79);
-            }else if(i==14){
-                column.setPreferredWidth(103);
-            }else if(i==15){
-                column.setPreferredWidth(99);
-            }else if(i==16){
-                column.setPreferredWidth(150);
-            }else if(i==17){
-                column.setPreferredWidth(196);
-            }else if(i==18){
-                column.setPreferredWidth(185);
-            }else if(i==19){
-                column.setPreferredWidth(200);
-            }else if(i==20){
-                column.setPreferredWidth(200);
-            }else if(i==21){
-                column.setPreferredWidth(200);
-            }else if(i==22){
-                column.setPreferredWidth(200);
-            }else if(i==23){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(145);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1576,23 +1548,23 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             try{
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal_pindah,"+
                         "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
                         "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
                         "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
-                        "transfer_pasien_antar_ruang.tanggal between ? and ? order by transfer_pasien_antar_ruang.tanggal");
+                        "transfer_pasien_antar_ruang.tanggal_pindah between ? and ? order by transfer_pasien_antar_ruang.tanggal_pindah");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal_pindah,"+
                         "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
                         "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
                         "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
-                        "transfer_pasien_antar_ruang.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "transfer_pasien_antar_ruang.nip like ? or petugas.nama like ?) order by transfer_pasien_antar_ruang.tanggal");
+                        "transfer_pasien_antar_ruang.tanggal_pindah between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "transfer_pasien_antar_ruang.nip like ? or petugas.nama like ?) order by transfer_pasien_antar_ruang.tanggal_pindah");
                 }
 
                 try {
@@ -1823,7 +1795,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
             Valid.MyReportqry("rptCetakPenilaianPsikolog.jasper","report","::[ Laporan Penilaian Psikolog ]::",
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal_pindah,"+
                         "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
                         "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2137,23 +2109,49 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
-                        "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
-                        "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,"+
+                        "transfer_pasien_antar_ruang.tanggal_masuk,transfer_pasien_antar_ruang.tanggal_pindah,transfer_pasien_antar_ruang.asal_ruang,"+
+                        "transfer_pasien_antar_ruang.ruang_selanjutnya,transfer_pasien_antar_ruang.diagnosa_utama,transfer_pasien_antar_ruang.diagnosa_sekunder,"+
+                        "transfer_pasien_antar_ruang.indikasi_pindah_ruang,transfer_pasien_antar_ruang.keterangan_indikasi_pindah_ruang,"+
+                        "transfer_pasien_antar_ruang.prosedur_yang_sudah_dilakukan,transfer_pasien_antar_ruang.obat_yang_telah_diberikan,"+
+                        "transfer_pasien_antar_ruang.metode_pemindahan_pasien,transfer_pasien_antar_ruang.peralatan_yang_menyertai,"+
+                        "transfer_pasien_antar_ruang.keterangan_peralatan_yang_menyertai,transfer_pasien_antar_ruang.pemeriksaan_penunjang_yang_dilakukan,"+
+                        "transfer_pasien_antar_ruang.pasien_keluarga_menyetujui,transfer_pasien_antar_ruang.nama_menyetujui,transfer_pasien_antar_ruang.hubungan_menyetujui,"+
+                        "transfer_pasien_antar_ruang.keluhan_utama_sebelum_transfer,transfer_pasien_antar_ruang.keadaan_umum_sebelum_transfer,"+
+                        "transfer_pasien_antar_ruang.td_sebelum_transfer,transfer_pasien_antar_ruang.nadi_sebelum_transfer,transfer_pasien_antar_ruang.rr_sebelum_transfer,"+
+                        "transfer_pasien_antar_ruang.suhu_sebelum_transfer,transfer_pasien_antar_ruang.keluhan_utama_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.keadaan_umum_sesudah_transfer,transfer_pasien_antar_ruang.td_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.nadi_sesudah_transfer,transfer_pasien_antar_ruang.rr_sesudah_transfer,transfer_pasien_antar_ruang.suhu_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.nip_menyerahkan,petugasmenyerahkan.nama as petugasmenyerahkan,transfer_pasien_antar_ruang.nip_menerima,"+
+                        "petugasmenerima.nama as petugasmenerima "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
-                        "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
-                        "transfer_pasien_antar_ruang.tanggal between ? and ? order by transfer_pasien_antar_ruang.tanggal");
+                        "inner join petugas as petugasmenyerahkan on transfer_pasien_antar_ruang.nip_menyerahkan=petugasmenyerahkan.nip "+
+                        "inner join petugas as petugasmenerima on transfer_pasien_antar_ruang.nip_menerima=petugasmenerima.nip where "+
+                        "transfer_pasien_antar_ruang.tanggal_pindah between ? and ? order by transfer_pasien_antar_ruang.tanggal_pindah");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,transfer_pasien_antar_ruang.tanggal,"+
-                        "transfer_pasien_antar_ruang.nip,transfer_pasien_antar_ruang.anamnesis,transfer_pasien_antar_ruang.dikirim_dari,transfer_pasien_antar_ruang.tujuan_pemeriksaan,transfer_pasien_antar_ruang.ket_anamnesis,transfer_pasien_antar_ruang.rupa,transfer_pasien_antar_ruang.bentuk_tubuh,transfer_pasien_antar_ruang.tindakan,"+
-                        "transfer_pasien_antar_ruang.pakaian,transfer_pasien_antar_ruang.ekspresi,transfer_pasien_antar_ruang.berbicara,transfer_pasien_antar_ruang.penggunaan_kata,transfer_pasien_antar_ruang.ciri_menyolok,transfer_pasien_antar_ruang.hasil_psikotes,transfer_pasien_antar_ruang.kepribadian,transfer_pasien_antar_ruang.psikodinamika,transfer_pasien_antar_ruang.kesimpulan_psikolog,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,"+
+                        "transfer_pasien_antar_ruang.tanggal_masuk,transfer_pasien_antar_ruang.tanggal_pindah,transfer_pasien_antar_ruang.asal_ruang,"+
+                        "transfer_pasien_antar_ruang.ruang_selanjutnya,transfer_pasien_antar_ruang.diagnosa_utama,transfer_pasien_antar_ruang.diagnosa_sekunder,"+
+                        "transfer_pasien_antar_ruang.indikasi_pindah_ruang,transfer_pasien_antar_ruang.keterangan_indikasi_pindah_ruang,"+
+                        "transfer_pasien_antar_ruang.prosedur_yang_sudah_dilakukan,transfer_pasien_antar_ruang.obat_yang_telah_diberikan,"+
+                        "transfer_pasien_antar_ruang.metode_pemindahan_pasien,transfer_pasien_antar_ruang.peralatan_yang_menyertai,"+
+                        "transfer_pasien_antar_ruang.keterangan_peralatan_yang_menyertai,transfer_pasien_antar_ruang.pemeriksaan_penunjang_yang_dilakukan,"+
+                        "transfer_pasien_antar_ruang.pasien_keluarga_menyetujui,transfer_pasien_antar_ruang.nama_menyetujui,transfer_pasien_antar_ruang.hubungan_menyetujui,"+
+                        "transfer_pasien_antar_ruang.keluhan_utama_sebelum_transfer,transfer_pasien_antar_ruang.keadaan_umum_sebelum_transfer,"+
+                        "transfer_pasien_antar_ruang.td_sebelum_transfer,transfer_pasien_antar_ruang.nadi_sebelum_transfer,transfer_pasien_antar_ruang.rr_sebelum_transfer,"+
+                        "transfer_pasien_antar_ruang.suhu_sebelum_transfer,transfer_pasien_antar_ruang.keluhan_utama_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.keadaan_umum_sesudah_transfer,transfer_pasien_antar_ruang.td_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.nadi_sesudah_transfer,transfer_pasien_antar_ruang.rr_sesudah_transfer,transfer_pasien_antar_ruang.suhu_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.nip_menyerahkan,petugasmenyerahkan.nama as petugasmenyerahkan,transfer_pasien_antar_ruang.nip_menerima,"+
+                        "petugasmenerima.nama as petugasmenerima "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join transfer_pasien_antar_ruang on reg_periksa.no_rawat=transfer_pasien_antar_ruang.no_rawat "+
-                        "inner join petugas on transfer_pasien_antar_ruang.nip=petugas.nip where "+
-                        "transfer_pasien_antar_ruang.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "transfer_pasien_antar_ruang.nip like ? or petugas.nama like ?) order by transfer_pasien_antar_ruang.tanggal");
+                        "inner join petugas as petugasmenyerahkan on transfer_pasien_antar_ruang.nip_menyerahkan=petugasmenyerahkan.nip "+
+                        "inner join petugas as petugasmenerima on transfer_pasien_antar_ruang.nip_menerima=petugasmenerima.nip where where "+
+                        "transfer_pasien_antar_ruang.tanggal_pindah between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "transfer_pasien_antar_ruang.nip_menyerahkan like ? or petugasmenyerahkan.nama like ?) order by transfer_pasien_antar_ruang.tanggal_pindah");
             }
                 
             try {
@@ -2172,9 +2170,14 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("anamnesis"),rs.getString("ket_anamnesis"),rs.getString("rupa"),rs.getString("bentuk_tubuh"),rs.getString("tindakan"),
-                        rs.getString("pakaian"),rs.getString("ekspresi"),rs.getString("berbicara"),rs.getString("penggunaan_kata"),rs.getString("ciri_menyolok"),rs.getString("hasil_psikotes"),rs.getString("kepribadian"),rs.getString("psikodinamika"),rs.getString("kesimpulan_psikolog")                     
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal_masuk"),
+                        rs.getString("tanggal_pindah"),rs.getString("indikasi_pindah_ruang"),rs.getString("keterangan_indikasi_pindah_ruang"),rs.getString("asal_ruang"),rs.getString("ruang_selanjutnya"),
+                        rs.getString("metode_pemindahan_pasien"),rs.getString("diagnosa_utama"),rs.getString("diagnosa_sekunder"),rs.getString("prosedur_yang_sudah_dilakukan"),rs.getString("obat_yang_telah_diberikan"),
+                        rs.getString("pemeriksaan_penunjang_yang_dilakukan"),rs.getString("peralatan_yang_menyertai"),rs.getString("keterangan_peralatan_yang_menyertai"),rs.getString("pasien_keluarga_menyetujui"),
+                        rs.getString("nama_menyetujui"),rs.getString("hubungan_menyetujui"),rs.getString("keadaan_umum_sebelum_transfer"),rs.getString("td_sebelum_transfer"),rs.getString("nadi_sebelum_transfer"),
+                        rs.getString("rr_sebelum_transfer"),rs.getString("suhu_sebelum_transfer"),rs.getString("keluhan_utama_sebelum_transfer"),rs.getString("keadaan_umum_sesudah_transfer"),
+                        rs.getString("td_sesudah_transfer"),rs.getString("nadi_sesudah_transfer"),rs.getString("rr_sesudah_transfer"),rs.getString("suhu_sesudah_transfer"),rs.getString("keluhan_utama_sesudah_transfer"),
+                        rs.getString("nip_menyerahkan"),rs.getString("petugasmenyerahkan"),rs.getString("nip_menerima"),rs.getString("petugasmenerima")
                     });
                 }
             } catch (Exception e) {

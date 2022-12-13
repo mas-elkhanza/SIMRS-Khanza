@@ -3,12 +3,6 @@
  * and open the template in the editor.
  */
 
-/*
- * DlgJnsPerawatanRalan.java
- *
- * Created on May 22, 2010, 11:58:21 PM
- */
-
 package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
