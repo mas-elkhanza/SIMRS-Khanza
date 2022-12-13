@@ -61,9 +61,10 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Psikolog","Tanggal","Dikirim Dari","Tujuan","Informasi","Keterangan Informasi",
-            "Rupa/Wajah","Bentuk Tubuh","Tindakan","Pakaian/Aksesoris","Penyampaian/Ekspresi","Berbicara","Penggunaan Kata","Ciri Yang Menyolok","Hasil Psikotes",
-            "Kepribadian","Psikodinamika","Kesimpulan Psikolog"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal Masuk","Tanggal Pindah","Indikasi Pindah","Keterangan Indikasi Pindah",
+            "Asal Ruang Rawat / Poliklinik","Ruang Rawat Selanjutnya","Metode Pemindahan","Diagnosa Utama","Diagnosa Sekunder","Prosedur Yang Sudah Dilakukan",
+            "Obat Yang Telah Diberikan","Pemeriksaan Penunjang Yang Sudah Dilakukan","Peralatan Yang Menyertai","Keterangan Peralatan Menyertai",
+            "Menyetujui Pemindahan","Nama Keluarga/Penanggung Jawab","Hubungan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };

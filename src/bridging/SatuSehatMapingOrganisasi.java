@@ -582,9 +582,112 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_departemen","dep_id");
-        tampil();
-        emptTeks();
+        if(KodeDepartemen.getText().trim().equals("")||NamaDepartemen.getText().trim().equals("")){
+            Valid.textKosong(KodeDepartemen,"Departemen/Organisasi");
+        }else{
+            if(tbJnsPerawatan.getSelectedRow()>-1){
+                try{
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                    json = "{" +
+                                "\"resourceType\": \"Organization\"," +
+                                "\"id\": \""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()+"\"," +
+                                "\"active\": false," +
+                                "\"identifier\": [" +
+                                    "{" +
+                                        "\"use\": \"official\"," +
+                                        "\"system\": \"http://sys-ids.kemkes.go.id/organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"value\": \""+KodeDepartemen.getText()+"\"" +
+                                    "}" +
+                                "]," +
+                                "\"type\": [" +
+                                    "{" +
+                                        "\"coding\": [" +
+                                            "{" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/organization-type\"," +
+                                                "\"code\": \"dept\"," +
+                                                "\"display\": \"Hospital Department\"" +
+                                            "}" +
+                                        "]" +
+                                    "}" +
+                                "]," +
+                                "\"name\": \""+NamaDepartemen.getText()+"\"," +
+                                "\"telecom\": [" +
+                                    "{" +
+                                        "\"system\": \"phone\"," +
+                                        "\"value\": \""+akses.getkontakrs()+"\"," +
+                                        "\"use\": \"work\"" +
+                                    "}," +
+                                    "{" +
+                                        "\"system\": \"email\"," +
+                                        "\"value\": \""+akses.getemailrs()+"\"," +
+                                        "\"use\": \"work\"" +
+                                    "}," +
+                                    "{" +
+                                        "\"system\": \"url\"," +
+                                        "\"value\": \"www."+akses.getemailrs()+"\"," +
+                                        "\"use\": \"work\"" +
+                                    "}" +
+                                "]," +
+                                "\"address\": [" +
+                                    "{" +
+                                        "\"use\": \"work\"," +
+                                        "\"type\": \"both\"," +
+                                        "\"line\": [" +
+                                            "\""+akses.getalamatrs()+"\"" +
+                                        "]," +
+                                        "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                        "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                        "\"country\": \"ID\"," +
+                                        "\"extension\": [" +
+                                            "{" +
+                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                                "\"extension\": [" +
+                                                    "{" +
+                                                        "\"url\": \"province\"," +
+                                                        "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"city\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"district\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"village\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "]" +
+                                    "}" +
+                                "]," +
+                                "\"partOf\": {" +
+                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                "}" +
+                            "}";
+                    System.out.println("Request JSON : "+json);
+                    requestEntity = new HttpEntity(json,headers);
+                    json=api.getRest().exchange(link+"/Organization/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                    System.out.println("Result JSON : "+json);
+                    root = mapper.readTree(json);
+                    response = root.path("id");
+                    if(!response.asText().equals("")){
+                        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_departemen","dep_id");
+                        emptTeks();
+                        tampil();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
+                    } 
+                }catch(Exception e){
+                    System.out.println("Notifikasi Bridging : "+e);
+                    JOptionPane.showMessageDialog(null,"Error Respon Satu Sehat Kemenkes : "+e);
+                }  
+            }                
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -600,7 +703,109 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
             Valid.textKosong(KodeDepartemen,"Departemen/Organisasi");
         }else{
             if(tbJnsPerawatan.getSelectedRow()>-1){
-                
+                try{
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                    json = "{" +
+                                "\"resourceType\": \"Organization\"," +
+                                "\"id\": \""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()+"\"," +
+                                "\"active\": true," +
+                                "\"identifier\": [" +
+                                    "{" +
+                                        "\"use\": \"official\"," +
+                                        "\"system\": \"http://sys-ids.kemkes.go.id/organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"value\": \""+KodeDepartemen.getText()+"\"" +
+                                    "}" +
+                                "]," +
+                                "\"type\": [" +
+                                    "{" +
+                                        "\"coding\": [" +
+                                            "{" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/organization-type\"," +
+                                                "\"code\": \"dept\"," +
+                                                "\"display\": \"Hospital Department\"" +
+                                            "}" +
+                                        "]" +
+                                    "}" +
+                                "]," +
+                                "\"name\": \""+NamaDepartemen.getText()+"\"," +
+                                "\"telecom\": [" +
+                                    "{" +
+                                        "\"system\": \"phone\"," +
+                                        "\"value\": \""+akses.getkontakrs()+"\"," +
+                                        "\"use\": \"work\"" +
+                                    "}," +
+                                    "{" +
+                                        "\"system\": \"email\"," +
+                                        "\"value\": \""+akses.getemailrs()+"\"," +
+                                        "\"use\": \"work\"" +
+                                    "}," +
+                                    "{" +
+                                        "\"system\": \"url\"," +
+                                        "\"value\": \"www."+akses.getemailrs()+"\"," +
+                                        "\"use\": \"work\"" +
+                                    "}" +
+                                "]," +
+                                "\"address\": [" +
+                                    "{" +
+                                        "\"use\": \"work\"," +
+                                        "\"type\": \"both\"," +
+                                        "\"line\": [" +
+                                            "\""+akses.getalamatrs()+"\"" +
+                                        "]," +
+                                        "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                        "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                        "\"country\": \"ID\"," +
+                                        "\"extension\": [" +
+                                            "{" +
+                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                                "\"extension\": [" +
+                                                    "{" +
+                                                        "\"url\": \"province\"," +
+                                                        "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"city\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"district\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"village\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "]" +
+                                    "}" +
+                                "]," +
+                                "\"partOf\": {" +
+                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                "}" +
+                            "}";
+                    System.out.println("Request JSON : "+json);
+                    requestEntity = new HttpEntity(json,headers);
+                    json=api.getRest().exchange(link+"/Organization/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                    System.out.println("Result JSON : "+json);
+                    root = mapper.readTree(json);
+                    response = root.path("id");
+                    if(!response.asText().equals("")){
+                        if(Sequel.mengedittf("satu_sehat_mapping_departemen","dep_id=?","dep_id=?,id_organisasi_satusehat=?",3,new String[]{
+                                KodeDepartemen.getText(),response.asText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                            })==true){
+                            emptTeks();
+                            tampil();
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
+                    } 
+                }catch(Exception e){
+                    System.out.println("Notifikasi Bridging : "+e);
+                    JOptionPane.showMessageDialog(null,"Error Respon Satu Sehat Kemenkes : "+e);
+                }  
             }                
         }
 }//GEN-LAST:event_BtnEditActionPerformed
