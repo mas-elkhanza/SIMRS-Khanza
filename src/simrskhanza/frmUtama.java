@@ -19541,7 +19541,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMTransferPasienAntarRuang aplikasi=new RMTransferPasienAntarRuang(this,false);
         aplikasi.isCek();
-        aplikasi.emptTeks();
+        aplikasi.setTampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
