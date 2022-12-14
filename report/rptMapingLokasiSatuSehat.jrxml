@@ -31,7 +31,9 @@
                    satu_sehat_mapping_departemen.dep_id,departemen.nama,satu_sehat_mapping_lokasi_ralan.id_organisasi_satusehat 
                    from satu_sehat_mapping_lokasi_ralan inner join poliklinik on satu_sehat_mapping_lokasi_ralan.kd_poli=poliklinik.kd_poli 
                    inner join satu_sehat_mapping_departemen on satu_sehat_mapping_lokasi_ralan.id_organisasi_satusehat=satu_sehat_mapping_departemen.id_organisasi_satusehat 
-                   inner join departemen on satu_sehat_mapping_departemen.dep_id=departemen.dep_id]]>
+                   inner join departemen on satu_sehat_mapping_departemen.dep_id=departemen.dep_id 
+                   where satu_sehat_mapping_departemen.dep_id like  $P{parameter} or departemen.nama like $P{parameter} or 
+                   poliklinik.nm_poli like $P{parameter} or satu_sehat_mapping_lokasi_ralan.kd_poli like $P{parameter} order by departemen.nama]]>
 	</queryString>
 	<field name="kd_poli" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="kd_poli"/>
