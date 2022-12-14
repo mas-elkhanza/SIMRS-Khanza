@@ -332,7 +332,7 @@ public final class SatuSehatReferensiPraktisi extends javax.swing.JDialog {
             System.out.println("JSON : "+json);
             root = mapper.readTree(json);
             response = root.path("entry");
-            System.out.println("Notifikasi : "+link);
+            System.out.println("URL : "+link);
             for(JsonNode list:response){
                 responsename=list.path("resource").path("name");
                 for(JsonNode list2:responsename){
@@ -355,7 +355,7 @@ public final class SatuSehatReferensiPraktisi extends javax.swing.JDialog {
                 System.out.println("JSON : "+json);
                 root = mapper.readTree(json);
                 response = root.path("name");
-                System.out.println("Notifikasi : "+link);
+                System.out.println("URL : "+link);
                 for(JsonNode list:response){
                     tabMode.addRow(new String[]{
                       TCari.getText(),list.path("text").asText()
