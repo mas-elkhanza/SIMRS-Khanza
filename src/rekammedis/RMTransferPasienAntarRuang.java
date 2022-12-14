@@ -1523,19 +1523,19 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        /*if(tbObat.getSelectedRow()>-1){
+        if(tbObat.getSelectedRow()>-1){
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
-            }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+            }else {
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString())){
                     hapus();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh psikolog yang bersangkutan..!!");
+                    JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
                 }
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-        }   */           
+        }             
             
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1548,35 +1548,59 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Ciriyangmenyolok.getText().trim().equals("")){
-            Valid.textKosong(Ciriyangmenyolok,"CIRI YANG MENYOLOK");
-        }else if(Hasilpsikotes.getText().trim().equals("")){
-            Valid.textKosong(Hasilpsikotes,"HASIL PSIKOTES");
-        }else if(Kepribadian.getText().trim().equals("")){
-            Valid.textKosong(Kepribadian,"KEPRIBADIAN DAN ASPEK-ASPEKNYA");
-        }else if(Psikodinamika.getText().trim().equals("")){
-            Valid.textKosong(Psikodinamika,"PSIKODINAMIKA");
-        }else if(Kesimpulanpsikolog.getText().trim().equals("")){
-            Valid.textKosong(Kesimpulanpsikolog,"KESIMPULAN PSIKOLOG");
+        }else if(NmPetugasMenyerahkan.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Petugas Yang Menyerahkan");
+        }else if(NmPetugasMenerima.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Petugas Yang Menerima");
+        }else if(AsalRuang.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter1,"Petugas Yang Menerima");
+        }else if(AsalRuang.getText().trim().equals("")){
+            Valid.textKosong(AsalRuang,"Asal Ruang");
+        }else if(RuangSelanjutnya.getText().trim().equals("")){
+            Valid.textKosong(RuangSelanjutnya,"Ruang Selanjutnya");
+        }else if(DiagnosaUtama.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaUtama,"Diagnosa Utama");
+        }else if(ProsedurDilakukan.getText().trim().equals("")){
+            Valid.textKosong(ProsedurDilakukan,"Prosedur Dilakukan");
+        }else if(ObatYangDiberikan.getText().trim().equals("")){
+            Valid.textKosong(ObatYangDiberikan,"Obat Yang Diberikan");
+        }else if(TDSebelumTransfer.getText().trim().equals("")){
+            Valid.textKosong(TDSebelumTransfer,"TD Sebelum Transfer");
+        }else if(NadiSebelumTransfer.getText().trim().equals("")){
+            Valid.textKosong(NadiSebelumTransfer,"Nadi Sebelum Transfer");
+        }else if(RRSebelumTransfer.getText().trim().equals("")){
+            Valid.textKosong(RRSebelumTransfer,"RR Sebelum Transfer");
+        }else if(SuhuSebelumTransfer.getText().trim().equals("")){
+            Valid.textKosong(SuhuSebelumTransfer,"Suhu Sebelum Transfer");
+        }else if(KeluhanUtamaSebelumTransfer.getText().trim().equals("")){
+            Valid.textKosong(KeluhanUtamaSebelumTransfer,"Keluhan Utama Sebelum Transfer");
+        }else if(TDSetelahTransfer.getText().trim().equals("")){
+            Valid.textKosong(TDSetelahTransfer,"TD Setelah Transfer");
+        }else if(NadiSetelahTransfer.getText().trim().equals("")){
+            Valid.textKosong(NadiSetelahTransfer,"Nadi Setelah Transfer");
+        }else if(RRSetelahTransfer.getText().trim().equals("")){
+            Valid.textKosong(RRSetelahTransfer,"RR Setelah Transfer");
+        }else if(SuhuSetelahTransfer.getText().trim().equals("")){
+            Valid.textKosong(SuhuSetelahTransfer,"Suhu Setelah Transfer");
+        }else if(KeluhanUtamaSetelahTransfer.getText().trim().equals("")){
+            Valid.textKosong(KeluhanUtamaSetelahTransfer,"Keluhan Utama Setelah Transfer");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
-                }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                }else {
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString())){
                         ganti();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh psikolog yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
                     }
                 }
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -2292,7 +2316,6 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
             /*
-            "Keadaan Umum SbT"21,"TD SbT"22,"Nadi SbT"23,"RR SbT"24,"Suhu Sbt"25,
             "Keluhan Utama Sebelum Transfer"26,"Keadaan Umum StT"27,"TD StT"28,"Nadi StT"29,"RR StT"30,"Suhu Stt"31,"Keluhan Utama Setelah Transfer"32,"NIP Menyerahkan"33,
             "Petugas Yang Menyerahkan"34,"NIP Menerima"35,"Petugas Yang Menerima"36
             */
@@ -2316,6 +2339,22 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             MenyetujuiPemindahan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             NamaMenyetujui.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());  
             HubunganMenyetujui.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            KeadaanUmumSebelumTransfer.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            TDSebelumTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString()); 
+            NadiSebelumTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString()); 
+            RRSebelumTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString()); 
+            SuhuSebelumTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString()); 
+            KeluhanUtamaSebelumTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString()); 
+            KeadaanUmumSetelahTransfer.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            TDSetelahTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()); 
+            NadiSetelahTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString()); 
+            RRSetelahTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString()); 
+            SuhuSetelahTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()); 
+            KeluhanUtamaSetelahTransfer.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString()); 
+            KdPetugasMenyerahkan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString()); 
+            NmPetugasMenyerahkan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString()); 
+            KdPetugasMenerima.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString()); 
+            NmPetugasMenerima.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString()); 
             
             Valid.SetTgl2(TanggalMasuk,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             Valid.SetTgl2(TanggalPindah,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
@@ -2373,8 +2412,8 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from transfer_pasien_antar_ruang where no_rawat=?",1,new String[]{
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.queryu2tf("delete from transfer_pasien_antar_ruang where no_rawat=? and tanggal_masuk=?",2,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tampil();
             TabRawat.setSelectedIndex(1);
