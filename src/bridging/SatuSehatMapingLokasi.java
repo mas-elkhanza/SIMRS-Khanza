@@ -66,7 +66,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Kode Poli","Nama Poli","ID Lokasi Satu Sehat","Longitude","Latitude","Altitude",
+                "Kode Unit","Nama Unit","ID Lokasi Satu Sehat","Longitude","Latitude","Altitude",
                 "Kode Departemen","Nama Departemen","ID Organisasi Satu Sehat"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -980,7 +980,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");
-                Valid.MyReport("rptMapingOrganisasiSatuSehat.jasper","report","::[ Mapping Departemen/Organisasi Satu Sehat Kemenkes ]::",param);            
+                Valid.MyReport("rptMapingLokasiSatuSehat.jasper","report","::[ Mapping Poli/Lokasi Satu Sehat Kemenkes ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

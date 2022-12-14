@@ -157,6 +157,8 @@ public final class KeuanganPiutangObatBelumLunas extends javax.swing.JDialog {
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnDetailPiutang = new javax.swing.JMenuItem();
+        ppPilihSemua = new javax.swing.JMenuItem();
+        ppBersihkan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -201,6 +203,38 @@ public final class KeuanganPiutangObatBelumLunas extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnDetailPiutang);
+
+        ppPilihSemua.setBackground(new java.awt.Color(255, 255, 254));
+        ppPilihSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPilihSemua.setForeground(new java.awt.Color(50, 50, 50));
+        ppPilihSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPilihSemua.setText("Pilih Semua");
+        ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPilihSemua.setName("ppPilihSemua"); // NOI18N
+        ppPilihSemua.setPreferredSize(new java.awt.Dimension(150, 26));
+        ppPilihSemua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPilihSemuaActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppPilihSemua);
+
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkan.setText("Hilangkan Pilihan");
+        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkan.setName("ppBersihkan"); // NOI18N
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(150, 26));
+        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppBersihkan);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -719,6 +753,46 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         tampilAkunBayar();
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
+    private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        total=0;
+        for(i=0;i<tbBangsal.getRowCount();i++){
+            tbBangsal.setValueAt(true,i,0);
+            getdata(i);
+        }
+        row=tbBangsal.getRowCount();
+        for(i=0;i<row;i++){  
+            if(tbBangsal.getValueAt(i,0).toString().equals("true")){
+                 total=total+(Double.parseDouble(tbBangsal.getValueAt(i,5).toString())+
+                         Double.parseDouble(tbBangsal.getValueAt(i,7).toString()))-
+                        (Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+
+                        Double.parseDouble(tbBangsal.getValueAt(i,8).toString()));     
+            }
+        }
+        LCount1.setText(Valid.SetAngka(total));
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppPilihSemuaActionPerformed
+
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        total=0;
+        for(i=0;i<tbBangsal.getRowCount();i++){
+            tbBangsal.setValueAt(false,i,0);
+            getdata(i);
+        }
+        row=tbBangsal.getRowCount();
+        for(i=0;i<row;i++){  
+            if(tbBangsal.getValueAt(i,0).toString().equals("true")){
+                 total=total+(Double.parseDouble(tbBangsal.getValueAt(i,5).toString())+
+                         Double.parseDouble(tbBangsal.getValueAt(i,7).toString()))-
+                        (Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+
+                        Double.parseDouble(tbBangsal.getValueAt(i,8).toString()));     
+            }
+        }
+        LCount1.setText(Valid.SetAngka(total));
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppBersihkanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -763,6 +837,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
+    private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppPilihSemua;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
@@ -848,6 +924,36 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
         }
         LCount1.setText(Valid.SetAngka(total));
+    }
+    
+    private void getdata(int pilih) {
+        try {
+            if(pilih!= -1){
+                if(tbBangsal.getValueAt(pilih,0).toString().equals("true")){
+                    tbBangsal.setValueAt(
+                            (Double.parseDouble(tbBangsal.getValueAt(pilih,5).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(pilih,7).toString()))-
+                            (Double.parseDouble(tbBangsal.getValueAt(pilih,6).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(pilih,8).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(pilih,11).toString())),
+                            pilih,9);
+                }else if(tbBangsal.getValueAt(pilih,0).toString().equals("false")){
+                    tbBangsal.setValueAt(
+                            (Double.parseDouble(tbBangsal.getValueAt(pilih,5).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(pilih,7).toString()))-
+                            (Double.parseDouble(tbBangsal.getValueAt(pilih,6).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(pilih,8).toString())),
+                            pilih,9);
+                    tbBangsal.setValueAt(
+                            (Double.parseDouble(tbBangsal.getValueAt(pilih,5).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(pilih,7).toString()))-
+                            (Double.parseDouble(tbBangsal.getValueAt(pilih,6).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(pilih,8).toString())),
+                            pilih,11);
+                }
+            }  
+        } catch (Exception e) {
+        }
     }
     
     public void isCek(){
