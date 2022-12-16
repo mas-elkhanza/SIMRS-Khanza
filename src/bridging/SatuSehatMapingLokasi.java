@@ -40,7 +40,7 @@ import simrskhanza.DlgCariPoli;
  * @author dosen
  */
 public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabModeKamar,tabModeRuangOK;
+    private final DefaultTableModel tabMode,tabModeKamar,tabModeRuangOK,tabModeRuangLabPK;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -168,6 +168,36 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         }
         tbLokasiRuangOK.setDefaultRenderer(Object.class, new WarnaTable());
 
+        tabModeRuangLabPK=new DefaultTableModel(null,new Object[]{
+                "ID Lokasi Satu Sehat","Longitude","Latitude","Altitude","Kode Departemen","Nama Departemen","ID Organisasi Satu Sehat"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbLokasiRuangLabPK.setModel(tabModeRuangLabPK);
+
+        tbLokasiRuangLabPK.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbLokasiRuangLabPK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 7; i++) {
+            TableColumn column = tbLokasiRuangLabPK.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(215);
+            }else if(i==1){
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(110);
+            }else if(i==3){
+                column.setPreferredWidth(110);
+            }else if(i==4){
+                column.setPreferredWidth(100);
+            }else if(i==5){
+                column.setPreferredWidth(180);
+            }else if(i==6){
+                column.setPreferredWidth(215);
+            }
+        }
+        tbLokasiRuangLabPK.setDefaultRenderer(Object.class, new WarnaTable());
+        
         KodeDepartemen.setDocument(new batasInput((byte)5).getKata(KodeDepartemen)); 
         Longitude.setDocument(new batasInput((byte)30).getKata(Longitude)); 
         Latitude.setDocument(new batasInput((byte)30).getKata(Latitude)); 
@@ -220,7 +250,12 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                         NamaDepartemenRuangOK.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),1).toString());
                         IDOrganisasiRuangOK.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),2).toString());
                         KodeDepartemenRuangOK.requestFocus();
-                    }     
+                    }else if(pilih==4){
+                        KodeDepartemenRuangLabPK.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),0).toString());
+                        NamaDepartemenRuangLabPK.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),1).toString());
+                        IDOrganisasiRuangLabPK.setText(organisasi.getTable().getValueAt(organisasi.getTable().getSelectedRow(),2).toString());
+                        KodeDepartemenRuangLabPK.requestFocus();
+                    }      
                 }
             }
             @Override
@@ -393,7 +428,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         jLabel23 = new widget.Label();
         AltitudeRuangLabPK = new widget.TextBox();
         Scroll3 = new widget.ScrollPane();
-        tbLokasiRuangOK1 = new widget.Table();
+        tbLokasiRuangLabPK = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1127,20 +1162,20 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbLokasiRuangOK1.setAutoCreateRowSorter(true);
-        tbLokasiRuangOK1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbLokasiRuangOK1.setName("tbLokasiRuangOK1"); // NOI18N
-        tbLokasiRuangOK1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbLokasiRuangLabPK.setAutoCreateRowSorter(true);
+        tbLokasiRuangLabPK.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbLokasiRuangLabPK.setName("tbLokasiRuangLabPK"); // NOI18N
+        tbLokasiRuangLabPK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbLokasiRuangOK1MouseClicked(evt);
+                tbLokasiRuangLabPKMouseClicked(evt);
             }
         });
-        tbLokasiRuangOK1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbLokasiRuangLabPK.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tbLokasiRuangOK1KeyReleased(evt);
+                tbLokasiRuangLabPKKeyReleased(evt);
             }
         });
-        Scroll3.setViewportView(tbLokasiRuangOK1);
+        Scroll3.setViewportView(tbLokasiRuangLabPK);
 
         internalFrame5.add(Scroll3, java.awt.BorderLayout.CENTER);
 
@@ -1515,6 +1550,124 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(null,"Untuk Ruang OK hanya diijinkan satu mapping lokasi");
             }
+        }else if(TabRawat.getSelectedIndex()==3){
+            if(tabModeRuangLabPK.getRowCount()==0){
+                if(KodeDepartemenRuangLabPK.getText().trim().equals("")||NamaDepartemenRuangLabPK.getText().trim().equals("")){
+                    Valid.textKosong(KodeDepartemenRuangLabPK,"Departemen/Organisasi");
+                }else if(LongitudeRuangLabPK.getText().trim().equals("")){
+                    Valid.textKosong(LongitudeRuangLabPK,"Longitude");
+                }else if(LatitudeRuangLabPK.getText().trim().equals("")){
+                    Valid.textKosong(LatitudeRuangLabPK,"Latitude");
+                }else if(AltitudeRuangLabPK.getText().trim().equals("")){
+                    Valid.textKosong(AltitudeRuangLabPK,"Altitude");
+                }else{
+                    try{
+                        headers = new HttpHeaders();
+                        headers.setContentType(MediaType.APPLICATION_JSON);
+                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                        json = "{" +
+                                    "\"resourceType\": \"Location\"," +
+                                    "\"identifier\": [" +
+                                        "{" +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/location/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"value\": \"R.LabPK.FAS\"" +
+                                        "}" +
+                                    "]," +
+                                    "\"status\": \"active\"," +
+                                    "\"name\": \"Ruang Operasi\"," +
+                                    "\"description\": \"Ruang Operasi\"," +
+                                    "\"mode\": \"instance\"," +
+                                    "\"telecom\": [" +
+                                        "{" +
+                                            "\"system\": \"phone\"," +
+                                            "\"value\": \""+akses.getkontakrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}," +
+                                        "{" +
+                                            "\"system\": \"email\"," +
+                                            "\"value\": \""+akses.getemailrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}," +
+                                        "{" +
+                                            "\"system\": \"url\"," +
+                                            "\"value\": \"www."+akses.getemailrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}" +
+                                    "]," +
+                                    "\"address\": {" +
+                                        "\"use\": \"work\"," +
+                                        "\"line\": [" +
+                                            "\""+akses.getalamatrs()+"\"" +
+                                        "]," +
+                                        "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                        "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                        "\"country\": \"ID\"," +
+                                        "\"extension\": [" +
+                                            "{" +
+                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                                "\"extension\": [" +
+                                                    "{" +
+                                                        "\"url\": \"province\"," +
+                                                        "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"city\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"district\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"village\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
+                                    "\"physicalType\": {" +
+                                        "\"coding\": [" +
+                                            "{" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/location-physical-type\"," +
+                                                "\"code\": \"ro\"," +
+                                                "\"display\": \"Room\"" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
+                                    "\"position\": {" +
+                                        "\"longitude\": "+LongitudeRuangLabPK.getText()+"," +
+                                        "\"latitude\": "+LatitudeRuangLabPK.getText()+"," +
+                                        "\"altitude\": "+AltitudeRuangLabPK.getText()+
+                                    "}," +
+                                    "\"managingOrganization\": {" +
+                                        "\"reference\": \"Organization/"+IDOrganisasiRuangLabPK.getText()+"\"" +
+                                    "}" +
+                                "}";
+                        System.out.println("Request JSON : "+json);
+                        requestEntity = new HttpEntity(json,headers);
+                        json=api.getRest().exchange(link+"/Location", HttpMethod.POST, requestEntity, String.class).getBody();
+                        System.out.println("Result JSON : "+json);
+                        root = mapper.readTree(json);
+                        response = root.path("id");
+                        if(!response.asText().equals("")){
+                            if(Sequel.menyimpantf("satu_sehat_mapping_lokasi_ruanglab","?,?,?,?,?","ID Lokasi",5,new String[]{
+                                    IDOrganisasiRuangLabPK.getText(),response.asText(),LongitudeRuangLabPK.getText(),LatitudeRuangLabPK.getText(),AltitudeRuangLabPK.getText()
+                                })==true){
+                                emptTeks();
+                                tampilruanglabpk();
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
+                        } 
+                    }catch(Exception e){
+                        System.out.println("Notifikasi Bridging : "+e);
+                        JOptionPane.showMessageDialog(null,"Error Respon Satu Sehat Kemenkes : "+e);
+                    }               
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Untuk Ruang LabPK hanya diijinkan satu mapping lokasi");
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1528,6 +1681,8 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                 Valid.pindah(evt,btnDepartemenKamar, BtnBatal);
             }else if(TabRawat.getSelectedIndex()==2){
                 Valid.pindah(evt,btnDepartemenRuangOK, BtnBatal);
+            }else if(TabRawat.getSelectedIndex()==2){
+                Valid.pindah(evt,btnDepartemenRuangLabPK, BtnBatal);
             }
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
@@ -1869,7 +2024,121 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                     }  
                 }                
             }
-        }    
+        }else if(TabRawat.getSelectedIndex()==3){
+            if(KodeDepartemenRuangLabPK.getText().trim().equals("")||NamaDepartemenRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(KodeDepartemenRuangLabPK,"Departemen/Organisasi");
+            }else if(LongitudeRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(LongitudeRuangLabPK,"Longitude");
+            }else if(LatitudeRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(LatitudeRuangLabPK,"Latitude");
+            }else if(AltitudeRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(AltitudeRuangLabPK,"Altitude");
+            }else{
+                if(tbLokasiRuangLabPK.getSelectedRow()>-1){
+                    try{
+                        headers = new HttpHeaders();
+                        headers.setContentType(MediaType.APPLICATION_JSON);
+                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                        json = "{" +
+                                    "\"resourceType\": \"Location\"," +
+                                    "\"id\": \""+tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),0).toString()+"\"," +
+                                    "\"identifier\": [" +
+                                        "{" +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/location/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"value\": \"R.LabPK.FAS\"" +
+                                        "}" +
+                                    "]," +
+                                    "\"status\": \"inactive\"," +
+                                    "\"name\": \"Ruang Operasi\"," +
+                                    "\"description\": \"Ruang Operasi\"," +
+                                    "\"mode\": \"instance\"," +
+                                    "\"telecom\": [" +
+                                        "{" +
+                                            "\"system\": \"phone\"," +
+                                            "\"value\": \""+akses.getkontakrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}," +
+                                        "{" +
+                                            "\"system\": \"email\"," +
+                                            "\"value\": \""+akses.getemailrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}," +
+                                        "{" +
+                                            "\"system\": \"url\"," +
+                                            "\"value\": \"www."+akses.getemailrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}" +
+                                    "]," +
+                                    "\"address\": {" +
+                                        "\"use\": \"work\"," +
+                                        "\"line\": [" +
+                                            "\""+akses.getalamatrs()+"\"" +
+                                        "]," +
+                                        "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                        "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                        "\"country\": \"ID\"," +
+                                        "\"extension\": [" +
+                                            "{" +
+                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                                "\"extension\": [" +
+                                                    "{" +
+                                                        "\"url\": \"province\"," +
+                                                        "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"city\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"district\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"village\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
+                                    "\"physicalType\": {" +
+                                        "\"coding\": [" +
+                                            "{" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/location-physical-type\"," +
+                                                "\"code\": \"ro\"," +
+                                                "\"display\": \"Room\"" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
+                                    "\"position\": {" +
+                                        "\"longitude\": "+LongitudeRuangLabPK.getText()+"," +
+                                        "\"latitude\": "+LatitudeRuangLabPK.getText()+"," +
+                                        "\"altitude\": "+AltitudeRuangLabPK.getText()+
+                                    "}," +
+                                    "\"managingOrganization\": {" +
+                                        "\"reference\": \"Organization/"+IDOrganisasiRuangLabPK.getText()+"\"" +
+                                    "}" +
+                                "}";
+                        System.out.println("Request JSON : "+json);
+                        requestEntity = new HttpEntity(json,headers);
+                        json=api.getRest().exchange(link+"/Location/"+tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),0).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                        System.out.println("Result JSON : "+json);
+                        root = mapper.readTree(json);
+                        response = root.path("id");
+                        if(!response.asText().equals("")){
+                            Sequel.meghapus("satu_sehat_mapping_lokasi_ruanglab","id_lokasi_satusehat",tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),0).toString());
+                            emptTeks();
+                            tampilruanglabpk();
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Gagal melakukan mapping lokasi ke server Satu Sehat Kemenkes");
+                        } 
+                    }catch(Exception e){
+                        System.out.println("Notifikasi Bridging : "+e);
+                        JOptionPane.showMessageDialog(null,"Error Respon Satu Sehat Kemenkes : "+e);
+                    }  
+                }                
+            }
+        }     
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -2236,6 +2505,123 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                     }  
                 }                
             }
+        }else if(TabRawat.getSelectedIndex()==3){
+            if(KodeDepartemenRuangLabPK.getText().trim().equals("")||NamaDepartemenRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(KodeDepartemenRuangLabPK,"Departemen/Organisasi");
+            }else if(LongitudeRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(LongitudeRuangLabPK,"Longitude");
+            }else if(LatitudeRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(LatitudeRuangLabPK,"Latitude");
+            }else if(AltitudeRuangLabPK.getText().trim().equals("")){
+                Valid.textKosong(AltitudeRuangLabPK,"Altitude");
+            }else{
+                if(tbLokasiRuangLabPK.getSelectedRow()>-1){
+                    try{
+                        headers = new HttpHeaders();
+                        headers.setContentType(MediaType.APPLICATION_JSON);
+                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                        json = "{" +
+                                    "\"resourceType\": \"Location\"," +
+                                    "\"id\": \""+tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),0).toString()+"\"," +
+                                    "\"identifier\": [" +
+                                        "{" +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/location/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"value\": \"R.LabPK.FAS\"" +
+                                        "}" +
+                                    "]," +
+                                    "\"status\": \"active\"," +
+                                    "\"name\": \"Ruang Operasi\"," +
+                                    "\"description\": \"Ruang Operasi\"," +
+                                    "\"mode\": \"instance\"," +
+                                    "\"telecom\": [" +
+                                        "{" +
+                                            "\"system\": \"phone\"," +
+                                            "\"value\": \""+akses.getkontakrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}," +
+                                        "{" +
+                                            "\"system\": \"email\"," +
+                                            "\"value\": \""+akses.getemailrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}," +
+                                        "{" +
+                                            "\"system\": \"url\"," +
+                                            "\"value\": \"www."+akses.getemailrs()+"\"," +
+                                            "\"use\": \"work\"" +
+                                        "}" +
+                                    "]," +
+                                    "\"address\": {" +
+                                        "\"use\": \"work\"," +
+                                        "\"line\": [" +
+                                            "\""+akses.getalamatrs()+"\"" +
+                                        "]," +
+                                        "\"city\": \""+akses.getkabupatenrs()+"\"," +
+                                        "\"postalCode\": \""+koneksiDB.KODEPOSSATUSEHAT()+"\"," +
+                                        "\"country\": \"ID\"," +
+                                        "\"extension\": [" +
+                                            "{" +
+                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/administrativeCode\"," +
+                                                "\"extension\": [" +
+                                                    "{" +
+                                                        "\"url\": \"province\"," +
+                                                        "\"valueCode\": \""+koneksiDB.PROPINSISATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"city\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KABUPATENSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"district\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KECAMATANSATUSEHAT()+"\"" +
+                                                    "}," +
+                                                    "{" +
+                                                        "\"url\": \"village\"," +
+                                                        "\"valueCode\": \""+koneksiDB.KELURAHANSATUSEHAT()+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
+                                    "\"physicalType\": {" +
+                                        "\"coding\": [" +
+                                            "{" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/location-physical-type\"," +
+                                                "\"code\": \"ro\"," +
+                                                "\"display\": \"Room\"" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
+                                    "\"position\": {" +
+                                        "\"longitude\": "+LongitudeRuangLabPK.getText()+"," +
+                                        "\"latitude\": "+LatitudeRuangLabPK.getText()+"," +
+                                        "\"altitude\": "+AltitudeRuangLabPK.getText()+
+                                    "}," +
+                                    "\"managingOrganization\": {" +
+                                        "\"reference\": \"Organization/"+IDOrganisasiRuangLabPK.getText()+"\"" +
+                                    "}" +
+                                "}";
+                        System.out.println("Request JSON : "+json);
+                        requestEntity = new HttpEntity(json,headers);
+                        json=api.getRest().exchange(link+"/Location/"+tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),0).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                        System.out.println("Result JSON : "+json);
+                        root = mapper.readTree(json);
+                        response = root.path("id");
+                        if(!response.asText().equals("")){
+                            if(Sequel.mengedittf("satu_sehat_mapping_lokasi_ruanglab","id_lokasi_satusehat=?","id_organisasi_satusehat=?,id_lokasi_satusehat=?,longitude=?,latitude=?,altittude=?",6,new String[]{
+                                    IDOrganisasiRuangLabPK.getText(),response.asText(),LongitudeRuangLabPK.getText(),LatitudeRuangLabPK.getText(),AltitudeRuangLabPK.getText(),tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),0).toString()
+                                })==true){
+                                emptTeks();
+                                tampilruanglabpk();
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Gagal melakukan mapping lokasi ke server Satu Sehat Kemenkes");
+                        } 
+                    }catch(Exception e){
+                        System.out.println("Notifikasi Bridging : "+e);
+                        JOptionPane.showMessageDialog(null,"Error Respon Satu Sehat Kemenkes : "+e);
+                    }  
+                }                
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -2518,32 +2904,47 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     }//GEN-LAST:event_tbLokasiRuangOKKeyReleased
 
     private void btnDepartemenRuangLabPKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepartemenRuangLabPKActionPerformed
-        // TODO add your handling code here:
+        pilih=4;
+        organisasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        organisasi.setLocationRelativeTo(internalFrame1);
+        organisasi.setVisible(true);
     }//GEN-LAST:event_btnDepartemenRuangLabPKActionPerformed
 
     private void btnDepartemenRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDepartemenRuangLabPKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, AltitudeRuangLabPK, BtnSimpan);
     }//GEN-LAST:event_btnDepartemenRuangLabPKKeyPressed
 
     private void LongitudeRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LongitudeRuangLabPKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, TCari, LatitudeRuangLabPK);
     }//GEN-LAST:event_LongitudeRuangLabPKKeyPressed
 
     private void LatitudeRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LatitudeRuangLabPKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, LongitudeRuangLabPK, AltitudeRuangLabPK);
     }//GEN-LAST:event_LatitudeRuangLabPKKeyPressed
 
     private void AltitudeRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AltitudeRuangLabPKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, LatitudeRuangLabPK, btnDepartemenRuangOK);
     }//GEN-LAST:event_AltitudeRuangLabPKKeyPressed
 
-    private void tbLokasiRuangOK1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLokasiRuangOK1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbLokasiRuangOK1MouseClicked
+    private void tbLokasiRuangLabPKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLokasiRuangLabPKMouseClicked
+        if(tabModeRuangLabPK.getRowCount()!=0){
+            try {
+                getDataRuangLabPK();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbLokasiRuangLabPKMouseClicked
 
-    private void tbLokasiRuangOK1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbLokasiRuangOK1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbLokasiRuangOK1KeyReleased
+    private void tbLokasiRuangLabPKKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbLokasiRuangLabPKKeyReleased
+        if(tabModeRuangLabPK.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getDataRuangLabPK();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbLokasiRuangLabPKKeyReleased
 
     /**
     * @param args the command line arguments
@@ -2645,8 +3046,8 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private widget.Table tbJnsPerawatan;
     private widget.Table tbLokasiKamar;
+    private widget.Table tbLokasiRuangLabPK;
     private widget.Table tbLokasiRuangOK;
-    private widget.Table tbLokasiRuangOK1;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -2720,7 +3121,15 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
             NamaDepartemenRuangOK.setText("");
             LongitudeRuangOK.requestFocus();
             IDOrganisasiRuangOK.setText("");
-        }     
+        }else if(TabRawat.getSelectedIndex()==3){
+            LongitudeRuangLabPK.setText("");
+            AltitudeRuangLabPK.setText("");
+            LatitudeRuangLabPK.setText("");
+            KodeDepartemenRuangLabPK.setText("");
+            NamaDepartemenRuangLabPK.setText("");
+            LongitudeRuangLabPK.requestFocus();
+            IDOrganisasiRuangLabPK.setText("");
+        }      
     }
 
     private void getData() {
@@ -2834,6 +3243,40 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         LCount.setText(""+tabModeRuangOK.getRowCount());
     }
     
+    private void tampilruanglabpk() {
+        Valid.tabelKosong(tabModeRuangLabPK);
+        try{
+            ps=koneksi.prepareStatement(
+                   "select satu_sehat_mapping_lokasi_ruanglab.id_lokasi_satusehat,satu_sehat_mapping_lokasi_ruanglab.longitude,"+
+                   "satu_sehat_mapping_lokasi_ruanglab.latitude,satu_sehat_mapping_lokasi_ruanglab.altittude,"+
+                   "satu_sehat_mapping_departemen.dep_id,departemen.nama,satu_sehat_mapping_lokasi_ruanglab.id_organisasi_satusehat "+
+                   "from satu_sehat_mapping_lokasi_ruanglab inner join satu_sehat_mapping_departemen "+
+                   "on satu_sehat_mapping_lokasi_ruanglab.id_organisasi_satusehat=satu_sehat_mapping_departemen.id_organisasi_satusehat "+
+                   "inner join departemen on satu_sehat_mapping_departemen.dep_id=departemen.dep_id");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModeRuangLabPK.addRow(new Object[]{
+                        rs.getString("id_lokasi_satusehat"),rs.getString("longitude"),rs.getString("latitude"),
+                        rs.getString("altittude"),rs.getString("dep_id"),rs.getString("nama"),rs.getString("id_organisasi_satusehat")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabModeRuangLabPK.getRowCount());
+    }
+    
     private void getDataRuangOK() {
        if(tbLokasiRuangOK.getSelectedRow()!= -1){
            LongitudeRuangOK.setText(tbLokasiRuangOK.getValueAt(tbLokasiRuangOK.getSelectedRow(),1).toString());
@@ -2842,6 +3285,17 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
            KodeDepartemenRuangOK.setText(tbLokasiRuangOK.getValueAt(tbLokasiRuangOK.getSelectedRow(),4).toString());
            NamaDepartemenRuangOK.setText(tbLokasiRuangOK.getValueAt(tbLokasiRuangOK.getSelectedRow(),5).toString());
            IDOrganisasiRuangOK.setText(tbLokasiRuangOK.getValueAt(tbLokasiRuangOK.getSelectedRow(),6).toString());
+        }
+    }
+    
+    private void getDataRuangLabPK() {
+       if(tbLokasiRuangLabPK.getSelectedRow()!= -1){
+           LongitudeRuangLabPK.setText(tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),1).toString());
+           LatitudeRuangLabPK.setText(tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),2).toString());
+           AltitudeRuangLabPK.setText(tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),3).toString());
+           KodeDepartemenRuangLabPK.setText(tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),4).toString());
+           NamaDepartemenRuangLabPK.setText(tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),5).toString());
+           IDOrganisasiRuangLabPK.setText(tbLokasiRuangLabPK.getValueAt(tbLokasiRuangLabPK.getSelectedRow(),6).toString());
         }
     }
 }
