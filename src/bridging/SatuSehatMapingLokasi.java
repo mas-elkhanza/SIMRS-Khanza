@@ -379,6 +379,21 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         AltitudeRuangOK = new widget.TextBox();
         Scroll2 = new widget.ScrollPane();
         tbLokasiRuangOK = new widget.Table();
+        internalFrame5 = new widget.InternalFrame();
+        FormInput3 = new widget.PanelBiasa();
+        jLabel17 = new widget.Label();
+        KodeDepartemenRuangLabPK = new widget.TextBox();
+        NamaDepartemenRuangLabPK = new widget.TextBox();
+        btnDepartemenRuangLabPK = new widget.Button();
+        IDOrganisasiRuangLabPK = new widget.TextBox();
+        LongitudeRuangLabPK = new widget.TextBox();
+        jLabel21 = new widget.Label();
+        jLabel22 = new widget.Label();
+        LatitudeRuangLabPK = new widget.TextBox();
+        jLabel23 = new widget.Label();
+        AltitudeRuangLabPK = new widget.TextBox();
+        Scroll3 = new widget.ScrollPane();
+        tbLokasiRuangOK1 = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1012,6 +1027,124 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         internalFrame4.add(Scroll2, java.awt.BorderLayout.CENTER);
 
         TabRawat.addTab("Lokasi OK", internalFrame4);
+
+        internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame5.setBorder(null);
+        internalFrame5.setName("internalFrame5"); // NOI18N
+        internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
+
+        FormInput3.setName("FormInput3"); // NOI18N
+        FormInput3.setPreferredSize(new java.awt.Dimension(100, 74));
+        FormInput3.setLayout(null);
+
+        jLabel17.setText("Organisasi :");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput3.add(jLabel17);
+        jLabel17.setBounds(0, 40, 75, 23);
+
+        KodeDepartemenRuangLabPK.setEditable(false);
+        KodeDepartemenRuangLabPK.setHighlighter(null);
+        KodeDepartemenRuangLabPK.setName("KodeDepartemenRuangLabPK"); // NOI18N
+        FormInput3.add(KodeDepartemenRuangLabPK);
+        KodeDepartemenRuangLabPK.setBounds(79, 40, 75, 23);
+
+        NamaDepartemenRuangLabPK.setEditable(false);
+        NamaDepartemenRuangLabPK.setHighlighter(null);
+        NamaDepartemenRuangLabPK.setName("NamaDepartemenRuangLabPK"); // NOI18N
+        FormInput3.add(NamaDepartemenRuangLabPK);
+        NamaDepartemenRuangLabPK.setBounds(156, 40, 275, 23);
+
+        btnDepartemenRuangLabPK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnDepartemenRuangLabPK.setMnemonic('1');
+        btnDepartemenRuangLabPK.setToolTipText("Alt+1");
+        btnDepartemenRuangLabPK.setName("btnDepartemenRuangLabPK"); // NOI18N
+        btnDepartemenRuangLabPK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepartemenRuangLabPKActionPerformed(evt);
+            }
+        });
+        btnDepartemenRuangLabPK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDepartemenRuangLabPKKeyPressed(evt);
+            }
+        });
+        FormInput3.add(btnDepartemenRuangLabPK);
+        btnDepartemenRuangLabPK.setBounds(705, 40, 28, 23);
+
+        IDOrganisasiRuangLabPK.setEditable(false);
+        IDOrganisasiRuangLabPK.setHighlighter(null);
+        IDOrganisasiRuangLabPK.setName("IDOrganisasiRuangLabPK"); // NOI18N
+        FormInput3.add(IDOrganisasiRuangLabPK);
+        IDOrganisasiRuangLabPK.setBounds(433, 40, 270, 23);
+
+        LongitudeRuangLabPK.setHighlighter(null);
+        LongitudeRuangLabPK.setName("LongitudeRuangLabPK"); // NOI18N
+        LongitudeRuangLabPK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LongitudeRuangLabPKKeyPressed(evt);
+            }
+        });
+        FormInput3.add(LongitudeRuangLabPK);
+        LongitudeRuangLabPK.setBounds(79, 10, 165, 23);
+
+        jLabel21.setText("Longitude :");
+        jLabel21.setName("jLabel21"); // NOI18N
+        FormInput3.add(jLabel21);
+        jLabel21.setBounds(0, 10, 75, 23);
+
+        jLabel22.setText("Latitude :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput3.add(jLabel22);
+        jLabel22.setBounds(261, 10, 60, 23);
+
+        LatitudeRuangLabPK.setHighlighter(null);
+        LatitudeRuangLabPK.setName("LatitudeRuangLabPK"); // NOI18N
+        LatitudeRuangLabPK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LatitudeRuangLabPKKeyPressed(evt);
+            }
+        });
+        FormInput3.add(LatitudeRuangLabPK);
+        LatitudeRuangLabPK.setBounds(325, 10, 165, 23);
+
+        jLabel23.setText("Altitude :");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput3.add(jLabel23);
+        jLabel23.setBounds(505, 10, 59, 23);
+
+        AltitudeRuangLabPK.setHighlighter(null);
+        AltitudeRuangLabPK.setName("AltitudeRuangLabPK"); // NOI18N
+        AltitudeRuangLabPK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AltitudeRuangLabPKKeyPressed(evt);
+            }
+        });
+        FormInput3.add(AltitudeRuangLabPK);
+        AltitudeRuangLabPK.setBounds(568, 10, 165, 23);
+
+        internalFrame5.add(FormInput3, java.awt.BorderLayout.PAGE_START);
+
+        Scroll3.setName("Scroll3"); // NOI18N
+        Scroll3.setOpaque(true);
+
+        tbLokasiRuangOK1.setAutoCreateRowSorter(true);
+        tbLokasiRuangOK1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbLokasiRuangOK1.setName("tbLokasiRuangOK1"); // NOI18N
+        tbLokasiRuangOK1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbLokasiRuangOK1MouseClicked(evt);
+            }
+        });
+        tbLokasiRuangOK1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbLokasiRuangOK1KeyReleased(evt);
+            }
+        });
+        Scroll3.setViewportView(tbLokasiRuangOK1);
+
+        internalFrame5.add(Scroll3, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Lokasi Lab PK", internalFrame5);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -2161,6 +2294,23 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                     Valid.MyReport("rptMapingLokasiSatuSehat2.jasper","report","::[ Mapping Poli/Lokasi Satu Sehat Kemenkes ]::",param);            
             }
             this.setCursor(Cursor.getDefaultCursor());
+        }else if(TabRawat.getSelectedIndex()==2){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tabModeRuangOK.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                BtnBatal.requestFocus();
+            }else if(tabModeRuangOK.getRowCount()!=0){            
+                    Map<String, Object> param = new HashMap<>();    
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReport("rptMapingLokasiSatuSehat3.jasper","report","::[ Mapping Poli/Lokasi Satu Sehat Kemenkes ]::",param);            
+            }
+            this.setCursor(Cursor.getDefaultCursor());
         }
             
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2367,6 +2517,34 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbLokasiRuangOKKeyReleased
 
+    private void btnDepartemenRuangLabPKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepartemenRuangLabPKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepartemenRuangLabPKActionPerformed
+
+    private void btnDepartemenRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDepartemenRuangLabPKKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepartemenRuangLabPKKeyPressed
+
+    private void LongitudeRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LongitudeRuangLabPKKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LongitudeRuangLabPKKeyPressed
+
+    private void LatitudeRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LatitudeRuangLabPKKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LatitudeRuangLabPKKeyPressed
+
+    private void AltitudeRuangLabPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AltitudeRuangLabPKKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AltitudeRuangLabPKKeyPressed
+
+    private void tbLokasiRuangOK1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLokasiRuangOK1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbLokasiRuangOK1MouseClicked
+
+    private void tbLokasiRuangOK1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbLokasiRuangOK1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbLokasiRuangOK1KeyReleased
+
     /**
     * @param args the command line arguments
     */
@@ -2386,6 +2564,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox Altitude;
     private widget.TextBox AltitudeKamar;
+    private widget.TextBox AltitudeRuangLabPK;
     private widget.TextBox AltitudeRuangOK;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
@@ -2398,33 +2577,41 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormInput1;
     private widget.PanelBiasa FormInput2;
+    private widget.PanelBiasa FormInput3;
     private widget.TextBox IDOrganisasi;
     private widget.TextBox IDOrganisasiKamar;
+    private widget.TextBox IDOrganisasiRuangLabPK;
     private widget.TextBox IDOrganisasiRuangOK;
     private widget.TextBox KodeDepartemen;
     private widget.TextBox KodeDepartemenKamar;
+    private widget.TextBox KodeDepartemenRuangLabPK;
     private widget.TextBox KodeDepartemenRuangOK;
     private widget.TextBox KodeKamar;
     private widget.TextBox KodePoli;
     private widget.Label LCount;
     private widget.TextBox Latitude;
     private widget.TextBox LatitudeKamar;
+    private widget.TextBox LatitudeRuangLabPK;
     private widget.TextBox LatitudeRuangOK;
     private widget.TextBox Longitude;
     private widget.TextBox LongitudeKamar;
+    private widget.TextBox LongitudeRuangLabPK;
     private widget.TextBox LongitudeRuangOK;
     private widget.TextBox NamaDepartemen;
     private widget.TextBox NamaDepartemenKamar;
+    private widget.TextBox NamaDepartemenRuangLabPK;
     private widget.TextBox NamaDepartemenRuangOK;
     private widget.TextBox NamaKamar;
     private widget.TextBox NamaPoli;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
+    private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;
     private javax.swing.JTabbedPane TabRawat;
     private widget.Button btnDepartemenKamar;
     private widget.Button btnDepartemenRS;
+    private widget.Button btnDepartemenRuangLabPK;
     private widget.Button btnDepartemenRuangOK;
     private widget.Button btnKamar;
     private widget.Button btnPoliRS;
@@ -2432,6 +2619,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
+    private widget.InternalFrame internalFrame5;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
@@ -2439,9 +2627,13 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel20;
+    private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -2454,6 +2646,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
     private widget.Table tbJnsPerawatan;
     private widget.Table tbLokasiKamar;
     private widget.Table tbLokasiRuangOK;
+    private widget.Table tbLokasiRuangOK1;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
