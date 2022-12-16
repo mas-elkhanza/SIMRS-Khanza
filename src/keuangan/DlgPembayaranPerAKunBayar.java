@@ -571,7 +571,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                         }
                         rs=ps.executeQuery();
                         while(rs.next()){                            
-                            petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                            petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                             if(CmbStatus.getSelectedItem().toString().equals("Semua")){
                                 norawatinap="";
                                 norawatjalan="";
@@ -831,7 +831,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                         }
                         rs=ps.executeQuery();
                         while(rs.next()){                            
-                            petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                            petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                             if(CmbStatus.getSelectedItem().toString().equals("Semua")){
                                 norawatinap="";
                                 norawatjalan="";

@@ -19,10 +19,10 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-danger"><h5><center>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5><br/>
+        <h5 class="text-dark"><h5><center>Pernyataan Persetujuan/Penolakan Tindakan No. <?=$nopernyataan;?></center></h5><br/>
         <form method="POST" action="pages/storeImage2.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nopernyataan" value="<?=$nopernyataan;?>">
-            <h7 class="text-danger">
+            <h7 class="text-dark">
                 <center>
                     Saksi 1 Keluarga<br/>
                     <?=getOne("select persetujuan_penolakan_tindakan.saksi_keluarga from persetujuan_penolakan_tindakan where persetujuan_penolakan_tindakan.no_pernyataan='$nopernyataan'")?>

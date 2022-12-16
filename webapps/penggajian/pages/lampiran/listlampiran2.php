@@ -37,7 +37,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="74%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                    <td width="74%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,250}" title=" a-zA-Z0-9, ./@_ (Maksimal 250 karakter)" autocomplete="off" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">            
                     </td>
                 </tr>
@@ -863,18 +863,18 @@
             </form>
        <?php
             if(mysqli_num_rows($hasil)!=0) {
-                echo("Data : $jumlah <a target=_blank href=../lampiran/LaporanLampiran.php?&keyword=$keyword>| Laporan1 </a>
-                      <a target=_blank href=../lampiran/LaporanLampiran2.php?&keyword=$keyword>| Laporan2 </a>
-                      <a target=_blank href=../lampiran/LaporanLampiran3.php?&keyword=$keyword>| Laporan3 </a>
-                      <a target=_blank href=../lampiran/LaporanLampiran4.php?&keyword=$keyword>| Laporan4 </a>
-                      <a target=_blank href=../lampiran/LaporanLampiran5.php?&keyword=$keyword>| Laporan5 </a>
-                      <a target=_blank href=../lampiran/LaporanTransfer.php?&keyword=$keyword>| Transfer1 </a>
-                      <a target=_blank href=../lampiran/LaporanTransfer2.php?&keyword=$keyword>| Transfer2 </a>
-                      <a target=_blank href=../lampiran/LaporanCash.php?&keyword=$keyword>| Casdiv </a>
-                      <a target=_blank href=../lampiran/LaporanCash2.php?&keyword=$keyword>| Cash2 </a>
-                      <a target=_blank href=../lampiran/LaporanTHR.php?&keyword=$keyword>| Laporan THR </a>
-                      <a target=_blank href=../lampiran/LaporanTHR2.php?&keyword=$keyword>| Laporan THR2 </a>
-                      <a target=_blank href=../lampiran/LaporanTHR3.php?&keyword=$keyword>| Laporan THR3 </a>");
+                echo("Data : $jumlah <a target=_blank href=../lampiran/LaporanLampiran.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan1 </a>
+                      <a target=_blank href=../lampiran/LaporanLampiran2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan2 </a>
+                      <a target=_blank href=../lampiran/LaporanLampiran3.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan3 </a>
+                      <a target=_blank href=../lampiran/LaporanLampiran4.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan4 </a>
+                      <a target=_blank href=../lampiran/LaporanLampiran5.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan5 </a>
+                      <a target=_blank href=../lampiran/LaporanTransfer.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Transfer1 </a>
+                      <a target=_blank href=../lampiran/LaporanTransfer2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Transfer2 </a>
+                      <a target=_blank href=../lampiran/LaporanCash.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Casdiv </a>
+                      <a target=_blank href=../lampiran/LaporanCash2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Cash2 </a>
+                      <a target=_blank href=../lampiran/LaporanTHR.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan THR </a>
+                      <a target=_blank href=../lampiran/LaporanTHR2.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan THR2 </a>
+                      <a target=_blank href=../lampiran/LaporanTHR3.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">| Laporan THR3 </a>");
              }
        ?>
     </div>

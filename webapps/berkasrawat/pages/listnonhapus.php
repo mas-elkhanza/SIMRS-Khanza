@@ -271,7 +271,7 @@
                             ?>
                         </select>
                         &nbsp;&nbsp;
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="30" maxlength="200" pattern="[A-Z0-9-]{1,200}" title=" A-Z0-9- (Maksimal 200 karakter)" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="30" maxlength="200" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off" autofocus />
                         &nbsp;&nbsp;
                         Status : 
                         <select name="status" class="text">

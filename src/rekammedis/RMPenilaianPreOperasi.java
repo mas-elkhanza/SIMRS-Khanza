@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari tim IT RSUD Prembun
+ * By Mas Elkhanza
  */
 
 
@@ -1443,8 +1443,6 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             RingkasanKlinik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             PemeriksaanFisik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             PemeriksaanDiagnostik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());

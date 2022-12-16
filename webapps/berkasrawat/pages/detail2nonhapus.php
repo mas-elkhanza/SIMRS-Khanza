@@ -1,6 +1,8 @@
 <?php
     if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
+            exit(header("Location:../index.php"));
+        }
     }
 ?>
 <div id="post">
@@ -73,7 +75,7 @@
                 </tr>
                 <tr class="isi2">
                     <td width="25%" valign="top">File Berkas(PDF/JPG)</td><td width="" valign="top">:</td>
-                    <td width="75%" valign="top"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
+                    <td width="75%" valign="top"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="application/pdf,image/jpeg,image/jpg"/>
                     </td>
                 </tr>        
             </table>
@@ -85,17 +87,20 @@
                     $no_rawat           = validTeks(trim($_POST['no_rawat']));
                     $kode               = validTeks(trim($_POST['kode']));
                     $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                    
-                    if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
-                        switch($action) {
-                            case "TAMBAH":
-                                Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."''>";
-                                break;
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                        if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
+                            switch($action) {
+                                case "TAMBAH":
+                                    Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."''>";
+                                    break;
+                            }
+                        }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
+                            echo 'Semua field harus isi..!!!';
                         }
-                    }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
-                        echo 'Semua field harus isi..!!!';
+                    }else{
+                        echo "Berkas harus pdf/JPG";
                     }
                 }
             ?>

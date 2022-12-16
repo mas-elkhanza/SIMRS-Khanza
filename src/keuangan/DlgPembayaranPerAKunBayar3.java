@@ -679,7 +679,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     norawatinap="";
                     norawatjalan="";
                     notajual="";
@@ -855,7 +855,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     norawatinap="";
                     norawatjalan="";
                     notajual="";

@@ -212,7 +212,7 @@ public final class sekuel {
             }
             SimpanTrack("insert into "+table+" values("+dicari+")");
         } catch (Exception e) {
-            System.out.println("Notifikasi : "+e); 
+            System.out.println("Notifikasi : "+table+" "+e); 
         }            
     }
     
@@ -403,7 +403,7 @@ public final class sekuel {
                 }            
                 ps.executeUpdate();
             }catch(Exception e){
-                System.out.println("Notifikasi : "+e);            
+                System.out.println("Notifikasi : "+e); ;            
             }finally{
                 if(ps != null){
                     ps.close();
@@ -993,6 +993,29 @@ public final class sekuel {
                 bool=false;
                 System.out.println("Notifikasi : "+e);
                 JOptionPane.showMessageDialog(null,"Maaf, Query tidak bisa dijalankan...!!!!");                
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+            SimpanTrack(qry);
+        } catch (Exception e) {
+            bool=false;
+            System.out.println("Notifikasi : "+e);
+        }
+        return bool;
+    }
+    
+    public boolean queryutf2(String qry){
+        bool=false;
+        try {
+            ps=connect.prepareStatement(qry);
+            try{                            
+                ps.executeUpdate(); 
+                bool=true;
+             }catch(Exception e){
+                bool=false;
+                System.out.println("Notifikasi : "+e);           
              }finally{
                 if(ps != null){
                     ps.close();

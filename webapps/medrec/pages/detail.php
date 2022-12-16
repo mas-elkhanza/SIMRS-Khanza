@@ -1,6 +1,8 @@
 <?php
     if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
+            exit(header("Location:../index.php"));
+        }
     }
 ?>
 <div id="post">
@@ -99,7 +101,7 @@
                 </tr>                
                 <tr class="head">
                     <td width="31%" >File Retensi</td><td width="">:</td>
-                    <td width="67%"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=file id="TxtIsi3" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
+                    <td width="67%"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=file id="TxtIsi3" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="application/pdf,image/jpeg,image/jpg"/>
                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>        
@@ -113,17 +115,20 @@
                     $terakhir_daftar    = validTeks(trim($_POST['ThnTerakhir'])."-".trim($_POST['BlnTerakhir'])."-".trim($_POST['TglTerakhir']));
                     $tgl_retensi        = validTeks(trim($_POST['ThnRetensi'])."-".trim($_POST['BlnRetensi'])."-".trim($_POST['TglRetensi']));
                     $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                    
-                    if ((!empty($id))&&(!empty($dokumen))) {
-                        switch($action) {
-                            case "TAMBAH":
-                                Tambah(" retensi_pasien "," '$id','$terakhir_daftar','$tgl_retensi','$dokumen'", " Riwayat Retensi " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&id=$id'>";
-                                break;
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                        if ((!empty($id))&&(!empty($dokumen))) {
+                            switch($action) {
+                                case "TAMBAH":
+                                    Tambah(" retensi_pasien "," '$id','$terakhir_daftar','$tgl_retensi','$dokumen'", " Riwayat Retensi " );
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&id=$id'>";
+                                    break;
+                            }
+                        }else if ((empty($id))||(empty($dokumen))){
+                            echo 'Semua field harus isi..!!!';
                         }
-                    }else if ((empty($id))||(empty($dokumen))){
-                        echo 'Semua field harus isi..!!!';
+                    }else{
+                        echo "Berkas harus PDF/JPG/JPEG";
                     }
                 }
             ?>

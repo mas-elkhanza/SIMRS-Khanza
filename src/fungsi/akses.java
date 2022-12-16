@@ -191,7 +191,12 @@ public final class akses {
             soap_ranap_tni=false,jumlah_pengunjung_ralan_tni=false,laporan_penyakit_tni=false,catatan_keperawatan_ranap=false,master_rencana_keperawatan_gigi=false,
             master_rencana_keperawatan_mata=false,master_rencana_keperawatan_igd=false,master_masalah_keperawatan_psikiatri=false,master_rencana_keperawatan_psikiatri=false,
             penilaian_awal_keperawatan_psikiatri=false,pemantauan_pews_anak=false,surat_pulang_atas_permintaan_sendiri=false,template_hasil_radiologi=false,
-            laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false;
+            laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false,
+            perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false,penilaian_lanjutan_resiko_jatuh_anak=false,penilaian_awal_medis_ralan_geriatri=false,
+            penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
+            akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,
+            jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,
+            satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1089,6 +1094,27 @@ public final class akses {
                         akses.ubah_petugas_lab_mb=true;
                         akses.penilaian_pre_operasi=true;
                         akses.penilaian_pre_anestesi=true;
+                        akses.perencanaan_pemulangan=true;
+                        akses.penilaian_lanjutan_resiko_jatuh_dewasa=true;
+                        akses.penilaian_lanjutan_resiko_jatuh_anak=true;
+                        akses.penilaian_awal_medis_ralan_geriatri=true;
+                        akses.penilaian_tambahan_pasien_geriatri=true;
+                        akses.skrining_nutrisi_dewasa=true;
+                        akses.skrining_nutrisi_lansia=true;
+                        akses.hasil_pemeriksaan_usg=true;
+                        akses.skrining_nutrisi_anak=true;
+                        akses.akun_host_to_host_bank_jabar=true;
+                        akses.pembayaran_bank_jabar=true;
+                        akses.surat_pernyataan_pasien_umum=true;
+                        akses.konseling_farmasi=true;
+                        akses.pelayanan_informasi_obat=true;
+                        akses.jawaban_pio_apoteker=true;
+                        akses.surat_persetujuan_umum=true;
+                        akses.transfer_pasien_antar_ruang=true;
+                        akses.satu_sehat_referensi_dokter=true;
+                        akses.satu_sehat_referensi_pasien=true;
+                        akses.satu_sehat_mapping_departemen=true;
+                        akses.satu_sehat_mapping_lokasi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1970,6 +1996,27 @@ public final class akses {
                         akses.ubah_petugas_lab_mb=rs2.getBoolean("ubah_petugas_lab_mb");
                         akses.penilaian_pre_operasi=rs2.getBoolean("penilaian_pre_operasi");
                         akses.penilaian_pre_anestesi=rs2.getBoolean("penilaian_pre_anestesi");
+                        akses.perencanaan_pemulangan=rs2.getBoolean("perencanaan_pemulangan");
+                        akses.penilaian_lanjutan_resiko_jatuh_dewasa=rs2.getBoolean("penilaian_lanjutan_resiko_jatuh_dewasa");
+                        akses.penilaian_lanjutan_resiko_jatuh_anak=rs2.getBoolean("penilaian_lanjutan_resiko_jatuh_anak");
+                        akses.penilaian_awal_medis_ralan_geriatri=rs2.getBoolean("penilaian_awal_medis_ralan_geriatri");
+                        akses.penilaian_tambahan_pasien_geriatri=rs2.getBoolean("penilaian_tambahan_pasien_geriatri");
+                        akses.skrining_nutrisi_dewasa=rs2.getBoolean("skrining_nutrisi_dewasa");
+                        akses.skrining_nutrisi_lansia=rs2.getBoolean("skrining_nutrisi_lansia");
+                        akses.hasil_pemeriksaan_usg=rs2.getBoolean("hasil_pemeriksaan_usg");
+                        akses.skrining_nutrisi_anak=rs2.getBoolean("skrining_nutrisi_anak");
+                        akses.akun_host_to_host_bank_jabar=rs2.getBoolean("akun_host_to_host_bank_jabar");
+                        akses.pembayaran_bank_jabar=rs2.getBoolean("pembayaran_bank_jabar");
+                        akses.surat_pernyataan_pasien_umum=rs2.getBoolean("surat_pernyataan_pasien_umum");
+                        akses.konseling_farmasi=rs2.getBoolean("konseling_farmasi");
+                        akses.pelayanan_informasi_obat=rs2.getBoolean("pelayanan_informasi_obat");
+                        akses.jawaban_pio_apoteker=rs2.getBoolean("jawaban_pio_apoteker");
+                        akses.surat_persetujuan_umum=rs2.getBoolean("surat_persetujuan_umum");
+                        akses.transfer_pasien_antar_ruang=rs2.getBoolean("transfer_pasien_antar_ruang");
+                        akses.satu_sehat_referensi_dokter=rs2.getBoolean("satu_sehat_referensi_dokter");
+                        akses.satu_sehat_referensi_pasien=rs2.getBoolean("satu_sehat_referensi_pasien");
+                        akses.satu_sehat_mapping_departemen=rs2.getBoolean("satu_sehat_mapping_departemen");
+                        akses.satu_sehat_mapping_lokasi=rs2.getBoolean("satu_sehat_mapping_lokasi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2849,6 +2896,27 @@ public final class akses {
                         akses.ubah_petugas_lab_mb=false;
                         akses.penilaian_pre_operasi=false;
                         akses.penilaian_pre_anestesi=false;
+                        akses.perencanaan_pemulangan=false;
+                        akses.penilaian_lanjutan_resiko_jatuh_dewasa=false;
+                        akses.penilaian_lanjutan_resiko_jatuh_anak=false;
+                        akses.penilaian_awal_medis_ralan_geriatri=false;
+                        akses.penilaian_tambahan_pasien_geriatri=false;
+                        akses.skrining_nutrisi_dewasa=false;
+                        akses.skrining_nutrisi_lansia=false;
+                        akses.hasil_pemeriksaan_usg=false;
+                        akses.skrining_nutrisi_anak=false;
+                        akses.akun_host_to_host_bank_jabar=false;
+                        akses.pembayaran_bank_jabar=false;
+                        akses.surat_pernyataan_pasien_umum=false;
+                        akses.konseling_farmasi=false;
+                        akses.pelayanan_informasi_obat=false;
+                        akses.jawaban_pio_apoteker=false;
+                        akses.surat_persetujuan_umum=false;
+                        akses.transfer_pasien_antar_ruang=false;
+                        akses.satu_sehat_referensi_dokter=false;
+                        akses.satu_sehat_referensi_pasien=false;
+                        akses.satu_sehat_mapping_departemen=false;
+                        akses.satu_sehat_mapping_lokasi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3785,4 +3853,25 @@ public final class akses {
     public static boolean getubah_petugas_lab_mb(){return akses.ubah_petugas_lab_mb;}
     public static boolean getpenilaian_pre_operasi(){return akses.penilaian_pre_operasi;}
     public static boolean getpenilaian_pre_anestesi(){return akses.penilaian_pre_anestesi;}
+    public static boolean getperencanaan_pemulangan(){return akses.perencanaan_pemulangan;}
+    public static boolean getpenilaian_lanjutan_resiko_jatuh_dewasa(){return akses.penilaian_lanjutan_resiko_jatuh_dewasa;}
+    public static boolean getpenilaian_lanjutan_resiko_jatuh_anak(){return akses.penilaian_lanjutan_resiko_jatuh_anak;}
+    public static boolean getpenilaian_awal_medis_ralan_geriatri(){return akses.penilaian_awal_medis_ralan_geriatri;}
+    public static boolean getpenilaian_tambahan_pasien_geriatri(){return akses.penilaian_tambahan_pasien_geriatri;}
+    public static boolean getskrining_nutrisi_dewasa(){return akses.skrining_nutrisi_dewasa;}
+    public static boolean getskrining_nutrisi_lansia(){return akses.skrining_nutrisi_lansia;}
+    public static boolean gethasil_pemeriksaan_usg(){return akses.hasil_pemeriksaan_usg;}
+    public static boolean getskrining_nutrisi_anak(){return akses.skrining_nutrisi_anak;}
+    public static boolean getakun_host_to_host_bank_jabar(){return akses.akun_host_to_host_bank_jabar;}
+    public static boolean getpembayaran_bank_jabar(){return akses.pembayaran_bank_jabar;}
+    public static boolean getsurat_pernyataan_pasien_umum(){return akses.surat_pernyataan_pasien_umum;}
+    public static boolean getkonseling_farmasi(){return akses.konseling_farmasi;}
+    public static boolean getpelayanan_informasi_obat(){return akses.pelayanan_informasi_obat;}
+    public static boolean getjawaban_pio_apoteker(){return akses.jawaban_pio_apoteker;}
+    public static boolean getsurat_persetujuan_umum(){return akses.surat_persetujuan_umum;}
+    public static boolean gettransfer_pasien_antar_ruang(){return akses.transfer_pasien_antar_ruang;}
+    public static boolean getsatu_sehat_referensi_dokter(){return akses.satu_sehat_referensi_dokter;}
+    public static boolean getsatu_sehat_referensi_pasien(){return akses.satu_sehat_referensi_pasien;}
+    public static boolean getsatu_sehat_mapping_departemen(){return akses.satu_sehat_mapping_departemen;}
+    public static boolean getsatu_sehat_mapping_lokasi(){return akses.satu_sehat_mapping_lokasi;}
 }   

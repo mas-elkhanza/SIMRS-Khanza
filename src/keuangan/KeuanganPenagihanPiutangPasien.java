@@ -79,7 +79,7 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
              }
         };
         tbBelumLunas.setModel(tabMode);
-        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
+        //tbBelumLunas.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBelumLunas.getBackground()));
         tbBelumLunas.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBelumLunas.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -134,7 +134,7 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
              }
         };
         tbBelumDitagihkan.setModel(tabMode2);
-        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
+        //tbBelumLunas.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBelumLunas.getBackground()));
         tbBelumDitagihkan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBelumDitagihkan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -321,6 +321,8 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnDetailPiutang = new javax.swing.JMenuItem();
+        ppPilihSemua = new javax.swing.JMenuItem();
+        ppBersihkan = new javax.swing.JMenuItem();
         KdAkun = new widget.TextBox();
         AtasNama = new widget.TextBox();
         NoTelp = new widget.TextBox();
@@ -391,13 +393,45 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
         MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailPiutang.setText("Detail Piutang");
         MnDetailPiutang.setName("MnDetailPiutang"); // NOI18N
-        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(200, 26));
         MnDetailPiutang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDetailPiutangActionPerformed(evt);
             }
         });
         jPopupMenu1.add(MnDetailPiutang);
+
+        ppPilihSemua.setBackground(new java.awt.Color(255, 255, 254));
+        ppPilihSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPilihSemua.setForeground(new java.awt.Color(50, 50, 50));
+        ppPilihSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPilihSemua.setText("Pilih Semua");
+        ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPilihSemua.setName("ppPilihSemua"); // NOI18N
+        ppPilihSemua.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppPilihSemua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPilihSemuaActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppPilihSemua);
+
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkan.setText("Hilangkan Pilihan");
+        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkan.setName("ppBersihkan"); // NOI18N
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppBersihkan);
 
         KdAkun.setEditable(false);
         KdAkun.setName("KdAkun"); // NOI18N
@@ -911,8 +945,8 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
         tbBelumLunas.setComponentPopupMenu(jPopupMenu1);
         tbBelumLunas.setName("tbBelumLunas"); // NOI18N
         tbBelumLunas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbBelumLunasMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbBelumLunasMouseReleased(evt);
             }
         });
         tbBelumLunas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -934,6 +968,9 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbBelumDitagihkanMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbBelumDitagihkanMouseReleased(evt);
+            }
         });
         tbBelumDitagihkan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -950,14 +987,6 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tbBelumLunasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumLunasMouseClicked
-        if(tabMode.getRowCount()!=0){
-            if(tbBelumLunas.getSelectedColumn()==0){
-                getdata();
-            }
-        }
-}//GEN-LAST:event_tbBelumLunasMouseClicked
 
     private void tbBelumLunasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBelumLunasKeyPressed
         if(tabMode.getRowCount()!=0){
@@ -1215,6 +1244,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     }                    
                 }
 
+                getdata();
                 Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
@@ -1268,6 +1298,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     }                    
                 }
 
+                getdata2();
                 Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
@@ -1410,11 +1441,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void tbBelumDitagihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumDitagihkanMouseClicked
-        if(tabMode2.getRowCount()!=0){
-            if(tbBelumDitagihkan.getSelectedColumn()==0){
-                getdata2();
-            }
-        }
+        
     }//GEN-LAST:event_tbBelumDitagihkanMouseClicked
 
     private void tbBelumDitagihkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBelumDitagihkanKeyPressed
@@ -1424,6 +1451,72 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
         }
     }//GEN-LAST:event_tbBelumDitagihkanKeyPressed
+
+    private void tbBelumLunasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumLunasMouseReleased
+        if(tabMode.getRowCount()!=0){
+            if(tbBelumLunas.getSelectedColumn()==0){
+                getdata();
+            }
+        }
+    }//GEN-LAST:event_tbBelumLunasMouseReleased
+
+    private void tbBelumDitagihkanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBelumDitagihkanMouseReleased
+        if(tabMode2.getRowCount()!=0){
+            if(tbBelumDitagihkan.getSelectedColumn()==0){
+                getdata2();
+            }
+        }
+    }//GEN-LAST:event_tbBelumDitagihkanMouseReleased
+
+    private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
+            if(tbBelumLunas.getSelectedRow()!= -1){
+                tbBelumLunas.setValueAt(false,tbBelumLunas.getSelectedRow(),0);
+            }
+            JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar/penjamin terlebih dahulu");
+        }else{
+            total=0;
+            jml=0;
+            for(i=0;i<tbBelumLunas.getRowCount();i++){
+                tbBelumLunas.setValueAt(true,i,0);
+            }
+            for(i=0;i<tbBelumLunas.getRowCount();i++){  
+                if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
+                     total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
+                     jml++;
+                }
+            }
+            LCountDipilih1.setText(jml+"");
+            LCountDipilih2.setText(Valid.SetAngka(total));
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppPilihSemuaActionPerformed
+
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
+            if(tbBelumLunas.getSelectedRow()!= -1){
+                tbBelumLunas.setValueAt(false,tbBelumLunas.getSelectedRow(),0);
+            }
+            JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar/penjamin terlebih dahulu");
+        }else{
+            total=0;
+            jml=0;
+            for(i=0;i<tbBelumLunas.getRowCount();i++){
+                tbBelumLunas.setValueAt(false,i,0);
+            }
+            for(i=0;i<tbBelumLunas.getRowCount();i++){  
+                if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
+                     total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
+                     jml++;
+                }
+            }
+            LCountDipilih1.setText(jml+"");
+            LCountDipilih2.setText(Valid.SetAngka(total));
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppBersihkanActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1501,6 +1594,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.TextBox nmptg;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
+    private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppPilihSemua;
     private widget.Table tbBelumDitagihkan;
     private widget.Table tbBelumLunas;
     // End of variables declaration//GEN-END:variables
@@ -1967,7 +2062,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     
     private void getdata2() {
         if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
-            tbBelumLunas.setValueAt(false,tbBelumLunas.getSelectedRow(),0);
+            tbBelumDitagihkan.setValueAt(false,tbBelumDitagihkan.getSelectedRow(),0);
             JOptionPane.showMessageDialog(null,"Silahkan pilih penjamin terlebih dahulu");
         }else{
             total=0;

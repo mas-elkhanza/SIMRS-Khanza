@@ -1,3 +1,9 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
+
 <div id="post">
     <div class="entry">
     <div align="center" class="link">

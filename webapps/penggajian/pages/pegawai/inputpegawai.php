@@ -1,3 +1,10 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/pegawai/photo/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+?>
 <div id="post">
     <div class="entry">
         <form name="frm_unit" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
@@ -585,7 +592,7 @@
                 <tr class="head">
                     <td width="25%" >Photo</td><td width="">:</td>
                     <td width="75%">
-                        <input name="photo" class="text2"  type=file  value="<?php echo $photo;?>" size="15" maxlength="250" />
+                        <input name="photo" class="text2"  type=file  value="<?php echo $photo;?>" size="15" maxlength="250" accept="image/jpeg,image/jpg"/>
                     </td>
                 </tr>
                 <tr class="head">
@@ -632,12 +639,12 @@
                     $mulai_kontrak  = validTeks(trim($_POST['ThnKontrak'])."-".trim($_POST['BlnKontrak'])."-".trim($_POST['TglKontrak']));
                     $photo          = "pages/pegawai/photo/".validTeks($_FILES['photo']['name']);
                     $no_ktp         = validTeks(trim($_POST['no_ktp']));
-                    move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
                     
                     if(($photo!="pages/pegawai/photo/")&&(strtolower(substr($photo,-3))!="jpg")){
                         echo "Berkas harus JPEG/JPG";
                         echo "<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=TAMBAH'></head><body></body></html>";
                     }else{
+                        move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
                         if ((!empty($nik))&&(!empty($jnj_jabatan))&&(!empty($departemen))&&(!empty($bidang))&&(!empty($stts_wp))&&(!empty($stts_kerja))&&
                             (!empty($pendidikan))&&(!empty($tgl_lahir))&&(!empty($mulai_kerja))&&(!empty($indexins))&&(!empty($bpd))&&(!empty($kode_kelompok))&&
                              (!empty($kode_resiko))&&(!empty($kode_emergency))) {

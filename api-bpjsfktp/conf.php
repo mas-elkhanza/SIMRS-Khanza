@@ -472,6 +472,103 @@
         return $save;
     }
     
+    function validTeks3($data,$panjang){
+        $save="";
+        if(strlen($data)>$panjang){
+            header('Location: https://www.google.com');
+        }else{
+            $save=str_replace("'","",$data);
+            $save=str_replace("\\","",$save);
+            $save=str_replace(";","",$save);
+            $save=str_replace("`","",$save);
+            $save=str_replace("--","",$save);
+            $save=str_replace("/*","",$save);
+            $save=str_replace("*/","",$save);
+            $save=str_replace("text/html","",$save);
+            $save=str_replace("<script>","",$save);
+            $save=str_replace("</script>","",$save);
+            $save=str_replace("<noscript>","",$save);
+            $save=str_replace("</noscript>","",$save);
+            $save=str_replace("<img","",$save);
+            $save=str_replace("document","",$save);
+            $save=str_replace(" from ","",$save);
+            $save=str_replace("concat","",$save);
+            $save=str_replace("union","",$save);
+            $save=str_replace("base64","",$save);
+            $save=str_replace("//","",$save);
+            $save=str_replace("*","",$save);
+            $save=str_replace("}","",$save);
+            $save=str_replace("$","",$save);
+            $save=str_replace("{","",$save);
+            $save=str_replace("@","",$save);
+            $save=str_replace("[","",$save);
+            $save=str_replace("]","",$save);
+            $save=str_replace("(","",$save);
+            $save=str_replace(")","",$save);
+            $save=str_replace("|","",$save);
+            $save=str_replace(",","",$save);
+            $save=str_replace("<","",$save);
+            $save=str_replace(">","",$save);
+            $save=str_replace(":","",$save);
+            $save=str_replace("+","",$save);
+            $save=str_replace("^","",$save);
+            $save=str_replace("#","",$save);
+            $save=str_replace("!","",$save);
+            $save=str_replace("='","",$save);
+            $save=str_replace("=/","",$save);
+            $save=str_replace("=","",$save);
+        }
+        return $save;
+    }
+    
+    function validTeks4($data,$panjang){
+        $save="";
+        if(strlen($data)>$panjang){
+            header('Location: https://www.google.com');
+        }else{
+            $save=str_replace("'","",$data);
+            $save=str_replace("\\","",$save);
+            $save=str_replace(";","",$save);
+            $save=str_replace("`","",$save);
+            $save=str_replace("--","",$save);
+            $save=str_replace("/*","",$save);
+            $save=str_replace("*/","",$save);
+            $save=str_replace("text/html","",$save);
+            $save=str_replace("<script>","",$save);
+            $save=str_replace("</script>","",$save);
+            $save=str_replace("<noscript>","",$save);
+            $save=str_replace("</noscript>","",$save);
+            $save=str_replace("<img","",$save);
+            $save=str_replace("document","",$save);
+            $save=str_replace(" from ","",$save);
+            $save=str_replace("concat","",$save);
+            $save=str_replace("union","",$save);
+            $save=str_replace("base64","",$save);
+            $save=str_replace("//","",$save);
+            $save=str_replace("*","",$save);
+            $save=str_replace("}","",$save);
+            $save=str_replace("$","",$save);
+            $save=str_replace("{","",$save);
+            $save=str_replace("@","",$save);
+            $save=str_replace("[","",$save);
+            $save=str_replace("]","",$save);
+            $save=str_replace("(","",$save);
+            $save=str_replace(")","",$save);
+            $save=str_replace("|","",$save);
+            $save=str_replace(",","",$save);
+            $save=str_replace("<","",$save);
+            $save=str_replace(">","",$save);
+            $save=str_replace("+","",$save);
+            $save=str_replace("^","",$save);
+            $save=str_replace("#","",$save);
+            $save=str_replace("!","",$save);
+            $save=str_replace("='","",$save);
+            $save=str_replace("=/","",$save);
+            $save=str_replace("=","",$save);
+        }
+        return $save;
+    }
+    
     date_default_timezone_set('Asia/Jakarta');
     $month      = date('Y-m');
     $date       = date('Y-m-d');
