@@ -383,6 +383,18 @@ color: #323232;
 	font: 25px  tahoma;
 }
 
+.isi8 td{
+	border-right: 0px solid #e2e7dd;
+	border-bottom: 0px solid #e2e7dd;
+        border-top: 0px solid #e2e7dd;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:8px;
+	padding-right:8px;
+	color:#323232;
+	font-size: 15px;
+        font: Tahoma;
+}
 
 .button {
 	margin-left: 10px;
@@ -392,6 +404,17 @@ color: #323232;
 	font-size: 22px;
         font: Tahoma;
 	color: #ffffff;
+}
+
+.button2 {
+	margin-left: 10px;
+	padding: 4px 4px;
+	border: none;
+	background: #C11212;
+	font-size: 15px;
+        font: Tahoma;
+	color: #ffffff;
+        width:100px;
 }
 
 .text {

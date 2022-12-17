@@ -1,18 +1,176 @@
 <?php
- header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
- header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
- header("Cache-Control: no-store, no-cache, must-revalidate"); 
- header("Cache-Control: post-check=0, pre-check=0", false);
- header("Pragma: no-cache"); // HTTP/1.0
+    session_start();
+    require_once('conf/conf.php');
+    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
+    header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
+    header("Cache-Control: no-store, no-cache, must-revalidate"); 
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache"); // HTTP/1.0
+    $action      = isset($_GET['aksi'])?$_GET['aksi']:NULL;
+    if($action=="Keluar"){
+        session_start();
+        $_SESSION["ses_admin_login"]=null;
+        unset($_SESSION["ses_admin_login"]); 
+        session_destroy();
+        exit(header("Location:index.php"));
+    }
 ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Edukasi, Konfirmasi & Persetujuan</title>
     <link href="css/default.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="conf/validator.js"></script>
+    <script>
+        function PopupCenter(pageURL, title,w,h) {
+            var left = (screen.width/2)-(w/2);
+            var top = (screen.height/2)-(h/2);
+            var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+            
+        }
+    </script>
 </head>
 <body>
-  
-<center><font size='30' color='FF55AA' face='Tahoma'>SIMKES Khanza</font></center>
-
+    <div id="mainContent">
+        <?php 
+           if ($_SESSION['ses_admin_login']=="admin"){
+                echo "
+                    <div id=\"navcontainer\">
+                        <div style='width: 100%; height: 100%; overflow: auto;'> 
+                            <table width='100%' align='center' height='100%'>
+                                <tr width='100%' align='center'>
+                                    <td width='33%' align='center'>
+                                      <a target=_blank href=persetujuanumum/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/5868931_architecture_building_coronavirus_hospital_corona_icon.png'/><br>
+                                         Persetujuan Umum                                                  
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
+                                      <a target=_blank href=persetujuantindakan/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/6771569_education_learning_pencil_school_signature_icon.png'/><br>
+                                         Persetujuan/Penolakan Tindakan                                                  
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
+                                      <a target=_blank href=perencanaanpemulangan/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/6141469_coronavirus_covid_covid19_hospital_infected_icon.png'/><br>
+                                         Perencanaan Pemulangan Pasien                                                  
+                                      </a>
+                                    </td>
+                                </tr>
+                                <tr width='100%' align='center'>
+                                    <td width='33%' align='center'>
+                                      <a target=_blank href=penyerahanresep/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/1360485894_add-notes.png'/><br>
+                                         Penyerahan Resep Rawat Jalan                                                 
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
+                                      <a target=_blank href=pernyataanumum/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/Edit-Male-User.png'/><br>
+                                         Pernyataan Pasien Umum                                                  
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
+                                      <a target=_blank href=pulangaps/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/5947112_clinic_doctor_healthcare_hospital_medical_icon.png'/><br>
+                                         Pernyataan Pulang Atas Permintaan Sendiri                                                 
+                                      </a>
+                                    </td>
+                                </tr>
+                                <tr width='100%' align='center'>
+                                    <td width='33%' align='center'>
+                                      <a href='?aksi=Keluar'>                                                 
+                                         <img src='images/1360484978_application-pgp-signature.png'/><br>
+                                         Keluar                                               
+                                      </a>
+                                    </td>
+                                </tr>
+                            </table> 
+                        </div>
+                    </div>";		
+           }else{
+               $BtnLogin=isset($_POST['BtnLogin'])?$_POST['BtnLogin']:NULL;
+                if (isset($BtnLogin)) {
+                    echo "tesss";
+                    $usere      = validTeks4($_POST['usere'],30);
+                    $passworde  = validTeks4($_POST['passworde'],30);
+                    if(getOne("select aes_decrypt(admin.passworde,'windi') from admin where admin.usere=aes_encrypt('$usere','nur')")==$passworde){
+                        $_SESSION["ses_admin_login"]= "admin";
+                        exit(header("Location:index.php"));
+                    }else if(getOne("select aes_decrypt(user.password,'windi') from user where user.id_user=aes_encrypt('$usere','nur')")==$passworde){
+                        $_SESSION["ses_admin_login"]= "admin";
+                        exit(header("Location:index.php"));
+                    }else{
+                        echo "  <form id=\"pengenmasuk-form\" role=\"form\" onsubmit=\"return validasiIsi();\" method=\"post\" action=\"\" enctype=multipart/form-data>
+                                    <table width='100%' align='center' height='100%' border='0'>
+                                        <tr width='100%' align='center' height='100%' border='0'>
+                                            <td width='100%' height='100%' alin='center' valign='middle' border='0'> 
+                                                <table width='400px' align='center' height='100px' border='0'>
+                                                    <tr width='100%' align='center' border='0'>
+                                                        <td width='40%' align='right' border='0' class=\"text\">User Login&nbsp;</td>
+                                                        <td align='center' border='0' class=\"text\">:</td>
+                                                        <td width='60%' align='left' border='0' class=\"text\">
+                                                            <input type=\"password\" name=\"usere\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_ (Maksimal 30 karakter)\" required placeholder=\"User\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi1'));\" id=\"TxtIsi1\" autocomplete=\"off\" size=\"17\" maxlength=\"30\" autofocus/>
+                                                            <span id=\"MsgIsi1\" style=\"color:#CC0000; font-size:10px;\"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr width='100%' align='center' border='0'>
+                                                        <td width='40%' align='right' border='0' class=\"text\">Password&nbsp;</td>
+                                                        <td align='center' border='0' class=\"text\">:</td>
+                                                        <td width='60%' align='left' border='0' class=\"text\">
+                                                            <input type=\"password\" name=\"passworde\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_ (Maksimal 30 karakter)\" required placeholder=\"Password\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi2'));\" id=\"TxtIsi2\" autocomplete=\"off\" size=\"17\" maxlength=\"30\"/>
+                                                            <span id=\"MsgIsi2\" style=\"color:#CC0000; font-size:10px;\"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr width='100%' align='center' border='0'>
+                                                        <td width='100%' colspan='3' border='0' class=\"text\">
+                                                            <div align=\"center\"><input name=\"BtnLogin\" type=\"submit\" class=\"button\" value=\"&nbsp;&nbsp;Log-In&nbsp;&nbsp;\">&nbsp<input name=\"BtnKosong\" type=\"reset\" class=\"button\" value=\"&nbsp;&nbsp;&nbsp;Batal&nbsp;&nbsp;&nbsp;\"></div>
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>";		
+                    }
+                }else{
+                    echo "  <form id=\"pengenmasuk-form\" role=\"form\" onsubmit=\"return validasiIsi();\" method=\"post\" action=\"\" enctype=multipart/form-data>
+                                <table width='100%' align='center' height='100%' border='0'>
+                                    <tr width='100%' align='center' height='100%' border='0'>
+                                        <td width='100%' height='100%' alin='center' valign='middle' border='0'> 
+                                            <table width='400px' align='center' height='100px' border='0'>
+                                                <tr width='100%' align='center' border='0'>
+                                                    <td width='40%' align='right' border='0' class=\"text\">User Login&nbsp;</td>
+                                                    <td align='center' border='0' class=\"text\">:</td>
+                                                    <td width='60%' align='left' border='0' class=\"text\">
+                                                        <input type=\"password\" name=\"usere\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_ (Maksimal 30 karakter)\" required placeholder=\"User\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi1'));\" id=\"TxtIsi1\" autocomplete=\"off\" size=\"17\" maxlength=\"30\" autofocus/>
+                                                        <span id=\"MsgIsi1\" style=\"color:#CC0000; font-size:10px;\"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr width='100%' align='center' border='0'>
+                                                    <td width='40%' align='right' border='0' class=\"text\">Password&nbsp;</td>
+                                                    <td align='center' border='0' class=\"text\">:</td>
+                                                    <td width='60%' align='left' border='0' class=\"text\">
+                                                        <input type=\"password\" name=\"passworde\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_ (Maksimal 30 karakter)\" required placeholder=\"Password\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi2'));\" id=\"TxtIsi2\" autocomplete=\"off\" size=\"17\" maxlength=\"30\"/>
+                                                        <span id=\"MsgIsi2\" style=\"color:#CC0000; font-size:10px;\"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr width='100%' align='center' border='0'>
+                                                    <td width='100%' colspan='3' border='0' class=\"text\">
+                                                        <div align=\"center\"><input name=\"BtnLogin\" type=\"submit\" class=\"button\" value=\"&nbsp;&nbsp;Log-In&nbsp;&nbsp;\">&nbsp<input name=\"BtnKosong\" type=\"reset\" class=\"button\" value=\"&nbsp;&nbsp;&nbsp;Batal&nbsp;&nbsp;&nbsp;\"></div>
+                                                    </td>
+                                                </tr>
+                                            </table> 
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>";	
+                }      
+           }
+        ?>
+    </div>    
 </body>
+</html>
 
