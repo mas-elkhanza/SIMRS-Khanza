@@ -34,7 +34,8 @@
 <body>
     <div id="mainContent">
         <?php 
-           if ($_SESSION['ses_admin_login']=="admin"){
+           $sesilogin=isset($_SESSION['ses_admin_login'])?$_SESSION['ses_admin_login']:NULL;
+           if ($sesilogin=="admin"){
                 echo "
                     <div id=\"navcontainer\">
                         <div style='width: 100%; height: 100%; overflow: auto;'> 
@@ -93,7 +94,6 @@
            }else{
                $BtnLogin=isset($_POST['BtnLogin'])?$_POST['BtnLogin']:NULL;
                 if (isset($BtnLogin)) {
-                    echo "tesss";
                     $usere      = validTeks4($_POST['usere'],30);
                     $passworde  = validTeks4($_POST['passworde'],30);
                     if(getOne("select aes_decrypt(admin.passworde,'windi') from admin where admin.usere=aes_encrypt('$usere','nur')")==$passworde){
