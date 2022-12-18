@@ -82,6 +82,12 @@
                                 </tr>
                                 <tr width='100%' align='center'>
                                     <td width='33%' align='center'>
+                                      <a target=_blank href=persetujuantransferruang/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/6009596_case_coronavirus_covid19_hospital_patient_icon.png'/><br>
+                                         Persetujuan Transfer Antar Ruang                                                
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               
