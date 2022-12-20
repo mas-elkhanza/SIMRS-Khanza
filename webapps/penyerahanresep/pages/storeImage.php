@@ -1,6 +1,6 @@
 <?php
     require_once('../../conf/conf.php');
-    $noresep    = validTeks4(trim($_POST['noresep'],20));
+    $noresep    = validTeks4($_POST['noresep'],20);
     if(file_exists(host()."webapps/penyerahanresep/pages/upload/".$noresep.".jpeg")){
         @unlink(host()."webapps/penyerahanresep/pages/upload/".$noresep.".jpeg");
     }

@@ -196,7 +196,7 @@ public final class akses {
             penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,
             jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,
-            satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false;
+            satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,catatan_cek_gds=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1116,6 +1116,7 @@ public final class akses {
                         akses.satu_sehat_mapping_departemen=true;
                         akses.satu_sehat_mapping_lokasi=true;
                         akses.satu_sehat_kirim_encounter=true;
+                        akses.catatan_cek_gds=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2019,6 +2020,7 @@ public final class akses {
                         akses.satu_sehat_mapping_departemen=rs2.getBoolean("satu_sehat_mapping_departemen");
                         akses.satu_sehat_mapping_lokasi=rs2.getBoolean("satu_sehat_mapping_lokasi");
                         akses.satu_sehat_kirim_encounter=rs2.getBoolean("satu_sehat_kirim_encounter");
+                        akses.catatan_cek_gds=rs2.getBoolean("catatan_cek_gds");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2920,6 +2922,7 @@ public final class akses {
                         akses.satu_sehat_mapping_departemen=false;
                         akses.satu_sehat_mapping_lokasi=false;
                         akses.satu_sehat_kirim_encounter=false;
+                        akses.catatan_cek_gds=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3878,4 +3881,5 @@ public final class akses {
     public static boolean getsatu_sehat_mapping_departemen(){return akses.satu_sehat_mapping_departemen;}
     public static boolean getsatu_sehat_mapping_lokasi(){return akses.satu_sehat_mapping_lokasi;}
     public static boolean getsatu_sehat_kirim_encounter(){return akses.satu_sehat_kirim_encounter;}
+    public static boolean getcatatan_cek_gds(){return akses.catatan_cek_gds;}
 }   

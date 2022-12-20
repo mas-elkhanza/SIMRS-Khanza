@@ -169,7 +169,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false,perencanaan_pemulangan=false,penilaian_lanjutan_resiko_jatuh_dewasa=false,penilaian_lanjutan_resiko_jatuh_anak=false,
             penilaian_awal_medis_ralan_geriatri=false,penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,jawaban_pio_apoteker=false,surat_persetujuan_umum=false,
-            transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false;
+            transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,
+            catatan_cek_gds=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -762,6 +763,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         penilaian_awal_medis_ralan_geriatri=false;penilaian_tambahan_pasien_geriatri=false;skrining_nutrisi_dewasa=false;skrining_nutrisi_lansia=false;hasil_pemeriksaan_usg=false;skrining_nutrisi_anak=false;
         akun_host_to_host_bank_jabar=false;pembayaran_bank_jabar=false;surat_pernyataan_pasien_umum=false;konseling_farmasi=false;pelayanan_informasi_obat=false;jawaban_pio_apoteker=false;surat_persetujuan_umum=false;
         transfer_pasien_antar_ruang=false;satu_sehat_referensi_dokter=false;satu_sehat_referensi_pasien=false;satu_sehat_mapping_departemen=false;satu_sehat_mapping_lokasi=false;satu_sehat_kirim_encounter=false;
+        catatan_cek_gds=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -963,7 +965,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.skrining_nutrisi_lansia,user.hasil_pemeriksaan_usg,user.skrining_nutrisi_anak,user.akun_host_to_host_bank_jabar,user.pembayaran_bank_jabar,"+
                 "user.surat_pernyataan_pasien_umum,user.konseling_farmasi,user.pelayanan_informasi_obat,user.jawaban_pio_apoteker,user.surat_persetujuan_umum,"+
                 "user.transfer_pasien_antar_ruang,user.satu_sehat_referensi_dokter,user.satu_sehat_referensi_pasien,user.satu_sehat_mapping_departemen,"+
-                "user.satu_sehat_mapping_lokasi,user.satu_sehat_kirim_encounter from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.satu_sehat_mapping_lokasi,user.satu_sehat_kirim_encounter,user.catatan_cek_gds from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1065,6 +1067,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     ubah_petugas_lab_mb=rs.getBoolean("ubah_petugas_lab_mb");penilaian_pre_operasi=rs.getBoolean("penilaian_pre_operasi");penilaian_pre_anestesi=rs.getBoolean("penilaian_pre_anestesi");perencanaan_pemulangan=rs.getBoolean("perencanaan_pemulangan");penilaian_lanjutan_resiko_jatuh_dewasa=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_dewasa");penilaian_lanjutan_resiko_jatuh_anak=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_anak");penilaian_awal_medis_ralan_geriatri=rs.getBoolean("penilaian_awal_medis_ralan_geriatri");penilaian_tambahan_pasien_geriatri=rs.getBoolean("penilaian_tambahan_pasien_geriatri");
                     skrining_nutrisi_dewasa=rs.getBoolean("skrining_nutrisi_dewasa");skrining_nutrisi_lansia=rs.getBoolean("skrining_nutrisi_lansia");hasil_pemeriksaan_usg=rs.getBoolean("hasil_pemeriksaan_usg");skrining_nutrisi_anak=rs.getBoolean("skrining_nutrisi_anak");akun_host_to_host_bank_jabar=rs.getBoolean("akun_host_to_host_bank_jabar");pembayaran_bank_jabar=rs.getBoolean("pembayaran_bank_jabar");surat_pernyataan_pasien_umum=rs.getBoolean("surat_pernyataan_pasien_umum");konseling_farmasi=rs.getBoolean("konseling_farmasi");pelayanan_informasi_obat=rs.getBoolean("pelayanan_informasi_obat");
                     jawaban_pio_apoteker=rs.getBoolean("jawaban_pio_apoteker");surat_persetujuan_umum=rs.getBoolean("surat_persetujuan_umum");transfer_pasien_antar_ruang=rs.getBoolean("transfer_pasien_antar_ruang");satu_sehat_referensi_dokter=rs.getBoolean("satu_sehat_referensi_dokter");satu_sehat_referensi_pasien=rs.getBoolean("satu_sehat_referensi_pasien");satu_sehat_mapping_departemen=rs.getBoolean("satu_sehat_mapping_departemen");satu_sehat_mapping_lokasi=rs.getBoolean("satu_sehat_mapping_lokasi");satu_sehat_kirim_encounter=rs.getBoolean("satu_sehat_kirim_encounter");
+                    catatan_cek_gds=rs.getBoolean("catatan_cek_gds");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -3749,8 +3752,12 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[L]Jawaban PIO Apoteker",jawaban_pio_apoteker});
         }
         
-        if("[[L]Transfer Pasien Antar Ruang".toLowerCase().contains(TCari.getText().toLowerCase())){
+        if("[L]Transfer Pasien Antar Ruang".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[L]Transfer Pasien Antar Ruang",transfer_pasien_antar_ruang});
+        }
+        
+        if("[L]Catatan Cek GDS".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[L]Catatan Cek GDS",catatan_cek_gds});
         }
 
         if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7350,6 +7357,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Transfer Pasien Antar Ruang".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","transfer_pasien_antar_ruang='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Catatan Cek GDS".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_cek_gds='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

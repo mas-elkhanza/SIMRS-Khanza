@@ -4995,7 +4995,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getsatu_sehat_mapping_lokasi());
     }
     
-    
     private void tampilkamar() {
         Valid.tabelKosong(tabModeKamar);
         try{

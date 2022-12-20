@@ -1665,9 +1665,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSG.setSelected(true);
             chkSkriningNutrisiLansia.setSelected(true);
             chkSkriningNutrisiAnak.setSelected(true);
-            chkKonselingFarmasi.setEnabled(true);
-            chkPelayananInformasiObat.setEnabled(true);
-            chkTransferAntarRuang.setEnabled(true);
+            chkKonselingFarmasi.setSelected(true);
+            chkPelayananInformasiObat.setSelected(true);
+            chkTransferAntarRuang.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1741,9 +1741,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSG.setSelected(false);
             chkSkriningNutrisiLansia.setSelected(false);
             chkSkriningNutrisiAnak.setSelected(false);
-            chkKonselingFarmasi.setEnabled(false);
-            chkPelayananInformasiObat.setEnabled(false);
-            chkTransferAntarRuang.setEnabled(false);
+            chkKonselingFarmasi.setSelected(false);
+            chkPelayananInformasiObat.setSelected(false);
+            chkTransferAntarRuang.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1752,7 +1752,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void NoRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRawatKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            BtnCari1ActionPerformed(null);
+        }
     }//GEN-LAST:event_NoRawatKeyPressed
 
     /**
