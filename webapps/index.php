@@ -102,10 +102,10 @@
                 if (isset($BtnLogin)) {
                     $usere      = validTeks4($_POST['usere'],30);
                     $passworde  = validTeks4($_POST['passworde'],30);
-                    if(getOne("select aes_decrypt(admin.passworde,'windi') from admin where admin.usere=aes_encrypt('$usere','nur')")==$passworde){
+                    if(getOne("select count(admin.passworde) from admin where admin.usere=aes_encrypt('$usere','nur') and admin.passworde=aes_encrypt('$passworde','windi')")>0){
                         $_SESSION["ses_admin_login"]= USERHYBRIDWEB.PASHYBRIDWEB;
                         exit(header("Location:index.php"));
-                    }else if(getOne("select aes_decrypt(user.password,'windi') from user where user.id_user=aes_encrypt('$usere','nur')")==$passworde){
+                    }else if(getOne("select count(user.password) from user where user.id_user=aes_encrypt('$usere','nur') and user.password=aes_encrypt('$passworde','windi')")>0){
                         $_SESSION["ses_admin_login"]= USERHYBRIDWEB.PASHYBRIDWEB;
                         exit(header("Location:index.php"));
                     }else{
@@ -118,7 +118,7 @@
                                                         <td width='40%' align='right' border='0' class=\"text\">User Login&nbsp;</td>
                                                         <td align='center' border='0' class=\"text\">:</td>
                                                         <td width='60%' align='left' border='0' class=\"text\">
-                                                            <input type=\"password\" name=\"usere\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_ (Maksimal 30 karakter)\" required placeholder=\"User\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi1'));\" id=\"TxtIsi1\" autocomplete=\"off\" size=\"17\" maxlength=\"30\" autofocus/>
+                                                            <input type=\"password\" name=\"usere\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_- (Maksimal 30 karakter)\" required placeholder=\"User\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi1'));\" id=\"TxtIsi1\" autocomplete=\"off\" size=\"17\" maxlength=\"30\" autofocus/>
                                                             <span id=\"MsgIsi1\" style=\"color:#CC0000; font-size:10px;\"></span>
                                                         </td>
                                                     </tr>
@@ -126,7 +126,7 @@
                                                         <td width='40%' align='right' border='0' class=\"text\">Password&nbsp;</td>
                                                         <td align='center' border='0' class=\"text\">:</td>
                                                         <td width='60%' align='left' border='0' class=\"text\">
-                                                            <input type=\"password\" name=\"passworde\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_ (Maksimal 30 karakter)\" required placeholder=\"Password\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi2'));\" id=\"TxtIsi2\" autocomplete=\"off\" size=\"17\" maxlength=\"30\"/>
+                                                            <input type=\"password\" name=\"passworde\" class=\"text\" pattern=\"[a-zA-Z0-9, ./_]{1,30}\" title=\" a-zA-Z0-9, ./_- (Maksimal 30 karakter)\" required placeholder=\"Password\" onkeydown=\"setDefault(this, document.getElementById('MsgIsi2'));\" id=\"TxtIsi2\" autocomplete=\"off\" size=\"17\" maxlength=\"30\"/>
                                                             <span id=\"MsgIsi2\" style=\"color:#CC0000; font-size:10px;\"></span>
                                                         </td>
                                                     </tr>

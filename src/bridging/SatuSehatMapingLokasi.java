@@ -1799,6 +1799,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                                     "\"reference\": \"Organization/"+IDOrganisasi.getText()+"\"" +
                                 "}" +
                             "}";
+                    System.out.println("URL : "+link+"/Location");
                     System.out.println("Request JSON : "+json);
                     requestEntity = new HttpEntity(json,headers);
                     json=api.getRest().exchange(link+"/Location", HttpMethod.POST, requestEntity, String.class).getBody();
@@ -2648,6 +2649,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                                     "\"reference\": \"Organization/"+IDOrganisasi.getText()+"\"" +
                                 "}" +
                             "}";
+                    System.out.println("URL : "+link+"/Location");
                     System.out.println("Request JSON : "+json);
                     requestEntity = new HttpEntity(json,headers);
                     json=api.getRest().exchange(link+"/Location/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
@@ -3453,6 +3455,7 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
                                         "\"reference\": \"Organization/"+IDOrganisasi.getText()+"\"" +
                                     "}" +
                                 "}";
+                        System.out.println("URL : "+link+"/Location");
                         System.out.println("Request JSON : "+json);
                         requestEntity = new HttpEntity(json,headers);
                         json=api.getRest().exchange(link+"/Location/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();

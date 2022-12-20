@@ -1,9 +1,9 @@
 <?php
+    include '../../../conf/conf.php';
     header("Content-type: application/x-msdownload");
     header("Content-Disposition: attachment; filename=LaporanIndex.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
-    include '../../../conf/conf.php';
 ?>
 <html>
     <head>
