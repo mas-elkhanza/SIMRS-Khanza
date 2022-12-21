@@ -14,7 +14,7 @@
                 $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
                 $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
                 if (isset($norawat["no_rawat"])) {
-                    $no_rawat = $norawat["no_rawat"];
+                    $no_rawat = validTeks4($norawat["no_rawat"],20);
                 }else{
                     exit(header("Location:../index.php"));
                 }

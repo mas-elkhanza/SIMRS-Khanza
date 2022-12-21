@@ -245,4 +245,46 @@ public class SatuSehatCekNIK {
         }
     }
     
+    public String tampilIDPasien(String cari) {
+        idpasien="";
+        try{
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+            requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+link+"/Patient?identifier=https://fhir.kemkes.go.id/id/nik|"+cari);
+            json=api.getRest().exchange(link+"/Patient?identifier=https://fhir.kemkes.go.id/id/nik|"+cari, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("JSON : "+json);
+            root = mapper.readTree(json);
+            for(JsonNode list:root.path("entry")){
+                idpasien=list.path("resource").path("id").asText();
+            }
+        }catch(Exception e){
+            idpasien="";
+            System.out.println("Notifikasi : "+e);
+        }
+        return idpasien;
+    }
+    
+    public String tampilIDParktisi(String cari) {
+        idpasien="";
+        try{
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+            requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+link+"/Practitioner?identifier=https://fhir.kemkes.go.id/id/nik|"+cari);
+            json=api.getRest().exchange(link+"/Practitioner?identifier=https://fhir.kemkes.go.id/id/nik|"+cari, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("JSON : "+json);
+            root = mapper.readTree(json);
+            response = root.path("entry");
+            for(JsonNode list:response){
+               idpasien=list.path("resource").path("id").asText();
+            }
+        }catch(Exception e){
+            idpasien="";
+            System.out.println("Notifikasi : "+e);
+        }
+        return idpasien;
+    }
 }

@@ -219,7 +219,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Penilaian Lanjutan Risiko Jatuh Anak","[L]Penilaian Awal Medis Ralan Geriatri","[L]Penilaian Tambahan Pasien Geriatri","[L]Skrining Nutrisi Pasien Dewasa",
                 "[L]Skrining Nutrisi Pasien Lansia","[L]Hasil Pemeriksaan USG","[L]Skrining Nutrisi Pasien Anak","[K]Host To Host Bank Jabar","[J]Pembayaran Bank Jabar",
                 "[O]Pernyataan Pasien Umum","[L]Konseling Farmasi","[L]Pelayanan Informasi Obat","[L]Jawaban PIO Apoteker","[O]Persetujuan Umum","[L]Transfer Pasien Antar Ruang",
-                "[K]Referensi Praktisi Satu Sehat","[K]Referensi Pasien Satu Sehat","[K]Mapping Organisasi Satu Sehat","[K]Mapping Lokasi Satu Sehat"
+                "[K]Referensi Praktisi Satu Sehat","[K]Referensi Pasien Satu Sehat","[K]Mapping Organisasi Satu Sehat","[K]Mapping Lokasi Satu Sehat","[K]Kirim Encounter Satu Sehat",
+                "[L]Catatan Cek GDS"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -464,6 +465,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -477,7 +479,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 899;i++) {
+        for (i = 0; i < 901;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2628,6 +2630,12 @@ public class DlgUser extends javax.swing.JDialog {
                 case 898:
                     column.setPreferredWidth(151);
                     break;
+                case 899:
+                    column.setPreferredWidth(154);
+                    break;
+                case 900:
+                    column.setPreferredWidth(103);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3129,7 +3137,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -4070,7 +4078,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "satu_sehat_referensi_dokter='"+tbUser.getValueAt(i,895).toString()+"',"+
                     "satu_sehat_referensi_pasien='"+tbUser.getValueAt(i,896).toString()+"',"+
                     "satu_sehat_mapping_departemen='"+tbUser.getValueAt(i,897).toString()+"',"+
-                    "satu_sehat_mapping_lokasi='"+tbUser.getValueAt(i,898).toString()+"'");
+                    "satu_sehat_mapping_lokasi='"+tbUser.getValueAt(i,898).toString()+"',"+
+                    "satu_sehat_kirim_encounter='"+tbUser.getValueAt(i,899).toString()+"',"+
+                    "catatan_cek_gds='"+tbUser.getValueAt(i,900).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -5051,7 +5061,9 @@ public class DlgUser extends javax.swing.JDialog {
                                         "satu_sehat_referensi_dokter='"+tbUser.getValueAt(barisdicopy,895).toString()+"',"+
                                         "satu_sehat_referensi_pasien='"+tbUser.getValueAt(barisdicopy,896).toString()+"',"+
                                         "satu_sehat_mapping_departemen='"+tbUser.getValueAt(barisdicopy,897).toString()+"',"+
-                                        "satu_sehat_mapping_lokasi='"+tbUser.getValueAt(barisdicopy,898).toString()+"'");
+                                        "satu_sehat_mapping_lokasi='"+tbUser.getValueAt(barisdicopy,898).toString()+"',"+
+                                        "satu_sehat_kirim_encounter='"+tbUser.getValueAt(barisdicopy,899).toString()+"',"+
+                                        "catatan_cek_gds='"+tbUser.getValueAt(barisdicopy,900).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5431,7 +5443,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.skrining_nutrisi_lansia,user.hasil_pemeriksaan_usg,user.skrining_nutrisi_anak,user.akun_host_to_host_bank_jabar,user.pembayaran_bank_jabar,"+
                 "user.surat_pernyataan_pasien_umum,user.konseling_farmasi,user.pelayanan_informasi_obat,user.jawaban_pio_apoteker,user.surat_persetujuan_umum,"+
                 "user.transfer_pasien_antar_ruang,user.satu_sehat_referensi_dokter,user.satu_sehat_referensi_pasien,user.satu_sehat_mapping_departemen,"+
-                "user.satu_sehat_mapping_lokasi from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.satu_sehat_mapping_lokasi,user.satu_sehat_kirim_encounter,user.catatan_cek_gds from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6342,7 +6354,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("satu_sehat_referensi_dokter"),
                                rs.getBoolean("satu_sehat_referensi_pasien"),
                                rs.getBoolean("satu_sehat_mapping_departemen"),
-                               rs.getBoolean("satu_sehat_mapping_lokasi")
+                               rs.getBoolean("satu_sehat_mapping_lokasi"),
+                               rs.getBoolean("satu_sehat_kirim_encounter"),
+                               rs.getBoolean("catatan_cek_gds")
                             });
                         }   
                     } catch (Exception e) {
@@ -7242,7 +7256,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("satu_sehat_referensi_dokter"),
                            rs.getBoolean("satu_sehat_referensi_pasien"),
                            rs.getBoolean("satu_sehat_mapping_departemen"),
-                           rs.getBoolean("satu_sehat_mapping_lokasi")
+                           rs.getBoolean("satu_sehat_mapping_lokasi"),
+                           rs.getBoolean("satu_sehat_kirim_encounter"),
+                           rs.getBoolean("catatan_cek_gds")
                         });
                     }                                             
                  }

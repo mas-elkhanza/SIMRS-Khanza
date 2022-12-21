@@ -49,7 +49,7 @@ public final class RMPerencanaanPemulangan extends javax.swing.JDialog {
     private int i=0;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
-    private String finger="",pilihan="";
+    private String pilihan="";
     
     /** Creates new form DlgRujuk
      * @param parent

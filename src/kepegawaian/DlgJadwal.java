@@ -890,7 +890,7 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void KdPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPoliKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",TPoli,KdPoli.getText());
+            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?",TPoli,KdPoli.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPoliActionPerformed(null);
         }else{            

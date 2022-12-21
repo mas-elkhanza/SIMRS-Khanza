@@ -326,6 +326,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkKonselingFarmasi = new widget.CekBox();
         chkPelayananInformasiObat = new widget.CekBox();
         chkBerkasDigital = new widget.CekBox();
+        chkTransferAntarRuang = new widget.CekBox();
         chkResume = new widget.CekBox();
         chkTindakanRalanDokter = new widget.CekBox();
         chkTindakanRalanParamedis = new widget.CekBox();
@@ -1068,6 +1069,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkBerkasDigital.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkBerkasDigital);
 
+        chkTransferAntarRuang.setSelected(true);
+        chkTransferAntarRuang.setText("Transfer Antar Ruang");
+        chkTransferAntarRuang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkTransferAntarRuang.setName("chkTransferAntarRuang"); // NOI18N
+        chkTransferAntarRuang.setOpaque(false);
+        chkTransferAntarRuang.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkTransferAntarRuang);
+
         chkResume.setSelected(true);
         chkResume.setText("Resume");
         chkResume.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1656,8 +1665,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSG.setSelected(true);
             chkSkriningNutrisiLansia.setSelected(true);
             chkSkriningNutrisiAnak.setSelected(true);
-            chkKonselingFarmasi.setEnabled(true);
-            chkPelayananInformasiObat.setEnabled(true);
+            chkKonselingFarmasi.setSelected(true);
+            chkPelayananInformasiObat.setSelected(true);
+            chkTransferAntarRuang.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1731,8 +1741,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSG.setSelected(false);
             chkSkriningNutrisiLansia.setSelected(false);
             chkSkriningNutrisiAnak.setSelected(false);
-            chkKonselingFarmasi.setEnabled(false);
-            chkPelayananInformasiObat.setEnabled(false);
+            chkKonselingFarmasi.setSelected(false);
+            chkPelayananInformasiObat.setSelected(false);
+            chkTransferAntarRuang.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1741,7 +1752,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void NoRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRawatKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            BtnCari1ActionPerformed(null);
+        }
     }//GEN-LAST:event_NoRawatKeyPressed
 
     /**
@@ -1879,6 +1892,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkTindakanRanapDokter;
     private widget.CekBox chkTindakanRanapDokterParamedis;
     private widget.CekBox chkTindakanRanapParamedis;
+    private widget.CekBox chkTransferAntarRuang;
     private widget.CekBox chkTriase;
     private widget.CekBox chkUjiFungsiKFR;
     private widget.InternalFrame internalFrame1;
@@ -2353,6 +2367,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanKonselingFarmasi(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
                     menampilkanPelayananInformasiObat(rs.getString("no_rawat"));
+                    //menampilkan konseling farmasi
+                    menampilkanTransferAntarRuang(rs.getString("no_rawat"));
                     //menampilkan diagnosa penyakit
                     menampilkanDiagnosa(rs.getString("no_rawat"));
                     //menampilkan berkas digital
@@ -10223,6 +10239,163 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='100%' colspan='3'>Referensi Jawaban : "+rs2.getString("referensi")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Asuhan Medis Rawat Jalan : "+e);
+        }
+    }
+    
+    private void menampilkanTransferAntarRuang(String norawat) {
+        try {
+            if(chkTransferAntarRuang.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select transfer_pasien_antar_ruang.tanggal_masuk,transfer_pasien_antar_ruang.tanggal_pindah,transfer_pasien_antar_ruang.asal_ruang,"+
+                        "transfer_pasien_antar_ruang.ruang_selanjutnya,transfer_pasien_antar_ruang.diagnosa_utama,transfer_pasien_antar_ruang.diagnosa_sekunder,"+
+                        "transfer_pasien_antar_ruang.indikasi_pindah_ruang,transfer_pasien_antar_ruang.keterangan_indikasi_pindah_ruang,"+
+                        "transfer_pasien_antar_ruang.prosedur_yang_sudah_dilakukan,transfer_pasien_antar_ruang.obat_yang_telah_diberikan,"+
+                        "transfer_pasien_antar_ruang.metode_pemindahan_pasien,transfer_pasien_antar_ruang.peralatan_yang_menyertai,"+
+                        "transfer_pasien_antar_ruang.keterangan_peralatan_yang_menyertai,transfer_pasien_antar_ruang.pemeriksaan_penunjang_yang_dilakukan,"+
+                        "transfer_pasien_antar_ruang.pasien_keluarga_menyetujui,transfer_pasien_antar_ruang.nama_menyetujui,transfer_pasien_antar_ruang.hubungan_menyetujui,"+
+                        "transfer_pasien_antar_ruang.keluhan_utama_sebelum_transfer,transfer_pasien_antar_ruang.keadaan_umum_sebelum_transfer,"+
+                        "transfer_pasien_antar_ruang.td_sebelum_transfer,transfer_pasien_antar_ruang.nadi_sebelum_transfer,transfer_pasien_antar_ruang.rr_sebelum_transfer,"+
+                        "transfer_pasien_antar_ruang.suhu_sebelum_transfer,transfer_pasien_antar_ruang.keluhan_utama_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.keadaan_umum_sesudah_transfer,transfer_pasien_antar_ruang.td_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.nadi_sesudah_transfer,transfer_pasien_antar_ruang.rr_sesudah_transfer,transfer_pasien_antar_ruang.suhu_sesudah_transfer,"+
+                        "transfer_pasien_antar_ruang.nip_menyerahkan,petugasmenyerahkan.nama as petugasmenyerahkan,transfer_pasien_antar_ruang.nip_menerima,"+
+                        "petugasmenerima.nama as petugasmenerima "+
+                        "from transfer_pasien_antar_ruang inner join petugas as petugasmenyerahkan on transfer_pasien_antar_ruang.nip_menyerahkan=petugasmenyerahkan.nip "+
+                        "inner join petugas as petugasmenerima on transfer_pasien_antar_ruang.nip_menerima=petugasmenerima.nip where "+
+                        "transfer_pasien_antar_ruang.no_rawat='"+norawat+"' order by transfer_pasien_antar_ruang.tanggal_pindah").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Transfer Pasien Antar Ruangan</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%'>Tanggal Masuk : "+rs2.getString("tanggal_masuk")+"</td>"+
+                                              "<td width='33%'>Tanggal Pindah : "+rs2.getString("tanggal_pindah")+"</td>"+
+                                              "<td width='33%'>Indikasi Pindah : "+rs2.getString("indikasi_pindah_ruang")+(rs2.getString("keterangan_indikasi_pindah_ruang").equals("")?"":", "+rs2.getString("keterangan_indikasi_pindah_ruang"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%'>Asal Ruang Rawat : "+rs2.getString("tanggal_masuk")+"</td>"+
+                                              "<td width='33%'>Ruang Rawat Selanjutnya : "+rs2.getString("tanggal_pindah")+"</td>"+
+                                              "<td width='33%'>Metode Pemindahan : "+rs2.getString("metode_pemindahan_pasien")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='3'>Petugas / Perawat Yang Menyerahkan : "+rs2.getString("nip_menyerahkan")+" "+rs2.getString("petugasmenyerahkan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='3'>Petugas / Perawat Yang Menerima : "+rs2.getString("nip_menerima")+" "+rs2.getString("petugasmenerima")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "DIAGNOSA & PROSEDUR"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Diagnosa Utama : "+rs2.getString("diagnosa_utama")+"</td>"+
+                                              "<td width='50%'>Diagnosa Sekunder : "+rs2.getString("diagnosa_sekunder")+"</td>"+         
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='2'>Prosedur Yang Sudah Dilakukan : "+rs2.getString("prosedur_yang_sudah_dilakukan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "OBAT & PEMERIKSAAN PENUNJANG"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Obat Yang Telah Diberikan : "+rs2.getString("obat_yang_telah_diberikan")+"</td>"+       
+                                          "</tr>"+
+                                          "<tr>"+       
+                                              "<td width='100%'>Pemeriksaan Penunjang Yang Sudah Dilakukan : "+rs2.getString("pemeriksaan_penunjang_yang_dilakukan")+"</td>"+    
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "PERSETUJUAN KELUARGA"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Peralatan Yang Menyertai : "+rs2.getString("peralatan_yang_menyertai")+(rs2.getString("keterangan_peralatan_yang_menyertai").equals("")?"":", "+rs2.getString("keterangan_peralatan_yang_menyertai"))+"</td>"+    
+                                              "<td width='50%'>Pasien/Keluarga Mengetahui & Menyetujui Alasan Pemindahan : "+rs2.getString("pasien_keluarga_menyetujui")+"</td>"+       
+                                          "</tr>"+
+                                          (rs2.getString("nama_menyetujui").equals("")?"":
+                                          "<tr>"+
+                                              "<td width='100%' colspan='2'>Keluarga/Penanggung Jawab Pasien Yang Menyetujui : "+rs2.getString("nama_menyetujui")+", Hubungan : "+rs2.getString("hubungan_menyetujui")+"</td>"+   
+                                          "</tr>")+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "KEADAAN PASIEN SAAT PINDAH SEBELUM TRANSFER"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='3'>Keluhan Utama : "+rs2.getString("keluhan_utama_sebelum_transfer")+"</td>"+       
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='66%' colspan='2'>Keadaan Umum : "+rs2.getString("keadaan_umum_sebelum_transfer")+"</td>"+    
+                                              "<td width='33%'>TD : "+rs2.getString("td_sebelum_transfer")+" mmHg</td>"+       
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%'>Nadi : "+rs2.getString("nadi_sebelum_transfer")+" x/menit</td>"+    
+                                              "<td width='33%'>RR : "+rs2.getString("rr_sebelum_transfer")+" x/menit</td>"+      
+                                              "<td width='33%'>Suhu : "+rs2.getString("suhu_sebelum_transfer")+" °C</td>"+       
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "KEADAAN PASIEN SAAT PINDAH SETELAH TRANSFER"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='3'>Keluhan Utama : "+rs2.getString("keluhan_utama_sesudah_transfer")+"</td>"+       
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='66%' colspan='2'>Keadaan Umum : "+rs2.getString("keadaan_umum_sesudah_transfer")+"</td>"+    
+                                              "<td width='33%'>TD : "+rs2.getString("td_sesudah_transfer")+" mmHg</td>"+       
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%'>Nadi : "+rs2.getString("nadi_sesudah_transfer")+" x/menit</td>"+    
+                                              "<td width='33%'>RR : "+rs2.getString("rr_sesudah_transfer")+" x/menit</td>"+      
+                                              "<td width='33%'>Suhu : "+rs2.getString("suhu_sesudah_transfer")+" °C</td>"+       
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
