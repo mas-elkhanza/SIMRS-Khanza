@@ -63,9 +63,9 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "P","Tgl.Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Kode Dokter","Nama Dokter",
+                "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Kode Dokter","Nama Dokter",
                 "No.KTP Dokter","Kode Poli","Nama Poli/Unit","ID Lokasi Unit","Stts Rawat","Stts Lanjut",
-                "Tgl.Pulang","ID Encounter"
+                "Tanggal Pulang","ID Encounter"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -116,7 +116,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
             }else if(i==10){
                 column.setPreferredWidth(140);
             }else if(i==11){
-                column.setPreferredWidth(207);
+                column.setPreferredWidth(210);
             }else if(i==12){
                 column.setPreferredWidth(63);
             }else if(i==13){
@@ -124,7 +124,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(150);
             }else if(i==15){
-                column.setPreferredWidth(207);
+                column.setPreferredWidth(215);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -183,6 +183,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
         BtnKirim = new widget.Button();
+        BtnUpdate = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
@@ -267,7 +268,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(265, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(165, 23));
         panelGlass8.add(LCount);
 
         BtnKirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/34.png"))); // NOI18N
@@ -282,6 +283,19 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
             }
         });
         panelGlass8.add(BtnKirim);
+
+        BtnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edit_f2.png"))); // NOI18N
+        BtnUpdate.setMnemonic('U');
+        BtnUpdate.setText("Update");
+        BtnUpdate.setToolTipText("Alt+U");
+        BtnUpdate.setName("BtnUpdate"); // NOI18N
+        BtnUpdate.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnUpdateActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(BtnUpdate);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -396,30 +410,25 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("truncate table temporary");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
-                                tabMode.getValueAt(r,0).toString()+"','"+
-                                tabMode.getValueAt(r,1).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
-            }
-            
-            Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSatuSehatPraktisi.jasper","report","[ Pencarian Referensi Praktisi Satu Sehat ]",param);
-            this.setCursor(Cursor.getDefaultCursor());
-        }        
+        }else if(tabMode.getRowCount()!=0){            
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                param.put("parameter","%"+TCari.getText().trim()+"%");
+                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                Valid.MyReport("rptKirimEncounterSatuSehat.jasper","report","::[ Kirim Data Encounter Satu Sehat Kemenkes ]::",param);            
+        }
+        this.setCursor(Cursor.getDefaultCursor());       
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -451,7 +460,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
         for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,8).toString().equals(""))){
+            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,8).toString().equals(""))&&tbKamar.getValueAt(i,15).toString().equals("")){
                 try {
                     iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,8).toString());
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
@@ -556,6 +565,94 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
+    private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
+        for(i=0;i<tbKamar.getRowCount();i++){
+            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,8).toString().equals(""))&&(!tbKamar.getValueAt(i,15).toString().equals(""))){
+                try {
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,8).toString());
+                    idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
+                    try{
+                        headers = new HttpHeaders();
+                        headers.setContentType(MediaType.APPLICATION_JSON);
+                        headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                        json = "{" +
+                                    "\"resourceType\": \"Encounter\"," +
+                                    "\"id\": \""+tbKamar.getValueAt(i,15).toString()+"\"," +
+                                    "\"identifier\": [" +
+                                        "{" +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/encounter/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"value\": \""+tbKamar.getValueAt(i,2).toString()+"\"" +
+                                        "}" +
+                                    "]," +
+                                    "\"status\": \"finished\"," +
+                                    "\"class\": {" +
+                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
+                                        "\"code\": \""+(tbKamar.getValueAt(i,11).toString().equals("Ralan")?"AMB":"IMP")+"\"," +
+                                        "\"display\": \""+(tbKamar.getValueAt(i,11).toString().equals("Ralan")?"ambulatory":"inpatient encounter")+"\"" +
+                                    "}," +
+                                    "\"subject\": {" +
+                                        "\"reference\": \"Patient/"+idpasien+"\"," +
+                                        "\"display\": \""+tbKamar.getValueAt(i,4).toString()+"\"" +
+                                    "}," +
+                                    "\"participant\": [" +
+                                        "{" +
+                                            "\"type\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\"," +
+                                                            "\"code\": \"ATND\"," +
+                                                            "\"display\": \"attender\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"individual\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+tbKamar.getValueAt(i,7).toString()+"\"" +
+                                            "}" +
+                                        "}" +
+                                    "]," +
+                                    "\"period\": {" +
+                                        "\"start\": \""+tbKamar.getValueAt(i,1).toString()+"\"" +
+                                    "}," +
+                                    "\"location\": [" +
+                                        "{" +
+                                            "\"location\": {" +
+                                                "\"reference\": \"Location/"+tbKamar.getValueAt(i,11).toString()+"\"," +
+                                                "\"display\": \""+tbKamar.getValueAt(i,10).toString()+"\"" +
+                                            "}" +
+                                        "}" +
+                                    "]," +
+                                    "\"statusHistory\": [" +
+                                        "{" +
+                                            "\"status\": \"finished\"," +
+                                            "\"period\": {" +
+                                                "\"start\": \""+tbKamar.getValueAt(i,1).toString()+"\"," +
+                                                "\"end\": \""+tbKamar.getValueAt(i,14).toString()+"\"" +
+                                            "}" +
+                                        "}" +
+                                    "]," +
+                                    "\"serviceProvider\": {" +
+                                        "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                    "}" +
+                                "}";
+                        System.out.println("URL : "+link+"/Encounter/"+tbKamar.getValueAt(i,15).toString());
+                        System.out.println("Request JSON : "+json);
+                        requestEntity = new HttpEntity(json,headers);
+                        json=api.getRest().exchange(link+"/Encounter/"+tbKamar.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                        System.out.println("Result JSON : "+json);
+                    }catch(Exception e){
+                        System.out.println("Notifikasi Bridging : "+e);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                }
+            }
+        }
+        tampil();
+    }//GEN-LAST:event_BtnUpdateActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -577,6 +674,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnKirim;
     private widget.Button BtnPrint;
+    private widget.Button BtnUpdate;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Label LCount;
@@ -601,9 +699,9 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,"+
                    "pegawai.nama,pegawai.no_ktp as ktpdokter,reg_periksa.kd_poli,poliklinik.nm_poli,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,reg_periksa.stts,"+
-                   "reg_periksa.status_lanjut,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%dT%H:%i:%s+07:00') as pulang,satu_sehat_encounter.id_encounter from reg_periksa inner join pasien on "+
-                   "reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                   "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=poliklinik.kd_poli "+
+                   "reg_periksa.status_lanjut,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%dT%H:%i:%s+07:00') as pulang,ifnull(satu_sehat_encounter.id_encounter,'') as id_encounter "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
+                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=poliklinik.kd_poli "+
                    "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat left join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
