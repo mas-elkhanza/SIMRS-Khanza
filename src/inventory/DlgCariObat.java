@@ -1384,11 +1384,11 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             });
                                             Sequel.menyimpan("gudangbarang", "'" + tbObat.getValueAt(i, 2).toString() + "','" + kdgudang.getText() + "','-" + (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)) + "','" + tbObat.getValueAt(i, 16).toString() + "','" + tbObat.getValueAt(i, 17).toString() + "'",
                                                     "stok=stok-'" + (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)) + "'", "kode_brng='" + tbObat.getValueAt(i, 2).toString() + "' and kd_bangsal='" + kdgudang.getText() + "' and no_batch='" + tbObat.getValueAt(i, 16).toString() + "' and no_faktur='" + tbObat.getValueAt(i, 17).toString() + "'");
-                                            Trackobat.catatRiwayat(tbObat.getValueAt(i, 2).toString(), 0, (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)), "Pemberian Obat", akses.getkode(), kdgudang.getText(), "Simpan", tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString());
+                                            Trackobat.catatRiwayat(tbObat.getValueAt(i, 2).toString(), 0, Double.parseDouble(tbObat.getValueAt(i, 1).toString()), "Pemberian Obat", akses.getkode(), kdgudang.getText(), "Simpan", tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString());
                                         } else {
                                             Sequel.menyimpan("gudangbarang", "'" + tbObat.getValueAt(i, 2).toString() + "','" + kdgudang.getText() + "','-" + (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)) + "','',''",
                                                     "stok=stok-'" + (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)) + "'", "kode_brng='" + tbObat.getValueAt(i, 2).toString() + "' and kd_bangsal='" + kdgudang.getText() + "' and no_batch='' and no_faktur=''");
-                                            Trackobat.catatRiwayat(tbObat.getValueAt(i, 2).toString(), 0, (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)), "Pemberian Obat", akses.getkode(), kdgudang.getText(), "Simpan", "", "");
+                                            Trackobat.catatRiwayat(tbObat.getValueAt(i, 2).toString(), 0, Double.parseDouble(tbObat.getValueAt(i, 1).toString()), "Pemberian Obat", akses.getkode(), kdgudang.getText(), "Simpan", "", "");
                                         }
 
                                         if (aktifpcare.equals("yes")) {
