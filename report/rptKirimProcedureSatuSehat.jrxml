@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f3e36cf-db64-4a89-825d-6a7ee2641b93">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="javascript" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f3e36cf-db64-4a89-825d-6a7ee2641b93">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -21,7 +21,7 @@
 	<queryString>
 		<![CDATA[select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,
                    reg_periksa.stts,reg_periksa.status_lanjut,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%dT%H:%i:%s07:00') as pulang,satu_sehat_encounter.id_encounter, 
-                   prosedur_pasien.kode,icd9.deskripsi_panjang,ifnull(satu_sehat_procedure.id_condition,'') as id_condition 
+                   prosedur_pasien.kode,icd9.deskripsi_panjang,ifnull(satu_sehat_procedure.id_procedure,'') as id_procedure 
                    from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat 
                    inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join prosedur_pasien on prosedur_pasien.no_rawat=reg_periksa.no_rawat 
                    inner join icd9 on prosedur_pasien.kode=icd9.kode left join satu_sehat_procedure on satu_sehat_procedure.no_rawat=prosedur_pasien.no_rawat 
@@ -99,9 +99,9 @@
 		<property name="com.jaspersoft.studio.field.tree.path" value="icd9"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="id_condition" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="id_condition"/>
-		<property name="com.jaspersoft.studio.field.label" value="id_condition"/>
+	<field name="id_procedure" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_procedure"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_procedure"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -171,7 +171,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[ID Encounter]]></text>
+				<text><![CDATA[ID Procedure]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="281" y="0" width="83" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="83d4ab34-c029-4305-8552-ebda55de80c2"/>
@@ -339,7 +339,7 @@
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{id_condition}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{id_procedure}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement positionType="Float" x="0" y="11" width="960" height="1" uuid="f1d14001-d8ce-4b28-a4ae-27cfb3c465cf">
