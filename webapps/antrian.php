@@ -46,7 +46,12 @@
         if (isset($token["kd_poli"])) {
             $kd_poli    = $token["kd_poli"];
             $kd_dokter  = $token["kd_dokter"];
+        }else{
+            exit(header("Location: https://www.google.com"));
         }
+        
+        $kd_poli    = validTeks4($kd_poli,20);
+        $kd_dokter  = validTeks4($kd_dokter,20);
             
         $setting    = mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
         echo "   
@@ -73,59 +78,59 @@
                         </td>                                                          
                  </tr>
           </table> "; 
-	?>
-	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
-	     <tr class='head5'>
-               <td width='100%'><div align='center'></div></td>
-             </tr>
-        </table>
-        <table border='0' witdh='100%' cellpadding='0' cellspacing='0'>
-            <tr class='head2' border='0'>
-                <td width='35%' align='center'><font size='6' color='#DD0000'><b>Panggilan Poli</b></font></td><td><font size='6' color='#DD0000'><b>:</b></font></td>
-                <td width='64%' align='center'>
-                <?php 
-                    $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
-                    $hasil=bukaquery($_sql);
-                    while ($data = mysqli_fetch_array ($hasil)){
-                        echo "<font size='6' color='#DD0000'><b>".getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'")."</b></font>";
-                        if($data['status']=="1"){
-                            echo "<audio autoplay='true' src='bell.wav'>";
-                            bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'");
-                        }   
-                    }
-                ?>
-                </td>
-            </tr>
-            </tr>
-        </table>    
-	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
-	    <tr class='head4'>
-              <td width='10%'><div align='center'><font size='5'><b>NO</b></font></div></td>
-              <td width='25%'><div align='center'><font size='5'><b>NO.RAWAT</b></font></div></td>
-              <td width='65%'><div align='center'><font size='5'><b>NAMA PASIEN</b></font></div></td>
-            </tr>
-	<?php  
-		$_sql="select reg_periksa.no_reg,reg_periksa.no_rawat,pasien.nm_pasien 
+    ?>
+    <table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
+         <tr class='head5'>
+           <td width='100%'><div align='center'></div></td>
+         </tr>
+    </table>
+    <table border='0' witdh='100%' cellpadding='0' cellspacing='0'>
+        <tr class='head2' border='0'>
+            <td width='35%' align='center'><font size='6' color='#DD0000'><b>Panggilan Poli</b></font></td><td><font size='6' color='#DD0000'><b>:</b></font></td>
+            <td width='64%' align='center'>
+            <?php 
+                $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
+                $hasil=bukaquery($_sql);
+                while ($data = mysqli_fetch_array ($hasil)){
+                    echo "<font size='6' color='#DD0000'><b>".getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'")."</b></font>";
+                    if($data['status']=="1"){
+                        echo "<audio autoplay='true' src='bell.wav'>";
+                        bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'");
+                    }   
+                }
+            ?>
+            </td>
+        </tr>
+        </tr>
+    </table>    
+    <table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
+        <tr class='head4'>
+          <td width='10%'><div align='center'><font size='5'><b>NO</b></font></div></td>
+          <td width='25%'><div align='center'><font size='5'><b>NO.RAWAT</b></font></div></td>
+          <td width='65%'><div align='center'><font size='5'><b>NAMA PASIEN</b></font></div></td>
+        </tr>
+        <?php  
+                $_sql="select reg_periksa.no_reg,reg_periksa.no_rawat,pasien.nm_pasien 
                        from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis
                        where reg_periksa.kd_poli='".$kd_poli."' and reg_periksa.kd_dokter='".$kd_dokter."' 
                        and reg_periksa.tgl_registrasi='".date("Y-m-d", $tanggal)."' and stts='Belum' order by reg_periksa.no_reg" ;  
-		$hasil=bukaquery($_sql);
+                $hasil=bukaquery($_sql);
 
-		while ($data = mysqli_fetch_array ($hasil)){
-			echo "<tr class='isi7' >
+                while ($data = mysqli_fetch_array ($hasil)){
+                        echo "<tr class='isi7' >
                                 <td align='center'><font size='5' color='gray' face='Tahoma'>".$data['no_reg']."</font></td>
                                 <td align='center'><font color='#DDDD00' size='5'  face='Tahoma'>".$data['no_rawat']."</font></td>
                                 <td align='center'><font color='gren' size='5'  face='Tahoma'>".$data['nm_pasien']."</font></td>
                             </tr> ";
-		}
-	?>
-	</table>
-	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
-	     <tr class='head5'>
+                }
+        ?>
+    </table>
+    <table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
+         <tr class='head5'>
               <td width='100%'><div align='center'></div></td>
          </tr>
     </table>
-	<img src="ft-2.jpg" alt="bar-pic" width="100%" height="83">
+     <img src="ft-2.jpg" alt="bar-pic" width="100%" height="83">
 </body>
 <?php 
   echo "<meta http-equiv='refresh' content='10;URL=?iyem=".encrypt_decrypt("{\"kd_poli\":\"".$kd_poli."\",\"kd_dokter\":\"".$kd_dokter."\"}","e")."'>";

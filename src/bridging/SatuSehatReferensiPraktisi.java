@@ -328,11 +328,11 @@ public final class SatuSehatReferensiPraktisi extends javax.swing.JDialog {
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
             requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+link+"/Practitioner?identifier=https://fhir.kemkes.go.id/id/nik|"+search);
             json=api.getRest().exchange(link+"/Practitioner?identifier=https://fhir.kemkes.go.id/id/nik|"+search, HttpMethod.GET, requestEntity, String.class).getBody();
             System.out.println("JSON : "+json);
             root = mapper.readTree(json);
             response = root.path("entry");
-            System.out.println("Notifikasi : "+link);
             for(JsonNode list:response){
                 responsename=list.path("resource").path("name");
                 for(JsonNode list2:responsename){
@@ -351,11 +351,11 @@ public final class SatuSehatReferensiPraktisi extends javax.swing.JDialog {
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                 requestEntity = new HttpEntity(headers);
+                System.out.println("URL : "+link+"/Practitioner/"+search);
                 json=api.getRest().exchange(link+"/Practitioner/"+search, HttpMethod.GET, requestEntity, String.class).getBody();
                 System.out.println("JSON : "+json);
                 root = mapper.readTree(json);
                 response = root.path("name");
-                System.out.println("Notifikasi : "+link);
                 for(JsonNode list:response){
                     tabMode.addRow(new String[]{
                       TCari.getText(),list.path("text").asText()

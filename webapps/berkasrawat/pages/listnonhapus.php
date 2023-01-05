@@ -14,17 +14,17 @@
             $cari   = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
             $cari   = json_decode(encrypt_decrypt($cari,"d"),true); 
             if (isset($cari["tahunawal"])) {
-                $tahunawal      = validTeks(isset($cari['tahunawal'])?$cari['tahunawal']:NULL);
-                $bulanawal      = validTeks(isset($cari['bulanawal'])?$cari['bulanawal']:NULL);
-                $tanggalawal    = validTeks(isset($cari['tanggalawal'])?$cari['tanggalawal']:NULL);
-                $tahunakhir     = validTeks(isset($cari['tahunakhir'])?$cari['tahunakhir']:NULL);
-                $bulanakhir     = validTeks(isset($cari['bulanakhir'])?$cari['bulanakhir']:NULL);
-                $tanggalakhir   = validTeks(isset($cari['tanggalakhir'])?$cari['tanggalakhir']:NULL);
-                $no_rawat       = validTeks(isset($cari['no_rawat'])?$cari['no_rawat']:NULL);
-                $status         = validTeks(isset($cari['status'])?$cari['status']:NULL);  
-                $keyword        = validTeks(str_replace("_"," ",isset($cari['keyword']))?str_replace("_"," ",$cari['keyword']):NULL);
-                $carabayar      = validTeks(str_replace("_"," ",isset($cari['carabayar']))?str_replace("_"," ",$cari['carabayar']):NULL);
-                $poli           = validTeks(str_replace("_"," ",isset($cari['poli']))?str_replace("_"," ",$cari['poli']):NULL);
+                $tahunawal      = validTeks4((isset($cari['tahunawal'])?$cari['tahunawal']:NULL),4);
+                $bulanawal      = validTeks4((isset($cari['bulanawal'])?$cari['bulanawal']:NULL),2);
+                $tanggalawal    = validTeks4((isset($cari['tanggalawal'])?$cari['tanggalawal']:NULL),2);
+                $tahunakhir     = validTeks4((isset($cari['tahunakhir'])?$cari['tahunakhir']:NULL),4);
+                $bulanakhir     = validTeks4((isset($cari['bulanakhir'])?$cari['bulanakhir']:NULL),4);
+                $tanggalakhir   = validTeks4((isset($cari['tanggalakhir'])?$cari['tanggalakhir']:NULL),2);  
+                $no_rawat       = validTeks4((isset($cari['no_rawat'])?$cari['no_rawat']:NULL),20);
+                $status         = validTeks4((isset($cari['status'])?$cari['status']:NULL),20);  
+                $keyword        = validTeks4((str_replace("_"," ",isset($cari['keyword']))?str_replace("_"," ",$cari['keyword']):NULL),20);
+                $carabayar      = validTeks4((str_replace("_"," ",isset($cari['carabayar']))?str_replace("_"," ",$cari['carabayar']):NULL),30);
+                $poli           = validTeks4((str_replace("_"," ",isset($cari['poli']))?str_replace("_"," ",$cari['poli']):NULL),50);
                 echo "<input type=hidden name=carabayar value=$carabayar><input type=hidden name=poli value=$poli><input type=hidden name=keyword value=$keyword>";
             }
         ?>
@@ -32,16 +32,16 @@
     <?php        
 	$BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
         if (isset($BtnCari)) {      
-                $tahunawal      = validTeks(trim($_POST['tahunawal']));
-                $bulanawal      = validTeks(trim($_POST['bulanawal']));
-                $tanggalawal    = validTeks(trim($_POST['tanggalawal']));
-                $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
-                $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
-                $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));    
-                $carabayar      = validTeks(trim($_POST['carabayar']));
-                $keyword        = validTeks(trim($_POST['keyword']));
-                $status         = validTeks(trim($_POST['status']));
-                $poli           = validTeks(trim($_POST['poli']));
+                $tahunawal      = validTeks4(trim($_POST['tahunawal']),4);
+                $bulanawal      = validTeks4(trim($_POST['bulanawal']),2);
+                $tanggalawal    = validTeks4(trim($_POST['tanggalawal']),2);
+                $tahunakhir     = validTeks4(trim($_POST['tahunakhir']),4);
+                $bulanakhir     = validTeks4(trim($_POST['bulanakhir']),2);
+                $tanggalakhir   = validTeks4(trim($_POST['tanggalakhir']),2);    
+                $carabayar      = validTeks4(trim($_POST['carabayar']),30);
+                $keyword        = validTeks4(trim($_POST['keyword']),20);
+                $status         = validTeks4(trim($_POST['status']),20);
+                $poli           = validTeks4(trim($_POST['poli']),50);
                 $action         = "no";
         }
         if(empty($tahunawal)){
@@ -271,7 +271,7 @@
                             ?>
                         </select>
                         &nbsp;&nbsp;
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="30" maxlength="200" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="30" maxlength="20" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" a-zA-Z0-9, ./@_ (Maksimal 20 karakter)" autocomplete="off" autofocus />
                         &nbsp;&nbsp;
                         Status : 
                         <select name="status" class="text">

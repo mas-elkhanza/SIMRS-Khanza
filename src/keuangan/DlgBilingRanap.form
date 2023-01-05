@@ -1975,7 +1975,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="21-11-2022 11:09:52"/>
+                    <StringItem index="0" value="31-12-2022 22:47:14"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2665,7 +2665,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane6" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -2700,7 +2699,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane7" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -2735,7 +2733,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane8" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

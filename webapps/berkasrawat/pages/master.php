@@ -12,10 +12,13 @@
                 $kode    = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
                 $kode    = json_decode(encrypt_decrypt($kode,"d"),true); 
                 if (isset($kode["kode"])) {
-                    $kode = $kode["kode"];
+                    $kode = validTeks4($kode["kode"],10);
                 }else{
                     $kode = "";
                 }
+                
+                $kode = validTeks4($kode,10);
+                
                 echo "<input type=hidden name=kode  value=$kode><input type=hidden name=action value=$action>";
                 echo "<div align='center' class='link'>
                           <a href=?act=List>| List Berkas |</a>
@@ -43,8 +46,8 @@
                 if (isset($BtnSimpan)) {
                     $kode   = trim($_POST['kode']);
                     $nama   = trim($_POST['nama']);
-                    $kode   = validTeks($kode);
-                    $nama   = validTeks($nama);
+                    $kode   = validTeks4($kode,10);
+                    $nama   = validTeks4($nama,100);
                     if ((!empty($kode))&&(!empty($nama))) {
                         switch($action) {
                             case "TAMBAH":
@@ -98,7 +101,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" master_berkas_digital "," kode ='".validTeks($kode)."' ","?act=MasterBerkas&action=TAMBAH");
+                Hapus(" master_berkas_digital "," kode ='$kode' ","?act=MasterBerkas&action=TAMBAH");
             }
             
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

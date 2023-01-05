@@ -15,6 +15,8 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
@@ -77,6 +79,26 @@ public class DlgRegistrasi extends javax.swing.JDialog {
 
             @Override
             public void keyReleased(KeyEvent e) {}
+        });
+        
+        pilihbayar.getTable().addMouseListener(new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                pilihbayar.dispose();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
+            
         });
         
         pilihbayar.addWindowListener(new WindowListener() {
@@ -878,11 +900,11 @@ public class DlgRegistrasi extends javax.swing.JDialog {
             System.out.println("Notifikasi a : "+e);
         }
         LblKdPoli.setText(kodepoli);
-        LblNamaPoli.setText(Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", kodepoli));
+        LblNamaPoli.setText(Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", kodepoli));
         if(Status.getText().equals("Baru")){
             Biaya.setText(""+Sequel.cariIsiAngka("select registrasi from poliklinik where kd_poli=?",kodepoli));
         }else{
-            Biaya.setText(""+Sequel.cariIsiAngka("select registrasilama from poliklinik where kd_poli=?",kodepoli));
+            Biaya.setText(""+Sequel.cariIsiAngka("select poliklinik.registrasilama from poliklinik where poliklinik.kd_poli=?",kodepoli));
         }
         LblKdDokter.setText(kddokter);
         LblDokter.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter));

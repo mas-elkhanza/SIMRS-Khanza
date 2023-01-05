@@ -516,6 +516,7 @@ public class DlgAntrian extends javax.swing.JDialog{
                             } catch (InterruptedException ex) {
                                System.out.println(e);
                             }
+                            BtnBatal2ActionPerformed(null);
                         }                      
                     }                          
                 }

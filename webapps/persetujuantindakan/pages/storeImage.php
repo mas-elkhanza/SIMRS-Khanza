@@ -1,6 +1,6 @@
 <?php
     require_once('../../conf/conf.php');
-    $nopernyataan           = validTeks($_POST["nopernyataan"]);
+    $nopernyataan           = validTeks4($_POST["nopernyataan"],20);
     if(file_exists(host()."webapps/persetujuantindakan/pages/upload/".$nopernyataan.".jpeg")){
         @unlink(host()."webapps/persetujuantindakan/pages/upload/".$nopernyataan.".jpeg");
     }
@@ -51,7 +51,7 @@
         $biaya_konfirmasi = "true";
     }
     
-    $pilihansetuju          = validTeks($_POST["pilihansetuju"]);
+    $pilihansetuju          = validTeks4($_POST["pilihansetuju"],20);
     $img                    = $_POST["image"];
     $folderPath             = "upload/";
     $image_parts            = explode(";base64,", $img);
@@ -80,7 +80,7 @@
         <center>
             Proses pengambilan persetujuan Pembuat Pernyataan/Penerima Informasi sudah selesai ..!! <br/>
             Silahkan lanjutkan untuk Pengambilan Saksi 1 Keluarga<br/>
-            <a href='../login2.php?usere=<?=USERHYBRIDWEB;?>&passwordte=<?=PASHYBRIDWEB;?>&nopernyataan=<?=$nopernyataan;?>' class='btn btn-secondary' >Lanjutkan</a>
+            <a href='../login2.php?iyem=<?=encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\",\"nopernyataan\":\"".$nopernyataan."\"}","e")?>' class='btn btn-secondary' >Lanjutkan</a>
         </center>
     </body>
 </html>

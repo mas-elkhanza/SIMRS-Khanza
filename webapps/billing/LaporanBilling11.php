@@ -14,8 +14,8 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $petugas = validTeks(str_replace("_"," ",$_GET['petugas'])); 
-                $nonota  = validTeks(str_replace("_"," ",$_GET['nonota'])); 
+                $petugas = validTeks4(str_replace("_"," ",$_GET['petugas']),20); 
+                $nonota  = validTeks4(str_replace("_"," ",$_GET['nonota']),20); 
                 $nonota2= str_replace(": ","",getOne("select temp2 from temporary_bayar_ranap where temp1='No.Nota'"));
                 $norawat=getOne("select no_rawat from nota_inap where no_nota='$nonota2'");
                 $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_bayar_ranap order by no asc";   

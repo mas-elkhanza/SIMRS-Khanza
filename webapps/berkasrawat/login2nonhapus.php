@@ -8,7 +8,7 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
             $_SESSION['ses_admin_berkas_rawat']="admin";
-            $url = "index.php?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($_GET['no_rawat'])."\"}","e");			
+            $url = "index.php?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks4($_GET['no_rawat'],20)."\"}","e");			
         }else{
             session_start();
             session_destroy();

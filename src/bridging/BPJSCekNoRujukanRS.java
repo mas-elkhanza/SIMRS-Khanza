@@ -6678,7 +6678,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     private void insertSEP(){
         try {
             tglkkl="0000-00-00";
-            if(LakaLantas.getSelectedIndex()==1){
+            if(LakaLantas.getSelectedIndex()>0){
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
             

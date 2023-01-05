@@ -576,11 +576,12 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
         }else if(NmKontraAKun.getText().trim().equals("")||KdKontraAkun.getText().trim().equals("")){
             Valid.textKosong(KdKontraAkun,"Kontra Akun Rekening");
         }else{
-            Sequel.menyimpan("kategori_pengeluaran_harian","?,?,?,?","Kode Kategori",4,new String[]{
+            if(Sequel.menyimpantf("kategori_pengeluaran_harian","?,?,?,?","Kode Kategori",4,new String[]{
                 Kd.getText(),Nm.getText(),KdAkun.getText(),KdKontraAkun.getText()
-            });
-            tampil();
-            emptTeks();
+            })==true){
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 

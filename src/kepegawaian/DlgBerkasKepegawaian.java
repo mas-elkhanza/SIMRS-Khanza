@@ -1019,14 +1019,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                  "pegawai.departemen,pegawai.bidang,pegawai.stts_kerja,pegawai.pendidikan,"+
                  "pegawai.mulai_kerja from pegawai inner join berkas_pegawai inner join master_berkas_pegawai "+
                  "on pegawai.nik=berkas_pegawai.nik and berkas_pegawai.kode_berkas=master_berkas_pegawai.kode where "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.nik like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.nama like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.jbtn like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.jnj_jabatan like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.departemen like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.bidang like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.stts_kerja like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and pegawai.pendidikan like ?  "+
+                 "pegawai.stts_aktif<>'KELUAR' and master_berkas_pegawai.kategori='Tenaga klinis Dokter Umum' and "+
+                 "(pegawai.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? or pegawai.jnj_jabatan like ? or "+
+                 "pegawai.departemen like ? or pegawai.bidang like ? or pegawai.stts_kerja like ? or pegawai.pendidikan like ?) "+
                  "group by pegawai.nik order by pegawai.jnj_jabatan,pegawai.departemen,pegawai.bidang,pegawai.nama");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -1142,14 +1137,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                  "pegawai.departemen,pegawai.bidang,pegawai.stts_kerja,pegawai.pendidikan,"+
                  "pegawai.mulai_kerja from pegawai inner join berkas_pegawai inner join master_berkas_pegawai "+
                  "on pegawai.nik=berkas_pegawai.nik and berkas_pegawai.kode_berkas=master_berkas_pegawai.kode where "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.nik like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.nama like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.jbtn like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.jnj_jabatan like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.departemen like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.bidang like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.stts_kerja like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and pegawai.pendidikan like ?  "+
+                 "pegawai.stts_aktif<>'KELUAR' and master_berkas_pegawai.kategori='Tenaga klinis Dokter Spesialis' and "+
+                 "(pegawai.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? or pegawai.jnj_jabatan like ? or "+
+                 "pegawai.departemen like ? or pegawai.bidang like ? or pegawai.stts_kerja like ? or pegawai.pendidikan like ?) "+
                  "group by pegawai.nik order by pegawai.jnj_jabatan,pegawai.departemen,pegawai.bidang,pegawai.nama");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -1265,14 +1255,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                  "pegawai.departemen,pegawai.bidang,pegawai.stts_kerja,pegawai.pendidikan,"+
                  "pegawai.mulai_kerja from pegawai inner join berkas_pegawai inner join master_berkas_pegawai "+
                  "on pegawai.nik=berkas_pegawai.nik and berkas_pegawai.kode_berkas=master_berkas_pegawai.kode where "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.nik like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.nama like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.jbtn like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.jnj_jabatan like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.departemen like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.bidang like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.stts_kerja like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and pegawai.pendidikan like ?  "+
+                 "pegawai.stts_aktif<>'KELUAR' and master_berkas_pegawai.kategori='Tenaga klinis Perawat dan Bidan' and "+
+                 "(pegawai.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? or pegawai.jnj_jabatan like ? or "+
+                 "pegawai.departemen like ? or pegawai.bidang like ? or pegawai.stts_kerja like ? or pegawai.pendidikan like ?)  "+
                  "group by pegawai.nik order by pegawai.jnj_jabatan,pegawai.departemen,pegawai.bidang,pegawai.nama");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -1388,14 +1373,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                  "pegawai.departemen,pegawai.bidang,pegawai.stts_kerja,pegawai.pendidikan,"+
                  "pegawai.mulai_kerja from pegawai inner join berkas_pegawai inner join master_berkas_pegawai "+
                  "on pegawai.nik=berkas_pegawai.nik and berkas_pegawai.kode_berkas=master_berkas_pegawai.kode where "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.nik like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.nama like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.jbtn like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.jnj_jabatan like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.departemen like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.bidang like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.stts_kerja like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and pegawai.pendidikan like ?  "+
+                 "pegawai.stts_aktif<>'KELUAR' and master_berkas_pegawai.kategori='Tenaga klinis Profesi Lain' and "+
+                 "(pegawai.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? or pegawai.jnj_jabatan like ? or "+
+                 "pegawai.departemen like ? or pegawai.bidang like ? or pegawai.stts_kerja like ? or pegawai.pendidikan like ?)  "+
                  "group by pegawai.nik order by pegawai.jnj_jabatan,pegawai.departemen,pegawai.bidang,pegawai.nama");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -1511,14 +1491,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                  "pegawai.departemen,pegawai.bidang,pegawai.stts_kerja,pegawai.pendidikan,"+
                  "pegawai.mulai_kerja from pegawai inner join berkas_pegawai inner join master_berkas_pegawai "+
                  "on pegawai.nik=berkas_pegawai.nik and berkas_pegawai.kode_berkas=master_berkas_pegawai.kode where "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.nik like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.nama like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.jbtn like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.jnj_jabatan like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.departemen like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.bidang like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.stts_kerja like ? or "+
-                 "master_berkas_pegawai.kategori='Tenaga Non Klinis' and pegawai.pendidikan like ?  "+
+                 "pegawai.stts_aktif<>'KELUAR' and master_berkas_pegawai.kategori='Tenaga Non Klinis' and "+
+                 "(pegawai.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? or pegawai.jnj_jabatan like ? or "+
+                 "pegawai.departemen like ? or pegawai.bidang like ? or pegawai.stts_kerja like ? or pegawai.pendidikan like ?)  "+
                  "group by pegawai.nik order by pegawai.jnj_jabatan,pegawai.departemen,pegawai.bidang,pegawai.nama");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");

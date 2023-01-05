@@ -142,7 +142,7 @@
     if (isset($BtnSimpan)) {
         $penjab     = cleankar(isset($_POST['penjab'])?$_POST['penjab']:NULL);
         $kd_poli    = cleankar(isset($_POST['kd_poli'])?$_POST['kd_poli']:NULL);
-        $tanggal    = cleankar(isset($_POST['tanggal'])?$_POST['tanggal']:NULL);
+        $tanggal    = cleankar2(isset($_POST['tanggal'])?$_POST['tanggal']:NULL);
         $kd_dokter  = cleankar(isset($_POST['kd_dokter'])?$_POST['kd_dokter']:NULL);
         if ((!empty($penjab))&&(!empty($kd_poli))&&(!empty($tanggal))&&(!empty($kd_dokter))) {
             $nourut = "";

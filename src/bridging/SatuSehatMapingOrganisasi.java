@@ -536,6 +536,7 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                                 "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                             "}" +
                         "}";
+                System.out.println("URL : "+link+"/Organization");
                 System.out.println("Request JSON : "+json);
                 requestEntity = new HttpEntity(json,headers);
                 json=api.getRest().exchange(link+"/Organization", HttpMethod.POST, requestEntity, String.class).getBody();
@@ -663,6 +664,7 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                                     "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                 "}" +
                             "}";
+                    System.out.println("URL : "+link+"/Organization");
                     System.out.println("Request JSON : "+json);
                     requestEntity = new HttpEntity(json,headers);
                     json=api.getRest().exchange(link+"/Organization/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
@@ -780,6 +782,7 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                                     "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                 "}" +
                             "}";
+                    System.out.println("URL : "+link+"/Organization");
                     System.out.println("Request JSON : "+json);
                     requestEntity = new HttpEntity(json,headers);
                     json=api.getRest().exchange(link+"/Organization/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
@@ -879,8 +882,8 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            tampil();
         }else{
             Valid.pindah(evt, BtnPrint, BtnKeluar);
         }

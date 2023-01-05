@@ -196,10 +196,11 @@ public final class akses {
             penilaian_tambahan_pasien_geriatri=false,skrining_nutrisi_dewasa=false,skrining_nutrisi_lansia=false,hasil_pemeriksaan_usg=false,skrining_nutrisi_anak=false,
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,
             jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,
-            satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false;
+            satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,catatan_cek_gds=false,satu_sehat_kirim_condition=false,
+            checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false;
     
     public static void setData(String user, String pass) {
-       try {                
+        try {        
                 ps=koneksi.prepareStatement("select * from admin where admin.usere=AES_ENCRYPT(?,'nur') and admin.passworde=AES_ENCRYPT(?,'windi')");               
                 ps2=koneksi.prepareStatement("select * from user where user.id_user=AES_ENCRYPT(?,'nur') and user.password=AES_ENCRYPT(?,'windi')");
                 try {
@@ -1115,6 +1116,12 @@ public final class akses {
                         akses.satu_sehat_referensi_pasien=true;
                         akses.satu_sehat_mapping_departemen=true;
                         akses.satu_sehat_mapping_lokasi=true;
+                        akses.satu_sehat_kirim_encounter=true;
+                        akses.catatan_cek_gds=true;
+                        akses.satu_sehat_kirim_condition=true;
+                        akses.checklist_pre_operasi=true;
+                        akses.satu_sehat_kirim_observationttv=true;
+                        akses.signin_sebelum_anestesi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2017,6 +2024,12 @@ public final class akses {
                         akses.satu_sehat_referensi_pasien=rs2.getBoolean("satu_sehat_referensi_pasien");
                         akses.satu_sehat_mapping_departemen=rs2.getBoolean("satu_sehat_mapping_departemen");
                         akses.satu_sehat_mapping_lokasi=rs2.getBoolean("satu_sehat_mapping_lokasi");
+                        akses.satu_sehat_kirim_encounter=rs2.getBoolean("satu_sehat_kirim_encounter");
+                        akses.catatan_cek_gds=rs2.getBoolean("catatan_cek_gds");
+                        akses.satu_sehat_kirim_condition=rs2.getBoolean("satu_sehat_kirim_condition");
+                        akses.checklist_pre_operasi=rs2.getBoolean("checklist_pre_operasi");
+                        akses.satu_sehat_kirim_observationttv=rs2.getBoolean("satu_sehat_kirim_observationttv");
+                        akses.signin_sebelum_anestesi=rs2.getBoolean("signin_sebelum_anestesi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2917,6 +2930,12 @@ public final class akses {
                         akses.satu_sehat_referensi_pasien=false;
                         akses.satu_sehat_mapping_departemen=false;
                         akses.satu_sehat_mapping_lokasi=false;
+                        akses.satu_sehat_kirim_encounter=false;
+                        akses.catatan_cek_gds=false;
+                        akses.satu_sehat_kirim_condition=false;
+                        akses.checklist_pre_operasi=false;
+                        akses.satu_sehat_kirim_observationttv=false;
+                        akses.signin_sebelum_anestesi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3874,4 +3893,10 @@ public final class akses {
     public static boolean getsatu_sehat_referensi_pasien(){return akses.satu_sehat_referensi_pasien;}
     public static boolean getsatu_sehat_mapping_departemen(){return akses.satu_sehat_mapping_departemen;}
     public static boolean getsatu_sehat_mapping_lokasi(){return akses.satu_sehat_mapping_lokasi;}
+    public static boolean getsatu_sehat_kirim_encounter(){return akses.satu_sehat_kirim_encounter;}
+    public static boolean getcatatan_cek_gds(){return akses.catatan_cek_gds;}
+    public static boolean getsatu_sehat_kirim_condition(){return akses.satu_sehat_kirim_condition;}
+    public static boolean getchecklist_pre_operasi(){return akses.checklist_pre_operasi;}
+    public static boolean getsatu_sehat_kirim_observationttv(){return akses.satu_sehat_kirim_observationttv;}
+    public static boolean getsignin_sebelum_anestesi(){return akses.signin_sebelum_anestesi;}
 }   

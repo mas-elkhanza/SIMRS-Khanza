@@ -9721,6 +9721,10 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         kdkec="";
         kdkab="";
         kdprop="";
+        KdProp.setText("");
+        KdKab.setText("");
+        KdKec.setText("");
+        KdKel.setText("");
         autoNomor();
         TNm.requestFocus();
     }

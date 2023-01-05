@@ -1492,6 +1492,16 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
         isRawat(); 
     }
     
+    public void setNoRm(String norwt,Date tgl2,String KodeDokter,String NamaDokter,String Operasi) {
+        TNoRw.setText(norwt);
+        TCari.setText(norwt);
+        DTPCari2.setDate(tgl2);    
+        isRawat(); 
+        KdDokter.setText(KodeDokter);
+        NmDokter.setText(NamaDokter);
+        RencanaTindakanBedah.setText(Operasi);
+    }
+    
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenilaian_pre_operasi());
         BtnHapus.setEnabled(akses.getpenilaian_pre_operasi());

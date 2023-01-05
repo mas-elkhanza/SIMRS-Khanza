@@ -890,15 +890,7 @@
                                                     )
                                                 );
                                                 http_response_code(201);
-                                            }else if($booking['status']=='Belum'){
-                                                $response = array(
-                                                    'metadata' => array(
-                                                        'message' => 'Anda belum melakukan checkin, Silahkan checkin terlebih dahulu',
-                                                        'code' => 201
-                                                    )
-                                                );
-                                                http_response_code(201);
-                                            }else if($booking['status']=='Checkin'){
+                                            }else {
                                                 /*single poli
                                                 $kodedokter = getOne2("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs='$booking[kodedokter]'");
                                                 $kodepoli   = getOne2("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs='$booking[kodepoli]'");
@@ -952,14 +944,6 @@
                                                     );
                                                     http_response_code(201);
                                                 } 
-                                            }else{
-                                                $response = array(
-                                                    'metadata' => array(
-                                                        'message' => 'Antrean Tidak Ditemukan !',
-                                                        'code' => 201
-                                                    )
-                                                );
-                                                http_response_code(201);
                                             }
                                         }
                                     }

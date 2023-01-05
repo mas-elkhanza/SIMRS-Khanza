@@ -1901,7 +1901,6 @@
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll3" noResource="true"/>
-                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">

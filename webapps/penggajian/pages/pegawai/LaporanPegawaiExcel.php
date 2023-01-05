@@ -1,9 +1,9 @@
 <?php
+    include '../../../conf/conf.php';
     header("Content-type: application/x-msdownload");
     header("Content-Disposition: attachment; filename=LaporanPegawai.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
-    include '../../../conf/conf.php';
     $_sql         = "SELECT * FROM set_tahun";
     $hasil        = bukaquery($_sql);
     $baris        = mysqli_fetch_row($hasil);

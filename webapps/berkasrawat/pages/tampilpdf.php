@@ -19,7 +19,7 @@
         $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
         $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
         if (isset($norawat["no_rawat"])&&isset($_SESSION['ses_vedika'])) {
-            $no_rawat = $norawat["no_rawat"];
+            $no_rawat = validTeks4($norawat["no_rawat"],20);
             $_sql2 = "SELECT berkas_digital_perawatan.no_rawat,berkas_digital_perawatan.kode, 
                       master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file 
                       from berkas_digital_perawatan inner join master_berkas_digital 

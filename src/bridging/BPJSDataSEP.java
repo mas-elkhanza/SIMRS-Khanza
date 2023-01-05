@@ -3276,7 +3276,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 }else{
                     try {
                         tglkkl="0000-00-00";
-                        if(LakaLantas.getSelectedIndex()==1){
+                        if(LakaLantas.getSelectedIndex()>0){
                             tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
                         }
 
@@ -3683,7 +3683,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         if(TabRawat.getSelectedIndex()==1){
             if(tbDataSEP.getSelectedRow()!= -1){
-                if(LakaLantas.getSelectedIndex()==1){
+                if(LakaLantas.getSelectedIndex()>0){
                     NoLPManual.setEditable(true);
                 }else{
                     NoLPManual.setEditable(false);
@@ -3696,7 +3696,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         }else if(TabRawat.getSelectedIndex()==2){
             if(tbDataSEPInternal.getSelectedRow()!= -1){
-                if(LakaLantas.getSelectedIndex()==1){
+                if(LakaLantas.getSelectedIndex()>0){
                     NoLPManual.setEditable(true);
                 }else{
                     NoLPManual.setEditable(false);
@@ -4334,7 +4334,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 Valid.textKosong(NoKartu, "Nomor Kartu");
             }else{ 
                 tglkkl="0000-00-00";
-                if(LakaLantas.getSelectedIndex()==1){
+                if(LakaLantas.getSelectedIndex()>0){
                     tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
                 }
                 
@@ -6249,7 +6249,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private void insertSEP(){
         try {
             tglkkl="0000-00-00";
-            if(LakaLantas.getSelectedIndex()==1){
+            if(LakaLantas.getSelectedIndex()>0){
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
             

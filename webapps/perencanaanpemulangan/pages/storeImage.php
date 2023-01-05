@@ -1,9 +1,10 @@
 <?php
     require_once('../../conf/conf.php');
-    $norawat           = validTeks($_POST["norawat"]);
+    $norawat           = validTeks4($_POST["norawat"],20);
     if(file_exists(host()."webapps/perencanaanpemulangan/pages/upload/".$norawat.".jpeg")){
         @unlink(host()."webapps/perencanaanpemulangan/pages/upload/".$norawat.".jpeg");
     }
+    
     $img                    = $_POST["image"];
     $folderPath             = "upload/";
     $image_parts            = explode(";base64,", $img);
@@ -24,5 +25,5 @@
     </style>
 </head>
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <body><center>Proses Pengambilan Persetujuan Pasien/Keluarga Pasien Sudah Selesai ..!! <br><a href='../login.php?usere=<?=USERHYBRIDWEB?>&passwordte=<?=PASHYBRIDWEB?>' class='btn btn-secondary' >Kembali</a></center></body>
+    <body><center>Proses Pengambilan Persetujuan Pasien/Keluarga Pasien Sudah Selesai ..!! <br><a href='../login.php?iyem=<?=encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e")?>' class='btn btn-secondary' >Kembali</a></center></body>
 </html>

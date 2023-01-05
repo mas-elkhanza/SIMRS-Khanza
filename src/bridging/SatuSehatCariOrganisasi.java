@@ -71,9 +71,9 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(300);
             }else if(i==2){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(220);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
