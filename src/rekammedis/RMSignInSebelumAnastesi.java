@@ -1451,22 +1451,15 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
             Valid.MyReportqry("rptFormulirChecklistPreOperasi.jasper","report","::[ Formulir Check List Pre Operasi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signin_sebelum_anestesi.tanggal,"+
                     "signin_sebelum_anestesi.sncn,signin_sebelum_anestesi.tindakan,signin_sebelum_anestesi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "signin_sebelum_anestesi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signin_sebelum_anestesi.identitas,"+
-                    "signin_sebelum_anestesi.surat_ijin_bedah,signin_sebelum_anestesi.surat_ijin_anestesi,signin_sebelum_anestesi.surat_ijin_transfusi,"+
-                    "signin_sebelum_anestesi.penandaan_area_operasi,signin_sebelum_anestesi.keadaan_umum,signin_sebelum_anestesi.pemeriksaan_penunjang_rontgen,"+
-                    "signin_sebelum_anestesi.keterangan_pemeriksaan_penunjang_rontgen,signin_sebelum_anestesi.pemeriksaan_penunjang_ekg,"+
-                    "signin_sebelum_anestesi.keterangan_pemeriksaan_penunjang_ekg,signin_sebelum_anestesi.pemeriksaan_penunjang_usg,"+
-                    "signin_sebelum_anestesi.keterangan_pemeriksaan_penunjang_usg,signin_sebelum_anestesi.pemeriksaan_penunjang_ctscan,"+
-                    "signin_sebelum_anestesi.keterangan_pemeriksaan_penunjang_ctscan,signin_sebelum_anestesi.pemeriksaan_penunjang_mri,"+
-                    "signin_sebelum_anestesi.keterangan_pemeriksaan_penunjang_mri,signin_sebelum_anestesi.persiapan_darah,signin_sebelum_anestesi.keterangan_persiapan_darah,"+
-                    "signin_sebelum_anestesi.perlengkapan_khusus,signin_sebelum_anestesi.nip_petugas_ruangan,petugasruangan.nama as petugasruangan,"+
-                    "signin_sebelum_anestesi.nip_perawat_ok,petugasok.nama as petugasok "+
-                    "from signin_sebelum_anestesi inner join reg_periksa on signin_sebelum_anestesi.no_rawat=reg_periksa.no_rawat "+
+                    "signin_sebelum_anestesi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signin_sebelum_anestesi.identitas,signin_sebelum_anestesi.penandaan_area_operasi,"+
+                    "signin_sebelum_anestesi.alergi,signin_sebelum_anestesi.resiko_aspirasi,signin_sebelum_anestesi.resiko_aspirasi_rencana_antisipasi,"+
+                    "signin_sebelum_anestesi.resiko_kehilangan_darah,signin_sebelum_anestesi.resiko_kehilangan_darah_line,signin_sebelum_anestesi.resiko_kehilangan_darah_rencana_antisipasi,"+
+                    "signin_sebelum_anestesi.kesiapan_alat_obat_anestesi,signin_sebelum_anestesi.kesiapan_alat_obat_anestesi_rencana_antisipasi,signin_sebelum_anestesi.nip_perawat_ok,"+
+                    "petugas.nama from signin_sebelum_anestesi inner join reg_periksa on signin_sebelum_anestesi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signin_sebelum_anestesi.kd_dokter_bedah "+
                     "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signin_sebelum_anestesi.kd_dokter_anestesi "+
-                    "inner join petugas as petugasruangan on petugasruangan.nip=signin_sebelum_anestesi.nip_petugas_ruangan "+
-                    "inner join petugas as petugasok on petugasok.nip=signin_sebelum_anestesi.nip_perawat_ok "+
+                    "inner join petugas on petugas.nip=signin_sebelum_anestesi.nip_perawat_ok "+
                     "where signin_sebelum_anestesi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and signin_sebelum_anestesi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
     }//GEN-LAST:event_MnSignInSebelumAnestesiActionPerformed
