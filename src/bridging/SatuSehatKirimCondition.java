@@ -513,7 +513,7 @@ public final class SatuSehatKirimCondition extends javax.swing.JDialog {
                                     "}," +
                                     "\"encounter\": {" +
                                         "\"reference\": \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\"," +
-                                        "\"display\": \"Kunjungan "+tbKamar.getValueAt(i,4).toString()+" pada tanggal "+tbKamar.getValueAt(i,1).toString()+"\"" +
+                                        "\"display\": \"Diagnosa "+tbKamar.getValueAt(i,4).toString()+" selama kunjungan/dirawat dari tanggal "+tbKamar.getValueAt(i,1).toString()+" sampai "+tbKamar.getValueAt(i,8).toString()+"\"" +
                                     "}" +
                                 "}";
                         System.out.println("URL : "+link+"/Condition");
@@ -598,7 +598,7 @@ public final class SatuSehatKirimCondition extends javax.swing.JDialog {
                                     "}," +
                                     "\"encounter\": {" +
                                         "\"reference\": \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\"," +
-                                        "\"display\": \"Kunjungan "+tbKamar.getValueAt(i,4).toString()+" pada tanggal "+tbKamar.getValueAt(i,1).toString()+"\"" +
+                                        "\"display\": \"Diagnosa "+tbKamar.getValueAt(i,4).toString()+" selama kunjungan/dirawat dari tanggal "+tbKamar.getValueAt(i,1).toString()+" sampai "+tbKamar.getValueAt(i,8).toString()+"\"" +
                                     "}" +
                                 "}";
                         System.out.println("URL : "+link+"/Condition/"+tbKamar.getValueAt(i,12).toString());

@@ -281,6 +281,8 @@ public class SuratKontrol extends javax.swing.JDialog {
             URUTNOREG="";
         }
         
+        
+        TanggalPeriksa.setDate(new Date());
     }
  
     /** This method is called from within the constructor to
@@ -1676,7 +1678,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Terapi.setText("");
         Diagnosa.setText("");
         TanggalSurat.setDate(new Date());
-        TanggalPeriksa.setDate(new Date());
         TanggalSurat.requestFocus();
         isNomer();
     }

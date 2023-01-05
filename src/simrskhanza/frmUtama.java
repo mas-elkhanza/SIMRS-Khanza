@@ -458,6 +458,7 @@ import bridging.PCareCekReferensiTACC;
 import bridging.SatuSehatKirimCondition;
 import bridging.SatuSehatKirimEncounter;
 import bridging.SatuSehatKirimObservationTTV;
+import bridging.SatuSehatKirimProcedure;
 import bridging.SatuSehatMapingLokasi;
 import bridging.SatuSehatMapingOrganisasi;
 import bridging.SatuSehatReferensiPasien;
@@ -19533,6 +19534,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKirimProcedureSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatKirimProcedure aplikasi=new SatuSehatKirimProcedure(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20192,7 +20205,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi,
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
-            btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi;
+            btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat;
     
     public void isWall(){
         try{            
@@ -23050,6 +23063,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_kirim_observationttv()==true){
                 Panelmenu.add(btnKirimObservationTTVSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_kirim_procedure()==true){
+                Panelmenu.add(btnKirimProcedureSatuSehat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -27526,6 +27544,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getsatu_sehat_kirim_observationttv()==true){
             Panelmenu.add(btnKirimObservationTTVSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_kirim_procedure()==true){
+            Panelmenu.add(btnKirimProcedureSatuSehat);
             jmlmenu++;
         }
 
@@ -33091,6 +33114,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_kirim_observationttv()==true){
             if(btnKirimObservationTTVSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKirimObservationTTVSatuSehat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsatu_sehat_kirim_procedure()==true){
+            if(btnKirimProcedureSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKirimProcedureSatuSehat);
                 jmlmenu++;
             }                
         }
@@ -39001,5 +39031,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSignInSebelumAnestesi.setName("btnSignInSebelumAnestesi"); 
         btnSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSignInSebelumAnestesi.addActionListener(this::btnSignInSebelumAnestesiActionPerformed);
+        
+        btnKirimProcedureSatuSehat = new widget.ButtonBig();
+        btnKirimProcedureSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnKirimProcedureSatuSehat.setText("Kirim Procedure Satu Sehat");
+        btnKirimProcedureSatuSehat.setIconTextGap(0);
+        btnKirimProcedureSatuSehat.setName("btnKirimProcedureSatuSehat"); 
+        btnKirimProcedureSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKirimProcedureSatuSehat.addActionListener(this::btnKirimProcedureSatuSehatActionPerformed);
     }
 }

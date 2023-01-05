@@ -197,7 +197,7 @@ public final class akses {
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,
             jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,
             satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,catatan_cek_gds=false,satu_sehat_kirim_condition=false,
-            checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false;
+            checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false,satu_sehat_kirim_procedure=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1122,6 +1122,7 @@ public final class akses {
                         akses.checklist_pre_operasi=true;
                         akses.satu_sehat_kirim_observationttv=true;
                         akses.signin_sebelum_anestesi=true;
+                        akses.satu_sehat_kirim_procedure=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2030,6 +2031,7 @@ public final class akses {
                         akses.checklist_pre_operasi=rs2.getBoolean("checklist_pre_operasi");
                         akses.satu_sehat_kirim_observationttv=rs2.getBoolean("satu_sehat_kirim_observationttv");
                         akses.signin_sebelum_anestesi=rs2.getBoolean("signin_sebelum_anestesi");
+                        akses.satu_sehat_kirim_procedure=rs2.getBoolean("satu_sehat_kirim_procedure");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2936,6 +2938,7 @@ public final class akses {
                         akses.checklist_pre_operasi=false;
                         akses.satu_sehat_kirim_observationttv=false;
                         akses.signin_sebelum_anestesi=false;
+                        akses.satu_sehat_kirim_procedure=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3899,4 +3902,5 @@ public final class akses {
     public static boolean getchecklist_pre_operasi(){return akses.checklist_pre_operasi;}
     public static boolean getsatu_sehat_kirim_observationttv(){return akses.satu_sehat_kirim_observationttv;}
     public static boolean getsignin_sebelum_anestesi(){return akses.signin_sebelum_anestesi;}
+    public static boolean getsatu_sehat_kirim_procedure(){return akses.satu_sehat_kirim_procedure;}
 }   
