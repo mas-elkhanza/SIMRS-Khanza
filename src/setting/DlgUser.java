@@ -221,7 +221,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[O]Pernyataan Pasien Umum","[L]Konseling Farmasi","[L]Pelayanan Informasi Obat","[L]Jawaban PIO Apoteker","[O]Persetujuan Umum","[L]Transfer Pasien Antar Ruang",
                 "[K]Referensi Praktisi Satu Sehat","[K]Referensi Pasien Satu Sehat","[K]Mapping Organisasi Satu Sehat","[K]Mapping Lokasi Satu Sehat","[K]Kirim Encounter Satu Sehat",
                 "[L]Catatan Cek GDS","[K]Kirim Condition Satu Sehat","[L]Check List Pre Operasi","[K]Kirim Observation-TTV Satu Sehat","[L]Sign-In Sebelum Anestesi",
-                "[K]Kirim Procedure Satu Sehat"
+                "[K]Kirim Procedure Satu Sehat","[I]Operasi Per Bulan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -481,7 +481,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 906;i++) {
+        for (i = 0; i < 907;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2653,6 +2653,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 905:
                     column.setPreferredWidth(154);
                     break;
+                case 906:
+                    column.setPreferredWidth(106);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3154,7 +3157,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -4102,7 +4105,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "checklist_pre_operasi='"+tbUser.getValueAt(i,902).toString()+"',"+
                     "satu_sehat_kirim_observationttv='"+tbUser.getValueAt(i,903).toString()+"',"+
                     "signin_sebelum_anestesi='"+tbUser.getValueAt(i,904).toString()+"',"+
-                    "satu_sehat_kirim_procedure='"+tbUser.getValueAt(i,905).toString()+"'");
+                    "satu_sehat_kirim_procedure='"+tbUser.getValueAt(i,905).toString()+"',"+
+                    "operasi_per_bulan='"+tbUser.getValueAt(i,906).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -5089,7 +5093,8 @@ public class DlgUser extends javax.swing.JDialog {
                                         "checklist_pre_operasi='"+tbUser.getValueAt(barisdicopy,902).toString()+"',"+
                                         "satu_sehat_kirim_observationttv='"+tbUser.getValueAt(barisdicopy,903).toString()+"',"+
                                         "signin_sebelum_anestesi='"+tbUser.getValueAt(barisdicopy,904).toString()+"',"+
-                                        "satu_sehat_kirim_procedure='"+tbUser.getValueAt(barisdicopy,905).toString()+"'");
+                                        "satu_sehat_kirim_procedure='"+tbUser.getValueAt(barisdicopy,905).toString()+"',"+
+                                        "operasi_per_bulan='"+tbUser.getValueAt(barisdicopy,906).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5470,7 +5475,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.surat_pernyataan_pasien_umum,user.konseling_farmasi,user.pelayanan_informasi_obat,user.jawaban_pio_apoteker,user.surat_persetujuan_umum,"+
                 "user.transfer_pasien_antar_ruang,user.satu_sehat_referensi_dokter,user.satu_sehat_referensi_pasien,user.satu_sehat_mapping_departemen,"+
                 "user.satu_sehat_mapping_lokasi,user.satu_sehat_kirim_encounter,user.catatan_cek_gds,user.satu_sehat_kirim_condition,user.checklist_pre_operasi,"+
-                "user.satu_sehat_kirim_observationttv,user.signin_sebelum_anestesi,user.satu_sehat_kirim_procedure from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.satu_sehat_kirim_observationttv,user.signin_sebelum_anestesi,user.satu_sehat_kirim_procedure,user.operasi_per_bulan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6388,7 +6393,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("checklist_pre_operasi"),
                                rs.getBoolean("satu_sehat_kirim_observationttv"),
                                rs.getBoolean("signin_sebelum_anestesi"),
-                               rs.getBoolean("satu_sehat_kirim_procedure")
+                               rs.getBoolean("satu_sehat_kirim_procedure"),
+                               rs.getBoolean("operasi_per_bulan")
                             });
                         }   
                     } catch (Exception e) {
@@ -7295,7 +7301,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("checklist_pre_operasi"),
                            rs.getBoolean("satu_sehat_kirim_observationttv"),
                            rs.getBoolean("signin_sebelum_anestesi"),
-                           rs.getBoolean("satu_sehat_kirim_procedure")
+                           rs.getBoolean("satu_sehat_kirim_procedure"),
+                           rs.getBoolean("operasi_per_bulan")
                         });
                     }                                             
                  }

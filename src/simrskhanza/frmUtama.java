@@ -701,6 +701,7 @@ import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgLamaPelayananPasien;
 import laporan.DlgLaporanPenyakitPolri;
 import laporan.DlgLaporanPenyakitTNI;
+import laporan.DlgOperasiPerBulan;
 import laporan.DlgPelayananLabMB;
 import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananOperasi;
@@ -1821,7 +1822,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/12/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/01/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -19546,6 +19547,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnOperasiPerBulanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgOperasiPerBulan aplikasi=new DlgOperasiPerBulan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20205,7 +20217,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi,
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
-            btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat;
+            btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan;
     
     public void isWall(){
         try{            
@@ -22135,6 +22147,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getstatus_data_rm()==true){  
                 Panelmenu.add(btnStatusDataRM);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getoperasi_per_bulan()==true){  
+                Panelmenu.add(btnOperasiPerBulan);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -26618,6 +26635,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getstatus_data_rm()==true){  
             Panelmenu.add(btnStatusDataRM);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getoperasi_per_bulan()==true){  
+            Panelmenu.add(btnOperasiPerBulan);                 
             jmlmenu++;
         }
 
@@ -31819,6 +31841,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getstatus_data_rm()==true){  
             if(btnStatusDataRM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnStatusDataRM);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getoperasi_per_bulan()==true){  
+            if(btnOperasiPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnOperasiPerBulan);                 
                 jmlmenu++;
             }                
         }
@@ -39039,5 +39068,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKirimProcedureSatuSehat.setName("btnKirimProcedureSatuSehat"); 
         btnKirimProcedureSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKirimProcedureSatuSehat.addActionListener(this::btnKirimProcedureSatuSehatActionPerformed);
+        
+        btnOperasiPerBulan = new widget.ButtonBig();
+        btnOperasiPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9554573_calendar_note_date_schedule_event_icon.png")));
+        btnOperasiPerBulan.setText("Operasi Per Bulan");
+        btnOperasiPerBulan.setIconTextGap(0);
+        btnOperasiPerBulan.setName("btnOperasiPerBulan"); 
+        btnOperasiPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnOperasiPerBulan.addActionListener(this::btnOperasiPerBulanActionPerformed);
     }
 }
