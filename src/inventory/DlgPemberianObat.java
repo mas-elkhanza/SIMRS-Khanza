@@ -1135,7 +1135,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         if (tbPemberianObat.getSelectedRow() != -1) {
             bangsal = tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(), 13).toString();
         }
-
+        
         if (tabModePO.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
             TNoRw.requestFocus();
