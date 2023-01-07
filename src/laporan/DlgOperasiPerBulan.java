@@ -387,54 +387,18 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         i+"",rs.getString(1),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-01' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-02' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-03' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-04' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-05' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-06' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-07' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-08' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-09' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-10' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-11' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
-                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi "+
-                            "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket "+
-                            "where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-12' "+
-                            "and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-01' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-02' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-03' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-04' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-05' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-06' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-07' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-08' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-09' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-10' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-11' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
+                        Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-12' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
                         rs.getString(2)
                     });
                     i++;
