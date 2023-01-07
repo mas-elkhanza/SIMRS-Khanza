@@ -822,6 +822,7 @@ import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
+import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMUjiFungsiKFR;
 import setting.DlgJamDietPasien;
@@ -19558,6 +19559,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnTimeOutSebelumInsisiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMTimeOutSebelumInsisi aplikasi=new RMTimeOutSebelumInsisi(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20217,7 +20230,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningNutrisiLansia,btnSkriningNutrisiAnak,btnAkunRekeningHtHBankJabar,btnPembayaranBankJabar,btnPernyataanPasienUmum,btnKonselingFarmasi,
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
-            btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan;
+            btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi;
     
     public void isWall(){
         try{            
@@ -23582,6 +23595,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsignin_sebelum_anestesi()==true){
                 Panelmenu.add(btnSignInSebelumAnestesi);
+                jmlmenu++;
+            }
+            
+            if(akses.gettimeout_sebelum_insisi()==true){
+                Panelmenu.add(btnTimeOutSebelumInsisi);
                 jmlmenu++;
             }
             
@@ -28067,6 +28085,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsignin_sebelum_anestesi()==true){
             Panelmenu.add(btnSignInSebelumAnestesi);
+            jmlmenu++;
+        }
+        
+        if(akses.gettimeout_sebelum_insisi()==true){
+            Panelmenu.add(btnTimeOutSebelumInsisi);
             jmlmenu++;
         }
         
@@ -33846,6 +33869,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettimeout_sebelum_insisi()==true){
+            if(btnTimeOutSebelumInsisi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnTimeOutSebelumInsisi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_pre_operasi()==true){
             if(btnPenilaianPreOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianPreOperasi);
@@ -39076,5 +39106,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnOperasiPerBulan.setName("btnOperasiPerBulan"); 
         btnOperasiPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnOperasiPerBulan.addActionListener(this::btnOperasiPerBulanActionPerformed);
+        
+        btnTimeOutSebelumInsisi = new widget.ButtonBig();
+        btnTimeOutSebelumInsisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8168668_notes_paper_document_page_icon.png")));
+        btnTimeOutSebelumInsisi.setText("Time-Out Sebelum Insisi");
+        btnTimeOutSebelumInsisi.setIconTextGap(0);
+        btnTimeOutSebelumInsisi.setName("btnTimeOutSebelumInsisi"); 
+        btnTimeOutSebelumInsisi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTimeOutSebelumInsisi.addActionListener(this::btnTimeOutSebelumInsisiActionPerformed);
     }
 }
