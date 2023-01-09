@@ -2011,7 +2011,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>508){
+            if(internalFrame1.getHeight()>538){
                 ChkInput.setVisible(false);
                 PanelInput.setPreferredSize(new Dimension(WIDTH,406));
                 FormInput.setVisible(true);      
