@@ -625,12 +625,39 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                if(tbDokter.getSelectedColumn()==2){
+                    try {
+                        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString().equals("")){
+                            psstok=koneksi.prepareStatement("select data_batch.no_faktur,data_batch."+hppfarmasi+" as dasar,data_batch.tgl_kadaluarsa from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.sisa>0 order by data_batch.tgl_kadaluarsa limit 1");
+                            try {
+                                psstok.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString());
+                                psstok.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
+                                rsstok=psstok.executeQuery();
+                                if(rsstok.next()){
+                                    tbDokter.setValueAt(rsstok.getString("no_faktur"), tbDokter.getSelectedRow(),9);
+                                    tbDokter.setValueAt(rsstok.getDouble("dasar"), tbDokter.getSelectedRow(),6);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rsstok!=null){
+                                    rsstok.close();
+                                }
+                                if(psstok!=null){
+                                    psstok.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    }
+                }
                 try {                                     
                     getData();                     
                     TCari.setText("");
                     TCari.requestFocus();
                 } catch (java.lang.NullPointerException e) {
-                }            
+                } 
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 try {                                     
                     getData();          

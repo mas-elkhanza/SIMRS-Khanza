@@ -1335,7 +1335,7 @@ public class DlgBarang extends javax.swing.JDialog {
         karyawan.setBounds(630, 222, 110, 23);
 
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2019" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2022" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);
@@ -1347,7 +1347,6 @@ public class DlgBarang extends javax.swing.JDialog {
         FormInput.add(DTPExpired);
         DTPExpired.setBounds(640, 282, 100, 23);
 
-        ChkKadaluarsa.setBackground(new java.awt.Color(235, 255, 235));
         ChkKadaluarsa.setSelected(true);
         ChkKadaluarsa.setText("Tanggal Kadaluwarsa :");
         ChkKadaluarsa.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

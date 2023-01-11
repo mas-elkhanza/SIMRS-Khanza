@@ -4143,6 +4143,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rs2.next()){
                             tbObat.setValueAt(rs2.getString("no_faktur"), tbObat.getSelectedRow(),17);
                             tbObat.setValueAt(rs2.getString("tgl_kadaluarsa"), tbObat.getSelectedRow(),18);
+                            tbObat.setValueAt(rs2.getDouble(hppfarmasi), tbObat.getSelectedRow(),13);
                             if(aktifkanbatch.equals("yes")){
                                 if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                     tbObat.setValueAt(rs2.getDouble("karyawan"), tbObat.getSelectedRow(),6);
@@ -4241,6 +4242,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rs2.next()){
                             tbDetailObatRacikan.setValueAt(rs2.getString("no_faktur"), tbDetailObatRacikan.getSelectedRow(),17);
                             tbDetailObatRacikan.setValueAt(rs2.getString("tgl_kadaluarsa"), tbDetailObatRacikan.getSelectedRow(),18);
+                            tbDetailObatRacikan.setValueAt(rs2.getDouble(hppfarmasi), tbDetailObatRacikan.getSelectedRow(),5);
                             if(aktifkanbatch.equals("yes")){
                                 if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                     tbDetailObatRacikan.setValueAt(rs2.getDouble("karyawan"), tbDetailObatRacikan.getSelectedRow(),4);
