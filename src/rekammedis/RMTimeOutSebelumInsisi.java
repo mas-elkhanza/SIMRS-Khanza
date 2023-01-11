@@ -315,23 +315,23 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         Alergi = new widget.TextBox();
         jLabel53 = new widget.Label();
         jLabel29 = new widget.Label();
-        Identitas1 = new widget.ComboBox();
+        VerbalTindakan = new widget.ComboBox();
         jLabel30 = new widget.Label();
         jLabel31 = new widget.Label();
-        Identitas2 = new widget.ComboBox();
+        VerbalArea = new widget.ComboBox();
         jLabel54 = new widget.Label();
         jLabel52 = new widget.Label();
-        AreaOperasi1 = new widget.ComboBox();
+        PenayanganRadiologi = new widget.ComboBox();
         jLabel55 = new widget.Label();
-        AreaOperasi2 = new widget.ComboBox();
+        PenayanganCTScan = new widget.ComboBox();
         jLabel56 = new widget.Label();
         AreaOperasi3 = new widget.ComboBox();
         jLabel57 = new widget.Label();
-        Identitas3 = new widget.ComboBox();
+        VerbalIdentitas = new widget.ComboBox();
         jLabel32 = new widget.Label();
         Alergi1 = new widget.TextBox();
         jLabel33 = new widget.Label();
-        Alergi2 = new widget.TextBox();
+        PerkiraanLama = new widget.TextBox();
         jLabel35 = new widget.Label();
         jLabel34 = new widget.Label();
         Identitas4 = new widget.ComboBox();
@@ -543,7 +543,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -557,7 +557,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -706,7 +706,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2023 19:53:38" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2023 08:19:34" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -938,15 +938,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel29);
         jLabel29.setBounds(342, 220, 30, 23);
 
-        Identitas1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Identitas1.setName("Identitas1"); // NOI18N
-        Identitas1.addKeyListener(new java.awt.event.KeyAdapter() {
+        VerbalTindakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        VerbalTindakan.setName("VerbalTindakan"); // NOI18N
+        VerbalTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Identitas1KeyPressed(evt);
+                VerbalTindakanKeyPressed(evt);
             }
         });
-        FormInput.add(Identitas1);
-        Identitas1.setBounds(266, 140, 80, 23);
+        FormInput.add(VerbalTindakan);
+        VerbalTindakan.setBounds(266, 140, 80, 23);
 
         jLabel30.setText("Tindakan :");
         jLabel30.setName("jLabel30"); // NOI18N
@@ -958,15 +958,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel31);
         jLabel31.setBounds(349, 140, 67, 23);
 
-        Identitas2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Identitas2.setName("Identitas2"); // NOI18N
-        Identitas2.addKeyListener(new java.awt.event.KeyAdapter() {
+        VerbalArea.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        VerbalArea.setName("VerbalArea"); // NOI18N
+        VerbalArea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Identitas2KeyPressed(evt);
+                VerbalAreaKeyPressed(evt);
             }
         });
-        FormInput.add(Identitas2);
-        Identitas2.setBounds(420, 140, 80, 23);
+        FormInput.add(VerbalArea);
+        VerbalArea.setBounds(420, 140, 80, 23);
 
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel54.setText("Verbalisasi Tim, Konfirmasi :");
@@ -979,30 +979,30 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel52);
         jLabel52.setBounds(93, 190, 90, 23);
 
-        AreaOperasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ditayangkan", "Benar", "Tidak Diperlukan" }));
-        AreaOperasi1.setName("AreaOperasi1"); // NOI18N
-        AreaOperasi1.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenayanganRadiologi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ditayangkan", "Benar", "Tidak Diperlukan" }));
+        PenayanganRadiologi.setName("PenayanganRadiologi"); // NOI18N
+        PenayanganRadiologi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AreaOperasi1KeyPressed(evt);
+                PenayanganRadiologiKeyPressed(evt);
             }
         });
-        FormInput.add(AreaOperasi1);
-        AreaOperasi1.setBounds(187, 190, 135, 23);
+        FormInput.add(PenayanganRadiologi);
+        PenayanganRadiologi.setBounds(187, 190, 135, 23);
 
         jLabel55.setText("CT Scan :");
         jLabel55.setName("jLabel55"); // NOI18N
         FormInput.add(jLabel55);
         jLabel55.setBounds(370, 190, 60, 23);
 
-        AreaOperasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ditayangkan", "Benar", "Tidak Diperlukan" }));
-        AreaOperasi2.setName("AreaOperasi2"); // NOI18N
-        AreaOperasi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenayanganCTScan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ditayangkan", "Benar", "Tidak Diperlukan" }));
+        PenayanganCTScan.setName("PenayanganCTScan"); // NOI18N
+        PenayanganCTScan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AreaOperasi2KeyPressed(evt);
+                PenayanganCTScanKeyPressed(evt);
             }
         });
-        FormInput.add(AreaOperasi2);
-        AreaOperasi2.setBounds(434, 190, 135, 23);
+        FormInput.add(PenayanganCTScan);
+        PenayanganCTScan.setBounds(434, 190, 135, 23);
 
         jLabel56.setText("MRI :");
         jLabel56.setName("jLabel56"); // NOI18N
@@ -1024,15 +1024,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel57);
         jLabel57.setBounds(2, 220, 200, 23);
 
-        Identitas3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Identitas3.setName("Identitas3"); // NOI18N
-        Identitas3.addKeyListener(new java.awt.event.KeyAdapter() {
+        VerbalIdentitas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        VerbalIdentitas.setName("VerbalIdentitas"); // NOI18N
+        VerbalIdentitas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Identitas3KeyPressed(evt);
+                VerbalIdentitasKeyPressed(evt);
             }
         });
-        FormInput.add(Identitas3);
-        Identitas3.setBounds(121, 140, 80, 23);
+        FormInput.add(VerbalIdentitas);
+        VerbalIdentitas.setBounds(121, 140, 80, 23);
 
         jLabel32.setText(":");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -1055,15 +1055,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel33);
         jLabel33.setBounds(737, 150, 30, 23);
 
-        Alergi2.setHighlighter(null);
-        Alergi2.setName("Alergi2"); // NOI18N
-        Alergi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        PerkiraanLama.setHighlighter(null);
+        PerkiraanLama.setName("PerkiraanLama"); // NOI18N
+        PerkiraanLama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Alergi2KeyPressed(evt);
+                PerkiraanLamaKeyPressed(evt);
             }
         });
-        FormInput.add(Alergi2);
-        Alergi2.setBounds(654, 150, 80, 23);
+        FormInput.add(PerkiraanLama);
+        PerkiraanLama.setBounds(654, 150, 80, 23);
 
         jLabel35.setText("Perkiraan Lama Operasi :");
         jLabel35.setName("jLabel35"); // NOI18N
@@ -1123,7 +1123,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         jLabel17.setBounds(0, 310, 115, 23);
 
         Tanggal1.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2023" }));
+        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2023" }));
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
         Tanggal1.setOpaque(false);
@@ -1686,37 +1686,37 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         Valid.pindah(evt,Identitas,AreaOperasi);
     }//GEN-LAST:event_AlergiKeyPressed
 
-    private void Identitas1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Identitas1KeyPressed
+    private void VerbalTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalTindakanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Identitas1KeyPressed
+    }//GEN-LAST:event_VerbalTindakanKeyPressed
 
-    private void Identitas2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Identitas2KeyPressed
+    private void VerbalAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalAreaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Identitas2KeyPressed
+    }//GEN-LAST:event_VerbalAreaKeyPressed
 
-    private void AreaOperasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AreaOperasi1KeyPressed
+    private void PenayanganRadiologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenayanganRadiologiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AreaOperasi1KeyPressed
+    }//GEN-LAST:event_PenayanganRadiologiKeyPressed
 
-    private void AreaOperasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AreaOperasi2KeyPressed
+    private void PenayanganCTScanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenayanganCTScanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AreaOperasi2KeyPressed
+    }//GEN-LAST:event_PenayanganCTScanKeyPressed
 
     private void AreaOperasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AreaOperasi3KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_AreaOperasi3KeyPressed
 
-    private void Identitas3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Identitas3KeyPressed
+    private void VerbalIdentitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalIdentitasKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Identitas3KeyPressed
+    }//GEN-LAST:event_VerbalIdentitasKeyPressed
 
     private void Alergi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alergi1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Alergi1KeyPressed
 
-    private void Alergi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alergi2KeyPressed
+    private void PerkiraanLamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerkiraanLamaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Alergi2KeyPressed
+    }//GEN-LAST:event_PerkiraanLamaKeyPressed
 
     private void Identitas4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Identitas4KeyPressed
         // TODO add your handling code here:
@@ -1761,12 +1761,9 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox Alergi;
     private widget.TextBox Alergi1;
-    private widget.TextBox Alergi2;
     private widget.TextBox Alergi3;
     private widget.TextBox Alergi4;
     private widget.ComboBox AreaOperasi;
-    private widget.ComboBox AreaOperasi1;
-    private widget.ComboBox AreaOperasi2;
     private widget.ComboBox AreaOperasi3;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
@@ -1781,9 +1778,6 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Identitas;
-    private widget.ComboBox Identitas1;
-    private widget.ComboBox Identitas2;
-    private widget.ComboBox Identitas3;
     private widget.ComboBox Identitas4;
     private widget.ComboBox Identitas5;
     private widget.ComboBox Identitas6;
@@ -1797,6 +1791,9 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasOK;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox PenayanganCTScan;
+    private widget.ComboBox PenayanganRadiologi;
+    private widget.TextBox PerkiraanLama;
     private widget.TextBox SNCN;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1807,6 +1804,9 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private widget.Tanggal Tanggal1;
     private widget.TextBox TglLahir;
     private widget.TextBox Tindakan;
+    private widget.ComboBox VerbalArea;
+    private widget.ComboBox VerbalIdentitas;
+    private widget.ComboBox VerbalTindakan;
     private widget.Button btnDokterAnestesi;
     private widget.Button btnDokterBedah;
     private widget.Button btnPetugasOK;

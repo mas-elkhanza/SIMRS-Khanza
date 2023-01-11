@@ -420,7 +420,7 @@ public class frmUtama extends javax.swing.JFrame {
                         try {
                             rs=ps.executeQuery();
                             while(rs.next()){
-                                datajam=Sequel.cariIsi("select referensi_mobilejkn_bpjs.validasi from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.no_rawat=? and referensi_mobilejkn_bpjs.status='Checkin'",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select referensi_mobilejkn_bpjs.validasi from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"3",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
