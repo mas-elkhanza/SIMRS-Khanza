@@ -1758,6 +1758,7 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
         RencanaAntisipasiKehilanganDarah.setText("");
         KesiapanAlatAnes.setSelectedIndex(0);
         RencanaAntisipasiKesiapanAlat.setText("");
+        Tanggal.setDate(new Date());
         SNCN.requestFocus();
     } 
 

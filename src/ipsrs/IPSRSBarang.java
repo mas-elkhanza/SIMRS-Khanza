@@ -1071,7 +1071,4 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TCari.requestFocus();
     }
     
-   
-
-    
 }
