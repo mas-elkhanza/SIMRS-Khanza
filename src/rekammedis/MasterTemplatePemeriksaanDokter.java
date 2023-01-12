@@ -156,6 +156,18 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         BtnCariPenyakit7 = new widget.Button();
         Scroll8 = new widget.ScrollPane();
         tbDiagnosa7 = new widget.Table();
+        jLabel19 = new widget.Label();
+        BtnCariPenyakit8 = new widget.Button();
+        Diagnosa8 = new widget.TextBox();
+        Scroll9 = new widget.ScrollPane();
+        tbDiagnosa8 = new widget.Table();
+        jLabel20 = new widget.Label();
+        Scroll10 = new widget.ScrollPane();
+        tbDiagnosa9 = new widget.Table();
+        Diagnosa10 = new widget.TextBox();
+        BtnCariPenyakit10 = new widget.Button();
+        Scroll11 = new widget.ScrollPane();
+        tbDiagnosa10 = new widget.Table();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -201,7 +213,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(700, 1883));
+        FormInput.setPreferredSize(new java.awt.Dimension(700, 2283));
         FormInput.setLayout(null);
 
         label12.setText("No.Template :");
@@ -699,6 +711,94 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(Scroll8);
         Scroll8.setBounds(16, 1667, 670, 106);
 
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("Obat Umum/Non Racikan :");
+        jLabel19.setName("jLabel19"); // NOI18N
+        FormInput.add(jLabel19);
+        jLabel19.setBounds(20, 1790, 270, 23);
+
+        BtnCariPenyakit8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariPenyakit8.setMnemonic('1');
+        BtnCariPenyakit8.setToolTipText("Alt+1");
+        BtnCariPenyakit8.setName("BtnCariPenyakit8"); // NOI18N
+        BtnCariPenyakit8.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariPenyakit8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariPenyakit8ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnCariPenyakit8);
+        BtnCariPenyakit8.setBounds(660, 1810, 28, 23);
+
+        Diagnosa8.setHighlighter(null);
+        Diagnosa8.setName("Diagnosa8"); // NOI18N
+        Diagnosa8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Diagnosa8KeyPressed(evt);
+            }
+        });
+        FormInput.add(Diagnosa8);
+        Diagnosa8.setBounds(20, 1810, 640, 23);
+
+        Scroll9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
+        Scroll9.setName("Scroll9"); // NOI18N
+        Scroll9.setOpaque(true);
+
+        tbDiagnosa8.setName("tbDiagnosa8"); // NOI18N
+        Scroll9.setViewportView(tbDiagnosa8);
+
+        FormInput.add(Scroll9);
+        Scroll9.setBounds(20, 1840, 670, 76);
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText("Obat Racikan :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(20, 1930, 270, 23);
+
+        Scroll10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
+        Scroll10.setName("Scroll10"); // NOI18N
+        Scroll10.setOpaque(true);
+
+        tbDiagnosa9.setName("tbDiagnosa9"); // NOI18N
+        Scroll10.setViewportView(tbDiagnosa9);
+
+        FormInput.add(Scroll10);
+        Scroll10.setBounds(20, 1970, 670, 50);
+
+        Diagnosa10.setHighlighter(null);
+        Diagnosa10.setName("Diagnosa10"); // NOI18N
+        Diagnosa10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Diagnosa10KeyPressed(evt);
+            }
+        });
+        FormInput.add(Diagnosa10);
+        Diagnosa10.setBounds(20, 2060, 640, 23);
+
+        BtnCariPenyakit10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariPenyakit10.setMnemonic('1');
+        BtnCariPenyakit10.setToolTipText("Alt+1");
+        BtnCariPenyakit10.setName("BtnCariPenyakit10"); // NOI18N
+        BtnCariPenyakit10.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariPenyakit10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariPenyakit10ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnCariPenyakit10);
+        BtnCariPenyakit10.setBounds(660, 2060, 28, 23);
+
+        Scroll11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
+        Scroll11.setName("Scroll11"); // NOI18N
+        Scroll11.setOpaque(true);
+
+        tbDiagnosa10.setName("tbDiagnosa10"); // NOI18N
+        Scroll11.setViewportView(tbDiagnosa10);
+
+        FormInput.add(Scroll11);
+        Scroll11.setBounds(20, 2090, 670, 106);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1192,6 +1292,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCariPenyakit7ActionPerformed
 
+    private void BtnCariPenyakit8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCariPenyakit8ActionPerformed
+
+    private void Diagnosa8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Diagnosa8KeyPressed
+
+    private void Diagnosa10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa10KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Diagnosa10KeyPressed
+
+    private void BtnCariPenyakit10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCariPenyakit10ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1214,12 +1330,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnCari;
     private widget.Button BtnCariPenyakit;
     private widget.Button BtnCariPenyakit1;
+    private widget.Button BtnCariPenyakit10;
     private widget.Button BtnCariPenyakit2;
     private widget.Button BtnCariPenyakit3;
     private widget.Button BtnCariPenyakit4;
     private widget.Button BtnCariPenyakit5;
     private widget.Button BtnCariPenyakit6;
     private widget.Button BtnCariPenyakit7;
+    private widget.Button BtnCariPenyakit8;
     private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
@@ -1227,12 +1345,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnSimpan;
     public widget.TextBox Diagnosa;
     public widget.TextBox Diagnosa1;
+    public widget.TextBox Diagnosa10;
     public widget.TextBox Diagnosa2;
     public widget.TextBox Diagnosa3;
     public widget.TextBox Diagnosa4;
     public widget.TextBox Diagnosa5;
     public widget.TextBox Diagnosa6;
     public widget.TextBox Diagnosa7;
+    public widget.TextBox Diagnosa8;
     private widget.PanelBiasa FormInput;
     private widget.TextBox Kd;
     private widget.TextBox KdDokter;
@@ -1240,6 +1360,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox NmDokter;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
+    private widget.ScrollPane Scroll10;
+    private widget.ScrollPane Scroll11;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -1247,6 +1369,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.ScrollPane Scroll6;
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
+    private widget.ScrollPane Scroll9;
     private widget.TextBox TCari;
     private javax.swing.JTabbedPane TabRawat;
     private widget.TextArea Template;
@@ -1264,6 +1387,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
+    private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
     private widget.Label jLabel42;
@@ -1285,12 +1410,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.ScrollPane scrollPane7;
     public widget.Table tbDiagnosa;
     public widget.Table tbDiagnosa1;
+    public widget.Table tbDiagnosa10;
     public widget.Table tbDiagnosa2;
     public widget.Table tbDiagnosa3;
     public widget.Table tbDiagnosa4;
     public widget.Table tbDiagnosa5;
     public widget.Table tbDiagnosa6;
     public widget.Table tbDiagnosa7;
+    public widget.Table tbDiagnosa8;
+    public widget.Table tbDiagnosa9;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 

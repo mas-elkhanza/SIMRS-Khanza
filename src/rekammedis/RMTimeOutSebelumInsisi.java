@@ -135,7 +135,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
         Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
-        Alergi.setDocument(new batasInput((byte)30).getKata(Alergi));
+        AnsipisasiKehialnganDarah.setDocument(new batasInput((byte)30).getKata(AnsipisasiKehialnganDarah));
         
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -298,7 +298,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         KodeDokterAnestesi = new widget.TextBox();
         jLabel24 = new widget.Label();
         jLabel25 = new widget.Label();
-        Identitas = new widget.ComboBox();
+        PemberianAntibiotik = new widget.ComboBox();
         jLabel51 = new widget.Label();
         AreaOperasi = new widget.ComboBox();
         Tindakan = new widget.TextBox();
@@ -312,7 +312,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel28 = new widget.Label();
-        Alergi = new widget.TextBox();
+        AnsipisasiKehialnganDarah = new widget.TextBox();
         jLabel53 = new widget.Label();
         jLabel29 = new widget.Label();
         VerbalTindakan = new widget.ComboBox();
@@ -325,26 +325,26 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         jLabel55 = new widget.Label();
         PenayanganCTScan = new widget.ComboBox();
         jLabel56 = new widget.Label();
-        AreaOperasi3 = new widget.ComboBox();
+        PenayanganMRI = new widget.ComboBox();
         jLabel57 = new widget.Label();
         VerbalIdentitas = new widget.ComboBox();
         jLabel32 = new widget.Label();
-        Alergi1 = new widget.TextBox();
+        JamPemberianAntibiotik = new widget.TextBox();
         jLabel33 = new widget.Label();
         PerkiraanLama = new widget.TextBox();
         jLabel35 = new widget.Label();
         jLabel34 = new widget.Label();
-        Identitas4 = new widget.ComboBox();
+        AdaHalKhusus = new widget.ComboBox();
         jLabel58 = new widget.Label();
-        Alergi3 = new widget.TextBox();
+        NamaAntibiotikDIberikan = new widget.TextBox();
         jLabel59 = new widget.Label();
-        Alergi4 = new widget.TextBox();
+        HalKhususDiperhatikan = new widget.TextBox();
         jLabel17 = new widget.Label();
-        Tanggal1 = new widget.Tanggal();
+        TanggalSeteril = new widget.Tanggal();
         jLabel36 = new widget.Label();
-        Identitas5 = new widget.ComboBox();
+        PetunjukSterilisasi = new widget.ComboBox();
         jLabel37 = new widget.Label();
-        Identitas6 = new widget.ComboBox();
+        VerifikasiOperatif = new widget.ComboBox();
         jLabel38 = new widget.Label();
         jLabel60 = new widget.Label();
         jLabel39 = new widget.Label();
@@ -810,15 +810,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel25);
         jLabel25.setBounds(0, 70, 75, 23);
 
-        Identitas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Identitas.setName("Identitas"); // NOI18N
-        Identitas.addKeyListener(new java.awt.event.KeyAdapter() {
+        PemberianAntibiotik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PemberianAntibiotik.setName("PemberianAntibiotik"); // NOI18N
+        PemberianAntibiotik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                IdentitasKeyPressed(evt);
+                PemberianAntibiotikKeyPressed(evt);
             }
         });
-        FormInput.add(Identitas);
-        Identitas.setBounds(206, 220, 80, 23);
+        FormInput.add(PemberianAntibiotik);
+        PemberianAntibiotik.setBounds(206, 220, 80, 23);
 
         jLabel51.setText("Penandaan Area Operasi :");
         jLabel51.setName("jLabel51"); // NOI18N
@@ -917,15 +917,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel28);
         jLabel28.setBounds(57, 140, 60, 23);
 
-        Alergi.setHighlighter(null);
-        Alergi.setName("Alergi"); // NOI18N
-        Alergi.addKeyListener(new java.awt.event.KeyAdapter() {
+        AnsipisasiKehialnganDarah.setHighlighter(null);
+        AnsipisasiKehialnganDarah.setName("AnsipisasiKehialnganDarah"); // NOI18N
+        AnsipisasiKehialnganDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AlergiKeyPressed(evt);
+                AnsipisasiKehialnganDarahKeyPressed(evt);
             }
         });
-        FormInput.add(Alergi);
-        Alergi.setBounds(356, 250, 433, 23);
+        FormInput.add(AnsipisasiKehialnganDarah);
+        AnsipisasiKehialnganDarah.setBounds(356, 250, 433, 23);
 
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel53.setText("Penayangan Hasil Pemeriksaan Penunjang :");
@@ -1009,15 +1009,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel56);
         jLabel56.setBounds(590, 190, 60, 23);
 
-        AreaOperasi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ditayangkan", "Benar", "Tidak Diperlukan" }));
-        AreaOperasi3.setName("AreaOperasi3"); // NOI18N
-        AreaOperasi3.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenayanganMRI.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ditayangkan", "Benar", "Tidak Diperlukan" }));
+        PenayanganMRI.setName("PenayanganMRI"); // NOI18N
+        PenayanganMRI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AreaOperasi3KeyPressed(evt);
+                PenayanganMRIKeyPressed(evt);
             }
         });
-        FormInput.add(AreaOperasi3);
-        AreaOperasi3.setBounds(654, 190, 135, 23);
+        FormInput.add(PenayanganMRI);
+        PenayanganMRI.setBounds(654, 190, 135, 23);
 
         jLabel57.setText(":");
         jLabel57.setName("jLabel57"); // NOI18N
@@ -1039,15 +1039,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel32);
         jLabel32.setBounds(685, 220, 40, 23);
 
-        Alergi1.setHighlighter(null);
-        Alergi1.setName("Alergi1"); // NOI18N
-        Alergi1.addKeyListener(new java.awt.event.KeyAdapter() {
+        JamPemberianAntibiotik.setHighlighter(null);
+        JamPemberianAntibiotik.setName("JamPemberianAntibiotik"); // NOI18N
+        JamPemberianAntibiotik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Alergi1KeyPressed(evt);
+                JamPemberianAntibiotikKeyPressed(evt);
             }
         });
-        FormInput.add(Alergi1);
-        Alergi1.setBounds(729, 220, 60, 23);
+        FormInput.add(JamPemberianAntibiotik);
+        JamPemberianAntibiotik.setBounds(729, 220, 60, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel33.setText("Jam");
@@ -1075,15 +1075,15 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel34);
         jLabel34.setBounds(0, 280, 205, 23);
 
-        Identitas4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Tidak Ada" }));
-        Identitas4.setName("Identitas4"); // NOI18N
-        Identitas4.addKeyListener(new java.awt.event.KeyAdapter() {
+        AdaHalKhusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Tidak Ada" }));
+        AdaHalKhusus.setName("AdaHalKhusus"); // NOI18N
+        AdaHalKhusus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Identitas4KeyPressed(evt);
+                AdaHalKhususKeyPressed(evt);
             }
         });
-        FormInput.add(Identitas4);
-        Identitas4.setBounds(209, 280, 100, 23);
+        FormInput.add(AdaHalKhusus);
+        AdaHalKhusus.setBounds(209, 280, 100, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel58.setText("Antisipasi Kehilangan Darah > 500 ml (7 ml/Kg BB Untuk Anak)");
@@ -1091,30 +1091,30 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel58);
         jLabel58.setBounds(40, 250, 320, 23);
 
-        Alergi3.setHighlighter(null);
-        Alergi3.setName("Alergi3"); // NOI18N
-        Alergi3.addKeyListener(new java.awt.event.KeyAdapter() {
+        NamaAntibiotikDIberikan.setHighlighter(null);
+        NamaAntibiotikDIberikan.setName("NamaAntibiotikDIberikan"); // NOI18N
+        NamaAntibiotikDIberikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Alergi3KeyPressed(evt);
+                NamaAntibiotikDIberikanKeyPressed(evt);
             }
         });
-        FormInput.add(Alergi3);
-        Alergi3.setBounds(376, 220, 258, 23);
+        FormInput.add(NamaAntibiotikDIberikan);
+        NamaAntibiotikDIberikan.setBounds(376, 220, 258, 23);
 
         jLabel59.setText(":");
         jLabel59.setName("jLabel59"); // NOI18N
         FormInput.add(jLabel59);
         jLabel59.setBounds(337, 280, 30, 23);
 
-        Alergi4.setHighlighter(null);
-        Alergi4.setName("Alergi4"); // NOI18N
-        Alergi4.addKeyListener(new java.awt.event.KeyAdapter() {
+        HalKhususDiperhatikan.setHighlighter(null);
+        HalKhususDiperhatikan.setName("HalKhususDiperhatikan"); // NOI18N
+        HalKhususDiperhatikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Alergi4KeyPressed(evt);
+                HalKhususDiperhatikanKeyPressed(evt);
             }
         });
-        FormInput.add(Alergi4);
-        Alergi4.setBounds(371, 280, 418, 23);
+        FormInput.add(HalKhususDiperhatikan);
+        HalKhususDiperhatikan.setBounds(371, 280, 418, 23);
 
         jLabel17.setText(":");
         jLabel17.setName("jLabel17"); // NOI18N
@@ -1122,48 +1122,48 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(0, 310, 115, 23);
 
-        Tanggal1.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2023" }));
-        Tanggal1.setDisplayFormat("dd-MM-yyyy");
-        Tanggal1.setName("Tanggal1"); // NOI18N
-        Tanggal1.setOpaque(false);
-        Tanggal1.addKeyListener(new java.awt.event.KeyAdapter() {
+        TanggalSeteril.setForeground(new java.awt.Color(50, 70, 50));
+        TanggalSeteril.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2023" }));
+        TanggalSeteril.setDisplayFormat("dd-MM-yyyy");
+        TanggalSeteril.setName("TanggalSeteril"); // NOI18N
+        TanggalSeteril.setOpaque(false);
+        TanggalSeteril.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tanggal1KeyPressed(evt);
+                TanggalSeterilKeyPressed(evt);
             }
         });
-        FormInput.add(Tanggal1);
-        Tanggal1.setBounds(119, 310, 90, 23);
+        FormInput.add(TanggalSeteril);
+        TanggalSeteril.setBounds(119, 310, 90, 23);
 
         jLabel36.setText("Petunjuk Sterilisasi Telah Dikonfirmasi :");
         jLabel36.setName("jLabel36"); // NOI18N
         FormInput.add(jLabel36);
         jLabel36.setBounds(215, 310, 200, 23);
 
-        Identitas5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Identitas5.setName("Identitas5"); // NOI18N
-        Identitas5.addKeyListener(new java.awt.event.KeyAdapter() {
+        PetunjukSterilisasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PetunjukSterilisasi.setName("PetunjukSterilisasi"); // NOI18N
+        PetunjukSterilisasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Identitas5KeyPressed(evt);
+                PetunjukSterilisasiKeyPressed(evt);
             }
         });
-        FormInput.add(Identitas5);
-        Identitas5.setBounds(419, 310, 80, 23);
+        FormInput.add(PetunjukSterilisasi);
+        PetunjukSterilisasi.setBounds(419, 310, 80, 23);
 
         jLabel37.setText("Verifikasi Pre Operatif Telah Dilakukan :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
         jLabel37.setBounds(495, 310, 210, 23);
 
-        Identitas6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Identitas6.setName("Identitas6"); // NOI18N
-        Identitas6.addKeyListener(new java.awt.event.KeyAdapter() {
+        VerifikasiOperatif.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        VerifikasiOperatif.setName("VerifikasiOperatif"); // NOI18N
+        VerifikasiOperatif.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Identitas6KeyPressed(evt);
+                VerifikasiOperatifKeyPressed(evt);
             }
         });
-        FormInput.add(Identitas6);
-        Identitas6.setBounds(709, 310, 80, 23);
+        FormInput.add(VerifikasiOperatif);
+        VerifikasiOperatif.setBounds(709, 310, 80, 23);
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel38.setText(", Jam Pemberian");
@@ -1650,12 +1650,12 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDokterAnestesiActionPerformed
 
     private void btnDokterAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterAnestesiKeyPressed
-        Valid.pindah(evt,btnDokterBedah,Identitas);
+        Valid.pindah(evt,btnDokterBedah,PemberianAntibiotik);
     }//GEN-LAST:event_btnDokterAnestesiKeyPressed
 
-    private void IdentitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdentitasKeyPressed
-        Valid.pindah(evt,btnDokterAnestesi,Alergi);
-    }//GEN-LAST:event_IdentitasKeyPressed
+    private void PemberianAntibiotikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemberianAntibiotikKeyPressed
+        Valid.pindah(evt,btnDokterAnestesi,AnsipisasiKehialnganDarah);
+    }//GEN-LAST:event_PemberianAntibiotikKeyPressed
 
     private void AreaOperasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AreaOperasiKeyPressed
         //Valid.pindah(evt,Alergi,ResikoAspirasi);
@@ -1682,9 +1682,9 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         Valid.pindah(evt,SNCN,btnDokterBedah);
     }//GEN-LAST:event_TindakanKeyPressed
 
-    private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
-        Valid.pindah(evt,Identitas,AreaOperasi);
-    }//GEN-LAST:event_AlergiKeyPressed
+    private void AnsipisasiKehialnganDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnsipisasiKehialnganDarahKeyPressed
+        Valid.pindah(evt,PemberianAntibiotik,AreaOperasi);
+    }//GEN-LAST:event_AnsipisasiKehialnganDarahKeyPressed
 
     private void VerbalTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalTindakanKeyPressed
         // TODO add your handling code here:
@@ -1702,45 +1702,45 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_PenayanganCTScanKeyPressed
 
-    private void AreaOperasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AreaOperasi3KeyPressed
+    private void PenayanganMRIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenayanganMRIKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AreaOperasi3KeyPressed
+    }//GEN-LAST:event_PenayanganMRIKeyPressed
 
     private void VerbalIdentitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalIdentitasKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_VerbalIdentitasKeyPressed
 
-    private void Alergi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alergi1KeyPressed
+    private void JamPemberianAntibiotikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamPemberianAntibiotikKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Alergi1KeyPressed
+    }//GEN-LAST:event_JamPemberianAntibiotikKeyPressed
 
     private void PerkiraanLamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerkiraanLamaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_PerkiraanLamaKeyPressed
 
-    private void Identitas4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Identitas4KeyPressed
+    private void AdaHalKhususKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AdaHalKhususKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Identitas4KeyPressed
+    }//GEN-LAST:event_AdaHalKhususKeyPressed
 
-    private void Alergi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alergi3KeyPressed
+    private void NamaAntibiotikDIberikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaAntibiotikDIberikanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Alergi3KeyPressed
+    }//GEN-LAST:event_NamaAntibiotikDIberikanKeyPressed
 
-    private void Alergi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alergi4KeyPressed
+    private void HalKhususDiperhatikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HalKhususDiperhatikanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Alergi4KeyPressed
+    }//GEN-LAST:event_HalKhususDiperhatikanKeyPressed
 
-    private void Tanggal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal1KeyPressed
+    private void TanggalSeterilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalSeterilKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Tanggal1KeyPressed
+    }//GEN-LAST:event_TanggalSeterilKeyPressed
 
-    private void Identitas5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Identitas5KeyPressed
+    private void PetunjukSterilisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PetunjukSterilisasiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Identitas5KeyPressed
+    }//GEN-LAST:event_PetunjukSterilisasiKeyPressed
 
-    private void Identitas6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Identitas6KeyPressed
+    private void VerifikasiOperatifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerifikasiOperatifKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Identitas6KeyPressed
+    }//GEN-LAST:event_VerifikasiOperatifKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1759,12 +1759,9 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox Alergi;
-    private widget.TextBox Alergi1;
-    private widget.TextBox Alergi3;
-    private widget.TextBox Alergi4;
+    private widget.ComboBox AdaHalKhusus;
+    private widget.TextBox AnsipisasiKehialnganDarah;
     private widget.ComboBox AreaOperasi;
-    private widget.ComboBox AreaOperasi3;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1777,23 +1774,25 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
-    private widget.ComboBox Identitas;
-    private widget.ComboBox Identitas4;
-    private widget.ComboBox Identitas5;
-    private widget.ComboBox Identitas6;
+    private widget.TextBox HalKhususDiperhatikan;
+    private widget.TextBox JamPemberianAntibiotik;
     private widget.TextBox KdPetugasOK;
     private widget.TextBox KodeDokterAnestesi;
     private widget.TextBox KodeDokterBedah;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnSignInSebelumAnestesi;
+    private widget.TextBox NamaAntibiotikDIberikan;
     private widget.TextBox NamaDokterAnestesi;
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasOK;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox PemberianAntibiotik;
     private widget.ComboBox PenayanganCTScan;
+    private widget.ComboBox PenayanganMRI;
     private widget.ComboBox PenayanganRadiologi;
     private widget.TextBox PerkiraanLama;
+    private widget.ComboBox PetunjukSterilisasi;
     private widget.TextBox SNCN;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1801,12 +1800,13 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
-    private widget.Tanggal Tanggal1;
+    private widget.Tanggal TanggalSeteril;
     private widget.TextBox TglLahir;
     private widget.TextBox Tindakan;
     private widget.ComboBox VerbalArea;
     private widget.ComboBox VerbalIdentitas;
     private widget.ComboBox VerbalTindakan;
+    private widget.ComboBox VerifikasiOperatif;
     private widget.Button btnDokterAnestesi;
     private widget.Button btnDokterBedah;
     private widget.Button btnPetugasOK;
@@ -1950,8 +1950,8 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         NamaDokterBedah.setText("");
         KodeDokterAnestesi.setText("");
         NamaDokterAnestesi.setText("");
-        Identitas.setSelectedIndex(0);
-        Alergi.setText("");
+        PemberianAntibiotik.setSelectedIndex(0);
+        AnsipisasiKehialnganDarah.setText("");
         AreaOperasi.setSelectedIndex(0);
         SNCN.requestFocus();
     } 
@@ -1968,8 +1968,8 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
             NamaDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             KodeDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             NamaDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Identitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            PemberianAntibiotik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            AnsipisasiKehialnganDarah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             KdPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             NmPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
