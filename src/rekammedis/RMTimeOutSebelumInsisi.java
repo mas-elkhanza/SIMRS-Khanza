@@ -268,7 +268,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSignInSebelumAnestesi = new javax.swing.JMenuItem();
+        MnTimeOutSebelumInsisi = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -375,19 +375,19 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSignInSebelumAnestesi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSignInSebelumAnestesi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSignInSebelumAnestesi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSignInSebelumAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSignInSebelumAnestesi.setText("Formulir Sign-In Sebelum Tindakan Anestesi");
-        MnSignInSebelumAnestesi.setName("MnSignInSebelumAnestesi"); // NOI18N
-        MnSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(270, 26));
-        MnSignInSebelumAnestesi.addActionListener(new java.awt.event.ActionListener() {
+        MnTimeOutSebelumInsisi.setBackground(new java.awt.Color(255, 255, 254));
+        MnTimeOutSebelumInsisi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnTimeOutSebelumInsisi.setForeground(new java.awt.Color(50, 50, 50));
+        MnTimeOutSebelumInsisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnTimeOutSebelumInsisi.setText("Formulir Time-Out Sebelum Tindakan Insisi");
+        MnTimeOutSebelumInsisi.setName("MnTimeOutSebelumInsisi"); // NOI18N
+        MnTimeOutSebelumInsisi.setPreferredSize(new java.awt.Dimension(270, 26));
+        MnTimeOutSebelumInsisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSignInSebelumAnestesiActionPerformed(evt);
+                MnTimeOutSebelumInsisiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSignInSebelumAnestesi);
+        jPopupMenu1.add(MnTimeOutSebelumInsisi);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1270,10 +1270,11 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
             if(Sequel.menyimpantf("timeout_sebelum_insisi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",24,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),SNCN.getText(),Tindakan.getText(),
                 KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),VerbalIdentitas.getSelectedItem().toString(),VerbalTindakan.getSelectedItem().toString(),
-                VerbalArea.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(),PenayanganRadiologi.getSelectedItem().toString(),PenayanganCTScan.getSelectedItem().toString(), 
-                PenayanganMRI.getSelectedItem().toString(),PemberianAntibiotik.getSelectedItem().toString(),NamaAntibiotikDIberikan.getText(),JamPemberianAntibiotik.getText(),
-                PerkiraanLama.getText(),AntisipisasiKehialnganDarah.getText(),AdaHalKhusus.getSelectedItem().toString(),HalKhususDiperhatikan.getText(),Valid.SetTgl(TanggalSeteril.getSelectedItem()+""), 
-                PetunjukSterilisasi.getSelectedItem().toString(),VerifikasiOperatif.getSelectedItem().toString(),KdPetugasOK.getText()
+                VerbalArea.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(),PerkiraanLama.getText(),PenayanganRadiologi.getSelectedItem().toString(),
+                PenayanganCTScan.getSelectedItem().toString(),PenayanganMRI.getSelectedItem().toString(),PemberianAntibiotik.getSelectedItem().toString(),
+                NamaAntibiotikDIberikan.getText(),JamPemberianAntibiotik.getText(),AntisipisasiKehialnganDarah.getText(),AdaHalKhusus.getSelectedItem().toString(),
+                HalKhususDiperhatikan.getText(),Valid.SetTgl(TanggalSeteril.getSelectedItem()+""),PetunjukSterilisasi.getSelectedItem().toString(),
+                VerifikasiOperatif.getSelectedItem().toString(),KdPetugasOK.getText()
             })==true){
                 tampil();
                 emptTeks();
@@ -1383,11 +1384,14 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,timeout_sebelum_insisi.tanggal,"+
                         "timeout_sebelum_insisi.sncn,timeout_sebelum_insisi.tindakan,timeout_sebelum_insisi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "timeout_sebelum_insisi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,timeout_sebelum_insisi.identitas,timeout_sebelum_insisi.penandaan_area_operasi,"+
-                        "timeout_sebelum_insisi.alergi,timeout_sebelum_insisi.resiko_aspirasi,timeout_sebelum_insisi.resiko_aspirasi_rencana_antisipasi,"+
-                        "timeout_sebelum_insisi.resiko_kehilangan_darah,timeout_sebelum_insisi.resiko_kehilangan_darah_line,timeout_sebelum_insisi.resiko_kehilangan_darah_rencana_antisipasi,"+
-                        "timeout_sebelum_insisi.kesiapan_alat_obat_anestesi,timeout_sebelum_insisi.kesiapan_alat_obat_anestesi_rencana_antisipasi,timeout_sebelum_insisi.nip_perawat_ok,"+
-                        "petugas.nama from timeout_sebelum_insisi inner join reg_periksa on timeout_sebelum_insisi.no_rawat=reg_periksa.no_rawat "+
+                        "timeout_sebelum_insisi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,timeout_sebelum_insisi.verbal_identitas,"+
+                        "timeout_sebelum_insisi.verbal_tindakan,timeout_sebelum_insisi.verbal_area_insisi,timeout_sebelum_insisi.penandaan_area_operasi,"+
+                        "timeout_sebelum_insisi.lama_operasi,timeout_sebelum_insisi.penayangan_radiologi,timeout_sebelum_insisi.penayangan_ctscan,"+
+                        "timeout_sebelum_insisi.penayangan_mri,timeout_sebelum_insisi.antibiotik_profilaks,timeout_sebelum_insisi.nama_antibiotik,"+
+                        "timeout_sebelum_insisi.jam_pemberian,timeout_sebelum_insisi.antisipasi_kehilangan_darah,timeout_sebelum_insisi.hal_khusus,"+
+                        "timeout_sebelum_insisi.hal_khusus_diperhatikan,timeout_sebelum_insisi.tanggal_steril,timeout_sebelum_insisi.petujuk_sterilisasi,"+
+                        "timeout_sebelum_insisi.verifikasi_preoperatif,timeout_sebelum_insisi.nip_perawat_ok,petugas.nama "+
+                        "from timeout_sebelum_insisi inner join reg_periksa on timeout_sebelum_insisi.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join dokter as dokterbedah on dokterbedah.kd_dokter=timeout_sebelum_insisi.kd_dokter_bedah "+
                         "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=timeout_sebelum_insisi.kd_dokter_anestesi "+
@@ -1397,11 +1401,14 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,timeout_sebelum_insisi.tanggal,"+
                         "timeout_sebelum_insisi.sncn,timeout_sebelum_insisi.tindakan,timeout_sebelum_insisi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "timeout_sebelum_insisi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,timeout_sebelum_insisi.identitas,timeout_sebelum_insisi.penandaan_area_operasi,"+
-                        "timeout_sebelum_insisi.alergi,timeout_sebelum_insisi.resiko_aspirasi,timeout_sebelum_insisi.resiko_aspirasi_rencana_antisipasi,"+
-                        "timeout_sebelum_insisi.resiko_kehilangan_darah,timeout_sebelum_insisi.resiko_kehilangan_darah_line,timeout_sebelum_insisi.resiko_kehilangan_darah_rencana_antisipasi,"+
-                        "timeout_sebelum_insisi.kesiapan_alat_obat_anestesi,timeout_sebelum_insisi.kesiapan_alat_obat_anestesi_rencana_antisipasi,timeout_sebelum_insisi.nip_perawat_ok,"+
-                        "petugas.nama from timeout_sebelum_insisi inner join reg_periksa on timeout_sebelum_insisi.no_rawat=reg_periksa.no_rawat "+
+                        "timeout_sebelum_insisi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,timeout_sebelum_insisi.verbal_identitas,"+
+                        "timeout_sebelum_insisi.verbal_tindakan,timeout_sebelum_insisi.verbal_area_insisi,timeout_sebelum_insisi.penandaan_area_operasi,"+
+                        "timeout_sebelum_insisi.lama_operasi,timeout_sebelum_insisi.penayangan_radiologi,timeout_sebelum_insisi.penayangan_ctscan,"+
+                        "timeout_sebelum_insisi.penayangan_mri,timeout_sebelum_insisi.antibiotik_profilaks,timeout_sebelum_insisi.nama_antibiotik,"+
+                        "timeout_sebelum_insisi.jam_pemberian,timeout_sebelum_insisi.antisipasi_kehilangan_darah,timeout_sebelum_insisi.hal_khusus,"+
+                        "timeout_sebelum_insisi.hal_khusus_diperhatikan,timeout_sebelum_insisi.tanggal_steril,timeout_sebelum_insisi.petujuk_sterilisasi,"+
+                        "timeout_sebelum_insisi.verifikasi_preoperatif,timeout_sebelum_insisi.nip_perawat_ok,petugas.nama "+
+                        "from timeout_sebelum_insisi inner join reg_periksa on timeout_sebelum_insisi.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join dokter as dokterbedah on dokterbedah.kd_dokter=timeout_sebelum_insisi.kd_dokter_bedah "+
                         "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=timeout_sebelum_insisi.kd_dokter_anestesi "+
@@ -1441,16 +1448,23 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Bedah</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Anest</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Identitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Area Operasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Resiko Aspirasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Antisipasi Resiko Aspirasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kehilangan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jalur IV Line</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Antisipasi Resiko Kehilangan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alat & Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Antisipasi Ketidaklengkapan Alat & Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Identitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Tindakan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Area Insisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penandaan Area Operasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lama Operasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penayangan Radiologi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penayangan CT Scan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penayangan MRI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemberian Antibiotik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Antibiotik Diberikan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam Pemberian</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Antisipasi Kehilangan Darah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ada Hal Khusus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hal Khusus Yang Perlu Diperhatikan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Steril</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petunjuk Sterilisasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verifikasi Pre Operatif</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP OK</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruang OK</b></td>"+
                         "</tr>"
@@ -1470,23 +1484,30 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("dokterbedah")+"</td>"+
                                "<td valign='top'>"+rs.getString("kd_dokter_anestesi")+"</td>"+
                                "<td valign='top'>"+rs.getString("dokteranestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("identitas")+"</td>"+
-                               "<td valign='top'>"+rs.getString("alergi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verbal_identitas")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verbal_tindakan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verbal_area_insisi")+"</td>"+
                                "<td valign='top'>"+rs.getString("penandaan_area_operasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_aspirasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_aspirasi_rencana_antisipasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_kehilangan_darah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_kehilangan_darah_line")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_kehilangan_darah_rencana_antisipasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kesiapan_alat_obat_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kesiapan_alat_obat_anestesi_rencana_antisipasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("lama_operasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("penayangan_radiologi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("penayangan_ctscan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("penayangan_mri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("antibiotik_profilaks")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nama_antibiotik")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jam_pemberian")+"</td>"+
+                               "<td valign='top'>"+rs.getString("antisipasi_kehilangan_darah")+"</td>"+
+                               "<td valign='top'>"+rs.getString("hal_khusus")+"</td>"+
+                               "<td valign='top'>"+rs.getString("hal_khusus_diperhatikan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tanggal_steril")+"</td>"+
+                               "<td valign='top'>"+rs.getString("petujuk_sterilisasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verifikasi_preoperatif")+"</td>"+
                                "<td valign='top'>"+rs.getString("nip_perawat_ok")+"</td>"+
                                "<td valign='top'>"+rs.getString("nama")+"</td>"+
                             "</tr>");
                     }
                     LoadHTML.setText(
                         "<html>"+
-                          "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='2900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>"
@@ -1507,17 +1528,17 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
                     );
                     bg.close();
 
-                    File f = new File("DataSignInSebelumAnestesi.html");            
+                    File f = new File("DataTimeOutSebelumInsisi.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='2900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA SININ SEBELUM ANESTESI<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA TIME-OUT SEBELUM INSISI<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")
@@ -1610,7 +1631,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnSignInSebelumAnestesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSignInSebelumAnestesiActionPerformed
+    private void MnTimeOutSebelumInsisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTimeOutSebelumInsisiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1620,32 +1641,35 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),23).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),22).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),30).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),29).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),10).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSIgnInSebelumAnestesi.jasper","report","::[ Formulir Sign-In Sebelum Tindakan Anestesi ]::",
+            Valid.MyReportqry("rptFormulirTimeOutSebelumInsisi.jasper","report","::[ Formulir Time-Out Sebelum Tindakan Insisi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,timeout_sebelum_insisi.tanggal,"+
                     "timeout_sebelum_insisi.sncn,timeout_sebelum_insisi.tindakan,timeout_sebelum_insisi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "timeout_sebelum_insisi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,timeout_sebelum_insisi.identitas,timeout_sebelum_insisi.penandaan_area_operasi,"+
-                    "timeout_sebelum_insisi.alergi,timeout_sebelum_insisi.resiko_aspirasi,timeout_sebelum_insisi.resiko_aspirasi_rencana_antisipasi,"+
-                    "timeout_sebelum_insisi.resiko_kehilangan_darah,timeout_sebelum_insisi.resiko_kehilangan_darah_line,timeout_sebelum_insisi.resiko_kehilangan_darah_rencana_antisipasi,"+
-                    "timeout_sebelum_insisi.kesiapan_alat_obat_anestesi,timeout_sebelum_insisi.kesiapan_alat_obat_anestesi_rencana_antisipasi,timeout_sebelum_insisi.nip_perawat_ok,"+
-                    "petugas.nama from timeout_sebelum_insisi inner join reg_periksa on timeout_sebelum_insisi.no_rawat=reg_periksa.no_rawat "+
+                    "timeout_sebelum_insisi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,timeout_sebelum_insisi.verbal_identitas,"+
+                    "timeout_sebelum_insisi.verbal_tindakan,timeout_sebelum_insisi.verbal_area_insisi,timeout_sebelum_insisi.penandaan_area_operasi,"+
+                    "timeout_sebelum_insisi.lama_operasi,timeout_sebelum_insisi.penayangan_radiologi,timeout_sebelum_insisi.penayangan_ctscan,"+
+                    "timeout_sebelum_insisi.penayangan_mri,timeout_sebelum_insisi.antibiotik_profilaks,timeout_sebelum_insisi.nama_antibiotik,"+
+                    "timeout_sebelum_insisi.jam_pemberian,timeout_sebelum_insisi.antisipasi_kehilangan_darah,timeout_sebelum_insisi.hal_khusus,"+
+                    "timeout_sebelum_insisi.hal_khusus_diperhatikan,timeout_sebelum_insisi.tanggal_steril,timeout_sebelum_insisi.petujuk_sterilisasi,"+
+                    "timeout_sebelum_insisi.verifikasi_preoperatif,timeout_sebelum_insisi.nip_perawat_ok,petugas.nama "+
+                    "from timeout_sebelum_insisi inner join reg_periksa on timeout_sebelum_insisi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter as dokterbedah on dokterbedah.kd_dokter=timeout_sebelum_insisi.kd_dokter_bedah "+
                     "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=timeout_sebelum_insisi.kd_dokter_anestesi "+
                     "inner join petugas on petugas.nip=timeout_sebelum_insisi.nip_perawat_ok "+
                     "where timeout_sebelum_insisi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and timeout_sebelum_insisi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnSignInSebelumAnestesiActionPerformed
+    }//GEN-LAST:event_MnTimeOutSebelumInsisiActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-       // Valid.pindah(evt,Rencana,Informasi);
+       Valid.pindah(evt,TCari,SNCN);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void btnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterBedahActionPerformed
@@ -1802,7 +1826,7 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private widget.TextBox KodeDokterBedah;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnSignInSebelumAnestesi;
+    private javax.swing.JMenuItem MnTimeOutSebelumInsisi;
     private widget.TextBox NamaAntibiotikDIberikan;
     private widget.TextBox NamaDokterAnestesi;
     private widget.TextBox NamaDokterBedah;
@@ -1952,7 +1976,8 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
                         rs.getString("verbal_area_insisi"),rs.getString("penandaan_area_operasi"),rs.getString("lama_operasi"),rs.getString("penayangan_radiologi"),
                         rs.getString("penayangan_ctscan"),rs.getString("penayangan_mri"),rs.getString("antibiotik_profilaks"),rs.getString("nama_antibiotik"),
                         rs.getString("jam_pemberian"),rs.getString("antisipasi_kehilangan_darah"),rs.getString("hal_khusus"),rs.getString("hal_khusus_diperhatikan"),
-                        rs.getString("tanggal_steril"),rs.getString("petujuk_sterilisasi"),rs.getString("verifikasi_preoperatif"),rs.getString("nip_perawat_ok"),rs.getString("nama")
+                        rs.getString("tanggal_steril"),rs.getString("petujuk_sterilisasi"),rs.getString("verifikasi_preoperatif"),rs.getString("nip_perawat_ok"),
+                        rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -2101,10 +2126,11 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
             "antisipasi_kehilangan_darah=?,hal_khusus=?,hal_khusus_diperhatikan=?,tanggal_steril=?,petujuk_sterilisasi=?,verifikasi_preoperatif=?,nip_perawat_ok=?",26,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),SNCN.getText(),Tindakan.getText(),
                 KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),VerbalIdentitas.getSelectedItem().toString(),VerbalTindakan.getSelectedItem().toString(),
-                VerbalArea.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(),PenayanganRadiologi.getSelectedItem().toString(),PenayanganCTScan.getSelectedItem().toString(), 
-                PenayanganMRI.getSelectedItem().toString(),PemberianAntibiotik.getSelectedItem().toString(),NamaAntibiotikDIberikan.getText(),JamPemberianAntibiotik.getText(),
-                PerkiraanLama.getText(),AntisipisasiKehialnganDarah.getText(),AdaHalKhusus.getSelectedItem().toString(),HalKhususDiperhatikan.getText(),Valid.SetTgl(TanggalSeteril.getSelectedItem()+""), 
-                PetunjukSterilisasi.getSelectedItem().toString(),VerifikasiOperatif.getSelectedItem().toString(),KdPetugasOK.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
+                VerbalArea.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(),PerkiraanLama.getText(),PenayanganRadiologi.getSelectedItem().toString(),
+                PenayanganCTScan.getSelectedItem().toString(),PenayanganMRI.getSelectedItem().toString(),PemberianAntibiotik.getSelectedItem().toString(),
+                NamaAntibiotikDIberikan.getText(),JamPemberianAntibiotik.getText(),AntisipisasiKehialnganDarah.getText(),AdaHalKhusus.getSelectedItem().toString(),
+                HalKhususDiperhatikan.getText(),Valid.SetTgl(TanggalSeteril.getSelectedItem()+""),PetunjukSterilisasi.getSelectedItem().toString(),
+                VerifikasiOperatif.getSelectedItem().toString(),KdPetugasOK.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         });
             

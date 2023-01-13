@@ -122,7 +122,7 @@
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Nama Aplikasi :"/>
+                <Property name="text" type="java.lang.String" value="Versi Aplikasi :"/>
                 <Property name="name" type="java.lang.String" value="jLabel7" noResource="true"/>
               </Properties>
               <Constraints>
@@ -278,7 +278,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Khanza SIMKES 2022"/>
+                <Property name="text" type="java.lang.String" value="Update 2022-01-13"/>
                 <Property name="name" type="java.lang.String" value="jLabel17" noResource="true"/>
               </Properties>
               <Constraints>

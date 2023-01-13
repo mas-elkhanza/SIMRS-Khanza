@@ -311,6 +311,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanMedisRanapKandungan = new widget.CekBox();
         chkChecklistPreOperasi = new widget.CekBox();
         chkSignInSebelumAnestesi = new widget.CekBox();
+        chkTimeOutSebelumInsisi = new widget.CekBox();
         chkAsuhanPreOperasi = new widget.CekBox();
         chkAsuhanPreAnestesi = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhDewasa = new widget.CekBox();
@@ -951,6 +952,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSignInSebelumAnestesi.setOpaque(false);
         chkSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSignInSebelumAnestesi);
+
+        chkTimeOutSebelumInsisi.setSelected(true);
+        chkTimeOutSebelumInsisi.setText("Time-Out Sebelum Insisi");
+        chkTimeOutSebelumInsisi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkTimeOutSebelumInsisi.setName("chkTimeOutSebelumInsisi"); // NOI18N
+        chkTimeOutSebelumInsisi.setOpaque(false);
+        chkTimeOutSebelumInsisi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkTimeOutSebelumInsisi);
 
         chkAsuhanPreOperasi.setSelected(true);
         chkAsuhanPreOperasi.setText("Penilaian Pre Operasi");
@@ -1698,6 +1707,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanCekGDS.setSelected(true);
             chkChecklistPreOperasi.setSelected(true);
             chkSignInSebelumAnestesi.setSelected(true);
+            chkTimeOutSebelumInsisi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1777,6 +1787,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanCekGDS.setSelected(false);
             chkChecklistPreOperasi.setSelected(false);
             chkSignInSebelumAnestesi.setSelected(false);
+            chkTimeOutSebelumInsisi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1922,6 +1933,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkSkriningNutrisiDewasa;
     private widget.CekBox chkSkriningNutrisiLansia;
     private widget.CekBox chkTambahanBiaya;
+    private widget.CekBox chkTimeOutSebelumInsisi;
     private widget.CekBox chkTindakanRalanDokter;
     private widget.CekBox chkTindakanRalanDokterParamedis;
     private widget.CekBox chkTindakanRalanParamedis;
@@ -2397,6 +2409,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanChecklistPreOperasi(rs.getString("no_rawat"));
                     //menampilkan signin sebelum tindakan anestesi
                     menampilkanSignInSebelumAnestesi(rs.getString("no_rawat"));
+                    //menampilkan timeout sebelum tindakan insisi
+                    menampilkanTimeOutSebelumInsisi(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre operasi
                     menampilkanAsuhanPreOperasi(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre anestesi
@@ -10127,6 +10141,140 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "<tr>"+
                                               "<td width='33%' border='0'>Kesiapan Alat & Obat Anestesi : "+rs2.getString("kesiapan_alat_obat_anestesi")+"</td>"+
                                               "<td width='66%' border='0' colspan='2'>Bila Tidak Lengkap, Rencana Antisipasi : "+rs2.getString("kesiapan_alat_obat_anestesi_rencana_antisipasi")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Checklist Pre Operasi : "+e);
+        }
+    }
+    
+    private void menampilkanTimeOutSebelumInsisi(String norawat) {
+        try {
+            if(chkTimeOutSebelumInsisi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,timeout_sebelum_insisi.tanggal,"+
+                            "timeout_sebelum_insisi.sncn,timeout_sebelum_insisi.tindakan,timeout_sebelum_insisi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
+                            "timeout_sebelum_insisi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,timeout_sebelum_insisi.verbal_identitas,"+
+                            "timeout_sebelum_insisi.verbal_tindakan,timeout_sebelum_insisi.verbal_area_insisi,timeout_sebelum_insisi.penandaan_area_operasi,"+
+                            "timeout_sebelum_insisi.lama_operasi,timeout_sebelum_insisi.penayangan_radiologi,timeout_sebelum_insisi.penayangan_ctscan,"+
+                            "timeout_sebelum_insisi.penayangan_mri,timeout_sebelum_insisi.antibiotik_profilaks,timeout_sebelum_insisi.nama_antibiotik,"+
+                            "timeout_sebelum_insisi.jam_pemberian,timeout_sebelum_insisi.antisipasi_kehilangan_darah,timeout_sebelum_insisi.hal_khusus,"+
+                            "timeout_sebelum_insisi.hal_khusus_diperhatikan,timeout_sebelum_insisi.tanggal_steril,timeout_sebelum_insisi.petujuk_sterilisasi,"+
+                            "timeout_sebelum_insisi.verifikasi_preoperatif,timeout_sebelum_insisi.nip_perawat_ok,petugas.nama "+
+                            "from timeout_sebelum_insisi inner join reg_periksa on timeout_sebelum_insisi.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join dokter as dokterbedah on dokterbedah.kd_dokter=timeout_sebelum_insisi.kd_dokter_bedah "+
+                            "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=timeout_sebelum_insisi.kd_dokter_anestesi "+
+                            "inner join petugas on petugas.nip=timeout_sebelum_insisi.nip_perawat_ok "+
+                            "where timeout_sebelum_insisi.no_rawat='"+norawat+"' order by timeout_sebelum_insisi.tanggal").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Time-Out Sebelum Tindakan Insisi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Dokter Anestesi : "+rs2.getString("kd_dokter_anestesi")+" "+rs2.getString("dokteranestesi")+"</td>"+
+                                              "<td width='50%' border='0'>Perawat Kamar Operasi : "+rs2.getString("nip_perawat_ok")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "RENCANA OPERASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='67%' border='0'>Dokter Bedah : "+rs2.getString("kd_dokter_bedah")+" "+rs2.getString("dokterbedah")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>SN/CN : "+rs2.getString("sncn")+"</td>"+
+                                              "<td width='67%' border='0'>Tindakan/Operasi : "+rs2.getString("tindakan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "KONFIRMASI DIPIMPIN OLEH SALAH SATU ANGGOTA TIM, SEMUA KEGIATAN DITANGGUHKAN KECUALI JIKA MENGANCAM JIWA : "+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                 "Verbalisasi Tim, Konfirmasi :"+
+                                                 "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                        "<td width='33%' border='0' style='margin-left: 10px'>Identitas : "+rs2.getString("verbal_identitas")+"</td>"+
+                                                        "<td width='33%' border='0' style='margin-left: 10px'>Tindakan : "+rs2.getString("verbal_tindakan")+"</td>"+
+                                                        "<td width='33%' border='0' style='margin-left: 10px'>Area Insisi : "+rs2.getString("verbal_area_insisi")+"</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                 "Penandaan Area Operasi : "+rs2.getString("penandaan_area_operasi")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                 "Perkiraan Lama Operasi : "+rs2.getString("lama_operasi")+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                 "Penayangan Hasil Pemeriksaan Penunjang :"+
+                                                 "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                        "<td width='33%' border='0' style='margin-left: 10px'>Radiologi : "+rs2.getString("penayangan_radiologi")+"</td>"+
+                                                        "<td width='33%' border='0' style='margin-left: 10px'>CT Scan : "+rs2.getString("penayangan_ctscan")+"</td>"+
+                                                        "<td width='33%' border='0' style='margin-left: 10px'>MRI : "+rs2.getString("penayangan_mri")+"</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                 "Pemberian Antibiotik Profilaksis : "+rs2.getString("antibiotik_profilaks")+(rs2.getString("antibiotik_profilaks").equals("Ya")?"":", Jika Diberikan : "+rs2.getString("nama_antibiotik")+", Jam Pemberian : "+rs2.getString("jam_pemberian"))+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                 "Antisipasi Kehilangan Darah > 500 ml (7 ml/Kg BB Untuk Anak) : "+rs2.getString("antisipasi_kehilangan_darah")+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                 "Hal Khusus Yang Perlu Perhatian : "+rs2.getString("hal_khusus")+(rs2.getString("hal_khusus").equals("Ada")?"":", Jika Ada "+rs2.getString("hal_khusus_diperhatikan"))+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                 "Tanggal Steril "+rs2.getString("tanggal_steril")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petunjuk Sterilisasi Telah Dikonfirmasi : "+rs2.getString("petujuk_sterilisasi")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Verifikasi Pre Operatif Telah Dilakukan : "+rs2.getString("verifikasi_preoperatif")+
+                                              "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
