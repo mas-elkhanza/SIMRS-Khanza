@@ -985,7 +985,7 @@ private void nama_brngKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
 private void kode_satKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kode_satKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nama_sat,kode_sat.getText());           
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?", nama_sat,kode_sat.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             nama_brng.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){

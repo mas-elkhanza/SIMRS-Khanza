@@ -410,7 +410,7 @@ public final class DlgCariDataKonversi extends javax.swing.JDialog {
     
     public void setSatuanKecil(String kodesatuan){
         KodeSatuanKecil.setText(kodesatuan);
-        NamaSatuanKecil.setText(Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?",kodesatuan));
+        NamaSatuanKecil.setText(Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?",kodesatuan));
     }
     
     public void isCek(){
