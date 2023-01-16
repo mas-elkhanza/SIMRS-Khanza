@@ -40,8 +40,8 @@ public class InventoryStokAkhirFarmasiPerTanggal extends javax.swing.JDialog {
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private String pilihan="",dateString,dayOfWeek,hari,h1="",h2="",h3="",h4="",h5="",h6="",h7="",h8="",h9="",h10="",h11="",h12="",h13="",
                    h14="",h15="",h16="",h17="",h18="",h19="",h20="",h21="",h22="",h23="",h24="",h25="",h26="",h27="",h28="",h29="",h30="",h31="";
-    private double stokawal=0,s1=0,s2=0,s3=0,s4=0,s5=0,s6=0,s7=0,s8=0,s9=0,s10=0,s11=0,s12=0,s13=0,s14=0,s15=0,s16=0,s17=0,s18=0,s19=0,s20=0,
-                   s21=0,s22=0,s23=0,s24=0,s25=0,s26=0,s27=0,s28=0,s29=0,s30=0,s31=0;
+    private String stokawal="",s1="",s2="",s3="",s4="",s5="",s6="",s7="",s8="",s9="",s10="",s11="",s12="",s13="",s14="",s15="",s16="",s17="",s18="",s19="",s20="",
+                   s21="",s22="",s23="",s24="",s25="",s26="",s27="",s28="",s29="",s30="",s31="";
     private Date date = null;
     private StringBuilder htmlContent;
     private int i=0;
@@ -839,133 +839,229 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                      }
                      rs=ps.executeQuery();
                      while(rs.next()){
-                         stokawal=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal < '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-01' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         s1=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-01' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s1==0){
+                         stokawal=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal < '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-01' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         s1=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-01' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s1==""){
                              s1=stokawal;
                          }
-                         s2=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-02' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s2==0){
+                         s2=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-02' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s2==""){
                              s2=s1;
                          }
-                         s3=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-03' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s3==0){
+                         s3=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-03' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s3==""){
                              s3=s2;
                          }
-                         s4=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-04' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s4==0){
+                         s4=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-04' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s4==""){
                              s4=s3;
                          }
-                         s5=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-05' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s5==0){
+                         s5=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-05' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s5==""){
                              s5=s4;
                          }
-                         s6=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-06' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s6==0){
+                         s6=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-06' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s6==""){
                              s6=s5;
                          }
-                         s7=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-07' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s7==0){
+                         s7=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-07' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s7==""){
                              s7=s6;
                          }
-                         s8=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-08' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s8==0){
+                         s8=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-08' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s8==""){
                              s8=s7;
                          }
-                         s9=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-09' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s9==0){
+                         s9=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-09' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s9==""){
                              s9=s8;
                          }
-                         s10=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-10' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s10==0){
+                         s10=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-10' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s10==""){
                              s10=s9;
                          }
-                         s11=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-11' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s11==0){
+                         s11=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-11' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s11==""){
                              s11=s10;
                          }
-                         s12=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-12' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s12==0){
+                         s12=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-12' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s12==""){
                              s12=s11;
                          }
-                         s13=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-13' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s13==0){
+                         s13=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-13' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s13==""){
                              s13=s12;
                          }
-                         s14=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-14' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s14==0){
+                         s14=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-14' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s14==""){
                              s14=s13;
                          }
-                         s15=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-15' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s15==0){
+                         s15=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-15' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s15==""){
                              s15=s14;
                          }
-                         s16=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-16' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s16==0){
+                         s16=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-16' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s16==""){
                              s16=s15;
                          }
-                         s17=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-17' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s17==0){
+                         s17=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-17' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s17==""){
                              s17=s16;
                          }
-                         s18=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-18' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s18==0){
+                         s18=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-18' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s18==""){
                              s18=s17;
                          }
-                         s19=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-19' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s19==0){
+                         s19=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-19' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s19==""){
                              s19=s18;
                          }
-                         s20=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-20' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s20==0){
+                         s20=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-20' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s20==""){
                              s20=s19;
                          }
-                         s21=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-21' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s21==0){
+                         s21=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-21' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s21==""){
                              s21=s20;
                          }
-                         s22=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-22' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s22==0){
+                         s22=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-22' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s22==""){
                              s22=s21;
                          }
-                         s23=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-23' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s23==0){
+                         s23=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-23' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s23==""){
                              s23=s22;
                          }
-                         s24=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-24' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s24==0){
+                         s24=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-24' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s24==""){
                              s24=s23;
                          }
-                         s25=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-25' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s25==0){
+                         s25=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-25' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s25==""){
                              s25=s24;
                          }
-                         s26=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-26' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s26==0){
+                         s26=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-26' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s26==""){
                              s26=s25;
                          }
-                         s27=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-27' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s27==0){
+                         s27=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-27' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s27==""){
                              s27=s26;
                          }
-                         s28=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-28' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s28==0){
+                         s28=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-28' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s28==""){
                              s28=s27;
                          }
-                         s29=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-29' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s29==0){
+                         s29=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-29' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s29==""){
                              s29=s28;
                          }
-                         s30=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-30' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s30==0){
+                         s30=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-30' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s30==""){
                              s30=s29;
                          }
-                         s31=Sequel.cariIsiAngka("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-31' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
-                         if(s31==0){
+                         s31=Sequel.cariIsi("select riwayat_barang_medis.stok_akhir from riwayat_barang_medis where riwayat_barang_medis.tanggal = '"+ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString()+"-31' and riwayat_barang_medis.kode_brng='"+rs.getString("kode_brng")+"' and riwayat_barang_medis.kd_bangsal='"+KdGudang.getText()+"' order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
+                         if(s31==""){
                              s31=s30;
                          }
+                         if(stokawal==""){
+                             stokawal="0";
+                         }
+                         if(s1==""){
+                             s1="0";
+                         }
+                         if(s2==""){
+                             s2="0";
+                         }
+                         if(s3==""){
+                             s3="0";
+                         }
+                         if(s4==""){
+                             s4="0";
+                         }
+                         if(s5==""){
+                             s5="0";
+                         }
+                         if(s6==""){
+                             s6="0";
+                         }
+                         if(s7==""){
+                             s7="0";
+                         }
+                         if(s8==""){
+                             s8="0";
+                         }
+                         if(s9==""){
+                             s9="0";
+                         }
+                         if(s10==""){
+                             s10="0";
+                         }
+                         if(s11==""){
+                             s11="0";
+                         }
+                         if(s12==""){
+                             s12="0";
+                         }
+                         if(s13==""){
+                             s13="0";
+                         }
+                         if(s14==""){
+                             s14="0";
+                         }
+                         if(s15==""){
+                             s15="0";
+                         }
+                         if(s16==""){
+                             s16="0";
+                         }
+                         if(s17==""){
+                             s17="0";
+                         }
+                         if(s18==""){
+                             s18="0";
+                         }
+                         if(s19==""){
+                             s19="0";
+                         }
+                         if(s20==""){
+                             s20="0";
+                         }
+                         if(s21==""){
+                             s21="0";
+                         }
+                         if(s22==""){
+                             s22="0";
+                         }
+                         if(s23==""){
+                             s23="0";
+                         }
+                         if(s24==""){
+                             s24="0";
+                         }
+                         if(s25==""){
+                             s25="0";
+                         }
+                         if(s26==""){
+                             s26="0";
+                         }
+                         if(s27==""){
+                             s27="0";
+                         }
+                         if(s28==""){
+                             s28="0";
+                         }
+                         if(s29==""){
+                             s29="0";
+                         }
+                         if(s30==""){
+                             s30="0";
+                         }
+                         if(s31==""){
+                             s31="0";
+                         }
                          tabMode.addRow(new String[]{
-                             rs.getString("kode_brng"),rs.getString("nama_brng"),s1+"",s2+"",s3+"",s4+"",s5+"",s6+"",s7+"",s8+"",s9+"",s10+"",s11+"",s12+"",s13+"",s14+"",s15+"",s16+"",s17+"",s18+"",s19+"",s20+"",s21+"",s22+"",s23+"",s24+"",s25+"",s26+"",s27+"",s28+"",s29+"",s30+"",s31+""
+                             rs.getString("kode_brng"),rs.getString("nama_brng"),s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31
                          });
                      }
                  } catch (Exception e) {

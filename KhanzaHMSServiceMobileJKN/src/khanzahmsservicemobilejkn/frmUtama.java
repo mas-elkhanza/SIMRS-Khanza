@@ -211,14 +211,13 @@ public class frmUtama extends javax.swing.JFrame {
                 jam = nol_jam + Integer.toString(nilai_jam);
                 menit = nol_menit + Integer.toString(nilai_menit);
                 detik = nol_detik + Integer.toString(nilai_detik);
+                if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
+                    TeksArea.setText("");
+                    date = new Date();  
+                    Tanggal1.setText(tanggalFormat.format(date)); 
+                    Tanggal2.setText(tanggalFormat.format(date)); 
+                }
                 if(detik.equals("01")&&((nilai_menit%10)==0)){
-                    if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
-                        TeksArea.setText("");
-                        date = new Date();  
-                        Tanggal1.setText(tanggalFormat.format(date)); 
-                        Tanggal2.setText(tanggalFormat.format(date)); 
-                    }
-                    
                     day=cal.get(Calendar.DAY_OF_WEEK);
                     switch (day) {
                         case 1:
