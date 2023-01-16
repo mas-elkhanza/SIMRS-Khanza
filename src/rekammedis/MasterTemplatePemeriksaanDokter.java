@@ -580,7 +580,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit2);
-        BtnCariPenyakit2.setBounds(660, 1020, 28, 23);
+        BtnCariPenyakit2.setBounds(658, 1000, 28, 23);
 
         Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll3.setName("Scroll3"); // NOI18N
@@ -590,7 +590,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         Scroll3.setViewportView(tbDiagnosa2);
 
         FormInput.add(Scroll3);
-        Scroll3.setBounds(20, 1050, 670, 76);
+        Scroll3.setBounds(16, 1027, 670, 116);
 
         Diagnosa2.setHighlighter(null);
         Diagnosa2.setName("Diagnosa2"); // NOI18N
@@ -600,13 +600,13 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa2);
-        Diagnosa2.setBounds(20, 1020, 640, 23);
+        Diagnosa2.setBounds(16, 1000, 640, 23);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText("Permintaan Radiologi :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(20, 1000, 120, 23);
+        jLabel15.setBounds(16, 980, 120, 23);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText("Permintaan Laborat Patologi Klinis :");
