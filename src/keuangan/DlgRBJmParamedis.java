@@ -815,7 +815,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                  if(NmDepartemen.getText().equals("")){
                     ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
                  }else{
-                    System.out.println("Kode : "+kdDepartemen.getText());
                     ps.setString(1,"%"+kdptg.getText()+nmptg.getText()+"%");
                     ps.setString(2,kdDepartemen.getText());
                  }
