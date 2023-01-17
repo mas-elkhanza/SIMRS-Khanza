@@ -104,6 +104,30 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                 column.setPreferredWidth(100);
             }else if(i==11){
                 column.setPreferredWidth(150);
+            }else if(i==12){
+                column.setPreferredWidth(87);
+            }else if(i==13){
+                column.setPreferredWidth(67);
+            }else if(i==14){
+                column.setPreferredWidth(94);
+            }else if(i==15){
+                column.setPreferredWidth(96);
+            }else if(i==16){
+                column.setPreferredWidth(167);
+            }else if(i==17){
+                column.setPreferredWidth(167);
+            }else if(i==18){
+                column.setPreferredWidth(91);
+            }else if(i==19){
+                column.setPreferredWidth(103);
+            }else if(i==20){
+                column.setPreferredWidth(84);
+            }else if(i==21){
+                column.setPreferredWidth(200);
+            }else if(i==22){
+                column.setPreferredWidth(90);
+            }else if(i==23){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1094,7 +1118,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"User Login harus Petugas OK/Dokter Anestesi..!!");
@@ -1129,7 +1153,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"User Login harus Petugas OK/Dokter Anestesi..!!");
@@ -1171,12 +1195,13 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
                         "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.identitas,signout_sebelum_menutup_luka.penandaan_area_operasi,"+
-                        "signout_sebelum_menutup_luka.alergi,signout_sebelum_menutup_luka.resiko_aspirasi,signout_sebelum_menutup_luka.resiko_aspirasi_rencana_antisipasi,"+
-                        "signout_sebelum_menutup_luka.resiko_kehilangan_darah,signout_sebelum_menutup_luka.resiko_kehilangan_darah_line,signout_sebelum_menutup_luka.resiko_kehilangan_darah_rencana_antisipasi,"+
-                        "signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi,signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi_rencana_antisipasi,signout_sebelum_menutup_luka.nip_perawat_ok,"+
-                        "petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
+                        "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
+                        "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
+                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
+                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
+                        "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
+                        "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
                         "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
                         "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
@@ -1185,12 +1210,13 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
                         "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.identitas,signout_sebelum_menutup_luka.penandaan_area_operasi,"+
-                        "signout_sebelum_menutup_luka.alergi,signout_sebelum_menutup_luka.resiko_aspirasi,signout_sebelum_menutup_luka.resiko_aspirasi_rencana_antisipasi,"+
-                        "signout_sebelum_menutup_luka.resiko_kehilangan_darah,signout_sebelum_menutup_luka.resiko_kehilangan_darah_line,signout_sebelum_menutup_luka.resiko_kehilangan_darah_rencana_antisipasi,"+
-                        "signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi,signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi_rencana_antisipasi,signout_sebelum_menutup_luka.nip_perawat_ok,"+
-                        "petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
+                        "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
+                        "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
+                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
+                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
+                        "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
+                        "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
                         "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
                         "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
@@ -1229,16 +1255,16 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Bedah</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Anest</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Identitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Area Operasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Resiko Aspirasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Antisipasi Resiko Aspirasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kehilangan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jalur IV Line</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Antisipasi Resiko Kehilangan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alat & Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Antisipasi Ketidaklengkapan Alat & Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Tindakan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Kasa</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Instrumen</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Alat Tajam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelengkapan Spesimen Label</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelengkapan Spesimen Formulir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Dokter Bedah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Dokter Anestesi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Perawat OK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Perhatian Utama Fase Pemulihan</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP OK</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruang OK</b></td>"+
                         "</tr>"
@@ -1258,23 +1284,23 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("dokterbedah")+"</td>"+
                                "<td valign='top'>"+rs.getString("kd_dokter_anestesi")+"</td>"+
                                "<td valign='top'>"+rs.getString("dokteranestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("identitas")+"</td>"+
-                               "<td valign='top'>"+rs.getString("alergi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("penandaan_area_operasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_aspirasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_aspirasi_rencana_antisipasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_kehilangan_darah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_kehilangan_darah_line")+"</td>"+
-                               "<td valign='top'>"+rs.getString("resiko_kehilangan_darah_rencana_antisipasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kesiapan_alat_obat_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kesiapan_alat_obat_anestesi_rencana_antisipasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verbal_tindakan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verbal_kelengkapan_kasa")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verbal_instrumen")+"</td>"+
+                               "<td valign='top'>"+rs.getString("verbal_alat_tajam")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kelengkapan_specimen_label")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kelengkapan_specimen_formulir")+"</td>"+
+                               "<td valign='top'>"+rs.getString("peninjauan_kegiatan_dokter_bedah")+"</td>"+
+                               "<td valign='top'>"+rs.getString("peninjauan_kegiatan_dokter_anestesi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("peninjauan_kegiatan_perawat_kamar_ok")+"</td>"+
+                               "<td valign='top'>"+rs.getString("perhatian_utama_fase_pemulihan")+"</td>"+
                                "<td valign='top'>"+rs.getString("nip_perawat_ok")+"</td>"+
                                "<td valign='top'>"+rs.getString("nama")+"</td>"+
                             "</tr>");
                     }
                     LoadHTML.setText(
                         "<html>"+
-                          "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>"
@@ -1295,17 +1321,17 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                     );
                     bg.close();
 
-                    File f = new File("DataSignInSebelumAnestesi.html");            
+                    File f = new File("DataSignOutSebelumMenutupLuka.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA SIGN-IN SEBELUM ANESTESI<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA SIGN-OUT SEBELUM MENUTUP LUKA/MENINGGALKAN KAMAR OPERASI<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")
@@ -1739,6 +1765,16 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             NamaDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             KodeDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             NamaDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            VerbalTindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            VerbalKasa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            VerbalInstrumen.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            VerbalAlatTajam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            KelengkapanSpesimenLabel.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            KelengkapanSpesimenFormulir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            PeninjauanKembaliDokterBedah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            PeninjauanKembaliDokterAnestesi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            PeninjauanKembaliPerawatKamarOK.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            PerhatianUtamaFasePemulihan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             KdPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             NmPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
