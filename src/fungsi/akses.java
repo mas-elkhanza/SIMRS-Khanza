@@ -198,7 +198,7 @@ public final class akses {
             jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,
             satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,catatan_cek_gds=false,satu_sehat_kirim_condition=false,
             checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false,satu_sehat_kirim_procedure=false,operasi_per_bulan=false,
-            timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false;
+            timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1128,6 +1128,7 @@ public final class akses {
                         akses.timeout_sebelum_insisi=true;
                         akses.signout_sebelum_menutup_luka=true;
                         akses.dapur_barang=true;
+                        akses.dapur_opname=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2041,6 +2042,7 @@ public final class akses {
                         akses.timeout_sebelum_insisi=rs2.getBoolean("timeout_sebelum_insisi");
                         akses.signout_sebelum_menutup_luka=rs2.getBoolean("signout_sebelum_menutup_luka");
                         akses.dapur_barang=rs2.getBoolean("dapur_barang");
+                        akses.dapur_opname=rs2.getBoolean("dapur_opname");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2952,6 +2954,7 @@ public final class akses {
                         akses.timeout_sebelum_insisi=false;
                         akses.signout_sebelum_menutup_luka=false;
                         akses.dapur_barang=false;
+                        akses.dapur_opname=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3920,4 +3923,5 @@ public final class akses {
     public static boolean gettimeout_sebelum_insisi(){return akses.timeout_sebelum_insisi;}
     public static boolean getsignout_sebelum_menutup_luka(){return akses.signout_sebelum_menutup_luka;}
     public static boolean getdapur_barang(){return akses.dapur_barang;}
+    public static boolean getdapur_opname(){return akses.dapur_opname;}
 }   

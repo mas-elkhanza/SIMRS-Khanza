@@ -107,6 +107,7 @@ import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMSignInSebelumAnastesi;
+import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
@@ -621,6 +622,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnChecklistPreOperasi = new javax.swing.JMenuItem();
         MnSignInSebelumAnestesi = new javax.swing.JMenuItem();
         MnTimeOutSebelumInsisi = new javax.swing.JMenuItem();
+        MnSignOutSebelumMenutupLuka = new javax.swing.JMenuItem();
         MnPenilaianPreOp = new javax.swing.JMenuItem();
         MnPenilaianPreAnestesi = new javax.swing.JMenuItem();
         MnPenilaianFisioterapi = new javax.swing.JMenuItem();
@@ -990,7 +992,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnChecklistPreOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnChecklistPreOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnChecklistPreOperasi.setName("MnChecklistPreOperasi"); // NOI18N
-        MnChecklistPreOperasi.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnChecklistPreOperasi.setPreferredSize(new java.awt.Dimension(210, 26));
         MnChecklistPreOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnChecklistPreOperasiActionPerformed(evt);
@@ -1006,7 +1008,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnSignInSebelumAnestesi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnSignInSebelumAnestesi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSignInSebelumAnestesi.setName("MnSignInSebelumAnestesi"); // NOI18N
-        MnSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(210, 26));
         MnSignInSebelumAnestesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSignInSebelumAnestesiActionPerformed(evt);
@@ -1022,13 +1024,29 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnTimeOutSebelumInsisi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnTimeOutSebelumInsisi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnTimeOutSebelumInsisi.setName("MnTimeOutSebelumInsisi"); // NOI18N
-        MnTimeOutSebelumInsisi.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnTimeOutSebelumInsisi.setPreferredSize(new java.awt.Dimension(210, 26));
         MnTimeOutSebelumInsisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnTimeOutSebelumInsisiActionPerformed(evt);
             }
         });
         MnRMOperasi.add(MnTimeOutSebelumInsisi);
+
+        MnSignOutSebelumMenutupLuka.setBackground(new java.awt.Color(255, 255, 254));
+        MnSignOutSebelumMenutupLuka.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSignOutSebelumMenutupLuka.setForeground(new java.awt.Color(50, 50, 50));
+        MnSignOutSebelumMenutupLuka.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSignOutSebelumMenutupLuka.setText("Sign-Out Sebelum Menutup Luka");
+        MnSignOutSebelumMenutupLuka.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSignOutSebelumMenutupLuka.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSignOutSebelumMenutupLuka.setName("MnSignOutSebelumMenutupLuka"); // NOI18N
+        MnSignOutSebelumMenutupLuka.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnSignOutSebelumMenutupLuka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSignOutSebelumMenutupLukaActionPerformed(evt);
+            }
+        });
+        MnRMOperasi.add(MnSignOutSebelumMenutupLuka);
 
         MnPenilaianPreOp.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianPreOp.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1038,7 +1056,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPenilaianPreOp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPenilaianPreOp.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPenilaianPreOp.setName("MnPenilaianPreOp"); // NOI18N
-        MnPenilaianPreOp.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnPenilaianPreOp.setPreferredSize(new java.awt.Dimension(210, 26));
         MnPenilaianPreOp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianPreOpActionPerformed(evt);
@@ -1054,7 +1072,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPenilaianPreAnestesi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPenilaianPreAnestesi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPenilaianPreAnestesi.setName("MnPenilaianPreAnestesi"); // NOI18N
-        MnPenilaianPreAnestesi.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnPenilaianPreAnestesi.setPreferredSize(new java.awt.Dimension(210, 26));
         MnPenilaianPreAnestesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianPreAnestesiActionPerformed(evt);
@@ -3921,7 +3939,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3935,7 +3953,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4027,7 +4045,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -8261,6 +8279,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnTimeOutSebelumInsisiActionPerformed
 
+    private void MnSignOutSebelumMenutupLukaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSignOutSebelumMenutupLukaActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMSignOutSebelumMenutupLuka form=new RMSignOutSebelumMenutupLuka(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnSignOutSebelumMenutupLukaActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -8432,6 +8472,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnSPBK;
     private javax.swing.JMenuItem MnSPBK1;
     private javax.swing.JMenuItem MnSignInSebelumAnestesi;
+    private javax.swing.JMenuItem MnSignOutSebelumMenutupLuka;
     private javax.swing.JMenu MnStatus;
     private javax.swing.JMenuItem MnStatusBaru;
     private javax.swing.JMenuItem MnStatusLama;
@@ -8922,6 +8963,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnChecklistPreOperasi.setEnabled(akses.getchecklist_pre_operasi());
         MnSignInSebelumAnestesi.setEnabled(akses.getsignin_sebelum_anestesi());
         MnTimeOutSebelumInsisi.setEnabled(akses.gettimeout_sebelum_insisi());
+        MnSignOutSebelumMenutupLuka.setEnabled(akses.getsignout_sebelum_menutup_luka());
     }
     
     private void isNumber(){

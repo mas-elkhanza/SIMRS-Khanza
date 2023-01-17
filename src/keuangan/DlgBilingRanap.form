@@ -1565,9 +1565,6 @@
                       <Dimension value="[200, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="norawatubahlamaKeyPressed"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Label" name="label18">
                   <Properties>

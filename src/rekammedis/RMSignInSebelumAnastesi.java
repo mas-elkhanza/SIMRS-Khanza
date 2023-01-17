@@ -253,7 +253,6 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSignInSebelumAnestesi = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -527,7 +526,7 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-01-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -541,7 +540,7 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-01-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -690,7 +689,7 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-01-2023 08:34:01" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2023 07:26:12" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1620,7 +1619,6 @@ public final class RMSignInSebelumAnastesi extends javax.swing.JDialog {
     private widget.Button btnDokterAnestesi;
     private widget.Button btnDokterBedah;
     private widget.Button btnPetugasOK;
-    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel19;

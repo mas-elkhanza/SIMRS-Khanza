@@ -269,7 +269,6 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnTimeOutSebelumInsisi = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1855,7 +1854,6 @@ public final class RMTimeOutSebelumInsisi extends javax.swing.JDialog {
     private widget.Button btnDokterAnestesi;
     private widget.Button btnDokterBedah;
     private widget.Button btnPetugasOK;
-    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;

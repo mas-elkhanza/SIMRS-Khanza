@@ -820,6 +820,7 @@ import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
+import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
@@ -19585,6 +19586,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSignOutSebelumMenutupLukaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSignOutSebelumMenutupLuka aplikasi=new RMSignOutSebelumMenutupLuka(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20245,7 +20258,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
-            btnBarangDapur;
+            btnBarangDapur,btnSignOutSebelumMenutupLuka;
     
     public void isWall(){
         try{            
@@ -23620,6 +23633,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettimeout_sebelum_insisi()==true){
                 Panelmenu.add(btnTimeOutSebelumInsisi);
+                jmlmenu++;
+            }
+            
+            if(akses.getsignout_sebelum_menutup_luka()==true){
+                Panelmenu.add(btnSignOutSebelumMenutupLuka);
                 jmlmenu++;
             }
             
@@ -28115,6 +28133,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettimeout_sebelum_insisi()==true){
             Panelmenu.add(btnTimeOutSebelumInsisi);
+            jmlmenu++;
+        }
+        
+        if(akses.getsignout_sebelum_menutup_luka()==true){
+            Panelmenu.add(btnSignOutSebelumMenutupLuka);
             jmlmenu++;
         }
         
@@ -33908,6 +33931,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsignout_sebelum_menutup_luka()==true){
+            if(btnSignOutSebelumMenutupLuka.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSignOutSebelumMenutupLuka);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_pre_operasi()==true){
             if(btnPenilaianPreOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianPreOperasi);
@@ -39154,5 +39184,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBarangDapur.setName("btnBarangDapur"); 
         btnBarangDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBarangDapur.addActionListener(this::btnBarangDapurActionPerformed);
+        
+        btnSignOutSebelumMenutupLuka = new widget.ButtonBig();
+        btnSignOutSebelumMenutupLuka.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7172890_note_book_office_paper_document_icon.png")));
+        btnSignOutSebelumMenutupLuka.setText("Sign-Out Sebelum Menutup Luka");
+        btnSignOutSebelumMenutupLuka.setIconTextGap(0);
+        btnSignOutSebelumMenutupLuka.setName("btnSignOutSebelumMenutupLuka"); 
+        btnSignOutSebelumMenutupLuka.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSignOutSebelumMenutupLuka.addActionListener(this::btnSignOutSebelumMenutupLukaActionPerformed);
     }
 }

@@ -1843,11 +1843,6 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         norawatubahlama.setEditable(false);
         norawatubahlama.setName("norawatubahlama"); // NOI18N
         norawatubahlama.setPreferredSize(new java.awt.Dimension(200, 23));
-        norawatubahlama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                norawatubahlamaKeyPressed(evt);
-            }
-        });
         panelisi3.add(norawatubahlama);
 
         label18.setName("label18"); // NOI18N
@@ -2052,7 +2047,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-11-2022 11:09:52" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023 07:41:51" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3546,10 +3541,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
         }           
     }//GEN-LAST:event_BtnSimpanActionPerformed
-
-    private void norawatubahlamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norawatubahlamaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_norawatubahlamaKeyPressed
 
     private void BtnSimpanUbahLamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanUbahLamaActionPerformed
         if(norawatubahlama.getText().trim().equals("")||(tbUbahLama.getRowCount()<=0)){
