@@ -31,6 +31,7 @@ import rekammedis.RMPenilaianPreOperasi;
 import simrskhanza.DlgKamarInap;
 import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMSignInSebelumAnastesi;
+import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import setting.DlgCariRuangOperasi;
@@ -301,6 +302,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnChecklistPreOperasi = new widget.Button();
         BtnSignInSebelumAnestesi = new widget.Button();
         BtnTimeOutSebelumInsisi = new widget.Button();
+        BtnSignOutSebelumMenutupLuka = new widget.Button();
         BtnPreOperasi = new widget.Button();
         BtnPreAnastesi = new widget.Button();
         BtnTagihanOperasi = new widget.Button();
@@ -544,7 +546,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -567,7 +569,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -595,7 +597,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -618,7 +620,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -701,7 +703,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         TPasien.setBounds(195, 10, 208, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -907,7 +909,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
         PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(175, 43));
+        PanelAccor.setPreferredSize(new java.awt.Dimension(215, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
 
         ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
@@ -946,7 +948,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnKamarInap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnKamarInap.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnKamarInap.setName("BtnKamarInap"); // NOI18N
-        BtnKamarInap.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnKamarInap.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnKamarInap.setRoundRect(false);
         BtnKamarInap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -963,7 +965,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnPermintaanLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnPermintaanLab.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnPermintaanLab.setName("BtnPermintaanLab"); // NOI18N
-        BtnPermintaanLab.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnPermintaanLab.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnPermintaanLab.setRoundRect(false);
         BtnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -980,7 +982,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnRiwayatPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnRiwayatPasien.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnRiwayatPasien.setName("BtnRiwayatPasien"); // NOI18N
-        BtnRiwayatPasien.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnRiwayatPasien.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnRiwayatPasien.setRoundRect(false);
         BtnRiwayatPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -997,7 +999,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnChecklistPreOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnChecklistPreOperasi.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnChecklistPreOperasi.setName("BtnChecklistPreOperasi"); // NOI18N
-        BtnChecklistPreOperasi.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnChecklistPreOperasi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnChecklistPreOperasi.setRoundRect(false);
         BtnChecklistPreOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1014,7 +1016,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnSignInSebelumAnestesi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnSignInSebelumAnestesi.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnSignInSebelumAnestesi.setName("BtnSignInSebelumAnestesi"); // NOI18N
-        BtnSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnSignInSebelumAnestesi.setRoundRect(false);
         BtnSignInSebelumAnestesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1031,7 +1033,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnTimeOutSebelumInsisi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnTimeOutSebelumInsisi.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnTimeOutSebelumInsisi.setName("BtnTimeOutSebelumInsisi"); // NOI18N
-        BtnTimeOutSebelumInsisi.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnTimeOutSebelumInsisi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnTimeOutSebelumInsisi.setRoundRect(false);
         BtnTimeOutSebelumInsisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1039,6 +1041,23 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnTimeOutSebelumInsisi);
+
+        BtnSignOutSebelumMenutupLuka.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnSignOutSebelumMenutupLuka.setText("Sign-Out Sebelum Menutup Luka");
+        BtnSignOutSebelumMenutupLuka.setFocusPainted(false);
+        BtnSignOutSebelumMenutupLuka.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnSignOutSebelumMenutupLuka.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnSignOutSebelumMenutupLuka.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnSignOutSebelumMenutupLuka.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnSignOutSebelumMenutupLuka.setName("BtnSignOutSebelumMenutupLuka"); // NOI18N
+        BtnSignOutSebelumMenutupLuka.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnSignOutSebelumMenutupLuka.setRoundRect(false);
+        BtnSignOutSebelumMenutupLuka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSignOutSebelumMenutupLukaActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnSignOutSebelumMenutupLuka);
 
         BtnPreOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnPreOperasi.setText("Penilaian Pre Operasi");
@@ -1048,7 +1067,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnPreOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnPreOperasi.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnPreOperasi.setName("BtnPreOperasi"); // NOI18N
-        BtnPreOperasi.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnPreOperasi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnPreOperasi.setRoundRect(false);
         BtnPreOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1065,7 +1084,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnPreAnastesi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnPreAnastesi.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnPreAnastesi.setName("BtnPreAnastesi"); // NOI18N
-        BtnPreAnastesi.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnPreAnastesi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnPreAnastesi.setRoundRect(false);
         BtnPreAnastesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1082,7 +1101,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnTagihanOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnTagihanOperasi.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnTagihanOperasi.setName("BtnTagihanOperasi"); // NOI18N
-        BtnTagihanOperasi.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnTagihanOperasi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnTagihanOperasi.setRoundRect(false);
         BtnTagihanOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1099,7 +1118,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnObatBhp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnObatBhp.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnObatBhp.setName("BtnObatBhp"); // NOI18N
-        BtnObatBhp.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnObatBhp.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnObatBhp.setRoundRect(false);
         BtnObatBhp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1116,7 +1135,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         BtnTransferAntarRuang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnTransferAntarRuang.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnTransferAntarRuang.setName("BtnTransferAntarRuang"); // NOI18N
-        BtnTransferAntarRuang.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnTransferAntarRuang.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnTransferAntarRuang.setRoundRect(false);
         BtnTransferAntarRuang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1782,6 +1801,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_BtnTimeOutSebelumInsisiActionPerformed
 
+    private void BtnSignOutSebelumMenutupLukaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSignOutSebelumMenutupLukaActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{            
+            if(tbObat.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMSignOutSebelumMenutupLuka form=new RMSignOutSebelumMenutupLuka(null,false);
+                form.isCek();
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate(),KdDokter.getText(),NmDokter.getText(),NmOperasi.getText());
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");
+            }
+        }
+    }//GEN-LAST:event_BtnSignOutSebelumMenutupLukaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1817,6 +1857,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnRiwayatPasien;
     private widget.Button BtnRuangOperasi;
     private widget.Button BtnSignInSebelumAnestesi;
+    private widget.Button BtnSignOutSebelumMenutupLuka;
     private widget.Button BtnSimpan;
     private widget.Button BtnTagihanOperasi;
     private widget.Button BtnTimeOutSebelumInsisi;
@@ -2031,12 +2072,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnTransferAntarRuang.setVisible(akses.gettransfer_pasien_antar_ruang());
         BtnSignInSebelumAnestesi.setVisible(akses.getsignin_sebelum_anestesi());
         BtnTimeOutSebelumInsisi.setVisible(akses.gettimeout_sebelum_insisi());
+        BtnSignOutSebelumMenutupLuka.setVisible(akses.getsignout_sebelum_menutup_luka());
     }
 
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(175,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(205,HEIGHT));
             FormMenu.setVisible(true); 
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){  
