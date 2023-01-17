@@ -66,8 +66,8 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","SN/CN","Tindakan","Kode Dokter Bedah","Nama Dokter Bedah",
-            "Kode Dokter Anest","Nama Dokter Anestesi","Identitas","Alergi","Area Operasi","Resiko Aspirasi","Antisipasi Resiko Aspirasi",
-            "Kehilangan Darah","Jalur IV Line","Antisipasi Resiko Kehilangan Darah","Alat & Obat","Rencana Antisipasi Ketidaklengkapan Alat & Obat",
+            "Kode Dokter Anest","Nama Dokter Anestesi","Verbal Tindakan","Verbal Kasa","Verbal Instrumen","Verbal Alat Tajam","Kelengkapan Spesimen Label",
+            "Kelengkapan Spesimen Formulir","P.K.Dokter Bedah","P.K.Dokter Anestesi","P.K.Perawat OK","Perhatian Utama Fase Pemulihan",
             "NIP OK","Petugas Ruang OK"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -103,30 +103,6 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             }else if(i==10){
                 column.setPreferredWidth(100);
             }else if(i==11){
-                column.setPreferredWidth(150);
-            }else if(i==12){
-                column.setPreferredWidth(53);
-            }else if(i==13){
-                column.setPreferredWidth(130);
-            }else if(i==14){
-                column.setPreferredWidth(88);
-            }else if(i==15){
-                column.setPreferredWidth(83);
-            }else if(i==16){
-                column.setPreferredWidth(145);
-            }else if(i==17){
-                column.setPreferredWidth(95);
-            }else if(i==18){
-                column.setPreferredWidth(110);
-            }else if(i==19){
-                column.setPreferredWidth(180);
-            }else if(i==20){
-                column.setPreferredWidth(77);
-            }else if(i==21){
-                column.setPreferredWidth(250);
-            }else if(i==22){
-                column.setPreferredWidth(90);
-            }else if(i==23){
                 column.setPreferredWidth(150);
             }
         }
@@ -1080,15 +1056,16 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         }else if(SNCN.getText().trim().equals("")){
             Valid.textKosong(SNCN,"SN/CN");
         }else{
-            /*if(Sequel.menyimpantf("signout_sebelum_menutup_luka","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
+            if(Sequel.menyimpantf("signout_sebelum_menutup_luka","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),SNCN.getText(),Tindakan.getText(),
-                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),Identitas.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(),Alergi.getText(), 
-                ResikoAspirasi.getSelectedItem().toString(),AntisipasiResikoAspirasi.getText(),ResikoKehilanganDarah.getSelectedItem().toString(),JalurIVLine.getText(), 
-                RencanaAntisipasiKehilanganDarah.getText(),KesiapanAlatAnes.getSelectedItem().toString(),RencanaAntisipasiKesiapanAlat.getText(),KdPetugasOK.getText()
+                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),VerbalTindakan.getSelectedItem().toString(),VerbalKasa.getSelectedItem().toString(), 
+                VerbalInstrumen.getSelectedItem().toString(),VerbalAlatTajam.getSelectedItem().toString(),KelengkapanSpesimenLabel.getSelectedItem().toString(), 
+                KelengkapanSpesimenFormulir.getSelectedItem().toString(),PeninjauanKembaliDokterBedah.getSelectedItem().toString(),PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(), 
+                PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(),PerhatianUtamaFasePemulihan.getText(),KdPetugasOK.getText()
             })==true){
                 tampil();
                 emptTeks();
-            } */
+            } 
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1482,7 +1459,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDokterAnestesiActionPerformed
 
     private void btnDokterAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterAnestesiKeyPressed
-        //Valid.pindah(evt,btnDokterBedah,Identitas);
+        Valid.pindah(evt,btnDokterBedah,VerbalTindakan);
     }//GEN-LAST:event_btnDokterAnestesiKeyPressed
 
     private void btnPetugasOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasOKActionPerformed
@@ -1495,7 +1472,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasOKActionPerformed
 
     private void btnPetugasOKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasOKKeyPressed
-        //Valid.pindah(evt,RencanaAntisipasiKesiapanAlat,BtnSimpan);
+        Valid.pindah(evt,PerhatianUtamaFasePemulihan,BtnSimpan);
     }//GEN-LAST:event_btnPetugasOKKeyPressed
 
     private void SNCNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SNCNKeyPressed
@@ -1515,35 +1492,35 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }//GEN-LAST:event_VerbalKasaKeyPressed
 
     private void VerbalInstrumenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalInstrumenKeyPressed
-        //Valid.pindah(evt,VerbalTindakan,AreaOperasi);
+        Valid.pindah(evt,VerbalTindakan,VerbalAlatTajam);
     }//GEN-LAST:event_VerbalInstrumenKeyPressed
 
     private void VerbalAlatTajamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalAlatTajamKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,VerbalInstrumen,KelengkapanSpesimenLabel);
     }//GEN-LAST:event_VerbalAlatTajamKeyPressed
 
     private void KelengkapanSpesimenLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanSpesimenLabelKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,VerbalAlatTajam,KelengkapanSpesimenFormulir);
     }//GEN-LAST:event_KelengkapanSpesimenLabelKeyPressed
 
     private void KelengkapanSpesimenFormulirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanSpesimenFormulirKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KelengkapanSpesimenLabel,PeninjauanKembaliDokterBedah);
     }//GEN-LAST:event_KelengkapanSpesimenFormulirKeyPressed
 
     private void PeninjauanKembaliDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliDokterBedahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KelengkapanSpesimenFormulir,PeninjauanKembaliDokterAnestesi);
     }//GEN-LAST:event_PeninjauanKembaliDokterBedahKeyPressed
 
     private void PeninjauanKembaliDokterAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliDokterAnestesiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PeninjauanKembaliDokterBedah,PeninjauanKembaliPerawatKamarOK);
     }//GEN-LAST:event_PeninjauanKembaliDokterAnestesiKeyPressed
 
     private void PeninjauanKembaliPerawatKamarOKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliPerawatKamarOKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PeninjauanKembaliDokterAnestesi,PerhatianUtamaFasePemulihan);
     }//GEN-LAST:event_PeninjauanKembaliPerawatKamarOKKeyPressed
 
     private void PerhatianUtamaFasePemulihanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerhatianUtamaFasePemulihanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PeninjauanKembaliPerawatKamarOK,btnPetugasOK);
     }//GEN-LAST:event_PerhatianUtamaFasePemulihanKeyPressed
 
     /**
@@ -1656,12 +1633,13 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
                     "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.identitas,signout_sebelum_menutup_luka.penandaan_area_operasi,"+
-                    "signout_sebelum_menutup_luka.alergi,signout_sebelum_menutup_luka.resiko_aspirasi,signout_sebelum_menutup_luka.resiko_aspirasi_rencana_antisipasi,"+
-                    "signout_sebelum_menutup_luka.resiko_kehilangan_darah,signout_sebelum_menutup_luka.resiko_kehilangan_darah_line,signout_sebelum_menutup_luka.resiko_kehilangan_darah_rencana_antisipasi,"+
-                    "signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi,signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi_rencana_antisipasi,signout_sebelum_menutup_luka.nip_perawat_ok,"+
-                    "petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
+                    "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
+                    "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
+                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
+                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
+                    "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
+                    "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
                     "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
                     "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
@@ -1670,12 +1648,13 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
                     "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.identitas,signout_sebelum_menutup_luka.penandaan_area_operasi,"+
-                    "signout_sebelum_menutup_luka.alergi,signout_sebelum_menutup_luka.resiko_aspirasi,signout_sebelum_menutup_luka.resiko_aspirasi_rencana_antisipasi,"+
-                    "signout_sebelum_menutup_luka.resiko_kehilangan_darah,signout_sebelum_menutup_luka.resiko_kehilangan_darah_line,signout_sebelum_menutup_luka.resiko_kehilangan_darah_rencana_antisipasi,"+
-                    "signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi,signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi_rencana_antisipasi,signout_sebelum_menutup_luka.nip_perawat_ok,"+
-                    "petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
+                    "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
+                    "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
+                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
+                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
+                    "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
+                    "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
                     "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
                     "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
@@ -1704,10 +1683,11 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("sncn"),rs.getString("tindakan"),rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),
-                        rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("identitas"),rs.getString("alergi"),rs.getString("penandaan_area_operasi"),
-                        rs.getString("resiko_aspirasi"),rs.getString("resiko_aspirasi_rencana_antisipasi"),rs.getString("resiko_kehilangan_darah"),rs.getString("resiko_kehilangan_darah_line"),
-                        rs.getString("resiko_kehilangan_darah_rencana_antisipasi"),rs.getString("kesiapan_alat_obat_anestesi"),rs.getString("kesiapan_alat_obat_anestesi_rencana_antisipasi"),
-                        rs.getString("nip_perawat_ok"),rs.getString("nama")
+                        rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("verbal_tindakan"),rs.getString("verbal_kelengkapan_kasa"),
+                        rs.getString("verbal_instrumen"),rs.getString("verbal_alat_tajam"),rs.getString("kelengkapan_specimen_label"),
+                        rs.getString("kelengkapan_specimen_formulir"),rs.getString("peninjauan_kegiatan_dokter_bedah"),rs.getString("peninjauan_kegiatan_dokter_anestesi"),
+                        rs.getString("peninjauan_kegiatan_perawat_kamar_ok"),rs.getString("perhatian_utama_fase_pemulihan"),rs.getString("nip_perawat_ok"),
+                        rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1734,6 +1714,16 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         KodeDokterAnestesi.setText("");
         NamaDokterAnestesi.setText("");
         Tanggal.setDate(new Date());
+        VerbalTindakan.setSelectedIndex(0);
+        VerbalKasa.setSelectedIndex(0);
+        VerbalInstrumen.setSelectedIndex(0);
+        VerbalAlatTajam.setSelectedIndex(0);
+        KelengkapanSpesimenLabel.setSelectedIndex(0);
+        KelengkapanSpesimenFormulir.setSelectedIndex(0);
+        PeninjauanKembaliDokterBedah.setSelectedIndex(0);
+        PeninjauanKembaliDokterAnestesi.setSelectedIndex(0);
+        PeninjauanKembaliPerawatKamarOK.setSelectedIndex(0);
+        PerhatianUtamaFasePemulihan.setText("");
         SNCN.requestFocus();
     } 
 
@@ -1817,15 +1807,17 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*Sequel.mengedit("signout_sebelum_menutup_luka","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,identitas=?,"+
-            "penandaan_area_operasi=?,alergi=?,resiko_aspirasi=?,resiko_aspirasi_rencana_antisipasi=?,resiko_kehilangan_darah=?,resiko_kehilangan_darah_line=?,"+
-            "resiko_kehilangan_darah_rencana_antisipasi=?,kesiapan_alat_obat_anestesi=?,kesiapan_alat_obat_anestesi_rencana_antisipasi=?,nip_perawat_ok=?",19,new String[]{
+        Sequel.mengedit("signout_sebelum_menutup_luka","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,"+
+                "verbal_tindakan=?,verbal_kelengkapan_kasa=?,verbal_instrumen=?,verbal_alat_tajam=?,kelengkapan_specimen_label=?,kelengkapan_specimen_formulir=?,"+
+                "peninjauan_kegiatan_dokter_bedah=?,peninjauan_kegiatan_dokter_anestesi=?,peninjauan_kegiatan_perawat_kamar_ok=?,perhatian_utama_fase_pemulihan=?,"+
+                "nip_perawat_ok=?",19,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),SNCN.getText(),Tindakan.getText(),
-                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),Identitas.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(),Alergi.getText(), 
-                ResikoAspirasi.getSelectedItem().toString(),AntisipasiResikoAspirasi.getText(),ResikoKehilanganDarah.getSelectedItem().toString(),JalurIVLine.getText(), 
-                RencanaAntisipasiKehilanganDarah.getText(),KesiapanAlatAnes.getSelectedItem().toString(),RencanaAntisipasiKesiapanAlat.getText(),KdPetugasOK.getText(),
+                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),VerbalTindakan.getSelectedItem().toString(),VerbalKasa.getSelectedItem().toString(), 
+                VerbalInstrumen.getSelectedItem().toString(),VerbalAlatTajam.getSelectedItem().toString(),KelengkapanSpesimenLabel.getSelectedItem().toString(), 
+                KelengkapanSpesimenFormulir.getSelectedItem().toString(),PeninjauanKembaliDokterBedah.getSelectedItem().toString(),PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(), 
+                PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(),PerhatianUtamaFasePemulihan.getText(),KdPetugasOK.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-        });*/
+        });
             
         if(tabMode.getRowCount()!=0){tampil();}
         emptTeks();

@@ -12,9 +12,9 @@
         $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
         $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-            $tanggal1      = validTeks($_GET['tanggal1']); 
-            $tanggal2      = validTeks($_GET['tanggal2']); 
-            $alamatip      = validTeks(str_replace("_"," ",$_GET['alamatip'])); 
+            $tanggal1      = validTeks4($_GET['tanggal1'],20); 
+            $tanggal2      = validTeks4($_GET['tanggal2'],20); 
+            $alamatip      = validTeks4(str_replace("_"," ",$_GET['alamatip']),20); 
 
             $_sql = "select * from temporary where temporary.temp37='$alamatip' order by temporary.no";                
             $hasil=bukaquery($_sql);

@@ -1,3 +1,9 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
+
 <div id="post">
     <div class="entry"> 
         <div align="center" class="link">
@@ -9,14 +15,14 @@
             <?php
                 $action  = isset($_GET['action'])?$_GET['action']:NULL;
                 $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-                $keyword = validTeks($keyword);
+                $keyword = validTeks4($keyword,20);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
                     <td width="82%">
-                        <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                        <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="20" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" a-zA-Z0-9, ./@_ (Maksimal 20 karakter)" autocomplete="off" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
@@ -62,14 +68,14 @@
             
             $aksi=isset($_GET['action'])?$_GET['action']:NULL;
             if ($aksi=="HAPUS") {
-                Hapus(" resiko_kerja "," kode_resiko ='".validTeks($_GET['kode_resiko'])."' ","?act=ListResikoKerja");
+                Hapus(" resiko_kerja "," kode_resiko ='".validTeks4($_GET['kode_resiko'],3)."' ","?act=ListResikoKerja");
             }
         ?>
         </div>
         <?php
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/resikokerja/LaporanResikoKerja.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/resikokerja/LaporanResikoKerjaExel.php?&keyword=$keyword>Excel</a> |</div></td>                        
+                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/resikokerja/LaporanResikoKerja.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">Laporan</a> | <a target=_blank href=../penggajian/pages/resikokerja/LaporanResikoKerjaExel.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">Excel</a> |</div></td>                        
                     </tr>     
                  </table>");
         ?>

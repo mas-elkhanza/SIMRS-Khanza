@@ -15,10 +15,10 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $petugas        = validTeks(str_replace("_"," ",$_GET['petugas'])); 
-                $norawat        = validTeks(str_replace("_"," ",$_GET['norawat'])); 
-                $deposit        = validTeks(str_replace("_"," ",$_GET['deposit']));
-                $pasien         = validTeks(str_replace("_"," ",$_GET['pasien']));
+                $petugas        = validTeks4(str_replace("_"," ",$_GET['petugas']),20); 
+                $norawat        = validTeks4(str_replace("_"," ",$_GET['norawat']),20); 
+                $deposit        = validTeks4(str_replace("_"," ",$_GET['deposit']),20);
+                $pasien         = validTeks4(str_replace("_"," ",$_GET['pasien']),70);
                 $PNG_TEMP_DIR   = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
                 $PNG_WEB_DIR    = 'temp/';
                 if (!file_exists($PNG_TEMP_DIR)) mkdir($PNG_TEMP_DIR);

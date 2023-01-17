@@ -14,7 +14,7 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $nonota    = validTeks(str_replace("_"," ",$_GET['nonota']));  
+                $nonota    = validTeks4(str_replace("_"," ",$_GET['nonota']),20);  
                 $_sql      = "SELECT tokopiutang.tgl_piutang,tokopiutang.nip,tokopiutang.no_member,tokopiutang.nm_member,tokopiutang.catatan,tokopiutang.ongkir,tokopiutang.uangmuka,tokopiutang.tgltempo from tokopiutang where tokopiutang.nota_piutang='$nonota'";  
                 $hasil     = mysqli_fetch_array(bukaquery($_sql));
                 $tanggal   = $hasil["tgl_piutang"]; 

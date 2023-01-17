@@ -15,8 +15,8 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $nonota    = validTeks(str_replace("_"," ",$_GET['nonota'])); 
-                $_sql      = "SELECT tgl_jual,nip,no_member,nm_member,keterangan,ongkir,ppn from tokopenjualan where nota_jual='$nonota'";  
+                $nonota    = validTeks4(str_replace("_"," ",$_GET['nonota']),20); 
+                $_sql      = "SELECT tokopenjualan.tgl_jual,tokopenjualan.nip,tokopenjualan.no_member,tokopenjualan.nm_member,tokopenjualan.keterangan,tokopenjualan.ongkir,tokopenjualan.ppn from tokopenjualan where tokopenjualan.nota_jual='$nonota'";  
                 $hasil     = mysqli_fetch_array(bukaquery($_sql));
                 $tanggal   = $hasil["tgl_jual"]; 
                 $catatan   = $hasil["keterangan"];

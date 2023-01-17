@@ -14,16 +14,16 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $nonota    = validTeks(str_replace("_"," ",$_GET['nonota']));  
-                $kdptg     = validTeks(str_replace("_"," ",$_GET['kdptg'])); 
-                $muka      = validTeks($_GET['muka']); 
-                $ongkir    = validTeks($_GET['ongkir']); 
-                $tanggal   = validTeks($_GET['tanggal']); 
-                $nm_member = validTeks(str_replace("_"," ",$_GET['nm_member'])); 
-                $tgltempo  = validTeks($_GET['tgltempo']); 
-                $catatan   = validTeks(str_replace("_"," ",$_GET['catatan'])); 
+                $nonota    = validTeks4(str_replace("_"," ",$_GET['nonota']),20);  
+                $kdptg     = validTeks4(str_replace("_"," ",$_GET['kdptg']),20); 
+                $muka      = validTeks4($_GET['muka'],20); 
+                $ongkir    = validTeks4($_GET['ongkir'],20); 
+                $tanggal   = validTeks4($_GET['tanggal'],20); 
+                $nm_member = validTeks4(str_replace("_"," ",$_GET['nm_member']),60); 
+                $tgltempo  = validTeks4($_GET['tgltempo'],20); 
+                $catatan   = validTeks4(str_replace("_"," ",$_GET['catatan']),70); 
 
-                $_sql = "SELECT kode_brng, nama_brng, satuan, h_jual,jumlah, subtotal, dis, bsr_dis, total from tamppiutang";            
+                $_sql = "SELECT tamppiutang.kode_brng, tamppiutang.nama_brng, tamppiutang.satuan, tamppiutang.h_jual,tamppiutang.jumlah, tamppiutang.subtotal, tamppiutang.dis, tamppiutang.bsr_dis, tamppiutang.total from tamppiutang";            
                 $hasil=bukaquery($_sql);
 
                 $_sqluser = "select petugas.nama from petugas where  nip='$kdptg'";            

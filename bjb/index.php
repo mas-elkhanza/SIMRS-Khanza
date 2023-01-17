@@ -21,7 +21,7 @@
                 $response = array(
                     'reff_id' => $referensiid,
                     'reff_num' => '',
-                    'response' => -1,
+                    'response' => '-1',
                     'msg' => 'Format Referensi ID tidak sesuai..!!'
                 );
                 http_response_code(200);
@@ -34,14 +34,14 @@
                             $response = array(
                                 'reff_id' => $referensiid,
                                 'reff_num' => $data['referensi'],
-                                'response' => -3,
+                                'response' => '-3',
                                 'msg' => 'Referensi ID sudah terbayar'
                             );
                             http_response_code(200);
                         }else{
                             if(empty($url[1])){
                                 $response = array(
-                                    'response' => 0,
+                                    'response' => '0',
                                     'msg' => 'Sukses',
                                     'reff_id' => $referensiid,
                                     'trx_id' => $data['no_nota'],
@@ -56,11 +56,11 @@
                             }else {
                                 if (!empty($url[1])) {
                                     $referensinum = validTeks3($url[1],20);
-                                    if (!preg_match("/^[0-9]{15}$/",$referensinum)){ 
+                                    if (!preg_match("/^[0-9]{16}$/",$referensinum)){ 
                                         $response = array(
                                             'reff_id' => $referensiid,
                                             'reff_num' => $referensinum,
-                                            'response' => -1,
+                                            'response' => '-1',
                                             'msg' => 'Format Referensi Number tidak sesuai..!!'
                                         );
                                         http_response_code(200);
@@ -70,7 +70,7 @@
                                             $response = array(
                                                 'reff_id' => $referensiid,
                                                 'reff_num' => $referensinum,
-                                                'response' => 0,
+                                                'response' => '0',
                                                 'msg' => 'Sukses'
                                             );
                                             http_response_code(200);
@@ -78,7 +78,7 @@
                                             $response = array(
                                                 'reff_id' => $referensiid,
                                                 'reff_num' => $referensinum,
-                                                'response' => -1,
+                                                'response' => '-1',
                                                 'msg' => 'Gagal melakukan update referensi..!!'
                                             );
                                             http_response_code(200);
@@ -91,7 +91,7 @@
                         $response = array(
                             'reff_id' => $referensiid,
                             'reff_num' => '',
-                            'response' => -4,
+                            'response' => '-4',
                             'msg' => 'Link Down'
                         );
                         http_response_code(200);
@@ -100,7 +100,7 @@
                     $response = array(
                         'reff_id' => $referensiid,
                         'reff_num' => '',
-                        'response' => -2,
+                        'response' => '-2',
                         'msg' => 'Data tidak ditemukan (Referensi ID tidak terdaftar)'
                     );
                     http_response_code(200);
@@ -109,7 +109,7 @@
         }
     }else{
         $response = array(
-            'response' => -1,
+            'response' => '-1',
             'msg' => 'Methode tidak tersedia..!!'
         );
         http_response_code(200);

@@ -32,13 +32,13 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode</td><td width="">:</td>
-                    <td width="67%"><input name="kode_emergency" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_emergency;?>" size="10" maxlength="3" pattern="[a-zA-Z0-9, ./@_]{1,3}" title=" a-zA-Z0-9, ./@_ (Maksimal 3 karakter)" autocomplete="off" autofocus>
+                    <td width="67%"><input name="kode_emergency" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_emergency;?>" size="10" maxlength="3" pattern="[a-zA-Z0-9, ./@_]{1,3}" title=" a-zA-Z0-9, ./@_ (Maksimal 3 karakter)" autocomplete="off" autofocus/>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Emergency Index</td><td width="">:</td>
-                    <td width="67%"><input name="nama_emergency" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama_emergency;?>" size="40" maxlength="100" pattern="[a-zA-Z0-9, ./@_]{1,100}" title=" a-zA-Z0-9, ./@_ (Maksimal 100 karakter)" autocomplete="off"/>
+                    <td width="67%"><input name="nama_emergency" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama_emergency;?>" size="40" maxlength="100" pattern="[a-zA-Z0-9, ./@_()]{1,100}" title=" a-zA-Z0-9, ./@_() (Maksimal 100 karakter)" autocomplete="off"/>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -54,9 +54,9 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $kode_emergency    = trim($_POST['kode_emergency']);
-                    $kode_emergency    = validTeks($kode_emergency);
+                    $kode_emergency    = validTeks4($kode_emergency,3);
                     $nama_emergency    = trim($_POST['nama_emergency']);
-                    $nama_emergency    = validTeks($nama_emergency);
+                    $nama_emergency    = validTeks6($nama_emergency,100);
                     $indek             = validangka(trim($_POST['indek']));
                     if ((isset($kode_emergency))&&(isset($nama_emergency))&&(isset($indek))) {
                         switch($action) {

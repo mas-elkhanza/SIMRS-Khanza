@@ -234,7 +234,7 @@
                     <tr class="isi2">
                         <td width="15%" >File Berkas(PDF/JPG)</td>
                         <td width="35%">
-                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" type=file id="TxtIsi19" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="image/jpeg,image/jpg"/>
+                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" type=file id="TxtIsi19" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="application/pdf,image/jpeg,image/jpg"/>
                             <span id="MsgIsi19" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -265,7 +265,7 @@
                     $max        = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim='$tgl_kirim'");
                     $no_urut    = "SK".str_replace("-","",$tgl_kirim).sprintf("%03s", $max);
                     $dokumen    = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
                         move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                         if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_kirim))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
                             switch($action) {

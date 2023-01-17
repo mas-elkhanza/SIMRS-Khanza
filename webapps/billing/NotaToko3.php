@@ -15,17 +15,17 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $nonota    = validTeks(str_replace("_"," ",$_GET['nonota']));  
-                $petugas   = validTeks(str_replace("_"," ",$_GET['petugas'])); 
-                $muka      = validTeks($_GET['muka']); 
-                $ongkir    = validTeks($_GET['ongkir']); 
-                $tanggal   = validTeks($_GET['tanggal']); 
-                $nomember  = validTeks(str_replace("_"," ",$_GET['nomember'])); 
-                $member    = validTeks(str_replace("_"," ",$_GET['member'])); 
-                $tgltempo  = validTeks($_GET['tgltempo']); 
-                $catatan   = validTeks(str_replace("_"," ",$_GET['catatan'])); 
+                $nonota    = validTeks4(str_replace("_"," ",$_GET['nonota']),20);  
+                $petugas   = validTeks4(str_replace("_"," ",$_GET['petugas']),70); 
+                $muka      = validTeks4($_GET['muka'],20); 
+                $ongkir    = validTeks4($_GET['ongkir'],20); 
+                $tanggal   = validTeks4($_GET['tanggal'],20); 
+                $nomember  = validTeks4(str_replace("_"," ",$_GET['nomember']),70); 
+                $member    = validTeks4(str_replace("_"," ",$_GET['member']),70); 
+                $tgltempo  = validTeks4($_GET['tgltempo'],20); 
+                $catatan   = validTeks4(str_replace("_"," ",$_GET['catatan']),70); 
 
-                $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13 from temporary_toko order by no asc";            
+                $_sql = "SELECT temporary_toko.no,temporary_toko.temp1,temporary_toko.temp2,temporary_toko.temp3,temporary_toko.temp4,temporary_toko.temp5,temporary_toko.temp6,temporary_toko.temp7, temporary_toko.temp8, temporary_toko.temp9, temporary_toko.temp10, temporary_toko.temp11, temporary_toko.temp12, temporary_toko.temp13 from temporary_toko order by temporary_toko.no asc";            
                 $hasil=bukaquery($_sql);
 
                 $_sqlins = "select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting";            
@@ -33,7 +33,7 @@
                 $setting = mysqli_fetch_array($hasilins);
 
                 if(mysqli_num_rows($hasil)!=0) { 
-                  echo "<table width='".getOne("select notatoko from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
+                  echo "<table width='".getOne("select set_nota.notatoko from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                          <tr class='isi14'>
                                <td width=50% colspan=4 align=left>
                                    <table width='100%' bgcolor='#ffffff' padding='0' align='left' border='0' class='tbl_form'>

@@ -22,9 +22,9 @@
         $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
         $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-            $tanggal1      = validTeks($_GET['tanggal1']); 
-            $tanggal2      = validTeks($_GET['tanggal2']); 
-            $kamar         = validTeks($_GET['kamar']); 
+            $tanggal1      = validTeks4($_GET['tanggal1'],20); 
+            $tanggal2      = validTeks4($_GET['tanggal2'],20); 
+            $kamar         = validTeks4($_GET['kamar'],50); 
             echo "<table width='100%'  border='1' align='left' cellpadding='0' cellspacing='0'>
                     <caption><center><font color='000000' size='4' face='Arial'>Sensus Harian Ranap Inap<br> Periode $tanggal1 s.d. $tanggal2 </font></center><br/></caption>
                     <tr class=isi15>
