@@ -3555,8 +3555,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(norawatubahlama.getText().trim().equals("")||(tbUbahLama.getRowCount()<=0)){
             Valid.textKosong(norawatubahlama,"Data");
         }else{
-            
-            for(int r=0;r<tbUbahLama.getRowCount();r++){
+            z=tbUbahLama.getRowCount();
+            for(r=0;r<z;r++){
                 if(Valid.SetAngka(tbUbahLama.getValueAt(r,6).toString())>-1){                    
                     Sequel.mengedit("kamar_inap","no_rawat='"+norawatubahlama.getText()+"' and kd_kamar='"+tbUbahLama.getValueAt(r,0)+"'",
                            "tgl_keluar='"+tbUbahLama.getValueAt(r,4).toString()+"',jam_keluar='"+tbUbahLama.getValueAt(r,5).toString()+"',"+
