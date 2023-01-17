@@ -53,7 +53,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private int i=0,pilihan=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String finger="",finger2="";
+    private String finger="",finger2="",finger3="";
     private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
@@ -248,7 +248,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSignInSebelumAnestesi = new javax.swing.JMenuItem();
+        MnSignOutSebelumMenutupLuka = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -334,19 +334,19 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSignInSebelumAnestesi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSignInSebelumAnestesi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSignInSebelumAnestesi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSignInSebelumAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSignInSebelumAnestesi.setText("Formulir Sign-In Sebelum Tindakan Anestesi");
-        MnSignInSebelumAnestesi.setName("MnSignInSebelumAnestesi"); // NOI18N
-        MnSignInSebelumAnestesi.setPreferredSize(new java.awt.Dimension(270, 26));
-        MnSignInSebelumAnestesi.addActionListener(new java.awt.event.ActionListener() {
+        MnSignOutSebelumMenutupLuka.setBackground(new java.awt.Color(255, 255, 254));
+        MnSignOutSebelumMenutupLuka.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSignOutSebelumMenutupLuka.setForeground(new java.awt.Color(50, 50, 50));
+        MnSignOutSebelumMenutupLuka.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSignOutSebelumMenutupLuka.setText("Formulir Sign-Out Sebelum Menutup Luka");
+        MnSignOutSebelumMenutupLuka.setName("MnSignOutSebelumMenutupLuka"); // NOI18N
+        MnSignOutSebelumMenutupLuka.setPreferredSize(new java.awt.Dimension(270, 26));
+        MnSignOutSebelumMenutupLuka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSignInSebelumAnestesiActionPerformed(evt);
+                MnSignOutSebelumMenutupLukaActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSignInSebelumAnestesi);
+        jPopupMenu1.add(MnSignOutSebelumMenutupLuka);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -684,7 +684,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023 06:09:30" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2023 19:06:59" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1424,7 +1424,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnSignInSebelumAnestesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSignInSebelumAnestesiActionPerformed
+    private void MnSignOutSebelumMenutupLukaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSignOutSebelumMenutupLukaActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1437,22 +1437,25 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),23).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),22).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),10).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSIgnInSebelumAnestesi.jasper","report","::[ Formulir Sign-In Sebelum Tindakan Anestesi ]::",
+            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),10).toString():finger2)+"\n"+Tanggal.getSelectedItem()); 
+            finger3=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            param.put("finger3","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()+"\nID "+(finger3.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),8).toString():finger3)+"\n"+Tanggal.getSelectedItem());
+            Valid.MyReportqry("rptFormulirSignOutSebelumMenutupLuka.jasper","report","::[ Formulir Sign-Out Sebelum Menutup Luka ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
                     "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.identitas,signout_sebelum_menutup_luka.penandaan_area_operasi,"+
-                    "signout_sebelum_menutup_luka.alergi,signout_sebelum_menutup_luka.resiko_aspirasi,signout_sebelum_menutup_luka.resiko_aspirasi_rencana_antisipasi,"+
-                    "signout_sebelum_menutup_luka.resiko_kehilangan_darah,signout_sebelum_menutup_luka.resiko_kehilangan_darah_line,signout_sebelum_menutup_luka.resiko_kehilangan_darah_rencana_antisipasi,"+
-                    "signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi,signout_sebelum_menutup_luka.kesiapan_alat_obat_anestesi_rencana_antisipasi,signout_sebelum_menutup_luka.nip_perawat_ok,"+
-                    "petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
+                    "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
+                    "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
+                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
+                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
+                    "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
+                    "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
                     "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
-                    "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
+                    "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok  "+
                     "where signout_sebelum_menutup_luka.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and signout_sebelum_menutup_luka.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnSignInSebelumAnestesiActionPerformed
+    }//GEN-LAST:event_MnSignOutSebelumMenutupLukaActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1585,7 +1588,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private widget.TextBox KodeDokterBedah;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnSignInSebelumAnestesi;
+    private javax.swing.JMenuItem MnSignOutSebelumMenutupLuka;
     private widget.TextBox NamaDokterAnestesi;
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasOK;
