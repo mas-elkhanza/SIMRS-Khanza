@@ -135,6 +135,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
         Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
+        PerhatianUtamaFasePemulihan.setDocument(new batasInput((byte)100).getKata(PerhatianUtamaFasePemulihan));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -308,16 +309,28 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         jLabel27 = new widget.Label();
         jLabel54 = new widget.Label();
         jLabel28 = new widget.Label();
-        VerbalIdentitas = new widget.ComboBox();
-        jLabel30 = new widget.Label();
         VerbalTindakan = new widget.ComboBox();
+        jLabel30 = new widget.Label();
+        VerbalKasa = new widget.ComboBox();
         jLabel31 = new widget.Label();
-        VerbalArea = new widget.ComboBox();
+        VerbalInstrumen = new widget.ComboBox();
         jLabel32 = new widget.Label();
-        VerbalArea1 = new widget.ComboBox();
+        VerbalAlatTajam = new widget.ComboBox();
         jLabel55 = new widget.Label();
         jLabel29 = new widget.Label();
-        VerbalIdentitas1 = new widget.ComboBox();
+        KelengkapanSpesimenLabel = new widget.ComboBox();
+        KelengkapanSpesimenFormulir = new widget.ComboBox();
+        jLabel33 = new widget.Label();
+        jLabel56 = new widget.Label();
+        jLabel34 = new widget.Label();
+        PeninjauanKembaliDokterBedah = new widget.ComboBox();
+        jLabel35 = new widget.Label();
+        PeninjauanKembaliDokterAnestesi = new widget.ComboBox();
+        jLabel36 = new widget.Label();
+        PeninjauanKembaliPerawatKamarOK = new widget.ComboBox();
+        jLabel57 = new widget.Label();
+        jLabel58 = new widget.Label();
+        PerhatianUtamaFasePemulihan = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -583,7 +596,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 336));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 366));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -789,18 +802,18 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         jLabel26.setText("Perawat Kamar Operasi");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(21, 280, 130, 23);
+        jLabel26.setBounds(21, 310, 130, 23);
 
         KdPetugasOK.setEditable(false);
         KdPetugasOK.setHighlighter(null);
         KdPetugasOK.setName("KdPetugasOK"); // NOI18N
         FormInput.add(KdPetugasOK);
-        KdPetugasOK.setBounds(147, 280, 110, 23);
+        KdPetugasOK.setBounds(147, 310, 110, 23);
 
         NmPetugasOK.setEditable(false);
         NmPetugasOK.setName("NmPetugasOK"); // NOI18N
         FormInput.add(NmPetugasOK);
-        NmPetugasOK.setBounds(259, 280, 300, 23);
+        NmPetugasOK.setBounds(259, 310, 300, 23);
 
         btnPetugasOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugasOK.setMnemonic('2');
@@ -817,7 +830,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPetugasOK);
-        btnPetugasOK.setBounds(561, 280, 28, 23);
+        btnPetugasOK.setBounds(561, 310, 28, 23);
 
         jLabel5.setText(":");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -843,19 +856,19 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 270, 810, 1);
+        jSeparator3.setBounds(0, 300, 810, 1);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 270, 810, 1);
+        jSeparator4.setBounds(0, 300, 810, 1);
 
         jLabel27.setText(":");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(0, 280, 143, 23);
+        jLabel27.setBounds(0, 310, 143, 23);
 
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel54.setText("Perawat Melakukan Konfirmasi Secara Verbal :");
@@ -868,21 +881,6 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         FormInput.add(jLabel28);
         jLabel28.setBounds(67, 140, 60, 23);
 
-        VerbalIdentitas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        VerbalIdentitas.setName("VerbalIdentitas"); // NOI18N
-        VerbalIdentitas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                VerbalIdentitasKeyPressed(evt);
-            }
-        });
-        FormInput.add(VerbalIdentitas);
-        VerbalIdentitas.setBounds(131, 140, 80, 23);
-
-        jLabel30.setText("Kelengkapan Kasa :");
-        jLabel30.setName("jLabel30"); // NOI18N
-        FormInput.add(jLabel30);
-        jLabel30.setBounds(237, 140, 110, 23);
-
         VerbalTindakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         VerbalTindakan.setName("VerbalTindakan"); // NOI18N
         VerbalTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -891,58 +889,160 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             }
         });
         FormInput.add(VerbalTindakan);
-        VerbalTindakan.setBounds(351, 140, 80, 23);
+        VerbalTindakan.setBounds(131, 140, 80, 23);
+
+        jLabel30.setText("Kelengkapan Kasa :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(237, 140, 110, 23);
+
+        VerbalKasa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        VerbalKasa.setName("VerbalKasa"); // NOI18N
+        VerbalKasa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                VerbalKasaKeyPressed(evt);
+            }
+        });
+        FormInput.add(VerbalKasa);
+        VerbalKasa.setBounds(351, 140, 80, 23);
 
         jLabel31.setText("Instrumen :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
         jLabel31.setBounds(459, 140, 67, 23);
 
-        VerbalArea.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        VerbalArea.setName("VerbalArea"); // NOI18N
-        VerbalArea.addKeyListener(new java.awt.event.KeyAdapter() {
+        VerbalInstrumen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        VerbalInstrumen.setName("VerbalInstrumen"); // NOI18N
+        VerbalInstrumen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                VerbalAreaKeyPressed(evt);
+                VerbalInstrumenKeyPressed(evt);
             }
         });
-        FormInput.add(VerbalArea);
-        VerbalArea.setBounds(530, 140, 80, 23);
+        FormInput.add(VerbalInstrumen);
+        VerbalInstrumen.setBounds(530, 140, 80, 23);
 
         jLabel32.setText("Alat Tajam :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
         jLabel32.setBounds(638, 140, 67, 23);
 
-        VerbalArea1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        VerbalArea1.setName("VerbalArea1"); // NOI18N
-        VerbalArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+        VerbalAlatTajam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        VerbalAlatTajam.setName("VerbalAlatTajam"); // NOI18N
+        VerbalAlatTajam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                VerbalArea1KeyPressed(evt);
+                VerbalAlatTajamKeyPressed(evt);
             }
         });
-        FormInput.add(VerbalArea1);
-        VerbalArea1.setBounds(709, 140, 80, 23);
+        FormInput.add(VerbalAlatTajam);
+        VerbalAlatTajam.setBounds(709, 140, 80, 23);
 
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel55.setText("Kelengkapan Spesimen :");
+        jLabel55.setText("Kelengkapan Spesimen Jika Ada :");
         jLabel55.setName("jLabel55"); // NOI18N
         FormInput.add(jLabel55);
-        jLabel55.setBounds(40, 170, 170, 23);
+        jLabel55.setBounds(40, 170, 180, 23);
 
         jLabel29.setText("Label :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(67, 190, 60, 23);
+        jLabel29.setBounds(87, 190, 60, 23);
 
-        VerbalIdentitas1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lengkap", "Tidak Lengkap", "Tidak Ada Pemeriksaan Spesimen" }));
-        VerbalIdentitas1.setName("VerbalIdentitas1"); // NOI18N
-        VerbalIdentitas1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KelengkapanSpesimenLabel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lengkap", "Tidak Lengkap", "Tidak Ada Pemeriksaan Spesimen" }));
+        KelengkapanSpesimenLabel.setName("KelengkapanSpesimenLabel"); // NOI18N
+        KelengkapanSpesimenLabel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                VerbalIdentitas1KeyPressed(evt);
+                KelengkapanSpesimenLabelKeyPressed(evt);
             }
         });
-        FormInput.add(VerbalIdentitas1);
-        VerbalIdentitas1.setBounds(131, 190, 230, 23);
+        FormInput.add(KelengkapanSpesimenLabel);
+        KelengkapanSpesimenLabel.setBounds(151, 190, 245, 23);
+
+        KelengkapanSpesimenFormulir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lengkap", "Tidak Lengkap", "Tidak Ada Pemeriksaan Spesimen" }));
+        KelengkapanSpesimenFormulir.setName("KelengkapanSpesimenFormulir"); // NOI18N
+        KelengkapanSpesimenFormulir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KelengkapanSpesimenFormulirKeyPressed(evt);
+            }
+        });
+        FormInput.add(KelengkapanSpesimenFormulir);
+        KelengkapanSpesimenFormulir.setBounds(544, 190, 245, 23);
+
+        jLabel33.setText("Formulir :");
+        jLabel33.setName("jLabel33"); // NOI18N
+        FormInput.add(jLabel33);
+        jLabel33.setBounds(450, 190, 90, 23);
+
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel56.setText("Peninjauan Kembali Kegiatan :");
+        jLabel56.setName("jLabel56"); // NOI18N
+        FormInput.add(jLabel56);
+        jLabel56.setBounds(40, 220, 290, 23);
+
+        jLabel34.setText("Dokter Bedah :");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(47, 240, 100, 23);
+
+        PeninjauanKembaliDokterBedah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PeninjauanKembaliDokterBedah.setName("PeninjauanKembaliDokterBedah"); // NOI18N
+        PeninjauanKembaliDokterBedah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PeninjauanKembaliDokterBedahKeyPressed(evt);
+            }
+        });
+        FormInput.add(PeninjauanKembaliDokterBedah);
+        PeninjauanKembaliDokterBedah.setBounds(151, 240, 80, 23);
+
+        jLabel35.setText("Dokter Anestesi :");
+        jLabel35.setName("jLabel35"); // NOI18N
+        FormInput.add(jLabel35);
+        jLabel35.setBounds(290, 240, 110, 23);
+
+        PeninjauanKembaliDokterAnestesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PeninjauanKembaliDokterAnestesi.setName("PeninjauanKembaliDokterAnestesi"); // NOI18N
+        PeninjauanKembaliDokterAnestesi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PeninjauanKembaliDokterAnestesiKeyPressed(evt);
+            }
+        });
+        FormInput.add(PeninjauanKembaliDokterAnestesi);
+        PeninjauanKembaliDokterAnestesi.setBounds(404, 240, 80, 23);
+
+        jLabel36.setText("Perawat Kamar Operasi :");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(575, 240, 130, 23);
+
+        PeninjauanKembaliPerawatKamarOK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        PeninjauanKembaliPerawatKamarOK.setName("PeninjauanKembaliPerawatKamarOK"); // NOI18N
+        PeninjauanKembaliPerawatKamarOK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PeninjauanKembaliPerawatKamarOKKeyPressed(evt);
+            }
+        });
+        FormInput.add(PeninjauanKembaliPerawatKamarOK);
+        PeninjauanKembaliPerawatKamarOK.setBounds(709, 240, 80, 23);
+
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel57.setText("Perhatian Utama Fase Pemulihan");
+        jLabel57.setName("jLabel57"); // NOI18N
+        FormInput.add(jLabel57);
+        jLabel57.setBounds(40, 270, 180, 23);
+
+        jLabel58.setText(":");
+        jLabel58.setName("jLabel58"); // NOI18N
+        FormInput.add(jLabel58);
+        jLabel58.setBounds(0, 270, 209, 23);
+
+        PerhatianUtamaFasePemulihan.setHighlighter(null);
+        PerhatianUtamaFasePemulihan.setName("PerhatianUtamaFasePemulihan"); // NOI18N
+        PerhatianUtamaFasePemulihan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PerhatianUtamaFasePemulihanKeyPressed(evt);
+            }
+        });
+        FormInput.add(PerhatianUtamaFasePemulihan);
+        PerhatianUtamaFasePemulihan.setBounds(213, 270, 576, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1406,25 +1506,45 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         Valid.pindah(evt,SNCN,btnDokterBedah);
     }//GEN-LAST:event_TindakanKeyPressed
 
-    private void VerbalIdentitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalIdentitasKeyPressed
-        Valid.pindah(evt,btnDokterAnestesi,VerbalTindakan);
-    }//GEN-LAST:event_VerbalIdentitasKeyPressed
-
     private void VerbalTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalTindakanKeyPressed
-        Valid.pindah(evt,VerbalIdentitas,VerbalArea);
+        Valid.pindah(evt,btnDokterAnestesi,VerbalKasa);
     }//GEN-LAST:event_VerbalTindakanKeyPressed
 
-    private void VerbalAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalAreaKeyPressed
+    private void VerbalKasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalKasaKeyPressed
+        Valid.pindah(evt,VerbalTindakan,VerbalInstrumen);
+    }//GEN-LAST:event_VerbalKasaKeyPressed
+
+    private void VerbalInstrumenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalInstrumenKeyPressed
         //Valid.pindah(evt,VerbalTindakan,AreaOperasi);
-    }//GEN-LAST:event_VerbalAreaKeyPressed
+    }//GEN-LAST:event_VerbalInstrumenKeyPressed
 
-    private void VerbalArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalArea1KeyPressed
+    private void VerbalAlatTajamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalAlatTajamKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_VerbalArea1KeyPressed
+    }//GEN-LAST:event_VerbalAlatTajamKeyPressed
 
-    private void VerbalIdentitas1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalIdentitas1KeyPressed
+    private void KelengkapanSpesimenLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanSpesimenLabelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_VerbalIdentitas1KeyPressed
+    }//GEN-LAST:event_KelengkapanSpesimenLabelKeyPressed
+
+    private void KelengkapanSpesimenFormulirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanSpesimenFormulirKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KelengkapanSpesimenFormulirKeyPressed
+
+    private void PeninjauanKembaliDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliDokterBedahKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PeninjauanKembaliDokterBedahKeyPressed
+
+    private void PeninjauanKembaliDokterAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliDokterAnestesiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PeninjauanKembaliDokterAnestesiKeyPressed
+
+    private void PeninjauanKembaliPerawatKamarOKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliPerawatKamarOKKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PeninjauanKembaliPerawatKamarOKKeyPressed
+
+    private void PerhatianUtamaFasePemulihanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerhatianUtamaFasePemulihanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PerhatianUtamaFasePemulihanKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1456,6 +1576,8 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdPetugasOK;
+    private widget.ComboBox KelengkapanSpesimenFormulir;
+    private widget.ComboBox KelengkapanSpesimenLabel;
     private widget.TextBox KodeDokterAnestesi;
     private widget.TextBox KodeDokterBedah;
     private widget.Label LCount;
@@ -1465,6 +1587,10 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasOK;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox PeninjauanKembaliDokterAnestesi;
+    private widget.ComboBox PeninjauanKembaliDokterBedah;
+    private widget.ComboBox PeninjauanKembaliPerawatKamarOK;
+    private widget.TextBox PerhatianUtamaFasePemulihan;
     private widget.TextBox SNCN;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1474,10 +1600,9 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
     private widget.TextBox Tindakan;
-    private widget.ComboBox VerbalArea;
-    private widget.ComboBox VerbalArea1;
-    private widget.ComboBox VerbalIdentitas;
-    private widget.ComboBox VerbalIdentitas1;
+    private widget.ComboBox VerbalAlatTajam;
+    private widget.ComboBox VerbalInstrumen;
+    private widget.ComboBox VerbalKasa;
     private widget.ComboBox VerbalTindakan;
     private widget.Button btnDokterAnestesi;
     private widget.Button btnDokterBedah;
@@ -1498,10 +1623,17 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private widget.Label jLabel30;
     private widget.Label jLabel31;
     private widget.Label jLabel32;
+    private widget.Label jLabel33;
+    private widget.Label jLabel34;
+    private widget.Label jLabel35;
+    private widget.Label jLabel36;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel54;
     private widget.Label jLabel55;
+    private widget.Label jLabel56;
+    private widget.Label jLabel57;
+    private widget.Label jLabel58;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -1658,9 +1790,9 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>508){
+            if(internalFrame1.getHeight()>538){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,336));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,366));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{

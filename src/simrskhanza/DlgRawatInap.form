@@ -332,7 +332,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="09-01-2023"/>
+                        <StringItem index="0" value="17-01-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -360,7 +360,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="09-01-2023"/>
+                        <StringItem index="0" value="17-01-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3439,7 +3439,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="09-01-2023"/>
+                    <StringItem index="0" value="17-01-2023"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3781,7 +3781,7 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="FormMenu" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[115, 43]"/>
+                      <Dimension value="[135, 43]"/>
                     </Property>
                   </Properties>
 
@@ -3809,7 +3809,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnRiwayat" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -3836,7 +3836,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnResepObat" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -3863,7 +3863,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnCopyResep" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -3890,7 +3890,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPermintaanStok" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -3917,7 +3917,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPermintaanResepPulang" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -3944,7 +3944,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnInputObat" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -3971,7 +3971,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnObatBhp" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -3998,7 +3998,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnBerkasDigital" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4025,7 +4025,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPermintaanLab" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4052,7 +4052,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPermintaanRad" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4079,7 +4079,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnJadwalOperasi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4106,7 +4106,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnSKDP" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4133,7 +4133,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnRujukKeluar" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4160,7 +4160,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnDiagnosa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4187,7 +4187,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnResume" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4214,7 +4214,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnAwalKeperawatanUmum" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4241,7 +4241,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnAwalKeperawatanKandungan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4268,7 +4268,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnAwalFisioterapi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4295,7 +4295,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnAwalMedis" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4322,7 +4322,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnAwalMedisKandungan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4349,7 +4349,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnChecklistPreOperasi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4376,7 +4376,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnSignInSebelumAnestesi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4403,12 +4403,39 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnTimeOutSebelumInsisi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnTimeOutSebelumInsisiActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.Button" name="BtnSignOutSebelumMenutupLuka">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/picture/item.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Sign-Out Sebelum Menutup Luka"/>
+                        <Property name="focusPainted" type="boolean" value="false"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="0"/>
+                        </Property>
+                        <Property name="glassColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[1, 1, 1, 1]"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="BtnSignOutSebelumMenutupLuka" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[190, 23]"/>
+                        </Property>
+                        <Property name="roundRect" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSignOutSebelumMenutupLukaActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="widget.Button" name="BtnPenilaianPreOperasi">
@@ -4430,7 +4457,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPenilaianPreOperasi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4457,7 +4484,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPenilaianPreAnestesi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4484,7 +4511,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPenilaianPsikolog" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4511,7 +4538,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPerencanaanPemulangan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4538,7 +4565,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPenilaianLanjutanResikoJatuhDewasa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4565,7 +4592,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPenilaianLanjutanResikoJatuhAnak" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4592,7 +4619,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPenilaianTambahanGeriatri" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4619,7 +4646,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnHasilPemeriksaanUSG" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4646,7 +4673,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnCatatan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4673,7 +4700,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnCatatanObservasiRanap" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4700,7 +4727,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnCatatanObservasiRanapKebidanan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4727,7 +4754,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnCatatanObservasiRanapPostPartum" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4754,7 +4781,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnCatatanKeperawatan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4781,7 +4808,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnCatatanCekGDS" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4808,7 +4835,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnPemantauanPEWSAnak" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4835,7 +4862,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnSkriningNutrisiDewasa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4862,7 +4889,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnSkriningNutrisiLansia" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4889,7 +4916,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnSkriningNutrisiAnak" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4916,7 +4943,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnSkriningGiziLanjut" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4943,7 +4970,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnAsuhanGizi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4970,7 +4997,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnMonitoringAsuhanGizi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -4997,7 +5024,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnKonselingFarmasi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -5024,7 +5051,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnInformasiObat" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
@@ -5051,7 +5078,7 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="BtnTransferAntarRuang" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[180, 23]"/>
+                          <Dimension value="[190, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
