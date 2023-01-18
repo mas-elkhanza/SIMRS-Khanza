@@ -591,6 +591,7 @@ import inventory.InventoryStokAkhirFarmasiPerTanggal;
 import inventory.InventoryTelaahResep;
 import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.DapurBarang;
+import ipsrs.DapurInputStok;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSHibah;
@@ -1766,7 +1767,7 @@ public class frmUtama extends javax.swing.JFrame {
         label35.setPreferredSize(new java.awt.Dimension(105, 23));
         panelisi2.add(label35);
 
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[G] Menejemen Parkir Kendaraan Pasien & Karyawan", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[J] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[P] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[Q] Toko / Minimarket / Koperasi", "[R] Pengelolaan Data Filantropi, CSR, Zakat, Infaq & Shodaqoh", "[S] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis, Dapur, Penunjang ( Lab & RO )", "[F] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[G] Menejemen Parkir Kendaraan Pasien & Karyawan", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[J] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[P] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[Q] Toko / Minimarket / Koperasi", "[R] Pengelolaan Data Filantropi, CSR, Zakat, Infaq & Shodaqoh", "[S] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
         cmbMenu.addItemListener(new java.awt.event.ItemListener() {
@@ -1825,7 +1826,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/01/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/01/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -19598,6 +19599,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnOpnameDapurActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurInputStok form=new DapurInputStok(this,false);
+        form.tampil();
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20258,7 +20272,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
-            btnBarangDapur,btnSignOutSebelumMenutupLuka;
+            btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur;
     
     public void isWall(){
         try{            
@@ -21343,6 +21357,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdapur_barang()==true){
                 Panelmenu.add(btnBarangDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getdapur_opname()==true){
+                Panelmenu.add(btnOpnameDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==5){ 
@@ -25855,6 +25874,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdapur_barang()==true){
             Panelmenu.add(btnBarangDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getdapur_opname()==true){
+            Panelmenu.add(btnOpnameDapur);
             jmlmenu++;
         }
 
@@ -30740,6 +30764,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdapur_barang()==true){
             if(btnBarangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarangDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdapur_opname()==true){
+            if(btnOpnameDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnOpnameDapur);
                 jmlmenu++;
             }                
         }
@@ -39192,5 +39223,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSignOutSebelumMenutupLuka.setName("btnSignOutSebelumMenutupLuka"); 
         btnSignOutSebelumMenutupLuka.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSignOutSebelumMenutupLuka.addActionListener(this::btnSignOutSebelumMenutupLukaActionPerformed);
+        
+        btnOpnameDapur = new widget.ButtonBig();
+        btnOpnameDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7800478_cabbage_vegetable_food_fruit_cooking_icon.png")));
+        btnOpnameDapur.setText("Stok Opname Barang Dapur");
+        btnOpnameDapur.setIconTextGap(0);
+        btnOpnameDapur.setName("btnOpnameDapur"); 
+        btnOpnameDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnOpnameDapur.addActionListener(this::btnOpnameDapurActionPerformed);
     }
 }

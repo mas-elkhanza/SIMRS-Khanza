@@ -837,21 +837,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void ppBelumOpnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBelumOpnameActionPerformed
         try{
             Valid.tabelKosong(tabMode);
-            pstampil=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis, ipsrsbarang.kode_sat, "+
-                "ipsrsbarang.harga,ipsrsbarang.stok from ipsrsbarang inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                " where ipsrsbarang.kode_brng not in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.kode_brng not in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? or "+
-                " ipsrsbarang.kode_brng not in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsbarang.kode_sat like ? or "+
-                " ipsrsbarang.kode_brng not in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsjenisbarang.nm_jenis like ? "+order);
+            pstampil=koneksi.prepareStatement(
+                "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis,ipsrsbarang.kode_sat,ipsrsbarang.harga,ipsrsbarang.stok from ipsrsbarang "+
+                " inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where ipsrsbarang.kode_brng not in (select kode_brng from ipsrsopname where tanggal=?) "+
+                " and ipsrsbarang.status='1' and (ipsrsbarang.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsbarang.kode_sat like ? or ipsrsjenisbarang.nm_jenis like ?) "+order);
             try {
                 pstampil.setString(1,Valid.SetTgl(Tgl.getSelectedItem()+""));
                 pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(3,Valid.SetTgl(Tgl.getSelectedItem()+""));
+                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
                 pstampil.setString(4,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(5,Valid.SetTgl(Tgl.getSelectedItem()+""));
-                pstampil.setString(6,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(7,Valid.SetTgl(Tgl.getSelectedItem()+""));
-                pstampil.setString(8,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(5,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
                 while(rstampil.next()){                            
                     tabMode.addRow(new Object[]{
@@ -881,21 +876,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void ppSudahOpnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSudahOpnameActionPerformed
         try{
             Valid.tabelKosong(tabMode);
-            pstampil=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis, ipsrsbarang.kode_sat, "+
-                "ipsrsbarang.harga,ipsrsbarang.stok from ipsrsbarang inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                " where ipsrsbarang.kode_brng in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.kode_brng in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? or "+
-                " ipsrsbarang.kode_brng in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsbarang.kode_sat like ? or "+
-                " ipsrsbarang.kode_brng in (select kode_brng from ipsrsopname where tanggal=?) and ipsrsbarang.status='1' and ipsrsjenisbarang.nm_jenis like ? "+order);
+            pstampil=koneksi.prepareStatement(
+                "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis,ipsrsbarang.kode_sat,ipsrsbarang.harga,ipsrsbarang.stok from ipsrsbarang "+
+                " inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where ipsrsbarang.kode_brng in (select kode_brng from ipsrsopname where tanggal=?) "+
+                " and ipsrsbarang.status='1' and (ipsrsbarang.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsbarang.kode_sat like ? or ipsrsjenisbarang.nm_jenis like ?) "+order);
             try {
                 pstampil.setString(1,Valid.SetTgl(Tgl.getSelectedItem()+""));
                 pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(3,Valid.SetTgl(Tgl.getSelectedItem()+""));
+                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
                 pstampil.setString(4,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(5,Valid.SetTgl(Tgl.getSelectedItem()+""));
-                pstampil.setString(6,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(7,Valid.SetTgl(Tgl.getSelectedItem()+""));
-                pstampil.setString(8,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(5,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
                 while(rstampil.next()){                            
                     tabMode.addRow(new Object[]{
@@ -1102,12 +1092,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     hargabeli[i],stok[i],selisih[i],nomihilang[i],lebih[i],nomilebih[i]
                 });
             }
-            pstampil=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis, ipsrsbarang.kode_sat, "+
-                "ipsrsbarang.harga,ipsrsbarang.stok from ipsrsbarang inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                " where ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? or "+
-                " ipsrsbarang.status='1' and ipsrsbarang.kode_sat like ? or "+
-                " ipsrsbarang.status='1' and ipsrsjenisbarang.nm_jenis like ? "+order);
+            pstampil=koneksi.prepareStatement(
+                "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis, ipsrsbarang.kode_sat,ipsrsbarang.harga,ipsrsbarang.stok from ipsrsbarang "+
+                " inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where ipsrsbarang.status='1' and (ipsrsbarang.kode_brng like ? or "+
+                " ipsrsbarang.nama_brng like ? or ipsrsbarang.kode_sat like ? or ipsrsjenisbarang.nm_jenis like ?) "+order);
             try {
                 pstampil.setString(1,"%"+TCari.getText().trim()+"%");
                 pstampil.setString(2,"%"+TCari.getText().trim()+"%");
