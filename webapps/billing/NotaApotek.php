@@ -20,8 +20,8 @@
             $catatan   = validTeks4(str_replace("_"," ",$_GET['catatan']),60); 
             $petugas   = validTeks4(str_replace("_"," ",$_GET['petugas']),70); 
             $norm      = validTeks4(str_replace("_"," ",$_GET['norm']),15);
-            $pasien    = validTeks4(str_replace("_"," ",$_GET['pasien'],70)); 
-            $besarppn  = validTeks4(str_replace("_"," ",$_GET['besarppn'],20)); 
+            $pasien    = validTeks4(str_replace("_"," ",$_GET['pasien']),70); 
+            $besarppn  = validTeks4(str_replace("_"," ",$_GET['besarppn']),20); 
             $ongkir    = validTeks4(str_replace("_"," ",$_GET['ongkir']),20); 
             $alamatip  = validTeks4(str_replace("_"," ",$_GET['alamatip']),20); 
 
