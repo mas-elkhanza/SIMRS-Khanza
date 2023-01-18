@@ -368,7 +368,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[GDP]]></text>
+				<text><![CDATA[GDS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="90" height="29" forecolor="#000000" backcolor="#F0F0DC" uuid="f24b606f-5ee8-4085-89ab-d71ce3951409"/>
