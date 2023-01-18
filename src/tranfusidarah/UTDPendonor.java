@@ -1061,15 +1061,10 @@ public class UTDPendonor extends javax.swing.JDialog {
                         "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
                         "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
-                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+
+                        "(utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or utd_pendonor.nama like '%"+TCari.getText()+"%' or utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.alamat like '%"+TCari.getText()+"%' or utd_pendonor.no_telp like '%"+TCari.getText()+"%' or kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "kecamatan.nm_kec like '%"+TCari.getText()+"%' or kabupaten.nm_kab like '%"+TCari.getText()+"%' or propinsi.nm_prop like '%"+TCari.getText()+"%') "+
                         "order by utd_pendonor.no_pendonor desc";
                 }   
             }else{
@@ -1086,15 +1081,10 @@ public class UTDPendonor extends javax.swing.JDialog {
                         "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
                         "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
-                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+
+                        "(utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or utd_pendonor.nama like '%"+TCari.getText()+"%' or utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.alamat like '%"+TCari.getText()+"%' or utd_pendonor.no_telp like '%"+TCari.getText()+"%' or kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "kecamatan.nm_kec like '%"+TCari.getText()+"%' or kabupaten.nm_kab like '%"+TCari.getText()+"%' or propinsi.nm_prop like '%"+TCari.getText()+"%') "+
                         "order by utd_pendonor.no_pendonor desc limit "+cmbHlm.getSelectedItem().toString();
                 }
             }
@@ -1552,15 +1542,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
                         "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
-                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+
+                        "(utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or utd_pendonor.nama like '%"+TCari.getText()+"%' or utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.alamat like '%"+TCari.getText()+"%' or utd_pendonor.no_telp like '%"+TCari.getText()+"%' or kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "kecamatan.nm_kec like '%"+TCari.getText()+"%' or kabupaten.nm_kab like '%"+TCari.getText()+"%' or propinsi.nm_prop like '%"+TCari.getText()+"%') "+
                         "order by utd_pendonor.no_pendonor desc";
                 }   
             }else{
@@ -1577,15 +1562,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
                         "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
-                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
-                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+
+                        "(utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or utd_pendonor.nama like '%"+TCari.getText()+"%' or utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.alamat like '%"+TCari.getText()+"%' or utd_pendonor.no_telp like '%"+TCari.getText()+"%' or kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "kecamatan.nm_kec like '%"+TCari.getText()+"%' or kabupaten.nm_kab like '%"+TCari.getText()+"%' or propinsi.nm_prop like '%"+TCari.getText()+"%') "+
                         "order by utd_pendonor.no_pendonor desc limit "+cmbHlm.getSelectedItem().toString();
                 }
             }
@@ -1630,7 +1610,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Propinsi.setText("PROPINSI");
         DTPLahir.setDate(new Date());
         NoId.requestFocus();
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pendonor,6),signed)),0) from utd_pendonor","UTD",6,NoId);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(utd_pendonor.no_pendonor,6),signed)),0) from utd_pendonor","UTD",6,NoId);
     }
 
     private void getData() {

@@ -3,7 +3,7 @@
         exit(header("Location:../index.php"));
     }
 ?>
-    <h1 class="title">Pengolahan data rekam medis</h1>
+    <h1 class="title">Ngintip ya?</h1>
     <div id="post">
        <b><br>Dikembangkan Oleh : <br>
 		&nbsp;&nbsp;&nbsp;&nbsp;Khanza.Soft Media<br>

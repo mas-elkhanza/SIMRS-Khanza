@@ -9,7 +9,7 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
             $_SESSION['ses_admin_gambarpemeriksaanusg']="admin";
-            $url = "index.php?act=List&no_rawat=".validTeks($_GET['no_rawat']);			
+            $url = "index.php?act=List&no_rawat=".validTeks4($_GET['no_rawat'],20);			
         }else{
             session_start();
             session_destroy();

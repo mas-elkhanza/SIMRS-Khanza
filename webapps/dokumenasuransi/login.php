@@ -9,7 +9,7 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
             $_SESSION['ses_admin_dokumenasuransi']="admin";
-            $_SESSION['kdpj']=validTeks(str_replace("_"," ",$_GET['kdpj']));
+            $_SESSION['kdpj']=validTeks4(str_replace("_"," ",$_GET['kdpj']),3);
             $url = "index.php?act=Kamera";			
         }else{
             session_start();
