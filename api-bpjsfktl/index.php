@@ -783,7 +783,7 @@
                                         );
                                         http_response_code(201);
                                     }else{
-                                        $booking = fetch_array(bukaquery2("select nobooking,no_rawat,tanggalperiksa,status,validasi,nomorreferensi,norm from referensi_mobilejkn_bpjs where nobooking='".validTeks4($decode['kodebooking'],25)."'"));
+                                        $booking = fetch_array(bukaquery2("select referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,referensi_mobilejkn_bpjs.tanggalperiksa,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.norm from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking='".validTeks4($decode['kodebooking'],25)."'"));
                                         if(empty($booking['status'])) {
                                             $response = array(
                                                 'metadata' => array(
@@ -872,7 +872,7 @@
                                         );
                                         http_response_code(201);
                                     }else{
-                                        $booking = fetch_array(bukaquery2("select nobooking,no_rawat,tanggalperiksa,status,validasi,nomorreferensi,kodedokter,kodepoli,jampraktek from referensi_mobilejkn_bpjs where nobooking='".validTeks4($decode['kodebooking'],25)."'"));
+                                        $booking = fetch_array(bukaquery2("select referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,referensi_mobilejkn_bpjs.tanggalperiksa,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.kodedokter,referensi_mobilejkn_bpjs.kodepoli,referensi_mobilejkn_bpjs.jampraktek from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking='".validTeks4($decode['kodebooking'],25)."'"));
                                         if(empty($booking['status'])) {
                                             $response = array(
                                                 'metadata' => array(
@@ -1595,6 +1595,190 @@
                                     http_response_code(201);
                                 }
                                 break;
+                           case "ambilantreanfarmasi":
+                                $konten = trim(file_get_contents("php://input"));
+                                $decode = json_decode($konten, true);
+                                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                                    if(empty($decode['kodebooking'])) { 
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Kode Booking tidak boleh kosong',
+                                                'code' => 201
+                                            )
+                                        );
+                                        http_response_code(201);
+                                    }else if(strpos($decode['kodebooking'],"'")||strpos($decode['kodebooking'],"\\")){
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Format Kode Booking salah',
+                                                'code' => 201
+                                            )
+                                        );
+                                        http_response_code(201);
+                                    }else{
+                                        $booking = fetch_array(bukaquery2("select referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking='".validTeks4($decode['kodebooking'],25)."'"));
+                                        if(empty($booking['status'])) {
+                                            $response = array(
+                                                'metadata' => array(
+                                                    'message' => 'Data Booking tidak ditemukan',
+                                                    'code' => 201
+                                                )
+                                            );
+                                            http_response_code(201);
+                                        }else{
+                                            if($booking['status']=='Batal'){
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'Booking Anda Sudah Dibatalkan pada tanggal '.$booking['validasi'],
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
+                                            }else if($booking['status']=='Gagal'){
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'No.Booking Anda Bermasalah, Hubungi Admnistrator..',
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
+                                            }else if($booking['status']=='Belum'){
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'Anda Belum Melakukan Checkin',
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
+                                            }else{
+                                                $resep = fetch_array(bukaquery2("select resep_obat.no_resep,CONVERT(RIGHT(resep_obat.no_resep,4),signed) as urut from resep_obat where resep_obat.no_rawat='".$booking['no_rawat']."'"));
+                                                if(empty($resep['no_resep'])) {
+                                                    $response = array(
+                                                        'metadata' => array(
+                                                            'message' => 'Anda tidak memiliki resep dari dokter yang anda tuju, silahkan konfirmasi petugas poli',
+                                                            'code' => 201
+                                                        )
+                                                    );
+                                                    http_response_code(201);
+                                                }else{
+                                                    $response = array(
+                                                        'response' => array(
+                                                            'jenisresep' => (getOne("select count(resep_dokter_racikan.no_resep) from resep_dokter_racikan where resep_dokter_racikan.no_resep='".$resep['no_resep']."'")>0?"Racikan":"Non Racikan"),
+                                                            'nomorantrean' => $resep['urut'],
+                                                            'keterangan' => "Resep dibuat secara elektronik di poli"
+                                                        ),
+                                                        'metadata' => array(
+                                                            'message' => 'Ok',
+                                                            'code' => 200
+                                                        )
+                                                    );
+                                                }
+                                            }
+                                        }
+                                    }
+                                }else {
+                                    $response = array(
+                                        'metadata' => array(
+                                            'message' => 'Nama User / Password / Token ada yang salah ..!!',
+                                            'code' => 201
+                                        )
+                                    );
+                                    http_response_code(201);
+                                }
+                               break;
+                           case "statusantreanfarmasi":
+                                $konten = trim(file_get_contents("php://input"));
+                                $decode = json_decode($konten, true);
+                                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                                    if(empty($decode['kodebooking'])) { 
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Kode Booking tidak boleh kosong',
+                                                'code' => 201
+                                            )
+                                        );
+                                        http_response_code(201);
+                                    }else if(strpos($decode['kodebooking'],"'")||strpos($decode['kodebooking'],"\\")){
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Format Kode Booking salah',
+                                                'code' => 201
+                                            )
+                                        );
+                                        http_response_code(201);
+                                    }else{
+                                        $booking = fetch_array(bukaquery2("select referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking='".validTeks4($decode['kodebooking'],25)."'"));
+                                        if(empty($booking['status'])) {
+                                            $response = array(
+                                                'metadata' => array(
+                                                    'message' => 'Data Booking tidak ditemukan',
+                                                    'code' => 201
+                                                )
+                                            );
+                                            http_response_code(201);
+                                        }else{
+                                            if($booking['status']=='Batal'){
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'Booking Anda Sudah Dibatalkan pada tanggal '.$booking['validasi'],
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
+                                            }else if($booking['status']=='Gagal'){
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'No.Booking Anda Bermasalah, Hubungi Admnistrator..',
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
+                                            }else if($booking['status']=='Belum'){
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'Anda Belum Melakukan Checkin',
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
+                                            }else{
+                                                $resep = fetch_array(bukaquery2("select resep_obat.no_resep,resep_obat.tgl_peresepan,left(resep_obat.no_resep,8) as marking from resep_obat where resep_obat.no_rawat='".$booking['no_rawat']."'"));
+                                                if(empty($resep['no_resep'])) {
+                                                    $response = array(
+                                                        'metadata' => array(
+                                                            'message' => 'Anda tidak memiliki resep dari dokter yang anda tuju, silahkan konfirmasi petugas poli',
+                                                            'code' => 201
+                                                        )
+                                                    );
+                                                    http_response_code(201);
+                                                }else{
+                                                    $response = array(
+                                                        'response' => array(
+                                                            'jenisresep' => (getOne("select count(resep_dokter_racikan.no_resep) from resep_dokter_racikan where resep_dokter_racikan.no_resep='".$resep['no_resep']."'")>0?"Racikan":"Non Racikan"),
+                                                            'totalantrean' => getOne("select count(resep_obat.no_resep) from resep_obat where resep_obat.tgl_peresepan='".$resep['tgl_peresepan']."'"),
+                                                            'sisaantrean' => getOne("select count(resep_obat.no_resep) from resep_obat where resep_obat.tgl_perawatan='0000-00-00' and resep_obat.tgl_peresepan='".$resep['tgl_peresepan']."'"),
+                                                            'antreanpanggil' => getOne("select ifnull(CONVERT(RIGHT(antriapotek2.no_resep,4),signed),0) from antriapotek2 where left(antriapotek2.no_resep,8)='".$resep['marking']."'"),
+                                                            'keterangan' => ""
+                                                        ),
+                                                        'metadata' => array(
+                                                            'message' => 'Ok',
+                                                            'code' => 200
+                                                        )
+                                                    );
+                                                }
+                                            }
+                                        }
+                                    }
+                                }else {
+                                    $response = array(
+                                        'metadata' => array(
+                                            'message' => 'Nama User / Password / Token ada yang salah ..!!',
+                                            'code' => 201
+                                        )
+                                    );
+                                    http_response_code(201);
+                                }
+                               break;
                         }
                     }
                 }
@@ -1847,6 +2031,46 @@
         echo '   {'."\n";
         echo '      "response": {'."\n";
         echo '          "norm": "XXXXXX",'."\n";
+        echo '      },'."\n";
+        echo '      "metadata": {'."\n";
+        echo '          "message": "Ok",'."\n";
+        echo '          "code": 200'."\n";
+        echo '      }'."\n";
+        echo '   }'."\n\n";
+        echo "10. Ambil Antrean Farmasi, methode POST\n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/ambilantreanfarmasi \n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
+        echo "   Body berisi : \n";
+        echo '   {'."\n";
+        echo '      "kodebooking": "XXXXXXXXXXXXX"'."\n";
+        echo '   }'."\n\n";
+        echo "   Hasilnya : \n";
+        echo '   {'."\n";
+        echo '      "response": {'."\n";
+        echo '          "jenisresep": "Racikan/Non Racikan",'."\n";
+        echo '          "nomorantrean": X,'."\n";
+        echo '          "keterangan": "XXXXXXXXXXXXXX",'."\n";
+        echo '      },'."\n";
+        echo '      "metadata": {'."\n";
+        echo '          "message": "Ok",'."\n";
+        echo '          "code": 200'."\n";
+        echo '      }'."\n";
+        echo '   }'."\n\n";
+        echo "11. Status Antrean Farmasi, methode POST\n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/statusantreanfarmasi \n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
+        echo "   Body berisi : \n";
+        echo '   {'."\n";
+        echo '      "kodebooking": "XXXXXXXXXXXXX"'."\n";
+        echo '   }'."\n\n";
+        echo "   Hasilnya : \n";
+        echo '   {'."\n";
+        echo '      "response": {'."\n";
+        echo '          "jenisresep": "Racikan/Non Racikan",'."\n";
+        echo '          "totalantrean": XXx,'."\n";
+        echo '          "sisaantrean": xxx,'."\n";
+        echo '          "antreanpanggil": xxx,'."\n";
+        echo '          "keterangan": "XXXXXX",'."\n";
         echo '      },'."\n";
         echo '      "metadata": {'."\n";
         echo '          "message": "Ok",'."\n";
