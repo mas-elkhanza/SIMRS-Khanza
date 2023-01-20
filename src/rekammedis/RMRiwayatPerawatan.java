@@ -3476,7 +3476,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 "select databarang.kode_brng,databarang.nama_brng,detreturjual.kode_sat,detreturjual.h_retur, "+
                              "(detreturjual.jml_retur * -1) as jumlah,(detreturjual.subtotal * -1) as total from detreturjual "+
                              "inner join databarang on detreturjual.kode_brng=databarang.kode_brng  "+
-                                "inner join returjual on returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual='"+rs.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
+                                "inner join returjual on returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual like '%"+rs.getString("no_rawat")+"%' order by databarang.nama_brng").executeQuery();
                             if(rs2.next()){                                    
                                 htmlContent.append(  
                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
