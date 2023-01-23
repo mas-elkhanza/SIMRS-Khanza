@@ -924,7 +924,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJnsPerawatan.setAutoCreateRowSorter(true);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1076,7 +1075,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbLokasiKamar.setAutoCreateRowSorter(true);
         tbLokasiKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLokasiKamar.setName("tbLokasiKamar"); // NOI18N
         tbLokasiKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1194,7 +1192,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbLokasiRuangOK.setAutoCreateRowSorter(true);
         tbLokasiRuangOK.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLokasiRuangOK.setName("tbLokasiRuangOK"); // NOI18N
         tbLokasiRuangOK.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1312,7 +1309,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbLokasiRuangLabPK.setAutoCreateRowSorter(true);
         tbLokasiRuangLabPK.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLokasiRuangLabPK.setName("tbLokasiRuangLabPK"); // NOI18N
         tbLokasiRuangLabPK.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1430,7 +1426,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbLokasiRuangLabPA.setAutoCreateRowSorter(true);
         tbLokasiRuangLabPA.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLokasiRuangLabPA.setName("tbLokasiRuangLabPA"); // NOI18N
         tbLokasiRuangLabPA.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1548,7 +1543,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbLokasiRuangLabMB.setAutoCreateRowSorter(true);
         tbLokasiRuangLabMB.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLokasiRuangLabMB.setName("tbLokasiRuangLabMB"); // NOI18N
         tbLokasiRuangLabMB.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1666,7 +1660,6 @@ public final class SatuSehatMapingLokasi extends javax.swing.JDialog {
         Scroll6.setName("Scroll6"); // NOI18N
         Scroll6.setOpaque(true);
 
-        tbLokasiRuangRadiologi.setAutoCreateRowSorter(true);
         tbLokasiRuangRadiologi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLokasiRuangRadiologi.setName("tbLokasiRuangRadiologi"); // NOI18N
         tbLokasiRuangRadiologi.addMouseListener(new java.awt.event.MouseAdapter() {

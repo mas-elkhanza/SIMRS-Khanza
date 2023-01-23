@@ -143,7 +143,6 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

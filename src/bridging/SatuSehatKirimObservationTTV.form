@@ -311,7 +311,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="30-12-2022"/>
+                        <StringItem index="0" value="23-01-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -336,7 +336,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="30-12-2022"/>
+                        <StringItem index="0" value="23-01-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -439,7 +439,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbSuhu">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -468,7 +467,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbRespirasi">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -497,7 +495,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbNadi">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -526,7 +523,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbSpO2">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -555,7 +551,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbGCS">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -584,7 +579,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbKesadaran">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -613,7 +607,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbTensi">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -642,7 +635,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbTB">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -671,7 +663,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbBB">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>
@@ -700,7 +691,6 @@
               <SubComponents>
                 <Component class="widget.Table" name="tbLP">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
                     </Property>

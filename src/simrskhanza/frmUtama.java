@@ -461,6 +461,7 @@ import bridging.SatuSehatKirimObservationTTV;
 import bridging.SatuSehatKirimProcedure;
 import bridging.SatuSehatMapingLokasi;
 import bridging.SatuSehatMapingOrganisasi;
+import bridging.SatuSehatMapingVaksin;
 import bridging.SatuSehatReferensiPasien;
 import bridging.SatuSehatReferensiPraktisi;
 import dapur.DapurSuplier;
@@ -19625,6 +19626,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMappingVaksinSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatMapingVaksin aplikasi=new SatuSehatMapingVaksin(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20285,7 +20298,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
-            btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur;
+            btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat;
     
     public void isWall(){
         try{            
@@ -23168,6 +23181,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_kirim_procedure()==true){
                 Panelmenu.add(btnKirimProcedureSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_mapping_vaksin()==true){
+                Panelmenu.add(btnMappingVaksinSatuSehat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -27679,6 +27697,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_kirim_procedure()==true){
             Panelmenu.add(btnKirimProcedureSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_mapping_vaksin()==true){
+            Panelmenu.add(btnMappingVaksinSatuSehat);
             jmlmenu++;
         }
 
@@ -33289,6 +33312,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_kirim_procedure()==true){
             if(btnKirimProcedureSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKirimProcedureSatuSehat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsatu_sehat_mapping_vaksin()==true){
+            if(btnMappingVaksinSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMappingVaksinSatuSehat);
                 jmlmenu++;
             }                
         }
@@ -39269,5 +39299,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuplierDapur.setName("btnSuplierDapur"); 
         btnSuplierDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSuplierDapur.addActionListener(this::btnSuplierDapurActionPerformed);
+        
+        btnMappingVaksinSatuSehat = new widget.ButtonBig();
+        btnMappingVaksinSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnMappingVaksinSatuSehat.setText("Mapping Vaksin Satu Sehat");
+        btnMappingVaksinSatuSehat.setIconTextGap(0);
+        btnMappingVaksinSatuSehat.setName("btnMappingVaksinSatuSehat"); 
+        btnMappingVaksinSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMappingVaksinSatuSehat.addActionListener(this::btnMappingVaksinSatuSehatActionPerformed);
     }
 }

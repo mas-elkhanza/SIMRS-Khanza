@@ -244,7 +244,6 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setComponentPopupMenu(jPopupMenu1);
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
