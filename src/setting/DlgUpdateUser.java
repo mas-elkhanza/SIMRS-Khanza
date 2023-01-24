@@ -171,7 +171,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             akun_host_to_host_bank_jabar=false,pembayaran_bank_jabar=false,surat_pernyataan_pasien_umum=false,konseling_farmasi=false,pelayanan_informasi_obat=false,jawaban_pio_apoteker=false,surat_persetujuan_umum=false,
             transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,
             catatan_cek_gds=false,satu_sehat_kirim_condition=false,checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false,satu_sehat_kirim_procedure=false,operasi_per_bulan=false,
-            timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false;
+            timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false,satu_sehat_kirim_Immunization=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -765,7 +765,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         akun_host_to_host_bank_jabar=false;pembayaran_bank_jabar=false;surat_pernyataan_pasien_umum=false;konseling_farmasi=false;pelayanan_informasi_obat=false;jawaban_pio_apoteker=false;surat_persetujuan_umum=false;
         transfer_pasien_antar_ruang=false;satu_sehat_referensi_dokter=false;satu_sehat_referensi_pasien=false;satu_sehat_mapping_departemen=false;satu_sehat_mapping_lokasi=false;satu_sehat_kirim_encounter=false;
         catatan_cek_gds=false;satu_sehat_kirim_condition=false;checklist_pre_operasi=false;satu_sehat_kirim_observationttv=false;signin_sebelum_anestesi=false;satu_sehat_kirim_procedure=false;operasi_per_bulan=false;
-        timeout_sebelum_insisi=false;signout_sebelum_menutup_luka=false;dapur_barang=false;dapur_opname=false;satu_sehat_mapping_vaksin=false;dapur_suplier=false;
+        timeout_sebelum_insisi=false;signout_sebelum_menutup_luka=false;dapur_barang=false;dapur_opname=false;satu_sehat_mapping_vaksin=false;dapur_suplier=false;satu_sehat_kirim_Immunization=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -969,7 +969,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.transfer_pasien_antar_ruang,user.satu_sehat_referensi_dokter,user.satu_sehat_referensi_pasien,user.satu_sehat_mapping_departemen,"+
                 "user.satu_sehat_mapping_lokasi,user.satu_sehat_kirim_encounter,user.catatan_cek_gds,user.satu_sehat_kirim_condition,user.checklist_pre_operasi,"+
                 "user.satu_sehat_kirim_observationttv,user.signin_sebelum_anestesi,user.satu_sehat_kirim_procedure,user.operasi_per_bulan,user.timeout_sebelum_insisi,"+
-                "user.signout_sebelum_menutup_luka,user.dapur_barang,user.dapur_opname,user.satu_sehat_mapping_vaksin,user.dapur_suplier from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.signout_sebelum_menutup_luka,user.dapur_barang,user.dapur_opname,user.satu_sehat_mapping_vaksin,user.dapur_suplier,user.satu_sehat_kirim_Immunization from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1072,7 +1072,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     skrining_nutrisi_dewasa=rs.getBoolean("skrining_nutrisi_dewasa");skrining_nutrisi_lansia=rs.getBoolean("skrining_nutrisi_lansia");hasil_pemeriksaan_usg=rs.getBoolean("hasil_pemeriksaan_usg");skrining_nutrisi_anak=rs.getBoolean("skrining_nutrisi_anak");akun_host_to_host_bank_jabar=rs.getBoolean("akun_host_to_host_bank_jabar");pembayaran_bank_jabar=rs.getBoolean("pembayaran_bank_jabar");surat_pernyataan_pasien_umum=rs.getBoolean("surat_pernyataan_pasien_umum");konseling_farmasi=rs.getBoolean("konseling_farmasi");pelayanan_informasi_obat=rs.getBoolean("pelayanan_informasi_obat");
                     jawaban_pio_apoteker=rs.getBoolean("jawaban_pio_apoteker");surat_persetujuan_umum=rs.getBoolean("surat_persetujuan_umum");transfer_pasien_antar_ruang=rs.getBoolean("transfer_pasien_antar_ruang");satu_sehat_referensi_dokter=rs.getBoolean("satu_sehat_referensi_dokter");satu_sehat_referensi_pasien=rs.getBoolean("satu_sehat_referensi_pasien");satu_sehat_mapping_departemen=rs.getBoolean("satu_sehat_mapping_departemen");satu_sehat_mapping_lokasi=rs.getBoolean("satu_sehat_mapping_lokasi");satu_sehat_kirim_encounter=rs.getBoolean("satu_sehat_kirim_encounter");
                     catatan_cek_gds=rs.getBoolean("catatan_cek_gds");satu_sehat_kirim_condition=rs.getBoolean("satu_sehat_kirim_condition");checklist_pre_operasi=rs.getBoolean("checklist_pre_operasi");satu_sehat_kirim_observationttv=rs.getBoolean("satu_sehat_kirim_observationttv");signin_sebelum_anestesi=rs.getBoolean("signin_sebelum_anestesi");satu_sehat_kirim_procedure=rs.getBoolean("satu_sehat_kirim_procedure");operasi_per_bulan=rs.getBoolean("operasi_per_bulan");timeout_sebelum_insisi=rs.getBoolean("timeout_sebelum_insisi");signout_sebelum_menutup_luka=rs.getBoolean("signout_sebelum_menutup_luka");
-                    dapur_barang=rs.getBoolean("dapur_barang");dapur_opname=rs.getBoolean("dapur_opname");satu_sehat_mapping_vaksin=rs.getBoolean("satu_sehat_mapping_vaksin");dapur_suplier=rs.getBoolean("dapur_suplier");
+                    dapur_barang=rs.getBoolean("dapur_barang");dapur_opname=rs.getBoolean("dapur_opname");satu_sehat_mapping_vaksin=rs.getBoolean("satu_sehat_mapping_vaksin");dapur_suplier=rs.getBoolean("dapur_suplier");satu_sehat_kirim_Immunization=rs.getBoolean("satu_sehat_kirim_Immunization");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -3355,6 +3355,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[K]Kirim Procedure Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[K]Kirim Procedure Satu Sehat",satu_sehat_kirim_procedure});
+        }
+        
+        if("[K]Kirim Vaksin Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[K]Kirim Vaksin Satu Sehat",satu_sehat_kirim_Immunization});
         }
 
         if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7006,6 +7010,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[K]Kirim Procedure Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_kirim_procedure='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Kirim Vaksin Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_kirim_Immunization='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){

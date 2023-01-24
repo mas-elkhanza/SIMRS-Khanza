@@ -198,7 +198,8 @@ public final class akses {
             jawaban_pio_apoteker=false,surat_persetujuan_umum=false,transfer_pasien_antar_ruang=false,satu_sehat_referensi_dokter=false,satu_sehat_referensi_pasien=false,
             satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,catatan_cek_gds=false,satu_sehat_kirim_condition=false,
             checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false,satu_sehat_kirim_procedure=false,operasi_per_bulan=false,
-            timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false;
+            timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false,
+            satu_sehat_kirim_Immunization=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1131,6 +1132,7 @@ public final class akses {
                         akses.dapur_opname=true;
                         akses.satu_sehat_mapping_vaksin=true;
                         akses.dapur_suplier=true;
+                        akses.satu_sehat_kirim_Immunization=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2047,6 +2049,7 @@ public final class akses {
                         akses.dapur_opname=rs2.getBoolean("dapur_opname");
                         akses.satu_sehat_mapping_vaksin=rs2.getBoolean("satu_sehat_mapping_vaksin");
                         akses.dapur_suplier=rs2.getBoolean("dapur_suplier");
+                        akses.satu_sehat_kirim_Immunization=rs2.getBoolean("satu_sehat_kirim_Immunization");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2961,6 +2964,7 @@ public final class akses {
                         akses.dapur_opname=false;
                         akses.satu_sehat_mapping_vaksin=false;
                         akses.dapur_suplier=false;
+                        akses.satu_sehat_kirim_Immunization=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3932,4 +3936,5 @@ public final class akses {
     public static boolean getdapur_opname(){return akses.dapur_opname;}
     public static boolean getsatu_sehat_mapping_vaksin(){return akses.satu_sehat_mapping_vaksin;}
     public static boolean getdapur_suplier(){return akses.dapur_suplier;}
+    public static boolean getsatu_sehat_kirim_Immunization(){return akses.satu_sehat_kirim_Immunization;}
 }   
