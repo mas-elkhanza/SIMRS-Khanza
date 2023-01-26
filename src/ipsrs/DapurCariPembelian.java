@@ -33,7 +33,7 @@ public class DapurCariPembelian extends javax.swing.JDialog {
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DapurBarang barang=new DapurBarang(null,false);
     private PreparedStatement ps,ps2,pscaribeli,psdapurdetailbeli;
-    private riwayatnonmedis Trackbarang=new riwayatnonmedis();
+    private riwayatdapur Trackbarang=new riwayatdapur();
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
@@ -846,7 +846,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                           rs.getString("kd_rek"),"KAS DI TANGAN",rs.getString("tagihan"),"0"
                       }); 
-                      sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PENGADAAN BARANG DAPUR KERING & BASAH"+", OLEH "+akses.getkode());
+                      sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PEMBELIAN BARANG DAPUR KERING & BASAH"+", OLEH "+akses.getkode());
                       if(sukses==true){
                           Sequel.queryu2("delete from dapurpembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
                           Sequel.Commit();

@@ -50,6 +50,7 @@ import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.RMCari5SOAPTerakhir;
+import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataCatatanCekGDS;
@@ -1279,6 +1280,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnSignInSebelumAnestesi = new widget.Button();
         BtnTimeOutSebelumInsisi = new widget.Button();
         BtnSignOutSebelumMenutupLuka = new widget.Button();
+        BtnChecklistPostOperasi = new widget.Button();
         BtnPenilaianPreOperasi = new widget.Button();
         BtnPenilaianPreAnestesi = new widget.Button();
         BtnPenilaianPsikolog = new widget.Button();
@@ -3681,6 +3683,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnSignOutSebelumMenutupLuka);
+
+        BtnChecklistPostOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnChecklistPostOperasi.setText("Check List Post Operasi");
+        BtnChecklistPostOperasi.setFocusPainted(false);
+        BtnChecklistPostOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnChecklistPostOperasi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnChecklistPostOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnChecklistPostOperasi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnChecklistPostOperasi.setName("BtnChecklistPostOperasi"); // NOI18N
+        BtnChecklistPostOperasi.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnChecklistPostOperasi.setRoundRect(false);
+        BtnChecklistPostOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnChecklistPostOperasiActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnChecklistPostOperasi);
 
         BtnPenilaianPreOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnPenilaianPreOperasi.setText("Penilaian Pre Operasi");
@@ -7078,6 +7097,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnSignOutSebelumMenutupLukaActionPerformed
 
+    private void BtnChecklistPostOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnChecklistPostOperasiActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMChecklistPostOperasi form=new RMChecklistPostOperasi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.emptTeks();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnChecklistPostOperasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7114,6 +7150,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnCatatanObservasiRanap;
     private widget.Button BtnCatatanObservasiRanapKebidanan;
     private widget.Button BtnCatatanObservasiRanapPostPartum;
+    private widget.Button BtnChecklistPostOperasi;
     private widget.Button BtnChecklistPreOperasi;
     private widget.Button BtnCopyResep;
     private widget.Button BtnDiagnosa;
@@ -8003,6 +8040,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnSignOutSebelumMenutupLuka.setVisible(akses.getsignout_sebelum_menutup_luka()); 
         if(akses.getsignout_sebelum_menutup_luka()==true){
+            tinggi=tinggi+24;
+        }
+        BtnChecklistPostOperasi.setVisible(akses.getchecklist_post_operasi()); 
+        if(akses.getchecklist_post_operasi()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
