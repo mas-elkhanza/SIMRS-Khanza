@@ -595,6 +595,7 @@ import inventory.InventoryTelaahResep;
 import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.DapurBarang;
 import ipsrs.DapurInputStok;
+import ipsrs.DapurPembelian;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSHibah;
@@ -19651,6 +19652,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPembelianDapurActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurPembelian pembelian=new DapurPembelian(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20311,7 +20324,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
-            btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat;
+            btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur;
     
     public void isWall(){
         try{            
@@ -21406,6 +21419,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdapur_suplier()==true){
                 Panelmenu.add(btnSuplierDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getdapur_pembelian()==true){
+                Panelmenu.add(btnPembelianDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==5){ 
@@ -25938,6 +25956,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdapur_suplier()==true){
             Panelmenu.add(btnSuplierDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getdapur_pembelian()==true){
+            Panelmenu.add(btnPembelianDapur);
             jmlmenu++;
         }
 
@@ -30847,6 +30870,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdapur_suplier()==true){
             if(btnSuplierDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuplierDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdapur_pembelian()==true){
+            if(btnPembelianDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembelianDapur);
                 jmlmenu++;
             }                
         }
@@ -39345,5 +39375,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKirimVaksinSatuSehat.setName("btnKirimVaksinSatuSehat"); 
         btnKirimVaksinSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKirimVaksinSatuSehat.addActionListener(this::btnKirimVaksinSatuSehatActionPerformed);
+        
+        btnPembelianDapur = new widget.ButtonBig();
+        btnPembelianDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5296685_fish_food_meal_rice_salmon_icon.png")));
+        btnPembelianDapur.setText("Pengadaan Barang Dapur");
+        btnPembelianDapur.setIconTextGap(0);
+        btnPembelianDapur.setName("btnPembelianDapur"); 
+        btnPembelianDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembelianDapur.addActionListener(this::btnPembelianDapurActionPerformed);
     }
 }

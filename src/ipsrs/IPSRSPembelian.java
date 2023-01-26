@@ -530,7 +530,7 @@ public class IPSRSPembelian extends javax.swing.JDialog {
         LPpn.setBounds(410, 20, 100, 30);
 
         label24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label24.setText("Meterai :");
+        label24.setText("Biaya Tambahan :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label24);
