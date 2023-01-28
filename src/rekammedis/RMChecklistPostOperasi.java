@@ -130,9 +130,33 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
             }else if(i==23){
                 column.setPreferredWidth(110);
             }else if(i==24){
-                column.setPreferredWidth(68);
+                column.setPreferredWidth(75);
             }else if(i==25){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(115);
+            }else if(i==26){
+                column.setPreferredWidth(68);
+            }else if(i==27){
+                column.setPreferredWidth(55);
+            }else if(i==28){
+                column.setPreferredWidth(150);
+            }else if(i==29){
+                column.setPreferredWidth(58);
+            }else if(i==30){
+                column.setPreferredWidth(57);
+            }else if(i==31){
+                column.setPreferredWidth(120);
+            }else if(i==32){
+                column.setPreferredWidth(90);
+            }else if(i==33){
+                column.setPreferredWidth(70);
+            }else if(i==34){
+                column.setPreferredWidth(90);
+            }else if(i==35){
+                column.setPreferredWidth(150);
+            }else if(i==36){
+                column.setPreferredWidth(90);
+            }else if(i==37){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -150,7 +174,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         JumlahDrain.setDocument(new batasInput((byte)2).getKata(JumlahDrain));
         LetakDrain.setDocument(new batasInput((byte)40).getKata(LetakDrain));
         WarnaDrain.setDocument(new batasInput((byte)30).getKata(WarnaDrain));
-        AreaLukaOperasi.setDocument(new batasInput((int)150).getKata(AreaLukaOperasi));
+        AreaLukaOperasi.setDocument(new batasInput((int)120).getKata(AreaLukaOperasi));
         JumlahUrine.setDocument(new batasInput((byte)4).getKata(JumlahUrine));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -269,8 +293,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningNutrisi = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        MnPostOperasi = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -380,19 +403,19 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningNutrisi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningNutrisi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningNutrisi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningNutrisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningNutrisi.setText("Formulir Checklist Pre Operasi");
-        MnSkriningNutrisi.setName("MnSkriningNutrisi"); // NOI18N
-        MnSkriningNutrisi.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnSkriningNutrisi.addActionListener(new java.awt.event.ActionListener() {
+        MnPostOperasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnPostOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPostOperasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnPostOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPostOperasi.setText("Formulir Checklist Post Operasi");
+        MnPostOperasi.setName("MnPostOperasi"); // NOI18N
+        MnPostOperasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPostOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningNutrisiActionPerformed(evt);
+                MnPostOperasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningNutrisi);
+        jPopupMenu1.add(MnPostOperasi);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -764,7 +787,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2023 09:15:15" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2023 17:28:04" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1152,7 +1175,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         jLabel53.setBounds(0, 150, 140, 23);
 
         TanggalKateter.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKateter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2023 09:15:16" }));
+        TanggalKateter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2023 17:28:04" }));
         TanggalKateter.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKateter.setName("TanggalKateter"); // NOI18N
         TanggalKateter.setOpaque(false);
@@ -1346,7 +1369,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,cmbSkor3,BtnBatal);
+            Valid.pindah(evt,btnPetugasOK,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1367,7 +1390,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString())){
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -1402,7 +1425,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString())){
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -1444,16 +1467,16 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_post_operasi.tanggal,"+
                         "checklist_post_operasi.sncn,checklist_post_operasi.tindakan,checklist_post_operasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "checklist_post_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_post_operasi.identitas,"+
-                        "checklist_post_operasi.surat_ijin_bedah,checklist_post_operasi.surat_ijin_anestesi,checklist_post_operasi.surat_ijin_transfusi,"+
-                        "checklist_post_operasi.penandaan_area_operasi,checklist_post_operasi.keadaan_umum,checklist_post_operasi.pemeriksaan_penunjang_rontgen,"+
-                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_rontgen,checklist_post_operasi.pemeriksaan_penunjang_ekg,"+
-                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_post_operasi.pemeriksaan_penunjang_usg,"+
+                        "checklist_post_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_post_operasi.keadaan_umum,"+
+                        "checklist_post_operasi.pemeriksaan_penunjang_rontgen,checklist_post_operasi.keterangan_pemeriksaan_penunjang_rontgen,"+
+                        "checklist_post_operasi.pemeriksaan_penunjang_ekg,checklist_post_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_post_operasi.pemeriksaan_penunjang_usg,"+
                         "checklist_post_operasi.keterangan_pemeriksaan_penunjang_usg,checklist_post_operasi.pemeriksaan_penunjang_ctscan,"+
                         "checklist_post_operasi.keterangan_pemeriksaan_penunjang_ctscan,checklist_post_operasi.pemeriksaan_penunjang_mri,"+
-                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_post_operasi.persiapan_darah,checklist_post_operasi.keterangan_persiapan_darah,"+
-                        "checklist_post_operasi.perlengkapan_khusus,checklist_post_operasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi,"+
-                        "checklist_post_operasi.nip_perawat_ok,petugasok.nama as petugasok "+
+                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_post_operasi.jenis_cairan_infus,checklist_post_operasi.kateter_urine,"+
+                        "checklist_post_operasi.tanggal_pemasangan_kateter,checklist_post_operasi.warna_kateter,checklist_post_operasi.jumlah_kateter,"+
+                        "checklist_post_operasi.area_luka_operasi,checklist_post_operasi.drain,checklist_post_operasi.jumlah_drain,checklist_post_operasi.letak_drain,"+
+                        "checklist_post_operasi.warna_drain,checklist_post_operasi.jaringan_pa,checklist_post_operasi.nip_perawat_ok,petugasok.nama as petugasok,"+
+                        "checklist_post_operasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi "+
                         "from checklist_post_operasi inner join reg_periksa on checklist_post_operasi.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join dokter as dokterbedah on dokterbedah.kd_dokter=checklist_post_operasi.kd_dokter_bedah "+
@@ -1465,16 +1488,16 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_post_operasi.tanggal,"+
                         "checklist_post_operasi.sncn,checklist_post_operasi.tindakan,checklist_post_operasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "checklist_post_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_post_operasi.identitas,"+
-                        "checklist_post_operasi.surat_ijin_bedah,checklist_post_operasi.surat_ijin_anestesi,checklist_post_operasi.surat_ijin_transfusi,"+
-                        "checklist_post_operasi.penandaan_area_operasi,checklist_post_operasi.keadaan_umum,checklist_post_operasi.pemeriksaan_penunjang_rontgen,"+
-                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_rontgen,checklist_post_operasi.pemeriksaan_penunjang_ekg,"+
-                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_post_operasi.pemeriksaan_penunjang_usg,"+
+                        "checklist_post_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_post_operasi.keadaan_umum,"+
+                        "checklist_post_operasi.pemeriksaan_penunjang_rontgen,checklist_post_operasi.keterangan_pemeriksaan_penunjang_rontgen,"+
+                        "checklist_post_operasi.pemeriksaan_penunjang_ekg,checklist_post_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_post_operasi.pemeriksaan_penunjang_usg,"+
                         "checklist_post_operasi.keterangan_pemeriksaan_penunjang_usg,checklist_post_operasi.pemeriksaan_penunjang_ctscan,"+
                         "checklist_post_operasi.keterangan_pemeriksaan_penunjang_ctscan,checklist_post_operasi.pemeriksaan_penunjang_mri,"+
-                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_post_operasi.persiapan_darah,checklist_post_operasi.keterangan_persiapan_darah,"+
-                        "checklist_post_operasi.perlengkapan_khusus,checklist_post_operasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi,"+
-                        "checklist_post_operasi.nip_perawat_ok,petugasok.nama as petugasok "+
+                        "checklist_post_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_post_operasi.jenis_cairan_infus,checklist_post_operasi.kateter_urine,"+
+                        "checklist_post_operasi.tanggal_pemasangan_kateter,checklist_post_operasi.warna_kateter,checklist_post_operasi.jumlah_kateter,"+
+                        "checklist_post_operasi.area_luka_operasi,checklist_post_operasi.drain,checklist_post_operasi.jumlah_drain,checklist_post_operasi.letak_drain,"+
+                        "checklist_post_operasi.warna_drain,checklist_post_operasi.jaringan_pa,checklist_post_operasi.nip_perawat_ok,petugasok.nama as petugasok,"+
+                        "checklist_post_operasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi "+
                         "from checklist_post_operasi inner join reg_periksa on checklist_post_operasi.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join dokter as dokterbedah on dokterbedah.kd_dokter=checklist_post_operasi.kd_dokter_bedah "+
@@ -1516,15 +1539,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Bedah</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Anest</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Identitas</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keadaan Umum</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penandaan Area Operasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Surat Ijin Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Surat Ijin Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Surat Ijin Transfusi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Persiapan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Persiapan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Perlengkapan Khusus</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Radiologi</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Radiologi</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>EKG</b></td>"+
@@ -1535,10 +1550,21 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan CT Scan</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>MRI</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan MRI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP Ruangan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruangan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Cairan Infus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kateter Urine</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Pemasangan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Warna Urine</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml.Urine</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Aarea Luka Operasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Drain</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml.Drain</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Letak Drain</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Warna Drain</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jaringan PA</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP OK</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruang OK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP Anestesi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Anestesi</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1556,15 +1582,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("dokterbedah")+"</td>"+
                                "<td valign='top'>"+rs.getString("kd_dokter_anestesi")+"</td>"+
                                "<td valign='top'>"+rs.getString("dokteranestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("identitas")+"</td>"+
                                "<td valign='top'>"+rs.getString("keadaan_umum")+"</td>"+
-                               "<td valign='top'>"+rs.getString("penandaan_area_operasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("surat_ijin_bedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("surat_ijin_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("surat_ijin_transfusi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("persiapan_darah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_persiapan_darah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("perlengkapan_khusus")+"</td>"+
                                "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_rontgen")+"</td>"+
                                "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_rontgen")+"</td>"+
                                "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_ekg")+"</td>"+
@@ -1575,10 +1593,21 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_ctscan")+"</td>"+
                                "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_mri")+"</td>"+
                                "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_mri")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nip_perawat_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("petugasanestesi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jenis_cairan_infus")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kateter_urine")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tanggal_pemasangan_kateter")+"</td>"+
+                               "<td valign='top'>"+rs.getString("warna_kateter")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jumlah_kateter")+"</td>"+
+                               "<td valign='top'>"+rs.getString("area_luka_operasi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("drain")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jumlah_drain")+"</td>"+
+                               "<td valign='top'>"+rs.getString("letak_drain")+"</td>"+
+                               "<td valign='top'>"+rs.getString("warna_drain")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jaringan_pa")+"</td>"+
                                "<td valign='top'>"+rs.getString("nip_perawat_ok")+"</td>"+
                                "<td valign='top'>"+rs.getString("petugasok")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nip_perawat_anestesi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("petugasanestesi")+"</td>"+
                             "</tr>");
                     }
                     LoadHTML.setText(
@@ -1604,7 +1633,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                     );
                     bg.close();
 
-                    File f = new File("DataChecklistPreOperasi.html");            
+                    File f = new File("DataChecklistPostOperasi.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1614,7 +1643,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA CHECK LIST PRE OPERASI<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA CHECK LIST POST OPERASI<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")
@@ -1720,7 +1749,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         Valid.pindah(evt,KeteranganMRI,btnPetugasOK);
     }//GEN-LAST:event_btnPetugasRuanganKeyPressed
 
-    private void MnSkriningNutrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningNutrisiActionPerformed
+    private void MnPostOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPostOperasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1730,23 +1759,23 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),31).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),34).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),33).toString():finger2)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistPreOperasi.jasper","report","::[ Formulir Check List Pre Operasi ]::",
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),35).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),34).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),37).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),36).toString():finger2)+"\n"+Tanggal.getSelectedItem()); 
+            Valid.MyReportqry("rptFormulirChecklistPostOperasi.jasper","report","::[ Formulir Check List Post Operasi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_post_operasi.tanggal,"+
                     "checklist_post_operasi.sncn,checklist_post_operasi.tindakan,checklist_post_operasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "checklist_post_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_post_operasi.identitas,"+
-                    "checklist_post_operasi.surat_ijin_bedah,checklist_post_operasi.surat_ijin_anestesi,checklist_post_operasi.surat_ijin_transfusi,"+
-                    "checklist_post_operasi.penandaan_area_operasi,checklist_post_operasi.keadaan_umum,checklist_post_operasi.pemeriksaan_penunjang_rontgen,"+
-                    "checklist_post_operasi.keterangan_pemeriksaan_penunjang_rontgen,checklist_post_operasi.pemeriksaan_penunjang_ekg,"+
-                    "checklist_post_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_post_operasi.pemeriksaan_penunjang_usg,"+
+                    "checklist_post_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_post_operasi.keadaan_umum,"+
+                    "checklist_post_operasi.pemeriksaan_penunjang_rontgen,checklist_post_operasi.keterangan_pemeriksaan_penunjang_rontgen,"+
+                    "checklist_post_operasi.pemeriksaan_penunjang_ekg,checklist_post_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_post_operasi.pemeriksaan_penunjang_usg,"+
                     "checklist_post_operasi.keterangan_pemeriksaan_penunjang_usg,checklist_post_operasi.pemeriksaan_penunjang_ctscan,"+
                     "checklist_post_operasi.keterangan_pemeriksaan_penunjang_ctscan,checklist_post_operasi.pemeriksaan_penunjang_mri,"+
-                    "checklist_post_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_post_operasi.persiapan_darah,checklist_post_operasi.keterangan_persiapan_darah,"+
-                    "checklist_post_operasi.perlengkapan_khusus,checklist_post_operasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi,"+
-                    "checklist_post_operasi.nip_perawat_ok,petugasok.nama as petugasok "+
+                    "checklist_post_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_post_operasi.jenis_cairan_infus,checklist_post_operasi.kateter_urine,"+
+                    "checklist_post_operasi.tanggal_pemasangan_kateter,checklist_post_operasi.warna_kateter,checklist_post_operasi.jumlah_kateter,"+
+                    "checklist_post_operasi.area_luka_operasi,checklist_post_operasi.drain,checklist_post_operasi.jumlah_drain,checklist_post_operasi.letak_drain,"+
+                    "checklist_post_operasi.warna_drain,checklist_post_operasi.jaringan_pa,checklist_post_operasi.nip_perawat_ok,petugasok.nama as petugasok,"+
+                    "checklist_post_operasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi "+
                     "from checklist_post_operasi inner join reg_periksa on checklist_post_operasi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter as dokterbedah on dokterbedah.kd_dokter=checklist_post_operasi.kd_dokter_bedah "+
@@ -1755,14 +1784,14 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                     "inner join petugas as petugasok on petugasok.nip=checklist_post_operasi.nip_perawat_ok "+
                     "where checklist_post_operasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_post_operasi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
+    }//GEN-LAST:event_MnPostOperasiActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-       // Valid.pindah(evt,Rencana,Informasi);
+       Valid.pindah(evt,TCari,SNCN);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void btnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterBedahActionPerformed
@@ -1952,7 +1981,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
     private widget.TextBox LetakDrain;
     private widget.editorpane LoadHTML;
     private widget.ComboBox MRI;
-    private javax.swing.JMenuItem MnSkriningNutrisi;
+    private javax.swing.JMenuItem MnPostOperasi;
     private widget.TextBox NamaDokterAnestesi;
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasAnest;
@@ -1976,7 +2005,6 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
     private widget.Button btnDokterBedah;
     private widget.Button btnPetugasOK;
     private widget.Button btnPetugasRuangan;
-    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
@@ -2167,11 +2195,35 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
             NamaDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             KodeDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             NamaDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            KdPetugasAnest.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            NmPetugasAnest.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            KdPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            NmPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            KeadaanUmum.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Radiologi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            KeteranganRadiologi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            EKG.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            KeteranganEKG.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            USG.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            KeteranganUSG.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            CTScan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            KeteranganCTScan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            MRI.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            KeteranganMRI.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            CairanInfus.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            KateterUrine.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            WarnaUrine.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            JumlahUrine.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            AreaLukaOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            Drain.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            JumlahDrain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            LetakDrain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            WarnaDrain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            JaringanPA.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            KdPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            NmPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            KdPetugasAnest.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            NmPetugasAnest.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),25).toString().equals("")){
+                Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            }
         }
     }
     private void isRawat() {
@@ -2237,20 +2289,20 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*Sequel.mengedit("checklist_post_operasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,identitas=?,"+
-            "surat_ijin_bedah=?,surat_ijin_anestesi=?,surat_ijin_transfusi=?,penandaan_area_operasi=?,keadaan_umum=?,pemeriksaan_penunjang_rontgen=?,keterangan_pemeriksaan_penunjang_rontgen=?,"+
-            "pemeriksaan_penunjang_ekg=?,keterangan_pemeriksaan_penunjang_ekg=?,pemeriksaan_penunjang_usg=?,keterangan_pemeriksaan_penunjang_usg=?,pemeriksaan_penunjang_ctscan=?,"+
-            "keterangan_pemeriksaan_penunjang_ctscan=?,pemeriksaan_penunjang_mri=?,keterangan_pemeriksaan_penunjang_mri=?,persiapan_darah=?,keterangan_persiapan_darah=?,perlengkapan_khusus=?,"+
-            "nip_perawat_anestesi=?,nip_perawat_ok=?",29,new String[]{
+        Sequel.mengedit("checklist_post_operasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,keadaan_umum=?,"+
+                "pemeriksaan_penunjang_rontgen=?,keterangan_pemeriksaan_penunjang_rontgen=?,pemeriksaan_penunjang_ekg=?,keterangan_pemeriksaan_penunjang_ekg=?,"+
+                "pemeriksaan_penunjang_usg=?,keterangan_pemeriksaan_penunjang_usg=?,pemeriksaan_penunjang_ctscan=?,keterangan_pemeriksaan_penunjang_ctscan=?,pemeriksaan_penunjang_mri=?,"+
+                "keterangan_pemeriksaan_penunjang_mri=?,jenis_cairan_infus=?,kateter_urine=?,tanggal_pemasangan_kateter=?,warna_kateter=?,jumlah_kateter=?,area_luka_operasi=?,"+
+                "drain=?,jumlah_drain=?,letak_drain=?,warna_drain=?,jaringan_pa=?,nip_perawat_ok=?,nip_perawat_anestesi=?",32,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),SNCN.getText(),Tindakan.getText(),
-                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),Identitas.getSelectedItem().toString(),IjinBedah.getSelectedItem().toString(), 
-                IjinAnestesi.getSelectedItem().toString(),IjinTransfusi.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(), 
-                KeadaanUmum.getSelectedItem().toString(),Radiologi.getSelectedItem().toString(),KeteranganRadiologi.getText(),EKG.getSelectedItem().toString(), 
-                KeteranganEKG.getText(),USG.getSelectedItem().toString(),KeteranganUSG.getText(),CTScan.getSelectedItem().toString(),KeteranganCTScan.getText(), 
-                MRI.getSelectedItem().toString(),KeteranganMRI.getText(),PersiapanDarah.getSelectedItem().toString(),KeteranganPersiapanDarah.getText(), 
-                PerlengkapanKhusus.getSelectedItem().toString(),KdPetugasRuangan.getText(),KdPetugasOK.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
+                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),KeadaanUmum.getSelectedItem().toString(),Radiologi.getSelectedItem().toString(),KeteranganRadiologi.getText(), 
+                EKG.getSelectedItem().toString(),KeteranganEKG.getText(),USG.getSelectedItem().toString(),KeteranganUSG.getText(),CTScan.getSelectedItem().toString(),
+                KeteranganCTScan.getText(),MRI.getSelectedItem().toString(),KeteranganMRI.getText(),CairanInfus.getText(),KateterUrine.getSelectedItem().toString(), 
+                (KateterUrine.getSelectedIndex()==0?Valid.SetTgl(TanggalKateter.getSelectedItem()+"")+" "+TanggalKateter.getSelectedItem().toString().substring(11,19):"0000-00-00 00:00:0"),
+                WarnaUrine.getSelectedItem().toString(),JumlahUrine.getText(),AreaLukaOperasi.getText(),Drain.getSelectedItem().toString(),JumlahDrain.getText(),LetakDrain.getText(),
+                WarnaDrain.getText(),JaringanPA.getSelectedItem().toString(),KdPetugasOK.getText(),KdPetugasAnest.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-        });*/
+        });
             
         if(tabMode.getRowCount()!=0){tampil();}
         emptTeks();
