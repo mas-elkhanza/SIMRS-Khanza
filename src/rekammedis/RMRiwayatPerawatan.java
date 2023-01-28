@@ -313,6 +313,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSignInSebelumAnestesi = new widget.CekBox();
         chkTimeOutSebelumInsisi = new widget.CekBox();
         chkSignOutSebelumMenutupLuka = new widget.CekBox();
+        chkChecklistPostOperasi = new widget.CekBox();
         chkAsuhanPreOperasi = new widget.CekBox();
         chkAsuhanPreAnestesi = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhDewasa = new widget.CekBox();
@@ -594,7 +595,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1877));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1907));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -969,6 +970,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSignOutSebelumMenutupLuka.setOpaque(false);
         chkSignOutSebelumMenutupLuka.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSignOutSebelumMenutupLuka);
+
+        chkChecklistPostOperasi.setSelected(true);
+        chkChecklistPostOperasi.setText("Check List Post Operasi");
+        chkChecklistPostOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkChecklistPostOperasi.setName("chkChecklistPostOperasi"); // NOI18N
+        chkChecklistPostOperasi.setOpaque(false);
+        chkChecklistPostOperasi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkChecklistPostOperasi);
 
         chkAsuhanPreOperasi.setSelected(true);
         chkAsuhanPreOperasi.setText("Penilaian Pre Operasi");
@@ -1718,6 +1727,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSignInSebelumAnestesi.setSelected(true);
             chkTimeOutSebelumInsisi.setSelected(true);
             chkSignOutSebelumMenutupLuka.setSelected(true);
+            chkChecklistPostOperasi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1799,6 +1809,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSignInSebelumAnestesi.setSelected(false);
             chkTimeOutSebelumInsisi.setSelected(false);
             chkSignOutSebelumMenutupLuka.setSelected(false);
+            chkChecklistPostOperasi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1912,6 +1923,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkCatatanObservasiRanap;
     private widget.CekBox chkCatatanObservasiRanapKebidanan;
     private widget.CekBox chkCatatanObservasiRanapPostPartum;
+    private widget.CekBox chkChecklistPostOperasi;
     private widget.CekBox chkChecklistPreOperasi;
     private widget.CekBox chkDiagnosaPenyakit;
     private widget.CekBox chkHasilPemeriksaanUSG;
@@ -2425,6 +2437,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanTimeOutSebelumInsisi(rs.getString("no_rawat"));
                     //menampilkan signout sebelum menutup luka
                     menampilkanSignOutSebelumMenutupLuka(rs.getString("no_rawat"));
+                    //menampilkan checlist post operasi
+                    menampilkanChecklistPostOperasi(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre operasi
                     menampilkanAsuhanPreOperasi(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre anestesi
@@ -10412,6 +10426,133 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='100%' border='0'>"+
                                                  "Perhatian Utama Fase Pemulihan : "+rs2.getString("perhatian_utama_fase_pemulihan")+
                                               "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Checklist Pre Operasi : "+e);
+        }
+    }
+    
+    private void menampilkanChecklistPostOperasi(String norawat) {
+        try {
+            if(chkChecklistPostOperasi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_post_operasi.tanggal,"+
+                            "checklist_post_operasi.sncn,checklist_post_operasi.tindakan,checklist_post_operasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
+                            "checklist_post_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_post_operasi.keadaan_umum,"+
+                            "checklist_post_operasi.pemeriksaan_penunjang_rontgen,checklist_post_operasi.keterangan_pemeriksaan_penunjang_rontgen,"+
+                            "checklist_post_operasi.pemeriksaan_penunjang_ekg,checklist_post_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_post_operasi.pemeriksaan_penunjang_usg,"+
+                            "checklist_post_operasi.keterangan_pemeriksaan_penunjang_usg,checklist_post_operasi.pemeriksaan_penunjang_ctscan,"+
+                            "checklist_post_operasi.keterangan_pemeriksaan_penunjang_ctscan,checklist_post_operasi.pemeriksaan_penunjang_mri,"+
+                            "checklist_post_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_post_operasi.jenis_cairan_infus,checklist_post_operasi.kateter_urine,"+
+                            "checklist_post_operasi.tanggal_pemasangan_kateter,checklist_post_operasi.warna_kateter,checklist_post_operasi.jumlah_kateter,"+
+                            "checklist_post_operasi.area_luka_operasi,checklist_post_operasi.drain,checklist_post_operasi.jumlah_drain,checklist_post_operasi.letak_drain,"+
+                            "checklist_post_operasi.warna_drain,checklist_post_operasi.jaringan_pa,checklist_post_operasi.nip_perawat_ok,petugasok.nama as petugasok,"+
+                            "checklist_post_operasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi "+
+                            "from checklist_post_operasi inner join reg_periksa on checklist_post_operasi.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join dokter as dokterbedah on dokterbedah.kd_dokter=checklist_post_operasi.kd_dokter_bedah "+
+                            "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=checklist_post_operasi.kd_dokter_anestesi "+
+                            "inner join petugas as petugasanestesi on petugasanestesi.nip=checklist_post_operasi.nip_perawat_anestesi "+
+                            "inner join petugas as petugasok on petugasok.nip=checklist_post_operasi.nip_perawat_ok "+
+                            "where checklist_post_operasi.no_rawat='"+norawat+"' order by checklist_post_operasi.tanggal").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Check List Post Operasi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Petugas Anestesi : "+rs2.getString("nip_perawat_anestesi")+" "+rs2.getString("petugasanestesi")+"</td>"+
+                                              "<td width='50%' border='0'>Petugas Kamar Operasi : "+rs2.getString("nip_perawat_ok")+" "+rs2.getString("petugasok")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "RENCANA OPERASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='67%' border='0'>Dokter Bedah : "+rs2.getString("kd_dokter_bedah")+" "+rs2.getString("dokterbedah")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>SN/CN : "+rs2.getString("sncn")+"</td>"+
+                                              "<td width='67%' border='0'>Dokter Anestesi : "+rs2.getString("kd_dokter_anestesi")+" "+rs2.getString("dokteranestesi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0' colspan='2'>Tindakan/Operasi : "+rs2.getString("tindakan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "SERAH TERIMA PERAWAT KAMAR OPERASI DENGAN ANESTESI / INTENSIF / RUANGAN. PERAWAT MELAKUKAN SERAH TERIMA SECARA VERBAL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Keadaan Umum : "+rs2.getString("keadaan_umum")+"</td>"+
+                                              "<td width='33%' border='0'>Jenis Cairan Infus : "+rs2.getString("jenis_cairan_infus")+"</td>"+
+                                              "<td width='33%' border='0'>Jaringan/Organ Tubuh PA/VC : "+rs2.getString("jaringan_pa")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Kateter Urine : "+rs2.getString("kateter_urine")+"</td>"+
+                                              "<td width='33%' border='0'>Jika Ada, Tgl.Pemasangan : "+rs2.getString("tanggal_pemasangan_kateter")+"</td>"+
+                                              "<td width='33%' border='0'>Warna : "+rs2.getString("warna_kateter")+", Jumlah : "+rs2.getString("jumlah_kateter")+" cc</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Drain : "+rs2.getString("drain")+"</td>"+
+                                              "<td width='33%' border='0'>Jika Ada, Jumlah : "+rs2.getString("jumlah_drain")+" buah</td>"+
+                                              "<td width='33%' border='0'>Letak : "+rs2.getString("letak_drain")+", Warna/Produksi : "+rs2.getString("warna_drain")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='3'>"+
+                                                  "Hasil Pemeriksaan Penunjang :"+
+                                                  "<table width='98%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                     "<tr>"+
+                                                        "<td width='50%' border='0'>Radiologi : "+rs2.getString("pemeriksaan_penunjang_rontgen")+(rs2.getString("keterangan_pemeriksaan_penunjang_rontgen").equals("")?"":", "+rs2.getString("keterangan_pemeriksaan_penunjang_rontgen"))+"</td>"+
+                                                        "<td width='50%' border='0'>EKG : "+rs2.getString("pemeriksaan_penunjang_ekg")+(rs2.getString("keterangan_pemeriksaan_penunjang_ekg").equals("")?"":", "+rs2.getString("keterangan_pemeriksaan_penunjang_ekg"))+"</td>"+
+                                                     "</tr>"+
+                                                     "<tr>"+
+                                                        "<td width='50%' border='0'>USG : "+rs2.getString("pemeriksaan_penunjang_usg")+(rs2.getString("keterangan_pemeriksaan_penunjang_usg").equals("")?"":", "+rs2.getString("keterangan_pemeriksaan_penunjang_usg"))+"</td>"+
+                                                        "<td width='50%' border='0'>CT Scan : "+rs2.getString("pemeriksaan_penunjang_ctscan")+(rs2.getString("keterangan_pemeriksaan_penunjang_ctscan").equals("")?"":", "+rs2.getString("keterangan_pemeriksaan_penunjang_ctscan"))+"</td>"+
+                                                     "</tr>"+
+                                                     "<tr>"+
+                                                        "<td width='100%' border='0' colspan='2'>MRI : "+rs2.getString("pemeriksaan_penunjang_mri")+(rs2.getString("keterangan_pemeriksaan_penunjang_mri").equals("")?"":", "+rs2.getString("keterangan_pemeriksaan_penunjang_mri"))+"</td>"+
+                                                     "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0' colspan='3'>Area Luka Operasi : "+rs2.getString("area_luka_operasi")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
