@@ -776,6 +776,7 @@ import rekammedis.MasterTriaseSkala2;
 import rekammedis.MasterTriaseSkala3;
 import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
+import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataCatatanCekGDS;
@@ -19664,6 +19665,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnChecklistPostOperasiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMChecklistPostOperasi aplikasi=new RMChecklistPostOperasi(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20324,7 +20337,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPelayananInformasiObat,btnPersetujuanUmum,btnTransferPasienAntarRuang,btnReferensiDokterSatuSehat,btnReferensiPasienSatuSehat,
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
-            btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur;
+            btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
+            btnChecklistPostOperasi;
     
     public void isWall(){
         try{            
@@ -23729,6 +23743,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsignout_sebelum_menutup_luka()==true){
                 Panelmenu.add(btnSignOutSebelumMenutupLuka);
+                jmlmenu++;
+            }
+            
+            if(akses.getchecklist_post_operasi()==true){
+                Panelmenu.add(btnChecklistPostOperasi);
                 jmlmenu++;
             }
             
@@ -28254,6 +28273,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsignout_sebelum_menutup_luka()==true){
             Panelmenu.add(btnSignOutSebelumMenutupLuka);
+            jmlmenu++;
+        }
+        
+        if(akses.getchecklist_post_operasi()==true){
+            Panelmenu.add(btnChecklistPostOperasi);
             jmlmenu++;
         }
         
@@ -34089,6 +34113,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getchecklist_post_operasi()==true){
+            if(btnChecklistPostOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnChecklistPostOperasi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_pre_operasi()==true){
             if(btnPenilaianPreOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianPreOperasi);
@@ -39383,5 +39414,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPembelianDapur.setName("btnPembelianDapur"); 
         btnPembelianDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPembelianDapur.addActionListener(this::btnPembelianDapurActionPerformed);
+        
+        btnChecklistPostOperasi = new widget.ButtonBig();
+        btnChecklistPostOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5859108_book_education_handbook_medical_medicine_icon.png")));
+        btnChecklistPostOperasi.setText("Check List Post Operasi");
+        btnChecklistPostOperasi.setIconTextGap(0);
+        btnChecklistPostOperasi.setName("btnChecklistPostOperasi"); 
+        btnChecklistPostOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnChecklistPostOperasi.addActionListener(this::btnChecklistPostOperasiActionPerformed);
     }
 }

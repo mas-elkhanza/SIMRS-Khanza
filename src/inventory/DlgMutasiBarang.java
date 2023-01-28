@@ -764,7 +764,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     TCari.requestFocus();
                 }else if(tbDokter.getSelectedColumn()==8){
                     try {
-                        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString().equals("")){
+                        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().equals("")){
                             psstok=koneksi.prepareStatement("select data_batch.no_faktur,data_batch."+hppfarmasi+" as dasar,data_batch.tgl_kadaluarsa from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.sisa>0 order by data_batch.tgl_kadaluarsa limit 1");
                             try {
                                 psstok.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString());
