@@ -855,9 +855,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "ipsrspengeluaran.keterangan,petugas.nama,ipsrsdetailpengeluaran.kode_brng,"+
                     "ipsrsbarang.nama_brng,kodesatuan.satuan,ipsrsdetailpengeluaran.jumlah,"+
                     "ipsrsdetailpengeluaran.harga,ipsrsdetailpengeluaran.total from ipsrspengeluaran "+
-                    "inner join petugas inner join ipsrsbarang inner join kodesatuan inner join "+
-                    "ipsrsdetailpengeluaran on ipsrspengeluaran.nip=petugas.nip and ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
-                    "and ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng and ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
+                    "inner join ipsrsdetailpengeluaran on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
+                    "inner join petugas on ipsrspengeluaran.nip=petugas.nip "+
+                    "inner join ipsrsbarang on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
+                    "inner join kodesatuan on ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
                     "where ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and "+
                     "(ipsrspengeluaran.no_keluar like '%"+TCari.getText()+"%' or ipsrspengeluaran.keterangan like '%"+TCari.getText()+"%' or ipsrspengeluaran.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or ipsrsbarang.jenis like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_brng like '%"+TCari.getText()+"%' or "+
                     "ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_sat like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%') order by ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar ",param);
@@ -1013,13 +1014,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{     
-            ps=koneksi.prepareStatement("select ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar,ipsrspengeluaran.keterangan,ipsrspengeluaran.nip,petugas.nama "+
-                    " from ipsrspengeluaran inner join petugas inner join kodesatuan  "+
-                    " inner join ipsrsdetailpengeluaran inner join ipsrsbarang "+
-                    " on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
-                    " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                    " and ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
-                    " and ipsrspengeluaran.nip=petugas.nip"+
+            ps=koneksi.prepareStatement(
+                    "select ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar,ipsrspengeluaran.keterangan,ipsrspengeluaran.nip,petugas.nama "+
+                    " from ipsrspengeluaran inner join petugas on ipsrspengeluaran.nip=petugas.nip "+
+                    " inner join ipsrsdetailpengeluaran on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
+                    " inner join ipsrsbarang on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
+                    " inner join kodesatuan on ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
                     " where ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and "+
                     " (ipsrspengeluaran.no_keluar like ? or ipsrspengeluaran.keterangan like ? or ipsrspengeluaran.nip like ? or petugas.nama like ? or ipsrsbarang.jenis like ? or "+
                     " ipsrsdetailpengeluaran.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailpengeluaran.kode_sat like ? or kodesatuan.satuan like ?) "+
@@ -1044,14 +1044,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ttltagihan=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)+", "+rs.getString(5),"Stok Keluar :","","","","",""});    
-                    ps2=koneksi.prepareStatement("select ipsrsdetailpengeluaran.kode_brng,ipsrsbarang.nama_brng, "+
-                        "ipsrsdetailpengeluaran.kode_sat,kodesatuan.satuan,ipsrsdetailpengeluaran.jumlah,ipsrsdetailpengeluaran.harga,ipsrsdetailpengeluaran.total "+
-                        "from ipsrsdetailpengeluaran inner join ipsrsbarang inner join kodesatuan "+
-                        " on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
-                        " and ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat where "+
-                        " ipsrsdetailpengeluaran.no_keluar=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and "+
-                        " (ipsrsdetailpengeluaran.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailpengeluaran.kode_sat like ? or "+
-                        " ipsrsbarang.jenis like ?) order by ipsrsdetailpengeluaran.kode_brng  ");
+                    ps2=koneksi.prepareStatement(
+                        "select ipsrsdetailpengeluaran.kode_brng,ipsrsbarang.nama_brng, ipsrsdetailpengeluaran.kode_sat,kodesatuan.satuan,"+
+                        "ipsrsdetailpengeluaran.jumlah,ipsrsdetailpengeluaran.harga,ipsrsdetailpengeluaran.total "+
+                        "from ipsrsdetailpengeluaran inner join ipsrsbarang on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
+                        "inner join kodesatuan on ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
+                        "where ipsrsdetailpengeluaran.no_keluar=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and "+
+                        "(ipsrsdetailpengeluaran.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailpengeluaran.kode_sat like ? or "+
+                        "ipsrsbarang.jenis like ?) order by ipsrsdetailpengeluaran.kode_brng  ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmbar.getText()+"%");
@@ -1116,9 +1116,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "ipsrspengeluaran.keterangan,petugas.nama,ipsrsdetailpengeluaran.kode_brng,"+
                     "ipsrsbarang.nama_brng,kodesatuan.satuan,ipsrsdetailpengeluaran.jumlah,"+
                     "ipsrsdetailpengeluaran.harga,ipsrsdetailpengeluaran.total from ipsrspengeluaran "+
-                    "inner join petugas inner join ipsrsbarang inner join kodesatuan inner join "+
-                    "ipsrsdetailpengeluaran on ipsrspengeluaran.nip=petugas.nip and ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
-                    "and ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng and ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
+                    "inner join ipsrsdetailpengeluaran on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
+                    "inner join petugas on ipsrspengeluaran.nip=petugas.nip "+
+                    "inner join ipsrsbarang on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
+                    "inner join kodesatuan on ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
                     "where ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and "+
                     "(ipsrspengeluaran.no_keluar like ? or ipsrspengeluaran.keterangan like ? or ipsrspengeluaran.nip like ? or petugas.nama like ? or ipsrsbarang.jenis like ? or "+
                     "ipsrsdetailpengeluaran.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailpengeluaran.kode_sat like ? or kodesatuan.satuan like ?) "+

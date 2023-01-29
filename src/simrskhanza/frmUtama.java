@@ -596,6 +596,7 @@ import inventory.InventoryVerifikasiPenerimaan;
 import dapur.DapurBarang;
 import dapur.DapurInputStok;
 import dapur.DapurPembelian;
+import dapur.DapurPengeluaran;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSHibah;
@@ -19677,6 +19678,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPengeluaranDapurActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurPengeluaran pengeluaran=new DapurPengeluaran(this,false);
+        pengeluaran.isCek();
+        pengeluaran.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pengeluaran.setLocationRelativeTo(PanelUtama);
+        pengeluaran.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -20338,7 +20351,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
-            btnChecklistPostOperasi;
+            btnChecklistPostOperasi,btnPengeluaranDapur;
     
     public void isWall(){
         try{            
@@ -21444,6 +21457,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdapur_pembelian()==true){
                 Panelmenu.add(btnPembelianDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getdapur_stok_keluar()==true){
+                Panelmenu.add(btnPengeluaranDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -25986,6 +26004,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdapur_pembelian()==true){
             Panelmenu.add(btnPembelianDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getdapur_stok_keluar()==true){
+            Panelmenu.add(btnPengeluaranDapur);
             jmlmenu++;
         }
 
@@ -30907,6 +30930,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdapur_pembelian()==true){
             if(btnPembelianDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembelianDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdapur_stok_keluar()==true){
+            if(btnPengeluaranDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengeluaranDapur);
                 jmlmenu++;
             }                
         }
@@ -39428,5 +39458,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistPostOperasi.setName("btnChecklistPostOperasi"); 
         btnChecklistPostOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistPostOperasi.addActionListener(this::btnChecklistPostOperasiActionPerformed);
+        
+        btnPengeluaranDapur = new widget.ButtonBig();
+        btnPengeluaranDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3929513_dinner_food_foods_meal_soup_icon.png")));
+        btnPengeluaranDapur.setText("Stok Keluar Dapur");
+        btnPengeluaranDapur.setIconTextGap(0);
+        btnPengeluaranDapur.setName("btnPengeluaranDapur"); 
+        btnPengeluaranDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengeluaranDapur.addActionListener(this::btnPengeluaranDapurActionPerformed);
     }
 }

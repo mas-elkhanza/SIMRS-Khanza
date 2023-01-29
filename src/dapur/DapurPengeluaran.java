@@ -788,7 +788,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],stok[i],harga[i],total[i]});
         }
         try{
-            ps=koneksi.prepareStatement("select dapurbarang.kode_brng, concat(dapurbarang.nama_brng,' (',dapurbarang.jenis,')'),dapurbarang.kode_sat,stok, "+
+            ps=koneksi.prepareStatement(
+                    "select dapurbarang.kode_brng, concat(dapurbarang.nama_brng,' (',dapurbarang.jenis,')'),dapurbarang.kode_sat,stok, "+
                     " dapurbarang.harga from dapurbarang where dapurbarang.status='1' and "+
                     " (dapurbarang.kode_brng like ? or dapurbarang.nama_brng like ? or dapurbarang.jenis like ?) order by dapurbarang.nama_brng");
             
@@ -860,7 +861,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         try{
             Keterangan.setText(keterangan);
             ps=koneksi.prepareStatement("select dapurbarang.kode_brng, concat(dapurbarang.nama_brng,' (',dapurbarang.jenis,')'),"+
-                    " dapurbarang.kode_sat,stok, dapurbarang.harga,detail_permintaan_non_medis.jumlah "+
+                    " dapurbarang.kode_sat,dapurbarang.stok, dapurbarang.harga,detail_permintaan_non_medis.jumlah "+
                     " from dapurbarang inner join detail_permintaan_non_medis "+
                     " on dapurbarang.kode_brng=detail_permintaan_non_medis.kode_brng "+
                     " where detail_permintaan_non_medis.no_permintaan=? order by dapurbarang.nama_brng");

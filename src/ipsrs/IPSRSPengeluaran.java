@@ -861,7 +861,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         try{
             Keterangan.setText(keterangan);
             ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),"+
-                    " ipsrsbarang.kode_sat,stok, ipsrsbarang.harga,detail_permintaan_non_medis.jumlah "+
+                    " ipsrsbarang.kode_sat,ipsrsbarang.stok,ipsrsbarang.harga,detail_permintaan_non_medis.jumlah "+
                     " from ipsrsbarang inner join detail_permintaan_non_medis "+
                     " on ipsrsbarang.kode_brng=detail_permintaan_non_medis.kode_brng "+
                     " where detail_permintaan_non_medis.no_permintaan=? order by ipsrsbarang.nama_brng");
