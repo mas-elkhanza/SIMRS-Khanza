@@ -179,7 +179,7 @@ public class DapurCariPengeluaran extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgCariPengeluaranIpsrs")){
+                if(akses.getform().equals("DlgCariPengeluaranDapur")){
                     if(petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -204,7 +204,7 @@ public class DapurCariPengeluaran extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgCariPengeluaranIpsrs")){
+                if(akses.getform().equals("DlgCariPengeluaranDapur")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
@@ -227,7 +227,7 @@ public class DapurCariPengeluaran extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgCariPengeluaranIpsrs")){
+                if(akses.getform().equals("DlgCariPengeluaranDapur")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                     }                
@@ -638,7 +638,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("DlgCariPengeluaranIpsrs");
+        akses.setform("DlgCariPengeluaranDapur");
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -652,7 +652,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TglBeli1KeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        akses.setform("DlgCariPengeluaranIpsrs");
+        akses.setform("DlgCariPengeluaranDapur");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -781,7 +781,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptPengeluaranIpsrs.jasper","report","::[ Transaksi Pengeluaran Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                Valid.MyReportqry("rptPengeluaranDapur.jasper","report","::[ Transaksi Pengeluaran Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }else if(TabRawat.getSelectedIndex()==1){
@@ -798,7 +798,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptPengeluaranIpsrs2.jasper","report","::[ Transaksi Pengeluaran Barang ]::",
+                Valid.MyReportqry("rptPengeluaranDapur2.jasper","report","::[ Transaksi Pengeluaran Barang ]::",
                     "select dapurpengeluaran.no_keluar,dapurpengeluaran.tanggal,dapurpengeluaran.nip,"+
                     "dapurpengeluaran.keterangan,petugas.nama,dapurdetailpengeluaran.kode_brng,"+
                     "dapurbarang.nama_brng,kodesatuan.satuan,dapurdetailpengeluaran.jumlah,"+
@@ -850,9 +850,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                total=total+rs2.getDouble("total");
             }         
             Sequel.queryu("delete from tampjurnal");
-            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Ipsrs from set_akun"),"PERSEDIAAN BARANG","0",""+total});
-            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Ipsrs from set_akun"),"KAS DI TANGAN",""+total,"0"}); 
-            sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN PENGGUNAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
+            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Dapur from set_akun"),"PERSEDIAAN BARANG","0",""+total});
+            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Dapur from set_akun"),"KAS DI TANGAN",""+total,"0"}); 
+            sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN PENGGUNAAN BARANG DAPUR KERING DAN BASAH"+", OLEH "+akses.getkode());
             
             if(sukses==true){
                 Sequel.queryu2("delete from dapurpengeluaran where no_keluar=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});

@@ -550,9 +550,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Ipsrs from set_akun"),"PERSEDIAAN BARANG",""+(ttl),"0"});
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Ipsrs from set_akun"),"KAS DI TANGAN","0",""+(ttl)}); 
-                    sukses=jur.simpanJurnal(NoKeluar.getText(),"U","PENGGUNAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Dapur from set_akun"),"PERSEDIAAN BARANG",""+(ttl),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Dapur from set_akun"),"KAS DI TANGAN","0",""+(ttl)}); 
+                    sukses=jur.simpanJurnal(NoKeluar.getText(),"U","PENGGUNAAN BARANG DAPUR KERING DAN BASAH"+", OLEH "+akses.getkode());
                 }
                 
                 if(sukses==true){
@@ -789,9 +789,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
         try{
             ps=koneksi.prepareStatement("select dapurbarang.kode_brng, concat(dapurbarang.nama_brng,' (',dapurbarang.jenis,')'),dapurbarang.kode_sat,stok, "+
-                    " dapurbarang.harga from dapurbarang where dapurbarang.status='1' and dapurbarang.kode_brng like ? or "+
-                    " dapurbarang.status='1' and dapurbarang.nama_brng like ? or "+
-                    " dapurbarang.status='1' and dapurbarang.jenis like ? order by dapurbarang.nama_brng");
+                    " dapurbarang.harga from dapurbarang where dapurbarang.status='1' and "+
+                    " (dapurbarang.kode_brng like ? or dapurbarang.nama_brng like ? or dapurbarang.jenis like ?) order by dapurbarang.nama_brng");
             
             try{  
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -852,7 +851,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from dapurpengeluaran where tanggal='"+Valid.SetTgl(TglKeluar.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(dapurpengeluaran.no_keluar,3),signed)),0) from dapurpengeluaran where dapurpengeluaran.tanggal='"+Valid.SetTgl(TglKeluar.getSelectedItem()+"")+"' ",
                 "SKD"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
     }
 

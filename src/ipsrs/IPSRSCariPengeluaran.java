@@ -858,16 +858,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "inner join petugas inner join ipsrsbarang inner join kodesatuan inner join "+
                     "ipsrsdetailpengeluaran on ipsrspengeluaran.nip=petugas.nip and ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
                     "and ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng and ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
-                    "where ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrspengeluaran.no_keluar like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrspengeluaran.keterangan like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrspengeluaran.nip like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsbarang.jenis like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsdetailpengeluaran.kode_brng like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsdetailpengeluaran.kode_sat like '%"+TCari.getText()+"%' or "+
-                    " ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and kodesatuan.satuan like '%"+TCari.getText()+"%' "+
-                    " order by ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar ",param);
+                    "where ipsrspengeluaran.tanggal between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspengeluaran.no_keluar like '%"+NoKeluar.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and "+
+                    "(ipsrspengeluaran.no_keluar like '%"+TCari.getText()+"%' or ipsrspengeluaran.keterangan like '%"+TCari.getText()+"%' or ipsrspengeluaran.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or ipsrsbarang.jenis like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_brng like '%"+TCari.getText()+"%' or "+
+                    "ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or ipsrsdetailpengeluaran.kode_sat like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%') order by ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar ",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -1027,15 +1020,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
                     " and ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
                     " and ipsrspengeluaran.nip=petugas.nip"+
-                    " where ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspengeluaran.no_keluar like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspengeluaran.keterangan like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspengeluaran.nip like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and petugas.nama like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpengeluaran.kode_brng like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpengeluaran.kode_sat like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                    " where ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and "+
+                    " (ipsrspengeluaran.no_keluar like ? or ipsrspengeluaran.keterangan like ? or ipsrspengeluaran.nip like ? or petugas.nama like ? or ipsrsbarang.jenis like ? or "+
+                    " ipsrsdetailpengeluaran.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailpengeluaran.kode_sat like ? or kodesatuan.satuan like ?) "+
                     " group by ipsrspengeluaran.no_keluar order by ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar ");
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
@@ -1045,62 +1032,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(5,"%"+kdjenis.getText()+"%");
                 ps.setString(6,"%"+nmbar.getText()+"%");
                 ps.setString(7,"%"+TCari.getText()+"%");
-                ps.setString(8,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(9,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(10,"%"+NoKeluar.getText()+"%");
-                ps.setString(11,"%"+nmptg.getText()+"%");
-                ps.setString(12,"%"+kdjenis.getText()+"%");
-                ps.setString(13,"%"+nmbar.getText()+"%");
+                ps.setString(8,"%"+TCari.getText()+"%");
+                ps.setString(9,"%"+TCari.getText()+"%");
+                ps.setString(10,"%"+TCari.getText()+"%");
+                ps.setString(11,"%"+TCari.getText()+"%");
+                ps.setString(12,"%"+TCari.getText()+"%");
+                ps.setString(13,"%"+TCari.getText()+"%");
                 ps.setString(14,"%"+TCari.getText()+"%");
-                ps.setString(15,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(16,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(17,"%"+NoKeluar.getText()+"%");
-                ps.setString(18,"%"+nmptg.getText()+"%");
-                ps.setString(19,"%"+kdjenis.getText()+"%");
-                ps.setString(20,"%"+nmbar.getText()+"%");
-                ps.setString(21,"%"+TCari.getText()+"%");
-                ps.setString(22,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(24,"%"+NoKeluar.getText()+"%");
-                ps.setString(25,"%"+nmptg.getText()+"%");
-                ps.setString(26,"%"+kdjenis.getText()+"%");
-                ps.setString(27,"%"+nmbar.getText()+"%");
-                ps.setString(28,"%"+TCari.getText()+"%");
-                ps.setString(29,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(30,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(31,"%"+NoKeluar.getText()+"%");
-                ps.setString(32,"%"+nmptg.getText()+"%");
-                ps.setString(33,"%"+kdjenis.getText()+"%");
-                ps.setString(34,"%"+nmbar.getText()+"%");
-                ps.setString(35,"%"+TCari.getText()+"%");
-                ps.setString(36,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(37,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(38,"%"+NoKeluar.getText()+"%");
-                ps.setString(39,"%"+nmptg.getText()+"%");
-                ps.setString(40,"%"+kdjenis.getText()+"%");
-                ps.setString(41,"%"+nmbar.getText()+"%");
-                ps.setString(42,"%"+TCari.getText()+"%");
-                ps.setString(43,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(44,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(45,"%"+NoKeluar.getText()+"%");
-                ps.setString(46,"%"+nmptg.getText()+"%");
-                ps.setString(47,"%"+kdjenis.getText()+"%");
-                ps.setString(48,"%"+nmbar.getText()+"%");
-                ps.setString(49,"%"+TCari.getText()+"%");
-                ps.setString(50,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(51,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(52,"%"+NoKeluar.getText()+"%");
-                ps.setString(53,"%"+nmptg.getText()+"%");
-                ps.setString(54,"%"+kdjenis.getText()+"%");
-                ps.setString(55,"%"+nmbar.getText()+"%");
-                ps.setString(56,"%"+TCari.getText()+"%");
-                ps.setString(57,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(58,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(59,"%"+NoKeluar.getText()+"%");
-                ps.setString(60,"%"+nmptg.getText()+"%");
-                ps.setString(61,"%"+kdjenis.getText()+"%");
-                ps.setString(62,"%"+nmbar.getText()+"%");
-                ps.setString(63,"%"+TCari.getText()+"%");
+                ps.setString(15,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 ttltagihan=0;
                 while(rs.next()){
@@ -1110,27 +1049,17 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "from ipsrsdetailpengeluaran inner join ipsrsbarang inner join kodesatuan "+
                         " on ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng "+
                         " and ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat where "+
-                        " ipsrsdetailpengeluaran.no_keluar=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsdetailpengeluaran.kode_brng like ? or "+
-                        " ipsrsdetailpengeluaran.no_keluar=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? or "+
-                        " ipsrsdetailpengeluaran.no_keluar=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsdetailpengeluaran.kode_sat like ? or "+
-                        " ipsrsdetailpengeluaran.no_keluar=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.jenis like ? order by ipsrsdetailpengeluaran.kode_brng  ");
+                        " ipsrsdetailpengeluaran.no_keluar=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and "+
+                        " (ipsrsdetailpengeluaran.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailpengeluaran.kode_sat like ? or "+
+                        " ipsrsbarang.jenis like ?) order by ipsrsdetailpengeluaran.kode_brng  ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmbar.getText()+"%");
                         ps2.setString(3,"%"+kdjenis.getText()+"%");
                         ps2.setString(4,"%"+TCari.getText()+"%");
-                        ps2.setString(5,rs.getString(2));
-                        ps2.setString(6,"%"+nmbar.getText()+"%");
-                        ps2.setString(7,"%"+kdjenis.getText()+"%");
-                        ps2.setString(8,"%"+TCari.getText()+"%");
-                        ps2.setString(9,rs.getString(2));
-                        ps2.setString(10,"%"+nmbar.getText()+"%");
-                        ps2.setString(11,"%"+kdjenis.getText()+"%");
-                        ps2.setString(12,"%"+TCari.getText()+"%");
-                        ps2.setString(13,rs.getString(2));
-                        ps2.setString(14,"%"+nmbar.getText()+"%");
-                        ps2.setString(15,"%"+kdjenis.getText()+"%");
-                        ps2.setString(16,"%"+TCari.getText()+"%");
+                        ps2.setString(5,"%"+TCari.getText()+"%");
+                        ps2.setString(6,"%"+TCari.getText()+"%");
+                        ps2.setString(7,"%"+TCari.getText()+"%");
                         rs2=ps2.executeQuery();
                         int no=1;
                         tagihan=0;
@@ -1190,15 +1119,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "inner join petugas inner join ipsrsbarang inner join kodesatuan inner join "+
                     "ipsrsdetailpengeluaran on ipsrspengeluaran.nip=petugas.nip and ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
                     "and ipsrsdetailpengeluaran.kode_brng=ipsrsbarang.kode_brng and ipsrsdetailpengeluaran.kode_sat=kodesatuan.kode_sat "+
-                    "where ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspengeluaran.no_keluar like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspengeluaran.keterangan like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspengeluaran.nip like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and petugas.nama like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpengeluaran.kode_brng like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpengeluaran.kode_sat like ? or "+
-                    " ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                    "where ipsrspengeluaran.tanggal between ? and ? and ipsrspengeluaran.no_keluar like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and "+
+                    "(ipsrspengeluaran.no_keluar like ? or ipsrspengeluaran.keterangan like ? or ipsrspengeluaran.nip like ? or petugas.nama like ? or ipsrsbarang.jenis like ? or "+
+                    "ipsrsdetailpengeluaran.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailpengeluaran.kode_sat like ? or kodesatuan.satuan like ?) "+
                     " order by ipsrspengeluaran.tanggal,ipsrspengeluaran.no_keluar ");
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
@@ -1208,62 +1131,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(5,"%"+kdjenis.getText()+"%");
                 ps.setString(6,"%"+nmbar.getText()+"%");
                 ps.setString(7,"%"+TCari.getText()+"%");
-                ps.setString(8,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(9,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(10,"%"+NoKeluar.getText()+"%");
-                ps.setString(11,"%"+nmptg.getText()+"%");
-                ps.setString(12,"%"+kdjenis.getText()+"%");
-                ps.setString(13,"%"+nmbar.getText()+"%");
+                ps.setString(8,"%"+TCari.getText()+"%");
+                ps.setString(9,"%"+TCari.getText()+"%");
+                ps.setString(10,"%"+TCari.getText()+"%");
+                ps.setString(11,"%"+TCari.getText()+"%");
+                ps.setString(12,"%"+TCari.getText()+"%");
+                ps.setString(13,"%"+TCari.getText()+"%");
                 ps.setString(14,"%"+TCari.getText()+"%");
-                ps.setString(15,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(16,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(17,"%"+NoKeluar.getText()+"%");
-                ps.setString(18,"%"+nmptg.getText()+"%");
-                ps.setString(19,"%"+kdjenis.getText()+"%");
-                ps.setString(20,"%"+nmbar.getText()+"%");
-                ps.setString(21,"%"+TCari.getText()+"%");
-                ps.setString(22,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(24,"%"+NoKeluar.getText()+"%");
-                ps.setString(25,"%"+nmptg.getText()+"%");
-                ps.setString(26,"%"+kdjenis.getText()+"%");
-                ps.setString(27,"%"+nmbar.getText()+"%");
-                ps.setString(28,"%"+TCari.getText()+"%");
-                ps.setString(29,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(30,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(31,"%"+NoKeluar.getText()+"%");
-                ps.setString(32,"%"+nmptg.getText()+"%");
-                ps.setString(33,"%"+kdjenis.getText()+"%");
-                ps.setString(34,"%"+nmbar.getText()+"%");
-                ps.setString(35,"%"+TCari.getText()+"%");
-                ps.setString(36,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(37,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(38,"%"+NoKeluar.getText()+"%");
-                ps.setString(39,"%"+nmptg.getText()+"%");
-                ps.setString(40,"%"+kdjenis.getText()+"%");
-                ps.setString(41,"%"+nmbar.getText()+"%");
-                ps.setString(42,"%"+TCari.getText()+"%");
-                ps.setString(43,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(44,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(45,"%"+NoKeluar.getText()+"%");
-                ps.setString(46,"%"+nmptg.getText()+"%");
-                ps.setString(47,"%"+kdjenis.getText()+"%");
-                ps.setString(48,"%"+nmbar.getText()+"%");
-                ps.setString(49,"%"+TCari.getText()+"%");
-                ps.setString(50,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(51,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(52,"%"+NoKeluar.getText()+"%");
-                ps.setString(53,"%"+nmptg.getText()+"%");
-                ps.setString(54,"%"+kdjenis.getText()+"%");
-                ps.setString(55,"%"+nmbar.getText()+"%");
-                ps.setString(56,"%"+TCari.getText()+"%");
-                ps.setString(57,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(58,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(59,"%"+NoKeluar.getText()+"%");
-                ps.setString(60,"%"+nmptg.getText()+"%");
-                ps.setString(61,"%"+kdjenis.getText()+"%");
-                ps.setString(62,"%"+nmbar.getText()+"%");
-                ps.setString(63,"%"+TCari.getText()+"%");
+                ps.setString(15,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 ttltagihan=0;
                 while(rs.next()){
