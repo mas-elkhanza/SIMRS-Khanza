@@ -1772,7 +1772,7 @@ public class frmUtama extends javax.swing.JFrame {
         label35.setPreferredSize(new java.awt.Dimension(105, 23));
         panelisi2.add(label35);
 
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis, Dapur, Penunjang ( Lab & RO )", "[F] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[G] Menejemen Parkir Kendaraan Pasien & Karyawan", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[J] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[P] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[Q] Toko / Minimarket / Koperasi", "[R] Pengelolaan Data Filantropi, CSR, Zakat, Infaq & Shodaqoh", "[S] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis, Penunjang ( Lab & RO )", "[F] Transaksi Inventory Barang Dapur Kering & Basah", "[G] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[H] Menejemen Parkir Kendaraan Pasien & Karyawan", "[I] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[J] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[K] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[L] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[M] Olah Data Pasien", "[N] Unit Pelayanan Tranfusi Darah", "[O] Analisa, Dashboard & Info Grafik", "[P] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[Q] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[R] Toko / Minimarket / Koperasi", "[S] Pengelolaan Data Filantropi, CSR, Zakat, Infaq & Shodaqoh", "[T] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
         cmbMenu.addItemListener(new java.awt.event.ItemListener() {
@@ -1831,7 +1831,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/01/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/01/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -21420,6 +21420,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnNilaiPenerimaanVendorNonMedisPerBulan);
                 jmlmenu++;
             }
+        }else if(cmbMenu.getSelectedIndex()==5){ 
+            jmlmenu=0;
+            if(akses.getsatuan_barang()==true){
+                Panelmenu.add(btnSatuan); 
+                jmlmenu++;
+            }
             
             if(akses.getdapur_barang()==true){
                 Panelmenu.add(btnBarangDapur);
@@ -21440,7 +21446,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPembelianDapur);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==5){ 
+        }else if(cmbMenu.getSelectedIndex()==6){ 
             jmlmenu=0;
             if(akses.getasal_hibah()==true){
                 Panelmenu.add(btnAsalHibah);  
@@ -21571,7 +21577,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPestControl);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==6){ 
+        }else if(cmbMenu.getSelectedIndex()==7){ 
             jmlmenu=0;
             if(akses.getparkir_jenis()==true){
                 Panelmenu.add(btnJenisParkir);
@@ -21587,7 +21593,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnParkirMasuk);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==7){ 
+        }else if(cmbMenu.getSelectedIndex()==8){ 
             jmlmenu=0;
             if(akses.getharian_tindakan_poli()==true){
                 Panelmenu.add(btnTagihanPoli); 
@@ -21868,7 +21874,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPiutangPerAkunPiutang);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==8){ 
+        }else if(cmbMenu.getSelectedIndex()==9){ 
             jmlmenu=0;
             if(akses.geticd9()==true){
                 Panelmenu.add(btnICD9);
@@ -22295,7 +22301,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnOperasiPerBulan);                 
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==9){   
+        }else if(cmbMenu.getSelectedIndex()==10){   
             jmlmenu=0;
             if(akses.getkamar()==true){
                 Panelmenu.add(btnKamar);
@@ -22612,7 +22618,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                               
 
-        }else if(cmbMenu.getSelectedIndex()==10){ 
+        }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
             if(akses.getbpjs_cek_kartu()==true){
                 Panelmenu.add(btnCekBPJSKartu);
@@ -23238,7 +23244,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnKirimVaksinSatuSehat);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==11){ 
+        }else if(cmbMenu.getSelectedIndex()==12){ 
             jmlmenu=0;
             if(akses.getperusahaan_pasien()==true){
                 Panelmenu.add(btnPerusahaan);
@@ -23805,7 +23811,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnCatatanCekGDS);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==12){  
+        }else if(cmbMenu.getSelectedIndex()==13){  
             jmlmenu=0;
             if(akses.getpengambilan_utd2()==true){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -23861,7 +23867,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnUTDPenyerahanDarah); 
                 jmlmenu++;
             } 
-        }else if(cmbMenu.getSelectedIndex()==13){ 
+        }else if(cmbMenu.getSelectedIndex()==14){ 
             jmlmenu=0;
             if(akses.getgrafik_kunjungan_poli()==true){
                 Panelmenu.add(btnGrafikKunjunganPoli);
@@ -24417,7 +24423,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnGrafikPerbaikanInventarisPerPelaksanaStatus);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==14){
+        }else if(cmbMenu.getSelectedIndex()==15){
             jmlmenu=0;
             if(akses.getsurat_indeks()==true){
                 Panelmenu.add(btnSuratIndeks);
@@ -24563,7 +24569,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPersetujuanUmum);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==15){ 
+        }else if(cmbMenu.getSelectedIndex()==16){ 
             jmlmenu=0;
             if(akses.getruang_perpustakaan()==true){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -24638,7 +24644,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             Panelmenu.add(btnCariInventarisPerpustakaan);
             jmlmenu++;
-        }else if(cmbMenu.getSelectedIndex()==16){  
+        }else if(cmbMenu.getSelectedIndex()==17){  
             jmlmenu=0;
             if(akses.getsatuan_barang()==true){
                 Panelmenu.add(btnSatuan); 
@@ -24764,7 +24770,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSirkulasiBarangToko2); 
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==17){
+        }else if(cmbMenu.getSelectedIndex()==18){
             jmlmenu=0;
             if(akses.getzis_pengeluaran_penerima_dankes()==true){
                 Panelmenu.add(btnZISPengeluaranPenerimaDankes);
@@ -24845,7 +24851,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnZISPatologisPenerimaDankes);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==18){   
+        }else if(cmbMenu.getSelectedIndex()==19){   
             jmlmenu=0;
             if(akses.getaplikasi()==true){
                 Panelmenu.add(btnSetupAplikasi);
