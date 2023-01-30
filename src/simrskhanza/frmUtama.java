@@ -597,6 +597,7 @@ import dapur.DapurBarang;
 import dapur.DapurInputStok;
 import dapur.DapurPembelian;
 import dapur.DapurPengeluaran;
+import dapur.DapurRiwayatBarang;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSHibah;
@@ -19690,6 +19691,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnRiwayatBarangDapurActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurRiwayatBarang sirkulasi=new DapurRiwayatBarang(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -20351,7 +20364,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
-            btnChecklistPostOperasi,btnPengeluaranDapur;
+            btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur;
     
     public void isWall(){
         try{            
@@ -21462,6 +21475,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdapur_stok_keluar()==true){
                 Panelmenu.add(btnPengeluaranDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getdapur_riwayat_barang()==true){
+                Panelmenu.add(btnRiwayatBarangDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -26009,6 +26027,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdapur_stok_keluar()==true){
             Panelmenu.add(btnPengeluaranDapur);
+            jmlmenu++;
+        }
+
+        if(akses.getdapur_riwayat_barang()==true){
+            Panelmenu.add(btnRiwayatBarangDapur);
             jmlmenu++;
         }
 
@@ -30937,6 +30960,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdapur_stok_keluar()==true){
             if(btnPengeluaranDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengeluaranDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdapur_riwayat_barang()==true){
+            if(btnRiwayatBarangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatBarangDapur);
                 jmlmenu++;
             }                
         }
@@ -39466,5 +39496,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengeluaranDapur.setName("btnPengeluaranDapur"); 
         btnPengeluaranDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPengeluaranDapur.addActionListener(this::btnPengeluaranDapurActionPerformed);
+        
+        btnRiwayatBarangDapur = new widget.ButtonBig();
+        btnRiwayatBarangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5854057_education_memo_notes_pad_reminder_icon.png")));
+        btnRiwayatBarangDapur.setText("Riwayat Barang Dapur");
+        btnRiwayatBarangDapur.setIconTextGap(0);
+        btnRiwayatBarangDapur.setName("btnRiwayatBarangDapur"); 
+        btnRiwayatBarangDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatBarangDapur.addActionListener(this::btnRiwayatBarangDapurActionPerformed);
     }
 }

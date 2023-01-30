@@ -222,7 +222,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Referensi Praktisi Satu Sehat","[K]Referensi Pasien Satu Sehat","[K]Mapping Organisasi Satu Sehat","[K]Mapping Lokasi Satu Sehat","[K]Kirim Encounter Satu Sehat",
                 "[L]Catatan Cek GDS","[K]Kirim Condition Satu Sehat","[L]Check List Pre Operasi","[K]Kirim Observation-TTV Satu Sehat","[L]Sign-In Sebelum Anestesi",
                 "[K]Kirim Procedure Satu Sehat","[O]Operasi Per Bulan","[L]Time-Out Sebelum Insisi","[L]Sign-Out Sebelum Menutup Luka","[F]Barang Dapur","[F]Stok Opname Dapur",
-                "[K]Mapping Vaksin Satu Sehat","[F]Suplier Dapur","[K]Kirim Imunisasi Satu Sehat","[L]Check List Post Operasi","[F]Pengadaan Barang Dapur","[F]Stok Keluar Dapur"
+                "[K]Mapping Vaksin Satu Sehat","[F]Suplier Dapur","[K]Kirim Imunisasi Satu Sehat","[L]Check List Post Operasi","[F]Pengadaan Barang Dapur","[F]Stok Keluar Dapur",
+                "[F]Riwayat Barang Dapur"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -485,7 +486,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 917;i++) {
+        for (i = 0; i < 918;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2690,6 +2691,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 916:
                     column.setPreferredWidth(109);
                     break;
+                case 917:
+                    column.setPreferredWidth(129);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3191,7 +3195,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -4150,7 +4154,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "satu_sehat_kirim_Immunization='"+tbUser.getValueAt(i,913).toString()+"',"+
                     "checklist_post_operasi='"+tbUser.getValueAt(i,914).toString()+"',"+
                     "dapur_pembelian='"+tbUser.getValueAt(i,915).toString()+"',"+
-                    "dapur_stok_keluar='"+tbUser.getValueAt(i,916).toString()+"'");
+                    "dapur_stok_keluar='"+tbUser.getValueAt(i,916).toString()+"',"+
+                    "dapur_riwayat_barang='"+tbUser.getValueAt(i,917).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -5148,7 +5153,8 @@ public class DlgUser extends javax.swing.JDialog {
                                         "satu_sehat_kirim_Immunization='"+tbUser.getValueAt(barisdicopy,913).toString()+"',"+
                                         "checklist_post_operasi='"+tbUser.getValueAt(barisdicopy,914).toString()+"',"+
                                         "dapur_pembelian='"+tbUser.getValueAt(barisdicopy,915).toString()+"',"+
-                                        "dapur_stok_keluar='"+tbUser.getValueAt(barisdicopy,916).toString()+"'");
+                                        "dapur_stok_keluar='"+tbUser.getValueAt(barisdicopy,916).toString()+"',"+
+                                        "dapur_riwayat_barang='"+tbUser.getValueAt(barisdicopy,917).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5531,7 +5537,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.satu_sehat_mapping_lokasi,user.satu_sehat_kirim_encounter,user.catatan_cek_gds,user.satu_sehat_kirim_condition,user.checklist_pre_operasi,"+
                 "user.satu_sehat_kirim_observationttv,user.signin_sebelum_anestesi,user.satu_sehat_kirim_procedure,user.operasi_per_bulan,user.timeout_sebelum_insisi,"+
                 "user.signout_sebelum_menutup_luka,user.dapur_barang,user.dapur_opname,user.satu_sehat_mapping_vaksin,user.dapur_suplier,user.satu_sehat_kirim_Immunization,"+
-                "user.checklist_post_operasi,user.dapur_pembelian,user.dapur_stok_keluar from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.checklist_post_operasi,user.dapur_pembelian,user.dapur_stok_keluar,user.dapur_riwayat_barang from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6460,7 +6466,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("satu_sehat_kirim_Immunization"),
                                rs.getBoolean("checklist_post_operasi"),
                                rs.getBoolean("dapur_pembelian"),
-                               rs.getBoolean("dapur_stok_keluar")
+                               rs.getBoolean("dapur_stok_keluar"),
+                               rs.getBoolean("dapur_riwayat_barang")
                             });
                         }   
                     } catch (Exception e) {
@@ -7378,7 +7385,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("satu_sehat_kirim_Immunization"),
                            rs.getBoolean("checklist_post_operasi"),
                            rs.getBoolean("dapur_pembelian"),
-                           rs.getBoolean("dapur_stok_keluar")
+                           rs.getBoolean("dapur_stok_keluar"),
+                           rs.getBoolean("dapur_riwayat_barang")
                         });
                     }                                             
                  }
