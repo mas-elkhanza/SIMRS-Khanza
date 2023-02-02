@@ -711,7 +711,7 @@ public class DlgSetHargaKamar extends javax.swing.JDialog {
 private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkamarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=? ",TKdBngsal,kdkamar.getText());
-            Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=? ",TBangsal,TKdBngsal.getText());
+            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=? ",TBangsal,TKdBngsal.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnKamarActionPerformed(null);
         }else{
