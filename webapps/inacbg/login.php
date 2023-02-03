@@ -9,7 +9,7 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
             $_SESSION['ses_admin_casemix']="admin";
-            $codernik= validTeks($_GET['codernik']);
+            $codernik= validTeks4($_GET['codernik'],30);
             if(($_GET['page']=="KlaimBaruOtomatis")){
                 $url = "index.php?act=KlaimBaruOtomatis&codernik=".$codernik;	
             }else if(($_GET['page']=="KlaimBaruManual")){

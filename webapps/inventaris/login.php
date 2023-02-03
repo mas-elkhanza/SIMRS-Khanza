@@ -9,7 +9,7 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
             $_SESSION['ses_admin_inventaris']="admin";
-            $url = "index.php?act=List&no_inventaris=".validTeks($_GET['no_inventaris']);			
+            $url = "index.php?act=List&no_inventaris=".validTeks4($_GET['no_inventaris'],30);			
         }else{
             session_start();
             session_destroy();

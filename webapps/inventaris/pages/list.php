@@ -10,7 +10,7 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 $action             = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_inventaris      = validTeks(str_replace("_"," ",$_GET['no_inventaris']));
+                $no_inventaris      = validTeks4(str_replace("_"," ",$_GET['no_inventaris']),30);
                 $gambar             = validTeks(str_replace("_"," ",isset($_GET['gambar']))?str_replace("_"," ",isset($_GET['gambar'])):NULL);
                 echo "<input type=hidden name=no_inventaris value=$no_inventaris>
                       <input type=hidden name=action value=$action>";
@@ -34,11 +34,11 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_inventaris = validTeks(trim($_POST['no_inventaris']));
+                    $no_inventaris = validTeks4(trim($_POST['no_inventaris']),30);
                     $gambar        = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
                     if((strtolower(substr($gambar,-3))=="jpg")||(strtolower(substr($gambar,-4))=="jpeg")){
-                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
                         if ((!empty($no_inventaris))&&(!empty($gambar))) {
+                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
                             Tambah(" inventaris_gambar "," '$no_inventaris','$gambar'", " Gambar Inventaris " );
                             echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_inventaris=$no_inventaris'>";                              
                         }else if ((empty($no_inventaris))||(empty($gambar))){
@@ -80,7 +80,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['gambar']);
-                Hapus(" inventaris_gambar "," no_inventaris ='".validTeks($_GET['no_inventaris'])."' ","?act=List&action=TAMBAH&no_inventaris=$no_inventaris");
+                Hapus(" inventaris_gambar "," no_inventaris ='".validTeks4($_GET['no_inventaris'],30)."' ","?act=List&action=TAMBAH&no_inventaris=$no_inventaris");
             }
         
         ?>

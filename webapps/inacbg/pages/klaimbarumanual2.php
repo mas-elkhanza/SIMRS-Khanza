@@ -8,33 +8,33 @@
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
                 echo "";
-                $tahunawal      = validTeks(isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL);
-                $bulanawal      = validTeks(isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL);
-                $tanggalawal    = validTeks(isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL);
-                $tahunakhir     = validTeks(isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL);
-                $bulanakhir     = validTeks(isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL);
-                $tanggalakhir   = validTeks(isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL);  
+                $tahunawal      = validTeks4((isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL),4);
+                $bulanawal      = validTeks4((isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL),2);
+                $tanggalawal    = validTeks4((isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL),2);
+                $tahunakhir     = validTeks4((isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL),4);
+                $bulanakhir     = validTeks4((isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL),2);
+                $tanggalakhir   = validTeks4((isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL),2);  
                 $action         = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
-                $norawat        = validTeks(isset($_GET['norawat'])?$_GET['norawat']:NULL);
-                $codernik       = validTeks(isset($_GET['codernik'])?$_GET['codernik']:NULL);
-                $carabayar      = validTeks(str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL);
-                $keyword        = validTeks(isset($_GET['keyword'])?$_GET['keyword']:NULL);
+                $norawat        = validTeks4((isset($_GET['norawat'])?$_GET['norawat']:NULL),20);
+                $codernik       = validTeks4((isset($_GET['codernik'])?$_GET['codernik']:NULL),30);
+                $carabayar      = validTeks4((str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL),40);
+                $keyword        = validTeks4((isset($_GET['keyword'])?$_GET['keyword']:NULL),20);
                 echo "<input type=hidden name=codernik  value=$codernik><input type=hidden name=keyword value=$keyword>";
         ?>
         <div style="width: 100%; height: 85%; overflow: auto;">
         <?php
             $BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
             $keyword  =isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
-            $keyword  = validTeks($keyword);
+            $keyword  = validTeks4($keyword,20);
             if (isset($BtnCari)) {      
-                    $tahunawal      = validTeks(trim($_POST['tahunawal']));
-                    $bulanawal      = validTeks(trim($_POST['bulanawal']));
-                    $tanggalawal    = validTeks(trim($_POST['tanggalawal']));
-                    $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
-                    $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
-                    $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));
-                    $codernik       = validTeks(trim($_POST['codernik'])); 
-                    $carabayar      = validTeks(isset($_POST['carabayar'])?trim($_POST['carabayar']):NULL);
+                    $tahunawal      = validTeks4(trim($_POST['tahunawal']),4);
+                    $bulanawal      = validTeks4(trim($_POST['bulanawal']),2);
+                    $tanggalawal    = validTeks4(trim($_POST['tanggalawal']),2);
+                    $tahunakhir     = validTeks4(trim($_POST['tahunakhir']),4);
+                    $bulanakhir     = validTeks4(trim($_POST['bulanakhir']),2);
+                    $tanggalakhir   = validTeks4(trim($_POST['tanggalakhir']),2);
+                    $codernik       = validTeks4(trim($_POST['codernik']),30); 
+                    $carabayar      = validTeks4((isset($_POST['carabayar'])?trim($_POST['carabayar']):NULL),40);
             }
             if(empty($tahunawal)){
                 $tahunawal=date('Y');
@@ -234,7 +234,7 @@
                 </tr>
                 <tr class="head3">					
                     <td width="690px">
-                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="55" maxlength="200" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="55" maxlength="20" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" a-zA-Z0-9, ./@_ (Maksimal 20 karakter)" autocomplete="off" autocomplete="off" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         Record : <?php echo $jumlah; ?>

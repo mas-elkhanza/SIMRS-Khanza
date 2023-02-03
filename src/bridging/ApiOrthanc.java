@@ -11,6 +11,7 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.swing.JOptionPane;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
@@ -73,6 +74,7 @@ public class ApiOrthanc {
             root = mapper.readTree(requestJson);
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+            JOptionPane.showMessageDialog(null,"Gagal mengambil data dari Orthanc, silahkan hubungi administrator ..!!");
         }
         return root;
     }
