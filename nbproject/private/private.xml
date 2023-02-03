@@ -5,7 +5,7 @@
             <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
             <bookmark id="2">
                 <name/>
-                <line>1793</line>
+                <line>1789</line>
                 <key/>
             </bookmark>
         </file>
@@ -19,6 +19,12 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/bridging/OrthancDICOM.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/setting/database.xml</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/bridging/ApiOrthanc.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgCariPeriksaRadiologi.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/surat/SuratMasuk.java</file>
+        </group>
     </open-files>
 </project-private>

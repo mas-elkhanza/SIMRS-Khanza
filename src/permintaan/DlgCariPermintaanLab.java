@@ -2606,7 +2606,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     pilihan="U";
                                 }
                                 Permintaan="";
-                                ps2=koneksi.prepareStatement("select kd_jenis_prw from permintaan_pemeriksaan_lab where noorder=?");
+                                ps2=koneksi.prepareStatement("select permintaan_pemeriksaan_lab.kd_jenis_prw from permintaan_pemeriksaan_lab where permintaan_pemeriksaan_lab.noorder=?");
                                 try {
                                     ps2.setString(1,NoPermintaan);
                                     rs2=ps2.executeQuery();
@@ -2634,7 +2634,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                         "'"+Permintaan+"','0')").executeUpdate();
                                 
                                 Permintaan="";
-                                ps2=koneksi.prepareStatement("select id_template from permintaan_detail_permintaan_lab where noorder=?");
+                                ps2=koneksi.prepareStatement("select permintaan_detail_permintaan_lab.id_template from permintaan_detail_permintaan_lab where permintaan_detail_permintaan_lab.noorder=?");
                                 try {
                                     ps2.setString(1,NoPermintaan);
                                     rs2=ps2.executeQuery();
@@ -2715,7 +2715,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     pilihan="U";
                                 }
                                 Permintaan="";
-                                ps2=koneksi.prepareStatement("select kd_jenis_prw from permintaan_pemeriksaan_lab where noorder=?");
+                                ps2=koneksi.prepareStatement("select permintaan_pemeriksaan_lab.kd_jenis_prw from permintaan_pemeriksaan_lab where permintaan_pemeriksaan_lab.noorder=?");
                                 try {
                                     ps2.setString(1,NoPermintaan);
                                     rs2=ps2.executeQuery();
@@ -2743,7 +2743,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                         "'"+Permintaan+"','0')").executeUpdate();
                                 
                                 Permintaan="";
-                                ps2=koneksi.prepareStatement("select id_template from permintaan_detail_permintaan_lab where noorder=?");
+                                ps2=koneksi.prepareStatement("select permintaan_detail_permintaan_lab.id_template from permintaan_detail_permintaan_lab where permintaan_detail_permintaan_lab.noorder=?");
                                 try {
                                     ps2.setString(1,NoPermintaan);
                                     rs2=ps2.executeQuery();

@@ -2,11 +2,11 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>KhanzaHMS</comment> 
-    <entry key="HOST">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="HOST">Y8sgom3+mfni1N2PruN8Kg==</entry>
     <entry key="DATABASE">AZHNccBwSmSho84f+X8GyQ==</entry>
     <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
-    <entry key="PAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="PAS">+DPvi2TqIW5E6OVob1F4NA==</entry>
     <entry key="CARICEPAT">nonaktif</entry>
     <entry key="HOSTHYBRIDWEB">5k7+C7EnUw9nUv2Nix+DBA==</entry>
     <entry key="USERHYBRIDWEB">nmXqCKzrz9i8GTZlq7JruQ==</entry>
@@ -141,4 +141,8 @@
     <entry key="PORTVANSLAB">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USERVANSLAB">kMR3WfAwUK6MbhCyydxa0g==</entry>
     <entry key="PASVANSLAB">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLORTHANC">http://192.168.11.23</entry>
+    <entry key="PORTORTHANC">gie5pRePkRsFe+dOh84P4A==</entry>
+    <entry key="USERORTHANC">V9bi0P2HgAq8Nn8lUyS6/A==</entry>
+    <entry key="PASSORTHANC">V9bi0P2HgAq8Nn8lUyS6/A==</entry>
 </properties>
