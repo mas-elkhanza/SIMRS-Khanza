@@ -6,7 +6,7 @@
     $nosurat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $nosurat = json_decode(encrypt_decrypt($nosurat,"d"),true); 
     if (isset($nosurat["nosurat"])) {
-        $nosurat = $nosurat["nosurat"];
+        $nosurat = cleankar2($nosurat["nosurat"]);
         $querysuratrujuk = bukaquery("select rujuk.no_rujuk,rujuk.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
                 rujuk.rujuk_ke,date_format(rujuk.tgl_rujuk,'%d/%m/%Y') as tgl_rujuk,rujuk.jam,rujuk.keterangan_diagnosa,
                 rujuk.kd_dokter,dokter.nm_dokter,rujuk.kat_rujuk,rujuk.ambulance,rujuk.keterangan,reg_periksa.tgl_registrasi,

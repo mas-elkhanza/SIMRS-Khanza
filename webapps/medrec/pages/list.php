@@ -10,14 +10,14 @@
             <?php
                     echo "";
                     $action      = isset($_GET['action'])?$_GET['action']:NULL;
-                    $keyword     = validTeks(isset($_GET['keyword'])?$_GET['keyword']:NULL);
+                    $keyword     = validTeks4((isset($_GET['keyword'])?$_GET['keyword']:NULL),25);
                     echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
             ?>
             <div style="width: 100%; height: 91%; overflow: auto;">
             <?php
 
                 $keyword= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;   
-                $keyword= validTeks($keyword);
+                $keyword= validTeks4($keyword,25);
 
                 $_sql = "SELECT pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,pasien.nm_ibu from pasien where pasien.no_rkm_medis like '%".$keyword."%' or 
                                pasien.nm_pasien like '%".$keyword."%' or pasien.tgl_lahir like '%".$keyword."%' or pasien.nm_ibu like '%".$keyword."%' order by pasien.no_rkm_medis DESC limit 1000";
@@ -84,7 +84,7 @@
             <table width="100%" align="center" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr class="head3">					
                     <td width="430px">
-                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="25" pattern="[a-zA-Z0-9, ./@_]{1,25}" title=" a-zA-Z0-9, ./@_ (Maksimal 25 karakter)" autocomplete="off" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />
                     </td>
                     <td width="140px" >Record : <?php echo $jumlah; ?> </td>

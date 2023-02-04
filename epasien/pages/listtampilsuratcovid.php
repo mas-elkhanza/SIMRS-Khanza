@@ -6,7 +6,7 @@
     $nosurat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $nosurat = json_decode(encrypt_decrypt($nosurat,"d"),true); 
     if (isset($nosurat["nosurat"])) {
-        $nosurat = $nosurat["nosurat"];
+        $nosurat = cleankar2($nosurat["nosurat"]);
         $querysuratcovid = bukaquery("select surat_keterangan_covid.no_surat,surat_keterangan_covid.no_rawat,surat_keterangan_covid.kd_dokter,dokter.nm_dokter,
                 reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-laki','Perempuan') as jk,pasien.pekerjaan,
                 date_format(pasien.tgl_lahir,'%d/%m/%Y') as tanggallahir,spesialis.nm_sps,

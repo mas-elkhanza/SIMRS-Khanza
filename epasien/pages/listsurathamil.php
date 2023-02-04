@@ -23,7 +23,7 @@
                         </thead>
                         <tbody>
                         <?php 
-                           $querysurathamil = bukaquery("select surat_hamil.no_surat,surat_hamil.no_rawat,date_format(surat_hamil.tanggalperiksa,'%d/%m/%Y') as tanggalperiksa,surat_hamil.hasilperiksa,dokter.nm_dokter from surat_hamil inner join reg_periksa on surat_hamil.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+                           $querysurathamil = bukaquery("select surat_hamil.no_surat,surat_hamil.no_rawat,date_format(surat_hamil.tanggalperiksa,'%d/%m/%Y') as tanggalperiksa,surat_hamil.hasilperiksa,dokter.nm_dokter from surat_hamil inner join reg_periksa on surat_hamil.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");
                            while($rsquerysurathamil = mysqli_fetch_array($querysurathamil)) {
                                echo "<tr>
                                         <td align='center' valign='middle'>".$rsquerysurathamil["no_surat"]."</td>

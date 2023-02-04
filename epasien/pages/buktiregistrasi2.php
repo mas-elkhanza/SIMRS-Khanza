@@ -6,7 +6,7 @@
     $norawat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $norawat = json_decode(encrypt_decrypt($norawat,"d"),true); 
     if (isset($norawat["norawat"])) {
-        $norawat = $norawat["norawat"];
+        $norawat = cleankar2($norawat["norawat"]);
         $queryregistrasi = bukaquery2("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_tlp,
                reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur as umur,poliklinik.nm_poli,
                reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab 

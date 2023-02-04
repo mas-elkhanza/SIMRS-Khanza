@@ -3,7 +3,7 @@
         $halaman                            = isset($_GET["hal"])?$_GET["hal"]:NULL;
         $subhalaman                         = isset($_GET["act"])?$_GET["act"]:NULL;
         if(!isset($_SESSION["nm_pasien"])){
-            $queryuser                      = @bukaquery2("select pasien.nm_pasien,pasien.email,pasien.jk,personal_pasien.gambar,pasien.no_tlp,pasien.no_peserta,pasien.no_ktp,pasien.tmp_lahir,date_format(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+            $queryuser                      = @bukaquery2("select pasien.nm_pasien,pasien.email,pasien.jk,personal_pasien.gambar,pasien.no_tlp,pasien.no_peserta,pasien.no_ktp,pasien.tmp_lahir,date_format(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");
             while($rsqueryuser = mysqli_fetch_array($queryuser)) {
                 $_SESSION["nm_pasien"]      = $rsqueryuser["nm_pasien"];
                 $_SESSION["email"]          = $rsqueryuser["email"];

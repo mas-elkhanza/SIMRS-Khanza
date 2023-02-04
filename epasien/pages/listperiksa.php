@@ -5,7 +5,7 @@
 
     $btnBooking=isset($_POST['btnBooking'])?$_POST['btnBooking']:NULL;
     if (isset($btnBooking)) {
-        if(@$_SESSION["Capcay"]!= getOne2("select aes_encrypt(".cleankar($_POST["inputcaptcha"]).",'windi')")){
+        if(@$_SESSION["Capcay"]!= getOne2("select aes_encrypt(".cleankar2($_POST["inputcaptcha"]).",'windi')")){
             echo "<section id='news' data-stellar-background-ratio='2.5'>
                             <div class='container'>
                                  <div class='row'>
@@ -21,23 +21,23 @@
                 JSRedirect2("index.php?act=Home",4);
         }else{
             $nama         = trim(isset($_POST['nama']))?trim($_POST['nama']):NULL;
-            $nama         = strtoupper(cleankar($nama));
+            $nama         = strtoupper(cleankar2($nama));
             $alamat       = trim(isset($_POST['alamat']))?trim($_POST['alamat']):NULL;
-            $alamat       = strtoupper(cleankar($alamat));
+            $alamat       = strtoupper(cleankar2($alamat));
             $nohp         = trim(isset($_POST['nohp']))?trim($_POST['nohp']):NULL;
-            $nohp         = cleankar($nohp);
+            $nohp         = cleankar2($nohp);
             $email        = trim(isset($_POST['email']))?trim($_POST['email']):NULL;
-            $email        = cleankar($email);
+            $email        = cleankar2($email);
             $pesan        = trim(isset($_POST['pesan']))?trim($_POST['pesan']):NULL;
-            $pesan        = cleankar($pesan);
+            $pesan        = cleankar2($pesan);
             $TglDaftar    = trim(isset($_POST['TglDaftar']))?trim($_POST['TglDaftar']):NULL;
-            $TglDaftar    = cleankar($TglDaftar);
+            $TglDaftar    = cleankar2($TglDaftar);
             $BlnDaftar    = trim(isset($_POST['BlnDaftar']))?trim($_POST['BlnDaftar']):NULL;
-            $BlnDaftar    = cleankar($BlnDaftar);
+            $BlnDaftar    = cleankar2($BlnDaftar);
             $ThnDaftar    = trim(isset($_POST['ThnDaftar']))?trim($_POST['ThnDaftar']):NULL;
-            $ThnDaftar    = cleankar($ThnDaftar);
+            $ThnDaftar    = cleankar2($ThnDaftar);
             $poli         = trim(isset($_POST['poli']))?trim($_POST['poli']):NULL;
-            $poli         = cleankar($poli);
+            $poli         = cleankar2($poli);
             $sekarang     = date("Y-m-d H:i:s");
             $interval     = getOne2("select (TO_DAYS('$ThnDaftar-$BlnDaftar-$TglDaftar')-TO_DAYS('$sekarang'))");
             if($interval>0){

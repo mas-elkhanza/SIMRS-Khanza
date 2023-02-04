@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                         <?php 
-                           $querysuratbebasnarkoba = bukaquery("select surat_skbn.no_surat,surat_skbn.no_rawat,date_format(surat_skbn.tanggalsurat,'%d/%m/%Y') as tanggalsurat,surat_skbn.kategori,surat_skbn.keperluan,dokter.nm_dokter from surat_skbn inner join reg_periksa on surat_skbn.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+                           $querysuratbebasnarkoba = bukaquery("select surat_skbn.no_surat,surat_skbn.no_rawat,date_format(surat_skbn.tanggalsurat,'%d/%m/%Y') as tanggalsurat,surat_skbn.kategori,surat_skbn.keperluan,dokter.nm_dokter from surat_skbn inner join reg_periksa on surat_skbn.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");
                            while($rsquerysuratbebasnarkoba = mysqli_fetch_array($querysuratbebasnarkoba)) {
                                echo "<tr>
                                         <td align='center' valign='middle'>".$rsquerysuratbebasnarkoba["no_surat"]."</td>

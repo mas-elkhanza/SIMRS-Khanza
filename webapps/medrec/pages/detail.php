@@ -11,7 +11,7 @@
             <?php
                 echo "";
                 $action  = isset($_GET['action'])?$_GET['action']:NULL;
-                $id      = validTeks(isset($_GET['id'])?$_GET['id']:NULL);
+                $id      = validTeks4((isset($_GET['id'])?$_GET['id']:NULL),15);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
                 echo "<div align='center' class='link'>
                           <a href=?act=List>| List Retensi |</a>
@@ -111,9 +111,9 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 = validTeks(trim($_POST['id']));
-                    $terakhir_daftar    = validTeks(trim($_POST['ThnTerakhir'])."-".trim($_POST['BlnTerakhir'])."-".trim($_POST['TglTerakhir']));
-                    $tgl_retensi        = validTeks(trim($_POST['ThnRetensi'])."-".trim($_POST['BlnRetensi'])."-".trim($_POST['TglRetensi']));
+                    $id                 = validTeks4(trim($_POST['id']),15);
+                    $terakhir_daftar    = validTeks4(trim($_POST['ThnTerakhir'])."-".trim($_POST['BlnTerakhir'])."-".trim($_POST['TglTerakhir']),20);
+                    $tgl_retensi        = validTeks4(trim($_POST['ThnRetensi'])."-".trim($_POST['BlnRetensi'])."-".trim($_POST['TglRetensi']),20);
                     $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
                     if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
                         move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);

@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                         <?php 
-                           $queryperiksa = bukaquery("select reg_periksa.no_rawat,date_format(reg_periksa.tgl_registrasi,'%d/%m/%Y') as tgl_registrasi,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.status_lanjut from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+                           $queryperiksa = bukaquery("select reg_periksa.no_rawat,date_format(reg_periksa.tgl_registrasi,'%d/%m/%Y') as tgl_registrasi,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.status_lanjut from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");
                            while($rsqueryperiksa = mysqli_fetch_array($queryperiksa)) {
                                echo "<tr>
                                         <td align='center' valign='middle'>".$rsqueryperiksa["tgl_registrasi"]."</td>
