@@ -598,6 +598,7 @@ import dapur.DapurInputStok;
 import dapur.DapurPembelian;
 import dapur.DapurPengeluaran;
 import dapur.DapurPermintaan;
+import dapur.DapurRBiayaHarian;
 import dapur.DapurRiwayatBarang;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
@@ -19805,6 +19806,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnRBiayaDapurActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurRBiayaHarian form=new DapurRBiayaHarian(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -20471,7 +20483,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
-            btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur;
+            btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur;
     
     public void isWall(){
         try{            
@@ -21592,6 +21604,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpermintaan_dapur()==true){
                 Panelmenu.add(btnPermintaanDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getbiaya_pengadaan_dapur()==true){
+                Panelmenu.add(btnRBiayaDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -26149,6 +26166,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpermintaan_dapur()==true){
             Panelmenu.add(btnPermintaanDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getbiaya_pengadaan_dapur()==true){
+            Panelmenu.add(btnRBiayaDapur);
             jmlmenu++;
         }
 
@@ -31091,6 +31113,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpermintaan_dapur()==true){
             if(btnPermintaanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbiaya_pengadaan_dapur()==true){
+            if(btnRBiayaDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRBiayaDapur);
                 jmlmenu++;
             }                
         }
@@ -39636,5 +39665,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPermintaanDapur.setName("btnPermintaanDapur"); 
         btnPermintaanDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPermintaanDapur.addActionListener(this::btnPermintaanDapurActionPerformed);
+        
+        btnRBiayaDapur = new widget.ButtonBig();
+        btnRBiayaDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3558095_food_noodle_shop_street_vender_icon.png")));
+        btnRBiayaDapur.setText("Biaya Pengadaan Dapur");
+        btnRBiayaDapur.setIconTextGap(0);
+        btnRBiayaDapur.setName("btnRBiayaDapur"); 
+        btnRBiayaDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBiayaDapur.addActionListener(this::btnRBiayaDapurActionPerformed);
     }
 }
