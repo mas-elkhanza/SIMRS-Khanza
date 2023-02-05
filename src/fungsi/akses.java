@@ -199,7 +199,8 @@ public final class akses {
             satu_sehat_mapping_departemen=false,satu_sehat_mapping_lokasi=false,satu_sehat_kirim_encounter=false,catatan_cek_gds=false,satu_sehat_kirim_condition=false,
             checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false,satu_sehat_kirim_procedure=false,operasi_per_bulan=false,
             timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false,
-            satu_sehat_kirim_Immunization=false,checklist_post_operasi=false,dapur_pembelian=false,dapur_stok_keluar=false,dapur_riwayat_barang=false,permintaan_dapur=false;
+            satu_sehat_kirim_Immunization=false,checklist_post_operasi=false,dapur_pembelian=false,dapur_stok_keluar=false,dapur_riwayat_barang=false,permintaan_dapur=false,
+            rekonsiliasi_obat=false,biaya_pengadaan_dapur=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1138,6 +1139,8 @@ public final class akses {
                         akses.dapur_stok_keluar=true;
                         akses.dapur_riwayat_barang=true;
                         akses.permintaan_dapur=true;
+                        akses.rekonsiliasi_obat=true;
+                        akses.biaya_pengadaan_dapur=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2060,6 +2063,8 @@ public final class akses {
                         akses.dapur_stok_keluar=rs2.getBoolean("dapur_stok_keluar");
                         akses.dapur_riwayat_barang=rs2.getBoolean("dapur_riwayat_barang");
                         akses.permintaan_dapur=rs2.getBoolean("permintaan_dapur");
+                        akses.rekonsiliasi_obat=rs2.getBoolean("rekonsiliasi_obat");
+                        akses.biaya_pengadaan_dapur=rs2.getBoolean("biaya_pengadaan_dapur");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2980,6 +2985,8 @@ public final class akses {
                         akses.dapur_stok_keluar=false;
                         akses.dapur_riwayat_barang=false;
                         akses.permintaan_dapur=false;
+                        akses.rekonsiliasi_obat=false;
+                        akses.biaya_pengadaan_dapur=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3957,4 +3964,6 @@ public final class akses {
     public static boolean getdapur_stok_keluar(){return akses.dapur_stok_keluar;}
     public static boolean getdapur_riwayat_barang(){return akses.dapur_riwayat_barang;}
     public static boolean getpermintaan_dapur(){return akses.permintaan_dapur;}
+    public static boolean getrekonsiliasi_obat(){return akses.rekonsiliasi_obat;}
+    public static boolean getbiaya_pengadaan_dapur(){return akses.biaya_pengadaan_dapur;}
 }   
