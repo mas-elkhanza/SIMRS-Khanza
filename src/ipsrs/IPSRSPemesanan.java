@@ -988,12 +988,12 @@ private void NoFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());           
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);

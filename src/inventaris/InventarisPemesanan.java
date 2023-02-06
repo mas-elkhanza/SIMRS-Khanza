@@ -962,12 +962,12 @@ private void NoFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());           
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -1406,7 +1406,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void tampil(String noorder) {
         /*NoOrder.setText(noorder);
         kdsup.setText(Sequel.cariIsi("select kode_suplier from surat_pemesanan_non_medis where no_pemesanan=?",noorder));
-        nmsup.setText(Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?",kdsup.getText()));
+        nmsup.setText(Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?",kdsup.getText()));
         meterai=Sequel.cariIsiAngka("select meterai from surat_pemesanan_non_medis where no_pemesanan=?",noorder);
         ppn=Sequel.cariIsiAngka("select ppn from surat_pemesanan_non_medis where no_pemesanan=?",noorder);
         Meterai.setText(Valid.SetAngka2(meterai));

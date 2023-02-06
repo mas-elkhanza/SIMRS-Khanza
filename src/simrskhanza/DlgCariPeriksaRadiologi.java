@@ -1134,6 +1134,16 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         Scroll5.setOpaque(true);
 
         tbListDicom.setName("tbListDicom"); // NOI18N
+        tbListDicom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbListDicomMouseClicked(evt);
+            }
+        });
+        tbListDicom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbListDicomKeyPressed(evt);
+            }
+        });
         Scroll5.setViewportView(tbListDicom);
 
         FormOrthan.add(Scroll5, java.awt.BorderLayout.CENTER);
@@ -1927,6 +1937,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 OrthancDICOM orthan=new OrthancDICOM(null,false);
                 orthan.setJudul("::[ DICOM Orthanc Pasien "+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+", Series "+tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString()+" ]::");
                 try {
+                    System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/web-viewer/app/viewer.html?series="+tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString());
                     orthan.loadURL(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/web-viewer/app/viewer.html?series="+tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString());
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
@@ -1944,6 +1955,22 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
         tampilOrthanc();
     }//GEN-LAST:event_TabDataMouseClicked
+
+    private void tbListDicomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListDicomMouseClicked
+        if(tabModeDicom.getRowCount()!=0){
+            if(evt.getClickCount()==2){
+                btnDicomActionPerformed(null);
+            }
+        }
+    }//GEN-LAST:event_tbListDicomMouseClicked
+
+    private void tbListDicomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbListDicomKeyPressed
+        if(tabModeDicom.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                btnDicomActionPerformed(null);
+            }
+        }
+    }//GEN-LAST:event_tbListDicomKeyPressed
 
     /**
     * @param args the command line arguments

@@ -599,6 +599,7 @@ import dapur.DapurPembelian;
 import dapur.DapurPengeluaran;
 import dapur.DapurPermintaan;
 import dapur.DapurRBiayaHarian;
+import dapur.DapurRHPembelian;
 import dapur.DapurRiwayatBarang;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
@@ -19817,6 +19818,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnRekapPengadaanDapurActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurRHPembelian form=new DapurRHPembelian(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -20483,7 +20495,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
-            btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur;
+            btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur;
     
     public void isWall(){
         try{            
@@ -21609,6 +21621,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbiaya_pengadaan_dapur()==true){
                 Panelmenu.add(btnRBiayaDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getrekap_pengadaan_dapur()==true){
+                Panelmenu.add(btnRekapPengadaanDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -26171,6 +26188,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbiaya_pengadaan_dapur()==true){
             Panelmenu.add(btnRBiayaDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getrekap_pengadaan_dapur()==true){
+            Panelmenu.add(btnRekapPengadaanDapur);
             jmlmenu++;
         }
 
@@ -31120,6 +31142,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbiaya_pengadaan_dapur()==true){
             if(btnRBiayaDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBiayaDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getrekap_pengadaan_dapur()==true){
+            if(btnRekapPengadaanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapPengadaanDapur);
                 jmlmenu++;
             }                
         }
@@ -39673,5 +39702,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRBiayaDapur.setName("btnRBiayaDapur"); 
         btnRBiayaDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRBiayaDapur.addActionListener(this::btnRBiayaDapurActionPerformed);
+        
+        btnRekapPengadaanDapur = new widget.ButtonBig();
+        btnRekapPengadaanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3558120_corn_food_shop_street_vegetable_icon.png")));
+        btnRekapPengadaanDapur.setText("Rekap Pengadaan Dapur");
+        btnRekapPengadaanDapur.setIconTextGap(0);
+        btnRekapPengadaanDapur.setName("btnRekapPengadaanDapur"); 
+        btnRekapPengadaanDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPengadaanDapur.addActionListener(this::btnRekapPengadaanDapurActionPerformed);
     }
 }
