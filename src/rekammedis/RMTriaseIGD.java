@@ -2089,24 +2089,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }
                 }
                 if(PrimerKeluhanUtama.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerKeluhanUtama,"Keluhan Utama");
                 }else if(PrimerSuhu.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerSuhu,"Suhu");
                 }else if(PrimerNyeri.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerNyeri,"Nyeri");
                 }else if(PrimerTensi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerTensi,"Tensi");
                 }else if(PrimerNadi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerNadi,"Nadi");
                 }else if(PrimerSaturasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerSaturasi,"Saturasi O²");
                 }else if(PrimerRespirasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerRespirasi,"Respirasi");
                 }else if(PrimerCatatan.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerCatatan,"Catatan");
                 }else if(PrimerKodePetugas.getText().trim().equals("")||PrimerNamaPetugas.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(btnPrimerPetugas,"Dokter/Petugas Triase");
                 }else if((jmlskala1==0)&&(jmlskala2==0)){
+                    sukses=false;
                     Valid.textKosong(TCariPemeriksaan,"Skala 1 / Skala 2");
                 }else{
                     if(Sequel.menyimpantf("data_triase_igd","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",13,new String[]{
@@ -2175,24 +2185,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }
                 }
                 if(SekunderAnamnesa.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderAnamnesa,"Anamnesa");
                 }else if(SekunderSuhu.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderSuhu,"Suhu");
                 }else if(SekunderNyeri.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderNyeri,"Nyeri");
                 }else if(SekunderTensi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderTensi,"Tensi");
                 }else if(SekunderNadi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderNadi,"Nadi");
                 }else if(SekunderSaturasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderSaturasi,"Saturasi O²");
                 }else if(SekunderRespirasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderRespirasi,"Respirasi");
                 }else if(SekunderCatatan.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderCatatan,"Catatan");
                 }else if(SekunderKodePetugas.getText().trim().equals("")||SekunderNamaPetugas.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(btnSekunderPetugas,"Dokter Sekunder");
                 }else if((jmlskala3==0)&&(jmlskala4==0)&&(jmlskala5==0)){
+                    sukses=false;
                     Valid.textKosong(TCariPemeriksaan2,"Skala 3 / Skala 4 / Skala 5");
                 }else{
                     if(Sequel.menyimpantf("data_triase_igd","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",13,new String[]{
@@ -2260,7 +2280,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 Sequel.Commit();
             }else{
                 sukses=false;
-                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, input data dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                 Sequel.RollBack();
             }
             Sequel.AutoComitTrue();
@@ -5670,24 +5689,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 }
             }
             if(PrimerKeluhanUtama.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerKeluhanUtama,"Keluhan Utama");
             }else if(PrimerSuhu.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerSuhu,"Suhu");
             }else if(PrimerNyeri.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerNyeri,"Nyeri");
             }else if(PrimerTensi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerTensi,"Tensi");
             }else if(PrimerNadi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerNadi,"Nadi");
             }else if(PrimerSaturasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerSaturasi,"Saturasi O²");
             }else if(PrimerRespirasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerRespirasi,"Respirasi");
             }else if(PrimerCatatan.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerCatatan,"Catatan");
             }else if(PrimerKodePetugas.getText().trim().equals("")||PrimerNamaPetugas.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(btnPrimerPetugas,"Dokter/Petugas Triase");
             }else if((jmlskala1==0)&&(jmlskala2==0)){
+                sukses=false;
                 Valid.textKosong(TCariPemeriksaan,"Skala 1 / Skala 2");
             }else{
                 if(Sequel.mengedittf("data_triase_igd","no_rawat=?","no_rawat=?,tgl_kunjungan=?,cara_masuk=?,alat_transportasi=?,alasan_kedatangan=?,keterangan_kedatangan=?,kode_kasus=?,tekanan_darah=?,nadi=?,pernapasan=?,suhu=?,saturasi_o2=?,nyeri=?",14,new String[]{
@@ -5756,24 +5785,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 }
             }
             if(SekunderAnamnesa.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderAnamnesa,"Anamnesa");
             }else if(SekunderSuhu.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderSuhu,"Suhu");
             }else if(SekunderNyeri.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderNyeri,"Nyeri");
             }else if(SekunderTensi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderTensi,"Tensi");
             }else if(SekunderNadi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderNadi,"Nadi");
             }else if(SekunderSaturasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderSaturasi,"Saturasi O²");
             }else if(SekunderRespirasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderRespirasi,"Respirasi");
             }else if(SekunderCatatan.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderCatatan,"Catatan");
             }else if(SekunderKodePetugas.getText().trim().equals("")||SekunderNamaPetugas.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(btnSekunderPetugas,"Dokter/Petugas Triase");
             }else if((jmlskala3==0)&&(jmlskala4==0)&&(jmlskala5==0)){
+                sukses=false;
                 Valid.textKosong(TCariPemeriksaan2,"Skala 3 / Skala 4 / Skala 5");
             }else{
                 if(Sequel.mengedittf("data_triase_igd","no_rawat=?","no_rawat=?,tgl_kunjungan=?,cara_masuk=?,alat_transportasi=?,alasan_kedatangan=?,keterangan_kedatangan=?,kode_kasus=?,tekanan_darah=?,nadi=?,pernapasan=?,suhu=?,saturasi_o2=?,nyeri=?",14,new String[]{
@@ -5841,7 +5880,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             Sequel.Commit();
         }else{
             sukses=false;
-            JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, input data dibatalkan.\nPeriksa kembali data sebelum melanjutkan mengganti..!!");
             Sequel.RollBack();
         }
         Sequel.AutoComitTrue();

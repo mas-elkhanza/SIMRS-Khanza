@@ -29,7 +29,7 @@
                 if (isset($BtnCari)) {      
                     $tahunawal      = validTeks4(trim($_POST['tahunawal']),4);
                     $bulanawal      = validTeks4(trim($_POST['bulanawal']),2);
-                    $tanggalawal    = validTeks4(trim($_POST['tanggalawal'],2));
+                    $tanggalawal    = validTeks4(trim($_POST['tanggalawal']),2);
                     $tahunakhir     = validTeks4(trim($_POST['tahunakhir']),4);
                     $bulanakhir     = validTeks4(trim($_POST['bulanakhir']),2);
                     $tanggalakhir   = validTeks4(trim($_POST['tanggalakhir']),2);    
