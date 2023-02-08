@@ -210,16 +210,17 @@ public class OrthancDICOM extends javax.swing.JDialog {
 
         PanelMenu = new widget.panelisi();
         BtnPng = new widget.Button();
-        BtnDcm = new widget.Button();
         BtnJpg = new widget.Button();
+        BtnBmp = new widget.Button();
+        BtnDcm = new widget.Button();
         BtnKeluar = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
 
         PanelMenu.setName("PanelMenu"); // NOI18N
         PanelMenu.setPreferredSize(new java.awt.Dimension(44, 34));
-        PanelMenu.setLayout(new java.awt.GridLayout());
+        PanelMenu.setLayout(new java.awt.GridLayout(1, 0));
 
-        BtnPng.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16i.png"))); // NOI18N
+        BtnPng.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/3079288_adobe file extensions_adobe fireworks_document_extension icon_file_icon.png"))); // NOI18N
         BtnPng.setMnemonic('P');
         BtnPng.setText("Download PNG");
         BtnPng.setToolTipText("Alt+P");
@@ -231,6 +232,32 @@ public class OrthancDICOM extends javax.swing.JDialog {
             }
         });
         PanelMenu.add(BtnPng);
+
+        BtnJpg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/2276087_document_extension_format_jpg_paper_icon.png"))); // NOI18N
+        BtnJpg.setMnemonic('D');
+        BtnJpg.setText("Download JPG");
+        BtnJpg.setToolTipText("Alt+D");
+        BtnJpg.setName("BtnJpg"); // NOI18N
+        BtnJpg.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnJpg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJpgActionPerformed(evt);
+            }
+        });
+        PanelMenu.add(BtnJpg);
+
+        BtnBmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/2315911_bmp_documents_file_format_paper_icon.png"))); // NOI18N
+        BtnBmp.setMnemonic('D');
+        BtnBmp.setText("Download BMP");
+        BtnBmp.setToolTipText("Alt+D");
+        BtnBmp.setName("BtnBmp"); // NOI18N
+        BtnBmp.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBmpActionPerformed(evt);
+            }
+        });
+        PanelMenu.add(BtnBmp);
 
         BtnDcm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16i.png"))); // NOI18N
         BtnDcm.setMnemonic('D');
@@ -244,19 +271,6 @@ public class OrthancDICOM extends javax.swing.JDialog {
             }
         });
         PanelMenu.add(BtnDcm);
-
-        BtnJpg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16i.png"))); // NOI18N
-        BtnJpg.setMnemonic('D');
-        BtnJpg.setText("Download JPG");
-        BtnJpg.setToolTipText("Alt+D");
-        BtnJpg.setName("BtnJpg"); // NOI18N
-        BtnJpg.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnJpg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnJpgActionPerformed(evt);
-            }
-        });
-        PanelMenu.add(BtnJpg);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -333,6 +347,10 @@ public class OrthancDICOM extends javax.swing.JDialog {
         orthanc.AmbilJpg(norawat,series);
     }//GEN-LAST:event_BtnJpgActionPerformed
 
+    private void BtnBmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBmpActionPerformed
+        orthanc.AmbilBmp(norawat,series);
+    }//GEN-LAST:event_BtnBmpActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -350,6 +368,7 @@ public class OrthancDICOM extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnBmp;
     private widget.Button BtnDcm;
     private widget.Button BtnJpg;
     private widget.Button BtnKeluar;

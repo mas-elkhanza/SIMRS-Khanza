@@ -148,6 +148,38 @@ public class ApiOrthanc {
         return root;
     }
     
+    public JsonNode AmbilBmp(String NoRawat,String Series){
+        System.out.println("Percobaan Mengambil Gambar BMP : "+NoRawat+", Series : "+Series);
+        try{
+            headers = new HttpHeaders();
+            System.out.println("Auth : "+authEncrypt);
+            headers.add("Authorization", "Basic "+authEncrypt);
+            requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
+            requestJson=getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("Result JSON : "+requestJson);
+            root = mapper.readTree(requestJson);
+            i=1;
+            for(JsonNode list:root.path("Instances")){
+                 System.out.println("Mengambil Gambar BMP "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview");
+                 headers = new HttpHeaders();
+                 headers.add("Authorization", "Basic "+authEncrypt);
+                 headers.add("Accept","image/bmp");
+                 headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+                 headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
+                 HttpEntity<String> entity = new HttpEntity<>(headers);
+                 ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview", HttpMethod.GET, entity, byte[].class);
+                 Files.write(Paths.get(NoRawat+i+".bmp"),response.getBody());
+                 i++;
+            }
+            JOptionPane.showMessageDialog(null,"Pengambilan Gambar BMP dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+            JOptionPane.showMessageDialog(null,"Gagal mengambil Gambar BMP dari Orthanc, silahkan hubungi administrator ..!!");
+        }
+        return root;
+    }
+    
     public JsonNode AmbilDcm(String NoRawat,String Series){
         System.out.println("Percobaan Mengambil Gambar DCM : "+NoRawat+", Series : "+Series);
         try{
