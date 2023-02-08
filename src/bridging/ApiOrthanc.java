@@ -108,10 +108,10 @@ public class ApiOrthanc {
                  Files.write(Paths.get(NoRawat+i+".png"),response.getBody());
                  i++;
             }
-            JOptionPane.showMessageDialog(null,"Pengambilan gambar PNG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+            JOptionPane.showMessageDialog(null,"Pengambilan Gambar PNG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-            JOptionPane.showMessageDialog(null,"Gagal mengambil gambar PNG dari Orthanc, silahkan hubungi administrator ..!!");
+            JOptionPane.showMessageDialog(null,"Gagal mengambil Gambar PNG dari Orthanc, silahkan hubungi administrator ..!!");
         }
         return root;
     }
@@ -140,10 +140,10 @@ public class ApiOrthanc {
                  Files.write(Paths.get(NoRawat+i+".jpg"),response.getBody());
                  i++;
             }
-            JOptionPane.showMessageDialog(null,"Pengambilan gambar PNG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+            JOptionPane.showMessageDialog(null,"Pengambilan Gambar JPG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-            JOptionPane.showMessageDialog(null,"Gagal mengambil gambar PNG dari Orthanc, silahkan hubungi administrator ..!!");
+            JOptionPane.showMessageDialog(null,"Gagal mengambil Gambar JPG dari Orthanc, silahkan hubungi administrator ..!!");
         }
         return root;
     }
@@ -171,10 +171,10 @@ public class ApiOrthanc {
                  Files.write(Paths.get(NoRawat+i+".dcm"),response.getBody());
                  i++;
             }
-            JOptionPane.showMessageDialog(null,"Pengambilan gambar DCM dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+            JOptionPane.showMessageDialog(null,"Pengambilan Gambar DCM dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-            JOptionPane.showMessageDialog(null,"Gagal mengambil gambar DCM dari Orthanc, silahkan hubungi administrator ..!!");
+            JOptionPane.showMessageDialog(null,"Gagal mengambil Gambar DCM dari Orthanc, silahkan hubungi administrator ..!!");
         }
         return root;
     }
