@@ -3,11 +3,14 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.koneksiDB;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.Collections;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
@@ -18,6 +21,8 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,6 +41,7 @@ public class ApiOrthanc {
     private HttpComponentsClientHttpRequestFactory factory;
     private String auth,authEncrypt,requestJson;
     private byte[] encodedBytes;
+    private int i=1;
     
     public ApiOrthanc(){
         try {
@@ -52,12 +58,11 @@ public class ApiOrthanc {
     }
     
     public JsonNode AmbilSeries(String Norm,String Tanggal1,String Tanggal2){
-        System.out.println("Percobaan Mengampil Photo Pasien : "+Norm);
+        System.out.println("Percobaan Mengambil Photo Pasien : "+Norm);
         try{
             headers = new HttpHeaders();
             System.out.println("Auth : "+authEncrypt);
             headers.add("Authorization", "Basic "+authEncrypt);
-            requestEntity = new HttpEntity(headers);
             requestJson = "{"+
                               "\"Level\": \"Study\","+
                               "\"Expand\": true,"+
@@ -75,6 +80,101 @@ public class ApiOrthanc {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
             JOptionPane.showMessageDialog(null,"Gagal mengambil data dari Orthanc, silahkan hubungi administrator ..!!");
+        }
+        return root;
+    }
+    
+    public JsonNode AmbilPng(String NoRawat,String Series){
+        System.out.println("Percobaan Mengambil Gambar PNG : "+NoRawat+", Series : "+Series);
+        try{
+            headers = new HttpHeaders();
+            System.out.println("Auth : "+authEncrypt);
+            headers.add("Authorization", "Basic "+authEncrypt);
+            requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
+            requestJson=getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("Result JSON : "+requestJson);
+            root = mapper.readTree(requestJson);
+            i=1;
+            for(JsonNode list:root.path("Instances")){
+                 System.out.println("Mengambil Gambar PNG "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview");
+                 headers = new HttpHeaders();
+                 headers.add("Authorization", "Basic "+authEncrypt);
+                 headers.add("Accept","image/png");
+                 headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+                 headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
+                 HttpEntity<String> entity = new HttpEntity<>(headers);
+                 ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview", HttpMethod.GET, entity, byte[].class);
+                 Files.write(Paths.get(NoRawat+i+".png"),response.getBody());
+                 i++;
+            }
+            JOptionPane.showMessageDialog(null,"Pengambilan gambar PNG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+            JOptionPane.showMessageDialog(null,"Gagal mengambil gambar PNG dari Orthanc, silahkan hubungi administrator ..!!");
+        }
+        return root;
+    }
+    
+    public JsonNode AmbilJpg(String NoRawat,String Series){
+        System.out.println("Percobaan Mengambil Gambar JPG : "+NoRawat+", Series : "+Series);
+        try{
+            headers = new HttpHeaders();
+            System.out.println("Auth : "+authEncrypt);
+            headers.add("Authorization", "Basic "+authEncrypt);
+            requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
+            requestJson=getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("Result JSON : "+requestJson);
+            root = mapper.readTree(requestJson);
+            i=1;
+            for(JsonNode list:root.path("Instances")){
+                 System.out.println("Mengambil Gambar JPG "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview");
+                 headers = new HttpHeaders();
+                 headers.add("Authorization", "Basic "+authEncrypt);
+                 headers.add("Accept","image/jpeg");
+                 headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+                 headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
+                 HttpEntity<String> entity = new HttpEntity<>(headers);
+                 ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview", HttpMethod.GET, entity, byte[].class);
+                 Files.write(Paths.get(NoRawat+i+".jpg"),response.getBody());
+                 i++;
+            }
+            JOptionPane.showMessageDialog(null,"Pengambilan gambar PNG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+            JOptionPane.showMessageDialog(null,"Gagal mengambil gambar PNG dari Orthanc, silahkan hubungi administrator ..!!");
+        }
+        return root;
+    }
+    
+    public JsonNode AmbilDcm(String NoRawat,String Series){
+        System.out.println("Percobaan Mengambil Gambar DCM : "+NoRawat+", Series : "+Series);
+        try{
+            headers = new HttpHeaders();
+            System.out.println("Auth : "+authEncrypt);
+            headers.add("Authorization", "Basic "+authEncrypt);
+            requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series);
+            requestJson=getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/series/"+Series, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("Result JSON : "+requestJson);
+            root = mapper.readTree(requestJson);
+            i=1;
+            for(JsonNode list:root.path("Instances")){
+                 System.out.println("Mengambil Gambar DCM "+koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/file");
+                 headers = new HttpHeaders();
+                 headers.add("Authorization", "Basic "+authEncrypt);
+                 headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+                 headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
+                 HttpEntity<String> entity = new HttpEntity<>(headers);
+                 ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/file", HttpMethod.GET, entity, byte[].class);
+                 Files.write(Paths.get(NoRawat+i+".dcm"),response.getBody());
+                 i++;
+            }
+            JOptionPane.showMessageDialog(null,"Pengambilan gambar DCM dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+            JOptionPane.showMessageDialog(null,"Gagal mengambil gambar DCM dari Orthanc, silahkan hubungi administrator ..!!");
         }
         return root;
     }
