@@ -434,20 +434,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             );            
             ps=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as nm_penyakit from diagnosa_pasien inner join penyakit "+
                     "inner join reg_periksa on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit and reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
-                    "where diagnosa_pasien.status='Ranap' and reg_periksa.tgl_registrasi between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='V' or "+
-                    " diagnosa_pasien.status='Ranap' and reg_periksa.tgl_registrasi between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='W' or "+
-                    " diagnosa_pasien.status='Ranap' and reg_periksa.tgl_registrasi between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='X' or "+
-                    " diagnosa_pasien.status='Ranap' and reg_periksa.tgl_registrasi between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='Y' "+
+                    "where diagnosa_pasien.status='Ranap' and reg_periksa.tgl_registrasi between ? and ? and (left(diagnosa_pasien.kd_penyakit,1)='V' or "+
+                    "left(diagnosa_pasien.kd_penyakit,1)='W' or left(diagnosa_pasien.kd_penyakit,1)='X' or left(diagnosa_pasien.kd_penyakit,1)='Y') "+
                     " group by diagnosa_pasien.kd_penyakit order by diagnosa_pasien.kd_penyakit");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
@@ -699,20 +691,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             ps=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as nm_penyakit from diagnosa_pasien inner join penyakit "+
                     "inner join reg_periksa inner join kamar_inap on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit and reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
                     "and kamar_inap.no_rawat=reg_periksa.no_rawat where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and "+
-                    " kamar_inap.tgl_keluar between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='V' or "+
-                    " diagnosa_pasien.status='Ranap' and kamar_inap.tgl_keluar between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='W' or "+
-                    " diagnosa_pasien.status='Ranap' and kamar_inap.tgl_keluar between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='X' or "+
-                    " diagnosa_pasien.status='Ranap' and kamar_inap.tgl_keluar between ? and ? and left(diagnosa_pasien.kd_penyakit,1)='Y' "+
-                    " group by diagnosa_pasien.kd_penyakit order by diagnosa_pasien.kd_penyakit");
+                    " kamar_inap.tgl_keluar between ? and ? and (left(diagnosa_pasien.kd_penyakit,1)='V' or left(diagnosa_pasien.kd_penyakit,1)='W' or "+
+                    " left(diagnosa_pasien.kd_penyakit,1)='X' or left(diagnosa_pasien.kd_penyakit,1)='Y') group by diagnosa_pasien.kd_penyakit order by diagnosa_pasien.kd_penyakit");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){

@@ -59,7 +59,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.","NIP","Petugas","Tanggal","Jumlah(Kg)","Tujuan Penyerahan","Bukti No.Dokumen","Sisa di TPS(Kg)"
+                "No.","NIP","Petugas","Tanggal","Jumlah(Kg)","Tujuan Penyerahan","Bukti No.Dokumen","Sisa di TPS(Kg)","Keterangan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -69,7 +69,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
@@ -87,12 +87,15 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
                 column.setPreferredWidth(120);
             }else if(i==7){
                 column.setPreferredWidth(80);
+            }else if(i==8){
+                column.setPreferredWidth(170);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         Jumlah.setDocument(new batasInput((byte)10).getKata(Jumlah));
         Tujuan.setDocument(new batasInput((byte)50).getKata(Tujuan));
+        Keterangan.setDocument(new batasInput((byte)60).getKata(Keterangan));
         Sisa.setDocument(new batasInput((byte)10).getKata(Sisa));
         NoDokumen.setDocument(new batasInput((byte)20).getKata(Sisa));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
@@ -195,6 +198,8 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         Sisa = new widget.TextBox();
         jLabel4 = new widget.Label();
         NoDokumen = new widget.TextBox();
+        jLabel13 = new widget.Label();
+        Keterangan = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -206,7 +211,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Limbah Padat B3 Medis Keluar TPS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Limbah Padat B3 Medis Keluar TPS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -379,7 +384,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-04-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-02-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -393,7 +398,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-04-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-02-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -468,7 +473,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
             }
         });
         FormInput.add(Jumlah);
-        Jumlah.setBounds(84, 70, 100, 23);
+        Jumlah.setBounds(84, 70, 70, 23);
 
         jLabel8.setText("Tanggal :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -486,7 +491,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         Tujuan.setBounds(415, 40, 310, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-04-2019 06:03:59" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-02-2023 10:01:52" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -545,7 +550,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         jLabel15.setText("Sisa (Kg) :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(251, 70, 160, 23);
+        jLabel15.setBounds(161, 70, 70, 23);
 
         Sisa.setHighlighter(null);
         Sisa.setName("Sisa"); // NOI18N
@@ -555,7 +560,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sisa);
-        Sisa.setBounds(415, 70, 100, 23);
+        Sisa.setBounds(235, 70, 70, 23);
 
         jLabel4.setText("No.Dokumen :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -571,6 +576,21 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         });
         FormInput.add(NoDokumen);
         NoDokumen.setBounds(84, 40, 150, 23);
+
+        jLabel13.setText("Keterangan :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(331, 70, 80, 23);
+
+        Keterangan.setHighlighter(null);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(415, 70, 310, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -622,9 +642,9 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas yang bertugas");
         }else{
-            if(Sequel.menyimpantf("kesling_limbah_b3medis","?,?,?,?,?,?","Data",6,new String[]{
+            if(Sequel.menyimpantf("kesling_limbah_b3medis","?,?,?,?,?,?,?","Data",7,new String[]{
                     KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    Jumlah.getText(),Tujuan.getText(),NoDokumen.getText(),Sisa.getText()
+                    Jumlah.getText(),Tujuan.getText(),NoDokumen.getText(),Sisa.getText(),Keterangan.getText()
                 })==true){
                     tampil();
                     emptTeks();
@@ -636,7 +656,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Sisa,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -681,10 +701,9 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
             Valid.textKosong(KdPetugas,"Petugas yang bertugas");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("kesling_limbah_b3medis","nip=? and tanggal=?","nip=?,tanggal=?,jmllimbah=?,tujuan_penyerahan=?,bukti_dokumen=?,sisa_di_tps=?",8,new String[]{
-                        KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        Jumlah.getText(),Tujuan.getText(),NoDokumen.getText(),Sisa.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
-                        tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
+                if(Sequel.mengedittf("kesling_limbah_b3medis","nip=? and tanggal=?","nip=?,tanggal=?,jmllimbah=?,tujuan_penyerahan=?,bukti_dokumen=?,sisa_di_tps=?,keterangan=?",9,new String[]{
+                        KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Jumlah.getText(),Tujuan.getText(),
+                        NoDokumen.getText(),Sisa.getText(),Keterangan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
                     })==true){
                         tampil();
                         emptTeks();
@@ -728,10 +747,9 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
             Valid.MyReportqry("rptLimbahB3Medis.jasper","report","::[ Data Limbah Padat B3 Medis Keluar TPS ]::",
                    "select kesling_limbah_b3medis.nip,petugas.nama,kesling_limbah_b3medis.tanggal,"+
                    "kesling_limbah_b3medis.jmllimbah,kesling_limbah_b3medis.tujuan_penyerahan,kesling_limbah_b3medis.bukti_dokumen, "+
-                   "kesling_limbah_b3medis.sisa_di_tps from kesling_limbah_b3medis inner join petugas on kesling_limbah_b3medis.nip=petugas.nip where "+
-                   "kesling_limbah_b3medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kesling_limbah_b3medis.nip like '%"+TCari.getText().trim()+"%' or "+
-                   "kesling_limbah_b3medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "kesling_limbah_b3medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kesling_limbah_b3medis.bukti_dokumen like '%"+TCari.getText().trim()+"%' "+
+                   "kesling_limbah_b3medis.sisa_di_tps,kesling_limbah_b3medis.keterangan from kesling_limbah_b3medis inner join petugas on kesling_limbah_b3medis.nip=petugas.nip where "+
+                   "kesling_limbah_b3medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
+                   "(kesling_limbah_b3medis.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or kesling_limbah_b3medis.bukti_dokumen like '%"+TCari.getText().trim()+"%') "+
                    "order by kesling_limbah_b3medis.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -816,7 +834,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_NmPetugasKeyPressed
 
     private void SisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SisaKeyPressed
-        Valid.pindah(evt,Jumlah,BtnSimpan);
+        Valid.pindah(evt,Jumlah,Keterangan);
     }//GEN-LAST:event_SisaKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -841,6 +859,10 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void NoDokumenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoDokumenKeyPressed
         Valid.pindah(evt,Tanggal,Tujuan);
     }//GEN-LAST:event_NoDokumenKeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,Sisa,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -873,6 +895,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.PanelBiasa FormInput;
     private widget.TextBox Jumlah;
     private widget.TextBox KdPetugas;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.TextBox NmPetugas;
     private widget.TextBox NoDokumen;
@@ -885,6 +908,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
     private widget.Label jLabel15;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
@@ -906,27 +930,22 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             ps=koneksi.prepareStatement(
                    "select kesling_limbah_b3medis.nip,petugas.nama,kesling_limbah_b3medis.tanggal,"+
                    "kesling_limbah_b3medis.jmllimbah,kesling_limbah_b3medis.tujuan_penyerahan,kesling_limbah_b3medis.bukti_dokumen, "+
-                   "kesling_limbah_b3medis.sisa_di_tps from kesling_limbah_b3medis inner join petugas on kesling_limbah_b3medis.nip=petugas.nip where "+
-                   "kesling_limbah_b3medis.tanggal between ? and ? and kesling_limbah_b3medis.nip like ? or "+
-                   "kesling_limbah_b3medis.tanggal between ? and ? and petugas.nama like ? or "+
-                   "kesling_limbah_b3medis.tanggal between ? and ? and kesling_limbah_b3medis.bukti_dokumen like ? "+
-                   "order by kesling_limbah_b3medis.tanggal");
+                   "kesling_limbah_b3medis.sisa_di_tps,kesling_limbah_b3medis.keterangan from kesling_limbah_b3medis "+
+                   "inner join petugas on kesling_limbah_b3medis.nip=petugas.nip where "+
+                   "kesling_limbah_b3medis.tanggal between ? and ? and (kesling_limbah_b3medis.nip like ? or petugas.nama like ? or "+
+                   "kesling_limbah_b3medis.bukti_dokumen like ? ) order by kesling_limbah_b3medis.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 total=0;
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        i+"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
+                        i+"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
                     });
                     total=total+rs.getDouble(4);
                     i++;
@@ -943,7 +962,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
             if(total>0){
                 tabMode.addRow(new String[]{
-                    "","","JUMLAH :","",""+total,"","",""
+                    "","","JUMLAH :","",""+total,"","","",""
                 });
             }
         }catch(Exception e){
@@ -958,6 +977,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         Tanggal.setDate(new Date());
         NoDokumen.setText("");
         Tujuan.setText("");
+        Keterangan.setText("");
         NoDokumen.requestFocus();
     }
 
@@ -971,6 +991,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             Tujuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             NoDokumen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             Sisa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
         }
     }
 

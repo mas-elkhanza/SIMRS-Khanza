@@ -601,6 +601,7 @@ import dapur.DapurPermintaan;
 import dapur.DapurRBiayaHarian;
 import dapur.DapurRHPembelian;
 import dapur.DapurRiwayatBarang;
+import inventaris.KeslingLimbahB3MedisCair;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSHibah;
@@ -19829,6 +19830,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnLimbahB3MedisCairActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingLimbahB3MedisCair form=new KeslingLimbahB3MedisCair(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -20495,7 +20509,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingOrganisasiSatuSehat,btnMappingLokasiSatuSehat,btnKirimEncounterSatuSehat,btnCatatanCekGDS,btnKirimConditionSatuSehat,
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
-            btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur;
+            btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair;
     
     public void isWall(){
         try{            
@@ -21742,6 +21756,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlimbah_b3_medis()==true){
                 Panelmenu.add(btnLimbahB3Medis);
+                jmlmenu++;
+            } 
+            
+            if(akses.getkesling_limbah_b3medis_cair()==true){
+                Panelmenu.add(btnLimbahB3MedisCair);
                 jmlmenu++;
             } 
             
@@ -26308,6 +26327,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlimbah_b3_medis()==true){
             Panelmenu.add(btnLimbahB3Medis);
+            jmlmenu++;
+        } 
+        
+        if(akses.getkesling_limbah_b3medis_cair()==true){
+            Panelmenu.add(btnLimbahB3MedisCair);
             jmlmenu++;
         } 
         
@@ -31310,6 +31334,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getlimbah_b3_medis()==true){
             if(btnLimbahB3Medis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLimbahB3Medis);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(akses.getkesling_limbah_b3medis_cair()==true){
+            if(btnLimbahB3MedisCair.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLimbahB3MedisCair);
                 jmlmenu++;
             }                
         } 
@@ -39710,5 +39741,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapPengadaanDapur.setName("btnRekapPengadaanDapur"); 
         btnRekapPengadaanDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRekapPengadaanDapur.addActionListener(this::btnRekapPengadaanDapurActionPerformed);
+        
+        btnLimbahB3MedisCair = new widget.ButtonBig();
+        btnLimbahB3MedisCair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5958332_disease_drink water_epidemic_hydrate_infection_icon.png")));
+        btnLimbahB3MedisCair.setText("Limbah Cair B3 Medis");
+        btnLimbahB3MedisCair.setIconTextGap(0);
+        btnLimbahB3MedisCair.setName("btnLimbahB3MedisCair"); 
+        btnLimbahB3MedisCair.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLimbahB3MedisCair.addActionListener(this::btnLimbahB3MedisCairActionPerformed);
     }
 }

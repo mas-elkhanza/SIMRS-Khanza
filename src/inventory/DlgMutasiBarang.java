@@ -1248,6 +1248,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             rsstok=psstok.executeQuery();
                             if(rsstok.next()){
                                 tabMode.addRow(new Object[]{rs.getString("jumlah"),rs.getDouble("dasar"),rs.getDouble("total"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),rsstok.getDouble(1),0,"","",rs.getString("expire")});
+                            }else{
+                                tabMode.addRow(new Object[]{"",rs.getDouble("dasar"),rs.getDouble("total"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),0,0,"","",rs.getString("expire")});
                             } 
                         } catch (Exception e) {
                             System.out.println("Note : "+e);
