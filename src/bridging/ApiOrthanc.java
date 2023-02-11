@@ -105,7 +105,7 @@ public class ApiOrthanc {
                  headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
                  HttpEntity<String> entity = new HttpEntity<>(headers);
                  ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview", HttpMethod.GET, entity, byte[].class);
-                 Files.write(Paths.get(NoRawat+i+".png"),response.getBody());
+                 Files.write(Paths.get("./gambarradiologi/"+NoRawat+i+".png"),response.getBody());
                  i++;
             }
             JOptionPane.showMessageDialog(null,"Pengambilan Gambar PNG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
@@ -137,7 +137,7 @@ public class ApiOrthanc {
                  headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
                  HttpEntity<String> entity = new HttpEntity<>(headers);
                  ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview", HttpMethod.GET, entity, byte[].class);
-                 Files.write(Paths.get(NoRawat+i+".jpg"),response.getBody());
+                 Files.write(Paths.get("./gambarradiologi/"+NoRawat+i+".jpg"),response.getBody());
                  i++;
             }
             JOptionPane.showMessageDialog(null,"Pengambilan Gambar JPG dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
@@ -169,7 +169,7 @@ public class ApiOrthanc {
                  headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
                  HttpEntity<String> entity = new HttpEntity<>(headers);
                  ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/preview", HttpMethod.GET, entity, byte[].class);
-                 Files.write(Paths.get(NoRawat+i+".bmp"),response.getBody());
+                 Files.write(Paths.get("./gambarradiologi/"+NoRawat+i+".bmp"),response.getBody());
                  i++;
             }
             JOptionPane.showMessageDialog(null,"Pengambilan Gambar BMP dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
@@ -200,7 +200,7 @@ public class ApiOrthanc {
                  headers.setAccept(Collections.singletonList(MediaType.IMAGE_JPEG));
                  HttpEntity<String> entity = new HttpEntity<>(headers);
                  ResponseEntity<byte[]> response = getRest().exchange(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/instances/"+list.asText()+"/file", HttpMethod.GET, entity, byte[].class);
-                 Files.write(Paths.get(NoRawat+i+".dcm"),response.getBody());
+                 Files.write(Paths.get("./gambarradiologi/"+NoRawat+i+".dcm"),response.getBody());
                  i++;
             }
             JOptionPane.showMessageDialog(null,"Pengambilan Gambar DCM dari Orthanc berhasil, silahkan lihat di dalam folder Aplikasi..!!");
