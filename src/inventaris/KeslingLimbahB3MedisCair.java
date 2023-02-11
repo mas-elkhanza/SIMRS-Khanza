@@ -744,7 +744,7 @@ public final class KeslingLimbahB3MedisCair extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptLimbahB3Medis.jasper","report","::[ Data Limbah Padat B3 Medis Keluar TPS ]::",
+            Valid.MyReportqry("rptLimbahB3MedisCair.jasper","report","::[ Data Limbah Cair B3 Medis Keluar TPS ]::",
                    "select kesling_limbah_b3medis_cair.nip,petugas.nama,kesling_limbah_b3medis_cair.tanggal,"+
                    "kesling_limbah_b3medis_cair.jmllimbah,kesling_limbah_b3medis_cair.tujuan_penyerahan,kesling_limbah_b3medis_cair.bukti_dokumen, "+
                    "kesling_limbah_b3medis_cair.sisa_di_tps,kesling_limbah_b3medis_cair.keterangan from kesling_limbah_b3medis_cair inner join petugas on kesling_limbah_b3medis_cair.nip=petugas.nip where "+
