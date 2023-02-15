@@ -601,6 +601,7 @@ import dapur.DapurPermintaan;
 import dapur.DapurRBiayaHarian;
 import dapur.DapurRHPembelian;
 import dapur.DapurRiwayatBarang;
+import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
 import grafikanalisa.GrafikKeslingLimbahB3CairPertanggal;
 import inventaris.KeslingLimbahB3MedisCair;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
@@ -19853,6 +19854,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikLimbahB3MedisCairPerBulanActionPerformed(java.awt.event.ActionEvent evt) {                                                                 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingLimbahB3CairBulan aplikasi=new GrafikKeslingLimbahB3CairBulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20520,7 +20532,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
-            btnGrafikLimbahB3MedisCairPerTanggal;
+            btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan;
     
     public void isWall(){
         try{            
@@ -24638,6 +24650,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_limbahb3cair_pertanggal()==true){
                 Panelmenu.add(btnGrafikLimbahB3MedisCairPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_limbahb3cair_perbulan()==true){
+                Panelmenu.add(btnGrafikLimbahB3MedisCairPerBulan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==15){
@@ -29201,6 +29218,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getgrafik_limbahb3cair_pertanggal()==true){
             Panelmenu.add(btnGrafikLimbahB3MedisCairPerTanggal);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_limbahb3cair_perbulan()==true){
+            Panelmenu.add(btnGrafikLimbahB3MedisCairPerBulan);
             jmlmenu++;
         }
 
@@ -35358,6 +35380,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_limbahb3cair_perbulan()==true){
+            if(btnGrafikLimbahB3MedisCairPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikLimbahB3MedisCairPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -39785,5 +39814,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikLimbahB3MedisCairPerTanggal.setName("btnGrafikLimbahB3MedisCairPerTanggal"); 
         btnGrafikLimbahB3MedisCairPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
         btnGrafikLimbahB3MedisCairPerTanggal.addActionListener(this::btnGrafikLimbahB3MedisCairPerTanggalActionPerformed);
+        
+        btnGrafikLimbahB3MedisCairPerBulan = new widget.ButtonBig();
+        btnGrafikLimbahB3MedisCairPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikLimbahB3MedisCairPerBulan.setText("Limbah B3 Cair Per Bulan");
+        btnGrafikLimbahB3MedisCairPerBulan.setIconTextGap(0);
+        btnGrafikLimbahB3MedisCairPerBulan.setName("btnGrafikLimbahB3MedisCairPerBulan"); 
+        btnGrafikLimbahB3MedisCairPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahB3MedisCairPerBulan.addActionListener(this::btnGrafikLimbahB3MedisCairPerBulanActionPerformed);
     }
 }
