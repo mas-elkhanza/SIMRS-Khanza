@@ -2709,7 +2709,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(kddrumum.getText().trim().equals("")||nmdrumum.getText().trim().equals("")){
             Valid.textKosong(kddrumum,"dr Umum");
         }else if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, pilihan operasi kosong...!!!!");
             TCari.requestFocus();
         }else if(jml==0){
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih operasi...!!!!");

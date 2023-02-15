@@ -200,7 +200,7 @@ public final class akses {
             checklist_pre_operasi=false,satu_sehat_kirim_observationttv=false,signin_sebelum_anestesi=false,satu_sehat_kirim_procedure=false,operasi_per_bulan=false,
             timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false,
             satu_sehat_kirim_Immunization=false,checklist_post_operasi=false,dapur_pembelian=false,dapur_stok_keluar=false,dapur_riwayat_barang=false,permintaan_dapur=false,
-            rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false;
+            rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false,grafik_limbahb3cair_pertanggal=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1143,6 +1143,7 @@ public final class akses {
                         akses.biaya_pengadaan_dapur=true;
                         akses.rekap_pengadaan_dapur=true;
                         akses.kesling_limbah_b3medis_cair=true;
+                        akses.grafik_limbahb3cair_pertanggal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2069,6 +2070,7 @@ public final class akses {
                         akses.biaya_pengadaan_dapur=rs2.getBoolean("biaya_pengadaan_dapur");
                         akses.rekap_pengadaan_dapur=rs2.getBoolean("rekap_pengadaan_dapur");
                         akses.kesling_limbah_b3medis_cair=rs2.getBoolean("kesling_limbah_b3medis_cair");
+                        akses.grafik_limbahb3cair_pertanggal=rs2.getBoolean("grafik_limbahb3cair_pertanggal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2993,6 +2995,7 @@ public final class akses {
                         akses.biaya_pengadaan_dapur=false;
                         akses.rekap_pengadaan_dapur=false;
                         akses.kesling_limbah_b3medis_cair=false;
+                        akses.grafik_limbahb3cair_pertanggal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3974,4 +3977,5 @@ public final class akses {
     public static boolean getbiaya_pengadaan_dapur(){return akses.biaya_pengadaan_dapur;}
     public static boolean getrekap_pengadaan_dapur(){return akses.rekap_pengadaan_dapur;}
     public static boolean getkesling_limbah_b3medis_cair(){return akses.kesling_limbah_b3medis_cair;}
+    public static boolean getgrafik_limbahb3cair_pertanggal(){return akses.grafik_limbahb3cair_pertanggal;}
 }   

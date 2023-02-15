@@ -18,7 +18,7 @@ public final class Tanggal extends JDateTimePicker {
         //setBackground(new Color(245,160,245));
         //setForeground(new Color(90,90,90));
         setForeground(new Color(50,50,50));
-        setBackground(new Color(255,255,255));
+        setBackground(new Color(255,252,252));
         setFont(new java.awt.Font("Tahoma", 0, 11));
         //setBorder(javax.swing.BorderFactory.createLineBorder(new Color(212,212,152)));
         setSize(WIDTH,23);

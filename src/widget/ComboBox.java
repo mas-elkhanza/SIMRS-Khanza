@@ -16,7 +16,7 @@ public final class ComboBox extends JComboBox {
 
     public ComboBox(){
         setFont(new java.awt.Font("Tahoma", 0, 11));
-        setBackground(new Color(255,255,255));
+        setBackground(new Color(255,252,252));
         setForeground(new Color(50,50,50));
         setSize(WIDTH,23);
     } 

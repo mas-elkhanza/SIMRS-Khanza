@@ -21,6 +21,6 @@ public class editorpane extends JEditorPane{
         setSelectedTextColor(new Color(255,255,0));
         setForeground(new Color(50,50,50));
         setBorder(new LineBorder(new Color(239,244,234)));
-        setBackground(new Color(255,255,255));
+        setBackground(new Color(255,252,252));
     }
 }

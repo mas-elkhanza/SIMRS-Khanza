@@ -3186,12 +3186,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     if(chkPemeriksaanLaborat.isSelected()==true){
                         try {
                             rs4=koneksi.prepareStatement(
-                                 "select periksa_lab.tgl_periksa,periksa_lab.jam from periksa_lab where periksa_lab.kategori='PK' and periksa_lab.no_rawat='"+rs.getString("no_rawat")+"' "+
+                                 "select periksa_lab.tgl_periksa,periksa_lab.jam from periksa_lab where periksa_lab.kategori<>'PA' and periksa_lab.no_rawat='"+rs.getString("no_rawat")+"' "+
                                  "group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam) order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
                             if(rs4.next()){
                                 htmlContent.append(  
                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                    "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PK & MB</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                     "<tr align='center'>"+
                                       "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
                                       "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
@@ -11058,8 +11058,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='33%'>Indikasi Pindah : "+rs2.getString("indikasi_pindah_ruang")+(rs2.getString("keterangan_indikasi_pindah_ruang").equals("")?"":", "+rs2.getString("keterangan_indikasi_pindah_ruang"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='33%'>Asal Ruang Rawat : "+rs2.getString("tanggal_masuk")+"</td>"+
-                                              "<td width='33%'>Ruang Rawat Selanjutnya : "+rs2.getString("tanggal_pindah")+"</td>"+
+                                              "<td width='33%'>Asal Ruang Rawat : "+rs2.getString("asal_ruang")+"</td>"+
+                                              "<td width='33%'>Ruang Rawat Selanjutnya : "+rs2.getString("ruang_selanjutnya")+"</td>"+
                                               "<td width='33%'>Metode Pemindahan : "+rs2.getString("metode_pemindahan_pasien")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
@@ -13596,7 +13596,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
-                                    "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs2.getString("lokasi_file")+"'>"+rs2.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
+                                    "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs2.getString("lokasi_file")+"'>"+rs2.getString("nama")+"_"+rs2.getString("lokasi_file").replaceAll("pages/upload/","")+"</a></td>"+
                                  "</tr>"); 
                             w++;
                         }

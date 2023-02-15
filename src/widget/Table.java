@@ -19,7 +19,7 @@ public class Table extends JTable {
         //setBackground(new Color(255,235,255));
         //setGridColor(new Color(245,170,245));
         //setForeground(new Color(90,90,90));
-        setBackground(new Color(255,255,255));
+        setBackground(new Color(255,252,252));
         setGridColor(new Color(226,231,221));
         setForeground(new Color(50,50,50));
         setFont(new java.awt.Font("Tahoma", 0, 11));

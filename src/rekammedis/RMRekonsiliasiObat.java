@@ -109,8 +109,18 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
     private void initComponents() {
 
         internalFrame1 = new widget.InternalFrame();
-        FormInput = new javax.swing.JPanel();
-        ChkInput = new widget.CekBox();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        Scroll2 = new widget.ScrollPane();
+        tbPemeriksaan = new widget.Table();
+        panelGlass8 = new widget.panelisi();
+        BtnTambah = new widget.Button();
+        BtnHapus = new widget.Button();
+        label9 = new widget.Label();
+        BtnSimpan = new widget.Button();
+        BtnBatal = new widget.Button();
+        BtnCari = new widget.Button();
+        BtnKeluar = new widget.Button();
         PanelInput = new widget.PanelBiasa();
         jLabel3 = new widget.Label();
         TNoRw = new widget.TextBox();
@@ -142,18 +152,6 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         TglLahir = new widget.TextBox();
         jLabel11 = new widget.Label();
         Jk = new widget.TextBox();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        Scroll2 = new widget.ScrollPane();
-        tbPemeriksaan = new widget.Table();
-        panelGlass8 = new widget.panelisi();
-        BtnTambah = new widget.Button();
-        BtnHapus = new widget.Button();
-        label9 = new widget.Label();
-        BtnSimpan = new widget.Button();
-        BtnBatal = new widget.Button();
-        BtnCari = new widget.Button();
-        BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -167,270 +165,6 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekonsiliasi Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
-
-        FormInput.setName("FormInput"); // NOI18N
-        FormInput.setOpaque(false);
-        FormInput.setPreferredSize(new java.awt.Dimension(560, 219));
-        FormInput.setLayout(new java.awt.BorderLayout(1, 1));
-
-        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
-        ChkInput.setMnemonic('I');
-        ChkInput.setSelected(true);
-        ChkInput.setText(".: Input Data");
-        ChkInput.setToolTipText("Alt+I");
-        ChkInput.setBorderPainted(true);
-        ChkInput.setBorderPaintedFlat(true);
-        ChkInput.setFocusable(false);
-        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ChkInput.setName("ChkInput"); // NOI18N
-        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
-        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
-        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        ChkInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkInputActionPerformed(evt);
-            }
-        });
-        FormInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
-
-        PanelInput.setName("PanelInput"); // NOI18N
-        PanelInput.setPreferredSize(new java.awt.Dimension(560, 108));
-        PanelInput.setLayout(null);
-
-        jLabel3.setText("No.Rawat :");
-        jLabel3.setName("jLabel3"); // NOI18N
-        PanelInput.add(jLabel3);
-        jLabel3.setBounds(0, 12, 92, 23);
-
-        TNoRw.setEditable(false);
-        TNoRw.setHighlighter(null);
-        TNoRw.setName("TNoRw"); // NOI18N
-        PanelInput.add(TNoRw);
-        TNoRw.setBounds(95, 12, 128, 23);
-
-        TNoRM.setEditable(false);
-        TNoRM.setHighlighter(null);
-        TNoRM.setName("TNoRM"); // NOI18N
-        PanelInput.add(TNoRM);
-        TNoRM.setBounds(225, 12, 105, 23);
-
-        TPasien.setEditable(false);
-        TPasien.setHighlighter(null);
-        TPasien.setName("TPasien"); // NOI18N
-        PanelInput.add(TPasien);
-        TPasien.setBounds(332, 12, 240, 23);
-
-        jLabel9.setText("Petugas :");
-        jLabel9.setName("jLabel9"); // NOI18N
-        PanelInput.add(jLabel9);
-        jLabel9.setBounds(170, 40, 92, 23);
-
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2023" }));
-        Tanggal.setDisplayFormat("dd-MM-yyyy");
-        Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setOpaque(false);
-        Tanggal.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TanggalItemStateChanged(evt);
-            }
-        });
-        Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TanggalKeyPressed(evt);
-            }
-        });
-        PanelInput.add(Tanggal);
-        Tanggal.setBounds(400, 70, 90, 23);
-
-        CmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-        CmbJam.setName("CmbJam"); // NOI18N
-        PanelInput.add(CmbJam);
-        CmbJam.setBounds(490, 70, 62, 23);
-
-        CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        CmbMenit.setName("CmbMenit"); // NOI18N
-        PanelInput.add(CmbMenit);
-        CmbMenit.setBounds(560, 70, 62, 23);
-
-        CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        CmbDetik.setName("CmbDetik"); // NOI18N
-        PanelInput.add(CmbDetik);
-        CmbDetik.setBounds(620, 70, 62, 23);
-
-        ChkJln.setBorder(null);
-        ChkJln.setSelected(true);
-        ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkJln.setName("ChkJln"); // NOI18N
-        ChkJln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkJlnActionPerformed(evt);
-            }
-        });
-        PanelInput.add(ChkJln);
-        ChkJln.setBounds(700, 70, 23, 23);
-
-        KodePerujuk.setName("KodePerujuk"); // NOI18N
-        KodePerujuk.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodePerujukKeyPressed(evt);
-            }
-        });
-        PanelInput.add(KodePerujuk);
-        KodePerujuk.setBounds(270, 40, 128, 23);
-
-        NmPerujuk.setEditable(false);
-        NmPerujuk.setHighlighter(null);
-        NmPerujuk.setName("NmPerujuk"); // NOI18N
-        PanelInput.add(NmPerujuk);
-        NmPerujuk.setBounds(400, 40, 280, 23);
-
-        btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnDokter.setMnemonic('4');
-        btnDokter.setToolTipText("ALt+4");
-        btnDokter.setName("btnDokter"); // NOI18N
-        btnDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDokterActionPerformed(evt);
-            }
-        });
-        PanelInput.add(btnDokter);
-        btnDokter.setBounds(680, 40, 28, 23);
-
-        jLabel15.setText("Tgl. Wawancara :");
-        jLabel15.setName("jLabel15"); // NOI18N
-        PanelInput.add(jLabel15);
-        jLabel15.setBounds(230, 70, 160, 23);
-
-        jLabel4.setText("No.Rekonsiliasi :");
-        jLabel4.setName("jLabel4"); // NOI18N
-        PanelInput.add(jLabel4);
-        jLabel4.setBounds(10, 70, 90, 23);
-
-        TNoPermintaan.setHighlighter(null);
-        TNoPermintaan.setName("TNoPermintaan"); // NOI18N
-        TNoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoPermintaanKeyPressed(evt);
-            }
-        });
-        PanelInput.add(TNoPermintaan);
-        TNoPermintaan.setBounds(100, 70, 130, 23);
-
-        jLabel5.setText("Rekonsiliasi Saat :");
-        jLabel5.setName("jLabel5"); // NOI18N
-        PanelInput.add(jLabel5);
-        jLabel5.setBounds(410, 160, 120, 23);
-
-        Jenisjual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admisi", "Tranfser Antar Ruang", "Pindah Faskes Lain" }));
-        Jenisjual.setName("Jenisjual"); // NOI18N
-        Jenisjual.setPreferredSize(new java.awt.Dimension(45, 23));
-        Jenisjual.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                JenisjualItemStateChanged(evt);
-            }
-        });
-        Jenisjual.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JenisjualKeyPressed(evt);
-            }
-        });
-        PanelInput.add(Jenisjual);
-        Jenisjual.setBounds(560, 160, 140, 23);
-
-        jLabel55.setText("Alergi Obat :");
-        jLabel55.setName("jLabel55"); // NOI18N
-        PanelInput.add(jLabel55);
-        jLabel55.setBounds(0, 90, 90, 23);
-
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane2.setName("scrollPane2"); // NOI18N
-
-        RiwayatPenyakitSekarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang.setColumns(20);
-        RiwayatPenyakitSekarang.setRows(5);
-        RiwayatPenyakitSekarang.setName("RiwayatPenyakitSekarang"); // NOI18N
-        RiwayatPenyakitSekarang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarangKeyPressed(evt);
-            }
-        });
-        scrollPane2.setViewportView(RiwayatPenyakitSekarang);
-
-        PanelInput.add(scrollPane2);
-        scrollPane2.setBounds(100, 100, 210, 48);
-
-        jLabel56.setText("Manifestasi Alergi :");
-        jLabel56.setName("jLabel56"); // NOI18N
-        PanelInput.add(jLabel56);
-        jLabel56.setBounds(370, 100, 120, 23);
-
-        scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane3.setName("scrollPane3"); // NOI18N
-
-        RiwayatPenyakitSekarang1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang1.setColumns(20);
-        RiwayatPenyakitSekarang1.setRows(5);
-        RiwayatPenyakitSekarang1.setName("RiwayatPenyakitSekarang1"); // NOI18N
-        RiwayatPenyakitSekarang1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarang1KeyPressed(evt);
-            }
-        });
-        scrollPane3.setViewportView(RiwayatPenyakitSekarang1);
-
-        PanelInput.add(scrollPane3);
-        scrollPane3.setBounds(500, 100, 210, 48);
-
-        jLabel6.setText("Dampak Alergi :");
-        jLabel6.setName("jLabel6"); // NOI18N
-        PanelInput.add(jLabel6);
-        jLabel6.setBounds(20, 160, 120, 23);
-
-        Jenisjual1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admisi", "Tranfser Antar Ruang", "Pindah Faskes Lain" }));
-        Jenisjual1.setName("Jenisjual1"); // NOI18N
-        Jenisjual1.setPreferredSize(new java.awt.Dimension(45, 23));
-        Jenisjual1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                Jenisjual1ItemStateChanged(evt);
-            }
-        });
-        Jenisjual1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Jenisjual1KeyPressed(evt);
-            }
-        });
-        PanelInput.add(Jenisjual1);
-        Jenisjual1.setBounds(170, 160, 140, 23);
-
-        jLabel8.setText("Tgl.Lahir :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        PanelInput.add(jLabel8);
-        jLabel8.setBounds(580, 10, 60, 23);
-
-        TglLahir.setEditable(false);
-        TglLahir.setHighlighter(null);
-        TglLahir.setName("TglLahir"); // NOI18N
-        PanelInput.add(TglLahir);
-        TglLahir.setBounds(644, 10, 80, 23);
-
-        jLabel11.setText("J.K. :");
-        jLabel11.setName("jLabel11"); // NOI18N
-        PanelInput.add(jLabel11);
-        jLabel11.setBounds(60, 40, 30, 23);
-
-        Jk.setEditable(false);
-        Jk.setHighlighter(null);
-        Jk.setName("Jk"); // NOI18N
-        PanelInput.add(Jk);
-        Jk.setBounds(90, 40, 80, 23);
-
-        FormInput.add(PanelInput, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
@@ -506,7 +240,7 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
 
         label9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(70, 23));
+        label9.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass8.add(label9);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
@@ -583,6 +317,241 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
+        PanelInput.setName("PanelInput"); // NOI18N
+        PanelInput.setPreferredSize(new java.awt.Dimension(560, 185));
+        PanelInput.setLayout(null);
+
+        jLabel3.setText("No.Rawat :");
+        jLabel3.setName("jLabel3"); // NOI18N
+        PanelInput.add(jLabel3);
+        jLabel3.setBounds(0, 12, 94, 23);
+
+        TNoRw.setEditable(false);
+        TNoRw.setHighlighter(null);
+        TNoRw.setName("TNoRw"); // NOI18N
+        PanelInput.add(TNoRw);
+        TNoRw.setBounds(98, 12, 128, 23);
+
+        TNoRM.setEditable(false);
+        TNoRM.setHighlighter(null);
+        TNoRM.setName("TNoRM"); // NOI18N
+        PanelInput.add(TNoRM);
+        TNoRM.setBounds(228, 12, 100, 23);
+
+        TPasien.setEditable(false);
+        TPasien.setHighlighter(null);
+        TPasien.setName("TPasien"); // NOI18N
+        PanelInput.add(TPasien);
+        TPasien.setBounds(330, 12, 225, 23);
+
+        jLabel9.setText("Petugas :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        PanelInput.add(jLabel9);
+        jLabel9.setBounds(197, 40, 69, 23);
+
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2023" }));
+        Tanggal.setDisplayFormat("dd-MM-yyyy");
+        Tanggal.setName("Tanggal"); // NOI18N
+        Tanggal.setOpaque(false);
+        Tanggal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TanggalItemStateChanged(evt);
+            }
+        });
+        Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TanggalKeyPressed(evt);
+            }
+        });
+        PanelInput.add(Tanggal);
+        Tanggal.setBounds(395, 70, 90, 23);
+
+        CmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        CmbJam.setName("CmbJam"); // NOI18N
+        PanelInput.add(CmbJam);
+        CmbJam.setBounds(489, 70, 62, 23);
+
+        CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        CmbMenit.setName("CmbMenit"); // NOI18N
+        PanelInput.add(CmbMenit);
+        CmbMenit.setBounds(555, 70, 62, 23);
+
+        CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        CmbDetik.setName("CmbDetik"); // NOI18N
+        PanelInput.add(CmbDetik);
+        CmbDetik.setBounds(621, 70, 62, 23);
+
+        ChkJln.setBorder(null);
+        ChkJln.setSelected(true);
+        ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkJln.setName("ChkJln"); // NOI18N
+        ChkJln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkJlnActionPerformed(evt);
+            }
+        });
+        PanelInput.add(ChkJln);
+        ChkJln.setBounds(687, 70, 23, 23);
+
+        KodePerujuk.setName("KodePerujuk"); // NOI18N
+        KodePerujuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KodePerujukKeyPressed(evt);
+            }
+        });
+        PanelInput.add(KodePerujuk);
+        KodePerujuk.setBounds(270, 40, 128, 23);
+
+        NmPerujuk.setEditable(false);
+        NmPerujuk.setHighlighter(null);
+        NmPerujuk.setName("NmPerujuk"); // NOI18N
+        PanelInput.add(NmPerujuk);
+        NmPerujuk.setBounds(400, 40, 280, 23);
+
+        btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnDokter.setMnemonic('4');
+        btnDokter.setToolTipText("ALt+4");
+        btnDokter.setName("btnDokter"); // NOI18N
+        btnDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDokterActionPerformed(evt);
+            }
+        });
+        PanelInput.add(btnDokter);
+        btnDokter.setBounds(682, 40, 28, 23);
+
+        jLabel15.setText("Tanggal Wawancara :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        PanelInput.add(jLabel15);
+        jLabel15.setBounds(261, 70, 130, 23);
+
+        jLabel4.setText("No.Rekonsiliasi :");
+        jLabel4.setName("jLabel4"); // NOI18N
+        PanelInput.add(jLabel4);
+        jLabel4.setBounds(0, 70, 94, 23);
+
+        TNoPermintaan.setHighlighter(null);
+        TNoPermintaan.setName("TNoPermintaan"); // NOI18N
+        TNoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoPermintaanKeyPressed(evt);
+            }
+        });
+        PanelInput.add(TNoPermintaan);
+        TNoPermintaan.setBounds(98, 70, 150, 23);
+
+        jLabel5.setText("Rekonsiliasi Saat :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        PanelInput.add(jLabel5);
+        jLabel5.setBounds(346, 150, 120, 23);
+
+        Jenisjual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admisi", "Tranfser Antar Ruang", "Pindah Faskes Lain" }));
+        Jenisjual.setName("Jenisjual"); // NOI18N
+        Jenisjual.setPreferredSize(new java.awt.Dimension(45, 23));
+        Jenisjual.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JenisjualItemStateChanged(evt);
+            }
+        });
+        Jenisjual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JenisjualKeyPressed(evt);
+            }
+        });
+        PanelInput.add(Jenisjual);
+        Jenisjual.setBounds(470, 150, 160, 23);
+
+        jLabel55.setText("Alergi Obat :");
+        jLabel55.setName("jLabel55"); // NOI18N
+        PanelInput.add(jLabel55);
+        jLabel55.setBounds(0, 100, 94, 23);
+
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane2.setName("scrollPane2"); // NOI18N
+
+        RiwayatPenyakitSekarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RiwayatPenyakitSekarang.setColumns(20);
+        RiwayatPenyakitSekarang.setRows(5);
+        RiwayatPenyakitSekarang.setName("RiwayatPenyakitSekarang"); // NOI18N
+        RiwayatPenyakitSekarang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RiwayatPenyakitSekarangKeyPressed(evt);
+            }
+        });
+        scrollPane2.setViewportView(RiwayatPenyakitSekarang);
+
+        PanelInput.add(scrollPane2);
+        scrollPane2.setBounds(98, 100, 240, 43);
+
+        jLabel56.setText("Manifestasi Alergi :");
+        jLabel56.setName("jLabel56"); // NOI18N
+        PanelInput.add(jLabel56);
+        jLabel56.setBounds(346, 100, 120, 23);
+
+        scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane3.setName("scrollPane3"); // NOI18N
+
+        RiwayatPenyakitSekarang1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RiwayatPenyakitSekarang1.setColumns(20);
+        RiwayatPenyakitSekarang1.setRows(5);
+        RiwayatPenyakitSekarang1.setName("RiwayatPenyakitSekarang1"); // NOI18N
+        RiwayatPenyakitSekarang1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RiwayatPenyakitSekarang1KeyPressed(evt);
+            }
+        });
+        scrollPane3.setViewportView(RiwayatPenyakitSekarang1);
+
+        PanelInput.add(scrollPane3);
+        scrollPane3.setBounds(470, 100, 240, 43);
+
+        jLabel6.setText("Dampak Alergi :");
+        jLabel6.setName("jLabel6"); // NOI18N
+        PanelInput.add(jLabel6);
+        jLabel6.setBounds(0, 150, 94, 23);
+
+        Jenisjual1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ringan", "Sedang", "Berat" }));
+        Jenisjual1.setName("Jenisjual1"); // NOI18N
+        Jenisjual1.setPreferredSize(new java.awt.Dimension(45, 23));
+        Jenisjual1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Jenisjual1ItemStateChanged(evt);
+            }
+        });
+        Jenisjual1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Jenisjual1KeyPressed(evt);
+            }
+        });
+        PanelInput.add(Jenisjual1);
+        Jenisjual1.setBounds(98, 150, 90, 23);
+
+        jLabel8.setText("Tgl.Lahir :");
+        jLabel8.setName("jLabel8"); // NOI18N
+        PanelInput.add(jLabel8);
+        jLabel8.setBounds(566, 10, 60, 23);
+
+        TglLahir.setEditable(false);
+        TglLahir.setHighlighter(null);
+        TglLahir.setName("TglLahir"); // NOI18N
+        PanelInput.add(TglLahir);
+        TglLahir.setBounds(630, 10, 80, 23);
+
+        jLabel11.setText("J.K. :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        PanelInput.add(jLabel11);
+        jLabel11.setBounds(0, 40, 94, 23);
+
+        Jk.setEditable(false);
+        Jk.setHighlighter(null);
+        Jk.setName("Jk"); // NOI18N
+        PanelInput.add(Jk);
+        Jk.setBounds(98, 40, 80, 23);
+
+        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -591,10 +560,6 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
 private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkJlnActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_ChkJlnActionPerformed
-
-    private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
-        isForm();
-    }//GEN-LAST:event_ChkInputActionPerformed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
         
@@ -737,12 +702,10 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
     private widget.Button BtnTambah;
-    private widget.CekBox ChkInput;
     private widget.CekBox ChkJln;
     private widget.ComboBox CmbDetik;
     private widget.ComboBox CmbJam;
     private widget.ComboBox CmbMenit;
-    private javax.swing.JPanel FormInput;
     private widget.ComboBox Jenisjual;
     private widget.ComboBox Jenisjual1;
     private widget.TextBox Jk;
@@ -892,20 +855,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     
     public void isCek(){        
         BtnSimpan.setEnabled(akses.getpermintaan_radiologi());
-    }
-    
-    private void isForm(){
-        if(ChkInput.isSelected()==true){
-            ChkInput.setVisible(false);
-            FormInput.setPreferredSize(new Dimension(WIDTH,189));
-            PanelInput.setVisible(true);      
-            ChkInput.setVisible(true);
-        }else if(ChkInput.isSelected()==false){           
-            ChkInput.setVisible(false);            
-            FormInput.setPreferredSize(new Dimension(WIDTH,20));
-            PanelInput.setVisible(false);      
-            ChkInput.setVisible(true);
-        }
     }
     
     public void setDokterPerujuk(String kodeperujuk,String namaperujuk){
