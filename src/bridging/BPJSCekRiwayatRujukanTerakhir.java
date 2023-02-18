@@ -55,7 +55,7 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"ICD 10","Nama Diagnosa","No.Rujukan","Kode Tujuan","Nama Tujuan","Tgl.Rujukan","Kode PPK","Nama PPK"};
+        Object[] row={"ICD 10","Nama Diagnosa","No.Rujukan","Kode Tujuan","Nama Tujuan","Tgl.Rujukan","Kode PPK","Nama PPK","Status"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -65,24 +65,26 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(60);
             }else if(i==1){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(160);
             }else if(i==2){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(125);
             }else if(i==3){
                 column.setPreferredWidth(70);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(160);
             }else if(i==5){
                 column.setPreferredWidth(65);
             }else if(i==6){
                 column.setPreferredWidth(70);
             }else if(i==7){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(160);
+            }else if(i==8){
+                column.setPreferredWidth(50);
             }
         }
         
@@ -245,7 +247,7 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{
                             list.path("diagnosa").path("kode").asText(),list.path("diagnosa").path("nama").asText(),list.path("noKunjungan").asText(),
                             list.path("poliRujukan").path("kode").asText(),list.path("poliRujukan").path("nama").asText(),list.path("tglKunjungan").asText(),
-                            list.path("provPerujuk").path("kode").asText(),list.path("provPerujuk").path("nama").asText()
+                            list.path("provPerujuk").path("kode").asText(),list.path("provPerujuk").path("nama").asText(),"FKTP"
                         }); 
                     }
                 }                      
@@ -270,7 +272,7 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{
                             list.path("diagnosa").path("kode").asText(),list.path("diagnosa").path("nama").asText(),list.path("noKunjungan").asText(),
                             list.path("poliRujukan").path("kode").asText(),list.path("poliRujukan").path("nama").asText(),list.path("tglKunjungan").asText(),
-                            list.path("provPerujuk").path("kode").asText(),list.path("provPerujuk").path("nama").asText()
+                            list.path("provPerujuk").path("kode").asText(),list.path("provPerujuk").path("nama").asText(),"FKTL"
                         }); 
                     }
                 }
