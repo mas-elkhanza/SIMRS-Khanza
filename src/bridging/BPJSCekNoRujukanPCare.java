@@ -107,6 +107,10 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private BPJSCekReferensiPropinsi propinsikll=new BPJSCekReferensiPropinsi(null,false);
     private BPJSCekReferensiKabupaten kabupatenkll=new BPJSCekReferensiKabupaten(null,false);
     private BPJSCekReferensiKecamatan kecamatankll=new BPJSCekReferensiKecamatan(null,false);
+    private YaskiReferensiPropinsi propinsiref=new YaskiReferensiPropinsi(null,false);
+    private YaskiReferensiKabupaten kabupatenref=new YaskiReferensiKabupaten(null,false);
+    private YaskiReferensiKecamatan kecamatanref=new YaskiReferensiKecamatan(null,false);
+    private YaskiReferensiKelurahan kelurahanref=new YaskiReferensiKelurahan(null,false);
     private ApiBPJS api=new ApiBPJS();
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
@@ -399,6 +403,186 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        propinsiref.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(propinsiref.getTable().getSelectedRow()!= -1){   
+                    KdProp.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),1).toString());
+                    kdprop="";
+                    switch (pilih) {
+                        case 1:
+                            Propinsi.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        case 2:
+                            PropinsiPj.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        default:
+                            break;
+                    }
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        propinsiref.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    propinsiref.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        kabupatenref.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kabupatenref.getTable().getSelectedRow()!= -1){   
+                    KdKab.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),1).toString());
+                    kdkab="";
+                    switch (pilih) {
+                        case 1:
+                            Kabupaten.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        case 2:
+                            KabupatenPj.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        default:
+                            break;
+                    }
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kabupatenref.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kabupatenref.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        kecamatanref.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kecamatanref.getTable().getSelectedRow()!= -1){   
+                    KdKec.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),1).toString());
+                    kdkec="";
+                    switch (pilih) {
+                        case 1:
+                            Kecamatan.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        case 2:
+                            KecamatanPj.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        default:
+                            break;
+                    }
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kecamatanref.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kecamatanref.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        kelurahanref.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kelurahanref.getTable().getSelectedRow()!= -1){    
+                    KdKel.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),1).toString());
+                    kdkel="";
+                    switch (pilih) {
+                        case 1:
+                            Kelurahan.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        case 2:
+                            KelurahanPj.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),2).toString().toUpperCase());
+                            break;
+                        default:
+                            break;
+                    }
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kelurahanref.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kelurahanref.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
         });
         
         dokter.addWindowListener(new WindowListener() {
@@ -1485,6 +1669,10 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         kdjabatanpolri = new widget.TextBox();
         kdperusahaan = new widget.TextBox();
         kdcacat = new widget.TextBox();
+        KdKec = new widget.TextBox();
+        KdProp = new widget.TextBox();
+        KdKel = new widget.TextBox();
+        KdKab = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -1710,7 +1898,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2023" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1922,6 +2110,22 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                 kdcacatKeyPressed(evt);
             }
         });
+
+        KdKec.setEditable(false);
+        KdKec.setHighlighter(null);
+        KdKec.setName("KdKec"); // NOI18N
+
+        KdProp.setEditable(false);
+        KdProp.setHighlighter(null);
+        KdProp.setName("KdProp"); // NOI18N
+
+        KdKel.setEditable(false);
+        KdKel.setHighlighter(null);
+        KdKel.setName("KdKel"); // NOI18N
+
+        KdKab.setEditable(false);
+        KdKab.setHighlighter(null);
+        KdKab.setName("KdKab"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -2238,7 +2442,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 160, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2023" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3297,7 +3501,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel31);
         jLabel31.setBounds(239, 355, 100, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021 16:01:44" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2023 21:24:13" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -3316,7 +3520,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(3, 355, 100, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2023" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3785,7 +3989,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(LakaLantas);
-        LakaLantas.setBounds(589, 25, 131, 23);
+        LakaLantas.setBounds(589, 25, 107, 23);
 
         jLabel47.setText("Tgl.Kecelakaan :");
         jLabel47.setName("jLabel47"); // NOI18N
@@ -3794,7 +3998,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         jLabel47.setBounds(724, 25, 90, 23);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2023" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setName("TanggalKKL"); // NOI18N
@@ -4181,7 +4385,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             Alamat.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnKelurahanActionPerformed(null);
+            if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
+                JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
+                BtnKelurahan.requestFocus();
+            }else{
+                pilih=1;
+                kelurahanref.setPropinsi(KdKec.getText(),Kecamatan.getText());
+                kelurahanref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kelurahanref.setLocationRelativeTo(internalFrame1);
+                kelurahanref.setVisible(true);
+            }
         }
     }//GEN-LAST:event_KelurahanKeyPressed
 
@@ -4215,7 +4428,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             Kelurahan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnKecamatanActionPerformed(null);
+            if(KdKab.getText().trim().equals("")||Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
+                JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+                BtnKabupaten.requestFocus();
+            }else{
+                pilih=1;
+                kecamatanref.setPropinsi(KdKab.getText(),Kabupaten.getText());
+                kecamatanref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kecamatanref.setLocationRelativeTo(internalFrame1);
+                kecamatanref.setVisible(true);
+            }
         }
     }//GEN-LAST:event_KecamatanKeyPressed
 
@@ -4249,7 +4471,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             Kecamatan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnKabupatenActionPerformed(null);
+            if(KdProp.getText().trim().equals("")||Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
+                JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+                BtnPropinsi.requestFocus();
+            }else{
+                pilih=1;
+                kabupatenref.setPropinsi(KdProp.getText(),Propinsi.getText());
+                kabupatenref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kabupatenref.setLocationRelativeTo(internalFrame1);
+                kabupatenref.setVisible(true);
+            }
         }
     }//GEN-LAST:event_KabupatenKeyPressed
 
@@ -4348,7 +4579,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             KelurahanPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnKecamatanPjActionPerformed(null);
+            if(KdKab.getText().trim().equals("")||KabupatenPj.getText().trim().equals("")||KabupatenPj.getText().trim().equals("KABUPATEN")){
+                JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+                BtnKabupaten.requestFocus();
+            }else{
+                pilih=2;
+                kecamatanref.setPropinsi(KdKab.getText(),KabupatenPj.getText());
+                kecamatanref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kecamatanref.setLocationRelativeTo(internalFrame1);
+                kecamatanref.setVisible(true);
+            }
         }
     }//GEN-LAST:event_KecamatanPjKeyPressed
 
@@ -4389,7 +4629,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             KecamatanPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnKabupatenPjActionPerformed(null);
+            if(KdProp.getText().trim().equals("")||PropinsiPj.getText().trim().equals("")||PropinsiPj.getText().trim().equals("PROPINSI")){
+                JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+                BtnPropinsi.requestFocus();
+            }else{
+                pilih=2;
+                kabupatenref.setPropinsi(KdProp.getText(),PropinsiPj.getText());
+                kabupatenref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kabupatenref.setLocationRelativeTo(internalFrame1);
+                kabupatenref.setVisible(true);
+            } 
         }
     }//GEN-LAST:event_KabupatenPjKeyPressed
 
@@ -4437,7 +4686,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             AlamatPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnKelurahanPjActionPerformed(null);
+            if(KdKec.getText().trim().equals("")||KecamatanPj.getText().trim().equals("")||KecamatanPj.getText().trim().equals("KECAMATAN")){
+                JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
+                BtnKelurahan.requestFocus();
+            }else{
+                pilih=2;
+                kelurahanref.setPropinsi(KdKec.getText(),KecamatanPj.getText());
+                kelurahanref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kelurahanref.setLocationRelativeTo(internalFrame1);
+                kelurahanref.setVisible(true);
+            }
         }
     }//GEN-LAST:event_KelurahanPjKeyPressed
 
@@ -4567,7 +4825,10 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             Kabupaten.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnPropinsiActionPerformed(null);
+            pilih=1;
+            propinsiref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            propinsiref.setLocationRelativeTo(internalFrame1);
+            propinsiref.setVisible(true);
         }
     }//GEN-LAST:event_PropinsiKeyPressed
 
@@ -4606,7 +4867,10 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
             KabupatenPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPropinsiPjActionPerformed(null);
+            pilih=2;
+            propinsiref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            propinsiref.setLocationRelativeTo(internalFrame1);
+            propinsiref.setVisible(true);
         }
     }//GEN-LAST:event_PropinsiPjKeyPressed
 
@@ -5488,12 +5752,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private widget.ComboBox Katarak;
     private widget.TextBox KdDPJP;
     private widget.TextBox KdDPJPLayanan;
+    private widget.TextBox KdKab;
     private widget.TextBox KdKabupaten;
+    private widget.TextBox KdKec;
     private widget.TextBox KdKecamatan;
+    private widget.TextBox KdKel;
     private widget.TextBox KdPPK;
     private widget.TextBox KdPenyakit;
     private widget.TextBox KdPoli;
     private widget.TextBox KdPpkRujukan;
+    private widget.TextBox KdProp;
     private widget.TextBox KdPropinsi;
     private widget.TextBox Kdpnj;
     private widget.TextBox Kecamatan;
@@ -6248,6 +6516,14 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         KdDPJPLayanan.setText("");
         NmDPJPLayanan.setText("");
         btnDPJPLayanan.setEnabled(true);
+        kdkel="";
+        kdkec="";
+        kdkab="";
+        kdprop="";
+        KdProp.setText("");
+        KdKab.setText("");
+        KdKec.setText("");
+        KdKel.setText("");
         TNo.requestFocus();
     }
     

@@ -88,10 +88,10 @@ public class DlgPasien extends javax.swing.JDialog {
     public  DlgSatuanPolri satuanpolri=new DlgSatuanPolri(null,false);
     public  DlgPangkatPolri pangkatpolri=new DlgPangkatPolri(null,false);
     public  DlgJabatanPolri jabatanpolri=new DlgJabatanPolri(null,false);
-    private YaskiReferensiPropinsi propinsiref=new YaskiReferensiPropinsi(null,false);
-    private YaskiReferensiKabupaten kabupatenref=new YaskiReferensiKabupaten(null,false);
-    private YaskiReferensiKecamatan kecamatanref=new YaskiReferensiKecamatan(null,false);
-    private YaskiReferensiKelurahan kelurahanref=new YaskiReferensiKelurahan(null,false);
+    public  YaskiReferensiPropinsi propinsiref=new YaskiReferensiPropinsi(null,false);
+    public  YaskiReferensiKabupaten kabupatenref=new YaskiReferensiKabupaten(null,false);
+    public  YaskiReferensiKecamatan kecamatanref=new YaskiReferensiKecamatan(null,false);
+    public  YaskiReferensiKelurahan kelurahanref=new YaskiReferensiKelurahan(null,false);
     private int pilih=0,z=0,j=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
             p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
             p_kelurahan=0,p_kecamatan=0,p_kabupaten=0,p_pekerjaanpj=0,
@@ -6173,7 +6173,7 @@ private void KelurahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
        }     
        Alamat.requestFocus();
    }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-       if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
+        if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
             BtnKelurahan.requestFocus();
         }else{

@@ -35,7 +35,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="31-05-2022"/>
+            <StringItem index="0" value="18-02-2023"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -391,6 +391,42 @@
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdcacatKeyPressed"/>
       </Events>
+    </Component>
+    <Component class="widget.TextBox" name="KdKec">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="KdKec" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="widget.TextBox" name="KdProp">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="KdProp" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="widget.TextBox" name="KdKel">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="KdKel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="widget.TextBox" name="KdKab">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="KdKab" noResource="true"/>
+      </Properties>
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -990,7 +1026,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="31-05-2022"/>
+                                    <StringItem index="0" value="18-02-2023"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2698,7 +2734,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="31-05-2022 08:02:21"/>
+                                    <StringItem index="0" value="18-02-2023 21:24:13"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2735,7 +2771,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="31-05-2022"/>
+                                    <StringItem index="0" value="18-02-2023"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3615,7 +3651,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="31-05-2022"/>
+                                    <StringItem index="0" value="18-02-2023"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
