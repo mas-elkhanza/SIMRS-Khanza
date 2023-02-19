@@ -53,7 +53,7 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
-    private int i=0;
+    private int i=0,jml=0,index=0;
     private boolean[] pilih; 
     private String[] KodeAsuransi,NamaAsuransi,PerusahaanAsuransi,AlamatAsuransi,NoTelp,Attn;
     /** Creates new form DlgPenyakit
@@ -69,7 +69,7 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==1)||(colIndex==8)||(colIndex==9)||(colIndex==11)||(colIndex==16)||(colIndex==17)) {
+                if (colIndex==0) {
                     a=true;
                 }
                 return a;
@@ -77,7 +77,7 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
             
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              
              @Override
@@ -582,9 +582,49 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
     
     private void tampil2() {
         try {
+            jml=0;
+            for(i=0;i<tbKamar.getRowCount();i++){
+                if(tbKamar.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=null;
+            pilih=new boolean[jml];
+            KodeAsuransi=null;
+            NamaAsuransi=null;
+            PerusahaanAsuransi=null;
+            AlamatAsuransi=null;
+            NoTelp=null;
+            Attn=null;
+            KodeAsuransi=new String[jml];
+            NamaAsuransi=new String[jml];
+            PerusahaanAsuransi=new String[jml];
+            AlamatAsuransi=new String[jml];
+            NoTelp=new String[jml];
+            Attn=new String[jml];
+            
+            index=0; 
+            for(i=0;i<tbKamar.getRowCount();i++){
+                if(tbKamar.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    KodeAsuransi[index]=tbKamar.getValueAt(i,1).toString();
+                    NamaAsuransi[index]=tbKamar.getValueAt(i,2).toString();
+                    PerusahaanAsuransi[index]=tbKamar.getValueAt(i,3).toString();
+                    AlamatAsuransi[index]=tbKamar.getValueAt(i,4).toString();
+                    NoTelp[index]=tbKamar.getValueAt(i,5).toString();
+                    Attn[index]=tbKamar.getValueAt(i,6).toString();
+                    index++;
+                }
+            }
+            
+            Valid.tabelKosong(tabMode);
+            for(i=0;i<jml;i++){                
+                tabMode.addRow(new Object[] {pilih[i],KodeAsuransi[i],NamaAsuransi[i],PerusahaanAsuransi[i],AlamatAsuransi[i],NoTelp[i],Attn[i]});
+            } 
+            
             myObj = new FileReader("./cache/penjab.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("penjab");
             if(response.isArray()){
                 i=1;
