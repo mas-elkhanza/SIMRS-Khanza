@@ -29,6 +29,9 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -45,13 +48,14 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
     private StringBuilder htmlContent;
     private String[] carabayar,kodecarabayar;
     private int[] jumlah;
-    private int i,kolom=0,no=0,jumlahcarabayar=0;
-    private String carabayardicari="";
+    private double totalbiaya=0;
+    private int i,baris=0,no=0,sesuai=0,x=0,y=0;
+    private String carabayardicari="",diagnosa="",kddiangnosa="",pilihan="";
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariCaraBayar2 penjab=new DlgCariCaraBayar2(null,false);
@@ -155,19 +159,6 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });   
-        
-        penjab.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    penjab.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         dokter.addWindowListener(new WindowListener() {
             @Override
@@ -573,22 +564,63 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
             );
             bg.close();
             
-            File f = new File("PembayaranPerAkunBayar.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                            "<tr class='isi2'>"+
-                                "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>PIUTANG PER AKUN PIUTANG<br>TANGGAL "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
-                                "</td>"+
-                           "</tr>"+
-                        "</table>")
-            );
-            bw.close();                         
-            Desktop.getDesktop().browse(f.toURI());
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)","Laporan 4 (Jasper)"},"Laporan 1 (HTML)");
+            switch (pilihan) {
+                case "Laporan 1 (HTML)":
+                        File f = new File("RekapBiayaPendaftaran.html");            
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td valign='top' align='center'>"+
+                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                "<font size='2' face='Tahoma'>REKAP BIAYA PENDAFTARAN<br>TANGGAL "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                            "</td>"+
+                                       "</tr>"+
+                                    "</table>")
+                        );
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 2 (WPS)":
+                        File h = new File("RekapBiayaPendaftaran.wps");            
+                        BufferedWriter bh = new BufferedWriter(new FileWriter(h));            
+                        bh.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td valign='top' align='center'>"+
+                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                "<font size='2' face='Tahoma'>REKAP BIAYA PENDAFTARAN<br>TANGGAL "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                            "</td>"+
+                                       "</tr>"+
+                                    "</table>")
+                        );
+                        bh.close();                         
+                        Desktop.getDesktop().browse(h.toURI());
+                    break;
+                case "Laporan 3 (XLS)":
+                        File z = new File("RekapBiayaPendaftaran.xls");            
+                        BufferedWriter bz = new BufferedWriter(new FileWriter(z));            
+                        bz.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td valign='top' align='center'>"+
+                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                "<font size='2' face='Tahoma'>REKAP BIAYA PENDAFTARAN<br>TANGGAL "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                            "</td>"+
+                                       "</tr>"+
+                                    "</table>")
+                        );
+                        bz.close();                         
+                        Desktop.getDesktop().browse(z.toURI());
+                    break; 
+            }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }     
@@ -620,6 +652,9 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        nmpoli.setText("");
+        nmdokter.setText("");
+        nmpenjab.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -642,7 +677,11 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        if(nmpenjab.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar/jenis bayar terlebih dahulu");
+        }else{
+            tampil();
+        }
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -766,7 +805,7 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         try{        
             htmlContent = new StringBuilder();
-            jumlahcarabayar=Sequel.cariInteger("select count(penjab.png_jawab) from penjab where penjab.status='1'");
+            Sequel.cariInteger("select count(penjab.png_jawab) from penjab where penjab.status='1'");
             htmlContent.append(                             
                 "<tr class='head'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='27px'>No.</td>"+
@@ -794,147 +833,101 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
                 );
             }
                 
-            /*
-            no=1;
-            ps= koneksi.prepareStatement(
-                    "select nota_jalan.no_rawat,nota_jalan.no_nota,nota_jalan.tanggal,pasien.nm_pasien,(piutang_pasien.totalpiutang-piutang_pasien.uangmuka) as totalpiutang,"+
-                    "piutang_pasien.uangmuka from piutang_pasien inner join nota_jalan inner join pasien "+
-                    "on piutang_pasien.no_rawat=nota_jalan.no_rawat and piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where nota_jalan.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                    "nota_jalan.tanggal between ? and ? and nota_jalan.no_nota like ? order by nota_jalan.tanggal,nota_jalan.no_nota");
-            try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    uangmuka=uangmuka+rs.getDouble("uangmuka");
-                    piutang=piutang+rs.getDouble("totalpiutang");
-                    htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+no+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tanggal")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("uangmuka"))+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("totalpiutang"))+"</td>");
-                    for(i=0;i<kolom;i++){
-                        bayar=Sequel.cariIsiAngka("select totalpiutang from detail_piutang_pasien where no_rawat='"+rs.getString("no_rawat")+"' and nama_bayar='"+akunbayar[i]+"'");
-                        htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
-                        totalbayar[i]=totalbayar[i]+bayar;
+            baris=1;
+            y=no;
+            jumlah=new int[no];
+            totalbiaya=0;
+            for(i=0;i<no;i++){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.tgl_registrasi,pasien.nm_pasien,pasien.no_ktp,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                    "pasien.no_rkm_medis,reg_periksa.biaya_reg,reg_periksa.status_lanjut,reg_periksa.kd_pj,reg_periksa.no_rawat from reg_periksa inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj='"+kodecarabayar[i]+"'"+
+                    (kdpoli.getText().trim().equals("")?"":" and reg_periksa.kd_poli='"+kdpoli.getText().trim()+"' ")+
+                    (kddokter.getText().trim().equals("")?"":" and reg_periksa.kd_dokter='"+kddokter.getText().trim()+"' ")+
+                    " order by reg_periksa.tgl_registrasi");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        diagnosa="";
+                        kddiangnosa="";
+                        ps2=koneksi.prepareStatement("select penyakit.kd_penyakit,penyakit.nm_penyakit from penyakit inner join diagnosa_pasien " +
+                            "on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit " +
+                            "where diagnosa_pasien.no_rawat=? order by prioritas asc limit 1");
+                        try {
+                            ps2.setString(1,rs.getString("no_rawat"));
+                            rs2=ps2.executeQuery();
+                            if(rs2.next()){
+                                kddiangnosa=rs2.getString(1);
+                                diagnosa=rs2.getString(2);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif 2 :"+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        } 
+                        
+                        totalbiaya=totalbiaya+rs.getDouble("biaya_reg");
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' align='center'>"+baris+"</td>"+
+                                "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
+                                "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                                "<td valign='middle' align='center'>"+rs.getString("no_ktp")+"</td>"+
+                                "<td valign='middle' align='left'>"+rs.getString("alamat")+"</td>"+
+                                "<td valign='middle' align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
+                                "<td valign='middle' align='left'>"+kddiangnosa+" "+diagnosa+"</td>"
+                        );
+                        for(x=0;x<y;x++){
+                            sesuai=0;
+                            if(x==i){
+                                sesuai=1;
+                            }
+                            jumlah[i]=jumlah[i]+sesuai;
+                            htmlContent.append("<td valign='middle' align='center'>"+Integer.toString(sesuai).replaceAll("0","")+"</td>");
+                        } 
+                        htmlContent.append( 
+                                "<td valign='middle' align='center'>"+Valid.SetAngka(rs.getDouble("biaya_reg"))+"</td>"+
+                                "<td valign='middle' align='center'>"+rs.getString("status_lanjut")+"</td>"+
+                            "</tr>"
+                        );
+                        baris++;
                     }
-                    htmlContent.append( 
-                        "</tr>"
-                    ); 
-                    no++;
-                }
-            }  catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            } 
-           
-            ps= koneksi.prepareStatement(
-                    "select nota_inap.no_rawat,nota_inap.no_nota,nota_inap.tanggal,pasien.nm_pasien,(piutang_pasien.totalpiutang-piutang_pasien.uangmuka) as totalpiutang,"+
-                    "piutang_pasien.uangmuka from piutang_pasien inner join nota_inap inner join pasien "+
-                    "on piutang_pasien.no_rawat=nota_inap.no_rawat and piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where nota_inap.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                    "nota_inap.tanggal between ? and ? and nota_inap.no_nota like ? order by nota_inap.tanggal,nota_inap.no_nota");
-            try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    uangmuka=uangmuka+rs.getDouble("uangmuka");
-                    piutang=piutang+rs.getDouble("totalpiutang");
-                    htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+no+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tanggal")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_nota")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("uangmuka"))+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("totalpiutang"))+"</td>");
-                    for(i=0;i<kolom;i++){
-                        bayar=Sequel.cariIsiAngka("select totalpiutang from detail_piutang_pasien where no_rawat='"+rs.getString("no_rawat")+"' and nama_bayar='"+akunbayar[i]+"'");
-                        htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
-                        totalbayar[i]=totalbayar[i]+bayar;
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
                     }
-                    htmlContent.append( 
-                        "</tr>"
-                    ); 
-                    no++;
-                }
-            }  catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            } 
+                    if(ps!=null){
+                        ps.close();
+                    }
+                } 
+            }
             
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' align='center'></td>"+
-                    "<td valign='middle' align='right'>Total :</td>"+
-                    "<td valign='middle' align='center'></td>"+
-                    "<td valign='middle' align='center'></td>"+
-                    "<td valign='middle' align='right'>"+Valid.SetAngka(uangmuka)+"</td>"+
-                    "<td valign='middle' align='right'>"+Valid.SetAngka(piutang)+"</td>");
-            for(i=0;i<kolom;i++){
-                htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(totalbayar[i])+"</td>"); 
-            }
+                    "<td valign='middle' align='left' colspan='7'>Total</td>"
+            );
+            for(x=0;x<y;x++){
+                htmlContent.append("<td valign='middle' align='center'>"+jumlah[x]+"</td>");
+            } 
             htmlContent.append( 
+                    "<td valign='middle' align='center'>"+Valid.SetAngka(totalbiaya)+"</td>"+
+                    "<td valign='middle' align='center'>&nbsp;</td>"+
                 "</tr>"
-            );  
+            );
             
-            if(kolom==0){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }else if(kolom>2){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='1200px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }else if(kolom>6){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='1700px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }else if(kolom>12){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2100px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }  */   
             LoadHTML.setText(
                         "<html>"+
-                          "<table width='"+(1000+(kolom*100))+"px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='"+(1000+(no*100))+"px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
