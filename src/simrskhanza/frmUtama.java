@@ -7156,8 +7156,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblStts.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblStts);
 
-        jSeparator1.setBackground(new java.awt.Color(217, 1, 122));
-        jSeparator1.setForeground(new java.awt.Color(217, 1, 122));
+        jSeparator1.setBackground(new java.awt.Color(255, 81, 102));
+        jSeparator1.setForeground(new java.awt.Color(255, 81, 102));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator1.setName("jSeparator1"); // NOI18N
@@ -7174,8 +7174,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
         internalFrame4.add(lblUser);
 
-        jSeparator2.setBackground(new java.awt.Color(217, 1, 122));
-        jSeparator2.setForeground(new java.awt.Color(217, 1, 122));
+        jSeparator2.setBackground(new java.awt.Color(255, 81, 102));
+        jSeparator2.setForeground(new java.awt.Color(255, 81, 102));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator2.setName("jSeparator2"); // NOI18N
@@ -7192,8 +7192,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblTgl);
 
-        jSeparator3.setBackground(new java.awt.Color(217, 1, 122));
-        jSeparator3.setForeground(new java.awt.Color(217, 1, 122));
+        jSeparator3.setBackground(new java.awt.Color(255, 81, 102));
+        jSeparator3.setForeground(new java.awt.Color(255, 81, 102));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator3.setName("jSeparator3"); // NOI18N
@@ -7210,8 +7210,8 @@ public class frmUtama extends javax.swing.JFrame {
         LblIP.setPreferredSize(new java.awt.Dimension(120, 23));
         internalFrame4.add(LblIP);
 
-        jSeparator6.setBackground(new java.awt.Color(217, 1, 122));
-        jSeparator6.setForeground(new java.awt.Color(217, 1, 122));
+        jSeparator6.setBackground(new java.awt.Color(255, 81, 102));
+        jSeparator6.setForeground(new java.awt.Color(255, 81, 102));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator6.setName("jSeparator6"); // NOI18N
@@ -39723,7 +39723,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnTimeOutSebelumInsisi.addActionListener(this::btnTimeOutSebelumInsisiActionPerformed);
         
         btnBarangDapur = new widget.ButtonBig();
-        btnBarangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9016847_cleaning_kitchen_covid-19_virus_pandemic_icon.png"))); 
+        btnBarangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Barang_Dapur.png"))); 
         btnBarangDapur.setText("Barang Dapur");
         btnBarangDapur.setIconTextGap(0);
         btnBarangDapur.setName("btnBarangDapur"); 
@@ -39739,7 +39739,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSignOutSebelumMenutupLuka.addActionListener(this::btnSignOutSebelumMenutupLukaActionPerformed);
         
         btnOpnameDapur = new widget.ButtonBig();
-        btnOpnameDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7800478_cabbage_vegetable_food_fruit_cooking_icon.png")));
+        btnOpnameDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Stok_Opname_Barang_Dapur.png")));
         btnOpnameDapur.setText("Stok Opname Barang Dapur");
         btnOpnameDapur.setIconTextGap(0);
         btnOpnameDapur.setName("btnOpnameDapur"); 
@@ -39747,7 +39747,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnOpnameDapur.addActionListener(this::btnOpnameDapurActionPerformed);
         
         btnSuplierDapur = new widget.ButtonBig();
-        btnSuplierDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1988885_front_lorry_truck_vehicle_icon.png")));
+        btnSuplierDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Suplier_Dapur.png")));
         btnSuplierDapur.setText("Suplier Dapur");
         btnSuplierDapur.setIconTextGap(0);
         btnSuplierDapur.setName("btnSuplierDapur"); 
@@ -39771,7 +39771,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKirimVaksinSatuSehat.addActionListener(this::btnKirimVaksinSatuSehatActionPerformed);
         
         btnPembelianDapur = new widget.ButtonBig();
-        btnPembelianDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5296685_fish_food_meal_rice_salmon_icon.png")));
+        btnPembelianDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Pengadaan_Barang_Dapur.png")));
         btnPembelianDapur.setText("Pengadaan Barang Dapur");
         btnPembelianDapur.setIconTextGap(0);
         btnPembelianDapur.setName("btnPembelianDapur"); 
@@ -39787,7 +39787,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistPostOperasi.addActionListener(this::btnChecklistPostOperasiActionPerformed);
         
         btnPengeluaranDapur = new widget.ButtonBig();
-        btnPengeluaranDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3929513_dinner_food_foods_meal_soup_icon.png")));
+        btnPengeluaranDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Stok_Keluar_Dapur.png")));
         btnPengeluaranDapur.setText("Stok Keluar Dapur");
         btnPengeluaranDapur.setIconTextGap(0);
         btnPengeluaranDapur.setName("btnPengeluaranDapur"); 
@@ -39795,7 +39795,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengeluaranDapur.addActionListener(this::btnPengeluaranDapurActionPerformed);
         
         btnRiwayatBarangDapur = new widget.ButtonBig();
-        btnRiwayatBarangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5854057_education_memo_notes_pad_reminder_icon.png")));
+        btnRiwayatBarangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Riwayat_Barang_Dapur.png")));
         btnRiwayatBarangDapur.setText("Riwayat Barang Dapur");
         btnRiwayatBarangDapur.setIconTextGap(0);
         btnRiwayatBarangDapur.setName("btnRiwayatBarangDapur"); 
@@ -39803,7 +39803,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRiwayatBarangDapur.addActionListener(this::btnRiwayatBarangDapurActionPerformed);
         
         btnPermintaanDapur = new widget.ButtonBig();
-        btnPermintaanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3929511_bowl_food_foods_meal_noodle_icon.png")));
+        btnPermintaanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Permintaan_Barang_Dapur.png")));
         btnPermintaanDapur.setText("Permintaan Barang Dapur");
         btnPermintaanDapur.setIconTextGap(0);
         btnPermintaanDapur.setName("btnPermintaanDapur"); 
@@ -39811,7 +39811,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPermintaanDapur.addActionListener(this::btnPermintaanDapurActionPerformed);
         
         btnRBiayaDapur = new widget.ButtonBig();
-        btnRBiayaDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3558095_food_noodle_shop_street_vender_icon.png")));
+        btnRBiayaDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Biaya_Pengadaan_Dapur.png")));
         btnRBiayaDapur.setText("Biaya Pengadaan Dapur");
         btnRBiayaDapur.setIconTextGap(0);
         btnRBiayaDapur.setName("btnRBiayaDapur"); 
@@ -39819,7 +39819,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRBiayaDapur.addActionListener(this::btnRBiayaDapurActionPerformed);
         
         btnRekapPengadaanDapur = new widget.ButtonBig();
-        btnRekapPengadaanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3558120_corn_food_shop_street_vegetable_icon.png")));
+        btnRekapPengadaanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Rekap_Pengadaan_Dapur.png")));
         btnRekapPengadaanDapur.setText("Rekap Pengadaan Dapur");
         btnRekapPengadaanDapur.setIconTextGap(0);
         btnRekapPengadaanDapur.setName("btnRekapPengadaanDapur"); 
