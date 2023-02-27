@@ -13912,6 +13912,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.setVisible(true);
+                                form.emptTeks();
                                 form.setNoRm(rs2.getString("no_rawat2"));
                                 this.setCursor(Cursor.getDefaultCursor());
                             }else{
@@ -13938,6 +13939,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     form.setVisible(true);
                     form.setLocationRelativeTo(internalFrame1);
+                    form.emptTeks();
                     form.setNoRm(norawat.getText());
                     this.setCursor(Cursor.getDefaultCursor());
                 }
