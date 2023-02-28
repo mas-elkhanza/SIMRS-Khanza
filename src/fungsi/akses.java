@@ -201,7 +201,7 @@ public final class akses {
             timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false,
             satu_sehat_kirim_Immunization=false,checklist_post_operasi=false,dapur_pembelian=false,dapur_stok_keluar=false,dapur_riwayat_barang=false,permintaan_dapur=false,
             rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false,grafik_limbahb3cair_pertanggal=false,
-            grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false;
+            grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false,konfirmasi_rekonsiliasi_obat=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1147,6 +1147,7 @@ public final class akses {
                         akses.grafik_limbahb3cair_pertanggal=true;
                         akses.grafik_limbahb3cair_perbulan=true;
                         akses.rekap_biaya_registrasi=true;
+                        akses.konfirmasi_rekonsiliasi_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2076,6 +2077,7 @@ public final class akses {
                         akses.grafik_limbahb3cair_pertanggal=rs2.getBoolean("grafik_limbahb3cair_pertanggal");
                         akses.grafik_limbahb3cair_perbulan=rs2.getBoolean("grafik_limbahb3cair_perbulan");
                         akses.rekap_biaya_registrasi=rs2.getBoolean("rekap_biaya_registrasi");
+                        akses.konfirmasi_rekonsiliasi_obat=rs2.getBoolean("konfirmasi_rekonsiliasi_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3003,6 +3005,7 @@ public final class akses {
                         akses.grafik_limbahb3cair_pertanggal=false;
                         akses.grafik_limbahb3cair_perbulan=false;
                         akses.rekap_biaya_registrasi=false;
+                        akses.konfirmasi_rekonsiliasi_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3987,4 +3990,5 @@ public final class akses {
     public static boolean getgrafik_limbahb3cair_pertanggal(){return akses.grafik_limbahb3cair_pertanggal;}
     public static boolean getgrafik_limbahb3cair_perbulan(){return akses.grafik_limbahb3cair_perbulan;}
     public static boolean getrekap_biaya_registrasi(){return akses.rekap_biaya_registrasi;}
+    public static boolean getkonfirmasi_rekonsiliasi_obat(){return akses.konfirmasi_rekonsiliasi_obat;}
 }   
