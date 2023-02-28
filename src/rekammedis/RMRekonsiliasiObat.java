@@ -41,7 +41,7 @@ import java.awt.Cursor;
  * @author dosen
  */
 public final class RMRekonsiliasiObat extends javax.swing.JDialog {
-    private DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -644,7 +644,7 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         PanelInput.add(jLabel5);
         jLabel5.setBounds(346, 150, 120, 23);
 
-        RekonsiliasiSaat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admisi", "Tranfser Antar Ruang", "Pindah Faskes Lain" }));
+        RekonsiliasiSaat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admisi", "Transfer Antar Ruang", "Pindah Faskes Lain" }));
         RekonsiliasiSaat.setName("RekonsiliasiSaat"); // NOI18N
         RekonsiliasiSaat.setPreferredSize(new java.awt.Dimension(45, 23));
         RekonsiliasiSaat.addItemListener(new java.awt.event.ItemListener() {

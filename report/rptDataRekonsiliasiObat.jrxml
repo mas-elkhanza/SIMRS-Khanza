@@ -85,7 +85,7 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[DATA OPERASI/VK]]></text>
+				<text><![CDATA[DATA REKONSILIASI OBAT]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="0" width="958" height="17" uuid="c7de443a-43f0-4c6d-9204-eb37f4a0456b"/>

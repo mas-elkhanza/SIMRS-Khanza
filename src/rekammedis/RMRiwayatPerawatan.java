@@ -329,6 +329,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningNutrisiAnak = new widget.CekBox();
         chkSkriningGiziLanjut = new widget.CekBox();
         chkMonitoringGizi = new widget.CekBox();
+        chkRekonsiliasiObat = new widget.CekBox();
         chkKonselingFarmasi = new widget.CekBox();
         chkPelayananInformasiObat = new widget.CekBox();
         chkBerkasDigital = new widget.CekBox();
@@ -595,7 +596,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1907));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1915));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1098,6 +1099,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkMonitoringGizi.setOpaque(false);
         chkMonitoringGizi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkMonitoringGizi);
+
+        chkRekonsiliasiObat.setSelected(true);
+        chkRekonsiliasiObat.setText("Rekonsiliasi Obat");
+        chkRekonsiliasiObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRekonsiliasiObat.setName("chkRekonsiliasiObat"); // NOI18N
+        chkRekonsiliasiObat.setOpaque(false);
+        chkRekonsiliasiObat.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkRekonsiliasiObat);
 
         chkKonselingFarmasi.setSelected(true);
         chkKonselingFarmasi.setText("Konseling Farmasi");
@@ -1728,6 +1737,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkTimeOutSebelumInsisi.setSelected(true);
             chkSignOutSebelumMenutupLuka.setSelected(true);
             chkChecklistPostOperasi.setSelected(true);
+            chkRekonsiliasiObat.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1810,6 +1820,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkTimeOutSebelumInsisi.setSelected(false);
             chkSignOutSebelumMenutupLuka.setSelected(false);
             chkChecklistPostOperasi.setSelected(false);
+            chkRekonsiliasiObat.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1947,6 +1958,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkPerencanaanPemulangan;
     private widget.CekBox chkPotonganBiaya;
     private widget.CekBox chkProsedurTindakan;
+    private widget.CekBox chkRekonsiliasiObat;
     private widget.CekBox chkResepPulang;
     private widget.CekBox chkResume;
     private widget.CekBox chkSemua;
@@ -2447,6 +2459,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanHasilPemeriksaanUSG(rs.getString("no_rawat"));
                     //menampilkan skrining gizi lanjut
                     menampilkanGizi(rs.getString("no_rawat"));
+                    //menampilkan konseling farmasi
+                    menampilkanRekonsiliasiObat(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
                     menampilkanKonselingFarmasi(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
@@ -10853,6 +10867,147 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    private void menampilkanRekonsiliasiObat(String norawat) {
+        try {
+            if(chkRekonsiliasiObat.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select rekonsiliasi_obat.no_rekonsiliasi,rekonsiliasi_obat.tanggal_wawancara,rekonsiliasi_obat.rekonsiliasi_obat_saat,"+
+                        "rekonsiliasi_obat.alergi_obat,rekonsiliasi_obat.manifestasi_alergi,rekonsiliasi_obat.dampak_alergi,rekonsiliasi_obat.nip,"+
+                        "petugas.nama from rekonsiliasi_obat inner join reg_periksa on reg_periksa.no_rawat=rekonsiliasi_obat.no_rawat "+
+                        "inner join petugas on rekonsiliasi_obat.nip=petugas.nip where rekonsiliasi_obat.no_rawat='"+norawat+"' "+
+                        "order by rekonsiliasi_obat.tanggal_wawancara").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Rekonsiliasi Obat</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN WAWANCARA"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='3'>Petugas Wawancara : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%'>No.Rekonsiliasi : "+rs2.getString("no_rekonsiliasi")+"</td>"+
+                                              "<td width='33%'>Tgl.Wawancara : "+rs2.getString("tanggal_wawancara")+"</td>"+
+                                              "<td width='33%'>Rekonsiliasi Saat : "+rs2.getString("rekonsiliasi_obat_saat")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%'>Alergi Obat : "+rs2.getString("alergi_obat")+"</td>"+
+                                              "<td width='33%'>Manifestasi Alergi : "+rs2.getString("manifestasi_alergi")+"</td>"+
+                                              "<td width='33%'>Dampak Alergi : "+rs2.getString("dampak_alergi")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "DAFTAR OBAT REKONSILIASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>"+
+                                            "<td valign='top' width='22%' bgcolor='#FFFAF8' align='center'>Nama Obat</td>"+
+                                            "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Dosis Obat</td>"+
+                                            "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Frekuensi</td>"+
+                                            "<td valign='top' width='19%' bgcolor='#FFFAF8' align='center'>Cara Pemberian/Aturan Pakai</td>"+
+                                            "<td valign='top' width='10%' bgcolor='#FFFAF8' align='center'>Pemberian Terakhir</td>"+
+                                            "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Tindak Lanjut</td>"+
+                                            "<td valign='top' width='19%' bgcolor='#FFFAF8' align='center'>Perubahan Aturan Pakai</td>"+
+                                          "</tr>"
+                            );
+                            
+                            try {
+                                w=1;
+                                rs3=koneksi.prepareStatement(
+                                        "select * from rekonsiliasi_obat_detail_obat where rekonsiliasi_obat_detail_obat.no_rekonsiliasi='"+rs2.getString("no_rekonsiliasi")+"'").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs3.getString("nama_obat")+"</td>"+
+                                            "<td valign='top'>"+rs3.getString("dosis_obat")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs3.getString("frekuensi")+"</td>"+
+                                            "<td valign='top'>"+rs3.getString("cara_pemberian")+"</td>"+
+                                            "<td valign='top'>"+rs3.getString("waktu_pemberian_terakhir")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs3.getString("tindak_lanjut")+"</td>"+
+                                            "<td valign='top'>"+rs3.getString("perubahan_aturan_pakai")+"</td>"+
+                                         "</tr>"
+                                    ); 
+                                    w++;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            htmlContent.append(
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );
+                            
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select rekonsiliasi_obat_konfirmasi.diterima_farmasi,rekonsiliasi_obat_konfirmasi.dikonfirmasi_apoteker,rekonsiliasi_obat_konfirmasi.nip,petugas.nama,"+
+                                        "rekonsiliasi_obat_konfirmasi.diserahkan_pasien from rekonsiliasi_obat_konfirmasi inner join petugas on rekonsiliasi_obat_konfirmasi.nip=petugas.nip "+
+                                        "where rekonsiliasi_obat_konfirmasi.no_rekonsiliasi='"+rs2.getString("no_rekonsiliasi")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "DIKONFIRMASI FARMASI/APOTEKER"+  
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                      "<td width='33%'>Diterima Farmasi : "+rs3.getString("diterima_farmasi")+"</td>"+
+                                                      "<td width='33%'>Dikonfirmasi Apoteker : "+rs3.getString("dikonfirmasi_apoteker")+"</td>"+
+                                                      "<td width='33%'>Diserahkan Pasien : "+rs3.getString("diserahkan_pasien")+"</td>"+
+                                                  "</tr>"+
+                                                 "<tr>"+
+                                                      "<td width='100%' colspan='3'>Petugas Farmasi/Apoteker : "+rs3.getString("nip")+" "+rs3.getString("nama")+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"
+                                    ); 
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Rekonsiliasi Obat : "+e);
+        }
+    }
+    
     private void menampilkanKonselingFarmasi(String norawat) {
         try {
             if(chkKonselingFarmasi.isSelected()==true){
@@ -10923,7 +11078,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notif Asuhan Medis Rawat Jalan : "+e);
+            System.out.println("Notif Konseling Farmasi : "+e);
         }
     }
     
@@ -11010,7 +11165,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notif Asuhan Medis Rawat Jalan : "+e);
+            System.out.println("Notif Pelayanan Informasi Obat : "+e);
         }
     }
     

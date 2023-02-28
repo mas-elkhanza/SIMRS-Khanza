@@ -42,7 +42,7 @@ public class RMCariRekonsiliasiObat extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        DlgKonfirmasiObatRekonsiliasi.setSize(572,163);
+        DlgKonfirmasiObatRekonsiliasi.setSize(572,165);
 
         Object[] row={"No.Rekonsiliasi","Pasien","Tanggal Wawancara","Rekonsiliasi Saat","Alergi Obat","Dampak Alergi","Manifestasi Alergi","Petugas Rekonsiliasi"};
         tabMode=new DefaultTableModel(null,row){
@@ -891,7 +891,7 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnPetugas,"Petugas");
         }else{
-            Sequel.meghapus("rekonsiliasi_obat_konfirmasi","no_rekonsiliasi",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            Sequel.meghapus("rekonsiliasi_obat_konfirmasi","no_rekonsiliasi",NoRekonsiliasi.getText());
             if(Sequel.menyimpantf("rekonsiliasi_obat_konfirmasi","?,?,?,?,?","Nomor Rekonsiliasi",5,new String[]{
                 NoRekonsiliasi.getText(),Valid.SetTgl(DiterimaFarmasi.getSelectedItem()+"")+" "+DiterimaFarmasi.getSelectedItem().toString().substring(11,19),
                 Valid.SetTgl(DikonfirmasiApoteker.getSelectedItem()+"")+" "+DikonfirmasiApoteker.getSelectedItem().toString().substring(11,19),
