@@ -785,6 +785,7 @@ import rekammedis.MasterTriaseSkala2;
 import rekammedis.MasterTriaseSkala3;
 import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
+import rekammedis.RMCariRekonsiliasiObat;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
@@ -19875,6 +19876,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRekonsiliasiObatActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMCariRekonsiliasiObat aplikasi=new RMCariRekonsiliasiObat(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20542,7 +20554,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
-            btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi;
+            btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat;
     
     public void isWall(){
         try{            
@@ -24048,6 +24060,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getcatatan_cek_gds()==true){
                 Panelmenu.add(btnCatatanCekGDS);
+                jmlmenu++;
+            }
+            
+            if(akses.getrekonsiliasi_obat()==true){
+                Panelmenu.add(btnRekonsiliasiObat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -28623,6 +28640,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getcatatan_cek_gds()==true){
             Panelmenu.add(btnCatatanCekGDS);
+            jmlmenu++;
+        }
+        
+        if(akses.getrekonsiliasi_obat()==true){
+            Panelmenu.add(btnRekonsiliasiObat);
             jmlmenu++;
         }
 
@@ -34546,6 +34568,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getrekonsiliasi_obat()==true){
+            if(btnRekonsiliasiObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekonsiliasiObat);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -39857,5 +39886,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapBiayaRegistrasi.setName("btnRekapBiayaRegistrasi"); 
         btnRekapBiayaRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRekapBiayaRegistrasi.addActionListener(this::btnRekapBiayaRegistrasiActionPerformed);
+        
+        btnRekonsiliasiObat = new widget.ButtonBig();
+        btnRekonsiliasiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9016848_doctor_examination_covid-19_virus_pandemic_icon.png")));
+        btnRekonsiliasiObat.setText("Rekonsiliasi Obat");
+        btnRekonsiliasiObat.setIconTextGap(0);
+        btnRekonsiliasiObat.setName("btnRekonsiliasiObat"); 
+        btnRekonsiliasiObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekonsiliasiObat.addActionListener(this::btnRekonsiliasiObatActionPerformed);
     }
 }

@@ -34,6 +34,7 @@ import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import java.awt.Cursor;
 
 /**
  *
@@ -47,7 +48,7 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i;
+    private int i,reply;
     
 
     /** Creates new form DlgPerawatan
@@ -853,6 +854,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        DlgTambahObatRekonsiliasi.dispose();
+        petugas.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -861,7 +864,14 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
+        RMCariRekonsiliasiObat form=new RMCariRekonsiliasiObat(null,false);
+        form.isCek();
+        form.SetNoRw(TNoRw.getText());
+        form.setSize(this.getWidth(),this.getHeight());
+        form.setLocationRelativeTo(this);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -888,18 +898,21 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }else if(tabMode.getRowCount()==0){
             Valid.textKosong(TNoRekonsialiasi,"Data Obat Rekonsiliasi");
         }else{
-            if(Sequel.menyimpantf("rekonsiliasi_obat","?,?,?,?,?,?,?,?","No.Rawat",8,new String[]{
-                    TNoRekonsialiasi.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
-                    RekonsiliasiSaat.getSelectedItem().toString(),AlergiObat.getText(),ManifestasiAlergi.getText(),DampakAlergi.getSelectedItem().toString(),KodePetugas.getText(),
-                })==true){
-                    for (i = 0; i < tbPemeriksaan.getRowCount(); i++) {
-                       Sequel.menyimpan2("rekonsiliasi_obat_detail_obat","?,?,?,?,?,?,?,?",8,new String[]{
-                           TNoRekonsialiasi.getText(),tbPemeriksaan.getValueAt(i,0).toString(),tbPemeriksaan.getValueAt(i,1).toString(),tbPemeriksaan.getValueAt(i,2).toString(),
-                           tbPemeriksaan.getValueAt(i,3).toString(),tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,5).toString(),tbPemeriksaan.getValueAt(i,6).toString()
-                       });
-                    }
-                    Valid.tabelKosong(tabMode);
-                    emptTeks();
+            reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                if(Sequel.menyimpantf("rekonsiliasi_obat","?,?,?,?,?,?,?,?","No.Rawat",8,new String[]{
+                        TNoRekonsialiasi.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
+                        RekonsiliasiSaat.getSelectedItem().toString(),AlergiObat.getText(),ManifestasiAlergi.getText(),DampakAlergi.getSelectedItem().toString(),KodePetugas.getText(),
+                    })==true){
+                        for (i = 0; i < tbPemeriksaan.getRowCount(); i++) {
+                           Sequel.menyimpan2("rekonsiliasi_obat_detail_obat","?,?,?,?,?,?,?,?",8,new String[]{
+                               TNoRekonsialiasi.getText(),tbPemeriksaan.getValueAt(i,0).toString(),tbPemeriksaan.getValueAt(i,1).toString(),tbPemeriksaan.getValueAt(i,2).toString(),
+                               tbPemeriksaan.getValueAt(i,3).toString(),tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,5).toString(),tbPemeriksaan.getValueAt(i,6).toString()
+                           });
+                        }
+                        Valid.tabelKosong(tabMode);
+                        emptTeks();
+                }
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
