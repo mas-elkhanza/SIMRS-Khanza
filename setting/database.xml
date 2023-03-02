@@ -74,11 +74,11 @@
     <entry key="URLAUTHSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/oauth2/v1</entry> 
     <entry key="URLFHIRSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/fhir-r4/v1</entry>
     <entry key="IDSATUSEHAT">Z64Bi97zYtxq3TuJDUb/ng==</entry>
-    <entry key="KELURAHANSATUSEHAT">31710101</entry>
-    <entry key="KECAMATANSATUSEHAT">317101</entry>
-    <entry key="KABUPATENSATUSEHAT">3171</entry>
-    <entry key="PROPINSISATUSEHAT">31</entry>
-    <entry key="KODEPOSSATUSEHAT">55292</entry>
+    <entry key="KELURAHANSATUSEHAT">3313160009</entry>
+    <entry key="KECAMATANSATUSEHAT">3313160</entry>
+    <entry key="KABUPATENSATUSEHAT">3313</entry>
+    <entry key="PROPINSISATUSEHAT">33</entry>
+    <entry key="KODEPOSSATUSEHAT">57752</entry>
     <entry key="KAMARAKTIFRANAP"></entry>
     <entry key="DOKTERAKTIFKASIRRALAN"></entry>
     <entry key="POLIAKTIFKASIRRALAN"></entry>
