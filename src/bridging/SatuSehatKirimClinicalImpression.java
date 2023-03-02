@@ -17,14 +17,18 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -49,7 +53,8 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
-    private SatuSehatCekNIK cekViaSatuSehat=new SatuSehatCekNIK();    
+    private SatuSehatCekNIK cekViaSatuSehat=new SatuSehatCekNIK();  
+    private StringBuilder htmlContent;    
     
     /** Creates new form DlgKamar
      * @param parent
@@ -162,7 +167,25 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
             link=koneksiDB.URLFHIRSATUSEHAT();
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        }     
+        }   
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
     
     
@@ -179,6 +202,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppPilihSemua = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -233,6 +257,9 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
             }
         });
         jPopupMenu1.add(ppBersihkan);
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -433,22 +460,193 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-                Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                param.put("parameter","%"+TCari.getText().trim()+"%");
-                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                Valid.MyReport("rptKirimProcedureSatuSehat.jasper","report","::[ Kirim Data Procedure Satu Sehat Kemenkes ]::",param);            
+        try{
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keluhan/Subjek/Objek</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asesmen/Clinical Impression</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Clincial Impression</b></td>"+
+                "</tr>"
+            );
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                   "pasien.nm_pasien,pasien.no_ktp,reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') "+
+                   "as pulang,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
+                   "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.penilaian,"+
+                   "pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan, "+
+                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik "+
+                   "left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ralan.no_rawat "+
+                   "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan "+
+                   "and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ralan.jam_rawat "+
+                   "and satu_sehat_clinicalimpression.status='Ralan' where pemeriksaan_ralan.penilaian<>'' "+
+                   "and reg_periksa.tgl_registrasi between ? and ? "+
+                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
+                   "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                   "reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                if(!TCari.getText().equals("")){
+                     ps.setString(3,"%"+TCari.getText()+"%");
+                     ps.setString(4,"%"+TCari.getText()+"%");
+                     ps.setString(5,"%"+TCari.getText()+"%");
+                     ps.setString(6,"%"+TCari.getText()+"%");
+                     ps.setString(7,"%"+TCari.getText()+"%");
+                     ps.setString(8,"%"+TCari.getText()+"%");
+                     ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top'>"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"</td>"+
+                           "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
+                           "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
+                           "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
+                           "<td valign='top'>"+rs.getString("no_ktp")+"</td>"+
+                           "<td valign='top'>"+rs.getString("stts")+"</td>"+
+                           "<td valign='top'>"+"Ralan"+"</td>"+
+                           "<td valign='top'>"+rs.getString("pulang")+"</td>"+
+                           "<td valign='top'>"+rs.getString("id_encounter")+"</td>"+
+                           "<td valign='top'>"+rs.getString("keluhan")+", "+rs.getString("pemeriksaan")+"</td>"+
+                           "<td valign='top'>"+rs.getString("penilaian")+"</td>"+
+                           "<td valign='top'>"+rs.getString("nama")+"</td>"+
+                           "<td valign='top'>"+rs.getString("ktppraktisi")+"</td>"+
+                           "<td valign='top'>"+rs.getString("tgl_perawatan")+"</td>"+
+                           "<td valign='top'>"+rs.getString("jam_rawat")+"</td>"+
+                           "<td valign='top'>"+rs.getString("satu_sehat_clinicalimpression")+"</td>"+
+                        "</tr>");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.penilaian,"+
+                   "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan, "+
+                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression from reg_periksa inner join pasien "+
+                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ranap.no_rawat "+
+                   "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ranap.jam_rawat "+
+                   "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
+                   "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                if(!TCari.getText().equals("")){
+                     ps.setString(3,"%"+TCari.getText()+"%");
+                     ps.setString(4,"%"+TCari.getText()+"%");
+                     ps.setString(5,"%"+TCari.getText()+"%");
+                     ps.setString(6,"%"+TCari.getText()+"%");
+                     ps.setString(7,"%"+TCari.getText()+"%");
+                     ps.setString(8,"%"+TCari.getText()+"%");
+                     ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top'>"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"</td>"+
+                           "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
+                           "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
+                           "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
+                           "<td valign='top'>"+rs.getString("no_ktp")+"</td>"+
+                           "<td valign='top'>"+rs.getString("stts")+"</td>"+
+                           "<td valign='top'>"+"Ranap"+"</td>"+
+                           "<td valign='top'>"+rs.getString("pulang")+"</td>"+
+                           "<td valign='top'>"+rs.getString("id_encounter")+"</td>"+
+                           "<td valign='top'>"+rs.getString("keluhan")+", "+rs.getString("pemeriksaan")+"</td>"+
+                           "<td valign='top'>"+rs.getString("penilaian")+"</td>"+
+                           "<td valign='top'>"+rs.getString("nama")+"</td>"+
+                           "<td valign='top'>"+rs.getString("ktppraktisi")+"</td>"+
+                           "<td valign='top'>"+rs.getString("tgl_perawatan")+"</td>"+
+                           "<td valign='top'>"+rs.getString("jam_rawat")+"</td>"+
+                           "<td valign='top'>"+rs.getString("satu_sehat_clinicalimpression")+"</td>"+
+                        "</tr>");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LoadHTML.setText(
+                "<html>"+
+                  "<table width='1700px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                   htmlContent.toString()+
+                  "</table>"+
+                "</html>"
+            );
+
+            File g = new File("file2.css");            
+            BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+            bg.write(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+            );
+            bg.close();
+
+            File f = new File("DataSatuSehatClinicalImpression.html");            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                        "<table width='1700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<tr class='isi2'>"+
+                                "<td valign='top' align='center'>"+
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT CLINICAL IMPRESSION<br><br></font>"+        
+                                "</td>"+
+                           "</tr>"+
+                        "</table>")
+            );
+            bw.close();                         
+            Desktop.getDesktop().browse(f.toURI());
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
         this.setCursor(Cursor.getDefaultCursor());       
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -481,7 +679,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
         for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,13).toString().equals(""))&&tbKamar.getValueAt(i,16).toString().equals("")){
+            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,11).toString().equals(""))&&(!tbKamar.getValueAt(i,13).toString().equals(""))&&tbKamar.getValueAt(i,16).toString().equals("")){
                 try {
                     iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,13).toString());
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
@@ -543,53 +741,36 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
 
     private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
         for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,9).toString().equals(""))&&(!tbKamar.getValueAt(i,12).toString().equals(""))){
+            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,11).toString().equals(""))&&(!tbKamar.getValueAt(i,13).toString().equals(""))&&(!tbKamar.getValueAt(i,16).toString().equals(""))){
                 try {
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,13).toString());
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
-                                    "\"resourceType\": \"Procedure\"," +
-                                    "\"id\": \""+tbKamar.getValueAt(i,12).toString()+"\"," +
+                                    "\"resourceType\": \"ClinicalImpression\"," +
+                                    "\"id\": \""+tbKamar.getValueAt(i,16).toString()+"\"," +
                                     "\"status\": \"completed\","+
-                                    "\"category\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://snomed.info/sct\"," +
-                                                "\"code\": \"103693007\"," +
-                                                "\"display\": \"Diagnostic procedure\"" +
-                                            "}" +
-                                        "]," +
-                                        "\"text\":\"Diagnostic procedure\""+
-                                    "}," +
-                                    "\"code\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://hl7.org/fhir/sid/icd-9-cm\"," +
-                                                "\"code\": \""+tbKamar.getValueAt(i,10).toString()+"\"," +
-                                                "\"display\": \""+tbKamar.getValueAt(i,11).toString()+"\"" +
-                                            "}" +
-                                        "]" +
-                                    "}," +
-                                    "\"subject\": {" +
-                                        "\"reference\": \"Patient/"+idpasien+"\"," +
-                                        "\"display\": \""+tbKamar.getValueAt(i,4).toString()+"\"" +
-                                    "}," +
-                                    "\"encounter\": {" +
-                                        "\"reference\": \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\"," +
-                                        "\"display\": \"Prosedur "+tbKamar.getValueAt(i,4).toString()+" selama kunjungan/dirawat dari tanggal "+tbKamar.getValueAt(i,1).toString()+" sampai "+tbKamar.getValueAt(i,8).toString()+"\"" +
-                                    "}," +
-                                    "\"performedPeriod\": {" +
-                                        "\"start\": \""+tbKamar.getValueAt(i,1).toString()+"\","+
-                                        "\"end\": \""+tbKamar.getValueAt(i,8).toString()+"\""+
-                                    "}"+
+                                    "\"description\" : \""+tbKamar.getValueAt(i,10).toString()+"\"," +
+                                    "\"subject\" : {"+
+                                       "\"reference\" : \"Patient/"+idpasien+"\""+
+                                    "},"+
+                                    "\"encounter\" : { " +
+                                      "\"reference\" : \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\""+
+                                    "},"+
+                                    "\"effectiveDateTime\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"date\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"assessor\" : {"+
+                                      "\"reference\" : \"Practitioner/"+iddokter+"\""+
+                                    "},"+
+                                    "\"summary\" : \""+tbKamar.getValueAt(i,11).toString()+"\""+
                                 "}";
-                        System.out.println("URL : "+link+"/Procedure/"+tbKamar.getValueAt(i,12).toString());
+                        System.out.println("URL : "+link+"/ClinicalImpression/"+tbKamar.getValueAt(i,16).toString());
                         System.out.println("Request JSON : "+json);
                         requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/Procedure/"+tbKamar.getValueAt(i,12).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                        json=api.getRest().exchange(link+"/ClinicalImpression/"+tbKamar.getValueAt(i,16).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
@@ -642,6 +823,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
