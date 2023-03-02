@@ -42,7 +42,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
     private PreparedStatement ps;
     private ResultSet rs;   
     private int i=0;
-    private String link="",json="",idpasien="";
+    private String link="",json="",idpasien="",iddokter="";
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
@@ -62,8 +62,11 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Stts Rawat","Stts Lanjut",
-                "Tanggal Pulang","ID Encounter","ICD 9","Nama Prosedur","ID Procedure"
+                "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien",
+                "No.KTP Pasien","Stts Rawat","Stts Lanjut",
+                "Tanggal Pulang","ID Encounter","Keluhan/Subjek/Objek",
+                "Asesmen/Clinical Impression","Petugas/Dokter/Praktisi",
+                "No.KTP Praktisi","Tanggal","Jam","ID Clincial Impression"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -73,9 +76,11 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                 return a;
              }
              Class[] types = new Class[] {
-                 java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-                 java.lang.String.class, java.lang.String.class, java.lang.String.class
+                 java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -88,12 +93,12 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(110);
             }else if(i==2){
                 column.setPreferredWidth(105);
             }else if(i==3){
@@ -107,14 +112,22 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
             }else if(i==7){
                 column.setPreferredWidth(63);
             }else if(i==8){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(110);
             }else if(i==9){
                 column.setPreferredWidth(215);
             }else if(i==10){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(200);
             }else if(i==11){
-                column.setPreferredWidth(225);
+                column.setPreferredWidth(200);
             }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(110);
+            }else if(i==14){
+                column.setPreferredWidth(65);
+            }else if(i==15){
+                column.setPreferredWidth(55);
+            }else if(i==16){
                 column.setPreferredWidth(215);
             }
         }
@@ -468,58 +481,41 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
         for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,9).toString().equals(""))&&tbKamar.getValueAt(i,12).toString().equals("")){
+            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,13).toString().equals(""))&&tbKamar.getValueAt(i,16).toString().equals("")){
                 try {
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,13).toString());
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
-                                    "\"resourceType\": \"Procedure\"," +
-                                    "\"status\": \"completed\","+
-                                    "\"category\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://snomed.info/sct\"," +
-                                                "\"code\": \"103693007\"," +
-                                                "\"display\": \"Diagnostic procedure\"" +
-                                            "}" +
-                                        "]," +
-                                        "\"text\":\"Diagnostic procedure\""+
-                                    "}," +
-                                    "\"code\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \"http://hl7.org/fhir/sid/icd-9-cm\"," +
-                                                "\"code\": \""+tbKamar.getValueAt(i,10).toString()+"\"," +
-                                                "\"display\": \""+tbKamar.getValueAt(i,11).toString()+"\"" +
-                                            "}" +
-                                        "]" +
-                                    "}," +
-                                    "\"subject\": {" +
-                                        "\"reference\": \"Patient/"+idpasien+"\"," +
-                                        "\"display\": \""+tbKamar.getValueAt(i,4).toString()+"\"" +
-                                    "}," +
-                                    "\"encounter\": {" +
-                                        "\"reference\": \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\"," +
-                                        "\"display\": \"Prosedur "+tbKamar.getValueAt(i,4).toString()+" selama kunjungan/dirawat dari tanggal "+tbKamar.getValueAt(i,1).toString()+" sampai "+tbKamar.getValueAt(i,8).toString()+"\"" +
-                                    "}," +
-                                    "\"performedPeriod\": {" +
-                                        "\"start\": \""+tbKamar.getValueAt(i,1).toString()+"\","+
-                                        "\"end\": \""+tbKamar.getValueAt(i,8).toString()+"\""+
-                                    "}"+
-                                "}";
-                        System.out.println("URL : "+link+"/Procedure");
+                                    "\"resourceType\": \"ClinicalImpression\"," +
+                                    "\"status\": \"completed\"," +
+                                    "\"description\" : \""+tbKamar.getValueAt(i,10).toString()+"\"," +
+                                    "\"subject\" : {"+
+                                       "\"reference\" : \"Patient/"+idpasien+"\""+
+                                    "},"+
+                                    "\"encounter\" : { " +
+                                      "\"reference\" : \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\""+
+                                    "},"+
+                                    "\"effectiveDateTime\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"date\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"assessor\" : {"+
+                                      "\"reference\" : \"Practitioner/"+iddokter+"\""+
+                                    "},"+
+                                    "\"summary\" : \""+tbKamar.getValueAt(i,11).toString()+"\""+
+                               "}";
+                        System.out.println("URL : "+link+"/ClinicalImpression");
                         System.out.println("Request JSON : "+json);
                         requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/Procedure", HttpMethod.POST, requestEntity, String.class).getBody();
+                        json=api.getRest().exchange(link+"/ClinicalImpression", HttpMethod.POST, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
                         root = mapper.readTree(json);
                         response = root.path("id");
                         if(!response.asText().equals("")){
-                            Sequel.menyimpan("satu_sehat_procedure","?,?,?,?","Prosedur",4,new String[]{
-                                tbKamar.getValueAt(i,2).toString(),tbKamar.getValueAt(i,10).toString(),tbKamar.getValueAt(i,7).toString(),response.asText()
+                            Sequel.menyimpan("satu_sehat_clinicalimpression","?,?,?,?,?","Clinical Impression",5,new String[]{
+                                tbKamar.getValueAt(i,2).toString(),tbKamar.getValueAt(i,14).toString(),tbKamar.getValueAt(i,15).toString(),tbKamar.getValueAt(i,7).toString(),response.asText()
                             });
                         }
                     }catch(Exception e){
@@ -666,17 +662,26 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,reg_periksa.status_lanjut,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%dT%H:%i:%s+07:00') as pulang,satu_sehat_encounter.id_encounter, "+
-                   "prosedur_pasien.kode,icd9.deskripsi_panjang,ifnull(satu_sehat_procedure.id_procedure,'') as id_procedure "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join prosedur_pasien on prosedur_pasien.no_rawat=reg_periksa.no_rawat "+
-                   "inner join icd9 on prosedur_pasien.kode=icd9.kode left join satu_sehat_procedure on satu_sehat_procedure.no_rawat=prosedur_pasien.no_rawat "+
-                   "and satu_sehat_procedure.kode=prosedur_pasien.kode and satu_sehat_procedure.status=prosedur_pasien.status "+
-                   "where reg_periksa.tgl_registrasi between ? and ? "+
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                   "pasien.nm_pasien,pasien.no_ktp,reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') "+
+                   "as pulang,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
+                   "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.penilaian,"+
+                   "pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan, "+
+                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik "+
+                   "left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ralan.no_rawat "+
+                   "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan "+
+                   "and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ralan.jam_rawat "+
+                   "and satu_sehat_clinicalimpression.status='Ralan' where pemeriksaan_ralan.penilaian<>'' "+
+                   "and reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or prosedur_pasien.kode like ? or icd9.deskripsi_panjang like ? or "+
-                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,prosedur_pasien.prioritas");
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
+                   "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                   "reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -688,14 +693,58 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        false,rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00",rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("stts"),rs.getString("status_lanjut"),rs.getString("pulang"),rs.getString("id_encounter"),rs.getString("kode"),
-                        rs.getString("deskripsi_panjang"),rs.getString("id_procedure")
+                        false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                        rs.getString("no_ktp"),rs.getString("stts"),"Ralan",rs.getString("pulang"),rs.getString("id_encounter"),rs.getString("keluhan")+", "+rs.getString("pemeriksaan"),rs.getString("penilaian"),
+                        rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("satu_sehat_clinicalimpression")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.penilaian,"+
+                   "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan, "+
+                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression from reg_periksa inner join pasien "+
+                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ranap.no_rawat "+
+                   "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ranap.jam_rawat "+
+                   "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
+                   "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                if(!TCari.getText().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                        rs.getString("no_ktp"),rs.getString("stts"),"Ralan",rs.getString("pulang"),rs.getString("id_encounter"),rs.getString("keluhan")+", "+rs.getString("pemeriksaan"),rs.getString("penilaian"),
+                        rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("satu_sehat_clinicalimpression")
                     });
                 }
             } catch (Exception e) {
