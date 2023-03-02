@@ -3994,7 +3994,5 @@ public final class akses {
     public static boolean getgrafik_limbahb3cair_perbulan(){return akses.grafik_limbahb3cair_perbulan;}
     public static boolean getrekap_biaya_registrasi(){return akses.rekap_biaya_registrasi;}
     public static boolean getkonfirmasi_rekonsiliasi_obat(){return akses.konfirmasi_rekonsiliasi_obat;}
-    public static boolean getsatu_sehat_kirim_clinicalimpression(){
-        return akses.satu_sehat_kirim_clinicalimpression;
-    }
+    public static boolean getsatu_sehat_kirim_clinicalimpression(){return akses.satu_sehat_kirim_clinicalimpression;}
 }   

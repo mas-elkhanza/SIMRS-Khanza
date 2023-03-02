@@ -1842,7 +1842,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/02/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02/03/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -20554,7 +20554,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
-            btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat;
+            btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat;
     
     public void isWall(){
         try{            
@@ -23493,6 +23493,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_kirim_Immunization()==true){
                 Panelmenu.add(btnKirimVaksinSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_kirim_clinicalimpression()==true){
+                Panelmenu.add(btnKirimClinicalImpressionSatuSehat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){ 
@@ -28074,6 +28079,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_kirim_Immunization()==true){
             Panelmenu.add(btnKirimVaksinSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_kirim_clinicalimpression()==true){
+            Panelmenu.add(btnKirimClinicalImpressionSatuSehat);
             jmlmenu++;
         }
 
@@ -33774,6 +33784,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_kirim_Immunization()==true){
             if(btnKirimVaksinSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKirimVaksinSatuSehat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsatu_sehat_kirim_clinicalimpression()==true){
+            if(btnKirimClinicalImpressionSatuSehat.getText().toLowerCase().trim().
+                    contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKirimClinicalImpressionSatuSehat);
                 jmlmenu++;
             }                
         }
@@ -39894,5 +39912,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekonsiliasiObat.setName("btnRekonsiliasiObat"); 
         btnRekonsiliasiObat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRekonsiliasiObat.addActionListener(this::btnRekonsiliasiObatActionPerformed);
+        
+        btnKirimClinicalImpressionSatuSehat = new widget.ButtonBig();
+        btnKirimClinicalImpressionSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnKirimClinicalImpressionSatuSehat.setText("Kirim Clinical Impression Satu Sehat");
+        btnKirimClinicalImpressionSatuSehat.setIconTextGap(0);
+        btnKirimClinicalImpressionSatuSehat.setName("btnKirimClinicalImpressionSatuSehat"); 
+        btnKirimClinicalImpressionSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        //btnKirimClinicalImpressionSatuSehat.addActionListener(this::btnKirimClinicalImpressionSatuSehatActionPerformed);
     }
 }
