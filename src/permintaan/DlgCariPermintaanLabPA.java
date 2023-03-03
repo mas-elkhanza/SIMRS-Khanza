@@ -2531,7 +2531,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                 "(permintaan_labpa.noorder like ? or permintaan_labpa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                 "pasien.nm_pasien like ? or permintaan_labpa.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ? )")+
-                "group by permintaan_labpa.noorder order by permintaan_labpa.status='ranap' and permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan desc");
+                "group by permintaan_labpa.noorder order by permintaan_labpa.tgl_permintaan desc,permintaan_labpa.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -2630,7 +2630,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "(permintaan_labpa.noorder like ? or permintaan_labpa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or "+
                     "permintaan_labpa.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    "group by permintaan_labpa.noorder,permintaan_pemeriksaan_labpa.kd_jenis_prw order by permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan desc");
+                    "group by permintaan_labpa.noorder,permintaan_pemeriksaan_labpa.kd_jenis_prw order by permintaan_labpa.tgl_permintaan desc,permintaan_labpa.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
