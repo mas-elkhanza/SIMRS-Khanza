@@ -224,7 +224,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Kirim Procedure Satu Sehat","[J]Operasi Per Bulan","[M]Time-Out Sebelum Insisi","[M]Sign-Out Sebelum Menutup Luka","[F]Barang Dapur","[F]Stok Opname Dapur",
                 "[L]Mapping Vaksin Satu Sehat","[F]Suplier Dapur","[L]Kirim Imunisasi Satu Sehat","[M]Check List Post Operasi","[F]Pengadaan Barang Dapur","[F]Stok Keluar Dapur",
                 "[F]Riwayat Barang Dapur","[F]Permintaan Barang Dapur","[M]Rekonsiliasi Obat","[F]Biaya Pengadaan Dapur","[F]Rekap Pengadaan Dapur","[G]Limbah Cair B3 Medis",
-                "[O]Limbah B3 Cair Per Tanggal","[O]Limbah B3 Cair Per Bulan","[I]Rekap Biaya Registrasi","[M]Konfirmasi Rekonsiliasi Obat","[L]Kirim Clinical Impression Satu Sehat"
+                "[O]Limbah B3 Cair Per Tanggal","[O]Limbah B3 Cair Per Bulan","[I]Rekap Biaya Registrasi","[M]Konfirmasi Rekonsiliasi Obat","[L]Kirim Clinical Impression Satu Sehat",
+                "[M]Penilaian Pasien Terminal"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -477,6 +478,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -490,7 +492,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 928;i++) {
+        for (i = 0; i < 929;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2728,6 +2730,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 927:
                     column.setPreferredWidth(198);
                     break;
+                case 928:
+                    column.setPreferredWidth(149);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3229,7 +3234,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -4199,7 +4204,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_limbahb3cair_perbulan='"+tbUser.getValueAt(i,924).toString()+"',"+
                     "rekap_biaya_registrasi='"+tbUser.getValueAt(i,925).toString()+"',"+
                     "konfirmasi_rekonsiliasi_obat='"+tbUser.getValueAt(i,926).toString()+"',"+
-                    "satu_sehat_kirim_clinicalimpression='"+tbUser.getValueAt(i,927).toString()+"'");
+                    "satu_sehat_kirim_clinicalimpression='"+tbUser.getValueAt(i,927).toString()+"',"+
+                    "penilaian_pasien_terminal='"+tbUser.getValueAt(i,928).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -5325,7 +5331,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "grafik_limbahb3cair_perbulan='"+tbUser.getValueAt(barisdicopy,924).toString()+"',"+
                                         "rekap_biaya_registrasi='"+tbUser.getValueAt(barisdicopy,925).toString()+"',"+
                                         "konfirmasi_rekonsiliasi_obat='"+tbUser.getValueAt(barisdicopy,926).toString()+"',"+
-                                        "satu_sehat_kirim_clinicalimpression='"+tbUser.getValueAt(barisdicopy,927).toString()+"'");
+                                        "satu_sehat_kirim_clinicalimpression='"+tbUser.getValueAt(barisdicopy,927).toString()+"',"+
+                                        "penilaian_pasien_terminal='"+tbUser.getValueAt(barisdicopy,928).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5593,7 +5600,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.signout_sebelum_menutup_luka,user.dapur_barang,user.dapur_opname,user.satu_sehat_mapping_vaksin,user.dapur_suplier,user.satu_sehat_kirim_Immunization,"+
                 "user.checklist_post_operasi,user.dapur_pembelian,user.dapur_stok_keluar,user.dapur_riwayat_barang,user.permintaan_dapur,user.rekonsiliasi_obat,"+
                 "user.biaya_pengadaan_dapur,user.rekap_pengadaan_dapur,user.kesling_limbah_b3medis_cair,user.grafik_limbahb3cair_pertanggal,user.grafik_limbahb3cair_perbulan,"+
-                "user.rekap_biaya_registrasi,user.konfirmasi_rekonsiliasi_obat,user.satu_sehat_kirim_clinicalimpression from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.rekap_biaya_registrasi,user.konfirmasi_rekonsiliasi_obat,user.satu_sehat_kirim_clinicalimpression,user.penilaian_pasien_terminal from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6533,7 +6540,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_limbahb3cair_perbulan"),
                                rs.getBoolean("rekap_biaya_registrasi"),
                                rs.getBoolean("konfirmasi_rekonsiliasi_obat"),
-                               rs.getBoolean("satu_sehat_kirim_clinicalimpression")
+                               rs.getBoolean("satu_sehat_kirim_clinicalimpression"),
+                               rs.getBoolean("penilaian_pasien_terminal")
                             });
                         }   
                     } catch (Exception e) {
@@ -7462,7 +7470,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_limbahb3cair_perbulan"),
                            rs.getBoolean("rekap_biaya_registrasi"),
                            rs.getBoolean("konfirmasi_rekonsiliasi_obat"),
-                           rs.getBoolean("satu_sehat_kirim_clinicalimpression")
+                           rs.getBoolean("satu_sehat_kirim_clinicalimpression"),
+                           rs.getBoolean("penilaian_pasien_terminal")
                         });
                     }                                             
                  }

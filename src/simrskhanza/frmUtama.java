@@ -829,6 +829,7 @@ import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhDewasa;
+import rekammedis.RMPenilaianPasienTerminal;
 import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
@@ -19899,6 +19900,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianPasienTerminalActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianPasienTerminal aplikasi=new RMPenilaianPasienTerminal(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20566,7 +20578,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistPreOperasi,btnKirimObservationTTVSatuSehat,btnSignInSebelumAnestesi,btnKirimProcedureSatuSehat,btnOperasiPerBulan,btnTimeOutSebelumInsisi,
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
-            btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat;
+            btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
+            btnPenilaianPasienTerminal;
     
     public void isWall(){
         try{            
@@ -23952,6 +23965,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_tambahan_pasien_geriatri()==true){
                 Panelmenu.add(btnPenilaianTambahanGeriatri);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_pasien_terminal()==true){
+                Panelmenu.add(btnPenilaianPasienTerminal);
                 jmlmenu++;
             }
             
@@ -28537,6 +28555,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_tambahan_pasien_geriatri()==true){
             Panelmenu.add(btnPenilaianTambahanGeriatri);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_pasien_terminal()==true){
+            Panelmenu.add(btnPenilaianPasienTerminal);
             jmlmenu++;
         }
 
@@ -34422,6 +34445,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_pasien_terminal()==true){
+            if(btnPenilaianPasienTerminal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianPasienTerminal);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getcatatan_observasi_igd()==true){
             if(btnCatatanObservasiIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanObservasiIGD);
@@ -39931,5 +39961,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKirimClinicalImpressionSatuSehat.setName("btnKirimClinicalImpressionSatuSehat"); 
         btnKirimClinicalImpressionSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKirimClinicalImpressionSatuSehat.addActionListener(this::btnKirimClinicalImpressionSatuSehatActionPerformed);
+        
+        btnPenilaianPasienTerminal = new widget.ButtonBig();
+        btnPenilaianPasienTerminal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5983455_bed_hospital_medical_patient_icon.png")));
+        btnPenilaianPasienTerminal.setText("Penilaian Pasien Terminal");
+        btnPenilaianPasienTerminal.setIconTextGap(0);
+        btnPenilaianPasienTerminal.setName("btnPenilaianPasienTerminal"); 
+        btnPenilaianPasienTerminal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianPasienTerminal.addActionListener(this::btnPenilaianPasienTerminalActionPerformed);
     }
 }
