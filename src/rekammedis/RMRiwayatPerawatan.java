@@ -334,6 +334,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPelayananInformasiObat = new widget.CekBox();
         chkBerkasDigital = new widget.CekBox();
         chkTransferAntarRuang = new widget.CekBox();
+        chkPenilaianPasienTerminal = new widget.CekBox();
         chkResume = new widget.CekBox();
         chkTindakanRalanDokter = new widget.CekBox();
         chkTindakanRalanParamedis = new widget.CekBox();
@@ -596,7 +597,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1915));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1945));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1139,6 +1140,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkTransferAntarRuang.setOpaque(false);
         chkTransferAntarRuang.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkTransferAntarRuang);
+
+        chkPenilaianPasienTerminal.setSelected(true);
+        chkPenilaianPasienTerminal.setText("Penilaian Pasien Terminal");
+        chkPenilaianPasienTerminal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPenilaianPasienTerminal.setName("chkPenilaianPasienTerminal"); // NOI18N
+        chkPenilaianPasienTerminal.setOpaque(false);
+        chkPenilaianPasienTerminal.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkPenilaianPasienTerminal);
 
         chkResume.setSelected(true);
         chkResume.setText("Resume");
@@ -1738,6 +1747,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSignOutSebelumMenutupLuka.setSelected(true);
             chkChecklistPostOperasi.setSelected(true);
             chkRekonsiliasiObat.setSelected(true);
+            chkPenilaianPasienTerminal.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1821,6 +1831,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSignOutSebelumMenutupLuka.setSelected(false);
             chkChecklistPostOperasi.setSelected(false);
             chkRekonsiliasiObat.setSelected(false);
+            chkPenilaianPasienTerminal.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1955,6 +1966,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkPemeriksaanRanap;
     private widget.CekBox chkPenggunaanKamar;
     private widget.CekBox chkPenggunaanObatOperasi;
+    private widget.CekBox chkPenilaianPasienTerminal;
     private widget.CekBox chkPerencanaanPemulangan;
     private widget.CekBox chkPotonganBiaya;
     private widget.CekBox chkProsedurTindakan;
@@ -2467,6 +2479,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanPelayananInformasiObat(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
                     menampilkanTransferAntarRuang(rs.getString("no_rawat"));
+                    //menampilkan konseling farmasi
+                    menampilkanPenilaianPasienTerminal(rs.getString("no_rawat"));
                     //menampilkan diagnosa penyakit
                     menampilkanDiagnosa(rs.getString("no_rawat"));
                     //menampilkan berkas digital
@@ -15544,6 +15558,105 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Hemodialisa : "+e);
+        }
+    }
+    
+    private void menampilkanPenilaianPasienTerminal(String norawat) {
+        try{
+            if(chkPenilaianPasienTerminal.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select penilaian_pasien_terminal.tanggal,penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
+                        "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
+                        "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
+                        "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
+                        "from penilaian_pasien_terminal inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where penilaian_pasien_terminal.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Pasien Terminal</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='50%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "RIWAYAT PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>1.</td><td border='0' width='96%'>Diagnosa : "+rs2.getString("diagnosa").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>2.</td><td border='0' width='96%'>Uraian Penyakit/Kondisi Pasien Saat Ini : "+rs2.getString("rps").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>3.</td><td border='0' width='96%'>Riwayat Penyakit/Kondisi Sebelumnya : "+rs2.getString("rpd").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>4.</td><td border='0' width='96%'>Keadaa Umum : "+rs2.getString("keadaan_umum")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>5.</td><td border='0' width='96%'>Kesadaran : "+rs2.getString("kesadaran")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>6.</td><td border='0' width='96%'>Tanda-tanda Vital : </td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'></td><td border='0' width='96%' style='margin-left: 10px'>"+
+                                                   "TD : "+rs2.getString("td")+" mmHg&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "Nadi : "+rs2.getString("nadi")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "Suhu : "+rs2.getString("suhu")+" °C&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "SpO2 : "+rs2.getString("spo2")+" %mmHg&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "RR : "+rs2.getString("rr")+" x/menit"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>7.</td><td border='0' border='0' width='96%'>Skala Nyeri : "+rs2.getString("skala_nyeri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>8.</td><td border='0' width='96%'>Tahap Pasien Menjelang Ajal : "+rs2.getString("tahap_pasien_menjelang_ajal")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>9.</td><td border='0' width='96%'>Tanda-tanda Klinis Menjelang Kematian : "+rs2.getString("tanda_klinis_menjelang_kematian")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' border='0'>10.</td><td border='0' width='96%'>Kebutuhan Spiritual Pasien/Keluarga : "+rs2.getString("kebutuhan_spiritual_pasien").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );  
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        }catch (Exception e) {
+            System.out.println("Notif Penilaian Pasien Terminal : "+e);
         }
     }
 }
