@@ -4493,8 +4493,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[P]Persetujuan Umum",surat_persetujuan_umum});
         }
         
-        if("[P]Surat Persetujuan Rawat Inap".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[P]Surat Persetujuan Rawat Inap",surat_persetujuan_rawat_inap});
+        if("[P]Persetujuan Rawat Inap".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[P]Persetujuan Rawat Inap",surat_persetujuan_rawat_inap});
         }
 
         if("[Q]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -8212,7 +8212,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_persetujuan_umum='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[P]Surat Persetujuan Rawat Inap".equals(tbUser.getValueAt(i,1).toString())){
+            if("[P]Persetujuan Rawat Inap".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_persetujuan_rawat_inap='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 

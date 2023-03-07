@@ -225,7 +225,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Mapping Vaksin Satu Sehat","[F]Suplier Dapur","[L]Kirim Imunisasi Satu Sehat","[M]Check List Post Operasi","[F]Pengadaan Barang Dapur","[F]Stok Keluar Dapur",
                 "[F]Riwayat Barang Dapur","[F]Permintaan Barang Dapur","[M]Rekonsiliasi Obat","[F]Biaya Pengadaan Dapur","[F]Rekap Pengadaan Dapur","[G]Limbah Cair B3 Medis",
                 "[O]Limbah B3 Cair Per Tanggal","[O]Limbah B3 Cair Per Bulan","[I]Rekap Biaya Registrasi","[M]Konfirmasi Rekonsiliasi Obat","[L]Kirim Clinical Impression Satu Sehat",
-                "[M]Penilaian Pasien Terminal","[P]Surat Persetujuan Rawat Inap"
+                "[M]Penilaian Pasien Terminal","[P]Persetujuan Rawat Inap"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2734,7 +2734,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(149);
                     break;
                 case 929:
-                    column.setPreferredWidth(168);
+                    column.setPreferredWidth(138);
                     break;
                 default:
                     column.setPreferredWidth(135);
