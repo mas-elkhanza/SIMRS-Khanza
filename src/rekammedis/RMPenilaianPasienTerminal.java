@@ -13,12 +13,16 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,6 +37,9 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -50,6 +57,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
+    private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -60,9 +68,10 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala Humpty Dumpty 1","N.H. 1",
-            "Skala Humpty Dumpty 2","N.H. 2","Skala Humpty Dumpty 3","N.H. 3","Skala Humpty Dumpty 4","N.H. 4","Skala Humpty Dumpty 5","N.H. 5",
-            "Skala Humpty Dumpty 6","N.H. 6","Skala Humpty Dumpty 7","N.H. 7","Total","Hasil Skrining","Saran","NIP","Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Diagnosa","Uraian Penyakit/Kondisi Pasien Saat Ini", 
+            "Riwayat Penyakit/Kondisi Sebelumnya","Keadaan Umum","Kesadaran","TD(mmHg)","Nadi(x/menit)","Suhu(°C)","RR(x/menit)", 
+            "SpO2(%)","Skala Nyeri","Tahap Menjelang Ajal","Tanda-tanda Klinis Menjelang Kematian","Kebutuhan Spiritual Pasien/Keluarga",
+            "NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +81,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 25; i++) {
+        for (i = 0; i < 22; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -87,42 +96,36 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(124);
             }else if(i==6){
-                column.setPreferredWidth(124);
+                column.setPreferredWidth(170);
             }else if(i==7){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(200);
             }else if(i==8){
-                column.setPreferredWidth(124);
+                column.setPreferredWidth(190);
             }else if(i==9){
-                column.setPreferredWidth(40);
-            }else if(i==10){
-                column.setPreferredWidth(124);
-            }else if(i==11){
-                column.setPreferredWidth(40);
-            }else if(i==12){
-                column.setPreferredWidth(124);
-            }else if(i==13){
-                column.setPreferredWidth(40);
-            }else if(i==14){
-                column.setPreferredWidth(124);
-            }else if(i==15){
-                column.setPreferredWidth(40);
-            }else if(i==16){
-                column.setPreferredWidth(124);
-            }else if(i==17){
-                column.setPreferredWidth(40);
-            }else if(i==18){
-                column.setPreferredWidth(124);
-            }else if(i==19){
-                column.setPreferredWidth(40);
-            }else if(i==20){
-                column.setPreferredWidth(40);
-            }else if(i==21){
-                column.setPreferredWidth(200);
-            }else if(i==22){
-                column.setPreferredWidth(200);
-            }else if(i==23){
                 column.setPreferredWidth(85);
-            }else if(i==24){
+            }else if(i==10){
+                column.setPreferredWidth(80);
+            }else if(i==11){
+                column.setPreferredWidth(60);
+            }else if(i==12){
+                column.setPreferredWidth(76);
+            }else if(i==13){
+                column.setPreferredWidth(51);
+            }else if(i==14){
+                column.setPreferredWidth(68);
+            }else if(i==15){
+                column.setPreferredWidth(55);
+            }else if(i==16){
+                column.setPreferredWidth(61);
+            }else if(i==17){
+                column.setPreferredWidth(115);
+            }else if(i==18){
+                column.setPreferredWidth(220);
+            }else if(i==19){
+                column.setPreferredWidth(190);
+            }else if(i==20){
+                column.setPreferredWidth(85);
+            }else if(i==21){
                 column.setPreferredWidth(150);
             }
         }
@@ -190,6 +193,24 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm();
         jam();
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
 
 
@@ -204,6 +225,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -303,6 +325,9 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnPenilaianLanjutanRisikoJatuh);
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1157,51 +1182,154 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptLanjutanRisikoJatuhAnak.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Anak ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_anak.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala1,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala2,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala3,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala4,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala5,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala6,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala7,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai7,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_totalnilai,penilaian_lanjutan_resiko_jatuh_anak.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.saran,penilaian_lanjutan_resiko_jatuh_anak.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_anak inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_anak.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_anak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "order by penilaian_lanjutan_resiko_jatuh_anak.tanggal",param);
-            }else{
-                Valid.MyReportqry("rptLanjutanRisikoJatuhAnak.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Anak ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_anak.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala1,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala2,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala3,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala4,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala5,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala6,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala7,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai7,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_totalnilai,penilaian_lanjutan_resiko_jatuh_anak.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.saran,penilaian_lanjutan_resiko_jatuh_anak.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_anak inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_anak.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_anak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or penilaian_lanjutan_resiko_jatuh_anak.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by penilaian_lanjutan_resiko_jatuh_anak.tanggal ",param);
-            }  
+            try{
+                if(TCari.getText().toString().trim().equals("")){
+                    ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
+                        "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
+                        "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
+                        "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
+                        "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
+                        "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
+                        "penilaian_pasien_terminal.tanggal between ? and ? order by penilaian_pasien_terminal.tanggal");
+                }else{
+                    ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
+                        "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
+                        "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
+                        "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
+                        "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
+                        "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
+                        "penilaian_pasien_terminal.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_pasien_terminal.nip like ? or petugas.nama like ?) "+
+                        "order by penilaian_pasien_terminal.tanggal ");
+                }
+
+                try {
+                    if(TCari.getText().toString().trim().equals("")){
+                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    }else{
+                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                        ps.setString(3,"%"+TCari.getText()+"%");
+                        ps.setString(4,"%"+TCari.getText()+"%");
+                        ps.setString(5,"%"+TCari.getText()+"%");
+                        ps.setString(6,"%"+TCari.getText()+"%");
+                        ps.setString(7,"%"+TCari.getText()+"%");
+                    }
+                    rs=ps.executeQuery();
+                    htmlContent = new StringBuilder();
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.R.M.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>JK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Uraian Penyakit/Kondisi Pasien Saat Ini</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit/Kondisi Sebelumnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keadaan Umum</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesadaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu(°C)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SpO2(%)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahap Menjelang Ajal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanda-tanda Klinis Menjelang Kematian</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kebutuhan Spiritual Pasien/Keluarga</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas</b></td>"+
+                        "</tr>"
+                    );
+                    while(rs.next()){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
+                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
+                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
+                               "<td valign='top'>"+rs.getString("diagnosa")+"</td>"+
+                               "<td valign='top'>"+rs.getString("rps")+"</td>"+
+                               "<td valign='top'>"+rs.getString("rpd")+"</td>"+
+                               "<td valign='top'>"+rs.getString("keadaan_umum")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kesadaran")+"</td>"+
+                               "<td valign='top'>"+rs.getString("td")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nadi")+"</td>"+
+                               "<td valign='top'>"+rs.getString("suhu")+"</td>"+
+                               "<td valign='top'>"+rs.getString("rr")+"</td>"+
+                               "<td valign='top'>"+rs.getString("spo2")+"</td>"+
+                               "<td valign='top'>"+rs.getString("skala_nyeri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tahap_pasien_menjelang_ajal")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tanda_klinis_menjelang_kematian")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kebutuhan_spiritual_pasien")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nip")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
+                            "</tr>");
+                    }
+                    LoadHTML.setText(
+                        "<html>"+
+                          "<table width='3000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                           htmlContent.toString()+
+                          "</table>"+
+                        "</html>"
+                    );
+
+                    File g = new File("file2.css");            
+                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                    bg.write(
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                    );
+                    bg.close();
+
+                    File f = new File("DataPenilaianPasienTerminal.html");            
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                "<table width='3000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi2'>"+
+                                        "<td valign='top' align='center'>"+
+                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                            "<font size='2' face='Tahoma'>DATA PENILAIAN PASIEN TERMINAL<br><br></font>"+        
+                                        "</td>"+
+                                   "</tr>"+
+                                "</table>")
+                    );
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1331,19 +1459,19 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhAnak.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Anak ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_anak.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala1,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala2,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala3,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala4,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala5,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala6,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala7,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai7,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_totalnilai,penilaian_lanjutan_resiko_jatuh_anak.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.saran,penilaian_lanjutan_resiko_jatuh_anak.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_anak inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_anak.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_skala1,penilaian_pasien_terminal.penilaian_humptydumpty_nilai1,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_skala2,penilaian_pasien_terminal.penilaian_humptydumpty_nilai2,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_skala3,penilaian_pasien_terminal.penilaian_humptydumpty_nilai3,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_skala4,penilaian_pasien_terminal.penilaian_humptydumpty_nilai4,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_skala5,penilaian_pasien_terminal.penilaian_humptydumpty_nilai5,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_skala6,penilaian_pasien_terminal.penilaian_humptydumpty_nilai6,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_skala7,penilaian_pasien_terminal.penilaian_humptydumpty_nilai7,"+
+                    "penilaian_pasien_terminal.penilaian_humptydumpty_totalnilai,penilaian_pasien_terminal.hasil_skrining,"+
+                    "penilaian_pasien_terminal.saran,penilaian_pasien_terminal.nip,petugas.nama "+
+                    "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_anak.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
 
@@ -1441,6 +1569,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     private widget.ComboBox Kesadaran;
     private widget.ComboBox KlinisMenjelangKematian;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private widget.ComboBox MenjelangAjal;
     private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
@@ -1512,37 +1641,27 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_anak.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala1,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala2,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala3,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala4,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala5,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala6,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala7,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai7,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_totalnilai,penilaian_lanjutan_resiko_jatuh_anak.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.saran,penilaian_lanjutan_resiko_jatuh_anak.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_anak inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_anak.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
+                    "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
+                    "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
+                    "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
+                    "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
+                    "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_anak.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_anak.tanggal between ? and ? order by penilaian_lanjutan_resiko_jatuh_anak.tanggal");
+                    "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
+                    "penilaian_pasien_terminal.tanggal between ? and ? order by penilaian_pasien_terminal.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_anak.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala1,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala2,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala3,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala4,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala5,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala6,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_skala7,penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_nilai7,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.penilaian_humptydumpty_totalnilai,penilaian_lanjutan_resiko_jatuh_anak.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_anak.saran,penilaian_lanjutan_resiko_jatuh_anak.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_anak inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_anak.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
+                    "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
+                    "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
+                    "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
+                    "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
+                    "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_anak.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_anak.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_lanjutan_resiko_jatuh_anak.nip like ? or petugas.nama like ?) "+
-                    "order by penilaian_lanjutan_resiko_jatuh_anak.tanggal ");
+                    "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
+                    "penilaian_pasien_terminal.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_pasien_terminal.nip like ? or petugas.nama like ?) "+
+                    "order by penilaian_pasien_terminal.tanggal ");
             }
                 
             try {
@@ -1558,16 +1677,14 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
                 }
-                    
+                
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("penilaian_humptydumpty_skala1"),rs.getString("penilaian_humptydumpty_nilai1"),rs.getString("penilaian_humptydumpty_skala2"),rs.getString("penilaian_humptydumpty_nilai2"),
-                        rs.getString("penilaian_humptydumpty_skala3"),rs.getString("penilaian_humptydumpty_nilai3"),rs.getString("penilaian_humptydumpty_skala4"),rs.getString("penilaian_humptydumpty_nilai4"),
-                        rs.getString("penilaian_humptydumpty_skala5"),rs.getString("penilaian_humptydumpty_nilai5"),rs.getString("penilaian_humptydumpty_skala6"),rs.getString("penilaian_humptydumpty_nilai6"),
-                        rs.getString("penilaian_humptydumpty_skala7"),rs.getString("penilaian_humptydumpty_nilai7"),rs.getString("penilaian_humptydumpty_totalnilai"),rs.getString("hasil_skrining"),
-                        rs.getString("saran"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("diagnosa"),rs.getString("rps"),rs.getString("rpd"),rs.getString("keadaan_umum"),rs.getString("kesadaran"),rs.getString("td"),
+                        rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("spo2"),rs.getString("skala_nyeri"),rs.getString("tahap_pasien_menjelang_ajal"),
+                        rs.getString("tanda_klinis_menjelang_kematian"),rs.getString("kebutuhan_spiritual_pasien"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1611,6 +1728,24 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            RPS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            RPD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            KeadaanUmum.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Kesadaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            SPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            SkalaNyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            MenjelangAjal.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            KlinisMenjelangKematian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            KebutuhanSpiritual.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
     private void isRawat() {
@@ -1729,7 +1864,7 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_lanjutan_resiko_jatuh_anak where tanggal=? and no_rawat=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_pasien_terminal where tanggal=? and no_rawat=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tampil();
