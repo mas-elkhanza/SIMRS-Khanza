@@ -174,7 +174,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             timeout_sebelum_insisi=false,signout_sebelum_menutup_luka=false,dapur_barang=false,dapur_opname=false,satu_sehat_mapping_vaksin=false,dapur_suplier=false,satu_sehat_kirim_Immunization=false,checklist_post_operasi=false,
             dapur_pembelian=false,dapur_stok_keluar=false,dapur_riwayat_barang=false,permintaan_dapur=false,rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false,
             grafik_limbahb3cair_pertanggal=false,grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false,konfirmasi_rekonsiliasi_obat=false,satu_sehat_kirim_clinicalimpression=false,penilaian_pasien_terminal=false,
-            surat_persetujuan_rawat_inap=false;
+            surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -771,7 +771,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         timeout_sebelum_insisi=false;signout_sebelum_menutup_luka=false;dapur_barang=false;dapur_opname=false;satu_sehat_mapping_vaksin=false;dapur_suplier=false;satu_sehat_kirim_Immunization=false;checklist_post_operasi=false;
         dapur_pembelian=false;dapur_stok_keluar=false;dapur_riwayat_barang=false;permintaan_dapur=false;rekonsiliasi_obat=false;biaya_pengadaan_dapur=false;rekap_pengadaan_dapur=false;kesling_limbah_b3medis_cair=false;
         grafik_limbahb3cair_pertanggal=false;grafik_limbahb3cair_perbulan=false;rekap_biaya_registrasi=false;konfirmasi_rekonsiliasi_obat=false;satu_sehat_kirim_clinicalimpression=false;penilaian_pasien_terminal=false;
-        surat_persetujuan_rawat_inap=false;
+        surat_persetujuan_rawat_inap=false;monitoring_reaksi_tranfusi=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -979,7 +979,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.checklist_post_operasi,user.dapur_pembelian,user.dapur_stok_keluar,user.dapur_riwayat_barang,user.permintaan_dapur,user.rekonsiliasi_obat,"+
                 "user.biaya_pengadaan_dapur,user.rekap_pengadaan_dapur,user.kesling_limbah_b3medis_cair,user.grafik_limbahb3cair_pertanggal,user.grafik_limbahb3cair_perbulan,"+
                 "user.rekap_biaya_registrasi,user.konfirmasi_rekonsiliasi_obat,user.satu_sehat_kirim_clinicalimpression,user.penilaian_pasien_terminal,"+
-                "user.surat_persetujuan_rawat_inap from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.surat_persetujuan_rawat_inap,user.monitoring_reaksi_tranfusi from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1084,7 +1084,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     catatan_cek_gds=rs.getBoolean("catatan_cek_gds");satu_sehat_kirim_condition=rs.getBoolean("satu_sehat_kirim_condition");checklist_pre_operasi=rs.getBoolean("checklist_pre_operasi");satu_sehat_kirim_observationttv=rs.getBoolean("satu_sehat_kirim_observationttv");signin_sebelum_anestesi=rs.getBoolean("signin_sebelum_anestesi");satu_sehat_kirim_procedure=rs.getBoolean("satu_sehat_kirim_procedure");operasi_per_bulan=rs.getBoolean("operasi_per_bulan");timeout_sebelum_insisi=rs.getBoolean("timeout_sebelum_insisi");signout_sebelum_menutup_luka=rs.getBoolean("signout_sebelum_menutup_luka");
                     dapur_barang=rs.getBoolean("dapur_barang");dapur_opname=rs.getBoolean("dapur_opname");satu_sehat_mapping_vaksin=rs.getBoolean("satu_sehat_mapping_vaksin");dapur_suplier=rs.getBoolean("dapur_suplier");satu_sehat_kirim_Immunization=rs.getBoolean("satu_sehat_kirim_Immunization");checklist_post_operasi=rs.getBoolean("checklist_post_operasi");dapur_pembelian=rs.getBoolean("dapur_pembelian");dapur_stok_keluar=rs.getBoolean("dapur_stok_keluar");dapur_riwayat_barang=rs.getBoolean("dapur_riwayat_barang");permintaan_dapur=rs.getBoolean("permintaan_dapur");rekonsiliasi_obat=rs.getBoolean("rekonsiliasi_obat");
                     biaya_pengadaan_dapur=rs.getBoolean("biaya_pengadaan_dapur");rekap_pengadaan_dapur=rs.getBoolean("rekap_pengadaan_dapur");kesling_limbah_b3medis_cair=rs.getBoolean("kesling_limbah_b3medis_cair");grafik_limbahb3cair_pertanggal=rs.getBoolean("grafik_limbahb3cair_pertanggal");grafik_limbahb3cair_perbulan=rs.getBoolean("grafik_limbahb3cair_perbulan");rekap_biaya_registrasi=rs.getBoolean("rekap_biaya_registrasi");konfirmasi_rekonsiliasi_obat=rs.getBoolean("konfirmasi_rekonsiliasi_obat");satu_sehat_kirim_clinicalimpression=rs.getBoolean("satu_sehat_kirim_clinicalimpression");
-                    penilaian_pasien_terminal=rs.getBoolean("penilaian_pasien_terminal");surat_persetujuan_rawat_inap=rs.getBoolean("surat_persetujuan_rawat_inap");
+                    penilaian_pasien_terminal=rs.getBoolean("penilaian_pasien_terminal");surat_persetujuan_rawat_inap=rs.getBoolean("surat_persetujuan_rawat_inap");monitoring_reaksi_tranfusi=rs.getBoolean("monitoring_reaksi_tranfusi");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -3879,6 +3879,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[M]Penilaian Pasien Terminal".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Penilaian Pasien Terminal",penilaian_pasien_terminal});
+        }
+        
+        if("[M]Monitoring Reaksi Tranfusi".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Monitoring Reaksi Tranfusi",monitoring_reaksi_tranfusi});
         }
 
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7598,6 +7602,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Penilaian Pasien Terminal".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_pasien_terminal='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Monitoring Reaksi Tranfusi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","monitoring_reaksi_tranfusi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
