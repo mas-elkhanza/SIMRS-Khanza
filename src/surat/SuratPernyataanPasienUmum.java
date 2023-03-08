@@ -3,9 +3,6 @@
  * and open the template in the editor.
  */
 
-/*
- * kontribusi dari dokter Salim Mulyana
- */
 
 package surat;
 
