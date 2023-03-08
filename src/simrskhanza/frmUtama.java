@@ -797,6 +797,7 @@ import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
 import rekammedis.RMDataCatatanObservasiRanapPostPartum;
 import rekammedis.RMDataMonitoringAsuhanGizi;
+import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
@@ -19925,6 +19926,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMonitoringReaksiTranfusiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataMonitoringReaksiTranfusi aplikasi=new RMDataMonitoringReaksiTranfusi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20593,7 +20607,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
-            btnPenilaianPasienTerminal,btnPersetujuanRawatInap;
+            btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi;
     
     public void isWall(){
         try{            
@@ -24009,6 +24023,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getcatatan_keperawatan_ranap()==true){
                 Panelmenu.add(btnCatatanKeperawatanRanap);
+                jmlmenu++;
+            }
+            
+            if(akses.getmonitoring_reaksi_tranfusi()==true){
+                Panelmenu.add(btnMonitoringReaksiTranfusi);
                 jmlmenu++;
             }
             
@@ -28604,6 +28623,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getcatatan_keperawatan_ranap()==true){
             Panelmenu.add(btnCatatanKeperawatanRanap);
+            jmlmenu++;
+        }
+        
+        if(akses.getmonitoring_reaksi_tranfusi()==true){
+            Panelmenu.add(btnMonitoringReaksiTranfusi);
             jmlmenu++;
         }
         
@@ -34511,6 +34535,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmonitoring_reaksi_tranfusi()==true){
+            if(btnMonitoringReaksiTranfusi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMonitoringReaksiTranfusi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpemantauan_pews_anak()==true){
             if(btnPemantauanPEWSAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemantauanPEWSAnak);
@@ -39290,7 +39321,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditPembuanganBendaTajam.addActionListener(this::btnAuditPembuanganBendaTajamActionPerformed);
         
         btnAuditPenangananDarah = new widget.ButtonBig();
-        btnAuditPenangananDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088722_blood_bottle_packet_icon.png"))); 
+        btnAuditPenangananDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960610_blood_drop_blood test_hand_transfusion_icon.png"))); 
         btnAuditPenangananDarah.setText("Audit Penanganan Darah");
         btnAuditPenangananDarah.setIconTextGap(0);
         btnAuditPenangananDarah.setName("btnAuditPenangananDarah");
@@ -40008,5 +40039,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPersetujuanRawatInap.setName("btnPersetujuanRawatInap"); 
         btnPersetujuanRawatInap.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPersetujuanRawatInap.addActionListener(this::btnPersetujuanRawatInapActionPerformed);
+        
+        btnMonitoringReaksiTranfusi = new widget.ButtonBig();
+        btnMonitoringReaksiTranfusi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088722_blood_bottle_packet_icon.png")));
+        btnMonitoringReaksiTranfusi.setText("Monitoring Reaksi Tranfusi");
+        btnMonitoringReaksiTranfusi.setIconTextGap(0);
+        btnMonitoringReaksiTranfusi.setName("btnMonitoringReaksiTranfusi"); 
+        btnMonitoringReaksiTranfusi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMonitoringReaksiTranfusi.addActionListener(this::btnMonitoringReaksiTranfusiActionPerformed);
     }
 }
