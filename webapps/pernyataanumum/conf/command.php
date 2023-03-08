@@ -62,7 +62,6 @@
         switch ($aksi) {
               case 'Home'                   : include_once('pages/index.php'); break;
               case 'Kamera'                 : include_once('pages/kamera.php'); break;
-              case 'Kamera2'                : include_once('pages/kamera2.php'); break;
               default                       : include_once('pages/index.php');
         }
     }

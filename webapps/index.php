@@ -91,6 +91,12 @@
                                       </a>
                                     </td>
                                     <td width='33%' align='center'>
+                                      <a target=_blank href=persetujuanrawatinap/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/5983455_bed_hospital_medical_patient_icon.png'/><br>
+                                         Persetujuan Rawat Inap                                                
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               
