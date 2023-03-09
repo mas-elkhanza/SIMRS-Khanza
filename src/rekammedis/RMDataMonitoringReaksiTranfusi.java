@@ -12,16 +12,19 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,6 +51,8 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private String pilihan="";
+    private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -58,8 +63,9 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","GCS (E,V,M)",
-            "TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu(°C)","SpO2(%)","NIP","Nama Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Produk/Jenis Darah",
+            "No.Kantong","Lokasi Insersi","TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu(°C)","Alergi","Keterangan",
+            "NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -69,7 +75,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -88,20 +94,26 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(130);
             }else if(i==9){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(80);
             }else if(i==10){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(130);
             }else if(i==11){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(68);
             }else if(i==12){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(68);
             }else if(i==13){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(68);
             }else if(i==14){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(50);
             }else if(i==15){
+                column.setPreferredWidth(150);
+            }else if(i==16){
+                column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(90);
+            }else if(i==18){
                 column.setPreferredWidth(160);
             }
         }
@@ -109,12 +121,15 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        GCS.setDocument(new batasInput((byte)10).getKata(GCS));
         TD.setDocument(new batasInput((byte)8).getKata(TD));
         HR.setDocument(new batasInput((byte)5).getKata(HR));
         RR.setDocument(new batasInput((byte)5).getKata(RR));
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
-        SPO.setDocument(new batasInput((byte)3).getKata(SPO));
+        JenisDarah.setDocument(new batasInput((byte)40).getKata(JenisDarah));
+        NoKantong.setDocument(new batasInput((byte)20).getKata(NoKantong));
+        LokasiInsersi.setDocument(new batasInput((byte)40).getKata(LokasiInsersi));
+        Alergi.setDocument(new batasInput((byte)70).getKata(Alergi));
+        Keterangan.setDocument(new batasInput((byte)70).getKata(Keterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -179,7 +194,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiIGD = new javax.swing.JMenuItem();
+        MnMonitoringReaksiTranfusi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -220,8 +235,6 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
-        jLabel12 = new widget.Label();
-        GCS = new widget.TextBox();
         jLabel17 = new widget.Label();
         HR = new widget.TextBox();
         jLabel20 = new widget.Label();
@@ -234,26 +247,33 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
         jLabel25 = new widget.Label();
         RR = new widget.TextBox();
         jLabel28 = new widget.Label();
+        jLabel24 = new widget.Label();
+        JenisDarah = new widget.TextBox();
+        NoKantong = new widget.TextBox();
         jLabel29 = new widget.Label();
-        SPO = new widget.TextBox();
-        jLabel35 = new widget.Label();
+        jLabel30 = new widget.Label();
+        LokasiInsersi = new widget.TextBox();
+        jLabel31 = new widget.Label();
+        Alergi = new widget.TextBox();
+        jLabel32 = new widget.Label();
+        Keterangan = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiIGD.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanObservasiIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanObservasiIGD.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanObservasiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiIGD.setText("Formulir Catatan Observasi IGD");
-        MnCatatanObservasiIGD.setName("MnCatatanObservasiIGD"); // NOI18N
-        MnCatatanObservasiIGD.setPreferredSize(new java.awt.Dimension(230, 26));
-        MnCatatanObservasiIGD.addActionListener(new java.awt.event.ActionListener() {
+        MnMonitoringReaksiTranfusi.setBackground(new java.awt.Color(255, 255, 254));
+        MnMonitoringReaksiTranfusi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnMonitoringReaksiTranfusi.setForeground(new java.awt.Color(50, 50, 50));
+        MnMonitoringReaksiTranfusi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnMonitoringReaksiTranfusi.setText("Formulir Monitoring Reaksi Tranfusi");
+        MnMonitoringReaksiTranfusi.setName("MnMonitoringReaksiTranfusi"); // NOI18N
+        MnMonitoringReaksiTranfusi.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnMonitoringReaksiTranfusi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiIGDActionPerformed(evt);
+                MnMonitoringReaksiTranfusiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiIGD);
+        jPopupMenu1.add(MnMonitoringReaksiTranfusi);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -500,7 +520,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 124));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 185));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
@@ -651,26 +671,11 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("GCS (E,V,M) :");
-        jLabel12.setName("jLabel12"); // NOI18N
-        FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 70, 80, 23);
-
-        GCS.setFocusTraversalPolicyProvider(true);
-        GCS.setName("GCS"); // NOI18N
-        GCS.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCSKeyPressed(evt);
-            }
-        });
-        FormInput.add(GCS);
-        GCS.setBounds(84, 70, 50, 23);
-
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText("x/menit");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(382, 70, 50, 23);
+        jLabel17.setBounds(367, 100, 50, 23);
 
         HR.setFocusTraversalPolicyProvider(true);
         HR.setName("HR"); // NOI18N
@@ -680,17 +685,17 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             }
         });
         FormInput.add(HR);
-        HR.setBounds(339, 70, 40, 23);
+        HR.setBounds(304, 100, 60, 23);
 
         jLabel20.setText("HR :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(295, 70, 40, 23);
+        jLabel20.setBounds(260, 100, 40, 23);
 
         jLabel22.setText("Suhu :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(570, 70, 40, 23);
+        jLabel22.setBounds(664, 100, 40, 23);
 
         Suhu.setFocusTraversalPolicyProvider(true);
         Suhu.setName("Suhu"); // NOI18N
@@ -700,12 +705,12 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Suhu);
-        Suhu.setBounds(614, 70, 40, 23);
+        Suhu.setBounds(708, 100, 60, 23);
 
         jLabel23.setText("TD :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(138, 70, 40, 23);
+        jLabel23.setBounds(0, 100, 80, 23);
 
         TD.setFocusTraversalPolicyProvider(true);
         TD.setName("TD"); // NOI18N
@@ -715,25 +720,25 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TD);
-        TD.setBounds(182, 70, 70, 23);
+        TD.setBounds(84, 100, 85, 23);
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel26.setText("°C");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(657, 70, 30, 23);
+        jLabel26.setBounds(771, 100, 30, 23);
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel27.setText("mmHg");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(255, 70, 40, 23);
+        jLabel27.setBounds(172, 100, 40, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("x/menit");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(517, 70, 50, 23);
+        jLabel25.setBounds(567, 100, 50, 23);
 
         RR.setFocusTraversalPolicyProvider(true);
         RR.setName("RR"); // NOI18N
@@ -743,33 +748,87 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             }
         });
         FormInput.add(RR);
-        RR.setBounds(474, 70, 40, 23);
+        RR.setBounds(504, 100, 60, 23);
 
         jLabel28.setText("RR :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(430, 70, 40, 23);
+        jLabel28.setBounds(460, 100, 40, 23);
 
-        jLabel29.setText("SpO2 :");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(686, 70, 40, 23);
+        jLabel24.setText("Jenis Darah :");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(0, 70, 80, 23);
 
-        SPO.setFocusTraversalPolicyProvider(true);
-        SPO.setName("SPO"); // NOI18N
-        SPO.addKeyListener(new java.awt.event.KeyAdapter() {
+        JenisDarah.setFocusTraversalPolicyProvider(true);
+        JenisDarah.setName("JenisDarah"); // NOI18N
+        JenisDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SPOKeyPressed(evt);
+                JenisDarahKeyPressed(evt);
             }
         });
-        FormInput.add(SPO);
-        SPO.setBounds(730, 70, 40, 23);
+        FormInput.add(JenisDarah);
+        JenisDarah.setBounds(84, 70, 200, 23);
 
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel35.setText("%");
-        jLabel35.setName("jLabel35"); // NOI18N
-        FormInput.add(jLabel35);
-        jLabel35.setBounds(773, 70, 30, 23);
+        NoKantong.setFocusTraversalPolicyProvider(true);
+        NoKantong.setName("NoKantong"); // NOI18N
+        NoKantong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoKantongKeyPressed(evt);
+            }
+        });
+        FormInput.add(NoKantong);
+        NoKantong.setBounds(374, 70, 110, 23);
+
+        jLabel29.setText("No.Kantong :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(290, 70, 80, 23);
+
+        jLabel30.setText("Lokasi Insersi :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(505, 70, 80, 23);
+
+        LokasiInsersi.setFocusTraversalPolicyProvider(true);
+        LokasiInsersi.setName("LokasiInsersi"); // NOI18N
+        LokasiInsersi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LokasiInsersiKeyPressed(evt);
+            }
+        });
+        FormInput.add(LokasiInsersi);
+        LokasiInsersi.setBounds(589, 70, 200, 23);
+
+        jLabel31.setText("Alergi :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(0, 130, 80, 23);
+
+        Alergi.setFocusTraversalPolicyProvider(true);
+        Alergi.setName("Alergi"); // NOI18N
+        Alergi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlergiKeyPressed(evt);
+            }
+        });
+        FormInput.add(Alergi);
+        Alergi.setBounds(84, 130, 280, 23);
+
+        jLabel32.setText("Keterangan :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(385, 130, 80, 23);
+
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(469, 130, 320, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -820,13 +879,14 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
-            if(Sequel.menyimpantf("catatan_observasi_igd","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
+            if(Sequel.menyimpantf("monitoring_reaksi_tranfusi","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText()
+                JenisDarah.getText(),NoKantong.getText(),LokasiInsersi.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),Alergi.getText(), 
+                Keterangan.getText(),NIP.getText()
             })==true){
                 tampil();
                 emptTeks();
-            }   
+            } 
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -834,7 +894,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,SPO,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -855,7 +915,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -884,7 +944,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -916,44 +976,202 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            BtnBatal.requestFocus();
+            BtnPrint.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanObservasiIGD.jasper","report","::[ Data Catatan Observasi IGD ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_igd.tgl_perawatan,catatan_observasi_igd.jam_rawat,catatan_observasi_igd.gcs,"+
-                    "catatan_observasi_igd.td,catatan_observasi_igd.hr,catatan_observasi_igd.rr,catatan_observasi_igd.suhu,catatan_observasi_igd.spo2,"+
-                    "catatan_observasi_igd.nip,petugas.nama from catatan_observasi_igd inner join reg_periksa on catatan_observasi_igd.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_igd.nip=petugas.nip where "+
-                    "catatan_observasi_igd.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_igd.tgl_perawatan",param);
-            }else{
-                Valid.MyReportqry("rptDataCatatanObservasiIGD.jasper","report","::[ Data Catatan Observasi IGD ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_igd.tgl_perawatan,catatan_observasi_igd.jam_rawat,catatan_observasi_igd.gcs,"+
-                    "catatan_observasi_igd.td,catatan_observasi_igd.hr,catatan_observasi_igd.rr,catatan_observasi_igd.suhu,catatan_observasi_igd.spo2,"+
-                    "catatan_observasi_igd.nip,petugas.nama from catatan_observasi_igd inner join reg_periksa on catatan_observasi_igd.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_igd.nip=petugas.nip where "+
-                    "catatan_observasi_igd.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_observasi_igd.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by catatan_observasi_igd.tgl_perawatan ",param);
-            }  
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {            
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                );
+                bg.close();
+
+                File f;            
+                BufferedWriter bw; 
+
+                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                switch (pilihan) {
+                    case "Laporan 1 (HTML)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.R.M.</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>JK</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Lahir</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jam Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Produk/Jenis Darah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Kantong</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lokasi Insersi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TD(mmHg)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>HR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>RR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Suhu(°C)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alergi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keterangan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Petugas</td>"+
+                                "</tr>"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                    "</tr>"
+                                ); 
+                            }            
+
+                            f = new File("MonitoringReaksiTranfusi.html");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write("<html>"+
+                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                        "<body>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>MONITORING REAKSI TRANFUSI PERIODE "+DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem()+"<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                htmlContent.toString()+
+                                            "</table>"+
+                                        "</body>"+                   
+                                     "</html>"
+                            );
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 2 (WPS)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.R.M.</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>JK</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Lahir</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jam Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Produk/Jenis Darah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Kantong</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lokasi Insersi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TD(mmHg)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>HR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>RR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Suhu(°C)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alergi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keterangan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Petugas</td>"+
+                                "</tr>"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                    "</tr>"
+                                ); 
+                            }            
+
+                            f = new File("MonitoringReaksiTranfusi.wps");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write("<html>"+
+                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                        "<body>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>MONITORING REAKSI TRANFUSI PERIODE "+DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem()+"<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                htmlContent.toString()+
+                                            "</table>"+
+                                        "</body>"+                   
+                                     "</html>"
+                            );
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 3 (CSV)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "\"No.Rawat\";\"No.R.M.\";\"Nama Pasien\";\"Umur\";\"JK\";\"Tgl.Lahir\";\"Tgl.Obser\";\"Jam Obser\";\"Produk/Jenis Darah\";\"No.Kantong\";\"Lokasi Insersi\";\"TD(mmHg)\";\"HR(x/menit)\";\"RR(x/menit)\";\"Suhu(°C)\";\"Alergi\";\"Keterangan\";\"NIP\";\"Nama Petugas\"\n"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\";\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,11)+"\";\""+tabMode.getValueAt(i,12)+"\";\""+tabMode.getValueAt(i,13)+"\";\""+tabMode.getValueAt(i,14)+"\";\""+tabMode.getValueAt(i,15)+"\";\""+tabMode.getValueAt(i,16)+"\";\""+tabMode.getValueAt(i,17)+"\";\""+tabMode.getValueAt(i,18)+"\"\n"
+                                ); 
+                            }            
+
+                            f = new File("MonitoringReaksiTranfusi.csv");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(htmlContent.toString());
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break; 
+                }                 
+            } catch (Exception e) {
+            }     
+            this.setCursor(Cursor.getDefaultCursor());
         }
-        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -1045,12 +1263,10 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     }//GEN-LAST:event_DetikKeyPressed
 
     private void NIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIPKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NamaPetugas,NIP.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            GCS.requestFocus();
+           // GCS.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -1065,10 +1281,10 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,GCS);
+        Valid.pindah(evt,Detik,JenisDarah);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
+    private void MnMonitoringReaksiTranfusiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnMonitoringReaksiTranfusiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1078,39 +1294,52 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanObservasiIGD.jasper","report","::[ Formulir Catatan Observasi IGD ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_igd.tgl_perawatan,catatan_observasi_igd.jam_rawat,catatan_observasi_igd.gcs,dokter.nm_dokter,"+
-                    "catatan_observasi_igd.td,catatan_observasi_igd.hr,catatan_observasi_igd.rr,catatan_observasi_igd.suhu,catatan_observasi_igd.spo2,"+
-                    "petugas.nama from catatan_observasi_igd inner join reg_periksa on catatan_observasi_igd.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
-                    "inner join petugas on catatan_observasi_igd.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+            Valid.MyReportqry("rptFormulirMonitoringReaksiTranfusi.jasper","report","::[ Formulir Monitoring Reaksi Tranfusi ]::",
+                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "pasien.jk,pasien.tgl_lahir,monitoring_reaksi_tranfusi.tgl_perawatan,monitoring_reaksi_tranfusi.jam_rawat,monitoring_reaksi_tranfusi.produk_darah,"+
+                    "monitoring_reaksi_tranfusi.no_kantong,monitoring_reaksi_tranfusi.lokasi_insersi,monitoring_reaksi_tranfusi.td,monitoring_reaksi_tranfusi.hr,"+
+                    "monitoring_reaksi_tranfusi.rr,monitoring_reaksi_tranfusi.suhu,monitoring_reaksi_tranfusi.jenis_reaksi_alergi,monitoring_reaksi_tranfusi.keterangan,"+
+                    "monitoring_reaksi_tranfusi.nip,petugas.nama from monitoring_reaksi_tranfusi inner join reg_periksa on monitoring_reaksi_tranfusi.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on monitoring_reaksi_tranfusi.nip=petugas.nip "+
+                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
-
-    private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        Valid.pindah(evt,btnPetugas,TD);
-    }//GEN-LAST:event_GCSKeyPressed
+    }//GEN-LAST:event_MnMonitoringReaksiTranfusiActionPerformed
 
     private void HRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HRKeyPressed
         Valid.pindah(evt,TD,RR);
     }//GEN-LAST:event_HRKeyPressed
 
     private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        Valid.pindah(evt,RR,SPO);
+        Valid.pindah(evt,RR,Alergi);
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,GCS,HR);
+        Valid.pindah(evt,LokasiInsersi,HR);
     }//GEN-LAST:event_TDKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
         Valid.pindah(evt,HR,Suhu);
     }//GEN-LAST:event_RRKeyPressed
 
-    private void SPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SPOKeyPressed
-        Valid.pindah(evt,Suhu,BtnSimpan);
-    }//GEN-LAST:event_SPOKeyPressed
+    private void JenisDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisDarahKeyPressed
+        Valid.pindah(evt,Detik,NoKantong);
+    }//GEN-LAST:event_JenisDarahKeyPressed
+
+    private void NoKantongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKantongKeyPressed
+        Valid.pindah(evt,JenisDarah,LokasiInsersi);
+    }//GEN-LAST:event_NoKantongKeyPressed
+
+    private void LokasiInsersiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiInsersiKeyPressed
+        Valid.pindah(evt,NoKantong,TD);
+    }//GEN-LAST:event_LokasiInsersiKeyPressed
+
+    private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
+        Valid.pindah(evt,Suhu,Keterangan);
+    }//GEN-LAST:event_AlergiKeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,Alergi,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1129,6 +1358,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Alergi;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1143,17 +1373,19 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox GCS;
     private widget.TextBox HR;
     private widget.ComboBox Jam;
+    private widget.TextBox JenisDarah;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
+    private widget.TextBox LokasiInsersi;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiIGD;
+    private javax.swing.JMenuItem MnMonitoringReaksiTranfusi;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
+    private widget.TextBox NoKantong;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox RR;
-    private widget.TextBox SPO;
     private widget.ScrollPane Scroll;
     private widget.TextBox Suhu;
     private widget.TextBox TCari;
@@ -1165,7 +1397,6 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private widget.TextBox TglLahir;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel12;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
@@ -1174,12 +1405,15 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
+    private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
     private widget.Label jLabel27;
     private widget.Label jLabel28;
     private widget.Label jLabel29;
-    private widget.Label jLabel35;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1197,31 +1431,33 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_igd.tgl_perawatan,catatan_observasi_igd.jam_rawat,catatan_observasi_igd.gcs,"+
-                    "catatan_observasi_igd.td,catatan_observasi_igd.hr,catatan_observasi_igd.rr,catatan_observasi_igd.suhu,catatan_observasi_igd.spo2,"+
-                    "catatan_observasi_igd.nip,petugas.nama from catatan_observasi_igd inner join reg_periksa on catatan_observasi_igd.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,monitoring_reaksi_tranfusi.tgl_perawatan,monitoring_reaksi_tranfusi.jam_rawat,monitoring_reaksi_tranfusi.produk_darah,"+
+                    "monitoring_reaksi_tranfusi.no_kantong,monitoring_reaksi_tranfusi.lokasi_insersi,monitoring_reaksi_tranfusi.td,monitoring_reaksi_tranfusi.hr,"+
+                    "monitoring_reaksi_tranfusi.rr,monitoring_reaksi_tranfusi.suhu,monitoring_reaksi_tranfusi.jenis_reaksi_alergi,monitoring_reaksi_tranfusi.keterangan,"+
+                    "monitoring_reaksi_tranfusi.nip,petugas.nama from monitoring_reaksi_tranfusi inner join reg_periksa on monitoring_reaksi_tranfusi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_igd.nip=petugas.nip where "+
-                    "catatan_observasi_igd.tgl_perawatan between ? and ? order by catatan_observasi_igd.tgl_perawatan");
+                    "inner join petugas on monitoring_reaksi_tranfusi.nip=petugas.nip where "+
+                    "monitoring_reaksi_tranfusi.tgl_perawatan between ? and ? order by monitoring_reaksi_tranfusi.tgl_perawatan");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_igd.tgl_perawatan,catatan_observasi_igd.jam_rawat,catatan_observasi_igd.gcs,"+
-                    "catatan_observasi_igd.td,catatan_observasi_igd.hr,catatan_observasi_igd.rr,catatan_observasi_igd.suhu,catatan_observasi_igd.spo2,"+
-                    "catatan_observasi_igd.nip,petugas.nama from catatan_observasi_igd inner join reg_periksa on catatan_observasi_igd.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,monitoring_reaksi_tranfusi.tgl_perawatan,monitoring_reaksi_tranfusi.jam_rawat,monitoring_reaksi_tranfusi.produk_darah,"+
+                    "monitoring_reaksi_tranfusi.no_kantong,monitoring_reaksi_tranfusi.lokasi_insersi,monitoring_reaksi_tranfusi.td,monitoring_reaksi_tranfusi.hr,"+
+                    "monitoring_reaksi_tranfusi.rr,monitoring_reaksi_tranfusi.suhu,monitoring_reaksi_tranfusi.jenis_reaksi_alergi,monitoring_reaksi_tranfusi.keterangan,"+
+                    "monitoring_reaksi_tranfusi.nip,petugas.nama from monitoring_reaksi_tranfusi inner join reg_periksa on monitoring_reaksi_tranfusi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_igd.nip=petugas.nip where "+
-                    "catatan_observasi_igd.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_observasi_igd.nip like ? or petugas.nama like ?) "+
-                    "order by catatan_observasi_igd.tgl_perawatan ");
+                    "inner join petugas on monitoring_reaksi_tranfusi.nip=petugas.nip where "+
+                    "monitoring_reaksi_tranfusi.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or monitoring_reaksi_tranfusi.nip like ? or petugas.nama like ?) "+
+                    "order by monitoring_reaksi_tranfusi.tgl_perawatan ");
             }
                 
             try {
                 if(TCari.getText().toString().trim().equals("")){
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 }else{
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                     ps.setString(5,"%"+TCari.getText()+"%");
@@ -1234,9 +1470,9 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("gcs"),rs.getString("td"),
-                        rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("nip"),
-                        rs.getString("nama")
+                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("produk_darah"),rs.getString("no_kantong"),
+                        rs.getString("lokasi_insersi"),rs.getString("td"),rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),
+                        rs.getString("jenis_reaksi_alergi"),rs.getString("keterangan"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1249,21 +1485,24 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
     
     public void emptTeks() {
-        GCS.setText("");
         TD.setText("");
         HR.setText("");
         RR.setText("");
         Suhu.setText("");
-        SPO.setText("");
+        JenisDarah.setText("");
+        NoKantong.setText("");
+        LokasiInsersi.setText("");
+        Alergi.setText("");
+        Keterangan.setText("");
         Tanggal.setDate(new Date());
-        GCS.requestFocus();
+        JenisDarah.requestFocus();
     } 
 
     private void getData() {
@@ -1275,12 +1514,15 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            HR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            SPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            JenisDarah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NoKantong.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            LokasiInsersi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            HR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
@@ -1307,7 +1549,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,124));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,185));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1319,10 +1561,10 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getcatatan_observasi_igd());
-        BtnHapus.setEnabled(akses.getcatatan_observasi_igd());
-        BtnEdit.setEnabled(akses.getcatatan_observasi_igd());
-        BtnPrint.setEnabled(akses.getcatatan_observasi_igd()); 
+        BtnSimpan.setEnabled(akses.getmonitoring_reaksi_tranfusi());
+        BtnHapus.setEnabled(akses.getmonitoring_reaksi_tranfusi());
+        BtnEdit.setEnabled(akses.getmonitoring_reaksi_tranfusi());
+        BtnPrint.setEnabled(akses.getmonitoring_reaksi_tranfusi()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1389,17 +1631,19 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        Sequel.mengedit("catatan_observasi_igd","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,gcs=?,td=?,hr=?,rr=?,suhu=?,spo2=?,nip=?",13,new String[]{
+        Sequel.mengedit("monitoring_reaksi_tranfusi","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,produk_darah=?,"+
+            "no_kantong=?,lokasi_insersi=?,td=?,hr=?,rr=?,suhu=?,jenis_reaksi_alergi=?,keterangan=?,nip=?",16,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            JenisDarah.getText(),NoKantong.getText(),LokasiInsersi.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),Alergi.getText(), 
+            Keterangan.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         });
         if(tabMode.getRowCount()!=0){tampil();}
         emptTeks();
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from catatan_observasi_igd where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
+        if(Sequel.queryu2tf("delete from monitoring_reaksi_tranfusi where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tampil();
