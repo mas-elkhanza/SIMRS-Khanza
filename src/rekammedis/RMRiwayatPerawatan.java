@@ -9030,19 +9030,19 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "<tr align='center'>"+
                                     "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>"+
                                     "<td valign='middle' width='8%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>"+
-                                    "<td valign='middle' width='12%' bgcolor='#FFFAF8' rowspan='2'>Jenis/Produk Darah</td>"+
+                                    "<td valign='middle' width='13%' bgcolor='#FFFAF8' rowspan='2'>Jenis/Produk Darah</td>"+
                                     "<td valign='middle' width='8%' bgcolor='#FFFAF8' rowspan='2'>No.Kantong</td>"+
                                     "<td valign='middle' width='13%' bgcolor='#FFFAF8' rowspan='2'>Lokasi Insersi</td>"+
-                                    "<td valign='top' width='17%' bgcolor='#FFFAF8' colspan='4'>Monitoring</td>"+
-                                    "<td valign='middle' width='12%' bgcolor='#FFFAF8' rowspan='2'>Perawat/Paramedis</td>"+
+                                    "<td valign='top' width='14%' bgcolor='#FFFAF8' colspan='4'>TTV</td>"+
+                                    "<td valign='middle' width='13%' bgcolor='#FFFAF8' rowspan='2'>Perawat/Paramedis</td>"+
                                     "<td valign='middle' width='13%' bgcolor='#FFFAF8' rowspan='2'>Alergi/Reaksi Tranfusi</td>"+
-                                    "<td valign='middle' width='13%' bgcolor='#FFFAF8' rowspan='2'>Keterangan</td>"+
+                                    "<td valign='middle' width='14%' bgcolor='#FFFAF8' rowspan='2'>Keterangan</td>"+
                                  "</tr>"+
                                  "<tr align='center'>"+
                                     "<td valign='top' width='5%' bgcolor='#FFFAF8'>TD</td>"+
-                                    "<td valign='top' width='4%' bgcolor='#FFFAF8'>HR</td>"+
-                                    "<td valign='top' width='4%' bgcolor='#FFFAF8'>RR</td>"+
-                                    "<td valign='top' width='4%' bgcolor='#FFFAF8'>Suhu</td>"+
+                                    "<td valign='top' width='3%' bgcolor='#FFFAF8'>HR</td>"+
+                                    "<td valign='top' width='3%' bgcolor='#FFFAF8'>RR</td>"+
+                                    "<td valign='top' width='3%' bgcolor='#FFFAF8'>Suhu</td>"+
                                  "</tr>"
                         );
                         rs2.beforeFirst();
@@ -9051,7 +9051,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
-                                    "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
                                     "<td valign='top' align='left'>"+rs2.getString("produk_darah")+"</td>"+
                                     "<td valign='top' align='center'>"+rs2.getString("no_kantong")+"</td>"+
                                     "<td valign='top' align='left'>"+rs2.getString("lokasi_insersi")+"</td>"+
