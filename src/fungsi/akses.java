@@ -202,7 +202,7 @@ public final class akses {
             satu_sehat_kirim_Immunization=false,checklist_post_operasi=false,dapur_pembelian=false,dapur_stok_keluar=false,dapur_riwayat_barang=false,permintaan_dapur=false,
             rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false,grafik_limbahb3cair_pertanggal=false,
             grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false,konfirmasi_rekonsiliasi_obat=false,satu_sehat_kirim_clinicalimpression=false,
-            penilaian_pasien_terminal=false,surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false;
+            penilaian_pasien_terminal=false,surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false,penilaian_korban_kekerasan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1153,6 +1153,7 @@ public final class akses {
                         akses.penilaian_pasien_terminal=true;
                         akses.surat_persetujuan_rawat_inap=true;
                         akses.monitoring_reaksi_tranfusi=true;
+                        akses.penilaian_korban_kekerasan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2087,6 +2088,7 @@ public final class akses {
                         akses.penilaian_pasien_terminal=rs2.getBoolean("penilaian_pasien_terminal");
                         akses.surat_persetujuan_rawat_inap=rs2.getBoolean("surat_persetujuan_rawat_inap");
                         akses.monitoring_reaksi_tranfusi=rs2.getBoolean("monitoring_reaksi_tranfusi");
+                        akses.penilaian_korban_kekerasan=rs2.getBoolean("penilaian_korban_kekerasan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3019,6 +3021,7 @@ public final class akses {
                         akses.penilaian_pasien_terminal=false;
                         akses.surat_persetujuan_rawat_inap=false;
                         akses.monitoring_reaksi_tranfusi=false;
+                        akses.penilaian_korban_kekerasan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4008,4 +4011,5 @@ public final class akses {
     public static boolean getpenilaian_pasien_terminal(){return akses.penilaian_pasien_terminal;}
     public static boolean getsurat_persetujuan_rawat_inap(){return akses.surat_persetujuan_rawat_inap;}
     public static boolean getmonitoring_reaksi_tranfusi(){return akses.monitoring_reaksi_tranfusi;}
+    public static boolean getpenilaian_korban_kekerasan(){return akses.penilaian_korban_kekerasan;}
 }   
