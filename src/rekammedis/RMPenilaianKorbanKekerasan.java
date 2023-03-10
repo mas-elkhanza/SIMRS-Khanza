@@ -713,7 +713,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         jLabel39.setText("Apakah Memerlukan Pendampingan");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(16, 480, 200, 23);
+        jLabel39.setBounds(16, 480, 190, 23);
 
         KondisiKeluargaInti.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bahagia", "Broken Home" }));
         KondisiKeluargaInti.setName("KondisiKeluargaInti"); // NOI18N
