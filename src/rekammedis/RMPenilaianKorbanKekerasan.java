@@ -1263,20 +1263,26 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
-        }else if(KeluhanUtama.getText().trim().equals("")){
-            Valid.textKosong(KeluhanUtama,"Keluhan Utama");
-        }else if(RPS.getText().trim().equals("")){
-            Valid.textKosong(RPS,"Riwayat Penyakit Sekarang");
-        }else if(RPK.getText().trim().equals("")){
-            Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
-        }else if(RPD.getText().trim().equals("")){
-            Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
-        }else if(RPO.getText().trim().equals("")){
-            Valid.textKosong(RPO,"Riwayat Pengunaan obat");
+            Valid.textKosong(BtnDokter,"Pemeriksa");
+        }else if(KekerasanYangDialami.getText().trim().equals("")){
+            Valid.textKosong(KekerasanYangDialami,"Jenis Kekerasan/Penganiayaan Yang Dialami");
+        }else if(TempatKejadian.getText().trim().equals("")){
+            Valid.textKosong(TempatKejadian,"Tempat Kejadian Kekerasan");
+        }else if(LamaKekerasan.getText().trim().equals("")){
+            Valid.textKosong(LamaKekerasan,"Lama Mengalami Kekerasan / Penganiayaan");
+        }else if(SeberapaSeringPenganiayaan.getText().trim().equals("")){
+            Valid.textKosong(SeberapaSeringPenganiayaan,"Seberapa Sering Mengalami Kekerasan / Penganiayaan");
+        }else if(PemicuKekerasan.getText().trim().equals("")){
+            Valid.textKosong(PemicuKekerasan,"Pemicu Kekerasan");
+        }else if(SiapaYangMelakukanKekerasan.getText().trim().equals("")){
+            Valid.textKosong(SiapaYangMelakukanKekerasan,"Siapa Yang Melakukan Kekerasan");
+        }else if(DampakYangTerjadi.getText().trim().equals("")){
+            Valid.textKosong(DampakYangTerjadi,"Dampak Yang Terjadi Pada Korban Kekerasan");
+        }else if(TandaYangDidapatkan.getText().trim().equals("")){
+            Valid.textKosong(TandaYangDidapatkan,"Tanda-tanda Yang Didapatkan Pada Korban Kekerasan");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1291,7 +1297,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1322,46 +1328,38 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
                 htmlContent = new StringBuilder();
                 htmlContent.append(                             
                     "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anamnesis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Hubungan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Keluhan Utama</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Sekarang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Dahulu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Keluarga</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penggunakan Obat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Riwayat Alergi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Keadaan Umum</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>GCS</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kesadaran</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>TD(mmHg)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Nadi(x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'><b>RR(x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Suhu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>SpO2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>BB(Kg)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>TB(cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kepala</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Gigi & Mulut</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>THT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Thoraks</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Abdomen</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Genital & Anus</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Ekstremitas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kulit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Ket.Pemeriksaan Fisik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ket.Status Lokalis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Pemeriksaa Penunjang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis/Asesmen</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Tatalaksana</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Konsul/Rujuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode/NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pemeriksa</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hubungan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml.Saudara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kondisi Keluarga Inti</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hubungan Orang Terdekat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Kekerasan/Penganiayaan Yang Dialami</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tempat Kejadian Kekerasan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lama</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Periode</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Seberapa Sering Mengalami Kekerasan / Penganiayaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemicu Kekerasan / Penganiayaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Yang Melakukan Kekerasan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dampak Yang Terjadi Pada Korban Kekerasan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanda-tanda Yang Didapatkan Pada Korban Kekerasan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Memerlukan Pendampingan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Kelainan/Gangguan Jiwa</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Kepala</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Thoraks</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Leher</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Abdomen</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Genitalia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Ekstrimitas Atas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Ekstrimitas Bawah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Anus</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1399,19 +1397,11 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='4400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='3800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1432,17 +1422,17 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataPenilaianAwalMedisRalan.html");            
+                File f = new File("DataPenilaianKorbanKekerasan.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='4400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='3800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT JALAN<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN KORBAN KEKERASAN<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1905,7 +1895,28 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
             Anamnesis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             Hubungan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            KekerasanYangDialami.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            JumlahSaudara.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            KondisiKeluargaInti.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            HubunganOrangTerdekat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            KekerasanYangDialami.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            TempatKejadian.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            LamaKekerasan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            PeriodeKekerasan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            SeberapaSeringPenganiayaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            PemicuKekerasan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            SiapaYangMelakukanKekerasan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            DampakYangTerjadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            TandaYangDidapatkan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            MemerlukanPendampingan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            RiwayatKelainan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            PemeriksaanKepala.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            PemeriksaanThoraks.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            PemeriksaanLeher.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            PemeriksaanAbdomen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            PemeriksaanGenitalia.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            PemeriksaanEkstrimitasAtas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            PemeriksaanEkstrimitasBawah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            PemeriksaanAnus.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
@@ -1978,14 +1989,19 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penilaian_korban_kekerasan","no_rawat=?","no_rawat=?,tanggal=?,nip=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpk=?,rpd=?,rpo=?,alergi=?,keadaan=?,gcs=?,kesadaran=?,td=?,nadi=?,rr=?,suhu=?,spo=?,bb=?,tb=?,kepala=?,gigi=?,tht=?,thoraks=?,abdomen=?,genital=?,ekstremitas=?,kulit=?,ket_fisik=?,ket_lokalis=?,penunjang=?,diagnosis=?,tata=?,konsulrujuk=?",36,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),GCS.getText(),Kesadaran.getSelectedItem().toString(),TD.getText(),Nadi.getText(),
-                RR.getText(),Suhu.getText(),SPO.getText(),BB.getText(),TB.getText(),Kepala.getSelectedItem().toString(),Gigi.getSelectedItem().toString(),THT.getSelectedItem().toString(),Thoraks.getSelectedItem().toString(),Abdomen.getSelectedItem().toString(),Genital.getSelectedItem().toString(),Ekstremitas.getSelectedItem().toString(),Kulit.getSelectedItem().toString(),KetFisik.getText(),KetLokalis.getText(),
-                Penunjang.getText(),Diagnosis.getText(),Tatalaksana.getText(),Konsul.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("penilaian_korban_kekerasan","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,hubungan_dengan_pasien=?,jumlah_saudara=?,kondisi_keluaga=?,hubungan_orang_terdekat=?,kekerasan_yang_dialami=?,tempat_kejadian=?,lama_kekerasan=?,"+
+                "periode_kekerasan=?,seberapa_sering_mengalami=?,pemicu_kekerasan=?,yang_melakukan_kekerasan=?,dampak_kekerasan=?,tanda_tanda_didapatkan=?,memerlukan_pendampingan=?,riwayat_kelainan=?,pemeriksaan_kepala=?,pemeriksaan_thoraks=?,"+
+                "pemeriksaan_leher=?,pemeriksaan_abdomen=?,pemeriksaan_genitalia=?,pemeriksaan_ekstrimitas_atas=?,pemeriksaan_ekstrimitas_bawah=?,pemeriksaan_anus=?,nip=?",28,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),
+                Hubungan.getText(),JumlahSaudara.getText(),KondisiKeluargaInti.getSelectedItem().toString(),HubunganOrangTerdekat.getSelectedItem().toString(),KekerasanYangDialami.getText(), 
+                TempatKejadian.getText(),LamaKekerasan.getText(),PeriodeKekerasan.getSelectedItem().toString(),SeberapaSeringPenganiayaan.getText(),PemicuKekerasan.getText(), 
+                SiapaYangMelakukanKekerasan.getText(),DampakYangTerjadi.getText(),TandaYangDidapatkan.getText(),MemerlukanPendampingan.getSelectedItem().toString(),RiwayatKelainan.getText(), 
+                PemeriksaanKepala.getText(),PemeriksaanThoraks.getText(),PemeriksaanLeher.getText(),PemeriksaanAbdomen.getText(),PemeriksaanGenitalia.getText(),
+                PemeriksaanEkstrimitasAtas.getText(),PemeriksaanEkstrimitasBawah.getText(),PemeriksaanAnus.getText(),KdDokter.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();
                TabRawat.setSelectedIndex(1);
-        }*/
+        }
     }
 }
