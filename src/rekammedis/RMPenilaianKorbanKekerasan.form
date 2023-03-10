@@ -1007,7 +1007,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel43">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Riwayat Kelainan/Gangguan Jiwa :"/>
+                            <Property name="text" type="java.lang.String" value="Riwayat Kelainan / Gangguan Jiwa :"/>
                             <Property name="name" type="java.lang.String" value="jLabel43" noResource="true"/>
                           </Properties>
                           <Constraints>

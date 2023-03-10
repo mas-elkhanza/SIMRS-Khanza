@@ -61,10 +61,12 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
-            "Riwayat Penyakit Keluarga","Riwayat Penggunakan Obat","Riwayat Alergi","Keadaan Umum","GCS","Kesadaran","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu","SpO2","BB(Kg)","TB(cm)","Kepala",
-            "Gigi & Mulut","THT","Thoraks","Abdomen","Genital & Anus","Ekstremitas","Kulit","Ket.Pemeriksaan Fisik","Ket.Status Lokalis","Pemeriksaan Penunjang","Diagnosis/Asesmen",
-            "Tatalaksana","Konsul/Rujuk"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode/NIP","Nama Pemeriksa","Tanggal","Anamnesis","Hubungan",
+            "Jml.Saudara","Kondisi Keluarga Inti","Hubungan Orang Terdekat","Jenis Kekerasan/Penganiayaan Yang Dialami",
+            "Tempat Kejadian Kekerasan","Lama","Periode","Seberapa Sering Mengalami Kekerasan / Penganiayaan","Pemicu Kekerasan / Penganiayaan",
+            "Yang Melakukan Kekerasan","Dampak Yang Terjadi Pada Korban Kekerasan","Tanda-tanda Yang Didapatkan Pada Korban Kekerasan",
+            "Memerlukan Pendampingan","Riwayat Kelainan/Gangguan Jiwa","Pemeriksaan Kepala","Pemeriksaan Thoraks","Pemeriksaan Leher",
+            "Pemeriksaan Abdomen","Pemeriksaan Genitalia","Pemeriksaan Ekstrimitas Atas","Pemeriksaan Ekstrimitas Bawah","Pemeriksaan Anus"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -73,7 +75,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 40; i++) {
+        for (i = 0; i < 32; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -94,67 +96,51 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(80);
             }else if(i==9){
-                column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(300);
-            }else if(i==11){
-                column.setPreferredWidth(150);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else if(i==13){
-                column.setPreferredWidth(150);
-            }else if(i==14){
-                column.setPreferredWidth(150);
-            }else if(i==15){
-                column.setPreferredWidth(120);
-            }else if(i==16){
                 column.setPreferredWidth(90);
+            }else if(i==10){
+                column.setPreferredWidth(69);
+            }else if(i==11){
+                column.setPreferredWidth(108);
+            }else if(i==12){
+                column.setPreferredWidth(137);
+            }else if(i==13){
+                column.setPreferredWidth(240);
+            }else if(i==14){
+                column.setPreferredWidth(145);
+            }else if(i==15){
+                column.setPreferredWidth(37);
+            }else if(i==16){
+                column.setPreferredWidth(45);
             }else if(i==17){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(277);
             }else if(i==18){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(177);
             }else if(i==19){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(143);
             }else if(i==20){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(235);
             }else if(i==21){
-                column.setPreferredWidth(67);
+                column.setPreferredWidth(275);
             }else if(i==22){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(142);
             }else if(i==23){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(173);
             }else if(i==24){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(160);
             }else if(i==25){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(160);
             }else if(i==26){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(160);
             }else if(i==27){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(160);
             }else if(i==28){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(160);
             }else if(i==29){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(160);
             }else if(i==30){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(160);
             }else if(i==31){
-                column.setPreferredWidth(80);
-            }else if(i==32){
-                column.setPreferredWidth(80);
-            }else if(i==33){
-                column.setPreferredWidth(80);
-            }else if(i==34){
-                column.setPreferredWidth(300);
-            }else if(i==35){
-                column.setPreferredWidth(200);
-            }else if(i==36){
-                column.setPreferredWidth(170);
-            }else if(i==37){
-                column.setPreferredWidth(150);
-            }else if(i==38){
-                column.setPreferredWidth(300);
-            }else if(i==39){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(160);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -218,7 +204,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
                 if(pemeriksa.getTable().getSelectedRow()!= -1){
                     KdDokter.setText(pemeriksa.getTable().getValueAt(pemeriksa.getTable().getSelectedRow(),0).toString());
                     NmDokter.setText(pemeriksa.getTable().getValueAt(pemeriksa.getTable().getSelectedRow(),1).toString());
-                    KdDokter.requestFocus();
+                    BtnDokter.requestFocus();
                 }
             }
             @Override
@@ -903,7 +889,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         FormInput.add(jLabel40);
         jLabel40.setBounds(16, 410, 290, 23);
 
-        jLabel43.setText("Riwayat Kelainan/Gangguan Jiwa :");
+        jLabel43.setText("Riwayat Kelainan / Gangguan Jiwa :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
         jLabel43.setBounds(320, 480, 190, 23);
@@ -1198,31 +1184,38 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 }//GEN-LAST:event_TNoRwKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
-        }else if(KeluhanUtama.getText().trim().equals("")){
-            Valid.textKosong(KeluhanUtama,"Keluhan Utama");
-        }else if(RPS.getText().trim().equals("")){
-            Valid.textKosong(RPS,"Riwayat Penyakit Sekarang");
-        }else if(RPK.getText().trim().equals("")){
-            Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
-        }else if(RPD.getText().trim().equals("")){
-            Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
-        }else if(RPO.getText().trim().equals("")){
-            Valid.textKosong(RPO,"Riwayat Pengunaan obat");
+            Valid.textKosong(BtnDokter,"Pemeriksa");
+        }else if(KekerasanYangDialami.getText().trim().equals("")){
+            Valid.textKosong(KekerasanYangDialami,"Jenis Kekerasan/Penganiayaan Yang Dialami");
+        }else if(TempatKejadian.getText().trim().equals("")){
+            Valid.textKosong(TempatKejadian,"Tempat Kejadian Kekerasan");
+        }else if(LamaKekerasan.getText().trim().equals("")){
+            Valid.textKosong(LamaKekerasan,"Lama Mengalami Kekerasan / Penganiayaan");
+        }else if(SeberapaSeringPenganiayaan.getText().trim().equals("")){
+            Valid.textKosong(SeberapaSeringPenganiayaan,"Seberapa Sering Mengalami Kekerasan / Penganiayaan");
+        }else if(PemicuKekerasan.getText().trim().equals("")){
+            Valid.textKosong(PemicuKekerasan,"Pemicu Kekerasan");
+        }else if(SiapaYangMelakukanKekerasan.getText().trim().equals("")){
+            Valid.textKosong(SiapaYangMelakukanKekerasan,"Siapa Yang Melakukan Kekerasan");
+        }else if(DampakYangTerjadi.getText().trim().equals("")){
+            Valid.textKosong(DampakYangTerjadi,"Dampak Yang Terjadi Pada Korban Kekerasan");
+        }else if(TandaYangDidapatkan.getText().trim().equals("")){
+            Valid.textKosong(TandaYangDidapatkan,"Tanda-tanda Yang Didapatkan Pada Korban Kekerasan");
         }else{
-            if(Sequel.menyimpantf("penilaian_korban_kekerasan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",35,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),GCS.getText(),Kesadaran.getSelectedItem().toString(),TD.getText(),
-                    Nadi.getText(),RR.getText(),Suhu.getText(),SPO.getText(),BB.getText(),TB.getText(),Kepala.getSelectedItem().toString(),Gigi.getSelectedItem().toString(),THT.getSelectedItem().toString(),
-                    Thoraks.getSelectedItem().toString(),Abdomen.getSelectedItem().toString(),Genital.getSelectedItem().toString(),Ekstremitas.getSelectedItem().toString(),Kulit.getSelectedItem().toString(),KetFisik.getText(),
-                    KetLokalis.getText(),Penunjang.getText(),Diagnosis.getText(),Tatalaksana.getText(),Konsul.getText()
+            if(Sequel.menyimpantf("penilaian_korban_kekerasan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",27,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),
+                    Hubungan.getText(),JumlahSaudara.getText(),KondisiKeluargaInti.getSelectedItem().toString(),HubunganOrangTerdekat.getSelectedItem().toString(),KekerasanYangDialami.getText(), 
+                    TempatKejadian.getText(),LamaKekerasan.getText(),PeriodeKekerasan.getSelectedItem().toString(),SeberapaSeringPenganiayaan.getText(),PemicuKekerasan.getText(), 
+                    SiapaYangMelakukanKekerasan.getText(),DampakYangTerjadi.getText(),TandaYangDidapatkan.getText(),MemerlukanPendampingan.getSelectedItem().toString(),RiwayatKelainan.getText(), 
+                    PemeriksaanKepala.getText(),PemeriksaanThoraks.getText(),PemeriksaanLeher.getText(),PemeriksaanAbdomen.getText(),PemeriksaanGenitalia.getText(),
+                    PemeriksaanEkstrimitasAtas.getText(),PemeriksaanEkstrimitasBawah.getText(),PemeriksaanAnus.getText(),KdDokter.getText()
                 })==true){
                     emptTeks();
             }
-        }*/
+        }
     
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1230,7 +1223,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,KetFisik,BtnBatal);
+            Valid.pindah(evt,PemeriksaanAnus,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1549,15 +1542,15 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Monitoring,BtnSimpan);
+        Valid.pindah(evt,BtnSimpan,TglAsuhan);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void PemicuKekerasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemicuKekerasanKeyPressed
-        //Valid.pindah(evt,TB,TD);
+        Valid.pindah(evt,SeberapaSeringPenganiayaan,SiapaYangMelakukanKekerasan);
     }//GEN-LAST:event_PemicuKekerasanKeyPressed
 
     private void SeberapaSeringPenganiayaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeberapaSeringPenganiayaanKeyPressed
-        Valid.pindah(evt,JumlahSaudara,PemicuKekerasan);
+        Valid.pindah(evt,PeriodeKekerasan,PemicuKekerasan);
     }//GEN-LAST:event_SeberapaSeringPenganiayaanKeyPressed
 
     private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
@@ -1565,11 +1558,11 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     }//GEN-LAST:event_AnamnesisKeyPressed
 
     private void KekerasanYangDialamiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KekerasanYangDialamiKeyPressed
-        //Valid.pindah2(evt,Hubungan,RPS);
+        Valid.pindah2(evt,HubunganOrangTerdekat,TempatKejadian);
     }//GEN-LAST:event_KekerasanYangDialamiKeyPressed
 
     private void JumlahSaudaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahSaudaraKeyPressed
-        Valid.pindah(evt,PeriodeKekerasan,SeberapaSeringPenganiayaan);
+        Valid.pindah(evt,Hubungan,KondisiKeluargaInti);
     }//GEN-LAST:event_JumlahSaudaraKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
@@ -1579,19 +1572,19 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void KondisiKeluargaIntiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiKeluargaIntiKeyPressed
-        //Valid.pindah(evt,Alergi,Kesadaran);
+        Valid.pindah(evt,JumlahSaudara,HubunganOrangTerdekat);
     }//GEN-LAST:event_KondisiKeluargaIntiKeyPressed
 
     private void PeriodeKekerasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeriodeKekerasanKeyPressed
-        Valid.pindah(evt,KondisiKeluargaInti,JumlahSaudara);
+        Valid.pindah(evt,LamaKekerasan,SeberapaSeringPenganiayaan);
     }//GEN-LAST:event_PeriodeKekerasanKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
-        //Valid.pindah(evt,Konsul,Anamnesis);
+        Valid.pindah(evt,BtnDokter,Anamnesis);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        Valid.pindah(evt,Anamnesis,KekerasanYangDialami);
+        Valid.pindah(evt,Anamnesis,JumlahSaudara);
     }//GEN-LAST:event_HubunganKeyPressed
 
     private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
@@ -1610,78 +1603,78 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
             
             Valid.MyReportqry("rptCetakPenilaianAwalMedisRalan.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.tanggal,"+
-                "penilaian_korban_kekerasan.kd_dokter,penilaian_korban_kekerasan.anamnesis,penilaian_korban_kekerasan.hubungan,penilaian_korban_kekerasan.keluhan_utama,penilaian_korban_kekerasan.rps,penilaian_korban_kekerasan.rpk,penilaian_korban_kekerasan.rpd,penilaian_korban_kekerasan.rpo,penilaian_korban_kekerasan.alergi,"+
+                "penilaian_korban_kekerasan.nip,penilaian_korban_kekerasan.anamnesis,penilaian_korban_kekerasan.hubungan,penilaian_korban_kekerasan.keluhan_utama,penilaian_korban_kekerasan.rps,penilaian_korban_kekerasan.rpk,penilaian_korban_kekerasan.rpd,penilaian_korban_kekerasan.rpo,penilaian_korban_kekerasan.alergi,"+
                 "penilaian_korban_kekerasan.keadaan,penilaian_korban_kekerasan.gcs,penilaian_korban_kekerasan.kesadaran,penilaian_korban_kekerasan.td,penilaian_korban_kekerasan.nadi,penilaian_korban_kekerasan.rr,penilaian_korban_kekerasan.suhu,penilaian_korban_kekerasan.spo,penilaian_korban_kekerasan.bb,penilaian_korban_kekerasan.tb,"+
                 "penilaian_korban_kekerasan.kepala,penilaian_korban_kekerasan.gigi,penilaian_korban_kekerasan.tht,penilaian_korban_kekerasan.thoraks,penilaian_korban_kekerasan.abdomen,penilaian_korban_kekerasan.ekstremitas,penilaian_korban_kekerasan.genital,penilaian_korban_kekerasan.kulit,"+
-                "penilaian_korban_kekerasan.ket_fisik,penilaian_korban_kekerasan.ket_lokalis,penilaian_korban_kekerasan.penunjang,penilaian_korban_kekerasan.diagnosis,penilaian_korban_kekerasan.tata,penilaian_korban_kekerasan.konsulrujuk,dokter.nm_dokter "+
+                "penilaian_korban_kekerasan.ket_fisik,penilaian_korban_kekerasan.ket_lokalis,penilaian_korban_kekerasan.penunjang,penilaian_korban_kekerasan.diagnosis,penilaian_korban_kekerasan.tata,penilaian_korban_kekerasan.konsulrujuk,pegawai.nama "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_korban_kekerasan on reg_periksa.no_rawat=penilaian_korban_kekerasan.no_rawat "+
-                "inner join dokter on penilaian_korban_kekerasan.kd_dokter=dokter.kd_dokter where penilaian_korban_kekerasan.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join pegawai on penilaian_korban_kekerasan.nip=pegawai.nik where penilaian_korban_kekerasan.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
     private void HubunganOrangTerdekatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganOrangTerdekatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KondisiKeluargaInti,KekerasanYangDialami);
     }//GEN-LAST:event_HubunganOrangTerdekatKeyPressed
 
     private void TempatKejadianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TempatKejadianKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KekerasanYangDialami,LamaKekerasan);
     }//GEN-LAST:event_TempatKejadianKeyPressed
 
     private void LamaKekerasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LamaKekerasanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TempatKejadian,PeriodeKekerasan);
     }//GEN-LAST:event_LamaKekerasanKeyPressed
 
     private void MemerlukanPendampinganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MemerlukanPendampinganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TandaYangDidapatkan,RiwayatKelainan);
     }//GEN-LAST:event_MemerlukanPendampinganKeyPressed
 
     private void SiapaYangMelakukanKekerasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SiapaYangMelakukanKekerasanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemicuKekerasan,DampakYangTerjadi);
     }//GEN-LAST:event_SiapaYangMelakukanKekerasanKeyPressed
 
     private void DampakYangTerjadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DampakYangTerjadiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,SiapaYangMelakukanKekerasan,TandaYangDidapatkan);
     }//GEN-LAST:event_DampakYangTerjadiKeyPressed
 
     private void TandaYangDidapatkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaYangDidapatkanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,DampakYangTerjadi,MemerlukanPendampingan);
     }//GEN-LAST:event_TandaYangDidapatkanKeyPressed
 
     private void RiwayatKelainanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatKelainanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MemerlukanPendampingan,PemeriksaanKepala);
     }//GEN-LAST:event_RiwayatKelainanKeyPressed
 
     private void PemeriksaanKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanKepalaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RiwayatKelainan,PemeriksaanThoraks);
     }//GEN-LAST:event_PemeriksaanKepalaKeyPressed
 
     private void PemeriksaanThoraksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanThoraksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanKepala,PemeriksaanLeher);
     }//GEN-LAST:event_PemeriksaanThoraksKeyPressed
 
     private void PemeriksaanLeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanLeherKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanThoraks,PemeriksaanAbdomen);
     }//GEN-LAST:event_PemeriksaanLeherKeyPressed
 
     private void PemeriksaanAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanAbdomenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanLeher,PemeriksaanGenitalia);
     }//GEN-LAST:event_PemeriksaanAbdomenKeyPressed
 
     private void PemeriksaanGenitaliaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanGenitaliaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanAbdomen,PemeriksaanEkstrimitasAtas);
     }//GEN-LAST:event_PemeriksaanGenitaliaKeyPressed
 
     private void PemeriksaanEkstrimitasAtasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanEkstrimitasAtasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanGenitalia,PemeriksaanEkstrimitasBawah);
     }//GEN-LAST:event_PemeriksaanEkstrimitasAtasKeyPressed
 
     private void PemeriksaanEkstrimitasBawahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanEkstrimitasBawahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanEkstrimitasAtas,PemeriksaanAnus);
     }//GEN-LAST:event_PemeriksaanEkstrimitasBawahKeyPressed
 
     private void PemeriksaanAnusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanAnusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemeriksaanEkstrimitasBawah,BtnSimpan);
     }//GEN-LAST:event_PemeriksaanAnusKeyPressed
 
     /**
@@ -1807,27 +1800,29 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.tanggal,"+
-                        "penilaian_korban_kekerasan.kd_dokter,penilaian_korban_kekerasan.anamnesis,penilaian_korban_kekerasan.hubungan,penilaian_korban_kekerasan.keluhan_utama,penilaian_korban_kekerasan.rps,penilaian_korban_kekerasan.rpk,penilaian_korban_kekerasan.rpd,penilaian_korban_kekerasan.rpo,penilaian_korban_kekerasan.alergi,"+
-                        "penilaian_korban_kekerasan.keadaan,penilaian_korban_kekerasan.gcs,penilaian_korban_kekerasan.kesadaran,penilaian_korban_kekerasan.td,penilaian_korban_kekerasan.nadi,penilaian_korban_kekerasan.rr,penilaian_korban_kekerasan.suhu,penilaian_korban_kekerasan.spo,penilaian_korban_kekerasan.bb,penilaian_korban_kekerasan.tb,"+
-                        "penilaian_korban_kekerasan.kepala,penilaian_korban_kekerasan.gigi,penilaian_korban_kekerasan.tht,penilaian_korban_kekerasan.thoraks,penilaian_korban_kekerasan.abdomen,penilaian_korban_kekerasan.ekstremitas,penilaian_korban_kekerasan.genital,penilaian_korban_kekerasan.kulit,"+
-                        "penilaian_korban_kekerasan.ket_fisik,penilaian_korban_kekerasan.ket_lokalis,penilaian_korban_kekerasan.penunjang,penilaian_korban_kekerasan.diagnosis,penilaian_korban_kekerasan.tata,penilaian_korban_kekerasan.konsulrujuk,dokter.nm_dokter "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.nip,pegawai.nama,penilaian_korban_kekerasan.tanggal, "+
+                        "penilaian_korban_kekerasan.informasi,penilaian_korban_kekerasan.hubungan_dengan_pasien,penilaian_korban_kekerasan.jumlah_saudara,penilaian_korban_kekerasan.kondisi_keluaga,penilaian_korban_kekerasan.hubungan_orang_terdekat,"+
+                        "penilaian_korban_kekerasan.kekerasan_yang_dialami,penilaian_korban_kekerasan.tempat_kejadian,penilaian_korban_kekerasan.lama_kekerasan,penilaian_korban_kekerasan.periode_kekerasan,penilaian_korban_kekerasan.seberapa_sering_mengalami,"+
+                        "penilaian_korban_kekerasan.pemicu_kekerasan,penilaian_korban_kekerasan.yang_melakukan_kekerasan,penilaian_korban_kekerasan.dampak_kekerasan,penilaian_korban_kekerasan.tanda_tanda_didapatkan,penilaian_korban_kekerasan.memerlukan_pendampingan,"+
+                        "penilaian_korban_kekerasan.riwayat_kelainan,penilaian_korban_kekerasan.pemeriksaan_kepala,penilaian_korban_kekerasan.pemeriksaan_thoraks,penilaian_korban_kekerasan.pemeriksaan_leher,penilaian_korban_kekerasan.pemeriksaan_abdomen,"+
+                        "penilaian_korban_kekerasan.pemeriksaan_genitalia,penilaian_korban_kekerasan.pemeriksaan_ekstrimitas_atas,penilaian_korban_kekerasan.pemeriksaan_ekstrimitas_bawah,penilaian_korban_kekerasan.pemeriksaan_anus "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_korban_kekerasan on reg_periksa.no_rawat=penilaian_korban_kekerasan.no_rawat "+
-                        "inner join dokter on penilaian_korban_kekerasan.kd_dokter=dokter.kd_dokter where "+
+                        "inner join pegawai on penilaian_korban_kekerasan.nip=pegawai.nik where "+
                         "penilaian_korban_kekerasan.tanggal between ? and ? order by penilaian_korban_kekerasan.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.tanggal,"+
-                        "penilaian_korban_kekerasan.kd_dokter,penilaian_korban_kekerasan.anamnesis,penilaian_korban_kekerasan.hubungan,penilaian_korban_kekerasan.keluhan_utama,penilaian_korban_kekerasan.rps,penilaian_korban_kekerasan.rpk,penilaian_korban_kekerasan.rpd,penilaian_korban_kekerasan.rpo,penilaian_korban_kekerasan.alergi,"+
-                        "penilaian_korban_kekerasan.keadaan,penilaian_korban_kekerasan.gcs,penilaian_korban_kekerasan.kesadaran,penilaian_korban_kekerasan.td,penilaian_korban_kekerasan.nadi,penilaian_korban_kekerasan.rr,penilaian_korban_kekerasan.suhu,penilaian_korban_kekerasan.spo,penilaian_korban_kekerasan.bb,penilaian_korban_kekerasan.tb,"+
-                        "penilaian_korban_kekerasan.kepala,penilaian_korban_kekerasan.gigi,penilaian_korban_kekerasan.tht,penilaian_korban_kekerasan.thoraks,penilaian_korban_kekerasan.abdomen,penilaian_korban_kekerasan.ekstremitas,penilaian_korban_kekerasan.genital,penilaian_korban_kekerasan.kulit,"+
-                        "penilaian_korban_kekerasan.ket_fisik,penilaian_korban_kekerasan.ket_lokalis,penilaian_korban_kekerasan.penunjang,penilaian_korban_kekerasan.diagnosis,penilaian_korban_kekerasan.tata,penilaian_korban_kekerasan.konsulrujuk,dokter.nm_dokter "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.nip,pegawai.nama,penilaian_korban_kekerasan.tanggal, "+
+                        "penilaian_korban_kekerasan.informasi,penilaian_korban_kekerasan.hubungan_dengan_pasien,penilaian_korban_kekerasan.jumlah_saudara,penilaian_korban_kekerasan.kondisi_keluaga,penilaian_korban_kekerasan.hubungan_orang_terdekat,"+
+                        "penilaian_korban_kekerasan.kekerasan_yang_dialami,penilaian_korban_kekerasan.tempat_kejadian,penilaian_korban_kekerasan.lama_kekerasan,penilaian_korban_kekerasan.periode_kekerasan,penilaian_korban_kekerasan.seberapa_sering_mengalami,"+
+                        "penilaian_korban_kekerasan.pemicu_kekerasan,penilaian_korban_kekerasan.yang_melakukan_kekerasan,penilaian_korban_kekerasan.dampak_kekerasan,penilaian_korban_kekerasan.tanda_tanda_didapatkan,penilaian_korban_kekerasan.memerlukan_pendampingan,"+
+                        "penilaian_korban_kekerasan.riwayat_kelainan,penilaian_korban_kekerasan.pemeriksaan_kepala,penilaian_korban_kekerasan.pemeriksaan_thoraks,penilaian_korban_kekerasan.pemeriksaan_leher,penilaian_korban_kekerasan.pemeriksaan_abdomen,"+
+                        "penilaian_korban_kekerasan.pemeriksaan_genitalia,penilaian_korban_kekerasan.pemeriksaan_ekstrimitas_atas,penilaian_korban_kekerasan.pemeriksaan_ekstrimitas_bawah,penilaian_korban_kekerasan.pemeriksaan_anus "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_korban_kekerasan on reg_periksa.no_rawat=penilaian_korban_kekerasan.no_rawat "+
-                        "inner join dokter on penilaian_korban_kekerasan.kd_dokter=dokter.kd_dokter where "+
+                        "inner join pegawai on penilaian_korban_kekerasan.nip=pegawai.nik where "+
                         "penilaian_korban_kekerasan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_korban_kekerasan.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_korban_kekerasan.tanggal");
+                        "penilaian_korban_kekerasan.nip like ? or pegawai.nama like ?) order by penilaian_korban_kekerasan.tanggal");
             }
                 
             try {
@@ -1846,11 +1841,12 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpk"),rs.getString("rpo"),rs.getString("alergi"),
-                        rs.getString("keadaan"),rs.getString("gcs"),rs.getString("kesadaran"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),rs.getString("spo"),rs.getString("bb"),
-                        rs.getString("tb"),rs.getString("kepala"),rs.getString("gigi"),rs.getString("tht"),rs.getString("thoraks"),rs.getString("abdomen"),rs.getString("genital"),rs.getString("ekstremitas"),
-                        rs.getString("kulit"),rs.getString("ket_fisik"),rs.getString("ket_lokalis"),rs.getString("penunjang"),rs.getString("diagnosis"),rs.getString("tata"),rs.getString("konsulrujuk")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("informasi"),rs.getString("hubungan_dengan_pasien"),rs.getString("jumlah_saudara"),rs.getString("kondisi_keluaga"),rs.getString("hubungan_orang_terdekat"),
+                        rs.getString("kekerasan_yang_dialami"),rs.getString("tempat_kejadian"),rs.getString("lama_kekerasan"),rs.getString("periode_kekerasan"),rs.getString("seberapa_sering_mengalami"),
+                        rs.getString("pemicu_kekerasan"),rs.getString("yang_melakukan_kekerasan"),rs.getString("dampak_kekerasan"),rs.getString("tanda_tanda_didapatkan"),rs.getString("memerlukan_pendampingan"),
+                        rs.getString("riwayat_kelainan"),rs.getString("pemeriksaan_kepala"),rs.getString("pemeriksaan_thoraks"),rs.getString("pemeriksaan_leher"),rs.getString("pemeriksaan_abdomen"),
+                        rs.getString("pemeriksaan_genitalia"),rs.getString("pemeriksaan_ekstrimitas_atas"),rs.getString("pemeriksaan_ekstrimitas_bawah"),rs.getString("pemeriksaan_anus")
                     });
                 }
             } catch (Exception e) {
@@ -1871,10 +1867,31 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
+        TglAsuhan.setDate(new Date());
         Anamnesis.setSelectedIndex(0);
         Hubungan.setText("");
+        JumlahSaudara.setText("");
+        KondisiKeluargaInti.setSelectedIndex(0);
+        HubunganOrangTerdekat.setSelectedIndex(0);
         KekerasanYangDialami.setText("");
-        TglAsuhan.setDate(new Date());
+        TempatKejadian.setText("");
+        LamaKekerasan.setText("");
+        PeriodeKekerasan.setSelectedIndex(0);
+        SeberapaSeringPenganiayaan.setText("");
+        PemicuKekerasan.setText("");
+        SiapaYangMelakukanKekerasan.setText("");
+        DampakYangTerjadi.setText("");
+        TandaYangDidapatkan.setText("");
+        MemerlukanPendampingan.setSelectedIndex(0);
+        RiwayatKelainan.setText("");
+        PemeriksaanKepala.setText("");
+        PemeriksaanLeher.setText("");
+        PemeriksaanThoraks.setText("");
+        PemeriksaanAbdomen.setText("");
+        PemeriksaanGenitalia.setText("");
+        PemeriksaanEkstrimitasAtas.setText("");
+        PemeriksaanEkstrimitasBawah.setText("");
+        PemeriksaanAnus.setText("");
         TabRawat.setSelectedIndex(0);
         Anamnesis.requestFocus();
     } 
@@ -1961,7 +1978,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penilaian_korban_kekerasan","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpk=?,rpd=?,rpo=?,alergi=?,keadaan=?,gcs=?,kesadaran=?,td=?,nadi=?,rr=?,suhu=?,spo=?,bb=?,tb=?,kepala=?,gigi=?,tht=?,thoraks=?,abdomen=?,genital=?,ekstremitas=?,kulit=?,ket_fisik=?,ket_lokalis=?,penunjang=?,diagnosis=?,tata=?,konsulrujuk=?",36,new String[]{
+        /*if(Sequel.mengedittf("penilaian_korban_kekerasan","no_rawat=?","no_rawat=?,tanggal=?,nip=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpk=?,rpd=?,rpo=?,alergi=?,keadaan=?,gcs=?,kesadaran=?,td=?,nadi=?,rr=?,suhu=?,spo=?,bb=?,tb=?,kepala=?,gigi=?,tht=?,thoraks=?,abdomen=?,genital=?,ekstremitas=?,kulit=?,ket_fisik=?,ket_lokalis=?,penunjang=?,diagnosis=?,tata=?,konsulrujuk=?",36,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),GCS.getText(),Kesadaran.getSelectedItem().toString(),TD.getText(),Nadi.getText(),
                 RR.getText(),Suhu.getText(),SPO.getText(),BB.getText(),TB.getText(),Kepala.getSelectedItem().toString(),Gigi.getSelectedItem().toString(),THT.getSelectedItem().toString(),Thoraks.getSelectedItem().toString(),Abdomen.getSelectedItem().toString(),Genital.getSelectedItem().toString(),Ekstremitas.getSelectedItem().toString(),Kulit.getSelectedItem().toString(),KetFisik.getText(),KetLokalis.getText(),
                 Penunjang.getText(),Diagnosis.getText(),Tatalaksana.getText(),Konsul.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
