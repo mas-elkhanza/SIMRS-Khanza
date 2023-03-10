@@ -248,7 +248,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianKorbanKekerasan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -351,19 +351,19 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianMedis.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Medis");
-        MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
+        MnPenilaianKorbanKekerasan.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianKorbanKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianKorbanKekerasan.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianKorbanKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianKorbanKekerasan.setText("Laporan Penilaian Korban Kekerasan");
+        MnPenilaianKorbanKekerasan.setName("MnPenilaianKorbanKekerasan"); // NOI18N
+        MnPenilaianKorbanKekerasan.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnPenilaianKorbanKekerasan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianMedisActionPerformed(evt);
+                MnPenilaianKorbanKekerasanActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianMedis);
+        jPopupMenu1.add(MnPenilaianKorbanKekerasan);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1577,7 +1577,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         Valid.pindah(evt,Anamnesis,JumlahSaudara);
     }//GEN-LAST:event_HubunganKeyPressed
 
-    private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
+    private void MnPenilaianKorbanKekerasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianKorbanKekerasanActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1591,17 +1591,18 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalan.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.tanggal,"+
-                "penilaian_korban_kekerasan.nip,penilaian_korban_kekerasan.anamnesis,penilaian_korban_kekerasan.hubungan,penilaian_korban_kekerasan.keluhan_utama,penilaian_korban_kekerasan.rps,penilaian_korban_kekerasan.rpk,penilaian_korban_kekerasan.rpd,penilaian_korban_kekerasan.rpo,penilaian_korban_kekerasan.alergi,"+
-                "penilaian_korban_kekerasan.keadaan,penilaian_korban_kekerasan.gcs,penilaian_korban_kekerasan.kesadaran,penilaian_korban_kekerasan.td,penilaian_korban_kekerasan.nadi,penilaian_korban_kekerasan.rr,penilaian_korban_kekerasan.suhu,penilaian_korban_kekerasan.spo,penilaian_korban_kekerasan.bb,penilaian_korban_kekerasan.tb,"+
-                "penilaian_korban_kekerasan.kepala,penilaian_korban_kekerasan.gigi,penilaian_korban_kekerasan.tht,penilaian_korban_kekerasan.thoraks,penilaian_korban_kekerasan.abdomen,penilaian_korban_kekerasan.ekstremitas,penilaian_korban_kekerasan.genital,penilaian_korban_kekerasan.kulit,"+
-                "penilaian_korban_kekerasan.ket_fisik,penilaian_korban_kekerasan.ket_lokalis,penilaian_korban_kekerasan.penunjang,penilaian_korban_kekerasan.diagnosis,penilaian_korban_kekerasan.tata,penilaian_korban_kekerasan.konsulrujuk,pegawai.nama "+
+            Valid.MyReportqry("rptFormulirPenilaianKorbanKekerasan.jasper","report","::[ Formulir Penilaian Korban Kekerasan ]::",
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.nip,pegawai.nama,penilaian_korban_kekerasan.tanggal, "+
+                "penilaian_korban_kekerasan.informasi,penilaian_korban_kekerasan.hubungan_dengan_pasien,penilaian_korban_kekerasan.jumlah_saudara,penilaian_korban_kekerasan.kondisi_keluaga,penilaian_korban_kekerasan.hubungan_orang_terdekat,"+
+                "penilaian_korban_kekerasan.kekerasan_yang_dialami,penilaian_korban_kekerasan.tempat_kejadian,penilaian_korban_kekerasan.lama_kekerasan,penilaian_korban_kekerasan.periode_kekerasan,penilaian_korban_kekerasan.seberapa_sering_mengalami,"+
+                "penilaian_korban_kekerasan.pemicu_kekerasan,penilaian_korban_kekerasan.yang_melakukan_kekerasan,penilaian_korban_kekerasan.dampak_kekerasan,penilaian_korban_kekerasan.tanda_tanda_didapatkan,penilaian_korban_kekerasan.memerlukan_pendampingan,"+
+                "penilaian_korban_kekerasan.riwayat_kelainan,penilaian_korban_kekerasan.pemeriksaan_kepala,penilaian_korban_kekerasan.pemeriksaan_thoraks,penilaian_korban_kekerasan.pemeriksaan_leher,penilaian_korban_kekerasan.pemeriksaan_abdomen,"+
+                "penilaian_korban_kekerasan.pemeriksaan_genitalia,penilaian_korban_kekerasan.pemeriksaan_ekstrimitas_atas,penilaian_korban_kekerasan.pemeriksaan_ekstrimitas_bawah,penilaian_korban_kekerasan.pemeriksaan_anus "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_korban_kekerasan on reg_periksa.no_rawat=penilaian_korban_kekerasan.no_rawat "+
                 "inner join pegawai on penilaian_korban_kekerasan.nip=pegawai.nik where penilaian_korban_kekerasan.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianMedisActionPerformed
+    }//GEN-LAST:event_MnPenilaianKorbanKekerasanActionPerformed
 
     private void HubunganOrangTerdekatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganOrangTerdekatKeyPressed
         Valid.pindah(evt,KondisiKeluargaInti,KekerasanYangDialami);
@@ -1709,7 +1710,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
     private widget.TextBox LamaKekerasan;
     private widget.editorpane LoadHTML;
     private widget.ComboBox MemerlukanPendampingan;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private javax.swing.JMenuItem MnPenilaianKorbanKekerasan;
     private widget.TextBox NmDokter;
     private usu.widget.glass.PanelGlass PanelWall1;
     private widget.TextBox PemeriksaanAbdomen;
