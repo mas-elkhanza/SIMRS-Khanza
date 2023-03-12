@@ -5022,6 +5022,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                      }
                  }
             } 
+            LCount.setText(""+tabMode.getRowCount());
             break;
         case 2:
             for(z=0;z<tbPasien2.getRowCount();z++){ 
@@ -5032,6 +5033,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                      }
                  }
             } 
+            LCount.setText(""+tabMode2.getRowCount());
             break;
         case 3:
             for(z=0;z<tbPasien3.getRowCount();z++){ 
@@ -5042,6 +5044,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                      }
                  }
             } 
+            LCount.setText(""+tabMode3.getRowCount());
             break;
         default:
             break;
