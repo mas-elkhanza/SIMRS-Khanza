@@ -5016,26 +5016,32 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         case 1:
             for(z=0;z<tbPasien.getRowCount();z++){ 
                  if(tbPasien.getValueAt(z,0).toString().equals("true")){
-                     Sequel.meghapus("pasien","no_rkm_medis",tbPasien.getValueAt(z,1).toString());
+                     if(Sequel.meghapustf("pasien","no_rkm_medis",tbPasien.getValueAt(z,1).toString())==true){
+                        tabMode.removeRow(z);
+                        z--;
+                     }
                  }
             } 
-            tampil();
             break;
         case 2:
             for(z=0;z<tbPasien2.getRowCount();z++){ 
                  if(tbPasien2.getValueAt(z,0).toString().equals("true")){
-                     Sequel.meghapus("pasien","no_rkm_medis",tbPasien2.getValueAt(z,1).toString());
+                     if(Sequel.meghapustf("pasien","no_rkm_medis",tbPasien2.getValueAt(z,1).toString())==true){
+                         tabMode2.removeRow(z);
+                         z--;
+                     }
                  }
             } 
-            tampiltni();
             break;
         case 3:
             for(z=0;z<tbPasien3.getRowCount();z++){ 
                  if(tbPasien3.getValueAt(z,0).toString().equals("true")){
-                     Sequel.meghapus("pasien","no_rkm_medis",tbPasien3.getValueAt(z,1).toString());
+                     if(Sequel.meghapustf("pasien","no_rkm_medis",tbPasien3.getValueAt(z,1).toString())==true){
+                         tabMode3.removeRow(z);
+                         z--;
+                     }
                  }
             } 
-            tampilpolri();
             break;
         default:
             break;

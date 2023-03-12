@@ -6496,6 +6496,7 @@ public final class DlgReg extends javax.swing.JDialog {
             if(tbPetugas.getValueAt(i,0).toString().equals("true")){
                 if(Sequel.meghapustf("reg_periksa","no_rawat",tbPetugas.getValueAt(i,2).toString())==true){
                     tabMode.removeRow(i);
+                    i--;
                 }
             }
         }

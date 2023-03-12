@@ -5020,6 +5020,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         if(tbRawatDr.getValueAt(i,0).toString().equals("true")){                            
                             if(Sequel.cariRegistrasi(tbRawatDr.getValueAt(i,1).toString())>0){
                                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                tbRawatDr.setValueAt(false,i,0);
                                 TCari.requestFocus();
                             }else{
                                 if(Sequel.queryutf("delete from rawat_jl_dr where no_rawat='"+tbRawatDr.getValueAt(i,1).toString()+
@@ -5071,7 +5072,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                       
                     if(sukses==true){
                         Sequel.Commit();
-                        tampilDr();
+                        for(i=0;i<tbRawatDr.getRowCount();i++){
+                            if(tbRawatDr.getValueAt(i,0).toString().equals("true")){ 
+                                tabModeDr.removeRow(i);
+                                i--;
+                            }
+                        }
                     }else{
                         sukses=false;
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -5091,6 +5097,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         if(tbRawatPr.getValueAt(i,0).toString().equals("true")){
                             if(Sequel.cariRegistrasi(tbRawatPr.getValueAt(i,1).toString())>0){
                                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                tbRawatPr.setValueAt(false,i,0);
                                 TCari.requestFocus();
                             }else{
                                 if(Sequel.queryutf("delete from rawat_jl_pr where no_rawat='"+tbRawatPr.getValueAt(i,1).toString()+
@@ -5142,7 +5149,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         
                     if(sukses==true){
                         Sequel.Commit();
-                        tampilPr();
+                        for(i=0;i<tbRawatPr.getRowCount();i++){
+                            if(tbRawatPr.getValueAt(i,0).toString().equals("true")){ 
+                                tabModePr.removeRow(i);
+                                i--;
+                            }
+                        }
                     }else{
                         sukses=false;
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -5162,6 +5174,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         if(tbRawatDrPr.getValueAt(i,0).toString().equals("true")){                            
                             if(Sequel.cariRegistrasi(tbRawatDrPr.getValueAt(i,1).toString())>0){
                                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                tbRawatDrPr.setValueAt(false,i,0);
                                 TCari.requestFocus();
                             }else{
                                 if(Sequel.queryutf("delete from rawat_jl_drpr where no_rawat='"+tbRawatDrPr.getValueAt(i,1).toString()+
@@ -5219,7 +5232,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         
                     if(sukses==true){
                         Sequel.Commit();
-                        tampilDrPr();
+                        for(i=0;i<tbRawatDrPr.getRowCount();i++){
+                            if(tbRawatDrPr.getValueAt(i,0).toString().equals("true")){ 
+                                tabModeDrPr.removeRow(i);
+                                i--;
+                            }
+                        }
                     }else{
                         sukses=false;
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -5238,18 +5256,21 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 Sequel.queryu("delete from pemeriksaan_ralan where no_rawat='"+tbPemeriksaan.getValueAt(i,1).toString()+
                                         "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(i,4).toString()+
                                         "' and jam_rawat='"+tbPemeriksaan.getValueAt(i,5).toString()+"' ");
+                                tabModePemeriksaan.removeRow(i);
+                                i--;
                             }else{
                                 if(akses.getkode().equals(tbPemeriksaan.getValueAt(i,23).toString())){
                                     Sequel.queryu("delete from pemeriksaan_ralan where no_rawat='"+tbPemeriksaan.getValueAt(i,1).toString()+
                                             "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(i,4).toString()+
                                             "' and jam_rawat='"+tbPemeriksaan.getValueAt(i,5).toString()+"' ");
+                                    tabModePemeriksaan.removeRow(i);
+                                    i--;
                                 }else{
                                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh dokter/petugas yang bersangkutan..!!");
                                 }
                             }
                         }
                     }
-                    tampilPemeriksaan();
                 }   break;
             case 4:
                 if(tabModeObstetri.getRowCount()==0){
@@ -5261,9 +5282,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             Sequel.queryu("delete from pemeriksaan_obstetri_ralan where no_rawat='"+tbPemeriksaanObstetri.getValueAt(i,1).toString()+
                                     "' and tgl_perawatan='"+tbPemeriksaanObstetri.getValueAt(i,4).toString()+
                                     "' and jam_rawat='"+tbPemeriksaanObstetri.getValueAt(i,5).toString()+"' ");
+                            tabModeObstetri.removeRow(i);
+                            i--;
                         }
                     }
-                    tampilPemeriksaanObstetri();
                 }   break;
             case 5:
                 if(tabModeGinekologi.getRowCount()==0){
@@ -5275,9 +5297,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             Sequel.queryu("delete from pemeriksaan_ginekologi_ralan where no_rawat='"+tbPemeriksaanGinekologi.getValueAt(i,1).toString()+
                                     "' and tgl_perawatan='"+tbPemeriksaanGinekologi.getValueAt(i,4).toString()+
                                     "' and jam_rawat='"+tbPemeriksaanGinekologi.getValueAt(i,5).toString()+"' ");
+                            tabModeGinekologi.removeRow(i);
+                            i--;
                         }
                     }
-                    tampilPemeriksaanGinekologi();
                 }   break;
             case 6:
                 panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
@@ -5295,9 +5318,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                     "' and tanggal='"+tbCatatan.getValueAt(i,4).toString()+
                                     "' and jam='"+tbCatatan.getValueAt(i,5).toString()+
                                     "' and kd_dokter='"+tbCatatan.getValueAt(i,6).toString()+"' ");
+                            TabModeCatatan.removeRow(i);
+                            i--;
                         }
                     }
-                    tampilCatatan();
                 }   break;
             default:
                 break;
