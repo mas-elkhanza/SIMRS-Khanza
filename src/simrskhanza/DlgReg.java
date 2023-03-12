@@ -7538,6 +7538,7 @@ public final class DlgReg extends javax.swing.JDialog {
                                         }
                                     }
                                     emptTeks();
+                                    LCount.setText(""+tabMode.getRowCount());
                                 }
                             }else{
                                 JOptionPane.showMessageDialog(rootPane,"Tidak bisa digabung karena No.RM berbeda");

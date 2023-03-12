@@ -4838,6 +4838,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                         TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
                                         TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");SpO2.setText("");
                                         TEvaluasi.setText("");cmbKesadaran.setSelectedIndex(0);
+                                        LCount.setText(""+tabModePemeriksaan.getRowCount());
                                 }
                             }else{
                                 if(akses.getkode().equals(KdPeg.getText())){
@@ -4857,6 +4858,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                             TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
                                             TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");SpO2.setText("");
                                             TEvaluasi.setText("");cmbKesadaran.setSelectedIndex(0);
+                                            LCount.setText(""+tabModePemeriksaan.getRowCount());
                                     }
                                 }else{
                                     JOptionPane.showMessageDialog(null,"Hanya bisa disimpan oleh dokter/petugas yang bersangkutan..!!");
@@ -4891,6 +4893,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 cmbAlbus.setSelectedIndex(0);TVulva.setText("");TPortio.setText("");cmbDalam.setSelectedIndex(0);TTebal.setText("");
                                 cmbArah.setSelectedIndex(0);TPembukaan.setText("");TPenurunan.setText("");TDenominator.setText("");cmbKetuban.setSelectedIndex(0);
                                 cmbFeto.getSelectedItem().toString();
+                                LCount.setText(""+tabModeObstetri.getRowCount());
                         }
                     }  
                     break;
@@ -4922,6 +4925,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 TBentuk.setText(""); TCavumUteri.setText(""); cmbMobilitas.setSelectedIndex(0);
                                 TUkuran.setText(""); cmbNyeriTekan.setSelectedIndex(0);
                                 TAdnexaKanan.setText(""); TAdnexaKiri.setText(""); TCavumDouglas.getText();
+                                LCount.setText(""+tabModeGinekologi.getRowCount());
                         }
                     }
                     break;
@@ -4940,6 +4944,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             TabModeCatatan.addRow(new Object[]{
                                 false,TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),KdDok3.getText(),TDokter3.getText(),Catatan.getText()
                             });
+                            Catatan.setText("");
+                            LCount.setText(""+TabModeCatatan.getRowCount());
                         }
                     }
                     break;
