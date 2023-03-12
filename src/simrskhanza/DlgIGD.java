@@ -4651,7 +4651,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                 tabMode.addRow(new Object[] {
                     false,TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
                     KdDokter.getText(),TDokter.getText(),TNoRM.getText(),TPasien.getText(),JK.getText(),umur+" "+sttsumur,"IGD",TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),biaya+"",
-                    status,nmpnj.getText(),"Belum",kdpnj.getText(),"Belum Bayar"
+                    TStatus.getText(),nmpnj.getText(),"Belum",kdpnj.getText(),"Belum Bayar"
                 });
                 emptTeks(); 
             }
@@ -4842,7 +4842,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                             tabMode.setValueAt(TAlmt.getText(),tbPetugas.getSelectedRow(),13);
                             tabMode.setValueAt(THbngn.getText(),tbPetugas.getSelectedRow(),14);
                             tabMode.setValueAt(biaya+"",tbPetugas.getSelectedRow(),15);
-                            tabMode.setValueAt(status,tbPetugas.getSelectedRow(),16);
+                            tabMode.setValueAt(TStatus.getText(),tbPetugas.getSelectedRow(),16);
                             tabMode.setValueAt(nmpnj.getText(),tbPetugas.getSelectedRow(),17);
                             tabMode.setValueAt(kdpnj.getText(),tbPetugas.getSelectedRow(),19);
                             emptTeks();
