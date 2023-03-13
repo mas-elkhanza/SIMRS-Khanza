@@ -193,6 +193,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
+        JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -295,6 +296,9 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
         });
         jPopupMenu1.add(MnPenilaianLanjutanRisikoJatuh);
+
+        JK.setHighlighter(null);
+        JK.setName("JK"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -876,7 +880,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel229.setText("Transfer");
         jLabel229.setName("jLabel229"); // NOI18N
         FormInput.add(jLabel229);
-        jLabel229.setBounds(54, 230, 180, 23);
+        jLabel229.setBounds(55, 230, 180, 23);
 
         jLabel230.setText("Skala :");
         jLabel230.setName("jLabel230"); // NOI18N
@@ -913,7 +917,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel232.setText("Mobilitas");
         jLabel232.setName("jLabel232"); // NOI18N
         FormInput.add(jLabel232);
-        jLabel232.setBounds(54, 260, 180, 23);
+        jLabel232.setBounds(55, 260, 180, 23);
 
         jLabel233.setText("Skala :");
         jLabel233.setName("jLabel233"); // NOI18N
@@ -1503,6 +1507,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
     private widget.TextArea HasilSkrining;
+    private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.Label LCount;
     private widget.ComboBox Menit;
@@ -1648,7 +1653,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
                     ps.close();
                 }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -1706,8 +1711,29 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
     }
 
     private void isPsien() {
-        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
-        Sequel.cariIsi("select date_format(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TglLahir,TNoRM.getText());
+        try {
+            ps=koneksi.prepareStatement("select pasien.nm_pasien,pasien.jk,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir from pasien where pasien.no_rkm_medis=?");
+            try {
+                ps.setString(1,TNoRM.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    TPasien.setText(rs.getString("nm_pasien"));
+                    JK.setText(rs.getString("jk"));
+                    TglLahir.setText(rs.getString("lahir"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }finally {
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void setNoRm(String norwt, Date tgl2) {
@@ -1839,7 +1865,6 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         }
     }
     
-    @SuppressWarnings("empty-statement")
     private void isTotalResikoJatuh(){
         try {
             if((Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText()))<=3){
@@ -1847,7 +1872,6 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }else{
                 rlansia=7;
             }
-            
 
             NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+rlansia)+"");
             if(Integer.parseInt(NilaiResikoTotal.getText())<25){

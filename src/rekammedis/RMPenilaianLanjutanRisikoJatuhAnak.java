@@ -1858,6 +1858,7 @@ public final class RMPenilaianLanjutanRisikoJatuhAnak extends javax.swing.JDialo
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
             emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

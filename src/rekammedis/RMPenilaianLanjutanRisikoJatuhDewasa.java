@@ -1865,6 +1865,7 @@ public final class RMPenilaianLanjutanRisikoJatuhDewasa extends javax.swing.JDia
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
             emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
