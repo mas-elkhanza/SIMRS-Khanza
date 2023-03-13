@@ -13017,6 +13017,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 }else if(R3.isSelected()==true){
                                     form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
                                 }
+                                form.emptTeks();
                                 form.tampil();
                                 this.setCursor(Cursor.getDefaultCursor());
                             }else{
@@ -13049,7 +13050,8 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         form.setNoRm(norawat.getText(),DTPCari2.getDate());
                     }else if(R3.isSelected()==true){
                         form.setNoRm(norawat.getText(),DTPCari4.getDate());
-                    }   
+                    }  
+                    form.emptTeks();
                     form.tampil();
                     this.setCursor(Cursor.getDefaultCursor());
                 }
