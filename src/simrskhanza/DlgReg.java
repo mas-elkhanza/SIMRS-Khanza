@@ -6655,7 +6655,7 @@ public final class DlgReg extends javax.swing.JDialog {
                             tabMode.setValueAt(TPngJwb.getText(),tbPetugas.getSelectedRow(),13);
                             tabMode.setValueAt(TAlmt.getText(),tbPetugas.getSelectedRow(),14);
                             tabMode.setValueAt(THbngn.getText(),tbPetugas.getSelectedRow(),15);
-                            tabMode.setValueAt(TBiaya.getText(),tbPetugas.getSelectedRow(),16);
+                            tabMode.setValueAt(Valid.SetAngka(Double.parseDouble(TBiaya.getText())),tbPetugas.getSelectedRow(),16);
                             tabMode.setValueAt(TStatus.getText(),tbPetugas.getSelectedRow(),17);
                             tabMode.setValueAt(NoTelp.getText(),tbPetugas.getSelectedRow(),18);
                             tabMode.setValueAt(kdpoli.getText(),tbPetugas.getSelectedRow(),21);
@@ -14093,10 +14093,14 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(ChkTracker.isSelected()==true){
                 ctk();
             }
-            emptTeks(); 
             if(TabRawat.getSelectedIndex()==0){
-                tampil();
-            }                
+                tabMode.addRow(new Object[] {
+                    false,TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
+                    KdDokter.getText(),TDokter.getText(),TNoRM.getText(),TPasien.getText(),JK.getText(),umur+" "+sttsumur,TPoli.getText(),nmpnj.getText(),TPngJwb.getText(),TAlmt.getText(),
+                    THbngn.getText(),Valid.SetAngka(Double.parseDouble(TBiaya.getText())),TStatus.getText(),NoTelp.getText(),"Belum",status,kdpoli.getText(),kdpnj.getText(),"Belum Bayar"
+                });
+            } 
+            emptTeks();                
         }  
     }
 
