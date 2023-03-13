@@ -1044,6 +1044,7 @@ public final class RMPenilaianLanjutanRisikoJatuhAnak extends javax.swing.JDialo
                     SkalaResiko7.getSelectedItem().toString(),NilaiResiko7.getText(),NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }  
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed

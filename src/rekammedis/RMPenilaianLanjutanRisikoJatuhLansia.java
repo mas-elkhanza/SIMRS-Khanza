@@ -21,7 +21,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -737,7 +736,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel219.setText("Skala :");
         jLabel219.setName("jLabel219"); // NOI18N
         FormInput.add(jLabel219);
-        jLabel219.setBounds(250, 90, 80, 23);
+        jLabel219.setBounds(230, 90, 80, 23);
 
         SkalaResiko1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Pasien Datang Karena Jatuh", "Pasien Jatuh Dalam 2 Bulan Terakhir" }));
         SkalaResiko1.setName("SkalaResiko1"); // NOI18N
@@ -752,7 +751,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
         });
         FormInput.add(SkalaResiko1);
-        SkalaResiko1.setBounds(334, 90, 310, 23);
+        SkalaResiko1.setBounds(314, 90, 330, 23);
 
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
@@ -774,7 +773,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel221.setText("Skala :");
         jLabel221.setName("jLabel221"); // NOI18N
         FormInput.add(jLabel221);
-        jLabel221.setBounds(250, 120, 80, 23);
+        jLabel221.setBounds(230, 120, 80, 23);
 
         SkalaResiko2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Pasien Delirium", "Pasien Disorientasi", "Pasien Agitasi" }));
         SkalaResiko2.setName("SkalaResiko2"); // NOI18N
@@ -789,7 +788,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
         });
         FormInput.add(SkalaResiko2);
-        SkalaResiko2.setBounds(334, 120, 310, 23);
+        SkalaResiko2.setBounds(314, 120, 330, 23);
 
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
@@ -811,7 +810,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel224.setText("Skala :");
         jLabel224.setName("jLabel224"); // NOI18N
         FormInput.add(jLabel224);
-        jLabel224.setBounds(250, 150, 80, 23);
+        jLabel224.setBounds(230, 150, 80, 23);
 
         SkalaResiko3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Memakai Kaca Mata", "Penglihatan Kabur", "Memiliki Glukoma/Katarak/Degenerasi Makula" }));
         SkalaResiko3.setName("SkalaResiko3"); // NOI18N
@@ -826,7 +825,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
         });
         FormInput.add(SkalaResiko3);
-        SkalaResiko3.setBounds(334, 150, 310, 23);
+        SkalaResiko3.setBounds(314, 150, 330, 23);
 
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
@@ -848,7 +847,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel227.setText("Skala :");
         jLabel227.setName("jLabel227"); // NOI18N
         FormInput.add(jLabel227);
-        jLabel227.setBounds(250, 180, 80, 23);
+        jLabel227.setBounds(230, 180, 80, 23);
 
         SkalaResiko4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Prilaku Berkemih/Frekuensi/Urgensi/Incontinensia/Nokturia" }));
         SkalaResiko4.setName("SkalaResiko4"); // NOI18N
@@ -863,7 +862,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
         });
         FormInput.add(SkalaResiko4);
-        SkalaResiko4.setBounds(334, 180, 310, 23);
+        SkalaResiko4.setBounds(314, 180, 330, 23);
 
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
@@ -885,7 +884,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel230.setText("Skala :");
         jLabel230.setName("jLabel230"); // NOI18N
         FormInput.add(jLabel230);
-        jLabel230.setBounds(250, 230, 80, 23);
+        jLabel230.setBounds(230, 230, 80, 23);
 
         SkalaResiko5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Memerlukan Bantuan 1 Orang/Pengawasan", "Memerlukan Bantuan 2 Orang", "Memerlukan Bantuan Total" }));
         SkalaResiko5.setName("SkalaResiko5"); // NOI18N
@@ -900,7 +899,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
         });
         FormInput.add(SkalaResiko5);
-        SkalaResiko5.setBounds(334, 230, 310, 23);
+        SkalaResiko5.setBounds(314, 230, 330, 23);
 
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N
@@ -922,7 +921,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         jLabel233.setText("Skala :");
         jLabel233.setName("jLabel233"); // NOI18N
         FormInput.add(jLabel233);
-        jLabel233.setBounds(250, 260, 80, 23);
+        jLabel233.setBounds(230, 260, 80, 23);
 
         SkalaResiko6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Berjalan Dengan Bantuan 1 Orang", "Menggunakan Kursi Roda", "Imobilisasi" }));
         SkalaResiko6.setName("SkalaResiko6"); // NOI18N
@@ -937,7 +936,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
         });
         FormInput.add(SkalaResiko6);
-        SkalaResiko6.setBounds(334, 260, 310, 23);
+        SkalaResiko6.setBounds(314, 260, 330, 23);
 
         jLabel234.setText("Nilai :");
         jLabel234.setName("jLabel234"); // NOI18N
@@ -1082,8 +1081,14 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
                 SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
                 NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText()
             })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),
+                    SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
+                    NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),NamaPetugas.getText()
+                });
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }  
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1208,7 +1213,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
                     "penilaian_lanjutan_resiko_jatuh_lansia.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
                     "order by penilaian_lanjutan_resiko_jatuh_lansia.tanggal",param);
             }else{
-                Valid.MyReportqry("rptLanjutanRisikoJatuhLansua.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Lansia ]::",
+                Valid.MyReportqry("rptLanjutanRisikoJatuhLansia.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Lansia ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_lansia.tanggal,"+
                     "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai1,"+
                     "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai2,"+
@@ -1749,7 +1754,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>688){
+            if(internalFrame1.getHeight()>668){
                 ChkInput.setVisible(false);
                 PanelInput.setPreferredSize(new Dimension(WIDTH,486));
                 FormInput.setVisible(true);      
@@ -1839,27 +1844,51 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
     }
 
     private void ganti() {
-        Sequel.mengedit("penilaian_lanjutan_resiko_jatuh_lansia","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,"+
-            "penilaian_jatuhmorse_skala2=?,penilaian_jatuhmorse_nilai2=?,penilaian_jatuhmorse_skala3=?,penilaian_jatuhmorse_nilai3=?,penilaian_jatuhmorse_skala4=?,"+
-            "penilaian_jatuhmorse_nilai4=?,penilaian_jatuhmorse_skala5=?,penilaian_jatuhmorse_nilai5=?,penilaian_jatuhmorse_skala6=?,penilaian_jatuhmorse_nilai6=?,"+
-            "penilaian_jatuhmorse_totalnilai=?,hasil_skrining=?,saran=?,nip=?",20,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),
-            SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
-            SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
-            NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        });
-        if(tabMode.getRowCount()!=0){tampil();}
-        emptTeks();
+        if(Sequel.mengedittf("penilaian_lanjutan_resiko_jatuh_lansia","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,"+
+                "penilaian_jatuhmorse_skala2=?,penilaian_jatuhmorse_nilai2=?,penilaian_jatuhmorse_skala3=?,penilaian_jatuhmorse_nilai3=?,penilaian_jatuhmorse_skala4=?,"+
+                "penilaian_jatuhmorse_nilai4=?,penilaian_jatuhmorse_skala5=?,penilaian_jatuhmorse_nilai5=?,penilaian_jatuhmorse_skala6=?,penilaian_jatuhmorse_nilai6=?,"+
+                "penilaian_jatuhmorse_totalnilai=?,hasil_skrining=?,saran=?,nip=?",20,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),
+                SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
+                SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
+                NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            })==true){
+            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(SkalaResiko1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(NilaiResiko1.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(SkalaResiko2.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(NilaiResiko2.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(SkalaResiko3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(NilaiResiko3.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(SkalaResiko4.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(NilaiResiko4.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(SkalaResiko5.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(NilaiResiko5.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(SkalaResiko6.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(NilaiResiko6.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(NilaiResikoTotal.getText(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(Saran.getText(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),22);
+            emptTeks();
+        }
     }
 
     private void hapus() {
         if(Sequel.queryu2tf("delete from penilaian_lanjutan_resiko_jatuh_lansia where tanggal=? and no_rawat=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
             emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
@@ -1874,16 +1903,16 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             }
 
             NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+rlansia)+"");
-            if(Integer.parseInt(NilaiResikoTotal.getText())<25){
+            if(Integer.parseInt(NilaiResikoTotal.getText())<6){
                 TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-5), Tindakan : Intervensi pencegahan risiko jatuh standar");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())<45){
+            }else if(Integer.parseInt(NilaiResikoTotal.getText())<17){
                 TingkatResiko.setText("Tingkat Resiko : Risiko Sedang (6-16), Tindakan : Intervensi pencegahan risiko jatuh standar");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=45){
+            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=17){
                 TingkatResiko.setText("Tingkat Resiko : Risiko Tinggi (> 17), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
             }
         } catch (Exception e) {
             NilaiResikoTotal.setText("0");
-            TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-30), Tindakan : Intervensi pencegahan risiko jatuh standar");
+            TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-5), Tindakan : Intervensi pencegahan risiko jatuh standar");
         }
     } 
 }
