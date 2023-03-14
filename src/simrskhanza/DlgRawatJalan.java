@@ -5127,6 +5127,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 i--;
                             }
                         }
+                        LCount.setText(""+tabModeDr.getRowCount());
                     }else{
                         sukses=false;
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -5204,6 +5205,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 i--;
                             }
                         }
+                        LCount.setText(""+tabModePr.getRowCount());
                     }else{
                         sukses=false;
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -5287,6 +5289,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 i--;
                             }
                         }
+                        LCount.setText(""+tabModeDrPr.getRowCount());
                     }else{
                         sukses=false;
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -5320,6 +5323,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }
                     }
+                    LCount.setText(""+tabModePemeriksaan.getRowCount());
                 }   break;
             case 4:
                 if(tabModeObstetri.getRowCount()==0){
@@ -5335,6 +5339,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             i--;
                         }
                     }
+                    LCount.setText(""+tabModeObstetri.getRowCount());
                 }   break;
             case 5:
                 if(tabModeGinekologi.getRowCount()==0){
@@ -5350,6 +5355,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             i--;
                         }
                     }
+                    LCount.setText(""+tabModeGinekologi.getRowCount());
                 }   break;
             case 6:
                 panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
@@ -5371,6 +5377,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             i--;
                         }
                     }
+                    LCount.setText(""+TabModeCatatan.getRowCount());
                 }   break;
             default:
                 break;
