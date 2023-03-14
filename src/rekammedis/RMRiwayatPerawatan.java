@@ -15460,12 +15460,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center' valign='middle'></td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' align='justify' valign='middle' style='margin-left: 10px'>Transfer</td>"+
+                                    "<td valign='top' align='justify' valign='middle'>&nbsp;&nbsp;&nbsp;&nbsp;Transfer</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_skala5")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_nilai5")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' align='justify' valign='middle' style='margin-left: 10px'>Mobilitas</td>"+
+                                    "<td valign='top' align='justify' valign='middle'>&nbsp;&nbsp;&nbsp;&nbsp;Mobilitas</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_skala6")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhmorse_nilai6")+"</td>"+
                                  "</tr>"+
