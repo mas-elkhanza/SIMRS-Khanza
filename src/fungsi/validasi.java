@@ -432,8 +432,7 @@ public final class validasi {
         }else if(nilai_field.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! nilai_field.getText().trim().equals("")){            
-            sek.meghapus(table,field,nilai_field.getText());            
-            
+            sek.meghapus(table,field,nilai_field.getText());   
         }
     }
 

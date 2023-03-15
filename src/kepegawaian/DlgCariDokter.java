@@ -405,11 +405,12 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select kd_dokter,nm_dokter,jk,tmp_lahir, "+
-                "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
-                "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
+            ps=koneksi.prepareStatement(
+                "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir, "+
+                "dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
+                "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek "+
                 "from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps "+
-                "where status='1' order by nm_dokter");
+                "where dokter.status='1' order by dokter.nm_dokter");
             try{
                 rs=ps.executeQuery();
                 while(rs.next()){
