@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1290" pageHeight="612" orientation="Landscape" columnWidth="1250" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f92f69c-b7ef-4c40-8feb-4253834b38e2">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="105"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -20,117 +20,152 @@
 mpp_skrining.tanggal,mpp_skrining.param1,mpp_skrining.param2,mpp_skrining.param3,mpp_skrining.param3,
 mpp_skrining.param4,mpp_skrining.param5,mpp_skrining.param5,mpp_skrining.param6,mpp_skrining.param7,
 mpp_skrining.param8,mpp_skrining.param9,mpp_skrining.param10,mpp_skrining.param11,mpp_skrining.param12,
-mpp_skrining.param13,mpp_skrining.param14,mpp_skrining.param15,mpp_skrining.param16,mpp_skrining.nip,petugas.nama
+mpp_skrining.param13,mpp_skrining.param14,mpp_skrining.param15,mpp_skrining.param16,mpp_skrining.nip,pegawai.nama
 from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
 inner join mpp_skrining on reg_periksa.no_rawat=mpp_skrining.no_rawat 
-inner join petugas on mpp_skrining.nip=petugas.nip 
+inner join pegawai on mpp_skrining.nip=pegawai.nik 
 inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel 
 inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec 
 inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab 
 inner join propinsi on pasien.kd_prop=propinsi.kd_prop]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jk"/>
 		<property name="com.jaspersoft.studio.field.label" value="jk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
 	<field name="tgl_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
-	<field name="tanggal" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+	<field name="alamat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
+		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
 	</field>
-	<field name="alamat" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="antropometri_bb"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+	<field name="tanggal" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param1" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alergi_telur"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param1"/>
+		<property name="com.jaspersoft.studio.field.label" value="param1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param2" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alergi_susu_sapi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param2"/>
+		<property name="com.jaspersoft.studio.field.label" value="param2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param3" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alergi_kacang"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param3"/>
+		<property name="com.jaspersoft.studio.field.label" value="param3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
+	</field>
+	<field name="COLUMN_11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="param3"/>
+		<property name="com.jaspersoft.studio.field.label" value="param3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param4" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alergi_gluten"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param4"/>
+		<property name="com.jaspersoft.studio.field.label" value="param4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param5" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alergi_udang"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param5"/>
+		<property name="com.jaspersoft.studio.field.label" value="param5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
+	</field>
+	<field name="COLUMN_14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="param5"/>
+		<property name="com.jaspersoft.studio.field.label" value="param5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param6" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alergi_ikan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param6"/>
+		<property name="com.jaspersoft.studio.field.label" value="param6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param7" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="alergi_hazelnut"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param7"/>
+		<property name="com.jaspersoft.studio.field.label" value="param7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param8" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="pola_makan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param8"/>
+		<property name="com.jaspersoft.studio.field.label" value="param8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param9" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="riwayat_personal"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param9"/>
+		<property name="com.jaspersoft.studio.field.label" value="param9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param10" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="diagnosis"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param10"/>
+		<property name="com.jaspersoft.studio.field.label" value="param10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param11" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="intervensi_gizi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param11"/>
+		<property name="com.jaspersoft.studio.field.label" value="param11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param12" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="monitoring_evaluasi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param12"/>
+		<property name="com.jaspersoft.studio.field.label" value="param12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param13" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="monitoring_evaluasi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param13"/>
+		<property name="com.jaspersoft.studio.field.label" value="param13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param14" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="monitoring_evaluasi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param14"/>
+		<property name="com.jaspersoft.studio.field.label" value="param14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param15" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="monitoring_evaluasi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param15"/>
+		<property name="com.jaspersoft.studio.field.label" value="param15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="param16" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="monitoring_evaluasi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.name" value="param16"/>
+		<property name="com.jaspersoft.studio.field.label" value="param16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="nip" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nip"/>
 		<property name="com.jaspersoft.studio.field.label" value="nip"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="asuhan_gizi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mpp_skrining"/>
 	</field>
 	<field name="nama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
 		<property name="com.jaspersoft.studio.field.label" value="nama"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pegawai"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -445,7 +480,7 @@ inner join propinsi on pasien.kd_prop=propinsi.kd_prop]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="16" splitType="Stretch">
+		<band height="13" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="0" y="0" width="75" height="10" uuid="a12ab6eb-09bd-448e-a314-b92bb9ed0de0"/>
 				<textElement>
@@ -543,7 +578,7 @@ inner join propinsi on pasien.kd_prop=propinsi.kd_prop]]>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="1250" height="1" uuid="9c00d9cc-4fdd-479d-8215-f0ec6ade1e3c">
+				<reportElement positionType="Float" x="0" y="12" width="1250" height="1" uuid="9c00d9cc-4fdd-479d-8215-f0ec6ade1e3c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>

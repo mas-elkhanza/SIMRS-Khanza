@@ -350,9 +350,17 @@ public class DlgKelurahan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Nama,"kelurahan","nm_kel");
-        tampil();
-        emptTeks();
+        if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Kelurahan");
+        }else{
+            if(tbkelurahan.getSelectedRow()!= -1){
+                if(Sequel.meghapustf("kelurahan","nm_kel",tbkelurahan.getValueAt(tbkelurahan.getSelectedRow(),1).toString())==true){
+                    tabMode.removeRow(tbkelurahan.getSelectedRow());
+                    emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

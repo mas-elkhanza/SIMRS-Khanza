@@ -376,6 +376,20 @@ public final class validasi {
             sek.mengedit(table,field_acuan+"="+nilai_field, update,i,a);                 
         }
     }
+    
+    public boolean editTabletf(DefaultTableModel tabMode,String table,String field_acuan,String nilai_field,String update,int i, String[] a) {
+        boolean status=true;
+        if(tabMode.getRowCount()==0){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+        }else if(nilai_field.trim().equals("")){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+        }else if(! nilai_field.trim().equals("")){            
+            status=sek.mengedittf(table,field_acuan+"="+nilai_field, update,i,a);                 
+        }
+        return status;
+    }
 
     public void editTable(DefaultTableModel tabMode,String table,String field_acuan,JComboBox nilai_field,String update) {
         if(tabMode.getRowCount()==0){

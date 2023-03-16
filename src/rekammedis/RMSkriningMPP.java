@@ -286,6 +286,8 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         Param15Ya = new widget.RadioButton();
         Param16Ya = new widget.RadioButton();
         Param16Tidak = new widget.RadioButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -607,7 +609,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 525));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 539));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -641,7 +643,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label14);
-        label14.setBounds(0, 495, 85, 23);
+        label14.setBounds(0, 505, 85, 23);
 
         KdPetugas.setEditable(false);
         KdPetugas.setName("KdPetugas"); // NOI18N
@@ -652,13 +654,13 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             }
         });
         FormInput.add(KdPetugas);
-        KdPetugas.setBounds(89, 495, 130, 23);
+        KdPetugas.setBounds(89, 505, 130, 23);
 
         NmPetugas.setEditable(false);
         NmPetugas.setName("NmPetugas"); // NOI18N
         NmPetugas.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmPetugas);
-        NmPetugas.setBounds(221, 495, 360, 23);
+        NmPetugas.setBounds(221, 505, 360, 23);
 
         BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPetugas.setMnemonic('2');
@@ -676,7 +678,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnPetugas);
-        BtnPetugas.setBounds(585, 495, 28, 23);
+        BtnPetugas.setBounds(585, 505, 28, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -1136,6 +1138,20 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         FormInput.add(Param16Tidak);
         Param16Tidak.setBounds(720, 465, 60, 23);
 
+        jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator1.setName("jSeparator1"); // NOI18N
+        FormInput.add(jSeparator1);
+        jSeparator1.setBounds(0, 70, 795, 1);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 495, 795, 1);
+
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1152,7 +1168,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             isRawat();
             isPsien();
         }else{            
-            //Valid.pindah(evt,TCari,Kejadian);
+            Valid.pindah(evt,TCari,TglSkrining);
         }
 }//GEN-LAST:event_TNoRwKeyPressed
 
@@ -1765,6 +1781,8 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;
