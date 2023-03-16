@@ -747,6 +747,11 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
+        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabRawatMouseClicked(evt);
+            }
+        });
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
@@ -948,7 +953,11 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+       if(TabRawat.getSelectedIndex()==0){
+            tampil();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -966,7 +975,11 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         NmDiet.setText("");
         WaktuDiet2.setText("");
         JamDiet2.setText("");
-        tampil();
+        if(TabRawat.getSelectedIndex()==0){
+            tampil();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1147,6 +1160,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         // TODO add your handling code here:
     }//GEN-LAST:event_tbRekapDietKeyPressed
 
+    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
+        if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }
+    }//GEN-LAST:event_TabRawatMouseClicked
+
     /**
     * @param args the command line arguments
     */
@@ -1220,95 +1239,95 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {   
-        if(TabRawat.getSelectedIndex()==0){
-            try{
-                Valid.tabelKosong(tabMode);
-                ps=koneksi.prepareStatement(
-                    "select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),"+
-                    "detail_beri_diet.tanggal,detail_beri_diet.waktu,jam_diet_pasien.jam,diet.nama_diet,detail_beri_diet.kd_kamar,detail_beri_diet.kd_diet " +
-                    "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal inner join jam_diet_pasien " +
-                    "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
-                    "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
-                    "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "and detail_beri_diet.kd_diet=diet.kd_diet " +
-                    "and detail_beri_diet.waktu=jam_diet_pasien.waktu " +
-                    "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? "+
-                    (TCari.getText().trim().equals("")?"":"and (detail_beri_diet.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?) ")+
-                    "order by bangsal.nm_bangsal,diet.nama_diet");
-                try {
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(3,"%"+WaktuDiet2.getText().trim()+"%");
-                    ps.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
-                    if(!TCari.getText().trim().equals("")){
-                        ps.setString(5,"%"+TCari.getText().trim()+"%");
-                        ps.setString(6,"%"+TCari.getText().trim()+"%");
-                        ps.setString(7,"%"+TCari.getText().trim()+"%");
-                    }
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        tabMode.addRow(new String[]{
-                            rs.getString(1),rs.getString(2)+" "+rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                            Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc",rs.getString(1)),
-                            rs.getString("kd_kamar"),rs.getString("kd_diet")
-                        });
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }                
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
-            }
-            LCount.setText(""+tabMode.getRowCount());
-        }else if(TabRawat.getSelectedIndex()==1){
-            try{
-                Valid.tabelKosong(tabMode2);  
-                ps2=koneksi.prepareStatement("select diet.nama_diet, count(diet.nama_diet) as jumlah " +
-                    "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
-                    "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
-                    "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
-                    "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "and detail_beri_diet.kd_diet=diet.kd_diet " +
-                    "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? "+
-                    (TCari.getText().trim().equals("")?"":"and (detail_beri_diet.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?) ")+
-                    "group by diet.nama_diet order by bangsal.nm_bangsal,diet.nama_diet");
-                try {
-                    ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps2.setString(3,"%"+WaktuDiet2.getText().trim()+"%");
-                    ps2.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
-                    if(!TCari.getText().trim().equals("")){
-                        ps2.setString(5,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(6,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(7,"%"+TCari.getText().trim()+"%");
-                    }
-                    rs=ps2.executeQuery();
-                    i=1;
-                    while(rs.next()){
-                         tabMode2.addRow(new String[]{i+"",rs.getString(1),rs.getString(2)});i++;                   
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps2!=null){
-                        ps2.close();
-                    }
+        try{
+            Valid.tabelKosong(tabMode);
+            ps=koneksi.prepareStatement(
+                "select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),"+
+                "detail_beri_diet.tanggal,detail_beri_diet.waktu,jam_diet_pasien.jam,diet.nama_diet,detail_beri_diet.kd_kamar,detail_beri_diet.kd_diet " +
+                "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal inner join jam_diet_pasien " +
+                "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
+                "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
+                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "and detail_beri_diet.kd_diet=diet.kd_diet " +
+                "and detail_beri_diet.waktu=jam_diet_pasien.waktu " +
+                "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? "+
+                (TCari.getText().trim().equals("")?"":"and (detail_beri_diet.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?) ")+
+                "order by bangsal.nm_bangsal,diet.nama_diet");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(3,"%"+WaktuDiet2.getText().trim()+"%");
+                ps.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
                 }
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2)+" "+rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                        Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc",rs.getString(1)),
+                        rs.getString("kd_kamar"),rs.getString("kd_diet")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }   
+            LCount.setText(""+tabMode.getRowCount());
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void tampil2() {   
+        try{
+            Valid.tabelKosong(tabMode2);  
+            ps2=koneksi.prepareStatement("select diet.nama_diet, count(diet.nama_diet) as jumlah " +
+                "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
+                "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
+                "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
+                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "and detail_beri_diet.kd_diet=diet.kd_diet " +
+                "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? "+
+                (TCari.getText().trim().equals("")?"":"and (detail_beri_diet.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?) ")+
+                "group by diet.nama_diet order by bangsal.nm_bangsal,diet.nama_diet");
+            try {
+                ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps2.setString(3,"%"+WaktuDiet2.getText().trim()+"%");
+                ps2.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps2.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(7,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps2.executeQuery();
+                i=1;
+                while(rs.next()){
+                     tabMode2.addRow(new String[]{i+"",rs.getString(1),rs.getString(2)});i++;                   
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps2!=null){
+                    ps2.close();
+                }
             }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
     }
 

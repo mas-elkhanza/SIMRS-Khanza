@@ -225,7 +225,7 @@ public class DlgRBTindakanPoli extends javax.swing.JDialog {
             psdetailregistrasi=koneksi.prepareStatement(
                     "select sum(reg_periksa.biaya_reg) from reg_periksa where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.no_rawat=? and reg_periksa.kd_dokter=? "+
                     "and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_poli=?");
-            pscarabayar=koneksi.prepareStatement("select png_jawab from penjab where kd_pj=?");
+            pscarabayar=koneksi.prepareStatement("select penjab.png_jawab from penjab where penjab.kd_pj=?");
         } catch (Exception e) {
             System.out.println(e);
         }     

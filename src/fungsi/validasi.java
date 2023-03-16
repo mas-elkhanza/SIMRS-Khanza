@@ -70,6 +70,7 @@ public final class validasi {
     private PreparedStatement ps;
     private ResultSet rs;
     private File file;
+    private boolean status=true;
     private final Calendar now = Calendar.getInstance();
     private final int year=(now.get(Calendar.YEAR));
     private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
@@ -378,7 +379,7 @@ public final class validasi {
     }
     
     public boolean editTabletf(DefaultTableModel tabMode,String table,String field_acuan,String nilai_field,String update,int i, String[] a) {
-        boolean status=true;
+        status=true;
         if(tabMode.getRowCount()==0){
             status=false;
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
@@ -448,6 +449,21 @@ public final class validasi {
         }else if(! nilai_field.getText().trim().equals("")){            
             sek.meghapus(table,field,nilai_field.getText());   
         }
+    }
+    
+    public boolean hapusTabletf(DefaultTableModel tabMode,JTextField nilai_field,String table,String field) {
+        status=true;
+        if(tabMode.getRowCount()==0){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            nilai_field.requestFocus();
+        }else if(nilai_field.getText().trim().equals("")){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+        }else if(! nilai_field.getText().trim().equals("")){            
+            status=sek.meghapustf(table,field,nilai_field.getText());   
+        }
+        return status;
     }
 
     public void hapusTable(DefaultTableModel tabMode,JComboBox nilai_field,String table,String field) {

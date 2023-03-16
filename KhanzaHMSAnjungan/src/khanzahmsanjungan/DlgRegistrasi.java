@@ -894,7 +894,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
                     }
                 }
                 KdBayar.setText(rs.getString("kd_pj"));
-                NmBayar.setText(Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",KdBayar.getText()));
+                NmBayar.setText(Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",KdBayar.getText()));
             }
         } catch (Exception e) {
             System.out.println("Notifikasi a : "+e);

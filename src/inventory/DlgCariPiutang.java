@@ -1330,7 +1330,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("penanggung",Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())));
+                    param.put("penanggung",Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())));
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("norawat",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
                     nomorrm=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
@@ -1401,7 +1401,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("penanggung",Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())));
+                    param.put("penanggung",Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())));
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("norawat",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
                     mem=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
