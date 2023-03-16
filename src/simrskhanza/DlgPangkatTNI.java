@@ -354,9 +354,13 @@ public class DlgPangkatTNI extends javax.swing.JDialog {
         if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Pangkat TNI");
         }else{
-            Sequel.meghapus("pangkat_tni","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString());  
-            tampil();
-            emptTeks();
+            if(tbkecamatan.getSelectedRow()!= -1){
+                if(Sequel.meghapustf("pangkat_tni","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString())==true){
+                    tabMode.removeRow(tbkecamatan.getSelectedRow());
+                    emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }
         }
             
 }//GEN-LAST:event_BtnHapusActionPerformed
