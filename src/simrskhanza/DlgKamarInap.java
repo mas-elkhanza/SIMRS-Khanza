@@ -6524,13 +6524,12 @@ private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                                 rawatinap.emptTeks(); 
                                 rawatinap.isCek();
                                 if(R1.isSelected()==true){
-                                    rawatinap.setNoRm(rs2.getString("no_rawat2"),new Date(),new Date());
+                                    rawatinap.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien"),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,19).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,9).toString(),new Date(),new Date());
                                 }else if(R2.isSelected()==true){
-                                    rawatinap.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),DTPCari2.getDate());
+                                    rawatinap.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien"),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,19).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,9).toString(),DTPCari1.getDate(),DTPCari2.getDate());
                                 }else if(R3.isSelected()==true){
-                                    rawatinap.setNoRm(rs2.getString("no_rawat2"),DTPCari3.getDate(),DTPCari4.getDate());
+                                    rawatinap.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien"),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,19).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,9).toString(),DTPCari3.getDate(),DTPCari4.getDate());
                                 }   
-                                rawatinap.tampil();
                                 rawatinap.setVisible(true);
                             }else{
                                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -6556,13 +6555,12 @@ private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     rawatinap.emptTeks(); 
                     rawatinap.isCek();
                     if(R1.isSelected()==true){
-                        rawatinap.setNoRm(norawat.getText(),new Date(),new Date());
+                        rawatinap.setNoRm(TNoRwCari.getText(),TNoRMCari.getText()+" "+TPasienCari.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),9).toString(),new Date(),new Date());
                     }else if(R2.isSelected()==true){
-                        rawatinap.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                        rawatinap.setNoRm(TNoRwCari.getText(),TNoRMCari.getText()+" "+TPasienCari.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),9).toString(),DTPCari1.getDate(),DTPCari2.getDate());
                     }else if(R3.isSelected()==true){
-                        rawatinap.setNoRm(norawat.getText(),DTPCari3.getDate(),DTPCari4.getDate());
+                        rawatinap.setNoRm(TNoRwCari.getText(),TNoRMCari.getText()+" "+TPasienCari.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),7).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),9).toString(),DTPCari3.getDate(),DTPCari4.getDate());
                     }
-                    rawatinap.tampil();
                     rawatinap.setVisible(true);
                 }
             }
