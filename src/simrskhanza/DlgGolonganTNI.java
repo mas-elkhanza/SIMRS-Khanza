@@ -361,8 +361,7 @@ public class DlgGolonganTNI extends javax.swing.JDialog {
                     LCount.setText(""+tabMode.getRowCount());
                 }
             } 
-        }
-            
+        }   
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

@@ -350,9 +350,17 @@ public class DlgKabupaten extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Nama,"kabupaten","nm_kab");
-        tampil();
-        emptTeks();
+        if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Kabupaten");
+        }else{
+            if(tbkabupaten.getSelectedRow()!= -1){
+                if(Sequel.meghapustf("kabupaten","nm_kab",tbkabupaten.getValueAt(tbkabupaten.getSelectedRow(),1).toString())==true){
+                    tabMode.removeRow(tbkabupaten.getSelectedRow());
+                    emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
