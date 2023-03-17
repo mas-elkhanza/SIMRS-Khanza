@@ -2881,7 +2881,8 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
                 Valid.tabelKosong(tabModeDetailMasalah);
                 ChkAccor.setSelected(false);
                 isMenu();
-                tampil();
+                tabMode.removeRow(tbObat.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

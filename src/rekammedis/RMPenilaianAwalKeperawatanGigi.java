@@ -4280,7 +4280,8 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         Valid.tabelKosong(tabModeDetailRencana);
         ChkAccor.setSelected(false);
         isMenu();
-        tampil();
+        tabMode.removeRow(tbObat.getSelectedRow());
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     private void ganti() {

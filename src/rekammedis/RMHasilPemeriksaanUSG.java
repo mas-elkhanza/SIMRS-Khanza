@@ -2006,7 +2006,8 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         if(Sequel.queryu2tf("delete from hasil_pemeriksaan_usg where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

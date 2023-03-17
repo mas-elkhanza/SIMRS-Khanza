@@ -350,9 +350,13 @@ public class DlgPropinsi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Nama,"propinsi","nm_prop");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,Nama,"propinsi","nm_prop")==true){
+            if(tbpropinsi.getSelectedRow()!= -1){
+                tabMode.removeRow(tbpropinsi.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

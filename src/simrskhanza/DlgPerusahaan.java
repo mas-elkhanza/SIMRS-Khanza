@@ -546,9 +546,13 @@ public class DlgPerusahaan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kd,"perusahaan_pasien","kode_perusahaan");
-            tampil();
-            emptTeks();
+            if(Valid.hapusTabletf(tabMode,Kd,"perusahaan_pasien","kode_perusahaan")==true){
+                if(tbDokter.getSelectedRow()!= -1){
+                    tabMode.removeRow(tbDokter.getSelectedRow());
+                    LCount.setText(""+tabMode.getRowCount());
+                    emptTeks();
+                }
+            }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

@@ -203,7 +203,7 @@ public final class akses {
             rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false,grafik_limbahb3cair_pertanggal=false,
             grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false,konfirmasi_rekonsiliasi_obat=false,satu_sehat_kirim_clinicalimpression=false,
             penilaian_pasien_terminal=false,surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false,penilaian_korban_kekerasan=false,
-            penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false;
+            penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1157,6 +1157,7 @@ public final class akses {
                         akses.penilaian_korban_kekerasan=true;
                         akses.penilaian_lanjutan_resiko_jatuh_lansia=true;
                         akses.mpp_skrining=true;
+                        akses.penilaian_pasien_penyakit_menular=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2094,6 +2095,7 @@ public final class akses {
                         akses.penilaian_korban_kekerasan=rs2.getBoolean("penilaian_korban_kekerasan");
                         akses.penilaian_lanjutan_resiko_jatuh_lansia=rs2.getBoolean("penilaian_lanjutan_resiko_jatuh_lansia");
                         akses.mpp_skrining=rs2.getBoolean("mpp_skrining");
+                        akses.penilaian_pasien_penyakit_menular=rs2.getBoolean("penilaian_pasien_penyakit_menular");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3029,6 +3031,7 @@ public final class akses {
                         akses.penilaian_korban_kekerasan=false;
                         akses.penilaian_lanjutan_resiko_jatuh_lansia=false;
                         akses.mpp_skrining=false;
+                        akses.penilaian_pasien_penyakit_menular=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4021,4 +4024,5 @@ public final class akses {
     public static boolean getpenilaian_korban_kekerasan(){return akses.penilaian_korban_kekerasan;}
     public static boolean getpenilaian_lanjutan_resiko_jatuh_lansia(){return akses.penilaian_lanjutan_resiko_jatuh_lansia;}
     public static boolean getmpp_skrining(){return akses.mpp_skrining;}
+    public static boolean getpenilaian_pasien_penyakit_menular(){return akses.penilaian_pasien_penyakit_menular;}
 }   

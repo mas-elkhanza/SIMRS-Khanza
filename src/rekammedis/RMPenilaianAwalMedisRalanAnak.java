@@ -2397,7 +2397,8 @@ public final class RMPenilaianAwalMedisRalanAnak extends javax.swing.JDialog {
         if(Sequel.queryu2tf("delete from penilaian_medis_ralan_anak where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

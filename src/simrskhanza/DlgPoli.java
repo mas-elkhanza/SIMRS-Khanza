@@ -593,10 +593,12 @@ public final class DlgPoli extends javax.swing.JDialog {
         for(i=0;i<tbKamar.getRowCount();i++){ 
             if(tbKamar.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit("poliklinik","kd_poli='"+tbKamar.getValueAt(i,1).toString()+"'","status='0'");
+                tabMode.removeRow(i);
+                i--;
             }
         } 
-        BtnCariActionPerformed(evt);
         emptTeks();
+        LCount.setText(""+tabMode.getRowCount());
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

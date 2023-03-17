@@ -419,9 +419,13 @@ public class MasterTriasePemeriksaan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,TKd,"master_triase_pemeriksaan","kode_pemeriksaan");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,TKd,"master_triase_pemeriksaan","kode_pemeriksaan")==true){
+            if(tbSpesialis.getSelectedRow()!= -1){
+                tabMode.removeRow(tbSpesialis.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

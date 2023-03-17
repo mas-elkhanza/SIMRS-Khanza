@@ -6092,7 +6092,8 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             TPasien1.setText("");
             ChkAccor.setSelected(false);
             isMenu();
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

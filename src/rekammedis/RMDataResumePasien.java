@@ -2399,7 +2399,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         if(Sequel.queryu2tf("delete from resume_pasien where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
