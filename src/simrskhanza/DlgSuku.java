@@ -354,9 +354,13 @@ public class DlgSuku extends javax.swing.JDialog {
         if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Suku Bangsa");
         }else{
-            Sequel.meghapus("suku_bangsa","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString());  
-            tampil();
-            emptTeks();
+            if(Sequel.meghapustf("suku_bangsa","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString())==true){
+                if(tbkecamatan.getSelectedRow()!= -1){
+                    tabMode.removeRow(tbkecamatan.getSelectedRow());
+                    LCount.setText(""+tabMode.getRowCount());
+                    emptTeks();
+                }
+            }
         }
             
 }//GEN-LAST:event_BtnHapusActionPerformed
