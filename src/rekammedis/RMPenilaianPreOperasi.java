@@ -1521,7 +1521,6 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {

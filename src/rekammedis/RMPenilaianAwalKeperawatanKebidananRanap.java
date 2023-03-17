@@ -7747,7 +7747,6 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void isMenu(){

@@ -2392,7 +2392,6 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {

@@ -2766,7 +2766,6 @@ public final class RMPenilaianAwalMedisRalanKandungan extends javax.swing.JDialo
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {

@@ -708,6 +708,5 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 }

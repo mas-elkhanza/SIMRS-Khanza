@@ -4263,7 +4263,6 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {

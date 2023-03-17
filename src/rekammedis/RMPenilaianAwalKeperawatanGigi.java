@@ -4010,7 +4010,6 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void tampilMasalah() {

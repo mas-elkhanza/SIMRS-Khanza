@@ -5974,7 +5974,6 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     

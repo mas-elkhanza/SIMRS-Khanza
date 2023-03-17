@@ -2512,7 +2512,6 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {

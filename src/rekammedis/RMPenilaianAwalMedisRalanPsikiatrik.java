@@ -2930,7 +2930,6 @@ public final class RMPenilaianAwalMedisRalanPsikiatrik extends javax.swing.JDial
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {

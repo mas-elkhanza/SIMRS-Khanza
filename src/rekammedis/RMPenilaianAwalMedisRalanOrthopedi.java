@@ -2539,7 +2539,6 @@ public final class RMPenilaianAwalMedisRalanOrthopedi extends javax.swing.JDialo
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {
