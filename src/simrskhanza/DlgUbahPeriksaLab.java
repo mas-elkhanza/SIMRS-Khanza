@@ -1527,7 +1527,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Tanggal.setText(tanggal);
             Jam.setText(jam);
             Sequel.cariIsi("select kd_dokter from periksa_lab where no_rawat='"+TNoRw.getText()+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'",KodePj);
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter='"+KodePj.getText()+"'",NmDokterPj);
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+KodePj.getText()+"'",NmDokterPj);
             Sequel.cariIsi("select nip from periksa_lab where no_rawat='"+TNoRw.getText()+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'",KdPtg);
             Sequel.cariIsi("select nama from petugas where nip='"+KdPtg.getText()+"'",NmPtg);
             Sequel.cariIsi("select dokter_perujuk from periksa_lab where no_rawat='"+TNoRw.getText()+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'",KodePerujuk);

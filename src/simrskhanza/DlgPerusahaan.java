@@ -576,12 +576,18 @@ public class DlgPerusahaan extends javax.swing.JDialog {
         }else if(Kota.getText().trim().equals("")){
             Valid.textKosong(Kota,"Kota");
         }else{
-            Valid.editTable(tabMode,"perusahaan_pasien","kode_perusahaan","?","kode_perusahaan=?,nama_perusahaan=?,alamat=?,kota=?,no_telp=?",6,new String[]{
+            if(Valid.editTabletf(tabMode,"perusahaan_pasien","kode_perusahaan","?","kode_perusahaan=?,nama_perusahaan=?,alamat=?,kota=?,no_telp=?",6,new String[]{
                 Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
-
+            })==true){
+                if(tbDokter.getSelectedRow()!= -1){
+                    tbDokter.setValueAt(Kd.getText(),tbDokter.getSelectedRow(),0);
+                    tbDokter.setValueAt(Nm.getText(),tbDokter.getSelectedRow(),1);
+                    tbDokter.setValueAt(Alamat.getText(),tbDokter.getSelectedRow(),2);
+                    tbDokter.setValueAt(Kota.getText(),tbDokter.getSelectedRow(),3);
+                    tbDokter.setValueAt(Telp.getText(),tbDokter.getSelectedRow(),4);
+                    emptTeks();
+                }
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -669,11 +675,15 @@ public class DlgPerusahaan extends javax.swing.JDialog {
         }else if(Kota.getText().trim().equals("")){
             Valid.textKosong(Kota,"Kota");
         }else{
-            Sequel.menyimpan("perusahaan_pasien","?,?,?,?,?","Kode Instasi/Perusahaan",5,new String[]{
+            if(Sequel.menyimpantf("perusahaan_pasien","?,?,?,?,?","Kode Instasi/Perusahaan",5,new String[]{
                 Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText()        
-            });
-            tampil();
-            emptTeks();
+            })==true){
+                tabMode.addRow(new String[]{
+                    Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText() 
+                });
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 

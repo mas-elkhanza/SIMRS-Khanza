@@ -28,7 +28,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.Timer;
@@ -840,19 +839,17 @@ public final class DlgRujuk extends javax.swing.JDialog {
         }else if(TDokter.getText().trim().equals("")){
             Valid.textKosong(KdDok,"dokter yang bertugas");
         }else{
-            Sequel.menyimpan("rujuk","'"+TNoRj.getText()+"','"+
-                    TNoRw.getText()+"','"+
-                    TTmpRujuk.getText()+"','"+
-                    Valid.SetTgl(DTPRujuk.getSelectedItem()+"")+"','"+ 
-                    TDiagnosa.getText()+"','"+
-                    KdDok.getText()+"','"+
-                    ktrujuk.getSelectedItem()+"','"+
-                    ambulance.getSelectedItem()+ "','"+
-                    ket.getText()+"','"+
-                    CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+"'","No.Rujuk");
-                    
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("rujuk","'"+TNoRj.getText()+"','"+TNoRw.getText()+"','"+TTmpRujuk.getText()+"','"+Valid.SetTgl(DTPRujuk.getSelectedItem()+"")+"',"+
+                    "'"+TDiagnosa.getText()+"','"+KdDok.getText()+"','"+ktrujuk.getSelectedItem()+"','"+ambulance.getSelectedItem()+ "','"+ket.getText()+"',"+
+                    "'"+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+"'","No.Rujuk")==true){
+                tabMode.addRow(new String[]{
+                    TNoRj.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TTmpRujuk.getText(),Valid.SetTgl(DTPRujuk.getSelectedItem()+""),
+                    CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),TDiagnosa.getText(),KdDok.getText(),
+                    TDokter.getText(),ktrujuk.getSelectedItem().toString(),ambulance.getSelectedItem().toString(),ket.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -877,9 +874,13 @@ public final class DlgRujuk extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,TNoRj,"rujuk","no_rujuk");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,TNoRj,"rujuk","no_rujuk")==true){
+            if(tbObat.getSelectedRow()!= -1){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -900,17 +901,26 @@ public final class DlgRujuk extends javax.swing.JDialog {
         }else if(TDokter.getText().trim().equals("")){
             Valid.textKosong(KdDok,"dokter yang bertugas");
         }else{         
-            Valid.editTable(tabMode,"rujuk","no_rujuk",TNoRj,"no_rawat='"+TNoRw.getText()+
-                    "',rujuk_ke='"+TTmpRujuk.getText()+
-                    "',tgl_rujuk='"+Valid.SetTgl(DTPRujuk.getSelectedItem()+"")+
-                    "',jam='"+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+
-                    "',keterangan_diagnosa='"+TDiagnosa.getText()+
-                    "',kd_dokter='"+KdDok.getText()+
-                    "',kat_rujuk='"+ktrujuk.getSelectedItem().toString()+
-                    "',ambulance='"+ambulance.getSelectedItem().toString()+ 
-                    "',keterangan='"+ket.getText()+"'");
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(Valid.editTabletf(tabMode,"rujuk","no_rujuk",TNoRj,"no_rawat='"+TNoRw.getText()+"',rujuk_ke='"+TTmpRujuk.getText()+"',tgl_rujuk='"+Valid.SetTgl(DTPRujuk.getSelectedItem()+"")+"',"+
+                    "jam='"+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+"',keterangan_diagnosa='"+TDiagnosa.getText()+"',kd_dokter='"+KdDok.getText()+"',"+
+                    "kat_rujuk='"+ktrujuk.getSelectedItem().toString()+"',ambulance='"+ambulance.getSelectedItem().toString()+"',keterangan='"+ket.getText()+"'")==true){
+                if(tbObat.getSelectedRow()!= -1){
+                    tbObat.setValueAt(TNoRj.getText(),tbObat.getSelectedRow(),0);
+                    tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
+                    tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
+                    tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
+                    tbObat.setValueAt(TTmpRujuk.getText(),tbObat.getSelectedRow(),4);
+                    tbObat.setValueAt(Valid.SetTgl(DTPRujuk.getSelectedItem()+""),tbObat.getSelectedRow(),5);
+                    tbObat.setValueAt(CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),tbObat.getSelectedRow(),6);
+                    tbObat.setValueAt(TDiagnosa.getText(),tbObat.getSelectedRow(),7);
+                    tbObat.setValueAt(KdDok.getText(),tbObat.getSelectedRow(),8);
+                    tbObat.setValueAt(TDokter.getText(),tbObat.getSelectedRow(),9);
+                    tbObat.setValueAt(ktrujuk.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+                    tbObat.setValueAt(ambulance.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+                    tbObat.setValueAt(ket.getText(),tbObat.getSelectedRow(),12);
+                    emptTeks();
+                }
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1281,37 +1291,23 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 "on rujuk.no_rawat=reg_periksa.no_rawat "+
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "and rujuk.kd_dokter=dokter.kd_dokter "+
-                "where "+tgl+"and no_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and rujuk.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and rujuk.rujuk_ke like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and rujuk.tgl_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and rujuk.keterangan_diagnosa like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and rujuk.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
-                tgl+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' "+
+                "where "+tgl+" and (no_rujuk like '%"+TCari.getText().trim()+"%' or rujuk.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                "reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                "rujuk.rujuk_ke like '%"+TCari.getText().trim()+"%' or rujuk.keterangan_diagnosa like '%"+TCari.getText().trim()+"%' or "+
+                "rujuk.kd_dokter like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%') "+
                 " order by rujuk.no_rujuk";
             ps=koneksi.prepareStatement(sql);
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    String[] data={rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   rs.getString(6),
-                                   rs.getString(7),
-                                   rs.getString(8),
-                                   rs.getString(9),
-                                   rs.getString(10),
-                                   rs.getString(11),
-                                   rs.getString(12),
-                                   rs.getString(13)};
-                    tabMode.addRow(data);
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
+                        rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),
+                        rs.getString(11),rs.getString(12),rs.getString(13)
+                    });
                 }
             } catch (Exception e) {
-                System.out.println("simrskhanza.DlgRujuk.tampil() : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -1320,11 +1316,10 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     ps.close();
                 }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {
@@ -1349,7 +1344,7 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             KdDok.setText(param);   
             KdDok.setEditable(false);
             btnDokter.setEnabled(false);
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter='"+param+"'",TDokter);
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+param+"'",TDokter);
         }else if(param.equals("")){
             KdDok.setText("");   
             KdDok.setEditable(true);

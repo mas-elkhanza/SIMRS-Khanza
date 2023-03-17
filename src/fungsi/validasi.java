@@ -360,6 +360,21 @@ public final class validasi {
         }
     }
     
+    public boolean editTabletf(DefaultTableModel tabMode,String table,String field_acuan,JTextField nilai_field,String update) {
+        status=true;
+        if(tabMode.getRowCount()==0){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            nilai_field.requestFocus();
+        }else if(nilai_field.getText().trim().equals("")){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+        }else if(! nilai_field.getText().trim().equals("")){            
+            status=sek.mengedittf(table,field_acuan+"='"+nilai_field.getText()+"'", update);                 
+        }
+        return status;
+    }
+    
     public void editTable(String table,String field_acuan,JTextField nilai_field,String update) {
         if(nilai_field.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");

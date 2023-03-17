@@ -1779,7 +1779,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
 
     private void KdDok1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDok1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter1,KdDok1.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter1,KdDok1.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokter1ActionPerformed(null);
         }
@@ -1800,7 +1800,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
 
     private void KdDok2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDok2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter2,KdDok2.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter2,KdDok2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokter2ActionPerformed(null);
         }
