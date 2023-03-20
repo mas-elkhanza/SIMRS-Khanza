@@ -955,6 +955,22 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
+
+    public void pindah2(KeyEvent evt, Button kiri, ComboBox kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JButton kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
     
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -995,14 +1011,6 @@ public final class validasi {
             kiri.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_DOWN){
             bawah.requestFocus();
-        }
-    }
-    
-    public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JButton kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_TAB){
-            kanan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kiri.requestFocus();
         }
     }
 
