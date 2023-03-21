@@ -312,7 +312,7 @@ public final class RMPenilaianPasienPenyakitMenular extends javax.swing.JDialog 
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPenilaianMedis.setText("Laporan Penilaian Pasien Penyakit Menular");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(260, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianMedisActionPerformed(evt);
@@ -1383,18 +1383,14 @@ public final class RMPenilaianPasienPenyakitMenular extends javax.swing.JDialog 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanPenyakitDalam.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Penyakit Dalam ]::",
+            Valid.MyReportqry("rptCetakPenilaianPasienPenyakitMenular.jasper","report","::[ Laporan Penilaian Pasien Penyakit Menular ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_pasien_penyakit_menular.tanggal,"+
-                "penilaian_pasien_penyakit_menular.kd_dokter,penilaian_pasien_penyakit_menular.anamnesis,penilaian_pasien_penyakit_menular.hubungan,penilaian_pasien_penyakit_menular.keluhan_utama,"+
-                "penilaian_pasien_penyakit_menular.rps,penilaian_pasien_penyakit_menular.rpd,penilaian_pasien_penyakit_menular.rpo,penilaian_pasien_penyakit_menular.alergi,"+
-                "penilaian_pasien_penyakit_menular.kondisi,penilaian_pasien_penyakit_menular.status,penilaian_pasien_penyakit_menular.td,penilaian_pasien_penyakit_menular.nadi,"+
-                "penilaian_pasien_penyakit_menular.suhu,penilaian_pasien_penyakit_menular.rr,penilaian_pasien_penyakit_menular.bb,penilaian_pasien_penyakit_menular.nyeri,penilaian_pasien_penyakit_menular.gcs,"+
-                "penilaian_pasien_penyakit_menular.kepala,penilaian_pasien_penyakit_menular.thoraks,penilaian_pasien_penyakit_menular.abdomen,penilaian_pasien_penyakit_menular.ekstremitas,"+
-                "penilaian_pasien_penyakit_menular.lainnya,penilaian_pasien_penyakit_menular.lab,penilaian_pasien_penyakit_menular.rad,penilaian_pasien_penyakit_menular.penunjanglain,"+
-                "penilaian_pasien_penyakit_menular.diagnosis,penilaian_pasien_penyakit_menular.diagnosis2,penilaian_pasien_penyakit_menular.permasalahan,penilaian_pasien_penyakit_menular.terapi,"+
-                "penilaian_pasien_penyakit_menular.tindakan,penilaian_pasien_penyakit_menular.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_pasien_penyakit_menular.keterangan_thorak,"+
-                "penilaian_pasien_penyakit_menular.keterangan_abdomen,penilaian_pasien_penyakit_menular.keterangan_ekstremitas "+
-                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "penilaian_pasien_penyakit_menular.kd_dokter,penilaian_pasien_penyakit_menular.anamnesis,penilaian_pasien_penyakit_menular.hubungan,penilaian_pasien_penyakit_menular.pasien_mengetahui_kondisi_penyakitnya,"+
+                "penilaian_pasien_penyakit_menular.penyakit_sama_serumah,penilaian_pasien_penyakit_menular.riwayat_kontak,penilaian_pasien_penyakit_menular.keterangan_riwayat_kontak,"+
+                "penilaian_pasien_penyakit_menular.transmisi_penularan_penyakit,penilaian_pasien_penyakit_menular.keterangan_transmisi_penularan_penyakit,penilaian_pasien_penyakit_menular.kebutuhan_ruang_rawat,"+
+                "penilaian_pasien_penyakit_menular.keluhan_yang_dirasakan_saat_ini,penilaian_pasien_penyakit_menular.riwayat_penyakit_keluarga,penilaian_pasien_penyakit_menular.riwayat_alergi,"+
+                "penilaian_pasien_penyakit_menular.riwayat_vaksinasi,penilaian_pasien_penyakit_menular.riwayat_pengobatan,penilaian_pasien_penyakit_menular.diagnosa_utama,penilaian_pasien_penyakit_menular.diagnosa_tambahan,"+
+                "dokter.nm_dokter from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_pasien_penyakit_menular on reg_periksa.no_rawat=penilaian_pasien_penyakit_menular.no_rawat "+
                 "inner join dokter on penilaian_pasien_penyakit_menular.kd_dokter=dokter.kd_dokter where penilaian_pasien_penyakit_menular.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
