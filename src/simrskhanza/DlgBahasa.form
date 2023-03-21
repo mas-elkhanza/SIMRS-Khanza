@@ -112,6 +112,9 @@
             </Component>
             <Component class="widget.TextBox" name="Nama">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f9" green="f9" red="ff" type="rgb"/>
+                </Property>
                 <Property name="name" type="java.lang.String" value="Nama" noResource="true"/>
               </Properties>
               <Events>

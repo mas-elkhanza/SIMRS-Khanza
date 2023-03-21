@@ -28,7 +28,7 @@ public class InternalFrame extends JPanel{
     //private Color warnaAtas = new Color(245,170,245) ;
     //private Color warnaBawah = new Color(245,170,245) ;
     private Color warnaAtas = new Color(255,255,255) ;
-    private Color warnaBawah = new Color(255,254,254) ;
+    private Color warnaBawah = new Color(255,255,255) ;
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);

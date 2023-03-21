@@ -169,6 +169,7 @@ public class DlgBahasa extends javax.swing.JDialog {
         panelGlass7.add(jLabel4);
         jLabel4.setBounds(0, 12, 90, 23);
 
+        Nama.setBackground(new java.awt.Color(255, 249, 249));
         Nama.setName("Nama"); // NOI18N
         Nama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
