@@ -156,7 +156,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==2){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(360);
             }
         }
         tbIdentifikasiMPP.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2194,7 +2194,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                     pilih[i],kode[i],masalah[i]
                 });
             }
-            ps=koneksi.prepareStatement("select * from master_masalah_mpp where kode_masalah like ? or nama_masalah like ? order by kode_masalah");
+            ps=koneksi.prepareStatement("select * from master_masalah_mpp where master_masalah_mpp.kode_masalah like ? or master_masalah_mpp.nama_masalah like ? order by master_masalah_mpp.kode_masalah");
             try {
                 ps.setString(1,"%"+TCariMasalah.getText().trim()+"%");
                 ps.setString(2,"%"+TCariMasalah.getText().trim()+"%");
