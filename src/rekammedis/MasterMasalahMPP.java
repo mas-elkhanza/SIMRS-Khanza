@@ -15,7 +15,6 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -52,8 +51,6 @@ public class MasterMasalahMPP extends javax.swing.JDialog {
         };
 
         tbSpesialis.setModel(tabMode);
-        //tampil();
-        //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -638,11 +635,5 @@ public class MasterMasalahMPP extends javax.swing.JDialog {
     
     public JTable getTable(){
         return tbSpesialis;
-    }
-    
-    public void isCek(){
-       BtnSimpan.setEnabled(akses.getmaster_masalah_keperawatan());
-       BtnHapus.setEnabled(akses.getmaster_masalah_keperawatan());
-       BtnEdit.setEnabled(akses.getmaster_masalah_keperawatan());
     }
 }

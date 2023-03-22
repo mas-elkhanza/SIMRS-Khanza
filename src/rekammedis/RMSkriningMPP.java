@@ -1607,7 +1607,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else{
-            /*if(tbObat.getSelectedRow()>-1){
+            if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMSkriningMPPFormA form=new RMSkriningMPPFormA(null,false);
                 form.isCek();
@@ -1617,7 +1617,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
-            }*/
+            }
         }
     }//GEN-LAST:event_MnEvaluasiFormAActionPerformed
 
@@ -2063,10 +2063,6 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
-            if(NmPetugas.getText().equals("")){
-                KdPetugas.setText("");
-                JOptionPane.showMessageDialog(null,"User login bukan pegawai...!!");
-            }
         }         
     }
 }

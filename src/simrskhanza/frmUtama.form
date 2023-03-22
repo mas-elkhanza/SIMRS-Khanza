@@ -53,10 +53,10 @@
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d2" green="d2" red="ff" type="rgb"/>
+                  <Color blue="e1" green="d7" red="fa" type="rgb"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fa" green="fa" red="ff" type="rgb"/>
+                  <Color blue="ff" green="f5" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -175,19 +175,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel6">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/LaST (Cobalt) Lock n Gear.png"/>
-                    </Property>
-                    <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="105" y="5" width="135" height="145"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
                 <Component class="widget.Button" name="BtnLogin">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -196,9 +183,6 @@
                     <Property name="mnemonic" type="int" value="90"/>
                     <Property name="text" type="java.lang.String" value="Log-in"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+Z"/>
-                    <Property name="glassColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f5" green="ff" red="eb" type="rgb"/>
-                    </Property>
                     <Property name="name" type="java.lang.String" value="BtnLogin" noResource="true"/>
                   </Properties>
                   <Events>
@@ -218,9 +202,6 @@
                     <Property name="mnemonic" type="int" value="89"/>
                     <Property name="text" type="java.lang.String" value="Batal"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+Y"/>
-                    <Property name="glassColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f5" green="ff" red="eb" type="rgb"/>
-                    </Property>
                     <Property name="name" type="java.lang.String" value="BtnCancel" noResource="true"/>
                   </Properties>
                   <Events>
@@ -229,6 +210,19 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="177" y="110" width="105" height="32"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel6">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/LaST (Cobalt) Lock n Gear.png"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="105" y="5" width="135" height="145"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -494,7 +488,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="21/03/2023"/>
+            <StringItem index="0" value="22/03/2023"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -9328,10 +9322,10 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fa" green="f5" red="ff" type="rgb"/>
+          <Color blue="fa" green="f0" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="b9" green="b4" red="f0" type="rgb"/>
+          <Color blue="b9" green="af" red="f0" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -9688,10 +9682,10 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c3" green="be" red="f0" type="rgb"/>
+          <Color blue="c3" green="b9" red="f0" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fa" green="f5" red="ff" type="rgb"/>
+          <Color blue="fa" green="f0" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
