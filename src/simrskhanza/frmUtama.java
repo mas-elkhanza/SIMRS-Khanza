@@ -1658,7 +1658,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
         internalFrame3.setWarnaAtas(new java.awt.Color(250, 215, 225));
-        internalFrame3.setWarnaBawah(new java.awt.Color(255, 245, 255));
+        internalFrame3.setWarnaBawah(new java.awt.Color(255, 240, 250));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);

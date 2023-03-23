@@ -297,7 +297,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnCetakLembarSkrining.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakLembarSkrining.setText("Form Skrining MPP");
         MnCetakLembarSkrining.setName("MnCetakLembarSkrining"); // NOI18N
-        MnCetakLembarSkrining.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnCetakLembarSkrining.setPreferredSize(new java.awt.Dimension(180, 26));
         MnCetakLembarSkrining.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCetakLembarSkriningActionPerformed(evt);
@@ -311,7 +311,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnEvaluasiFormA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnEvaluasiFormA.setText("Form-A Evaluasi\n");
         MnEvaluasiFormA.setName("MnEvaluasiFormA"); // NOI18N
-        MnEvaluasiFormA.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnEvaluasiFormA.setPreferredSize(new java.awt.Dimension(180, 26));
         MnEvaluasiFormA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnEvaluasiFormAActionPerformed(evt);
@@ -325,7 +325,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnEvaluasiFormB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnEvaluasiFormB.setText("Form-B Evaluasi\n");
         MnEvaluasiFormB.setName("MnEvaluasiFormB"); // NOI18N
-        MnEvaluasiFormB.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnEvaluasiFormB.setPreferredSize(new java.awt.Dimension(180, 26));
         MnEvaluasiFormB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnEvaluasiFormBActionPerformed(evt);
@@ -505,7 +505,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-03-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -519,7 +519,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-03-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

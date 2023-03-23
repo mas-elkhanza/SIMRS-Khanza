@@ -1267,7 +1267,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                 })==true){
                     for (i = 0; i < tbIdentifikasiMPP.getRowCount(); i++) {
                         if(tbIdentifikasiMPP.getValueAt(i,0).toString().equals("true")){
-                            Sequel.menyimpan2("mpp_evaluasi_masalah","?,?",2,new String[]{TNoRw.getText(),tbIdentifikasiMPP.getValueAt(i,1).toString()});
+                            Sequel.menyimpan2("mpp_evaluasi_masalah","?,?,?",3,new String[]{TNoRw.getText(),Valid.SetTgl(TglEvaluasi.getSelectedItem()+"")+" "+TglEvaluasi.getSelectedItem().toString().substring(11,19),tbIdentifikasiMPP.getValueAt(i,1).toString()});
                         }
                     }
                     emptTeks();
@@ -2182,7 +2182,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                     "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
                     "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
                     "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "where reg_periksa.no_rawat=?");
+                    "where reg_periksa.no_rawat=? group by reg_periksa.no_rawat");
             try {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
