@@ -618,12 +618,12 @@ public final class DlgPetugas extends javax.swing.JDialog {
         jLabel3.setText("NIP :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(0, 12, 105, 23);
+        jLabel3.setBounds(0, 12, 95, 23);
 
         jLabel4.setText("Nama Petugas :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 42, 105, 23);
+        jLabel4.setBounds(0, 42, 95, 23);
 
         TTmp.setName("TTmp"); // NOI18N
         TTmp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -632,7 +632,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmp);
-        TTmp.setBounds(109, 102, 206, 23);
+        TTmp.setBounds(99, 102, 216, 23);
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         CmbJk.setName("CmbJk"); // NOI18N
@@ -642,7 +642,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbJk);
-        CmbJk.setBounds(109, 72, 140, 23);
+        CmbJk.setBounds(99, 72, 140, 23);
 
         TNm.setHighlighter(null);
         TNm.setName("TNm"); // NOI18N
@@ -652,12 +652,12 @@ public final class DlgPetugas extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNm);
-        TNm.setBounds(109, 42, 310, 23);
+        TNm.setBounds(99, 42, 320, 23);
 
         jLabel8.setText("Jenis Kelamin :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(0, 72, 105, 23);
+        jLabel8.setBounds(0, 72, 95, 23);
 
         jLabel9.setBackground(new java.awt.Color(120, 30, 120));
         jLabel9.setText("Gol. Darah :");
@@ -678,10 +678,10 @@ public final class DlgPetugas extends javax.swing.JDialog {
         jLabel13.setText("Tmp/Tgl. Lahir :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(0, 102, 105, 23);
+        jLabel13.setBounds(0, 102, 95, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-12-2020" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2022" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -773,7 +773,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNip);
-        TNip.setBounds(109, 12, 200, 23);
+        TNip.setBounds(99, 12, 200, 23);
 
         KdJbtn.setHighlighter(null);
         KdJbtn.setName("KdJbtn"); // NOI18N
@@ -807,7 +807,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPegawai);
-        BtnCariPegawai.setBounds(312, 12, 28, 23);
+        BtnCariPegawai.setBounds(302, 12, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -947,9 +947,13 @@ public final class DlgPetugas extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         try {
-            Sequel.mengedit("petugas","nip='"+TNip.getText()+"'","status='0'");
-            tampil();
-            emptTeks();
+            if(Sequel.mengedittf("petugas","nip='"+TNip.getText()+"'","status='0'")==true){
+                if(tbPetugas.getSelectedRow()!= -1){
+                    tabMode.removeRow(tbPetugas.getSelectedRow());
+                    emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         } 
