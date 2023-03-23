@@ -94,7 +94,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(65);
             }else if(i==2){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(150);
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
@@ -102,31 +102,29 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(180);
             }else if(i==6){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(115);
             }else if(i==7){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(150);
             }else if(i==8){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(115);
             }else if(i==9){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(135);
+                column.setPreferredWidth(150);
             }else if(i==11){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(90);
             }else if(i==12){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(150);
             }else if(i==13){
-                column.setPreferredWidth(135);
+                column.setPreferredWidth(160);
             }else if(i==14){
-                column.setPreferredWidth(135);
+                column.setPreferredWidth(160);
             }else if(i==15){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(160);
             }else if(i==16){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(160);
             }else if(i==17){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(160);
             }else if(i==18){
                 column.setPreferredWidth(80);
             }else if(i==19){
@@ -2034,7 +2032,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                     "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec " +
                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
                     "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
-                    "mpp_evaluasi.tanggal between ? and ? group by reg_periksa.no_rawat,mpp_evaluasi.tanggal order by mpp_evaluasi.tanggal");
+                    "mpp_evaluasi.tanggal between ? and ? group by reg_periksa.no_rawat order by mpp_evaluasi.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir, " +
@@ -2056,7 +2054,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                     "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
                     "mpp_evaluasi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or mpp_evaluasi.nip like ? or petugas.nama like ?) "+
-                    "group by reg_periksa.no_rawat,mpp_evaluasi.tanggal order by mpp_evaluasi.tanggal");
+                    "group by reg_periksa.no_rawat order by mpp_evaluasi.tanggal");
             }
                 
             try {
@@ -2175,7 +2173,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                     "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                     "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
-                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop"+
+                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
                     "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
                     "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
                     "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
