@@ -844,6 +844,7 @@ import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningMPP;
+import rekammedis.RMSkriningMPPFormA;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
@@ -1848,7 +1849,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/03/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/03/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -19981,6 +19982,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningMPPFormAActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningMPPFormA aplikasi=new RMSkriningMPPFormA(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPenilaianPasienPenyakitMenularActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
@@ -20664,7 +20679,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
-            btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular;
+            btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA;
     
     public void isWall(){
         try{            
@@ -24210,6 +24225,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmpp_skrining()==true){
                 Panelmenu.add(btnSkriningManagerPelayananPasien);
+                jmlmenu++;
+                Panelmenu.add(btnSkriningMPPFormA);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -28830,6 +28847,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmpp_skrining()==true){
             Panelmenu.add(btnSkriningManagerPelayananPasien);
+            jmlmenu++;
+            Panelmenu.add(btnSkriningMPPFormA);
             jmlmenu++;
         }
 
@@ -34811,7 +34830,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(btnSkriningManagerPelayananPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningManagerPelayananPasien);
                 jmlmenu++;
-            }                
+            }
+            if(btnSkriningMPPFormA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningMPPFormA);
+                jmlmenu++;
+            }  
         }
         
         if(akses.getpengambilan_utd2()==true){
@@ -40191,11 +40214,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSkriningManagerPelayananPasien = new widget.ButtonBig();
         btnSkriningManagerPelayananPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9016855_stay_at_home_covid-19_virus_icon.png")));
-        btnSkriningManagerPelayananPasien.setText("Skrining Manager Pelayanan Pasien");
+        btnSkriningManagerPelayananPasien.setText("Skrining Manajer Pelayanan Pasien");
         btnSkriningManagerPelayananPasien.setIconTextGap(0);
         btnSkriningManagerPelayananPasien.setName("btnSkriningManagerPelayananPasien"); 
         btnSkriningManagerPelayananPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningManagerPelayananPasien.addActionListener(this::btnSkriningManagerPelayananPasienActionPerformed);
+        
+        btnSkriningMPPFormA = new widget.ButtonBig();
+        btnSkriningMPPFormA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088113_computer_record_scan_screening_virus_icon.png")));
+        btnSkriningMPPFormA.setText("Evaluasi Awal Manajer Pelayanan Pasien");
+        btnSkriningMPPFormA.setIconTextGap(0);
+        btnSkriningMPPFormA.setName("btnSkriningMPPFormA"); 
+        btnSkriningMPPFormA.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningMPPFormA.addActionListener(this::btnSkriningMPPFormAActionPerformed);
         
         
         btnPenilaianPasienPenyakitMenular = new widget.ButtonBig();

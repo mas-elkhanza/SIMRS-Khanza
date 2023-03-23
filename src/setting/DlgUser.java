@@ -226,7 +226,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[F]Riwayat Barang Dapur","[F]Permintaan Barang Dapur","[M]Rekonsiliasi Obat","[F]Biaya Pengadaan Dapur","[F]Rekap Pengadaan Dapur","[G]Limbah Cair B3 Medis",
                 "[O]Limbah B3 Cair Per Tanggal","[O]Limbah B3 Cair Per Bulan","[I]Rekap Biaya Registrasi","[M]Konfirmasi Rekonsiliasi Obat","[L]Kirim Clinical Impression Satu Sehat",
                 "[M]Penilaian Pasien Terminal","[P]Persetujuan Rawat Inap","[M]Monitoring Reaksi Tranfusi","[M]Penilaian Korban Kekerasan","[M]Penilaian Lanjutan Risiko Jatuh Lansia",
-                "[M]Penilaian Pasien Penyakit Menular","[M]Skrining Manager Pelayanan Pasien","[M]Edukasi Pasien & Keluarga Rawat Jalan"
+                "[M]Penilaian Pasien Penyakit Menular","[M]Skrining Manajer Pelayanan Pasien","[M]Edukasi Pasien & Keluarga Rawat Jalan"
         };
         
         tabMode=new DefaultTableModel(null,row){

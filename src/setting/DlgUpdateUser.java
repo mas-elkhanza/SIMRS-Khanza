@@ -3900,8 +3900,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[M]Penilaian Pasien Penyakit Menular",penilaian_pasien_penyakit_menular});
         }
         
-        if("[M]Skrining Manager Pelayanan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[M]Skrining Manager Pelayanan Pasien",mpp_skrining});
+        if("[M]Skrining Manajer Pelayanan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Skrining Manajer Pelayanan Pasien",mpp_skrining});
         }
         
         if("[M]Edukasi Pasien & Keluarga Rawat Jalan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7643,7 +7643,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_pasien_penyakit_menular='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[M]Skrining Manager Pelayanan Pasien".equals(tbUser.getValueAt(i,1).toString())){
+            if("[M]Skrining Manajer Pelayanan Pasien".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","mpp_skrining='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
