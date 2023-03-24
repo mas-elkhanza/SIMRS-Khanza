@@ -286,6 +286,22 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         jLabel54 = new widget.Label();
         jLabel55 = new widget.Label();
         jLabel56 = new widget.Label();
+        jLabel57 = new widget.Label();
+        KeadaanUmum6 = new widget.ComboBox();
+        TD6 = new widget.TextBox();
+        jLabel58 = new widget.Label();
+        KeadaanUmum7 = new widget.ComboBox();
+        TD7 = new widget.TextBox();
+        TD8 = new widget.TextBox();
+        KeadaanUmum8 = new widget.ComboBox();
+        jLabel59 = new widget.Label();
+        jLabel60 = new widget.Label();
+        KeadaanUmum9 = new widget.ComboBox();
+        TD9 = new widget.TextBox();
+        jLabel61 = new widget.Label();
+        jLabel62 = new widget.Label();
+        jLabel63 = new widget.Label();
+        jLabel64 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -581,7 +597,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 273));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 473));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -921,10 +937,134 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         jLabel55.setBounds(43, 180, 110, 23);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel56.setText("Kemampuan Belajar :");
+        jLabel56.setText("Nilai dan Keyakinan :");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
         jLabel56.setBounds(43, 210, 160, 23);
+
+        jLabel57.setText(":");
+        jLabel57.setName("jLabel57"); // NOI18N
+        FormInput.add(jLabel57);
+        jLabel57.setBounds(0, 230, 200, 23);
+
+        KeadaanUmum6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ujian/Cobaan", "Kutukan", "Lain-lain" }));
+        KeadaanUmum6.setName("KeadaanUmum6"); // NOI18N
+        KeadaanUmum6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeadaanUmum6KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeadaanUmum6);
+        KeadaanUmum6.setBounds(204, 230, 120, 23);
+
+        TD6.setFocusTraversalPolicyProvider(true);
+        TD6.setName("TD6"); // NOI18N
+        TD6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TD6KeyPressed(evt);
+            }
+        });
+        FormInput.add(TD6);
+        TD6.setBounds(340, 230, 180, 23);
+
+        jLabel58.setText(":");
+        jLabel58.setName("jLabel58"); // NOI18N
+        FormInput.add(jLabel58);
+        jLabel58.setBounds(0, 260, 275, 23);
+
+        KeadaanUmum7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sendiri", "Keluarga", "Lain-lain" }));
+        KeadaanUmum7.setName("KeadaanUmum7"); // NOI18N
+        KeadaanUmum7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeadaanUmum7KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeadaanUmum7);
+        KeadaanUmum7.setBounds(279, 260, 95, 23);
+
+        TD7.setFocusTraversalPolicyProvider(true);
+        TD7.setName("TD7"); // NOI18N
+        TD7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TD7KeyPressed(evt);
+            }
+        });
+        FormInput.add(TD7);
+        TD7.setBounds(390, 260, 180, 23);
+
+        TD8.setFocusTraversalPolicyProvider(true);
+        TD8.setName("TD8"); // NOI18N
+        TD8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TD8KeyPressed(evt);
+            }
+        });
+        FormInput.add(TD8);
+        TD8.setBounds(590, 290, 180, 23);
+
+        KeadaanUmum8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pasrah", "Yakin Sembuh Jika Kontrol Teratur", "Yakin Sembuh Jika Minum Obat Teratur", "Lain-lain" }));
+        KeadaanUmum8.setName("KeadaanUmum8"); // NOI18N
+        KeadaanUmum8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeadaanUmum8KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeadaanUmum8);
+        KeadaanUmum8.setBounds(249, 290, 245, 23);
+
+        jLabel59.setText(":");
+        jLabel59.setName("jLabel59"); // NOI18N
+        FormInput.add(jLabel59);
+        jLabel59.setBounds(0, 290, 245, 23);
+
+        jLabel60.setText(":");
+        jLabel60.setName("jLabel60"); // NOI18N
+        FormInput.add(jLabel60);
+        jLabel60.setBounds(0, 320, 430, 23);
+
+        KeadaanUmum9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Tidak" }));
+        KeadaanUmum9.setName("KeadaanUmum9"); // NOI18N
+        KeadaanUmum9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeadaanUmum9KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeadaanUmum9);
+        KeadaanUmum9.setBounds(434, 320, 80, 23);
+
+        TD9.setFocusTraversalPolicyProvider(true);
+        TD9.setName("TD9"); // NOI18N
+        TD9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TD9KeyPressed(evt);
+            }
+        });
+        FormInput.add(TD9);
+        TD9.setBounds(620, 320, 180, 23);
+
+        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel61.setText("Penyakitnya Merupakan");
+        jLabel61.setName("jLabel61"); // NOI18N
+        FormInput.add(jLabel61);
+        jLabel61.setBounds(79, 230, 130, 23);
+
+        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel62.setText("Keputusan Memilih Layanan Kesehatan");
+        jLabel62.setName("jLabel62"); // NOI18N
+        FormInput.add(jLabel62);
+        jLabel62.setBounds(79, 260, 200, 23);
+
+        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel63.setText("Keyakinan Terhadap Hasil Terapi");
+        jLabel63.setName("jLabel63"); // NOI18N
+        FormInput.add(jLabel63);
+        jLabel63.setBounds(79, 290, 170, 23);
+
+        jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel64.setText("Aspek Keyakinan Yang Perlu Dipertimbangkan Selama Masa Perawatan");
+        jLabel64.setName("jLabel64"); // NOI18N
+        FormInput.add(jLabel64);
+        jLabel64.setBounds(79, 320, 360, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1431,6 +1571,38 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         // TODO add your handling code here:
     }//GEN-LAST:event_TD5KeyPressed
 
+    private void KeadaanUmum6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmum6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeadaanUmum6KeyPressed
+
+    private void TD6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TD6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TD6KeyPressed
+
+    private void KeadaanUmum7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmum7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeadaanUmum7KeyPressed
+
+    private void TD7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TD7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TD7KeyPressed
+
+    private void TD8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TD8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TD8KeyPressed
+
+    private void KeadaanUmum8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmum8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeadaanUmum8KeyPressed
+
+    private void KeadaanUmum9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmum9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeadaanUmum9KeyPressed
+
+    private void TD9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TD9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TD9KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1469,6 +1641,10 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private widget.ComboBox KeadaanUmum3;
     private widget.ComboBox KeadaanUmum4;
     private widget.ComboBox KeadaanUmum5;
+    private widget.ComboBox KeadaanUmum6;
+    private widget.ComboBox KeadaanUmum7;
+    private widget.ComboBox KeadaanUmum8;
+    private widget.ComboBox KeadaanUmum9;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
@@ -1484,6 +1660,10 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private widget.TextBox TD3;
     private widget.TextBox TD4;
     private widget.TextBox TD5;
+    private widget.TextBox TD6;
+    private widget.TextBox TD7;
+    private widget.TextBox TD8;
+    private widget.TextBox TD9;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
@@ -1508,7 +1688,15 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private widget.Label jLabel54;
     private widget.Label jLabel55;
     private widget.Label jLabel56;
+    private widget.Label jLabel57;
+    private widget.Label jLabel58;
+    private widget.Label jLabel59;
     private widget.Label jLabel6;
+    private widget.Label jLabel60;
+    private widget.Label jLabel61;
+    private widget.Label jLabel62;
+    private widget.Label jLabel63;
+    private widget.Label jLabel64;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel99;
