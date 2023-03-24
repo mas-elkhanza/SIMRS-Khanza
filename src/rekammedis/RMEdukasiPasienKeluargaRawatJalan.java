@@ -282,6 +282,10 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         KeadaanUmum5 = new widget.ComboBox();
         TD5 = new widget.TextBox();
         jLabel52 = new widget.Label();
+        jLabel53 = new widget.Label();
+        jLabel54 = new widget.Label();
+        jLabel55 = new widget.Label();
+        jLabel56 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -748,7 +752,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(TD);
-        TD.setBounds(222, 90, 160, 23);
+        TD.setBounds(222, 90, 180, 23);
 
         jLabel45.setText(":");
         jLabel45.setName("jLabel45"); // NOI18N
@@ -764,7 +768,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         jLabel46.setText("Bahasa Sehari-hari :");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(380, 90, 120, 23);
+        jLabel46.setBounds(210, 120, 120, 23);
 
         TD1.setFocusTraversalPolicyProvider(true);
         TD1.setName("TD1"); // NOI18N
@@ -774,8 +778,9 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(TD1);
-        TD1.setBounds(630, 90, 160, 23);
+        TD1.setBounds(499, 120, 290, 23);
 
+        TD2.setEditable(false);
         TD2.setFocusTraversalPolicyProvider(true);
         TD2.setName("TD2"); // NOI18N
         TD2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -784,12 +789,12 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(TD2);
-        TD2.setBounds(500, 90, 130, 23);
+        TD2.setBounds(334, 120, 162, 23);
 
         jLabel47.setText("Perlu Penerjemah :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(380, 120, 130, 23);
+        jLabel47.setBounds(402, 90, 120, 23);
 
         KeadaanUmum1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KeadaanUmum1.setName("KeadaanUmum1"); // NOI18N
@@ -799,7 +804,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(KeadaanUmum1);
-        KeadaanUmum1.setBounds(510, 120, 80, 23);
+        KeadaanUmum1.setBounds(526, 90, 80, 23);
 
         TD3.setFocusTraversalPolicyProvider(true);
         TD3.setName("TD3"); // NOI18N
@@ -809,12 +814,12 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(TD3);
-        TD3.setBounds(600, 120, 180, 23);
+        TD3.setBounds(609, 90, 180, 23);
 
-        jLabel48.setText("Bahasa Isyarat :");
+        jLabel48.setText(":");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(0, 120, 120, 23);
+        jLabel48.setBounds(0, 120, 122, 23);
 
         KeadaanUmum2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KeadaanUmum2.setName("KeadaanUmum2"); // NOI18N
@@ -824,12 +829,12 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(KeadaanUmum2);
-        KeadaanUmum2.setBounds(120, 120, 80, 23);
+        KeadaanUmum2.setBounds(126, 120, 80, 23);
 
-        jLabel49.setText("Cara Belajar Yang Disukai :");
+        jLabel49.setText(":");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(30, 150, 150, 23);
+        jLabel49.setBounds(0, 150, 175, 23);
 
         KeadaanUmum3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Menulis", "Audio-Visual/Gambar", "Diskusi", "Simulasi" }));
         KeadaanUmum3.setName("KeadaanUmum3"); // NOI18N
@@ -839,12 +844,12 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(KeadaanUmum3);
-        KeadaanUmum3.setBounds(190, 150, 160, 23);
+        KeadaanUmum3.setBounds(179, 150, 158, 23);
 
         jLabel50.setText("Hambatan Belajar :");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
-        jLabel50.setBounds(340, 150, 110, 23);
+        jLabel50.setBounds(342, 150, 110, 23);
 
         KeadaanUmum4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Takut/Gelisah", "Tidak Tertarik", "Nyeri Tidak Nyaman", "Buta Huruf", "Gangguan Kognitif", "Lain-lain" }));
         KeadaanUmum4.setName("KeadaanUmum4"); // NOI18N
@@ -854,7 +859,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(KeadaanUmum4);
-        KeadaanUmum4.setBounds(450, 150, 150, 23);
+        KeadaanUmum4.setBounds(456, 150, 150, 23);
 
         TD4.setFocusTraversalPolicyProvider(true);
         TD4.setName("TD4"); // NOI18N
@@ -864,12 +869,12 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(TD4);
-        TD4.setBounds(610, 150, 180, 23);
+        TD4.setBounds(609, 150, 180, 23);
 
-        jLabel51.setText("Kemampuan Belajar :");
+        jLabel51.setText(":");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(20, 180, 130, 23);
+        jLabel51.setBounds(0, 180, 147, 23);
 
         KeadaanUmum5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mampu Menerima Informasi", "Tidak Mampu Menerima Informasi" }));
         KeadaanUmum5.setName("KeadaanUmum5"); // NOI18N
@@ -879,7 +884,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(KeadaanUmum5);
-        KeadaanUmum5.setBounds(150, 180, 215, 23);
+        KeadaanUmum5.setBounds(151, 180, 220, 23);
 
         TD5.setFocusTraversalPolicyProvider(true);
         TD5.setName("TD5"); // NOI18N
@@ -889,13 +894,37 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }
         });
         FormInput.add(TD5);
-        TD5.setBounds(380, 180, 180, 23);
+        TD5.setBounds(374, 180, 415, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel52.setText("Bicara");
         jLabel52.setName("jLabel52"); // NOI18N
         FormInput.add(jLabel52);
         jLabel52.setBounds(43, 90, 40, 23);
+
+        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel53.setText("Bahasa Isyarat");
+        jLabel53.setName("jLabel53"); // NOI18N
+        FormInput.add(jLabel53);
+        jLabel53.setBounds(43, 120, 90, 23);
+
+        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel54.setText("Cara Belajar Yang Disukai");
+        jLabel54.setName("jLabel54"); // NOI18N
+        FormInput.add(jLabel54);
+        jLabel54.setBounds(43, 150, 140, 23);
+
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel55.setText("Kemampuan Belajar");
+        jLabel55.setName("jLabel55"); // NOI18N
+        FormInput.add(jLabel55);
+        jLabel55.setBounds(43, 180, 110, 23);
+
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel56.setText("Kemampuan Belajar :");
+        jLabel56.setName("jLabel56"); // NOI18N
+        FormInput.add(jLabel56);
+        jLabel56.setBounds(43, 210, 160, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1475,6 +1504,10 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private widget.Label jLabel50;
     private widget.Label jLabel51;
     private widget.Label jLabel52;
+    private widget.Label jLabel53;
+    private widget.Label jLabel54;
+    private widget.Label jLabel55;
+    private widget.Label jLabel56;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;

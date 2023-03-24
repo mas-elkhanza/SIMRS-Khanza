@@ -327,11 +327,11 @@
 				</textElement>
 				<text><![CDATA[Tanggal Evaluasi]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="10" y="301" width="116" height="16" uuid="d50ed745-c279-4f52-b1fb-7c350da58218">
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="10" y="301" width="116" height="109" uuid="d50ed745-c279-4f52-b1fb-7c350da58218">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
