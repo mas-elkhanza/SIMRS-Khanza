@@ -1379,44 +1379,46 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
             try{
                 if(TCari.getText().equals("")){
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir, " +
-                            "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,mpp_evaluasi.tanggal, " +
-                            "concat(mpp_evaluasi.kamar,', ',bangsal.nm_bangsal) as ruang,mpp_evaluasi.tglmasuk,mpp_evaluasi.kd_dokter,dokterpj.nm_dokter as dpjp,mpp_evaluasi.kd_konsulan,dokterkonsulen.nm_dokter as konsulan, " +
-                            "mpp_evaluasi.diagnosis,mpp_evaluasi.kelompok,mpp_evaluasi.assesmen,mpp_evaluasi.identifikasi,mpp_evaluasi.rencana,mpp_evaluasi.nip,petugas.nama from reg_periksa " +
-                            "inner join mpp_evaluasi on mpp_evaluasi.no_rawat=reg_periksa.no_rawat " +
-                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-                            "inner join kamar on mpp_evaluasi.kamar=kamar.kd_kamar " +
-                            "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal " +
-                            "inner join dokter as dokterpj on mpp_evaluasi.kd_dokter=dokterpj.kd_dokter " +
-                            "inner join dokter as dokterkonsulen on mpp_evaluasi.kd_konsulan=dokterkonsulen.kd_dokter " +
-                            "inner join petugas on mpp_evaluasi.nip=petugas.nip " +
-                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel " +
-                            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec " +
-                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
-                            "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
-                            "mpp_evaluasi.tanggal between ? and ? order by mpp_evaluasi.tanggal");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir, " +
+                        "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,mpp_evaluasi.tanggal, " +
+                        "ifnull(bangsal.nm_bangsal,'Ranap Gabung') as ruang,ifnull(kamar_inap.kd_kamar,'RG') as kamar,kamar_inap.tgl_masuk,kamar_inap.jam_masuk,"+
+                        "mpp_evaluasi.kd_dokter,dokterpj.nm_dokter as dpjp,mpp_evaluasi.kd_konsulan,dokterkonsulen.nm_dokter as konsulan, " +
+                        "mpp_evaluasi.diagnosis,mpp_evaluasi.kelompok,mpp_evaluasi.assesmen,mpp_evaluasi.identifikasi,mpp_evaluasi.rencana,mpp_evaluasi.nip,petugas.nama "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join mpp_evaluasi on mpp_evaluasi.no_rawat=reg_periksa.no_rawat " +
+                        "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                        "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                        "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join dokter as dokterpj on mpp_evaluasi.kd_dokter=dokterpj.kd_dokter " +
+                        "inner join dokter as dokterkonsulen on mpp_evaluasi.kd_konsulan=dokterkonsulen.kd_dokter " +
+                        "inner join petugas on mpp_evaluasi.nip=petugas.nip " +
+                        "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel " +
+                        "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec " +
+                        "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
+                        "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
+                        "mpp_evaluasi.tanggal between ? and ? group by reg_periksa.no_rawat order by mpp_evaluasi.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir, " +
-                            "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,mpp_evaluasi.tanggal, " +
-                            "concat(mpp_evaluasi.kamar,', ',bangsal.nm_bangsal) as ruang,mpp_evaluasi.tglmasuk,mpp_evaluasi.kd_dokter,dokterpj.nm_dokter as dpjp,mpp_evaluasi.kd_konsulan,dokterkonsulen.nm_dokter as konsulan, " +
-                            "mpp_evaluasi.diagnosis,mpp_evaluasi.kelompok,mpp_evaluasi.assesmen,mpp_evaluasi.identifikasi,mpp_evaluasi.rencana,mpp_evaluasi.nip,petugas.nama from reg_periksa " +
-                            "inner join mpp_evaluasi on mpp_evaluasi.no_rawat=reg_periksa.no_rawat " +
-                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-                            "inner join kamar on mpp_evaluasi.kamar=kamar.kd_kamar " +
-                            "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal " +
-                            "inner join dokter as dokterpj on mpp_evaluasi.kd_dokter=dokterpj.kd_dokter " +
-                            "inner join dokter as dokterkonsulen on mpp_evaluasi.kd_konsulan=dokterkonsulen.kd_dokter " +
-                            "inner join petugas on mpp_evaluasi.nip=petugas.nip " +
-                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel " +
-                            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec " +
-                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
-                            "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
-                            "mpp_evaluasi.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
-                            "mpp_evaluasi.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
-                            "mpp_evaluasi.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                            "mpp_evaluasi.tanggal between ? and ? and mpp_evaluasi.nip like ? or "+
-                            "mpp_evaluasi.tanggal between ? and ? and petugas.nama like ? order by mpp_evaluasi.tanggal");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir, " +
+                        "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,mpp_evaluasi.tanggal, " +
+                        "ifnull(bangsal.nm_bangsal,'Ranap Gabung') as ruang,ifnull(kamar_inap.kd_kamar,'RG') as kamar,kamar_inap.tgl_masuk,kamar_inap.jam_masuk,"+
+                        "mpp_evaluasi.kd_dokter,dokterpj.nm_dokter as dpjp,mpp_evaluasi.kd_konsulan,dokterkonsulen.nm_dokter as konsulan, " +
+                        "mpp_evaluasi.diagnosis,mpp_evaluasi.kelompok,mpp_evaluasi.assesmen,mpp_evaluasi.identifikasi,mpp_evaluasi.rencana,mpp_evaluasi.nip,petugas.nama "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join mpp_evaluasi on mpp_evaluasi.no_rawat=reg_periksa.no_rawat " +
+                        "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                        "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                        "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join dokter as dokterpj on mpp_evaluasi.kd_dokter=dokterpj.kd_dokter " +
+                        "inner join dokter as dokterkonsulen on mpp_evaluasi.kd_konsulan=dokterkonsulen.kd_dokter " +
+                        "inner join petugas on mpp_evaluasi.nip=petugas.nip " +
+                        "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel " +
+                        "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec " +
+                        "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
+                        "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
+                        "mpp_evaluasi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                        "pasien.nm_pasien like ? or mpp_evaluasi.nip like ? or petugas.nama like ?) "+
+                        "group by reg_periksa.no_rawat order by mpp_evaluasi.tanggal");
                 }
 
                 try {
@@ -1427,26 +1429,18 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                         ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                         ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                         ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                        ps.setString(4,"%"+TCari.getText()+"%");
+                        ps.setString(5,"%"+TCari.getText()+"%");
                         ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(9,"%"+TCari.getText()+"%");
-                        ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(12,"%"+TCari.getText()+"%");
-                        ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(15,"%"+TCari.getText()+"%");
-                    }   
+                        ps.setString(7,"%"+TCari.getText()+"%");
+                    }
                     rs=ps.executeQuery();
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'><b>PASIEN & PETUGAS</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'><b>IDENTIFIKASI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'><b>MASALAH & RENCANA KEPERAWATAN</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'><b>EVALUASI</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1494,10 +1488,10 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                                             "<td width='32%' valign='top'>Alamat</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("alamat")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Kamar</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("kamar")+"</td>"+
+                                            "<td width='32%' valign='top'>Kamar</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("kamar")+" "+rs.getString("ruang")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Tgl.Masuk</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("tanggal")+"</td>"+
+                                            "<td width='32%' valign='top'>Tgl.Masuk</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("tgl_masuk")+" "+rs.getString("jam_masuk")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='32%' valign='top'>Dokter DPJP</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("dpjp")+"</td>"+
@@ -1535,7 +1529,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                     }
                     LoadHTML.setText(
                         "<html>"+
-                          "<table width='900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='100%' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>"
@@ -1560,7 +1554,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1797,12 +1791,14 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
             Valid.MyReportqry("rptCetakEvaluasiAwalMPP.jasper","report","::[ Laporan Evaluasi Awal Manajer Pelayanan Pasien ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir, " +
                         "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,mpp_evaluasi.tanggal, " +
-                        "concat(mpp_evaluasi.kamar,', ',bangsal.nm_bangsal) as ruang,mpp_evaluasi.tglmasuk,mpp_evaluasi.kd_dokter,dokterpj.nm_dokter as dpjp,mpp_evaluasi.kd_konsulan,dokterkonsulen.nm_dokter as konsulan, " +
-                        "mpp_evaluasi.diagnosis,mpp_evaluasi.kelompok,mpp_evaluasi.assesmen,mpp_evaluasi.identifikasi,mpp_evaluasi.rencana,mpp_evaluasi.nip,petugas.nama from reg_periksa " +
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+                        "ifnull(bangsal.nm_bangsal,'Ranap Gabung') as ruang,ifnull(kamar_inap.kd_kamar,'RG') as kamar,date_format(kamar_inap.tgl_masuk,'%d-%m-%Y') as tgl_masuk,kamar_inap.jam_masuk,"+
+                        "mpp_evaluasi.kd_dokter,dokterpj.nm_dokter as dpjp,mpp_evaluasi.kd_konsulan,dokterkonsulen.nm_dokter as konsulan, " +
+                        "mpp_evaluasi.diagnosis,mpp_evaluasi.kelompok,mpp_evaluasi.assesmen,mpp_evaluasi.identifikasi,mpp_evaluasi.rencana,mpp_evaluasi.nip,petugas.nama "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join mpp_evaluasi on mpp_evaluasi.no_rawat=reg_periksa.no_rawat " +
-                        "inner join kamar on mpp_evaluasi.kamar=kamar.kd_kamar " +
-                        "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal " +
+                        "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                        "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                        "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                         "inner join dokter as dokterpj on mpp_evaluasi.kd_dokter=dokterpj.kd_dokter " +
                         "inner join dokter as dokterkonsulen on mpp_evaluasi.kd_konsulan=dokterkonsulen.kd_dokter " +
                         "inner join petugas on mpp_evaluasi.nip=petugas.nip " +
