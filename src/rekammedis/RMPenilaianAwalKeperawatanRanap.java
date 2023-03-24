@@ -5131,7 +5131,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -5494,181 +5494,181 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'>No.Rawat</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.RM</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pasien</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Lahir</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25px'>J.K.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP Pengkaji 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pengkaji 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP Pengkaji 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pengkaji 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kode DPJP</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama DPJP</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='117px'>Tgl.Asuhan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='78px'>Macam Kasus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Anamnesis</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='110px'>Tiba Di Ruang Rawat</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Cara Masuk</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='220px'>Riwayat Penyakit Saat Ini</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penyakit Dahulu</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penyakit Keluarga</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penggunaan Obat</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Pembedahan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Dirawat Di RS</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alat Bantu Yang Dipakai</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='210px'>Dalam Keadaan Hamil/Sedang Menyusui</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Transfusi Darah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Alergi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='48px'>Merokok</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Batang/Hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='44px'>Alkohol</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='59px'>Gelas/Hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='61px'>Obat Tidur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='59px'>Olah Raga</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kesadaran Mental</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keadaan Umum</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='64px'>GCS(E,V,M)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>TD(mmHg)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='74px'>Nadi(x/menit)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'>RR(x/menit)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='52px'>Suhu(°C)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='52px'>SpO2(%)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='44px'>BB(Kg)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='44px'>TB(cm)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kepala</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Wajah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='106px'>Leher</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kejang</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sensorik</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>Pulsasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sirkulasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'>Denyut Nadi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54px'>Retraksi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='63px'>Pola Nafas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='69px'>Suara Nafas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='97px'>Batuk & Sekresi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>Volume</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jenis Pernafasaan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Irama</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mulut</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lidah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Gigi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tenggorokan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Abdomen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Peistatik Usus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Anus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sensorik</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penglihatan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alat Bantu Penglihatan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Motorik</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pendengaran</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Bicara</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Otot</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kulit</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Warna Kulit</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Turgor</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Resiko Decubitas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Oedema</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pergerakan Sendi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kekuatan Otot</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Fraktur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri Sendi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Frekuensi BAB</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>x/</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Konsistensi BAB</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Warna BAB</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Frekuensi BAK</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>x/</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Warna BAK</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lain-lain BAK</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mandi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Makan/Minum</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Berpakaian</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Eliminasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Berpindah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Porsi Makan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Frekuensi Makan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jenis Makanan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lama Tidur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Gangguan Tidur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>a. Aktifitas Sehari-hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>b. Berjalan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>c. Aktifitas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>d. Alat Ambulasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>e. Ekstremitas Atas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>f. Ekstremitas Bawah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>g. Kemampuan Menggenggam</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>h. Kemampuan Koordinasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>i. Kesimpulan Gangguan Fungsi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>a. Kondisi Psikologis</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>b. Adakah Perilaku</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>c. Gangguan Jiwa di Masa Lalu</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>d. Hubungan Pasien</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>e. Agama</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>f. Tinggal Dengan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>g. Pekerjaan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>h. Pembayaran</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>i. Nilai-nilai Kepercayaan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>j. Bahasa Sehari-hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>k. Pendidikan Pasien</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>l. Pendidikan P.J.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>m. Edukasi Diberikan Kepada</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penyebab Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kualitas Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lokasi Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri Menyebar</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Waktu / Durasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri Hilang Bila</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Diberitahukan Pada Dokter</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>T.M.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 7</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 7</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 8</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 8</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 9</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 9</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 10</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 10</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 11</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 11</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>T.S.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>1. Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skor 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>2. Apakah asupan makan berkurang karena tidak nafsu makan ?</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skor 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total Skor</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pasien dengan diagnosis khusus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keterangan Diagnosa Khusus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sudah dibaca dan diketahui oleh Dietisen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jam Dibaca Dietisen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Rencana Keperawatan Lainnya</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'>No.Rawat</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.RM</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pasien</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Lahir</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='25px'>J.K.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>NIP Pengkaji 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pengkaji 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>NIP Pengkaji 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pengkaji 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode DPJP</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama DPJP</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='117px'>Tgl.Asuhan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='78px'>Macam Kasus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Anamnesis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tiba Di Ruang Rawat</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cara Masuk</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Riwayat Penyakit Saat Ini</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penyakit Dahulu</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penyakit Keluarga</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penggunaan Obat</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Pembedahan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Dirawat Di RS</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Alat Bantu Yang Dipakai</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='210px'>Dalam Keadaan Hamil/Sedang Menyusui</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Transfusi Darah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Alergi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='48px'>Merokok</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Batang/Hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44px'>Alkohol</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='59px'>Gelas/Hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='61px'>Obat Tidur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='59px'>Olah Raga</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kesadaran Mental</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keadaan Umum</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='64px'>GCS(E,V,M)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>TD(mmHg)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='74px'>Nadi(x/menit)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='67px'>RR(x/menit)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='52px'>Suhu(°C)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='52px'>SpO2(%)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44px'>BB(Kg)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44px'>TB(cm)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kepala</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Wajah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='106px'>Leher</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kejang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sensorik</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>Pulsasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sirkulasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='72px'>Denyut Nadi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>Retraksi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>Pola Nafas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='69px'>Suara Nafas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='97px'>Batuk & Sekresi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>Volume</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jenis Pernafasaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Irama</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mulut</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lidah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Gigi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tenggorokan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Abdomen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Peistatik Usus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Anus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sensorik</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penglihatan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Alat Bantu Penglihatan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Motorik</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pendengaran</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Bicara</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Otot</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kulit</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Warna Kulit</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Turgor</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resiko Decubitas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Oedema</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pergerakan Sendi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kekuatan Otot</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Fraktur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri Sendi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Frekuensi BAB</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>x/</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Konsistensi BAB</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Warna BAB</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Frekuensi BAK</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>x/</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Warna BAK</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lain-lain BAK</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mandi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Makan/Minum</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Berpakaian</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Eliminasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Berpindah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Porsi Makan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Frekuensi Makan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jenis Makanan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lama Tidur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Gangguan Tidur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>a. Aktifitas Sehari-hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>b. Berjalan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>c. Aktifitas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>d. Alat Ambulasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>e. Ekstremitas Atas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>f. Ekstremitas Bawah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>g. Kemampuan Menggenggam</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>h. Kemampuan Koordinasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>i. Kesimpulan Gangguan Fungsi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>a. Kondisi Psikologis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>b. Adakah Perilaku</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>c. Gangguan Jiwa di Masa Lalu</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>d. Hubungan Pasien</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>e. Agama</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>f. Tinggal Dengan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>g. Pekerjaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>h. Pembayaran</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>i. Nilai-nilai Kepercayaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>j. Bahasa Sehari-hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>k. Pendidikan Pasien</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>l. Pendidikan P.J.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>m. Edukasi Diberikan Kepada</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penyebab Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kualitas Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lokasi Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri Menyebar</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Waktu / Durasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri Hilang Bila</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Diberitahukan Pada Dokter</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>T.M.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 7</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 7</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 8</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 8</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 9</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 9</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 10</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 10</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 11</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 11</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>T.S.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>1. Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skor 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>2. Apakah asupan makan berkurang karena tidak nafsu makan ?</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skor 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pasien dengan diagnosis khusus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keterangan Diagnosa Khusus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sudah dibaca dan diketahui oleh Dietisen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jam Dibaca Dietisen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Rencana Keperawatan Lainnya</td>"+
                                     "</tr>"
                                 );
                                 while(rs.next()){
@@ -5871,181 +5871,181 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'>No.Rawat</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.RM</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pasien</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Lahir</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25px'>J.K.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP Pengkaji 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pengkaji 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP Pengkaji 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pengkaji 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kode DPJP</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama DPJP</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='117px'>Tgl.Asuhan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='78px'>Macam Kasus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Anamnesis</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='110px'>Tiba Di Ruang Rawat</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Cara Masuk</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='220px'>Riwayat Penyakit Saat Ini</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penyakit Dahulu</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penyakit Keluarga</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penggunaan Obat</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Pembedahan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Dirawat Di RS</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alat Bantu Yang Dipakai</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='210px'>Dalam Keadaan Hamil/Sedang Menyusui</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Transfusi Darah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Alergi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='48px'>Merokok</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Batang/Hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='44px'>Alkohol</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='59px'>Gelas/Hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='61px'>Obat Tidur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='59px'>Olah Raga</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kesadaran Mental</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keadaan Umum</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='64px'>GCS(E,V,M)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>TD(mmHg)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='74px'>Nadi(x/menit)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'>RR(x/menit)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='52px'>Suhu(°C)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='52px'>SpO2(%)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='44px'>BB(Kg)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='44px'>TB(cm)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kepala</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Wajah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='106px'>Leher</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kejang</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sensorik</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>Pulsasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sirkulasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'>Denyut Nadi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54px'>Retraksi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='63px'>Pola Nafas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='69px'>Suara Nafas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='97px'>Batuk & Sekresi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>Volume</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jenis Pernafasaan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Irama</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mulut</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lidah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Gigi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tenggorokan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Abdomen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Peistatik Usus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Anus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sensorik</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penglihatan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alat Bantu Penglihatan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Motorik</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pendengaran</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Bicara</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Otot</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kulit</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Warna Kulit</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Turgor</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Resiko Decubitas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Oedema</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pergerakan Sendi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kekuatan Otot</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Fraktur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri Sendi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Frekuensi BAB</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>x/</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Konsistensi BAB</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Warna BAB</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Frekuensi BAK</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>x/</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Warna BAK</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lain-lain BAK</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mandi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Makan/Minum</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Berpakaian</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Eliminasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Berpindah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Porsi Makan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Frekuensi Makan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jenis Makanan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lama Tidur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Gangguan Tidur</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>a. Aktifitas Sehari-hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>b. Berjalan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>c. Aktifitas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>d. Alat Ambulasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>e. Ekstremitas Atas</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>f. Ekstremitas Bawah</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>g. Kemampuan Menggenggam</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>h. Kemampuan Koordinasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>i. Kesimpulan Gangguan Fungsi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>a. Kondisi Psikologis</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>b. Adakah Perilaku</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>c. Gangguan Jiwa di Masa Lalu</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>d. Hubungan Pasien</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>e. Agama</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>f. Tinggal Dengan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>g. Pekerjaan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>h. Pembayaran</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>i. Nilai-nilai Kepercayaan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>j. Bahasa Sehari-hari</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>k. Pendidikan Pasien</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>l. Pendidikan P.J.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>m. Edukasi Diberikan Kepada</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penyebab Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kualitas Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lokasi Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri Menyebar</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Nyeri</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Waktu / Durasi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nyeri Hilang Bila</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Diberitahukan Pada Dokter</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Morse 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.M. 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>T.M.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 3</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 4</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 5</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 6</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 7</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 7</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 8</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 8</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 9</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 9</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 10</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 10</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skala Sydney 11</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>N.S. 11</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>T.S.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>1. Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skor 1</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>2. Apakah asupan makan berkurang karena tidak nafsu makan ?</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Skor 2</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total Skor</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pasien dengan diagnosis khusus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keterangan Diagnosa Khusus</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sudah dibaca dan diketahui oleh Dietisen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jam Dibaca Dietisen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Rencana Keperawatan Lainnya</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'>No.Rawat</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.RM</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pasien</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Lahir</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='25px'>J.K.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>NIP Pengkaji 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pengkaji 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>NIP Pengkaji 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pengkaji 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode DPJP</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama DPJP</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='117px'>Tgl.Asuhan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='78px'>Macam Kasus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Anamnesis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tiba Di Ruang Rawat</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cara Masuk</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Riwayat Penyakit Saat Ini</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penyakit Dahulu</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penyakit Keluarga</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penggunaan Obat</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Pembedahan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Dirawat Di RS</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Alat Bantu Yang Dipakai</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='210px'>Dalam Keadaan Hamil/Sedang Menyusui</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Transfusi Darah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Alergi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='48px'>Merokok</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Batang/Hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44px'>Alkohol</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='59px'>Gelas/Hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='61px'>Obat Tidur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='59px'>Olah Raga</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kesadaran Mental</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keadaan Umum</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='64px'>GCS(E,V,M)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>TD(mmHg)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='74px'>Nadi(x/menit)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='67px'>RR(x/menit)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='52px'>Suhu(°C)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='52px'>SpO2(%)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44px'>BB(Kg)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='44px'>TB(cm)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kepala</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Wajah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='106px'>Leher</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kejang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sensorik</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>Pulsasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sirkulasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='72px'>Denyut Nadi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>Retraksi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63px'>Pola Nafas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='69px'>Suara Nafas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='97px'>Batuk & Sekresi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>Volume</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jenis Pernafasaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Irama</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mulut</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lidah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Gigi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tenggorokan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Abdomen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Peistatik Usus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Anus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sensorik</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penglihatan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Alat Bantu Penglihatan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Motorik</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pendengaran</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Bicara</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Otot</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kulit</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Warna Kulit</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Turgor</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resiko Decubitas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Oedema</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pergerakan Sendi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kekuatan Otot</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Fraktur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri Sendi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Frekuensi BAB</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>x/</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Konsistensi BAB</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Warna BAB</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Frekuensi BAK</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>x/</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Warna BAK</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lain-lain BAK</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mandi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Makan/Minum</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Berpakaian</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Eliminasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Berpindah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Porsi Makan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Frekuensi Makan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jenis Makanan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lama Tidur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Gangguan Tidur</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>a. Aktifitas Sehari-hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>b. Berjalan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>c. Aktifitas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>d. Alat Ambulasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>e. Ekstremitas Atas</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>f. Ekstremitas Bawah</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>g. Kemampuan Menggenggam</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>h. Kemampuan Koordinasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>i. Kesimpulan Gangguan Fungsi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>a. Kondisi Psikologis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>b. Adakah Perilaku</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>c. Gangguan Jiwa di Masa Lalu</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>d. Hubungan Pasien</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>e. Agama</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>f. Tinggal Dengan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>g. Pekerjaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>h. Pembayaran</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>i. Nilai-nilai Kepercayaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>j. Bahasa Sehari-hari</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>k. Pendidikan Pasien</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>l. Pendidikan P.J.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>m. Edukasi Diberikan Kepada</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penyebab Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kualitas Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lokasi Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri Menyebar</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Nyeri</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Waktu / Durasi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nyeri Hilang Bila</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Diberitahukan Pada Dokter</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Morse 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.M. 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>T.M.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 3</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 4</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 5</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 6</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 7</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 7</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 8</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 8</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 9</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 9</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 10</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 10</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Sydney 11</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>N.S. 11</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>T.S.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>1. Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skor 1</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>2. Apakah asupan makan berkurang karena tidak nafsu makan ?</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skor 2</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pasien dengan diagnosis khusus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keterangan Diagnosa Khusus</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sudah dibaca dan diketahui oleh Dietisen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jam Dibaca Dietisen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Rencana Keperawatan Lainnya</td>"+
                                     "</tr>"
                                 );
                                 while(rs.next()){

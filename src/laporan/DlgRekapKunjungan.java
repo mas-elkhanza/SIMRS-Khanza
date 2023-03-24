@@ -279,53 +279,53 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='4'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='4'>BULAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%' rowspan='4'>NO.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='16%' rowspan='4'>BULAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>RAWAT JALAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>RAWAT INAP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>JUMLAH</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='4'>RAWAT JALAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='4'>RAWAT INAP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='4'>JUMLAH</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Baru</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Lama</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Baru</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Lama</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Baru</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Lama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Baru</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Lama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Baru</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Lama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Baru</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Lama</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>1</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>2</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>3</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>4</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>5</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>6</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>7</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>8</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>9</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>4</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>5</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>6</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>7</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>8</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>9</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' align='center'>1</td>"+
@@ -540,53 +540,53 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='4'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='4'>BULAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%' rowspan='4'>NO.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='16%' rowspan='4'>BULAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>RAWAT JALAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>RAWAT INAP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>JUMLAH</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='4'>RAWAT JALAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='4'>RAWAT INAP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='4'>JUMLAH</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Baru</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Lama</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Baru</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Lama</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Baru</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Lama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Baru</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Lama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Baru</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Lama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Baru</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>Lama</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>P</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>1</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>2</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>3</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>4</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>5</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>6</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>7</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>8</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>9</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>4</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>5</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>6</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>7</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>8</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>9</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14</td>"+
                 "</tr>"
             );            
             

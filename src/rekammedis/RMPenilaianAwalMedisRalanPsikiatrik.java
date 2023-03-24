@@ -1931,39 +1931,39 @@ public final class RMPenilaianAwalMedisRalanPsikiatrik extends javax.swing.JDial
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Rawat</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.RM</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pasien</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Lahir</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>J.K.</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kode Dokter</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Dokter</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tanggal</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Anamnesis</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Hubungan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keluhan Utama</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penyakit Sekarang</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penyakit Dahulu</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Penyakit Keluarga</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Napza</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Riwayat Alergi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penampilan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pembicaraan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Psikomotor</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sikap</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mood</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Fungsi Kognitif</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Gangguan Persepsi</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Proses Pikir</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengendalian Impuls</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tilikan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Reality Testing Ability</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keadaan Umum</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>GCS</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kesadaran</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>TD(mmHg)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nadi(x/menit)</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>RR(x/menit)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Rawat</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.RM</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pasien</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Lahir</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>J.K.</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Dokter</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Dokter</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tanggal</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Anamnesis</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Hubungan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keluhan Utama</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penyakit Sekarang</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penyakit Dahulu</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Penyakit Keluarga</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Napza</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Riwayat Alergi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penampilan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pembicaraan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Psikomotor</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sikap</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mood</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Fungsi Kognitif</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Gangguan Persepsi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Proses Pikir</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengendalian Impuls</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tilikan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Reality Testing Ability</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keadaan Umum</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>GCS</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kesadaran</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>TD(mmHg)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nadi(x/menit)</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>RR(x/menit)</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Suhu</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>SpO2</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>BB(Kg)</td>"+

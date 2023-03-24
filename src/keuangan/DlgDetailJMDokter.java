@@ -2834,19 +2834,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                          "<td valign='middle' align='left' colspan='13'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='17%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Tarif</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Biaya</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Paket BHP/Obat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>J.M.Dokter</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>J.S.Rmh Skt</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>No.</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Ruang</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nama Tindakan</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Tarif</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Biaya</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Paket BHP/Obat</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.M.Dokter</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.S.Rmh Skt</td>"+
                                     "</tr>"
                     );
                     c=1;
@@ -5091,19 +5091,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                          "<td valign='middle' align='left' colspan='13'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='17%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Tarif</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Biaya</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Paket BHP/Obat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>J.M.Dokter</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>J.S.Rmh Skt</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>No.</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Ruang</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nama Tindakan</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Tarif</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Biaya</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Paket BHP/Obat</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.M.Dokter</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.S.Rmh Skt</td>"+
                                     "</tr>"
                     );
                     c=1;
@@ -7359,15 +7359,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "<td valign='top' align='center'>"+
                                 "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>J.M.Dokter</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'>Ruang</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Nama Tindakan</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>J.M.Dokter</td>"+
                                     "</tr>"
                     );
                     c=1;
@@ -9488,15 +9488,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "<td valign='top' align='center'>"+
                                 "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>J.M.Dokter</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'>Ruang</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Nama Tindakan</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>J.M.Dokter</td>"+
                                     "</tr>"
                     );
                     c=1;

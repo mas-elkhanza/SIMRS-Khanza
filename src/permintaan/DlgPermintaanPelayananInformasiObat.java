@@ -1041,7 +1041,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(145, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 255, 248)));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
         ChkAccor.setFocusable(false);
@@ -1252,22 +1252,22 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
                         htmlContent = new StringBuilder();
                         htmlContent.append(                             
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Permintaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Umur</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Bayar</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Metode</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Uraian Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Bayar</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Pertanyaan</b></td>"+
                             "</tr>"
                         );
                         if(!TCari.getText().equals("")){
@@ -1369,29 +1369,29 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
                         htmlContent = new StringBuilder();
                         htmlContent.append(                             
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Permintaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Umur</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Bayar</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Metode</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Telp Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Uraian Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jawaban Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Referensi Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penyampaian Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Metode Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Apoteker</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Bayar</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp Penanya</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jawaban Pertanyaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Referensi Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyampaian Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Jawaban</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Apoteker</b></td>"+
                             "</tr>"
                         );
                         ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");

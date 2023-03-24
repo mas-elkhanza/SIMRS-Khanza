@@ -1001,25 +1001,25 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Rawat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.R.M.</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Umur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>JK</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Lahir</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Obser</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jam Obser</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Produk/Jenis Darah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Kantong</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lokasi Insersi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TD(mmHg)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>HR(x/menit)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>RR(x/menit)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Suhu(°C)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alergi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keterangan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Petugas</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.R.M.</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>JK</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Lahir</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jam Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Produk/Jenis Darah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Kantong</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lokasi Insersi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TD(mmHg)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>HR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>RR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Suhu(°C)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Alergi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keterangan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>NIP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Petugas</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -1077,25 +1077,25 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Rawat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.R.M.</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Umur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>JK</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Lahir</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Obser</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jam Obser</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Produk/Jenis Darah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Kantong</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Lokasi Insersi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TD(mmHg)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>HR(x/menit)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>RR(x/menit)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Suhu(°C)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Alergi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keterangan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>NIP</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Petugas</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.R.M.</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>JK</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Lahir</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jam Obser</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Produk/Jenis Darah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Kantong</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Lokasi Insersi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TD(mmHg)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>HR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>RR(x/menit)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Suhu(°C)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Alergi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keterangan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>NIP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Petugas</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  

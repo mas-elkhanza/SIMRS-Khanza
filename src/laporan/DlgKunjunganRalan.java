@@ -910,16 +910,16 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                         htmlContent = new StringBuilder();
                         htmlContent.append(                             
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lama</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Baru</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>L</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alamat</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dokter Jaga</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Baru</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>L</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>P</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dokter Jaga</b></td>"+
                             "</tr>"
                         ); 
                         if(TabRawat.getSelectedIndex()==0){
@@ -987,16 +987,16 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                         htmlContent = new StringBuilder();
                         htmlContent.append(                             
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lama</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Baru</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>L</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alamat</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dokter Jaga</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Baru</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>L</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>P</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dokter Jaga</b></td>"+
                             "</tr>"
                         ); 
                         if(TabRawat.getSelectedIndex()==0){

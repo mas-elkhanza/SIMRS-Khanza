@@ -1924,16 +1924,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>No.Nota</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='6%'>Tanggal</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='14%'>Petugas</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='14%'>Pasien</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='5%'>Jenis Jual</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Keterangan</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='13%'>Asal Barang</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='15%'>Cara Bayar</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>PPN</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>Ongkos Kirim</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='7%'>No.Nota</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='6%'>Tanggal</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='14%'>Petugas</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='14%'>Pasien</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='5%'>Jenis Jual</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='10%'>Keterangan</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='13%'>Asal Barang</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='15%'>Cara Bayar</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='7%'>PPN</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='7%'>Ongkos Kirim</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
                     "penjualan.nip,petugas.nama,penjualan.ongkir,penjualan.ppn, "+

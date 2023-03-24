@@ -1807,55 +1807,55 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
                 htmlContent = new StringBuilder();
                 htmlContent.append(                             
                     "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hubungan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keluhan Utama</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Sekarang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Dahulu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penggunakan Obat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Alergi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kondisi Umum</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi(x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR(x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tulang Belakang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kepala</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Kepala</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Thoraks</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Thoraks</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Abdomen</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Abdomen</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ekstremitas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Ekstremitas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>In.Kebersihan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>In.Warna</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>In.Kelembaban</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>In.Gangguan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lainnya</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kondisi Sosial</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Psikologis (GDS)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Kognitif (MMSE)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Nutrisi (MNA)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrinning Risiko Jatuh (OMS)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Fungsional (ADL: BARTHEL INDEX)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Laboratorium</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Radiologi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis Banding</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Permasalahan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Terapi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tindakan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Edukasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hubungan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Utama</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Sekarang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Dahulu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penggunakan Obat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Alergi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Umum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD(mmHg)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi(x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR(x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tulang Belakang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kepala</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kepala</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Thoraks</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Thoraks</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Abdomen</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Abdomen</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ekstremitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Ekstremitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>In.Kebersihan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>In.Warna</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>In.Kelembaban</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>In.Gangguan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Sosial</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Psikologis (GDS)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Kognitif (MMSE)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Nutrisi (MNA)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skrinning Risiko Jatuh (OMS)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Fungsional (ADL: BARTHEL INDEX)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Laboratorium</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosis Banding</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Permasalahan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Terapi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindakan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Edukasi</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {

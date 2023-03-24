@@ -183,7 +183,7 @@ public final class DlgPelayananLabPA extends javax.swing.JDialog {
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        panelGlass5.setBackground(new java.awt.Color(255, 250, 248));
+        panelGlass5.setBackground(new java.awt.Color(255,250,250));
         panelGlass5.setName("panelGlass5"); // NOI18N
         panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));

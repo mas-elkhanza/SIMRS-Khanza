@@ -441,29 +441,29 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>TNo.Rawat/Tagihan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tgl.Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Jatuh Tempo</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Cara Bayar</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Registrasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tindakan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Obt+Emb+Tsl</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Retur Obat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Resep Pulang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Laborat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Radiologi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Potongan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tambahan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Kamar+Service</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Operasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Harian</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Total Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Uang Muka</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Cicilan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Sisa Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TNo.Rawat/Tagihan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Jatuh Tempo</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Cara Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Obt+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Retur Obat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Resep Pulang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Kamar+Service</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Harian</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Total Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Uang Muka</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Cicilan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Sisa Piutang</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -525,29 +525,29 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>TNo.Rawat/Tagihan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tgl.Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Jatuh Tempo</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Cara Bayar</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Registrasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tindakan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Obt+Emb+Tsl</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Retur Obat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Resep Pulang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Laborat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Radiologi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Potongan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tambahan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Kamar+Service</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Operasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Harian</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Total Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Uang Muka</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Cicilan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Sisa Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TNo.Rawat/Tagihan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Jatuh Tempo</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Cara Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Obt+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Retur Obat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Resep Pulang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Kamar+Service</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Harian</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Total Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Uang Muka</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Cicilan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Sisa Piutang</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  

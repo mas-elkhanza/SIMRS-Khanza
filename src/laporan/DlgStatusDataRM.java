@@ -529,21 +529,21 @@ public final class DlgStatusDataRM extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'>No.Rawat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tanggal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Dokter Dituju</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Nomer RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>Poliklinik</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='43px'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>SOAPI Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>SOAPI Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Resume Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Resume Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Triase IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Askep IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54px'>ICD 10</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54px'>ICD 9</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Dokter Dituju</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Nomer RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Poliklinik</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='43px'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ralan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ranap</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ralan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ranap</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Triase IGD</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Askep IGD</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 10</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 9</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -597,21 +597,21 @@ public final class DlgStatusDataRM extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'>No.Rawat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tanggal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Dokter Dituju</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Nomer RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>Poliklinik</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='43px'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>SOAPI Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>SOAPI Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Resume Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Resume Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Triase IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Askep IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54px'>ICD 10</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54px'>ICD 9</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Dokter Dituju</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Nomer RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Poliklinik</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='43px'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ralan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ranap</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ralan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ranap</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Triase IGD</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Askep IGD</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 10</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 9</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  

@@ -1430,41 +1430,41 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SN/CN</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Anest</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Identitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keadaan Umum</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penandaan Area Operasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Surat Ijin Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Surat Ijin Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Surat Ijin Transfusi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Persiapan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Persiapan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Perlengkapan Khusus</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Radiologi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Radiologi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>EKG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan EKG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>USG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan USG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CT Scan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan CT Scan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>MRI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan MRI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP Ruangan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruangan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP OK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruang OK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SN/CN</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindakan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Bedah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Bedah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Anest</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Anestesi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Identitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keadaan Umum</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penandaan Area Operasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Bedah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Anestesi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Transfusi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Persiapan Darah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Persiapan Darah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perlengkapan Khusus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Radiologi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>EKG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan EKG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>USG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan USG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CT Scan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan CT Scan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MRI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan MRI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Ruangan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Ruangan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP OK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Ruang OK</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){

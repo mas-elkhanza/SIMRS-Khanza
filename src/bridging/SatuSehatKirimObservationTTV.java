@@ -1188,21 +1188,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu (°C)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu (°C)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -1366,21 +1366,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Resp(/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Resp(/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -1546,21 +1546,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi(/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi(/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -1726,21 +1726,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SpO2(%)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SpO2(%)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -1906,21 +1906,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>GCS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GCS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -2086,21 +2086,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesadaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesadaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -2266,21 +2266,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tensi(mmHg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tensi(mmHg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -2446,21 +2446,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TB(Cm)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB(Cm)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -2626,21 +2626,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB(Kg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(Kg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(
@@ -2806,21 +2806,21 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Pulang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>LP(Cm)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Observation Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pulang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>LP(Cm)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Dokter/Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation Suhu</b></td>"+
                         "</tr>"
                     );
                     ps=koneksi.prepareStatement(

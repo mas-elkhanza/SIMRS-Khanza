@@ -3009,79 +3009,79 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anamnesis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Hubungan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Rajal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Ranap</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Status</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Hipertensi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Diabetes Melitus</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Batu Saluran Kemih</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Operasi Saluran Kemih</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Infeksi Saluran Kemih</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'><b>Bengkak Seluruh Tubuh</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Urin Berdarah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Penyakit Ginjal Laom</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Penyakit Lain</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Konsumsi Obt Nefroktosis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Dialisis pertama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Pernah CAPD</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Pernah Transplantasi Ginjal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Keadaan Umum</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kesadaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>BB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>TB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Nadi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>td</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Napas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ikterik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Konjungtiva</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tekanan vena jugularis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Jantung Kardiomegali</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Jantung Bising</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Paru Whezzing</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Paru Ronchi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Abdomen Hepatomegali</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Abdomen Splenomegali</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Abdomen Ascites</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Ekstremitas Edema</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Foto Thoraks</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>EKG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>BNO</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>USG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Renogram</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>PA Biopsi Ginjal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>CT Scan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Arteriografi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kultur Urin</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Laboratorium</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Hematokrit</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Hemoglobin</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Leukosit</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Trombosit</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Hitung Jenis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Ureum</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Kreatinin</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Asam Urat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>SGOT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>SGPT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>HbsAg</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>CT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Urin Lengkap</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>CCT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anti HCV</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Edukasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='55px'><b>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='115px'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Anamnesis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'><b>Hubungan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px'><b>Rajal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Ranap</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Alergi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='120px'><b>Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Status</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Hipertensi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40px'><b>Diabetes Melitus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>Batu Saluran Kemih</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'><b>Operasi Saluran Kemih</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40px'><b>Infeksi Saluran Kemih</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='67px'><b>Bengkak Seluruh Tubuh</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='40px'><b>Urin Berdarah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Penyakit Ginjal Laom</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Penyakit Lain</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Konsumsi Obt Nefroktosis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Dialisis pertama</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Pernah CAPD</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Pernah Transplantasi Ginjal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Keadaan Umum</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Kesadaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>BB</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>TB</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>Nadi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>td</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>Napas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Ikterik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Konjungtiva</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Tekanan vena jugularis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Jantung Kardiomegali</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Jantung Bising</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Paru Whezzing</b></td>"+
+			    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px'><b>Paru Ronchi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Abdomen Hepatomegali</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Abdomen Splenomegali</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Abdomen Ascites</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Ekstremitas Edema</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Foto Thoraks</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>EKG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>BNO</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>USG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Renogram</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>PA Biopsi Ginjal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>CT Scan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Arteriografi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Kultur Urin</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Laboratorium</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Hematokrit</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Hemoglobin</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Leukosit</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Trombosit</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Hitung Jenis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Ureum</b></td>"+
+			    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px'><b>Kreatinin</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Asam Urat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>SGOT</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>SGPT</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>HbsAg</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>CT</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Urin Lengkap</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>CCT</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Anti HCV</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Edukasi</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){

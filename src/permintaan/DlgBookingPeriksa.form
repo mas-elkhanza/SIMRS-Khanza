@@ -1368,7 +1368,7 @@
             <Component class="widget.CekBox" name="ChkAccor">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f8" green="fa" red="ff" type="rgb"/>
+                  <Color blue="fa" green="fa" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/kiri.png"/>

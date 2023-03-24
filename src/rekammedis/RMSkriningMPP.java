@@ -1260,7 +1260,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Obat2an,BtnBatal);
+            Valid.pindah(evt,TglSkrining,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1278,14 +1278,14 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()>-1){
-            if(Sequel.queryu2tf("delete from mpp_skrining where no_rawat=? and tanggal=?",2,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-            })==true){
-                tabMode.removeRow(tbObat.getSelectedRow());
-                emptTeks();
-                LCount.setText(""+tabMode.getRowCount());
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
             }else{
-                JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                }
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
@@ -1308,100 +1308,14 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             Valid.textKosong(BtnPetugas,"Petugas");
         }else{
             if(tbObat.getSelectedRow()>-1){
-                param1="Tidak"; 
-                param2="Tidak";
-                param3="Tidak";
-                param4="Tidak";
-                param5="Tidak";
-                param6="Tidak";
-                param7="Tidak";
-                param8="Tidak"; 
-                param9="Tidak";
-                param10="Tidak";
-                param11="Tidak";
-                param12="Tidak";
-                param13="Tidak";
-                param14="Tidak";
-                param15="Tidak";
-                param16="Tidak";
-                if(Param1Ya.isSelected()==true){
-                    param1="Ya";
-                }
-                if(Param2Ya.isSelected()==true){
-                    param2="Ya";
-                }
-                if(Param3Ya.isSelected()==true){
-                    param3="Ya";
-                }
-                if(Param4Ya.isSelected()==true){
-                    param4="Ya";
-                }
-                if(Param5Ya.isSelected()==true){
-                    param5="Ya";
-                }
-                if(Param6Ya.isSelected()==true){
-                    param6="Ya";
-                }
-                if(Param7Ya.isSelected()==true){
-                    param7="Ya";
-                }
-                if(Param8Ya.isSelected()==true){
-                    param8="Ya";
-                }
-                if(Param9Ya.isSelected()==true){
-                    param9="Ya";
-                }
-                if(Param10Ya.isSelected()==true){
-                    param10="Ya";
-                }
-                if(Param11Ya.isSelected()==true){
-                    param11="Ya";
-                }
-                if(Param12Ya.isSelected()==true){
-                    param12="Ya";
-                }
-                if(Param13Ya.isSelected()==true){
-                    param13="Ya";
-                }
-                if(Param14Ya.isSelected()==true){
-                    param14="Ya";
-                }
-                if(Param15Ya.isSelected()==true){
-                    param15="Ya";
-                }
-                if(Param16Ya.isSelected()==true){
-                    param16="Ya";
-                }  
-                if(Sequel.mengedittf("mpp_skrining","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,param1=?,param2=?,param3=?,param4=?,param5=?,param6=?,param7=?,param8=?,param9=?,param10=?,param11=?,param12=?,param13=?,param14=?,param15=?,param16=?,nip=?",21,new String[]{
-                        TNoRw.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""), param1, param2, param3, param4, param5, param6, param7,
-                        param8, param9, param10, param11, param12, param13, param14, param15, param16,KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()
-                    })==true){
-                        tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
-                        tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
-                        tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
-                        tbObat.setValueAt(JK.getText().substring(0,1),tbObat.getSelectedRow(),3);
-                        tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),4);
-                        tbObat.setValueAt(AlamatLengkap.getText(),tbObat.getSelectedRow(),5);
-                        tbObat.setValueAt(Valid.SetTgl(TglSkrining.getSelectedItem()+""),tbObat.getSelectedRow(),6);
-                        tbObat.setValueAt(param1,tbObat.getSelectedRow(),7);
-                        tbObat.setValueAt(param2,tbObat.getSelectedRow(),8);
-                        tbObat.setValueAt(param3,tbObat.getSelectedRow(),9);
-                        tbObat.setValueAt(param4,tbObat.getSelectedRow(),10);
-                        tbObat.setValueAt(param5,tbObat.getSelectedRow(),11);
-                        tbObat.setValueAt(param6,tbObat.getSelectedRow(),12);
-                        tbObat.setValueAt(param7,tbObat.getSelectedRow(),13);
-                        tbObat.setValueAt(param8,tbObat.getSelectedRow(),14);
-                        tbObat.setValueAt(param9,tbObat.getSelectedRow(),15);
-                        tbObat.setValueAt(param10,tbObat.getSelectedRow(),16);
-                        tbObat.setValueAt(param11,tbObat.getSelectedRow(),17);
-                        tbObat.setValueAt(param12,tbObat.getSelectedRow(),18);
-                        tbObat.setValueAt(param13,tbObat.getSelectedRow(),19);
-                        tbObat.setValueAt(param14,tbObat.getSelectedRow(),20);
-                        tbObat.setValueAt(param15,tbObat.getSelectedRow(),21);
-                        tbObat.setValueAt(param16,tbObat.getSelectedRow(),22);
-                        tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),23);
-                        tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),24);
-                        emptTeks();
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else{
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                    }
                 }
             }
         }
@@ -2064,5 +1978,115 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
         }         
+    }
+
+    private void hapus() {
+        if(Sequel.queryu2tf("delete from mpp_skrining where no_rawat=? and tanggal=?",2,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+        })==true){
+            tabMode.removeRow(tbObat.getSelectedRow());
+            emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+
+    private void ganti() {
+        param1="Tidak"; 
+        param2="Tidak";
+        param3="Tidak";
+        param4="Tidak";
+        param5="Tidak";
+        param6="Tidak";
+        param7="Tidak";
+        param8="Tidak"; 
+        param9="Tidak";
+        param10="Tidak";
+        param11="Tidak";
+        param12="Tidak";
+        param13="Tidak";
+        param14="Tidak";
+        param15="Tidak";
+        param16="Tidak";
+        if(Param1Ya.isSelected()==true){
+            param1="Ya";
+        }
+        if(Param2Ya.isSelected()==true){
+            param2="Ya";
+        }
+        if(Param3Ya.isSelected()==true){
+            param3="Ya";
+        }
+        if(Param4Ya.isSelected()==true){
+            param4="Ya";
+        }
+        if(Param5Ya.isSelected()==true){
+            param5="Ya";
+        }
+        if(Param6Ya.isSelected()==true){
+            param6="Ya";
+        }
+        if(Param7Ya.isSelected()==true){
+            param7="Ya";
+        }
+        if(Param8Ya.isSelected()==true){
+            param8="Ya";
+        }
+        if(Param9Ya.isSelected()==true){
+            param9="Ya";
+        }
+        if(Param10Ya.isSelected()==true){
+            param10="Ya";
+        }
+        if(Param11Ya.isSelected()==true){
+            param11="Ya";
+        }
+        if(Param12Ya.isSelected()==true){
+            param12="Ya";
+        }
+        if(Param13Ya.isSelected()==true){
+            param13="Ya";
+        }
+        if(Param14Ya.isSelected()==true){
+            param14="Ya";
+        }
+        if(Param15Ya.isSelected()==true){
+            param15="Ya";
+        }
+        if(Param16Ya.isSelected()==true){
+            param16="Ya";
+        }  
+        if(Sequel.mengedittf("mpp_skrining","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,param1=?,param2=?,param3=?,param4=?,param5=?,param6=?,param7=?,param8=?,param9=?,param10=?,param11=?,param12=?,param13=?,param14=?,param15=?,param16=?,nip=?",21,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""), param1, param2, param3, param4, param5, param6, param7,
+                param8, param9, param10, param11, param12, param13, param14, param15, param16,KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()
+            })==true){
+                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+                tbObat.setValueAt(JK.getText().substring(0,1),tbObat.getSelectedRow(),3);
+                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),4);
+                tbObat.setValueAt(AlamatLengkap.getText(),tbObat.getSelectedRow(),5);
+                tbObat.setValueAt(Valid.SetTgl(TglSkrining.getSelectedItem()+""),tbObat.getSelectedRow(),6);
+                tbObat.setValueAt(param1,tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(param2,tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(param3,tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(param4,tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(param5,tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(param6,tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(param7,tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(param8,tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(param9,tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(param10,tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(param11,tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(param12,tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(param13,tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(param14,tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(param15,tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(param16,tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),24);
+                emptTeks();
+        }
     }
 }

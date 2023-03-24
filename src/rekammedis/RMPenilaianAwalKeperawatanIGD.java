@@ -2511,7 +2511,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -2821,14 +2821,14 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'><b>PASIEN & PETUGAS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'><b>I. RIWAYAT KESEHATAN PASIEN</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'><b>II. PEMERIKSAAN FISIK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%'><b>III. RIWAYAT PSIKOLOGIS - SOSIAL - EKONOMI - BUDAYA - SPIRITUAL</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'><b>IV. PENGKAJIAN FUNGSI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'><b>V. SKALA NYERI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%'><b>VI. PENILAIAN RESIKO JATUH (GET UP AND GO)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'><b>MASALAH & RENCANA KEPERAWATAN</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'><b>PASIEN & PETUGAS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'><b>I. RIWAYAT KESEHATAN PASIEN</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'><b>II. PEMERIKSAAN FISIK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'><b>III. RIWAYAT PSIKOLOGIS - SOSIAL - EKONOMI - BUDAYA - SPIRITUAL</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'><b>IV. PENGKAJIAN FUNGSI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'><b>V. SKALA NYERI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='16%'><b>VI. PENILAIAN RESIKO JATUH (GET UP AND GO)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'><b>MASALAH & RENCANA KEPERAWATAN</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){

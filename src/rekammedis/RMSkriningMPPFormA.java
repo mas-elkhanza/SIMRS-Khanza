@@ -134,7 +134,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeMasalah=new DefaultTableModel(null,new Object[]{
-                "P","KODE","IDENTIFIKASI MASALAH"
+                "P","Kode","Identifikasi Masalah"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -176,7 +176,6 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
         };
         tbMasalahDetailMasalah.setModel(tabModeDetailMasalah);
 
-        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbMasalahDetailMasalah.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbMasalahDetailMasalah.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -1131,7 +1130,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -1294,19 +1293,14 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()>-1){
-            if(Sequel.queryu2tf("delete from mpp_evaluasi where no_rawat=?",1,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-            })==true){
-                TNoRM1.setText("");
-                TPasien1.setText("");
-                Sequel.meghapus("mpp_evaluasi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                Valid.tabelKosong(tabModeDetailMasalah);
-                ChkAccor.setSelected(false);
-                isMenu();
-                tampil();
-                emptTeks();
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
             }else{
-                JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                }
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
@@ -1344,25 +1338,17 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
         }else if(TDokter2.getText().trim().equals("")){
             Valid.textKosong(TDokter2,"Dokter Konsulan");
         }else{
-            /*if(tbObat.getSelectedRow()>-1){
-                if(Sequel.mengedittf("mpp_evaluasi","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,td=?,nadi=?,rr=?,suhu=?,gcs=?,bb=?,tb=?,bmi=?,keluhan_utama=?,rpd=?,rpk=?,rpo=?,alergi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,adl=?,status_psiko=?,ket_psiko=?,hub_keluarga=?,tinggal_dengan=?,ket_tinggal=?,ekonomi=?,budaya=?,ket_budaya=?,edukasi=?,ket_edukasi=?,berjalan_a=?,berjalan_b=?,berjalan_c=?,hasil=?,lapor=?,ket_lapor=?,sg1=?,nilai1=?,sg2=?,nilai2=?,total_hasil=?,nyeri=?,provokes=?,ket_provokes=?,quality=?,ket_quality=?,lokasi=?,menyebar=?,skala_nyeri=?,durasi=?,nyeri_hilang=?,ket_nyeri=?,pada_dokter=?,ket_dokter=?,rencana=?,nip=?",58,new String[]{
-                        TNoRw.getText(),Valid.SetTgl(TglEvaluasi.getSelectedItem()+"")+" "+TglEvaluasi.getSelectedItem().toString().substring(11,19),Kamar.getText(),Valid.SetTgl(TglMasuk.getSelectedItem()+"")+" "+TglMasuk.getSelectedItem().toString().substring(11,19),
-                        KdDok1.getText(),KdDok2.getText(),TDiagnosis.getText(),TKelompok.getText(),Assemen.getText(),Identifikasi.getText(),Perencanaan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                     })==true){
-                        Sequel.meghapus("mpp_evaluasi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                        for (i = 0; i < tbIdentifikasiMPP.getRowCount(); i++) {
-                            if(tbIdentifikasiMPP.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan2("mpp_evaluasi_masalah","?,?",2,new String[]{TNoRw.getText(),tbIdentifikasiMPP.getValueAt(i,1).toString()});
-                            }
-                        }
-                        getMasalah();
-                        tampil();
-                        emptTeks();
-                        TabRawat.setSelectedIndex(1);
+            if(tbObat.getSelectedRow()>-1){
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else{
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                    }
                 }
-            }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-            }  */ 
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -2136,7 +2122,6 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
             
             try {
                 Valid.tabelKosong(tabModeMasalah);
-                
                 ps=koneksi.prepareStatement(
                         "select master_masalah_mpp.kode_masalah,master_masalah_mpp.nama_masalah from master_masalah_mpp "+
                         "inner join mpp_evaluasi_masalah on mpp_evaluasi_masalah.kode_masalah=master_masalah_mpp.kode_masalah "+
@@ -2166,9 +2151,9 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,date_format(pasien.tgl_lahir,'%d-%m-%Y') as tgl_lahir,"+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
                     "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop)as alamat,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal, "+
-                    "ifnull(kamar_inap.kd_kamar,'RG') as kamar,date_format(kamar_inap.tgl_masuk,'%d-%m-%Y') as tgl_masuk,kamar_inap.jam_masuk,reg_periksa.tgl_registrasi "+
+                    "ifnull(kamar_inap.kd_kamar,'RG') as kamar,kamar_inap.tgl_masuk,kamar_inap.jam_masuk "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                     "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
@@ -2342,7 +2327,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select master_masalah_mpp.kode_masalah,master_masalah_mpp.nama_masalah from master_masalah_mpp "+
                         "inner join mpp_evaluasi_masalah on mpp_evaluasi_masalah.kode_masalah=master_masalah_mpp.kode_masalah "+
-                        "where mpp_evaluasi_masalah.no_rawat=? order by kode_masalah");
+                        "where mpp_evaluasi_masalah.no_rawat=? order by master_masalah_mpp.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -2363,5 +2348,66 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                 System.out.println("Notif : "+e);
             }
         }
+    }
+
+    private void hapus() {
+        if(Sequel.queryu2tf("delete from mpp_evaluasi where no_rawat=?",1,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        })==true){
+            TNoRM1.setText("");
+            TPasien1.setText("");
+            Sequel.meghapus("mpp_evaluasi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Valid.tabelKosong(tabModeDetailMasalah);
+            ChkAccor.setSelected(false);
+            isMenu();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
+            emptTeks();
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+
+    private void ganti() {
+        if(tbObat.getSelectedRow()>-1){
+            if(Sequel.mengedittf("mpp_evaluasi","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,kd_konsulan=?,diagnosis=?,kelompok=?,assesmen=?,identifikasi=?,rencana=?,nip=?",11,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(TglEvaluasi.getSelectedItem()+"")+" "+TglEvaluasi.getSelectedItem().toString().substring(11,19),KdDok1.getText(),KdDok2.getText(),TDiagnosis.getText(),
+                    TKelompok.getText(),Assemen.getText(),Identifikasi.getText(),Perencanaan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                 })==true){
+                    tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+                    tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+                    tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+                    tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),3);
+                    tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),4);
+                    tbObat.setValueAt(Alamat.getText(),tbObat.getSelectedRow(),5);
+                    tbObat.setValueAt(Valid.SetTgl(TglEvaluasi.getSelectedItem()+"")+" "+TglEvaluasi.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
+                    tbObat.setValueAt(Kamar.getText(),tbObat.getSelectedRow(),7);
+                    tbObat.setValueAt(TglMasuk.getText(),tbObat.getSelectedRow(),8);
+                    tbObat.setValueAt(KdDok1.getText(),tbObat.getSelectedRow(),9);
+                    tbObat.setValueAt(TDokter1.getText(),tbObat.getSelectedRow(),10);
+                    tbObat.setValueAt(KdDok2.getText(),tbObat.getSelectedRow(),11);
+                    tbObat.setValueAt(TDokter2.getText(),tbObat.getSelectedRow(),12);
+                    tbObat.setValueAt(TDiagnosis.getText(),tbObat.getSelectedRow(),13);
+                    tbObat.setValueAt(TKelompok.getText(),tbObat.getSelectedRow(),14);
+                    tbObat.setValueAt(Assemen.getText(),tbObat.getSelectedRow(),15);
+                    tbObat.setValueAt(Identifikasi.getText(),tbObat.getSelectedRow(),16);
+                    tbObat.setValueAt(Perencanaan.getText(),tbObat.getSelectedRow(),17);
+                    tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),18);
+                    tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),19);
+                    Sequel.meghapus("mpp_evaluasi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    Valid.tabelKosong(tabModeDetailMasalah);
+                    for (i = 0; i < tbIdentifikasiMPP.getRowCount(); i++) {
+                        if(tbIdentifikasiMPP.getValueAt(i,0).toString().equals("true")){
+                            if(Sequel.menyimpantf2("mpp_evaluasi_masalah","?,?",2,new String[]{TNoRw.getText(),tbIdentifikasiMPP.getValueAt(i,1).toString()})==true){
+                                tabModeDetailMasalah.addRow(new Object[]{tbIdentifikasiMPP.getValueAt(i,1).toString(),tbIdentifikasiMPP.getValueAt(i,2).toString()});
+                            }
+                        }
+                    }
+                    emptTeks();
+                    TabRawat.setSelectedIndex(1);
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+        } 
     }
 }

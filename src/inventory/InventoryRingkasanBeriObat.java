@@ -973,12 +973,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45%'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Jenis</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Jumlah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Total</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Kode Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45%'>Nama Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Satuan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Jumlah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Total</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -1023,12 +1023,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45%'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Jenis</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Jumlah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Total</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Kode Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45%'>Nama Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Satuan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Jumlah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Total</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  

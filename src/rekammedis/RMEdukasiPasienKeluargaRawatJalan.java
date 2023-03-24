@@ -1261,28 +1261,28 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.R.M.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>JK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Uraian Penyakit/Kondisi Pasien Saat Ini</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit/Kondisi Sebelumnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keadaan Umum</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesadaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu(°C)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SpO2(%)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahap Menjelang Ajal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanda-tanda Klinis Menjelang Kematian</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kebutuhan Spiritual Pasien/Keluarga</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.R.M.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>JK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Penyakit/Kondisi Pasien Saat Ini</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit/Kondisi Sebelumnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keadaan Umum</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesadaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD(mmHg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu(°C)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SpO2(%)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skala Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tahap Menjelang Ajal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanda-tanda Klinis Menjelang Kematian</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebutuhan Spiritual Pasien/Keluarga</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){

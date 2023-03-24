@@ -1109,7 +1109,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -2720,9 +2720,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                         "<td valign='middle' align='center' colspan='3'>TELAAH RESEP</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75%'>Penilaian</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Ya/Tidak</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75%'>Penilaian</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Ya/Tidak</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
                                         "<td valign='middle' align='center'>1</td>"+
@@ -2800,9 +2800,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                         "<td valign='middle' align='center' colspan='3'><br>TELAAH OBAT ( VERIFIKASI OBAT )</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75%'>Penilaian</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Ya/Tidak</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75%'>Penilaian</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Ya/Tidak</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
                                         "<td valign='middle' align='center'>1</td>"+

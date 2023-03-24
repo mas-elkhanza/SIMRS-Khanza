@@ -847,17 +847,17 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Masuk</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>NRP/NIP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='180px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>Golongan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>Pangkat</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>Kesatuan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Diagnosa</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>DPJP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Ruang/Bangsal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Masuk</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>NRP/NIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='180px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Golongan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Pangkat</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Kesatuan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Diagnosa</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>DPJP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Ruang/Bangsal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Cara Bayar</td>"+
                     "<td valign='middle' bgcolor='#FFFFF8' align='center' width='90px'>Tgl & Jam SOAP</td>"+
                     "<td valign='middle' bgcolor='#FFFFF8' align='center' width='150px'>Dilakukan</td>"+
                     "<td valign='middle' bgcolor='#FFFFF8' align='center' width='200px'>Subjek</td>"+

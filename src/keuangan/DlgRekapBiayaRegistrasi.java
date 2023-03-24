@@ -808,16 +808,16 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
             Sequel.cariInteger("select count(penjab.png_jawab) from penjab where penjab.status='1'");
             htmlContent.append(                             
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='80px'>Tgl.Periksa</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='170px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='110px'>NIK</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='250px'>Alamat</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='90px'>No.RM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='90px'>Diagnosis</td>"+
-                    (no>0?"<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+no+"' width='"+(no*100)+"px'>Cara Bayar</td>":"")+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='90px'>Biaya</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='60px'>Status</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='80px'>Tgl.Periksa</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='170px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='110px'>NIK</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='250px'>Alamat</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='90px'>No.RM</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='90px'>Diagnosis</td>"+
+                    (no>0?"<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+no+"' width='"+(no*100)+"px'>Cara Bayar</td>":"")+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='90px'>Biaya</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='60px'>Status</td>"+
                 "</tr>"
             );
             
@@ -826,7 +826,7 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
                     "<tr class='head'>"
                 );
                 for(i=0;i<no;i++){
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>"+carabayar[i]+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>"+carabayar[i]+"</td>");
                 } 
                 htmlContent.append(                             
                     "</tr>"

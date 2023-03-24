@@ -1030,7 +1030,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -1334,31 +1334,31 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kiriman Dari</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Klinis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>HTA</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Prestasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>GS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CRL</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>DBP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>FL</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>AC</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TBJ</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Usia Kehamilan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Plasenta Berimplatansi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Derajat Maturitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Air Ketuban</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Peluang Sex</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Indeks Cairan Ketuban (ICK)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelainan Kongenital Mayor</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesimpulan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kiriman Dari</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HTA</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Prestasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CRL</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>FL</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AC</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TBJ</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia Kehamilan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Plasenta Berimplatansi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Derajat Maturitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Air Ketuban</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Peluang Sex</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indeks Cairan Ketuban (ICK)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelainan Kongenital Mayor</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){

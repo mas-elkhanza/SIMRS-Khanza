@@ -874,44 +874,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Batch</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Faktur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Awal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Awal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Awal(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengadaan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengadaan(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penerimaan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penerimaan(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penjualan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penjualan(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Ke Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Ke Pasien(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Piutang Jual</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Piutang Jual(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Beli</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Beli(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Jual</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Jual(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Piutang(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengambilan UTD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengambilan UTD(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Keluar Medis</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Keluar Medis(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Resep Pulang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Resep Pulang(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Masuk</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Masuk(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Keluar</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Keluar(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Hibah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Hibah(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Akhir</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Akhir(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Batch</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Faktur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Satuan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Awal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Awal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Awal(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengadaan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengadaan(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penerimaan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penerimaan(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penjualan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penjualan(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Ke Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Ke Pasien(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Piutang Jual</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Piutang Jual(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Beli</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Beli(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Jual</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Jual(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Piutang(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengambilan UTD</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengambilan UTD(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Keluar Medis</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Keluar Medis(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resep Pulang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resep Pulang(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Masuk</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Masuk(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Keluar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Keluar(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Hibah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Hibah(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Akhir</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Akhir(Rp)</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -988,44 +988,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kode Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Batch</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>No.Faktur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nama Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tgl.Awal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Awal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Awal(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengadaan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengadaan(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penerimaan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penerimaan(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penjualan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Penjualan(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Ke Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Ke Pasien(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Piutang Jual</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Piutang Jual(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Beli</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Beli(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Jual</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Jual(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Retur Piutang(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengambilan UTD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengambilan UTD(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Keluar Medis</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Keluar Medis(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Resep Pulang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Resep Pulang(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Masuk</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Masuk(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Keluar</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mutasi Keluar(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Hibah</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Hibah(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Akhir</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Stok Akhir(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Batch</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Faktur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Satuan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Awal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Awal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Awal(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengadaan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengadaan(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penerimaan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penerimaan(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penjualan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Penjualan(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Ke Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Ke Pasien(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Piutang Jual</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Piutang Jual(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Beli</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Beli(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Jual</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Jual(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Piutang(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengambilan UTD</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengambilan UTD(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Keluar Medis</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Keluar Medis(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resep Pulang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resep Pulang(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Masuk</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Masuk(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Keluar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mutasi Keluar(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Hibah</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Hibah(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Akhir</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stok Akhir(Rp)</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  

@@ -495,33 +495,33 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                 htmlContent = new StringBuilder();
                 htmlContent.append(                             
                     "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal Registrasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Stts Lanjut</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Encounter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Vaksin Code</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Vaksin System</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Vaksin</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Vaksin Display</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Route Code</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Route System</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Route Display</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dose Code</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dose System</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dose Unit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Batch</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal & Jam Beri</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml/Kps</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dosis/No</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Lokasi Satu Sehat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Unit/Poli</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dokter Penanggung Jawab</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.KTP Praktisi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ID Imunisasi Satu Sehat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Registrasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stts Lanjut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Vaksin Code</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Vaksin System</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Vaksin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Vaksin Display</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Route Code</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Route System</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Route Display</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dose Code</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dose System</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dose Unit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Batch</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal & Jam Beri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml/Kps</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dosis/No</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Lokasi Satu Sehat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Unit/Poli</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dokter Penanggung Jawab</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Imunisasi Satu Sehat</b></td>"+
                     "</tr>"
                 );
                 ps=koneksi.prepareStatement(
