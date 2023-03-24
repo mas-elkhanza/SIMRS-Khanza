@@ -218,6 +218,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianPasienTerminal = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
+        JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -267,7 +268,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         jLabel99 = new widget.Label();
         jLabel46 = new widget.Label();
         TD1 = new widget.TextBox();
-        TD2 = new widget.TextBox();
+        Bahasa = new widget.TextBox();
         jLabel47 = new widget.Label();
         KeadaanUmum1 = new widget.ComboBox();
         TD3 = new widget.TextBox();
@@ -302,7 +303,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         jLabel62 = new widget.Label();
         jLabel63 = new widget.Label();
         jLabel64 = new widget.Label();
-        TD10 = new widget.TextBox();
+        Pendidikan = new widget.TextBox();
         jLabel9 = new widget.Label();
         jLabel65 = new widget.Label();
         KeadaanUmum10 = new widget.ComboBox();
@@ -339,6 +340,9 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
+
+        JK.setHighlighter(null);
+        JK.setName("JK"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -814,16 +818,16 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         FormInput.add(TD1);
         TD1.setBounds(499, 120, 290, 23);
 
-        TD2.setEditable(false);
-        TD2.setFocusTraversalPolicyProvider(true);
-        TD2.setName("TD2"); // NOI18N
-        TD2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Bahasa.setEditable(false);
+        Bahasa.setFocusTraversalPolicyProvider(true);
+        Bahasa.setName("Bahasa"); // NOI18N
+        Bahasa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TD2KeyPressed(evt);
+                BahasaKeyPressed(evt);
             }
         });
-        FormInput.add(TD2);
-        TD2.setBounds(334, 120, 162, 23);
+        FormInput.add(Bahasa);
+        Bahasa.setBounds(334, 120, 162, 23);
 
         jLabel47.setText("Perlu Penerjemah :");
         jLabel47.setName("jLabel47"); // NOI18N
@@ -1084,16 +1088,16 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         FormInput.add(jLabel64);
         jLabel64.setBounds(79, 320, 360, 23);
 
-        TD10.setEditable(false);
-        TD10.setFocusTraversalPolicyProvider(true);
-        TD10.setName("TD10"); // NOI18N
-        TD10.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pendidikan.setEditable(false);
+        Pendidikan.setFocusTraversalPolicyProvider(true);
+        Pendidikan.setName("Pendidikan"); // NOI18N
+        Pendidikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TD10KeyPressed(evt);
+                PendidikanKeyPressed(evt);
             }
         });
-        FormInput.add(TD10);
-        TD10.setBounds(669, 180, 120, 23);
+        FormInput.add(Pendidikan);
+        Pendidikan.setBounds(669, 180, 120, 23);
 
         jLabel9.setText("Pendidikan :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -1226,7 +1230,6 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
-            isPsien();
         }else{            
             Valid.pindah(evt,TCari,Tanggal);
         }
@@ -1681,9 +1684,9 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         // TODO add your handling code here:
     }//GEN-LAST:event_TD1KeyPressed
 
-    private void TD2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TD2KeyPressed
+    private void BahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TD2KeyPressed
+    }//GEN-LAST:event_BahasaKeyPressed
 
     private void KeadaanUmum1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmum1KeyPressed
         // TODO add your handling code here:
@@ -1749,9 +1752,9 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         // TODO add your handling code here:
     }//GEN-LAST:event_TD9KeyPressed
 
-    private void TD10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TD10KeyPressed
+    private void PendidikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TD10KeyPressed
+    }//GEN-LAST:event_PendidikanKeyPressed
 
     private void KeadaanUmum10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmum10KeyPressed
         // TODO add your handling code here:
@@ -1790,6 +1793,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Bahasa;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1804,6 +1808,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.ComboBox KeadaanUmum;
     private widget.ComboBox KeadaanUmum1;
@@ -1827,12 +1832,11 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
+    private widget.TextBox Pendidikan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TD;
     private widget.TextBox TD1;
-    private widget.TextBox TD10;
-    private widget.TextBox TD2;
     private widget.TextBox TD3;
     private widget.TextBox TD4;
     private widget.TextBox TD5;
@@ -2009,22 +2013,47 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());*/
         }
     }
+    
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
-    }
-
-    private void isPsien() {
-        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
-        Sequel.cariIsi("select date_format(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TglLahir,TNoRM.getText());
+         try {
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
+                    "bahasa_pasien.nama_bahasa,pasien.pnd,reg_periksa.tgl_registrasi "+
+                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
+                    "where reg_periksa.no_rawat=?");
+            try {
+                ps.setString(1,TNoRw.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    TPasien.setText(rs.getString("nm_pasien"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
+                    TglLahir.setText(rs.getString("tgl_lahir"));
+                    Pendidikan.setText(rs.getString("pnd"));
+                    JK.setText(rs.getString("jk"));
+                    Bahasa.setText(rs.getString("nama_bahasa"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
-        isPsien();
         ChkInput.setSelected(true);
         isForm();
     }
