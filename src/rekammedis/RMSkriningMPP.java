@@ -309,7 +309,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnEvaluasiFormA.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnEvaluasiFormA.setForeground(new java.awt.Color(50, 50, 50));
         MnEvaluasiFormA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnEvaluasiFormA.setText("Form - A Evaluasi ");
+        MnEvaluasiFormA.setText("Form - A Evaluasi Awal");
         MnEvaluasiFormA.setName("MnEvaluasiFormA"); // NOI18N
         MnEvaluasiFormA.setPreferredSize(new java.awt.Dimension(170, 26));
         MnEvaluasiFormA.addActionListener(new java.awt.event.ActionListener() {
@@ -323,7 +323,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnEvaluasiFormB.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnEvaluasiFormB.setForeground(new java.awt.Color(50, 50, 50));
         MnEvaluasiFormB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnEvaluasiFormB.setText("Form - B Evaluasi ");
+        MnEvaluasiFormB.setText("Form - B Catatan Implementasi");
         MnEvaluasiFormB.setName("MnEvaluasiFormB"); // NOI18N
         MnEvaluasiFormB.setPreferredSize(new java.awt.Dimension(170, 26));
         MnEvaluasiFormB.addActionListener(new java.awt.event.ActionListener() {
@@ -505,7 +505,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -519,7 +519,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1540,16 +1540,17 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else{
-            /*if(tbObat.getSelectedRow()>-1){
+            if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMSkriningMPPFormB form=new RMSkriningMPPFormB(null,false);
                 form.isCek();
                 form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
-            }*/
+            }
         }
     }//GEN-LAST:event_MnEvaluasiFormBActionPerformed
 
