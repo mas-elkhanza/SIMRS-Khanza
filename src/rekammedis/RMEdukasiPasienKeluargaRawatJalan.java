@@ -68,9 +68,12 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Diagnosa","Uraian Penyakit/Kondisi Pasien Saat Ini", 
-            "Riwayat Penyakit/Kondisi Sebelumnya","Keadaan Umum","Kesadaran","TD(mmHg)","Nadi(x/menit)","Suhu(°C)","RR(x/menit)", 
-            "SpO2(%)","Skala Nyeri","Tahap Menjelang Ajal","Tanda-tanda Klinis Menjelang Kematian","Kebutuhan Spiritual Pasien/Keluarga",
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Bicara","Keterangan Bicara","Bahasa Sehari-hari","Keterangan Bahasa Sehari-hari",
+            "Perlu Penerjemah","Keterangan Penerjemah","Bahasa Isyarat","Cara Belajar","Hambatan Belajar","Keterangan Hambatan Belajar","Kemampuan Belajar", 
+            "Keterangan Kemampuan Belajar","Pendidikan Pasien","Penyakitnya Merupakan","Keterangan Penyakitnya Merupakan","Keputusan Memilih Layanan", 
+            "Keterangan Keputusan Memilih Layanan","Keyakinan Terhadap Terapi","Keterangan Keyakinan Terhadap Terapi","Aspek Keyakinan Dipertimbangkan", 
+            "Keterangan Aspek Keyakinan Dipertimbangkan","Kesediaan Menerima Informasi","Topik Edukasi Penyakit","Topik Edukasi Rencana_ Tindakan", 
+            "Topik Edukasi Pengobatan","Topik Edukasi Hasil Layanan",
             "NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -133,7 +136,15 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        KeteranganBicara.setDocument(new batasInput((byte)8).getKata(KeteranganBicara));
+        KeteranganBicara.setDocument(new batasInput((byte)50).getKata(KeteranganBicara));
+        KeteranganPenerjemah.setDocument(new batasInput((byte)50).getKata(KeteranganPenerjemah));
+        KeteranganBahasa.setDocument(new batasInput((byte)50).getKata(KeteranganBahasa));
+        KeteranganHambatanBelajar.setDocument(new batasInput((byte)50).getKata(KeteranganHambatanBelajar));
+        KeteranganKemampuanBelajar.setDocument(new batasInput((byte)50).getKata(KeteranganKemampuanBelajar));
+        KeteranganPenyakitnyaMerupakan.setDocument(new batasInput((byte)50).getKata(KeteranganPenyakitnyaMerupakan));
+        KeteranganKeputusanMemilihLayanan.setDocument(new batasInput((byte)50).getKata(KeteranganKeputusanMemilihLayanan));
+        KeteranganKeyakinanTerhadapHasil.setDocument(new batasInput((byte)50).getKata(KeteranganKeyakinanTerhadapHasil));
+        KeteranganAspekKeyakinan.setDocument(new batasInput((byte)50).getKata(KeteranganAspekKeyakinan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -1970,21 +1981,31 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        /*RPS.setText("");
-        RPD.setText("");
-        KeadaanUmum.setSelectedIndex(0);
-        Kesadaran.setSelectedItem(0);
-        TD.setText("");
-        Nadi.setText("");
-        Suhu.setText("");
-        SPO.setText("");
-        RR.setText("");
-        SkalaNyeri.setSelectedIndex(0);
-        MenjelangAjal.setSelectedIndex(0);
-        KlinisMenjelangKematian.setSelectedIndex(0);
-        Diagnosa.setText("");
-        KebutuhanSpiritual.setText("");
-        RPS.requestFocus();*/
+        Bicara.setSelectedIndex(0);
+        KeteranganBicara.setText("");
+        Penerjemah.setSelectedIndex(0);
+        KeteranganPenerjemah.setText("");
+        BahasaIsyarat.setSelectedIndex(0);
+        KeteranganBahasa.setText("");
+        CaraBelajar.setSelectedItem(0);
+        HambatanBelajar.setSelectedIndex(0);
+        KeteranganHambatanBelajar.setText("");
+        KemampuanBelajar.setSelectedIndex(0);
+        KeteranganKemampuanBelajar.setText("");
+        PenyakitnyaMerupakan.setSelectedIndex(0);
+        KeteranganPenyakitnyaMerupakan.setText("");
+        KeputusanMemilihLayanan.setSelectedIndex(0);
+        KeteranganKeputusanMemilihLayanan.setText("");
+        KeyakinanTerhadapHasil.setSelectedIndex(0);
+        KeteranganKeyakinanTerhadapHasil.setText("");
+        AspekKeyakinan.setSelectedIndex(0);
+        KeteranganAspekKeyakinan.setText("");
+        KesediaanInformasi.setSelectedIndex(0);
+        PenyakitYangDiderita.setSelectedIndex(0);
+        PengobatanProsedur.setSelectedIndex(0);
+        HasilLayanan.setSelectedIndex(0);
+        RencanaTindakan.setSelectedIndex(0);
+        Bicara.requestFocus();
     } 
 
     private void getData() {
