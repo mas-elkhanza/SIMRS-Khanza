@@ -737,12 +737,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
                 "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+
                 "where kamar_inap.no_rawat=? and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
-            lokasistok=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",bangsal));
+            lokasistok=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",bangsal));
             if(lokasistok.equals("")){
-                if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
                     lokasistok=bangsal;
                 }else{
-                    lokasistok=Sequel.cariIsi("select kd_bangsal from set_lokasi");
+                    lokasistok=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi");
                 }
             }
             akses.setkdbangsal(lokasistok);

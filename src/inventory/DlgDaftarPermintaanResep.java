@@ -1795,12 +1795,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else {
                         kamar=Sequel.cariIsi("select kd_bangsal from kamar inner join kamar_inap on kamar_inap.kd_kamar=kamar.kd_kamar "+
                                 "where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc limit 1 ",NoRawat); 
-                        bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",kamar);
+                        bangsal=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",kamar);
                         if(bangsal.equals("")){
-                            if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                            if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
                                 akses.setkdbangsal(kamar);
                             }else{
-                                akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                                akses.setkdbangsal(Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi"));
                             }
                         }else{
                             akses.setkdbangsal(bangsal);
@@ -1831,12 +1831,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else {
                         kamar=Sequel.cariIsi("select kd_bangsal from kamar inner join kamar_inap on kamar_inap.kd_kamar=kamar.kd_kamar "+
                                 "where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc limit 1 ",NoRawat); 
-                        bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",kamar);
+                        bangsal=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",kamar);
                         if(bangsal.equals("")){
-                            if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                            if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
                                 akses.setkdbangsal(kamar);
                             }else{
-                                akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                                akses.setkdbangsal(Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi"));
                             }
                         }else{
                             akses.setkdbangsal(bangsal);
@@ -1868,12 +1868,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else {
                         kamar=Sequel.cariIsi("select kd_bangsal from kamar inner join kamar_inap on kamar_inap.kd_kamar=kamar.kd_kamar "+
                                 "where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc limit 1 ",NoRawat); 
-                        bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",kamar);
+                        bangsal=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",kamar);
                         if(bangsal.equals("")){
-                            if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                            if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
                                 akses.setkdbangsal(kamar);
                             }else{
-                                akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                                akses.setkdbangsal(Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi"));
                             }
                         }else{
                             akses.setkdbangsal(bangsal);

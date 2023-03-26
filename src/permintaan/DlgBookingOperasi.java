@@ -50,7 +50,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String status="",bangsal="",lokasistok="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",posisi="",norm="";
+    private String status="",bangsal="",lokasistok="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",posisi="",DEPOAKTIFOBAT="",norm="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariRuangOperasi ruangok=new DlgCariRuangOperasi(null,false);
     private DlgCariDaftarOperasi operasi=new DlgCariDaftarOperasi(null,false);
@@ -221,6 +221,12 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         ChkAccor.setSelected(false);
         isMenu();
         
+        try {
+            DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            DEPOAKTIFOBAT = "";
+        }
     }
  
     /** This method is called from within the constructor to
@@ -1656,15 +1662,20 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
                             "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+
                             "where kamar_inap.no_rawat=? and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
-                        lokasistok=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",bangsal);
-                        if(lokasistok.equals("")){
-                            if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
-                                lokasistok=bangsal;
-                            }else{
-                                lokasistok=Sequel.cariIsi("select kd_bangsal from set_lokasi");
+                        if(!DEPOAKTIFOBAT.equals("")){
+                            lokasistok=DEPOAKTIFOBAT;
+                            akses.setkdbangsal(lokasistok);
+                        }else{
+                            lokasistok=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",bangsal);
+                            if(lokasistok.equals("")){
+                                if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                                    lokasistok=bangsal;
+                                }else{
+                                    lokasistok=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi");
+                                }
                             }
+                            akses.setkdbangsal(lokasistok);
                         }
-                        akses.setkdbangsal(lokasistok);
                     }
 
                     DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);

@@ -100,36 +100,6 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                 column.setPreferredWidth(124);
             }else if(i==6){
                 column.setPreferredWidth(170);
-            }else if(i==7){
-                column.setPreferredWidth(200);
-            }else if(i==8){
-                column.setPreferredWidth(190);
-            }else if(i==9){
-                column.setPreferredWidth(85);
-            }else if(i==10){
-                column.setPreferredWidth(80);
-            }else if(i==11){
-                column.setPreferredWidth(60);
-            }else if(i==12){
-                column.setPreferredWidth(76);
-            }else if(i==13){
-                column.setPreferredWidth(51);
-            }else if(i==14){
-                column.setPreferredWidth(68);
-            }else if(i==15){
-                column.setPreferredWidth(55);
-            }else if(i==16){
-                column.setPreferredWidth(61);
-            }else if(i==17){
-                column.setPreferredWidth(115);
-            }else if(i==18){
-                column.setPreferredWidth(220);
-            }else if(i==19){
-                column.setPreferredWidth(190);
-            }else if(i==20){
-                column.setPreferredWidth(85);
-            }else if(i==21){
-                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1274,7 +1244,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         }else if(Suhu.getText().trim().equals("")){
             Valid.textKosong(Suhu,"Suhu");
         }else{
-            if(Sequel.menyimpantf("penilaian_pasien_terminal","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
+            if(Sequel.menyimpantf("edukasi_pasien_keluarga_rj","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Diagnosa.getText(),RPS.getText(),RPD.getText(),KeadaanUmum.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),TD.getText(), 
                 Nadi.getText(),Suhu.getText(),RR.getText(),SPO.getText(),SkalaNyeri.getSelectedItem().toString(),MenjelangAjal.getSelectedItem().toString(), 
@@ -1398,27 +1368,27 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             try{
                 if(TCari.getText().toString().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
-                        "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
-                        "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
-                        "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
-                        "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
-                        "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
+                        "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
+                        "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
+                        "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
+                        "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                        "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
-                        "penilaian_pasien_terminal.tanggal between ? and ? order by penilaian_pasien_terminal.tanggal");
+                        "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
+                        "edukasi_pasien_keluarga_rj.tanggal between ? and ? order by edukasi_pasien_keluarga_rj.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
-                        "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
-                        "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
-                        "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
-                        "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
-                        "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
+                        "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
+                        "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
+                        "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
+                        "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                        "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
-                        "penilaian_pasien_terminal.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_pasien_terminal.nip like ? or petugas.nama like ?) "+
-                        "order by penilaian_pasien_terminal.tanggal ");
+                        "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
+                        "edukasi_pasien_keluarga_rj.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or edukasi_pasien_keluarga_rj.nip like ? or petugas.nama like ?) "+
+                        "order by edukasi_pasien_keluarga_rj.tanggal ");
                 }
 
                 try {
@@ -1672,14 +1642,14 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),21).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),20).toString():finger)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptFormulirPenilaianPasienTerminal.jasper","report","::[ Formulir Penilaian Pasien Terminal ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
-                    "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
-                    "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
-                    "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
-                    "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
-                    "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
+                    "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
+                    "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
+                    "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
+                    "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                    "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianPasienTerminalActionPerformed
 
@@ -1915,29 +1885,38 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
+            /*
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Bicara","Keterangan Bicara","Bahasa Sehari-hari","Keterangan Bahasa Sehari-hari",
+            "Perlu Penerjemah","Keterangan Penerjemah","Bahasa Isyarat","Cara Belajar","Hambatan Belajar","Keterangan Hambatan Belajar","Kemampuan Belajar", 
+            "Keterangan Kemampuan Belajar","Pendidikan Pasien","Penyakitnya Merupakan","Keterangan Penyakitnya Merupakan","Keputusan Memilih Layanan", 
+            "Keterangan Keputusan Memilih Layanan","Keyakinan Terhadap Terapi","Keterangan Keyakinan Terhadap Terapi","Aspek Keyakinan Dipertimbangkan", 
+            "Keterangan Aspek Keyakinan Dipertimbangkan","Kesediaan Menerima Informasi","Topik Edukasi Penyakit","Topik Edukasi Rencana_ Tindakan", 
+            "Topik Edukasi Pengobatan","Topik Edukasi Hasil Layanan",
+            "NIP","Petugas"
+            */
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
-                    "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
-                    "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
-                    "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
-                    "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
-                    "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
+                    "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
+                    "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
+                    "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
+                    "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                    "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
-                    "penilaian_pasien_terminal.tanggal between ? and ? order by penilaian_pasien_terminal.tanggal");
+                    "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
+                    "edukasi_pasien_keluarga_rj.tanggal between ? and ? order by edukasi_pasien_keluarga_rj.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_pasien_terminal.tanggal,"+
-                    "penilaian_pasien_terminal.diagnosa,penilaian_pasien_terminal.rps,penilaian_pasien_terminal.rpd,penilaian_pasien_terminal.keadaan_umum,"+
-                    "penilaian_pasien_terminal.kesadaran,penilaian_pasien_terminal.td,penilaian_pasien_terminal.nadi,penilaian_pasien_terminal.suhu,"+
-                    "penilaian_pasien_terminal.rr,penilaian_pasien_terminal.spo2,penilaian_pasien_terminal.skala_nyeri,penilaian_pasien_terminal.tahap_pasien_menjelang_ajal,"+
-                    "penilaian_pasien_terminal.tanda_klinis_menjelang_kematian,penilaian_pasien_terminal.kebutuhan_spiritual_pasien,penilaian_pasien_terminal.nip,petugas.nama "+
-                    "from penilaian_pasien_terminal inner join reg_periksa on penilaian_pasien_terminal.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
+                    "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
+                    "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
+                    "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
+                    "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                    "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_pasien_terminal.nip=petugas.nip where "+
-                    "penilaian_pasien_terminal.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_pasien_terminal.nip like ? or petugas.nama like ?) "+
-                    "order by penilaian_pasien_terminal.tanggal ");
+                    "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
+                    "edukasi_pasien_keluarga_rj.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or edukasi_pasien_keluarga_rj.nip like ? or petugas.nama like ?) "+
+                    "order by edukasi_pasien_keluarga_rj.tanggal ");
             }
                 
             try {
@@ -2101,10 +2080,10 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_pasien_terminal());
-        BtnHapus.setEnabled(akses.getpenilaian_pasien_terminal());
-        BtnEdit.setEnabled(akses.getpenilaian_pasien_terminal());
-        BtnPrint.setEnabled(akses.getpenilaian_pasien_terminal()); 
+        BtnSimpan.setEnabled(akses.getedukasi_pasien_keluarga_rj());
+        BtnHapus.setEnabled(akses.getedukasi_pasien_keluarga_rj());
+        BtnEdit.setEnabled(akses.getedukasi_pasien_keluarga_rj());
+        BtnPrint.setEnabled(akses.getedukasi_pasien_keluarga_rj()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2171,7 +2150,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     }
 
     private void ganti() {
-        /*Sequel.mengedit("penilaian_pasien_terminal","no_rawat=?","no_rawat=?,tanggal=?,diagnosa=?,rps=?,rpd=?,keadaan_umum=?,kesadaran=?,td=?,nadi=?,suhu=?,"+
+        /*Sequel.mengedit("edukasi_pasien_keluarga_rj","no_rawat=?","no_rawat=?,tanggal=?,diagnosa=?,rps=?,rpd=?,keadaan_umum=?,kesadaran=?,td=?,nadi=?,suhu=?,"+
            "rr=?,spo2=?,skala_nyeri=?,tahap_pasien_menjelang_ajal=?,tanda_klinis_menjelang_kematian=?,kebutuhan_spiritual_pasien=?,nip=?",18,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             Diagnosa.getText(),RPS.getText(),RPD.getText(),KeadaanUmum.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),TD.getText(), 
@@ -2183,7 +2162,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_pasien_terminal where tanggal=? and no_rawat=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from edukasi_pasien_keluarga_rj where tanggal=? and no_rawat=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
