@@ -27,6 +27,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
+import setting.DlgSetHarga;
 import simrskhanza.DlgCariBangsal;
 
 public class DlgPemesanan extends javax.swing.JDialog {
@@ -351,6 +352,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
         label24 = new widget.Label();
         Meterai = new widget.TextBox();
         BtnAll = new widget.Button();
+        BtnSetHarga = new widget.Button();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
@@ -498,7 +500,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(TCari);
-        TCari.setBounds(190, 65, 250, 23);
+        TCari.setBounds(190, 65, 230, 23);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('1');
@@ -516,7 +518,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnCari1);
-        BtnCari1.setBounds(442, 65, 28, 23);
+        BtnCari1.setBounds(422, 65, 28, 23);
 
         label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label9.setText("Potongan :");
@@ -662,7 +664,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnTambah);
-        BtnTambah.setBounds(501, 65, 28, 23);
+        BtnTambah.setBounds(480, 65, 28, 23);
 
         label24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label24.setText("Meterai :");
@@ -700,7 +702,20 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnAll);
-        BtnAll.setBounds(472, 65, 28, 23);
+        BtnAll.setBounds(452, 65, 28, 23);
+
+        BtnSetHarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/011.png"))); // NOI18N
+        BtnSetHarga.setMnemonic('3');
+        BtnSetHarga.setToolTipText("Alt+3");
+        BtnSetHarga.setName("BtnSetHarga"); // NOI18N
+        BtnSetHarga.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnSetHarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSetHargaActionPerformed(evt);
+            }
+        });
+        panelisi1.add(BtnSetHarga);
+        BtnSetHarga.setBounds(510, 65, 28, 23);
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
@@ -1421,6 +1436,17 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
+    private void BtnSetHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSetHargaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSetHarga barang=new DlgSetHarga(null,false);
+        barang.emptTeks();
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.setLocationRelativeTo(internalFrame1);
+        barang.setAlwaysOnTop(false);
+        barang.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnSetHargaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1442,6 +1468,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
+    private widget.Button BtnSetHarga;
     private widget.Button BtnSimpan;
     private widget.Button BtnTambah;
     private widget.TextBox Kd2;
@@ -1756,12 +1783,13 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TCari.requestFocus();
         tppn.setText("11");
         Meterai.setText("0");
+        BtnSimpan.setEnabled(akses.getpemesanan_obat());
+        BtnTambah.setEnabled(akses.getobat());
+        BtnSetHarga.setEnabled(akses.getset_harga_obat());
         if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
-            BtnSimpan.setEnabled(akses.getpemesanan_obat());
-            BtnTambah.setEnabled(akses.getobat());
             Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
         }      
     }

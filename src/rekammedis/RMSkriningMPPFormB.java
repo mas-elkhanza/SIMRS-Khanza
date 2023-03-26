@@ -58,7 +58,7 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","J.K.","Tgl.Lahir","Alamat","Tgl. Implementasi","Masalah","Tindak Lanjut",
+            "No.Rawat","No.RM","Nama Pasien","J.K.","Tgl.Lahir","Alamat","Tanggal Catatan","Masalah","Tindak Lanjut",
             "Evaluasi","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -82,9 +82,9 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(65);
             }else if(i==5){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(150);
             }else if(i==6){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(115);
             }else if(i==7){
                 column.setPreferredWidth(200);
             }else if(i==8){
@@ -92,7 +92,7 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(200);
             }else if(i==10){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(90);
             }else if(i==11){
                 column.setPreferredWidth(150);
             }
@@ -100,7 +100,11 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));            
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));           
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));           
+        TMasalah.setDocument(new batasInput((int)500).getKata(TMasalah));           
+        TTinjut.setDocument(new batasInput((int)500).getKata(TTinjut));           
+        TEvaluasi.setDocument(new batasInput((int)500).getKata(TEvaluasi));    
+        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -159,7 +163,6 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -211,8 +214,6 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
         TEvaluasi = new widget.TextArea();
         ChkInput = new widget.CekBox();
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -228,7 +229,6 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
 
         tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -726,10 +726,15 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else{
             if(Sequel.menyimpantf("mpp_evaluasi_catatan","?,?,?,?,?,?","Catatan",6,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglImplementasi.getSelectedItem()+""),TMasalah.getText(),TTinjut.getText(),
-                    TEvaluasi.getText(),KdPetugas.getText()
+                    TNoRw.getText(),Valid.SetTgl(TglImplementasi.getSelectedItem()+"")+" "+TglImplementasi.getSelectedItem().toString().substring(11,19),
+                    TMasalah.getText(),TTinjut.getText(),TEvaluasi.getText(),KdPetugas.getText()
                 })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText().substring(0,1),TglLahir.getText(),AlamatLengkap.getText(),
+                    Valid.SetTgl(TglImplementasi.getSelectedItem()+"")+" "+TglImplementasi.getSelectedItem().toString().substring(11,19),
+                    TMasalah.getText(),TTinjut.getText(),TEvaluasi.getText(),KdPetugas.getText(),NmPetugas.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
         }
@@ -758,14 +763,14 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()!= -1){
-            if(Sequel.queryu2tf("delete from mpp_evaluasi_catatan where no_rawat=? and tgl_implementasi=?",2,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
-            })==true){
-                tabMode.removeRow(tbObat.getSelectedRow());
-                LCount.setText(""+tabMode.getRowCount());
-                emptTeks();
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
             }else{
-                JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                }
             }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -789,12 +794,14 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else{    
             if(tbObat.getSelectedRow()!= -1){
-                if(Sequel.mengedittf("mpp_evaluasi_catatan","no_rawat=? and tgl_implementasi=?","no_rawat=?,tgl_implementasi=?,masalah=?,tinjut=?,evaluasi=?,nip=?",8,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglImplementasi.getSelectedItem()+""),TMasalah.getText(),TTinjut.getText(),
-                    TEvaluasi.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
-                })==true){
-                    tampil();
-                    emptTeks();
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else{
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                    }
                 }
             }
         }
@@ -832,7 +839,7 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            tgl=" mpp_evaluasi_catatan.tgl_implementasi between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
+            tgl=" mpp_evaluasi_catatan.tgl_implementasi between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' ";
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptDataMPPCatatan.jasper","report","::[ Data Evaluasi Catatan MPP ]::",
                      "select mpp_evaluasi_catatan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
@@ -862,10 +869,9 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
                      "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                      "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                      "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                     "where "+tgl+" and mpp_evaluasi_catatan.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                     tgl+" and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                     tgl+" and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                     tgl+" and petugas.nama like '%"+TCari.getText().trim()+"%' "+
+                     "where "+tgl+" and (mpp_evaluasi_catatan.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                     "reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                     "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or  petugas.nama like '%"+TCari.getText().trim()+"%') "+
                      "order by mpp_evaluasi_catatan.no_rawat",param);
             }
             
@@ -962,19 +968,19 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPetugasKeyPressed
 
     private void TglImplementasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglImplementasiKeyPressed
-        Valid.pindah(evt,TNoRw,BtnSimpan);
+        Valid.pindah(evt,TNoRw,TMasalah);
     }//GEN-LAST:event_TglImplementasiKeyPressed
 
     private void TMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TMasalahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,TglImplementasi,TTinjut);
     }//GEN-LAST:event_TMasalahKeyPressed
 
     private void TTinjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTinjutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,TMasalah,TEvaluasi);
     }//GEN-LAST:event_TTinjutKeyPressed
 
     private void TEvaluasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TEvaluasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,TTinjut,BtnSimpan);
     }//GEN-LAST:event_TEvaluasiKeyPressed
 
     /**
@@ -1036,7 +1042,6 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;
@@ -1050,7 +1055,7 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            tgl=" mpp_evaluasi_catatan.tgl_implementasi between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
+            tgl=" mpp_evaluasi_catatan.tgl_implementasi between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' ";
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                      "select mpp_evaluasi_catatan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
@@ -1112,17 +1117,11 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        TNoRw.setText("");
-        TNoRM.setText("");
-        TPasien.setText("");
-        TglLahir.setText("");
-        AlamatLengkap.setText("");
-        Jk.setText("");
         TglImplementasi.setDate(new Date());
         TMasalah.setText("");
         TTinjut.setText("");
         TEvaluasi.setText("");
-        TglImplementasi.requestFocus();
+        TMasalah.requestFocus();
     }
     
     private void getData() {
@@ -1183,7 +1182,9 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        DTPCari2.setDate(tgl2);    
+        DTPCari2.setDate(tgl2); 
+        ChkInput.setSelected(true);
+        isForm();   
         isRawat(); 
     }
     private void isForm(){
@@ -1211,6 +1212,39 @@ public final class RMSkriningMPPFormB extends javax.swing.JDialog {
             KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
         } 
+    }
+
+    private void hapus() {
+        if(Sequel.queryu2tf("delete from mpp_evaluasi_catatan where no_rawat=? and tgl_implementasi=?",2,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()
+        })==true){
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
+            emptTeks();
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+
+    private void ganti() {
+        if(Sequel.mengedittf("mpp_evaluasi_catatan","no_rawat=? and tgl_implementasi=?","no_rawat=?,tgl_implementasi=?,masalah=?,tinjut=?,evaluasi=?,nip=?",8,new String[]{
+            TNoRw.getText(),Valid.SetTgl(TglImplementasi.getSelectedItem()+"")+" "+TglImplementasi.getSelectedItem().toString().substring(11,19),TMasalah.getText(),TTinjut.getText(),
+            TEvaluasi.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()
+        })==true){
+            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+            tbObat.setValueAt(Jk.getText().substring(0,1),tbObat.getSelectedRow(),3);
+            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(AlamatLengkap.getText(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(Valid.SetTgl(TglImplementasi.getSelectedItem()+"")+" "+TglImplementasi.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(TMasalah.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(TTinjut.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(TEvaluasi.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),11);
+            emptTeks();
+        }
     }
 }
 

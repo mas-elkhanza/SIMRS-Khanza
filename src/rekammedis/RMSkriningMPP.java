@@ -295,9 +295,9 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnCetakLembarSkrining.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakLembarSkrining.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakLembarSkrining.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakLembarSkrining.setText("Form Skrining MPP");
+        MnCetakLembarSkrining.setText("Form Skrining Manager Pelayanan Pasien");
         MnCetakLembarSkrining.setName("MnCetakLembarSkrining"); // NOI18N
-        MnCetakLembarSkrining.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnCetakLembarSkrining.setPreferredSize(new java.awt.Dimension(250, 26));
         MnCetakLembarSkrining.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCetakLembarSkriningActionPerformed(evt);
@@ -311,7 +311,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnEvaluasiFormA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnEvaluasiFormA.setText("Form - A Evaluasi Awal");
         MnEvaluasiFormA.setName("MnEvaluasiFormA"); // NOI18N
-        MnEvaluasiFormA.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnEvaluasiFormA.setPreferredSize(new java.awt.Dimension(250, 26));
         MnEvaluasiFormA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnEvaluasiFormAActionPerformed(evt);
@@ -325,7 +325,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         MnEvaluasiFormB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnEvaluasiFormB.setText("Form - B Catatan Implementasi");
         MnEvaluasiFormB.setName("MnEvaluasiFormB"); // NOI18N
-        MnEvaluasiFormB.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnEvaluasiFormB.setPreferredSize(new java.awt.Dimension(250, 26));
         MnEvaluasiFormB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnEvaluasiFormBActionPerformed(evt);
@@ -703,11 +703,6 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
         AlamatLengkap.setEditable(false);
         AlamatLengkap.setHighlighter(null);
         AlamatLengkap.setName("AlamatLengkap"); // NOI18N
-        AlamatLengkap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlamatLengkapActionPerformed(evt);
-            }
-        });
         FormInput.add(AlamatLengkap);
         AlamatLengkap.setBounds(249, 40, 348, 23);
 
@@ -1367,7 +1362,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                         "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                         "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
-                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by mpp_skrining.tanggal",param);
+                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by mpp_skrining.tanggal",param);
                 }else{
                     Valid.MyReportqry("rptDataSkriningMPP.jasper","report","::[ Data Skrining Manajer Pelayanan Pasien ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
@@ -1382,11 +1377,9 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                         "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                         "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
-                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and mpp_skrining.nip like '%"+TCari.getText().trim()+"%' or "+
-                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pegawai.nama like '%"+TCari.getText().trim()+"%' order by mpp_skrining.tanggal",param);
+                        "mpp_skrining.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
+                        "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                        "mpp_skrining.nip like '%"+TCari.getText().trim()+"%' or pegawai.nama like '%"+TCari.getText().trim()+"%') order by mpp_skrining.tanggal",param);
                 }   
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1553,10 +1546,6 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_MnEvaluasiFormBActionPerformed
-
-    private void AlamatLengkapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlamatLengkapActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AlamatLengkapActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1738,33 +1727,22 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                         "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                         "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where "+
-                        "mpp_skrining.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
-                        "mpp_skrining.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
-                        "mpp_skrining.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                        "mpp_skrining.tanggal between ? and ? and mpp_skrining.nip like ? or "+
-                        "mpp_skrining.tanggal between ? and ? and pegawai.nama like ? order by mpp_skrining.tanggal");
+                        "mpp_skrining.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                        "pasien.nm_pasien like ? or mpp_skrining.nip like ? or pegawai.nama like ?) order by mpp_skrining.tanggal");
             }
                 
             try {
                 if(TCari.getText().equals("")){
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                     ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(12,"%"+TCari.getText()+"%");
-                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(15,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1818,7 +1796,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());  
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());    
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan"));    
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             AlamatLengkap.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()); 
             Valid.SetTgl(TglSkrining,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()); 
@@ -1983,7 +1961,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
 
     private void hapus() {
         if(Sequel.queryu2tf("delete from mpp_skrining where no_rawat=? and tanggal=?",2,new String[]{
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
             emptTeks();
@@ -2059,8 +2037,8 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
             param16="Ya";
         }  
         if(Sequel.mengedittf("mpp_skrining","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,param1=?,param2=?,param3=?,param4=?,param5=?,param6=?,param7=?,param8=?,param9=?,param10=?,param11=?,param12=?,param13=?,param14=?,param15=?,param16=?,nip=?",21,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""), param1, param2, param3, param4, param5, param6, param7,
-                param8, param9, param10, param11, param12, param13, param14, param15, param16,KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()
+                TNoRw.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""), param1, param2, param3, param4, param5, param6, param7,param8, param9, param10, param11, param12, param13, param14, param15, param16,
+                KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()
             })==true){
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);

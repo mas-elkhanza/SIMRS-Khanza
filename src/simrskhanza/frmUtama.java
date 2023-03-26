@@ -845,6 +845,7 @@ import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningMPP;
 import rekammedis.RMSkriningMPPFormA;
+import rekammedis.RMSkriningMPPFormB;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
@@ -19996,6 +19997,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningMPPFormBActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningMPPFormB aplikasi=new RMSkriningMPPFormB(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPenilaianPasienPenyakitMenularActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
@@ -20679,7 +20693,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
-            btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA;
+            btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB;
     
     public void isWall(){
         try{            
@@ -24227,6 +24241,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSkriningManagerPelayananPasien);
                 jmlmenu++;
                 Panelmenu.add(btnSkriningMPPFormA);
+                jmlmenu++;
+                Panelmenu.add(btnSkriningMPPFormB);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -28849,6 +28865,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnSkriningManagerPelayananPasien);
             jmlmenu++;
             Panelmenu.add(btnSkriningMPPFormA);
+            jmlmenu++;
+            Panelmenu.add(btnSkriningMPPFormB);
             jmlmenu++;
         }
 
@@ -34835,6 +34853,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSkriningMPPFormA);
                 jmlmenu++;
             }  
+            if(btnSkriningMPPFormB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningMPPFormB);
+                jmlmenu++;
+            } 
         }
         
         if(akses.getpengambilan_utd2()==true){
@@ -40227,6 +40249,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningMPPFormA.setName("btnSkriningMPPFormA"); 
         btnSkriningMPPFormA.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningMPPFormA.addActionListener(this::btnSkriningMPPFormAActionPerformed);
+        
+        btnSkriningMPPFormB = new widget.ButtonBig();
+        btnSkriningMPPFormB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088152_computer_record_scan_screening_virus_icon.png")));
+        btnSkriningMPPFormB.setText("Catatan Implementasi Manajer Pelayanan Pasien");
+        btnSkriningMPPFormB.setIconTextGap(0);
+        btnSkriningMPPFormB.setName("btnSkriningMPPFormB"); 
+        btnSkriningMPPFormB.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningMPPFormB.addActionListener(this::btnSkriningMPPFormBActionPerformed);
         
         
         btnPenilaianPasienPenyakitMenular = new widget.ButtonBig();

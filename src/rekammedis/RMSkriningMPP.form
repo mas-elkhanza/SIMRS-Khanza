@@ -25,10 +25,10 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Form Skrining MPP"/>
+            <Property name="text" type="java.lang.String" value="Form Skrining Manager Pelayanan Pasien"/>
             <Property name="name" type="java.lang.String" value="MnCetakLembarSkrining" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[170, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -52,7 +52,7 @@
             <Property name="text" type="java.lang.String" value="Form - A Evaluasi Awal"/>
             <Property name="name" type="java.lang.String" value="MnEvaluasiFormA" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[170, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -76,7 +76,7 @@
             <Property name="text" type="java.lang.String" value="Form - B Catatan Implementasi"/>
             <Property name="name" type="java.lang.String" value="MnEvaluasiFormB" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[170, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -408,7 +408,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-03-2023"/>
+                        <StringItem index="0" value="26-03-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -436,7 +436,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-03-2023"/>
+                        <StringItem index="0" value="26-03-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -768,9 +768,6 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="AlamatLengkap" noResource="true"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AlamatLengkapActionPerformed"/>
-                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="249" y="40" width="348" height="23"/>
