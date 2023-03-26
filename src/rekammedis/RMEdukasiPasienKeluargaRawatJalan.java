@@ -26,7 +26,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -72,9 +71,8 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             "Perlu Penerjemah","Keterangan Penerjemah","Bahasa Isyarat","Cara Belajar","Hambatan Belajar","Keterangan Hambatan Belajar","Kemampuan Belajar", 
             "Keterangan Kemampuan Belajar","Pendidikan Pasien","Penyakitnya Merupakan","Keterangan Penyakitnya Merupakan","Keputusan Memilih Layanan", 
             "Keterangan Keputusan Memilih Layanan","Keyakinan Terhadap Terapi","Keterangan Keyakinan Terhadap Terapi","Aspek Keyakinan Dipertimbangkan", 
-            "Keterangan Aspek Keyakinan Dipertimbangkan","Kesediaan Menerima Informasi","Topik Edukasi Penyakit","Topik Edukasi Rencana_ Tindakan", 
-            "Topik Edukasi Pengobatan","Topik Edukasi Hasil Layanan",
-            "NIP","Petugas"
+            "Keterangan Aspek Keyakinan Dipertimbangkan","Kesediaan Menerima Informasi","Topik Edukasi Penyakit Diderita","Topik Edukasi Rencana Tindakan/Terapi", 
+            "Topik Edukasi Pengobatan/Prosedur Diperlukan","Topik Edukasi Hasil Pelayanan","NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -84,7 +82,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 22; i++) {
+        for (i = 0; i < 25; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -97,9 +95,45 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             }else if(i==4){
                 column.setPreferredWidth(25);
             }else if(i==5){
-                column.setPreferredWidth(124);
+                column.setPreferredWidth(122);
             }else if(i==6){
+                column.setPreferredWidth(90);
+            }else if(i==7){
+                column.setPreferredWidth(150);
+            }else if(i==8){
+                column.setPreferredWidth(100);
+            }else if(i==9){
+                column.setPreferredWidth(160);
+            }else if(i==10){
+                column.setPreferredWidth(96);
+            }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
+                column.setPreferredWidth(80);
+            }else if(i==13){
+                column.setPreferredWidth(110);
+            }else if(i==14){
+                column.setPreferredWidth(104);
+            }else if(i==15){
+                column.setPreferredWidth(156);
+            }else if(i==16){
                 column.setPreferredWidth(170);
+            }else if(i==17){
+                column.setPreferredWidth(170);
+            }else if(i==18){
+                column.setPreferredWidth(98);
+            }else if(i==19){
+                column.setPreferredWidth(122);
+            }else if(i==20){
+                column.setPreferredWidth(182);
+            }else if(i==21){
+                column.setPreferredWidth(143);
+            }else if(i==22){
+                column.setPreferredWidth(192);
+            }else if(i==23){
+                column.setPreferredWidth(172);
+            }else if(i==24){
+                column.setPreferredWidth(172);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1221,39 +1255,34 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
-        }else if(RPS.getText().trim().equals("")){
-            Valid.textKosong(RPS,"Uraian Penyakit/Kondisi Pasien Saat Ini");
-        }else if(RPD.getText().trim().equals("")){
-            Valid.textKosong(RPD,"Riwayat Penyakit/Kondisi Sebelumnya");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
-        }else if(KebutuhanSpiritual.getText().trim().equals("")){
-            Valid.textKosong(KebutuhanSpiritual,"Kebutuhan Spiritual Pasien/Keluarga");
-        }else if(TD.getText().trim().equals("")){
-            Valid.textKosong(TD,"Tekanan Darah");
-        }else if(Nadi.getText().trim().equals("")){
-            Valid.textKosong(Nadi,"Nadi");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu");
-        }else if(SPO.getText().trim().equals("")){
-            Valid.textKosong(SPO,"SpO2");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu");
         }else{
-            if(Sequel.menyimpantf("edukasi_pasien_keluarga_rj","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
+            if(Sequel.menyimpantf("edukasi_pasien_keluarga_rj","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",27,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Diagnosa.getText(),RPS.getText(),RPD.getText(),KeadaanUmum.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),TD.getText(), 
-                Nadi.getText(),Suhu.getText(),RR.getText(),SPO.getText(),SkalaNyeri.getSelectedItem().toString(),MenjelangAjal.getSelectedItem().toString(), 
-                KlinisMenjelangKematian.getSelectedItem().toString(),KebutuhanSpiritual.getText(),NIP.getText()
+                NIP.getText(),Bicara.getSelectedItem().toString(),KeteranganBicara.getText(),KeteranganBahasa.getText(),Penerjemah.getSelectedItem().toString(),
+                KeteranganPenerjemah.getText(),BahasaIsyarat.getSelectedItem().toString(),CaraBelajar.getSelectedItem().toString(),HambatanBelajar.getSelectedItem().toString(),
+                KeteranganHambatanBelajar.getText(),KemampuanBelajar.getSelectedItem().toString(),KeteranganKemampuanBelajar.getText(),
+                PenyakitnyaMerupakan.getSelectedItem().toString(),KeteranganPenyakitnyaMerupakan.getText(),KeputusanMemilihLayanan.getSelectedItem().toString(),
+                KeteranganKeputusanMemilihLayanan.getText(),KeyakinanTerhadapHasil.getSelectedItem().toString(),KeteranganKeyakinanTerhadapHasil.getText(),
+                AspekKeyakinan.getSelectedItem().toString(),KeteranganAspekKeyakinan.getText(),KesediaanInformasi.getSelectedItem().toString(),
+                PenyakitYangDiderita.getSelectedItem().toString(),RencanaTindakan.getSelectedItem().toString(),PengobatanProsedur.getSelectedItem().toString(),
+                HasilLayanan.getSelectedItem().toString()
             })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText().substring(0,1),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    Bicara.getSelectedItem().toString(),KeteranganBicara.getText(),KeteranganBahasa.getText(),Penerjemah.getSelectedItem().toString(),KeteranganPenerjemah.getText(),BahasaIsyarat.getSelectedItem().toString(),
+                    CaraBelajar.getSelectedItem().toString(),HambatanBelajar.getSelectedItem().toString(),KeteranganHambatanBelajar.getText(),KemampuanBelajar.getSelectedItem().toString(),KeteranganKemampuanBelajar.getText(),
+                    PenyakitnyaMerupakan.getSelectedItem().toString(),KeteranganPenyakitnyaMerupakan.getText(),KeputusanMemilihLayanan.getSelectedItem().toString(),KeteranganKeputusanMemilihLayanan.getText(),
+                    KeyakinanTerhadapHasil.getSelectedItem().toString(),KeteranganKeyakinanTerhadapHasil.getText(),AspekKeyakinan.getSelectedItem().toString(),KeteranganAspekKeyakinan.getText(),KesediaanInformasi.getSelectedItem().toString(),
+                    PenyakitYangDiderita.getSelectedItem().toString(),RencanaTindakan.getSelectedItem().toString(),PengobatanProsedur.getSelectedItem().toString(),HasilLayanan.getSelectedItem().toString(),NIP.getText(),NamaPetugas.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }  
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1654,11 +1683,11 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     }//GEN-LAST:event_MnPenilaianPasienTerminalActionPerformed
 
     private void BicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BicaraKeyPressed
-       // Valid.pindah(evt,RPD,Kesadaran);
+       Valid.pindah(evt,btnPetugas,KeteranganBicara);
     }//GEN-LAST:event_BicaraKeyPressed
 
     private void KeteranganBicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganBicaraKeyPressed
-        //Valid.pindah(evt,Kesadaran,Nadi);
+        Valid.pindah(evt,Bicara,Penerjemah);
     }//GEN-LAST:event_KeteranganBicaraKeyPressed
 
     private void KeteranganBahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganBahasaKeyPressed
@@ -1670,11 +1699,11 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     }//GEN-LAST:event_BahasaKeyPressed
 
     private void PenerjemahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenerjemahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganBicara,KeteranganPenerjemah);
     }//GEN-LAST:event_PenerjemahKeyPressed
 
     private void KeteranganPenerjemahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenerjemahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Penerjemah,BahasaIsyarat);
     }//GEN-LAST:event_KeteranganPenerjemahKeyPressed
 
     private void BahasaIsyaratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaIsyaratKeyPressed
@@ -1885,35 +1914,40 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            /*
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Bicara","Keterangan Bicara","Bahasa Sehari-hari","Keterangan Bahasa Sehari-hari",
-            "Perlu Penerjemah","Keterangan Penerjemah","Bahasa Isyarat","Cara Belajar","Hambatan Belajar","Keterangan Hambatan Belajar","Kemampuan Belajar", 
-            "Keterangan Kemampuan Belajar","Pendidikan Pasien","Penyakitnya Merupakan","Keterangan Penyakitnya Merupakan","Keputusan Memilih Layanan", 
-            "Keterangan Keputusan Memilih Layanan","Keyakinan Terhadap Terapi","Keterangan Keyakinan Terhadap Terapi","Aspek Keyakinan Dipertimbangkan", 
-            "Keterangan Aspek Keyakinan Dipertimbangkan","Kesediaan Menerima Informasi","Topik Edukasi Penyakit","Topik Edukasi Rencana_ Tindakan", 
-            "Topik Edukasi Pengobatan","Topik Edukasi Hasil Layanan",
-            "NIP","Petugas"
-            */
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
-                    "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
-                    "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
-                    "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
-                    "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                    "edukasi_pasien_keluarga_rj.bicara,edukasi_pasien_keluarga_rj.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_rj.bahasa_sehari,"+
+                    "edukasi_pasien_keluarga_rj.perlu_penerjemah,edukasi_pasien_keluarga_rj.keterangan_penerjemah,edukasi_pasien_keluarga_rj.bahasa_isyarat,"+
+                    "edukasi_pasien_keluarga_rj.cara_belajar,edukasi_pasien_keluarga_rj.hambatan_belajar,edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar,"+
+                    "edukasi_pasien_keluarga_rj.kemampuan_belajar,edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar,pasien.pnd,"+
+                    "edukasi_pasien_keluarga_rj.penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keputusan_memilih_layanan,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi,"+
+                    "edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,"+
+                    "edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
                     "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
                     "edukasi_pasien_keluarga_rj.tanggal between ? and ? order by edukasi_pasien_keluarga_rj.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
-                    "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
-                    "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
-                    "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
-                    "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                    "edukasi_pasien_keluarga_rj.bicara,edukasi_pasien_keluarga_rj.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_rj.bahasa_sehari,"+
+                    "edukasi_pasien_keluarga_rj.perlu_penerjemah,edukasi_pasien_keluarga_rj.keterangan_penerjemah,edukasi_pasien_keluarga_rj.bahasa_isyarat,"+
+                    "edukasi_pasien_keluarga_rj.cara_belajar,edukasi_pasien_keluarga_rj.hambatan_belajar,edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar,"+
+                    "edukasi_pasien_keluarga_rj.kemampuan_belajar,edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar,pasien.pnd,"+
+                    "edukasi_pasien_keluarga_rj.penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keputusan_memilih_layanan,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi,"+
+                    "edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,"+
+                    "edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
                     "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
                     "edukasi_pasien_keluarga_rj.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or edukasi_pasien_keluarga_rj.nip like ? or petugas.nama like ?) "+
                     "order by edukasi_pasien_keluarga_rj.tanggal ");
@@ -1937,9 +1971,14 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("diagnosa"),rs.getString("rps"),rs.getString("rpd"),rs.getString("keadaan_umum"),rs.getString("kesadaran"),rs.getString("td"),
-                        rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("spo2"),rs.getString("skala_nyeri"),rs.getString("tahap_pasien_menjelang_ajal"),
-                        rs.getString("tanda_klinis_menjelang_kematian"),rs.getString("kebutuhan_spiritual_pasien"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("bicara"),rs.getString("keterangan_bicara"),rs.getString("nama_bahasa"),rs.getString("bahasa_sehari"),rs.getString("perlu_penerjemah"),
+                        rs.getString("keterangan_penerjemah"),rs.getString("bahasa_isyarat"),rs.getString("cara_belajar"),rs.getString("hambatan_belajar"),
+                        rs.getString("keterangan_hambatan_belajar"),rs.getString("kemampuan_belajar"),rs.getString("keterangan_kemampuan_belajar"),rs.getString("pnd"),
+                        rs.getString("penyakitnya_merupakan"),rs.getString("keterangan_penyakitnya_merupakan"),rs.getString("keputusan_memilih_layanan"),
+                        rs.getString("keterangan_keputusan_memilih_layanan"),rs.getString("keyakinan_terhadap_terapi"),rs.getString("keterangan_keyakinan_terhadap_terapi"),
+                        rs.getString("aspek_keyakinan_dipertimbangkan"),rs.getString("keterangan_aspek_keyakinan_dipertimbangkan"),rs.getString("kesediaan_menerima_informasi"),
+                        rs.getString("topik_edukasi_penyakit"),rs.getString("topik_edukasi_rencana_tindakan"),rs.getString("topik_edukasi_pengobatan"),
+                        rs.getString("topik_edukasi_hasil_layanan"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1952,7 +1991,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     ps.close();
                 }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
