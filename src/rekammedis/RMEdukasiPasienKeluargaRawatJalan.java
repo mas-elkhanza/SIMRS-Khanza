@@ -1307,7 +1307,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,KebutuhanSpiritual,BtnBatal);
+            Valid.pindah(evt,RencanaTindakan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1475,7 +1475,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='4200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1500,7 +1500,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='4200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1742,23 +1742,23 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     }//GEN-LAST:event_PendidikanKeyPressed
 
     private void KesediaanInformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesediaanInformasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganAspekKeyakinan,PenyakitYangDiderita);
     }//GEN-LAST:event_KesediaanInformasiKeyPressed
 
     private void PenyakitYangDideritaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyakitYangDideritaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KesediaanInformasi,PengobatanProsedur);
     }//GEN-LAST:event_PenyakitYangDideritaKeyPressed
 
     private void RencanaTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaTindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HasilLayanan,BtnSimpan);
     }//GEN-LAST:event_RencanaTindakanKeyPressed
 
     private void PengobatanProsedurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PengobatanProsedurKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenyakitYangDiderita,HasilLayanan);
     }//GEN-LAST:event_PengobatanProsedurKeyPressed
 
     private void HasilLayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilLayananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PengobatanProsedur,RencanaTindakan);
     }//GEN-LAST:event_HasilLayananKeyPressed
 
     /**
