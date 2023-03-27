@@ -249,7 +249,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianPasienTerminal = new javax.swing.JMenuItem();
+        MnEdukasiPasienKeluarga = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -357,19 +357,19 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianPasienTerminal.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianPasienTerminal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianPasienTerminal.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianPasienTerminal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianPasienTerminal.setText("Formulir Penilaian Pasien Terminal");
-        MnPenilaianPasienTerminal.setName("MnPenilaianPasienTerminal"); // NOI18N
-        MnPenilaianPasienTerminal.setPreferredSize(new java.awt.Dimension(290, 26));
-        MnPenilaianPasienTerminal.addActionListener(new java.awt.event.ActionListener() {
+        MnEdukasiPasienKeluarga.setBackground(new java.awt.Color(255, 255, 254));
+        MnEdukasiPasienKeluarga.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnEdukasiPasienKeluarga.setForeground(new java.awt.Color(50, 50, 50));
+        MnEdukasiPasienKeluarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnEdukasiPasienKeluarga.setText("Formulir Edukasi Pasien & Keluarga Terintegrasi");
+        MnEdukasiPasienKeluarga.setName("MnEdukasiPasienKeluarga"); // NOI18N
+        MnEdukasiPasienKeluarga.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnEdukasiPasienKeluarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianPasienTerminalActionPerformed(evt);
+                MnEdukasiPasienKeluargaActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianPasienTerminal);
+        jPopupMenu1.add(MnEdukasiPasienKeluarga);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -547,7 +547,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -561,7 +561,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -682,7 +682,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1633,7 +1633,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
         //Valid.pindah(evt,Detik,RPS);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnPenilaianPasienTerminalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianPasienTerminalActionPerformed
+    private void MnEdukasiPasienKeluargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnEdukasiPasienKeluargaActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1643,19 +1643,26 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),21).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),20).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianPasienTerminal.jasper","report","::[ Formulir Penilaian Pasien Terminal ]::",
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),33).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),32).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            Valid.MyReportqry("rptFormulirEdukasiPasienRJ.jasper","report","::[ Formulir Edukasi Pasien & Keluarga Terintegrasi Rawat Jalan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
-                    "edukasi_pasien_keluarga_rj.diagnosa,edukasi_pasien_keluarga_rj.rps,edukasi_pasien_keluarga_rj.rpd,edukasi_pasien_keluarga_rj.keadaan_umum,"+
-                    "edukasi_pasien_keluarga_rj.kesadaran,edukasi_pasien_keluarga_rj.td,edukasi_pasien_keluarga_rj.nadi,edukasi_pasien_keluarga_rj.suhu,"+
-                    "edukasi_pasien_keluarga_rj.rr,edukasi_pasien_keluarga_rj.spo2,edukasi_pasien_keluarga_rj.skala_nyeri,edukasi_pasien_keluarga_rj.tahap_pasien_menjelang_ajal,"+
-                    "edukasi_pasien_keluarga_rj.tanda_klinis_menjelang_kematian,edukasi_pasien_keluarga_rj.kebutuhan_spiritual_pasien,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
+                    "edukasi_pasien_keluarga_rj.bicara,edukasi_pasien_keluarga_rj.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_rj.bahasa_sehari,"+
+                    "edukasi_pasien_keluarga_rj.perlu_penerjemah,edukasi_pasien_keluarga_rj.keterangan_penerjemah,edukasi_pasien_keluarga_rj.bahasa_isyarat,"+
+                    "edukasi_pasien_keluarga_rj.cara_belajar,edukasi_pasien_keluarga_rj.hambatan_belajar,edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar,"+
+                    "edukasi_pasien_keluarga_rj.kemampuan_belajar,edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar,pasien.pnd,"+
+                    "edukasi_pasien_keluarga_rj.penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keputusan_memilih_layanan,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan,"+
+                    "edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi,"+
+                    "edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,"+
+                    "edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
                     "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianPasienTerminalActionPerformed
+    }//GEN-LAST:event_MnEdukasiPasienKeluargaActionPerformed
 
     private void BicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BicaraKeyPressed
        Valid.pindah(evt,btnPetugas,KeteranganBicara);
@@ -1817,7 +1824,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianPasienTerminal;
+    private javax.swing.JMenuItem MnEdukasiPasienKeluarga;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
