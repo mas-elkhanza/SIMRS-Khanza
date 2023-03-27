@@ -16160,35 +16160,36 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "A. PENGKAJIAN KEBUTUHAN EDUKASI"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='30%' border='0' valign='top'>Bicara</td>"+
-                                              "<td width='70%' border='0' valign='top'>: "+rs2.getString("bicara")+(rs2.getString("keterangan_bicara").equals("")?"":", "+rs2.getString("keterangan_bicara"))+"</td>"+
+                                              "<td width='25%' border='0' valign='top'>Bicara</td>"+
+                                              "<td width='75%' border='0' valign='top'>: "+rs2.getString("bicara")+(rs2.getString("keterangan_bicara").equals("")?"":", "+rs2.getString("keterangan_bicara"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='30%' border='0' valign='top'>Keterangan Bahasa Sehari-hari</td>"+
-                                              "<td width='70%' border='0' valign='top'>: "+rs2.getString("bahasa_sehari")+"</td>"+
+                                              "<td width='25%' border='0' valign='top'>Keterangan Bahasa Sehari-hari</td>"+
+                                              "<td width='75%' border='0' valign='top'>: "+rs2.getString("bahasa_sehari")+"</td>"+
                                           "</tr>"+
                                            "<tr>"+
-                                              "<td width='30%' border='0' valign='top'>Perlu Penerjemah</td>"+
-                                              "<td width='70%' border='0' valign='top'>: "+rs2.getString("perlu_penerjemah")+(rs2.getString("keterangan_penerjemah").equals("")?"":", "+rs2.getString("keterangan_penerjemah"))+"</td>"+
+                                              "<td width='25%' border='0' valign='top'>Perlu Penerjemah</td>"+
+                                              "<td width='75%' border='0' valign='top'>: "+rs2.getString("perlu_penerjemah")+(rs2.getString("keterangan_penerjemah").equals("")?"":", "+rs2.getString("keterangan_penerjemah"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='30%' border='0' valign='top'>Bahasa Isyarat</td>"+
-                                              "<td width='70%' border='0' valign='top'>: "+rs2.getString("bahasa_isyarat")+"</td>"+
+                                              "<td width='25%' border='0' valign='top'>Bahasa Isyarat</td>"+
+                                              "<td width='75%' border='0' valign='top'>: "+rs2.getString("bahasa_isyarat")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='30%' border='0' valign='top'>Cara Belajar Yang Disukai</td>"+
-                                              "<td width='70%' border='0' valign='top'>: "+rs2.getString("cara_belajar")+"</td>"+
+                                              "<td width='25%' border='0' valign='top'>Cara Belajar Yang Disukai</td>"+
+                                              "<td width='75%' border='0' valign='top'>: "+rs2.getString("cara_belajar")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='30%' border='0' valign='top'>Hambatan Belajar</td>"+
-                                              "<td width='70%' border='0' valign='top'>: "+rs2.getString("hambatan_belajar")+(rs2.getString("keterangan_hambatan_belajar").equals("")?"":", "+rs2.getString("keterangan_hambatan_belajar"))+"</td>"+
+                                              "<td width='25%' border='0' valign='top'>Hambatan Belajar</td>"+
+                                              "<td width='75%' border='0' valign='top'>: "+rs2.getString("hambatan_belajar")+(rs2.getString("keterangan_hambatan_belajar").equals("")?"":", "+rs2.getString("keterangan_hambatan_belajar"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='30%' border='0' valign='top'>Kemampuan Belajar</td>"+
-                                              "<td width='70%' border='0' valign='top'>: "+rs2.getString("kemampuan_belajar")+(rs2.getString("keterangan_kemampuan_belajar").equals("")?"":", "+rs2.getString("keterangan_kemampuan_belajar"))+"</td>"+
+                                              "<td width='25%' border='0' valign='top'>Kemampuan Belajar</td>"+
+                                              "<td width='75%' border='0' valign='top'>: "+rs2.getString("kemampuan_belajar")+(rs2.getString("keterangan_kemampuan_belajar").equals("")?"":", "+rs2.getString("keterangan_kemampuan_belajar"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='100%' colspan='2'>Nilai dan Keyakinan"+
+                                              "<td width='100%' colspan='2'>"+
+                                                  "Nilai dan Keyakinan"+
                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                       "<tr>"+
                                                          "<td width='100%' border='0' style='margin-left: 10px'>a. Penyakitnya Merupakan : "+rs2.getString("penyakitnya_merupakan")+(rs2.getString("keterangan_penyakitnya_merupakan").equals("")?"":", "+rs2.getString("keterangan_penyakitnya_merupakan"))+"</td>"+
@@ -16206,8 +16207,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='30%' valign='top'>Kesediaan Menerima Informasi</td>"+
-                                              "<td width='70%' valign='top'>: "+rs2.getString("kesediaan_menerima_informasi")+"</td>"+
+                                              "<td width='25%' valign='top' border='0'>Kesediaan Menerima Informasi</td>"+
+                                              "<td width='75%' valign='top' border='0'>: "+rs2.getString("kesediaan_menerima_informasi")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -16220,20 +16221,20 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                "<td width='100%' colspan='3'>Topik Edukasi Yang Harus Diberikan Kepada Pasien Dan Keluarga Antara Lain :"+
                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                       "<tr>"+
-                                                         "<td width='75%' valign='top' style='margin-left: 10px'>Penyakit Yang Diderita Pasien</td>"+
-                                                         "<td width='25%' valign='top'>: "+rs2.getString("topik_edukasi_penyakit")+"</td>"+
+                                                         "<td width='75%' border='0' valign='top' style='margin-left: 10px'>Penyakit Yang Diderita Pasien</td>"+
+                                                         "<td width='25%' border='0' valign='top'>: "+rs2.getString("topik_edukasi_penyakit")+"</td>"+
                                                       "</tr>"+
                                                       "<tr>"+
-                                                         "<td width='75%' valign='top' style='margin-left: 10px'>Rencana Tindakan/Terapi</td>"+
-                                                         "<td width='25%' valign='top'>: "+rs2.getString("topik_edukasi_rencana_tindakan")+"</td>"+
+                                                         "<td width='75%' border='0' valign='top' style='margin-left: 10px'>Rencana Tindakan/Terapi</td>"+
+                                                         "<td width='25%' border='0' valign='top'>: "+rs2.getString("topik_edukasi_rencana_tindakan")+"</td>"+
                                                       "</tr>"+
                                                       "<tr>"+
-                                                         "<td width='75%' valign='top' style='margin-left: 10px'>Pengobatan Dan Prosedur Yang Diberikan/Diperlukan</td>"+
-                                                         "<td width='25%' valign='top'>: "+rs2.getString("topik_edukasi_pengobatan")+"</td>"+
+                                                         "<td width='75%' border='0' valign='top' style='margin-left: 10px'>Pengobatan Dan Prosedur Yang Diberikan/Diperlukan</td>"+
+                                                         "<td width='25%' border='0' valign='top'>: "+rs2.getString("topik_edukasi_pengobatan")+"</td>"+
                                                       "</tr>"+
                                                       "<tr>"+
-                                                         "<td width='75%' valign='top' style='margin-left: 10px'>Hasil Pelayanan,Termasuk Terjadinya Kejadian Yang Diharapkan & Tidak Diharapkan</td>"+
-                                                         "<td width='25%' valign='top'>: "+rs2.getString("topik_edukasi_hasil_layanan")+"</td>"+
+                                                         "<td width='75%' border='0' valign='top' style='margin-left: 10px'>Hasil Pelayanan,Termasuk Terjadinya Kejadian Yang Diharapkan & Tidak Diharapkan</td>"+
+                                                         "<td width='25%' border='0' valign='top'>: "+rs2.getString("topik_edukasi_hasil_layanan")+"</td>"+
                                                       "</tr>"+
                                                   "</table>"+
                                               "</td>"+
