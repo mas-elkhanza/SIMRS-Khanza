@@ -18,6 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -39,6 +40,7 @@ import javax.swing.table.TableColumn;
 public final class DlgCariBangsal extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
+    private sekuel Sequel=new sekuel();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
@@ -439,5 +441,29 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    public String tampil3(String kode) {
+        iyem="";
+        try {
+            myObj = new FileReader("./cache/bangsal.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("bangsal");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeKamar").asText().toLowerCase().contains(kode)){
+                        iyem=list.path("NamaKamar").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",kode);
+        }
+        return iyem;
     }
 }

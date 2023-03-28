@@ -2784,7 +2784,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         rs.getString("golongan")
                     });
                     
-                    ps2 = koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal");
+                    ps2 = koneksi.prepareStatement("select bangsal.kd_bangsal,bangsal.nm_bangsal from bangsal");
                     try {
                         rs2 = ps2.executeQuery();
                         totalstok = 0;

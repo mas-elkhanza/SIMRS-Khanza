@@ -2638,13 +2638,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void isCek(){  
         if(!DEPOAKTIFOBAT.equals("")){
             kdgudang.setText(DEPOAKTIFOBAT);
-            nmgudang.setText(Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",DEPOAKTIFOBAT));
+            nmgudang.setText(caribangsal.tampil3(DEPOAKTIFOBAT));
         }else{
             kdgudang.setText(akses.getkdbangsal());
             if(akses.getkdbangsal().equals("")){
                 kdgudang.setText(bangsaldefault);
             } 
-            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText()); 
+            nmgudang.setText(caribangsal.tampil3(kdgudang.getText()));
         }
              
         BtnTambah.setEnabled(akses.getobat());

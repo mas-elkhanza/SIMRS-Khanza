@@ -1213,7 +1213,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void KdKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKamarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){            
-              Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?", NmKamar,KdKamar.getText());
+            NmKamar.setText(bangsal.tampil3(KdKamar.getText())); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKamarActionPerformed(null);
         }else{
