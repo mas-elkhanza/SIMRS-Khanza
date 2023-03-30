@@ -1065,17 +1065,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
             Valid.textKosong(TCari,"pilihan data");
         }else{
-            Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
-            aplikasi.tampilkanpermintaan=false;
-            aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            aplikasi.isCek();
-            aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            aplikasi.setLocationRelativeTo(internalFrame1);
-            aplikasi.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
-            tampil();
+            if(Sequel.cariIsi("select permintaan_medis.status from permintaan_medis where permintaan_medis.no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()).equals("Baru")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
+                aplikasi.tampilkanpermintaan=false;
+                aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                aplikasi.isCek();
+                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                aplikasi.setLocationRelativeTo(internalFrame1);
+                aplikasi.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+                tampil();
+            }else{
+                JOptionPane.showMessageDialog(null,"Data permintaan sudah divalidasi...!!");
+            }
         }
     }//GEN-LAST:event_ppDisetujuiActionPerformed
 
@@ -1092,17 +1095,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
             Valid.textKosong(TCari,"pilihan data");
         }else{
-            Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
-            aplikasi2.tampilkanpermintaan=false;
-            aplikasi2.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            aplikasi2.isCek();
-            aplikasi2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            aplikasi2.setLocationRelativeTo(internalFrame1);
-            aplikasi2.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
-            tampil();
+            if(Sequel.cariIsi("select permintaan_medis.status from permintaan_medis where permintaan_medis.no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim()).equals("Baru")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
+                aplikasi2.tampilkanpermintaan=false;
+                aplikasi2.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                aplikasi2.isCek();
+                aplikasi2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                aplikasi2.setLocationRelativeTo(internalFrame1);
+                aplikasi2.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+                tampil();
+            }else{
+                JOptionPane.showMessageDialog(null,"Data permintaan sudah divalidasi...!!");
+            }
         }
     }//GEN-LAST:event_ppDisetujui1ActionPerformed
 

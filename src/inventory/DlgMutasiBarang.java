@@ -38,7 +38,7 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampilkanpermintaan=false;
     private boolean sukses=false;
-    private String aktifkanbatch="no",DEPOAKTIFOBAT="",hppfarmasi="";
+    private String aktifkanbatch="no",DEPOAKTIFOBAT="",hppfarmasi="",nomorpermintaan="";
     private DlgPindahGudang pindah=new DlgPindahGudang(null,false);
 
     /** Creates new form DlgProgramStudi
@@ -602,8 +602,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     Trackobat.catatRiwayat(tbDokter.getValueAt(i,3).toString(),Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),0,"Mutasi",akses.getkode(),kdke.getText(),"Simpan","","",Keterangan.getText()+", dari "+nmdari.getText()+" ke "+nmke.getText());
                                     Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,3).toString()+"','"+kdke.getText()+"','"+tbDokter.getValueAt(i,0).toString()+"','',''", 
                                         "stok=stok+"+tbDokter.getValueAt(i,0).toString()+"","kode_brng='"+tbDokter.getValueAt(i,3).toString()+"' and kd_bangsal='"+kdke.getText()+"' and no_batch='' and no_faktur=''");
-                                }
-                                    
+                                }   
                             }else{
                                 sukses=false;
                             }                                     
@@ -614,12 +613,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }  
                 if(sukses==true){
                     Sequel.Commit();
+                    if(!nomorpermintaan.equals("")){
+                        Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",nomorpermintaan);
+                    }
                     for(index=0;index<tbDokter.getRowCount();index++){   
                         tbDokter.setValueAt("",index,0); 
                         tbDokter.setValueAt(0,index,2); 
                         tbDokter.setValueAt(0,index,6);
                         tbDokter.setValueAt(0,index,7);
                     }
+                    nomorpermintaan="";
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
@@ -1198,6 +1201,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             nmke.setText(Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",kdke.getText()));
             kddari.setText(Sequel.cariIsi("select permintaan_medis.kd_bangsaltujuan from permintaan_medis where permintaan_medis.no_permintaan=?", nopermintaan));
             nmdari.setText(Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",kddari.getText()));
+            Keterangan.setText("Permintaan No. "+nopermintaan);
+            nomorpermintaan=nopermintaan;
             ps=koneksi.prepareStatement(
                 "select databarang.kode_brng, databarang.nama_brng,detail_permintaan_medis.kode_sat,detail_permintaan_medis.jumlah,"+
                 "databarang."+hppfarmasi+" as dasar,(detail_permintaan_medis.jumlah*databarang."+hppfarmasi+") as total,ifnull(databarang.expire,'0000-00-00') as expire "+

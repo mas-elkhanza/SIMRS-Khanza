@@ -695,12 +695,21 @@ public class frmUtama extends javax.swing.JFrame {
                                                 datajam=Sequel.cariIsi("select DATE_ADD(concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),INTERVAL "+(Integer.parseInt(rs.getString("no_reg"))*10)+" MINUTE) ");
                                                 parsedDate = dateFormat.parse(datajam);
                                                 status="1";
-                                                norujukan=Sequel.cariIsi("select bridging_sep.no_rujukan from bridging_sep where bridging_sep.no_rawat=?",rs.getString("no_rawat"));
+                                                norujukan=Sequel.cariIsi("select bridging_sep.noskdp from bridging_sep where bridging_sep.no_rawat=?",rs.getString("no_rawat"));
                                                 if(norujukan.equals("")){
-                                                    norujukan=Sequel.cariIsi("select bridging_sep_internal.no_rujukan from bridging_sep_internal where bridging_sep_internal.no_rawat=?",rs.getString("no_rawat"));
-                                                    if(!norujukan.equals("")){
-                                                        status="2";
+                                                    norujukan=Sequel.cariIsi("select bridging_sep.no_rujukan from bridging_sep where bridging_sep.no_rawat=?",rs.getString("no_rawat"));
+                                                    if(norujukan.equals("")){
+                                                        norujukan=Sequel.cariIsi("select bridging_sep_internal.no_rujukan from bridging_sep_internal where bridging_sep_internal.no_rawat=?",rs.getString("no_rawat"));
+                                                        if(!norujukan.equals("")){
+                                                            status="2";
+                                                        }
+                                                    }else{
+                                                        if(Sequel.cariIsi("select bridging_sep.asal_rujukan from bridging_sep where bridging_sep.no_rawat=?",rs.getString("no_rawat")).equals("2. Faskes 2(RS)")){
+                                                            status="4";
+                                                        }
                                                     }
+                                                }else{
+                                                    status="3";
                                                 }
                                                 if(norujukan.equals("")){
                                                     if(!rs.getString("kd_pj").equals(kodebpjs)){

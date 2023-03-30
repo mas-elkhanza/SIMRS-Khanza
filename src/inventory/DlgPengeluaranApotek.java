@@ -38,7 +38,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     public boolean tampilkanpermintaan=false;
     private double stok_asal=0;
     private boolean sukses=true;
-    private String aktifkanbatch="no",DEPOAKTIFOBAT="",hppfarmasi="";
+    private String aktifkanbatch="no",DEPOAKTIFOBAT="",hppfarmasi="",nomorpermintaan="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -776,12 +776,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ttl=0;
                     LTotal.setText("0");
                     jml=tbDokter.getRowCount();
+                    if(!nomorpermintaan.equals("")){
+                        Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",nomorpermintaan);
+                    }
+                    
                     for(i=0;i<jml;i++){ 
                         tbDokter.setValueAt("",i,0);
                         tbDokter.setValueAt("",i,2);
                         tbDokter.setValueAt(0,i,7);
                         tbDokter.setValueAt(0,i,8);
                     }
+                    
+                    nomorpermintaan="";
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
@@ -1292,6 +1298,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
    public void tampil(String nopermintaan) {
         Valid.tabelKosong(tabMode);
         try{
+            nomorpermintaan=nopermintaan;
             ps=koneksi.prepareStatement(
                     "select permintaan_medis.tanggal,permintaan_medis.no_permintaan, "+
                     "permintaan_medis.kd_bangsal,bangsal.nm_bangsal as asal, "+
