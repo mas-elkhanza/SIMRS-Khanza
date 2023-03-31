@@ -10269,7 +10269,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgki.setLocationRelativeTo(internalFrame1);
                 dlgki.isCek();
-                dlgki.setNoRm2(TNoRw.getText(),Valid.SetTgl2(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),12).toString()),"2. Ralan",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),18).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),4).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());   
+                dlgki.setNoRm2(TNoRw.getText(),Valid.SetTgl2(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),12).toString()),"2. Ralan",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),18).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),4).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),14).toString());   
                 dlgki.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }

@@ -9131,7 +9131,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgki.setLocationRelativeTo(internalFrame1);
             dlgki.isCek();
-            dlgki.setNoRm2(TNoRw.getText(),DTPReg.getDate(),"2. Ralan",kdpoli.getText(),TPoli.getText(),KdDokter.getText());   
+            dlgki.setNoRm2(TNoRw.getText(),DTPReg.getDate(),"2. Ralan",kdpoli.getText(),TPoli.getText(),KdDokter.getText(),TNoReg.getText());   
             dlgki.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
