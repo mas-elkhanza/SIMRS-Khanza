@@ -7316,6 +7316,9 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     if(TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter")&&AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")){
                         jeniskunjungan="3";
                         noreferensi=NoSKDP.getText();
+                        if(noreferensi.equals("")){
+                            noreferensi=NoRujukan.getText();
+                        }
                     }else{
                         jeniskunjungan="2";
                         if(!NoRujukan.getText().equals("")){
@@ -7325,6 +7328,9 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                         }
                     }
                 }
+            }
+            if(noreferensi.equals("")){
+                noreferensi=TNoRw.getText();
             }
             
             try {
