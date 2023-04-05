@@ -392,7 +392,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             iyem="";
             ps=koneksi.prepareStatement("select petugas.nip,petugas.nama,petugas.jk,petugas.tmp_lahir,petugas.tgl_lahir, "+
-                    "petugas.gol_darah,petugas.agama,petugas.stts_nikah,petugas.alamat,petugas.nm_jbtn,petugas.no_telp "+
+                    "petugas.gol_darah,petugas.agama,petugas.stts_nikah,petugas.alamat,jabatan.nm_jbtn,petugas.no_telp "+
                     "from petugas inner join jabatan on jabatan.kd_jbtn=petugas.kd_jbtn "+
                     "where petugas.status='1' order by petugas.nip");
             try {
