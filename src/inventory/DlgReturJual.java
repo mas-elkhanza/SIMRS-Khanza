@@ -1099,12 +1099,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void KdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());          
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText()));        
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());   
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText())); 
             TglRetur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());   
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText())); 
             NoNota.requestFocus();  
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPtgActionPerformed(null);
@@ -1416,7 +1416,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             BtnHapus.setEnabled(akses.getretur_dari_pembeli());
             BtnBatal.setEnabled(akses.getretur_dari_pembeli());
             Kdptg.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText())); 
         }        
     }
     

@@ -1412,8 +1412,7 @@ public final class validasi {
     
     public int daysOld(String path) {
         file=new File(path);
-        if (file.lastModified() < 1)
-            return 0;
+        if (file.lastModified() < 1) return 0;
         return milliToDay(Calendar.getInstance().getTimeInMillis() - file.lastModified());
     }
 

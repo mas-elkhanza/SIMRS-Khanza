@@ -444,6 +444,16 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
     }
     
     public String tampil3(String kode) {
+        try {
+            if(Valid.daysOld("./cache/bangsal.iyem")>7){
+                tampil();
+            }
+        } catch (Exception e) {
+            if(e.toString().contains("No such file or directory")){
+                tampil();
+            }
+        }
+        
         iyem="";
         try {
             myObj = new FileReader("./cache/bangsal.iyem");

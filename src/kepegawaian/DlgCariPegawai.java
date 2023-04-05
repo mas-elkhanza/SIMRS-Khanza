@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
+import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -36,6 +37,8 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private sekuel Sequel=new sekuel();
+    
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -388,10 +391,10 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,"+
-                 "npwp, pendidikan, tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,"+
-                 "indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,no_ktp from pegawai "+
-                 "where stts_aktif<>'KELUAR' order by id ASC ");
+            ps=koneksi.prepareStatement("select pegawai.nik,pegawai.nama,pegawai.jk,pegawai.jbtn,pegawai.jnj_jabatan,pegawai.departemen,pegawai.bidang,pegawai.stts_wp,pegawai.stts_kerja,"+
+                 "pegawai.npwp,pegawai.pendidikan,pegawai.tmp_lahir,pegawai.tgl_lahir,pegawai.alamat,pegawai.kota,pegawai.mulai_kerja,pegawai.ms_kerja,"+
+                 "pegawai.indexins,pegawai.bpd,pegawai.rekening,pegawai.stts_aktif,pegawai.wajibmasuk,pegawai.mulai_kontrak,pegawai.no_ktp from pegawai "+
+                 "where pegawai.stts_aktif<>'KELUAR' order by pegawai.id ASC ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -455,5 +458,38 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+ex);
         }
     } 
-
+    
+    public String tampil3(String kode) {
+        try {
+            if(Valid.daysOld("./cache/pegawai.iyem")>7){
+                tampil();
+            }
+        } catch (Exception e) {
+            if(e.toString().contains("No such file or directory")){
+                tampil();
+            }
+        }
+        
+        iyem="";
+        try {
+            myObj = new FileReader("./cache/pegawai.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("pegawai");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NIP").asText().toLowerCase().contains(kode)){
+                        iyem=list.path("Nama").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",kode);
+        }
+        return iyem;
+    }
 }

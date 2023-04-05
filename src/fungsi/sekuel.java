@@ -50,7 +50,6 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class sekuel {
     private javax.swing.ImageIcon icon = null;
-    private javax.swing.ImageIcon iconThumbnail = null;
     private String folder,AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
     private final Connection connect=koneksiDB.condb();
     private PreparedStatement ps;
@@ -60,7 +59,7 @@ public final class sekuel {
     private String dicari="";
     private Date tanggal=new Date();
     private boolean bool=false;
-    private DecimalFormat df2 = new DecimalFormat("####");
+    private final DecimalFormat df2 = new DecimalFormat("####");
     public sekuel(){
         super();
     }
@@ -1988,7 +1987,7 @@ public final class sekuel {
             g2d.drawImage(inImage, tx, null);
             g2d.dispose();
 
-            iconThumbnail = new javax.swing.ImageIcon(outImage);
+            new javax.swing.ImageIcon(outImage);
         } catch (Exception e) {
         }
     }

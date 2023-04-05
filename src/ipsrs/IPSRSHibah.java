@@ -1020,7 +1020,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gethibah_non_medis());
             BtnTambah.setEnabled(akses.getipsrs_barang());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
+            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
         }        
     }
     

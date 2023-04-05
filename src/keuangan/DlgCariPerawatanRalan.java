@@ -608,11 +608,6 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
         Nip2.setHighlighter(null);
         Nip2.setName("Nip2"); // NOI18N
         Nip2.setPreferredSize(new java.awt.Dimension(120, 23));
-        Nip2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nip2KeyPressed(evt);
-            }
-        });
         FormInput.add(Nip2);
         Nip2.setBounds(61, 40, 99, 23);
 
@@ -1106,10 +1101,6 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         btnPetugas.setVisible(true);
         tampil();
     }//GEN-LAST:event_ppPetugasDokterActionPerformed
-
-    private void Nip2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nip2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Nip2KeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         petugas.isCek();
