@@ -99,8 +99,10 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
                  column.setPreferredWidth(45);
             }else if(i==13){
                  column.setPreferredWidth(450);
+            }else if(i==14){
+                 column.setPreferredWidth(80);
             }else if(i==15){
-                 column.setPreferredWidth(125);
+                 column.setPreferredWidth(150);
             }else{
                  column.setMinWidth(0);
                  column.setMaxWidth(0);
@@ -1055,7 +1057,6 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("finger2",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdPetugas.getText()));
             param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirPemantauanPEWS.jasper","report","::[ Pemantauan PEWS ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur, "+
