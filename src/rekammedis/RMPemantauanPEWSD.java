@@ -693,7 +693,7 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         jLabel14.setText("1. Laju Respirasi/Menit");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(40, 90, 160, 23);
+        jLabel14.setBounds(40, 90, 140, 23);
 
         cmbSkor1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 5", "6 - 8", "9 - 11", "12 - 20", "21 - 24", "25 - 34", ">= 35" }));
         cmbSkor1.setSelectedIndex(3);
@@ -715,7 +715,7 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         jLabel17.setText("2. Saturasi Oksigen");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(40, 120, 160, 23);
+        jLabel17.setBounds(40, 120, 140, 23);
 
         cmbSkor2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 95", "94 - 95", "92 - 93", "<= 92" }));
         cmbSkor2.setName("cmbSkor2"); // NOI18N
@@ -733,7 +733,6 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         cmbSkor2.setBounds(180, 120, 115, 23);
 
         Skor1.setEditable(false);
-        Skor1.setBackground(new java.awt.Color(255, 255, 255));
         Skor1.setText("0");
         Skor1.setFocusTraversalPolicyProvider(true);
         Skor1.setName("Skor1"); // NOI18N
@@ -752,7 +751,6 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         jLabel22.setBounds(290, 120, 50, 23);
 
         Skor2.setEditable(false);
-        Skor2.setBackground(new java.awt.Color(255, 255, 255));
         Skor2.setText("0");
         Skor2.setFocusTraversalPolicyProvider(true);
         Skor2.setName("Skor2"); // NOI18N
@@ -787,7 +785,6 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         jLabel26.setBounds(690, 150, 50, 23);
 
         Skor3.setEditable(false);
-        Skor3.setBackground(new java.awt.Color(255, 255, 255));
         Skor3.setText("0");
         Skor3.setFocusTraversalPolicyProvider(true);
         Skor3.setName("Skor3"); // NOI18N
@@ -838,7 +835,7 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         jLabel24.setText("3. Suplemen Oksigen");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(40, 150, 160, 23);
+        jLabel24.setBounds(40, 150, 140, 23);
 
         cmbSkor5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 140", "131 - 140", "111 - 130", "91 - 110", "51 - 90", "41 - 50", "<= 40" }));
         cmbSkor5.setSelectedIndex(4);
@@ -860,7 +857,7 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         jLabel25.setText("4. Tekanan Darah Sistolik");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(40, 180, 160, 23);
+        jLabel25.setBounds(40, 180, 140, 23);
 
         cmbSkor6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sadar", "Nyeri/Verbal", "Unrespon" }));
         cmbSkor6.setName("cmbSkor6"); // NOI18N
@@ -899,7 +896,6 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         jLabel32.setBounds(690, 90, 50, 23);
 
         Skor4.setEditable(false);
-        Skor4.setBackground(new java.awt.Color(255, 255, 255));
         Skor4.setText("0");
         Skor4.setFocusTraversalPolicyProvider(true);
         Skor4.setName("Skor4"); // NOI18N
@@ -908,7 +904,6 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         Skor4.setBounds(345, 180, 44, 23);
 
         Skor5.setEditable(false);
-        Skor5.setBackground(new java.awt.Color(255, 255, 255));
         Skor5.setText("0");
         Skor5.setFocusTraversalPolicyProvider(true);
         Skor5.setName("Skor5"); // NOI18N
@@ -917,7 +912,6 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         Skor5.setBounds(745, 90, 44, 23);
 
         Skor6.setEditable(false);
-        Skor6.setBackground(new java.awt.Color(255, 255, 255));
         Skor6.setText("0");
         Skor6.setFocusTraversalPolicyProvider(true);
         Skor6.setName("Skor6"); // NOI18N
@@ -948,7 +942,6 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         cmbSkor7.setBounds(580, 150, 115, 23);
 
         Skor7.setEditable(false);
-        Skor7.setBackground(new java.awt.Color(255, 255, 255));
         Skor7.setText("0");
         Skor7.setFocusTraversalPolicyProvider(true);
         Skor7.setName("Skor7"); // NOI18N

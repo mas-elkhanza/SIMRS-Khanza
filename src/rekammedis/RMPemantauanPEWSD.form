@@ -343,7 +343,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-04-2023"/>
+                        <StringItem index="0" value="07-04-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -371,7 +371,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-04-2023"/>
+                        <StringItem index="0" value="07-04-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -530,7 +530,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-04-2023"/>
+                        <StringItem index="0" value="07-04-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -879,7 +879,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="90" width="160" height="23"/>
+                      <AbsoluteConstraints x="40" y="90" width="140" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -917,7 +917,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="120" width="160" height="23"/>
+                      <AbsoluteConstraints x="40" y="120" width="140" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -946,9 +946,6 @@
                 <Component class="widget.TextBox" name="Skor1">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                     <Property name="name" type="java.lang.String" value="Skor1" noResource="true"/>
@@ -985,9 +982,6 @@
                 <Component class="widget.TextBox" name="Skor2">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                     <Property name="name" type="java.lang.String" value="Skor2" noResource="true"/>
@@ -1045,9 +1039,6 @@
                 <Component class="widget.TextBox" name="Skor3">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                     <Property name="name" type="java.lang.String" value="Skor3" noResource="true"/>
@@ -1140,7 +1131,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="150" width="160" height="23"/>
+                      <AbsoluteConstraints x="40" y="150" width="140" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1178,7 +1169,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="180" width="160" height="23"/>
+                      <AbsoluteConstraints x="40" y="180" width="140" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1251,9 +1242,6 @@
                 <Component class="widget.TextBox" name="Skor4">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                     <Property name="name" type="java.lang.String" value="Skor4" noResource="true"/>
@@ -1268,9 +1256,6 @@
                 <Component class="widget.TextBox" name="Skor5">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                     <Property name="name" type="java.lang.String" value="Skor5" noResource="true"/>
@@ -1285,9 +1270,6 @@
                 <Component class="widget.TextBox" name="Skor6">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                     <Property name="name" type="java.lang.String" value="Skor6" noResource="true"/>
@@ -1338,9 +1320,6 @@
                 <Component class="widget.TextBox" name="Skor7">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                     <Property name="name" type="java.lang.String" value="Skor7" noResource="true"/>
