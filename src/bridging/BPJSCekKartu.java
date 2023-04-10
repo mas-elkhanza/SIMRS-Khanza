@@ -7308,26 +7308,49 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     public void SimpanAntrianOnSite(){
         if((!NoRujukan.getText().equals(""))||(!NoSKDP.getText().equals(""))){
             noreferensi="";
-            if(AsalRujukan.getSelectedIndex()==0){
-                jeniskunjungan="1";
-                noreferensi=NoRujukan.getText();
-            }else{
-                if(!KdPPK.getText().equals(KdPpkRujukan.getText())){
-                    jeniskunjungan="4";
+            if(TujuanKunjungan.getSelectedItem().toString().equals("0. Normal")&&FlagProsedur.getSelectedItem().toString().equals("")&&Penunjang.getSelectedItem().toString().equals("")&&AsesmenPoli.getSelectedItem().toString().equals("")){
+                if(AsalRujukan.getSelectedIndex()==0){
+                    jeniskunjungan="1";
                     noreferensi=NoRujukan.getText();
                 }else{
-                    if(TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter")&&AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")){
-                        jeniskunjungan="3";
-                        noreferensi=NoSKDP.getText();
-                        if(noreferensi.equals("")){
-                            noreferensi=NoRujukan.getText();
-                        }
+                    jeniskunjungan="4";
+                    noreferensi=NoRujukan.getText();
+                }
+            }else if(TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter")&&FlagProsedur.getSelectedItem().toString().equals("")&&Penunjang.getSelectedItem().toString().equals("")&&AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")){
+                jeniskunjungan="3";
+                noreferensi=NoSKDP.getText();
+                if(noreferensi.equals("")){
+                    noreferensi=NoRujukan.getText();
+                }
+            }else if(TujuanKunjungan.getSelectedItem().toString().equals("0. Normal")&&FlagProsedur.getSelectedItem().toString().equals("")&&Penunjang.getSelectedItem().toString().equals("")&&AsesmenPoli.getSelectedItem().toString().equals("4. Atas Instruksi RS")){
+                jeniskunjungan="2";
+                if(!NoRujukan.getText().equals("")){
+                    noreferensi=NoRujukan.getText();
+                }else{
+                    noreferensi=NoSKDP.getText();
+                }
+            }else{
+                if(AsalRujukan.getSelectedIndex()==0){
+                    jeniskunjungan="1";
+                    noreferensi=NoRujukan.getText();
+                }else{
+                    if(!KdPPK.getText().equals(KdPpkRujukan.getText())){
+                        jeniskunjungan="4";
+                        noreferensi=NoRujukan.getText();
                     }else{
-                        jeniskunjungan="2";
-                        if(!NoRujukan.getText().equals("")){
-                            noreferensi=NoRujukan.getText();
-                        }else{
+                        if(TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter")&&AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")){
+                            jeniskunjungan="3";
                             noreferensi=NoSKDP.getText();
+                            if(noreferensi.equals("")){
+                                noreferensi=NoRujukan.getText();
+                            }
+                        }else{
+                            jeniskunjungan="2";
+                            if(!NoRujukan.getText().equals("")){
+                                noreferensi=NoRujukan.getText();
+                            }else{
+                                noreferensi=NoSKDP.getText();
+                            }
                         }
                     }
                 }

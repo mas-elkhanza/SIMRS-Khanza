@@ -234,7 +234,7 @@ inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="551" y="83" width="1" height="65" uuid="bc504372-aece-4974-afd4-7fb7aeff76e1">
+				<reportElement positionType="FixRelativeToBottom" x="552" y="83" width="1" height="65" uuid="bc504372-aece-4974-afd4-7fb7aeff76e1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -386,7 +386,7 @@ inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="551" y="0" width="1" height="17" uuid="081764b4-e741-463e-b354-cc17e8a75a20">
+				<reportElement positionType="FixRelativeToBottom" x="552" y="0" width="1" height="17" uuid="081764b4-e741-463e-b354-cc17e8a75a20">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -396,7 +396,7 @@ inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="159" splitType="Stretch">
+		<band height="156" splitType="Stretch">
 			<staticText>
 				<reportElement positionType="Float" mode="Opaque" x="85" y="110" width="379" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="39d654c1-a0e6-4081-be04-e48415c7a484"/>
 				<box>
@@ -461,7 +461,7 @@ inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="Float" x="551" y="0" width="1" height="156" uuid="556b7791-1090-4673-94d9-efe13381d163">
+				<reportElement positionType="Float" x="552" y="0" width="1" height="156" uuid="556b7791-1090-4673-94d9-efe13381d163">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>

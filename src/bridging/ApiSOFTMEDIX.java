@@ -231,7 +231,7 @@ public class ApiSOFTMEDIX {
                                             "\"sex\": \""+rs.getString("jk")+"\"," +
                                             "\"birth_dt\": \""+rs.getString("tgl_lahir")+"\","+
                                             "\"address\": \""+rs.getString("alamat")+"\","+
-                                            "\"no_tlp\": \""+rs.getString("no_tlp")+"\"" +
+                                            "\"no_tlp\": \""+rs.getString("no_tlp")+"\"," +
                                             "\"no_hp\": \""+rs.getString("no_tlp")+"\"," +
                                             "\"email\": \""+rs.getString("email")+"\"," +
                                             "\"nik\": \""+rs.getString("no_ktp")+"\"" +
