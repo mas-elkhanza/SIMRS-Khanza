@@ -1420,7 +1420,14 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                     alergi_ikan, alergi_hazelnut, PolaMakan.getText(),RiwayatPersonal.getText(),DiagnosisGizi.getText(),IntervensiGizi.getText(),
                     Monitoring.getText(),KdPetugas.getText()
                 })==true){
-                    tampil();
+                    tabMode.addRow(new String[]{
+                        TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText().substring(0,1),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+""),
+                        BB.getText(),TB.getText(),IMT.getText(),LiLA.getText(),TL.getText(),ULNA.getText(),BBIdeal.getText(),BBPerU.getText(),TBPerU.getText(),BBPerTB.getText(),
+                        LiLAPerU.getText(),Biokimia.getText(),FisikKlinis.getText(),alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, 
+                        alergi_ikan, alergi_hazelnut, PolaMakan.getText(),RiwayatPersonal.getText(),DiagnosisGizi.getText(),IntervensiGizi.getText(),Monitoring.getText(),
+                        KdPetugas.getText(),NmPetugas.getText()
+                    });
+                    LCount.setText(""+tabMode.getRowCount());
                     emptTeks();
             }
         }
@@ -1430,7 +1437,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Obat2an,BtnBatal);
+            Valid.pindah(evt,Monitoring,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -2027,8 +2034,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {
@@ -2244,7 +2250,39 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                 alergi_ikan, alergi_hazelnut, PolaMakan.getText(),RiwayatPersonal.getText(),DiagnosisGizi.getText(),IntervensiGizi.getText(),
                 Monitoring.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
             })==true){
-                tampil();
+                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+                tbObat.setValueAt(Jk.getText().substring(0,1),tbObat.getSelectedRow(),3);
+                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),4);
+                tbObat.setValueAt(Valid.SetTgl(TglAsuhan.getSelectedItem()+""),tbObat.getSelectedRow(),5);
+                tbObat.setValueAt(BB.getText(),tbObat.getSelectedRow(),6);
+                tbObat.setValueAt(TB.getText(),tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(IMT.getText(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(LiLA.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(TL.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(ULNA.getText(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(BBIdeal.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(BBPerU.getText(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(TBPerU.getText(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(BBPerTB.getText(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(LiLAPerU.getText(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(Biokimia.getText(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(FisikKlinis.getText(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(alergi_telur,tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(alergi_susu_sapi,tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(alergi_kacang,tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(alergi_gluten,tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(alergi_udang,tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(alergi_ikan,tbObat.getSelectedRow(),24);
+                tbObat.setValueAt(alergi_hazelnut,tbObat.getSelectedRow(),25);
+                tbObat.setValueAt(PolaMakan.getText(),tbObat.getSelectedRow(),26);
+                tbObat.setValueAt(RiwayatPersonal.getText(),tbObat.getSelectedRow(),27);
+                tbObat.setValueAt(DiagnosisGizi.getText(),tbObat.getSelectedRow(),28);
+                tbObat.setValueAt(IntervensiGizi.getText(),tbObat.getSelectedRow(),29);
+                tbObat.setValueAt(Monitoring.getText(),tbObat.getSelectedRow(),30);
+                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),31);
+                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),32);
                 emptTeks();
         }
     }

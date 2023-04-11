@@ -203,7 +203,8 @@ public final class akses {
             rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false,grafik_limbahb3cair_pertanggal=false,
             grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false,konfirmasi_rekonsiliasi_obat=false,satu_sehat_kirim_clinicalimpression=false,
             penilaian_pasien_terminal=false,surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false,penilaian_korban_kekerasan=false,
-            penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false,edukasi_pasien_keluarga_rj=false,pemantauan_pews_dewasa=false;
+            penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false,edukasi_pasien_keluarga_rj=false,pemantauan_pews_dewasa=false,
+            penilaian_tambahan_bunuh_diri=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1160,6 +1161,7 @@ public final class akses {
                         akses.penilaian_pasien_penyakit_menular=true;
                         akses.edukasi_pasien_keluarga_rj=true;
                         akses.pemantauan_pews_dewasa=true;
+                        akses.penilaian_tambahan_bunuh_diri=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2100,6 +2102,7 @@ public final class akses {
                         akses.penilaian_pasien_penyakit_menular=rs2.getBoolean("penilaian_pasien_penyakit_menular");
                         akses.edukasi_pasien_keluarga_rj=rs2.getBoolean("edukasi_pasien_keluarga_rj");
                         akses.pemantauan_pews_dewasa=rs2.getBoolean("pemantauan_pews_dewasa");
+                        akses.penilaian_tambahan_bunuh_diri=rs2.getBoolean("penilaian_tambahan_bunuh_diri");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3038,6 +3041,7 @@ public final class akses {
                         akses.penilaian_pasien_penyakit_menular=false;
                         akses.edukasi_pasien_keluarga_rj=false;
                         akses.pemantauan_pews_dewasa=false;
+                        akses.penilaian_tambahan_bunuh_diri=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4035,4 +4039,5 @@ public final class akses {
     public static boolean getpenilaian_pasien_penyakit_menular(){return akses.penilaian_pasien_penyakit_menular;}
     public static boolean getedukasi_pasien_keluarga_rj(){return akses.edukasi_pasien_keluarga_rj;}
     public static boolean getpemantauan_pews_dewasa(){return akses.pemantauan_pews_dewasa;}
+    public static boolean getpenilaian_tambahan_bunuh_diri(){return akses.penilaian_tambahan_bunuh_diri;}
 }   
