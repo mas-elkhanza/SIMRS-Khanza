@@ -5766,8 +5766,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             "',trf_kamar='"+TTarif.getText()+"',jam_keluar='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+
                             "',ttl_biaya='"+ttlbiaya.getText()+"',stts_pulang='"+cmbStatus.getSelectedItem()+"',diagnosa_akhir='"+diagnosaakhir.getText()+"',lama='"+TJmlHari.getText()+"'")==true){
                         if(tabMode.getRowCount()>1){
-                            if(tbKamIn.getValueAt(tbKamIn.getSelectedRow()+1,0).toString().equals("")){
-                                tabMode.removeRow(tbKamIn.getSelectedRow()+1);
+                            try {
+                                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow()+1,0).toString().equals("")){
+                                    tabMode.removeRow(tbKamIn.getSelectedRow()+1);
+                                }
+                            } catch (Exception e) {
                             }
                         }
                         tabMode.removeRow(tbKamIn.getSelectedRow());
@@ -5777,7 +5780,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgPasienMati.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 dlgPasienMati.setLocationRelativeTo(internalFrame1);
                                 dlgPasienMati.emptTeks();
-                                dlgPasienMati.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),2).toString()); 
+                                dlgPasienMati.setNoRm(TNoRMCari.getText(),TPasienCari.getText()); 
                                 dlgPasienMati.isCek();
                                 dlgPasienMati.setVisible(true);
                             }else if(cmbStatus.getSelectedItem().equals("Rujuk")){
@@ -7225,8 +7228,11 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 Sequel.mengedit("reg_periksa","no_rawat='"+norawat.getText()+"'","stts='Sudah'");
                             }
                             if(tabMode.getRowCount()>1){
-                                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow()+1,0).toString().equals("")){
-                                    tabMode.removeRow(tbKamIn.getSelectedRow()+1);
+                                try {
+                                    if(tbKamIn.getValueAt(tbKamIn.getSelectedRow()+1,0).toString().equals("")){
+                                        tabMode.removeRow(tbKamIn.getSelectedRow()+1);
+                                    }
+                                } catch (Exception e) {
                                 }
                             }
                             tabMode.removeRow(tbKamIn.getSelectedRow());
@@ -8362,8 +8368,11 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }else{
                     Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='-',tgl_keluar='0000-00-00',jam_keluar='00:00:00'");
                     if(tabMode.getRowCount()>1){
-                        if(tbKamIn.getValueAt(tbKamIn.getSelectedRow()+1,0).toString().equals("")){
-                            tabMode.removeRow(tbKamIn.getSelectedRow()+1);
+                        try {
+                            if(tbKamIn.getValueAt(tbKamIn.getSelectedRow()+1,0).toString().equals("")){
+                                tabMode.removeRow(tbKamIn.getSelectedRow()+1);
+                            }
+                        } catch (Exception e) {
                         }
                     }
                     tabMode.removeRow(tbKamIn.getSelectedRow());

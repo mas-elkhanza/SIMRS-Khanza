@@ -81,7 +81,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
@@ -178,6 +178,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnKonselingFarmasi = new javax.swing.JMenuItem();
+        JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -250,6 +251,9 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnKonselingFarmasi);
+
+        JK.setHighlighter(null);
+        JK.setName("JK"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -421,7 +425,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-11-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -435,7 +439,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-11-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -531,7 +535,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-11-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -797,7 +801,6 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
-            isPsien();
         }else{            
             Valid.pindah(evt,TCari,Tanggal);
         }
@@ -826,8 +829,14 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
                 Diagnosa.getText(),ObatPemakaian.getText(),Alergi.getText(),Keluhan.getText(),PernahKonseling.getSelectedItem().toString(),TindakLanjut.getText(),
                 KdPetugas.getText()
             })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),KdPetugas.getText(),NmPetugas.getText(),
+                    Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    Diagnosa.getText(),Alergi.getText(),PernahKonseling.getSelectedItem().toString(),ObatPemakaian.getText(),Keluhan.getText(),
+                    TindakLanjut.getText()
+                });
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }  
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1158,6 +1167,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
     private widget.ComboBox Detik;
     private widget.TextBox Diagnosa;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
     private widget.TextArea Keluhan;
@@ -1283,6 +1293,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
@@ -1295,22 +1306,43 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
+    
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
-    }
-
-    private void isPsien() {
-        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
-        Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TglLahir,TNoRM.getText());
+        try {
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi "+
+                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "where reg_periksa.no_rawat=?");
+            try {
+                ps.setString(1,TNoRw.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
+                    TPasien.setText(rs.getString("nm_pasien"));
+                    JK.setText(rs.getString("jk"));
+                    TglLahir.setText(rs.getString("tgl_lahir"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
-        isPsien();
         ChkInput.setSelected(true);
         isForm();
     }
@@ -1400,14 +1432,28 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        Sequel.mengedit("konseling_farmasi","no_rawat=?","no_rawat=?,tanggal=?,diagnosa=?,obat_pemakaian=?,riwayat_alergi=?,keluhan=?,pernah_datang=?,"+
+        if(Sequel.mengedittf("konseling_farmasi","no_rawat=?","no_rawat=?,tanggal=?,diagnosa=?,obat_pemakaian=?,riwayat_alergi=?,keluhan=?,pernah_datang=?,"+
             "tindak_lanjut=?,nip=?",11,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Diagnosa.getText(),ObatPemakaian.getText(),Alergi.getText(),Keluhan.getText(),PernahKonseling.getSelectedItem().toString(),TindakLanjut.getText(),
                 KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        });
-        if(tabMode.getRowCount()!=0){tampil();}
-        emptTeks();
+        })==true){
+            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(Diagnosa.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(Alergi.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(PernahKonseling.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(ObatPemakaian.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(Keluhan.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(TindakLanjut.getText(),tbObat.getSelectedRow(),13);
+            emptTeks();
+        }
     }
 
     private void hapus() {

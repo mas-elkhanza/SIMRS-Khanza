@@ -2557,9 +2557,46 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
                 SuhuSetelahTransfer.getText(),KdPetugasMenyerahkan.getText(),KdPetugasMenerima.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
             })==true){
-               tampil();
-               emptTeks();
-               TabRawat.setSelectedIndex(1);
+                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+                tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
+                tbObat.setValueAt(Valid.SetTgl(TanggalMasuk.getSelectedItem()+"")+" "+TanggalMasuk.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),5);
+                tbObat.setValueAt(Valid.SetTgl(TanggalPindah.getSelectedItem()+"")+" "+TanggalPindah.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
+                tbObat.setValueAt(IndikasiPindah.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(KeteranganIndikasiPindahRuang.getText(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(AsalRuang.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(RuangSelanjutnya.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(MetodePemindahan.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(DiagnosaUtama.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(DiagnosaSekunder.getText(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(ProsedurDilakukan.getText(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(ObatYangDiberikan.getText(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(PemeriksaanPenunjang.getText(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(PeralatanMenyertai.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(KeteranganPeralatan.getText(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(MenyetujuiPemindahan.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(NamaMenyetujui.getText(),tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(HubunganMenyetujui.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(KeadaanUmumSebelumTransfer.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(TDSebelumTransfer.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(NadiSebelumTransfer.getText(),tbObat.getSelectedRow(),24);
+                tbObat.setValueAt(RRSebelumTransfer.getText(),tbObat.getSelectedRow(),25);
+                tbObat.setValueAt(SuhuSebelumTransfer.getText(),tbObat.getSelectedRow(),26);
+                tbObat.setValueAt(KeluhanUtamaSebelumTransfer.getText(),tbObat.getSelectedRow(),27);
+                tbObat.setValueAt(KeadaanUmumSetelahTransfer.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
+                tbObat.setValueAt(TDSetelahTransfer.getText(),tbObat.getSelectedRow(),29);
+                tbObat.setValueAt(NadiSetelahTransfer.getText(),tbObat.getSelectedRow(),30);
+                tbObat.setValueAt(RRSetelahTransfer.getText(),tbObat.getSelectedRow(),31);
+                tbObat.setValueAt(SuhuSetelahTransfer.getText(),tbObat.getSelectedRow(),32);
+                tbObat.setValueAt(KeluhanUtamaSetelahTransfer.getText(),tbObat.getSelectedRow(),33);
+                tbObat.setValueAt(KdPetugasMenyerahkan.getText(),tbObat.getSelectedRow(),34);
+                tbObat.setValueAt(NmPetugasMenyerahkan.getText(),tbObat.getSelectedRow(),35);
+                tbObat.setValueAt(KdPetugasMenerima.getText(),tbObat.getSelectedRow(),36);
+                tbObat.setValueAt(NmPetugasMenerima.getText(),tbObat.getSelectedRow(),37);
+                emptTeks();
+                TabRawat.setSelectedIndex(1);
         }
     }
 
