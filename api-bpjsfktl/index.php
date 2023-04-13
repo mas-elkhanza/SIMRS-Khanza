@@ -504,7 +504,7 @@
                                                         }else{
                                                             $sekarang  = date("Y-m-d");
                                                             $interval  = getOne2("select (TO_DAYS('".validTeks4($decode["tanggalperiksa"],20)."')-TO_DAYS('$sekarang'))");
-                                                            if($interval<=0){
+                                                            if($interval<0){
                                                                 $response = array(
                                                                     'metadata' => array(
                                                                         'message' => 'Pendaftaran ke Poli ini sudah tutup',
@@ -819,7 +819,7 @@
                                                 http_response_code(201);
                                             }else if($booking['status']=='Belum'){
                                                 $update        = bukaquery2("update referensi_mobilejkn_bpjs set status='Batal',validasi=now() where nobooking='".validTeks4($decode['kodebooking'],25)."'");
-                                                $batal         = bukaquery2("delete from reg_periksa where no_rawat='$booking[no_rawat]'");
+                                                $batal         = bukaquery2("delete from reg_periksa where no_rawat='".$booking['no_rawat']."'");
                                                 if($batal){
                                                     $response = array(
                                                         'metadata' => array(

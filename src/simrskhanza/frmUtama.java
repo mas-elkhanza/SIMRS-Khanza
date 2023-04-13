@@ -840,6 +840,7 @@ import rekammedis.RMPenilaianPasienTerminal;
 import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
+import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
@@ -20064,6 +20065,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianTambahanBunuhDiriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianTambahanBunuhDiri aplikasi=new RMPenilaianTambahanBunuhDiri(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20734,7 +20748,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
-            btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN;
+            btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri;
     
     public void isWall(){
         try{            
@@ -24126,6 +24140,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_tambahan_pasien_geriatri()==true){
                 Panelmenu.add(btnPenilaianTambahanGeriatri);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_tambahan_bunuh_diri()==true){
+                Panelmenu.add(btnPenilaianTambahanBunuhDiri);
                 jmlmenu++;
             }
             
@@ -28765,6 +28784,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_tambahan_pasien_geriatri()==true){
             Panelmenu.add(btnPenilaianTambahanGeriatri);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_tambahan_bunuh_diri()==true){
+            Panelmenu.add(btnPenilaianTambahanBunuhDiri);
             jmlmenu++;
         }
         
@@ -34706,6 +34730,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_tambahan_bunuh_diri()==true){
+            if(btnPenilaianTambahanBunuhDiri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianTambahanBunuhDiri);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_pasien_terminal()==true){
             if(btnPenilaianPasienTerminal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianPasienTerminal);
@@ -40382,5 +40413,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSAntreanPerTanggalMobileJKN.setName("btnBPJSAntreanPerTanggalMobileJKN"); 
         btnBPJSAntreanPerTanggalMobileJKN.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSAntreanPerTanggalMobileJKN.addActionListener(this::btnBPJSAntreanPerTanggalMobileJKNActionPerformed);
+        
+        btnPenilaianTambahanBunuhDiri = new widget.ButtonBig();
+        btnPenilaianTambahanBunuhDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6954610_blood_crime_kill_killer_knife_icon.png and kid_icon.png"))); 
+        btnPenilaianTambahanBunuhDiri.setText("Penilaian Tambahan Bunuh Diri");
+        btnPenilaianTambahanBunuhDiri.setIconTextGap(0);
+        btnPenilaianTambahanBunuhDiri.setName("btnPenilaianTambahanBunuhDiri");
+        btnPenilaianTambahanBunuhDiri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianTambahanBunuhDiri.addActionListener(this::btnPenilaianTambahanBunuhDiriActionPerformed);
     }
 }
