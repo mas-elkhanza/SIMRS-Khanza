@@ -300,6 +300,13 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel221 = new widget.Label();
         jLabel245 = new widget.Label();
         jLabel58 = new widget.Label();
+        NilaiResikoTotal1 = new widget.TextBox();
+        jLabel246 = new widget.Label();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel31 = new widget.Label();
+        jLabel32 = new widget.Label();
+        jLabel33 = new widget.Label();
+        jLabel34 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -565,7 +572,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 466));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 456));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -595,7 +602,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 443));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 413));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -934,22 +941,22 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         FormInput.add(NilaiResiko6);
         NilaiResiko6.setBounds(359, 240, 35, 23);
 
-        jLabel235.setText("Total :");
+        jLabel235.setText("Jumlah Skor :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(655, 330, 70, 23);
+        jLabel235.setBounds(675, 300, 70, 23);
 
         NilaiResikoTotal.setEditable(false);
         NilaiResikoTotal.setFocusTraversalPolicyProvider(true);
         NilaiResikoTotal.setName("NilaiResikoTotal"); // NOI18N
         FormInput.add(NilaiResikoTotal);
-        NilaiResikoTotal.setBounds(729, 330, 60, 23);
+        NilaiResikoTotal.setBounds(749, 300, 40, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel30.setText("Hasil Skrining :");
+        jLabel30.setText("Faktor-faktor Pencegahan :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(14, 360, 80, 23);
+        jLabel30.setBounds(14, 330, 310, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -966,7 +973,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         scrollPane1.setViewportView(HasilSkrining);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(34, 380, 755, 43);
+        scrollPane1.setBounds(24, 350, 765, 43);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -980,7 +987,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 360, 810, 1);
+        jSeparator3.setBounds(0, 330, 810, 1);
 
         jLabel236.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel236.setText("Kehilangan Pekerjaan/Tidak Bekerja");
@@ -1243,6 +1250,49 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
         jLabel58.setBounds(405, 70, 80, 23);
+
+        NilaiResikoTotal1.setEditable(false);
+        NilaiResikoTotal1.setFocusTraversalPolicyProvider(true);
+        NilaiResikoTotal1.setName("NilaiResikoTotal1"); // NOI18N
+        FormInput.add(NilaiResikoTotal1);
+        NilaiResikoTotal1.setBounds(354, 300, 40, 23);
+
+        jLabel246.setText("Jumlah Skor :");
+        jLabel246.setName("jLabel246"); // NOI18N
+        FormInput.add(jLabel246);
+        jLabel246.setBounds(280, 300, 70, 23);
+
+        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator4.setName("jSeparator4"); // NOI18N
+        FormInput.add(jSeparator4);
+        jSeparator4.setBounds(0, 400, 810, 1);
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("Total Skor Risiko Bunuh Diri :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(14, 400, 160, 23);
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel32.setText("0");
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(164, 400, 100, 23);
+
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel33.setText("0");
+        jLabel33.setName("jLabel33"); // NOI18N
+        FormInput.add(jLabel33);
+        jLabel33.setBounds(330, 400, 100, 23);
+
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel34.setText("Level :");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(280, 400, 50, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1771,6 +1821,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     private widget.TextBox NilaiResiko8;
     private widget.TextBox NilaiResiko9;
     private widget.TextBox NilaiResikoTotal;
+    private widget.TextBox NilaiResikoTotal1;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.ComboBox SkalaResiko1;
@@ -1828,7 +1879,12 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     private widget.Label jLabel243;
     private widget.Label jLabel244;
     private widget.Label jLabel245;
+    private widget.Label jLabel246;
     private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
+    private widget.Label jLabel33;
+    private widget.Label jLabel34;
     private widget.Label jLabel4;
     private widget.Label jLabel57;
     private widget.Label jLabel58;
@@ -1839,6 +1895,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -2013,9 +2070,9 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>638){
+            if(internalFrame1.getHeight()>628){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,466));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,456));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
