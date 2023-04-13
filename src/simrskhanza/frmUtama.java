@@ -36,6 +36,7 @@ import bridging.ApotekBPJSCekReferensiDPHO;
 import bridging.ApotekBPJSCekReferensiFaskes;
 import bridging.ApotekBPJSCekReferensiPoli;
 import bridging.ApotekBPJSCekReferensiSpesialistik;
+import bridging.BPJSAntreanPerTanggal;
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekDataSEPInternal;
 import bridging.BPJSCekDetailSEP2;
@@ -20052,6 +20053,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSAntreanPerTanggalMobileJKNActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSAntreanPerTanggal aplikasi=new BPJSAntreanPerTanggal(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20722,7 +20734,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
-            btnPemantauanPEWSDewasa;
+            btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN;
     
     public void isWall(){
         try{            
@@ -23267,6 +23279,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_task_id()==true){
                 Panelmenu.add(btnBPJSTaskIDMobileJKN);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_antrean_pertanggal()==true){
+                Panelmenu.add(btnBPJSAntreanPerTanggalMobileJKN);
                 jmlmenu++;
             }
             
@@ -27902,6 +27919,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_task_id()==true){
             Panelmenu.add(btnBPJSTaskIDMobileJKN);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_antrean_pertanggal()==true){
+            Panelmenu.add(btnBPJSAntreanPerTanggalMobileJKN);
             jmlmenu++;
         }
         
@@ -33498,6 +33520,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_task_id()==true){
             if(btnBPJSTaskIDMobileJKN.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSTaskIDMobileJKN);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_antrean_pertanggal()==true){
+            if(btnBPJSAntreanPerTanggalMobileJKN.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSAntreanPerTanggalMobileJKN);
                 jmlmenu++;
             }                
         }
@@ -40345,5 +40374,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemantauanPEWSDewasa.setName("btnPemantauanPEWSDewasa"); 
         btnPemantauanPEWSDewasa.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPemantauanPEWSDewasa.addActionListener(this::btnPemantauanPEWSDewasaActionPerformed);
+        
+        btnBPJSAntreanPerTanggalMobileJKN = new widget.ButtonBig();
+        btnBPJSAntreanPerTanggalMobileJKN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSAntreanPerTanggalMobileJKN.setText("Antrean Per Tanggal Mobile JKN");
+        btnBPJSAntreanPerTanggalMobileJKN.setIconTextGap(0);
+        btnBPJSAntreanPerTanggalMobileJKN.setName("btnBPJSAntreanPerTanggalMobileJKN"); 
+        btnBPJSAntreanPerTanggalMobileJKN.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSAntreanPerTanggalMobileJKN.addActionListener(this::btnBPJSAntreanPerTanggalMobileJKNActionPerformed);
     }
 }

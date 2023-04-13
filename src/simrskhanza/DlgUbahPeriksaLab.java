@@ -41,7 +41,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
     private boolean sukses=false;
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement pstindakan,pstindakan2,pstampil,pstampil2,pstampil3,pstampil4,pscariperawatan,psset_tarif,pscariperiksa,pscaridetailperiksa,psrekening;
+    private PreparedStatement pstindakan,pstampil,pstampil2,pstampil3,pstampil4,pscariperawatan,psset_tarif,pscariperiksa,pscaridetailperiksa,psrekening;
     private ResultSet rstindakan,rstampil,rscari,rsset_tarif,rssetpj,rsrekening;
     private boolean[] pilih,pilih2; 
     private String[] kode,nama,pemeriksaan2,hasil2,satuan2,nilai_rujukan2,keterangan2,idtemplate2;
@@ -214,41 +214,18 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                     }
                 }
             });
-        }  
-        try {            
-            pstindakan=koneksi.prepareStatement(
-                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,"+
-                    "jns_perawatan_lab.bagian_rs,jns_perawatan_lab.bhp,jns_perawatan_lab.tarif_perujuk,"+
-                    "jns_perawatan_lab.tarif_tindakan_dokter,jns_perawatan_lab.tarif_tindakan_petugas,"+
-                    "jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,penjab.png_jawab "+
-                    "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
-                    " jns_perawatan_lab.kd_pj like ? and jns_perawatan_lab.kd_jenis_prw like ? or "+
-                    " jns_perawatan_lab.kd_pj like ? and jns_perawatan_lab.nm_perawatan like ? "+
-                    "order by jns_perawatan_lab.kd_jenis_prw");
-            pstindakan2=koneksi.prepareStatement(
-                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,"+
-                    "jns_perawatan_lab.bagian_rs,jns_perawatan_lab.bhp,jns_perawatan_lab.tarif_perujuk,"+
-                    "jns_perawatan_lab.tarif_tindakan_dokter,jns_perawatan_lab.tarif_tindakan_petugas,"+
-                    "jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,penjab.png_jawab "+
-                    "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
-                    " jns_perawatan_lab.kd_jenis_prw like ? or "+
-                    " jns_perawatan_lab.nm_perawatan like ?  "+
-                    "order by jns_perawatan_lab.kd_jenis_prw"); 
-            pstampil=koneksi.prepareStatement("select id_template, Pemeriksaan, satuan, nilai_rujukan_ld,biaya_item, "+
-                                "bagian_rs,bhp,bagian_perujuk,bagian_dokter,bagian_laborat,kso,menejemen from template_laboratorium where kd_jenis_prw=? order by id_template");
-            pstampil2=koneksi.prepareStatement("select id_template, Pemeriksaan, satuan, nilai_rujukan_la,biaya_item, "+
-                                "bagian_rs,bhp,bagian_perujuk,bagian_dokter,bagian_laborat,kso,menejemen from template_laboratorium where kd_jenis_prw=? order by id_template");
-            pstampil3=koneksi.prepareStatement("select id_template, Pemeriksaan, satuan, nilai_rujukan_pd,biaya_item, "+
-                                "bagian_rs,bhp,bagian_perujuk,bagian_dokter,bagian_laborat,kso,menejemen from template_laboratorium where kd_jenis_prw=? order by id_template");
-            pstampil4=koneksi.prepareStatement("select id_template, Pemeriksaan, satuan, nilai_rujukan_pa,biaya_item, "+
-                                "bagian_rs,bhp,bagian_perujuk,bagian_dokter,bagian_laborat,kso,menejemen from template_laboratorium where kd_jenis_prw=? order by id_template");
-            pscariperawatan=koneksi.prepareStatement("select template_laboratorium.kd_jenis_prw from template_laboratorium where template_laboratorium.id_template=?");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        } 
         
         try {
-            psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
+            psrekening=koneksi.prepareStatement(
+                "select set_akun_ranap.Suspen_Piutang_Laborat_Ranap,set_akun_ranap.Laborat_Ranap,"+
+                "set_akun_ranap.Beban_Jasa_Medik_Dokter_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Laborat_Ranap,"+
+                "set_akun_ranap.Beban_Jasa_Medik_Petugas_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Petugas_Laborat_Ranap,"+
+                "set_akun_ranap.Beban_Kso_Laborat_Ranap,set_akun_ranap.Utang_Kso_Laborat_Ranap,"+
+                "set_akun_ranap.HPP_Persediaan_Laborat_Rawat_inap,set_akun_ranap.Persediaan_BHP_Laborat_Rawat_Inap,"+
+                "set_akun_ranap.Beban_Jasa_Sarana_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Sarana_Laborat_Ranap,"+
+                "set_akun_ranap.Beban_Jasa_Perujuk_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Perujuk_Laborat_Ranap,"+
+                "set_akun_ranap.Beban_Jasa_Menejemen_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Menejemen_Laborat_Ranap from set_akun_ranap");
             try {
                 rsrekening=psrekening.executeQuery();
                 while(rsrekening.next()){
@@ -278,9 +255,17 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                 if(psrekening!=null){
                     psrekening.close();
                 }
-            }   
+            }  
             
-            psrekening=koneksi.prepareStatement("select * from set_akun_ralan");
+            psrekening=koneksi.prepareStatement(
+                "select set_akun_ralan.Suspen_Piutang_Laborat_Ralan,set_akun_ralan.Laborat_Ralan,"+
+                "set_akun_ralan.Beban_Jasa_Medik_Dokter_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Laborat_Ralan,"+
+                "set_akun_ralan.Beban_Jasa_Medik_Petugas_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Medik_Petugas_Laborat_Ralan,"+
+                "set_akun_ralan.Beban_Kso_Laborat_Ralan,set_akun_ralan.Utang_Kso_Laborat_Ralan,"+
+                "set_akun_ralan.HPP_Persediaan_Laborat_Rawat_Jalan,set_akun_ralan.Persediaan_BHP_Laborat_Rawat_Jalan,"+
+                "set_akun_ralan.Beban_Jasa_Sarana_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Sarana_Laborat_Ralan,"+
+                "set_akun_ralan.Beban_Jasa_Perujuk_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Perujuk_Laborat_Ralan,"+
+                "set_akun_ralan.Beban_Jasa_Menejemen_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Laborat_Ralan from set_akun_ralan");
             try {
                 rsrekening=psrekening.executeQuery();
                 while(rsrekening.next()){
@@ -314,7 +299,6 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println(e);
         }
-    
     }
 
     /** This method is called from within the constructor to
@@ -1676,21 +1660,61 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         
             switch (cara_bayar_lab) {
                 case "Yes":
-                    pstindakan.setString(1,"%"+Penjab.getText().trim()+"%");
-                    pstindakan.setString(2,"%"+Pemeriksaan.getText().trim()+"%");
-                    pstindakan.setString(3,"%"+Penjab.getText().trim()+"%");
-                    pstindakan.setString(4,"%"+Pemeriksaan.getText().trim()+"%");
-                    rstindakan=pstindakan.executeQuery();
+                    pstindakan=koneksi.prepareStatement(
+                        "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,"+
+                        "jns_perawatan_lab.bagian_rs,jns_perawatan_lab.bhp,jns_perawatan_lab.tarif_perujuk,"+
+                        "jns_perawatan_lab.tarif_tindakan_dokter,jns_perawatan_lab.tarif_tindakan_petugas,"+
+                        "jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,penjab.png_jawab "+
+                        "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
+                        " jns_perawatan_lab.status='1' and jns_perawatan_lab.kd_pj like ? and (jns_perawatan_lab.kd_jenis_prw like ? or jns_perawatan_lab.nm_perawatan like ?) "+
+                        "order by jns_perawatan_lab.kd_jenis_prw");
+                    try {
+                        pstindakan.setString(1,"%"+Penjab.getText().trim()+"%");
+                        pstindakan.setString(2,"%"+Pemeriksaan.getText().trim()+"%");
+                        pstindakan.setString(3,"%"+Pemeriksaan.getText().trim()+"%");
+                        rstindakan=pstindakan.executeQuery();
+                        while(rstindakan.next()){                
+                            tabMode2.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10)});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rstindakan!=null){
+                            rstindakan.close();
+                        }
+                        if(pstindakan!=null){
+                            pstindakan.close();
+                        }
+                    }
+                        
                     break;
                 case "No":
-                    pstindakan2.setString(1,"%"+Pemeriksaan.getText().trim()+"%");                
-                    pstindakan2.setString(2,"%"+Pemeriksaan.getText().trim()+"%");
-                    rstindakan=pstindakan2.executeQuery();
+                    pstindakan=koneksi.prepareStatement(
+                        "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,"+
+                        "jns_perawatan_lab.bagian_rs,jns_perawatan_lab.bhp,jns_perawatan_lab.tarif_perujuk,"+
+                        "jns_perawatan_lab.tarif_tindakan_dokter,jns_perawatan_lab.tarif_tindakan_petugas,"+
+                        "jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,penjab.png_jawab "+
+                        "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
+                        " jns_perawatan_lab.status='1' and (jns_perawatan_lab.kd_jenis_prw like ? or jns_perawatan_lab.nm_perawatan like ?)  "+
+                        "order by jns_perawatan_lab.kd_jenis_prw"); 
+                    try {
+                        pstindakan.setString(1,"%"+Pemeriksaan.getText().trim()+"%");                
+                        pstindakan.setString(2,"%"+Pemeriksaan.getText().trim()+"%");
+                        rstindakan=pstindakan.executeQuery();
+                        while(rstindakan.next()){                
+                            tabMode2.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10)});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rstindakan!=null){
+                            rstindakan.close();
+                        }
+                        if(pstindakan!=null){
+                            pstindakan.close();
+                        }
+                    }
                     break;
-            }
-            
-            while(rstindakan.next()){                
-                tabMode2.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10)});
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
