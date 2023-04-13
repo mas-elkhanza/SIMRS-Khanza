@@ -40415,7 +40415,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSAntreanPerTanggalMobileJKN.addActionListener(this::btnBPJSAntreanPerTanggalMobileJKNActionPerformed);
         
         btnPenilaianTambahanBunuhDiri = new widget.ButtonBig();
-        btnPenilaianTambahanBunuhDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6954610_blood_crime_kill_killer_knife_icon.png and kid_icon.png"))); 
+        btnPenilaianTambahanBunuhDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6954610_blood_crime_kill_killer_knife_icon.png"))); 
         btnPenilaianTambahanBunuhDiri.setText("Penilaian Tambahan Bunuh Diri");
         btnPenilaianTambahanBunuhDiri.setIconTextGap(0);
         btnPenilaianTambahanBunuhDiri.setName("btnPenilaianTambahanBunuhDiri");
