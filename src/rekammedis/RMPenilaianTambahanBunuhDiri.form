@@ -45,6 +45,14 @@
         <Property name="name" type="java.lang.String" value="JK" noResource="true"/>
       </Properties>
     </Component>
+    <Component class="widget.editorpane" name="LoadHTML">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="LoadHTML" noResource="true"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -965,6 +973,8 @@
                     <Component class="widget.TextBox" name="SkorStatik1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorStatik1" noResource="true"/>
                       </Properties>
@@ -1021,6 +1031,8 @@
                     <Component class="widget.TextBox" name="SkorStatik2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorStatik2" noResource="true"/>
                       </Properties>
@@ -1077,6 +1089,8 @@
                     <Component class="widget.TextBox" name="SkorStatik3">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorStatik3" noResource="true"/>
                       </Properties>
@@ -1133,6 +1147,8 @@
                     <Component class="widget.TextBox" name="SkorStatik4">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorStatik4" noResource="true"/>
                       </Properties>
@@ -1189,6 +1205,8 @@
                     <Component class="widget.TextBox" name="SkorStatik5">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorStatik5" noResource="true"/>
                       </Properties>
@@ -1245,6 +1263,8 @@
                     <Component class="widget.TextBox" name="SkorStatik6">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorStatik6" noResource="true"/>
                       </Properties>
@@ -1268,6 +1288,8 @@
                     <Component class="widget.TextBox" name="TotalDinamis">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="TotalDinamis" noResource="true"/>
                       </Properties>
@@ -1416,6 +1438,8 @@
                     <Component class="widget.TextBox" name="SkorStatik7">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorStatik7" noResource="true"/>
                       </Properties>
@@ -1428,6 +1452,8 @@
                     <Component class="widget.TextBox" name="SkorDinamis7">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorDinamis7" noResource="true"/>
                       </Properties>
@@ -1451,6 +1477,8 @@
                     <Component class="widget.TextBox" name="SkorDinamis6">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorDinamis6" noResource="true"/>
                       </Properties>
@@ -1485,6 +1513,8 @@
                     <Component class="widget.TextBox" name="SkorDinamis5">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorDinamis5" noResource="true"/>
                       </Properties>
@@ -1497,6 +1527,8 @@
                     <Component class="widget.TextBox" name="SkorDinamis4">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorDinamis4" noResource="true"/>
                       </Properties>
@@ -1531,6 +1563,8 @@
                     <Component class="widget.TextBox" name="SkorDinamis3">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorDinamis3" noResource="true"/>
                       </Properties>
@@ -1543,6 +1577,8 @@
                     <Component class="widget.TextBox" name="SkorDinamis2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorDinamis2" noResource="true"/>
                       </Properties>
@@ -1566,6 +1602,8 @@
                     <Component class="widget.TextBox" name="SkorDinamis1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="SkorDinamis1" noResource="true"/>
                       </Properties>
@@ -1832,6 +1870,8 @@
                     <Component class="widget.TextBox" name="TotalStatik">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="TotalStatik" noResource="true"/>
                       </Properties>
@@ -1894,7 +1934,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="160" y="400" width="60" height="23"/>
+                          <AbsoluteConstraints x="160" y="400" width="130" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>

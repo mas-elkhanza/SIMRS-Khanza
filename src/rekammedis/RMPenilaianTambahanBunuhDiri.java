@@ -13,12 +13,16 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,6 +37,9 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -50,6 +57,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
+    private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -60,9 +68,11 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala Morse 1","N.M. 1",
-            "Skala Morse 2","N.M. 2","Skala Morse 3","N.M. 3","Skala Morse 4","N.M. 4","Skala Morse 5","N.M. 5",
-            "Skala Morse 6","N.M. 6","Total","Hasil Skrining","Saran","NIP","Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Faktor Statik 1","Skor Statik 1","Faktor Statik 2","Skor Statik 2",
+            "Faktor Statik 3","Skor Statik 3","Faktor Statik 4","Skor Statik 4","Faktor Statik 5","Skor Statik 5","Faktor Statik 6","Skor Statik 6",
+            "Faktor Statik 7","Skor Statik 7","Jml Skor Statik","Faktor Dinamis 1","Skor Dinamis 1", "Faktor Dinamis 2","Skor Dinamis 2", 
+            "Faktor Dinamis 3","Skor Dinamis 3","Faktor Dinamis 4","Skor Dinamis 4","Faktor Dinamis 5","Skor Dinamis 5","Faktor Dinamis 6","Skor Dinamis 6",
+            "Faktor Dinamis 7","Skor Dinamis 7","Jml Skor Dinamis","Faktor-faktor Pencegahan","Total Skor","Level Skor","NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +82,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 23; i++) {
+        for (i = 0; i < 41; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -87,38 +97,74 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(115);
             }else if(i==6){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==7){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(70);
             }else if(i==8){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==9){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(70);
             }else if(i==10){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==11){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(70);
             }else if(i==12){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==13){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(70);
             }else if(i==14){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==15){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(70);
             }else if(i==16){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==17){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(70);
             }else if(i==18){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(80);
             }else if(i==19){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(70);
             }else if(i==20){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(80);
             }else if(i==21){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(90);
             }else if(i==22){
+                column.setPreferredWidth(80);
+            }else if(i==23){
+                column.setPreferredWidth(90);
+            }else if(i==24){
+                column.setPreferredWidth(80);
+            }else if(i==25){
+                column.setPreferredWidth(90);
+            }else if(i==26){
+                column.setPreferredWidth(80);
+            }else if(i==27){
+                column.setPreferredWidth(90);
+            }else if(i==28){
+                column.setPreferredWidth(80);
+            }else if(i==29){
+                column.setPreferredWidth(90);
+            }else if(i==30){
+                column.setPreferredWidth(80);
+            }else if(i==31){
+                column.setPreferredWidth(90);
+            }else if(i==32){
+                column.setPreferredWidth(80);
+            }else if(i==33){
+                column.setPreferredWidth(90);
+            }else if(i==34){
+                column.setPreferredWidth(80);
+            }else if(i==35){
+                column.setPreferredWidth(90);
+            }else if(i==36){
+                column.setPreferredWidth(200);
+            }else if(i==37){
+                column.setPreferredWidth(60);
+            }else if(i==38){
+                column.setPreferredWidth(75);
+            }else if(i==39){
+                column.setPreferredWidth(80);
+            }else if(i==40){
                 column.setPreferredWidth(150);
             }
         }
@@ -178,6 +224,25 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm();
         jam();
+        
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
 
 
@@ -193,6 +258,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -327,6 +393,9 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -777,6 +846,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel218.setBounds(315, 90, 40, 23);
 
         SkorStatik1.setEditable(false);
+        SkorStatik1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorStatik1.setText("0");
         SkorStatik1.setFocusTraversalPolicyProvider(true);
         SkorStatik1.setName("SkorStatik1"); // NOI18N
         FormInput.add(SkorStatik1);
@@ -809,6 +880,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel222.setBounds(315, 120, 40, 23);
 
         SkorStatik2.setEditable(false);
+        SkorStatik2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorStatik2.setText("0");
         SkorStatik2.setFocusTraversalPolicyProvider(true);
         SkorStatik2.setName("SkorStatik2"); // NOI18N
         FormInput.add(SkorStatik2);
@@ -841,6 +914,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel225.setBounds(315, 150, 40, 23);
 
         SkorStatik3.setEditable(false);
+        SkorStatik3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorStatik3.setText("0");
         SkorStatik3.setFocusTraversalPolicyProvider(true);
         SkorStatik3.setName("SkorStatik3"); // NOI18N
         FormInput.add(SkorStatik3);
@@ -873,6 +948,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel228.setBounds(315, 180, 40, 23);
 
         SkorStatik4.setEditable(false);
+        SkorStatik4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorStatik4.setText("0");
         SkorStatik4.setFocusTraversalPolicyProvider(true);
         SkorStatik4.setName("SkorStatik4"); // NOI18N
         FormInput.add(SkorStatik4);
@@ -905,6 +982,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel231.setBounds(315, 210, 40, 23);
 
         SkorStatik5.setEditable(false);
+        SkorStatik5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorStatik5.setText("0");
         SkorStatik5.setFocusTraversalPolicyProvider(true);
         SkorStatik5.setName("SkorStatik5"); // NOI18N
         FormInput.add(SkorStatik5);
@@ -937,6 +1016,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel234.setBounds(315, 240, 40, 23);
 
         SkorStatik6.setEditable(false);
+        SkorStatik6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorStatik6.setText("0");
         SkorStatik6.setFocusTraversalPolicyProvider(true);
         SkorStatik6.setName("SkorStatik6"); // NOI18N
         FormInput.add(SkorStatik6);
@@ -948,6 +1029,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel235.setBounds(675, 300, 70, 23);
 
         TotalDinamis.setEditable(false);
+        TotalDinamis.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TotalDinamis.setText("0");
         TotalDinamis.setFocusTraversalPolicyProvider(true);
         TotalDinamis.setName("TotalDinamis"); // NOI18N
         FormInput.add(TotalDinamis);
@@ -1017,12 +1100,16 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel238.setBounds(315, 270, 40, 23);
 
         SkorStatik7.setEditable(false);
+        SkorStatik7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorStatik7.setText("0");
         SkorStatik7.setFocusTraversalPolicyProvider(true);
         SkorStatik7.setName("SkorStatik7"); // NOI18N
         FormInput.add(SkorStatik7);
         SkorStatik7.setBounds(359, 270, 35, 23);
 
         SkorDinamis7.setEditable(false);
+        SkorDinamis7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorDinamis7.setText("0");
         SkorDinamis7.setFocusTraversalPolicyProvider(true);
         SkorDinamis7.setName("SkorDinamis7"); // NOI18N
         FormInput.add(SkorDinamis7);
@@ -1034,6 +1121,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel239.setBounds(710, 270, 40, 23);
 
         SkorDinamis6.setEditable(false);
+        SkorDinamis6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorDinamis6.setText("0");
         SkorDinamis6.setFocusTraversalPolicyProvider(true);
         SkorDinamis6.setName("SkorDinamis6"); // NOI18N
         FormInput.add(SkorDinamis6);
@@ -1050,12 +1139,16 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel233.setBounds(710, 210, 40, 23);
 
         SkorDinamis5.setEditable(false);
+        SkorDinamis5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorDinamis5.setText("0");
         SkorDinamis5.setFocusTraversalPolicyProvider(true);
         SkorDinamis5.setName("SkorDinamis5"); // NOI18N
         FormInput.add(SkorDinamis5);
         SkorDinamis5.setBounds(754, 210, 35, 23);
 
         SkorDinamis4.setEditable(false);
+        SkorDinamis4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorDinamis4.setText("0");
         SkorDinamis4.setFocusTraversalPolicyProvider(true);
         SkorDinamis4.setName("SkorDinamis4"); // NOI18N
         FormInput.add(SkorDinamis4);
@@ -1072,12 +1165,16 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel227.setBounds(710, 150, 40, 23);
 
         SkorDinamis3.setEditable(false);
+        SkorDinamis3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorDinamis3.setText("0");
         SkorDinamis3.setFocusTraversalPolicyProvider(true);
         SkorDinamis3.setName("SkorDinamis3"); // NOI18N
         FormInput.add(SkorDinamis3);
         SkorDinamis3.setBounds(754, 150, 35, 23);
 
         SkorDinamis2.setEditable(false);
+        SkorDinamis2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorDinamis2.setText("0");
         SkorDinamis2.setFocusTraversalPolicyProvider(true);
         SkorDinamis2.setName("SkorDinamis2"); // NOI18N
         FormInput.add(SkorDinamis2);
@@ -1089,6 +1186,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel224.setBounds(710, 120, 40, 23);
 
         SkorDinamis1.setEditable(false);
+        SkorDinamis1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SkorDinamis1.setText("0");
         SkorDinamis1.setFocusTraversalPolicyProvider(true);
         SkorDinamis1.setName("SkorDinamis1"); // NOI18N
         FormInput.add(SkorDinamis1);
@@ -1253,6 +1352,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         jLabel58.setBounds(405, 70, 80, 23);
 
         TotalStatik.setEditable(false);
+        TotalStatik.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TotalStatik.setText("0");
         TotalStatik.setFocusTraversalPolicyProvider(true);
         TotalStatik.setName("TotalStatik"); // NOI18N
         FormInput.add(TotalStatik);
@@ -1279,7 +1380,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         SkorTotal.setText("0");
         SkorTotal.setName("SkorTotal"); // NOI18N
         FormInput.add(SkorTotal);
-        SkorTotal.setBounds(160, 400, 60, 23);
+        SkorTotal.setBounds(160, 400, 130, 23);
 
         Level.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Level.setText("Level");
@@ -1323,39 +1424,40 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
-        }else if(HasilSkrining.getText().trim().equals("")){
-            Valid.textKosong(HasilSkrining,"Hasil Skrining");
-        }else if(Saran.getText().trim().equals("")){
-            Valid.textKosong(Saran,"Saran");
         }else{
-            if(Sequel.menyimpantf("penilaian_lanjutan_resiko_jatuh_dewasa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",18,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),
-                SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
-                SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
-                NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText()
+            if(Sequel.menyimpantf("penilaian_tambahan_bunuh_diri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",36,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
+                FaktorStatik1.getSelectedItem().toString(),SkorStatik1.getText(),FaktorStatik2.getSelectedItem().toString(),SkorStatik2.getText(),FaktorStatik3.getSelectedItem().toString(),SkorStatik3.getText(),
+                FaktorStatik4.getSelectedItem().toString(),SkorStatik4.getText(),FaktorStatik5.getSelectedItem().toString(),SkorStatik5.getText(),FaktorStatik6.getSelectedItem().toString(),SkorStatik6.getText(), 
+                FaktorStatik7.getSelectedItem().toString(),SkorStatik7.getText(),TotalStatik.getText(),FaktorDinamis1.getSelectedItem().toString(),SkorDinamis1.getText(), 
+                FaktorDinamis2.getSelectedItem().toString(),SkorDinamis2.getText(),FaktorDinamis3.getSelectedItem().toString(),SkorDinamis3.getText(),FaktorDinamis4.getSelectedItem().toString(),SkorDinamis4.getText(), 
+                FaktorDinamis5.getSelectedItem().toString(),SkorDinamis5.getText(),FaktorDinamis6.getSelectedItem().toString(),SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(), 
+                TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),
-                    SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
-                    NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),NamaPetugas.getText()
+                    FaktorStatik1.getSelectedItem().toString(),SkorStatik1.getText(),FaktorStatik2.getSelectedItem().toString(),SkorStatik2.getText(),FaktorStatik3.getSelectedItem().toString(),SkorStatik3.getText(),
+                    FaktorStatik4.getSelectedItem().toString(),SkorStatik4.getText(),FaktorStatik5.getSelectedItem().toString(),SkorStatik5.getText(),FaktorStatik6.getSelectedItem().toString(),SkorStatik6.getText(), 
+                    FaktorStatik7.getSelectedItem().toString(),SkorStatik7.getText(),TotalStatik.getText(),FaktorDinamis1.getSelectedItem().toString(),SkorDinamis1.getText(), 
+                    FaktorDinamis2.getSelectedItem().toString(),SkorDinamis2.getText(),FaktorDinamis3.getSelectedItem().toString(),SkorDinamis3.getText(),FaktorDinamis4.getSelectedItem().toString(),SkorDinamis4.getText(), 
+                    FaktorDinamis5.getSelectedItem().toString(),SkorDinamis5.getText(),FaktorDinamis6.getSelectedItem().toString(),SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(), 
+                    TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
             }  
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Saran,BtnBatal);
+            Valid.pindah(evt,FaktorPencegahan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1376,7 +1478,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1396,20 +1498,16 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
-        }else if(HasilSkrining.getText().trim().equals("")){
-            Valid.textKosong(HasilSkrining,"Hasil Skrining");
-        }else if(Saran.getText().trim().equals("")){
-            Valid.textKosong(Saran,"Saran");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1418,7 +1516,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1446,49 +1544,142 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptLanjutanRisikoJatuhDewasa.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Dewasa ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_dewasa.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_dewasa.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.saran,penilaian_lanjutan_resiko_jatuh_dewasa.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_dewasa inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_dewasa.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_dewasa.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "order by penilaian_lanjutan_resiko_jatuh_dewasa.tanggal",param);
-            }else{
-                Valid.MyReportqry("rptLanjutanRisikoJatuhDewasa.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Dewasa ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_dewasa.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_dewasa.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.saran,penilaian_lanjutan_resiko_jatuh_dewasa.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_dewasa inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_dewasa.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_dewasa.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or penilaian_lanjutan_resiko_jatuh_dewasa.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by penilaian_lanjutan_resiko_jatuh_dewasa.tanggal ",param);
-            }  
+            try{
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.R.M.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>JK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Statik 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Statik 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Statik 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Statik 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Statik 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Statik 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Statik 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Statik 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Statik 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Statik 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Statik 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Statik 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Statik 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Statik 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml Skor Statik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml Skor Dinamis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor-faktor Pencegahan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Level Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
+                        "</tr>");
+                }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='3500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataPenilaianTambahanBunuhDiri.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='3500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN TAMBAHAN BUNUH DIRI<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1606,18 +1797,18 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhDewasa.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Dewasa ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_dewasa.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_dewasa.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.saran,penilaian_lanjutan_resiko_jatuh_dewasa.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_dewasa inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_bunuh_diri.tanggal,"+
+                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala1,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai1,"+
+                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala2,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai2,"+
+                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala3,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai3,"+
+                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala4,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai4,"+
+                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala5,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai5,"+
+                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala6,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai6,"+
+                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_totalnilai,penilaian_tambahan_bunuh_diri.hasil_skrining,"+
+                    "penilaian_tambahan_bunuh_diri.saran,penilaian_tambahan_bunuh_diri.nip,petugas.nama "+
+                    "from penilaian_tambahan_bunuh_diri inner join reg_periksa on penilaian_tambahan_bunuh_diri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_dewasa.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on penilaian_tambahan_bunuh_diri.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
 
@@ -1627,7 +1818,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }else{
             SkorStatik1.setText("0");
         }
-        isTotalResikoJatuh();
+        isTotalSkor();
     }//GEN-LAST:event_FaktorStatik1ItemStateChanged
 
     private void FaktorStatik1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik1KeyPressed
@@ -1640,7 +1831,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }else{
             SkorStatik2.setText("0");
         }
-        isTotalResikoJatuh();
+        isTotalSkor();
     }//GEN-LAST:event_FaktorStatik2ItemStateChanged
 
     private void FaktorStatik2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik2KeyPressed
@@ -1653,7 +1844,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }else{
             SkorStatik3.setText("0");
         }
-        isTotalResikoJatuh();
+        isTotalSkor();
     }//GEN-LAST:event_FaktorStatik3ItemStateChanged
 
     private void FaktorStatik3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik3KeyPressed
@@ -1666,7 +1857,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }else{
             SkorStatik4.setText("0");
         }
-        isTotalResikoJatuh();
+        isTotalSkor();
     }//GEN-LAST:event_FaktorStatik4ItemStateChanged
 
     private void FaktorStatik4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik4KeyPressed
@@ -1679,7 +1870,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }else{
             SkorStatik5.setText("0");
         }
-        isTotalResikoJatuh();
+        isTotalSkor();
     }//GEN-LAST:event_FaktorStatik5ItemStateChanged
 
     private void FaktorStatik5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik5KeyPressed
@@ -1692,15 +1883,15 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }else{
             SkorStatik6.setText("0");
         }
-        isTotalResikoJatuh();
+        isTotalSkor();
     }//GEN-LAST:event_FaktorStatik6ItemStateChanged
 
     private void FaktorStatik6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik6KeyPressed
-        Valid.pindah(evt,FaktorStatik5,FaktorPencegahan);
+        Valid.pindah(evt,FaktorStatik5,FaktorStatik7);
     }//GEN-LAST:event_FaktorStatik6KeyPressed
 
     private void FaktorPencegahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorPencegahanKeyPressed
-        //Valid.pindah2(evt,SkalaResiko6,Saran);
+        Valid.pindah2(evt,FaktorDinamis7,BtnSimpan);
     }//GEN-LAST:event_FaktorPencegahanKeyPressed
 
     private void FaktorStatik7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorStatik7ItemStateChanged
@@ -1709,67 +1900,102 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }else{
             SkorStatik7.setText("0");
         }
-        isTotalResikoJatuh();
+        isTotalSkor();
     }//GEN-LAST:event_FaktorStatik7ItemStateChanged
 
     private void FaktorStatik7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorStatik6,FaktorDinamis1);
     }//GEN-LAST:event_FaktorStatik7KeyPressed
 
     private void FaktorDinamis1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis1ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorDinamis1.getSelectedIndex()==1){
+            SkorDinamis1.setText("2");
+        }else{
+            SkorDinamis1.setText("0");
+        }
+        isTotalSkor();
     }//GEN-LAST:event_FaktorDinamis1ItemStateChanged
 
     private void FaktorDinamis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorStatik7,FaktorDinamis2);
     }//GEN-LAST:event_FaktorDinamis1KeyPressed
 
     private void FaktorDinamis2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis2ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorDinamis2.getSelectedIndex()==1){
+            SkorDinamis2.setText("2");
+        }else{
+            SkorDinamis2.setText("0");
+        }
+        isTotalSkor();
     }//GEN-LAST:event_FaktorDinamis2ItemStateChanged
 
     private void FaktorDinamis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorDinamis1,FaktorDinamis3);
     }//GEN-LAST:event_FaktorDinamis2KeyPressed
 
     private void FaktorDinamis3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis3ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorDinamis3.getSelectedIndex()==1){
+            SkorDinamis3.setText("2");
+        }else{
+            SkorDinamis3.setText("0");
+        }
+        isTotalSkor();
     }//GEN-LAST:event_FaktorDinamis3ItemStateChanged
 
     private void FaktorDinamis3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorDinamis2,FaktorDinamis4);
     }//GEN-LAST:event_FaktorDinamis3KeyPressed
 
     private void FaktorDinamis4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis4ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorDinamis4.getSelectedIndex()==1){
+            SkorDinamis4.setText("2");
+        }else{
+            SkorDinamis4.setText("0");
+        }
+        isTotalSkor();
     }//GEN-LAST:event_FaktorDinamis4ItemStateChanged
 
     private void FaktorDinamis4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorDinamis3,FaktorDinamis5);
     }//GEN-LAST:event_FaktorDinamis4KeyPressed
 
     private void FaktorDinamis5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis5ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorDinamis5.getSelectedIndex()==1){
+            SkorDinamis5.setText("2");
+        }else{
+            SkorDinamis5.setText("0");
+        }
+        isTotalSkor();
     }//GEN-LAST:event_FaktorDinamis5ItemStateChanged
 
     private void FaktorDinamis5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorDinamis4,FaktorDinamis6);
     }//GEN-LAST:event_FaktorDinamis5KeyPressed
 
     private void FaktorDinamis6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis6ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorDinamis6.getSelectedIndex()==1){
+            SkorDinamis6.setText("2");
+        }else{
+            SkorDinamis6.setText("0");
+        }
+        isTotalSkor();
     }//GEN-LAST:event_FaktorDinamis6ItemStateChanged
 
     private void FaktorDinamis6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis6KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorDinamis5,FaktorDinamis7);
     }//GEN-LAST:event_FaktorDinamis6KeyPressed
 
     private void FaktorDinamis7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis7ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorDinamis7.getSelectedIndex()==1){
+            SkorDinamis7.setText("2");
+        }else{
+            SkorDinamis7.setText("0");
+        }
+        isTotalSkor();
     }//GEN-LAST:event_FaktorDinamis7ItemStateChanged
 
     private void FaktorDinamis7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorDinamis6,FaktorPencegahan);
     }//GEN-LAST:event_FaktorDinamis7KeyPressed
 
     /**
@@ -1822,6 +2048,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     private widget.ComboBox Jam;
     private widget.Label LCount;
     private widget.Label Level;
+    private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
     private widget.TextBox NIP;
@@ -1914,35 +2141,43 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_dewasa.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_dewasa.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.saran,penilaian_lanjutan_resiko_jatuh_dewasa.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_dewasa inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_bunuh_diri.tanggal,"+
+                    "penilaian_tambahan_bunuh_diri.statik_hidup_sendiri,penilaian_tambahan_bunuh_diri.statik_skorhidup_sendiri,penilaian_tambahan_bunuh_diri.statik_upaya_suicide,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skorupaya_suicide,penilaian_tambahan_bunuh_diri.statik_keluarga_suicide,penilaian_tambahan_bunuh_diri.statik_skorkeluarga_suicide,"+
+                    "penilaian_tambahan_bunuh_diri.statik_diagnosa_gangguan_jiwa,penilaian_tambahan_bunuh_diri.statik_skordiagnosa_gangguan_jiwa,"+
+                    "penilaian_tambahan_bunuh_diri.statik_disabilitas_berat,penilaian_tambahan_bunuh_diri.statik_skordisabilitas_berat,penilaian_tambahan_bunuh_diri.statik_berpisah,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skorberpisah,penilaian_tambahan_bunuh_diri.statik_kehilangan_kerja,penilaian_tambahan_bunuh_diri.statik_skorkehilangan_kerja,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skortotal,penilaian_tambahan_bunuh_diri.dinamis_ide_bunuh_diri,penilaian_tambahan_bunuh_diri.dinamis_skoride_bunuh_diri,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_maksud_suicide,penilaian_tambahan_bunuh_diri.dinamis_skormaksud_suicide,penilaian_tambahan_bunuh_diri.dinamis_stress_berat,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skorstress_berat,penilaian_tambahan_bunuh_diri.dinamis_keputusasaan,penilaian_tambahan_bunuh_diri.dinamis_skorkeputusasaan,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_kejadian_signifikan,penilaian_tambahan_bunuh_diri.dinamis_skorkejadian_signifikan,penilaian_tambahan_bunuh_diri.dinamis_kehilangan_kontrol,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skorkehilangan_kontrol,penilaian_tambahan_bunuh_diri.dinamis_penggunaan_napza,penilaian_tambahan_bunuh_diri.dinamis_skorpenggunaan_napza,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skortotal,penilaian_tambahan_bunuh_diri.faktor_faktor_pencegahan,penilaian_tambahan_bunuh_diri.total_skor,"+
+                    "penilaian_tambahan_bunuh_diri.level_skor,penilaian_tambahan_bunuh_diri.nip,petugas.nama "+
+                    "from penilaian_tambahan_bunuh_diri inner join reg_periksa on penilaian_tambahan_bunuh_diri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_dewasa.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.tanggal between ? and ? order by penilaian_lanjutan_resiko_jatuh_dewasa.tanggal");
+                    "inner join petugas on penilaian_tambahan_bunuh_diri.nip=petugas.nip where "+
+                    "penilaian_tambahan_bunuh_diri.tanggal between ? and ? order by penilaian_tambahan_bunuh_diri.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_dewasa.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_dewasa.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.saran,penilaian_lanjutan_resiko_jatuh_dewasa.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_dewasa inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_bunuh_diri.tanggal,"+
+                    "penilaian_tambahan_bunuh_diri.statik_hidup_sendiri,penilaian_tambahan_bunuh_diri.statik_skorhidup_sendiri,penilaian_tambahan_bunuh_diri.statik_upaya_suicide,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skorupaya_suicide,penilaian_tambahan_bunuh_diri.statik_keluarga_suicide,penilaian_tambahan_bunuh_diri.statik_skorkeluarga_suicide,"+
+                    "penilaian_tambahan_bunuh_diri.statik_diagnosa_gangguan_jiwa,penilaian_tambahan_bunuh_diri.statik_skordiagnosa_gangguan_jiwa,"+
+                    "penilaian_tambahan_bunuh_diri.statik_disabilitas_berat,penilaian_tambahan_bunuh_diri.statik_skordisabilitas_berat,penilaian_tambahan_bunuh_diri.statik_berpisah,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skorberpisah,penilaian_tambahan_bunuh_diri.statik_kehilangan_kerja,penilaian_tambahan_bunuh_diri.statik_skorkehilangan_kerja,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skortotal,penilaian_tambahan_bunuh_diri.dinamis_ide_bunuh_diri,penilaian_tambahan_bunuh_diri.dinamis_skoride_bunuh_diri,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_maksud_suicide,penilaian_tambahan_bunuh_diri.dinamis_skormaksud_suicide,penilaian_tambahan_bunuh_diri.dinamis_stress_berat,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skorstress_berat,penilaian_tambahan_bunuh_diri.dinamis_keputusasaan,penilaian_tambahan_bunuh_diri.dinamis_skorkeputusasaan,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_kejadian_signifikan,penilaian_tambahan_bunuh_diri.dinamis_skorkejadian_signifikan,penilaian_tambahan_bunuh_diri.dinamis_kehilangan_kontrol,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skorkehilangan_kontrol,penilaian_tambahan_bunuh_diri.dinamis_penggunaan_napza,penilaian_tambahan_bunuh_diri.dinamis_skorpenggunaan_napza,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skortotal,penilaian_tambahan_bunuh_diri.faktor_faktor_pencegahan,penilaian_tambahan_bunuh_diri.total_skor,"+
+                    "penilaian_tambahan_bunuh_diri.level_skor,penilaian_tambahan_bunuh_diri.nip,petugas.nama "+
+                    "from penilaian_tambahan_bunuh_diri inner join reg_periksa on penilaian_tambahan_bunuh_diri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_dewasa.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_dewasa.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_lanjutan_resiko_jatuh_dewasa.nip like ? or petugas.nama like ?) "+
-                    "order by penilaian_lanjutan_resiko_jatuh_dewasa.tanggal ");
+                    "inner join petugas on penilaian_tambahan_bunuh_diri.nip=petugas.nip where "+
+                    "penilaian_tambahan_bunuh_diri.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_tambahan_bunuh_diri.nip like ? or petugas.nama like ?) "+
+                    "order by penilaian_tambahan_bunuh_diri.tanggal ");
             }
                 
             try {
@@ -1963,10 +2198,16 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("penilaian_jatuhmorse_skala1"),rs.getString("penilaian_jatuhmorse_nilai1"),rs.getString("penilaian_jatuhmorse_skala2"),rs.getString("penilaian_jatuhmorse_nilai2"),
-                        rs.getString("penilaian_jatuhmorse_skala3"),rs.getString("penilaian_jatuhmorse_nilai3"),rs.getString("penilaian_jatuhmorse_skala4"),rs.getString("penilaian_jatuhmorse_nilai4"),
-                        rs.getString("penilaian_jatuhmorse_skala5"),rs.getString("penilaian_jatuhmorse_nilai5"),rs.getString("penilaian_jatuhmorse_skala6"),rs.getString("penilaian_jatuhmorse_nilai6"),
-                        rs.getString("penilaian_jatuhmorse_totalnilai"),rs.getString("hasil_skrining"),rs.getString("saran"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("statik_hidup_sendiri"),rs.getString("statik_skorhidup_sendiri"),rs.getString("statik_upaya_suicide"),rs.getString("statik_skorupaya_suicide"),
+                        rs.getString("statik_keluarga_suicide"),rs.getString("statik_skorkeluarga_suicide"),rs.getString("statik_diagnosa_gangguan_jiwa"),
+                        rs.getString("statik_skordiagnosa_gangguan_jiwa"),rs.getString("statik_disabilitas_berat"),rs.getString("statik_skordisabilitas_berat"),
+                        rs.getString("statik_berpisah"),rs.getString("statik_skorberpisah"),rs.getString("statik_kehilangan_kerja"),rs.getString("statik_skorkehilangan_kerja"),
+                        rs.getString("statik_skortotal"),rs.getString("dinamis_ide_bunuh_diri"),rs.getString("dinamis_skoride_bunuh_diri"),rs.getString("dinamis_maksud_suicide"),
+                        rs.getString("dinamis_skormaksud_suicide"),rs.getString("dinamis_stress_berat"),rs.getString("dinamis_skorstress_berat"),rs.getString("dinamis_keputusasaan"),
+                        rs.getString("dinamis_skorkeputusasaan"),rs.getString("dinamis_kejadian_signifikan"),rs.getString("dinamis_skorkejadian_signifikan"),
+                        rs.getString("dinamis_kehilangan_kontrol"),rs.getString("dinamis_skorkehilangan_kontrol"),rs.getString("dinamis_penggunaan_napza"),
+                        rs.getString("dinamis_skorpenggunaan_napza"),rs.getString("dinamis_skortotal"),rs.getString("faktor_faktor_pencegahan"),rs.getString("total_skor"),
+                        rs.getString("level_skor"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -2057,7 +2298,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
 
     private void isPsien() {
         try {
-            ps=koneksi.prepareStatement("select pasien.nm_pasien,pasien.jk,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir from pasien where pasien.no_rkm_medis=?");
+            ps=koneksi.prepareStatement("select pasien.nm_pasien,pasien.jk,pasien.tgl_lahir as lahir from pasien where pasien.no_rkm_medis=?");
             try {
                 ps.setString(1,TNoRM.getText());
                 rs=ps.executeQuery();
@@ -2114,10 +2355,10 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_dewasa());
-        BtnHapus.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_dewasa());
-        BtnEdit.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_dewasa());
-        BtnPrint.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_dewasa()); 
+        BtnSimpan.setEnabled(akses.getpenilaian_tambahan_bunuh_diri());
+        BtnHapus.setEnabled(akses.getpenilaian_tambahan_bunuh_diri());
+        BtnEdit.setEnabled(akses.getpenilaian_tambahan_bunuh_diri());
+        BtnPrint.setEnabled(akses.getpenilaian_tambahan_bunuh_diri()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2184,16 +2425,19 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penilaian_lanjutan_resiko_jatuh_dewasa","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,"+
-                "penilaian_jatuhmorse_skala2=?,penilaian_jatuhmorse_nilai2=?,penilaian_jatuhmorse_skala3=?,penilaian_jatuhmorse_nilai3=?,penilaian_jatuhmorse_skala4=?,"+
-                "penilaian_jatuhmorse_nilai4=?,penilaian_jatuhmorse_skala5=?,penilaian_jatuhmorse_nilai5=?,penilaian_jatuhmorse_skala6=?,penilaian_jatuhmorse_nilai6=?,"+
-                "penilaian_jatuhmorse_totalnilai=?,hasil_skrining=?,saran=?,nip=?",20,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),
-                SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
-                SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
-                NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("penilaian_tambahan_bunuh_diri","no_rawat=?","no_rawat=?,tanggal=?,nip=?,statik_hidup_sendiri=?,statik_skorhidup_sendiri=?,statik_upaya_suicide=?,"+
+                "statik_skorupaya_suicide=?,statik_keluarga_suicide=?,statik_skorkeluarga_suicide=?,statik_diagnosa_gangguan_jiwa=?,statik_skordiagnosa_gangguan_jiwa=?,statik_disabilitas_berat=?,"+
+                "statik_skordisabilitas_berat=?,statik_berpisah=?,statik_skorberpisah=?,statik_kehilangan_kerja=?,statik_skorkehilangan_kerja=?,statik_skortotal=?,dinamis_ide_bunuh_diri=?,"+
+                "dinamis_skoride_bunuh_diri=?,dinamis_maksud_suicide=?,dinamis_skormaksud_suicide=?,dinamis_stress_berat=?,dinamis_skorstress_berat=?,dinamis_keputusasaan=?,dinamis_skorkeputusasaan=?,"+
+                "dinamis_kejadian_signifikan=?,dinamis_skorkejadian_signifikan=?,dinamis_kehilangan_kontrol=?,dinamis_skorkehilangan_kontrol=?,dinamis_penggunaan_napza=?,dinamis_skorpenggunaan_napza=?,"+
+                "dinamis_skortotal=?,faktor_faktor_pencegahan=?,total_skor=?,level_skor=?",37,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
+                FaktorStatik1.getSelectedItem().toString(),SkorStatik1.getText(),FaktorStatik2.getSelectedItem().toString(),SkorStatik2.getText(),FaktorStatik3.getSelectedItem().toString(),SkorStatik3.getText(),
+                FaktorStatik4.getSelectedItem().toString(),SkorStatik4.getText(),FaktorStatik5.getSelectedItem().toString(),SkorStatik5.getText(),FaktorStatik6.getSelectedItem().toString(),SkorStatik6.getText(), 
+                FaktorStatik7.getSelectedItem().toString(),SkorStatik7.getText(),TotalStatik.getText(),FaktorDinamis1.getSelectedItem().toString(),SkorDinamis1.getText(), 
+                FaktorDinamis2.getSelectedItem().toString(),SkorDinamis2.getText(),FaktorDinamis3.getSelectedItem().toString(),SkorDinamis3.getText(),FaktorDinamis4.getSelectedItem().toString(),SkorDinamis4.getText(), 
+                FaktorDinamis5.getSelectedItem().toString(),SkorDinamis5.getText(),FaktorDinamis6.getSelectedItem().toString(),SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(), 
+                TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2201,30 +2445,48 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(SkalaResiko1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(NilaiResiko1.getText(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(SkalaResiko2.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(NilaiResiko2.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(SkalaResiko3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(NilaiResiko3.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(SkalaResiko4.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(NilaiResiko4.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(SkalaResiko5.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(NilaiResiko5.getText(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(SkalaResiko6.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(NilaiResiko6.getText(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(NilaiResikoTotal.getText(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(Saran.getText(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(FaktorStatik1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(SkorStatik1.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(FaktorStatik2.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(SkorStatik2.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(FaktorStatik3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(SkorStatik3.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(FaktorStatik4.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(SkorStatik4.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(FaktorStatik5.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(SkorStatik5.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(FaktorStatik6.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(SkorStatik6.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(FaktorStatik7.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(SkorStatik7.getText(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(TotalStatik.getText(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(FaktorDinamis1.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(SkorDinamis1.getText(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(FaktorDinamis2.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(SkorDinamis2.getText(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(FaktorDinamis3.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(SkorDinamis3.getText(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(FaktorDinamis4.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(SkorDinamis4.getText(),tbObat.getSelectedRow(),28);
+            tbObat.setValueAt(FaktorDinamis5.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
+            tbObat.setValueAt(SkorDinamis5.getText(),tbObat.getSelectedRow(),30);
+            tbObat.setValueAt(FaktorDinamis6.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
+            tbObat.setValueAt(SkorDinamis6.getText(),tbObat.getSelectedRow(),32);
+            tbObat.setValueAt(FaktorDinamis7.getSelectedItem().toString(),tbObat.getSelectedRow(),33);
+            tbObat.setValueAt(SkorDinamis7.getText(),tbObat.getSelectedRow(),34);
+            tbObat.setValueAt(TotalDinamis.getText(),tbObat.getSelectedRow(),35);
+            tbObat.setValueAt(FaktorPencegahan.getText(),tbObat.getSelectedRow(),36);
+            tbObat.setValueAt(SkorTotal.getText(),tbObat.getSelectedRow(),37);
+            tbObat.setValueAt(Level.getText(),tbObat.getSelectedRow(),38);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),39);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),40);
             emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_lanjutan_resiko_jatuh_dewasa where tanggal=? and no_rawat=?",2,new String[]{
-            tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.queryu2tf("delete from penilaian_tambahan_bunuh_diri where no_rawat=?",1,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
             emptTeks();
@@ -2234,19 +2496,21 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         }
     }
     
-    private void isTotalResikoJatuh(){
-        /*try {
-            NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText()))+"");
-            if(Integer.parseInt(NilaiResikoTotal.getText())<25){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())<45){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Sedang (25-44), Tindakan : Intervensi pencegahan risiko jatuh standar");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=45){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Tinggi (> 45), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
+    private void isTotalSkor(){
+        try {
+            TotalStatik.setText((Integer.parseInt(SkorStatik1.getText())+Integer.parseInt(SkorStatik2.getText())+Integer.parseInt(SkorStatik3.getText())+Integer.parseInt(SkorStatik4.getText())+Integer.parseInt(SkorStatik5.getText())+Integer.parseInt(SkorStatik6.getText())+Integer.parseInt(SkorStatik7.getText()))+"");
+            TotalDinamis.setText((Integer.parseInt(SkorDinamis1.getText())+Integer.parseInt(SkorDinamis2.getText())+Integer.parseInt(SkorDinamis3.getText())+Integer.parseInt(SkorDinamis4.getText())+Integer.parseInt(SkorDinamis5.getText())+Integer.parseInt(SkorDinamis6.getText())+Integer.parseInt(SkorDinamis7.getText()))+"");
+            SkorTotal.setText((Integer.parseInt(TotalStatik.getText())+Integer.parseInt(TotalDinamis.getText()))+"");
+            if(Integer.parseInt(SkorTotal.getText())<7){
+                Level.setText("Rendah(<7)");
+            }else if(Integer.parseInt(SkorTotal.getText())<=14){
+                Level.setText("Sedang(7-14)");
+            }else if(Integer.parseInt(SkorTotal.getText())>14){
+                Level.setText("Tinggi(>14)");
             }
         } catch (Exception e) {
-            NilaiResikoTotal.setText("0");
-            TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
-        }*/
+            SkorTotal.setText("0");
+            Level.setText("Rendah(<7)");
+        }
     }
 }
