@@ -256,7 +256,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
+        MnPenilaianTambahanBunuhDiri = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -377,19 +377,19 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianLanjutanRisikoJatuh.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianLanjutanRisikoJatuh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianLanjutanRisikoJatuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setText("Formulir Penilaian Lanjutan Risiko Jatuh Dewasa");
-        MnPenilaianLanjutanRisikoJatuh.setName("MnPenilaianLanjutanRisikoJatuh"); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setPreferredSize(new java.awt.Dimension(290, 26));
-        MnPenilaianLanjutanRisikoJatuh.addActionListener(new java.awt.event.ActionListener() {
+        MnPenilaianTambahanBunuhDiri.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianTambahanBunuhDiri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianTambahanBunuhDiri.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianTambahanBunuhDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianTambahanBunuhDiri.setText("Formulir Penilaian Tambahan Bunuh Diri");
+        MnPenilaianTambahanBunuhDiri.setName("MnPenilaianTambahanBunuhDiri"); // NOI18N
+        MnPenilaianTambahanBunuhDiri.setPreferredSize(new java.awt.Dimension(290, 26));
+        MnPenilaianTambahanBunuhDiri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianLanjutanRisikoJatuhActionPerformed(evt);
+                MnPenilaianTambahanBunuhDiriActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianLanjutanRisikoJatuh);
+        jPopupMenu1.add(MnPenilaianTambahanBunuhDiri);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -1784,7 +1784,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,FaktorStatik1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnPenilaianLanjutanRisikoJatuhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
+    private void MnPenilaianTambahanBunuhDiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianTambahanBunuhDiriActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1796,21 +1796,26 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhDewasa.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Dewasa ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_bunuh_diri.tanggal,"+
-                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala1,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala2,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala3,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala4,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala5,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_skala6,penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_tambahan_bunuh_diri.penilaian_jatuhmorse_totalnilai,penilaian_tambahan_bunuh_diri.hasil_skrining,"+
-                    "penilaian_tambahan_bunuh_diri.saran,penilaian_tambahan_bunuh_diri.nip,petugas.nama "+
+            Valid.MyReportqry("rptFormulirPenilaianTambahanBunuhDiri.jasper","report","::[ Formulir Penilaian Tambahan Bunuh Diri ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_bunuh_diri.tanggal,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                    "penilaian_tambahan_bunuh_diri.statik_hidup_sendiri,penilaian_tambahan_bunuh_diri.statik_skorhidup_sendiri,penilaian_tambahan_bunuh_diri.statik_upaya_suicide,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skorupaya_suicide,penilaian_tambahan_bunuh_diri.statik_keluarga_suicide,penilaian_tambahan_bunuh_diri.statik_skorkeluarga_suicide,"+
+                    "penilaian_tambahan_bunuh_diri.statik_diagnosa_gangguan_jiwa,penilaian_tambahan_bunuh_diri.statik_skordiagnosa_gangguan_jiwa,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "penilaian_tambahan_bunuh_diri.statik_disabilitas_berat,penilaian_tambahan_bunuh_diri.statik_skordisabilitas_berat,penilaian_tambahan_bunuh_diri.statik_berpisah,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skorberpisah,penilaian_tambahan_bunuh_diri.statik_kehilangan_kerja,penilaian_tambahan_bunuh_diri.statik_skorkehilangan_kerja,"+
+                    "penilaian_tambahan_bunuh_diri.statik_skortotal,penilaian_tambahan_bunuh_diri.dinamis_ide_bunuh_diri,penilaian_tambahan_bunuh_diri.dinamis_skoride_bunuh_diri,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_maksud_suicide,penilaian_tambahan_bunuh_diri.dinamis_skormaksud_suicide,penilaian_tambahan_bunuh_diri.dinamis_stress_berat,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skorstress_berat,penilaian_tambahan_bunuh_diri.dinamis_keputusasaan,penilaian_tambahan_bunuh_diri.dinamis_skorkeputusasaan,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_kejadian_signifikan,penilaian_tambahan_bunuh_diri.dinamis_skorkejadian_signifikan,penilaian_tambahan_bunuh_diri.dinamis_kehilangan_kontrol,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skorkehilangan_kontrol,penilaian_tambahan_bunuh_diri.dinamis_penggunaan_napza,penilaian_tambahan_bunuh_diri.dinamis_skorpenggunaan_napza,"+
+                    "penilaian_tambahan_bunuh_diri.dinamis_skortotal,penilaian_tambahan_bunuh_diri.faktor_faktor_pencegahan,penilaian_tambahan_bunuh_diri.total_skor,"+
+                    "penilaian_tambahan_bunuh_diri.level_skor,penilaian_tambahan_bunuh_diri.nip,petugas.nama,dokter.nm_dokter,poliklinik.nm_poli "+
                     "from penilaian_tambahan_bunuh_diri inner join reg_periksa on penilaian_tambahan_bunuh_diri.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_tambahan_bunuh_diri.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                    "inner join petugas on penilaian_tambahan_bunuh_diri.nip=petugas.nip inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
+    }//GEN-LAST:event_MnPenilaianTambahanBunuhDiriActionPerformed
 
     private void FaktorStatik1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorStatik1ItemStateChanged
         if(FaktorStatik1.getSelectedIndex()==1){
@@ -2050,7 +2055,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
     private widget.Label Level;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
+    private javax.swing.JMenuItem MnPenilaianTambahanBunuhDiri;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
@@ -2271,6 +2276,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            
             FaktorStatik1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             SkorStatik1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             FaktorStatik2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
@@ -2283,9 +2289,28 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
             SkorStatik5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
             FaktorStatik6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             SkorStatik6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            TotalDinamis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            FaktorPencegahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            //Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            FaktorStatik7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            SkorStatik7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            TotalStatik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            FaktorDinamis1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            SkorDinamis1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            FaktorDinamis2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            SkorDinamis2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            FaktorDinamis3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            SkorDinamis3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            FaktorDinamis4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            SkorDinamis4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            FaktorDinamis5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            SkorDinamis5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            FaktorDinamis6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            SkorDinamis6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            FaktorDinamis7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            SkorDinamis7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            TotalDinamis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            FaktorPencegahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            SkorTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            Level.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));

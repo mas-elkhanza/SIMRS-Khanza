@@ -14594,6 +14594,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }else if(R3.isSelected()==true){
                     form.setNoRm(norawat.getText(),DTPCari4.getDate());
                 }
+                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
