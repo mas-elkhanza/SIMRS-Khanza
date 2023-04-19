@@ -3033,7 +3033,7 @@ private void BtnSimpan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
 private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,kddokter.getText());
+            TDokter.setText(dokter.tampil3(kddokter.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnCariDokterActionPerformed(null);
         }else{
@@ -3396,7 +3396,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }else{ 
                 akses.setform("DlgBilingRalan");
                 kdptg=Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
-                nmptg=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kdptg);
+                nmptg=dokter.tampil3(kddokter.getText());
                 DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
                 dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","-","-");
                 dlgrwjl.isCek();

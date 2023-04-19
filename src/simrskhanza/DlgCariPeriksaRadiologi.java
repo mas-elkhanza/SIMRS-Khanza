@@ -1805,7 +1805,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void KodePerujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePerujukKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",NmPerujuk,KodePerujuk.getText());
+            NmPerujuk.setText(dokter.tampil3(KodePerujuk.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{
@@ -2127,7 +2127,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien")+" ("+kamar+" : "+namakamar+")",rs.getString("nama"),
-                        rs.getString("tgl_periksa"),rs.getString("jam"),Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString("dokter_perujuk")),rs.getString("nm_dokter")
+                        rs.getString("tgl_periksa"),rs.getString("jam"),dokter.tampil3(rs.getString("dokter_perujuk")),rs.getString("nm_dokter")
                     });
                     tabMode.addRow(new Object[]{"","Proyeksi & Dosis Radiasi","Kode Periksa","Nama Pemeriksaan","Biaya","Cara Bayar : "+rs.getString("png_jawab"),""});
                     ps2=koneksi.prepareStatement(
@@ -2254,7 +2254,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 rs5=ps5.executeQuery();
                 if(rs5.next()){      
                     KodePerujuk.setText(rs5.getString("dokter_perujuk"));
-                    NmPerujuk.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs5.getString("dokter_perujuk")));
+                    NmPerujuk.setText(dokter.tampil3(rs5.getString("dokter_perujuk")));
                     KodePj.setText(rs5.getString("kd_dokter"));
                     NmDokterPj.setText(rs5.getString("nm_dokter"));
                     KdPtgUbah.setText(rs5.getString("nip"));

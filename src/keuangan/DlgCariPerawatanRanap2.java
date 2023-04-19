@@ -1792,13 +1792,13 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             switch (pilihtable) {
                 case "rawat_inap_dr":
-                    Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdokter,kddokter.getText());
+                    nmdokter.setText(dokter.tampil3(kddokter.getText()));
                     break;
                 case "rawat_inap_pr":
                     Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmdokter,kddokter.getText());
                     break;
                 case "rawat_inap_drpr":
-                    Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdokter,kddokter.getText());
+                    nmdokter.setText(dokter.tampil3(kddokter.getText()));
                     break;
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){

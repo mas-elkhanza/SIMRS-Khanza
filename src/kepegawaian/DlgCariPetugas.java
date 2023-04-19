@@ -475,7 +475,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             response = root.path("petugas");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("NIP").asText().toLowerCase().contains(kode)){
+                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
                         iyem=list.path("NamaPetugas").asText();
                     }
                 }

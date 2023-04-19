@@ -478,7 +478,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             response = root.path("pegawai");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("NIP").asText().toLowerCase().contains(kode)){
+                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
                         iyem=list.path("Nama").asText();
                     }
                 }

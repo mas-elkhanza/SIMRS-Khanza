@@ -5473,7 +5473,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isNumber();
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,kddokter.getText());
+            TDokter.setText(dokter.tampil3(kddokter.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }else{

@@ -5935,7 +5935,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
 private void KdDokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,KdDok.getText());
+            TDokter.setText(dokter.tampil3(KdDok.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekDokterActionPerformed(null);
         }else{            
@@ -6269,7 +6269,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void KdDok2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDok2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter2,KdDok2.getText());
+            TDokter2.setText(dokter.tampil3(KdDok2.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekDokter2ActionPerformed(null);
         }else{            
@@ -6978,7 +6978,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void KdDok3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDok3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter3,KdDok3.getText());
+            TDokter3.setText(dokter.tampil3(KdDok3.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekDokter3ActionPerformed(null);
         }else{            
@@ -7078,7 +7078,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void KdPegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPegKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText());
+            TPegawai.setText(pegawai.tampil3(KdPeg.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekPegawaiActionPerformed(null);
         }else{
@@ -8676,7 +8676,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         isRawat();
         isPsien();  
         KdDok.setText(Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",norwt));
-        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,KdDok.getText());
+        TDokter.setText(dokter.tampil3(KdDok.getText()));
         KdDok2.setText(KdDok.getText());
         KdDok3.setText(KdDok.getText());
         TDokter2.setText(TDokter.getText()); 
