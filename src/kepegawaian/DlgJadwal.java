@@ -880,7 +880,7 @@ private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
 private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter='"+kddokter.getText()+"'",nmdokter);
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+kddokter.getText()+"'",nmdokter);
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{            
@@ -890,7 +890,7 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void KdPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPoliKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",TPoli,KdPoli.getText());
+            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?",TPoli,KdPoli.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPoliActionPerformed(null);
         }else{            

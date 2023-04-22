@@ -14,13 +14,13 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $KdKategori =validTeks($_GET['kode']); 
-                $petugas    =validTeks($_GET['petugas']); 
-                $tanggal    =validTeks($_GET['Tanggal']); 
-                $keterangan =validTeks($_GET['keterangan']); 
-                $kategori   =validTeks($_GET['kategori']); 
-                $keperluan  =validTeks($_GET['keperluan']); 
-                $nominal    =validTeks($_GET['nom']); 
+                $KdKategori =validTeks4($_GET['kode'],20); 
+                $petugas    =validTeks4($_GET['petugas'],50); 
+                $tanggal    =validTeks4($_GET['Tanggal'],20); 
+                $keterangan =validTeks4($_GET['keterangan'],100); 
+                $kategori   =validTeks4($_GET['kategori'],40); 
+                $keperluan  =validTeks4($_GET['keperluan'],100); 
+                $nominal    =validTeks4($_GET['nom'],20); 
 
                 $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
                 echo "<table width='100%' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' cellspacing='0' cellpadding='0'>
@@ -121,7 +121,7 @@
                                         <td padding='0' width='50%'><font color='000000' size='3'  face='Tahoma'>&nbsp;</td> 
                                         <td padding='0' width='50%' align='right'><font color='000000' size='3'  face='Tahoma'></font></td>              
                                        </tr> 
-                                                                            <tr class='isi12' padding='0'>
+                                       <tr class='isi12' padding='0'>
                                         <td padding='0' width='50%'><font color='000000' size='3'  face='Tahoma'>&nbsp;</td> 
                                         <td padding='0' width='50%' align='right'><font color='000000' size='3'  face='Tahoma'></font></td>              
                                        </tr> 

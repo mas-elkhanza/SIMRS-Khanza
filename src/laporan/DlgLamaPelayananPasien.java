@@ -299,40 +299,40 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         htmlContent = new StringBuilder();
         htmlContent.append(   
             "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'>No.Rawat</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'>No.RM</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='145px'>Nama Pasien</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'>Poliklinik</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='145px'>Dokter</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tgl.Reg</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jam Reg</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Siap Berkas</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Berkas di Poli</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Ditangani Poli</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Resep Dikirim</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Resep Divalidasi</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>Tutup Billing</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. S.B.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. B.P.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. D.P.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. R.Dk.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. R.Dv.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. T.B.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. B.P.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. D.P.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. R.Dk.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. R.Dv.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. T.B.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. D.P.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. R.Dk.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. R.Dv.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. T.B.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>D.P. s.d. R.Dk.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>D.P. s.d. R.Dv.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>D.P. s.d. T.B.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>R.Dk. s.d. R.Dv.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>R.Dk. s.d. T.B.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>R.Dv. s.d. T.B.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>No.Rawat</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='55px'>No.RM</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='145px'>Nama Pasien</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='120px'>Poliklinik</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='145px'>Dokter</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Tgl.Reg</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Jam Reg</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Siap Berkas</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Berkas di Poli</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Ditangani Poli</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Resep Dikirim</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resep Divalidasi</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>Tutup Billing</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. S.B.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. B.P.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. D.P.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. R.Dk.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. R.Dv.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. T.B.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. B.P.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. D.P.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. R.Dk.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. R.Dv.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. T.B.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. D.P.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. R.Dk.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. R.Dv.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. T.B.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>D.P. s.d. R.Dk.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>D.P. s.d. R.Dv.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>D.P. s.d. T.B.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>R.Dk. s.d. R.Dv.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>R.Dk. s.d. T.B.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>R.Dv. s.d. T.B.</td>"+
             "</tr>"
         ); 
         LoadHTML.setText(
@@ -407,40 +407,40 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(   
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>No.Rawat</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'>No.RM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='145px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'>Poliklinik</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='145px'>Dokter</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tgl.Reg</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jam Reg</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Siap Berkas</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Berkas di Poli</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Ditangani Poli</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Resep Dikirim</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Resep Divalidasi</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tutup Billing</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. S.B.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. B.P.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. D.P.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. R.Dk.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. R.Dv.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>J.R. s.d. T.B.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. B.P.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. D.P.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. R.Dk.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. R.Dv.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>S.B. s.d. T.B.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. D.P.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. R.Dk.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. R.Dv.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>B.P. s.d. T.B.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>D.P. s.d. R.Dk.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>D.P. s.d. R.Dv.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>D.P. s.d. T.B.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>R.Dk. s.d. R.Dv.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>R.Dk. s.d. T.B.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>R.Dv. s.d. T.B.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'>No.Rawat</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='55px'>No.RM</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='145px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='120px'>Poliklinik</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='145px'>Dokter</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Tgl.Reg</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Jam Reg</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Siap Berkas</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Berkas di Poli</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Ditangani Poli</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Resep Dikirim</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resep Divalidasi</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Tutup Billing</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. S.B.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. B.P.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. D.P.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. R.Dk.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. R.Dv.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>J.R. s.d. T.B.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. B.P.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. D.P.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. R.Dk.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. R.Dv.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>S.B. s.d. T.B.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. D.P.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. R.Dk.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. R.Dv.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>B.P. s.d. T.B.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>D.P. s.d. R.Dk.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>D.P. s.d. R.Dv.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>D.P. s.d. T.B.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>R.Dk. s.d. R.Dv.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>R.Dk. s.d. T.B.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'>R.Dv. s.d. T.B.</td>"+
                 "</tr>"
             );            
             ps=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,dokter.nm_dokter,date_format(reg_periksa.tgl_registrasi,'%d/%m/%Y') as tgl_registrasi,reg_periksa.jam_reg,"+

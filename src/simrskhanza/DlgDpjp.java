@@ -11,6 +11,8 @@
 
 package simrskhanza;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kepegawaian.DlgDokter;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -30,6 +32,9 @@ import javax.swing.table.TableColumn;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
@@ -724,24 +729,20 @@ public class DlgDpjp extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"No.Rawat");
         }else if(jml==0){
             Valid.textKosong(Dokter,"Data Dokter");
-        }else{          
-            try {
-                koneksi.setAutoCommit(false);
-                for(i=0;i<tbDiagnosa.getRowCount();i++){ 
-                    if(tbDiagnosa.getValueAt(i,0).toString().equals("true")){
-                        Sequel.menyimpan("dpjp_ranap","?,?","Dokter",2,new String[]{
-                            TNoRw.getText(),tbDiagnosa.getValueAt(i,1).toString()
-                        });
-                    }                    
-                }
-                koneksi.setAutoCommit(true);                
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada data yang sama dimasukkan sebelumnya...!");
-            }
+        }else{    
             for(i=0;i<tbDiagnosa.getRowCount();i++){ 
-               tbDiagnosa.setValueAt(false,i,0);
+                if(tbDiagnosa.getValueAt(i,0).toString().equals("true")){
+                    if(Sequel.menyimpantf("dpjp_ranap","?,?","Dokter",2,new String[]{
+                            TNoRw.getText(),tbDiagnosa.getValueAt(i,1).toString()
+                        })==true){
+                        TabModePasien.addRow(new Object[]{
+                            false,Tanggal.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),tbDiagnosa.getValueAt(i,1).toString(),tbDiagnosa.getValueAt(i,2).toString()
+                        });
+                        tbDiagnosa.setValueAt(false,i,0);
+                    }
+                }                    
             }
-            tampil();
+            LCount.setText(""+TabModePasien.getRowCount());
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -778,14 +779,16 @@ public class DlgDpjp extends javax.swing.JDialog {
         }else if(!(TPasien.getText().trim().equals(""))){
             for(i=0;i<tbPasien.getRowCount();i++){ 
                 if(tbPasien.getValueAt(i,0).toString().equals("true")){
-                    Sequel.queryu2("delete from dpjp_ranap where no_rawat=? and kd_dokter=?",2,new String[]{
+                    if(Sequel.queryu2tf("delete from dpjp_ranap where no_rawat=? and kd_dokter=?",2,new String[]{
                         tbPasien.getValueAt(i,2).toString(),tbPasien.getValueAt(i,5).toString()
-                    });
+                    })==true){
+                        TabModePasien.removeRow(i);
+                        i--;
+                    }
                 }
             }
+            LCount.setText(""+TabModePasien.getRowCount());
         }
-
-        tampil();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -798,7 +801,6 @@ public class DlgDpjp extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil();
         if(TabModePasien.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
@@ -1198,8 +1200,4 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             System.out.println("Notifikasi : "+e);
         }
     }
-    
-    
-
-
 }

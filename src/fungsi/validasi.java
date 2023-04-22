@@ -70,6 +70,7 @@ public final class validasi {
     private PreparedStatement ps;
     private ResultSet rs;
     private File file;
+    private boolean status=true;
     private final Calendar now = Calendar.getInstance();
     private final int year=(now.get(Calendar.YEAR));
     private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
@@ -359,6 +360,21 @@ public final class validasi {
         }
     }
     
+    public boolean editTabletf(DefaultTableModel tabMode,String table,String field_acuan,JTextField nilai_field,String update) {
+        status=true;
+        if(tabMode.getRowCount()==0){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            nilai_field.requestFocus();
+        }else if(nilai_field.getText().trim().equals("")){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+        }else if(! nilai_field.getText().trim().equals("")){            
+            status=sek.mengedittf(table,field_acuan+"='"+nilai_field.getText()+"'", update);                 
+        }
+        return status;
+    }
+    
     public void editTable(String table,String field_acuan,JTextField nilai_field,String update) {
         if(nilai_field.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
@@ -375,6 +391,20 @@ public final class validasi {
         }else if(! nilai_field.trim().equals("")){            
             sek.mengedit(table,field_acuan+"="+nilai_field, update,i,a);                 
         }
+    }
+    
+    public boolean editTabletf(DefaultTableModel tabMode,String table,String field_acuan,String nilai_field,String update,int i, String[] a) {
+        status=true;
+        if(tabMode.getRowCount()==0){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+        }else if(nilai_field.trim().equals("")){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+        }else if(! nilai_field.trim().equals("")){            
+            status=sek.mengedittf(table,field_acuan+"="+nilai_field, update,i,a);                 
+        }
+        return status;
     }
 
     public void editTable(DefaultTableModel tabMode,String table,String field_acuan,JComboBox nilai_field,String update) {
@@ -432,9 +462,23 @@ public final class validasi {
         }else if(nilai_field.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! nilai_field.getText().trim().equals("")){            
-            sek.meghapus(table,field,nilai_field.getText());            
-            
+            sek.meghapus(table,field,nilai_field.getText());   
         }
+    }
+    
+    public boolean hapusTabletf(DefaultTableModel tabMode,JTextField nilai_field,String table,String field) {
+        status=true;
+        if(tabMode.getRowCount()==0){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            nilai_field.requestFocus();
+        }else if(nilai_field.getText().trim().equals("")){
+            status=false;
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+        }else if(! nilai_field.getText().trim().equals("")){            
+            status=sek.meghapustf(table,field,nilai_field.getText());   
+        }
+        return status;
     }
 
     public void hapusTable(DefaultTableModel tabMode,JComboBox nilai_field,String table,String field) {
@@ -887,6 +931,14 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JButton kiri,JTextArea kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
 
     public void pindah2(KeyEvent evt, TextArea kiri, ComboBox kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_TAB){
@@ -897,6 +949,30 @@ public final class validasi {
     }
     
     public void pindah2(KeyEvent evt, Tanggal kiri, Button kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+
+    public void pindah2(KeyEvent evt, Button kiri, ComboBox kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JButton kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(KeyEvent evt, ComboBox kiri, Button kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -943,14 +1019,6 @@ public final class validasi {
             kiri.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_DOWN){
             bawah.requestFocus();
-        }
-    }
-    
-    public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JButton kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_TAB){
-            kanan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kiri.requestFocus();
         }
     }
 
@@ -1352,8 +1420,7 @@ public final class validasi {
     
     public int daysOld(String path) {
         file=new File(path);
-        if (file.lastModified() < 1)
-            return 0;
+        if (file.lastModified() < 1) return 0;
         return milliToDay(Calendar.getInstance().getTimeInMillis() - file.lastModified());
     }
 

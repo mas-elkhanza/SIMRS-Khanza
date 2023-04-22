@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                         <?php 
-                           $querysuratsakit = bukaquery("select rujuk.no_rujuk,rujuk.rujuk_ke,date_format(rujuk.tgl_rujuk,'%d/%m/%Y') as tgl_rujuk,rujuk.keterangan_diagnosa,dokter.nm_dokter from rujuk inner join dokter on rujuk.kd_dokter=dokter.kd_dokter inner join reg_periksa on reg_periksa.no_rawat=rujuk.no_rawat where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+                           $querysuratsakit = bukaquery("select rujuk.no_rujuk,rujuk.rujuk_ke,date_format(rujuk.tgl_rujuk,'%d/%m/%Y') as tgl_rujuk,rujuk.keterangan_diagnosa,dokter.nm_dokter from rujuk inner join dokter on rujuk.kd_dokter=dokter.kd_dokter inner join reg_periksa on reg_periksa.no_rawat=rujuk.no_rawat where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");
                            while($rsquerysuratsakit = mysqli_fetch_array($querysuratsakit)) {
                                echo "<tr>
                                         <td align='center' valign='middle'>".$rsquerysuratsakit["no_rujuk"]."</td>

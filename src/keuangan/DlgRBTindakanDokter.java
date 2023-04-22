@@ -224,7 +224,7 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
             psdetailregistrasi=koneksi.prepareStatement(
                     "select sum(reg_periksa.biaya_reg) from reg_periksa where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.no_rawat=? and reg_periksa.kd_dokter like ? "+
                     "and reg_periksa.tgl_registrasi between ? and ? ");
-            pscarabayar=koneksi.prepareStatement("select png_jawab from penjab where kd_pj=?");
+            pscarabayar=koneksi.prepareStatement("select penjab.png_jawab from penjab where penjab.kd_pj=?");
         } catch (SQLException e) {
             System.out.println(e);
         }     
@@ -552,12 +552,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", nmdokter,kddokter.getText()); 
+            nmdokter.setText(dokter.tampil3(kddokter.getText())); 
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", nmdokter,kddokter.getText()); 
+            nmdokter.setText(dokter.tampil3(kddokter.getText())); 
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", nmdokter,kddokter.getText()); 
+            nmdokter.setText(dokter.tampil3(kddokter.getText())); 
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);

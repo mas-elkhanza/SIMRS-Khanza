@@ -556,6 +556,27 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                     }
                 }
             });
+            
+            TCariMasalah.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariMasalah.getText().length()>2){
+                        tampilMasalah2();
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariMasalah.getText().length()>2){
+                        tampilMasalah2();
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariMasalah.getText().length()>2){
+                        tampilMasalah2();
+                    }
+                }
+            });
         }
         
         petugas.addWindowListener(new WindowListener() {
@@ -3530,7 +3551,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -3861,137 +3882,137 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Agama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Bahasa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cacat Fisik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Asuhan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Informasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keluhan Utama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Sakit Sejak</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Dahulu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Berobat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hasil Pengobatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Putus Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Putus Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Masalah Ekonomi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Masalah Ekonomi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Masalah Fisik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Masalah Fisik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Masalah Psikososial</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Masalah Psikososial</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Resiko Herediter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Resiko Herediter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Res Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ide Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Ide Bunuh DIri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Rencana Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alat Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Alat Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Percobaan Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Percobaan Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keinginan Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Keinginan Bunuh Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penggunaan Obat Psikiatri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Penggunaan Obat Psikiatri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Efek Samping Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Efek samping Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Napza</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Penggunaan Napza</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lama Napza</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Pemakaian Napza</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Latar Belakang Pemakaian Napza</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Obat Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Penggunaan Obat Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alasan Penggunaan Obat Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alergi Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Alergi Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Merokok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Merokok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Minum Kopi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Minum Kopi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>GCS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keluhan Fisik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Keluhan Fisik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Durasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Provokes</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Provokes</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kualitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Kualitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lokasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Menyebar</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lapor Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam Lapor Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nyeri Hilang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Hilang Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BMI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lapor Status Nutrisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam Lapor Status Nutrisi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 1</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 1</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 2</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 2</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total Skor</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Berjalan A</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Berjalan B</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Cara Berjalan C</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hasil Penilaian Resiko Jatuh</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lapor Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam Dilapor</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL Mandi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL Berpakaian</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL Makan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL BAK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL BAB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL Hobi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan ADL Hobi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL Sosialisasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan ADL Sosialisasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>ADL Kegiatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan ADL. Kegiatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penampilan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alam Perasaan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pembicaraan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Afek</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Aktifitas Motorik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gangguan Ringan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Proses Pikir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Orientasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesadaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Memori</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Interaksi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Konsentrasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Persepsi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Persepsi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Isi Pikir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Waham</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Waham</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Daya Tilik Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Daya Tilik Diri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pembelajaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Pembelajaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Pembelajaran Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penerjamah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penerjamah Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Bahasa Isyarat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kebutuhan Edukasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Kebutuhan Edukasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Keperawatan Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Perawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Agama</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bahasa</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cacat Fisik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Asuhan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Informasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Utama</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sakit Sejak</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Dahulu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berobat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pengobatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Putus Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Putus Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Masalah Ekonomi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Masalah Ekonomi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Masalah Fisik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Masalah Fisik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Masalah Psikososial</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Masalah Psikososial</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Resiko Herediter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Resiko Herediter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Res Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ide Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Ide Bunuh DIri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rencana Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Rencana Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alat Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Alat Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Percobaan Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Percobaan Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keinginan Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Keinginan Bunuh Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penggunaan Obat Psikiatri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Penggunaan Obat Psikiatri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Efek Samping Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Efek samping Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Napza</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Penggunaan Napza</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama Napza</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Pemakaian Napza</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Latar Belakang Pemakaian Napza</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obat Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Penggunaan Obat Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alasan Penggunaan Obat Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alergi Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Alergi Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merokok</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Merokok</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Minum Kopi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Minum Kopi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GCS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Fisik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Keluhan Fisik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skala Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Durasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Provokes</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Provokes</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kualitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kualitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lokasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Menyebar</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lapor Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam Lapor Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Hilang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Hilang Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BMI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lapor Status Nutrisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam Lapor Status Nutrisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skrining Gizi 1</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nilai 1</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skrining Gizi 2</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nilai 2</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Berjalan A</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Berjalan B</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Berjalan C</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Penilaian Resiko Jatuh</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lapor Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam Dilapor</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL Mandi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL Berpakaian</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL Makan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL BAK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL BAB</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL Hobi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan ADL Hobi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL Sosialisasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan ADL Sosialisasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL Kegiatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan ADL. Kegiatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penampilan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alam Perasaan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembicaraan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Afek</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Aktifitas Motorik</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Ringan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Proses Pikir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Orientasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesadaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Memori</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Interaksi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Konsentrasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Persepsi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Persepsi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Isi Pikir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waham</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Waham</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Daya Tilik Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Daya Tilik Diri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pembelajaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Pembelajaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Pembelajaran Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penerjamah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penerjamah Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bahasa Isyarat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebutuhan Edukasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kebutuhan Edukasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rencana Keperawatan Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Perawat</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -5874,7 +5895,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
             if(NmPetugas.getText().equals("")){
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
@@ -5884,7 +5905,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void tampilMasalah() {
@@ -6157,7 +6177,8 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             Valid.tabelKosong(tabModeDetailRencana);
             ChkAccor.setSelected(false);
             isMenu();
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

@@ -475,9 +475,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                 while(rs.next()){
                     hadir="0";pagi="0";siang="0";malam="0";tepatwaktu="0";toleransi="0";terlambat1="0";terlambat2="0";keterlambatan="0";durasi="0"; 
                     wajibmasuk=0;
-                    if(!(rs.getString("wajibmasuk").equals("0"))){
-                        wajibmasuk=jumlahhari-liburakhad-liburhariraya;
-                    }else if(rs.getString("wajibmasuk").equals("-1")){
+                    if(rs.getString("wajibmasuk").equals("-1")){
                         wajibmasuk=0;
                     }else if(rs.getString("wajibmasuk").equals("-2")){
                         wajibmasuk=jumlahhari-4;
@@ -494,8 +492,10 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                                       +"if(h26='',0,1)+if(h27='',0,1)+if(h28='',0,1)+if(h29='',0,1)+if(h30='',0,1)+"
                                       +"if(h31='',0,1)) from jadwal_pegawai where id='"+rs.getString("id")+"' and "
                                       +"tahun='"+ThnCari.getSelectedItem().toString()+"' and bulan='"+BlnCari.getSelectedItem().toString()+"'");
-                    }else {
+                    }else if(!rs.getString("wajibmasuk").equals("0")){
                         wajibmasuk=rs.getInt("wajibmasuk");
+                    }else if(!(rs.getString("wajibmasuk").equals("0"))){
+                        wajibmasuk=jumlahhari-liburakhad-liburhariraya;
                     }
 
                     ps2=koneksi.prepareStatement(

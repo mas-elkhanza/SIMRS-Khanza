@@ -46,7 +46,6 @@ public final class InventarisPemeliharaanGedung extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private boolean semua;
     private double total;
 
     /** Creates new form DlgJnsPerawatan
@@ -1062,7 +1061,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             BtnEdit.setEnabled(akses.getpemeliharaan_gedung());
             BtnPrint.setEnabled(akses.getpemeliharaan_gedung());
             NIP.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NamaPetugas,NIP.getText());
+            NamaPetugas.setText(petugas.tampil3(NIP.getText()));
         } 
         TCari.requestFocus();
     }

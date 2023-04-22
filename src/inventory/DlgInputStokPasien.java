@@ -946,14 +946,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
 private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
         tampil();
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
         tampil();
         Tgl.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
         tampil();
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -2123,7 +2123,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     public void setNoRm(String no_rawat,String pasien){
         norawat.setText(no_rawat);
         nm_pasien.setText(pasien);
-        KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",no_rawat));
+        KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",no_rawat));
         kelas.setText(Sequel.cariIsi(
                 "select kamar.kelas from kamar inner join kamar_inap on kamar.kd_kamar=kamar_inap.kd_kamar "+
                 "where kamar_inap.no_rawat=? and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",no_rawat));
@@ -2144,7 +2144,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.nopermintaan="";
         kenaikan=Sequel.cariIsiAngka2("select (set_harga_obat_ranap.hargajual/100) from set_harga_obat_ranap where set_harga_obat_ranap.kd_pj=? and set_harga_obat_ranap.kelas=?",KdPj.getText(),kelas.getText());
         kdgudang.setText(akses.getkdbangsal());
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
     }
 
     private void getData() {

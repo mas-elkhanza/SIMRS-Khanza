@@ -15,7 +15,7 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $nonota    = validTeks(str_replace("_"," ",$_GET['nonota'])); 
+                $nonota    = validTeks4(str_replace("_"," ",$_GET['nonota']),20); 
 
                 $_sql      = "SELECT penjualan.tgl_jual,penjualan.nip,penjualan.no_rkm_medis,penjualan.nm_pasien,penjualan.keterangan,penjualan.ongkir,penjualan.ppn,penjualan.nama_bayar from penjualan where penjualan.nota_jual='$nonota'";            
                 $hasil     = mysqli_fetch_array(bukaquery($_sql));

@@ -312,7 +312,7 @@ public class DlgPilihDokter extends javax.swing.JDialog {
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
                     if(aktifjadwal.equals("aktif")){
-                        if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"+tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString()+"' and tgl_registrasi=CURRENT_DATE() ")>=Integer.parseInt(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),2).toString())){
+                        if(Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where reg_periksa.kd_dokter='"+tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString()+"' and reg_periksa.tgl_registrasi=CURRENT_DATE() ")>=Integer.parseInt(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),2).toString())){
                             JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
                             TCari.requestFocus();
                         }else{
@@ -339,7 +339,7 @@ public class DlgPilihDokter extends javax.swing.JDialog {
         if(tabmode.getRowCount()!=0){
             try {
                 if(aktifjadwal.equals("aktif")){
-                    if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"+tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString()+"' and tgl_registrasi=CURRENT_DATE() ")>=Integer.parseInt(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),2).toString())){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where reg_periksa.kd_dokter='"+tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString()+"' and reg_periksa.tgl_registrasi=CURRENT_DATE() ")>=Integer.parseInt(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),2).toString())){
                         JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
                         TCari.requestFocus();
                     }else{
@@ -498,6 +498,6 @@ public class DlgPilihDokter extends javax.swing.JDialog {
         LblNoRm.setText(norm);
         LblNama.setText(Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", norm));
         LblKdPoli.setText(kodepoli);
-        LblNamaPoli.setText(Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", kodepoli));
+        LblNamaPoli.setText(Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", kodepoli));
     }
 }

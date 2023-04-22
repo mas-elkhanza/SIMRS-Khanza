@@ -12,7 +12,7 @@
             <?php
                 echo "";
                 $action             = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat           = validTeks(isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL);
+                $no_rawat           = validTeks4((isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL),20);
                 $no_rm              = getOne("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='$no_rawat'");
                 $nama_pasien        = getOne("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='$no_rm'");
                 echo "<input type=hidden name=no_rawat value=$no_rawat>
@@ -41,7 +41,7 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_rawat   = validTeks(trim($_POST['no_rawat']));
+                    $no_rawat   = validTeks4(trim($_POST['no_rawat']),20);
                     $gambar     = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
                     if((strtolower(substr($gambar,-3))=="jpg")||(strtolower(substr($gambar,-4))=="jpeg")){  
                         move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
@@ -97,7 +97,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['gambar']);
-                Hapus(" hasil_pemeriksaan_usg_gambar "," no_rawat ='".validTeks($_GET['no_rawat'])."'","?act=List&action=TAMBAH&no_rawat=$no_rawat");
+                Hapus(" hasil_pemeriksaan_usg_gambar "," no_rawat ='".validTeks4($_GET['no_rawat'],20)."'","?act=List&action=TAMBAH&no_rawat=$no_rawat");
             }
 
         

@@ -224,8 +224,8 @@ public final class RMHemodialisa extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm();
         
-        kddok.setText(Sequel.cariIsi("select kd_dokterhemodialisa from set_pjlab"));
-        namadokter.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddok.getText()));
+        kddok.setText(Sequel.cariIsi("select set_pjlab.kd_dokterhemodialisa from set_pjlab"));
+        namadokter.setText(dokter.tampil3(kddok.getText()));
         
         jam();
     }
@@ -1095,7 +1095,8 @@ public final class RMHemodialisa extends javax.swing.JDialog {
             if(Sequel.queryu2tf("delete from hemodialisa where tanggal=? and no_rawat=?",2,new String[]{
                 tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
-                tampil();
+                tabMode.removeRow(tbObat.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

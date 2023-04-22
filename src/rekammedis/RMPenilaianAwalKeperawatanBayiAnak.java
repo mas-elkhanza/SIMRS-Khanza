@@ -1412,7 +1412,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022 22:09:15" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2022 06:52:29" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2372,7 +2372,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         jLabel150.setBounds(40, 1000, 610, 23);
 
         jLabel152.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel152.setText("Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari salam seminggu terakhir;");
+        jLabel152.setText("Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari dalam seminggu terakhir;");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
         jLabel152.setBounds(55, 1075, 610, 23);
@@ -3113,7 +3113,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3127,7 +3127,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3183,7 +3183,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -3524,13 +3524,13 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%'><b>PASIEN & PETUGAS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'><b>II. RIWAYAT KESEHATAN DAHULU</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%'><b>V. RIWAYAT TUMBUH KEMBANG ANAK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'><b>VII. RIWAYAT PSIKO-SOSIAL, SPIRITUAL DAN BUDAYA</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'><b>VIII. PENILAIAN RESIKO JATUH</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%'><b>IX. SKRINING GIZI (Strong kid)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'><b>X. PENILAIAN TINGKAT NYERI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'><b>PASIEN & PETUGAS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'><b>II. RIWAYAT KESEHATAN DAHULU</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'><b>V. RIWAYAT TUMBUH KEMBANG ANAK</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'><b>VII. RIWAYAT PSIKO-SOSIAL, SPIRITUAL DAN BUDAYA</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'><b>VIII. PENILAIAN RESIKO JATUH</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'><b>IX. SKRINING GIZI (Strong kid)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'><b>X. PENILAIAN TINGKAT NYERI</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -3592,7 +3592,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                                         "<tr class='isi2'>"+
                                             "<td width='32%' valign='top' align='justify'>Informasi</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("informasi")+"</td>"+
                                         "</tr>"+
-                                        "<tr class='isi2'><td valign='middle' bgcolor='#FFFAF8' align='center' colspan='3' width='100%'><b>I. KEADAAN UMUM</b></td></tr>"+
+                                        "<tr class='isi2'><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='3' width='100%'><b>I. KEADAAN UMUM</b></td></tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='34%' valign='top' align='justify'>TD</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("td")+"mmHg</td>"+
                                         "</tr>"+
@@ -3642,7 +3642,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                                         "<tr class='isi2'>"+
                                             "<td width='32%' valign='top' align='justify'>Alergi</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("alergi")+"</td>"+
                                         "</tr>"+
-                                        "<tr class='isi2'><td valign='middle' bgcolor='#FFFAF8' align='center' colspan='3' width='100%'><b>III. RIWAYAT TUMBUH KEMBANG DAN PERINATAL CARE</b></td></tr>"+
+                                        "<tr class='isi2'><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='3' width='100%'><b>III. RIWAYAT TUMBUH KEMBANG DAN PERINATAL CARE</b></td></tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='40%' valign='top' align='justify'>Riwayat Kelahiran</td><td valign='top'>:&nbsp;</td><td width='59%' valign='top'> Anak ke "+rs.getString("anakke")+" dari "+rs.getString("darisaudara")+" saudara</td>"+
                                         "</tr>"+
@@ -3659,7 +3659,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                                             "<td valign='top' cellpadding='0' cellspacing='0' colspan='3'>"+
                                                 "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
                                                     "<tr class='isi2'>"+
-                                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='7'><b>IV. RIWAYAT IMUNISASI</b></td>"+
+                                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='7'><b>IV. RIWAYAT IMUNISASI</b></td>"+
                                                     "</tr>"+
                                                     "<tr class='isi2'>"+
                                                         "<td width='70%' valign='top'>Nama Imunisasi</td><td width='5%' valign='top'>Ke 1</td><td width='5%' valign='top'>Ke 2</td><td width='5%' valign='top'>Ke 3</td><td width='5%' valign='top'>Ke 4</td><td width='5%' valign='top'>Ke 5</td><td width='5%' valign='top'>Ke 6</td>");
@@ -3755,7 +3755,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                                         "<tr class='isi2'>"+
                                             "<td width='100%' valign='top' colspan='3' align='justify'>Gangguan perkembangan mental / emosi : "+rs.getString("gangguanemosi")+"</td>"+
                                         "</tr>"+
-                                        "<tr class='isi2'><td valign='middle' bgcolor='#FFFAF8' align='center' colspan='3'><b>VI. FUNGSIONAL</b></td></tr>"+
+                                        "<tr class='isi2'><td valign='middle' bgcolor='#FFFAFA' align='center' colspan='3'><b>VI. FUNGSIONAL</b></td></tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='30%' valign='top' align='justify'>Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='69%' valign='top'>"+rs.getString("alat_bantu")+"<br>"+rs.getString("ket_bantu")+"</td>"+
                                         "</tr>"+
@@ -5455,14 +5455,13 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_anak());
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_anak());
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_anak());
-        BtnTambahImunisasi.setEnabled(akses.getmaster_masalah_keperawatan_anak());  
         BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan_anak()); 
         BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan_anak()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
             if(NmPetugas.getText().equals("")){
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
@@ -5472,7 +5471,6 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void tampilMasalah() {
@@ -5863,7 +5861,8 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             Valid.tabelKosong(tabModeDetailRencana);
             ChkAccor.setSelected(false);
             isMenu();
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

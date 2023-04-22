@@ -1359,7 +1359,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
 
     private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NamaPetugas,Nip.getText());
+            NamaPetugas.setText(petugas.tampil3(Nip.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -1756,7 +1756,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
             Nip.setEditable(false);
             btnPetugas.setEnabled(false);
             Nip.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NamaPetugas,Nip.getText());
+            NamaPetugas.setText(petugas.tampil3(Nip.getText()));
             if(NamaPetugas.getText().equals("")){
                 Nip.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
@@ -1799,15 +1799,15 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>No.Resep</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Tgl.Resep</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Jam Resep</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>No.Rawat</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>No.RM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='21%'>Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Kode Dokter</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='21%'>Dokter Peresep</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Status</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>No.Resep</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Tgl.Resep</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Jam Resep</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>No.Rawat</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>No.RM</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='21%'>Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Kode Dokter</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='21%'>Dokter Peresep</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Status</td>"+
                 "</tr>");
             ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,"+
                     " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter,"+

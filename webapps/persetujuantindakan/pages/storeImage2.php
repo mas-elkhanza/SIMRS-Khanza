@@ -1,6 +1,6 @@
 <?php
     require_once('../../conf/conf.php');
-    $nopernyataan           = validTeks($_POST["nopernyataan"]);
+    $nopernyataan           = validTeks4($_POST["nopernyataan"],20);
     if(file_exists(host()."webapps/persetujuantindakan/pages/upload/".$nopernyataan.".jpeg")){
         @unlink(host()."webapps/persetujuantindakan/pages/upload/".$nopernyataan.".jpeg");
     }
@@ -24,5 +24,5 @@
     </style>
 </head>
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <body><center>Proses Pengambilan Persetujuan Saksi 1 Keluarga Sudah Selesai ..!! <br><a href='../login.php?usere=<?=USERHYBRIDWEB?>&passwordte=<?=PASHYBRIDWEB?>' class='btn btn-secondary' >Kembali</a></center></body>
+    <body><center>Proses Pengambilan Persetujuan Saksi 1 Keluarga Sudah Selesai ..!! <br><a href='../login.php?iyem=<?=encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e")?>' class='btn btn-secondary' >Kembali</a></center></body>
 </html>

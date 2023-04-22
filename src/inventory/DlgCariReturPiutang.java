@@ -630,12 +630,12 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
 
     private void KdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",Nmptg,Kdptg.getText());           
+            Nmptg.setText(petugas.tampil3(Kdptg.getText()));         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",Nmptg,Kdptg.getText());      
+            Nmptg.setText(petugas.tampil3(Kdptg.getText()));    
             TglRetur1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",Nmptg,Kdptg.getText());      
+            Nmptg.setText(petugas.tampil3(Kdptg.getText()));    
             NoNota.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -746,12 +746,12 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
 
     private void kdsatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsatKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?",nmsat,kdsat.getText());
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?",nmsat,kdsat.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?",nmsat,kdsat.getText());
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?",nmsat,kdsat.getText());
             Kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?",nmsat,kdsat.getText());
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?",nmsat,kdsat.getText());
             kdbar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSatuanActionPerformed(null);
@@ -849,7 +849,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 if(sukses==true){
                     Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Piutang_Obat from set_akun")+"','RETUR PIUTANG','0','"+Sequel.cariIsi("select sum(subtotal) from detreturpiutang where no_retur_piutang='"+rs.getString("no_retur_piutang")+"'")+"'","Rekening");    
                     Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Piutang_Obat from set_akun")+"','KAS DI TANGAN','"+Sequel.cariIsi("select sum(subtotal) from detreturpiutang where no_retur_piutang='"+rs.getString("no_retur_piutang")+"'")+"','0'","Rekening"); 
-                    sukses=jur.simpanJurnal(rs.getString("no_retur_piutang"),"U","BATAL RETUR PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(rs.getString("no_retur_piutang"),"U","BATAL RETUR PENJUALAN DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
                 }   
                 
                 if(sukses==true){

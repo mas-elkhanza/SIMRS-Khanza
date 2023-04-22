@@ -364,12 +364,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Tgl.Reg</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>No.Rawat</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.R.M</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Status</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='66%'>S.O.A.P.I.E</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Tgl.Reg</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>No.Rawat</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>No.R.M</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>Status</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='66%'>S.O.A.P.I.E</td>"+
                 "</tr>"
             );     
             ps=koneksi.prepareStatement(

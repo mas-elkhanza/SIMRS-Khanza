@@ -398,9 +398,13 @@ public class DlgSpesialis extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama spesialis");
         }else{
-            Sequel.menyimpan("spesialis","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode Spesialis");
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("spesialis","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode Spesialis")==true){
+                tabMode.addRow(new String[]{
+                    TKd.getText(),TNm.getText()
+                });
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -423,9 +427,13 @@ public class DlgSpesialis extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,TKd,"spesialis","kd_sps");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,TKd,"spesialis","kd_sps")==true){
+            if(tbSpesialis.getSelectedRow()!= -1){
+                tabMode.removeRow(tbSpesialis.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -442,9 +450,13 @@ public class DlgSpesialis extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama spesialis");
         }else{
-            Valid.editTable(tabMode,"spesialis","kd_sps",TKd,"nm_sps='"+TNm.getText()+"'");
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(Valid.editTabletf(tabMode,"spesialis","kd_sps",TKd,"nm_sps='"+TNm.getText()+"'")==true){
+                if(tbSpesialis.getSelectedRow()>-1){
+                    tabMode.setValueAt(TKd.getText(),tbSpesialis.getSelectedRow(),0);
+                    tabMode.setValueAt(TNm.getText(),tbSpesialis.getSelectedRow(),1);
+                    emptTeks();
+                }
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

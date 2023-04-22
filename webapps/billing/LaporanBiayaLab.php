@@ -11,13 +11,13 @@
         $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
         $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-            $norm       = validTeks($_GET['norm']);
-            $pasien     = validTeks($_GET['pasien']);
-            $tanggal    = validTeks($_GET['tanggal']);
-            $jam        = validTeks($_GET['jam']);
-            $pjlab      = validTeks($_GET['pjlab']);
-            $petugas    = validTeks($_GET['petugas']);
-            $kasir      = validTeks($_GET['kasir']);
+            $norm       = validTeks4($_GET['norm'],20);
+            $pasien     = validTeks4($_GET['pasien'],50);
+            $tanggal    = validTeks4($_GET['tanggal'],14);
+            $jam        = validTeks4($_GET['jam'],10);
+            $pjlab      = validTeks4($_GET['pjlab'],70);
+            $petugas    = validTeks4($_GET['petugas'],70);
+            $kasir      = validTeks4($_GET['kasir'],70);
 
             $_sql = "select * from temporary_lab where temporary_lab.temp4='Pemeriksaan' order by temporary_lab.no asc";   
             $hasil=bukaquery($_sql);

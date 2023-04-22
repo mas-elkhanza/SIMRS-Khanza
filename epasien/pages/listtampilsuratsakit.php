@@ -6,7 +6,7 @@
     $nosurat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $nosurat = json_decode(encrypt_decrypt($nosurat,"d"),true); 
     if (isset($nosurat["nosurat"])) {
-        $nosurat = $nosurat["nosurat"];
+        $nosurat = cleankar2($nosurat["nosurat"]);
         $querysuratsakit = bukaquery("select suratsakit.no_surat,suratsakit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-laki','Perempuan') as jk,
                 pasien.pekerjaan,pasien.umur,date_format(suratsakit.tanggalawal,'%d/%m/%Y') as tanggalawal,date_format(suratsakit.tanggalakhir,'%d/%m/%Y') as tanggalakhir,suratsakit.lamasakit,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,
                 dokter.nm_dokter,reg_periksa.kd_dokter from suratsakit inner join reg_periksa on suratsakit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join kelurahan 

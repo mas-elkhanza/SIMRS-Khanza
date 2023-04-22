@@ -10,7 +10,7 @@
         <?php
             $action             = isset($_GET['action'])?$_GET['action']:NULL;
             $keyword            = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
-            $kode_ebook         = validTeks(str_replace("_"," ",isset($_GET['kode_ebook']))?str_replace("_"," ",$_GET['kode_ebook']):NULL);
+            $kode_ebook         = validTeks4((str_replace("_"," ",isset($_GET['kode_ebook']))?str_replace("_"," ",$_GET['kode_ebook']):NULL),10);
             $kode_ebook2        = "";
             $judul_ebook        = "";
             $jml_halaman        = "";
@@ -165,15 +165,15 @@
         <?php
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
-                $kode_ebook         = validTeks(trim($_POST['kode_ebook']));
-                $kode_ebook2        = validTeks(trim($_POST['kode_ebook2']));
-                $judul_ebook        = validTeks(trim($_POST['judul_ebook']));
-                $jml_halaman        = validTeks(trim($_POST['jml_halaman']));
-                $kode_penerbit      = validTeks(trim($_POST['kode_penerbit']));
-                $kode_pengarang     = validTeks(trim($_POST['kode_pengarang']));
-                $id_jenis           = validTeks(trim($_POST['id_jenis']));
-                $id_kategori        = validTeks(trim($_POST['id_kategori']));
-                $thn_terbit         = validTeks(trim($_POST['thn_terbit']));
+                $kode_ebook         = validTeks4(trim($_POST['kode_ebook']),10);
+                $kode_ebook2        = validTeks4(trim($_POST['kode_ebook2']),10);
+                $judul_ebook        = validTeks4(trim($_POST['judul_ebook']),200);
+                $jml_halaman        = validTeks4(trim($_POST['jml_halaman']),5);
+                $kode_penerbit      = validTeks4(trim($_POST['kode_penerbit']),10);
+                $kode_pengarang     = validTeks4(trim($_POST['kode_pengarang']),7);
+                $id_jenis           = validTeks4(trim($_POST['id_jenis']),5);
+                $id_kategori        = validTeks4(trim($_POST['id_kategori']),5);
+                $thn_terbit         = validTeks4(trim($_POST['thn_terbit']),4);
                 $berkas             = validTeks(str_replace(" ","_","pages/upload/".$_FILES['berkas']['name']));
                 if ((!empty($kode_ebook))&&(!empty($judul_ebook))&&(!empty($jml_halaman))&&(!empty($kode_penerbit))&&(!empty($kode_pengarang))&&(!empty($id_jenis))&&(!empty($id_kategori))&&(!empty($berkas))) {
                     switch($action) {
@@ -275,7 +275,7 @@
     <?php
         if ($action=="HAPUS") {
             unlink($_GET['berkas']);
-            Hapus(" perpustakaan_ebook ","  kode_ebook='".validTeks($_GET['kode_ebook'])."'","?act=List&action=TAMBAH");
+            Hapus(" perpustakaan_ebook ","  kode_ebook='".validTeks4($_GET['kode_ebook'],10)."'","?act=List&action=TAMBAH");
         }
         
         echo("<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

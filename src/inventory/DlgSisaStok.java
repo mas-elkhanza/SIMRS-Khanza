@@ -597,12 +597,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='70px'>Kode Barang</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='150px'>Nama Barang</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>Satuan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='75px'>Harga Satuan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(i+2)+"'>Sisa Stok</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='70px'>Kode Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='150px'>Nama Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>Satuan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='75px'>Harga Satuan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(i+2)+"'>Sisa Stok</td>"+
                 "</tr>"
             );
             
@@ -615,7 +615,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 while(rs.next()){
                     posisigudang[kolom]=rs.getString("kd_bangsal");
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>"+rs.getString("nm_bangsal")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>"+rs.getString("nm_bangsal")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -628,8 +628,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }         
             htmlContent.append(
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>Total</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'>Nilai Aset</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Nilai Aset</td>"+
                 "</tr>"
             );  
             

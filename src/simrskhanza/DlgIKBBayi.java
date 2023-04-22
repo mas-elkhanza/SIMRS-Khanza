@@ -2890,10 +2890,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             if(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_rkm_medis=?",NoRm.getText()).isEmpty()){ 
                 Sequel.queryu4("insert into cacat_fisik values(?,?)",2,new String[]{"0","-"});
                 Sequel.queryu4("insert into penjab values(?,?)",2,new String[]{"-","-"});
-                Sequel.queryu4("insert into kelurahan values(?,?)",2,new String[]{"0","-"});
-                Sequel.queryu4("insert into kecamatan values(?,?)",2,new String[]{"0","-"});
-                Sequel.queryu4("insert into kabupaten values(?,?)",2,new String[]{"0","-"});
-                Sequel.queryu4("insert into propinsi values(?,?)",2,new String[]{"0","-"});
+                Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0","-"});
+                Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0","-"});
+                Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0","-"});
+                Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0","-"});
                 Sequel.queryu4("insert into bahasa_pasien values(?,?)",2,new String[]{"0","-"});
                 Sequel.queryu4("insert into suku_bangsa values(?,?)",2,new String[]{"0","-"});
                 Sequel.queryu4("insert into perusahaan_pasien values(?,?,?,?,?)",2,new String[]{"-","-","-","-","-"});
@@ -3433,10 +3433,10 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         
                         Sequel.queryu4("insert into cacat_fisik values(?,?)",2,new String[]{"0","-"});
                         Sequel.queryu4("insert into penjab values(?,?)",2,new String[]{"-","-"});
-                        Sequel.queryu4("insert into kelurahan values(?,?)",2,new String[]{"0","-"});
-                        Sequel.queryu4("insert into kecamatan values(?,?)",2,new String[]{"0","-"});
-                        Sequel.queryu4("insert into kabupaten values(?,?)",2,new String[]{"0","-"});
-                        Sequel.queryu4("insert into propinsi values(?,?)",2,new String[]{"0","-"});
+                        Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0","-"});
+                        Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0","-"});
+                        Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0","-"});
+                        Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0","-"});
                         Sequel.queryu4("insert into bahasa_pasien values(?,?)",2,new String[]{"0","-"});
                         Sequel.queryu4("insert into suku_bangsa values(?,?)",2,new String[]{"0","-"});
                         Sequel.queryu4("insert into perusahaan_pasien values(?,?,?,?,?)",2,new String[]{"-","-","-","-","-"});

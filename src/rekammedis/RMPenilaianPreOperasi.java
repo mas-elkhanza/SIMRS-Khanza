@@ -1492,6 +1492,16 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
         isRawat(); 
     }
     
+    public void setNoRm(String norwt,Date tgl2,String KodeDokter,String NamaDokter,String Operasi) {
+        TNoRw.setText(norwt);
+        TCari.setText(norwt);
+        DTPCari2.setDate(tgl2);    
+        isRawat(); 
+        KdDokter.setText(KodeDokter);
+        NmDokter.setText(NamaDokter);
+        RencanaTindakanBedah.setText(Operasi);
+    }
+    
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenilaian_pre_operasi());
         BtnHapus.setEnabled(akses.getpenilaian_pre_operasi());
@@ -1501,7 +1511,7 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", NmDokter,KdDokter.getText());
+            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
@@ -1511,14 +1521,14 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {
         if(Sequel.queryu2tf("delete from penilaian_pre_operasi where no_rawat=? and tanggal=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

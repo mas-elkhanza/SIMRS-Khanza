@@ -837,15 +837,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         htmlContent = new StringBuilder();
                         htmlContent.append(
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Tanggal</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>No.Rawat</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>No.RM</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='17%'>Nama Pasien</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%'>Alamat</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Cara Bayar</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Unit/Layanan</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Tanggal</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>No.RM</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nama Pasien</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Alamat</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Cara Bayar</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Unit/Layanan</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                             "</tr>"
                         );
                         for(i=0;i<tabMode.getRowCount();i++){
@@ -893,15 +893,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         htmlContent = new StringBuilder();
                         htmlContent.append(
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Tanggal</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>No.Rawat</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>No.RM</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%'>Nama Pasien</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%'>Alamat</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Cara Bayar</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Unit/Layanan</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Tanggal</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>No.RM</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Nama Pasien</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Alamat</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Cara Bayar</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Unit/Layanan</td>"+
+                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                             "</tr>"
                         );
                         for(i=0;i<tabMode.getRowCount();i++){

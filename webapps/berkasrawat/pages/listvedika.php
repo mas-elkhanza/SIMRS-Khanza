@@ -8,19 +8,27 @@
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <div style="width: 100%; height: 87.4%; overflow: auto;">
             <?php
-                $carabayar  = encrypt_decrypt($_SESSION["carabayar"],"d");
-                $BtnCari    = isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+                $carabayar      = encrypt_decrypt($_SESSION["carabayar"],"d");
+                $BtnCari        = isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+                $tahunawal      = "";
+                $bulanawal      = "";
+                $tanggalawal    = "";
+                $tahunakhir     = "";
+                $bulanakhir     = "";
+                $tanggalakhir   = ""; 
+                $keyword        = "";
+                $status         = "";
+                $poli           = "";
                 if (isset($BtnCari)) {      
-                    $tahunawal      = validTeks(trim($_POST['tahunawal']));
-                    $bulanawal      = validTeks(trim($_POST['bulanawal']));
-                    $tanggalawal    = validTeks(trim($_POST['tanggalawal']));
-                    $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
-                    $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
-                    $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));    
-                    $keyword        = validTeks(trim($_POST['keyword']));
-                    $status         = validTeks(trim($_POST['status']));
-                    $poli           = validTeks(trim($_POST['poli']));
-                    $action         = "no";
+                    $tahunawal      = validTeks4(trim($_POST['tahunawal']),4);
+                    $bulanawal      = validTeks4(trim($_POST['bulanawal']),2);
+                    $tanggalawal    = validTeks4(trim($_POST['tanggalawal']),2);
+                    $tahunakhir     = validTeks4(trim($_POST['tahunakhir']),4);
+                    $bulanakhir     = validTeks4(trim($_POST['bulanakhir']),2);
+                    $tanggalakhir   = validTeks4(trim($_POST['tanggalakhir']),2);    
+                    $keyword        = validTeks4(trim($_POST['keyword']),30);
+                    $status         = validTeks4(trim($_POST['status']),15);
+                    $poli           = validTeks4(trim($_POST['poli']),50);
                 }
                 if(empty($tahunawal)){
                     $tahunawal=date('Y');
@@ -234,7 +242,7 @@
                 </tr>
                 <tr class="head3">
                     <td>
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="43" maxlength="200" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="43" maxlength="30" pattern="[a-zA-Z0-9, ./@_]{1,30}" title=" a-zA-Z0-9, ./@_ (Maksimal 30 karakter)" autocomplete="off" autofocus />
                         &nbsp;&nbsp;
                         Status : 
                         <select name="status" class="text">

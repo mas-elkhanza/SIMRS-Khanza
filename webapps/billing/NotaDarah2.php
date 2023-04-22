@@ -14,7 +14,7 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $nopenyerahan  = validTeks(str_replace("_"," ",$_GET['nopenyerahan'])); 
+                $nopenyerahan  = validTeks4(str_replace("_"," ",$_GET['nopenyerahan']),20); 
                 $_sql          = "SELECT tanggal,nip_cross,pengambil_darah,keterangan,besarppn from utd_penyerahan_darah where no_penyerahan='$nopenyerahan'";            
                 $hasil         = mysqli_fetch_array(bukaquery($_sql));
                 $tanggal   = $hasil["tanggal"]; 

@@ -780,12 +780,12 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
 
     private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", nmpoli,kdpoli.getText());
+            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpoli,kdpoli.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", nmpoli,kdpoli.getText());
+            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpoli,kdpoli.getText());
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", nmpoli,kdpoli.getText());
+            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpoli,kdpoli.getText());
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -846,12 +846,12 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
 
     private void kdpenjabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpenjabKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmpenjab,kdpenjab.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmpenjab,kdpenjab.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmpenjab,kdpenjab.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -1000,8 +1000,8 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
                 if(rspoli.next()){
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' width='3%'>No.</td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' width='97%'>Nama Poli</td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' width='3%'>No.</td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' width='97%'>Nama Poli</td>"+
                         "</tr>"
                     );
                 }
@@ -1051,13 +1051,13 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
                                         "<table width='100%' border='0' align='center' cellspacing='0'>"+
                                             "<caption>"+rspenjab.getString("png_jawab")+"</caption>"+
                                             "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Barang</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='43%'>Nama Barang</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Satuan</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Jml.Obat</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Jml.Resep</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='17%'>Nilai Obat</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>No.</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Kode Barang</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='43%'>Nama Barang</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Satuan</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Jml.Obat</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Jml.Resep</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nilai Obat</td>"+
                                             "</tr>"
                                     );
                                     rsobat.beforeFirst();
@@ -1149,8 +1149,8 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
                 if(rspoli.next()){
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' width='3%'>No.</td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' width='97%'>Nama Poli</td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' width='3%'>No.</td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' width='97%'>Nama Poli</td>"+
                         "</tr>"
                     );
                 }
@@ -1200,13 +1200,13 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
                                         "<table width='100%' border='0' align='center' cellspacing='0'>"+
                                             "<caption>"+rspenjab.getString("png_jawab")+"</caption>"+
                                             "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Barang</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='43%'>Nama Barang</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Satuan</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Jml.Obat</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Jml.Resep</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='17%'>Nilai Obat</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>No.</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Kode Barang</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='43%'>Nama Barang</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Satuan</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Jml.Obat</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Jml.Resep</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nilai Obat</td>"+
                                             "</tr>"
                                     );
                                     rsobat.beforeFirst();

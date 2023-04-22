@@ -1608,13 +1608,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                          "<td valign='middle' align='left' colspan='7'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>No.Rawat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='22%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='33%'>Tindakan Medis</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Jasa Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>No.Rawat</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Tindakan Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Status</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Jasa Medis</td>"+
                                     "</tr>"
                     );
                     if(chkRalan.isSelected()==true){
@@ -3079,13 +3079,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                          "<td valign='middle' align='left' colspan='7'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>No.Rawat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='22%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='33%'>Tindakan Medis</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Jasa Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>No.Rawat</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Tindakan Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Status</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Jasa Medis</td>"+
                                     "</tr>"
                     );
                     if(chkRalan.isSelected()==true){
@@ -4549,13 +4549,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                          "<td valign='middle' align='left' colspan='7'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>No.Rawat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='22%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='33%'>Tindakan Medis</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Jasa Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>No.Rawat</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Tindakan Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Status</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Jasa Medis</td>"+
                                     "</tr>"
                     );
                     if(chkRalan.isSelected()==true){
@@ -6002,13 +6002,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                          "<td valign='middle' align='left' colspan='7'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>No.Rawat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='22%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='33%'>Tindakan Medis</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Jasa Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>No.Rawat</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Tindakan Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Status</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Jasa Medis</td>"+
                                     "</tr>"
                     );
                     if(chkRalan.isSelected()==true){
@@ -7438,13 +7438,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                          "<td valign='middle' align='left' colspan='7'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>No.Rawat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='22%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='33%'>Tindakan Medis</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Jasa Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>No.Rawat</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='22%'>Nama Pasien</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Tindakan Medis</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Status</td>"+
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Jasa Medis</td>"+
                                     "</tr>"
                     );
                     if(chkRalan.isSelected()==true){

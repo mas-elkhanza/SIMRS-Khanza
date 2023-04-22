@@ -20,7 +20,7 @@
 
     $token        = json_decode(curl_exec($curl),true);
     curl_close($curl);
-    $nopermintaan = validTeks(isset($_GET["nopermintaan"])?$_GET["nopermintaan"]:NULL);
+    $nopermintaan = validTeks4((isset($_GET["nopermintaan"])?$_GET["nopermintaan"]:NULL),25);
     $json         = "";
     $json2        = "";
     

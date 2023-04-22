@@ -350,9 +350,17 @@ public class DlgKecamatan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Nama,"kecamatan","nm_kec");
-        tampil();
-        emptTeks();
+        if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Kecamatan");
+        }else{
+            if(tbkecamatan.getSelectedRow()!= -1){
+                if(Sequel.meghapustf("kecamatan","nm_kec",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),1).toString())==true){
+                    tabMode.removeRow(tbkecamatan.getSelectedRow());
+                    emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

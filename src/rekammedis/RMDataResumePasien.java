@@ -2373,7 +2373,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             KodeDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KodeDokter.setText(akses.getkode());
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", NamaDokter,KodeDokter.getText());
+            NamaDokter.setText(dokter.tampil3(KodeDokter.getText()));
             if(NamaDokter.getText().equals("")){
                 KodeDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
@@ -2399,7 +2399,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         if(Sequel.queryu2tf("delete from resume_pasien where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

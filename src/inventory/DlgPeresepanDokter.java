@@ -64,7 +64,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private WarnaTable2 warna3=new WarnaTable2();
     private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",resep="",
+    private String noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
             kamar="",norawatibu="",kelas,bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),RESEPRAJALKEPLAN="no";
     /** Creates new form DlgPenyakit
      * @param parent
@@ -365,7 +365,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         }); 
         jam();
         
-        tampilkan_ppnobat_ralan=Sequel.cariIsi("select tampilkan_ppnobat_ralan from set_nota"); 
+        tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota"); 
         
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
@@ -374,6 +374,13 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
             STOKKOSONGRESEP="no";
+        }
+        
+        try {
+            DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            DEPOAKTIFOBAT = "";
         }
         
         try {
@@ -1276,7 +1283,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",NmDokter,KdDokter.getText());
+            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{
@@ -1826,14 +1833,18 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     public void isCek(){   
         BtnTambah.setEnabled(akses.getresep_dokter());
         TCari.requestFocus();
-        if(status.equals("ralan")){
-            bangsal=Sequel.cariIsi("select set_depo_ralan.kd_bangsal from set_depo_ralan where set_depo_ralan.kd_poli=?",Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
-            if(bangsal.equals("")){
-                bangsal=bangsaldefault;
-            }
-        }else if(status.equals("ranap")){
-            bangsal=akses.getkdbangsal();
-        }  
+        if(!DEPOAKTIFOBAT.equals("")){
+            bangsal=DEPOAKTIFOBAT;
+        }else{
+            if(status.equals("ralan")){
+                bangsal=Sequel.cariIsi("select set_depo_ralan.kd_bangsal from set_depo_ralan where set_depo_ralan.kd_poli=?",Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                if(bangsal.equals("")){
+                    bangsal=bangsaldefault;
+                }
+            }else if(status.equals("ranap")){
+                bangsal=akses.getkdbangsal();
+            } 
+        } 
     }
     
     public void setNoRm(String norwt,Date tanggal, String jam,String menit,String detik,String KodeDokter,String NamaDokter,String status) {        
@@ -1847,7 +1858,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         cmbDtk.setSelectedItem(detik); 
         KdDokter.setText(KodeDokter);
         NmDokter.setText(NamaDokter);
-        KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
+        KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt));
         TCari.requestFocus();
         this.status=status;
         SetHarga();
@@ -1878,9 +1889,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(KdDokter.getText().equals("")){
             KdDokter.setText(Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",norwt));
         }
-        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",NmDokter,KdDokter.getText());
+        NmDokter.setText(dokter.tampil3(KdDokter.getText()));
         
-        KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
+        KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt));
         TCari.requestFocus();
         this.status=status;
         SetHarga();

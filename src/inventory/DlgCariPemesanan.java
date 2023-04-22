@@ -885,7 +885,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -1096,12 +1096,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());     
+            nmptg.setText(petugas.tampil3(kdptg.getText()));     
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
             kdsup.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
             kdbar.requestFocus();       
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -1343,7 +1343,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 Sequel.cariIsi("select set_akun.Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
                             }); 
-                            sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode()); 
+                            sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode()); 
                          }
 
                          if(sukses==true){
@@ -1790,25 +1790,25 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='90px'>No.Faktur</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='70px'>Tgl.Faktur</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='70px'>Tgl.Datang</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='70px'>Jth.Tempo</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='80px'>Status Bayar</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='180px'>Suplier</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='180px'>Petugas</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='300px'>Barang</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='70px'>Satuan</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='40px'>Jml</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='75px'>Harga(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='80px'>Subtotal(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='40px'>Disk(%)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='75px'>Besar Disk(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='80px'>Total(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='80px'>Penerimaan(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='65px'>Meterai(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='65px'>PPN(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='85px'>Tagihan(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='90px'>No.Faktur</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Tgl.Faktur</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Tgl.Datang</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Jth.Tempo</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Status Bayar</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='180px'>Suplier</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='180px'>Petugas</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='300px'>Barang</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Satuan</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='40px'>Jml</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='75px'>Harga(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Subtotal(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='40px'>Disk(%)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='75px'>Besar Disk(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Total(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Penerimaan(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='65px'>Meterai(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='65px'>PPN(Rp)</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='85px'>Tagihan(Rp)</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement("select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
                     "pemesanan.kode_suplier,datasuplier.nama_suplier, "+

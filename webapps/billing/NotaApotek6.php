@@ -14,11 +14,11 @@
             $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-                $noretur    = validTeks(str_replace("_"," ",isset($_GET['noretur'])?$_GET['noretur']:NULL));  
-                $petugas    = validTeks(str_replace("_"," ",isset($_GET['petugas'])?$_GET['petugas']:NULL)); 
-                $tanggal    = validTeks(isset($_GET['tanggal'])?$_GET['tanggal']:NULL); 
-                $nm_member  = validTeks(str_replace("_"," ",isset($_GET['nm_member'])?$_GET['nm_member']:NULL)); 
-                $catatan    = validTeks(str_replace("_"," ",isset($_GET['catatan'])?$_GET['catatan']:NULL));
+                $noretur    = validTeks4(str_replace("_"," ",isset($_GET['noretur'])?$_GET['noretur']:NULL),20);  
+                $petugas    = validTeks4(str_replace("_"," ",isset($_GET['petugas'])?$_GET['petugas']:NULL),70); 
+                $tanggal    = validTeks4((isset($_GET['tanggal'])?$_GET['tanggal']:NULL),20); 
+                $nm_member  = validTeks4(str_replace("_"," ",isset($_GET['nm_member'])?$_GET['nm_member']:NULL),70); 
+                $catatan    = validTeks4(str_replace("_"," ",isset($_GET['catatan'])?$_GET['catatan']:NULL),70);
 
                 $_sql       = "select tampreturpiutang.nama_brng, tampreturpiutang.h_retur, tampreturpiutang.jml_retur, tampreturpiutang.subtotal from  tampreturpiutang ";            
                 $hasil      = bukaquery($_sql);

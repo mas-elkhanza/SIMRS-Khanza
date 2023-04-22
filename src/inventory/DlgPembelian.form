@@ -233,7 +233,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="65" width="250" height="-1"/>
+                  <AbsoluteConstraints x="190" y="65" width="230" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -255,7 +255,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="442" y="65" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="422" y="65" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -525,7 +525,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="501" y="65" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="480" y="65" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -550,7 +550,28 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="472" y="65" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="452" y="65" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="widget.Button" name="BtnSetHarga">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/011.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="51"/>
+                <Property name="toolTipText" type="java.lang.String" value="Alt+3"/>
+                <Property name="name" type="java.lang.String" value="BtnSetHarga" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[28, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSetHargaActionPerformed"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="510" y="65" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

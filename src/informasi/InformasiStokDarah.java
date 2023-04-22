@@ -11,7 +11,6 @@
 
 package informasi;
 
-import simrskhanza.DlgCariBangsal;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -100,7 +99,6 @@ public final class InformasiStokDarah extends javax.swing.JDialog {
         
     }
     
-    public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private int pilihan=0;
 
     /** This method is called from within the constructor to

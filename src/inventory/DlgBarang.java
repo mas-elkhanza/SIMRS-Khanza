@@ -890,7 +890,7 @@ public class DlgBarang extends javax.swing.JDialog {
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label12);
-        label12.setBounds(8, 12, 88, 23);
+        label12.setBounds(0, 12, 88, 23);
 
         Kd.setName("Kd"); // NOI18N
         Kd.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -900,7 +900,7 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kd);
-        Kd.setBounds(100, 12, 100, 23);
+        Kd.setBounds(92, 12, 100, 23);
 
         Nm.setName("Nm"); // NOI18N
         Nm.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -910,13 +910,13 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
         FormInput.add(Nm);
-        Nm.setBounds(100, 42, 380, 23);
+        Nm.setBounds(92, 42, 388, 23);
 
         label18.setText("Nama Barang :");
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label18);
-        label18.setBounds(8, 42, 88, 23);
+        label18.setBounds(0, 42, 88, 23);
 
         label26.setText("Hrg Rnp Kelas 1 : Rp.");
         label26.setName("label26"); // NOI18N
@@ -974,7 +974,7 @@ public class DlgBarang extends javax.swing.JDialog {
         label31.setName("label31"); // NOI18N
         label31.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label31);
-        label31.setBounds(8, 72, 88, 23);
+        label31.setBounds(0, 72, 88, 23);
 
         Letak.setName("Letak"); // NOI18N
         Letak.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -984,13 +984,13 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
         FormInput.add(Letak);
-        Letak.setBounds(100, 72, 380, 23);
+        Letak.setBounds(92, 72, 388, 23);
 
         label27.setText("Hrg Ralan : Rp.");
         label27.setName("label27"); // NOI18N
         label27.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label27);
-        label27.setBounds(8, 282, 107, 23);
+        label27.setBounds(0, 282, 107, 23);
 
         ralan.setName("ralan"); // NOI18N
         ralan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -1010,25 +1010,25 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
         FormInput.add(ralan);
-        ralan.setBounds(117, 282, 110, 23);
+        ralan.setBounds(109, 282, 110, 23);
 
         nmsat.setEditable(false);
         nmsat.setName("nmsat"); // NOI18N
         nmsat.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(nmsat);
-        nmsat.setBounds(162, 132, 140, 23);
+        nmsat.setBounds(154, 132, 148, 23);
 
         label19.setText("Satuan Kecil :");
         label19.setName("label19"); // NOI18N
         label19.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label19);
-        label19.setBounds(8, 132, 88, 23);
+        label19.setBounds(0, 132, 88, 23);
 
         kdsat.setEditable(false);
         kdsat.setName("kdsat"); // NOI18N
         kdsat.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(kdsat);
-        kdsat.setBounds(100, 132, 60, 23);
+        kdsat.setBounds(92, 132, 60, 23);
 
         BtnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSatuan.setMnemonic('1');
@@ -1078,19 +1078,19 @@ public class DlgBarang extends javax.swing.JDialog {
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label20);
-        label20.setBounds(8, 162, 88, 23);
+        label20.setBounds(0, 162, 88, 23);
 
         kdjns.setEditable(false);
         kdjns.setName("kdjns"); // NOI18N
         kdjns.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(kdjns);
-        kdjns.setBounds(100, 162, 90, 23);
+        kdjns.setBounds(92, 162, 90, 23);
 
         nmjns.setEditable(false);
         nmjns.setName("nmjns"); // NOI18N
         nmjns.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(nmjns);
-        nmjns.setBounds(192, 162, 260, 23);
+        nmjns.setBounds(184, 162, 268, 23);
 
         BtnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnJenis.setMnemonic('2');
@@ -1335,7 +1335,7 @@ public class DlgBarang extends javax.swing.JDialog {
         karyawan.setBounds(630, 222, 110, 23);
 
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2019" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2023" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);
@@ -1347,7 +1347,6 @@ public class DlgBarang extends javax.swing.JDialog {
         FormInput.add(DTPExpired);
         DTPExpired.setBounds(640, 282, 100, 23);
 
-        ChkKadaluarsa.setBackground(new java.awt.Color(235, 255, 235));
         ChkKadaluarsa.setSelected(true);
         ChkKadaluarsa.setText("Tanggal Kadaluwarsa :");
         ChkKadaluarsa.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1397,19 +1396,19 @@ public class DlgBarang extends javax.swing.JDialog {
         label22.setName("label22"); // NOI18N
         label22.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label22);
-        label22.setBounds(8, 192, 88, 23);
+        label22.setBounds(0, 192, 88, 23);
 
         kdkategori.setEditable(false);
         kdkategori.setName("kdkategori"); // NOI18N
         kdkategori.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(kdkategori);
-        kdkategori.setBounds(100, 192, 90, 23);
+        kdkategori.setBounds(92, 192, 90, 23);
 
         nmkategori.setEditable(false);
         nmkategori.setName("nmkategori"); // NOI18N
         nmkategori.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(nmkategori);
-        nmkategori.setBounds(192, 192, 260, 23);
+        nmkategori.setBounds(184, 192, 268, 23);
 
         BtnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKategori.setMnemonic('2');
@@ -1433,13 +1432,13 @@ public class DlgBarang extends javax.swing.JDialog {
         nmgolongan.setName("nmgolongan"); // NOI18N
         nmgolongan.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(nmgolongan);
-        nmgolongan.setBounds(192, 222, 260, 23);
+        nmgolongan.setBounds(184, 222, 268, 23);
 
         kdgolongan.setEditable(false);
         kdgolongan.setName("kdgolongan"); // NOI18N
         kdgolongan.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(kdgolongan);
-        kdgolongan.setBounds(100, 222, 90, 23);
+        kdgolongan.setBounds(92, 222, 90, 23);
 
         BtnGolongan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnGolongan.setMnemonic('2');
@@ -1463,25 +1462,25 @@ public class DlgBarang extends javax.swing.JDialog {
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label23);
-        label23.setBounds(8, 222, 88, 23);
+        label23.setBounds(0, 222, 88, 23);
 
         label24.setText("Satuan Besar :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label24);
-        label24.setBounds(8, 102, 88, 23);
+        label24.setBounds(0, 102, 88, 23);
 
         kdsatBesar.setEditable(false);
         kdsatBesar.setName("kdsatBesar"); // NOI18N
         kdsatBesar.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(kdsatBesar);
-        kdsatBesar.setBounds(100, 102, 60, 23);
+        kdsatBesar.setBounds(92, 102, 60, 23);
 
         nmsatBesar.setEditable(false);
         nmsatBesar.setName("nmsatBesar"); // NOI18N
         nmsatBesar.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(nmsatBesar);
-        nmsatBesar.setBounds(162, 102, 140, 23);
+        nmsatBesar.setBounds(154, 102, 148, 23);
 
         BtnSatuanBesar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSatuanBesar.setMnemonic('1');
@@ -1535,13 +1534,13 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
         FormInput.add(dasar);
-        dasar.setBounds(117, 252, 110, 23);
+        dasar.setBounds(109, 252, 110, 23);
 
         label40.setText("Harga Dasar : Rp.");
         label40.setName("label40"); // NOI18N
         label40.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label40);
-        label40.setBounds(8, 252, 107, 23);
+        label40.setBounds(0, 252, 107, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1627,10 +1626,11 @@ public class DlgBarang extends javax.swing.JDialog {
         for (i = 0; i < tbDokter.getRowCount(); i++) {
             if (tbDokter.getValueAt(i, 0).toString().equals("true")) {
                 Sequel.mengedit("databarang","kode_brng='"+tbDokter.getValueAt(i, 1).toString()+"'","status='0'");
+                tabMode.removeRow(i);
+                i--;
             }
         }
-        
-        tampil();
+        LCount.setText("" + tabMode.getRowCount());
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -2507,7 +2507,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
                     
                 try {
-                    if(TCari.getText().trim().equals("")){}else{
+                    if(!TCari.getText().trim().equals("")){
                         ps.setString(1, "%" + TCari.getText().trim() + "%");
                         ps.setString(2, "%" + TCari.getText().trim() + "%");
                         ps.setString(3, "%" + TCari.getText().trim() + "%");
@@ -2733,7 +2733,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
 
             try {
-                if(TCari.getText().trim().equals("")){}else{
+                if(!TCari.getText().trim().equals("")){
                     ps.setString(1, "%" + TCari.getText().trim() + "%");
                     ps.setString(2, "%" + TCari.getText().trim() + "%");
                     ps.setString(3, "%" + TCari.getText().trim() + "%");
@@ -2784,7 +2784,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         rs.getString("golongan")
                     });
                     
-                    ps2 = koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal");
+                    ps2 = koneksi.prepareStatement("select bangsal.kd_bangsal,bangsal.nm_bangsal from bangsal");
                     try {
                         rs2 = ps2.executeQuery();
                         totalstok = 0;
@@ -2896,7 +2896,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
 
             try {
-                if(TCari.getText().trim().equals("")){}else{
+                if(!TCari.getText().trim().equals("")){
                     ps.setString(1, "%" + TCari.getText().trim() + "%");
                     ps.setString(2, "%" + TCari.getText().trim() + "%");
                     ps.setString(3, "%" + TCari.getText().trim() + "%");
@@ -3176,7 +3176,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         nmgolongan.setText("");
 
         Kd.requestFocus();
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kode_brng,4),signed)),0)  from databarang ", "B", 9, Kd);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(databarang.kode_brng,4),signed)),0)  from databarang ", "B", 9, Kd);
         //Valid.autoNomer("databarang","B",9,Kd);
     }
 
@@ -3240,7 +3240,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 Valid.textKosong(kdjns,"Kode Jenis");
                             }else{
                                 try{
-                                    rs=koneksi.prepareStatement("select * from setpenjualan where kdjns='"+kdjns.getText()+"'").executeQuery();
+                                    rs=koneksi.prepareStatement("select * from setpenjualan where setpenjualan.kdjns='"+kdjns.getText()+"'").executeQuery();
                                     if(rs.next()){
                                         ralan.setText(Double.toString(Valid.roundUp(Double.parseDouble(beli.getText()) + (Double.parseDouble(beli.getText()) * (rs.getDouble("ralan") / 100)),100)));
                                         kelas1.setText(Double.toString(Valid.roundUp(Double.parseDouble(beli.getText()) + (Double.parseDouble(beli.getText()) * (rs.getDouble("kelas1") / 100)),100)));
@@ -3295,7 +3295,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 Valid.textKosong(Kd,"Kode Barang");
                             }else{
                                 try{
-                                    rs=koneksi.prepareStatement("select * from setpenjualanperbarang where kode_brng='"+Kd.getText()+"'").executeQuery();
+                                    rs=koneksi.prepareStatement("select * from setpenjualanperbarang where setpenjualanperbarang.kode_brng='"+Kd.getText()+"'").executeQuery();
                                     if(rs.next()){
                                         ralan.setText(Double.toString(Valid.roundUp(Double.parseDouble(beli.getText()) + (Double.parseDouble(beli.getText()) * (rs.getDouble("ralan") / 100)),100)));
                                         kelas1.setText(Double.toString(Valid.roundUp(Double.parseDouble(beli.getText()) + (Double.parseDouble(beli.getText()) * (rs.getDouble("kelas1") / 100)),100)));

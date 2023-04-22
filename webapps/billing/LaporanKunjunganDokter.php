@@ -12,8 +12,8 @@
         $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
         $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-            $tanggal1      = validTeks($_GET['tanggal1']); 
-            $tanggal2      = validTeks($_GET['tanggal2']); 
+            $tanggal1      = validTeks4($_GET['tanggal1'],20); 
+            $tanggal2      = validTeks4($_GET['tanggal2'],20); 
 
             $_sql = "select dokter.kd_dokter,dokter.nm_dokter from dokter ";            
             $hasil=bukaquery($_sql);

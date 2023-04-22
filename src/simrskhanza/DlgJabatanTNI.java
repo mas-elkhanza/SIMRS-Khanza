@@ -354,11 +354,14 @@ public class DlgJabatanTNI extends javax.swing.JDialog {
         if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Jabatan TNI");
         }else{
-            Sequel.meghapus("jabatan_tni","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString());  
-            tampil();
-            emptTeks();
-        }
-            
+            if(tbkecamatan.getSelectedRow()!= -1){
+                if(Sequel.meghapustf("jabatan_tni","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString())==true){
+                    tabMode.removeRow(tbkecamatan.getSelectedRow());
+                    emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }
+        }   
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

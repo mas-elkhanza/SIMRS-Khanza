@@ -759,7 +759,7 @@ public final class IPSRSBarang extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptBarangIpsrs.jasper","report","::[ Data Barang Non Medis, Radiologi, Loundry, ATK, Dapur, IPSRS ]::",
+                Valid.MyReportqry("rptBarangIpsrs.jasper","report","::[ Data Barang Non Medis, Radiologi, Loundry, ATK, IPSRS ]::",
                     "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsjenisbarang.nm_jenis, "+
                     "ipsrsbarang.stok,ipsrsbarang.harga from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
                     "on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
@@ -854,7 +854,7 @@ private void nama_brngKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
 private void kode_satKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kode_satKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nama_sat,kode_sat.getText());           
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?", nama_sat,kode_sat.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             nama_brng.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -886,7 +886,7 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang where kd_jenis=?", nmjenis,kdjenis.getText());           
+            Sequel.cariIsi("select ipsrsjenisbarang.nm_jenis from ipsrsjenisbarang where ipsrsjenisbarang.kd_jenis=?", nmjenis,kdjenis.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){            
             kode_sat.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1019,7 +1019,7 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TCari.setText("");
         kode_brng.requestFocus();
         //Valid.autoNomer(" jns_perawatan ","JP",6,TKd);
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kode_brng,4),signed)),0) from ipsrsbarang  ","B",5,kode_brng);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(ipsrsbarang.kode_brng,4),signed)),0) from ipsrsbarang  ","B",5,kode_brng);
         kode_brng.requestFocus();
     }
     
@@ -1035,8 +1035,8 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             nmjenis.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
             stok.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
             harga.setText(Valid.SetAngka6(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString())));
-            kode_sat.setText(Sequel.cariIsi("select kode_sat from ipsrsbarang where kode_brng=?",kode_brng.getText()));
-            kdjenis.setText(Sequel.cariIsi("select jenis from ipsrsbarang where kode_brng=?",kode_brng.getText()));
+            kode_sat.setText(Sequel.cariIsi("select ipsrsbarang.kode_sat from ipsrsbarang where ipsrsbarang.kode_brng=?",kode_brng.getText()));
+            kdjenis.setText(Sequel.cariIsi("select ipsrsbarang.jenis from ipsrsbarang where ipsrsbarang.kode_brng=?",kode_brng.getText()));
         }
     }
 
@@ -1070,8 +1070,5 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
         TCari.requestFocus();
     }
-    
-   
-
     
 }

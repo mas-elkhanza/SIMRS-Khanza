@@ -24,6 +24,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -398,9 +399,13 @@ public class DlgDiet extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama diet");
         }else{
-            Sequel.menyimpan("diet","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode diet");
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("diet","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode diet")==true){
+                tabMode.addRow(new Object[]{
+                    TKd.getText(),TNm.getText()
+                });
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -423,9 +428,15 @@ public class DlgDiet extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,TKd,"diet","kd_diet");
-        tampil();
-        emptTeks();
+        if(tbSpesialis.getSelectedRow()!= -1){
+            if(Sequel.meghapustf("diet","kd_diet",tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString())==true){
+                tabMode.removeRow(tbSpesialis.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus...!!!!");
+        } 
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -442,9 +453,17 @@ public class DlgDiet extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama diet");
         }else{
-            Valid.editTable(tabMode,"diet","kd_diet",TKd,"nama_diet='"+TNm.getText()+"'");
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbSpesialis.getSelectedRow()>-1){
+                if(Sequel.mengedittf("diet","kd_diet=?","kd_diet=?,nama_diet=?",3,new String[]{
+                        TKd.getText(),TNm.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(), 0).toString()
+                    })==true){
+                    tabMode.setValueAt(TKd.getText(),tbSpesialis.getSelectedRow(),0);
+                    tabMode.setValueAt(TNm.getText(),tbSpesialis.getSelectedRow(),1);
+                    emptTeks();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau diganti...!!!!");
+            } 
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

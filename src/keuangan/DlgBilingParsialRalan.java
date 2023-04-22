@@ -58,7 +58,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private ResultSet rsakunbayar,rstindakan,rsset_tarif,rsbayar,rsreg,rscaripoli,
             rscarialamat,rsdokterralan,rsrekening;
     private String noorderradiologi="",noorderlaborat="",jmls="",kd_pj="",kd_poli="",poli_ralan="Yes",cara_bayar_ralan="Yes",cara_bayar_lab="Yes",kelas_lab="Yes",
-            NoNota="",sqlpscaripoli="select nm_poli from poliklinik where kd_poli=?",
+            NoNota="",sqlpscaripoli="select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?",
             sqlpscarialamat="select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) from pasien "+
                         "inner join kelurahan inner join kecamatan inner join kabupaten on pasien.kd_kel=kelurahan.kd_kel "+
                         "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
@@ -2946,7 +2946,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
                 if(i>0){                       
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());
+                    kd_pj=Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
                     if(i==1){
                         Valid.panggilUrl("billing/LaporanBilling9.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
                     }else if(i==2){
@@ -3464,7 +3464,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
     public void setNoRm(String norwt,String kodedokter, String namadokter,String KodePoli) {
         TNoRw.setText(norwt);
-        this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt);
+        this.kd_pj=Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt);
         this.kd_poli=KodePoli;
         KdDok.setText(kodedokter);
         TDokter.setText(namadokter);
@@ -3483,7 +3483,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private void isRawat(){
         DTPTgl.setDate(new Date());
         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",TNoRM,TNoRw.getText());
-        chkPoli.setText("Unit/Instansi : "+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", kd_poli));
+        chkPoli.setText("Unit/Instansi : "+Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", kd_poli));
         TBiaya.setText(Sequel.cariIsi("select biaya_reg from reg_periksa where no_rawat=?", TNoRw.getText()));
     }
 
@@ -3583,7 +3583,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     
     private void tampilDr() {
         try{  
-            if(Sequel.cariInteger("select count(*) from rawat_jl_dr where no_rawat=? and stts_bayar='Belum'",TNoRw.getText())>0){
+            if(Sequel.cariInteger("select count(*) from rawat_jl_dr where rawat_jl_dr.no_rawat=? and rawat_jl_dr.stts_bayar='Belum'",TNoRw.getText())>0){
                 Valid.tabelKosong(TabModeTindakanDr);
                 pstindakan=koneksi.prepareStatement(
                     "select rawat_jl_dr.kd_jenis_prw, jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+

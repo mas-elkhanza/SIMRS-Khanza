@@ -12,7 +12,7 @@
         $keyword = "";
         if (isset($cari["usere"])) {
             if(($cari["usere"]==USERHYBRIDWEB)&&($cari["passwordte"]==PASHYBRIDWEB)){
-                $keyword = validTeks($cari["keyword"]);
+                $keyword = validTeks4($cari["keyword"],20);
                 $_sql    = "SELECT emergency_index.kode_emergency,emergency_index.nama_emergency,emergency_index.indek FROM emergency_index where emergency_index.kode_emergency like '%".$keyword."%' or emergency_index.nama_emergency like '%".$keyword."%' ORDER BY emergency_index.indek desc";
                 $hasil   = bukaquery($_sql);
                 $jumlah  = mysqli_num_rows($hasil);

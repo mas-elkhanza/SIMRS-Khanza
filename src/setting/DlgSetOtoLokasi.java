@@ -1203,7 +1203,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 while(rs.next()){
                     tabModeRanap.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
-                        Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",rs.getString(3))
+                        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",rs.getString(3))
                     });
                 }
             } catch (SQLException e) {

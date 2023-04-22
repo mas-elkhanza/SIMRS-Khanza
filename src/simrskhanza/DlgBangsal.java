@@ -458,8 +458,11 @@ public final class DlgBangsal extends javax.swing.JDialog {
             Valid.textKosong(TNm,"nama bangsal");
         }else{
             if(Sequel.menyimpantf("bangsal","?,?,?","Kode Kamar",3,new String[]{TKd.getText(),TNm.getText(),"1"})==true){
-                tampil();
+                tabMode.addRow(new Object[]{
+                    false,TKd.getText(),TNm.getText()
+                });
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }else{
                 TKd.requestFocus();
             }            
@@ -488,9 +491,11 @@ public final class DlgBangsal extends javax.swing.JDialog {
         for(i=0;i<tbBangsal.getRowCount();i++){ 
             if(tbBangsal.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit("bangsal","kd_bangsal='"+tbBangsal.getValueAt(i,1).toString()+"'","status='0'");
+                tabMode.removeRow(i);
+                i--;
             }
         } 
-        tampil();
+        LCount.setText(""+tabMode.getRowCount());
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -509,9 +514,11 @@ public final class DlgBangsal extends javax.swing.JDialog {
             Valid.textKosong(TNm,"nama bangsal");
         }else{
             if(tbBangsal.getSelectedRow()>-1){
-                Sequel.mengedit("bangsal","kd_bangsal=?","nm_bangsal=?,kd_bangsal=?",3,new String[]{TNm.getText(),TKd.getText(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 1).toString()});
-                if(tabMode.getRowCount()!=0){tampil();}
-                emptTeks();
+                if(Sequel.mengedittf("bangsal","kd_bangsal=?","nm_bangsal=?,kd_bangsal=?",3,new String[]{TNm.getText(),TKd.getText(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 1).toString()})==true){
+                    tabMode.setValueAt(TKd.getText(),tbBangsal.getSelectedRow(),1);
+                    tabMode.setValueAt(TNm.getText(),tbBangsal.getSelectedRow(),2);
+                    emptTeks();
+                }
             }            
         }
 }//GEN-LAST:event_BtnEditActionPerformed

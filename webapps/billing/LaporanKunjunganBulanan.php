@@ -12,8 +12,8 @@
         $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
         $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-            $tanggal1 = validTeks($_GET['tanggal1']); 
-            $tanggal2 = validTeks($_GET['tanggal2']); 
+            $tanggal1 = validTeks4($_GET['tanggal1'],20); 
+            $tanggal2 = validTeks4($_GET['tanggal2'],20); 
             $_sql     = "select left(reg_periksa.tgl_registrasi,7) from reg_periksa where reg_periksa.tgl_registrasi between '$tanggal1' and '$tanggal2' group by left(reg_periksa.tgl_registrasi,7) order by reg_periksa.tgl_registrasi";            
             $hasil    = bukaquery($_sql);
             if(mysqli_num_rows($hasil)!=0) { 

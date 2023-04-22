@@ -659,7 +659,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?", nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){  
             kdjenis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){    
@@ -773,7 +773,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_ipsrsjenisbarang from ipsrsipsrsjenisbarangbarang where kd_ipsrsjenisbarang=?", nmjenis,kdjenis.getText());
+            Sequel.cariIsi("select ipsrsjenisbarang.nm_jenis from ipsrsjenisbarang where ipsrsjenisbarang.kd_jenis=?", nmjenis,kdjenis.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kdbar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -882,23 +882,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "select permintaan_non_medis.tanggal,permintaan_non_medis.no_permintaan, "+
                     "permintaan_non_medis.ruang, "+
                     "permintaan_non_medis.nip,pegawai.nama,permintaan_non_medis.status "+
-                    "from permintaan_non_medis inner join pegawai "+
-                    "inner join kodesatuan inner join detail_permintaan_non_medis inner join ipsrsjenisbarang "+
+                    "from permintaan_non_medis inner join pegawai on permintaan_non_medis.nip=pegawai.nik "+
+                    "inner join detail_permintaan_non_medis on permintaan_non_medis.no_permintaan=detail_permintaan_non_medis.no_permintaan "+
                     "inner join ipsrsbarang on detail_permintaan_non_medis.kode_brng=ipsrsbarang.kode_brng "+
-                    " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                    " and permintaan_non_medis.no_permintaan=detail_permintaan_non_medis.no_permintaan "+
-                    " and permintaan_non_medis.nip=pegawai.nik "+
-                    " and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                    " where permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and permintaan_non_medis.no_permintaan like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and permintaan_non_medis.ruang like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and permintaan_non_medis.nip like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and pegawai.nama like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and detail_permintaan_non_medis.kode_brng like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and detail_permintaan_non_medis.kode_sat like ? or "+
-                    " permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                    " group by permintaan_non_medis.no_permintaan order by permintaan_non_medis.tanggal,permintaan_non_medis.no_permintaan ");
+                    "inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
+                    "inner join kodesatuan on ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
+                    " where permintaan_non_medis.tanggal between ? and ? and permintaan_non_medis.no_permintaan like ? and permintaan_non_medis.ruang like ? and pegawai.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and "+
+                    " (permintaan_non_medis.no_permintaan like ? or permintaan_non_medis.ruang like ? or permintaan_non_medis.nip like ? or pegawai.nama like ? or ipsrsjenisbarang.nm_jenis like ? or detail_permintaan_non_medis.kode_brng like ? or "+
+                    " ipsrsbarang.nama_brng like ? or detail_permintaan_non_medis.kode_sat like ? or kodesatuan.satuan like ?) group by permintaan_non_medis.no_permintaan order by permintaan_non_medis.tanggal,permintaan_non_medis.no_permintaan ");
             try {
                 ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
@@ -908,70 +899,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(6,"%"+kdjenis.getText()+"%");
                 ps.setString(7,"%"+nmbar.getText()+"%");
                 ps.setString(8,"%"+TCari.getText()+"%");
-                ps.setString(9,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(11,"%"+NoPermintaan.getText()+"%");
-                ps.setString(12,"%"+Ruangan.getText()+"%");
-                ps.setString(13,"%"+NmPeg.getText()+"%");
-                ps.setString(14,"%"+kdjenis.getText()+"%");
-                ps.setString(15,"%"+nmbar.getText()+"%");
+                ps.setString(9,"%"+TCari.getText()+"%");
+                ps.setString(10,"%"+TCari.getText()+"%");
+                ps.setString(11,"%"+TCari.getText()+"%");
+                ps.setString(12,"%"+TCari.getText()+"%");
+                ps.setString(13,"%"+TCari.getText()+"%");
+                ps.setString(14,"%"+TCari.getText()+"%");
+                ps.setString(15,"%"+TCari.getText()+"%");
                 ps.setString(16,"%"+TCari.getText()+"%");
-                ps.setString(17,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(19,"%"+NoPermintaan.getText()+"%");
-                ps.setString(20,"%"+Ruangan.getText()+"%");
-                ps.setString(21,"%"+NmPeg.getText()+"%");
-                ps.setString(22,"%"+kdjenis.getText()+"%");
-                ps.setString(23,"%"+nmbar.getText()+"%");
-                ps.setString(24,"%"+TCari.getText()+"%");
-                ps.setString(25,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(27,"%"+NoPermintaan.getText()+"%");
-                ps.setString(28,"%"+Ruangan.getText()+"%");
-                ps.setString(29,"%"+NmPeg.getText()+"%");
-                ps.setString(30,"%"+kdjenis.getText()+"%");
-                ps.setString(31,"%"+nmbar.getText()+"%");
-                ps.setString(32,"%"+TCari.getText()+"%");
-                ps.setString(33,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(34,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(35,"%"+NoPermintaan.getText()+"%");
-                ps.setString(36,"%"+Ruangan.getText()+"%");
-                ps.setString(37,"%"+NmPeg.getText()+"%");
-                ps.setString(38,"%"+kdjenis.getText()+"%");
-                ps.setString(39,"%"+nmbar.getText()+"%");
-                ps.setString(40,"%"+TCari.getText()+"%");
-                ps.setString(41,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(42,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(43,"%"+NoPermintaan.getText()+"%");
-                ps.setString(44,"%"+Ruangan.getText()+"%");
-                ps.setString(45,"%"+NmPeg.getText()+"%");
-                ps.setString(46,"%"+kdjenis.getText()+"%");
-                ps.setString(47,"%"+nmbar.getText()+"%");
-                ps.setString(48,"%"+TCari.getText()+"%");
-                ps.setString(49,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(50,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(51,"%"+NoPermintaan.getText()+"%");
-                ps.setString(52,"%"+Ruangan.getText()+"%");
-                ps.setString(53,"%"+NmPeg.getText()+"%");
-                ps.setString(54,"%"+kdjenis.getText()+"%");
-                ps.setString(55,"%"+nmbar.getText()+"%");
-                ps.setString(56,"%"+TCari.getText()+"%");
-                ps.setString(57,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(58,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(59,"%"+NoPermintaan.getText()+"%");
-                ps.setString(60,"%"+Ruangan.getText()+"%");
-                ps.setString(61,"%"+NmPeg.getText()+"%");
-                ps.setString(62,"%"+kdjenis.getText()+"%");
-                ps.setString(63,"%"+nmbar.getText()+"%");
-                ps.setString(64,"%"+TCari.getText()+"%");
-                ps.setString(65,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(66,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(67,"%"+NoPermintaan.getText()+"%");
-                ps.setString(68,"%"+Ruangan.getText()+"%");
-                ps.setString(69,"%"+NmPeg.getText()+"%");
-                ps.setString(70,"%"+kdjenis.getText()+"%");
-                ps.setString(71,"%"+nmbar.getText()+"%");
-                ps.setString(72,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -982,31 +917,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 "select detail_permintaan_non_medis.kode_brng,ipsrsbarang.nama_brng, "+
                                 "detail_permintaan_non_medis.kode_sat,kodesatuan.satuan,"+
                                 "detail_permintaan_non_medis.jumlah,detail_permintaan_non_medis.keterangan "+
-                                "from detail_permintaan_non_medis inner join ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
-                                " on detail_permintaan_non_medis.kode_brng=ipsrsbarang.kode_brng "+
-                                " and detail_permintaan_non_medis.kode_sat=kodesatuan.kode_sat "+
-                                " and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where "+
-                                " detail_permintaan_non_medis.no_permintaan=? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? and detail_permintaan_non_medis.kode_brng like ? or "+
-                                " detail_permintaan_non_medis.no_permintaan=? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? or "+
-                                " detail_permintaan_non_medis.no_permintaan=? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? and detail_permintaan_non_medis.kode_sat like ? or "+
-                                " detail_permintaan_non_medis.no_permintaan=? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? and ipsrsjenisbarang.nm_jenis like ? order by detail_permintaan_non_medis.kode_brng  ");
+                                "from detail_permintaan_non_medis inner join ipsrsbarang on detail_permintaan_non_medis.kode_brng=ipsrsbarang.kode_brng "+
+                                "inner join kodesatuan on detail_permintaan_non_medis.kode_sat=kodesatuan.kode_sat "+
+                                "inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where "+
+                                " detail_permintaan_non_medis.no_permintaan=? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? and "+
+                                " (detail_permintaan_non_medis.kode_brng like ? or ipsrsbarang.nama_brng like ? or detail_permintaan_non_medis.kode_sat like ? or "+
+                                " ipsrsjenisbarang.nm_jenis like ?) order by detail_permintaan_non_medis.kode_brng ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmbar.getText()+"%");
                         ps2.setString(3,"%"+kdjenis.getText()+"%");
                         ps2.setString(4,"%"+TCari.getText()+"%");
-                        ps2.setString(5,rs.getString(2));
-                        ps2.setString(6,"%"+nmbar.getText()+"%");
-                        ps2.setString(7,"%"+kdjenis.getText()+"%");
-                        ps2.setString(8,"%"+TCari.getText()+"%");
-                        ps2.setString(9,rs.getString(2));
-                        ps2.setString(10,"%"+nmbar.getText()+"%");
-                        ps2.setString(11,"%"+kdjenis.getText()+"%");
-                        ps2.setString(12,"%"+TCari.getText()+"%");
-                        ps2.setString(13,rs.getString(2));
-                        ps2.setString(14,"%"+nmbar.getText()+"%");
-                        ps2.setString(15,"%"+kdjenis.getText()+"%");
-                        ps2.setString(16,"%"+TCari.getText()+"%");
+                        ps2.setString(5,"%"+TCari.getText()+"%");
+                        ps2.setString(6,"%"+TCari.getText()+"%");
+                        ps2.setString(7,"%"+TCari.getText()+"%");
                         rs2=ps2.executeQuery();
                         int no=1;
                         while(rs2.next()){

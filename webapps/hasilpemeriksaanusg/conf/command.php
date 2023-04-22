@@ -35,7 +35,6 @@
     }
 
 
-
     function isGuest() {
         if (cekSessiAdmin()) {
             return false;
@@ -48,15 +47,15 @@
     function formProtek() {
             $aksi=isset($_GET['act'])?$_GET['act']:NULL;
             if (!cekUser()) {
-                    $form = array ('HomeAdmin','List');
-                            foreach ($form as $page) {
-                                    if ($aksi==$page) {
-                                            echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
-                                            exit;
-                                            break;
-                                    }
-                            }
-                    }		
+                $form = array ('HomeAdmin','List');
+                foreach ($form as $page) {
+                    if ($aksi==$page) {
+                        echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
+                        exit;
+                        break;
+                    }
+                }
+            }		
 
     }
 
@@ -66,7 +65,6 @@
             switch ($aksi) {
                     case 'HomeAdmin'	  	: include_once('pages/kontak.php'); break;
                     case 'List'                 : include_once('pages/list.php'); break;
-
                     default			: include_once('pages/kontak.php');
 
             }

@@ -633,13 +633,13 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='110px'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='220px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Pembayaran</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>Petugas</td>"
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>"
             );   
             
             kolom=0;
@@ -651,7 +651,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                 while(rsakunbayar.next()){
                     namabayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -676,7 +676,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                     akunrekening[kolom2]=rsakunbayar.getString("kd_rek");
                     namarekening[kolom2]=rsakunbayar.getString("nm_rek");
                     kolom2++;
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>"+rsakunbayar.getString("nm_rek")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>"+rsakunbayar.getString("nm_rek")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -988,13 +988,13 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='110px'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='220px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Pembayaran</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>Petugas</td>"
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>Jenis/Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>"
             );   
             
             kolom=0;
@@ -1006,7 +1006,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                 while(rsakunbayar.next()){
                     namabayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -1031,7 +1031,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                     akunrekening[kolom2]=rsakunbayar.getString("kd_rek");
                     namarekening[kolom2]=rsakunbayar.getString("nm_rek");
                     kolom2++;
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>"+rsakunbayar.getString("nm_rek")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>"+rsakunbayar.getString("nm_rek")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);

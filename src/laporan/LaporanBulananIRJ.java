@@ -483,43 +483,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );            
             
@@ -584,43 +584,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -806,43 +806,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -1123,43 +1123,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -1572,43 +1572,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -2021,43 +2021,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Uraian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Uraian</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -2243,43 +2243,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Uraian</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Uraian</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -2552,43 +2552,43 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85%' colspan='32'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>01-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>02-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>03-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>04-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>05-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>06-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>07-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>08-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>09-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>10-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>11-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>12-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>13-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>14-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>15-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>16-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>17-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>18-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>19-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>20-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>21-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>22-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>23-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>24-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>25-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>26-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>27-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>28-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>29-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>30-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>31-"+Bulan.getSelectedItem()+"-"+Tahun.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );  
             

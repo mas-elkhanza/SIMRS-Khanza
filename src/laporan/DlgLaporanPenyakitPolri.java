@@ -418,12 +418,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='30px'>NO</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>ICD 10</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='30px'>NO</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>ICD 10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>Total</td>"+
                 "</tr>"
             );
             
@@ -552,12 +552,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='30px'>NO</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>ICD 10</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='30px'>NO</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>ICD 10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>Total</td>"+
                 "</tr>"
             );
             
@@ -685,12 +685,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='30px'>NO</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>ICD 10</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='30px'>NO</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>ICD 10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>Total</td>"+
                 "</tr>"
             );
             
@@ -818,12 +818,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='30px'>NO</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>ICD 10</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='30px'>NO</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>ICD 10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='200px'>JENIS PENYAKIT</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcari)+"'>PASIEN POLRI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(jumlahcarabayar)+"'>PASIEN UMUM</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>Total</td>"+
                 "</tr>"
             );
             

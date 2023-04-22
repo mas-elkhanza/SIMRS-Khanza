@@ -22,7 +22,7 @@ public class WarnaTable4 extends JTextArea implements TableCellRenderer {
         this.setWrapStyleWord(true);                    
         this.setLineWrap(true);  
         if (row % 2 == 1){
-            this.setBackground(new Color(255,246,244));
+            this.setBackground(new Color(255,244,244));
         }else{
             this.setBackground(new Color(255,255,255));
         } 

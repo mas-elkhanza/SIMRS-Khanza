@@ -391,10 +391,9 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,kddokter.getText());
+            TDokter.setText(dokter.tampil3(kddokter.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
-        }else{
         }
     }//GEN-LAST:event_kddokterKeyPressed
 
@@ -448,7 +447,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
 
     private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",TPoli,kdpoli.getText());
+            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?",TPoli,kdpoli.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnUnitActionPerformed(null);
         }else{

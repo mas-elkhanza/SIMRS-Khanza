@@ -1040,7 +1040,7 @@ private void no_buktiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nama_petugas,nip.getText()); 
+            nama_petugas.setText(petugas.tampil3(nip.getText())); 
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             AkunBayar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1104,12 +1104,12 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmsup,kdsup.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmsup,kdsup.getText());
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmsup,kdsup.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -1331,7 +1331,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             BtnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getbayar_pesan_non_medis());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nama_petugas,nip.getText());
+            nama_petugas.setText(petugas.tampil3(nip.getText()));
         }else if(akses.getjml1()>=1){
             nip.setEditable(true);
             BtnPetugas.setEnabled(true);

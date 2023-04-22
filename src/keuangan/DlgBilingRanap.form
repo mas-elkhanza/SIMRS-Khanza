@@ -1565,9 +1565,6 @@
                       <Dimension value="[200, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="norawatubahlamaKeyPressed"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Label" name="label18">
                   <Properties>
@@ -1975,7 +1972,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="11-10-2022 11:42:51"/>
+                    <StringItem index="0" value="11-02-2023 09:16:04"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2665,7 +2662,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane6" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -2700,7 +2696,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane7" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -2735,7 +2730,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="scrollPane8" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

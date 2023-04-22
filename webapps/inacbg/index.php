@@ -31,7 +31,7 @@
 <body>
     <div id="mainContent">
         <?php 
-        actionPages();
+            actionPages();
         ?>
     </div>    
 </body>

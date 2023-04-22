@@ -1289,7 +1289,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -2494,7 +2494,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", NmDokter,KdDokter.getText());
+            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
@@ -2504,7 +2504,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {

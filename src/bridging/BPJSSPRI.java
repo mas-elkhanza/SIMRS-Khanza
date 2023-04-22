@@ -1678,7 +1678,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
                 Sequel.meghapus("bridging_surat_pri_bpjs","no_surat",NoSurat.getText());
-                tampil();
+                tabMode.removeRow(tbObat.getSelectedRow());
                 emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());

@@ -1792,13 +1792,13 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             switch (pilihtable) {
                 case "rawat_inap_dr":
-                    Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdokter,kddokter.getText());
+                    nmdokter.setText(dokter.tampil3(kddokter.getText()));
                     break;
                 case "rawat_inap_pr":
                     Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmdokter,kddokter.getText());
                     break;
                 case "rawat_inap_drpr":
-                    Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdokter,kddokter.getText());
+                    nmdokter.setText(dokter.tampil3(kddokter.getText()));
                     break;
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -3129,7 +3129,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TNoRw.setText(norwt);
         kddokter.setText("");
         TPasien.setText(pasien);
-        this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());
+        this.kd_pj=Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
         this.kd_bangsal=Sequel.cariIsi(
                 "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
                 "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+

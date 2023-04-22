@@ -517,8 +517,7 @@ public final class BPJSCekRiwayatRujukanRS extends javax.swing.JDialog {
                         });  
                         i++;
                     }
-                }
-                                       
+                }                      
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   

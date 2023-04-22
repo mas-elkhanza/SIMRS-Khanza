@@ -3,6 +3,7 @@
         exit(header("Location:../index.php"));
     }
 ?>
+
 <div id="post">
   <div class="entry"> 
     <div align="center" class="link">
@@ -14,14 +15,14 @@
         <?php
                 $action  = isset($_GET['action'])?$_GET['action']:NULL;
                 $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-                $keyword = validTeks($keyword);
+                $keyword = validTeks4($keyword,20);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
         <table width="100%" align="center">
             <tr class="head">
                 <td width="25%" >Keyword</td><td width="">:</td>
                 <td width="82%">
-                    <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,250}" title=" a-zA-Z0-9, ./@_ (Maksimal 250 karakter)" autocomplete="off" autofocus/>
+                    <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="20" pattern="[a-zA-Z0-9, ./@_]{1,20}" title=" a-zA-Z0-9, ./@_ (Maksimal 20 karakter)" autocomplete="off" autofocus/>
                     <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                 </td>
             </tr>
@@ -69,7 +70,7 @@
         
         $aksi=isset($_GET['action'])?$_GET['action']:NULL;
         if ($aksi=="HAPUS") {
-            Hapus(" emergency_index "," kode_emergency ='".validTeks($_GET['kode_emergency'])."' ","?act=ListEmergencyIndex");
+            Hapus(" emergency_index "," kode_emergency ='".validTeks4($_GET['kode_emergency'],3)."' ","?act=ListEmergencyIndex");
         }
     ?>
     </div>

@@ -1065,7 +1065,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(175, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 255, 248)));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
         ChkAccor.setFocusable(false);
@@ -1746,7 +1746,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             Sequel.queryu("delete from antrilabpa");
                             Sequel.queryu("insert into antrilabpa values('1')");
                             TeksKosong();
-                            tampil();
+                            tbLabRalan.setValueAt(Valid.SetTgl(TanggalPulang.getSelectedItem()+""),tbLabRalan.getSelectedRow(),5);
+                            tbLabRalan.setValueAt(TanggalPulang.getSelectedItem().toString().substring(11,19),tbLabRalan.getSelectedRow(),6);
                     }
                 }
             }else{            
@@ -1782,7 +1783,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     break;
                             }  
                             TeksKosong();
-                            tampil3();
+                            tbLabRanap.setValueAt(Valid.SetTgl(TanggalPulang.getSelectedItem()+""),tbLabRanap.getSelectedRow(),5);
+                            tbLabRanap.setValueAt(TanggalPulang.getSelectedItem().toString().substring(11,19),tbLabRanap.getSelectedRow(),6);
                     }
                 }
             }else{            
@@ -2527,11 +2529,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
                 "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                 "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                "where permintaan_labpa.status='ranap' and permintaan_labpa.tgl_permintaan between ? and ? "+
+                "where permintaan_labpa.status='ranap' and kamar_inap.stts_pulang='-' and permintaan_labpa.tgl_permintaan between ? and ? "+
                 (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                 "(permintaan_labpa.noorder like ? or permintaan_labpa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                 "pasien.nm_pasien like ? or permintaan_labpa.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ? )")+
-                "group by permintaan_labpa.noorder order by permintaan_labpa.status='ranap' and permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan desc");
+                "group by permintaan_labpa.noorder order by permintaan_labpa.tgl_permintaan desc,permintaan_labpa.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -2625,12 +2627,12 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=permintaan_pemeriksaan_labpa.kd_jenis_prw "+
                     "inner join dokter on permintaan_labpa.dokter_perujuk=dokter.kd_dokter  "+
                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                    "where permintaan_labpa.status='ranap' and permintaan_labpa.tgl_permintaan between ? and ? "+
+                    "where permintaan_labpa.status='ranap' and kamar_inap.stts_pulang='-' and permintaan_labpa.tgl_permintaan between ? and ? "+
                     (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                     "(permintaan_labpa.noorder like ? or permintaan_labpa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or "+
                     "permintaan_labpa.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    "group by permintaan_labpa.noorder,permintaan_pemeriksaan_labpa.kd_jenis_prw order by permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan desc");
+                    "group by permintaan_labpa.noorder,permintaan_pemeriksaan_labpa.kd_jenis_prw order by permintaan_labpa.tgl_permintaan desc,permintaan_labpa.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));

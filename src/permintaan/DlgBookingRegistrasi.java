@@ -1320,7 +1320,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     tbObat.getValueAt(i,11).toString(),tbObat.getValueAt(i,12).toString()+", "+tbObat.getValueAt(i,13).toString()+
                     ", "+tbObat.getValueAt(i,14).toString()+", "+tbObat.getValueAt(i,15).toString()+
                     ", "+tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString(),
-                    ""+Sequel.cariIsiAngka("select registrasilama from poliklinik where kd_poli=?",tbObat.getValueAt(i,8).toString()),
+                    ""+Sequel.cariIsiAngka("select poliklinik.registrasilama from poliklinik where poliklinik.kd_poli=?",tbObat.getValueAt(i,8).toString()),
                     "Belum","Lama","Ralan",tbObat.getValueAt(i,18).toString(),umur,sttsumur,"Belum Bayar",status
                 })==true){
                     Sequel.mengedit3("skdp_bpjs","no_rkm_medis=? and tanggal_datang=?","status='Sudah Periksa'",2,new String[]{
@@ -1435,7 +1435,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void kdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpnjKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",nmpnj,kdpnj.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnPoli.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){

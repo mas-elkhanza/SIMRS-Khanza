@@ -5,6 +5,9 @@
 
 package rekammedis;
 
+import bridging.ApiOrthanc;
+import bridging.OrthancDICOM;
+import com.fasterxml.jackson.databind.JsonNode;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -43,7 +46,7 @@ import kepegawaian.DlgCariDokter;
  * @author perpustakaan
  */
 public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode,tabModeDicom;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -53,6 +56,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
     private String finger="";
+    private JsonNode root;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -128,6 +132,26 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDicom=new DefaultTableModel(null,new Object[]{
+            "UUID Pasien","ID Studies","ID Series"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbListDicom.setModel(tabModeDicom);
+        tbListDicom.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbListDicom.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 3; i++) {
+            TableColumn column = tbListDicom.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(100);
+            }else if(i==1){
+                column.setPreferredWidth(270);
+            }else if(i==2){
+                column.setPreferredWidth(270);
+            }
+        }
+        tbListDicom.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KirimanDari.setDocument(new batasInput((int)50).getKata(KirimanDari));
@@ -319,12 +343,18 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         LCount = new widget.Label();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
+        TabData = new javax.swing.JTabbedPane();
         FormPhoto = new widget.PanelBiasa();
         FormPass3 = new widget.PanelBiasa();
         btnAmbil = new widget.Button();
         BtnRefreshPhoto1 = new widget.Button();
         Scroll5 = new widget.ScrollPane();
         LoadHTML2 = new widget.editorpane();
+        FormOrthan = new widget.PanelBiasa();
+        Scroll6 = new widget.ScrollPane();
+        tbListDicom = new widget.Table();
+        panelGlass7 = new widget.panelisi();
+        btnDicom = new widget.Button();
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -600,7 +630,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2022 10:56:08" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2022 13:03:35" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1000,7 +1030,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -1018,8 +1048,18 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         });
         PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
 
+        TabData.setBackground(new java.awt.Color(254, 255, 254));
+        TabData.setForeground(new java.awt.Color(50, 50, 50));
+        TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabData.setName("TabData"); // NOI18N
+        TabData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabDataMouseClicked(evt);
+            }
+        });
+
         FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
-        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Gambar Pemeriksaan USG : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPhoto.setBorder(null);
         FormPhoto.setName("FormPhoto"); // NOI18N
         FormPhoto.setPreferredSize(new java.awt.Dimension(115, 73));
         FormPhoto.setLayout(new java.awt.BorderLayout());
@@ -1068,7 +1108,45 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
 
         FormPhoto.add(Scroll5, java.awt.BorderLayout.CENTER);
 
-        PanelAccor.add(FormPhoto, java.awt.BorderLayout.CENTER);
+        TabData.addTab("Gambar Pemeriksaan USG", FormPhoto);
+
+        FormOrthan.setBackground(new java.awt.Color(255, 255, 255));
+        FormOrthan.setBorder(null);
+        FormOrthan.setName("FormOrthan"); // NOI18N
+        FormOrthan.setPreferredSize(new java.awt.Dimension(115, 73));
+        FormOrthan.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll6.setName("Scroll6"); // NOI18N
+        Scroll6.setOpaque(true);
+
+        tbListDicom.setName("tbListDicom"); // NOI18N
+        Scroll6.setViewportView(tbListDicom);
+
+        FormOrthan.add(Scroll6, java.awt.BorderLayout.CENTER);
+
+        panelGlass7.setBorder(null);
+        panelGlass7.setName("panelGlass7"); // NOI18N
+        panelGlass7.setPreferredSize(new java.awt.Dimension(115, 40));
+
+        btnDicom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        btnDicom.setMnemonic('T');
+        btnDicom.setText("Tampilkan DICOM");
+        btnDicom.setToolTipText("Alt+T");
+        btnDicom.setName("btnDicom"); // NOI18N
+        btnDicom.setPreferredSize(new java.awt.Dimension(150, 30));
+        btnDicom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDicomActionPerformed(evt);
+            }
+        });
+        panelGlass7.add(btnDicom);
+
+        FormOrthan.add(panelGlass7, java.awt.BorderLayout.PAGE_END);
+
+        TabData.addTab("Integrasi Orthanc", FormOrthan);
+
+        PanelAccor.add(TabData, java.awt.BorderLayout.CENTER);
 
         internalFrame3.add(PanelAccor, java.awt.BorderLayout.EAST);
 
@@ -1256,31 +1334,31 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kiriman Dari</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Klinis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>HTA</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jenis Prestasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>GS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CRL</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>DBP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>FL</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>AC</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TBJ</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Usia Kehamilan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Plasenta Berimplatansi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Derajat Maturitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Air Ketuban</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Peluang Sex</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Indeks Cairan Ketuban (ICK)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelainan Kongenital Mayor</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesimpulan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kiriman Dari</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HTA</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Prestasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CRL</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>FL</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>AC</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TBJ</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia Kehamilan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Plasenta Berimplatansi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Derajat Maturitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Air Ketuban</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Peluang Sex</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indeks Cairan Ketuban (ICK)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelainan Kongenital Mayor</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1421,6 +1499,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                 isPhoto();
                 panggilPhoto();
                 getData();
+                tampilOrthanc();
             } catch (java.lang.NullPointerException e) {
             }
             if((evt.getClickCount()==2)&&(tbObat.getSelectedColumn()==0)){
@@ -1600,6 +1679,34 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
+    private void btnDicomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDicomActionPerformed
+        if(tabModeDicom.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else {
+            if(tbListDicom.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                OrthancDICOM orthan=new OrthancDICOM(null,false);
+                orthan.setJudul("::[ DICOM Orthanc Pasien "+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+" "+tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()+", Series "+tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString()+" ]::",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().replaceAll("/",""),tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString());
+                try {
+                    orthan.loadURL(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/web-viewer/app/viewer.html?series="+tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString());
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                }
+                orthan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                orthan.setLocationRelativeTo(internalFrame1);
+                orthan.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+            }
+        }
+    }//GEN-LAST:event_btnDicomActionPerformed
+
+    private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
+        tampilOrthanc();
+    }//GEN-LAST:event_TabDataMouseClicked
+
     /**
     * @param args the command line arguments
     */
@@ -1634,6 +1741,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     private widget.TextBox DiagnosaKlinis;
     private widget.TextBox DiameterBiparietal;
     private widget.PanelBiasa FormInput;
+    private widget.PanelBiasa FormOrthan;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
     private widget.TextBox HTA;
@@ -1656,10 +1764,12 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     private widget.TextBox Plasenta;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
+    private widget.ScrollPane Scroll6;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
+    private javax.swing.JTabbedPane TabData;
     private javax.swing.JTabbedPane TabRawat;
     private widget.TextBox TafsiranBerat;
     private widget.Tanggal Tanggal;
@@ -1668,6 +1778,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     private widget.TextBox UkuranKantong;
     private widget.TextBox UsiaKehamilan;
     private widget.Button btnAmbil;
+    private widget.Button btnDicom;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -1699,10 +1810,12 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private widget.Label label11;
     private widget.Label label14;
+    private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane17;
+    private widget.Table tbListDicom;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
@@ -1876,7 +1989,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", NmDokter,KdDokter.getText());
+            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
@@ -1886,14 +1999,14 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {
         if(Sequel.queryu2tf("delete from hasil_pemeriksaan_usg where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
@@ -1920,12 +2033,12 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(530,HEIGHT));
-            FormPhoto.setVisible(true);  
+            TabData.setVisible(true);  
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){    
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
-            FormPhoto.setVisible(false);  
+            TabData.setVisible(false);  
             ChkAccor.setVisible(true);
         }
     }
@@ -1958,6 +2071,29 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
+            }
+        }
+    }
+    
+    private void tampilOrthanc() {
+        if(TabData.isVisible()==true){
+            if(tbObat.getSelectedRow()!= -1){
+                 if(TabData.getSelectedIndex()==1){
+                     try {
+                         Valid.tabelKosong(tabModeDicom);
+                         ApiOrthanc orthanc=new ApiOrthanc();
+                         root=orthanc.AmbilSeries(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),Valid.SetTgl(DTPCari1.getSelectedItem()+"").replaceAll("-",""),Valid.SetTgl(DTPCari2.getSelectedItem()+"").replaceAll("-",""));
+                         for(JsonNode list:root){
+                             for(JsonNode sublist:list.path("Series")){
+                                  tabModeDicom.addRow(new Object[]{
+                                       list.path("PatientMainDicomTags").path("PatientID").asText(),list.path("ID").asText(),sublist.asText()
+                                  });   
+                             }        
+                         }
+                     } catch (Exception e) {
+                         System.out.println("Notif : "+e);
+                     }
+                 }
             }
         }
     }

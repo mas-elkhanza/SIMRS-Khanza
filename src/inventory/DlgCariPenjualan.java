@@ -1041,12 +1041,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());           
+            nmptg.setText(petugas.tampil3(kdptg.getText()));           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText()); 
+            nmptg.setText(petugas.tampil3(kdptg.getText())); 
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText()); 
+            nmptg.setText(petugas.tampil3(kdptg.getText())); 
             kdbar.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -1342,7 +1342,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Sequel.menyimpan("tampjurnal","'"+rs.getString("kd_rek")+"','KAS DI TANGAN','0','"+(ttljual+rs.getDouble("ongkir")+rs.getDouble("ppn"))+"'","Rekening"); 
                                     Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");    
                                     Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");                              
-                                    sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
+                                    sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
                                 }
                                 
                                 if(sukses==true){
@@ -1642,7 +1642,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             Sequel.menyimpan("tampjurnal","'"+kdrek+"','KAS DI TANGAN','"+Double.toString(ttljual)+"','0'","Rekening"); 
                             Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");    
                             Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
-                            sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode()); 
+                            sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","PENJUALAN DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode()); 
                          }
 
                          if(sukses==true){
@@ -1924,16 +1924,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>No.Nota</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='6%'>Tanggal</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='14%'>Petugas</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='14%'>Pasien</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='5%'>Jenis Jual</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Keterangan</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='13%'>Asal Barang</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='15%'>Cara Bayar</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>PPN</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>Ongkos Kirim</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='7%'>No.Nota</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='6%'>Tanggal</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='14%'>Petugas</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='14%'>Pasien</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='5%'>Jenis Jual</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='10%'>Keterangan</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='13%'>Asal Barang</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='15%'>Cara Bayar</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='7%'>PPN</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='7%'>Ongkos Kirim</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
                     "penjualan.nip,petugas.nama,penjualan.ongkir,penjualan.ppn, "+

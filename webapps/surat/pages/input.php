@@ -20,7 +20,7 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Masuk</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15">
+                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15" pattern="[A-Z0-9-]{1,15}" title=" A-Z0-9- (Maksimal 15 karakter)" autocomplete="off" required>
                             <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Ruang Surat</td>
@@ -40,7 +40,7 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Surat</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35">
+                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35" pattern="[a-zA-Z0-9, ./@_]{1,35}" title=" a-zA-Z0-9, ./@_ (Maksimal 35 karakter)" autocomplete="off" required>
                             <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Sifat Surat</td>
@@ -60,24 +60,24 @@
                     <tr class="isi2">
                         <td width="15%" >Asal</td>
                         <td width="35%">
-                            :&nbsp;<input name="asal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="asal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Lampiran</td>
                         <td width="35%">
-                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi13" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
                     <tr class="isi2">
                         <td width="15%" >Tujuan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Tembusan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi14'));" type=text id="TxtIsi14" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi14'));" type=text id="TxtIsi14" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi14" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -124,14 +124,14 @@
                     <tr class="isi2">
                         <td width="15%" >Perihal</td>
                         <td width="35%">
-                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" type=text id="TxtIsi6" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" type=text id="TxtIsi6" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
                         </td>                        
                         <td width="15%" >Status Balas</td>
                         <td width="35%">
                             :&nbsp;<select name="kd_balas" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" id="TxtIsi16">
                                 <?php
-                                    $_sql = "SELECT surat_sifat.kd,surat_sifat.balas FROM surat_balas ORDER BY surat_sifat.balas";
+                                    $_sql = "SELECT surat_balas.kd,surat_balas.balas FROM surat_balas ORDER BY surat_balas.balas";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi16' value='$baris[0]'>$baris[1]</option>";
@@ -163,7 +163,7 @@
                         </td>
                         <td width="15%" >Keterangan</td>
                         <td width="35%">
-                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi17'));" type=text id="TxtIsi17" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi17'));" type=text id="TxtIsi17" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi17" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -239,7 +239,7 @@
                         </td>
                         <td width="15%" >File Berkas(PDF/JPG)</td>
                         <td width="35%">
-                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi20'));" type=file id="TxtIsi20" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="image/jpeg,image/jpg"/>
+                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi20'));" type=file id="TxtIsi20" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="application/pdf,image/jpeg,image/jpg"/>
                             <span id="MsgIsi20" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -271,7 +271,7 @@
                     $max        = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_masuk where tgl_terima='$tgl_terima'");
                     $no_urut    = "SM".str_replace("-","",$tgl_terima).sprintf("%03s", $max);
                     $dokumen    = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
                         move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                         if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($asal))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_terima))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
                             switch($action) {

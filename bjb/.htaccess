@@ -1,0 +1,9 @@
+RewriteEngine On
+Options All -Indexes
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf|pdf)$">
+  Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

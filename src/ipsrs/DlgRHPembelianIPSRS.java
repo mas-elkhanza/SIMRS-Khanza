@@ -720,12 +720,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());            
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -738,12 +738,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());     
+            nmptg.setText(petugas.tampil3(kdptg.getText()));     
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
             kdsup.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
             kdbar.requestFocus();       
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -752,12 +752,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?", nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){            
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?", nmbar,kdbar.getText());
             kdjenis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){            
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?", nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBarangActionPerformed(null);
@@ -766,12 +766,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmjenis,kdjenis.getText());         
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?", nmjenis,kdjenis.getText());         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmjenis,kdjenis.getText());
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?", nmjenis,kdjenis.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmjenis,kdjenis.getText());
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?", nmjenis,kdjenis.getText());
             kdbar.requestFocus();   
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSatuanActionPerformed(null);
@@ -849,14 +849,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "ipsrspembelian.nip,petugas.nama, ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng, "+
                 " ipsrsdetailbeli.kode_sat,kodesatuan.satuan, ipsrsdetailbeli.jumlah, ipsrsdetailbeli.harga, "+
                 " ipsrsdetailbeli.subtotal, ipsrsdetailbeli.dis, ipsrsdetailbeli.besardis, ipsrsdetailbeli.total "+
-                " from ipsrspembelian inner join ipsrssuplier inner join petugas  "+
-                " inner join  ipsrsdetailbeli inner join ipsrsbarang inner join kodesatuan "+
-                " inner join ipsrsjenisbarang "+
-                " on  ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
-                " and  ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat "+                    
-                " and ipsrspembelian.no_faktur= ipsrsdetailbeli.no_faktur "+
-                " and ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+                    
-                " and ipsrspembelian.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
+                " from ipsrspembelian inner join ipsrssuplier on ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
+                " inner join petugas  on ipsrspembelian.nip=petugas.nip "+
+                " inner join ipsrsdetailbeli on ipsrspembelian.no_faktur= ipsrsdetailbeli.no_faktur "+
+                " inner join ipsrsbarang on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
+                " inner join kodesatuan on ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat "+
+                " inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
                 " where ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText().trim()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and petugas.nama like '%"+nmptg.getText().trim()+"%'  and ipsrsjenisbarang.nm_jenis like '%"+nmjenis.getText().trim()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText().trim()+"%' and "+
                 " (ipsrspembelian.no_faktur like '%"+TCari.getText().trim()+"%' or ipsrspembelian.kode_suplier like '%"+TCari.getText().trim()+"%' or ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or ipsrspembelian.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or ipsrsdetailbeli.kode_brng like '%"+TCari.getText().trim()+"%' or ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or ipsrsdetailbeli.kode_sat like '%"+TCari.getText().trim()+"%' or ipsrsjenisbarang.nm_jenis like '%"+TCari.getText().trim()+"%') "+
                 " order by ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur ",param);
@@ -945,14 +943,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "ipsrspembelian.nip,petugas.nama, ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng, "+
                     " ipsrsdetailbeli.kode_sat,kodesatuan.satuan, ipsrsdetailbeli.jumlah, ipsrsdetailbeli.harga, "+
                     " ipsrsdetailbeli.subtotal, ipsrsdetailbeli.dis, ipsrsdetailbeli.besardis, ipsrsdetailbeli.total "+
-                    " from ipsrspembelian inner join ipsrssuplier inner join petugas  "+
-                    " inner join  ipsrsdetailbeli inner join ipsrsbarang inner join kodesatuan "+
-                    " inner join ipsrsjenisbarang "+
-                    " on  ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
-                    " and  ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat "+                    
-                    " and ipsrspembelian.no_faktur= ipsrsdetailbeli.no_faktur "+
-                    " and ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+                    
-                    " and ipsrspembelian.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis"+
+                    " from ipsrspembelian inner join ipsrssuplier on ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
+                    " inner join petugas  on ipsrspembelian.nip=petugas.nip "+
+                    " inner join ipsrsdetailbeli on ipsrspembelian.no_faktur= ipsrsdetailbeli.no_faktur "+
+                    " inner join ipsrsbarang on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
+                    " inner join kodesatuan on ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat "+
+                    " inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
                     " where ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and "+
                     "(ipsrspembelian.no_faktur like ? or ipsrspembelian.kode_suplier like ? or ipsrssuplier.nama_suplier like ? or ipsrspembelian.nip like ? or petugas.nama like ? or ipsrsdetailbeli.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsdetailbeli.kode_sat like ? or ipsrsjenisbarang.nm_jenis like ?) "+
                     " order by ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur ");

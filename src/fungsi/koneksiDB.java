@@ -1094,4 +1094,144 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String CLIENTIDSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("CLIENTIDSATUSEHAT"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String SECRETKEYSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYSATUSEHAT"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IDSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSATUSEHAT"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAUTHSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAUTHSATUSEHAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLFHIRSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLFHIRSATUSEHAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KELURAHANSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("KELURAHANSATUSEHAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KECAMATANSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("KECAMATANSATUSEHAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KABUPATENSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("KABUPATENSATUSEHAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PROPINSISATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("PROPINSISATUSEHAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KODEPOSSATUSEHAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("KODEPOSSATUSEHAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USERORTHANC(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERORTHANC"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSORTHANC(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSORTHANC"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PORTORTHANC(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PORTORTHANC"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLORTHANC(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLORTHANC");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }

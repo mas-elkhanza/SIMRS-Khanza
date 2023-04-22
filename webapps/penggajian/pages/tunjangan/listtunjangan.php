@@ -9,8 +9,10 @@
         </div>   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                $action   = isset($_GET['action'])?$_GET['action']:NULL;
-                echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
+                $action  = isset($_GET['action'])?$_GET['action']:NULL;
+                $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+                $keyword = validTeks($keyword);
+                echo "<input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -22,8 +24,6 @@
             </table><br> 
             <div style="width: 100%; height: 78%; overflow: auto;">
             <?php
-                $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-                $keyword = validTeks($keyword);
                 $_sql    = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.departemen from pegawai where pegawai.stts_aktif<>'KELUAR' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen like '%".$keyword."%') order by pegawai.id ASC ";
                 $hasil   = bukaquery($_sql);
                 $jumlah  = mysqli_num_rows($hasil);

@@ -4,7 +4,7 @@
     }
 
     function Proses(){
-        if(getOne2("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'")>0){
+        if(getOne2("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'")>0){
             echo "<div class='block-header'>
                         <h2><center>Gagal melakukan booking</center></h2>
                   </div>
@@ -142,7 +142,7 @@
     if (isset($BtnSimpan)) {
         $penjab     = cleankar(isset($_POST['penjab'])?$_POST['penjab']:NULL);
         $kd_poli    = cleankar(isset($_POST['kd_poli'])?$_POST['kd_poli']:NULL);
-        $tanggal    = cleankar(isset($_POST['tanggal'])?$_POST['tanggal']:NULL);
+        $tanggal    = cleankar2(isset($_POST['tanggal'])?$_POST['tanggal']:NULL);
         $kd_dokter  = cleankar(isset($_POST['kd_dokter'])?$_POST['kd_dokter']:NULL);
         if ((!empty($penjab))&&(!empty($kd_poli))&&(!empty($tanggal))&&(!empty($kd_dokter))) {
             $nourut = "";
@@ -165,7 +165,7 @@
                     break;
             }
             
-            $insert = Tambah4("booking_registrasi","CURRENT_DATE(),CURRENT_TIME(),'".encrypt_decrypt($_SESSION["ses_pasien"],"d")."','$tanggal','$kd_dokter','$kd_poli','$nourut','$penjab','1','$tanggal 00:00:00','Belum'");
+            $insert = Tambah4("booking_registrasi","CURRENT_DATE(),CURRENT_TIME(),'".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."','$tanggal','$kd_dokter','$kd_poli','$nourut','$penjab','1','$tanggal 00:00:00','Belum'");
             if($insert){
                 echo "<div class='block-header'>
                             <h2><center>Proses booking berhasil</center></h2>
@@ -216,7 +216,7 @@
     }else{
         $validasiregistrasi = getOne2("select wajib_closing_kasir from set_validasi_registrasi");
         if($validasiregistrasi == "Yes"){
-            if(getOne("select count(no_rkm_medis) from reg_periksa where no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and status_bayar='Belum Bayar' and stts<>'Batal'" )>0){
+            if(getOne("select count(no_rkm_medis) from reg_periksa where no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' and status_bayar='Belum Bayar' and stts<>'Batal'" )>0){
                 echo "<div class='block-header'>
                             <h2><center>Gagal melakukan booking</center></h2>
                       </div>

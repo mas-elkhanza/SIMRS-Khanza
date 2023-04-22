@@ -1,3 +1,9 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
+
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputResikoKerja&action=TAMBAH>| Input Data |</a>
@@ -26,13 +32,13 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode</td><td width="">:</td>
-                    <td width="67%"><input name="kode_resiko" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_resiko;?>" size="10" maxlength="3" autofocus>
+                    <td width="67%"><input name="kode_resiko" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_resiko;?>" size="10" maxlength="3" pattern="[a-zA-Z0-9, ./@_]{1,3}" title=" a-zA-Z0-9, ./@_ (Maksimal 3 karakter)" autocomplete="off" autofocus/>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Resiko Kerja</td><td width="">:</td>
-                    <td width="67%"><input name="nama_resiko" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama_resiko;?>" size="40" maxlength="100" />
+                    <td width="67%"><input name="nama_resiko" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama_resiko;?>" size="40" maxlength="100" pattern="[a-zA-Z0-9, ./@_()]{1,100}" title=" a-zA-Z0-9, ./@_() (Maksimal 100 karakter)" autocomplete="off"/>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -47,8 +53,8 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode_resiko    = validTeks(trim($_POST['kode_resiko']));
-                    $nama_resiko    = validTeks(trim($_POST['nama_resiko']));
+                    $kode_resiko    = validTeks4(trim($_POST['kode_resiko']),3);
+                    $nama_resiko    = validTeks6(trim($_POST['nama_resiko']),100);
                     $indek          = validangka(trim($_POST['indek']));
                     if ((isset($kode_resiko))&&(isset($nama_resiko))&&(isset($indek))) {
                         switch($action) {
@@ -57,7 +63,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputResikoKerja&action=TAMBAH'></head><body></body></html>";
                                 break;
                             case "UBAH":
-                                Ubah(" resiko_kerja "," nama_resiko='$nama_resiko',indek='$indek' WHERE kode_resiko='$kode_resiko' ", " kelompok jabatan ");
+                                Ubah(" resiko_kerja "," nama_resiko='$nama_resiko',indek='$indek' WHERE kode_resiko='$kode_resiko' ", " resiko kerja ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResikoKerja'></head><body></body></html>";
                                 break;
                         }

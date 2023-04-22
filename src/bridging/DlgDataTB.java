@@ -39,7 +39,6 @@ import laporan.DlgCariPenyakit;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -747,7 +746,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel58.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel58);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -760,7 +759,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel59.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel59);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -960,7 +959,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(270, 160, 54, 23);
 
-        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022 15:36:59" }));
+        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2023 20:17:42" }));
         TanggalLaporan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalLaporan.setName("TanggalLaporan"); // NOI18N
         TanggalLaporan.setOpaque(false);
@@ -1351,7 +1350,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(532, 250, 80, 23);
 
-        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2023" }));
         MulaiBerobat.setDisplayFormat("dd-MM-yyyy");
         MulaiBerobat.setName("MulaiBerobat"); // NOI18N
         MulaiBerobat.setOpaque(false);
@@ -1598,7 +1597,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel31);
         jLabel31.setBounds(0, 460, 100, 23);
 
-        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2023" }));
         AkhirBerobat.setDisplayFormat("dd-MM-yyyy");
         AkhirBerobat.setName("AkhirBerobat"); // NOI18N
         AkhirBerobat.setOpaque(false);
@@ -1630,7 +1629,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel32);
         jLabel32.setBounds(512, 460, 100, 23);
 
-        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2023" }));
         DianjurkanTesHIV.setDisplayFormat("dd-MM-yyyy");
         DianjurkanTesHIV.setName("DianjurkanTesHIV"); // NOI18N
         DianjurkanTesHIV.setOpaque(false);
@@ -1642,7 +1641,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(DianjurkanTesHIV);
         DianjurkanTesHIV.setBounds(615, 460, 90, 23);
 
-        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2022" }));
+        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2023" }));
         TanggalTesHIV.setDisplayFormat("dd-MM-yyyy");
         TanggalTesHIV.setName("TanggalTesHIV"); // NOI18N
         TanggalTesHIV.setOpaque(false);
@@ -1903,12 +1902,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-
-        
         if(PaduanOAT.getSelectedItem().equals("Belum")){
-        PaduanOATHasil = "";
+            PaduanOATHasil = "";
         }else{
-        PaduanOATHasil = PaduanOAT.getSelectedItem().toString();
+            PaduanOATHasil = PaduanOAT.getSelectedItem().toString();
         }
         
         if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")){

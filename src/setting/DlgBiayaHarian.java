@@ -780,7 +780,7 @@ private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ju
     
     private void isKmr() {
         Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=? ",TKdBngsal,kdkamar.getText());
-        Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=? ",TBangsal,TKdBngsal.getText());
+        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=? ",TBangsal,TKdBngsal.getText());
     }
 
 

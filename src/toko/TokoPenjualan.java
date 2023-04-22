@@ -1106,14 +1106,14 @@ private void kdmemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdm
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_PAGE_DOWN:
-                Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
+                nmptg.setText(carijual.petugas.tampil3(kdptg.getText()));
                 break;
             case KeyEvent.VK_PAGE_UP:
-                Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
+                nmptg.setText(carijual.petugas.tampil3(kdptg.getText()));
                 Jenisjual.requestFocus();
                 break;
             case KeyEvent.VK_ENTER:
-                Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
+                nmptg.setText(carijual.petugas.tampil3(kdptg.getText()));
                 TCari.requestFocus();
                 break;
             case KeyEvent.VK_UP:
@@ -1518,9 +1518,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             BtnSimpan.setEnabled(akses.gettoko_penjualan());
             BtnTambah.setEnabled(akses.gettoko_barang());
             kdptg.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
+            nmptg.setText(carijual.petugas.tampil3(kdptg.getText()));
         }    
-        if(Sequel.cariIsi("select tampilkan_tombol_nota_toko from set_nota").equals("Yes")){
+        if(Sequel.cariIsi("select set_nota.tampilkan_tombol_nota_toko from set_nota").equals("Yes")){
             BtnNota.setVisible(true);
         }else{
             if(akses.getkode().equals("Admin Utama")){
@@ -1532,7 +1532,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     public void autoNomor(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,5),signed)),0) from tokopenjualan where tgl_jual='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(tokopenjualan.nota_jual,5),signed)),0) from tokopenjualan where tokopenjualan.tgl_jual='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' ",
                 "TJ"+Tgl.getSelectedItem().toString().substring(6,10)+Tgl.getSelectedItem().toString().substring(3,5)+Tgl.getSelectedItem().toString().substring(0,2),5,NoNota); 
     }
 

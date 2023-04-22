@@ -443,7 +443,8 @@ public final class DlgCariObat extends javax.swing.JDialog {
         }
         
         try {
-            psrekening=koneksi.prepareStatement("select * from set_akun_ralan");
+            psrekening=koneksi.prepareStatement(
+                "select set_akun_ralan.Suspen_Piutang_Obat_Ralan,set_akun_ralan.Obat_Ralan,set_akun_ralan.HPP_Obat_Rawat_Jalan,set_akun_ralan.Persediaan_Obat_Rawat_Jalan from set_akun_ralan");
             try {
                 rsrekening=psrekening.executeQuery();
                 while(rsrekening.next()){
@@ -3408,14 +3409,14 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     public void isCek(){   
         if(!DEPOAKTIFOBAT.equals("")){
             kdgudang.setText(DEPOAKTIFOBAT);
-            nmgudang.setText(Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",DEPOAKTIFOBAT));
+            nmgudang.setText(caribangsal.tampil3(DEPOAKTIFOBAT));
         }else{
             bangsal=Sequel.cariIsi("select set_depo_ralan.kd_bangsal from set_depo_ralan where set_depo_ralan.kd_poli=?",Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
             if(bangsal.equals("")){
                 bangsal=bangsaldefault;
             }     
             kdgudang.setText(bangsal);
-            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());    
+            nmgudang.setText(caribangsal.tampil3(kdgudang.getText()));
         }
                     
         BtnTambah.setEnabled(akses.getobat());
@@ -4143,6 +4144,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rs2.next()){
                             tbObat.setValueAt(rs2.getString("no_faktur"), tbObat.getSelectedRow(),17);
                             tbObat.setValueAt(rs2.getString("tgl_kadaluarsa"), tbObat.getSelectedRow(),18);
+                            tbObat.setValueAt(rs2.getDouble(hppfarmasi), tbObat.getSelectedRow(),13);
                             if(aktifkanbatch.equals("yes")){
                                 if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                     tbObat.setValueAt(rs2.getDouble("karyawan"), tbObat.getSelectedRow(),6);
@@ -4241,6 +4243,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rs2.next()){
                             tbDetailObatRacikan.setValueAt(rs2.getString("no_faktur"), tbDetailObatRacikan.getSelectedRow(),17);
                             tbDetailObatRacikan.setValueAt(rs2.getString("tgl_kadaluarsa"), tbDetailObatRacikan.getSelectedRow(),18);
+                            tbDetailObatRacikan.setValueAt(rs2.getDouble(hppfarmasi), tbDetailObatRacikan.getSelectedRow(),5);
                             if(aktifkanbatch.equals("yes")){
                                 if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                     tbDetailObatRacikan.setValueAt(rs2.getDouble("karyawan"), tbDetailObatRacikan.getSelectedRow(),4);

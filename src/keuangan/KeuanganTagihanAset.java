@@ -710,7 +710,7 @@ public final class KeuanganTagihanAset extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -1201,7 +1201,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             BtnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gettitip_faktur_aset());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nama_petugas,nip.getText());
+            nama_petugas.setText(petugas.tampil3(nip.getText()));
         }        
     }
 }

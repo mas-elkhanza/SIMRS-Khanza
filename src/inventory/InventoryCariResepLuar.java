@@ -960,7 +960,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                             param.put("propinsirs",akses.getpropinsirs());
                             param.put("emailrs",akses.getemailrs());
                             param.put("kontakrs",akses.getkontakrs());
-                            param.put("penanggung",Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",rs.getString("kd_pj")));               
+                            param.put("penanggung",Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",rs.getString("kd_pj")));               
                             param.put("propinsirs",akses.getpropinsirs());
                             param.put("tanggal",Valid.SetTgl(rs.getString("tgl_perawatan")+""));
                             param.put("norawat",rs.getString("no_rawat"));

@@ -664,21 +664,19 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tbKamar.getRowCount()!=0){   
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptOpnameIPSRS.jasper","report","::[ Stok Opname Non Medis, Penunjang Lab & Radiologi ]::","select ipsrsopname.kode_brng, ipsrsbarang.nama_brng,ipsrsopname.h_beli, ipsrsbarang.kode_sat, ipsrsopname.tanggal, ipsrsopname.stok, "+
                   "ipsrsopname.real, ipsrsopname.selisih,ipsrsopname.lebih, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal,ipsrsopname.nomihilang,ipsrsopname.nomilebih,ipsrsopname.keterangan "+
                   "from ipsrsopname inner join ipsrsbarang inner join ipsrsjenisbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng and ipsrsjenisbarang.kd_jenis=ipsrsbarang.jenis "+
-                  "where concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.kode_sat like '%"+TCari.getText().trim()+"%' or "+ 
-                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.keterangan like '%"+TCari.getText().trim()+"%' order by ipsrsopname.tanggal",param);
+                  "where concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and "+
+                  "(ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or ipsrsbarang.kode_sat like '%"+TCari.getText().trim()+"%' or "+
+                  "ipsrsopname.keterangan like '%"+TCari.getText().trim()+"%') order by ipsrsopname.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -862,32 +860,17 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
             pstampil=koneksi.prepareStatement("select ipsrsopname.kode_brng, ipsrsbarang.nama_brng,ipsrsopname.h_beli, ipsrsbarang.kode_sat, ipsrsopname.tanggal, ipsrsopname.stok, "+
                      "ipsrsopname.real, ipsrsopname.selisih,ipsrsopname.lebih, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal,ipsrsopname.nomihilang,ipsrsopname.nomilebih,ipsrsopname.keterangan "+
                      "from ipsrsopname inner join ipsrsbarang inner join ipsrsjenisbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng and ipsrsjenisbarang.kd_jenis=ipsrsbarang.jenis "+
-                     "where concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsopname.kode_brng like ? or "+
-                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsbarang.nama_brng like ? or "+
-                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsopname.kode_brng like ? or "+
-                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsbarang.kode_sat like ? or "+ 
-                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsopname.keterangan like ? order by ipsrsopname.tanggal");
+                     "where concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and "+
+                     "(ipsrsopname.kode_brng like ? or ipsrsbarang.nama_brng like ? or ipsrsopname.kode_brng like ? or ipsrsbarang.kode_sat like ? or ipsrsopname.keterangan like ?) order by ipsrsopname.tanggal");
             try {                
                 pstampil.setString(1,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
                 pstampil.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 pstampil.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 pstampil.setString(4,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(5,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
-                pstampil.setString(6,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(7,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(5,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(6,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(7,"%"+TCari.getText().trim()+"%");
                 pstampil.setString(8,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(9,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
-                pstampil.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(12,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(13,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
-                pstampil.setString(14,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(15,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(16,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(17,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
-                pstampil.setString(18,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(19,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(20,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
                 total=0;
                 while(rstampil.next()){                
@@ -959,7 +942,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     
         
     public void isCek(){
-        BtnHapus.setEnabled(akses.getstok_opname_obat());
-        BtnPrint.setEnabled(akses.getstok_opname_obat()); 
+        BtnHapus.setEnabled(akses.getstok_opname_logistik());
+        BtnPrint.setEnabled(akses.getstok_opname_logistik()); 
     }
 }

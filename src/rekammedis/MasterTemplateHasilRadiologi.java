@@ -475,9 +475,13 @@ public class MasterTemplateHasilRadiologi extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kd,"template_hasil_radiologi","no_template");
-            tampil();
-            emptTeks();
+            if(Valid.hapusTabletf(tabMode,Kd,"template_hasil_radiologi","no_template")==true){
+                if(tbDokter.getSelectedRow()!= -1){
+                    tabMode.removeRow(tbDokter.getSelectedRow());
+                    LCount.setText(""+tabMode.getRowCount());
+                    emptTeks();
+                }
+            }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -704,6 +708,5 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 }

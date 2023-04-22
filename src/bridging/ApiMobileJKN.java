@@ -103,5 +103,4 @@ public class ApiMobileJKN {
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
         return new RestTemplate(factory);
     }
-
 }

@@ -399,11 +399,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "ipsrs_riwayat_barang.jam,ipsrs_riwayat_barang.petugas,"+
                     "ipsrs_riwayat_barang.status from ipsrs_riwayat_barang "+
                     "inner join ipsrsbarang on ipsrs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
-                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrs_riwayat_barang.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrs_riwayat_barang.petugas like '%"+TCari.getText().trim()+"%' or "+
-                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrs_riwayat_barang.status like '%"+TCari.getText().trim()+"%' "+
-                    "order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ",param);
+                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and "+
+                    "(ipsrs_riwayat_barang.kode_brng like '%"+TCari.getText().trim()+"%' or ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or ipsrs_riwayat_barang.petugas like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrs_riwayat_barang.status like '%"+TCari.getText().trim()+"%') order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ",param);
             }
                 
             this.setCursor(Cursor.getDefaultCursor());
@@ -455,12 +453,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?",nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?",nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?",nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBarangActionPerformed(null);
@@ -559,10 +557,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "ipsrs_riwayat_barang.jam,ipsrs_riwayat_barang.petugas,"+
                     "ipsrs_riwayat_barang.status from ipsrs_riwayat_barang "+
                     "inner join ipsrsbarang on ipsrs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
-                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrs_riwayat_barang.kode_brng like ? or "+
-                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrs_riwayat_barang.petugas like ? or "+
-                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrs_riwayat_barang.status like ? order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ");
+                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and "+
+                    "(ipsrs_riwayat_barang.kode_brng like ? or ipsrsbarang.nama_brng like ? or "+
+                    "ipsrs_riwayat_barang.petugas like ? or ipsrs_riwayat_barang.status like ?)"+
+                    "order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ");
             }
                 
             try {
@@ -574,18 +572,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     ps.setString(3,"%"+nmbar.getText()+"%");
                     ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(7,"%"+nmbar.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText().trim()+"%");
-                    ps.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(11,"%"+nmbar.getText()+"%");
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(15,"%"+nmbar.getText()+"%");
-                    ps.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();            
                 while(rs.next()){

@@ -415,11 +415,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
        try{   
             pilihan="";
             if(R1.isSelected()==true){
-                pilihan="where riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 1 MONTH) and current_date()";
+                pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 1 MONTH) and current_date()";
             }else if(R2.isSelected()==true){
-                pilihan="where riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 3 MONTH) and current_date()";
+                pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 3 MONTH) and current_date()";
             }else if(R3.isSelected()==true){
-                pilihan="where riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date()";
+                pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date()";
             }
             ps=koneksi.prepareStatement(
                     "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+

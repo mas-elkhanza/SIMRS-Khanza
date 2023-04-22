@@ -21,14 +21,11 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -36,7 +33,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
-import keuangan.DlgCariPerawatanRalan;
 import keuangan.DlgJnsPerawatanRalan;
 import simrskhanza.DlgCariCaraBayar;
 
@@ -1230,7 +1226,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
 private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-             Sequel.cariIsi("select nm_dokter from dokter where kd_dokter='"+kddokter.getText()+"'", nmdokter);
+             Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+kddokter.getText()+"'", nmdokter);
         }else{
              Valid.pindah(evt,TCari,kdtindakan);
         }
@@ -1250,7 +1246,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void kdpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpjKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmpj,kdpj.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpj,kdpj.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPenjabActionPerformed(null);
         }else{
@@ -1321,7 +1317,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void kdpj2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpj2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmpj2,kdpj2.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpj2,kdpj2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPenjabActionPerformed(null);
         }else{
@@ -1374,7 +1370,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void kddokter3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-             Sequel.cariIsi("select nm_dokter from dokter where kd_dokter='"+kddokter3.getText()+"'", nmdokter3);
+             Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+kddokter3.getText()+"'", nmdokter3);
         }else{
              Valid.pindah(evt,TCari,kdtindakan3);
         }
@@ -1390,7 +1386,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void kdpj3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpj3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmpj3,kdpj3.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpj3,kdpj3.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPenjabActionPerformed(null);
         }else{

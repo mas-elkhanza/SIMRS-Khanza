@@ -1213,7 +1213,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void KdKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKamarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){            
-              Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?", NmKamar,KdKamar.getText());
+            NmKamar.setText(bangsal.tampil3(KdKamar.getText())); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKamarActionPerformed(null);
         }else{
@@ -1231,13 +1231,13 @@ private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void kdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpnjKeyPressed
        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());        
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",nmpnj,kdpnj.getText());        
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",nmpnj,kdpnj.getText());
             KdKtg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             KdKamar.requestFocus();    
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?",nmpnj,kdpnj.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBayarActionPerformed(null);
         }

@@ -62,8 +62,8 @@
                     
                     $_sqlbar        = "select id from barcode where barcode='$barcode'";
                     $hasilbar       = bukaquery($_sqlbar);
-                    @$barisbar       = mysqli_fetch_array($hasilbar);  
-                    @$idpeg          = $barisbar["id"];
+                    @$barisbar      = mysqli_fetch_array($hasilbar);  
+                    @$idpeg         = $barisbar["id"];
                     
                     $_sqljamdatang  = "select jam_jaga.shift,CURRENT_DATE() as hariini,pegawai.departemen from jam_jaga inner join pegawai on pegawai.departemen=jam_jaga.dep_id 
                                        where jam_jaga.jam_masuk='$jam_masuk' and pegawai.id='$idpeg'";
@@ -101,8 +101,8 @@
                     
                     $_sqlvalid        = "select id from rekap_presensi where id='$idpeg' and shift='$shift' and jam_datang like '%$hariini%'";
                     $hasilvalid       = bukaquery($_sqlvalid);
-                    @$barisvalid       = mysqli_fetch_array($hasilvalid);  
-                    @$idvalid          = $barisvalid["id"];  
+                    @$barisvalid      = mysqli_fetch_array($hasilvalid);  
+                    @$idvalid         = $barisvalid["id"];  
                     
                     if(!empty($idvalid)){
                         echo"<font size='9'>Anda sudah presensi untuk tanggal ".date('Y-m-d')."</font> <html><head><title></title><meta http-equiv='refresh' content='5;URL=?page=Input'></head><body></body></html>";

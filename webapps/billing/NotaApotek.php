@@ -15,15 +15,15 @@
         $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
         $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
-            $nonota    = validTeks(str_replace("_"," ",$_GET['nonota'])); 
-            $tanggal   = validTeks($_GET['tanggal']); 
-            $catatan   = validTeks(str_replace("_"," ",$_GET['catatan'])); 
-            $petugas   = validTeks(str_replace("_"," ",$_GET['petugas'])); 
-            $norm      = validTeks(str_replace("_"," ",$_GET['norm']));
-            $pasien    = validTeks(str_replace("_"," ",$_GET['pasien'])); 
-            $besarppn  = validTeks(str_replace("_"," ",$_GET['besarppn'])); 
-            $ongkir    = validTeks(str_replace("_"," ",$_GET['ongkir'])); 
-            $alamatip  = validTeks(str_replace("_"," ",$_GET['alamatip'])); 
+            $nonota    = validTeks4(str_replace("_"," ",$_GET['nonota']),20); 
+            $tanggal   = validTeks4($_GET['tanggal'],20); 
+            $catatan   = validTeks4(str_replace("_"," ",$_GET['catatan']),60); 
+            $petugas   = validTeks4(str_replace("_"," ",$_GET['petugas']),70); 
+            $norm      = validTeks4(str_replace("_"," ",$_GET['norm']),15);
+            $pasien    = validTeks4(str_replace("_"," ",$_GET['pasien']),70); 
+            $besarppn  = validTeks4(str_replace("_"," ",$_GET['besarppn']),20); 
+            $ongkir    = validTeks4(str_replace("_"," ",$_GET['ongkir']),20); 
+            $alamatip  = validTeks4(str_replace("_"," ",$_GET['alamatip']),20); 
 
             $_sql = "SELECT temporary.no,temporary.temp1,temporary.temp2,temporary.temp3,temporary.temp4,temporary.temp5,temporary.temp6,temporary.temp7,temporary.temp8,temporary.temp9,temporary.temp10,temporary.temp11,temporary.temp12,temporary.temp13 from temporary where temporary.temp37='$alamatip' order by temporary.no";            
             $hasil=bukaquery($_sql);

@@ -423,7 +423,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
                 rssetpj=pssetpj.executeQuery();
                 while(rssetpj.next()){
                     KodePj.setText(rssetpj.getString(2));
-                    NmDokterPj.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rssetpj.getString(2)));
+                    NmDokterPj.setText(dokter.tampil3(rssetpj.getString(2)));
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -1138,7 +1138,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
 
 private void KdPtgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPtgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPtg,KdPtg.getText());
+            NmPtg.setText(petugas.tampil3(KdPtg.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }else{            
@@ -1445,7 +1445,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void KodePerujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePerujukKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",NmPerujuk,KodePerujuk.getText());
+            NmPerujuk.setText(dokter.tampil3(KodePerujuk.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{            
@@ -2042,7 +2042,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         TNoRw.setText(norwt);
         this.status=posisi;
         Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=? ",KodePerujuk,TNoRw.getText());
-        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=? ",NmPerujuk,KodePerujuk.getText());
+        NmPerujuk.setText(dokter.tampil3(KodePerujuk.getText()));
         isPsien();
         if(noorder.equals("")){
            isRawat();
@@ -2053,7 +2053,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void isCek(){
         if(akses.getjml2()>=1){
             KdPtg.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPtg,KdPtg.getText());
+            NmPtg.setText(petugas.tampil3(KdPtg.getText()));
         }else{
             KdPtg.setText("");
             NmPtg.setText("");

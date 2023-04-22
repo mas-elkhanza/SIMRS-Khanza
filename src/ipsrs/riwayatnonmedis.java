@@ -4,7 +4,6 @@
  */
 package ipsrs;
 
-import toko.*;
 import fungsi.koneksiDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
