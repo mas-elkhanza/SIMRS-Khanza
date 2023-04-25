@@ -2327,12 +2327,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Retur_Ke_Suplayer),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Retur_Ke_Suplayer)
             });
-            tabMode.addRow(new Object[]{" [Debet] Akun Retur Obat & BHP dari Pasien/Pembeli pada menu Retur Dari Pembeli",Retur_Dari_pembeli,
+            tabMode.addRow(new Object[]{" [Kredit] Akun Retur Obat & BHP dari Pasien/Pembeli pada menu Retur Dari Pembeli",Retur_Dari_pembeli,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Retur_Dari_pembeli),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Retur_Dari_pembeli),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Retur_Dari_pembeli)
             });
-            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Retur Obat & BHP dari Pasien/Pembeli pada menu Retur Dari Pembeli",Kontra_Retur_Dari_Pembeli,
+            tabMode.addRow(new Object[]{" [Debet] Kontra Akun Retur Obat & BHP dari Pasien/Pembeli pada menu Retur Dari Pembeli",Kontra_Retur_Dari_Pembeli,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Retur_Dari_Pembeli),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Retur_Dari_Pembeli),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Retur_Dari_Pembeli)

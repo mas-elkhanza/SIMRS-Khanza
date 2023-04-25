@@ -98,7 +98,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(50, 50, 50));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Server :");
+        jLabel4.setText("Database Server :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass1.add(jLabel4);
         jLabel4.setBounds(0, 22, 104, 14);
@@ -172,7 +172,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel17.setText("Update 2022-04-13");
+        jLabel17.setText("Update 2022-04-25");
         jLabel17.setName("jLabel17"); // NOI18N
         panelGlass1.add(jLabel17);
         jLabel17.setBounds(107, 8, 120, 14);
