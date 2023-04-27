@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnPenilaianTambahanBunuhDiri">
+        <MenuItem class="javax.swing.JMenuItem" name="MnPenilaianTambahanPerilakuKekerasan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -25,14 +25,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Penilaian Tambahan Bunuh Diri"/>
-            <Property name="name" type="java.lang.String" value="MnPenilaianTambahanBunuhDiri" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Formulir Penilaian Tambahan Perilaku Kekerasan"/>
+            <Property name="name" type="java.lang.String" value="MnPenilaianTambahanPerilakuKekerasan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[290, 26]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPenilaianTambahanBunuhDiriActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPenilaianTambahanPerilakuKekerasanActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -1774,7 +1774,7 @@
                     <Component class="widget.Label" name="jLabel240">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Penggunaan Napza"/>
+                        <Property name="text" type="java.lang.String" value="Perilaku Seksual Yang Tidak Wajar"/>
                         <Property name="name" type="java.lang.String" value="jLabel240" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1786,7 +1786,7 @@
                     <Component class="widget.Label" name="jLabel241">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Berkurangnya/Kehilangan Kontrol Diri"/>
+                        <Property name="text" type="java.lang.String" value="Kesenangan Ide/Tindakan Kekerasan"/>
                         <Property name="name" type="java.lang.String" value="jLabel241" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1798,7 +1798,7 @@
                     <Component class="widget.Label" name="jLabel242">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Kejadian Signifikan Akhir-akhir Ini"/>
+                        <Property name="text" type="java.lang.String" value="Kemarahan, Frustasi Atau Agitasi"/>
                         <Property name="name" type="java.lang.String" value="jLabel242" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1810,7 +1810,7 @@
                     <Component class="widget.Label" name="jLabel243">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Keputusasaan"/>
+                        <Property name="text" type="java.lang.String" value="Perintah Halusinasi Untuk Kekerasan"/>
                         <Property name="name" type="java.lang.String" value="jLabel243" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1822,7 +1822,7 @@
                     <Component class="widget.Label" name="jLabel244">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Mengungkapkan Stress Yang Berat"/>
+                        <Property name="text" type="java.lang.String" value="Ide Paranoid Atau Lainnya"/>
                         <Property name="name" type="java.lang.String" value="jLabel244" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1834,7 +1834,7 @@
                     <Component class="widget.Label" name="jLabel221">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Memiliki Rencana Maksud Suicide"/>
+                        <Property name="text" type="java.lang.String" value="Akses Melakukan Tindakan Kekerasan"/>
                         <Property name="name" type="java.lang.String" value="jLabel221" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1846,7 +1846,7 @@
                     <Component class="widget.Label" name="jLabel245">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Mengungkapkan Ide Bunuh Diri"/>
+                        <Property name="text" type="java.lang.String" value="Mengekspresikan Ide Melukai Orang "/>
                         <Property name="name" type="java.lang.String" value="jLabel245" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1976,7 +1976,7 @@
                     <Component class="widget.Label" name="jLabel247">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Kekerasan Masa Kanak-kanak"/>
+                        <Property name="text" type="java.lang.String" value="Kurangnya Peran Dalam Hidup"/>
                         <Property name="name" type="java.lang.String" value="jLabel247" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -2034,7 +2034,7 @@
                     <Component class="widget.Label" name="jLabel249">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Penggunaan Napza"/>
+                        <Property name="text" type="java.lang.String" value="Berkurang/Hilangnya Kontrol Diri"/>
                         <Property name="name" type="java.lang.String" value="jLabel249" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -2092,7 +2092,7 @@
                     <Component class="widget.Label" name="jLabel251">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Kekerasan Masa Kanak-kanak"/>
+                        <Property name="text" type="java.lang.String" value="Riwayat Penggunaan NAPZA"/>
                         <Property name="name" type="java.lang.String" value="jLabel251" noResource="true"/>
                       </Properties>
                       <Constraints>
