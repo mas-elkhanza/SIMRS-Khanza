@@ -8142,6 +8142,7 @@ public class frmUtama extends javax.swing.JFrame {
                 akses.setpermintaanlabfalse();
                 akses.setperiksalabfalse();
                 akses.setperiksalabpafalse();
+                akses.setperiksalabmbfalse();
                 akses.setpermintaanradiologifalse();
                 akses.setperiksaradiologifalse();
                 edAdmin.setText("");

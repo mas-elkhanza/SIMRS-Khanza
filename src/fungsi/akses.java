@@ -3470,6 +3470,7 @@ public final class akses {
     public static boolean getpermintaan_lab(){return akses.permintaan_lab;}
     public static void setperiksalabfalse(){akses.periksa_lab=false;} 
     public static void setperiksalabpafalse(){akses.pemeriksaan_lab_pa=false;} 
+    public static void setperiksalabmbfalse(){akses.pemeriksaan_lab_mb=false;} 
     public static void setpermintaanlabfalse(){akses.permintaan_lab=false;} 
     public static boolean getpermintaan_radiologi(){return akses.permintaan_radiologi;}
     public static void setperiksaradiologifalse(){akses.periksa_radiologi=false;} 

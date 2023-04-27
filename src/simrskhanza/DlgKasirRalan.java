@@ -113,6 +113,7 @@ import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
+import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
 import rekammedis.RMRekonsiliasiObat;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
@@ -612,6 +613,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPenilaianLain = new javax.swing.JMenu();
         MnPenilaianTambahanGeriatri = new javax.swing.JMenuItem();
         MnPenilaianTambahanBunuhDiri = new javax.swing.JMenuItem();
+        MnPenilaianTambahanPerilakuKekerasan = new javax.swing.JMenuItem();
         MnPenilaianPasienTerminal = new javax.swing.JMenuItem();
         MnPenilaianKorbanKekerasan = new javax.swing.JMenuItem();
         MnPenilaianPasienPenyakitMenular = new javax.swing.JMenuItem();
@@ -1586,6 +1588,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnPenilaianLain.add(MnPenilaianTambahanBunuhDiri);
+
+        MnPenilaianTambahanPerilakuKekerasan.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianTambahanPerilakuKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianTambahanPerilakuKekerasan.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianTambahanPerilakuKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianTambahanPerilakuKekerasan.setText("Penilaian Tambahan Perilaku Kekerasan");
+        MnPenilaianTambahanPerilakuKekerasan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianTambahanPerilakuKekerasan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianTambahanPerilakuKekerasan.setName("MnPenilaianTambahanPerilakuKekerasan"); // NOI18N
+        MnPenilaianTambahanPerilakuKekerasan.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnPenilaianTambahanPerilakuKekerasan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPenilaianTambahanPerilakuKekerasanActionPerformed(evt);
+            }
+        });
+        MnPenilaianLain.add(MnPenilaianTambahanPerilakuKekerasan);
 
         MnPenilaianPasienTerminal.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianPasienTerminal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -5682,7 +5700,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2023" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2023" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -5729,7 +5747,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2023" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2023" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -6001,7 +6019,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -6014,7 +6032,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass8.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -12617,6 +12635,29 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnPenilaianTambahanBunuhDiriActionPerformed
 
+    private void MnPenilaianTambahanPerilakuKekerasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianTambahanPerilakuKekerasanActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            //TNoReg.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianTambahanPerilakuKekerasan form=new RMPenilaianTambahanPerilakuKekerasan(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPenilaianTambahanPerilakuKekerasanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12815,6 +12856,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnPenilaianRisikoJatuhLansia;
     private javax.swing.JMenuItem MnPenilaianTambahanBunuhDiri;
     private javax.swing.JMenuItem MnPenilaianTambahanGeriatri;
+    private javax.swing.JMenuItem MnPenilaianTambahanPerilakuKekerasan;
     private javax.swing.JMenuItem MnPenjab;
     private javax.swing.JMenuItem MnPenjualan;
     private javax.swing.JMenuItem MnPenjualan1;
@@ -13319,6 +13361,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnEdukasiPasienKeluarga.setEnabled(akses.getedukasi_pasien_keluarga_rj());
         MnPemantauanPEWSDewasa.setEnabled(akses.getpemantauan_pews_dewasa());
         MnPenilaianTambahanBunuhDiri.setEnabled(akses.getpenilaian_tambahan_bunuh_diri());
+        MnPenilaianTambahanPerilakuKekerasan.setEnabled(akses.getpenilaian_tambahan_perilaku_kekerasan());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);
@@ -13356,7 +13399,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 CrPtg.setEditable(false);
             }                
         }else{
-            namadokter=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",akses.getkode());
+            namadokter=billing.dokter.tampil3(akses.getkode());
             if(!namadokter.equals("")){
                 CrPtg.setText(namadokter);
                 BtnSeek3.setEnabled(false);
@@ -13397,9 +13440,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     psotomatis.setString(2,Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
                     rskasir=psotomatis.executeQuery();
                     while(rskasir.next()){    
-                        if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_dr where "+
-                           "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
-                           "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
+                        if(Sequel.cariIsiAngka("select count(rawat_jl_dr.no_rawat) from rawat_jl_dr where "+
+                           "rawat_jl_dr.no_rawat='"+TNoRw.getText()+"' and rawat_jl_dr.kd_jenis_prw='"+rskasir.getString(1)+"' "+
+                           "and rawat_jl_dr.kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
                             psotomatis2=koneksi.prepareStatement(sqlpsotomatis2);
                             try {
                                 psotomatis2.setString(1,TNoRw.getText()); 
@@ -13449,9 +13492,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         psotomatis.setString(1,Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
                         rskasir=psotomatis.executeQuery();
                         while(rskasir.next()){    
-                            if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_pr where "+
-                               "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
-                               "and nip='"+akses.getkode()+"'")==0){
+                            if(Sequel.cariIsiAngka("select count(rawat_jl_pr.no_rawat) from rawat_jl_pr where "+
+                               "rawat_jl_pr.no_rawat='"+TNoRw.getText()+"' and rawat_jl_pr.kd_jenis_prw='"+rskasir.getString(1)+"' "+
+                               "and rawat_jl_pr.nip='"+akses.getkode()+"'")==0){
                                 psotomatis2=koneksi.prepareStatement(sqlpsotomatis2petugas);
                                 try {
                                     psotomatis2.setString(1,TNoRw.getText()); 
@@ -13503,9 +13546,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         psotomatis.setString(2,Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
                         rskasir=psotomatis.executeQuery();
                         while(rskasir.next()){    
-                            if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_drpr where "+
-                               "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
-                               "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
+                            if(Sequel.cariIsiAngka("select count(rawat_jl_drpr.no_rawat) from rawat_jl_drpr where "+
+                               "rawat_jl_drpr.no_rawat='"+TNoRw.getText()+"' and rawat_jl_drpr.kd_jenis_prw='"+rskasir.getString(1)+"' "+
+                               "and rawat_jl_drpr.kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
                                 psotomatis2=koneksi.prepareStatement(sqlpsotomatis2dokterpetugas);
                                 try {
                                     psotomatis2.setString(1,TNoRw.getText()); 
@@ -13836,8 +13879,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             DlgCariObat dlgobt=new DlgCariObat(null,false);
             dlgobt.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString(),
                                 tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),3).toString(),
-                                Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"'"),
-                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
+                                tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),12).toString(),
+                                tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),13).toString());
             dlgobt.isCek();
             dlgobt.setDokter("","");
             dlgobt.tampilobat();
