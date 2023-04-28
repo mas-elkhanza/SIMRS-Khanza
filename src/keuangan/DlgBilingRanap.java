@@ -3703,7 +3703,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else if(tbBilling.getRowCount()!=0){
             try{
                 koneksi.setAutoCommit(false);
-                Sequel.queryu2("truncate table temporary_bayar_ranap"); 
+                Sequel.queryu2("delete from temporary_bayar_ranap"); 
                 for(i=0;i<tbBilling.getRowCount();i++){  
                     if(tbBilling.getValueAt(i,0).toString().equals("true")){
                         biaya="";

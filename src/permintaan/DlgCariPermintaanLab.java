@@ -1504,7 +1504,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
                     
-                    Sequel.queryu("truncate table temporary_permintaan_lab");
+                    Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -1554,7 +1554,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode2.getRowCount()!=0){
                     
-                    Sequel.queryu("truncate table temporary_permintaan_lab");
+                    Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode2.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -1610,7 +1610,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode3.getRowCount()!=0){
                     
-                    Sequel.queryu("truncate table temporary_permintaan_lab");
+                    Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode3.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -1660,7 +1660,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode4.getRowCount()!=0){
                     
-                    Sequel.queryu("truncate table temporary_permintaan_lab");
+                    Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode4.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -2145,7 +2145,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{  
-                    Sequel.queryu("truncate table temporary_permintaan_lab");
+                    Sequel.queryu("delete from temporary_permintaan_lab");
                     try {
                         ps2=koneksi.prepareStatement(
                                 "select permintaan_pemeriksaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan "+
@@ -2258,7 +2258,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     
-                    Sequel.queryu("truncate table temporary_permintaan_lab");
+                    Sequel.queryu("delete from temporary_permintaan_lab");
                     try {
                         ps2=koneksi.prepareStatement(
                                 "select permintaan_pemeriksaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan "+
@@ -3149,7 +3149,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             try {
                                 root=mapper.readTree(json);
                                 response = root.path("hasil");
-                                Sequel.queryu("truncate table temporary_permintaan_lab");
+                                Sequel.queryu("delete from temporary_permintaan_lab");
                                 if(response.isArray()){
                                     for(JsonNode list:response){
                                         Sequel.menyimpan("temporary_permintaan_lab","'0','"+root.path("idi").asText()+"','"+
@@ -4483,7 +4483,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                         try {
                                             root=mapper.readTree(json);
                                             response = root.path("hasil");
-                                            Sequel.queryu("truncate table temporary_permintaan_lab");
+                                            Sequel.queryu("delete from temporary_permintaan_lab");
                                             if(response.isArray()){
                                                 for(JsonNode list:response){
                                                     Sequel.menyimpan("temporary_permintaan_lab","'0','"+root.path("idi").asText()+"','"+

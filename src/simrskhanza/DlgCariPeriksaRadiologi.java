@@ -1292,7 +1292,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary_radiologi");
+            Sequel.queryu("delete from temporary_radiologi");
             int row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 Sequel.menyimpan("temporary_radiologi","'0','"+
@@ -1560,7 +1560,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps4.executeQuery();
                         while(rs.next()){
-                            Sequel.queryu("truncate table temporary_radiologi");
+                            Sequel.queryu("delete from temporary_radiologi");
                             koneksi.setAutoCommit(false);
                             ps2=koneksi.prepareStatement(
                                 "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.biaya from periksa_radiologi inner join jns_perawatan_radiologi "+

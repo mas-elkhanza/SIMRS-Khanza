@@ -1053,7 +1053,7 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
         }else if(jml==0){
             Valid.textKosong(Pemeriksaan,"Data Pemeriksaan");
         }else{
-            Sequel.queryu("truncate table temporary_lab");
+            Sequel.queryu("delete from temporary_lab");
             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                 Sequel.menyimpan("temporary_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                     "0",tbPemeriksaan.getValueAt(i,0).toString(),tbPemeriksaan.getValueAt(i,1).toString(),tbPemeriksaan.getValueAt(i,2).toString(),
@@ -1240,7 +1240,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             Pemeriksaan.requestFocus();
         }else {
-            Sequel.queryu("truncate table temporary_lab");
+            Sequel.queryu("delete from temporary_lab");
             ttl=0;
             for(i=0;i<tbTarif.getRowCount();i++){
                 if(tbTarif.getValueAt(i,0).toString().equals("true")){                                       

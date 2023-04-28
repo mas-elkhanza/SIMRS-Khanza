@@ -688,7 +688,7 @@ public class frmPengaduan extends javax.swing.JFrame {
     private void BtnHapusTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusTotalActionPerformed
         i=JOptionPane.showConfirmDialog(null, "Yakin semua data pengaduan mau dihapus ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if(i==JOptionPane.YES_OPTION){
-            Sequel.queryu("truncate table pengaduan");
+            Sequel.queryu("delete from pengaduan");
             tampil();
         }
     }//GEN-LAST:event_BtnHapusTotalActionPerformed

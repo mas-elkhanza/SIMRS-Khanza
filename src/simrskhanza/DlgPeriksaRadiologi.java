@@ -1191,7 +1191,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCariPeriksa.requestFocus();
         }else {
-            Sequel.queryu("truncate table temporary_radiologi");
+            Sequel.queryu("delete from temporary_radiologi");
             ttl=0;
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
                 item=0;

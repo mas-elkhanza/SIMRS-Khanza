@@ -902,7 +902,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
-                    Sequel.queryu("truncate table temporary_toko");
+                    Sequel.queryu("delete from temporary_toko");
                     int row=tabMode.getRowCount();
                     for(int i=0;i<row;i++){  
                         Sequel.menyimpan("temporary_toko","'0','"+

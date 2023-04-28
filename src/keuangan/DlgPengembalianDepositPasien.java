@@ -413,7 +413,7 @@ public final class DlgPengembalianDepositPasien extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary_payment");
+            Sequel.queryu("delete from temporary_payment");
             for(int r=0;r<tabMode.getRowCount();r++){  
                 Sequel.menyimpan("temporary_payment","'0',?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''",7,new String[]{
                     tabMode.getValueAt(r,0).toString(),tabMode.getValueAt(r,1).toString(),tabMode.getValueAt(r,2).toString(),tabMode.getValueAt(r,3).toString(),

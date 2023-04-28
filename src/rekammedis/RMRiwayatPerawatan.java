@@ -1643,7 +1643,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     }else if(tabModeRegistrasi.getRowCount()!=0){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-                        Sequel.queryu("truncate table temporary_resume");
+                        Sequel.queryu("delete from temporary_resume");
 
                         for(int i=0;i<tabModeRegistrasi.getRowCount();i++){  
                             Sequel.menyimpan("temporary_resume","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{

@@ -1149,7 +1149,7 @@ public class SuratKontrol extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
-            Sequel.queryu("truncate table temporary_booking_registrasi");
+            Sequel.queryu("delete from temporary_booking_registrasi");
             for(i=0;i<tabMode.getRowCount();i++){ 
                 Sequel.menyimpan("temporary_booking_registrasi","'0','"+
                     tabMode.getValueAt(i,0).toString()+"','"+
@@ -1444,7 +1444,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),13).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()));
-                Sequel.queryu("truncate table temporary_booking_registrasi");                
+                Sequel.queryu("delete from temporary_booking_registrasi");                
                 Sequel.menyimpan("temporary_booking_registrasi","'0','"+
                     tabMode.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+
                     tabMode.getValueAt(tbObat.getSelectedRow(),1).toString()+"','"+
