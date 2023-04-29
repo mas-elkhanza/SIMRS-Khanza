@@ -73,7 +73,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             "Faktor Statik 7","Skor Statik 7","Faktor Statik 8","Skor Statik 8","Faktor Statik 9","Skor Statik 9","Jml Skor Statik",
             "Faktor Dinamis 1","Skor Dinamis 1", "Faktor Dinamis 2","Skor Dinamis 2","Faktor Dinamis 3","Skor Dinamis 3","Faktor Dinamis 4","Skor Dinamis 4",
             "Faktor Dinamis 5","Skor Dinamis 5","Faktor Dinamis 6","Skor Dinamis 6","Faktor Dinamis 7","Skor Dinamis 7","Faktor Dinamis 8","Skor Dinamis 8",
-            "Faktor Dinamis 9","Skor Dinamis 9","Jml Skor Dinamis","Faktor-faktor Pencegahan","Total Skor","Level Skor","NIP","Petugas"
+            "Jml Skor Dinamis","Faktor-faktor Pencegahan","Total Skor","Level Skor","NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -83,7 +83,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 49; i++) {
+        for (i = 0; i < 47; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -170,18 +170,14 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             }else if(i==41){
                 column.setPreferredWidth(90);
             }else if(i==42){
-                column.setPreferredWidth(80);
-            }else if(i==43){
-                column.setPreferredWidth(90);
-            }else if(i==44){
                 column.setPreferredWidth(200);
-            }else if(i==45){
+            }else if(i==43){
                 column.setPreferredWidth(60);
-            }else if(i==46){
+            }else if(i==44){
                 column.setPreferredWidth(75);
-            }else if(i==47){
+            }else if(i==45){
                 column.setPreferredWidth(80);
-            }else if(i==48){
+            }else if(i==46){
                 column.setPreferredWidth(150);
             }
         }
@@ -273,7 +269,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianTambahanPerilakuKekerasan = new javax.swing.JMenuItem();
+        MnPenilaianTambahanMelarikanDiri = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -403,26 +399,22 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         FaktorStatik9 = new widget.ComboBox();
         jLabel252 = new widget.Label();
         SkorStatik9 = new widget.TextBox();
-        jLabel253 = new widget.Label();
-        FaktorDinamis9 = new widget.ComboBox();
-        jLabel254 = new widget.Label();
-        SkorDinamis9 = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianTambahanPerilakuKekerasan.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianTambahanPerilakuKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianTambahanPerilakuKekerasan.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianTambahanPerilakuKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianTambahanPerilakuKekerasan.setText("Formulir Penilaian Tambahan Perilaku Kekerasan");
-        MnPenilaianTambahanPerilakuKekerasan.setName("MnPenilaianTambahanPerilakuKekerasan"); // NOI18N
-        MnPenilaianTambahanPerilakuKekerasan.setPreferredSize(new java.awt.Dimension(290, 26));
-        MnPenilaianTambahanPerilakuKekerasan.addActionListener(new java.awt.event.ActionListener() {
+        MnPenilaianTambahanMelarikanDiri.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianTambahanMelarikanDiri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianTambahanMelarikanDiri.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianTambahanMelarikanDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianTambahanMelarikanDiri.setText("Formulir Penilaian Tambahan Berisiko Melarikan Diri");
+        MnPenilaianTambahanMelarikanDiri.setName("MnPenilaianTambahanMelarikanDiri"); // NOI18N
+        MnPenilaianTambahanMelarikanDiri.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnPenilaianTambahanMelarikanDiri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianTambahanPerilakuKekerasanActionPerformed(evt);
+                MnPenilaianTambahanMelarikanDiriActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianTambahanPerilakuKekerasan);
+        jPopupMenu1.add(MnPenilaianTambahanMelarikanDiri);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -853,7 +845,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         jLabel57.setBounds(14, 70, 80, 23);
 
         jLabel217.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel217.setText("Insiden Kekerasan Baru-baru Ini");
+        jLabel217.setText("Riwayat Melarikan Diri");
         jLabel217.setName("jLabel217"); // NOI18N
         FormInput.add(jLabel217);
         jLabel217.setBounds(24, 90, 190, 23);
@@ -887,7 +879,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorStatik1.setBounds(359, 90, 35, 23);
 
         jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel220.setText("Riwayat Penggunaan Senjata");
+        jLabel220.setText("Riwayat Penolakan Pengobatan");
         jLabel220.setName("jLabel220"); // NOI18N
         FormInput.add(jLabel220);
         jLabel220.setBounds(24, 120, 190, 23);
@@ -921,7 +913,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorStatik2.setBounds(359, 120, 35, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText("Laki-laki");
+        jLabel223.setText("Usia Dibawah 35 Tahun");
         jLabel223.setName("jLabel223"); // NOI18N
         FormInput.add(jLabel223);
         jLabel223.setBounds(24, 150, 190, 23);
@@ -955,7 +947,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorStatik3.setBounds(359, 150, 35, 23);
 
         jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel226.setText("Usia Dibawah 35 Tahun");
+        jLabel226.setText("Laki-laki");
         jLabel226.setName("jLabel226"); // NOI18N
         FormInput.add(jLabel226);
         jLabel226.setBounds(24, 180, 190, 23);
@@ -989,7 +981,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorStatik4.setBounds(359, 180, 35, 23);
 
         jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel229.setText("Riwayat Kriminal");
+        jLabel229.setText("Diagnosis Skizofrenia");
         jLabel229.setName("jLabel229"); // NOI18N
         FormInput.add(jLabel229);
         jLabel229.setBounds(24, 210, 190, 23);
@@ -1023,7 +1015,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorStatik5.setBounds(359, 210, 35, 23);
 
         jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel232.setText("Riwayat Tindakan Berbahaya");
+        jLabel232.setText("Belum Menikah");
         jLabel232.setName("jLabel232"); // NOI18N
         FormInput.add(jLabel232);
         jLabel232.setBounds(24, 240, 190, 23);
@@ -1059,7 +1051,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         jLabel235.setText("Jumlah Skor :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(675, 360, 70, 23);
+        jLabel235.setBounds(675, 330, 70, 23);
 
         TotalDinamis.setEditable(false);
         TotalDinamis.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1067,7 +1059,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         TotalDinamis.setFocusTraversalPolicyProvider(true);
         TotalDinamis.setName("TotalDinamis"); // NOI18N
         FormInput.add(TotalDinamis);
-        TotalDinamis.setBounds(749, 360, 40, 23);
+        TotalDinamis.setBounds(749, 330, 40, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Faktor-faktor Pencegahan :");
@@ -1107,7 +1099,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         jSeparator3.setBounds(0, 390, 810, 1);
 
         jLabel236.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel236.setText("Kekerasan Masa Kanak-kanak");
+        jLabel236.setText("Riwayat Penggunaan NAPZA");
         jLabel236.setName("jLabel236"); // NOI18N
         FormInput.add(jLabel236);
         jLabel236.setBounds(24, 270, 190, 23);
@@ -1337,43 +1329,43 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         FaktorDinamis7.setBounds(605, 270, 105, 23);
 
         jLabel240.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel240.setText("Perilaku Seksual Yang Tidak Wajar");
+        jLabel240.setText("Kemarahan Frustasi");
         jLabel240.setName("jLabel240"); // NOI18N
         FormInput.add(jLabel240);
         jLabel240.setBounds(415, 270, 194, 23);
 
         jLabel241.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel241.setText("Kesenangan Ide/Tindakan Kekerasan");
+        jLabel241.setText("Perilaku Seksual Yang Tidak Wajar");
         jLabel241.setName("jLabel241"); // NOI18N
         FormInput.add(jLabel241);
         jLabel241.setBounds(415, 240, 194, 23);
 
         jLabel242.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel242.setText("Kemarahan, Frustasi Atau Agitasi");
+        jLabel242.setText("Berkurang/Kehilangan Kontrol Diri");
         jLabel242.setName("jLabel242"); // NOI18N
         FormInput.add(jLabel242);
         jLabel242.setBounds(415, 210, 194, 23);
 
         jLabel243.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel243.setText("Perintah Halusinasi Untuk Kekerasan");
+        jLabel243.setText("Perintah Halusinasi Melarikan Diri");
         jLabel243.setName("jLabel243"); // NOI18N
         FormInput.add(jLabel243);
         jLabel243.setBounds(415, 180, 194, 23);
 
         jLabel244.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel244.setText("Ide Paranoid Atau Lainnya");
+        jLabel244.setText("Kebosanan");
         jLabel244.setName("jLabel244"); // NOI18N
         FormInput.add(jLabel244);
         jLabel244.setBounds(415, 150, 194, 23);
 
         jLabel221.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel221.setText("Akses Melakukan Tindakan Kekerasan");
+        jLabel221.setText("Penggunaan NAPZA");
         jLabel221.setName("jLabel221"); // NOI18N
         FormInput.add(jLabel221);
         jLabel221.setBounds(415, 120, 194, 23);
 
         jLabel245.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel245.setText("Mengekspresikan Ide Melukai Orang ");
+        jLabel245.setText("Anti Treatment/ Insight Jelek");
         jLabel245.setName("jLabel245"); // NOI18N
         FormInput.add(jLabel245);
         jLabel245.setBounds(415, 90, 194, 23);
@@ -1407,13 +1399,13 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         jLabel31.setText(":");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(0, 460, 155, 23);
+        jLabel31.setBounds(0, 460, 172, 23);
 
         SkorTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         SkorTotal.setText("0");
         SkorTotal.setName("SkorTotal"); // NOI18N
         FormInput.add(SkorTotal);
-        SkorTotal.setBounds(160, 460, 130, 23);
+        SkorTotal.setBounds(178, 460, 110, 23);
 
         Level.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Level.setText("Level");
@@ -1427,13 +1419,13 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         jLabel34.setBounds(285, 460, 60, 23);
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel35.setText("Total Skor Risiko Bunuh Diri");
+        jLabel35.setText("Total Skor Risiko Melarikan Diri");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(14, 460, 150, 23);
+        jLabel35.setBounds(14, 460, 160, 23);
 
         jLabel247.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel247.setText("Kurangnya Peran Dalam Hidup");
+        jLabel247.setText("Diagnosis Gangguan Kepribadian");
         jLabel247.setName("jLabel247"); // NOI18N
         FormInput.add(jLabel247);
         jLabel247.setBounds(24, 300, 190, 23);
@@ -1467,7 +1459,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorStatik8.setBounds(359, 300, 35, 23);
 
         jLabel249.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel249.setText("Berkurang/Hilangnya Kontrol Diri");
+        jLabel249.setText("Ketakutan Perawatan");
         jLabel249.setName("jLabel249"); // NOI18N
         FormInput.add(jLabel249);
         jLabel249.setBounds(415, 300, 194, 23);
@@ -1501,7 +1493,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorDinamis8.setBounds(754, 300, 35, 23);
 
         jLabel251.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel251.setText("Riwayat Penggunaan NAPZA");
+        jLabel251.setText("Riwayat Kriminal");
         jLabel251.setName("jLabel251"); // NOI18N
         FormInput.add(jLabel251);
         jLabel251.setBounds(24, 330, 190, 23);
@@ -1534,40 +1526,6 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         FormInput.add(SkorStatik9);
         SkorStatik9.setBounds(359, 330, 35, 23);
 
-        jLabel253.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel253.setText("Penggunaan Napza");
-        jLabel253.setName("jLabel253"); // NOI18N
-        FormInput.add(jLabel253);
-        jLabel253.setBounds(415, 330, 194, 23);
-
-        FaktorDinamis9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya", "Tidak Tahu" }));
-        FaktorDinamis9.setName("FaktorDinamis9"); // NOI18N
-        FaktorDinamis9.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                FaktorDinamis9ItemStateChanged(evt);
-            }
-        });
-        FaktorDinamis9.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                FaktorDinamis9KeyPressed(evt);
-            }
-        });
-        FormInput.add(FaktorDinamis9);
-        FaktorDinamis9.setBounds(605, 330, 105, 23);
-
-        jLabel254.setText("Skor :");
-        jLabel254.setName("jLabel254"); // NOI18N
-        FormInput.add(jLabel254);
-        jLabel254.setBounds(710, 330, 40, 23);
-
-        SkorDinamis9.setEditable(false);
-        SkorDinamis9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        SkorDinamis9.setText("0");
-        SkorDinamis9.setFocusTraversalPolicyProvider(true);
-        SkorDinamis9.setName("SkorDinamis9"); // NOI18N
-        FormInput.add(SkorDinamis9);
-        SkorDinamis9.setBounds(754, 330, 35, 23);
-
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1598,15 +1556,15 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
-            if(Sequel.menyimpantf("penilaian_tambahan_perilaku_kekerasan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",44,new String[]{
+            if(Sequel.menyimpantf("penilaian_tambahan_beresiko_melarikan_diri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",42,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
                 FaktorStatik1.getSelectedItem().toString(),SkorStatik1.getText(),FaktorStatik2.getSelectedItem().toString(),SkorStatik2.getText(),FaktorStatik3.getSelectedItem().toString(),SkorStatik3.getText(),
                 FaktorStatik4.getSelectedItem().toString(),SkorStatik4.getText(),FaktorStatik5.getSelectedItem().toString(),SkorStatik5.getText(),FaktorStatik6.getSelectedItem().toString(),SkorStatik6.getText(), 
                 FaktorStatik7.getSelectedItem().toString(),SkorStatik7.getText(),FaktorStatik8.getSelectedItem().toString(),SkorStatik8.getText(),FaktorStatik9.getSelectedItem().toString(),SkorStatik9.getText(),
                 TotalStatik.getText(),FaktorDinamis1.getSelectedItem().toString(),SkorDinamis1.getText(),FaktorDinamis2.getSelectedItem().toString(),SkorDinamis2.getText(),FaktorDinamis3.getSelectedItem().toString(),
                 SkorDinamis3.getText(),FaktorDinamis4.getSelectedItem().toString(),SkorDinamis4.getText(),FaktorDinamis5.getSelectedItem().toString(),SkorDinamis5.getText(),FaktorDinamis6.getSelectedItem().toString(),
-                SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(),FaktorDinamis8.getSelectedItem().toString(),SkorDinamis8.getText(),FaktorDinamis9.getSelectedItem().toString(),
-                SkorDinamis9.getText(),TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText()
+                SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(),FaktorDinamis8.getSelectedItem().toString(),SkorDinamis8.getText(),TotalDinamis.getText(),
+                FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
@@ -1615,8 +1573,8 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
                     FaktorStatik7.getSelectedItem().toString(),SkorStatik7.getText(),FaktorStatik8.getSelectedItem().toString(),SkorStatik8.getText(),FaktorStatik9.getSelectedItem().toString(),SkorStatik9.getText(),
                     TotalStatik.getText(),FaktorDinamis1.getSelectedItem().toString(),SkorDinamis1.getText(),FaktorDinamis2.getSelectedItem().toString(),SkorDinamis2.getText(),FaktorDinamis3.getSelectedItem().toString(),
                     SkorDinamis3.getText(),FaktorDinamis4.getSelectedItem().toString(),SkorDinamis4.getText(),FaktorDinamis5.getSelectedItem().toString(),SkorDinamis5.getText(),FaktorDinamis6.getSelectedItem().toString(),
-                    SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(),FaktorDinamis8.getSelectedItem().toString(),SkorDinamis8.getText(),FaktorDinamis9.getSelectedItem().toString(),
-                    SkorDinamis9.getText(),TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText(),NIP.getText(),NamaPetugas.getText()
+                    SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(),FaktorDinamis8.getSelectedItem().toString(),SkorDinamis8.getText(),TotalDinamis.getText(),
+                    FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -1649,7 +1607,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1678,7 +1636,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1760,8 +1718,6 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 7</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 8</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor Dinamis 9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skor Dinamis 9</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jml Skor Dinamis</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Faktor-faktor Pencegahan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total Skor</b></td>"+
@@ -1820,13 +1776,11 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
                             "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='4500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='4400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1847,17 +1801,17 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
                 );
                 bg.close();
 
-                File f = new File("DataPenilaianTambahanPerilakuKekerasan.html");            
+                File f = new File("DataPenilaianTambahanBerisikoMelarikanDiri.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='4500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='4400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN TAMBAHAN PERILAKU KEKERASAN<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN TAMBAHAN BERISIKO MELARIKAN DIRI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1971,7 +1925,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         Valid.pindah(evt,Detik,FaktorStatik1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnPenilaianTambahanPerilakuKekerasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianTambahanPerilakuKekerasanActionPerformed
+    private void MnPenilaianTambahanMelarikanDiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianTambahanMelarikanDiriActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1981,34 +1935,36 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),48).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),47).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianTambahanPerilakuKekerasan.jasper","report","::[ Formulir Penilaian Tambahan Perilaku Kekerasan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_perilaku_kekerasan.tanggal,date_format(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,reg_periksa.jam_reg,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_insiden_kekerasan_baru_ini,penilaian_tambahan_perilaku_kekerasan.statik_skorinsiden_kekerasan_baru_ini,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_riwayat_penggunaan_senjata,penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_penggunaan_senjata,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_laki_laki,penilaian_tambahan_perilaku_kekerasan.statik_skorlaki_laki,penilaian_tambahan_perilaku_kekerasan.statik_usia_dibawah_35,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skorusia_dibawah_35,penilaian_tambahan_perilaku_kekerasan.statik_riwayat_kriminal,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_kriminal,penilaian_tambahan_perilaku_kekerasan.statik_ide_kekerasan,penilaian_tambahan_perilaku_kekerasan.statik_skoride_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_kekerasan_anak_anak,penilaian_tambahan_perilaku_kekerasan.statik_skorkekerasan_anak_anak,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_peran_dalam_hidup,penilaian_tambahan_perilaku_kekerasan.statik_skorperan_dalam_hidup,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_penggunaan_napza,penilaian_tambahan_perilaku_kekerasan.statik_skorpenggunaan_napza,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skortotal,penilaian_tambahan_perilaku_kekerasan.dinamis_ide_melukai_orang_lain,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_melukai_orang_lain,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_akses_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_skorakses_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_ide_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_perintah_halusinasi,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorperintah_halusinasi,penilaian_tambahan_perilaku_kekerasan.dinamis_frustasi_agitasi,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorfrustasi_agitasi,penilaian_tambahan_perilaku_kekerasan.dinamis_kesenangan_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorkesenangan_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_seksual_tidak_wajar,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_perilaku_kekerasan.dinamis_hilangnya_kontrol_diri,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_perilaku_kekerasan.dinamis_pengguaan_napza,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorpengguaan_napza,penilaian_tambahan_perilaku_kekerasan.dinamis_skortotal,penilaian_tambahan_perilaku_kekerasan.faktor_faktor_pencegahan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.total_skor,penilaian_tambahan_perilaku_kekerasan.level_skor,penilaian_tambahan_perilaku_kekerasan.nip,petugas.nama,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
-                    "from penilaian_tambahan_perilaku_kekerasan inner join reg_periksa on penilaian_tambahan_perilaku_kekerasan.no_rawat=reg_periksa.no_rawat "+
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),46).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),45).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            Valid.MyReportqry("rptFormulirPenilaianTambahanMelarikanDiri.jasper","report","::[ Formulir Penilaian Tambahan Berisiko Melarikan Diri ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_beresiko_melarikan_diri.tanggal,date_format(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,reg_periksa.jam_reg,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_melarikan_diri,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_melarikan_diri,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penolakan_pengobatan,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_penolakan_pengobatan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_usia_dibawah_35,penilaian_tambahan_beresiko_melarikan_diri.statik_skorusia_dibawah_35,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_laki_laki,penilaian_tambahan_beresiko_melarikan_diri.statik_skorlaki_laki,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_skizofrenia,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_skizofrenia,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_belum_menikah,penilaian_tambahan_beresiko_melarikan_diri.statik_skorbelum_menikah,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.statik_skoriwayat_penggunaan_napza,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_gangguan_kepribadian,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_gangguan_kepribadian,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_kriminal,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_kriminal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_skortotal,penilaian_tambahan_beresiko_melarikan_diri.dinamis_anti_treatment,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skoranti_treatment,penilaian_tambahan_beresiko_melarikan_diri.dinamis_penggunaan_napza,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorpenggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kebosanan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkebosanan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_perintah_halusinasi,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorperintah_halusinasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_hilangnya_kontrol_diri,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_beresiko_melarikan_diri.dinamis_seksual_tidak_wajar,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kemarahan_frustasi,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkemarahan_frustasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_ketakutan_perawatan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorketakutan_perawatan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_skortotal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.faktor_faktor_pencegahan,penilaian_tambahan_beresiko_melarikan_diri.total_skor,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.level_skor,penilaian_tambahan_beresiko_melarikan_diri.nip,petugas.nama,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
+                    "from penilaian_tambahan_beresiko_melarikan_diri inner join reg_periksa on penilaian_tambahan_beresiko_melarikan_diri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                    "inner join petugas on penilaian_tambahan_perilaku_kekerasan.nip=petugas.nip inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "inner join petugas on penilaian_tambahan_beresiko_melarikan_diri.nip=petugas.nip inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianTambahanPerilakuKekerasanActionPerformed
+    }//GEN-LAST:event_MnPenilaianTambahanMelarikanDiriActionPerformed
 
     private void FaktorStatik1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorStatik1ItemStateChanged
         if(FaktorStatik1.getSelectedIndex()==1){
@@ -2219,7 +2175,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     }//GEN-LAST:event_FaktorDinamis8ItemStateChanged
 
     private void FaktorDinamis8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis8KeyPressed
-        Valid.pindah(evt,FaktorDinamis7,FaktorDinamis9);
+        Valid.pindah(evt,FaktorDinamis7,FaktorPencegahan);
     }//GEN-LAST:event_FaktorDinamis8KeyPressed
 
     private void FaktorStatik9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorStatik9ItemStateChanged
@@ -2234,19 +2190,6 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private void FaktorStatik9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorStatik9KeyPressed
         Valid.pindah(evt,FaktorStatik8,FaktorDinamis1);
     }//GEN-LAST:event_FaktorStatik9KeyPressed
-
-    private void FaktorDinamis9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorDinamis9ItemStateChanged
-        if(FaktorDinamis9.getSelectedIndex()==1){
-            SkorDinamis9.setText("2");
-        }else{
-            SkorDinamis9.setText("0");
-        }
-        isTotalSkor();
-    }//GEN-LAST:event_FaktorDinamis9ItemStateChanged
-
-    private void FaktorDinamis9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorDinamis9KeyPressed
-        Valid.pindah(evt,FaktorDinamis8,FaktorPencegahan);
-    }//GEN-LAST:event_FaktorDinamis9KeyPressed
 
     /**
     * @param args the command line arguments
@@ -2286,7 +2229,6 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private widget.ComboBox FaktorDinamis6;
     private widget.ComboBox FaktorDinamis7;
     private widget.ComboBox FaktorDinamis8;
-    private widget.ComboBox FaktorDinamis9;
     private widget.TextArea FaktorPencegahan;
     private widget.ComboBox FaktorStatik1;
     private widget.ComboBox FaktorStatik2;
@@ -2304,7 +2246,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private widget.Label Level;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianTambahanPerilakuKekerasan;
+    private javax.swing.JMenuItem MnPenilaianTambahanMelarikanDiri;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
@@ -2317,7 +2259,6 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private widget.TextBox SkorDinamis6;
     private widget.TextBox SkorDinamis7;
     private widget.TextBox SkorDinamis8;
-    private widget.TextBox SkorDinamis9;
     private widget.TextBox SkorStatik1;
     private widget.TextBox SkorStatik2;
     private widget.TextBox SkorStatik3;
@@ -2378,8 +2319,6 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private widget.Label jLabel250;
     private widget.Label jLabel251;
     private widget.Label jLabel252;
-    private widget.Label jLabel253;
-    private widget.Label jLabel254;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
     private widget.Label jLabel34;
@@ -2407,55 +2346,59 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_perilaku_kekerasan.tanggal,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_insiden_kekerasan_baru_ini,penilaian_tambahan_perilaku_kekerasan.statik_skorinsiden_kekerasan_baru_ini,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_riwayat_penggunaan_senjata,penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_penggunaan_senjata,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_laki_laki,penilaian_tambahan_perilaku_kekerasan.statik_skorlaki_laki,penilaian_tambahan_perilaku_kekerasan.statik_usia_dibawah_35,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skorusia_dibawah_35,penilaian_tambahan_perilaku_kekerasan.statik_riwayat_kriminal,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_kriminal,penilaian_tambahan_perilaku_kekerasan.statik_ide_kekerasan,penilaian_tambahan_perilaku_kekerasan.statik_skoride_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_kekerasan_anak_anak,penilaian_tambahan_perilaku_kekerasan.statik_skorkekerasan_anak_anak,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_peran_dalam_hidup,penilaian_tambahan_perilaku_kekerasan.statik_skorperan_dalam_hidup,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_penggunaan_napza,penilaian_tambahan_perilaku_kekerasan.statik_skorpenggunaan_napza,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skortotal,penilaian_tambahan_perilaku_kekerasan.dinamis_ide_melukai_orang_lain,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_melukai_orang_lain,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_akses_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_skorakses_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_ide_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_perintah_halusinasi,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorperintah_halusinasi,penilaian_tambahan_perilaku_kekerasan.dinamis_frustasi_agitasi,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorfrustasi_agitasi,penilaian_tambahan_perilaku_kekerasan.dinamis_kesenangan_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorkesenangan_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_seksual_tidak_wajar,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_perilaku_kekerasan.dinamis_hilangnya_kontrol_diri,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_perilaku_kekerasan.dinamis_pengguaan_napza,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorpengguaan_napza,penilaian_tambahan_perilaku_kekerasan.dinamis_skortotal,penilaian_tambahan_perilaku_kekerasan.faktor_faktor_pencegahan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.total_skor,penilaian_tambahan_perilaku_kekerasan.level_skor,penilaian_tambahan_perilaku_kekerasan.nip,petugas.nama "+
-                    "from penilaian_tambahan_perilaku_kekerasan inner join reg_periksa on penilaian_tambahan_perilaku_kekerasan.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_beresiko_melarikan_diri.tanggal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_melarikan_diri,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_melarikan_diri,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penolakan_pengobatan,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_penolakan_pengobatan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_usia_dibawah_35,penilaian_tambahan_beresiko_melarikan_diri.statik_skorusia_dibawah_35,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_laki_laki,penilaian_tambahan_beresiko_melarikan_diri.statik_skorlaki_laki,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_skizofrenia,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_skizofrenia,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_belum_menikah,penilaian_tambahan_beresiko_melarikan_diri.statik_skorbelum_menikah,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.statik_skoriwayat_penggunaan_napza,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_gangguan_kepribadian,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_gangguan_kepribadian,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_kriminal,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_kriminal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_skortotal,penilaian_tambahan_beresiko_melarikan_diri.dinamis_anti_treatment,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skoranti_treatment,penilaian_tambahan_beresiko_melarikan_diri.dinamis_penggunaan_napza,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorpenggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kebosanan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkebosanan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_perintah_halusinasi,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorperintah_halusinasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_hilangnya_kontrol_diri,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_beresiko_melarikan_diri.dinamis_seksual_tidak_wajar,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kemarahan_frustasi,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkemarahan_frustasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_ketakutan_perawatan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorketakutan_perawatan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_skortotal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.faktor_faktor_pencegahan,penilaian_tambahan_beresiko_melarikan_diri.total_skor,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.level_skor,penilaian_tambahan_beresiko_melarikan_diri.nip,petugas.nama "+
+                    "from penilaian_tambahan_beresiko_melarikan_diri inner join reg_periksa on penilaian_tambahan_beresiko_melarikan_diri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_tambahan_perilaku_kekerasan.nip=petugas.nip where "+
-                    "penilaian_tambahan_perilaku_kekerasan.tanggal between ? and ? order by penilaian_tambahan_perilaku_kekerasan.tanggal");
+                    "inner join petugas on penilaian_tambahan_beresiko_melarikan_diri.nip=petugas.nip where "+
+                    "penilaian_tambahan_beresiko_melarikan_diri.tanggal between ? and ? order by penilaian_tambahan_beresiko_melarikan_diri.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_perilaku_kekerasan.tanggal,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_insiden_kekerasan_baru_ini,penilaian_tambahan_perilaku_kekerasan.statik_skorinsiden_kekerasan_baru_ini,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_riwayat_penggunaan_senjata,penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_penggunaan_senjata,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_laki_laki,penilaian_tambahan_perilaku_kekerasan.statik_skorlaki_laki,penilaian_tambahan_perilaku_kekerasan.statik_usia_dibawah_35,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skorusia_dibawah_35,penilaian_tambahan_perilaku_kekerasan.statik_riwayat_kriminal,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_kriminal,penilaian_tambahan_perilaku_kekerasan.statik_ide_kekerasan,penilaian_tambahan_perilaku_kekerasan.statik_skoride_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_kekerasan_anak_anak,penilaian_tambahan_perilaku_kekerasan.statik_skorkekerasan_anak_anak,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_peran_dalam_hidup,penilaian_tambahan_perilaku_kekerasan.statik_skorperan_dalam_hidup,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_penggunaan_napza,penilaian_tambahan_perilaku_kekerasan.statik_skorpenggunaan_napza,"+
-                    "penilaian_tambahan_perilaku_kekerasan.statik_skortotal,penilaian_tambahan_perilaku_kekerasan.dinamis_ide_melukai_orang_lain,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_melukai_orang_lain,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_akses_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_skorakses_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_ide_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_perintah_halusinasi,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorperintah_halusinasi,penilaian_tambahan_perilaku_kekerasan.dinamis_frustasi_agitasi,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorfrustasi_agitasi,penilaian_tambahan_perilaku_kekerasan.dinamis_kesenangan_kekerasan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorkesenangan_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_seksual_tidak_wajar,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_perilaku_kekerasan.dinamis_hilangnya_kontrol_diri,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_perilaku_kekerasan.dinamis_pengguaan_napza,"+
-                    "penilaian_tambahan_perilaku_kekerasan.dinamis_skorpengguaan_napza,penilaian_tambahan_perilaku_kekerasan.dinamis_skortotal,penilaian_tambahan_perilaku_kekerasan.faktor_faktor_pencegahan,"+
-                    "penilaian_tambahan_perilaku_kekerasan.total_skor,penilaian_tambahan_perilaku_kekerasan.level_skor,penilaian_tambahan_perilaku_kekerasan.nip,petugas.nama "+
-                    "from penilaian_tambahan_perilaku_kekerasan inner join reg_periksa on penilaian_tambahan_perilaku_kekerasan.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_beresiko_melarikan_diri.tanggal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_melarikan_diri,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_melarikan_diri,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penolakan_pengobatan,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_penolakan_pengobatan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_usia_dibawah_35,penilaian_tambahan_beresiko_melarikan_diri.statik_skorusia_dibawah_35,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_laki_laki,penilaian_tambahan_beresiko_melarikan_diri.statik_skorlaki_laki,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_skizofrenia,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_skizofrenia,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_belum_menikah,penilaian_tambahan_beresiko_melarikan_diri.statik_skorbelum_menikah,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.statik_skoriwayat_penggunaan_napza,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_gangguan_kepribadian,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_gangguan_kepribadian,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_kriminal,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_kriminal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.statik_skortotal,penilaian_tambahan_beresiko_melarikan_diri.dinamis_anti_treatment,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skoranti_treatment,penilaian_tambahan_beresiko_melarikan_diri.dinamis_penggunaan_napza,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorpenggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kebosanan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkebosanan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_perintah_halusinasi,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorperintah_halusinasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_hilangnya_kontrol_diri,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_beresiko_melarikan_diri.dinamis_seksual_tidak_wajar,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kemarahan_frustasi,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkemarahan_frustasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_ketakutan_perawatan,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorketakutan_perawatan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_skortotal,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.faktor_faktor_pencegahan,penilaian_tambahan_beresiko_melarikan_diri.total_skor,"+
+                    "penilaian_tambahan_beresiko_melarikan_diri.level_skor,penilaian_tambahan_beresiko_melarikan_diri.nip,petugas.nama "+
+                    "from penilaian_tambahan_beresiko_melarikan_diri inner join reg_periksa on penilaian_tambahan_beresiko_melarikan_diri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_tambahan_perilaku_kekerasan.nip=petugas.nip where "+
-                    "penilaian_tambahan_perilaku_kekerasan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_tambahan_perilaku_kekerasan.nip like ? or petugas.nama like ?) "+
-                    "order by penilaian_tambahan_perilaku_kekerasan.tanggal ");
+                    "inner join petugas on penilaian_tambahan_beresiko_melarikan_diri.nip=petugas.nip where "+
+                    "penilaian_tambahan_beresiko_melarikan_diri.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_tambahan_beresiko_melarikan_diri.nip like ? or petugas.nama like ?) "+
+                    "order by penilaian_tambahan_beresiko_melarikan_diri.tanggal ");
             }
                 
             try {
@@ -2476,15 +2419,18 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("statik_insiden_kekerasan_baru_ini"),rs.getString("statik_skorinsiden_kekerasan_baru_ini"),rs.getString("statik_riwayat_penggunaan_senjata"),rs.getString("statik_skorriwayat_penggunaan_senjata"),
-                        rs.getString("statik_laki_laki"),rs.getString("statik_skorlaki_laki"),rs.getString("statik_usia_dibawah_35"),rs.getString("statik_skorusia_dibawah_35"),rs.getString("statik_riwayat_kriminal"),
-                        rs.getString("statik_skorriwayat_kriminal"),rs.getString("statik_ide_kekerasan"),rs.getString("statik_skoride_kekerasan"),rs.getString("statik_kekerasan_anak_anak"),rs.getString("statik_skorkekerasan_anak_anak"),
-                        rs.getString("statik_peran_dalam_hidup"),rs.getString("statik_skorperan_dalam_hidup"),rs.getString("statik_penggunaan_napza"),rs.getString("statik_skorpenggunaan_napza"),rs.getString("statik_skortotal"),
-                        rs.getString("dinamis_ide_melukai_orang_lain"),rs.getString("dinamis_skoride_melukai_orang_lain"),rs.getString("dinamis_akses_kekerasan"),rs.getString("dinamis_skorakses_kekerasan"),rs.getString("dinamis_ide_paranoid"),
-                        rs.getString("dinamis_skoride_paranoid"),rs.getString("dinamis_perintah_halusinasi"),rs.getString("dinamis_skorperintah_halusinasi"),rs.getString("dinamis_frustasi_agitasi"),rs.getString("dinamis_skorfrustasi_agitasi"),
-                        rs.getString("dinamis_kesenangan_kekerasan"),rs.getString("dinamis_skorkesenangan_kekerasan"),rs.getString("dinamis_seksual_tidak_wajar"),rs.getString("dinamis_skorseksual_tidak_wajar"),
-                        rs.getString("dinamis_hilangnya_kontrol_diri"),rs.getString("dinamis_skorhilangnya_kontrol_diri"),rs.getString("dinamis_pengguaan_napza"),rs.getString("dinamis_skorpengguaan_napza"),rs.getString("dinamis_skortotal"),
-                        rs.getString("faktor_faktor_pencegahan"),rs.getString("total_skor"),rs.getString("level_skor"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("statik_riwayat_melarikan_diri"),rs.getString("statik_skorriwayat_melarikan_diri"),rs.getString("statik_riwayat_penolakan_pengobatan"),
+                        rs.getString("statik_skorriwayat_penolakan_pengobatan"),rs.getString("statik_usia_dibawah_35"),rs.getString("statik_skorusia_dibawah_35"),rs.getString("statik_laki_laki"),
+                        rs.getString("statik_skorlaki_laki"),rs.getString("statik_diagnosis_skizofrenia"),rs.getString("statik_skordiagnosis_skizofrenia"),rs.getString("statik_belum_menikah"),
+                        rs.getString("statik_skorbelum_menikah"),rs.getString("statik_riwayat_penggunaan_napza"),rs.getString("statik_skoriwayat_penggunaan_napza"),
+                        rs.getString("statik_diagnosis_gangguan_kepribadian"),rs.getString("statik_skordiagnosis_gangguan_kepribadian"),rs.getString("statik_riwayat_kriminal"),
+                        rs.getString("statik_skorriwayat_kriminal"),rs.getString("statik_skortotal"),rs.getString("dinamis_anti_treatment"),rs.getString("dinamis_skoranti_treatment"),
+                        rs.getString("dinamis_penggunaan_napza"),rs.getString("dinamis_skorpenggunaan_napza"),rs.getString("dinamis_kebosanan"),rs.getString("dinamis_skorkebosanan"),
+                        rs.getString("dinamis_perintah_halusinasi"),rs.getString("dinamis_skorperintah_halusinasi"),rs.getString("dinamis_hilangnya_kontrol_diri"),
+                        rs.getString("dinamis_skorhilangnya_kontrol_diri"),rs.getString("dinamis_seksual_tidak_wajar"),rs.getString("dinamis_skorseksual_tidak_wajar"),
+                        rs.getString("dinamis_kemarahan_frustasi"),rs.getString("dinamis_skorkemarahan_frustasi"),rs.getString("dinamis_ketakutan_perawatan"),
+                        rs.getString("dinamis_skorketakutan_perawatan"),rs.getString("dinamis_skortotal"),rs.getString("faktor_faktor_pencegahan"),rs.getString("total_skor"),
+                        rs.getString("level_skor"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -2540,8 +2486,6 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         SkorDinamis7.setText("0");
         FaktorDinamis8.setSelectedIndex(0);
         SkorDinamis8.setText("0");
-        FaktorDinamis9.setSelectedIndex(0);
-        SkorDinamis9.setText("0");
         TotalDinamis.setText("0");
         SkorTotal.setText("0");
         Level.setText("Rendah(<7)");
@@ -2592,12 +2536,10 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             SkorDinamis7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
             FaktorDinamis8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
             SkorDinamis8.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
-            FaktorDinamis9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
-            SkorDinamis9.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
-            TotalDinamis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            FaktorPencegahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
-            SkorTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
-            Level.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            TotalDinamis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            FaktorPencegahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            SkorTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            Level.setText(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
             
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
@@ -2668,10 +2610,10 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_tambahan_perilaku_kekerasan());
-        BtnHapus.setEnabled(akses.getpenilaian_tambahan_perilaku_kekerasan());
-        BtnEdit.setEnabled(akses.getpenilaian_tambahan_perilaku_kekerasan());
-        BtnPrint.setEnabled(akses.getpenilaian_tambahan_perilaku_kekerasan()); 
+        BtnSimpan.setEnabled(akses.getpenilaian_tambahan_beresiko_melarikan_diri());
+        BtnHapus.setEnabled(akses.getpenilaian_tambahan_beresiko_melarikan_diri());
+        BtnEdit.setEnabled(akses.getpenilaian_tambahan_beresiko_melarikan_diri());
+        BtnPrint.setEnabled(akses.getpenilaian_tambahan_beresiko_melarikan_diri()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2738,20 +2680,20 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_tambahan_perilaku_kekerasan","no_rawat=?","no_rawat=?,tanggal=?,nip=?,statik_insiden_kekerasan_baru_ini=?,statik_skorinsiden_kekerasan_baru_ini=?,statik_riwayat_penggunaan_senjata=?,"+
-                "statik_skorriwayat_penggunaan_senjata=?,statik_laki_laki=?,statik_skorlaki_laki=?,statik_usia_dibawah_35=?,statik_skorusia_dibawah_35=?,statik_riwayat_kriminal=?,statik_skorriwayat_kriminal=?,statik_ide_kekerasan=?,"+
-                "statik_skoride_kekerasan=?,statik_kekerasan_anak_anak=?,statik_skorkekerasan_anak_anak=?,statik_peran_dalam_hidup=?,statik_skorperan_dalam_hidup=?,statik_penggunaan_napza=?,statik_skorpenggunaan_napza=?,statik_skortotal=?,"+
-                "dinamis_ide_melukai_orang_lain=?,dinamis_skoride_melukai_orang_lain=?,dinamis_akses_kekerasan=?,dinamis_skorakses_kekerasan=?,dinamis_ide_paranoid=?,dinamis_skoride_paranoid=?,dinamis_perintah_halusinasi=?,"+
-                "dinamis_skorperintah_halusinasi=?,dinamis_frustasi_agitasi=?,dinamis_skorfrustasi_agitasi=?,dinamis_kesenangan_kekerasan=?,dinamis_skorkesenangan_kekerasan=?,dinamis_seksual_tidak_wajar=?,dinamis_skorseksual_tidak_wajar=?,"+
-                "dinamis_hilangnya_kontrol_diri=?,dinamis_skorhilangnya_kontrol_diri=?,dinamis_pengguaan_napza=?,dinamis_skorpengguaan_napza=?,dinamis_skortotal=?,faktor_faktor_pencegahan=?,total_skor=?,level_skor=?",45,new String[]{
+        if(Sequel.mengedittf("penilaian_tambahan_beresiko_melarikan_diri","no_rawat=?","no_rawat=?,tanggal=?,nip=?,statik_riwayat_melarikan_diri=?,statik_skorriwayat_melarikan_diri=?,statik_riwayat_penolakan_pengobatan=?,"+
+                "statik_skorriwayat_penolakan_pengobatan=?,statik_usia_dibawah_35=?,statik_skorusia_dibawah_35=?,statik_laki_laki=?,statik_skorlaki_laki=?,statik_diagnosis_skizofrenia=?,statik_skordiagnosis_skizofrenia=?,"+
+                "statik_belum_menikah=?,statik_skorbelum_menikah=?,statik_riwayat_penggunaan_napza=?,statik_skoriwayat_penggunaan_napza=?,statik_diagnosis_gangguan_kepribadian=?,statik_skordiagnosis_gangguan_kepribadian=?,"+
+                "statik_riwayat_kriminal=?,statik_skorriwayat_kriminal=?,statik_skortotal=?,dinamis_anti_treatment=?,dinamis_skoranti_treatment=?,dinamis_penggunaan_napza=?,dinamis_skorpenggunaan_napza=?,dinamis_kebosanan=?,"+
+                "dinamis_skorkebosanan=?,dinamis_perintah_halusinasi=?,dinamis_skorperintah_halusinasi=?,dinamis_hilangnya_kontrol_diri=?,dinamis_skorhilangnya_kontrol_diri=?,dinamis_seksual_tidak_wajar=?,dinamis_skorseksual_tidak_wajar=?,"+
+                "dinamis_kemarahan_frustasi=?,dinamis_skorkemarahan_frustasi=?,dinamis_ketakutan_perawatan=?,dinamis_skorketakutan_perawatan=?,dinamis_skortotal=?,faktor_faktor_pencegahan=?,total_skor=?,level_skor=?",43,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
                 FaktorStatik1.getSelectedItem().toString(),SkorStatik1.getText(),FaktorStatik2.getSelectedItem().toString(),SkorStatik2.getText(),FaktorStatik3.getSelectedItem().toString(),SkorStatik3.getText(),
                 FaktorStatik4.getSelectedItem().toString(),SkorStatik4.getText(),FaktorStatik5.getSelectedItem().toString(),SkorStatik5.getText(),FaktorStatik6.getSelectedItem().toString(),SkorStatik6.getText(), 
                 FaktorStatik7.getSelectedItem().toString(),SkorStatik7.getText(),FaktorStatik8.getSelectedItem().toString(),SkorStatik8.getText(),FaktorStatik9.getSelectedItem().toString(),SkorStatik9.getText(),
                 TotalStatik.getText(),FaktorDinamis1.getSelectedItem().toString(),SkorDinamis1.getText(),FaktorDinamis2.getSelectedItem().toString(),SkorDinamis2.getText(),FaktorDinamis3.getSelectedItem().toString(),
                 SkorDinamis3.getText(),FaktorDinamis4.getSelectedItem().toString(),SkorDinamis4.getText(),FaktorDinamis5.getSelectedItem().toString(),SkorDinamis5.getText(),FaktorDinamis6.getSelectedItem().toString(),
-                SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(),FaktorDinamis8.getSelectedItem().toString(),SkorDinamis8.getText(),FaktorDinamis9.getSelectedItem().toString(),
-                SkorDinamis9.getText(),TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(),FaktorDinamis8.getSelectedItem().toString(),SkorDinamis8.getText(),TotalDinamis.getText(),
+                FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2794,20 +2736,18 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             tbObat.setValueAt(SkorDinamis7.getText(),tbObat.getSelectedRow(),38);
             tbObat.setValueAt(FaktorDinamis8.getSelectedItem().toString(),tbObat.getSelectedRow(),39);
             tbObat.setValueAt(SkorDinamis8.getText(),tbObat.getSelectedRow(),40);
-            tbObat.setValueAt(FaktorDinamis9.getSelectedItem().toString(),tbObat.getSelectedRow(),41);
-            tbObat.setValueAt(SkorDinamis9.getText(),tbObat.getSelectedRow(),42);
-            tbObat.setValueAt(TotalDinamis.getText(),tbObat.getSelectedRow(),43);
-            tbObat.setValueAt(FaktorPencegahan.getText(),tbObat.getSelectedRow(),44);
-            tbObat.setValueAt(SkorTotal.getText(),tbObat.getSelectedRow(),45);
-            tbObat.setValueAt(Level.getText(),tbObat.getSelectedRow(),46);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),47);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),48);
+            tbObat.setValueAt(TotalDinamis.getText(),tbObat.getSelectedRow(),41);
+            tbObat.setValueAt(FaktorPencegahan.getText(),tbObat.getSelectedRow(),42);
+            tbObat.setValueAt(SkorTotal.getText(),tbObat.getSelectedRow(),43);
+            tbObat.setValueAt(Level.getText(),tbObat.getSelectedRow(),44);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),45);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),46);
             emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_tambahan_perilaku_kekerasan where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_tambahan_beresiko_melarikan_diri where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2821,7 +2761,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
     private void isTotalSkor(){
         try {
             TotalStatik.setText((Integer.parseInt(SkorStatik1.getText())+Integer.parseInt(SkorStatik2.getText())+Integer.parseInt(SkorStatik3.getText())+Integer.parseInt(SkorStatik4.getText())+Integer.parseInt(SkorStatik5.getText())+Integer.parseInt(SkorStatik6.getText())+Integer.parseInt(SkorStatik7.getText())+Integer.parseInt(SkorStatik8.getText())+Integer.parseInt(SkorStatik9.getText()))+"");
-            TotalDinamis.setText((Integer.parseInt(SkorDinamis1.getText())+Integer.parseInt(SkorDinamis2.getText())+Integer.parseInt(SkorDinamis3.getText())+Integer.parseInt(SkorDinamis4.getText())+Integer.parseInt(SkorDinamis5.getText())+Integer.parseInt(SkorDinamis6.getText())+Integer.parseInt(SkorDinamis7.getText())+Integer.parseInt(SkorDinamis8.getText())+Integer.parseInt(SkorDinamis9.getText()))+"");
+            TotalDinamis.setText((Integer.parseInt(SkorDinamis1.getText())+Integer.parseInt(SkorDinamis2.getText())+Integer.parseInt(SkorDinamis3.getText())+Integer.parseInt(SkorDinamis4.getText())+Integer.parseInt(SkorDinamis5.getText())+Integer.parseInt(SkorDinamis6.getText())+Integer.parseInt(SkorDinamis7.getText())+Integer.parseInt(SkorDinamis8.getText()))+"");
             SkorTotal.setText((Integer.parseInt(TotalStatik.getText())+Integer.parseInt(TotalDinamis.getText()))+"");
             if(Integer.parseInt(SkorTotal.getText())<7){
                 Level.setText("Rendah(<7)");

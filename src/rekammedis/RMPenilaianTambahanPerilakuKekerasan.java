@@ -1407,13 +1407,13 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
         jLabel31.setText(":");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(0, 460, 155, 23);
+        jLabel31.setBounds(0, 460, 197, 23);
 
         SkorTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         SkorTotal.setText("0");
         SkorTotal.setName("SkorTotal"); // NOI18N
         FormInput.add(SkorTotal);
-        SkorTotal.setBounds(160, 460, 130, 23);
+        SkorTotal.setBounds(203, 460, 50, 23);
 
         Level.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Level.setText("Level");
@@ -1427,10 +1427,10 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
         jLabel34.setBounds(285, 460, 60, 23);
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel35.setText("Total Skor Risiko Bunuh Diri");
+        jLabel35.setText("Total Skor Risiko Perilaku Kekerasan");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(14, 460, 150, 23);
+        jLabel35.setBounds(14, 460, 190, 23);
 
         jLabel247.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel247.setText("Kurangnya Peran Dalam Hidup");
