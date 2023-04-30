@@ -204,7 +204,8 @@ public final class akses {
             grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false,konfirmasi_rekonsiliasi_obat=false,satu_sehat_kirim_clinicalimpression=false,
             penilaian_pasien_terminal=false,surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false,penilaian_korban_kekerasan=false,
             penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false,edukasi_pasien_keluarga_rj=false,pemantauan_pews_dewasa=false,
-            penilaian_tambahan_bunuh_diri=false,bpjs_antrean_pertanggal=false,penilaian_tambahan_perilaku_kekerasan=false,penilaian_tambahan_beresiko_melarikan_diri=false;
+            penilaian_tambahan_bunuh_diri=false,bpjs_antrean_pertanggal=false,penilaian_tambahan_perilaku_kekerasan=false,penilaian_tambahan_beresiko_melarikan_diri=false,
+            persetujuan_penundaan_pelayanan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1165,6 +1166,7 @@ public final class akses {
                         akses.bpjs_antrean_pertanggal=true;
                         akses.penilaian_tambahan_perilaku_kekerasan=true;
                         akses.penilaian_tambahan_beresiko_melarikan_diri=true;
+                        akses.persetujuan_penundaan_pelayanan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2109,6 +2111,7 @@ public final class akses {
                         akses.bpjs_antrean_pertanggal=rs2.getBoolean("bpjs_antrean_pertanggal");
                         akses.penilaian_tambahan_perilaku_kekerasan=rs2.getBoolean("penilaian_tambahan_perilaku_kekerasan");
                         akses.penilaian_tambahan_beresiko_melarikan_diri=rs2.getBoolean("penilaian_tambahan_beresiko_melarikan_diri");
+                        akses.persetujuan_penundaan_pelayanan=rs2.getBoolean("persetujuan_penundaan_pelayanan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3051,6 +3054,7 @@ public final class akses {
                         akses.bpjs_antrean_pertanggal=false;
                         akses.penilaian_tambahan_perilaku_kekerasan=false;
                         akses.penilaian_tambahan_beresiko_melarikan_diri=false;
+                        akses.persetujuan_penundaan_pelayanan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4053,4 +4057,5 @@ public final class akses {
     public static boolean getbpjs_antrean_pertanggal(){return akses.bpjs_antrean_pertanggal;}
     public static boolean getpenilaian_tambahan_perilaku_kekerasan(){return akses.penilaian_tambahan_perilaku_kekerasan;}
     public static boolean getpenilaian_tambahan_beresiko_melarikan_diri(){return akses.penilaian_tambahan_beresiko_melarikan_diri;}
+    public static boolean getpersetujuan_penundaan_pelayanan(){return akses.persetujuan_penundaan_pelayanan;}
 }   
