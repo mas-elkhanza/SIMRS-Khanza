@@ -160,6 +160,7 @@ import surat.SuratKeteranganSehat;
 import surat.SuratKewaspadaanKesehatan;
 import surat.SuratPernyataanPasienUmum;
 import surat.SuratPersetujuanPenolakanTindakan;
+import surat.SuratPersetujuanPenundaanPelayanan;
 import surat.SuratPersetujuanRawatInap;
 import surat.SuratPersetujuanUmum;
 import surat.SuratPulangAtasPermintaanSendiri;
@@ -1026,6 +1027,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnPulangAtasPermintaanSendiri = new javax.swing.JMenuItem();
         MnPernyataanPasienUmum = new javax.swing.JMenuItem();
         MnPersetujuanRawatInap = new javax.swing.JMenuItem();
+        MnPersetujuanPenundaanPelayanan = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         MnCetakRegister = new javax.swing.JMenuItem();
         MnCetakRegister1 = new javax.swing.JMenuItem();
@@ -3394,6 +3396,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         MnSuratSurat.add(MnPersetujuanRawatInap);
+
+        MnPersetujuanPenundaanPelayanan.setBackground(new java.awt.Color(255, 255, 254));
+        MnPersetujuanPenundaanPelayanan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPersetujuanPenundaanPelayanan.setForeground(new java.awt.Color(50, 50, 50));
+        MnPersetujuanPenundaanPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPersetujuanPenundaanPelayanan.setText("Persetujuan Penundaan Pelayanan");
+        MnPersetujuanPenundaanPelayanan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPersetujuanPenundaanPelayanan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPersetujuanPenundaanPelayanan.setName("MnPersetujuanPenundaanPelayanan"); // NOI18N
+        MnPersetujuanPenundaanPelayanan.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnPersetujuanPenundaanPelayanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPersetujuanPenundaanPelayananActionPerformed(evt);
+            }
+        });
+        MnSuratSurat.add(MnPersetujuanPenundaanPelayanan);
 
         jMenu8.setBackground(new java.awt.Color(255, 255, 254));
         jMenu8.setForeground(new java.awt.Color(50, 50, 50));
@@ -13255,6 +13273,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPenilaianTambahanMelarikanDiriActionPerformed
 
+    private void MnPersetujuanPenundaanPelayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPersetujuanPenundaanPelayananActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratPersetujuanPenundaanPelayanan form=new SuratPersetujuanPenundaanPelayanan(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPersetujuanPenundaanPelayananActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13470,6 +13511,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPermintaanRanap1;
     private javax.swing.JMenuItem MnPernyataanPasienUmum;
     private javax.swing.JMenuItem MnPersetujuanPenolakanTindakan;
+    private javax.swing.JMenuItem MnPersetujuanPenundaanPelayanan;
     private javax.swing.JMenuItem MnPersetujuanRawatInap;
     private javax.swing.JMenuItem MnPersetujuanUmum;
     private javax.swing.JMenu MnPilihBilling;
@@ -14170,6 +14212,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianTambahanBunuhDiri.setEnabled(akses.getpenilaian_tambahan_bunuh_diri());
         MnPenilaianTambahanPerilakuKekerasan.setEnabled(akses.getpenilaian_tambahan_perilaku_kekerasan());
         MnPenilaianTambahanMelarikanDiri.setEnabled(akses.getpenilaian_tambahan_beresiko_melarikan_diri());
+        MnPersetujuanPenundaanPelayanan.setEnabled(akses.getpersetujuan_penundaan_pelayanan());
     }
     
     private void isNumber(){         
