@@ -227,7 +227,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[O]Limbah B3 Cair Per Tanggal","[O]Limbah B3 Cair Per Bulan","[I]Rekap Biaya Registrasi","[M]Konfirmasi Rekonsiliasi Obat","[L]Kirim Clinical Impression Satu Sehat",
                 "[M]Penilaian Pasien Terminal","[P]Persetujuan Rawat Inap","[M]Monitoring Reaksi Tranfusi","[M]Penilaian Korban Kekerasan","[M]Penilaian Lanjutan Risiko Jatuh Lansia",
                 "[M]Penilaian Pasien Penyakit Menular","[M]Skrining Manajer Pelayanan Pasien","[M]Edukasi Pasien & Keluarga Rawat Jalan","[M]Pemantauan PEWS Pasien Dewasa",
-                "[M]Penilaian Tambahan Bunuh Diri","[L]Antrean Per Tanggal Mobile JKN","[M]Penilaian Tambahan Perilaku Kekerasan","[M]Penilaian Tambahan Melarikan Diri"
+                "[M]Penilaian Tambahan Bunuh Diri","[L]Antrean Per Tanggal Mobile JKN","[M]Penilaian Tambahan Perilaku Kekerasan","[M]Penilaian Tambahan Melarikan Diri",
+                "[P]Persetujuan Penundaan Pelayanan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -499,7 +500,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 941;i++) {
+        for (i = 0; i < 942;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2776,6 +2777,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 940:
                     column.setPreferredWidth(192);
                     break;
+                case 941:
+                    column.setPreferredWidth(189);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2854,23 +2858,6 @@ public class DlgUser extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });
-
-        TKd.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                isUser();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                isUser();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                isUser();
-            }
         });
     }
 
@@ -3004,6 +2991,7 @@ public class DlgUser extends javax.swing.JDialog {
         panelGlass5.add(jLabel4);
         jLabel4.setBounds(449, 12, 60, 23);
 
+        TKd.setEditable(false);
         TKd.setHighlighter(null);
         TKd.setName("TKd"); // NOI18N
         TKd.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3289,7 +3277,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3313,7 +3301,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
             }            
@@ -4300,7 +4288,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_tambahan_bunuh_diri='"+tbUser.getValueAt(i,937).toString()+"',"+
                     "bpjs_antrean_pertanggal='"+tbUser.getValueAt(i,938).toString()+"',"+
                     "penilaian_tambahan_perilaku_kekerasan='"+tbUser.getValueAt(i,939).toString()+"',"+
-                    "penilaian_tambahan_beresiko_melarikan_diri='"+tbUser.getValueAt(i,940).toString()+"'")==true){
+                    "penilaian_tambahan_beresiko_melarikan_diri='"+tbUser.getValueAt(i,940).toString()+"',"+
+                    "persetujuan_penundaan_pelayanan='"+tbUser.getValueAt(i,941).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5439,7 +5428,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "penilaian_tambahan_bunuh_diri='"+tbUser.getValueAt(barisdicopy,937).toString()+"',"+
                                         "bpjs_antrean_pertanggal='"+tbUser.getValueAt(barisdicopy,938).toString()+"',"+
                                         "penilaian_tambahan_perilaku_kekerasan='"+tbUser.getValueAt(barisdicopy,939).toString()+"',"+
-                                        "penilaian_tambahan_beresiko_melarikan_diri='"+tbUser.getValueAt(barisdicopy,940).toString()+"'");
+                                        "penilaian_tambahan_beresiko_melarikan_diri='"+tbUser.getValueAt(barisdicopy,940).toString()+"',"+
+                                        "persetujuan_penundaan_pelayanan='"+tbUser.getValueAt(barisdicopy,941).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5715,15 +5705,15 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.rekap_biaya_registrasi,user.konfirmasi_rekonsiliasi_obat,user.satu_sehat_kirim_clinicalimpression,user.penilaian_pasien_terminal,"+
                 "user.surat_persetujuan_rawat_inap,user.monitoring_reaksi_tranfusi,user.penilaian_korban_kekerasan,user.penilaian_lanjutan_resiko_jatuh_lansia,"+
                 "user.penilaian_pasien_penyakit_menular,user.mpp_skrining,user.edukasi_pasien_keluarga_rj,user.pemantauan_pews_dewasa,user.penilaian_tambahan_bunuh_diri,"+
-                "user.bpjs_antrean_pertanggal,user.penilaian_tambahan_perilaku_kekerasan,user.penilaian_tambahan_beresiko_melarikan_diri from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.bpjs_antrean_pertanggal,user.penilaian_tambahan_perilaku_kekerasan,user.penilaian_tambahan_beresiko_melarikan_diri,user.persetujuan_penundaan_pelayanan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     user="";
-                    user=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(1));
+                    user=dlgdokter.tampil3(rs.getString(1));
                     jabatan=Sequel.cariIsi("select spesialis.nm_sps from spesialis where spesialis.kd_sps=?",Sequel.cariIsi("select dokter.kd_sps from dokter where dokter.kd_dokter=?",rs.getString(1)));
                     if(user.equals("")){    
-                        user=Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs.getString(1));
+                        user=dlgpetugas.tampil3(rs.getString(1));
                         jabatan=Sequel.cariIsi("select jabatan.nm_jbtn from jabatan where jabatan.kd_jbtn=?",Sequel.cariIsi("select petugas.kd_jbtn from petugas where petugas.nip=?",rs.getString(1)));
                     }    
                     try {
@@ -6668,7 +6658,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_tambahan_bunuh_diri"),
                                rs.getBoolean("bpjs_antrean_pertanggal"),
                                rs.getBoolean("penilaian_tambahan_perilaku_kekerasan"),
-                               rs.getBoolean("penilaian_tambahan_beresiko_melarikan_diri")
+                               rs.getBoolean("penilaian_tambahan_beresiko_melarikan_diri"),
+                               rs.getBoolean("persetujuan_penundaan_pelayanan")
                             });
                         }   
                     } catch (Exception e) {
@@ -7610,7 +7601,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_tambahan_bunuh_diri"),
                            rs.getBoolean("bpjs_antrean_pertanggal"),
                            rs.getBoolean("penilaian_tambahan_perilaku_kekerasan"),
-                           rs.getBoolean("penilaian_tambahan_beresiko_melarikan_diri")
+                           rs.getBoolean("penilaian_tambahan_beresiko_melarikan_diri"),
+                           rs.getBoolean("persetujuan_penundaan_pelayanan")
                         });
                     }                                             
                  }
@@ -7626,27 +7618,6 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
             }
                         
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
-        }
-    }
-
-    private void isUser() {
-        try{
-            rs=koneksi.prepareStatement("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+TKd.getText()+"'").executeQuery();
-            if(rs.next()){
-                TNmUser.setText(rs.getString(1));
-            }else if(!rs.next()){
-                rs=koneksi.prepareStatement("select petugas.nama from petugas where petugas.nip='"+TKd.getText()+"'").executeQuery();
-                if(rs.next()){
-                    TNmUser.setText(rs.getString(1));
-                }else if(!rs.next()){
-                    TNmUser.setText("");
-                }
-            }
-            if(rs!=null){
-                rs.close();
-            }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

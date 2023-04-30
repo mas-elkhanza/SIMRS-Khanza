@@ -1226,7 +1226,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
 private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-             Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+kddokter.getText()+"'", nmdokter);
+             nmdokter.setText(dokter.tampil3(kddokter.getText()));
         }else{
              Valid.pindah(evt,TCari,kdtindakan);
         }
@@ -1370,7 +1370,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void kddokter3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-             Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+kddokter3.getText()+"'", nmdokter3);
+             nmdokter3.setText(dokter.tampil3(kddokter3.getText()));
         }else{
              Valid.pindah(evt,TCari,kdtindakan3);
         }

@@ -1160,7 +1160,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             nip.setEditable(false);
             btnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmpetugas,nip.getText());
+            nmpetugas.setText(petugas.tampil3(nip.getText()));
         } 
     }
     

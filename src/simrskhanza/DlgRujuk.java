@@ -1344,7 +1344,7 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             KdDok.setText(param);   
             KdDok.setEditable(false);
             btnDokter.setEnabled(false);
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+param+"'",TDokter);
+            TDokter.setText(dokter.tampil3(param));
         }else if(param.equals("")){
             KdDok.setText("");   
             KdDok.setEditable(true);
@@ -1388,7 +1388,7 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         isRawat();
         isPsien();              
         KdDok.setText(Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat='"+norwt+"'"));
-        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+KdDok.getText()+"'",TDokter);
+        TDokter.setText(dokter.tampil3(KdDok.getText()));
         Sequel.cariIsi("select penyakit.nm_penyakit from penyakit inner join diagnosa_pasien on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where diagnosa_pasien.no_rawat=?",norwt);
         ChkInput.setSelected(true);
         isForm();

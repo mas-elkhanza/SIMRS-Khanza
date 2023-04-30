@@ -1875,7 +1875,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 rssetpj=pssetpj.executeQuery();
                 while(rssetpj.next()){
                     KodePj.setText(rssetpj.getString(5));
-                    NmDokterPj.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rssetpj.getString(5)));
+                    NmDokterPj.setText(dokter.tampil3(rssetpj.getString(5)));
                 }
             } catch (Exception e) {
                 System.out.println(e);

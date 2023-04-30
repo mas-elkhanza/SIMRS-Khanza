@@ -1417,7 +1417,7 @@ private void nopenyerahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
 private void kdptgcrossKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgcrossKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptgcross,kdptgcross.getText());
+            nmptgcross.setText(petugas.tampil3(kdptgcross.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPtgCrossActionPerformed(null);
         }else{
@@ -1427,7 +1427,7 @@ private void kdptgcrossKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
 private void kdptgpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgpjKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptgpj,kdptgpj.getText());
+            nmptgpj.setText(petugas.tampil3(kdptgpj.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPtgPJActionPerformed(null);
         }else{
@@ -2111,12 +2111,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kdptgpj.setEditable(false);
             btnPtgPJ.setEnabled(false);
             kdptgpj.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptgpj,kdptgpj.getText());
+            nmptgpj.setText(petugas.tampil3(kdptgpj.getText()));
         }      
     }
     
     private void emptTeks(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_penyerahan,5),signed)),0) from utd_penyerahan_darah where tanggal like '%"+Valid.SetTgl(tanggal.getSelectedItem()+"").substring(0,7)+"%'",dateformat.format(tanggal.getDate()).substring(0,7)+"/PD",5,nopenyerahan); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(utd_penyerahan_darah.no_penyerahan,5),signed)),0) from utd_penyerahan_darah where utd_penyerahan_darah.tanggal like '%"+Valid.SetTgl(tanggal.getSelectedItem()+"").substring(0,7)+"%'",dateformat.format(tanggal.getDate()).substring(0,7)+"/PD",5,nopenyerahan); 
         keterangan.setText("");
         nmpengambil.setText("");
         alamatpengambil.setText("");

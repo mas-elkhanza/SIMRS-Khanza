@@ -1011,7 +1011,7 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     nmdokter.setText(dokter.tampil3(kddokter.getText()));
                     break;
                 case "rawat_jl_pr":
-                    Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmdokter,kddokter.getText());
+                    nmdokter.setText(petugas.tampil3(kddokter.getText()));
                     break;
                 case "rawat_jl_drpr":
                     nmdokter.setText(dokter.tampil3(kddokter.getText()));

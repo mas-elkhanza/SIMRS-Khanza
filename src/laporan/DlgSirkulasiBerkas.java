@@ -1193,12 +1193,12 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
 private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPetugas,Nip.getText());
+        NmPetugas.setText(petugas.tampil3(Nip.getText()));
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPetugas,Nip.getText());
+        NmPetugas.setText(petugas.tampil3(Nip.getText()));
         Tanggal.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPetugas,Nip.getText());
+        NmPetugas.setText(petugas.tampil3(Nip.getText()));
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
@@ -1477,7 +1477,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             BtnIn.setEnabled(akses.getpeminjaman_berkas());
             BtnOut.setEnabled(akses.getpeminjaman_berkas());
             Nip.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,Nip.getText());
+            NmPetugas.setText(petugas.tampil3(Nip.getText()));
         } 
     }
     
