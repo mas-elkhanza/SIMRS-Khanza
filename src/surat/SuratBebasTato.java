@@ -623,9 +623,13 @@ public final class SuratBebasTato extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,NoSurat,"surat_bebas_tato","no_surat");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,NoSurat,"surat_bebas_tato","no_surat")==true){
+            if(tbObat.getSelectedRow()!= -1){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -647,8 +651,14 @@ public final class SuratBebasTato extends javax.swing.JDialog {
             if(tbObat.getSelectedRow()!= -1){
                 if(Sequel.mengedittf("surat_bebas_tato","no_surat=?","no_surat=?,no_rawat=?,tanggalperiksa=?,hasilperiksa=?,keperluan=?",6,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(TanggalPeriksa.getSelectedItem()+""),HasilPeriksa.getSelectedItem()+"",Keperluan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                        })==true){
-                    tampil();
+                    })==true){
+                    tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
+                    tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
+                    tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
+                    tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalPeriksa.getSelectedItem()+""),tbObat.getSelectedRow(),4);
+                    tbObat.setValueAt(HasilPeriksa.getSelectedItem().toString(),tbObat.getSelectedRow(),5);
+                    tbObat.setValueAt(Keperluan.getText(),tbObat.getSelectedRow(),8);
                     emptTeks();
                 }
             }

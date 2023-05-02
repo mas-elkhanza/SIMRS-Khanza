@@ -882,6 +882,7 @@ import surat.SuratMap;
 import surat.SuratMasuk;
 import surat.SuratPernyataanPasienUmum;
 import surat.SuratPersetujuanPenolakanTindakan;
+import surat.SuratPersetujuanPenundaanPelayanan;
 import surat.SuratPersetujuanRawatInap;
 import surat.SuratPersetujuanUmum;
 import surat.SuratPulangAtasPermintaanSendiri;
@@ -20107,6 +20108,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPersetujuanPenundaanPelayananActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratPersetujuanPenundaanPelayanan aplikasi=new SuratPersetujuanPenundaanPelayanan(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20778,7 +20792,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
-            btnPenilaianTambahanMelarikanDiri;
+            btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan;
     
     public void isWall(){
         try{            
@@ -25132,6 +25146,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_persetujuan_rawat_inap()==true){
                 Panelmenu.add(btnPersetujuanRawatInap);
+                jmlmenu++;
+            }
+            
+            if(akses.getpersetujuan_penundaan_pelayanan()==true){
+                Panelmenu.add(btnPersetujuanPenundaanPelayanan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==16){ 
@@ -29783,6 +29802,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_persetujuan_rawat_inap()==true){
             Panelmenu.add(btnPersetujuanRawatInap);
+            jmlmenu++;
+        }
+        
+        if(akses.getpersetujuan_penundaan_pelayanan()==true){
+            Panelmenu.add(btnPersetujuanPenundaanPelayanan);
             jmlmenu++;
         }
 
@@ -36125,6 +36149,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpersetujuan_penundaan_pelayanan()==true){
+            if(btnPersetujuanPenundaanPelayanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPersetujuanPenundaanPelayanan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -40501,5 +40532,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianTambahanMelarikanDiri.setName("btnPenilaianTambahanMelarikanDiri");
         btnPenilaianTambahanMelarikanDiri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianTambahanMelarikanDiri.addActionListener(this::btnPenilaianTambahanMelarikanDiriActionPerformed);
+        
+        btnPersetujuanPenundaanPelayanan = new widget.ButtonBig();
+        btnPersetujuanPenundaanPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9004742_timer_time_clock_alarm_icon.png"))); 
+        btnPersetujuanPenundaanPelayanan.setText("Persetujuan Penundaan Pelayanan");
+        btnPersetujuanPenundaanPelayanan.setIconTextGap(0);
+        btnPersetujuanPenundaanPelayanan.setName("btnPersetujuanPenundaanPelayanan");
+        btnPersetujuanPenundaanPelayanan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPersetujuanPenundaanPelayanan.addActionListener(this::btnPersetujuanPenundaanPelayananActionPerformed);
     }
 }

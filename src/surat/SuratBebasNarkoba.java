@@ -845,7 +845,12 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
                     Keperluan.getText(),hasil1.getSelectedItem().toString(),hasil2.getSelectedItem().toString(),hasil3.getSelectedItem().toString(),
                     hasil4.getSelectedItem().toString(),hasil5.getSelectedItem().toString(),hasil6.getSelectedItem().toString()
                 })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(TanggalSurat.getSelectedItem()+""),Kategori.getSelectedItem().toString(),
+                    KdDok.getText(),TDokter.getText(),Keperluan.getText(),hasil1.getSelectedItem().toString(),hasil2.getSelectedItem().toString(),hasil3.getSelectedItem().toString(),
+                    hasil4.getSelectedItem().toString(),hasil5.getSelectedItem().toString(),hasil6.getSelectedItem().toString()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }else{
                 autoSKBN();
@@ -875,9 +880,13 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,NoSurat,"surat_skbn","no_surat");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,NoSurat,"surat_skbn","no_surat")==true){
+            if(tbObat.getSelectedRow()!= -1){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -906,7 +915,21 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
                     hasil2.getSelectedItem().toString(),hasil3.getSelectedItem().toString(),hasil4.getSelectedItem().toString(),hasil5.getSelectedItem().toString(),hasil6.getSelectedItem().toString(),
                     tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                 })==true){
-                    tampil();
+                    tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
+                    tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
+                    tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
+                    tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalSurat.getSelectedItem()+""),tbObat.getSelectedRow(),4);
+                    tbObat.setValueAt(Kategori.getSelectedItem().toString(),tbObat.getSelectedRow(),5);
+                    tbObat.setValueAt(KdDok.getText(),tbObat.getSelectedRow(),6);
+                    tbObat.setValueAt(TDokter.getText(),tbObat.getSelectedRow(),7);
+                    tbObat.setValueAt(Keperluan.getText(),tbObat.getSelectedRow(),8);
+                    tbObat.setValueAt(hasil1.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+                    tbObat.setValueAt(hasil2.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+                    tbObat.setValueAt(hasil3.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+                    tbObat.setValueAt(hasil4.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+                    tbObat.setValueAt(hasil5.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+                    tbObat.setValueAt(hasil6.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
                     emptTeks();
                 }
             }

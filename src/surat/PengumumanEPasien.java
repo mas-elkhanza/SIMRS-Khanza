@@ -553,7 +553,10 @@ public final class PengumumanEPasien extends javax.swing.JDialog {
             if(Sequel.menyimpantf("pengumuman_epasien","?,?,?","Data",3,new String[]{
                     KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Pengumuman.getText()
                 })==true){
-                    tampil();
+                    tabMode.addRow(new String[]{
+                        (tabMode.getRowCount()+1)+"",KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Pengumuman.getText()
+                    });
+                    LCount.setText(""+tabMode.getRowCount());
                     emptTeks();
             }
         }
@@ -584,7 +587,7 @@ public final class PengumumanEPasien extends javax.swing.JDialog {
             if(Sequel.queryu2tf("delete from pengumuman_epasien where nik=? and tanggal=?",2,new String[]{
                     tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
                 })==true){
-                tampil();
+                tabMode.removeRow(tbObat.getSelectedRow());
                 emptTeks();
             }
         }
@@ -609,7 +612,10 @@ public final class PengumumanEPasien extends javax.swing.JDialog {
                         KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                         Pengumuman.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
                     })==true){
-                        tampil();
+                        tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),1);
+                        tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),2);
+                        tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),3);
+                        tbObat.setValueAt(Pengumuman.getText(),tbObat.getSelectedRow(),3);
                         emptTeks();
                 }
             }
@@ -884,7 +890,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
         }  
     }
 }
