@@ -768,9 +768,13 @@ public final class SuratKeteranganSehat extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,NoSurat,"surat_keterangan_sehat","no_surat");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,NoSurat,"surat_keterangan_sehat","no_surat")==true){
+            if(tbObat.getSelectedRow()!= -1){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

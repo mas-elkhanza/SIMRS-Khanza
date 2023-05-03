@@ -573,7 +573,10 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
             if(Sequel.menyimpantf("surat_keterangan_rawat_inap","?,?,?,?","No.Surat",4,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+"")
                 })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+"")
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
         }
@@ -601,9 +604,13 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,NoSurat,"surat_keterangan_rawat_inap","no_surat");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,NoSurat,"surat_keterangan_rawat_inap","no_surat")==true){
+            if(tbObat.getSelectedRow()!= -1){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -624,7 +631,12 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
                 if(Sequel.mengedittf("surat_keterangan_rawat_inap","no_surat=?","no_surat=?,no_rawat=?,tanggalawal=?,tanggalakhir=?",5,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                 })==true){
-                    tampil();
+                    tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
+                    tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
+                    tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
+                    tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalAwal.getSelectedItem()+""),tbObat.getSelectedRow(),4);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),tbObat.getSelectedRow(),5);
                     emptTeks();
                 }
             }
@@ -920,7 +932,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         NoSurat.setText("");
         TanggalAwal.setDate(new Date());
         TanggalAkhir.setDate(new Date());
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_surat,3),signed)),0) from surat_keterangan_rawat_inap where tanggalawal='"+Valid.SetTgl(TanggalAwal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_keterangan_rawat_inap.no_surat,3),signed)),0) from surat_keterangan_rawat_inap where surat_keterangan_rawat_inap.tanggalawal='"+Valid.SetTgl(TanggalAwal.getSelectedItem()+"")+"' ",
                 "SKR"+TanggalAwal.getSelectedItem().toString().substring(6,10)+TanggalAwal.getSelectedItem().toString().substring(3,5)+TanggalAwal.getSelectedItem().toString().substring(0,2),3,NoSurat); 
         NoSurat.requestFocus();
     }

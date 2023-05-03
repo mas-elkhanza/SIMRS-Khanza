@@ -40534,7 +40534,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianTambahanMelarikanDiri.addActionListener(this::btnPenilaianTambahanMelarikanDiriActionPerformed);
         
         btnPersetujuanPenundaanPelayanan = new widget.ButtonBig();
-        btnPersetujuanPenundaanPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9004742_timer_time_clock_alarm_icon.png"))); 
+        btnPersetujuanPenundaanPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9160890_clock_commerce_shopping_online_store_icon.png"))); 
         btnPersetujuanPenundaanPelayanan.setText("Persetujuan Penundaan Pelayanan");
         btnPersetujuanPenundaanPelayanan.setIconTextGap(0);
         btnPersetujuanPenundaanPelayanan.setName("btnPersetujuanPenundaanPelayanan");
