@@ -270,10 +270,7 @@
                 }
 
                 $naikkelas=getOne("select bridging_sep.klsnaik from bridging_sep where bridging_sep.no_rawat='$norawat'");
-                if(empty($naikkelas)){
-                    $naikkelas=getOne("select bridging_sep.klsnaik from bridging_sep where bridging_sep.no_rawat='$norawat'");
-                }
-
+                
                 $upgrade_class_ind="0";
                 if(!empty($naikkelas)){
                     $upgrade_class_ind="1";
@@ -378,10 +375,7 @@
                 }
 
                 $naikkelas=getOne("select bridging_sep_internal.klsnaik from bridging_sep_internal where bridging_sep_internal.no_rawat='$norawat'");
-                if(empty($naikkelas)){
-                    $naikkelas=getOne("select bridging_sep_internal_internal.klsnaik from bridging_sep_internal_internal where bridging_sep_internal_internal.no_rawat='$norawat'");
-                }
-
+                
                 $upgrade_class_ind="0";
                 if(!empty($naikkelas)){
                     $upgrade_class_ind="1";

@@ -1470,9 +1470,9 @@ public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialo
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("delete from antripernyataanumum");
-                Sequel.queryu("insert into antripernyataanumum values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from persetujuan_penundaan_pelayanan_pembuat_pernyataan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from antripenundaanpelayanan");
+                Sequel.queryu("insert into antripenundaanpelayanan values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                Sequel.queryu("delete from bukti_persetujuan_penundaan_pelayanan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
             }
@@ -1903,7 +1903,7 @@ public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialo
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select persetujuan_penundaan_pelayanan_pembuat_pernyataan.photo from persetujuan_penundaan_pelayanan_pembuat_pernyataan where persetujuan_penundaan_pelayanan_pembuat_pernyataan.no_surat=?");
+                ps=koneksi.prepareStatement("select bukti_persetujuan_penundaan_pelayanan.photo from bukti_persetujuan_penundaan_pelayanan where bukti_persetujuan_penundaan_pelayanan.no_surat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -1911,7 +1911,7 @@ public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialo
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanumum/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penundaanpelayanan/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");

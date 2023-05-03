@@ -442,13 +442,13 @@
                                 }
                                 $ttltnjjbtn=$ttltnjjbtn+$tnjjbtn;
 
-                                $_sql17  ="SELECT tnj from set_jgmlm ";
+                                $_sql17  ="SELECT ifnull(tnj,0) from set_jgmlm ";
                                 $hasil17 =bukaquery($_sql17);
                                 $baris17 = mysqli_fetch_array($hasil17);
                                 $tmbhjgmlm = $sisamlm*$baris17[0];
                                 $ttltmbhjgmlm=$ttltmbhjgmlm+$tmbhjgmlm;
 
-                                $_sql18  ="SELECT tnj from set_jgtambah where pendidikan='".$baris["pendidikan"]."' ";
+                                $_sql18  ="SELECT ifnull(tnj,0) from set_jgtambah where pendidikan='".$baris["pendidikan"]."' ";
                                 $hasil18 =bukaquery($_sql18);
                                 $baris18 = mysqli_fetch_array($hasil18);
                                 $tmbahanjg =0;
@@ -458,7 +458,7 @@
                                 }
                                 $ttltmbahanjg=$ttltmbahanjg+$tmbahanjg;
 
-                                $_sql19  ="SELECT tnj from set_hadir ";
+                                $_sql19  ="SELECT ifnull(tnj,0) from set_hadir ";
                                 $hasil19 =bukaquery($_sql19);
                                 $baris19 = mysqli_fetch_array($hasil19);
                                 $tnjhadir =0;
@@ -473,13 +473,13 @@
                                     $ptg_krghadir=25000;
                                 }
 
-                                $_sql20  ="SELECT tnj from set_lemburhb";
+                                $_sql20  ="SELECT ifnull(tnj,0) from set_lemburhb";
                                 $hasil20 =bukaquery($_sql20);
                                 $baris20 = mysqli_fetch_array($hasil20);
                                 $lemburhb=$hb*(isset($baris20[0])?$baris20[0]:0);
                                 $ttllemburhb=$ttllemburhb+$lemburhb;
 
-                                $_sql21  ="SELECT tnj from set_lemburhr";
+                                $_sql21  ="SELECT ifnull(tnj,0) from set_lemburhr";
                                 $hasil21 =bukaquery($_sql21);
                                 $baris21 = mysqli_fetch_array($hasil21);
                                 $lemburhr=$hr*(isset($baris21[0])?$baris21[0]:0);
