@@ -135,6 +135,32 @@
             </table>
             <br/>
             <h7 class="text-dark">
+                Terhadap Pasien : 
+            </h7>
+            <table class="default" width="98%" border="0" align="center" cellpadding="3px" cellspacing="0px">
+                <tr class="text-dark">
+                    <td width="25%">Nama Pasien</td>
+                    <td width="70%">: <?=$nm_pasien;?></td>
+                </tr>
+                <tr class="text-dark">
+                    <td width="25%">Nomor Rekam Medis</td>
+                    <td width="75%">: <?=$no_rkm_medis;?></td>
+                </tr>
+                <tr class="text-dark">
+                    <td width="25%">Jenis Kelamin</td>
+                    <td width="75%">: <?=$jk;?></td>
+                </tr>
+                <tr class="text-dark">
+                    <td width="25%">Tanggal Lahir</td>
+                    <td width="75%">: <?=$tgl_lahir;?></td>
+                </tr>
+                <tr class="text-dark">
+                    <td width="25%">Hubungan</td>
+                    <td width="75%">: <?=$hubungan;?></td>
+                </tr>
+            </table>
+            <br/>
+            <h7 class="text-dark">
                 Dengan ini menyatakan bahwa saya telah menerima informasi terhadap penundaan pelayanan dikarenakan : <?=$ditunda_karena.($keterangan_ditunda==""?"":", ".$keterangan_ditunda);?>
             </h7>
             <br/>
