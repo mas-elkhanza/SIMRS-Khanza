@@ -6,12 +6,12 @@
     $json       = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $json       = json_decode(encrypt_decrypt($json,"d"),true);
     if (isset($json["kd_dokter"])) {
-        $kd_dokter  = cleankar2($json["kd_dokter"]);
-        $kd_poli    = cleankar2($json["kd_poli"]);
-        $tanggal    = cleankar2($json["tanggal"]);
-        $kd_pj      = cleankar2($json["kd_pj"]);
-        $status     = cleankar2($json["status"]);
-        $no_reg     = cleankar2($json["no_reg"]);
+        $kd_dokter  = validTeks($json["kd_dokter"]);
+        $kd_poli    = validTeks($json["kd_poli"]);
+        $tanggal    = validTeks($json["tanggal"]);
+        $kd_pj      = validTeks($json["kd_pj"]);
+        $status     = validTeks($json["status"]);
+        $no_reg     = validTeks($json["no_reg"]);
         $sekarang   = date("Y-m-d");
         $interval   = getOne2("select (TO_DAYS('$tanggal')-TO_DAYS('$sekarang'))");
         if($status == "batal"){
