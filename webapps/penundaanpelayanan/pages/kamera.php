@@ -154,10 +154,6 @@
                     <td width="25%">Tanggal Lahir</td>
                     <td width="75%">: <?=$tgl_lahir;?></td>
                 </tr>
-                <tr class="text-dark">
-                    <td width="25%">Hubungan</td>
-                    <td width="75%">: <?=$hubungan;?></td>
-                </tr>
             </table>
             <br/>
             <h7 class="text-dark">
