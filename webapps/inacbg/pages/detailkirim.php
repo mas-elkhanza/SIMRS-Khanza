@@ -60,11 +60,27 @@
             }
             $status_lanjut  = $baris["status_lanjut"];
             $png_jawab    = $baris["png_jawab"];
+            $sistole = "120";
+            $diastole = "90";
             $jnsrawat="1";
             if($status_lanjut=="Ranap"){
                 $jnsrawat="1";
+                $tensi=explode("/", getOne("select pemeriksaan_ranap.tensi from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='".$baris["no_rawat"]."' order by pemeriksaan_ranap.tgl_perawatan desc,pemeriksaan_ranap.jam_rawat desc"));
+                if(!empty($tensi[0])){
+                    $sistole=$tensi[0];
+                }
+                if(!empty($tensi[1])){
+                    $diastole=$tensi[1];
+                }
             }else{
                 $jnsrawat="2";
+                $tensi=explode("/", getOne("select pemeriksaan_ralan.tensi from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat='".$baris["no_rawat"]."' order by pemeriksaan_ralan.tgl_perawatan desc,pemeriksaan_ralan.jam_rawat desc"));
+                if(!empty($tensi[0])){
+                    $sistole=$tensi[0];
+                }
+                if(!empty($tensi[1])){
+                    $diastole=$tensi[1];
+                }
             }
 
             $nosep="";
@@ -282,6 +298,18 @@
                 <td width="41%" >Berat Saat Lahir</td><td width="">:</td>
                 <td width="57%">
                     <input name="birth_weight" class="text" type="text" class="inputbox" value="" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
+                </td>
+            </tr>
+            <tr class="head">
+                <td width="41%" >Sistole</td><td width="">:</td>
+                <td width="57%">
+                    <input name="sistole" class="text" type="text" class="inputbox" value="<?php echo $sistole; ?>" size="5" maxlength="3" pattern="[0-9]{1,3}" title=" 0-9 (Maksimal 3 karakter)" autocomplete="off">
+                </td>
+            </tr>
+            <tr class="head">
+                <td width="41%" >Diastole</td><td width="">:</td>
+                <td width="57%">
+                    <input name="diastole" class="text" type="text" class="inputbox" value="<?php echo $diastole; ?>" size="5" maxlength="3" pattern="[0-9]{1,3}" title=" 0-9 (Maksimal 3 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
@@ -755,6 +783,8 @@
                 $jk                = validTeks(trim($_POST['jk']));
                 $tgl_lahir         = validTeks(trim($_POST['tgl_lahir']));
                 $jnsrawat          = validTeks(trim($_POST['jnsrawat']));
+                $sistole           = validTeks(trim($_POST['sistole']));
+                $diastole          = validTeks(trim($_POST['diastole']));
                 $gender            = "";
                 if($jk=="L"){
                     $gender="1";
@@ -793,7 +823,7 @@
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
                             $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$pemulasaraan_jenazah,$kantong_jenazah, 
                             $peti_jenazah,$plastik_erat,$desinfektan_jenazah,$mobil_jenazah,$desinfektan_mobil_jenazah,
-                            $covid19_status_cd,$nomor_kartu_t,$episodes,$covid19_cc_ind);
+                            $covid19_status_cd,$nomor_kartu_t,$episodes,$covid19_cc_ind,$sistole,$diastole);
                         echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
                     }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))||(empty($nomor_kartu_t))){
                         echo 'Semua field harus isi..!!!';
@@ -808,7 +838,7 @@
                             $tarif_poli_eks,$nama_dokter,getKelasRS(),"3","JKN","#",$codernik,
                             $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
-                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat);
+                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$sistole,$diastole);
                         echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
                     }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))){
                         echo 'Semua field harus isi..!!!';

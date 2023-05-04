@@ -182,7 +182,7 @@
     function UpdateDataKlaim($nomor_sep,$nomor_kartu,$tgl_masuk,$tgl_pulang,$jenis_rawat,$kelas_rawat,$adl_sub_acute,
                             $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
                             $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure,
-                            $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$norawat){	
+                            $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$norawat,$diastole,$sistole){	
         
         $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan not like '%terapi%'")+
                             getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan not like '%terapi%'");
@@ -291,6 +291,8 @@
                                 "upgrade_class_los": "'.$upgrade_class_los.'",
                                 "add_payment_pct": "'.$add_payment_pct.'",
                                 "birth_weight": "'.$birth_weight.'",
+                                "sistole": '.$sistole.',
+                                "diastole": '.$diastole.',
                                 "discharge_status": "'.$discharge_status.'",
                                 "diagnosa": "'.$diagnosa.'",
                                 "procedure": "'.$procedure.'",
@@ -359,6 +361,8 @@
                                 "upgrade_class_los": "'.$upgrade_class_los.'",
                                 "add_payment_pct": "'.$add_payment_pct.'",
                                 "birth_weight": "'.$birth_weight.'",
+                                "sistole": '.$sistole.',
+                                "diastole": '.$diastole.',
                                 "discharge_status": "'.$discharge_status.'",
                                 "diagnosa": "'.$diagnosa.'",
                                 "procedure": "'.$procedure.'",
@@ -407,7 +411,7 @@
     function UpdateDataKlaimInternal($nomor_sep,$nomor_kartu,$tgl_masuk,$tgl_pulang,$jenis_rawat,$kelas_rawat,$adl_sub_acute,
                             $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
                             $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure,
-                            $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$norawat){	
+                            $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$norawat,$sistole,$diastole){	
         
         $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan not like '%terapi%'")+
                             getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan not like '%terapi%'");
@@ -516,6 +520,8 @@
                                 "upgrade_class_los": "'.$upgrade_class_los.'",
                                 "add_payment_pct": "'.$add_payment_pct.'",
                                 "birth_weight": "'.$birth_weight.'",
+                                "sistole": '.$sistole.',
+                                "diastole": '.$diastole.',
                                 "discharge_status": "'.$discharge_status.'",
                                 "diagnosa": "'.$diagnosa.'",
                                 "procedure": "'.$procedure.'",
@@ -584,6 +590,8 @@
                                 "upgrade_class_los": "'.$upgrade_class_los.'",
                                 "add_payment_pct": "'.$add_payment_pct.'",
                                 "birth_weight": "'.$birth_weight.'",
+                                "sistole": '.$sistole.',
+                                "diastole": '.$diastole.',
                                 "discharge_status": "'.$discharge_status.'",
                                 "diagnosa": "'.$diagnosa.'",
                                 "procedure": "'.$procedure.'",
@@ -635,7 +643,7 @@
                             $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,
                             $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
-                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat){	
+                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$sistole,$diastole){	
         $request ='{
                         "metadata": {
                             "method": "set_claim_data",
@@ -658,6 +666,8 @@
                             "upgrade_class_los": "'.$upgrade_class_los.'",
                             "add_payment_pct": "'.$add_payment_pct.'",
                             "birth_weight": "'.$birth_weight.'",
+                            "sistole": '.$sistole.',
+                            "diastole": '.$diastole.',
                             "discharge_status": "'.$discharge_status.'",
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
@@ -709,7 +719,7 @@
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
                             $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$pemulasaraan_jenazah,$kantong_jenazah, 
                             $peti_jenazah,$plastik_erat,$desinfektan_jenazah,$mobil_jenazah,$desinfektan_mobil_jenazah,
-                            $covid19_status_cd,$nomor_kartu_t,$episodes,$covid19_cc_ind){	
+                            $covid19_status_cd,$nomor_kartu_t,$episodes,$covid19_cc_ind,$sistole,$diastole){	
         $request ='{
                         "metadata": {
                             "method": "set_claim_data",
@@ -732,6 +742,8 @@
                             "upgrade_class_los": "'.$upgrade_class_los.'",
                             "add_payment_pct": "'.$add_payment_pct.'",
                             "birth_weight": "'.$birth_weight.'",
+                            "sistole": '.$sistole.',
+                            "diastole": '.$diastole.',
                             "discharge_status": "'.$discharge_status.'",
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
