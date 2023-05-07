@@ -54,7 +54,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         tbDataDiet.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDataDiet.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbDataDiet.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -68,6 +68,19 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(60);
             }else if(i==5){
                 column.setPreferredWidth(55);
+            }else if(i==6){
+                column.setPreferredWidth(65);
+            }else if(i==7){
+                column.setPreferredWidth(45);
+            }else if(i==8){
+                column.setPreferredWidth(41);
+            }else if(i==9){
+                column.setPreferredWidth(39);
+            }else if(i==10){
+                column.setPreferredWidth(38);
+            }else if(i==11){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbDataDiet.setDefaultRenderer(Object.class, new WarnaTable());
@@ -170,10 +183,6 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnLabelDiet = new javax.swing.JMenuItem();
-        MnLabelDiet1 = new javax.swing.JMenuItem();
-        MnSisaDietPasien = new javax.swing.JMenuItem();
         Ruang = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
@@ -230,50 +239,6 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         jLabel24 = new widget.Label();
         Scroll = new widget.ScrollPane();
         tbDataDiet = new widget.Table();
-
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnLabelDiet.setBackground(new java.awt.Color(255, 255, 254));
-        MnLabelDiet.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLabelDiet.setForeground(java.awt.Color.darkGray);
-        MnLabelDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnLabelDiet.setText("Label Diet");
-        MnLabelDiet.setName("MnLabelDiet"); // NOI18N
-        MnLabelDiet.setPreferredSize(new java.awt.Dimension(150, 28));
-        MnLabelDiet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnLabelDietActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnLabelDiet);
-
-        MnLabelDiet1.setBackground(new java.awt.Color(255, 255, 254));
-        MnLabelDiet1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLabelDiet1.setForeground(java.awt.Color.darkGray);
-        MnLabelDiet1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnLabelDiet1.setText("Semua Label Diet");
-        MnLabelDiet1.setName("MnLabelDiet1"); // NOI18N
-        MnLabelDiet1.setPreferredSize(new java.awt.Dimension(150, 28));
-        MnLabelDiet1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnLabelDiet1ActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnLabelDiet1);
-
-        MnSisaDietPasien.setBackground(new java.awt.Color(255, 255, 254));
-        MnSisaDietPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSisaDietPasien.setForeground(java.awt.Color.darkGray);
-        MnSisaDietPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSisaDietPasien.setText("Sisa Diet Pasien");
-        MnSisaDietPasien.setName("MnSisaDietPasien"); // NOI18N
-        MnSisaDietPasien.setPreferredSize(new java.awt.Dimension(150, 28));
-        MnSisaDietPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSisaDietPasienActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnSisaDietPasien);
 
         Ruang.setEditable(false);
         Ruang.setHighlighter(null);
@@ -748,7 +713,6 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbDataDiet.setAutoCreateRowSorter(true);
-        tbDataDiet.setComponentPopupMenu(jPopupMenu1);
         tbDataDiet.setName("tbDataDiet"); // NOI18N
         tbDataDiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -773,7 +737,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
         }else{            
-            //Valid.pindah(evt,WaktuDiet,KdDiet);
+            Valid.pindah(evt,WaktuDiet,TCari);
         }
 }//GEN-LAST:event_TNoRwKeyPressed
 
@@ -981,65 +945,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnSeek2KeyPressed
 
-    private void MnLabelDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLabelDietActionPerformed
-        /*if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-        }else{
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-            Valid.MyReportqry("rptLabelDiet.jasper","report","::[ Label Diet ]::",
-                "select sisa_diet_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir, " +
-                "concat(sisa_diet_pasien.kd_kamar,', ',bangsal.nm_bangsal) as kamar,sisa_diet_pasien.tanggal,sisa_diet_pasien.waktu,jam_diet_pasien.jam,diet.nama_diet " +
-                "from sisa_diet_pasien inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal inner join jam_diet_pasien " +
-                "on sisa_diet_pasien.no_rawat=reg_periksa.no_rawat " +
-                "and sisa_diet_pasien.kd_kamar=kamar.kd_kamar "+
-                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "and sisa_diet_pasien.kd_diet=diet.kd_diet " +
-                "and sisa_diet_pasien.waktu=jam_diet_pasien.waktu " +
-                "where sisa_diet_pasien.tanggal='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu='"+WaktuDiet.getText()+"' "+
-                "and sisa_diet_pasien.no_rawat='"+TNoRw.getText()+"' and diet.nama_diet='"+NmDiet.getText()+"'",param);
-        }*/
-    }//GEN-LAST:event_MnLabelDietActionPerformed
-
-    private void MnLabelDiet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLabelDiet1ActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-            Valid.MyReportqry("rptLabelDiet.jasper","report","::[ Label Diet ]::",
-                "select sisa_diet_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir, " +
-                "concat(sisa_diet_pasien.kd_kamar,', ',bangsal.nm_bangsal) as kamar,sisa_diet_pasien.tanggal,sisa_diet_pasien.waktu,jam_diet_pasien.jam,diet.nama_diet " +
-                "from sisa_diet_pasien inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal inner join jam_diet_pasien " +
-                "on sisa_diet_pasien.no_rawat=reg_periksa.no_rawat " +
-                "and sisa_diet_pasien.kd_kamar=kamar.kd_kamar "+
-                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "and sisa_diet_pasien.kd_diet=diet.kd_diet " +
-                "and sisa_diet_pasien.waktu=jam_diet_pasien.waktu " +
-                "where sisa_diet_pasien.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and sisa_diet_pasien.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "sisa_diet_pasien.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "sisa_diet_pasien.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                "order by bangsal.nm_bangsal,diet.nama_diet",param);
-            this.setCursor(Cursor.getDefaultCursor());
-        }
-    }//GEN-LAST:event_MnLabelDiet1ActionPerformed
-
     private void BtnJam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJam2ActionPerformed
         akses.setform("LaporanSisaDietPasien");  
         pilih=2;
@@ -1057,10 +962,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void WaktuDiet2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WaktuDiet2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_WaktuDiet2KeyPressed
-
-    private void MnSisaDietPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSisaDietPasienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MnSisaDietPasienActionPerformed
 
     private void KarboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KarboKeyPressed
         Valid.pindah(evt,Sayur,Buah);
@@ -1119,9 +1020,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Kamar;
     private widget.TextBox Karbo;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnLabelDiet;
-    private javax.swing.JMenuItem MnLabelDiet1;
-    private javax.swing.JMenuItem MnSisaDietPasien;
     private widget.TextBox Nabati;
     private widget.TextBox NmBangsalCari;
     private javax.swing.JPanel PanelInput;
@@ -1154,7 +1052,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1271,9 +1168,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getdiet_pasien());
-        BtnHapus.setEnabled(akses.getdiet_pasien());
-        BtnPrint.setEnabled(akses.getdiet_pasien());
-        MnSisaDietPasien.setEnabled(akses.getsisa_diet_pasien());
+        BtnSimpan.setEnabled(akses.getsisa_diet_pasien());
+        BtnHapus.setEnabled(akses.getsisa_diet_pasien());
+        BtnPrint.setEnabled(akses.getsisa_diet_pasien());
     }
 }
