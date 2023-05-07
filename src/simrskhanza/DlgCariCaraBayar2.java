@@ -592,11 +592,9 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
             ps=koneksi.prepareStatement("select * from penjab where penjab.status='1' order by penjab.png_jawab");
             try{           
                 rs=ps.executeQuery();
-                i=1;
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
+                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
                     iyem=iyem+"{\"KodeAsuransi\":\""+rs.getString(1)+"\",\"NamaAsuransi\":\""+rs.getString(2)+"\",\"PerusahaanAsuransi\":\""+rs.getString(3)+"\",\"AlamatAsuransi\":\""+rs.getString(4)+"\",\"NoTelp\":\""+rs.getString(5)+"\",\"Attn\":\""+rs.getString(6)+"\"},";
-                    i++;
                 }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);

@@ -736,6 +736,7 @@ import laporan.LaporanKedatanganPasienPerJam;
 import laporan.LaporanRegistrasiPoliPerTanggal;
 import laporan.LaporanRekapKunjunganRuangPerTahun;
 import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
+import laporan.LaporanSisaDietPasien;
 import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
@@ -20121,6 +20122,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSisaDietPasienActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanSisaDietPasien aplikasi=new LaporanSisaDietPasien(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20792,7 +20806,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
-            btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan;
+            btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien;
     
     public void isWall(){
         try{            
@@ -22662,6 +22676,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekap_permintaan_diet()==true){  
                 Panelmenu.add(btnRekapPermintaanDiet);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getsisa_diet_pasien()==true){  
+                Panelmenu.add(btnSisaDietPasien);                 
                 jmlmenu++;
             }
             
@@ -27324,6 +27343,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekap_permintaan_diet()==true){  
             Panelmenu.add(btnRekapPermintaanDiet);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getsisa_diet_pasien()==true){  
+            Panelmenu.add(btnSisaDietPasien);                 
             jmlmenu++;
         }
         
@@ -32678,6 +32702,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekap_permintaan_diet()==true){  
             if(btnRekapPermintaanDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPermintaanDiet);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsisa_diet_pasien()==true){  
+            if(btnSisaDietPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSisaDietPasien);                 
                 jmlmenu++;
             }                
         }
@@ -40540,5 +40571,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPersetujuanPenundaanPelayanan.setName("btnPersetujuanPenundaanPelayanan");
         btnPersetujuanPenundaanPelayanan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPersetujuanPenundaanPelayanan.addActionListener(this::btnPersetujuanPenundaanPelayananActionPerformed);
+        
+        btnSisaDietPasien = new widget.ButtonBig();
+        btnSisaDietPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5296685_fish_food_meal_rice_salmon_icon.png"))); 
+        btnSisaDietPasien.setText("Sisa Diet Pasien");
+        btnSisaDietPasien.setIconTextGap(0);
+        btnSisaDietPasien.setName("btnSisaDietPasien");
+        btnSisaDietPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSisaDietPasien.addActionListener(this::btnSisaDietPasienActionPerformed);
     }
 }
