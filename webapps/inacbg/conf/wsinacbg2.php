@@ -5,12 +5,12 @@
     require_once('../../conf/conf.php');
 
     function getKey() {
-       $keyRS = "d9cf321d74922da0ff9c36a438ea79b89fa6781c793e46fbd1d893fd39cdffb6";   
+       $keyRS = "6d80443ff19d0ef76c6f25289bfbbece5b1bf4326b9fa3aa680f17e5232deaa4";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.10.28/E-Klaim/ws.php";
+        $UrlWS = "http://sipenjor.ddns.net:8001/E-Klaim/ws.php";
         return $UrlWS;
     }
     

@@ -930,19 +930,17 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptBrDiet.jasper","report","::[ Data Pemberian Diet ]::","select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
-                    "concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal) as namakamar,detail_beri_diet.tanggal,detail_beri_diet.waktu,jam_diet_pasien.jam,diet.nama_diet " +
-                    "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal inner join jam_diet_pasien " +
-                    "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
-                    "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
-                    "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "and detail_beri_diet.kd_diet=diet.kd_diet " +
-                    "and detail_beri_diet.waktu=jam_diet_pasien.waktu " +
-                    "where detail_beri_diet.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_beri_diet.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and detail_beri_diet.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    "detail_beri_diet.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_beri_diet.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "detail_beri_diet.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_beri_diet.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "order by bangsal.nm_bangsal,diet.nama_diet",param);
+                Valid.MyReportqry("rptBrDiet.jasper","report","::[ Data Pemberian Diet ]::",
+                    "select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),"+
+                    "detail_beri_diet.tanggal,detail_beri_diet.waktu,jam_diet_pasien.jam,diet.nama_diet,detail_beri_diet.kd_kamar,detail_beri_diet.kd_diet " +
+                    "from detail_beri_diet inner join reg_periksa on detail_beri_diet.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join diet on detail_beri_diet.kd_diet=diet.kd_diet "+
+                    "inner join kamar on detail_beri_diet.kd_kamar=kamar.kd_kamar "+
+                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                    "inner join jam_diet_pasien on detail_beri_diet.waktu=jam_diet_pasien.waktu " +
+                    "where detail_beri_diet.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_beri_diet.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and "+
+                    "(detail_beri_diet.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%') order by bangsal.nm_bangsal,diet.nama_diet",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }else{
