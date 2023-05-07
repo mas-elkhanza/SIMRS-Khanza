@@ -599,7 +599,7 @@ public final class RMPerencanaanPemulangan extends javax.swing.JDialog {
         TinggalSendiri.setBounds(40, 380, 80, 23);
 
         RencanaPemulangan.setForeground(new java.awt.Color(50, 70, 50));
-        RencanaPemulangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2022" }));
+        RencanaPemulangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2023" }));
         RencanaPemulangan.setDisplayFormat("dd-MM-yyyy");
         RencanaPemulangan.setName("RencanaPemulangan"); // NOI18N
         RencanaPemulangan.setOpaque(false);
@@ -873,7 +873,7 @@ public final class RMPerencanaanPemulangan extends javax.swing.JDialog {
         FormInput.add(jLabel56);
         jLabel56.setBounds(15, 360, 590, 23);
 
-        YangMembantuKeperluan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        YangMembantuKeperluan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ada" }));
         YangMembantuKeperluan.setName("YangMembantuKeperluan"); // NOI18N
         YangMembantuKeperluan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1121,7 +1121,7 @@ public final class RMPerencanaanPemulangan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1135,7 +1135,7 @@ public final class RMPerencanaanPemulangan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1191,7 +1191,7 @@ public final class RMPerencanaanPemulangan extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
