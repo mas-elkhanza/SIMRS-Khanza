@@ -30,7 +30,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -7634,6 +7633,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     public void emptTeks() {
         TKd.setText("");
+        TNmUser.setText("");
         TPass.setText("");
         TKd.requestFocus();
     }
@@ -7642,6 +7642,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         i=tbUser.getSelectedRow();
         if(i!= -1){
             TKd.setText(tbUser.getValueAt(i,0).toString());
+            TNmUser.setText(tbUser.getValueAt(i,1).toString());
             TPass.setText(tbUser.getValueAt(i,3).toString());            
         }
     }

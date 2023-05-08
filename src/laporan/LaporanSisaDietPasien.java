@@ -6,7 +6,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -15,8 +14,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -24,6 +21,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import setting.DlgCariJamDiet;
 import simrskhanza.DlgCariBangsal;
+import java.awt.Cursor;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -36,7 +36,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0,pilih=0;
+    private int i=0,pilih=0,hewani=0,nabati=0,karbo=0,sayur=0,buah=0;
 
     /** Creates new form DlgPemberianInfus
      * @param parent
@@ -46,7 +46,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","Nama Pasien","Kamar","Tanggal","Waktu","Jam","Karbohidrat","Hewani","Nabati","Sayur","Buah","Kode Kamar"
+                "No.Rawat","Nama Pasien","Kamar","Tanggal","Waktu","Jam","Karbohidrat(%)","Hewani(%)","Nabati(%)","Sayur(%)","Buah(%)","Kode Kamar"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -69,15 +69,15 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(55);
             }else if(i==6){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(85);
             }else if(i==7){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(65);
             }else if(i==8){
-                column.setPreferredWidth(41);
+                column.setPreferredWidth(60);
             }else if(i==9){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(53);
             }else if(i==10){
-                column.setPreferredWidth(38);
+                column.setPreferredWidth(53);
             }else if(i==11){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -827,38 +827,38 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        /*if(TabRawat.getSelectedIndex()==0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                BtnBatal.requestFocus();
-            }else if(tabMode.getRowCount()!=0){
-                Map<String, Object> param = new HashMap<>();  
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptBrDiet.jasper","report","::[ Data Pemberian Diet ]::","select sisa_diet_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
-                    "concat(sisa_diet_pasien.kd_kamar,', ',bangsal.nm_bangsal) as namakamar,sisa_diet_pasien.tanggal,sisa_diet_pasien.waktu,jam_diet_pasien.jam,diet.nama_diet " +
-                    "from sisa_diet_pasien inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal inner join jam_diet_pasien " +
-                    "on sisa_diet_pasien.no_rawat=reg_periksa.no_rawat " +
-                    "and sisa_diet_pasien.kd_kamar=kamar.kd_kamar "+
-                    "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "and sisa_diet_pasien.kd_diet=diet.kd_diet " +
-                    "and sisa_diet_pasien.waktu=jam_diet_pasien.waktu " +
-                    "where sisa_diet_pasien.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and sisa_diet_pasien.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    "sisa_diet_pasien.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "sisa_diet_pasien.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "order by bangsal.nm_bangsal,diet.nama_diet",param);
-            }
-            this.setCursor(Cursor.getDefaultCursor());
-        }else{
-            JOptionPane.showMessageDialog(null,"Silahkan buka data diet pasien");
-        }*/
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnBatal.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();  
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());  
+            param.put("karbo",(karbo/i)+"");   
+            param.put("hewani",(hewani/i)+"");   
+            param.put("nabati",(nabati/i)+"");   
+            param.put("sayur",(sayur/i)+"");   
+            param.put("buah",(buah/i)+"");    
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptSisaDiet.jasper","report","::[ Data Pemberian Diet ]::",
+                "select sisa_diet_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(sisa_diet_pasien.kd_kamar,', ',bangsal.nm_bangsal) as namakamar,"+
+                "sisa_diet_pasien.tanggal,sisa_diet_pasien.waktu,jam_diet_pasien.jam,sisa_diet_pasien.kd_kamar,sisa_diet_pasien.karbohidrat,"+
+                "sisa_diet_pasien.hewani,sisa_diet_pasien.nabati,sisa_diet_pasien.sayur,sisa_diet_pasien.buah " +
+                "from sisa_diet_pasien inner join reg_periksa on sisa_diet_pasien.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join kamar on sisa_diet_pasien.kd_kamar=kamar.kd_kamar "+
+                "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                "inner join jam_diet_pasien on sisa_diet_pasien.waktu=jam_diet_pasien.waktu " +
+                "where sisa_diet_pasien.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and sisa_diet_pasien.waktu like '%"+WaktuDiet2.getText().trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' "+
+                (TCari.getText().trim().equals("")?"":"and (sisa_diet_pasien.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%') ")+
+                "order by bangsal.nm_bangsal" ,param);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -1084,12 +1084,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps.setString(7,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
+                hewani=0;nabati=0;karbo=0;sayur=0;buah=0;i=0;
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),rs.getString("kamar"),rs.getString("tanggal"),
                         rs.getString("waktu"),rs.getString("jam"),rs.getString("karbohidrat"),rs.getString("hewani"),rs.getString("nabati"),rs.getString("sayur"),
                         rs.getString("buah"),rs.getString("kd_kamar")
                     });
+                    i++;
+                    hewani=hewani+rs.getInt("hewani");
+                    nabati=nabati+rs.getInt("nabati");
+                    sayur=sayur+rs.getInt("sayur");
+                    karbo=karbo+rs.getInt("karbohidrat");
+                    buah=buah+rs.getInt("buah");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1102,6 +1109,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }   
             LCount.setText(""+tabMode.getRowCount());
+            if(tabMode.getRowCount()>0){
+                tabMode.addRow(new String[]{
+                    "","Rata-rata Persentase Sisa Makanan","","","","",(karbo/i)+"",(hewani/i)+"",(nabati/i)+"",(sayur/i)+"",(buah/i)+"",""
+                });
+            }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
