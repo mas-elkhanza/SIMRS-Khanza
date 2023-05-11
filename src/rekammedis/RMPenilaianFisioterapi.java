@@ -2690,7 +2690,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
         }            
     }
 

@@ -1109,9 +1109,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     public void isCek(){
         if(akses.getjml2()>=1){            
-            Sequel.cariIsi("select no_ktp from pegawai where nik=?",Nama,akses.getkode());
+            Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",Nama,akses.getkode());
             BtnPegawai.setEnabled(false);
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",Nama,akses.getkode());
+            Nama.setText(pegawai.tampil3(akses.getkode()));
         }else{
             BtnPegawai.setEnabled(true);
         }    

@@ -41,7 +41,7 @@ public class IPSRSReturBeli extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampikan=true;
     private boolean sukses=true;
-    private String Retur_Beli_Non_Medis=Sequel.cariIsi("select Retur_Beli_Non_Medis from set_akun"),Kontra_Retur_Beli_Non_Medis=Sequel.cariIsi("select Kontra_Retur_Beli_Non_Medis from set_akun");
+    private String Retur_Beli_Non_Medis=Sequel.cariIsi("select set_akun.Retur_Beli_Non_Medis from set_akun"),Kontra_Retur_Beli_Non_Medis=Sequel.cariIsi("select set_akun.Kontra_Retur_Beli_Non_Medis from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -992,7 +992,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_beli,3),signed)),0) from ipsrsreturbeli where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"'","TRB"+TglRetur.getSelectedItem().toString().substring(6,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(ipsrsreturbeli.no_retur_beli,3),signed)),0) from ipsrsreturbeli where ipsrsreturbeli.tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"'","TRB"+TglRetur.getSelectedItem().toString().substring(6,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
     }
  
 }

@@ -2209,7 +2209,7 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
         }            
     }
 

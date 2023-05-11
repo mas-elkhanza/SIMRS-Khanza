@@ -1212,11 +1212,11 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     
     public void isCek(){
         KdPetugas.setText(akses.getkode());
-        Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmPetugas,KdPetugas.getText());
+        NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pengajuan,3),signed)),0) from pengajuan_cuti where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengajuan_cuti.no_pengajuan,3),signed)),0) from pengajuan_cuti where pengajuan_cuti.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "PC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
     }
     

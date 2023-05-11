@@ -1969,7 +1969,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", NmDokter,KdDokter.getText());
+            NmDokter.setText(pemeriksa.tampil3(KdDokter.getText()));
         }            
     }
     

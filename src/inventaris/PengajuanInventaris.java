@@ -1137,7 +1137,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
 private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }else{            
@@ -1524,12 +1524,12 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
         }  
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pengajuan,3),signed)),0) from pengajuan_inventaris where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengajuan_inventaris.no_pengajuan,3),signed)),0) from pengajuan_inventaris where pengajuan_inventaris.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "PI"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
     }
     

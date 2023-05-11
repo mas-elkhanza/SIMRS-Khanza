@@ -691,12 +691,10 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nmptg,kdptg.getText());          
+            nmptg.setText(pegawai.tampil3(kdptg.getText()));          
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nmptg,kdptg.getText());
             Keterangan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nmptg,kdptg.getText());
             BtnSimpan.requestFocus();  
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -913,13 +911,13 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getpengajuan_barang_nonmedis());
             BtnTambah.setEnabled(akses.getipsrs_barang());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", nmptg,kdptg.getText());
+            nmptg.setText(pegawai.tampil3(kdptg.getText()));
             Sequel.cariIsi("select pegawai.departemen from pegawai where pegawai.nik=?",Departemen,kdptg.getText());
         }        
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pengajuan,3),signed)),0) from pengajuan_barang_nonmedis where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengajuan_barang_nonmedis.no_pengajuan,3),signed)),0) from pengajuan_barang_nonmedis where pengajuan_barang_nonmedis.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "PBNM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
     }
     

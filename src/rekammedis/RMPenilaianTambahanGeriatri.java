@@ -2069,7 +2069,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         if(akses.getjml2()>=1){
             BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",NmPetugas,KdPetugas.getText());
+            NmPetugas.setText(pegawai.tampil3(KdPetugas.getText()));
         }            
     }
     
