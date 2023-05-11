@@ -130,8 +130,8 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         panelGlass9 = new widget.panelisi();
         jLabel12 = new widget.Label();
-        MJknCapaian = new widget.Label();
         MJknBelum = new widget.Label();
+        MJknCapaian = new widget.Label();
         jLabel13 = new widget.Label();
         MJknSelesai = new widget.Label();
         jLabel19 = new widget.Label();
@@ -191,19 +191,19 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
         jLabel12.setPreferredSize(new java.awt.Dimension(75, 23));
         panelGlass9.add(jLabel12);
 
-        MJknCapaian.setForeground(new java.awt.Color(0, 153, 0));
-        MJknCapaian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MJknCapaian.setText("0");
-        MJknCapaian.setName("MJknCapaian"); // NOI18N
-        MJknCapaian.setPreferredSize(new java.awt.Dimension(35, 23));
-        panelGlass9.add(MJknCapaian);
-
         MJknBelum.setForeground(new java.awt.Color(0, 153, 0));
         MJknBelum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MJknBelum.setText("0");
         MJknBelum.setName("MJknBelum"); // NOI18N
         MJknBelum.setPreferredSize(new java.awt.Dimension(35, 23));
         panelGlass9.add(MJknBelum);
+
+        MJknCapaian.setForeground(new java.awt.Color(0, 153, 0));
+        MJknCapaian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MJknCapaian.setText("0");
+        MJknCapaian.setName("MJknCapaian"); // NOI18N
+        MJknCapaian.setPreferredSize(new java.awt.Dimension(35, 23));
+        panelGlass9.add(MJknCapaian);
 
         jLabel13.setForeground(new java.awt.Color(0, 153, 0));
         jLabel13.setText("MJKN Selesai :");

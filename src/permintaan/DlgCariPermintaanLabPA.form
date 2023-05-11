@@ -92,7 +92,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="16-03-2023 11:29:41"/>
+                    <StringItem index="0" value="11-05-2023 16:07:01"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -512,7 +512,7 @@
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="CrDokter" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[257, 23]"/>
+                          <Dimension value="[245, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -534,7 +534,7 @@
                     </Component>
                     <Component class="widget.Label" name="jLabel16">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Unit :"/>
+                        <Property name="text" type="java.lang.String" value="Unit/Poli :"/>
                         <Property name="name" type="java.lang.String" value="jLabel16" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[90, 23]"/>
@@ -546,7 +546,7 @@
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="CrPoli" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[257, 23]"/>
+                          <Dimension value="[245, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -726,7 +726,7 @@
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="CrDokter2" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[250, 23]"/>
+                          <Dimension value="[170, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -748,10 +748,10 @@
                     </Component>
                     <Component class="widget.Label" name="jLabel17">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Ruang/Kamar :"/>
+                        <Property name="text" type="java.lang.String" value="Ruang :"/>
                         <Property name="name" type="java.lang.String" value="jLabel17" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[104, 23]"/>
+                          <Dimension value="[54, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -760,7 +760,7 @@
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="Kamar" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[250, 23]"/>
+                          <Dimension value="[170, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -779,6 +779,29 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSeek6ActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel18">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Status :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel18" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[55, 23]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="widget.ComboBox" name="cmbStatus">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="2">
+                            <StringItem index="0" value="Semua"/>
+                            <StringItem index="1" value="Belum Pulang"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="cmbStatus" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[120, 23]"/>
+                        </Property>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
