@@ -1406,7 +1406,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             if(aktifkanparsial.equals("yes")){
                 jmlparsial=Sequel.cariInteger("select count(set_input_parsial.kd_pj) from set_input_parsial where set_input_parsial.kd_pj=?",Penjab.getText());
             }
-            if(jmlparsial>0){     
+            if((jmlparsial>0)&&status.equals("Ralan")){    
                 simpan();
             }else{
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){
