@@ -1655,7 +1655,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             BtnSimpan.setEnabled(akses.getsurat_pemesanan_medis());
             BtnTambah.setEnabled(akses.getobat());
             nmptg.setText(pegawai.tampil3(kdptg.getText()));
-            Sequel.cariIsi("select pegawai.departemen from pegawai where pegawai.nik=?",Departemen,kdptg.getText());
+            Departemen.setText(pegawai.tampilDepartemen(kdptg.getText()));
         }        
     }
     

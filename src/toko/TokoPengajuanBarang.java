@@ -841,7 +841,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             BtnSimpan.setEnabled(akses.gettoko_pengajuan_barang());
             BtnTambah.setEnabled(akses.gettoko_barang());
             nmptg.setText(pegawai.tampil3(kdptg.getText())); 
-            Sequel.cariIsi("select pegawai.departemen from pegawai where pegawai.nik=?",Departemen,kdptg.getText());
+            Departemen.setText(pegawai.tampilDepartemen(kdptg.getText()));
         }        
     }
     

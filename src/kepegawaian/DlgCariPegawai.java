@@ -526,4 +526,38 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         }
         return iyem;
     }
+    
+    public String tampilDepartemen(String kode) {
+        try {
+            if(Valid.daysOld("./cache/pegawai.iyem")>7){
+                tampil();
+            }
+        } catch (Exception e) {
+            if(e.toString().contains("No such file or directory")){
+                tampil();
+            }
+        }
+        
+        iyem="";
+        try {
+            myObj = new FileReader("./cache/pegawai.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("pegawai");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
+                        iyem=list.path("Departemen").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=Sequel.cariIsi("select pegawai.departemen from pegawai where pegawai.nik=?",kode);
+        }
+        return iyem;
+    }
 }
