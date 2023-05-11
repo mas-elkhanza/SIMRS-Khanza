@@ -6606,7 +6606,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                         "\"kodepoli\": \""+KdPoli.getText()+"\"," +
                                         "\"namapoli\": \""+NmPoli.getText()+"\"," +
                                         "\"pasienbaru\": 0," +
-                                        "\"norm\": \""+TNoRM+"\"," +
+                                        "\"norm\": \""+TNoRM.getText()+"\"," +
                                         "\"tanggalperiksa\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
                                         "\"kodedokter\": "+KdDPJP.getText()+"," +
                                         "\"namadokter\": \""+NmDPJP.getText()+"\"," +
@@ -6655,7 +6655,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                             "\"kodepoli\": \""+KdPoli.getText()+"\"," +
                                             "\"namapoli\": \""+NmPoli.getText()+"\"," +
                                             "\"pasienbaru\": 0," +
-                                            "\"norm\": \""+TNoRM+"\"," +
+                                            "\"norm\": \""+TNoRM.getText()+"\"," +
                                             "\"tanggalperiksa\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
                                             "\"kodedokter\": "+KdDPJP.getText()+"," +
                                             "\"namadokter\": \""+NmDPJP.getText()+"\"," +
