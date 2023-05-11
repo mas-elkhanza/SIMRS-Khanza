@@ -822,7 +822,12 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
                     NamaPihak2.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),TUmurTh.getText()+" Th "+TUmurBl.getText()+" Bl "+TUmurHr.getText()+" Hr",cmbJk.getSelectedItem()+"",AlamatPj.getText(),
                     cmbHubungan.getSelectedItem()+"",cmbPekerjaan.getSelectedItem()+"",Instansi.getText()
                 })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),LamaSakit.getText(),
+                    NamaPihak2.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),TUmurTh.getText()+" Th "+TUmurBl.getText()+" Bl "+TUmurHr.getText()+" Hr",cmbJk.getSelectedItem().toString(),AlamatPj.getText(),
+                    cmbHubungan.getToolTipText(),cmbPekerjaan.getSelectedItem().toString(),Instansi.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
         }
@@ -850,9 +855,13 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,NoSurat,"suratsakitpihak2","no_surat");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,NoSurat,"suratsakitpihak2","no_surat")==true){
+            if(tbObat.getSelectedRow()!= -1){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -883,7 +892,21 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
                     NamaPihak2.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),TUmurTh.getText()+" Th "+TUmurBl.getText()+" Bl "+TUmurHr.getText()+" Hr",cmbJk.getSelectedItem()+"",AlamatPj.getText(),
                     cmbHubungan.getSelectedItem()+"",cmbPekerjaan.getSelectedItem()+"",Instansi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                 })==true){
-                    tampil();
+                    tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
+                    tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
+                    tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
+                    tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalAwal.getSelectedItem()+""),tbObat.getSelectedRow(),4);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),tbObat.getSelectedRow(),5);
+                    tbObat.setValueAt(LamaSakit.getText(),tbObat.getSelectedRow(),6);
+                    tbObat.setValueAt(NamaPihak2.getText(),tbObat.getSelectedRow(),7);
+                    tbObat.setValueAt(Valid.SetTgl(TglLahir.getSelectedItem()+""),tbObat.getSelectedRow(),8);
+                    tbObat.setValueAt(TUmurTh.getText()+" Th "+TUmurBl.getText()+" Bl "+TUmurHr.getText()+" Hr",tbObat.getSelectedRow(),9);
+                    tbObat.setValueAt(cmbJk.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+                    tbObat.setValueAt(AlamatPj.getText(),tbObat.getSelectedRow(),11);
+                    tbObat.setValueAt(cmbHubungan.getToolTipText(),tbObat.getSelectedRow(),12);
+                    tbObat.setValueAt(cmbPekerjaan.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+                    tbObat.setValueAt(Instansi.getText(),tbObat.getSelectedRow(),14);
                     emptTeks();
                 }
             }

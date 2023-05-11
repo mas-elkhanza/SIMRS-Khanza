@@ -674,7 +674,10 @@ public final class SuratSakit extends javax.swing.JDialog {
             if(Sequel.menyimpantf("suratsakit","?,?,?,?,?","No.Surat Sakit",5,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),LamaSakit.getText()
                 })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),LamaSakit.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
         }
@@ -702,9 +705,13 @@ public final class SuratSakit extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,NoSurat,"suratsakit","no_surat");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,NoSurat,"suratsakit","no_surat")==true){
+            if(tbObat.getSelectedRow()!= -1){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -725,7 +732,13 @@ public final class SuratSakit extends javax.swing.JDialog {
                 if(Sequel.mengedittf("suratsakit","no_surat=?","no_surat=?,no_rawat=?,tanggalawal=?,tanggalakhir=?,lamasakit=?",6,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),LamaSakit.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                 })==true){
-                    tampil();
+                    tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
+                    tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
+                    tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
+                    tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalAwal.getSelectedItem()+""),tbObat.getSelectedRow(),4);
+                    tbObat.setValueAt(Valid.SetTgl(TanggalAkhir.getSelectedItem()+""),tbObat.getSelectedRow(),5);
+                    tbObat.setValueAt(LamaSakit.getText(),tbObat.getSelectedRow(),6);
                     emptTeks();
                 }
             }

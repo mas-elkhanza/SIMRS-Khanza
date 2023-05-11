@@ -2510,8 +2510,9 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         if(Sequel.queryu2tf("delete from persetujuan_penolakan_tindakan where no_pernyataan=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
-            TabRawat.setSelectedIndex(1);
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
+            emptTeks();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

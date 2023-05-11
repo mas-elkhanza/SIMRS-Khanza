@@ -1462,7 +1462,8 @@ public final class SuratPernyataanPasienUmum extends javax.swing.JDialog {
         if(Sequel.queryu2tf("delete from surat_pernyataan_pasien_umum where no_surat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
