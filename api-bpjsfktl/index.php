@@ -1664,7 +1664,7 @@
                                                     $response = array(
                                                         'response' => array(
                                                             'jenisresep' => (getOne("select count(resep_dokter_racikan.no_resep) from resep_dokter_racikan where resep_dokter_racikan.no_resep='".$resep['no_resep']."'")>0?"Racikan":"Non Racikan"),
-                                                            'nomorantrean' => $resep['urut'],
+                                                            'nomorantrean' => intval($resep['urut']),
                                                             'keterangan' => "Resep dibuat secara elektronik di poli"
                                                         ),
                                                         'metadata' => array(
@@ -1756,9 +1756,9 @@
                                                     $response = array(
                                                         'response' => array(
                                                             'jenisresep' => (getOne("select count(resep_dokter_racikan.no_resep) from resep_dokter_racikan where resep_dokter_racikan.no_resep='".$resep['no_resep']."'")>0?"Racikan":"Non Racikan"),
-                                                            'totalantrean' => getOne("select count(resep_obat.no_resep) from resep_obat where resep_obat.tgl_peresepan='".$resep['tgl_peresepan']."'"),
-                                                            'sisaantrean' => getOne("select count(resep_obat.no_resep) from resep_obat where resep_obat.tgl_perawatan='0000-00-00' and resep_obat.tgl_peresepan='".$resep['tgl_peresepan']."'"),
-                                                            'antreanpanggil' => getOne("select ifnull(CONVERT(RIGHT(antriapotek2.no_resep,4),signed),0) from antriapotek2 where left(antriapotek2.no_resep,8)='".$resep['marking']."'"),
+                                                            'totalantrean' => intval(getOne("select count(resep_obat.no_resep) from resep_obat where resep_obat.tgl_peresepan='".$resep['tgl_peresepan']."'")),
+                                                            'sisaantrean' => intval(getOne("select count(resep_obat.no_resep) from resep_obat where resep_obat.tgl_perawatan='0000-00-00' and resep_obat.tgl_peresepan='".$resep['tgl_peresepan']."'")),
+                                                            'antreanpanggil' => intval(getOne("select ifnull(CONVERT(RIGHT(antriapotek2.no_resep,4),signed),0) from antriapotek2 where left(antriapotek2.no_resep,8)='".$resep['marking']."'")),
                                                             'keterangan' => ""
                                                         ),
                                                         'metadata' => array(

@@ -394,7 +394,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         WaktuDiet2.setEditable(false);
         WaktuDiet2.setHighlighter(null);
         WaktuDiet2.setName("WaktuDiet2"); // NOI18N
-        WaktuDiet2.setPreferredSize(new java.awt.Dimension(70, 23));
+        WaktuDiet2.setPreferredSize(new java.awt.Dimension(90, 23));
         WaktuDiet2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 WaktuDiet2KeyPressed(evt);
@@ -405,7 +405,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         JamDiet2.setEditable(false);
         JamDiet2.setHighlighter(null);
         JamDiet2.setName("JamDiet2"); // NOI18N
-        JamDiet2.setPreferredSize(new java.awt.Dimension(70, 23));
+        JamDiet2.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(JamDiet2);
 
         BtnJam2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -427,7 +427,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
 
         jLabel12.setText("Bangsal :");
         jLabel12.setName("jLabel12"); // NOI18N
-        jLabel12.setPreferredSize(new java.awt.Dimension(133, 23));
+        jLabel12.setPreferredSize(new java.awt.Dimension(103, 23));
         panelGlass9.add(jLabel12);
 
         NmBangsalCari.setEditable(false);
@@ -465,7 +465,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-05-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-05-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -479,7 +479,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-05-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-05-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -797,7 +797,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
             if(tbDataDiet.getSelectedRow()!= -1){
                 if(Sequel.queryutf("delete from sisa_diet_pasien " +
                         "where no_rawat='"+TNoRw.getText()+"' " +
-                        "and tanggal='"+Valid.SetTgl(Tanggal+"")+"' " +
+                        "and tanggal='"+Valid.SetTgl(Tanggal.getText()+"")+"' " +
                         "and waktu='"+WaktuDiet.getText()+"' " +
                         "and kd_kamar='"+Kamar.getText()+"'")==true){
                     tabMode.removeRow(tbDataDiet.getSelectedRow());
@@ -1129,18 +1129,33 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void getData() {
         if(tbDataDiet.getSelectedRow()!= -1){
-            TNoRw.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),0).toString()); 
-            TPasien.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),1).toString());    
-            Ruang.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),2).toString());      
-            Tanggal.setText(Valid.SetTgl3(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),3).toString()));           
-            WaktuDiet.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),4).toString());
-            JamDiet.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),5).toString());
-            Karbo.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),6).toString());
-            Hewani.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),7).toString());
-            Nabati.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),8).toString());
-            Sayur.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),9).toString());
-            Buah.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),10).toString());
-            Kamar.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),11).toString());
+            if(!tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),0).toString().equals("")){
+                TNoRw.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),0).toString()); 
+                TPasien.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),1).toString());    
+                Ruang.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),2).toString());      
+                Tanggal.setText(Valid.SetTgl3(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),3).toString()));           
+                WaktuDiet.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),4).toString());
+                JamDiet.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),5).toString());
+                Karbo.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),6).toString());
+                Hewani.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),7).toString());
+                Nabati.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),8).toString());
+                Sayur.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),9).toString());
+                Buah.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),10).toString());
+                Kamar.setText(tbDataDiet.getValueAt(tbDataDiet.getSelectedRow(),11).toString());
+            }else{
+                TNoRw.setText(""); 
+                TPasien.setText("");    
+                Ruang.setText("");      
+                Tanggal.setText("");           
+                WaktuDiet.setText("");
+                JamDiet.setText("");
+                Karbo.setText("");
+                Hewani.setText("");
+                Nabati.setText("");
+                Sayur.setText("");
+                Buah.setText("");
+                Kamar.setText("");
+            }
         }
     }
     
