@@ -110,6 +110,7 @@ public class Jurnal {
                             } 
                         }
                     }else{
+                        System.out.println("Notif : Debet dan Kredit tidak sama");
                         sukses=false;
                     }
                 }
