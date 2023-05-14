@@ -3429,6 +3429,23 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         TCari.requestFocus();
     }
     
+    public void setNoRm2(String norwt,String norm,String nama,Date tanggal, String jam,String menit,String detik,boolean cekbox) {        
+        aktifpcare="no";
+        TNoRw.setText(norwt);
+        LblNoRawat.setText(norwt);
+        TNoRM.setText(norm);
+        TPasien.setText(nama);
+        noresep="";
+        DTPTgl.setDate(tanggal);
+        cmbJam.setSelectedItem(jam); 
+        cmbMnt.setSelectedItem(menit); 
+        cmbDtk.setSelectedItem(detik);  
+        ChkJln.setSelected(cekbox);
+        KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt));
+        kenaikan=Sequel.cariIsiAngka("select (set_harga_obat_ralan.hargajual/100) from set_harga_obat_ralan where set_harga_obat_ralan.kd_pj=?",KdPj.getText());
+        TCari.requestFocus();
+    }
+    
     private void jam(){
         ActionListener taskPerformer = new ActionListener(){
             private int nilai_jam;

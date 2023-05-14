@@ -2201,13 +2201,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else{
                         if(Status.equals("Sudah Terlayani")){
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgPemberianObat dlgrwinap=new DlgPemberianObat(null,false);
-                            dlgrwinap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                            dlgrwinap.setLocationRelativeTo(internalFrame1);
-                            dlgrwinap.isCek();
-                            dlgrwinap.setNoRm2(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ralan");
-                            dlgrwinap.tampilPO();
-                            dlgrwinap.setVisible(true);
+                            DlgPemberianObat form=new DlgPemberianObat(null,false);
+                            form.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                            form.setLocationRelativeTo(internalFrame1);
+                            form.isCek();
+                            form.setNoRm3(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ralan");
+                            form.tampilPO();
+                            form.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
                             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang sudah divalidasi..!!");
@@ -2232,13 +2232,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else{
                         if(Status.equals("Sudah Terlayani")){
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgPemberianObat dlgrwinap=new DlgPemberianObat(null,false);
-                            dlgrwinap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                            dlgrwinap.setLocationRelativeTo(internalFrame1);
-                            dlgrwinap.isCek();
-                            dlgrwinap.setNoRm2(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
-                            dlgrwinap.tampilPO();
-                            dlgrwinap.setVisible(true);
+                            DlgPemberianObat form=new DlgPemberianObat(null,false);
+                            form.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                            form.setLocationRelativeTo(internalFrame1);
+                            form.isCek();
+                            form.setNoRm2(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
+                            form.tampilPO();
+                            form.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
                             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang sudah divalidasi..!!");

@@ -4790,11 +4790,11 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             
             if(Kabupaten.isEditable()==true){
                 Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText());
+                kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
             }else if(Kabupaten.isEditable()==false){
                 if(kdkab.equals("")){
                     Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                    kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText());
+                    kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
                 }
             }
             
@@ -5150,11 +5150,11 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             
             if(Kabupaten.isEditable()==true){
                 Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText());
+                kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
             }else if(Kabupaten.isEditable()==false){
                 if(kdkab.equals("")){
                     Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                    kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText());
+                    kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
                 }
             }
             

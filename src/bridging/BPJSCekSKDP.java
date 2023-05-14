@@ -6613,11 +6613,11 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         if(Kabupaten.isEditable()==true){
             Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
-            kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-"));
+            kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
         }else if(Kabupaten.isEditable()==false){
             if(kdkab.equals("")){
                 Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
-                kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-"));
+                kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
             }
         }
 

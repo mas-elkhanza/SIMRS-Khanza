@@ -1551,7 +1551,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(statuspasien.equals("ranap")){
             BtnObat2.setEnabled(true);
             BtnObat3.setEnabled(false);
-            if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",norwt)>0){
+            if(Sequel.cariInteger("select count(stok_obat_pasien.no_rawat) from stok_obat_pasien where stok_obat_pasien.no_rawat=? ",norwt)>0){
                 btnObat1.setEnabled(false);
             }else{
                 btnObat1.setEnabled(true);
@@ -1564,6 +1564,32 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl2);
         ChkInput.setSelected(false);
+        isForm();
+    }
+    
+    public void setNoRm3(String norwt, Date tgl1, Date tgl2,String statuspasien) {
+        TNoRw.setText(norwt);
+        TCari.setText(norwt);
+        isRawat();
+        isPsien();   
+        status=statuspasien;
+        if(statuspasien.equals("ranap")){
+            BtnObat2.setEnabled(true);
+            BtnObat3.setEnabled(false);
+            if(Sequel.cariInteger("select count(stok_obat_pasien.no_rawat) from stok_obat_pasien where stok_obat_pasien.no_rawat=? ",norwt)>0){
+                btnObat1.setEnabled(false);
+            }else{
+                btnObat1.setEnabled(true);
+            }
+        }else if(statuspasien.equals("ralan")){
+            btnObat1.setEnabled(true);
+            BtnObat2.setEnabled(false);
+            BtnObat3.setEnabled(true);
+        }
+        ChkJln.setSelected(false);
+        DTPCari1.setDate(tgl1);
+        DTPCari2.setDate(tgl2);
+        ChkInput.setSelected(true);
         isForm();
     }
     
@@ -1659,8 +1685,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             dlgobt.setLocationRelativeTo(internalFrame1);
             dlgobt.setVisible(true);
         }else if(status.equals("ralan")){
-            dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"'"),
-                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
+            dlgobtjalan.setNoRm2(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),ChkJln.isSelected());
             dlgobtjalan.isCek();
             if(!namadokter.equals("")){
                 dlgobtjalan.setDokter(kodedokter, namadokter);

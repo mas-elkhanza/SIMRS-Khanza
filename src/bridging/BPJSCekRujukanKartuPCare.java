@@ -6886,11 +6886,11 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
 
         if(Kabupaten.isEditable()==true){
             Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
-            kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-"));
+            kdkab=pasien.kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
         }else if(Kabupaten.isEditable()==false){
             if(kdkab.equals("")){
                 Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
-                kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-"));
+                kdkab=pasien.kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
             }
         }
 
@@ -6974,7 +6974,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                 kdkec=Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-"));
             }            
             if(kdkab.equals("")){
-                kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-"));
+                kdkab=pasien.kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
             }            
             if(kdprop.equals("")){
                 kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));

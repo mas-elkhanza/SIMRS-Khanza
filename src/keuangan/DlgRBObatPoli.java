@@ -879,10 +879,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -893,10 +891,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpoli,kdpoli.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpoli,kdpoli.getText());
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpoli,kdpoli.getText());
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -980,9 +976,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
            Valid.tabelKosong(tabMode);
            if(kdpoli.getText().equals("")){
-               pspoli=koneksi.prepareStatement("select kd_poli,nm_poli from poliklinik");
+               pspoli=koneksi.prepareStatement("select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik");
            }else{
-               pspoli=koneksi.prepareStatement("select kd_poli,nm_poli from poliklinik where concat(kd_poli,nm_poli) like ?");
+               pspoli=koneksi.prepareStatement("select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where concat(poliklinik.kd_poli,poliklinik.nm_poli) like ?");
            }
                 
            try {

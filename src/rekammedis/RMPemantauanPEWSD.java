@@ -1760,8 +1760,10 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
             ParameterSkor.setText("Resusitasi dan monitoring secara kontinyu ole dokter jaga dan perawat senior, aktivasi code blue kegawatan medis (....) respon Tim Medis Emergency (TME) segera, maksimal 10 menit, informasikr dan konsultasikan ke DPJP");
         }else if(Integer.parseInt(TotalSkor.getText())>=5){
             ParameterSkor.setText("Asesment segera oleh dokter jaga (respon segera, maks 5 menit) konsultasi DPJP dan spesialis terkait, eskalasi perawatan dan monitoring tap jam, pertimbangkan perawatan dengan monitoring yang sesua (HCU)");
-        }else if(Integer.parseInt(TotalSkor.getText())>=0){
+        }else if(Integer.parseInt(TotalSkor.getText())>0){
             ParameterSkor.setText("Assement segera oleh perawat senior, respon segera, maks 5 menit, eskalasi perawat dan frekuensi monitoring per 4-6 jam, jika diperlukan assesment oleh dokter jaga bangsal");
+        }else if(Integer.parseInt(TotalSkor.getText())==0){
+            ParameterSkor.setText("Beresiko rendah, ulangi setiap 7 jam");
         }
     }
     
@@ -1796,7 +1798,7 @@ public final class RMPemantauanPEWSD extends javax.swing.JDialog {
         Skor7.setBackground(Color.WHITE);
         Skor7.setForeground(new Color(50,50,50));
         TotalSkor.setText("0");
-        ParameterSkor.setText("Beresiko rendah, ulangi 7 hari");
+        ParameterSkor.setText("Beresiko rendah, ulangi setiap 7 jam");
         cmbSkor1.requestFocus();
     } 
 
