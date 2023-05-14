@@ -36,7 +36,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0,pilih=0,hewani=0,nabati=0,karbo=0,sayur=0,buah=0;
+    private int i=0,x=0,pilih=0,hewani=0,nabati=0,karbo=0,sayur=0,buah=0;
 
     /** Creates new form DlgPemberianInfus
      * @param parent
@@ -761,8 +761,8 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TPasien.getText(),Ruang.getText(),Valid.SetTgl(Tanggal.getText()+""),WaktuDiet.getText(),JamDiet.getText(),Karbo.getText(),Hewani.getText(),Nabati.getText(),Sayur.getText(),Buah.getText(),Kamar.getText()
                 });
-                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
+                hitung();
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -801,7 +801,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
                         "and waktu='"+WaktuDiet.getText()+"' " +
                         "and kd_kamar='"+Kamar.getText()+"'")==true){
                     tabMode.removeRow(tbDataDiet.getSelectedRow());
-                    LCount.setText(""+tabMode.getRowCount());
+                    hitung();
                 }
             }
         }
@@ -1083,19 +1083,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps.setString(7,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
-                hewani=0;nabati=0;karbo=0;sayur=0;buah=0;i=0;
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),rs.getString("kamar"),rs.getString("tanggal"),
                         rs.getString("waktu"),rs.getString("jam"),rs.getString("karbohidrat"),rs.getString("hewani"),rs.getString("nabati"),rs.getString("sayur"),
                         rs.getString("buah"),rs.getString("kd_kamar")
                     });
-                    i++;
-                    hewani=hewani+rs.getInt("hewani");
-                    nabati=nabati+rs.getInt("nabati");
-                    sayur=sayur+rs.getInt("sayur");
-                    karbo=karbo+rs.getInt("karbohidrat");
-                    buah=buah+rs.getInt("buah");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1107,14 +1100,32 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps.close();
                 }
             }   
-            LCount.setText(""+tabMode.getRowCount());
-            if(tabMode.getRowCount()>0){
-                tabMode.addRow(new String[]{
-                    "","Rata-rata Persentase Sisa Makanan","","","","",(karbo/i)+"",(hewani/i)+"",(nabati/i)+"",(sayur/i)+"",(buah/i)+"",""
-                });
-            }
+            hitung();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void hitung(){
+        hewani=0;nabati=0;karbo=0;sayur=0;buah=0;x=0;
+        for(i=0;i<tabMode.getRowCount();i++){
+            if(!tbDataDiet.getValueAt(i,0).toString().equals("")){
+                karbo=karbo+Valid.SetInteger(tbDataDiet.getValueAt(i,6).toString());
+                hewani=hewani+Valid.SetInteger(tbDataDiet.getValueAt(i,7).toString());
+                nabati=nabati+Valid.SetInteger(tbDataDiet.getValueAt(i,8).toString());
+                sayur=sayur+Valid.SetInteger(tbDataDiet.getValueAt(i,9).toString());
+                buah=buah+Valid.SetInteger(tbDataDiet.getValueAt(i,10).toString());
+                x++;
+            }else{
+                tabMode.removeRow(i);
+                i--;
+            }
+        }
+        LCount.setText(""+tabMode.getRowCount());
+        if(tabMode.getRowCount()>0){
+            tabMode.addRow(new String[]{
+                "","Rata-rata Persentase Sisa Makanan","","","","",(karbo/x)+"",(hewani/x)+"",(nabati/x)+"",(sayur/x)+"",(buah/x)+"",""
+            });
         }
     }
     
