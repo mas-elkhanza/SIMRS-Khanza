@@ -820,6 +820,7 @@ import rekammedis.RMPenilaianAwalKeperawatanRanap;
 import rekammedis.RMPenilaianAwalMedisIGD;
 import rekammedis.RMPenilaianAwalMedisRalanAnak;
 import rekammedis.RMPenilaianAwalMedisRalanBedah;
+import rekammedis.RMPenilaianAwalMedisRalanBedahMulut;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanGeriatri;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
@@ -20135,6 +20136,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianAwalMedisRalanBedahMulutActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianAwalMedisRalanBedahMulut aplikasi=new RMPenilaianAwalMedisRalanBedahMulut(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20806,7 +20821,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
-            btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien;
+            btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut;
     
     public void isWall(){
         try{            
@@ -24193,6 +24208,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_medis_ralan_bedah()==true){
                 Panelmenu.add(btnPenilaianAwalMedisRalanBedah);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_medis_ralan_bedah_mulut()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRalanBedahMulut);
                 jmlmenu++;
             }
             
@@ -28857,6 +28877,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_awal_medis_ralan_bedah()==true){
             Panelmenu.add(btnPenilaianAwalMedisRalanBedah);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan_bedah_mulut()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRalanBedahMulut);
             jmlmenu++;
         }
         
@@ -34821,6 +34846,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_awal_medis_ralan_bedah_mulut()==true){
+            if(btnPenilaianAwalMedisRalanBedahMulut.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRalanBedahMulut);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_medis_ralan_geriatri()==true){
             if(btnPenilaianAwalMedisRalanGeriatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisRalanGeriatri);
@@ -40579,5 +40611,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSisaDietPasien.setName("btnSisaDietPasien");
         btnSisaDietPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSisaDietPasien.addActionListener(this::btnSisaDietPasienActionPerformed);
+        
+        btnPenilaianAwalMedisRalanBedahMulut = new widget.ButtonBig();
+        btnPenilaianAwalMedisRalanBedahMulut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5947116_avoid_do not_hand_mouth_touch_icon.png"))); 
+        btnPenilaianAwalMedisRalanBedahMulut.setText("Awal Medis Ralan Bedah Mulut");
+        btnPenilaianAwalMedisRalanBedahMulut.setIconTextGap(0);
+        btnPenilaianAwalMedisRalanBedahMulut.setName("btnPenilaianAwalMedisRalanBedahMulut"); 
+        btnPenilaianAwalMedisRalanBedahMulut.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalMedisRalanBedahMulut.addActionListener(this::btnPenilaianAwalMedisRalanBedahMulutActionPerformed);
     }
 }
