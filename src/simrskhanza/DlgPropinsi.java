@@ -11,6 +11,8 @@
 
 package simrskhanza;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -18,6 +20,9 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,6 +43,13 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
 
     /** Creates new form Dlgpropinsi
      * @param parent
@@ -55,8 +67,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
         };
 
         tbpropinsi.setModel(tabMode);
-        //tampil();
-        //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbpropinsi.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbpropinsi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -78,19 +88,19 @@ public class DlgPropinsi extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -326,7 +336,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Propinsi");
         }else{
             Sequel.menyimpan("propinsi","'0','"+Nama.getText()+"'","Kode propinsi");
-            tampil();
+            tampil2();
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -390,7 +400,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        tampil2();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -443,7 +453,14 @@ public class DlgPropinsi extends javax.swing.JDialog {
 }//GEN-LAST:event_tbpropinsiKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/masterpropinsi.iyem")<8){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -488,13 +505,17 @@ public class DlgPropinsi extends javax.swing.JDialog {
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{     
-            ps=koneksi.prepareStatement("select nm_prop,kd_prop from propinsi where nm_prop like ? ");
+        try{   
+            file=new File("./cache/masterpropinsi.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
+            ps=koneksi.prepareStatement("select propinsi.nm_prop,propinsi.kd_prop from propinsi");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    iyem=iyem+"{\"NamaProp\":\""+rs.getString(1)+"\",\"KodeProp\":\""+rs.getString(2)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -505,16 +526,94 @@ public class DlgPropinsi extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }                
-        }catch(SQLException e){
+            }   
+            fileWriter.write("{\"masterpropinsi\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;             
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
+    
+    private void tampil2() {
+        try {
+            myObj = new FileReader("./cache/masterpropinsi.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("masterpropinsi");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaProp").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            list.path("NamaProp").asText(),list.path("KodeProp").asText()
+                        });
+                    }
+                }
+            }
+            myObj.close();
+            if(tabMode.getRowCount()==0){
+                ps=koneksi.prepareStatement("select propinsi.nm_prop,propinsi.kd_prop from propinsi where propinsi.nm_prop like ?");
+                try {
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    public String tampil3(String nama) {
+        try {
+            if(Valid.daysOld("./cache/masterpropinsi.iyem")>7){
+                tampil();
+            }
+        } catch (Exception e) {
+            if(e.toString().contains("No such file or directory")){
+                tampil();
+            }
+        }
+        
+        iyem="";
+        try {
+            myObj = new FileReader("./cache/masterpropinsi.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("masterpropinsi");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaProp").asText().toLowerCase().equals(nama)){
+                        iyem=list.path("KodeProp").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",nama);
+        }
+        return iyem;
+    }
 
     public void emptTeks() {
         Nama.setText("");
-        TCari.setText("");
         Nama.requestFocus();
     }
 
@@ -529,6 +628,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
     }
     
     public void onCari(){
+        TCari.setText("");
         TCari.requestFocus();
     }
 }

@@ -6713,11 +6713,11 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         if(Propinsi.isEditable()==true){
            Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText().replaceAll("PROPINSI","-")}); 
-           kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));
+           kdprop=propin.tampil3(Propinsi.getText().replaceAll("PROPINSI","-"));
         }else if(Propinsi.isEditable()==false){
             if(kdprop.equals("")){
                 Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText().replaceAll("PROPINSI","-")}); 
-                kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));
+                kdprop=propin.tampil3(Propinsi.getText().replaceAll("PROPINSI","-"));
             }
         }
         
@@ -6794,7 +6794,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
             }            
             if(kdprop.equals("")){
-                kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));
+                kdprop=propin.tampil3(Propinsi.getText().replaceAll("PROPINSI","-"));
             }
             
             Sequel.mengedit("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,no_ktp=?,jk=?,tmp_lahir=?,"+
