@@ -6682,11 +6682,11 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
 
         if(Kelurahan.isEditable()==true){
             Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText().replaceAll("KELURAHAN","-")});
-            kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-"));
+            kdkel=kel.tampil3(Kelurahan.getText().replaceAll("KELURAHAN","-"));
         }else if(Kelurahan.isEditable()==false){
             if(kdkel.equals("")){
                 Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText().replaceAll("KELURAHAN","-")});
-                kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-"));
+                kdkel=kel.tampil3(Kelurahan.getText().replaceAll("KELURAHAN","-"));
             }
         }
 
@@ -6784,7 +6784,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
         }else if(statuspasien.equals("Lama")){
             if(kdkel.equals("")){
-                kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-"));
+                kdkel=kel.tampil3(Kelurahan.getText().replaceAll("KELURAHAN","-"));
             }
             if(kdkec.equals("")){
                 kdkec=kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-"));

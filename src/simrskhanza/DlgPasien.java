@@ -4770,11 +4770,11 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             
             if(Kelurahan.isEditable()==true){
                 Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
-                kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText());
+                kdkel=kel.tampil3(Kelurahan.getText());
             }else if(Kelurahan.isEditable()==false){
                 if(kdkel.equals("")){
                     Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
-                    kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText());
+                    kdkel=kel.tampil3(Kelurahan.getText());
                 }
             }
             
@@ -5130,11 +5130,11 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             
             if(Kelurahan.isEditable()==true){
                 Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
-                kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText());
+                kdkel=kel.tampil3(Kelurahan.getText());
             }else if(Kelurahan.isEditable()==false){
                 if(kdkel.equals("")){
                     Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
-                    kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText());
+                    kdkel=kel.tampil3(Kelurahan.getText());
                 }
             }
             
