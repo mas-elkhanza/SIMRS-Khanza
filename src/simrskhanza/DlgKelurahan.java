@@ -26,7 +26,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -514,9 +513,8 @@ public class DlgKelurahan extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select kelurahan.nm_kel,kelurahan.kd_kel from kelurahan where kelurahan.nm_kel like ? ");
+            ps=koneksi.prepareStatement("select kelurahan.nm_kel,kelurahan.kd_kel from kelurahan");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){                
                     tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
