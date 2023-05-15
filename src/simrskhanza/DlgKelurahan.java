@@ -74,8 +74,8 @@ public class DlgKelurahan extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(500);
             }else if(i==1){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
             }
         }
 
@@ -363,7 +363,7 @@ public class DlgKelurahan extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Kelurahan");
         }else{
             if(tbkelurahan.getSelectedRow()!= -1){
-                if(Sequel.meghapustf("kelurahan","nm_kel",tbkelurahan.getValueAt(tbkelurahan.getSelectedRow(),1).toString())==true){
+                if(Sequel.meghapustf("kelurahan","nm_kel",Nama.getText())==true){
                     tabMode.removeRow(tbkelurahan.getSelectedRow());
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());

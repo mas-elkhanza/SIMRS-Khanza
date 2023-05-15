@@ -364,7 +364,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Kabupaten");
         }else{
             if(tbkabupaten.getSelectedRow()!= -1){
-                if(Sequel.meghapustf("kabupaten","nm_kab",tbkabupaten.getValueAt(tbkabupaten.getSelectedRow(),1).toString())==true){
+                if(Sequel.meghapustf("kabupaten","nm_kab",Nama.getText())==true){
                     tabMode.removeRow(tbkabupaten.getSelectedRow());
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());

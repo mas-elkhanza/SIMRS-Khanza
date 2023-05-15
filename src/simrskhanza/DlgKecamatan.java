@@ -363,7 +363,7 @@ public class DlgKecamatan extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Kecamatan");
         }else{
             if(tbkecamatan.getSelectedRow()!= -1){
-                if(Sequel.meghapustf("kecamatan","nm_kec",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),1).toString())==true){
+                if(Sequel.meghapustf("kecamatan","nm_kec",Nama.getText())==true){
                     tabMode.removeRow(tbkecamatan.getSelectedRow());
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
