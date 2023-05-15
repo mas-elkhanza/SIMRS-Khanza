@@ -5273,7 +5273,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
                     TTlp.getText(),TUmur.getText(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                     Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-")),
-                    Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-")),
+                    kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-")),
                     kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-")),PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),
                     KabupatenPj.getText(),kdperusahaan.getText(),kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),
                     propin.tampil3(Propinsi.getText().replaceAll("PROPINSI","-")),PropinsiPj.getText()
@@ -5311,7 +5311,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
                     TTlp.getText(),TUmur.getText(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                     Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText()),
-                    Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText()),
+                    kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-")),
                     kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-")),NmIbu.getText(),PekerjaanPj.getText(),AlamatPj.getText(),
                     KelurahanPj.getText(),KecamatanPj.getText(),KabupatenPj.getText(),kdperusahaan.getText(),kdsuku.getText(),
                     kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),propin.tampil3(Propinsi.getText().replaceAll("PROPINSI","-")),

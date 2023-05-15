@@ -6693,11 +6693,11 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         if(Kecamatan.isEditable()==true){
             Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText().replaceAll("KECAMATAN","-")});
-            kdkec=Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-"));
+            kdkec=kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-"));
         }else if(Kecamatan.isEditable()==false){
             if(kdkec.equals("")){
                 Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText().replaceAll("KECAMATAN","-")});
-                kdkec=Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-"));
+                kdkec=kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-"));
             }
         }
 
@@ -6788,7 +6788,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 kdkel=Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-"));
             }
             if(kdkec.equals("")){
-                kdkec=Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-"));
+                kdkec=kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-"));
             }            
             if(kdkab.equals("")){
                 kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
