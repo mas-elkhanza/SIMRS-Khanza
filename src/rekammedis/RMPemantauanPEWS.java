@@ -1381,8 +1381,10 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             ParameterSkor.setText("Monitor per 1 jam. Laporkan ke dokter jaga dan kemudian tindak lanjut lapor ke DPJP untuk advis selanjutnya. Kolaborasi langkah selanjutnya dengan seluruh tim perawatan. Jika masih di perlukan lapor ulang keperawat ketua tim dan DPJP");
         }else if(Integer.parseInt(TotalSkor.getText())>2){
             ParameterSkor.setText("Monitoring 1 sampai 2 jam. Pengkajian ulang dilakukan oleh PJ sift dan laporkan ke dokter jaga");
-        }else if(Integer.parseInt(TotalSkor.getText())>=0){
+        }else if(Integer.parseInt(TotalSkor.getText())>0){
             ParameterSkor.setText("Monitoring setiap 4 jam oleh perawat pelaksana dan di lanjutkan observasi atau monitoring secara rutin");
+        }else if(Integer.parseInt(TotalSkor.getText())==0){
+            ParameterSkor.setText("Beresiko rendah, ulangi setiap 7 jam");
         }
     }
     
@@ -1401,7 +1403,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         Skor3.setBackground(Color.GREEN);
         Skor3.setForeground(Color.WHITE);
         TotalSkor.setText("0");
-        ParameterSkor.setText("Beresiko rendah, ulangi 7 hari");
+        ParameterSkor.setText("Beresiko rendah, ulangi setiap 7 jam");
         cmbSkor1.requestFocus();
     } 
 
