@@ -1319,6 +1319,200 @@ public class frmUtama extends javax.swing.JFrame {
                         }
                         
                         //kirim TTV Kesadaran
+                        try{
+                            ps=koneksi.prepareStatement(
+                                   "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
+                                   "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.kesadaran,ifnull(satu_sehat_observationttvkesadaran.id_observation,'') as satu_sehat_observationttvkesadaran "+
+                                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvkesadaran on satu_sehat_observationttvkesadaran.no_rawat=pemeriksaan_ralan.no_rawat "+
+                                   "and satu_sehat_observationttvkesadaran.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvkesadaran.jam_rawat=pemeriksaan_ralan.jam_rawat "+
+                                   "and satu_sehat_observationttvkesadaran.status='Ralan' where pemeriksaan_ralan.kesadaran<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
+                            try {
+                                ps.setString(1,Tanggal1.getText());
+                                ps.setString(2,Tanggal2.getText());
+                                rs=ps.executeQuery();
+                                while(rs.next()){
+                                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("satu_sehat_observationttvkesadaran").equals("")){
+                                        try {
+                                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                                            try{
+                                                headers = new HttpHeaders();
+                                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                                json = "{" +
+                                                            "\"resourceType\": \"Observation\"," +
+                                                            "\"status\": \"final\"," +
+                                                            "\"category\": [" +
+                                                                "{" +
+                                                                    "\"coding\": [" +
+                                                                        "{" +
+                                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\"," +
+                                                                            "\"code\": \"exam\"," +
+                                                                            "\"display\": \"Exam\"" +
+                                                                        "}" +
+                                                                    "]" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"code\": {" +
+                                                                "\"coding\": [" +
+                                                                    "{" +
+                                                                        "\"system\": \"http://snomed.info/sct\"," +
+                                                                        "\"code\": \"1104441000000107\"," +
+                                                                        "\"display\": \"ACVPU (Alert Confusion Voice Pain Unresponsive) scale score\"" +
+                                                                    "}" +
+                                                                "]" +
+                                                            "}," +
+                                                            "\"subject\": {" +
+                                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                                            "}," +
+                                                            "\"performer\": [" +
+                                                                "{" +
+                                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"encounter\": {" +
+                                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                                "\"display\": \"Pemeriksaan Fisik Kesadaran di Rawat Jalan/IGD, Pasien "+rs.getString("nm_pasien")+" Pada Tanggal "+rs.getString("tgl_perawatan")+" Jam "+rs.getString("jam_rawat")+"\"" +
+                                                            "}," +
+                                                            "\"effectiveDateTime\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam_rawat")+"+07:00\"," +
+                                                            "\"valueCodeableConcept\": {" +
+                                                                "\"text\": \""+rs.getString("kesadaran").replaceAll("Compos Mentis","Alert").replaceAll("Somnolence","Voice").replaceAll("Sopor","Pain").replaceAll("Coma","Unresponsive")+"\"" +
+                                                            "}" +
+                                                       "}";
+                                                System.out.println("URL : "+link+"/Observation");
+                                                System.out.println("Request JSON : "+json);
+                                                requestEntity = new HttpEntity(json,headers);
+                                                json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                System.out.println("Result JSON : "+json);
+                                                root = mapper.readTree(json);
+                                                response = root.path("id");
+                                                if(!response.asText().equals("")){
+                                                    Sequel.menyimpan("satu_sehat_observationttvkesadaran","?,?,?,?,?","Observation Kesadaran",5,new String[]{
+                                                        rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
+                                                    });
+                                                }
+                                            }catch(Exception eg){
+                                                System.out.println("Notifikasi Bridging : "+eg);
+                                            }
+                                        } catch (Exception ef) {
+                                            System.out.println("Notifikasi : "+ef);
+                                        }
+                                    }
+                                }
+                            } catch (Exception ez) {
+                                System.out.println("Notif : "+ez);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            ps=koneksi.prepareStatement(
+                                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
+                                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.kesadaran, "+
+                                   "ifnull(satu_sehat_observationttvkesadaran.id_observation,'') as satu_sehat_observationttvkesadaran from reg_periksa inner join pasien "+
+                                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvkesadaran on satu_sehat_observationttvkesadaran.no_rawat=pemeriksaan_ranap.no_rawat "+
+                                   "and satu_sehat_observationttvkesadaran.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvkesadaran.jam_rawat=pemeriksaan_ranap.jam_rawat "+
+                                   "and satu_sehat_observationttvkesadaran.status='Ranap' where pemeriksaan_ranap.kesadaran<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
+                            try {
+                                ps.setString(1,Tanggal1.getText());
+                                ps.setString(2,Tanggal2.getText());
+                                rs=ps.executeQuery();
+                                while(rs.next()){
+                                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("satu_sehat_observationttvkesadaran").equals("")){
+                                        try {
+                                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                                            try{
+                                                headers = new HttpHeaders();
+                                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                                json = "{" +
+                                                            "\"resourceType\": \"Observation\"," +
+                                                            "\"status\": \"final\"," +
+                                                            "\"category\": [" +
+                                                                "{" +
+                                                                    "\"coding\": [" +
+                                                                        "{" +
+                                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\"," +
+                                                                            "\"code\": \"exam\"," +
+                                                                            "\"display\": \"Exam\"" +
+                                                                        "}" +
+                                                                    "]" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"code\": {" +
+                                                                "\"coding\": [" +
+                                                                    "{" +
+                                                                        "\"system\": \"http://snomed.info/sct\"," +
+                                                                        "\"code\": \"1104441000000107\"," +
+                                                                        "\"display\": \"ACVPU (Alert Confusion Voice Pain Unresponsive) scale score\"" +
+                                                                    "}" +
+                                                                "]" +
+                                                            "}," +
+                                                            "\"subject\": {" +
+                                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                                            "}," +
+                                                            "\"performer\": [" +
+                                                                "{" +
+                                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"encounter\": {" +
+                                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                                "\"display\": \"Pemeriksaan Fisik Kesadaran di Rawat Inap, Pasien "+rs.getString("nm_pasien")+" Pada Tanggal "+rs.getString("tgl_perawatan")+" Jam "+rs.getString("jam_rawat")+"\"" +
+                                                            "}," +
+                                                            "\"effectiveDateTime\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam_rawat")+"+07:00\"," +
+                                                            "\"valueCodeableConcept\": {" +
+                                                                "\"text\": \""+rs.getString("kesadaran").replaceAll("Compos Mentis","Alert").replaceAll("Somnolence","Voice").replaceAll("Sopor","Pain").replaceAll("Coma","Unresponsive")+"\"" +
+                                                            "}" +
+                                                       "}";
+                                                System.out.println("URL : "+link+"/Observation");
+                                                System.out.println("Request JSON : "+json);
+                                                requestEntity = new HttpEntity(json,headers);
+                                                json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                System.out.println("Result JSON : "+json);
+                                                root = mapper.readTree(json);
+                                                response = root.path("id");
+                                                if(!response.asText().equals("")){
+                                                    Sequel.menyimpan("satu_sehat_observationttvkesadaran","?,?,?,?,?","Observation Kesadaran",5,new String[]{
+                                                        rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
+                                                    });
+                                                }
+                                            }catch(Exception eg){
+                                                System.out.println("Notifikasi Bridging : "+eg);
+                                            }
+                                        } catch (Exception ef) {
+                                            System.out.println("Notifikasi : "+ef);
+                                        }
+                                    }
+                                }
+                            } catch (Exception ez) {
+                                System.out.println("Notif : "+ez);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+                        }catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }
+                        
+                        //kirim TTV Tensi
+                        
                     }
                 }
             }
