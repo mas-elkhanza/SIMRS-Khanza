@@ -222,6 +222,7 @@ public class frmUtama extends javax.swing.JFrame {
                         observationTTV();
                         clinicalimpression();
                         vaksin();
+                        prosedur();
                     }
                 }
             }
@@ -2570,6 +2571,99 @@ public class frmUtama extends javax.swing.JFrame {
                                 if(!response.asText().equals("")){
                                     Sequel.menyimpan("satu_sehat_immunization","?,?,?,?,?,?,?","Imunisasi/Vaksin",7,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("kode_brng"),rs.getString("no_batch"),rs.getString("no_faktur"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void prosedur(){
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,reg_periksa.status_lanjut,"+
+                   "DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%dT%H:%i:%s+07:00') as pulang,satu_sehat_encounter.id_encounter,prosedur_pasien.kode,icd9.deskripsi_panjang,"+
+                   "ifnull(satu_sehat_procedure.id_procedure,'') as id_procedure from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join prosedur_pasien on prosedur_pasien.no_rawat=reg_periksa.no_rawat inner join icd9 on prosedur_pasien.kode=icd9.kode "+
+                   "left join satu_sehat_procedure on satu_sehat_procedure.no_rawat=prosedur_pasien.no_rawat and satu_sehat_procedure.kode=prosedur_pasien.kode "+
+                   "and satu_sehat_procedure.status=prosedur_pasien.status where reg_periksa.tgl_registrasi between ? and ? "+
+                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,prosedur_pasien.prioritas");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&rs.getString("id_procedure").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"Procedure\"," +
+                                            "\"status\": \"completed\","+
+                                            "\"category\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://snomed.info/sct\"," +
+                                                        "\"code\": \"103693007\"," +
+                                                        "\"display\": \"Diagnostic procedure\"" +
+                                                    "}" +
+                                                "]," +
+                                                "\"text\":\"Diagnostic procedure\""+
+                                            "}," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://hl7.org/fhir/sid/icd-9-cm\"," +
+                                                        "\"code\": \""+rs.getString("kode")+"\"," +
+                                                        "\"display\": \""+rs.getString("deskripsi_panjang")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Prosedur kepada "+rs.getString("nm_pasien")+" selama kunjungan/dirawat dari tanggal "+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+" sampai "+rs.getString("pulang")+"\"" +
+                                            "}," +
+                                            "\"performedPeriod\": {" +
+                                                "\"start\": \""+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+"\","+
+                                                "\"end\": \""+rs.getString("pulang")+"\""+
+                                            "}"+
+                                        "}";
+                                System.out.println("URL : "+link+"/Procedure");
+                                System.out.println("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/Procedure", HttpMethod.POST, requestEntity, String.class).getBody();
+                                System.out.println("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan("satu_sehat_procedure","?,?,?,?","Prosedur",4,new String[]{
+                                        rs.getString("no_rawat"),rs.getString("kode"),rs.getString("status_lanjut"),response.asText()
                                     });
                                 }
                             }catch(Exception e){
