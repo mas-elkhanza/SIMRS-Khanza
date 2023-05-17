@@ -7,7 +7,6 @@ package fungsi;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fungsi.koneksiDB;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
