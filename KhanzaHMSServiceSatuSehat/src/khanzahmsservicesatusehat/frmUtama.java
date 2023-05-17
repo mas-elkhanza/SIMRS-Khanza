@@ -30,19 +30,20 @@ import org.springframework.http.MediaType;
  * @author windiartonugroho
  */
 public class frmUtama extends javax.swing.JFrame {
-    private  Connection koneksi=koneksiDB.condb();
-    private  sekuel Sequel=new sekuel();
-    private  String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="";
-    private  ApiSatuSehat api=new ApiSatuSehat();
-    private  HttpHeaders headers;
-    private  HttpEntity requestEntity;
-    private  ObjectMapper mapper= new ObjectMapper();
-    private  JsonNode root;
-    private  JsonNode response;
-    private  PreparedStatement ps,ps2;
-    private  ResultSet rs,rs2;
-    private  SimpleDateFormat tanggalFormat = new SimpleDateFormat("yyyy-MM-dd");
-    private  Date date = new Date();  
+    private Connection koneksi=koneksiDB.condb();
+    private sekuel Sequel=new sekuel();
+    private String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="",sistole="0",diastole="0";
+    private ApiSatuSehat api=new ApiSatuSehat();
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper= new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private String[] arrSplit;
+    private SimpleDateFormat tanggalFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private Date date = new Date();  
     private SatuSehatCekNIK cekViaSatuSehat=new SatuSehatCekNIK();  
 
     /**
@@ -1512,6 +1513,301 @@ public class frmUtama extends javax.swing.JFrame {
                         }
                         
                         //kirim TTV Tensi
+                        try{
+                            ps=koneksi.prepareStatement(
+                                   "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
+                                   "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.tensi,ifnull(satu_sehat_observationttvtensi.id_observation,'') as satu_sehat_observationttvtensi "+
+                                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvtensi on satu_sehat_observationttvtensi.no_rawat=pemeriksaan_ralan.no_rawat "+
+                                   "and satu_sehat_observationttvtensi.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvtensi.jam_rawat=pemeriksaan_ralan.jam_rawat "+
+                                   "and satu_sehat_observationttvtensi.status='Ralan' where pemeriksaan_ralan.tensi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
+                            try {
+                                ps.setString(1,Tanggal1.getText());
+                                ps.setString(2,Tanggal2.getText());
+                                rs=ps.executeQuery();
+                                while(rs.next()){
+                                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("satu_sehat_observationttvtensi").equals("")){
+                                        try {
+                                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                                            arrSplit = rs.getString("tensi").split("/");
+                                            sistole="0";
+                                            try {
+                                                if(!arrSplit[0].equals("")){
+                                                    sistole=arrSplit[0];
+                                                }
+                                            } catch (Exception ef) {
+                                                sistole="0";
+                                            }
+                                            diastole="0";
+                                            try {
+                                                if(!arrSplit[1].equals("")){
+                                                    diastole=arrSplit[1];
+                                                }
+                                            } catch (Exception eg) {
+                                                diastole="0";
+                                            }
+                                            try{
+                                                headers = new HttpHeaders();
+                                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                                json = "{" +
+                                                            "\"resourceType\": \"Observation\"," +
+                                                            "\"status\": \"final\"," +
+                                                            "\"category\": [" +
+                                                                "{" +
+                                                                    "\"coding\": [" +
+                                                                        "{" +
+                                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\"," +
+                                                                            "\"code\": \"vital-signs\"," +
+                                                                            "\"display\": \"Vital Signs\"" +
+                                                                        "}" +
+                                                                    "]" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"code\": {" +
+                                                                "\"coding\": [" +
+                                                                    "{" +
+                                                                        "\"system\": \"http://loinc.org\"," +
+                                                                        "\"code\": \"35094-2\"," +
+                                                                        "\"display\": \"Blood pressure panel\"" +
+                                                                    "}" +
+                                                                "]," +
+                                                                "\"text\": \"Blood pressure systolic & diastolic\"" +
+                                                            "}," +
+                                                            "\"subject\": {" +
+                                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                                            "}," +
+                                                            "\"performer\": [" +
+                                                                "{" +
+                                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"encounter\": {" +
+                                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                                "\"display\": \"Pemeriksaan Fisik Tensi di Rawat Jalan/IGD, Pasien "+rs.getString("nm_pasien")+" Pada Tanggal "+rs.getString("tgl_perawatan")+" Jam "+rs.getString("jam_rawat")+"\"" +
+                                                            "}," +
+                                                            "\"effectiveDateTime\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam_rawat")+"+07:00\"," +
+                                                            "\"component\" : ["+
+                                                                "{" +
+                                                                    "\"code\" : {" +
+                                                                        "\"coding\" : ["+
+                                                                            "{" +
+                                                                                "\"system\" : \"http://loinc.org\"," +
+                                                                                "\"code\" : \"8480-6\"," +
+                                                                                "\"display\" : \"Systolic blood pressure\"" +
+                                                                            "}" +
+                                                                        "]" +
+                                                                    "}," +
+                                                                    "\"valueQuantity\" : {" +
+                                                                        "\"value\" : "+sistole+"," +
+                                                                        "\"unit\" : \"mmHg\"," +
+                                                                        "\"system\" : \"http://unitsofmeasure.org\"," +
+                                                                        "\"code\" : \"mm[Hg]\"" +
+                                                                    "}" +
+                                                                "}," +
+                                                                "{" +
+                                                                    "\"code\" : {" +
+                                                                        "\"coding\" : ["+
+                                                                            "{" +
+                                                                                "\"system\" : \"http://loinc.org\"," +
+                                                                                "\"code\" : \"8462-4\"," +
+                                                                                "\"display\" : \"Diastolic blood pressure\"" +
+                                                                            "}"+
+                                                                        "]" +
+                                                                    "}," +
+                                                                    "\"valueQuantity\" : {" +
+                                                                        "\"value\" : "+diastole+"," +
+                                                                        "\"unit\" : \"mmHg\"," +
+                                                                        "\"system\" : \"http://unitsofmeasure.org\"," +
+                                                                        "\"code\" : \"mm[Hg]\"" +
+                                                                    "}" +
+                                                                "}"+
+                                                            "]" +
+                                                       "}";
+                                                System.out.println("URL : "+link+"/Observation");
+                                                System.out.println("Request JSON : "+json);
+                                                requestEntity = new HttpEntity(json,headers);
+                                                json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                System.out.println("Result JSON : "+json);
+                                                root = mapper.readTree(json);
+                                                response = root.path("id");
+                                                if(!response.asText().equals("")){
+                                                    Sequel.menyimpan("satu_sehat_observationttvtensi","?,?,?,?,?","Observation Tensi",5,new String[]{
+                                                        rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
+                                                    });
+                                                }
+                                            }catch(Exception eg){
+                                                System.out.println("Notifikasi Bridging : "+eg);
+                                            }
+                                        } catch (Exception ef) {
+                                            System.out.println("Notifikasi : "+ef);
+                                        }
+                                    }
+                                }
+                            } catch (Exception ez) {
+                                System.out.println("Notif : "+ez);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            ps=koneksi.prepareStatement(
+                                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
+                                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.tensi, "+
+                                   "ifnull(satu_sehat_observationttvtensi.id_observation,'') as satu_sehat_observationttvtensi from reg_periksa inner join pasien "+
+                                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvtensi on satu_sehat_observationttvtensi.no_rawat=pemeriksaan_ranap.no_rawat "+
+                                   "and satu_sehat_observationttvtensi.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvtensi.jam_rawat=pemeriksaan_ranap.jam_rawat "+
+                                   "and satu_sehat_observationttvtensi.status='Ranap' where pemeriksaan_ranap.tensi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
+                            try {
+                                ps.setString(1,Tanggal1.getText());
+                                ps.setString(2,Tanggal2.getText());
+                                rs=ps.executeQuery();
+                                while(rs.next()){
+                                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("satu_sehat_observationttvtensi").equals("")){
+                                        try {
+                                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                                            arrSplit = rs.getString("tensi").split("/");
+                                            sistole="0";
+                                            try {
+                                                if(!arrSplit[0].equals("")){
+                                                    sistole=arrSplit[0];
+                                                }
+                                            } catch (Exception ef) {
+                                                sistole="0";
+                                            }
+                                            diastole="0";
+                                            try {
+                                                if(!arrSplit[1].equals("")){
+                                                    diastole=arrSplit[1];
+                                                }
+                                            } catch (Exception eg) {
+                                                diastole="0";
+                                            }
+                                            try{
+                                                headers = new HttpHeaders();
+                                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                                json = "{" +
+                                                            "\"resourceType\": \"Observation\"," +
+                                                            "\"status\": \"final\"," +
+                                                            "\"category\": [" +
+                                                                "{" +
+                                                                    "\"coding\": [" +
+                                                                        "{" +
+                                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\"," +
+                                                                            "\"code\": \"vital-signs\"," +
+                                                                            "\"display\": \"Vital Signs\"" +
+                                                                        "}" +
+                                                                    "]" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"code\": {" +
+                                                                "\"coding\": [" +
+                                                                    "{" +
+                                                                        "\"system\": \"http://loinc.org\"," +
+                                                                        "\"code\": \"35094-2\"," +
+                                                                        "\"display\": \"Blood pressure panel\"" +
+                                                                    "}" +
+                                                                "]," +
+                                                                "\"text\": \"Blood pressure systolic & diastolic\"" +
+                                                            "}," +
+                                                            "\"subject\": {" +
+                                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                                            "}," +
+                                                            "\"performer\": [" +
+                                                                "{" +
+                                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                                "}" +
+                                                            "]," +
+                                                            "\"encounter\": {" +
+                                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                                "\"display\": \"Pemeriksaan Fisik Tensi di Rawat Inap, Pasien "+rs.getString("nm_pasien")+" Pada Tanggal "+rs.getString("tgl_perawatan")+" Jam "+rs.getString("jam_rawat")+"\"" +
+                                                            "}," +
+                                                            "\"effectiveDateTime\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam_rawat")+"+07:00\"," +
+                                                            "\"component\" : ["+
+                                                                "{" +
+                                                                    "\"code\" : {" +
+                                                                        "\"coding\" : ["+
+                                                                            "{" +
+                                                                                "\"system\" : \"http://loinc.org\"," +
+                                                                                "\"code\" : \"8480-6\"," +
+                                                                                "\"display\" : \"Systolic blood pressure\"" +
+                                                                            "}" +
+                                                                        "]" +
+                                                                    "}," +
+                                                                    "\"valueQuantity\" : {" +
+                                                                        "\"value\" : "+sistole+"," +
+                                                                        "\"unit\" : \"mmHg\"," +
+                                                                        "\"system\" : \"http://unitsofmeasure.org\"," +
+                                                                        "\"code\" : \"mm[Hg]\"" +
+                                                                    "}" +
+                                                                "}," +
+                                                                "{" +
+                                                                    "\"code\" : {" +
+                                                                        "\"coding\" : ["+
+                                                                            "{" +
+                                                                                "\"system\" : \"http://loinc.org\"," +
+                                                                                "\"code\" : \"8462-4\"," +
+                                                                                "\"display\" : \"Diastolic blood pressure\"" +
+                                                                            "}"+
+                                                                        "]" +
+                                                                    "}," +
+                                                                    "\"valueQuantity\" : {" +
+                                                                        "\"value\" : "+diastole+"," +
+                                                                        "\"unit\" : \"mmHg\"," +
+                                                                        "\"system\" : \"http://unitsofmeasure.org\"," +
+                                                                        "\"code\" : \"mm[Hg]\"" +
+                                                                    "}" +
+                                                                "}"+
+                                                            "]" +
+                                                       "}";
+                                                System.out.println("URL : "+link+"/Observation");
+                                                System.out.println("Request JSON : "+json);
+                                                requestEntity = new HttpEntity(json,headers);
+                                                json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                System.out.println("Result JSON : "+json);
+                                                root = mapper.readTree(json);
+                                                response = root.path("id");
+                                                if(!response.asText().equals("")){
+                                                    Sequel.menyimpan("satu_sehat_observationttvtensi","?,?,?,?,?","Observation Tensi",5,new String[]{
+                                                        rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
+                                                    });
+                                                }
+                                            }catch(Exception eg){
+                                                System.out.println("Notifikasi Bridging : "+eg);
+                                            }
+                                        } catch (Exception ef) {
+                                            System.out.println("Notifikasi : "+ef);
+                                        }
+                                    }
+                                }
+                            } catch (Exception ez) {
+                                System.out.println("Notif : "+ez);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+                        }catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }
+                        
+                        //kirim TTV Tinggi Badan
                         
                     }
                 }
