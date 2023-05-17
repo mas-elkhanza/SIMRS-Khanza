@@ -216,14 +216,13 @@ public class frmUtama extends javax.swing.JFrame {
                     Tanggal2.setText(tanggalFormat.format(date)); 
                 }
                 
-                if(detik.equals("01")&&menit.equals("01")){
-                    if((nilai_jam%6)==0){
-                        encounter();
-                        observationTTV();
-                        clinicalimpression();
-                        vaksin();
-                        prosedur();
-                    }
+                if(detik.equals("01")&&menit.equals("01")&&((nilai_jam%6)==0)){
+                    encounter();
+                    observationTTV();
+                    clinicalimpression();
+                    vaksin();
+                    prosedur();
+                    condition();
                 }
             }
         };
@@ -316,11 +315,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]" +
                                         "}";
-                                System.out.println("URL : "+link+"/Encounter");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Encounter\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Encounter", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -419,11 +418,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"Cel\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -515,11 +514,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"Cel\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -616,11 +615,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"/min\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -712,11 +711,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"/min\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -813,11 +812,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"/min\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -909,11 +908,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"/min\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1010,11 +1009,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"%\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1106,11 +1105,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"%\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1206,11 +1205,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"{score}\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1301,11 +1300,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"{score}\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1399,11 +1398,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"text\": \""+rs.getString("kesadaran").replaceAll("Compos Mentis","Alert").replaceAll("Somnolence","Voice").replaceAll("Sopor","Pain").replaceAll("Coma","Unresponsive")+"\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1494,11 +1493,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"text\": \""+rs.getString("kesadaran").replaceAll("Compos Mentis","Alert").replaceAll("Somnolence","Voice").replaceAll("Sopor","Pain").replaceAll("Coma","Unresponsive")+"\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1643,11 +1642,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}"+
                                             "]" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1789,11 +1788,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}"+
                                             "]" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1892,11 +1891,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"cm\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -1990,11 +1989,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"cm\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -2091,11 +2090,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"kg\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -2187,11 +2186,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"kg\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -2288,11 +2287,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \"cm\"" +
                                             "}" +
                                        "}";
-                                System.out.println("URL : "+link+"/Observation");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Observation"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Observation", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -2371,11 +2370,11 @@ public class frmUtama extends javax.swing.JFrame {
                                             "},"+
                                             "\"summary\" : \""+rs.getString("penilaian")+"\""+
                                        "}";
-                                System.out.println("URL : "+link+"/ClinicalImpression");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/ClinicalImpression"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/ClinicalImpression", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -2443,11 +2442,11 @@ public class frmUtama extends javax.swing.JFrame {
                                             "},"+
                                             "\"summary\" : \""+rs.getString("penilaian")+"\""+
                                        "}";
-                                System.out.println("URL : "+link+"/ClinicalImpression");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/ClinicalImpression"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/ClinicalImpression", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -2561,11 +2560,11 @@ public class frmUtama extends javax.swing.JFrame {
                                             "]" +
                                             (rs.getString("aturan").equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
                                         "}";
-                                System.out.println("URL : "+link+"/Immunization");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Immunization"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Immunization", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -2654,16 +2653,113 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"end\": \""+rs.getString("pulang")+"\""+
                                             "}"+
                                         "}";
-                                System.out.println("URL : "+link+"/Procedure");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Procedure"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Procedure", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json+"\n");
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
                                     Sequel.menyimpan("satu_sehat_procedure","?,?,?,?","Prosedur",4,new String[]{
                                         rs.getString("no_rawat"),rs.getString("kode"),rs.getString("status_lanjut"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void condition(){
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,reg_periksa.status_lanjut,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,"+
+                   "satu_sehat_encounter.id_encounter,diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit,ifnull(satu_sehat_condition.id_condition,'') as id_condition "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join diagnosa_pasien on diagnosa_pasien.no_rawat=reg_periksa.no_rawat "+
+                   "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit left join satu_sehat_condition on satu_sehat_condition.no_rawat=diagnosa_pasien.no_rawat "+
+                   "and satu_sehat_condition.kd_penyakit=diagnosa_pasien.kd_penyakit and satu_sehat_condition.status=diagnosa_pasien.status "+
+                   "where reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,diagnosa_pasien.prioritas");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&rs.getString("id_condition").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"Condition\"," +
+                                            "\"clinicalStatus\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-clinical\"," +
+                                                        "\"code\": \"active\"," +
+                                                        "\"display\": \"Active\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\"," +
+                                                            "\"code\": \"encounter-diagnosis\"," +
+                                                            "\"display\": \"Encounter Diagnosis\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://hl7.org/fhir/sid/icd-10\"," +
+                                                        "\"code\": \""+rs.getString("kd_penyakit")+"\"," +
+                                                        "\"display\": \""+rs.getString("nm_penyakit")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Diagnosa pasien "+rs.getString("nm_pasien")+" selama kunjungan/dirawat dari tanggal "+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+" sampai "+rs.getString("pulang")+"\"" +
+                                            "}" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/Condition"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/Condition", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json+"\n");
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan("satu_sehat_condition","?,?,?,?","Diagnosa",4,new String[]{
+                                        rs.getString("no_rawat"),rs.getString("kd_penyakit"),rs.getString("status_lanjut"),response.asText()
                                     });
                                 }
                             }catch(Exception e){
