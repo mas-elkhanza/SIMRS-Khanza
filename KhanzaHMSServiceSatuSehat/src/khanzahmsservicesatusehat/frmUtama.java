@@ -220,10 +220,10 @@ public class frmUtama extends javax.swing.JFrame {
                     if((nilai_jam%6)==0){
                         encounter();
                         observationTTV();
-                        clinicalimpression();
                         vaksin();
                         prosedur();
                         condition();
+                        clinicalimpression();
                     }
                 }
             }
