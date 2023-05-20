@@ -72,8 +72,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             Obat_Ralan="",Registrasi_Ralan="",Tambahan_Ralan="",Potongan_Ralan="",Obat_Langsung_Ralan="",tgl_lahir,
             Operasi_Ralan="",tampilkan_ppnobat_ralan="",rincianoperasi="",centangobatralan="No",
             sqlpscekbilling="select count(billing.no_rawat) from billing where billing.no_rawat=?",
-            sqlpscarirm="select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",
-            sqlpscaripasien="select pasien.nm_pasien,pasien.jk,pasien.tgl_lahir from pasien where pasien.no_rkm_medis=? ",
             sqlpsreg="select reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,reg_periksa.kd_poli,reg_periksa.no_rawat,"+
                      "reg_periksa.biaya_reg,current_time() as jam,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                      "from reg_periksa where reg_periksa.no_rawat=?",
@@ -82,7 +80,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         "inner join kelurahan inner join kecamatan inner join kabupaten on pasien.kd_kel=kelurahan.kd_kel "+
                         "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
                         "where pasien.no_rkm_medis=?",
-            sqlpsrekening="select set_akun_ralan.Suspen_Piutang_Tindakan_Ralan,set_akun_ralan.Suspen_Piutang_Laborat_Ralan,set_akun_ralan.Suspen_Piutang_Radiologi_Ralan,set_akun_ralan.Suspen_Piutang_Obat_Ralan,set_akun_ralan.Obat_Ralan,set_akun_ralan.Registrasi_Ralan,set_akun_ralan.Tambahan_Ralan,set_akun_ralan.Potongan_Ralan,set_akun_ralan.Suspen_Piutang_Operasi_Ralan from set_akun_ralan",
             sqlpsdokterralan="select dokter.nm_dokter from reg_periksa "+
                             "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                             "where reg_periksa.no_rawat=?",
@@ -151,7 +148,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     "sum(periksa_radiologi.tarif_tindakan_petugas) as totalpetugas,sum(periksa_radiologi.kso) as totalkso,sum(periksa_radiologi.bhp) as totalbhp "+
                     " from periksa_radiologi inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=periksa_radiologi.kd_jenis_prw where "+
                     " periksa_radiologi.no_rawat=? group by periksa_radiologi.kd_jenis_prw  ",
-            sqlpsnota="insert into nota_jalan values(?,?,?,?)",
             sqlpsoperasi="select paket_operasi.nm_perawatan,(operasi.biayaoperator1+operasi.biayaoperator2+"+
                          "operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+"+
                          "operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+"+
@@ -181,11 +177,11 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             
     private PreparedStatement pscaripoli2,pscekbilling,pscarirm,pscaripasien,psreg,pscaripoli,pscarialamat,psrekening,
             psdokterralan,psdokterralan2,pscariralandokter,pscariralanperawat,pscariralandrpr,pscarilab,pscariobat,psdetaillab,
-            psobatlangsung,psreturobat,pstambahan,psbiling,pstemporary,pspotongan,psbilling,pscariradiologi,
+            psobatlangsung,pstambahan,psbiling,pstemporary,pspotongan,psbilling,pscariradiologi,
             pstamkur,psnota,psoperasi,psobatoperasi,psakunbayar,psakunpiutang;
     private ResultSet rscekbilling,rscarirm,rscaripasien,rsreg,rscaripoli,rscarialamat,rsrekening,rsobatoperasi,
             rsdokterralan,rsdokterralan2,rscariralandokter,rscariralanperawat,rscariralandrpr,rscarilab,rscariobat,rsdetaillab,
-            rsobatlangsung,rsreturobat,rstambahan,rspotongan,rsbilling,rscariradiologi,rstamkur,rsoperasi,
+            rsobatlangsung,rstambahan,rspotongan,rsbilling,rscariradiologi,rstamkur,rsoperasi,
             rsakunbayar,rsakunpiutang,rscaripoli2;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
@@ -570,19 +566,38 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         
         
         try {
-            notaralan=Sequel.cariIsi("select cetaknotasimpanralan from set_nota"); 
-            centangdokterralan=Sequel.cariIsi("select centangdokterralan from set_nota"); 
-            rinciandokterralan=Sequel.cariIsi("select rinciandokterralan from set_nota"); 
-            rincianoperasi=Sequel.cariIsi("select rincianoperasi from set_nota"); 
-            tampilkan_ppnobat_ralan=Sequel.cariIsi("select tampilkan_ppnobat_ralan from set_nota"); 
-            centangobatralan=Sequel.cariIsi("select centangobatralan from set_nota"); 
+            psrekening=koneksi.prepareStatement(
+                    "select set_nota.cetaknotasimpanralan,set_nota.centangdokterralan,"+
+                    "set_nota.rinciandokterralan,set_nota.rincianoperasi,set_nota.tampilkan_ppnobat_ralan,"+
+                    "set_nota.centangobatralan from set_nota");
+            try {
+                rsrekening=psrekening.executeQuery();
+                if(rsrekening.next()){
+                    notaralan=rsrekening.getString("cetaknotasimpanralan"); 
+                    centangdokterralan=rsrekening.getString("centangdokterralan"); 
+                    rinciandokterralan=rsrekening.getString("rinciandokterralan"); 
+                    rincianoperasi=rsrekening.getString("rincianoperasi"); 
+                    tampilkan_ppnobat_ralan=rsrekening.getString("tampilkan_ppnobat_ralan"); 
+                    centangobatralan=rsrekening.getString("centangobatralan"); 
+                }
+            } catch (Exception e) {
+                notaralan="No"; 
+                centangdokterralan="No";
+                rinciandokterralan="No";
+                rincianoperasi="No";
+                tampilkan_ppnobat_ralan="No";
+                centangobatralan="No";
+                System.out.println("Notif Set Nota : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }            
         } catch (Exception e) {
-            notaralan="No"; 
-            centangdokterralan="No";
-            rinciandokterralan="No";
-            rincianoperasi="No";
-            tampilkan_ppnobat_ralan="No";
-            centangobatralan="No";
+            System.out.println("Notif : "+e);
         }
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -632,10 +647,14 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         } 
         
         try {
-            psrekening=koneksi.prepareStatement(sqlpsrekening);
+            psrekening=koneksi.prepareStatement(
+                    "select set_akun_ralan.Suspen_Piutang_Tindakan_Ralan,set_akun_ralan.Suspen_Piutang_Laborat_Ralan,"+
+                    "set_akun_ralan.Suspen_Piutang_Radiologi_Ralan,set_akun_ralan.Suspen_Piutang_Obat_Ralan,"+
+                    "set_akun_ralan.Obat_Ralan,set_akun_ralan.Registrasi_Ralan,set_akun_ralan.Tambahan_Ralan,"+
+                    "set_akun_ralan.Potongan_Ralan,set_akun_ralan.Suspen_Piutang_Operasi_Ralan from set_akun_ralan");
             try {
                 rsrekening=psrekening.executeQuery();
-                while(rsrekening.next()){
+                if(rsrekening.next()){
                     Tindakan_Ralan=rsrekening.getString("Suspen_Piutang_Tindakan_Ralan");
                     Laborat_Ralan=rsrekening.getString("Suspen_Piutang_Laborat_Ralan");
                     Radiologi_Ralan=rsrekening.getString("Suspen_Piutang_Radiologi_Ralan");
@@ -657,7 +676,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 }
             }            
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Notif : "+e);
         }
         
     }
@@ -2395,7 +2414,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }else if(tabModeRwJlDr.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try{
-                    koneksi.setAutoCommit(false);
                     Sequel.queryu2("delete from temporary_bayar_ralan where temp9='"+akses.getkode()+"'"); 
                     for(i=0;i<tabModeRwJlDr.getRowCount();i++){  
                         if(tabModeRwJlDr.getValueAt(i,0).toString().equals("true")){
@@ -2514,7 +2532,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                     
-                    koneksi.setAutoCommit(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }catch(Exception ex){
                     System.out.println(ex);
@@ -4053,7 +4070,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
             }
                             
-            pscarirm=koneksi.prepareStatement(sqlpscarirm);
+            pscarirm=koneksi.prepareStatement("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?");
             try{
                 pscarirm.setString(1,TNoRw.getText());
                 rscarirm=pscarirm.executeQuery();
@@ -4073,7 +4090,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
             }
             
-            pscaripasien=koneksi.prepareStatement(sqlpscaripasien);
+            pscaripasien=koneksi.prepareStatement("select pasien.nm_pasien,pasien.jk,pasien.tgl_lahir from pasien where pasien.no_rkm_medis=? ");
             try{
                 pscaripasien.setString(1,TNoRM.getText());
                 rscaripasien=pscaripasien.executeQuery();
@@ -5652,7 +5669,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan tampilkan semua pilihan tagihan...!!!");
         }else{
             try {
-                psnota=koneksi.prepareStatement(sqlpsnota);
+                psnota=koneksi.prepareStatement("insert into nota_jalan values(?,?,?,?)");
                 try {    
                     no_nota=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jalan.no_nota,4),signed)),0) from nota_jalan where nota_jalan.tanggal='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10).replaceAll("-","/")+"/RJ",4);
                     psnota.setString(1,TNoRw.getText());
@@ -5976,7 +5993,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         this.dispose();
                     }
                 }
-            }catch (SQLException ex) {
+            }catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);            
                 JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Data yang sama dimasukkan sebelumnya...!");
             }
