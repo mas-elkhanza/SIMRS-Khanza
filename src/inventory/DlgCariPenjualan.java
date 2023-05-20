@@ -50,9 +50,9 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
-    private double besarppn=0,ttljual=0,ttlppn=0,ttlongkir=0,ttldisc=0,ttltambahan=0,ttlembalase=0,ttltuslah=0,ttlsubttl=0,subttljual=0,subttldisc=0,subttlall=0,subttltambahan=0,subttlembalase=0,subttltuslah=0,ttlhpp=0;
+    private double ttljual=0,ttlppn=0,ttlongkir=0,ttldisc=0,ttltambahan=0,ttlembalase=0,ttltuslah=0,ttlsubttl=0,subttljual=0,subttldisc=0,subttlall=0,subttltambahan=0,subttlembalase=0,subttltuslah=0,ttlhpp=0;
     private String totaljual="",notapenjualan="No",verifikasi_penjualan_di_kasir="",statusbayar="",datacari="",
-            nofak="",mem="",ptg="",sat="",bar="",tanggal="",Penjualan_Obat="",HPP_Obat_Jual_Bebas="",Persediaan_Obat_Jual_Bebas="";
+            nofak="",mem="",ptg="",sat="",bar="",tanggal="",Penjualan_Obat="",HPP_Obat_Jual_Bebas="",Persediaan_Obat_Jual_Bebas="",PPN_Keluaran="";
     private String aktifkanbatch="no",kdrek="";
     private StringBuilder htmlContent;
     private boolean sukses=true;
@@ -322,7 +322,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         });      
         
         try {
-            ps=koneksi.prepareStatement("select cetaknotasimpanpenjualan,verifikasi_penjualan_di_kasir from set_nota");
+            ps=koneksi.prepareStatement("select set_nota.cetaknotasimpanpenjualan,set_nota.verifikasi_penjualan_di_kasir from set_nota");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -355,13 +355,14 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         }
         
         try {
-            ps=koneksi.prepareStatement("select set_akun.Penjualan_Obat,set_akun.HPP_Obat_Jual_Bebas,set_akun.Persediaan_Obat_Jual_Bebas from set_akun");
+            ps=koneksi.prepareStatement("select set_akun.Penjualan_Obat,set_akun.HPP_Obat_Jual_Bebas,set_akun.Persediaan_Obat_Jual_Bebas,set_akun.PPN_Keluaran from set_akun");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
                     Penjualan_Obat=rs.getString("Penjualan_Obat");
                     HPP_Obat_Jual_Bebas=rs.getString("HPP_Obat_Jual_Bebas");
                     Persediaan_Obat_Jual_Bebas=rs.getString("Persediaan_Obat_Jual_Bebas");
+                    PPN_Keluaran=rs.getString("PPN_Keluaran");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1338,7 +1339,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     ttlhpp=Sequel.cariIsiAngka("select sum(detailjual.h_beli*detailjual.jumlah) from detailjual where detailjual.nota_jual=?",rs.getString("nota_jual"));
 
                                     Sequel.queryu("delete from tampjurnal");
-                                    Sequel.menyimpan("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN','"+(ttljual+rs.getDouble("ongkir")+rs.getDouble("ppn"))+"','0'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN','"+(ttljual+rs.getDouble("ongkir"))+"','0'","Rekening"); 
+                                    Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','"+(rs.getDouble("ppn"))+"','0'","Rekening"); 
                                     Sequel.menyimpan("tampjurnal","'"+rs.getString("kd_rek")+"','KAS DI TANGAN','0','"+(ttljual+rs.getDouble("ongkir")+rs.getDouble("ppn"))+"'","Rekening"); 
                                     Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");    
                                     Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");                              
@@ -1582,7 +1584,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           JOptionPane.showMessageDialog(rootPane,"Maaf transaksi penjualan sudah diverifikasi..!!");
                       }else{
                          kdrek="";
-                         besarppn=0;
                          ttljual=rs.getDouble("ongkir")+rs.getDouble("ppn")+Sequel.cariIsiAngka("select sum(detailjual.total) from detailjual where detailjual.nota_jual=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
                          
                          try {
@@ -1593,7 +1594,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                for(JsonNode list:response){
                                    if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
                                         kdrek=list.path("KodeRek").asText();  
-                                        besarppn=(list.path("PPN").asDouble()/100)*ttljual;
                                    }
                                }
                             }
@@ -1638,7 +1638,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                          if(sukses==true){
                             ttlhpp=Sequel.cariIsiAngka("select sum(detailjual.h_beli*detailjual.jumlah) from detailjual where detailjual.nota_jual=?",rs.getString("nota_jual"));
                             Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN OBAT BEBAS','0','"+Double.toString(ttljual)+"'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN OBAT BEBAS','0','"+Double.toString(ttljual-rs.getDouble("ppn"))+"'","Rekening");   
+                            Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','0','"+Double.toString(rs.getDouble("ppn"))+"'","Rekening");   
                             Sequel.menyimpan("tampjurnal","'"+kdrek+"','KAS DI TANGAN','"+Double.toString(ttljual)+"','0'","Rekening"); 
                             Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");    
                             Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
