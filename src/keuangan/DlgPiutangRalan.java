@@ -561,7 +561,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
                             bw.write("<html>"+
                                         "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
                                         "<body>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 "<tr class='isi2'>"+
                                                     "<td valign='top' align='center'>"+
                                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -571,7 +571,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
                                                     "</td>"+
                                                "</tr>"+
                                             "</table>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 htmlContent.toString()+
                                             "</table>"+
                                         "</body>"+                   
@@ -641,7 +641,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
                             bw.write("<html>"+
                                         "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
                                         "<body>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 "<tr class='isi2'>"+
                                                     "<td valign='top' align='center'>"+
                                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -651,7 +651,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
                                                     "</td>"+
                                                "</tr>"+
                                             "</table>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 htmlContent.toString()+
                                             "</table>"+
                                         "</body>"+                   
@@ -993,14 +993,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ttldiskon=ttldiskon+diskon;
                     tidakdibayar=Sequel.cariIsiAngka("select sum(bayar_piutang.tidak_terbayar) from bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
                     ttltidakdibayar=ttltidakdibayar+tidakdibayar;
-                    sisa=rs.getDouble("totalpiutang")-ekses-dibayar;
+                    sisa=rs.getDouble("totalpiutang")-ekses-dibayar-diskon-tidakdibayar;
                     ttlsisa=ttlsisa+sisa;
 
                     tabMode.addRow(new Object[] {
                         rs.getString("tgl_registrasi"),
-                        Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                        Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_rawat")),
                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("png_jawab"),
-                        Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
+                        Sequel.cariIsi("select rujuk_masuk.perujuk from rujuk_masuk where rujuk_masuk.no_rawat=?",rs.getString("no_rawat")),
                         Valid.SetAngka(Registrasi),Valid.SetAngka(Obat),Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
                         Valid.SetAngka(Operasi),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Tambahan),Valid.SetAngka(Potongan),
                         Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi),
