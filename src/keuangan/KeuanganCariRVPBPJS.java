@@ -820,7 +820,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             for(i=0;i<row;i++){  
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
                     Sequel.mengedit("piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","status='Belum Lunas'");
-                    Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"' and nama_bayar='"+Sequel.cariIsi("select nama_bayar from akun_piutang where kd_rek=?",tabMode.getValueAt(i,83).toString())+"'","sisapiutang='"+tabMode.getValueAt(i,8).toString()+"'");
+                    Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"' and nama_bayar='"+Sequel.cariIsi("select akun_piutang.nama_bayar from akun_piutang where akun_piutang.kd_rek=?",tabMode.getValueAt(i,83).toString())+"'","sisapiutang='"+tabMode.getValueAt(i,8).toString()+"'");
                     if(Valid.SetAngka(tabMode.getValueAt(i,11).toString())>=100){
                         Sequel.queryu("delete from tampjurnal"); 
                         Sequel.menyimpan("tampjurnal","'"+tabMode.getValueAt(i,83).toString()+"','PIUTANG BPJS','"+tabMode.getValueAt(i,8).toString()+"','0'","debet=debet+'"+tabMode.getValueAt(i,8).toString()+"'","kd_rek='"+tabMode.getValueAt(i,83).toString()+"'");     

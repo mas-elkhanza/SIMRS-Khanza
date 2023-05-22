@@ -523,12 +523,13 @@ public class DlgPenjualan extends javax.swing.JDialog {
         TCari.requestFocus();
         
         try {
-            ps=koneksi.prepareStatement("select set_nota.cetaknotasimpanpenjualan,set_nota.verifikasi_penjualan_di_kasir from set_nota");
+            ps=koneksi.prepareStatement("select set_nota.cetaknotasimpanpenjualan,set_nota.verifikasi_penjualan_di_kasir,set_nota.tampilkan_ppnobat_ralan from set_nota");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
                     notapenjualan=rs.getString("cetaknotasimpanpenjualan");
                     verifikasi_penjualan_di_kasir=rs.getString("verifikasi_penjualan_di_kasir");
+                    tampilkan_ppnobat_ralan=rs.getString("verifikasi_penjualan_di_kasir");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -601,7 +602,6 @@ public class DlgPenjualan extends javax.swing.JDialog {
             hppfarmasi="dasar";
         }
         
-        tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota");
         if(tampilkan_ppnobat_ralan.equals("Yes")){
             PersenppnObat.setText("11");
         }else{

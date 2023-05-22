@@ -750,7 +750,7 @@ public class DlgAkunPenagihanPiutang extends javax.swing.JDialog {
 
 private void kdrekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdrekKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",nmrek,kdrek.getText());
+            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",nmrek,kdrek.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPoliActionPerformed(null);
         }else{            

@@ -1517,25 +1517,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "piutang.no_rkm_medis,piutang.nm_pasien, "+
                     "piutang.catatan,piutang.jns_jual,piutang.ongkir,"+
                     "piutang.uangmuka,piutang.sisapiutang,piutang.tgltempo,bangsal.nm_bangsal  "+
-                    " from piutang inner join petugas inner join bangsal inner join jenis "+
-                    " inner join detailpiutang inner join databarang inner join kodesatuan "+
-                    " on detailpiutang.kode_brng=databarang.kode_brng "+
-                    " and piutang.kd_bangsal=bangsal.kd_bangsal "+
-                    " and detailpiutang.kode_sat=kodesatuan.kode_sat "+
-                    " and piutang.nota_piutang=detailpiutang.nota_piutang "+
-                    " and piutang.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nofak+mem+ptg+sat+bar+" and piutang.nota_piutang like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and piutang.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and piutang.nm_pasien like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and piutang.nip like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and piutang.catatan like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and piutang.jns_jual like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and detailpiutang.kode_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and detailpiutang.kode_sat like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and jenis.nama like '%"+TCari.getText()+"%' "+
+                    "from piutang inner join petugas on piutang.nip=petugas.nip "+
+                    "inner join bangsal on piutang.kd_bangsal=bangsal.kd_bangsal "+
+                    "inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                    "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    "inner join kodesatuan on detailpiutang.kode_sat=kodesatuan.kode_sat "+
+                    "where "+tanggal+nofak+mem+ptg+sat+bar+" and "+
+                    "(piutang.nota_piutang like '%"+TCari.getText()+"%' or piutang.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                    "piutang.nm_pasien like '%"+TCari.getText()+"%' or piutang.nip like '%"+TCari.getText()+"%' or "+
+                    "petugas.nama like '%"+TCari.getText()+"%' or piutang.catatan like '%"+TCari.getText()+"%' or "+
+                    "bangsal.nm_bangsal like '%"+TCari.getText()+"%' or piutang.jns_jual like '%"+TCari.getText()+"%' or "+
+                    "detailpiutang.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                    "detailpiutang.kode_sat like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') "+
                     " group by piutang.nota_piutang order by piutang.tgl_piutang,piutang.nota_piutang ");
             try {
                 rs=ps.executeQuery();
@@ -1553,15 +1547,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     cicilan=0;
                     no=1;
                     ps2=koneksi.prepareStatement("select detailpiutang.kode_brng,databarang.nama_brng, detailpiutang.kode_sat,"+
-                            " kodesatuan.satuan,detailpiutang.h_jual, detailpiutang.jumlah,detailpiutang.subtotal, detailpiutang.dis, "+
+                            " kodesatuan.satuan,detailpiutang.h_jual, detailpiutang.jumlah,detailpiutang.subtotal,detailpiutang.dis, "+
                             " detailpiutang.bsr_dis, detailpiutang.total,detailpiutang.no_batch,detailpiutang.no_faktur,detailpiutang.aturan_pakai  "+
-                            " from detailpiutang inner join databarang inner join kodesatuan inner join jenis "+
-                            " on detailpiutang.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
-                            " and detailpiutang.kode_sat=kodesatuan.kode_sat where "+
-                            " detailpiutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and detailpiutang.kode_brng like '%"+TCari.getText()+"%' or "+
-                            " detailpiutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                            " detailpiutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and detailpiutang.kode_sat like '%"+TCari.getText()+"%' or "+
-                            " detailpiutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and jenis.nama like '%"+TCari.getText()+"%' order by detailpiutang.kode_brng  ");
+                            " from detailpiutang inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                            " inner join kodesatuan on detailpiutang.kode_sat=kodesatuan.kode_sat "+
+                            " inner join jenis on databarang.kdjns=jenis.kdjns "+
+                            " where detailpiutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and "+
+                            " (detailpiutang.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                            " detailpiutang.kode_sat like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') "+
+                            " order by detailpiutang.kode_brng  ");
                     try {
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
@@ -1589,17 +1583,17 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }
                         
-                    cicilan=Sequel.cariIsiAngka("select sum(besar_cicilan) from bayar_piutang where no_rawat='"+rs.getString(1)+"' ");
+                    cicilan=Sequel.cariIsiAngka("select (sum(bayar_piutang.besar_cicilan)+sum(bayar_piutang.diskon_piutang)+sum(bayar_piutang.tidak_terbayar)) from bayar_piutang where bayar_piutang.no_rawat='"+rs.getString(1)+"' ");
                     sisapiutang=rs.getDouble(11)-cicilan;
                     if(sisapiutang<1){
                         status="Lunas";
                     }else if(sisapiutang>1){
                         telat=Sequel.cariIsiAngka("select TO_DAYS('"+rs.getString(12)+"')-TO_DAYS(current_date()) as day");                                                
-                        status="Belum Lunas"+Sequel.cariIsi("select if("+telat+" < 0,', Telat Bayar','')");
+                        status="Belum Lunas"+(telat<0?", Telat Bayar":"");
                     }
                     tabMode.addRow(new String[]{"","Total",":","","",""," ",df2.format(subttlall),"",df2.format(subttldisc),df2.format(subttljual)});    
-                    tabMode.addRow(new String[]{"","Jatuh Tempo",": "+rs.getString(12),"","","","","","","Bsr.Cicilan",": "+df2.format(cicilan)});  
-                    tabMode.addRow(new String[]{"","Status",": "+status,"","","","","","","Sisa Piutang",": "+df2.format(sisapiutang)}); 
+                    tabMode.addRow(new String[]{"","Jatuh Tempo",": "+rs.getString(12),"Cicilan+Diskon Bayar+Tidak Terbayar",":","","","","","",df2.format(cicilan)});  
+                    tabMode.addRow(new String[]{"","Status",": "+status,"Sisa Piutang",":","","","","","",df2.format(sisapiutang)}); 
                 }  
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
