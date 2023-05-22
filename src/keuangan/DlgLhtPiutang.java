@@ -41,7 +41,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private String status="";
     private int i=0;
-    private double sisapiutang=0,cicilan=0,diskon=0,tidakterbayar=0;
+    private double sisapiutang=0,cicilan=0,diskon=0,tidakterbayar=0,totalpiutang=0,totalcicilan=0,totaluangmuka=0,totaldiskon=0,totaltidakterbayar=0;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -485,11 +485,6 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()))+"','"+
                                 tabMode.getValueAt(i,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Piutang Pasien"); 
             }
-            i++;
-            Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Tindakan Dokter"); 
-            i++;
-            Sequel.menyimpan("temporary","'"+i+"','TOTAL PIUTANG','',':','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Tindakan Dokter"); 
-            
             
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",akses.getnamars());
@@ -760,6 +755,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
                 ps.setString(6,"%"+TCari.getText()+"%");
                 ps.setString(7,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
+                totalpiutang=0;totalcicilan=0;totaluangmuka=0;totaldiskon=0;totaltidakterbayar=0;
                 while(rs.next()){
                     cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString(1));
                     diskon=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.diskon_piutang),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString(1));
@@ -769,6 +765,11 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
                         cicilan,diskon,tidakterbayar,(rs.getDouble(7)-cicilan-diskon-tidakterbayar),rs.getString(8),rs.getString(9)
                     });
                     sisapiutang=sisapiutang+rs.getDouble(7)-cicilan-diskon-tidakterbayar;
+                    totalpiutang=totalpiutang+rs.getDouble("totalpiutang");
+                    totalcicilan=totalcicilan+cicilan;
+                    totaluangmuka=totaluangmuka+rs.getDouble("uangmuka");
+                    totaldiskon=totaldiskon+diskon;
+                    totaltidakterbayar=totaltidakterbayar+tidakterbayar;
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -782,6 +783,11 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
             
             LCount2.setText(""+tabMode.getRowCount());
+            if(tabMode.getRowCount()>0){
+                tabMode.addRow(new Object[]{
+                    "TOTAL",":","","",totalpiutang,totaluangmuka,totalcicilan,totaldiskon,totaltidakterbayar,sisapiutang,"",""
+                });
+            }
             LCount.setText(Valid.SetAngka(sisapiutang));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
