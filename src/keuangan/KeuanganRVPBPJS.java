@@ -79,7 +79,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                    HPP_Obat_Rawat_Inap="",Registrasi_Ranap="",Tambahan_Ranap="",Potongan_Ranap="",
                    Retur_Obat_Ranap="",Resep_Pulang_Ranap="",Kamar_Inap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",Utang_Jasa_Medik_Dokter_Operasi_Ranap="",
                    Beban_Jasa_Medik_Paramedis_Operasi_Ranap="",Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Service_Ranap="",
-                   Harian_Ranap="",json="";
+                   Harian_Ranap="",json="",PPN_Keluaran="",Diskon_Piutang="",Piutang_Tidak_Terbayar="";
     private double total=0,sisapiutang=0,cicilan=0,rugi=0,lebih=0,selisih=0,materialralan=0,bhpralan=0,tarif_tindakandrralan=0,tarif_tindakanprralan=0,ksoralan=0,menejemenralan=0,biaya_rawatralan=0,
                    materialranap=0,bhpranap=0,tarif_tindakandrranap=0,tarif_tindakanprranap=0,ksoranap=0,menejemenranap=0,biaya_rawatranap=0,bagian_rslabralan=0,bhplabralan=0,tarif_perujuklabralan=0,
                    tarif_tindakan_dokterlabralan=0,tarif_tindakan_petugaslabralan=0,ksolabralan=0,menejemenlabralan=0,biayalabralan=0,bagian_rslabranap=0,bhplabranap=0,tarif_perujuklabranap=0,
@@ -88,7 +88,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                    tarif_perujukradiologiranap=0,tarif_tindakan_dokterradiologiranap=0,tarif_tindakan_petugasradiologiranap=0,ksoradiologiranap=0,menejemenradiologiranap=0,biayaradiologiranap=0,
                    jmdokteroperasiralan=0,jmparamedisoperasiralan=0,bhpoperasiralan=0,pendapatanoperasiralan=0,jmdokteroperasiranap=0,jmparamedisoperasiranap=0,bhpoperasiranap=0,pendapatanoperasiranap=0,
                    obatlangsung=0,obatralan=0,hppobatralan=0,obatranap=0,hppobatranap=0,returobat=0,tambahanbiaya=0,potonganbiaya=0,kamar=0,reseppulang=0,totalbiaya=0,registrasi=0,harianranap=0,rugihppralan=0,
-                   rugihppranap=0,serviceranap=0,ttlpiutang=0,ttliur=0,ttlsudahdibayar=0,ttlsisapiutang=0,ttlinacbg=0,persenbayar=0;
+                   rugihppranap=0,serviceranap=0,ttlpiutang=0,ttliur=0,ttlsudahdibayar=0,ttlsisapiutang=0,ttlinacbg=0,persenbayar=0,ppnobat=0;
     private boolean sukses=true;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private javax.swing.JFileChooser jfc = new JFileChooser();    
@@ -251,7 +251,8 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         }); 
 
         try {
-            ps=koneksi.prepareStatement("select * from set_nota");
+            ps=koneksi.prepareStatement(
+                    "select set_nota.tampilkan_administrasi_di_billingranap,set_nota.tampilkan_ppnobat_ralan,set_nota.tampilkan_ppnobat_ranap from set_nota");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -281,13 +282,18 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         }
         
         try {
-            ps=koneksi.prepareStatement("select * from set_akun");
+            ps=koneksi.prepareStatement(
+                    "select set_akun.Piutang_BPJS_RVP,set_akun.Kerugian_Klaim_BPJS_RVP,set_akun.Lebih_Bayar_Klaim_BPJS_RVP,"+
+                    "set_akun.PPN_Keluaran,set_akun.Diskon_Piutang,set_akun.Piutang_Tidak_Terbayar from set_akun");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
                     Piutang_BPJS_RVP=rs.getString("Piutang_BPJS_RVP");
                     Kerugian_Klaim_BPJS_RVP=rs.getString("Kerugian_Klaim_BPJS_RVP");
                     Lebih_Bayar_Klaim_BPJS_RVP=rs.getString("Lebih_Bayar_Klaim_BPJS_RVP");
+                    PPN_Keluaran=rs.getString("PPN_Keluaran");
+                    Diskon_Piutang=rs.getString("Diskon_Piutang");
+                    Piutang_Tidak_Terbayar=rs.getString("Piutang_Tidak_Terbayar");
                 }
             } catch (Exception e) {
                 System.out.println("Notif Rekening : "+e);
@@ -437,7 +443,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 }
             } 
             
-            ps=koneksi.prepareStatement("select * from set_akun_ranap2");
+            ps=koneksi.prepareStatement("select set_akun_ranap2.Harian_Ranap from set_akun_ranap2");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -1023,7 +1029,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
                 billing.isCek();
                 billing.isRawat();
-                if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
+                if(Sequel.cariInteger("select count(piutang_pasien.no_rawat) from piutang_pasien where piutang_pasien.no_rawat=?",billing.TNoRw.getText())>0){
                     billing.setPiutang();
                 }
                 billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1080,7 +1086,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 if(tabMode.getValueAt(i,0).toString().equals("true")&&(Valid.SetAngka(tabMode.getValueAt(i,10).toString())>0)){
-                    if(Sequel.menyimpantf("bayar_piutang","?,?,?,?,?,?,?","Data",7,new String[]{
+                    if(Sequel.menyimpantf("bayar_piutang","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",tabMode.getValueAt(i,1).toString()),
                         tabMode.getValueAt(i,10).toString(),"diverifikasi oleh "+kdptg.getText(),tabMode.getValueAt(i,1).toString(),koderekening,Piutang_BPJS_RVP
                     })==true){
@@ -1948,7 +1954,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     jmdokteroperasiralan=0;jmparamedisoperasiralan=0;bhpoperasiralan=0;pendapatanoperasiralan=0;
                                     jmdokteroperasiranap=0;jmparamedisoperasiranap=0;bhpoperasiranap=0;pendapatanoperasiranap=0;
                                     obatlangsung=0;obatralan=0;hppobatralan=0;obatranap=0;hppobatranap=0;returobat=0;tambahanbiaya=0;potonganbiaya=0;
-                                    kamar=0;reseppulang=0;norawatbayi="";registrasi=0;harianranap=0;serviceranap=0;
+                                    kamar=0;reseppulang=0;norawatbayi="";registrasi=0;harianranap=0;serviceranap=0;ppnobat=0;
                                     status=rs.getString("status_lanjut");
                                     registrasi=rs.getDouble("biaya_reg");
                                     //cek obat langsung
@@ -2156,7 +2162,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     jmdokteroperasiralan=0;jmparamedisoperasiralan=0;bhpoperasiralan=0;pendapatanoperasiralan=0;
                                     jmdokteroperasiranap=0;jmparamedisoperasiranap=0;bhpoperasiranap=0;pendapatanoperasiranap=0;
                                     obatlangsung=0;obatralan=0;hppobatralan=0;obatranap=0;hppobatranap=0;returobat=0;tambahanbiaya=0;potonganbiaya=0;
-                                    kamar=0;reseppulang=0;norawatbayi="";registrasi=0;harianranap=0;serviceranap=0;
+                                    kamar=0;reseppulang=0;norawatbayi="";registrasi=0;harianranap=0;serviceranap=0;ppnobat=0;
                                     status=rs.getString("status_lanjut");
                                     registrasi=rs.getDouble("biaya_reg");
                                     //cek obat langsung
@@ -2492,7 +2498,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 jmdokteroperasiralan=0;jmparamedisoperasiralan=0;bhpoperasiralan=0;pendapatanoperasiralan=0;
                 jmdokteroperasiranap=0;jmparamedisoperasiranap=0;bhpoperasiranap=0;pendapatanoperasiranap=0;
                 obatlangsung=0;obatralan=0;hppobatralan=0;obatranap=0;hppobatranap=0;returobat=0;tambahanbiaya=0;potonganbiaya=0;
-                kamar=0;reseppulang=0;norawatbayi="";registrasi=0;harianranap=0;serviceranap=0;
+                kamar=0;reseppulang=0;norawatbayi="";registrasi=0;harianranap=0;serviceranap=0;ppnobat=0;
                 status=tbBangsal.getValueAt(pilih,14).toString();
                 registrasi=Valid.SetAngka(tbBangsal.getValueAt(pilih,15).toString());
                 //cek obat langsung
@@ -3340,11 +3346,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 }
                 if(status.equals("Ralan")){
                     if(tampilkan_ppnobat_ralan.equals("Yes")){
-                        obatlangsung=obatlangsung+(Valid.roundUp(obatralan*0.11,100));
+                        ppnobat=Valid.roundUp(obatralan*0.11,100);
                     }
                 }else if(status.equals("Ranap")){
                     if(tampilkan_ppnobat_ranap.equals("Yes")){
-                        obatlangsung=obatlangsung+(Valid.roundUp((obatralan+obatranap-returobat)*0.11,100));
+                        ppnobat=Valid.roundUp((obatralan+obatranap-returobat)*0.11,100);
                     }
                     if(tampilkan_administrasi_di_billingranap.equals("No")){
                         registrasi=0;
@@ -4469,11 +4475,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
             if(status.equals("Ralan")){
                 if(tampilkan_ppnobat_ralan.equals("Yes")){
-                    obatlangsung=obatlangsung+(Valid.roundUp(obatralan*0.11,100));
+                    ppnobat=Valid.roundUp(obatralan*0.11,100);
                 }
             }else if(status.equals("Ranap")){
                 if(tampilkan_ppnobat_ranap.equals("Yes")){
-                    obatlangsung=obatlangsung+(Valid.roundUp((obatralan+obatranap-returobat)*0.11,100));
+                    ppnobat=Valid.roundUp((obatralan+obatranap-returobat)*0.11,100);
                 }
                 if(tampilkan_administrasi_di_billingranap.equals("No")){
                     registrasi=0;
