@@ -126,7 +126,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 "ksoradiologiranap","menejemenradiologiranap","biayaradiologiranap","jmdokteroperasiralan","jmparamedisoperasiralan",
                 "bhpoperasiralan","pendapatanoperasiralan","jmdokteroperasiranap","jmparamedisoperasiranap","bhpoperasiranap",
                 "pendapatanoperasiranap","obatlangsung","obatralan","hppobatralan","obatranap","hppobatranap","returobat",
-                "tambahanbiaya","potonganbiaya","kamar","reseppulang","harianranap","registrasi","service"
+                "tambahanbiaya","potonganbiaya","kamar","reseppulang","harianranap","registrasi","service","ppnobat"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -152,7 +152,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -164,7 +164,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 83; i++) {
+        for (i = 0; i < 84; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -306,7 +306,24 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 }
             }   
             
-            ps=koneksi.prepareStatement("select * from set_akun_ralan");
+            ps=koneksi.prepareStatement(
+                    "select Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Tindakan_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Paramedis_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Medik_Paramedis_Tindakan_Ralan,set_akun_ralan.Beban_KSO_Tindakan_Ralan,"+
+                    "set_akun_ralan.Utang_KSO_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Sarana_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Sarana_Tindakan_Ralan,"+
+                    "set_akun_ralan.HPP_BHP_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Menejemen_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Tindakan_Ralan,"+
+                    "set_akun_ralan.Laborat_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Laborat_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Petugas_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Medik_Petugas_Laborat_Ralan,set_akun_ralan.Beban_Kso_Laborat_Ralan,"+
+                    "set_akun_ralan.Utang_Kso_Laborat_Ralan,set_akun_ralan.HPP_Persediaan_Laborat_Rawat_Jalan,set_akun_ralan.Beban_Jasa_Sarana_Laborat_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Sarana_Laborat_Ralan,set_akun_ralan.Beban_Jasa_Perujuk_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Perujuk_Laborat_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Menejemen_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Laborat_Ralan,set_akun_ralan.Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Dokter_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Petugas_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Petugas_Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Kso_Radiologi_Ralan,set_akun_ralan.Utang_Kso_Radiologi_Ralan,set_akun_ralan.HPP_Persediaan_Radiologi_Rawat_Jalan,"+
+                    "set_akun_ralan.Beban_Jasa_Sarana_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Sarana_Radiologi_Ralan,set_akun_ralan.Beban_Jasa_Perujuk_Radiologi_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Perujuk_Radiologi_Ralan,set_akun_ralan.Beban_Jasa_Menejemen_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Radiologi_Ralan,"+
+                    "set_akun_ralan.Obat_Ralan,set_akun_ralan.HPP_Obat_Rawat_Jalan,set_akun_ralan.Registrasi_Ralan,set_akun_ralan.Operasi_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Dokter_Operasi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Operasi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Paramedis_Operasi_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Medik_Paramedis_Operasi_Ralan,set_akun_ralan.HPP_Obat_Operasi_Ralan,set_akun_ralan.Tambahan_Ralan,set_akun_ralan.Potongan_Ralan from set_akun_ralan");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -373,7 +390,25 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 }
             } 
             
-            ps=koneksi.prepareStatement("select * from set_akun_ranap");
+            ps=koneksi.prepareStatement(
+                    "select set_akun_ranap.Tindakan_Ranap,set_akun_ranap.Beban_Jasa_Medik_Dokter_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Tindakan_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Paramedis_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Medik_Paramedis_Tindakan_Ranap,set_akun_ranap.Beban_KSO_Tindakan_Ranap,"+
+                    "set_akun_ranap.Utang_KSO_Tindakan_Ranap,set_akun_ranap.Beban_Jasa_Sarana_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Sarana_Tindakan_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Menejemen_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Menejemen_Tindakan_Ranap,set_akun_ranap.HPP_BHP_Tindakan_Ranap,"+
+                    "set_akun_ranap.Laborat_Ranap,Beban_Jasa_Medik_Dokter_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Laborat_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Petugas_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Petugas_Laborat_Ranap,set_akun_ranap.Beban_Kso_Laborat_Ranap,"+
+                    "set_akun_ranap.Utang_Kso_Laborat_Ranap,set_akun_ranap.HPP_Persediaan_Laborat_Rawat_inap,set_akun_ranap.Beban_Jasa_Sarana_Laborat_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Sarana_Laborat_Ranap,set_akun_ranap.Beban_Jasa_Perujuk_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Perujuk_Laborat_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Menejemen_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Menejemen_Laborat_Ranap,set_akun_ranap.Radiologi_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Dokter_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Radiologi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Petugas_Radiologi_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Medik_Petugas_Radiologi_Ranap,set_akun_ranap.Beban_Kso_Radiologi_Ranap,set_akun_ranap.Utang_Kso_Radiologi_Ranap,"+
+                    "set_akun_ranap.HPP_Persediaan_Radiologi_Rawat_Inap,set_akun_ranap.Beban_Jasa_Sarana_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Sarana_Radiologi_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Perujuk_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Perujuk_Radiologi_Ranap,set_akun_ranap.Beban_Jasa_Menejemen_Radiologi_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Menejemen_Radiologi_Ranap,set_akun_ranap.Obat_Ranap,set_akun_ranap.HPP_Obat_Rawat_Inap,set_akun_ranap.Registrasi_Ranap,"+
+                    "set_akun_ranap.Tambahan_Ranap,set_akun_ranap.Potongan_Ranap,set_akun_ranap.Retur_Obat_Ranap,set_akun_ranap.Resep_Pulang_Ranap,set_akun_ranap.Kamar_Inap,"+
+                    "set_akun_ranap.Operasi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Dokter_Operasi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Operasi_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Paramedis_Operasi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Paramedis_Operasi_Ranap,set_akun_ranap.HPP_Obat_Operasi_Ranap,"+
+                    "set_akun_ranap.Service_Ranap from set_akun_ranap");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -1088,7 +1123,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 if(tabMode.getValueAt(i,0).toString().equals("true")&&(Valid.SetAngka(tabMode.getValueAt(i,10).toString())>0)){
                     if(Sequel.menyimpantf("bayar_piutang","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",tabMode.getValueAt(i,1).toString()),
-                        tabMode.getValueAt(i,10).toString(),"diverifikasi oleh "+kdptg.getText(),tabMode.getValueAt(i,1).toString(),koderekening,Piutang_BPJS_RVP
+                        tabMode.getValueAt(i,10).toString(),"diverifikasi oleh "+kdptg.getText(),tabMode.getValueAt(i,1).toString(),koderekening,Piutang_BPJS_RVP,"0",Diskon_Piutang,"0",Piutang_Tidak_Terbayar
                     })==true){
                         Sequel.mengedit("piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","status='Lunas'");
                         Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","sisapiutang=0");
@@ -1367,6 +1402,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','0','"+Valid.SetAngka(tabMode.getValueAt(i,82).toString())+"'","kredit=kredit+'"+Valid.SetAngka(tabMode.getValueAt(i,82).toString())+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
                                 Sequel.menyimpan("tampjurnal","'"+Service_Ranap+"','PENDAPATAN SERVICE INAP','"+Valid.SetAngka(tabMode.getValueAt(i,82).toString())+"','0'","debet=debet+'"+Valid.SetAngka(tabMode.getValueAt(i,82).toString())+"'","kd_rek='"+Service_Ranap+"'");   
                             }
+                            //PPN Obat
+                            if(Valid.SetAngka(tabMode.getValueAt(i,83).toString())>0){
+                                Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','0','"+Valid.SetAngka(tabMode.getValueAt(i,83).toString())+"'","kredit=kredit+'"+Valid.SetAngka(tabMode.getValueAt(i,83).toString())+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','"+Valid.SetAngka(tabMode.getValueAt(i,83).toString())+"','0'","debet=debet+'"+Valid.SetAngka(tabMode.getValueAt(i,83).toString())+"'","kd_rek='"+PPN_Keluaran+"'");
+                            }
                             //jurnal pembatalan beban, utang, piutang, pendapatan
                             sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","RVP PIUTANG PASIEN BPJS, OLEH "+kdptg.getText());     
                             
@@ -1636,6 +1676,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,82).toString()))+"','0'","debet=debet+'"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,82).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
                                     Sequel.menyimpan("tampjurnal","'"+Service_Ranap+"','PENDAPATAN SERVICE INAP','0','"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,82).toString()))+"'","kredit=kredit+'"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,82).toString()))+"'","kd_rek='"+Service_Ranap+"'");   
                                 }
+                                //service ranap
+                                if(Valid.SetAngka(tabMode.getValueAt(i,83).toString())>0){
+                                    Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,83).toString()))+"','0'","debet=debet+'"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,83).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
+                                    Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','0','"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,83).toString()))+"'","kredit=kredit+'"+(persenbayar *Valid.SetAngka(tabMode.getValueAt(i,83).toString()))+"'","kd_rek='"+PPN_Keluaran+"'");   
+                                }
                                 //jurnal ulang penyusutan beban, utang, piutang, pendapatan
                                 sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","RVP PIUTANG PASIEN BPJS, OLEH "+kdptg.getText());     
                                 if(sukses==true){
@@ -1750,7 +1795,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         }       
 
                         if(sukses==true){
-                            if(Sequel.menyimpantf2("rvp_klaim_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",82,new String[]{
+                            if(Sequel.menyimpantf2("rvp_klaim_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",83,new String[]{
                                     tabMode.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),kdptg.getText(),tabMode.getValueAt(i,5).toString(),tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),
                                     tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,16).toString(),
                                     tabMode.getValueAt(i,17).toString(),tabMode.getValueAt(i,18).toString(),tabMode.getValueAt(i,19).toString(),tabMode.getValueAt(i,20).toString(),tabMode.getValueAt(i,21).toString(),tabMode.getValueAt(i,22).toString(),
@@ -1764,7 +1809,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     tabMode.getValueAt(i,65).toString(),tabMode.getValueAt(i,66).toString(),tabMode.getValueAt(i,67).toString(),tabMode.getValueAt(i,68).toString(),tabMode.getValueAt(i,69).toString(),tabMode.getValueAt(i,70).toString(),
                                     tabMode.getValueAt(i,71).toString(),tabMode.getValueAt(i,72).toString(),tabMode.getValueAt(i,73).toString(),tabMode.getValueAt(i,74).toString(),tabMode.getValueAt(i,75).toString(),tabMode.getValueAt(i,76).toString(),
                                     tabMode.getValueAt(i,77).toString(),tabMode.getValueAt(i,78).toString(),tabMode.getValueAt(i,79).toString(),tabMode.getValueAt(i,80).toString(),tabMode.getValueAt(i,81).toString(),tabMode.getValueAt(i,2).toString(),
-                                    koderekening,Piutang_BPJS_RVP,tabMode.getValueAt(i,82).toString()
+                                    koderekening,Piutang_BPJS_RVP,tabMode.getValueAt(i,82).toString(),tabMode.getValueAt(i,83).toString()
                                 })==false){
                                     sukses=false;
                             }
@@ -1967,7 +2012,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     setBiaya(rs.getString("no_rawat"));
                                     totalbiaya=Math.round(registrasi+biaya_rawatralan+biaya_rawatranap+biayalabralan+biayalabranap+biayaradiologiralan+biayaradiologiranap+
                                                bhpoperasiralan+pendapatanoperasiralan+bhpoperasiranap+pendapatanoperasiranap+obatlangsung+obatralan+obatranap-returobat+
-                                               tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap);
+                                               tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap+ppnobat);
                                     
                                     if(rs.getDouble("totalpiutang")==totalbiaya){
                                         rugi=0;
@@ -1999,7 +2044,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                             tarif_perujukradiologiranap,tarif_tindakan_dokterradiologiranap,tarif_tindakan_petugasradiologiranap,ksoradiologiranap,menejemenradiologiranap,
                                             biayaradiologiranap,jmdokteroperasiralan,jmparamedisoperasiralan,bhpoperasiralan,pendapatanoperasiralan,jmdokteroperasiranap,jmparamedisoperasiranap,
                                             bhpoperasiranap,pendapatanoperasiranap,obatlangsung,obatralan,hppobatralan,obatranap,hppobatranap,returobat,tambahanbiaya,potonganbiaya,
-                                            kamar,reseppulang,harianranap,registrasi,serviceranap
+                                            kamar,reseppulang,harianranap,registrasi,serviceranap,ppnobat
                                         });
                                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                                     }else{
@@ -2018,7 +2063,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                             tarif_perujukradiologiranap,tarif_tindakan_dokterradiologiranap,tarif_tindakan_petugasradiologiranap,ksoradiologiranap,menejemenradiologiranap,
                                             biayaradiologiranap,jmdokteroperasiralan,jmparamedisoperasiralan,bhpoperasiralan,pendapatanoperasiralan,jmdokteroperasiranap,jmparamedisoperasiranap,
                                             bhpoperasiranap,pendapatanoperasiranap,obatlangsung,obatralan,hppobatralan,obatranap,hppobatranap,returobat,tambahanbiaya,potonganbiaya,
-                                            kamar,reseppulang,harianranap,registrasi,serviceranap
+                                            kamar,reseppulang,harianranap,registrasi,serviceranap,ppnobat
                                         });
                                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                                     }
@@ -2175,7 +2220,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     setBiaya(rs.getString("no_rawat"));
                                     totalbiaya=Math.round(registrasi+biaya_rawatralan+biaya_rawatranap+biayalabralan+biayalabranap+biayaradiologiralan+biayaradiologiranap+
                                                bhpoperasiralan+pendapatanoperasiralan+bhpoperasiranap+pendapatanoperasiranap+obatlangsung+obatralan+obatranap-returobat+
-                                               tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap);
+                                               tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap+ppnobat);
                                     
                                     if(rs.getDouble("totalpiutang")==totalbiaya){
                                         rugi=0;
@@ -2207,7 +2252,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                             tarif_perujukradiologiranap,tarif_tindakan_dokterradiologiranap,tarif_tindakan_petugasradiologiranap,ksoradiologiranap,menejemenradiologiranap,
                                             biayaradiologiranap,jmdokteroperasiralan,jmparamedisoperasiralan,bhpoperasiralan,pendapatanoperasiralan,jmdokteroperasiranap,jmparamedisoperasiranap,
                                             bhpoperasiranap,pendapatanoperasiranap,obatlangsung,obatralan,hppobatralan,obatranap,hppobatranap,returobat,tambahanbiaya,potonganbiaya,
-                                            kamar,reseppulang,harianranap,registrasi,serviceranap
+                                            kamar,reseppulang,harianranap,registrasi,serviceranap,ppnobat
                                         });
                                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                                     }else{
@@ -2226,7 +2271,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                             tarif_perujukradiologiranap,tarif_tindakan_dokterradiologiranap,tarif_tindakan_petugasradiologiranap,ksoradiologiranap,menejemenradiologiranap,
                                             biayaradiologiranap,jmdokteroperasiralan,jmparamedisoperasiralan,bhpoperasiralan,pendapatanoperasiralan,jmdokteroperasiranap,jmparamedisoperasiranap,
                                             bhpoperasiranap,pendapatanoperasiranap,obatlangsung,obatralan,hppobatralan,obatranap,hppobatranap,returobat,tambahanbiaya,potonganbiaya,
-                                            kamar,reseppulang,harianranap,registrasi,serviceranap
+                                            kamar,reseppulang,harianranap,registrasi,serviceranap,ppnobat
                                         });
                                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                                     }
@@ -2380,7 +2425,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                         rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0
+                        0,0,0,0,0,0,0,0,0,0,0,0,0
                     });
                     sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                 }
@@ -2422,7 +2467,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                         rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0
+                        0,0,0,0,0,0,0,0,0,0,0,0,0
                     });
                     sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                 }
@@ -2464,7 +2509,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                         rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0
+                        0,0,0,0,0,0,0,0,0,0,0,0,0
                     });
                     sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                 }
@@ -3358,7 +3403,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 }
                 totalbiaya=Math.round(registrasi+biaya_rawatralan+biaya_rawatranap+biayalabralan+biayalabranap+biayaradiologiralan+biayaradiologiranap+
                            bhpoperasiralan+pendapatanoperasiralan+bhpoperasiranap+pendapatanoperasiranap+obatlangsung+obatralan+obatranap-returobat+
-                           tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap);
+                           tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap+ppnobat);
                 if(Math.round(Valid.SetAngka(tbBangsal.getValueAt(pilih,5).toString()))==totalbiaya){
                     tbBangsal.setValueAt(materialralan,pilih,16);
                     tbBangsal.setValueAt(bhpralan,pilih,17);
@@ -3427,6 +3472,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     tbBangsal.setValueAt(harianranap,pilih,80);
                     tbBangsal.setValueAt(registrasi,pilih,81);
                     tbBangsal.setValueAt(serviceranap,pilih,82);
+                    tbBangsal.setValueAt(ppnobat,pilih,83);
 
                     selisih=0;
                     selisih=(Valid.SetAngka(tbBangsal.getValueAt(pilih,10).toString())+Valid.SetAngka(tbBangsal.getValueAt(pilih,6).toString())+Valid.SetAngka(tbBangsal.getValueAt(pilih,7).toString()))-Valid.SetAngka(tbBangsal.getValueAt(pilih,5).toString());
@@ -3518,6 +3564,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     tbBangsal.setValueAt(0,pilih,80);
                     tbBangsal.setValueAt(0,pilih,81);
                     tbBangsal.setValueAt(0,pilih,82);
+                    tbBangsal.setValueAt(0,pilih,83);
                 }  
             }else if(tbBangsal.getValueAt(pilih,0).toString().equals("false")){
                 tbBangsal.setValueAt(null,pilih,10);
@@ -3591,6 +3638,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 tbBangsal.setValueAt(0,pilih,80);
                 tbBangsal.setValueAt(0,pilih,81);
                 tbBangsal.setValueAt(0,pilih,82);
+                tbBangsal.setValueAt(0,pilih,83);
             }
         } catch (Exception e) {
             System.out.println("Notif : "+e);
