@@ -42,13 +42,13 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private String sqlps2="select sum(totalbiaya) from billing where no_rawat=? and status=? ";
+    private String sqlps2="select sum(billing.totalbiaya) from billing where billing.no_rawat=? and billing.status=? ";
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private double sisapiutang=0,cicilan=0,all=0,Laborat=0,Radiologi=0,Operasi=0,Obat=0,Ranap_Dokter=0,Ranap_Paramedis=0,Ranap_Dokter_Paramedis=0,Ralan_Dokter=0,
              Ralan_Paramedis=0,Ralan_Dokter_Paramedis=0,Tambahan=0,Potongan=0,Kamar=0,Registrasi=0,Harian=0,Retur_Obat=0,Resep_Pulang=0,
              Service=0,ttlLaborat=0,ttlRadiologi=0,ttlOperasi=0,ttlObat=0,ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlRalan_Dokter=0,
              ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlKamar=0,ttlRegistrasi=0,ttlHarian=0,ttlRetur_Obat=0,ttlResep_Pulang=0,
-             ttlService=0,ttlUangMuka=0,ttlCicilan=0;
+             ttlService=0,ttlUangMuka=0,ttlCicilan=0,diskon=0,ttldiskon=0,tidakdibayar=0,ttltidakdibayar=0;
     private String status="",pilihan="";
     private StringBuilder htmlContent;
     private int i=0;
@@ -62,13 +62,11 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] rowRwJlDr={
-            "No.Rawat/Tagihan","Tgl.Piutang","No.RM","Pasien","Status","Jatuh Tempo",
-            "Cara Bayar","Registrasi","Tindakan","Obt+Emb+Tsl","Retur Obat",
-            "Resep Pulang","Laborat","Radiologi","Potongan","Tambahan",
-            "Kamar+Service","Operasi","Harian","Total Piutang","Uang Muka","Cicilan","Sisa Piutang"
-        };
-        tabMode=new DefaultTableModel(null,rowRwJlDr){
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "No.Rawat/Tagihan","Tgl.Piutang","No.RM","Pasien","Status","Jatuh Tempo","Cara Bayar","Registrasi","Tindakan","Obt+Emb+Tsl","Retur Obat",
+            "Resep Pulang","Laborat","Radiologi","Potongan","Tambahan","Kamar+Service","Operasi","Harian","Total Piutang","Uang Muka","Cicilan",
+            "Diskon Bayar","Tidak Terbayar","Sisa Piutang"
+        }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
@@ -76,7 +74,8 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class
                 
              };
              @Override
@@ -89,7 +88,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 23; i++) {
+        for (i = 0; i < 25; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -218,7 +217,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rincian Piutang Pasien Per Cara Bayar di Pendaftaran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rincian Piutang Pasien Per Cara Bayar Di Pendaftaran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -351,9 +350,9 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tgl.Tagihan :");
+        label11.setText("Tanggal Tagihan :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(80, 23));
+        label11.setPreferredSize(new java.awt.Dimension(100, 23));
         panelisi4.add(label11);
 
         Tgl1.setDisplayFormat("dd-MM-yyyy");
@@ -441,29 +440,31 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TNo.Rawat/Tagihan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Jatuh Tempo</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Cara Bayar</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Registrasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tindakan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Obt+Emb+Tsl</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Retur Obat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Resep Pulang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Laborat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Radiologi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Potongan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tambahan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Kamar+Service</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Operasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Harian</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Total Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Uang Muka</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Cicilan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Sisa Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TNo.Rawat/Tagihan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jatuh Tempo</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cara Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Obt+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Obat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resep Pulang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kamar+Service</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Harian</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Uang Muka</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cicilan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Diskon Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tidak Terbayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sisa Piutang</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -492,6 +493,8 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                                         "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,20).toString()))+"</td>"+
                                         "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,21).toString()))+"</td>"+
                                         "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,22).toString()))+"</td>"+
+                                        "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,23).toString()))+"</td>"+
+                                        "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,24).toString()))+"</td>"+
                                     "</tr>"
                                 ); 
                             }            
@@ -501,7 +504,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             bw.write("<html>"+
                                         "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
                                         "<body>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 "<tr class='isi2'>"+
                                                     "<td valign='top' align='center'>"+
                                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -511,7 +514,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                                                     "</td>"+
                                                "</tr>"+
                                             "</table>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 htmlContent.toString()+
                                             "</table>"+
                                         "</body>"+                   
@@ -525,29 +528,31 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>TNo.Rawat/Tagihan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Jatuh Tempo</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Cara Bayar</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Registrasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tindakan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Obt+Emb+Tsl</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Retur Obat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Resep Pulang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Laborat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Radiologi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Potongan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tambahan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Kamar+Service</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Operasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Harian</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Total Piutang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Uang Muka</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Cicilan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Sisa Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TNo.Rawat/Tagihan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jatuh Tempo</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cara Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Obt+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Retur Obat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Resep Pulang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kamar+Service</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Harian</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total Piutang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Uang Muka</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cicilan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Diskon Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tidak Terbayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sisa Piutang</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -576,6 +581,8 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                                         "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,20).toString()))+"</td>"+
                                         "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,21).toString()))+"</td>"+
                                         "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,22).toString()))+"</td>"+
+                                        "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,23).toString()))+"</td>"+
+                                        "<td valign='top' align='right'>"+Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,24).toString()))+"</td>"+
                                     "</tr>"
                                 ); 
                             }            
@@ -585,7 +592,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             bw.write("<html>"+
                                         "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
                                         "<body>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 "<tr class='isi2'>"+
                                                     "<td valign='top' align='center'>"+
                                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -595,7 +602,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                                                     "</td>"+
                                                "</tr>"+
                                             "</table>"+
-                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1950px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 htmlContent.toString()+
                                             "</table>"+
                                         "</body>"+                   
@@ -608,11 +615,11 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Rawat/Tagihan\";\"Tgl.Piutang\";\"No.RM\";\"Pasien\";\"Status\";\"Jatuh Tempo\";\"Cara Bayar\";\"Registrasi\";\"Tindakan\";\"Obt+Emb+Tsl\";\"Retur Obat\";\"Resep Pulang\";\"Laborat\";\"Radiologi\";\"Potongan\";\"Tambahan\";\"Kamar+Service\";\"Operasi\";\"Harian\";\"Total Piutang\";\"Uang Muka\";\"Cicilan\";\"Sisa Piutang\"\n"
+                                "\"No.Rawat/Tagihan\";\"Tgl.Piutang\";\"No.RM\";\"Pasien\";\"Status\";\"Jatuh Tempo\";\"Cara Bayar\";\"Registrasi\";\"Tindakan\";\"Obt+Emb+Tsl\";\"Retur Obat\";\"Resep Pulang\";\"Laborat\";\"Radiologi\";\"Potongan\";\"Tambahan\";\"Kamar+Service\";\"Operasi\";\"Harian\";\"Total Piutang\";\"Uang Muka\";\"Cicilan\";\"Diskon Bayar\";\"Tidak Terbayar\";\"Sisa Piutang\"\n"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
                                 htmlContent.append(                             
-                                    "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\";\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,11)+"\";\""+tabMode.getValueAt(i,12)+"\";\""+tabMode.getValueAt(i,13)+"\";\""+tabMode.getValueAt(i,14)+"\";\""+tabMode.getValueAt(i,15)+"\";\""+tabMode.getValueAt(i,16)+"\";\""+tabMode.getValueAt(i,17)+"\";\""+tabMode.getValueAt(i,18)+"\";\""+tabMode.getValueAt(i,19)+"\";\""+tabMode.getValueAt(i,20)+"\";\""+tabMode.getValueAt(i,21)+"\";\""+tabMode.getValueAt(i,22)+"\"\n"
+                                    "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\";\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,11)+"\";\""+tabMode.getValueAt(i,12)+"\";\""+tabMode.getValueAt(i,13)+"\";\""+tabMode.getValueAt(i,14)+"\";\""+tabMode.getValueAt(i,15)+"\";\""+tabMode.getValueAt(i,16)+"\";\""+tabMode.getValueAt(i,17)+"\";\""+tabMode.getValueAt(i,18)+"\";\""+tabMode.getValueAt(i,19)+"\";\""+tabMode.getValueAt(i,20)+"\";\""+tabMode.getValueAt(i,21)+"\";\""+tabMode.getValueAt(i,22)+"\";\""+tabMode.getValueAt(i,23)+"\";\""+tabMode.getValueAt(i,24)+"\"\n"
                                 ); 
                             }            
 
@@ -650,7 +657,9 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,19).toString()))+"','"+
                                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,20).toString()))+"','"+
                                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,21).toString()))+"','"+
-                                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,22).toString()))+"','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Piutang Pasien"); 
+                                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,22).toString()))+"','"+
+                                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,23).toString()))+"','"+
+                                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,24).toString()))+"','','','','','','','','','','','','"+akses.getalamatip()+"'","Piutang Pasien"); 
                             }
 
 
@@ -714,7 +723,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                     if(akses.getbayar_piutang()==true){
                         DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,false);
                         bayarpiutang.emptTeks();
-                        String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString() +"'");
+                        String norm=Sequel.cariIsi("select piutang_pasien.no_rkm_medis from piutang_pasien where piutang_pasien.no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString() +"'");
                         String nama=Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+norm+"'"); 
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
                         bayarpiutang.tampil();  
@@ -731,7 +740,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                         billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
                         billing.isCek();
                         billing.isRawat();
-                        if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
+                        if(Sequel.cariInteger("select count(piutang_pasien.no_rawat) from piutang_pasien where piutang_pasien.no_rawat=?",billing.TNoRw.getText())>0){
                             billing.setPiutang();
                         }
                         billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -761,7 +770,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,false);
                         bayarpiutang.emptTeks();
-                        String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"'");
+                        String norm=Sequel.cariIsi("select piutang_pasien.no_rkm_medis from piutang_pasien where piutang_pasien.no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"'");
                         String nama=Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+norm+"'");
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);
                         bayarpiutang.tampil();  
@@ -778,7 +787,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                         billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
                         billing.isCek();
                         billing.isRawat();
-                        if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
+                        if(Sequel.cariInteger("select count(piutang_pasien.no_rawat) from piutang_pasien where piutang_pasien.no_rawat=?",billing.TNoRw.getText())>0){
                             billing.setPiutang();
                         }
                         billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -829,10 +838,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmpenjab,kdpenjab.getText());
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -898,36 +905,28 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             sisapiutang=0;
             ps=koneksi.prepareStatement("select piutang_pasien.no_rawat, piutang_pasien.tgl_piutang,piutang_pasien.no_rkm_medis,pasien.nm_pasien, "+
                        "piutang_pasien.status,piutang_pasien.totalpiutang, piutang_pasien.uangmuka, piutang_pasien.sisapiutang, piutang_pasien.tgltempo,penjab.png_jawab "+
-                       "from piutang_pasien inner join pasien inner join reg_periksa inner join penjab on  "+
-                       "piutang_pasien.no_rkm_medis=pasien.no_rkm_medis and "+
-                       "piutang_pasien.no_rawat=reg_periksa.no_rawat and "+
-                       "reg_periksa.kd_pj=penjab.kd_pj where "+
-                       "penjab.png_jawab like ? and piutang_pasien.no_rawat like ? and piutang_pasien.tgl_piutang between ? and ? or "+
-                       "penjab.png_jawab like ? and piutang_pasien.no_rkm_medis like ? and piutang_pasien.tgl_piutang between ? and ? or "+
-                       "penjab.png_jawab like ? and pasien.nm_pasien like ? and piutang_pasien.tgl_piutang between ? and ? or "+
-                       "penjab.png_jawab like ? and piutang_pasien.status like ? and piutang_pasien.tgl_piutang between ? and ? order by piutang_pasien.tgl_piutang");
+                       "from piutang_pasien inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
+                       "inner join reg_periksa on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
+                       "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                       "where penjab.png_jawab like ? and piutang_pasien.tgl_piutang between ? and ? "+
+                       (TCari.getText().trim().equals("")?"":" and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or "+
+                       "pasien.nm_pasien like ? or piutang_pasien.status like ? )")+" order by piutang_pasien.tgl_piutang");
             try {
                 all=0;ttlLaborat=0;ttlRadiologi=0;ttlOperasi=0;ttlObat=0;
                 ttlRanap_Dokter=0;ttlRanap_Paramedis=0;ttlRalan_Dokter=0;
                 ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlKamar=0;
                 ttlRegistrasi=0;ttlHarian=0;ttlRetur_Obat=0;ttlResep_Pulang=0;
-                ttlService=0;sisapiutang=0;ttlUangMuka=0;ttlCicilan=0;
+                ttlService=0;sisapiutang=0;ttlUangMuka=0;ttlCicilan=0;ttldiskon=0;
+                ttltidakdibayar=0;
                 ps.setString(1,"%"+nmpenjab.getText()+"%");
-                ps.setString(2,"%"+TCari.getText()+"%");
-                ps.setString(3, Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(4, Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(5,"%"+nmpenjab.getText()+"%");
-                ps.setString(6,"%"+TCari.getText()+"%");
-                ps.setString(7, Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8, Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+nmpenjab.getText()+"%");
-                ps.setString(10,"%"+TCari.getText()+"%");
-                ps.setString(11, Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(12, Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(13,"%"+nmpenjab.getText()+"%");
-                ps.setString(14,"%"+TCari.getText()+"%");
-                ps.setString(15, Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(16, Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){                    
                     Laborat=0; 
@@ -1308,17 +1307,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         }
                     }
                     cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString(1));
+                    diskon=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.diskon_piutang),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString(1));
+                    tidakdibayar=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.tidak_terbayar),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString(1));
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("tgl_piutang"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("status"),rs.getString("tgltempo"),rs.getString("png_jawab"),
                         Registrasi,(Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis),
-                        Obat,Retur_Obat,Resep_Pulang,Laborat,Radiologi,Potongan,
-                        Tambahan,(Kamar+Service),Operasi,Harian,rs.getDouble("totalpiutang"),
-                        rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan)
+                        Obat,Retur_Obat,Resep_Pulang,Laborat,Radiologi,Potongan,Tambahan,(Kamar+Service),Operasi,Harian,rs.getDouble("totalpiutang"),
+                        rs.getDouble("uangmuka"),cicilan,diskon,tidakdibayar,(rs.getDouble("sisapiutang")-cicilan-diskon-tidakdibayar)
                     });
                     all=all+rs.getDouble("totalpiutang");
-                    sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
+                    sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan-diskon-tidakdibayar;
                     ttlCicilan=ttlCicilan+cicilan;
+                    ttldiskon=ttldiskon+diskon;
+                    ttltidakdibayar=ttltidakdibayar+tidakdibayar;
                     ttlUangMuka=ttlUangMuka+rs.getDouble("uangmuka");
                 }
                 tabMode.addRow(new Object[]{
@@ -1326,7 +1328,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ttlRegistrasi,(ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+ttlRalan_Paramedis),
                         ttlObat,ttlRetur_Obat,ttlResep_Pulang,ttlLaborat,ttlRadiologi,ttlPotongan,
                         ttlTambahan,(ttlKamar+ttlService),ttlOperasi,ttlHarian,all,
-                        ttlUangMuka,ttlCicilan,(sisapiutang-cicilan)
+                        ttlUangMuka,ttlCicilan,ttldiskon,ttltidakdibayar,sisapiutang
                 });
             } catch (Exception e) {
                 System.out.println(e);

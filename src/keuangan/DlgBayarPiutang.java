@@ -1554,6 +1554,7 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             NoRawat.setText(tbKamar.getValueAt(row,5).toString());
             DiskonBayar.setText(tbKamar.getValueAt(row,8).toString());
             TidakTerbayar.setText(tbKamar.getValueAt(row,10).toString());
+            Sisa.setText("0");
             Valid.SetTgl(Tanggal,tbKamar.getValueAt(row,0).toString());
         }
     }
