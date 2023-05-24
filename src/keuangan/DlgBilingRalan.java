@@ -4866,7 +4866,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         if(subttl>0){ 
             if(tampilkan_ppnobat_ralan.equals("Yes")){
                 ppnobat=Math.round(subttl*0.11);
-                obatlangsung=ppnobat;
                 if(centangobatralan.equals("Yes")){
                     tabModeRwJlDr.addRow(new Object[]{true,"","PPN Obat",":",ppnobat,1,0,ppnobat,"Obat"});
                 }else{

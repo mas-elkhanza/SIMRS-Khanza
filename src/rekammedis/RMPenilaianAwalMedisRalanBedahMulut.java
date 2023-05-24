@@ -477,7 +477,6 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         jLabel115 = new widget.Label();
         jLabel112 = new widget.Label();
         Gigigeligi = new java.awt.TextArea();
-        Wajah = new java.awt.TextArea();
         Intra = new java.awt.TextArea();
         jLabel33 = new widget.Label();
         jLabel34 = new widget.Label();
@@ -497,6 +496,11 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         Txtperut1 = new widget.TextBox();
         jLabel52 = new widget.Label();
         jSeparator18 = new javax.swing.JSeparator();
+        scrollPane5 = new widget.ScrollPane();
+        Wajah = new widget.TextArea();
+        PanelWall1 = new usu.widget.glass.PanelGlass();
+        PanelWall2 = new usu.widget.glass.PanelGlass();
+        jSeparator35 = new javax.swing.JSeparator();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1211,7 +1215,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-05-2023 07:19:56" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-05-2023 13:43:36" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1450,7 +1454,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         jLabel115.setText("Wajah :");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(10, 710, 190, 23);
+        jLabel115.setBounds(44, 430, 190, 23);
 
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel112.setText("Intra Oral :");
@@ -1463,12 +1467,6 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         Gigigeligi.setName("Gigigeligi"); // NOI18N
         FormInput.add(Gigigeligi);
         Gigigeligi.setBounds(10, 1190, 120, 180);
-
-        Wajah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        Wajah.setForeground(new java.awt.Color(50, 50, 50));
-        Wajah.setName("Wajah"); // NOI18N
-        FormInput.add(Wajah);
-        Wajah.setBounds(10, 740, 120, 170);
 
         Intra.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Intra.setForeground(new java.awt.Color(50, 50, 50));
@@ -1614,6 +1612,52 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         jSeparator18.setName("jSeparator18"); // NOI18N
         FormInput.add(jSeparator18);
         jSeparator18.setBounds(0, 410, 880, 1);
+
+        scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane5.setName("scrollPane5"); // NOI18N
+
+        Wajah.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Wajah.setColumns(20);
+        Wajah.setRows(15);
+        Wajah.setName("Wajah"); // NOI18N
+        Wajah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                WajahKeyPressed(evt);
+            }
+        });
+        scrollPane5.setViewportView(Wajah);
+
+        FormInput.add(scrollPane5);
+        scrollPane5.setBounds(44, 450, 210, 170);
+
+        PanelWall1.setBackground(new java.awt.Color(255, 255, 255));
+        PanelWall1.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/wajah2.png"))); // NOI18N
+        PanelWall1.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
+        PanelWall1.setOpaque(true);
+        PanelWall1.setPreferredSize(new java.awt.Dimension(200, 200));
+        PanelWall1.setRound(false);
+        PanelWall1.setWarna(new java.awt.Color(110, 110, 110));
+        PanelWall1.setLayout(null);
+        FormInput.add(PanelWall1);
+        PanelWall1.setBounds(694, 450, 130, 170);
+
+        PanelWall2.setBackground(new java.awt.Color(255, 255, 255));
+        PanelWall2.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/wajah1.png"))); // NOI18N
+        PanelWall2.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
+        PanelWall2.setOpaque(true);
+        PanelWall2.setPreferredSize(new java.awt.Dimension(200, 200));
+        PanelWall2.setRound(false);
+        PanelWall2.setWarna(new java.awt.Color(110, 110, 110));
+        PanelWall2.setLayout(null);
+        FormInput.add(PanelWall2);
+        PanelWall2.setBounds(270, 450, 400, 170);
+
+        jSeparator35.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator35.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator35.setName("jSeparator35"); // NOI18N
+        FormInput.add(jSeparator35);
+        jSeparator35.setBounds(44, 630, 780, 1);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2420,6 +2464,10 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         // TODO add your handling code here:
     }//GEN-LAST:event_Txtperut1KeyPressed
 
+    private void WajahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WajahKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WajahKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2477,6 +2525,8 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.ComboBox Nyeri;
+    private usu.widget.glass.PanelGlass PanelWall1;
+    private usu.widget.glass.PanelGlass PanelWall2;
     private widget.TextArea Pemeriksaan;
     private widget.TextArea Permasalahan;
     private widget.ComboBox Perut;
@@ -2506,7 +2556,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
     private widget.TextBox Txtleher1;
     private widget.TextBox Txtmata1;
     private widget.TextBox Txtperut1;
-    private java.awt.TextArea Wajah;
+    private widget.TextArea Wajah;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -2576,6 +2626,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator35;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;
@@ -2588,6 +2639,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
     private widget.ScrollPane scrollPane17;
     private widget.ScrollPane scrollPane18;
     private widget.ScrollPane scrollPane4;
+    private widget.ScrollPane scrollPane5;
     private widget.ScrollPane scrollPane7;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
