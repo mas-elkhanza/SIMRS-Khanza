@@ -227,7 +227,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Penilaian Pasien Terminal","[P]Persetujuan Rawat Inap","[M]Monitoring Reaksi Tranfusi","[M]Penilaian Korban Kekerasan","[M]Penilaian Lanjutan Risiko Jatuh Lansia",
                 "[M]Penilaian Pasien Penyakit Menular","[M]Skrining Manajer Pelayanan Pasien","[M]Edukasi Pasien & Keluarga Rawat Jalan","[M]Pemantauan PEWS Pasien Dewasa",
                 "[M]Penilaian Tambahan Bunuh Diri","[L]Antrean Per Tanggal Mobile JKN","[M]Penilaian Tambahan Perilaku Kekerasan","[M]Penilaian Tambahan Melarikan Diri",
-                "[P]Persetujuan Penundaan Pelayanan","[J]Sisa Diet Pasien","[M]Penilaian Awal Medis Ralan Bedah Mulut"
+                "[P]Persetujuan Penundaan Pelayanan","[J]Sisa Diet Pasien","[M]Penilaian Awal Medis Ralan Bedah Mulut","[M]Penilaian Pasien Keracunan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -488,6 +488,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -501,7 +502,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 944;i++) {
+        for (i = 0; i < 945;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2787,6 +2788,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 943:
                     column.setPreferredWidth(221);
                     break;
+                case 944:
+                    column.setPreferredWidth(157);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3284,7 +3288,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3308,7 +3312,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4299,7 +4303,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_tambahan_beresiko_melarikan_diri='"+tbUser.getValueAt(i,940).toString()+"',"+
                     "persetujuan_penundaan_pelayanan='"+tbUser.getValueAt(i,941).toString()+"',"+
                     "sisa_diet_pasien='"+tbUser.getValueAt(i,942).toString()+"',"+
-                    "penilaian_awal_medis_ralan_bedah_mulut='"+tbUser.getValueAt(i,943).toString()+"'")==true){
+                    "penilaian_awal_medis_ralan_bedah_mulut='"+tbUser.getValueAt(i,943).toString()+"',"+
+                    "penilaian_pasien_keracunan='"+tbUser.getValueAt(i,944).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5441,7 +5446,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "penilaian_tambahan_beresiko_melarikan_diri='"+tbUser.getValueAt(barisdicopy,940).toString()+"',"+
                                         "persetujuan_penundaan_pelayanan='"+tbUser.getValueAt(barisdicopy,941).toString()+"',"+
                                         "sisa_diet_pasien='"+tbUser.getValueAt(barisdicopy,942).toString()+"',"+
-                                        "penilaian_awal_medis_ralan_bedah_mulut='"+tbUser.getValueAt(barisdicopy,943).toString()+"'");
+                                        "penilaian_awal_medis_ralan_bedah_mulut='"+tbUser.getValueAt(barisdicopy,943).toString()+"',"+
+                                        "penilaian_pasien_keracunan='"+tbUser.getValueAt(barisdicopy,944).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5718,7 +5724,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.surat_persetujuan_rawat_inap,user.monitoring_reaksi_tranfusi,user.penilaian_korban_kekerasan,user.penilaian_lanjutan_resiko_jatuh_lansia,"+
                 "user.penilaian_pasien_penyakit_menular,user.mpp_skrining,user.edukasi_pasien_keluarga_rj,user.pemantauan_pews_dewasa,user.penilaian_tambahan_bunuh_diri,"+
                 "user.bpjs_antrean_pertanggal,user.penilaian_tambahan_perilaku_kekerasan,user.penilaian_tambahan_beresiko_melarikan_diri,user.persetujuan_penundaan_pelayanan,"+
-                "user.sisa_diet_pasien,user.penilaian_awal_medis_ralan_bedah_mulut from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.sisa_diet_pasien,user.penilaian_awal_medis_ralan_bedah_mulut,user.penilaian_pasien_keracunan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6674,7 +6680,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_tambahan_beresiko_melarikan_diri"),
                                rs.getBoolean("persetujuan_penundaan_pelayanan"),
                                rs.getBoolean("sisa_diet_pasien"),
-                               rs.getBoolean("penilaian_awal_medis_ralan_bedah_mulut")
+                               rs.getBoolean("penilaian_awal_medis_ralan_bedah_mulut"),
+                               rs.getBoolean("penilaian_pasien_keracunan")
                             });
                         }   
                     } catch (Exception e) {
@@ -7619,7 +7626,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_tambahan_beresiko_melarikan_diri"),
                            rs.getBoolean("persetujuan_penundaan_pelayanan"),
                            rs.getBoolean("sisa_diet_pasien"),
-                           rs.getBoolean("penilaian_awal_medis_ralan_bedah_mulut")
+                           rs.getBoolean("penilaian_awal_medis_ralan_bedah_mulut"),
+                           rs.getBoolean("penilaian_pasien_keracunan")
                         });
                     }                                             
                  }

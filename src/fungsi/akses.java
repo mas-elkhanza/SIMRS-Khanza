@@ -205,7 +205,7 @@ public final class akses {
             penilaian_pasien_terminal=false,surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false,penilaian_korban_kekerasan=false,
             penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false,edukasi_pasien_keluarga_rj=false,pemantauan_pews_dewasa=false,
             penilaian_tambahan_bunuh_diri=false,bpjs_antrean_pertanggal=false,penilaian_tambahan_perilaku_kekerasan=false,penilaian_tambahan_beresiko_melarikan_diri=false,
-            persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false;
+            persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false,penilaian_pasien_keracunan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1169,6 +1169,7 @@ public final class akses {
                         akses.persetujuan_penundaan_pelayanan=true;
                         akses.sisa_diet_pasien=true;
                         akses.penilaian_awal_medis_ralan_bedah_mulut=true;
+                        akses.penilaian_pasien_keracunan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2116,6 +2117,7 @@ public final class akses {
                         akses.persetujuan_penundaan_pelayanan=rs2.getBoolean("persetujuan_penundaan_pelayanan");
                         akses.sisa_diet_pasien=rs2.getBoolean("sisa_diet_pasien");
                         akses.penilaian_awal_medis_ralan_bedah_mulut=rs2.getBoolean("penilaian_awal_medis_ralan_bedah_mulut");
+                        akses.penilaian_pasien_keracunan=rs2.getBoolean("penilaian_pasien_keracunan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3061,6 +3063,7 @@ public final class akses {
                         akses.persetujuan_penundaan_pelayanan=false;
                         akses.sisa_diet_pasien=false;
                         akses.penilaian_awal_medis_ralan_bedah_mulut=false;
+                        akses.penilaian_pasien_keracunan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4066,4 +4069,5 @@ public final class akses {
     public static boolean getpersetujuan_penundaan_pelayanan(){return akses.persetujuan_penundaan_pelayanan;}
     public static boolean getsisa_diet_pasien(){return akses.sisa_diet_pasien;}
     public static boolean getpenilaian_awal_medis_ralan_bedah_mulut(){return akses.penilaian_awal_medis_ralan_bedah_mulut;}
+    public static boolean getpenilaian_pasien_keracunan(){return akses.penilaian_pasien_keracunan;}
 }   
