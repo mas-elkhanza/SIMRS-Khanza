@@ -61,10 +61,12 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Mengetahui Penyakitnya",
-            "Penyakit Sama Serumah","Riwayat Kontak","Keterangan Riwayat Kontak","Transmisi Penularan", "Keterangan Transmisi Penularan", 
-            "Kebutuhan Ruang","Keluhan Yang Dirasakan Saat Ini","Riwayat Penyakit Keluarga","Riwayat Alergi","Riwayat Vaksinasi","Riwayat Pengobatan", 
-            "Diagnosa Utama", "Diagnosa Tambahan"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan",
+            "Tempat Kejadian","Keterangan Tempat Kejadian","Keluhan Yang Dirasakan Saat Ini","Riwayat Penyakit Sekarang", 
+            "Hamil","Menyusui","Perkiraan Penyebab Keracunan","Nama Bahan","Jml Bahan","Tipe Pemaparan","Keterangan Tipe Pemaparan", 
+            "Tipe Kejadian","Bau Bahan","Keterangan Bau Bahan","Pupil","Keterangan Pupil","Kesadaran","Tensi(mmHg)","Nadi(x/menit)",
+            "RR(x/menit)","Suhu(°C)","SpO2(%)","Urine(cc/j)","Pengobatan Sebelum Ke IGD","Diagnosa","Pemeriksaan Penunjang", 
+            "Penatalaksanaan Yang Diberikan","Tindak Lanjut"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -73,7 +75,7 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -95,34 +97,6 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==9){
                 column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(127);
-            }else if(i==11){
-                column.setPreferredWidth(127);
-            }else if(i==12){
-                column.setPreferredWidth(250);
-            }else if(i==13){
-                column.setPreferredWidth(170);
-            }else if(i==14){
-                column.setPreferredWidth(110);
-            }else if(i==15){
-                column.setPreferredWidth(165);
-            }else if(i==16){
-                column.setPreferredWidth(100);
-            }else if(i==17){
-                column.setPreferredWidth(250);
-            }else if(i==18){
-                column.setPreferredWidth(220);
-            }else if(i==19){
-                column.setPreferredWidth(150);
-            }else if(i==20){
-                column.setPreferredWidth(150);
-            }else if(i==21){
-                column.setPreferredWidth(250);
-            }else if(i==22){
-                column.setPreferredWidth(150);
-            }else if(i==23){
-                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1190,7 +1164,7 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
             }
         });
         FormInput.add(RiwayatKontak8);
-        RiwayatKontak8.setBounds(120, 710, 140, 23);
+        RiwayatKontak8.setBounds(120, 710, 130, 23);
 
         scrollInput.setViewportView(FormInput);
 
