@@ -106,7 +106,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable());
 
         
-        TKd.setDocument(new batasInput((byte)10).getKata(TKd));
+        TKd.setDocument(new batasInput((byte)15).getKata(TKd));
         TNm.setDocument(new batasInput((int)100).getKata(TNm));
         TCiri.setDocument(new batasInput((int)1500).getKata(TCiri));
         TKeterangan.setDocument(new batasInput((byte)60).getKata(TKeterangan));

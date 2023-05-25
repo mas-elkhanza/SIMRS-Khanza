@@ -1027,7 +1027,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="widget.ComboBox" name="TiperPemaparan">
+                        <Component class="widget.ComboBox" name="TipePemaparan">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="8">
@@ -1041,10 +1041,10 @@
                                 <StringItem index="7" value="Lain-lain"/>
                               </StringArray>
                             </Property>
-                            <Property name="name" type="java.lang.String" value="TiperPemaparan" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="TipePemaparan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TiperPemaparanKeyPressed"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TipePemaparanKeyPressed"/>
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

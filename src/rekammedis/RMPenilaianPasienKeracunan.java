@@ -260,7 +260,7 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
         jLabel56 = new widget.Label();
         BauBahan = new widget.ComboBox();
         jLabel57 = new widget.Label();
-        TiperPemaparan = new widget.ComboBox();
+        TipePemaparan = new widget.ComboBox();
         KeteranganTipePemaparan = new widget.TextBox();
         Pupil = new widget.ComboBox();
         jLabel58 = new widget.Label();
@@ -853,15 +853,15 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
         FormInput.add(jLabel57);
         jLabel57.setBounds(0, 310, 168, 23);
 
-        TiperPemaparan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mulut", "Mata", "Gigitan", "Injeksi", "Inhalasi", "Sengatan", "Kulit", "Lain-lain" }));
-        TiperPemaparan.setName("TiperPemaparan"); // NOI18N
-        TiperPemaparan.addKeyListener(new java.awt.event.KeyAdapter() {
+        TipePemaparan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mulut", "Mata", "Gigitan", "Injeksi", "Inhalasi", "Sengatan", "Kulit", "Lain-lain" }));
+        TipePemaparan.setName("TipePemaparan"); // NOI18N
+        TipePemaparan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TiperPemaparanKeyPressed(evt);
+                TipePemaparanKeyPressed(evt);
             }
         });
-        FormInput.add(TiperPemaparan);
-        TiperPemaparan.setBounds(172, 310, 100, 23);
+        FormInput.add(TipePemaparan);
+        TipePemaparan.setBounds(172, 310, 100, 23);
 
         KeteranganTipePemaparan.setFocusTraversalPolicyProvider(true);
         KeteranganTipePemaparan.setName("KeteranganTipePemaparan"); // NOI18N
@@ -1712,9 +1712,9 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BauBahanKeyPressed
 
-    private void TiperPemaparanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TiperPemaparanKeyPressed
+    private void TipePemaparanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TipePemaparanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TiperPemaparanKeyPressed
+    }//GEN-LAST:event_TipePemaparanKeyPressed
 
     private void KeteranganTipePemaparanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTipePemaparanKeyPressed
         // TODO add your handling code here:
@@ -1847,7 +1847,7 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
     private widget.TextBox TglLahir;
     private widget.ComboBox TindakLanjut;
     private widget.ComboBox TipeKejadian;
-    private widget.ComboBox TiperPemaparan;
+    private widget.ComboBox TipePemaparan;
     private widget.TextBox Urine;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
@@ -1994,6 +1994,24 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
         Menyusui.setSelectedIndex(1);
         TempatKejadian.setSelectedIndex(0);
         KeteranganTempatKejadian.setText("");
+        Penyebab.setSelectedIndex(0);
+        NamaBahan.setText("");
+        JumlahBahan.setText("");
+        TipePemaparan.setSelectedIndex(0);
+        KeteranganTipePemaparan.setText("");
+        TipeKejadian.setSelectedIndex(0);
+        BauBahan.setSelectedIndex(0);
+        KeteranganBauBahan.setText("");
+        Pupil.setSelectedIndex(0);
+        KeteranganPupil.setText("");
+        Kesadaran.setSelectedIndex(0);
+        TD.setText("");
+        Nadi.setText("");
+        RR.setText("");
+        Suhu.setText("");
+        SPO.setText("");
+        Urine.setText("");
+        
         TabRawat.setSelectedIndex(0);
         Anamnesis.requestFocus();
     } 

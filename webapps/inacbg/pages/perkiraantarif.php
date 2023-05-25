@@ -1,8 +1,4 @@
 <?php
-    if(strpos($_SERVER['REQUEST_URI'],"pages")){
-        exit(header("Location:../index.php"));
-    }
-    
     require_once '../conf/wsinacbg2.php';
     require_once '../../conf/conf.php';
     $prosedur           = "";
