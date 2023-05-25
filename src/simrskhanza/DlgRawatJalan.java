@@ -101,6 +101,7 @@ import rekammedis.RMPenilaianKorbanKekerasan;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhDewasa;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhLansia;
+import rekammedis.RMPenilaianPasienKeracunan;
 import rekammedis.RMPenilaianPasienPenyakitMenular;
 import rekammedis.RMPenilaianPasienTerminal;
 import rekammedis.RMPenilaianPreAnastesi;
@@ -1589,6 +1590,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPenilaianPasienTerminal = new widget.Button();
         BtnPenilaianKorbanKekerasan = new widget.Button();
         BtnPenilaianPasienPenyakitMenular = new widget.Button();
+        BtnPenilaianPasienKeracunan = new widget.Button();
         BtnPenilaianTambahanGeriatri = new widget.Button();
         BtnPenilaianTambahanBunuhDiri = new widget.Button();
         BtnPenilaianTambahanPerilakuKekerasan = new widget.Button();
@@ -4773,6 +4775,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPenilaianPasienPenyakitMenular);
+
+        BtnPenilaianPasienKeracunan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPenilaianPasienKeracunan.setText("Pasien Keracunan");
+        BtnPenilaianPasienKeracunan.setFocusPainted(false);
+        BtnPenilaianPasienKeracunan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPenilaianPasienKeracunan.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianPasienKeracunan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianPasienKeracunan.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianPasienKeracunan.setName("BtnPenilaianPasienKeracunan"); // NOI18N
+        BtnPenilaianPasienKeracunan.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPenilaianPasienKeracunan.setRoundRect(false);
+        BtnPenilaianPasienKeracunan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPenilaianPasienKeracunanActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPenilaianPasienKeracunan);
 
         BtnPenilaianTambahanGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnPenilaianTambahanGeriatri.setText("Tambahan Pasien Geriatri");
@@ -8227,6 +8246,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalMedisBedahMulutActionPerformed
 
+    private void BtnPenilaianPasienKeracunanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianPasienKeracunanActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianPasienKeracunan form=new RMPenilaianPasienKeracunan(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPenilaianPasienKeracunanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8296,6 +8332,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPenilaianLanjutanRisikoJatuhAnak;
     private widget.Button BtnPenilaianLanjutanRisikoJatuhDewasa;
     private widget.Button BtnPenilaianLanjutanRisikoJatuhLansia;
+    private widget.Button BtnPenilaianPasienKeracunan;
     private widget.Button BtnPenilaianPasienPenyakitMenular;
     private widget.Button BtnPenilaianPasienTerminal;
     private widget.Button BtnPenilaianPreAnestesi;
@@ -9134,6 +9171,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalMedisBedahMulut.setVisible(akses.getpenilaian_awal_medis_ralan_bedah_mulut()); 
         if(akses.getpenilaian_awal_medis_ralan_bedah_mulut()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianPasienKeracunan.setVisible(akses.getpenilaian_pasien_keracunan()); 
+        if(akses.getpenilaian_pasien_keracunan()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
