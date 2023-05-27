@@ -42,13 +42,6 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private File file;
-    private FileWriter fileWriter;
-    private String iyem;
-    private ObjectMapper mapper = new ObjectMapper();
-    private JsonNode root;
-    private JsonNode response;
-    private FileReader myObj;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -86,19 +79,19 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        tampil();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        tampil();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil2();
+                        tampil();
                     }
                 }
             });
@@ -136,9 +129,6 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
-            }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
             }
         });
 
@@ -286,7 +276,7 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil2();
+        tampil();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -330,17 +320,6 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         emptTeks();
     }//GEN-LAST:event_formWindowActivated
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try {
-            if(Valid.daysOld("./cache/template_hasil_radiologi.iyem")<8){
-                tampil2();
-            }else{
-                tampil();
-            }
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_formWindowOpened
 
     private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
         if(tabMode.getRowCount()!=0){
@@ -400,16 +379,15 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            file=new File("./cache/template_hasil_radiologi.iyem");
-            file.createNewFile();
-            fileWriter = new FileWriter(file);
-            iyem="";
-            ps=koneksi.prepareStatement("select template_hasil_radiologi.no_template,template_hasil_radiologi.nama_pemeriksaan,template_hasil_radiologi.template_hasil_radiologi from template_hasil_radiologi order by template_hasil_radiologi.nama_pemeriksaan");   
+            ps=koneksi.prepareStatement(
+                    "select template_hasil_radiologi.no_template,template_hasil_radiologi.nama_pemeriksaan,template_hasil_radiologi.template_hasil_radiologi "+
+                    "from template_hasil_radiologi where template_hasil_radiologi.no_template like ? or template_hasil_radiologi.nama_pemeriksaan like ? order by template_hasil_radiologi.nama_pemeriksaan");   
             try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
-                    iyem=iyem+"{\"NoTemplate\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2)+"\",\"Template\":\""+rs.getString(3)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -421,40 +399,12 @@ public final class MasterCariTemplateHasilRadiologi extends javax.swing.JDialog 
                     ps.close();
                 }
             }
-            fileWriter.write("{\"template_hasil_radiologi\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
-            fileWriter.close();
-            iyem=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }  
         LCount.setText(""+tabMode.getRowCount());
     }
     
-    private void tampil2() {
-        try {
-            myObj = new FileReader("./cache/template_hasil_radiologi.iyem");
-            root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
-            response = root.path("template_hasil_radiologi");
-            if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("NoTemplate").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
-                       list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
-                       list.path("Template").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{
-                            list.path("NoTemplate").asText(),list.path("NamaPemeriksaan").asText(),list.path("Template").asText()
-                        });                    
-                    }
-                }
-            }
-            myObj.close();
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }
-        LCount.setText(""+tabMode.getRowCount());
-    }
-
     public void emptTeks() {
         TCari.requestFocus();
     }
