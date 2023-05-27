@@ -14,8 +14,6 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -1039,11 +1037,6 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
 
         Kulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Kulit.setName("Kulit"); // NOI18N
-        Kulit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KulitActionPerformed(evt);
-            }
-        });
         Kulit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KulitKeyPressed(evt);
@@ -1074,11 +1067,6 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
 
         Leher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Leher.setName("Leher"); // NOI18N
-        Leher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LeherActionPerformed(evt);
-            }
-        });
         Leher.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 LeherKeyPressed(evt);
@@ -1846,12 +1834,13 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         }else if(RPK.getText().trim().equals("")){
             Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
         }else{
-            if(Sequel.menyimpantf("penilaian_medis_ralan_bedah_mulut","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",39,new String[]{
+            if(Sequel.menyimpantf("penilaian_medis_ralan_bedah_mulut","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",47,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),RPS.getText(),RPK.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),StatusNutrisi.getText(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getSelectedItem().toString(),TB.getText(),
-                    dbkulit,dbkepala,dbmata,dbleher,dbkelenjar,dbdada,dbperut,dbekstremitas,Wajah.getText(),IntraOral.getText(),GigiGeligi.getText(),
-                    Laborat.getText(),Radiologi.getText(),Penunjang.getText(),AsesmenKerja.getText(),AsesmenBanding.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
-                    
+                    KeluhanUtama.getText(),RPS.getText(),RPK.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),Nyeri.getSelectedItem().toString(),TD.getText(),Nadi.getText(), 
+                    Suhu.getText(),RR.getText(),BB.getText(),TB.getText(),StatusNutrisi.getText(),Kulit.getSelectedItem().toString(),KeteranganKulit.getText(),Kepala.getSelectedItem().toString(),KeteranganKepala.getText(), 
+                    Mata.getSelectedItem().toString(),KeteranganMata.getText(),Leher.getSelectedItem().toString(),KeteranganLeher.getText(),Kelenjar.getSelectedItem().toString(),KeteranganKelenjar.getText(),Dada.getSelectedItem().toString(), 
+                    KeteranganDada.getText(),Perut.getSelectedItem().toString(),KeteranganPerut.getText(),Ekstremitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),Wajah.getText(),IntraOral.getText(),GigiGeligi.getText(),
+                    Laborat.getText(),Radiologi.getText(),Penunjang.getText(),AsesmenKerja.getText(),AsesmenKerja.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
                 })==true){
                     emptTeks();
             }
@@ -2405,16 +2394,8 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
-         Valid.pindah2(evt,Kesadaran,TD);
+         Valid.pindah(evt,Kesadaran,TD);
     }//GEN-LAST:event_NyeriKeyPressed
-
-    private void LeherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeherActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LeherActionPerformed
-
-    private void KulitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KulitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KulitActionPerformed
 
     private void PerutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerutKeyPressed
         Valid.pindah(evt,KeteranganDada,KeteranganPerut);

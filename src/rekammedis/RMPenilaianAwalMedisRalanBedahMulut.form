@@ -1119,7 +1119,6 @@
                             <Property name="name" type="java.lang.String" value="Kulit" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KulitActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KulitKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -1180,7 +1179,6 @@
                             <Property name="name" type="java.lang.String" value="Leher" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LeherActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LeherKeyPressed"/>
                           </Events>
                           <Constraints>
