@@ -1128,7 +1128,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-05-2023 17:10:45" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-05-2023 00:52:46" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1696,7 +1696,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         jSeparator22.setBounds(0, 1530, 880, 1);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("VII. EDUKASI");
+        jLabel109.setText("VIII. EDUKASI");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
         jLabel109.setBounds(10, 1530, 190, 23);
@@ -1759,7 +1759,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-05-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-05-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1773,7 +1773,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-05-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-05-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2318,7 +2318,10 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("lokalis",Sequel.cariGambar("select lokalis from gambar")); 
+            param.put("wajah1",Sequel.cariGambar("select gambar.wajah1 from gambar")); 
+            param.put("wajah2",Sequel.cariGambar("select gambar.wajah2 from gambar")); 
+            param.put("intraoral",Sequel.cariGambar("select gambar.intraoral from gambar")); 
+            param.put("gigigeligi",Sequel.cariGambar("select gambar.gigigeligi from gambar")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             

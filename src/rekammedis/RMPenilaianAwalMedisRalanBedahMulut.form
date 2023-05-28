@@ -1262,7 +1262,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="28-05-2023 00:52:46"/>
+                                <StringItem index="0" value="28-05-2023 18:31:37"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2450,7 +2450,7 @@
                         <Component class="widget.Label" name="jLabel109">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VII. EDUKASI"/>
+                            <Property name="text" type="java.lang.String" value="VIII. EDUKASI"/>
                             <Property name="name" type="java.lang.String" value="jLabel109" noResource="true"/>
                           </Properties>
                           <Constraints>
