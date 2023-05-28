@@ -75,7 +75,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 52; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -120,11 +120,67 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
             }else if(i==20){
                 column.setPreferredWidth(70);
             }else if(i==21){
-                column.setPreferredWidth(47);
+                column.setPreferredWidth(45);
             }else if(i==22){
-                column.setPreferredWidth(48);
+                column.setPreferredWidth(47);
             }else if(i==23){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
+            }else if(i==24){
+                column.setPreferredWidth(40);
+            }else if(i==25){
+                column.setPreferredWidth(130);
+            }else if(i==26){
+                column.setPreferredWidth(40);
+            }else if(i==27){
+                column.setPreferredWidth(130);
+            }else if(i==28){
+                column.setPreferredWidth(40);
+            }else if(i==29){
+                column.setPreferredWidth(130);
+            }else if(i==30){
+                column.setPreferredWidth(40);
+            }else if(i==31){
+                column.setPreferredWidth(130);
+            }else if(i==32){
+                column.setPreferredWidth(50);
+            }else if(i==33){
+                column.setPreferredWidth(130);
+            }else if(i==34){
+                column.setPreferredWidth(40);
+            }else if(i==35){
+                column.setPreferredWidth(130);
+            }else if(i==36){
+                column.setPreferredWidth(40);
+            }else if(i==37){
+                column.setPreferredWidth(130);
+            }else if(i==38){
+                column.setPreferredWidth(65);
+            }else if(i==39){
+                column.setPreferredWidth(130);
+            }else if(i==40){
+                column.setPreferredWidth(300);
+            }else if(i==41){
+                column.setPreferredWidth(300);
+            }else if(i==42){
+                column.setPreferredWidth(300);
+            }else if(i==43){
+                column.setPreferredWidth(200);
+            }else if(i==44){
+                column.setPreferredWidth(200);
+            }else if(i==45){
+                column.setPreferredWidth(200);
+            }else if(i==46){
+                column.setPreferredWidth(150);
+            }else if(i==47){
+                column.setPreferredWidth(150);
+            }else if(i==48){
+                column.setPreferredWidth(200);
+            }else if(i==49){
+                column.setPreferredWidth(200);
+            }else if(i==50){
+                column.setPreferredWidth(200);
+            }else if(i==51){
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2023,7 +2079,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='4100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='4200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -2048,7 +2104,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='4100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='4200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
