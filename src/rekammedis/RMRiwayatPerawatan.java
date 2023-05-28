@@ -17225,6 +17225,29 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. STATUS KELAINAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td width='50%'>Kulit : "+rs2.getString("kepala")+(rs2.getString("keterangan_kepala").equals("")?"":", "+rs2.getString("keterangan_kepala"))+"</td>"+
+                                               "<td width='50%'>Kelenjar Limfe : "+rs2.getString("thoraks")+(rs2.getString("keterangan_thorak").equals("")?"":", "+rs2.getString("keterangan_thorak"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='50%'>Kepala : "+rs2.getString("abdomen")+(rs2.getString("keterangan_abdomen").equals("")?"":", "+rs2.getString("keterangan_abdomen"))+"</td>"+
+                                               "<td width='50%'>Dada : "+rs2.getString("ekstremitas")+(rs2.getString("keterangan_ekstremitas").equals("")?"":", "+rs2.getString("keterangan_ekstremitas"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='50%'>Mata :"+rs2.getString("abdomen")+(rs2.getString("keterangan_abdomen").equals("")?"":", "+rs2.getString("keterangan_abdomen"))+"</td>"+
+                                               "<td width='50%'>Perut : "+rs2.getString("ekstremitas")+(rs2.getString("keterangan_ekstremitas").equals("")?"":", "+rs2.getString("keterangan_ekstremitas"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='50%'>Leher : "+rs2.getString("abdomen")+(rs2.getString("keterangan_abdomen").equals("")?"":", "+rs2.getString("keterangan_abdomen"))+"</td>"+
+                                               "<td width='50%'>Ekstremitas : "+rs2.getString("ekstremitas")+(rs2.getString("keterangan_ekstremitas").equals("")?"":", "+rs2.getString("keterangan_ekstremitas"))+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"
                             ); 
                         }
