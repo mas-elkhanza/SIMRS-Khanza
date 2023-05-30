@@ -3922,8 +3922,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[M]Edukasi Pasien & Keluarga Rawat Jalan",edukasi_pasien_keluarga_rj});
         }
         
-        if("[M]Pemantauan PEWS Pasien Dewasa".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[M]Pemantauan PEWS Pasien Dewasa",pemantauan_pews_dewasa});
+        if("[M]Pemantauan EWS Pasien Dewasa".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Pemantauan EWS Pasien Dewasa",pemantauan_pews_dewasa});
         }
         
         if("[M]Penilaian Tambahan Bunuh Diri".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7701,7 +7701,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","edukasi_pasien_keluarga_rj='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[M]Pemantauan PEWS Pasien Dewasa".equals(tbUser.getValueAt(i,1).toString())){
+            if("[M]Pemantauan EWS Pasien Dewasa".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pemantauan_pews_dewasa='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             

@@ -4331,7 +4331,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                     StatusPernikahan.setText(rs.getString("stts_nikah"));
                     Pekerjaan.setText(rs.getString("pekerjaan"));
                     PendidikanPasien.setText(rs.getString("pnd"));
-                    Pembayaran.setText("png_jawab");
+                    Pembayaran.setText(rs.getString("png_jawab"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

@@ -40591,7 +40591,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPemantauanPEWSDewasa = new widget.ButtonBig();
         btnPemantauanPEWSDewasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5928521_disease_fever_high_symptom_temperature_icon.png"))); 
-        btnPemantauanPEWSDewasa.setText("Pemantauan PEWS Pasien Dewasa");
+        btnPemantauanPEWSDewasa.setText("Pemantauan EWS Pasien Dewasa");
         btnPemantauanPEWSDewasa.setIconTextGap(0);
         btnPemantauanPEWSDewasa.setName("btnPemantauanPEWSDewasa"); 
         btnPemantauanPEWSDewasa.setPreferredSize(new java.awt.Dimension(200, 90));
