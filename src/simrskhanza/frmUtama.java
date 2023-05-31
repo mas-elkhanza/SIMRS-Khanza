@@ -807,6 +807,7 @@ import rekammedis.RMEdukasiPasienKeluargaRawatJalan;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMMCU;
+import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanPEWSD;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
@@ -20165,6 +20166,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPemantauanMEOWSActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPemantauanMEOWS aplikasi=new RMPemantauanMEOWS(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20837,7 +20851,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
-            btnPenilaianPasienKeracunan;
+            btnPenilaianPasienKeracunan,btnPemantauanMEOWS;
     
     public void isWall(){
         try{            
@@ -24314,6 +24328,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemantauan_pews_dewasa()==true){
                 Panelmenu.add(btnPemantauanPEWSDewasa);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemantauan_meows_obstetri()==true){
+                Panelmenu.add(btnPemantauanMEOWS);
                 jmlmenu++;
             }
             
@@ -28988,6 +29007,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemantauan_pews_dewasa()==true){
             Panelmenu.add(btnPemantauanPEWSDewasa);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemantauan_meows_obstetri()==true){
+            Panelmenu.add(btnPemantauanMEOWS);
             jmlmenu++;
         }
             
@@ -34998,6 +35022,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpemantauan_meows_obstetri()==true){
+            if(btnPemantauanMEOWS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemantauanMEOWS);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gethemodialisa()==true){
             if(btnHemodialisa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHemodialisa);
@@ -40660,5 +40691,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPasienKeracunan.setName("btnPenilaianPasienKeracunan"); 
         btnPenilaianPasienKeracunan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianPasienKeracunan.addActionListener(this::btnPenilaianPasienKeracunanActionPerformed);
+        
+        btnPemantauanMEOWS = new widget.ButtonBig();
+        btnPemantauanMEOWS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7744777_pregnant_mothers day_mother_mom_love_icon.png"))); 
+        btnPemantauanMEOWS.setText("Pemantauan MEOWS Pasien Obstetri");
+        btnPemantauanMEOWS.setIconTextGap(0);
+        btnPemantauanMEOWS.setName("btnPemantauanMEOWS"); 
+        btnPemantauanMEOWS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemantauanMEOWS.addActionListener(this::btnPemantauanMEOWSActionPerformed);
     }
 }
