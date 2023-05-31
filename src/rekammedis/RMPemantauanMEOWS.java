@@ -4,8 +4,8 @@
 
 
 package rekammedis;
+import fungsi.WarnaTableMEOWS;
 import java.awt.Color;
-import fungsi.WarnaTablePEWSD;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -84,60 +84,61 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             }else if(i==5){
                  column.setPreferredWidth(120);
             }else if(i==6){
-                 column.setPreferredWidth(240);
+                 column.setPreferredWidth(90);
             }else if(i==7){
                  column.setPreferredWidth(39);
             }else if(i==8){
-                 column.setPreferredWidth(122);
+                 column.setPreferredWidth(90);
             }else if(i==9){
                  column.setPreferredWidth(39);
             }else if(i==10){
-                 column.setPreferredWidth(145);
+                 column.setPreferredWidth(90);
             }else if(i==11){
                  column.setPreferredWidth(39);
             }else if(i==12){
-                 column.setPreferredWidth(145);
+                 column.setPreferredWidth(90);
             }else if(i==13){
                  column.setPreferredWidth(39);
             }else if(i==14){
-                 column.setPreferredWidth(145);
+                 column.setPreferredWidth(90);
             }else if(i==15){
                  column.setPreferredWidth(39);
             }else if(i==16){
-                 column.setPreferredWidth(145);
+                 column.setPreferredWidth(90);
             }else if(i==17){
                  column.setPreferredWidth(39);
             }else if(i==18){
-                 column.setPreferredWidth(145);     
+                 column.setPreferredWidth(90);     
             }else if(i==19){
                  column.setPreferredWidth(39);
             }else if(i==20){
-                 column.setPreferredWidth(145);     
+                 column.setPreferredWidth(90);     
             }else if(i==21){
                  column.setPreferredWidth(39);
             }else if(i==22){
-                 column.setPreferredWidth(145);     
+                 column.setPreferredWidth(90);     
             }else if(i==23){
                  column.setPreferredWidth(39);
             }else if(i==24){
-                 column.setPreferredWidth(145);     
+                 column.setPreferredWidth(90);     
             }else if(i==25){
-                 column.setPreferredWidth(39);
-            }else if(i==26){
                  column.setPreferredWidth(45);
+            }else if(i==26){
+                 column.setPreferredWidth(57);
             }else if(i==27){
                  column.setPreferredWidth(450);
             }else if(i==28){
-                 column.setPreferredWidth(45);
+                 column.setPreferredWidth(75);
             }else if(i==29){
                  column.setPreferredWidth(80);
             }else if(i==30){
                  column.setPreferredWidth(150);
             }else if(i==31){
-                 column.setPreferredWidth(150);
+                 column.setMinWidth(0);
+                 column.setMaxWidth(0);
             }
         }
-        tbObat.setDefaultRenderer(Object.class, new WarnaTablePEWSD());
+        tbObat.setDefaultRenderer(Object.class, new WarnaTableMEOWS());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
@@ -790,7 +791,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
         jLabel23.setText("7. Kesadaran");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(460, 120, 130, 23);
+        jLabel23.setBounds(440, 120, 130, 23);
 
         cmbSkor3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "> 38", "35 - 35.9", "36 - 37.9", "< 35" }));
         cmbSkor3.setName("cmbSkor3"); // NOI18N
@@ -898,7 +899,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbSkor6);
-        cmbSkor6.setBounds(590, 90, 100, 23);
+        cmbSkor6.setBounds(570, 90, 120, 23);
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel29.setText("5. Tekanan Darah Diastole");
@@ -949,7 +950,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
         jLabel33.setText("6. Denyut Jantung");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(460, 90, 130, 23);
+        jLabel33.setBounds(440, 90, 130, 23);
 
         cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alert", "Verbal", "Pain", "Unresponsive" }));
         cmbSkor7.setName("cmbSkor7"); // NOI18N
@@ -964,7 +965,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbSkor7);
-        cmbSkor7.setBounds(590, 120, 100, 23);
+        cmbSkor7.setBounds(570, 120, 120, 23);
 
         Skor7.setEditable(false);
         Skor7.setText("0");
@@ -983,7 +984,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
         jLabel35.setText("8. Bau Cairan Ketuban");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(460, 150, 130, 23);
+        jLabel35.setBounds(440, 150, 130, 23);
 
         cmbSkor8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Khas", "Busuk" }));
         cmbSkor8.setName("cmbSkor8"); // NOI18N
@@ -998,7 +999,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbSkor8);
-        cmbSkor8.setBounds(590, 150, 100, 23);
+        cmbSkor8.setBounds(570, 150, 120, 23);
 
         jLabel36.setText("Skor :");
         jLabel36.setName("jLabel36"); // NOI18N
@@ -1017,7 +1018,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
         jLabel37.setText("9. Discharge / Locia");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(460, 180, 130, 23);
+        jLabel37.setBounds(440, 180, 130, 23);
 
         cmbSkor9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Banyak" }));
         cmbSkor9.setName("cmbSkor9"); // NOI18N
@@ -1032,7 +1033,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbSkor9);
-        cmbSkor9.setBounds(590, 180, 100, 23);
+        cmbSkor9.setBounds(570, 180, 120, 23);
 
         jLabel38.setText("Skor :");
         jLabel38.setName("jLabel38"); // NOI18N
@@ -1051,7 +1052,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
         jLabel39.setText("10. Proteinuria");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(460, 210, 130, 23);
+        jLabel39.setBounds(440, 210, 130, 23);
 
         cmbSkor10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negatif", "+", "++>" }));
         cmbSkor10.setName("cmbSkor10"); // NOI18N
@@ -1066,7 +1067,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbSkor10);
-        cmbSkor10.setBounds(590, 210, 100, 23);
+        cmbSkor10.setBounds(570, 210, 120, 23);
 
         jLabel40.setText("Skor :");
         jLabel40.setName("jLabel40"); // NOI18N
@@ -1186,7 +1187,9 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
                 cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
                 cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
                 cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),
-                cmbSkor7.getSelectedItem().toString(),Skor7.getText(),TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText()
+                cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
+                cmbSkor9.getSelectedItem().toString(),Skor9.getText(),cmbSkor10.getSelectedItem().toString(),Skor10.getText(),
+                TotalSkor.getText(),ParameterSkor.getText(),cmbCodeBlue.getSelectedItem().toString(),KdPetugas.getText()
             })==true){
                 tabMode.addRow(new String[]{
                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
@@ -1271,23 +1274,33 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(TCari.getText().trim().equals("")){
-              Valid.MyReportqry("rptDataPemantauanPEWSDewasa.jasper","report","::[ Data Pemantauan PEWS Dewasa]::",
+              Valid.MyReportqry("rptDataPemantauanMEOWSObstetri.jasper","report","::[ Data Pemantauan MEOWS Obstetri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_meows_obstetri.tanggal,pemantauan_meows_obstetri.parameter_laju_respirasi,pemantauan_meows_obstetri.skor_laju_respirasi,pemantauan_meows_obstetri.parameter_saturasi_oksigen,"+
-                    "pemantauan_meows_obstetri.skor_saturasi_oksigen,pemantauan_meows_obstetri.parameter_suplemen_oksigen,pemantauan_meows_obstetri.skor_suplemen_oksigen,pemantauan_meows_obstetri.parameter_tekanan_darah_sistolik,"+
-                    "pemantauan_meows_obstetri.skor_tekanan_darah_sistolik,pemantauan_meows_obstetri.parameter_laju_jantung,pemantauan_meows_obstetri.skor_laju_jantung,pemantauan_meows_obstetri.parameter_kesadaran,"+
-                    "pemantauan_meows_obstetri.skor_kesadaran,pemantauan_meows_obstetri.parameter_temperatur,pemantauan_meows_obstetri.skor_temperatur,pemantauan_meows_obstetri.skor_total,pemantauan_meows_obstetri.parameter_total,pemantauan_meows_obstetri.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "pasien.jk,pemantauan_meows_obstetri.tanggal,pemantauan_meows_obstetri.parameter_pernapasan,pemantauan_meows_obstetri.skor_pernapasan,"+
+                    "pemantauan_meows_obstetri.parameter_saturasi,pemantauan_meows_obstetri.skor_saturasi,pemantauan_meows_obstetri.parameter_temperatur,"+
+                    "pemantauan_meows_obstetri.skor_temperatur,pemantauan_meows_obstetri.parameter_tekanan_darah_sistole,pemantauan_meows_obstetri.skor_tekanan_darah_sistole,"+
+                    "pemantauan_meows_obstetri.parameter_tekanan_darah_diastole,pemantauan_meows_obstetri.skor_tekanan_darah_diastole,"+
+                    "pemantauan_meows_obstetri.parameter_denyut_jantung,pemantauan_meows_obstetri.skor_denyut_jantung,pemantauan_meows_obstetri.parameter_kesadaran,"+
+                    "pemantauan_meows_obstetri.skor_kesadaran,pemantauan_meows_obstetri.parameter_ketuban,pemantauan_meows_obstetri.skor_ketuban,"+
+                    "pemantauan_meows_obstetri.parameter_discharge,pemantauan_meows_obstetri.skor_discharge,pemantauan_meows_obstetri.parameter_proteinuria,"+
+                    "pemantauan_meows_obstetri.skor_proteinuria,pemantauan_meows_obstetri.skor_total,pemantauan_meows_obstetri.parameter_total,"+
+                    "pemantauan_meows_obstetri.code_blue,pemantauan_meows_obstetri.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
                     "from pemantauan_meows_obstetri inner join reg_periksa on pemantauan_meows_obstetri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_meows_obstetri.nip=petugas.nip where "+
-                    "pemantauan_meows_obstetri.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by pemantauan_meows_obstetri.tanggal ",param);
+                    "inner join petugas on pemantauan_meows_obstetri.nip=petugas.nip "+
+                    "where pemantauan_meows_obstetri.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by pemantauan_meows_obstetri.tanggal ",param);
             }else{
-                Valid.MyReportqry("rptDataPemantauanPEWSDewasa.jasper","report","::[ Data Pemantauan PEWS Dewasa]::",
+                Valid.MyReportqry("rptDataPemantauanMEOWSObstetri.jasper","report","::[ Data Pemantauan PEWS Obstetri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_meows_obstetri.tanggal,pemantauan_meows_obstetri.parameter_laju_respirasi,pemantauan_meows_obstetri.skor_laju_respirasi,pemantauan_meows_obstetri.parameter_saturasi_oksigen,"+
-                    "pemantauan_meows_obstetri.skor_saturasi_oksigen,pemantauan_meows_obstetri.parameter_suplemen_oksigen,pemantauan_meows_obstetri.skor_suplemen_oksigen,pemantauan_meows_obstetri.parameter_tekanan_darah_sistolik,"+
-                    "pemantauan_meows_obstetri.skor_tekanan_darah_sistolik,pemantauan_meows_obstetri.parameter_laju_jantung,pemantauan_meows_obstetri.skor_laju_jantung,pemantauan_meows_obstetri.parameter_kesadaran,"+
-                    "pemantauan_meows_obstetri.skor_kesadaran,pemantauan_meows_obstetri.parameter_temperatur,pemantauan_meows_obstetri.skor_temperatur,pemantauan_meows_obstetri.skor_total,pemantauan_meows_obstetri.parameter_total,pemantauan_meows_obstetri.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "pasien.jk,pemantauan_meows_obstetri.tanggal,pemantauan_meows_obstetri.parameter_pernapasan,pemantauan_meows_obstetri.skor_pernapasan,"+
+                    "pemantauan_meows_obstetri.parameter_saturasi,pemantauan_meows_obstetri.skor_saturasi,pemantauan_meows_obstetri.parameter_temperatur,"+
+                    "pemantauan_meows_obstetri.skor_temperatur,pemantauan_meows_obstetri.parameter_tekanan_darah_sistole,pemantauan_meows_obstetri.skor_tekanan_darah_sistole,"+
+                    "pemantauan_meows_obstetri.parameter_tekanan_darah_diastole,pemantauan_meows_obstetri.skor_tekanan_darah_diastole,"+
+                    "pemantauan_meows_obstetri.parameter_denyut_jantung,pemantauan_meows_obstetri.skor_denyut_jantung,pemantauan_meows_obstetri.parameter_kesadaran,"+
+                    "pemantauan_meows_obstetri.skor_kesadaran,pemantauan_meows_obstetri.parameter_ketuban,pemantauan_meows_obstetri.skor_ketuban,"+
+                    "pemantauan_meows_obstetri.parameter_discharge,pemantauan_meows_obstetri.skor_discharge,pemantauan_meows_obstetri.parameter_proteinuria,"+
+                    "pemantauan_meows_obstetri.skor_proteinuria,pemantauan_meows_obstetri.skor_total,pemantauan_meows_obstetri.parameter_total,"+
+                    "pemantauan_meows_obstetri.code_blue,pemantauan_meows_obstetri.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
                     "from pemantauan_meows_obstetri inner join reg_periksa on pemantauan_meows_obstetri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on pemantauan_meows_obstetri.nip=petugas.nip "+
@@ -1985,7 +1998,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             ParameterSkor.setText("Assessment segera oleh Bidan/Katim/PJ Shift dan dokter jaga, evaluasi perawatan dan monitoring setiap 1-2 jam, pertimbangkan perawatan dengan monitoring yang sesuai.");
         }else if(Integer.parseInt(TotalSkor.getText())>=2){
             ParameterSkor.setText("Assessment segera oleh Bidan respon segera, maksimal 5 menit, evaluasi perawatan dan frekuensi monitoring setiap 4 - 6 jam.");
-        }else if(Integer.parseInt(TotalSkor.getText())>=1){
+        }else if(Integer.parseInt(TotalSkor.getText())>=0){
             ParameterSkor.setText("Berisiko rendah, observasi setiap 7 jam atau Setiap Shift");
         }
     }
@@ -2215,12 +2228,14 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
         if(Sequel.mengedittf("pemantauan_meows_obstetri","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter_pernapasan=?,skor_pernapasan=?,parameter_saturasi=?,"+
             "skor_saturasi=?,parameter_temperatur=?,skor_temperatur=?,parameter_tekanan_darah_sistole=?,skor_tekanan_darah_sistole=?,parameter_tekanan_darah_diastole=?,"+
             "skor_tekanan_darah_diastole=?,parameter_denyut_jantung=?,skor_denyut_jantung=?,parameter_kesadaran=?,skor_kesadaran=?,parameter_ketuban=?,skor_ketuban=?,"+
-            "parameter_discharge=?,skor_discharge=?,parameter_proteinuria=?,skor_proteinuria=?,skor_total=?,parameter_total=?,code_blue=?,nip=?",27,new String[]{
+            "parameter_discharge=?,skor_discharge=?,parameter_proteinuria=?,skor_proteinuria=?,skor_total=?,parameter_total=?,code_blue=?,nip=?",28,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
             cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
             cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),
-            cmbSkor7.getSelectedItem().toString(),Skor7.getText(),TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),
+            cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
+            cmbSkor9.getSelectedItem().toString(),Skor9.getText(),cmbSkor10.getSelectedItem().toString(),Skor10.getText(),
+            TotalSkor.getText(),ParameterSkor.getText(),cmbCodeBlue.getSelectedItem().toString(),KdPetugas.getText(),
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
