@@ -65,7 +65,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         WindowAmbilSampel.setSize(530,80);
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis"
+            "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -74,7 +74,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         tbRadiologiRalan.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRadiologiRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 16; i++) {
             TableColumn column = tbRadiologiRalan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -105,12 +105,17 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==13){
                 column.setPreferredWidth(150);
+            }else if(i==14){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==15){
+                column.setPreferredWidth(110);
             }
         }
         tbRadiologiRalan.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode2=new DefaultTableModel(null,new Object[]{
-                "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis"
+                "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -119,7 +124,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         tbRadiologiRalan2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRadiologiRalan2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbRadiologiRalan2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -152,12 +157,17 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==14){
                 column.setPreferredWidth(150);
+            }else if(i==15){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==16){
+                column.setPreferredWidth(110);
             }
         }
         tbRadiologiRalan2.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode3=new DefaultTableModel(null,new Object[]{
-            "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Kamar Terakhir","Informasi Tambahan","Diagnosis Klinis"
+            "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Kamar Terakhir","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -166,7 +176,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         tbRadiologiRanap.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRadiologiRanap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 16; i++) {
             TableColumn column = tbRadiologiRanap.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -197,12 +207,17 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==13){
                 column.setPreferredWidth(150);
+            }else if(i==14){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==15){
+                column.setPreferredWidth(110);
             }
         }
         tbRadiologiRanap.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode4=new DefaultTableModel(null,new Object[]{
-                "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Kamar Terakhir","Informasi Tambahan","Diagnosis Klinis"
+                "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Kamar Terakhir","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -211,7 +226,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         tbRadiologiRanap2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRadiologiRanap2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbRadiologiRanap2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -244,6 +259,11 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==14){
                 column.setPreferredWidth(150);
+            }else if(i==15){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==16){
+                column.setPreferredWidth(110);
             }
         }
         tbRadiologiRanap2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2361,7 +2381,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
             semua=CrDokter.getText().trim().equals("")&&CrPoli.getText().trim().equals("")&&TCari.getText().trim().equals("");
             ps=koneksi.prepareStatement(
                     "select permintaan_radiologi.noorder,permintaan_radiologi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_radiologi.tgl_permintaan,"+
-                    "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,"+
+                    "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                     "if(permintaan_radiologi.tgl_sampel='0000-00-00','',permintaan_radiologi.tgl_sampel) as tgl_sampel,if(permintaan_radiologi.jam_sampel='00:00:00','',permintaan_radiologi.jam_sampel) as jam_sampel,"+
                     "permintaan_radiologi.tgl_hasil,if(permintaan_radiologi.jam_hasil='00:00:00','',permintaan_radiologi.jam_hasil) as jam_hasil,"+
                     "permintaan_radiologi.dokter_perujuk,dokter.nm_dokter,poliklinik.nm_poli,permintaan_radiologi.informasi_tambahan,permintaan_radiologi.diagnosa_klinis "+
@@ -2369,10 +2389,11 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter on permintaan_radiologi.dokter_perujuk=dokter.kd_dokter "+
                     "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                     "where permintaan_radiologi.status='ralan' and permintaan_radiologi.tgl_permintaan between ? and ? "+
                     (semua?"":"and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and "+
                     "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or reg_periksa.no_rkm_medis like ? "+
-                    "or pasien.nm_pasien like ? or permintaan_radiologi.diagnosa_klinis like ? or dokter.nm_dokter like ?) ")+
+                    "or pasien.nm_pasien like ? or permintaan_radiologi.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?) ")+
                     "order by permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -2386,6 +2407,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
                     ps.setString(10,"%"+TCari.getText()+"%");
+                    ps.setString(11,"%"+TCari.getText()+"%");
                 } 
                     
                 rs=ps.executeQuery();
@@ -2395,7 +2417,8 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         rs.getString("nm_pasien"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),
                         rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("tgl_hasil"),
                         rs.getString("jam_hasil"),rs.getString("dokter_perujuk"),rs.getString("nm_dokter"),
-                        rs.getString("nm_poli"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis")
+                        rs.getString("nm_poli"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis"),
+                        rs.getString("kd_pj"),rs.getString("png_jawab")
                     });
                     ps2=koneksi.prepareStatement(
                             "select permintaan_pemeriksaan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan "+
@@ -2407,7 +2430,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
                             tabMode.addRow(new Object[]{
-                                "","",rs2.getString("nm_perawatan"),"","","","","","","","","","",""
+                                "","",rs2.getString("nm_perawatan"),"","","","","","","","","","","","",""
                             });
                         }
                     } catch (Exception e) {
@@ -2444,22 +2467,24 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
             semua=CrDokter.getText().trim().equals("")&&CrPoli.getText().trim().equals("")&&TCari.getText().trim().equals("");
             ps=koneksi.prepareStatement(
                     "select permintaan_radiologi.noorder,permintaan_radiologi.no_rawat,reg_periksa.no_rkm_medis,"+
-                    "pasien.nm_pasien,jns_perawatan_radiologi.nm_perawatan,permintaan_radiologi.tgl_permintaan,"+
+                    "pasien.nm_pasien,jns_perawatan_radiologi.nm_perawatan,permintaan_radiologi.tgl_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                     "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,permintaan_radiologi.tgl_sampel,"+
                     "if(permintaan_radiologi.jam_sampel='00:00:00','',permintaan_radiologi.jam_sampel) as jam_sampel, permintaan_radiologi.tgl_hasil,"+
                     "if(permintaan_radiologi.jam_hasil='00:00:00','',permintaan_radiologi.jam_hasil) as jam_hasil,"+
-                    "permintaan_radiologi.dokter_perujuk,dokter.nm_dokter,poliklinik.nm_poli,permintaan_radiologi.informasi_tambahan,permintaan_radiologi.diagnosa_klinis from permintaan_radiologi "+
-                    "inner join reg_periksa inner join pasien inner join permintaan_pemeriksaan_radiologi "+
-                    "inner join jns_perawatan_radiologi inner join dokter inner join poliklinik on "+
-                    "permintaan_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and "+
-                    "permintaan_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder and jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                    "and permintaan_radiologi.dokter_perujuk=dokter.kd_dokter and reg_periksa.kd_poli=poliklinik.kd_poli where "+
-                    "permintaan_radiologi.status='ralan' and permintaan_radiologi.tgl_permintaan between ? and ? "+
+                    "permintaan_radiologi.dokter_perujuk,dokter.nm_dokter,poliklinik.nm_poli,permintaan_radiologi.informasi_tambahan,permintaan_radiologi.diagnosa_klinis "+
+                    "from permintaan_radiologi inner join reg_periksa on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join permintaan_pemeriksaan_radiologi on permintaan_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder "+
+                    "inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
+                    "inner join dokter on permintaan_radiologi.dokter_perujuk=dokter.kd_dokter "+
+                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli  "+
+                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                    "where permintaan_radiologi.status='ralan' and permintaan_radiologi.tgl_permintaan between ? and ? "+
                     (semua?"":"and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and "+
                     "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or "+
                     "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                     "permintaan_radiologi.diagnosa_klinis like ? or jns_perawatan_radiologi.nm_perawatan like ? "+
-                    "or dokter.nm_dokter like ?)")+" order by permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan desc");
+                    "or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+" order by permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -2473,6 +2498,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     ps.setString(9,"%"+TCari.getText()+"%");
                     ps.setString(10,"%"+TCari.getText()+"%");
                     ps.setString(11,"%"+TCari.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -2482,7 +2508,8 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         rs.getString("nm_perawatan"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),
                         rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("tgl_hasil"),
                         rs.getString("jam_hasil"),rs.getString("dokter_perujuk"),rs.getString("nm_dokter"),
-                        rs.getString("nm_poli"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis")
+                        rs.getString("nm_poli"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis"),
+                        rs.getString("kd_pj"),rs.getString("png_jawab")
                     });
                 }
             } catch (Exception e) {
@@ -2586,7 +2613,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
             if(cmbStatus.getSelectedIndex()==0){
                 ps=koneksi.prepareStatement(
                         "select permintaan_radiologi.noorder,permintaan_radiologi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_radiologi.tgl_permintaan,"+
-                        "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,"+
+                        "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                         "if(permintaan_radiologi.tgl_sampel='0000-00-00','',permintaan_radiologi.tgl_sampel) as tgl_sampel,if(permintaan_radiologi.jam_sampel='00:00:00','',permintaan_radiologi.jam_sampel) as jam_sampel,"+
                         "permintaan_radiologi.tgl_hasil,if(permintaan_radiologi.jam_hasil='00:00:00','',permintaan_radiologi.jam_hasil) as jam_hasil,"+
                         "permintaan_radiologi.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_radiologi.informasi_tambahan,permintaan_radiologi.diagnosa_klinis "+
@@ -2596,16 +2623,17 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
                         "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
                         "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "where permintaan_radiologi.status='ranap' and permintaan_radiologi.tgl_permintaan between ? and ? "+
                         (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                         "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or "+
                         "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "permintaan_radiologi.diagnosa_klinis like ? or dokter.nm_dokter like ?)")+
+                        "permintaan_radiologi.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
                         "group by permintaan_radiologi.noorder order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             }else{
                 ps=koneksi.prepareStatement(
                         "select permintaan_radiologi.noorder,permintaan_radiologi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_radiologi.tgl_permintaan,"+
-                        "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,"+
+                        "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                         "if(permintaan_radiologi.tgl_sampel='0000-00-00','',permintaan_radiologi.tgl_sampel) as tgl_sampel,if(permintaan_radiologi.jam_sampel='00:00:00','',permintaan_radiologi.jam_sampel) as jam_sampel,"+
                         "permintaan_radiologi.tgl_hasil,if(permintaan_radiologi.jam_hasil='00:00:00','',permintaan_radiologi.jam_hasil) as jam_hasil,"+
                         "permintaan_radiologi.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_radiologi.informasi_tambahan,permintaan_radiologi.diagnosa_klinis "+
@@ -2615,11 +2643,12 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
                         "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
                         "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "where permintaan_radiologi.status='ranap' and kamar_inap.stts_pulang='-' and permintaan_radiologi.tgl_permintaan between ? and ? "+
                         (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                         "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or "+
                         "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "permintaan_radiologi.diagnosa_klinis like ? or dokter.nm_dokter like ?)")+
+                        "permintaan_radiologi.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
                         "group by permintaan_radiologi.noorder order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             }
                 
@@ -2635,6 +2664,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
                     ps.setString(10,"%"+TCari.getText()+"%");
+                    ps.setString(11,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -2644,7 +2674,8 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         rs.getString("nm_pasien"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),
                         rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("tgl_hasil"),
                         rs.getString("jam_hasil"),rs.getString("dokter_perujuk"),rs.getString("nm_dokter"),
-                        rs.getString("nm_bangsal"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis")
+                        rs.getString("nm_bangsal"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis"),
+                        rs.getString("kd_pj"),rs.getString("png_jawab")
                     });
                     ps2=koneksi.prepareStatement(
                             "select permintaan_pemeriksaan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan "+
@@ -2656,7 +2687,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
                             tabMode3.addRow(new Object[]{
-                                "","",rs2.getString("nm_perawatan"),"","","","","","","","","","",""
+                                "","",rs2.getString("nm_perawatan"),"","","","","","","","","","","","",""
                             });
                         }
                     } catch (Exception e) {
@@ -2694,7 +2725,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
             if(cmbStatus.getSelectedIndex()==0){
                 ps=koneksi.prepareStatement(
                         "select permintaan_radiologi.noorder,permintaan_radiologi.no_rawat,reg_periksa.no_rkm_medis,"+
-                        "pasien.nm_pasien,jns_perawatan_radiologi.nm_perawatan,permintaan_radiologi.tgl_permintaan,"+
+                        "pasien.nm_pasien,jns_perawatan_radiologi.nm_perawatan,permintaan_radiologi.tgl_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                         "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,permintaan_radiologi.tgl_sampel,"+
                         "if(permintaan_radiologi.jam_sampel='00:00:00','',permintaan_radiologi.jam_sampel) as jam_sampel, permintaan_radiologi.tgl_hasil,"+
                         "if(permintaan_radiologi.jam_hasil='00:00:00','',permintaan_radiologi.jam_hasil) as jam_hasil,"+
@@ -2707,16 +2738,17 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
                         "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar  "+
                         "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "where permintaan_radiologi.status='ranap' and permintaan_radiologi.tgl_permintaan between ? and ? "+
                         (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                         "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or "+
                         "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                         "permintaan_radiologi.diagnosa_klinis like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                        "dokter.nm_dokter like ?)")+" group by permintaan_radiologi.noorder,jns_perawatan_radiologi.kd_jenis_prw order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
+                        "dokter.nm_dokter like ? or penjab.png_jawab like ?)")+" group by permintaan_radiologi.noorder,jns_perawatan_radiologi.kd_jenis_prw order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             }else{
                 ps=koneksi.prepareStatement(
                         "select permintaan_radiologi.noorder,permintaan_radiologi.no_rawat,reg_periksa.no_rkm_medis,"+
-                        "pasien.nm_pasien,jns_perawatan_radiologi.nm_perawatan,permintaan_radiologi.tgl_permintaan,"+
+                        "pasien.nm_pasien,jns_perawatan_radiologi.nm_perawatan,permintaan_radiologi.tgl_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                         "if(permintaan_radiologi.jam_permintaan='00:00:00','',permintaan_radiologi.jam_permintaan) as jam_permintaan,permintaan_radiologi.tgl_sampel,"+
                         "if(permintaan_radiologi.jam_sampel='00:00:00','',permintaan_radiologi.jam_sampel) as jam_sampel, permintaan_radiologi.tgl_hasil,"+
                         "if(permintaan_radiologi.jam_hasil='00:00:00','',permintaan_radiologi.jam_hasil) as jam_hasil,"+
@@ -2729,12 +2761,13 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
                         "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar  "+
                         "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "where permintaan_radiologi.status='ranap' and kamar_inap.stts_pulang='-' and permintaan_radiologi.tgl_permintaan between ? and ? "+
                         (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                         "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or "+
                         "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                         "permintaan_radiologi.diagnosa_klinis like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                        "dokter.nm_dokter like ?)")+" group by permintaan_radiologi.noorder,jns_perawatan_radiologi.kd_jenis_prw order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
+                        "dokter.nm_dokter like ? or penjab.png_jawab like ?)")+" group by permintaan_radiologi.noorder,jns_perawatan_radiologi.kd_jenis_prw order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             }
                 
             try {
@@ -2750,6 +2783,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     ps.setString(9,"%"+TCari.getText()+"%");
                     ps.setString(10,"%"+TCari.getText()+"%");
                     ps.setString(11,"%"+TCari.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -2759,7 +2793,8 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         rs.getString("nm_perawatan"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),
                         rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("tgl_hasil"),
                         rs.getString("jam_hasil"),rs.getString("dokter_perujuk"),rs.getString("nm_dokter"),
-                        rs.getString("nm_bangsal"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis")
+                        rs.getString("nm_bangsal"),rs.getString("informasi_tambahan"),rs.getString("diagnosa_klinis"),
+                        rs.getString("kd_pj"),rs.getString("png_jawab")
                     });
                 }
             } catch (Exception e) {
