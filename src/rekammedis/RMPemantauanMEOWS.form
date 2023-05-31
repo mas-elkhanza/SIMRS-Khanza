@@ -1080,7 +1080,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="121" y="240" width="668" height="23"/>
+                      <AbsoluteConstraints x="121" y="240" width="470" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1461,9 +1461,10 @@
                 <Component class="widget.ComboBox" name="cmbSkor10">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="+"/>
-                        <StringItem index="1" value="++&gt;"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Negatif"/>
+                        <StringItem index="1" value="+"/>
+                        <StringItem index="2" value="++&gt;"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbSkor10" noResource="true"/>
@@ -1500,6 +1501,37 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="745" y="210" width="44" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Label" name="jLabel41">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Aktifkan Code Blue :"/>
+                    <Property name="name" type="java.lang.String" value="jLabel41" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="595" y="240" width="110" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.ComboBox" name="cmbCodeBlue">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Tidak"/>
+                        <StringItem index="1" value="Ya"/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="cmbCodeBlue" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbCodeBlueItemStateChanged"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbCodeBlueKeyPressed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="709" y="240" width="80" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
