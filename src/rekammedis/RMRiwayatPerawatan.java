@@ -15662,8 +15662,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             }
                             htmlContent.append(
                                "<tr>"+
-                                 "<td valign='middle' align='center' colspan='2' bgcolor='"+rs2.getString("code_blue").replaceAll("Ya","BLUE")+"' style='color:"+rs2.getString("code_blue").replaceAll("0","#323232").replaceAll("Ya","WHITE")+"'>Code Blue</td>"+
-                                 "<td valign='middle' align='center' bgcolor='"+rs2.getString("code_blue").replaceAll("Ya","BLUE")+"' style='color:"+rs2.getString("code_blue").replaceAll("0","#323232").replaceAll("Ya","WHITE")+"'>"+rs2.getString("code_blue")+"</td>"+
+                                 "<td valign='middle' align='center' colspan='2' bgcolor='"+rs2.getString("code_blue").replaceAll("Tidak","WHITE").replaceAll("Ya","BLUE")+"' style='color:"+rs2.getString("code_blue").replaceAll("Tidak","#323232").replaceAll("Ya","WHITE")+"'>Code Blue</td>"+
+                                 "<td valign='middle' align='center' bgcolor='"+rs2.getString("code_blue").replaceAll("Tidak","WHITE").replaceAll("Ya","BLUE")+"' style='color:"+rs2.getString("code_blue").replaceAll("Tidak","#323232").replaceAll("Ya","WHITE")+"'>"+rs2.getString("code_blue")+"</td>"+
                                "</tr>"
                             );
                             w++;
