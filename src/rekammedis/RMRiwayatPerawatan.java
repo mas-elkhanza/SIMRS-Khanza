@@ -312,6 +312,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanKeperawatanRanap = new widget.CekBox();
         chkPemantauanPEWSAnak = new widget.CekBox();
         chkPemantauanPEWSDewasa = new widget.CekBox();
+        chkPemantauanMOEWSObstetri = new widget.CekBox();
         chkMonitoringReaksiTranfusi = new widget.CekBox();
         chkChecklistPreOperasi = new widget.CekBox();
         chkSignInSebelumAnestesi = new widget.CekBox();
@@ -603,7 +604,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         ScrollMenu.setBorder(null);
         ScrollMenu.setName("ScrollMenu"); // NOI18N
         ScrollMenu.setOpaque(true);
-        ScrollMenu.setPreferredSize(new java.awt.Dimension(255, 1197));
+        ScrollMenu.setPreferredSize(new java.awt.Dimension(255, 1220));
 
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
@@ -969,12 +970,20 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.add(chkPemantauanPEWSAnak);
 
         chkPemantauanPEWSDewasa.setSelected(true);
-        chkPemantauanPEWSDewasa.setText("Pemantauan PEWS Dewasa");
         chkPemantauanPEWSDewasa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPemantauanPEWSDewasa.setLabel("Pemantauan EWS Dewasa");
         chkPemantauanPEWSDewasa.setName("chkPemantauanPEWSDewasa"); // NOI18N
         chkPemantauanPEWSDewasa.setOpaque(false);
         chkPemantauanPEWSDewasa.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkPemantauanPEWSDewasa);
+
+        chkPemantauanMOEWSObstetri.setSelected(true);
+        chkPemantauanMOEWSObstetri.setText("Pemantauan MEOWS Obstetri");
+        chkPemantauanMOEWSObstetri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPemantauanMOEWSObstetri.setName("chkPemantauanMOEWSObstetri"); // NOI18N
+        chkPemantauanMOEWSObstetri.setOpaque(false);
+        chkPemantauanMOEWSObstetri.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkPemantauanMOEWSObstetri);
 
         chkMonitoringReaksiTranfusi.setSelected(true);
         chkMonitoringReaksiTranfusi.setText("Monitoring Reaksi Tranfusi");
@@ -1858,6 +1867,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanTambahanMelarikanDiri.setSelected(true);
             chkPenilaianPasienKeracunan.setSelected(true);
             chkAsuhanMedisRalanBedahMulut.setSelected(true);
+            chkPemantauanMOEWSObstetri.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1953,6 +1963,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanTambahanMelarikanDiri.setSelected(false);
             chkPenilaianPasienKeracunan.setSelected(false);
             chkAsuhanMedisRalanBedahMulut.setSelected(false);
+            chkPemantauanMOEWSObstetri.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2082,6 +2093,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkMonitoringReaksiTranfusi;
     private widget.CekBox chkOperasiVK;
     private widget.CekBox chkPelayananInformasiObat;
+    private widget.CekBox chkPemantauanMOEWSObstetri;
     private widget.CekBox chkPemantauanPEWSAnak;
     private widget.CekBox chkPemantauanPEWSDewasa;
     private widget.CekBox chkPemberianObat;
@@ -15366,26 +15378,26 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         while(rs2.next()){
                             htmlContent.append(
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' align='center' rowspan='4'>"+w+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' rowspan='4'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_perilaku").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perilaku").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>1. Skor Perilaku</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_perilaku").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perilaku").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("parameter_perilaku")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_perilaku").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perilaku").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("skor_perilaku")+"</td>"+
+                                    "<td valign='middle' align='center' rowspan='4'>"+w+"</td>"+
+                                    "<td valign='middle' align='center' rowspan='4'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_perilaku").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perilaku").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>1. Skor Perilaku</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_perilaku").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perilaku").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("parameter_perilaku")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_perilaku").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perilaku").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("skor_perilaku")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>2. Skor CRT / Warna Kulit</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("parameter_crt_atau_warna_kulit")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("skor_crt_atau_warna_kulit")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>2. Skor CRT / Warna Kulit</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("parameter_crt_atau_warna_kulit")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_crt_atau_warna_kulit").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("skor_crt_atau_warna_kulit")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_perespirasi").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perespirasi").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>3. Skor Perespirasi</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_perespirasi").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perespirasi").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("parameter_perespirasi")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_perespirasi").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perespirasi").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("skor_perespirasi")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_perespirasi").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perespirasi").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>3. Skor Perespirasi</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_perespirasi").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perespirasi").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("parameter_perespirasi")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_perespirasi").replaceAll("0","GREEN").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED")+"' style='color:"+rs2.getString("skor_perespirasi").replaceAll("0","WHITE").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE")+"'>"+rs2.getString("skor_perespirasi")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' "+(rs2.getInt("skor_total")>7?"bgcolor='BLUE' style='color:WHITE'":"")+">Monitoring & Total Skor</td>"+
-                                    "<td valign='top' valign='middle' "+(rs2.getInt("skor_total")>7?"bgcolor='BLUE' style='color:WHITE'":"")+">"+rs2.getString("parameter_total")+"</td>"+
-                                    "<td valign='top' valign='middle' "+(rs2.getInt("skor_total")>7?"bgcolor='BLUE' style='color:WHITE'":"")+" align='center' >"+rs2.getString("skor_total")+"</td>"+
+                                    "<td valign='middle' "+(rs2.getInt("skor_total")>7?"bgcolor='BLUE' style='color:WHITE'":"")+">Monitoring & Total Skor</td>"+
+                                    "<td valign='middle' "+(rs2.getInt("skor_total")>7?"bgcolor='BLUE' style='color:WHITE'":"")+">"+rs2.getString("parameter_total")+"</td>"+
+                                    "<td valign='middle' "+(rs2.getInt("skor_total")>7?"bgcolor='BLUE' style='color:WHITE'":"")+" align='center' >"+rs2.getString("skor_total")+"</td>"+
                                  "</tr>"
                             );                                        
                             w++;
@@ -15433,49 +15445,49 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         while(rs2.next()){
                             htmlContent.append(
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' align='center' rowspan='8'>"+w+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' rowspan='8'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_laju_respirasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_respirasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>1. Laju Respirasi/Menit</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_laju_respirasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_respirasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_laju_respirasi")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_laju_respirasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_respirasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_laju_respirasi")+"</td>"+
+                                    "<td valign='middle' align='center' rowspan='8'>"+w+"</td>"+
+                                    "<td valign='middle' align='center' rowspan='8'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_laju_respirasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_respirasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>1. Laju Respirasi/Menit</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_laju_respirasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_respirasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_laju_respirasi")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_laju_respirasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_respirasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_laju_respirasi")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>2. Saturasi Oksigen</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_saturasi_oksigen")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_saturasi_oksigen")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>2. Saturasi Oksigen</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_saturasi_oksigen")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_saturasi_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_saturasi_oksigen")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>3. Suplemen Oksigen</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_suplemen_oksigen")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_suplemen_oksigen")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>3. Suplemen Oksigen</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_suplemen_oksigen")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_suplemen_oksigen").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_suplemen_oksigen")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>4. Tekanan Darah Sistolik</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_tekanan_darah_sistolik")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_tekanan_darah_sistolik")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>4. Tekanan Darah Sistolik</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_tekanan_darah_sistolik")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistolik").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_tekanan_darah_sistolik")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_laju_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>5. Laju Jatung/Menit</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_laju_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_laju_jantung")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_laju_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_laju_jantung")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_laju_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>5. Laju Jatung/Menit</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_laju_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_laju_jantung")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_laju_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_laju_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_laju_jantung")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_kesadaran").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>6. Kesadaran</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_kesadaran").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_kesadaran")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_kesadaran").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_kesadaran")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_kesadaran").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>6. Kesadaran</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_kesadaran").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_kesadaran")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_kesadaran").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_kesadaran")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>7. Temperatur</td>"+
-                                    "<td valign='top' valign='middle' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_temperatur")+"</td>"+
-                                    "<td valign='top' valign='middle' align='center' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_temperatur")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>7. Temperatur</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("parameter_temperatur")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","ORANGE").replaceAll("3","RED").replaceAll("7","BLUE")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE").replaceAll("3","WHITE").replaceAll("7","WHITE")+"'>"+rs2.getString("skor_temperatur")+"</td>"+
                                  "</tr>"
                             ); 
                             if(Integer.parseInt(rs2.getString("skor_total"))>8){
                                 htmlContent.append(
                                    "<tr>"+
-                                        "<td valign='top' valign='middle' bgcolor='BLUE' style='color:WHITE'>Monitoring & Total Skor</td>"+
-                                        "<td valign='top' valign='middle' bgcolor='BLUE' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
-                                        "<td valign='top' valign='middle' align='center' bgcolor='BLUE' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
+                                        "<td valign='middle' bgcolor='BLUE' style='color:WHITE'>Monitoring & Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='BLUE' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center' bgcolor='BLUE' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
                                    "</tr>"
                                 );
                             }else if((Integer.parseInt(rs2.getString("skor_total"))>=7)||(Integer.parseInt(rs2.getString("skor_laju_respirasi"))==7)||
@@ -15483,25 +15495,25 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 (Integer.parseInt(rs2.getString("skor_kesadaran"))==7)){
                                 htmlContent.append(
                                    "<tr>"+
-                                        "<td valign='top' valign='middle' bgcolor='RED' style='color:WHITE'>Monitoring & Total Skor</td>"+
-                                        "<td valign='top' valign='middle' bgcolor='RED' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
-                                        "<td valign='top' valign='middle' align='center' bgcolor='RED' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
+                                        "<td valign='middle' bgcolor='RED' style='color:WHITE'>Monitoring & Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='RED' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center' bgcolor='RED' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
                                    "</tr>"
                                 );
                             }else if(Integer.parseInt(rs2.getString("skor_total"))>=5){
                                 htmlContent.append(
                                    "<tr>"+
-                                        "<td valign='top' valign='middle' bgcolor='ORANGE' style='color:WHITE'>Monitoring & Total Skor</td>"+
-                                        "<td valign='top' valign='middle' bgcolor='ORANGE' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
-                                        "<td valign='top' valign='middle' align='center' bgcolor='ORANGE' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
+                                        "<td valign='middle' bgcolor='ORANGE' style='color:WHITE'>Monitoring & Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='ORANGE' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center' bgcolor='ORANGE' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
                                    "</tr>"
                                 );
                             }else if(Integer.parseInt(rs2.getString("skor_total"))>0){
                                 htmlContent.append(
                                    "<tr>"+
-                                        "<td valign='top' valign='middle' bgcolor='YELLOW' style='color:GREEN'>Monitoring & Total Skor</td>"+
-                                        "<td valign='top' valign='middle' bgcolor='YELLOW' style='color:GREEN'>"+rs2.getString("parameter_total")+"</td>"+
-                                        "<td valign='top' valign='middle' align='center' bgcolor='YELLOW' style='color:GREEN'>"+rs2.getString("skor_total")+"</td>"+
+                                        "<td valign='middle' bgcolor='YELLOW' style='color:GREEN'>Monitoring & Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='YELLOW' style='color:GREEN'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center' bgcolor='YELLOW' style='color:GREEN'>"+rs2.getString("skor_total")+"</td>"+
                                    "</tr>"
                                 );
                             }else if(Integer.parseInt(rs2.getString("skor_total"))==0){
@@ -15509,7 +15521,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                    "<tr>"+
                                         "<td valign='top' valign='middle'>Monitoring & Total Skor</td>"+
                                         "<td valign='top' valign='middle'>"+rs2.getString("parameter_total")+"</td>"+
-                                        "<td valign='top' valign='middle' align='center'>"+rs2.getString("skor_total")+"</td>"+
+                                        "<td valign='middle' align='center'>"+rs2.getString("skor_total")+"</td>"+
                                    "</tr>"
                                 );
                             }
@@ -15528,8 +15540,149 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                 }
             }
+            
+            if(chkPemantauanMOEWSObstetri.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select pemantauan_meows_obstetri.tanggal,pemantauan_meows_obstetri.parameter_pernapasan,pemantauan_meows_obstetri.skor_pernapasan,"+
+                            "pemantauan_meows_obstetri.parameter_saturasi,pemantauan_meows_obstetri.skor_saturasi,pemantauan_meows_obstetri.parameter_temperatur,"+
+                            "pemantauan_meows_obstetri.skor_temperatur,pemantauan_meows_obstetri.parameter_tekanan_darah_sistole,pemantauan_meows_obstetri.skor_tekanan_darah_sistole,"+
+                            "pemantauan_meows_obstetri.parameter_tekanan_darah_diastole,pemantauan_meows_obstetri.skor_tekanan_darah_diastole,"+
+                            "pemantauan_meows_obstetri.parameter_denyut_jantung,pemantauan_meows_obstetri.skor_denyut_jantung,pemantauan_meows_obstetri.parameter_kesadaran,"+
+                            "pemantauan_meows_obstetri.skor_kesadaran,pemantauan_meows_obstetri.parameter_ketuban,pemantauan_meows_obstetri.skor_ketuban,"+
+                            "pemantauan_meows_obstetri.parameter_discharge,pemantauan_meows_obstetri.skor_discharge,pemantauan_meows_obstetri.parameter_proteinuria,"+
+                            "pemantauan_meows_obstetri.skor_proteinuria,pemantauan_meows_obstetri.skor_total,pemantauan_meows_obstetri.parameter_total,"+
+                            "pemantauan_meows_obstetri.code_blue,pemantauan_meows_obstetri.nip,petugas.nama "+
+                            "from pemantauan_meows_obstetri inner join petugas on pemantauan_meows_obstetri.nip=petugas.nip where pemantauan_meows_obstetri.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Pemantauan MEOWS Obstetri</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='middle' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                    "<td valign='middle' width='25%' bgcolor='#FFFAF8'>Tanggal & Petugas</td>"+
+                                    "<td valign='top' width='23%' bgcolor='#FFFAF8'>Pemantauan</td>"+
+                                    "<td valign='top' width='43%' bgcolor='#FFFAF8'>Hasil Pemantauan</td>"+
+                                    "<td valign='middle' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='middle' align='center' rowspan='12'>"+w+"</td>"+
+                                    "<td valign='middle' align='center' rowspan='12'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_pernapasan").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_pernapasan").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>1. Pernapasan</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_pernapasan").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_pernapasan").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_pernapasan")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_pernapasan").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_pernapasan").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_pernapasan")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_saturasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_saturasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>2. Saturasi Oksigen</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_saturasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_saturasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_saturasi")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_saturasi").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_saturasi").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_saturasi")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>3. Temperatur</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_temperatur")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_temperatur").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_temperatur")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_sistole").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistole").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>4. Tekanan Darah Sistolik</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_sistole").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistole").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_tekanan_darah_sistole")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_tekanan_darah_sistole").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_tekanan_darah_sistole").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_tekanan_darah_sistole")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_diastole").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_tekanan_darah_diastole").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>5. Tekanan Darah Diastole</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_tekanan_darah_diastole").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_tekanan_darah_diastole").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_tekanan_darah_diastole")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_tekanan_darah_diastole").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_tekanan_darah_diastole").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_tekanan_darah_diastole")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_denyut_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_denyut_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>6. Denyut Jantung</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_denyut_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_denyut_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_denyut_jantung")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_denyut_jantung").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_denyut_jantung").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_denyut_jantung")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>7. Kesadaran</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_kesadaran")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_kesadaran").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_kesadaran").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_kesadaran")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_ketuban").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_ketuban").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>8. Bau Cairan Ketuban</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_ketuban").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_ketuban").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_ketuban")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_ketuban").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_ketuban").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_ketuban")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_discharge").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>9. Discharge / Locia</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_discharge").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_temperatur").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_discharge")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_discharge").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_discharge").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_discharge")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_proteinuria").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_proteinuria").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>10. Proteinuria</td>"+
+                                    "<td valign='middle' bgcolor='"+rs2.getString("skor_proteinuria").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_proteinuria").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("parameter_proteinuria")+"</td>"+
+                                    "<td valign='middle' align='center' bgcolor='"+rs2.getString("skor_proteinuria").replaceAll("0","WHITE").replaceAll("1","YELLOW").replaceAll("2","RED")+"' style='color:"+rs2.getString("skor_proteinuria").replaceAll("0","#323232").replaceAll("1","GREEN").replaceAll("2","WHITE")+"'>"+rs2.getString("skor_proteinuria")+"</td>"+
+                                 "</tr>"
+                            ); 
+                            if(Integer.parseInt(rs2.getString("skor_total"))>=7){
+                                htmlContent.append(
+                                   "<tr>"+
+                                        "<td valign='middle' bgcolor='RED' style='color:WHITE'>Monitoring & Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='RED' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center' bgcolor='RED' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
+                                   "</tr>"
+                                );
+                            }else if(Integer.parseInt(rs2.getString("skor_total"))>=5){
+                                htmlContent.append(
+                                   "<tr>"+
+                                        "<td valign='middle' bgcolor='YELLOW' style='color:GREEN'>Monitoring & Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='YELLOW' style='color:GREEN'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center' bgcolor='YELLOW' style='color:GREEN'>"+rs2.getString("skor_total")+"</td>"+
+                                   "</tr>"
+                                );
+                            }else if(Integer.parseInt(rs2.getString("skor_total"))>=2){
+                                htmlContent.append(
+                                   "<tr>"+
+                                        "<td valign='middle' bgcolor='GREEN' style='color:WHITE'>Monitoring & Total Skor</td>"+
+                                        "<td valign='middle' bgcolor='GREEN' style='color:WHITE'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center' bgcolor='GREEN' style='color:WHITE'>"+rs2.getString("skor_total")+"</td>"+
+                                   "</tr>"
+                                );
+                            }else if(Integer.parseInt(rs2.getString("skor_total"))>=0){
+                                htmlContent.append(
+                                   "<tr>"+
+                                        "<td valign='top' valign='middle'>Monitoring & Total Skor</td>"+
+                                        "<td valign='top' valign='middle'>"+rs2.getString("parameter_total")+"</td>"+
+                                        "<td valign='middle' align='center'>"+rs2.getString("skor_total")+"</td>"+
+                                   "</tr>"
+                                );
+                            }
+                            htmlContent.append(
+                               "<tr>"+
+                                 "<td valign='middle' align='center' colspan='2' bgcolor='"+rs2.getString("code_blue").replaceAll("Ya","BLUE")+"' style='color:"+rs2.getString("code_blue").replaceAll("0","#323232").replaceAll("Ya","WHITE")+"'>Code Blue</td>"+
+                                 "<td valign='middle' align='center' bgcolor='"+rs2.getString("code_blue").replaceAll("Ya","BLUE")+"' style='color:"+rs2.getString("code_blue").replaceAll("0","#323232").replaceAll("Ya","WHITE")+"'>"+rs2.getString("code_blue")+"</td>"+
+                               "</tr>"
+                            );
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
         } catch (Exception e) {
-            System.out.println("Notif Menampilkan EWS : "+e);
+            System.out.println("Notif Menampilkan MEOWS : "+e);
         }
     }
     

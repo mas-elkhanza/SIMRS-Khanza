@@ -304,7 +304,7 @@
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{lahir})+" / "+$F{umurdaftar}+" "+$F{sttsumur}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{lahir}+" / "+$F{umurdaftar}+" "+$F{sttsumur}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="120" width="552" height="1" uuid="16e9bae6-6e07-45d0-8856-db2643093370"/>

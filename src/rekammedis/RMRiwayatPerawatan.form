@@ -475,7 +475,7 @@
                         <Property name="name" type="java.lang.String" value="ScrollMenu" noResource="true"/>
                         <Property name="opaque" type="boolean" value="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[255, 1197]"/>
+                          <Dimension value="[255, 1220]"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -1039,9 +1039,21 @@
                             <Component class="widget.CekBox" name="chkPemantauanPEWSDewasa">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Pemantauan PEWS Dewasa"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="label" type="java.lang.String" value="Pemantauan EWS Dewasa"/>
                                 <Property name="name" type="java.lang.String" value="chkPemantauanPEWSDewasa" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[245, 22]"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="widget.CekBox" name="chkPemantauanMOEWSObstetri">
+                              <Properties>
+                                <Property name="selected" type="boolean" value="true"/>
+                                <Property name="text" type="java.lang.String" value="Pemantauan MEOWS Obstetri"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="chkPemantauanMOEWSObstetri" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[245, 22]"/>
