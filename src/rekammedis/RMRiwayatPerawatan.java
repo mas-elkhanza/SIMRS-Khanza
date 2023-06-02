@@ -5491,10 +5491,14 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='100%' border='0' colspan='3'>Eliminasi :</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='100%' border='0' colspan='3'>"+
-                                                   "&nbsp;&nbsp;&nbsp;&nbsp;BAB : Frekuensi : "+rs2.getString("bab")+" X/ "+rs2.getString("xbab")+(rs2.getString("kbab").equals("")?"":", Konsistensi : "+rs2.getString("kbab").equals(""))+(rs2.getString("kbab").equals("")?"":", Warna : "+rs2.getString("wbab").equals(""))+"<br>"+
-                                                   "&nbsp;&nbsp;&nbsp;&nbsp;BAK : Frekuensi : "+rs2.getString("bak")+" X/ "+rs2.getString("xbak")+(rs2.getString("wbak").equals("")?"":", Warna : "+rs2.getString("wbak").equals(""))+(rs2.getString("lbak").equals("")?"":", Lain-lain : "+rs2.getString("lbak").equals(""))+
-                                              "</td>"+
+                                              "<td width='33%' border='0' style='margin-left: 10px'>BAB : Frekuensi : "+rs2.getString("bab")+" X/ "+rs2.getString("xbab")+"</td>"+
+                                              "<td width='33%' border='0'>, Konsistensi : "+rs2.getString("kbab")+"</td>"+
+                                              "<td width='33%' border='0'>, Warna : "+rs2.getString("wbab")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0' style='margin-left: 10px'>BAK : Frekuensi : "+rs2.getString("bak")+" X/ "+rs2.getString("xbak")+"</td>"+
+                                              "<td width='33%' border='0'>, Warna : "+rs2.getString("wbak")+"</td>"+
+                                              "<td width='33%' border='0'>, Lain-lain : "+rs2.getString("lbak")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
