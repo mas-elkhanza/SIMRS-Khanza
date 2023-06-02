@@ -5000,13 +5000,13 @@ public final class DlgIGD extends javax.swing.JDialog {
             if(tbPetugas.getSelectedRow()>-1){
                 switch (TStatus.getText()) {
                     case "Baru":
-                            biaya=Sequel.cariIsiAngka("select registrasi from poliklinik where kd_poli='IGDK'");
+                            biaya=Sequel.cariIsiAngka("select poliklinik.registrasi from poliklinik where poliklinik.kd_poli='IGDK'");
                             break;
                     case "Lama":
-                            biaya=Sequel.cariIsiAngka("select registrasilama from poliklinik where kd_poli='IGDK'");
+                            biaya=Sequel.cariIsiAngka("select poliklinik.registrasilama from poliklinik where poliklinik.kd_poli='IGDK'");
                             break;
                     default:
-                            biaya=Sequel.cariIsiAngka("select registrasi from poliklinik where kd_poli='IGDK'");
+                            biaya=Sequel.cariIsiAngka("select poliklinik.registrasi from poliklinik where poliklinik.kd_poli='IGDK'");
                             break;
                 }
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){
@@ -9358,7 +9358,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                if(!TCari.getText().trim().contains("")){
+                if(!TCari.getText().trim().equals("")){
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
                     ps.setString(4,"%"+TCari.getText().trim()+"%");
                     ps.setString(5,"%"+TCari.getText().trim()+"%");
