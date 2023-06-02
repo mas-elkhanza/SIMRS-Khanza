@@ -325,7 +325,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_encounter","?,?","No.Rawat",2,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_encounter","?,?","No.Rawat",2,new String[]{
                                         rs.getString("no_rawat"),response.asText()
                                     });
                                 }
@@ -428,7 +428,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvsuhu","?,?,?,?,?","Observation Suhu",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvsuhu","?,?,?,?,?","Observation Suhu",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -524,7 +524,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvsuhu","?,?,?,?,?","Observation Suhu",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvsuhu","?,?,?,?,?","Observation Suhu",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -625,7 +625,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvrespirasi","?,?,?,?,?","Observation Respirasi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvrespirasi","?,?,?,?,?","Observation Respirasi",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -721,7 +721,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvrespirasi","?,?,?,?,?","Observation Respirasi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvrespirasi","?,?,?,?,?","Observation Respirasi",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -822,7 +822,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvnadi","?,?,?,?,?","Observation Nadi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvnadi","?,?,?,?,?","Observation Nadi",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -918,7 +918,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvnadi","?,?,?,?,?","Observation Nadi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvnadi","?,?,?,?,?","Observation Nadi",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -1019,7 +1019,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvspo2","?,?,?,?,?","Observation SpO2",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvspo2","?,?,?,?,?","Observation SpO2",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -1115,7 +1115,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvspo2","?,?,?,?,?","Observation SpO2",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvspo2","?,?,?,?,?","Observation SpO2",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -1215,7 +1215,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvgcs","?,?,?,?,?","Observation GCS",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvgcs","?,?,?,?,?","Observation GCS",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -1310,7 +1310,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvgcs","?,?,?,?,?","Observation GCS",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvgcs","?,?,?,?,?","Observation GCS",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -1408,7 +1408,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvkesadaran","?,?,?,?,?","Observation Kesadaran",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvkesadaran","?,?,?,?,?","Observation Kesadaran",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -1503,7 +1503,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvkesadaran","?,?,?,?,?","Observation Kesadaran",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvkesadaran","?,?,?,?,?","Observation Kesadaran",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -1652,7 +1652,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvtensi","?,?,?,?,?","Observation Tensi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvtensi","?,?,?,?,?","Observation Tensi",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -1798,7 +1798,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvtensi","?,?,?,?,?","Observation Tensi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvtensi","?,?,?,?,?","Observation Tensi",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -1901,7 +1901,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvtb","?,?,?,?,?","Observation TB",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvtb","?,?,?,?,?","Observation TB",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -1999,7 +1999,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvtb","?,?,?,?,?","Observation TB",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvtb","?,?,?,?,?","Observation TB",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -2100,7 +2100,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvbb","?,?,?,?,?","Observation BB",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvbb","?,?,?,?,?","Observation BB",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -2196,7 +2196,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvbb","?,?,?,?,?","Observation BB",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvbb","?,?,?,?,?","Observation BB",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -2297,7 +2297,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_observationttvlp","?,?,?,?,?","Observation LP",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_observationttvlp","?,?,?,?,?","Observation LP",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -2380,7 +2380,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_clinicalimpression","?,?,?,?,?","Clinical Impression",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_clinicalimpression","?,?,?,?,?","Clinical Impression",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
@@ -2452,7 +2452,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_clinicalimpression","?,?,?,?,?","Clinical Impression",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_clinicalimpression","?,?,?,?,?","Clinical Impression",5,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
@@ -2570,7 +2570,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_immunization","?,?,?,?,?,?,?","Imunisasi/Vaksin",7,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_immunization","?,?,?,?,?,?,?","Imunisasi/Vaksin",7,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("kode_brng"),rs.getString("no_batch"),rs.getString("no_faktur"),response.asText()
                                     });
                                 }
@@ -2663,7 +2663,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_procedure","?,?,?,?","Prosedur",4,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_procedure","?,?,?,?","Prosedur",4,new String[]{
                                         rs.getString("no_rawat"),rs.getString("kode"),rs.getString("status_lanjut"),response.asText()
                                     });
                                 }
@@ -2760,7 +2760,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_condition","?,?,?,?","Diagnosa",4,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_condition","?,?,?,?","Diagnosa",4,new String[]{
                                         rs.getString("no_rawat"),rs.getString("kd_penyakit"),rs.getString("status_lanjut"),response.asText()
                                     });
                                 }
