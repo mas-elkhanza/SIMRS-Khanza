@@ -789,6 +789,7 @@ import rekammedis.MasterTriaseSkala3;
 import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMCariRekonsiliasiObat;
+import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
@@ -20179,6 +20180,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnCatatanADIMEGiziActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMCatatanADIMEGizi form=new RMCatatanADIMEGizi(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.tampil();
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20851,7 +20865,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
-            btnPenilaianPasienKeracunan,btnPemantauanMEOWS;
+            btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi;
     
     public void isWall(){
         try{            
@@ -24038,6 +24052,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmonitoring_asuhan_gizi()==true){
                 Panelmenu.add(btnMonitoringAsuhanGizi);
+                jmlmenu++;
+            }
+            
+            if(akses.getcatatan_adime_gizi()==true){
+                Panelmenu.add(btnCatatanADIMEGizi);
                 jmlmenu++;
             }
             
@@ -28719,6 +28738,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnMonitoringAsuhanGizi);
             jmlmenu++;
         } 
+        
+        if(akses.getcatatan_adime_gizi()==true){
+            Panelmenu.add(btnCatatanADIMEGizi);
+            jmlmenu++;
+        }
         
         if(akses.getskrining_nutrisi_dewasa()==true){
             Panelmenu.add(btnSkriningNutrisiDewasa);
@@ -34612,6 +34636,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getmonitoring_asuhan_gizi()==true){
             if(btnMonitoringAsuhanGizi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMonitoringAsuhanGizi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getcatatan_adime_gizi()==true){
+            if(btnCatatanADIMEGizi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanADIMEGizi);
                 jmlmenu++;
             }                
         }
@@ -40699,5 +40730,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemantauanMEOWS.setName("btnPemantauanMEOWS"); 
         btnPemantauanMEOWS.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPemantauanMEOWS.addActionListener(this::btnPemantauanMEOWSActionPerformed);
+        
+        btnCatatanADIMEGizi = new widget.ButtonBig();
+        btnCatatanADIMEGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6771580_book_education_learning_school_science_icon.png"))); 
+        btnCatatanADIMEGizi.setText("Catatan ADIME Gizi");
+        btnCatatanADIMEGizi.setIconTextGap(0);
+        btnCatatanADIMEGizi.setName("btnCatatanADIMEGizi"); 
+        btnCatatanADIMEGizi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanADIMEGizi.addActionListener(this::btnCatatanADIMEGiziActionPerformed);
     }
 }

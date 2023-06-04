@@ -848,7 +848,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
                     "from monitoring_asuhan_gizi inner join reg_periksa on monitoring_asuhan_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by monitoring_asuhan_gizi.tanggal ",param);
+                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by monitoring_asuhan_gizi.tanggal ",param);
             }else{
                 Valid.MyReportqry("rptDataMonitoringAsuhanGizi.jasper","report","::[ Data Monitoring Asuhan Gizi Pasien ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
@@ -857,14 +857,10 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
                     "from monitoring_asuhan_gizi inner join reg_periksa on monitoring_asuhan_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and monitoring_asuhan_gizi.monitoring like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and monitoring_asuhan_gizi.evaluasi like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and monitoring_asuhan_gizi.nip like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText().trim()+"%' "+
-                    "order by monitoring_asuhan_gizi.tanggal ",param);
+                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
+                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    "monitoring_asuhan_gizi.monitoring like '%"+TCari.getText().trim()+"%' or monitoring_asuhan_gizi.evaluasi like '%"+TCari.getText().trim()+"%' or monitoring_asuhan_gizi.nip like '%"+TCari.getText().trim()+"%' or "+
+                    "petugas.nama like '%"+TCari.getText().trim()+"%') order by monitoring_asuhan_gizi.tanggal ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());

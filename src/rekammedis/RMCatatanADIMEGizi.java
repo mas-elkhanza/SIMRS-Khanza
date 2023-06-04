@@ -64,7 +64,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","Monitoring","Evaluasi","NIP","Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","Asesmen","Diagnosis","Intervensi","Monitoring","Evaluasi","Instruksi","NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -74,7 +74,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -93,8 +93,16 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(230);
             }else if(i==8){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(230);
             }else if(i==9){
+                column.setPreferredWidth(230);
+            }else if(i==10){
+                column.setPreferredWidth(230);
+            }else if(i==11){
+                column.setPreferredWidth(230);
+            }else if(i==12){
+                column.setPreferredWidth(80);
+            }else if(i==13){
                 column.setPreferredWidth(150);
             }
         }
@@ -102,8 +110,12 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        Monitoring.setDocument(new batasInput((int)500).getKata(Monitoring));
-        Evaluasi.setDocument(new batasInput((int)500).getKata(Evaluasi));
+        Asesmen.setDocument(new batasInput((int)1000).getKata(Asesmen));
+        Diagnosis.setDocument(new batasInput((int)1000).getKata(Diagnosis));
+        Intervensi.setDocument(new batasInput((int)1000).getKata(Intervensi));
+        Monitoring.setDocument(new batasInput((int)1000).getKata(Monitoring));
+        Evaluasi.setDocument(new batasInput((int)1000).getKata(Evaluasi));
+        Instruksi.setDocument(new batasInput((int)1000).getKata(Instruksi));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -171,6 +183,8 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnAsuhanGizi = new javax.swing.JMenuItem();
+        JK = new widget.TextBox();
+        Umur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -194,6 +208,8 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         PanelInput = new javax.swing.JPanel();
+        ChkInput = new widget.CekBox();
+        scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
         jLabel4 = new widget.Label();
         TNoRw = new widget.TextBox();
@@ -212,10 +228,21 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         jLabel24 = new widget.Label();
         jLabel29 = new widget.Label();
         scrollPane1 = new widget.ScrollPane();
-        Monitoring = new widget.TextArea();
+        Asesmen = new widget.TextArea();
         scrollPane2 = new widget.ScrollPane();
+        Monitoring = new widget.TextArea();
+        jLabel25 = new widget.Label();
+        scrollPane3 = new widget.ScrollPane();
+        Diagnosis = new widget.TextArea();
+        jLabel30 = new widget.Label();
+        scrollPane4 = new widget.ScrollPane();
         Evaluasi = new widget.TextArea();
-        ChkInput = new widget.CekBox();
+        jLabel26 = new widget.Label();
+        scrollPane5 = new widget.ScrollPane();
+        Intervensi = new widget.TextArea();
+        jLabel31 = new widget.Label();
+        scrollPane6 = new widget.ScrollPane();
+        Instruksi = new widget.TextArea();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -232,6 +259,12 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnAsuhanGizi);
+
+        JK.setHighlighter(null);
+        JK.setName("JK"); // NOI18N
+
+        Umur.setHighlighter(null);
+        Umur.setName("Umur"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -403,7 +436,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -417,7 +450,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -479,10 +512,35 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         PanelInput.setToolTipText("");
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 156));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 306));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
+        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setMnemonic('I');
+        ChkInput.setText(".: Input Data");
+        ChkInput.setToolTipText("Alt+I");
+        ChkInput.setBorderPainted(true);
+        ChkInput.setBorderPaintedFlat(true);
+        ChkInput.setFocusable(false);
+        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput.setName("ChkInput"); // NOI18N
+        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkInputActionPerformed(evt);
+            }
+        });
+        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
+
+        scrollInput.setName("scrollInput"); // NOI18N
+        scrollInput.setPreferredSize(new java.awt.Dimension(102, 557));
+
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
+        FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setPreferredSize(new java.awt.Dimension(100, 225));
         FormInput.setLayout(null);
@@ -514,7 +572,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 450, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -620,18 +678,35 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         FormInput.add(btnPetugas);
         btnPetugas.setBounds(758, 40, 28, 23);
 
-        jLabel24.setText("Monitoring :");
+        jLabel24.setText("Asesmen :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
         jLabel24.setBounds(0, 70, 75, 23);
 
-        jLabel29.setText("Evaluasi :");
+        jLabel29.setText("Monitoring :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
         jLabel29.setBounds(400, 70, 70, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
+
+        Asesmen.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Asesmen.setColumns(20);
+        Asesmen.setRows(5);
+        Asesmen.setName("Asesmen"); // NOI18N
+        Asesmen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AsesmenKeyPressed(evt);
+            }
+        });
+        scrollPane1.setViewportView(Asesmen);
+
+        FormInput.add(scrollPane1);
+        scrollPane1.setBounds(79, 70, 312, 63);
+
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane2.setName("scrollPane2"); // NOI18N
 
         Monitoring.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Monitoring.setColumns(20);
@@ -642,13 +717,40 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
                 MonitoringKeyPressed(evt);
             }
         });
-        scrollPane1.setViewportView(Monitoring);
+        scrollPane2.setViewportView(Monitoring);
 
-        FormInput.add(scrollPane1);
-        scrollPane1.setBounds(79, 70, 312, 53);
+        FormInput.add(scrollPane2);
+        scrollPane2.setBounds(474, 70, 312, 63);
 
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane2.setName("scrollPane2"); // NOI18N
+        jLabel25.setText("Diagnosis :");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(0, 140, 75, 23);
+
+        scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane3.setName("scrollPane3"); // NOI18N
+
+        Diagnosis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Diagnosis.setColumns(20);
+        Diagnosis.setRows(5);
+        Diagnosis.setName("Diagnosis"); // NOI18N
+        Diagnosis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DiagnosisKeyPressed(evt);
+            }
+        });
+        scrollPane3.setViewportView(Diagnosis);
+
+        FormInput.add(scrollPane3);
+        scrollPane3.setBounds(79, 140, 312, 63);
+
+        jLabel30.setText("Evaluasi :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(400, 140, 70, 23);
+
+        scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane4.setName("scrollPane4"); // NOI18N
 
         Evaluasi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Evaluasi.setColumns(20);
@@ -659,33 +761,58 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
                 EvaluasiKeyPressed(evt);
             }
         });
-        scrollPane2.setViewportView(Evaluasi);
+        scrollPane4.setViewportView(Evaluasi);
 
-        FormInput.add(scrollPane2);
-        scrollPane2.setBounds(474, 70, 312, 53);
+        FormInput.add(scrollPane4);
+        scrollPane4.setBounds(474, 140, 312, 63);
 
-        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
+        jLabel26.setText("Intervensi :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(0, 210, 75, 23);
 
-        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
-        ChkInput.setMnemonic('I');
-        ChkInput.setText(".: Input Data");
-        ChkInput.setToolTipText("Alt+I");
-        ChkInput.setBorderPainted(true);
-        ChkInput.setBorderPaintedFlat(true);
-        ChkInput.setFocusable(false);
-        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ChkInput.setName("ChkInput"); // NOI18N
-        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
-        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
-        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        ChkInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkInputActionPerformed(evt);
+        scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane5.setName("scrollPane5"); // NOI18N
+
+        Intervensi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Intervensi.setColumns(20);
+        Intervensi.setRows(5);
+        Intervensi.setName("Intervensi"); // NOI18N
+        Intervensi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IntervensiKeyPressed(evt);
             }
         });
-        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
+        scrollPane5.setViewportView(Intervensi);
+
+        FormInput.add(scrollPane5);
+        scrollPane5.setBounds(79, 210, 312, 63);
+
+        jLabel31.setText("Instruksi :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(400, 210, 70, 23);
+
+        scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane6.setName("scrollPane6"); // NOI18N
+
+        Instruksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Instruksi.setColumns(20);
+        Instruksi.setRows(5);
+        Instruksi.setName("Instruksi"); // NOI18N
+        Instruksi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InstruksiKeyPressed(evt);
+            }
+        });
+        scrollPane6.setViewportView(Instruksi);
+
+        FormInput.add(scrollPane6);
+        scrollPane6.setBounds(474, 210, 312, 63);
+
+        scrollInput.setViewportView(FormInput);
+
+        PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
@@ -697,7 +824,6 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
-            isPsien();
         }else{            
             Valid.pindah(evt,TCari,Tanggal);
         }
@@ -712,15 +838,19 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
+        }else if(Asesmen.getText().trim().equals("")){
+            Valid.textKosong(Asesmen,"Monitoring");
         }else if(Monitoring.getText().trim().equals("")){
-            Valid.textKosong(Monitoring,"Monitoring");
-        }else if(Evaluasi.getText().trim().equals("")){
-            Valid.textKosong(Evaluasi,"Evaluasi");
+            Valid.textKosong(Monitoring,"Evaluasi");
         }else{
-            if(Sequel.menyimpantf("monitoring_asuhan_gizi","?,?,?,?,?","Data",5,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Monitoring.getText(),Evaluasi.getText(),KdPetugas.getText()
+            if(Sequel.menyimpantf("catatan_adime_gizi","?,?,?,?,?,?,?,?,?","Data",9,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Asesmen.getText(),Diagnosis.getText(),Intervensi.getText(),Monitoring.getText(),Evaluasi.getText(),Instruksi.getText(),KdPetugas.getText()
             })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    Asesmen.getText(),Diagnosis.getText(),Intervensi.getText(),Monitoring.getText(),Evaluasi.getText(),Instruksi.getText(),KdPetugas.getText(),NmPetugas.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }   
         }
@@ -730,7 +860,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Evaluasi,BtnBatal);
+            Valid.pindah(evt,Instruksi,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -775,10 +905,10 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
+        }else if(Asesmen.getText().trim().equals("")){
+            Valid.textKosong(Asesmen,"Monitoring");
         }else if(Monitoring.getText().trim().equals("")){
-            Valid.textKosong(Monitoring,"Monitoring");
-        }else if(Evaluasi.getText().trim().equals("")){
-            Valid.textKosong(Evaluasi,"Evaluasi");
+            Valid.textKosong(Monitoring,"Evaluasi");
         }else{ 
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -830,30 +960,29 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(TCari.getText().equals("")){
-                Valid.MyReportqry("rptDataMonitoringAsuhanGizi.jasper","report","::[ Data Monitoring Asuhan Gizi Pasien ]::",
+                Valid.MyReportqry("rptDataCatatanADIMEGizi.jasper","report","::[ Data Catatan ADIME Gizi Pasien ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,monitoring_asuhan_gizi.tanggal,monitoring_asuhan_gizi.monitoring,monitoring_asuhan_gizi.evaluasi,"+
-                    "monitoring_asuhan_gizi.nip,petugas.nama "+
-                    "from monitoring_asuhan_gizi inner join reg_periksa on monitoring_asuhan_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.asesmen,catatan_adime_gizi.diagnosis,"+
+                    "catatan_adime_gizi.intervensi,catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,catatan_adime_gizi.instruksi,"+
+                    "catatan_adime_gizi.nip,petugas.nama "+
+                    "from catatan_adime_gizi inner join reg_periksa on catatan_adime_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by monitoring_asuhan_gizi.tanggal ",param);
+                    "inner join petugas on catatan_adime_gizi.nip=petugas.nip where "+
+                    "catatan_adime_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by catatan_adime_gizi.tanggal ",param);
             }else{
-                Valid.MyReportqry("rptDataMonitoringAsuhanGizi.jasper","report","::[ Data Monitoring Asuhan Gizi Pasien ]::",
+                Valid.MyReportqry("rptDataCatatanADIMEGizi.jasper","report","::[ Data Catatan ADIME Gizi Pasien ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,monitoring_asuhan_gizi.tanggal,monitoring_asuhan_gizi.monitoring,monitoring_asuhan_gizi.evaluasi,"+
-                    "monitoring_asuhan_gizi.nip,petugas.nama "+
-                    "from monitoring_asuhan_gizi inner join reg_periksa on monitoring_asuhan_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.asesmen,catatan_adime_gizi.diagnosis,"+
+                    "catatan_adime_gizi.intervensi,catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,catatan_adime_gizi.instruksi,"+
+                    "catatan_adime_gizi.nip,petugas.nama "+
+                    "from catatan_adime_gizi inner join reg_periksa on catatan_adime_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and monitoring_asuhan_gizi.monitoring like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and monitoring_asuhan_gizi.evaluasi like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and monitoring_asuhan_gizi.nip like '%"+TCari.getText().trim()+"%' or "+
-                    "monitoring_asuhan_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText().trim()+"%' "+
-                    "order by monitoring_asuhan_gizi.tanggal ",param);
+                    "inner join petugas on catatan_adime_gizi.nip=petugas.nip where "+
+                    "catatan_adime_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
+                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    "catatan_adime_gizi.asesmen like '%"+TCari.getText().trim()+"%' or catatan_adime_gizi.diagnosis like '%"+TCari.getText().trim()+"%' or catatan_adime_gizi.intervensi like '%"+TCari.getText().trim()+"%' or "+
+                    "catatan_adime_gizi.monitoring like '%"+TCari.getText().trim()+"%' or catatan_adime_gizi.evaluasi like '%"+TCari.getText().trim()+"%' or catatan_adime_gizi.instruksi like '%"+TCari.getText().trim()+"%' or "+
+                    "catatan_adime_gizi.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') order by catatan_adime_gizi.tanggal ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -904,7 +1033,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah(evt,TCari,Jam);
+        Valid.pindah2(evt,TCari,Jam);
 }//GEN-LAST:event_TanggalKeyPressed
 
     private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
@@ -953,7 +1082,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Monitoring.requestFocus();
+            Asesmen.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -968,7 +1097,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,Monitoring);
+        Valid.pindah(evt,Detik,Asesmen);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnAsuhanGiziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnAsuhanGiziActionPerformed
@@ -977,21 +1106,37 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirMonitoringAsuhanGizi.jasper","report","::[ Formulir Monitoring & Evaluasi Asuhan Gizi Pasien ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,monitoring_asuhan_gizi.tanggal,monitoring_asuhan_gizi.monitoring,monitoring_asuhan_gizi.evaluasi,"+
-                    "monitoring_asuhan_gizi.nip,petugas.nama "+
-                    "from monitoring_asuhan_gizi inner join reg_periksa on monitoring_asuhan_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,"+
+                    "catatan_adime_gizi.nip,petugas.nama "+
+                    "from catatan_adime_gizi inner join reg_periksa on catatan_adime_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on catatan_adime_gizi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnAsuhanGiziActionPerformed
 
+    private void AsesmenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsesmenKeyPressed
+        Valid.pindah2(evt,KdPetugas,Diagnosis);
+    }//GEN-LAST:event_AsesmenKeyPressed
+
     private void MonitoringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MonitoringKeyPressed
-        Valid.pindah2(evt,KdPetugas,Evaluasi);
+        Valid.pindah2(evt,Intervensi,Evaluasi);
     }//GEN-LAST:event_MonitoringKeyPressed
 
+    private void DiagnosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKeyPressed
+       Valid.pindah2(evt,Asesmen,Intervensi);
+    }//GEN-LAST:event_DiagnosisKeyPressed
+
     private void EvaluasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EvaluasiKeyPressed
-        Valid.pindah2(evt,Monitoring,BtnSimpan);
+        Valid.pindah2(evt,Monitoring,Instruksi);
     }//GEN-LAST:event_EvaluasiKeyPressed
+
+    private void IntervensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntervensiKeyPressed
+        Valid.pindah2(evt,Diagnosis,Monitoring);
+    }//GEN-LAST:event_IntervensiKeyPressed
+
+    private void InstruksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InstruksiKeyPressed
+        Valid.pindah2(evt,Evaluasi,BtnSimpan);
+    }//GEN-LAST:event_InstruksiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1010,6 +1155,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextArea Asesmen;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1023,8 +1169,12 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
+    private widget.TextArea Diagnosis;
     private widget.TextArea Evaluasi;
     private widget.PanelBiasa FormInput;
+    private widget.TextArea Instruksi;
+    private widget.TextArea Intervensi;
+    private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
@@ -1039,6 +1189,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
+    private widget.TextBox Umur;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
@@ -1046,7 +1197,11 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel24;
+    private widget.Label jLabel25;
+    private widget.Label jLabel26;
     private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1054,8 +1209,13 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
+    private widget.ScrollPane scrollPane3;
+    private widget.ScrollPane scrollPane4;
+    private widget.ScrollPane scrollPane5;
+    private widget.ScrollPane scrollPane6;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
@@ -1065,28 +1225,29 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,monitoring_asuhan_gizi.tanggal,monitoring_asuhan_gizi.monitoring,monitoring_asuhan_gizi.evaluasi,"+
-                    "monitoring_asuhan_gizi.nip,petugas.nama "+
-                    "from monitoring_asuhan_gizi inner join reg_periksa on monitoring_asuhan_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.asesmen,catatan_adime_gizi.diagnosis,"+
+                    "catatan_adime_gizi.intervensi,catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,catatan_adime_gizi.instruksi,"+
+                    "catatan_adime_gizi.nip,petugas.nama "+
+                    "from catatan_adime_gizi inner join reg_periksa on catatan_adime_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? order by monitoring_asuhan_gizi.tanggal ");
+                    "inner join petugas on catatan_adime_gizi.nip=petugas.nip where "+
+                    "catatan_adime_gizi.tanggal between ? and ? order by catatan_adime_gizi.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,monitoring_asuhan_gizi.tanggal,monitoring_asuhan_gizi.monitoring,monitoring_asuhan_gizi.evaluasi,"+
-                    "monitoring_asuhan_gizi.nip,petugas.nama "+
-                    "from monitoring_asuhan_gizi inner join reg_periksa on monitoring_asuhan_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.asesmen,catatan_adime_gizi.diagnosis,"+
+                    "catatan_adime_gizi.intervensi,catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,catatan_adime_gizi.instruksi,"+
+                    "catatan_adime_gizi.nip,petugas.nama "+
+                    "from catatan_adime_gizi inner join reg_periksa on catatan_adime_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip where "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? and monitoring_asuhan_gizi.monitoring like ? or "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? and monitoring_asuhan_gizi.evaluasi like ? or "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? and monitoring_asuhan_gizi.nip like ? or "+
-                    "monitoring_asuhan_gizi.tanggal between ? and ? and petugas.nama like ? "+
-                    "order by monitoring_asuhan_gizi.tanggal ");
+                    "inner join petugas on catatan_adime_gizi.nip=petugas.nip where "+
+                    "catatan_adime_gizi.tanggal between ? and ? and "+
+                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                    "catatan_adime_gizi.asesmen like ? or catatan_adime_gizi.diagnosis like ? or "+
+                    "catatan_adime_gizi.intervensi like ? or catatan_adime_gizi.monitoring like ? or "+
+                    "catatan_adime_gizi.evaluasi like ? or catatan_adime_gizi.instruksi like ? or "+
+                    "catatan_adime_gizi.nip like ? or petugas.nama like ?) "+
+                    "order by catatan_adime_gizi.tanggal ");
             }
                 
             try {
@@ -1097,24 +1258,16 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                     ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(10,"%"+TCari.getText()+"%");
+                    ps.setString(11,"%"+TCari.getText()+"%");
                     ps.setString(12,"%"+TCari.getText()+"%");
-                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    ps.setString(15,"%"+TCari.getText()+"%");
-                    ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    ps.setString(18,"%"+TCari.getText()+"%");
-                    ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    ps.setString(21,"%"+TCari.getText()+"%");
+                    ps.setString(13,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -1122,8 +1275,9 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),
-                        rs.getString("tanggal"),rs.getString("monitoring"),rs.getString("evaluasi"),
-                        rs.getString("nip"),rs.getString("nama")
+                        rs.getString("tanggal"),rs.getString("asesmen"),rs.getString("diagnosis"),
+                        rs.getString("intervensi"),rs.getString("monitoring"),rs.getString("evaluasi"),
+                        rs.getString("instruksi"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1139,15 +1293,18 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {
+        Asesmen.setText("");
+        Diagnosis.setText("");
+        Intervensi.setText("");
         Monitoring.setText("");
         Evaluasi.setText("");
+        Instruksi.setText("");
         Tanggal.setDate(new Date());
-        Tanggal.requestFocus();
+        Asesmen.requestFocus();
     } 
 
     private void getData() {
@@ -1155,40 +1312,74 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());  
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
-            Monitoring.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Evaluasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
+            Asesmen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Intervensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Monitoring.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Evaluasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Instruksi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
         }
     }
 
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
-    }
-
-    private void isPsien() {
-        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
+        try {
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "reg_periksa.tgl_registrasi from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "where reg_periksa.no_rawat=?");
+            try {
+                ps.setString(1,TNoRw.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
+                    TPasien.setText(rs.getString("nm_pasien"));
+                    JK.setText(rs.getString("jk"));
+                    Umur.setText(rs.getString("umurdaftar")+" "+rs.getString("sttsumur"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
-        isRawat();
-        isPsien();              
+        isRawat();              
         ChkInput.setSelected(true);
         isForm();
     }
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,156));
-            FormInput.setVisible(true);      
-            ChkInput.setVisible(true);
+            if(internalFrame1.getHeight()>478){
+                ChkInput.setVisible(false);
+                PanelInput.setPreferredSize(new Dimension(WIDTH,306));
+                FormInput.setVisible(true);      
+                ChkInput.setVisible(true);
+            }else{
+                ChkInput.setVisible(false);
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+                FormInput.setVisible(true);      
+                ChkInput.setVisible(true);
+            }
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
@@ -1198,10 +1389,10 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getmonitoring_asuhan_gizi());
-        BtnHapus.setEnabled(akses.getmonitoring_asuhan_gizi());
-        BtnEdit.setEnabled(akses.getmonitoring_asuhan_gizi());
-        BtnPrint.setEnabled(akses.getmonitoring_asuhan_gizi()); 
+        BtnSimpan.setEnabled(akses.getcatatan_adime_gizi());
+        BtnHapus.setEnabled(akses.getcatatan_adime_gizi());
+        BtnEdit.setEnabled(akses.getcatatan_adime_gizi());
+        BtnPrint.setEnabled(akses.getcatatan_adime_gizi()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1268,16 +1459,31 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        Sequel.mengedit("monitoring_asuhan_gizi","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,monitoring=?,evaluasi=?,nip=?",7,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Monitoring.getText(),Evaluasi.getText(),KdPetugas.getText(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        });
-        if(tabMode.getRowCount()!=0){tampil();}
-        emptTeks();
+        if(Sequel.mengedittf("catatan_adime_gizi","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,asesmen=?,diagnosis=?,intervensi=?,monitoring=?,evaluasi=?,instruksi=?,nip=?",11,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Asesmen.getText(),Diagnosis.getText(),
+            Intervensi.getText(),Monitoring.getText(),Evaluasi.getText(),Instruksi.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        })==true){
+            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+            tbObat.setValueAt(Umur.getText(),tbObat.getSelectedRow(),3);
+            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(Asesmen.getText(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(Diagnosis.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(Intervensi.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(Monitoring.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(Evaluasi.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(Instruksi.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),13);
+            emptTeks();
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from monitoring_asuhan_gizi where tanggal=? and no_rawat=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from catatan_adime_gizi where tanggal=? and no_rawat=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
