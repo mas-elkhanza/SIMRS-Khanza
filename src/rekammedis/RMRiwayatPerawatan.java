@@ -334,6 +334,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningNutrisiAnak = new widget.CekBox();
         chkSkriningGiziLanjut = new widget.CekBox();
         chkMonitoringGizi = new widget.CekBox();
+        chkCatatanADIMEGizi = new widget.CekBox();
         chkRekonsiliasiObat = new widget.CekBox();
         chkKonselingFarmasi = new widget.CekBox();
         chkPelayananInformasiObat = new widget.CekBox();
@@ -609,7 +610,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2190));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2213));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1152,6 +1153,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkMonitoringGizi.setOpaque(false);
         chkMonitoringGizi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkMonitoringGizi);
+
+        chkCatatanADIMEGizi.setSelected(true);
+        chkCatatanADIMEGizi.setText("Monitoring Gizi");
+        chkCatatanADIMEGizi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanADIMEGizi.setName("chkCatatanADIMEGizi"); // NOI18N
+        chkCatatanADIMEGizi.setOpaque(false);
+        chkCatatanADIMEGizi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkCatatanADIMEGizi);
 
         chkRekonsiliasiObat.setSelected(true);
         chkRekonsiliasiObat.setText("Rekonsiliasi Obat");
@@ -1868,6 +1877,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkPenilaianPasienKeracunan.setSelected(true);
             chkAsuhanMedisRalanBedahMulut.setSelected(true);
             chkPemantauanMOEWSObstetri.setSelected(true);
+            chkCatatanADIMEGizi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1964,6 +1974,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkPenilaianPasienKeracunan.setSelected(false);
             chkAsuhanMedisRalanBedahMulut.setSelected(false);
             chkPemantauanMOEWSObstetri.setSelected(false);
+            chkCatatanADIMEGizi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2075,6 +2086,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanTambahanMelarikanDiri;
     private widget.CekBox chkAsuhanTambahanPerilakuKekerasan;
     private widget.CekBox chkBerkasDigital;
+    private widget.CekBox chkCatatanADIMEGizi;
     private widget.CekBox chkCatatanCekGDS;
     private widget.CekBox chkCatatanDokter;
     private widget.CekBox chkCatatanKeperawatanRanap;
@@ -13022,6 +13034,71 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>"+rs2.getString("evaluasi")+"</td>"+
                                     "<td valign='top'>"+rs2.getString("nama")+"</td>"+
                                  "</tr>");                                        
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+            
+            //menampilkan catatan ADIME gizi
+            if(chkCatatanADIMEGizi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select catatan_adime_gizi.tanggal,catatan_adime_gizi.asesmen,catatan_adime_gizi.diagnosis,catatan_adime_gizi.intervensi,"+
+                            "catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,catatan_adime_gizi.instruksi,catatan_adime_gizi.nip,petugas.nama "+
+                            "from catatan_adime_gizi inner join petugas on catatan_adime_gizi.nip=petugas.nip where "+
+                            "catatan_adime_gizi.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Catatan ADIME Gizi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                    "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                    "<td valign='top' width='61%' bgcolor='#FFFAF8'>Catatan</td>"+
+                                    "<td valign='top' width='20%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' rowspan='6' align='center'>"+w+"</td>"+
+                                    "<td valign='top' rowspan='6'>"+rs2.getString("tanggal")+"</td>"+
+                                    "<td valign='top'>Asesmen : "+rs2.getString("asesmen")+"</td>"+
+                                    "<td valign='top' rowspan='6'>"+rs2.getString("nama")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>Diagnosis : "+rs2.getString("diagnosis")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>Intervensi : "+rs2.getString("intervensi")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>Monitoring : "+rs2.getString("monitoring")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>Evaluasi : "+rs2.getString("evaluasi")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>Instruksi : "+rs2.getString("instruksi")+"</td>"+
+                                 "</tr>"
+                            );                                        
                             w++;
                         }
                         htmlContent.append(

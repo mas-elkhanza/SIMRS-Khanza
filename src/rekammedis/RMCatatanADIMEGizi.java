@@ -182,7 +182,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnAsuhanGizi = new javax.swing.JMenuItem();
+        MnCatatanADIME = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -246,19 +246,19 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnAsuhanGizi.setBackground(new java.awt.Color(255, 255, 254));
-        MnAsuhanGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnAsuhanGizi.setForeground(new java.awt.Color(50, 50, 50));
-        MnAsuhanGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnAsuhanGizi.setText("Formulir Pasien Monitoring Asuhan Gizi");
-        MnAsuhanGizi.setName("MnAsuhanGizi"); // NOI18N
-        MnAsuhanGizi.setPreferredSize(new java.awt.Dimension(250, 26));
-        MnAsuhanGizi.addActionListener(new java.awt.event.ActionListener() {
+        MnCatatanADIME.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanADIME.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanADIME.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanADIME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanADIME.setText("Formulir Catatan ADIME Gizi");
+        MnCatatanADIME.setName("MnCatatanADIME"); // NOI18N
+        MnCatatanADIME.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnCatatanADIME.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnAsuhanGiziActionPerformed(evt);
+                MnCatatanADIMEActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnAsuhanGizi);
+        jPopupMenu1.add(MnCatatanADIME);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -1100,19 +1100,20 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,Asesmen);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnAsuhanGiziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnAsuhanGiziActionPerformed
+    private void MnCatatanADIMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanADIMEActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
-            Valid.MyReportqry("rptFormulirMonitoringAsuhanGizi.jasper","report","::[ Formulir Monitoring & Evaluasi Asuhan Gizi Pasien ]::",
+            Valid.MyReportqry("rptFormulirCatatanADIMEGizi.jasper","report","::[ Formulir Catatan ADIME Gizi Pasien ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,"+
+                    "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.asesmen,catatan_adime_gizi.diagnosis,"+
+                    "catatan_adime_gizi.intervensi,catatan_adime_gizi.monitoring,catatan_adime_gizi.evaluasi,catatan_adime_gizi.instruksi,"+
                     "catatan_adime_gizi.nip,petugas.nama "+
                     "from catatan_adime_gizi inner join reg_periksa on catatan_adime_gizi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_adime_gizi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnAsuhanGiziActionPerformed
+    }//GEN-LAST:event_MnCatatanADIMEActionPerformed
 
     private void AsesmenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsesmenKeyPressed
         Valid.pindah2(evt,KdPetugas,Diagnosis);
@@ -1179,7 +1180,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnAsuhanGizi;
+    private javax.swing.JMenuItem MnCatatanADIME;
     private widget.TextArea Monitoring;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
