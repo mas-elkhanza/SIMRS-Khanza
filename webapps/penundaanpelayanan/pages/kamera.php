@@ -40,15 +40,20 @@
         $no_tlp       = $data2['no_tlp'];
     }
     
-    $tanggal        = "";    
-    $nama_pj        = "";    
-    $no_ktppj       = "";    
-    $tempat_lahirpj = "";    
-    $lahirpj        = "";    
-    $jkpj           = "";    
-    $alamatpj       = "";    
-    $hubungan       = "";    
-    $no_telp        = ""; 
+    $tanggal                        = "";
+    $nama_pj                        = "";
+    $umur_pj                        = "";
+    $no_ktppj                       = "";
+    $alamatpj                       = "";
+    $no_telppj                      = "";
+    $hubungan                       = "";
+    $ruang                          = "";
+    $dokter_pengirim                = "";
+    $pelayanan_dilakukan            = "";
+    $ditunda_karena                 = "";
+    $keterangan_ditunda             = "";
+    $alternatif_diberikan           = "";
+    $keterangan_alternatif_diberikan= "";
     $_sql2  = "select DATE_FORMAT(persetujuan_penundaan_pelayanan.tanggal,'%d-%m-%Y') as tanggal,persetujuan_penundaan_pelayanan.nama_pj,
                persetujuan_penundaan_pelayanan.umur_pj,persetujuan_penundaan_pelayanan.no_ktppj,persetujuan_penundaan_pelayanan.alamatpj,
                persetujuan_penundaan_pelayanan.no_telppj,persetujuan_penundaan_pelayanan.hubungan,persetujuan_penundaan_pelayanan.ruang,

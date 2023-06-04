@@ -68,6 +68,7 @@ import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
 import permintaan.DlgPermintaanRanap;
+import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataCatatanCekGDS;
@@ -644,6 +645,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         ppSkriningGizi = new javax.swing.JMenuItem();
         ppAsuhanGizi = new javax.swing.JMenuItem();
         ppMonitoringAsuhanGizi = new javax.swing.JMenuItem();
+        ppCatatanADIMEGizi = new javax.swing.JMenuItem();
         MnTransferAntarRuang = new javax.swing.JMenuItem();
         MnEdukasiPasienKeluarga = new javax.swing.JMenuItem();
         ppResume = new javax.swing.JMenuItem();
@@ -2002,6 +2004,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnGizi.add(ppMonitoringAsuhanGizi);
+
+        ppCatatanADIMEGizi.setBackground(new java.awt.Color(255, 255, 254));
+        ppCatatanADIMEGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppCatatanADIMEGizi.setForeground(new java.awt.Color(50, 50, 50));
+        ppCatatanADIMEGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppCatatanADIMEGizi.setText("Catatan ADIME Gizi");
+        ppCatatanADIMEGizi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppCatatanADIMEGizi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppCatatanADIMEGizi.setName("ppCatatanADIMEGizi"); // NOI18N
+        ppCatatanADIMEGizi.setPreferredSize(new java.awt.Dimension(210, 26));
+        ppCatatanADIMEGizi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppCatatanADIMEGiziBtnPrintActionPerformed(evt);
+            }
+        });
+        MnGizi.add(ppCatatanADIMEGizi);
 
         MnDataRM.add(MnGizi);
 
@@ -12861,6 +12879,29 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnPemantauanMEOWSActionPerformed
 
+    private void ppCatatanADIMEGiziBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppCatatanADIMEGiziBtnPrintActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            //TNoReg.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMCatatanADIMEGizi form=new RMCatatanADIMEGizi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppCatatanADIMEGiziBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13246,6 +13287,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem ppBerkasDigital;
     private javax.swing.JMenuItem ppBerkasDigital1;
     private javax.swing.JMenuItem ppBerkasRanap;
+    private javax.swing.JMenuItem ppCatatanADIMEGizi;
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppDataIndukKecelakaan;
     private javax.swing.JMenuItem ppDeteksiDIniCorona;
@@ -13575,6 +13617,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnPenilaianAwalMedisRalanBedahMulut.setEnabled(akses.getpenilaian_awal_medis_ralan_bedah_mulut());
         MnPenilaianPasienKeracunan.setEnabled(akses.getpenilaian_pasien_keracunan());
         MnPemantauanMEOWS.setEnabled(akses.getpemantauan_meows_obstetri());
+        ppCatatanADIMEGizi.setEnabled(akses.getcatatan_adime_gizi());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);

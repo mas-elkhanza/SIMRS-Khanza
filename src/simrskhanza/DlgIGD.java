@@ -87,6 +87,7 @@ import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
 import permintaan.DlgPermintaanRanap;
+import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
@@ -673,6 +674,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         ppSkriningGizi = new javax.swing.JMenuItem();
         ppAsuhanGizi = new javax.swing.JMenuItem();
         ppMonitoringAsuhanGizi = new javax.swing.JMenuItem();
+        ppCatatanADIMEGizi = new javax.swing.JMenuItem();
         MnTransferAntarRuang = new javax.swing.JMenuItem();
         MnEdukasiPasienKeluarga = new javax.swing.JMenuItem();
         ppResume = new javax.swing.JMenuItem();
@@ -1608,6 +1610,22 @@ public final class DlgIGD extends javax.swing.JDialog {
             }
         });
         MnGizi.add(ppMonitoringAsuhanGizi);
+
+        ppCatatanADIMEGizi.setBackground(new java.awt.Color(255, 255, 254));
+        ppCatatanADIMEGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppCatatanADIMEGizi.setForeground(new java.awt.Color(50, 50, 50));
+        ppCatatanADIMEGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppCatatanADIMEGizi.setText("Catatan ADIME Gizi");
+        ppCatatanADIMEGizi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppCatatanADIMEGizi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppCatatanADIMEGizi.setName("ppCatatanADIMEGizi"); // NOI18N
+        ppCatatanADIMEGizi.setPreferredSize(new java.awt.Dimension(210, 26));
+        ppCatatanADIMEGizi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppCatatanADIMEGiziBtnPrintActionPerformed(evt);
+            }
+        });
+        MnGizi.add(ppCatatanADIMEGizi);
 
         MnDataRM.add(MnGizi);
 
@@ -4285,7 +4303,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-05-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4299,7 +4317,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-05-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4391,7 +4409,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-05-2023" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2023" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -9040,6 +9058,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPemantauanMEOWSActionPerformed
 
+    private void ppCatatanADIMEGiziBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppCatatanADIMEGiziBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMCatatanADIMEGizi form=new RMCatatanADIMEGizi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppCatatanADIMEGiziBtnPrintActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -9311,6 +9352,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem ppAsuhanGizi;
     private javax.swing.JMenuItem ppBerkas;
     private javax.swing.JMenuItem ppBerkasDigital;
+    private javax.swing.JMenuItem ppCatatanADIMEGizi;
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppDataIndukKecelakaan;
     private javax.swing.JMenuItem ppDeteksiDIniCorona;
@@ -9712,6 +9754,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPersetujuanPenundaanPelayanan.setEnabled(akses.getpersetujuan_penundaan_pelayanan());
         MnPenilaianPasienKeracunan.setEnabled(akses.getpenilaian_pasien_keracunan());
         MnPemantauanMEOWS.setEnabled(akses.getpemantauan_meows_obstetri());
+        ppCatatanADIMEGizi.setEnabled(akses.getcatatan_adime_gizi());
     }
     
     private void isNumber(){

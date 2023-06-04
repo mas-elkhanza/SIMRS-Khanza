@@ -10,7 +10,7 @@
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.1.24/E-Klaim/ws.php";
+        $UrlWS = "http://transmedic.co.id:8181/E-Klaim/ws.php";
         return $UrlWS;
     }
     

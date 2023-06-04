@@ -63,6 +63,7 @@ import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.RMCari5SOAPTerakhir;
+import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
@@ -1584,6 +1585,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnSkriningGiziLanjut = new widget.Button();
         BtnAsuhanGizi = new widget.Button();
         BtnMonitoringAsuhanGizi = new widget.Button();
+        BtnCatatanADIMEGizi = new widget.Button();
         BtnKonselingFarmasi = new widget.Button();
         BtnInformasiObat = new widget.Button();
         BtnRekonsiliasiObat = new widget.Button();
@@ -4658,6 +4660,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnMonitoringAsuhanGizi);
+
+        BtnCatatanADIMEGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnCatatanADIMEGizi.setText("Catatan ADIME Gizi");
+        BtnCatatanADIMEGizi.setFocusPainted(false);
+        BtnCatatanADIMEGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnCatatanADIMEGizi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnCatatanADIMEGizi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnCatatanADIMEGizi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnCatatanADIMEGizi.setName("BtnCatatanADIMEGizi"); // NOI18N
+        BtnCatatanADIMEGizi.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnCatatanADIMEGizi.setRoundRect(false);
+        BtnCatatanADIMEGizi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCatatanADIMEGiziActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnCatatanADIMEGizi);
 
         BtnKonselingFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnKonselingFarmasi.setText("Konseling Farmasi");
@@ -8300,6 +8319,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnPemantauanMEOWSActionPerformed
 
+    private void BtnCatatanADIMEGiziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanADIMEGiziActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMCatatanADIMEGizi form=new RMCatatanADIMEGizi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnCatatanADIMEGiziActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8344,6 +8381,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnBerkasDigital;
     private widget.Button BtnCari;
     private widget.Button BtnCatatan;
+    private widget.Button BtnCatatanADIMEGizi;
     private widget.Button BtnCatatanCekGDS;
     private widget.Button BtnCatatanObservasiIGD;
     private widget.Button BtnChecklistPostOperasi;
@@ -9217,6 +9255,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnPemantauanMEOWS.setVisible(akses.getpemantauan_meows_obstetri()); 
         if(akses.getpemantauan_meows_obstetri()==true){
+            tinggi=tinggi+24;
+        }
+        BtnCatatanADIMEGizi.setVisible(akses.getcatatan_adime_gizi()); 
+        if(akses.getcatatan_adime_gizi()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
