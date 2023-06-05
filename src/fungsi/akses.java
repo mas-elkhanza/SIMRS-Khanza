@@ -206,7 +206,7 @@ public final class akses {
             penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false,edukasi_pasien_keluarga_rj=false,pemantauan_pews_dewasa=false,
             penilaian_tambahan_bunuh_diri=false,bpjs_antrean_pertanggal=false,penilaian_tambahan_perilaku_kekerasan=false,penilaian_tambahan_beresiko_melarikan_diri=false,
             persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false,penilaian_pasien_keracunan=false,
-            pemantauan_meows_obstetri=false,catatan_adime_gizi=false;
+            pemantauan_meows_obstetri=false,catatan_adime_gizi=false,pengajuan_biaya=false,penilaian_awal_keperawatan_ralan_geriatri=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1173,6 +1173,8 @@ public final class akses {
                         akses.penilaian_pasien_keracunan=true;
                         akses.pemantauan_meows_obstetri=true;
                         akses.catatan_adime_gizi=true;
+                        akses.pengajuan_biaya=true;
+                        akses.penilaian_awal_keperawatan_ralan_geriatri=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2123,6 +2125,8 @@ public final class akses {
                         akses.penilaian_pasien_keracunan=rs2.getBoolean("penilaian_pasien_keracunan");
                         akses.pemantauan_meows_obstetri=rs2.getBoolean("pemantauan_meows_obstetri");
                         akses.catatan_adime_gizi=rs2.getBoolean("catatan_adime_gizi");
+                        akses.pengajuan_biaya=rs2.getBoolean("pengajuan_biaya");
+                        akses.penilaian_awal_keperawatan_ralan_geriatri=rs2.getBoolean("penilaian_awal_keperawatan_ralan_geriatri");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3071,6 +3075,8 @@ public final class akses {
                         akses.penilaian_pasien_keracunan=false;
                         akses.pemantauan_meows_obstetri=false;
                         akses.catatan_adime_gizi=false;
+                        akses.pengajuan_biaya=false;
+                        akses.penilaian_awal_keperawatan_ralan_geriatri=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4079,4 +4085,6 @@ public final class akses {
     public static boolean getpenilaian_pasien_keracunan(){return akses.penilaian_pasien_keracunan;}
     public static boolean getpemantauan_meows_obstetri(){return akses.pemantauan_meows_obstetri;}
     public static boolean getcatatan_adime_gizi(){return akses.catatan_adime_gizi;}
+    public static boolean getpengajuan_biaya(){return akses.pengajuan_biaya;}
+    public static boolean getpenilaian_awal_keperawatan_ralan_geriatri(){return akses.penilaian_awal_keperawatan_ralan_geriatri;}
 }   
