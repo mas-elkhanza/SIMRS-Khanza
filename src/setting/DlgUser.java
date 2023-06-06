@@ -228,7 +228,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Penilaian Pasien Penyakit Menular","[M]Skrining Manajer Pelayanan Pasien","[M]Edukasi Pasien & Keluarga Rawat Jalan","[M]Pemantauan EWS Pasien Dewasa",
                 "[M]Penilaian Tambahan Bunuh Diri","[L]Antrean Per Tanggal Mobile JKN","[M]Penilaian Tambahan Perilaku Kekerasan","[M]Penilaian Tambahan Melarikan Diri",
                 "[P]Persetujuan Penundaan Pelayanan","[J]Sisa Diet Pasien","[M]Penilaian Awal Medis Ralan Bedah Mulut","[M]Penilaian Pasien Keracunan","[M]Pemantauan MEOWS Pasien Obstetri",
-                "[M]Catatan ADIME Gizi","[K]Pengajuan Biaya","[M]Penilaian Awal Keperawatan Ralan Geriatri","[M]Master Masalah Keperawatan Geriatri"
+                "[M]Catatan ADIME Gizi","[K]Pengajuan Biaya","[M]Penilaian Awal Keperawatan Ralan Geriatri","[M]Master Masalah Keperawatan Geriatri","[M]Master Rencana Keperawatan Geriatri"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -506,7 +506,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 950;i++) {
+        for (i = 0; i < 951;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2810,6 +2810,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 949:
                     column.setPreferredWidth(206);
                     break;
+                case 950:
+                    column.setPreferredWidth(208);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3307,7 +3310,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3331,7 +3334,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4328,7 +4331,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "catatan_adime_gizi='"+tbUser.getValueAt(i,946).toString()+"',"+
                     "pengajuan_biaya='"+tbUser.getValueAt(i,947).toString()+"',"+
                     "penilaian_awal_keperawatan_ralan_geriatri='"+tbUser.getValueAt(i,948).toString()+"',"+
-                    "master_masalah_keperawatan_geriatri='"+tbUser.getValueAt(i,949).toString()+"'")==true){
+                    "master_masalah_keperawatan_geriatri='"+tbUser.getValueAt(i,949).toString()+"',"+
+                    "master_rencana_keperawatan_geriatri='"+tbUser.getValueAt(i,950).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5476,7 +5480,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "catatan_adime_gizi='"+tbUser.getValueAt(barisdicopy,946).toString()+"',"+
                                         "pengajuan_biaya='"+tbUser.getValueAt(barisdicopy,947).toString()+"',"+
                                         "penilaian_awal_keperawatan_ralan_geriatri='"+tbUser.getValueAt(barisdicopy,948).toString()+"',"+
-                                        "master_masalah_keperawatan_geriatri='"+tbUser.getValueAt(barisdicopy,949).toString()+"'");
+                                        "master_masalah_keperawatan_geriatri='"+tbUser.getValueAt(barisdicopy,949).toString()+"',"+
+                                        "master_rencana_keperawatan_geriatri='"+tbUser.getValueAt(barisdicopy,950).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5754,7 +5759,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.penilaian_pasien_penyakit_menular,user.mpp_skrining,user.edukasi_pasien_keluarga_rj,user.pemantauan_pews_dewasa,user.penilaian_tambahan_bunuh_diri,"+
                 "user.bpjs_antrean_pertanggal,user.penilaian_tambahan_perilaku_kekerasan,user.penilaian_tambahan_beresiko_melarikan_diri,user.persetujuan_penundaan_pelayanan,"+
                 "user.sisa_diet_pasien,user.penilaian_awal_medis_ralan_bedah_mulut,user.penilaian_pasien_keracunan,user.pemantauan_meows_obstetri,user.catatan_adime_gizi,"+
-                "user.pengajuan_biaya,user.penilaian_awal_keperawatan_ralan_geriatri,user.master_masalah_keperawatan_geriatri from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.pengajuan_biaya,user.penilaian_awal_keperawatan_ralan_geriatri,user.master_masalah_keperawatan_geriatri,user.master_rencana_keperawatan_geriatri from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6716,7 +6721,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("catatan_adime_gizi"),
                                rs.getBoolean("pengajuan_biaya"),
                                rs.getBoolean("penilaian_awal_keperawatan_ralan_geriatri"),
-                               rs.getBoolean("master_masalah_keperawatan_geriatri")
+                               rs.getBoolean("master_masalah_keperawatan_geriatri"),
+                               rs.getBoolean("master_rencana_keperawatan_geriatri")
                             });
                         }   
                     } catch (Exception e) {
@@ -7667,7 +7673,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("catatan_adime_gizi"),
                            rs.getBoolean("pengajuan_biaya"),
                            rs.getBoolean("penilaian_awal_keperawatan_ralan_geriatri"),
-                           rs.getBoolean("master_masalah_keperawatan_geriatri")
+                           rs.getBoolean("master_masalah_keperawatan_geriatri"),
+                           rs.getBoolean("master_rencana_keperawatan_geriatri")
                         });
                     }                                             
                  }
