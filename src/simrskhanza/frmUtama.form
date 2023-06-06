@@ -376,7 +376,7 @@
                         <StringItem index="9" value="[J] Olah Data Penyakit, Laporan DKK, Laporal RL &amp; Laporan Internal"/>
                         <StringItem index="10" value="[K] Tarif Pelayanan, Menejemen Keuangan &amp; Akuntansi"/>
                         <StringItem index="11" value="[L] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes &amp; Pihak Ke 3"/>
-                        <StringItem index="12" value="[M] Olah Data Pasien"/>
+                        <StringItem index="12" value="[M] Olah Data &amp; Rekam Medis Pasien"/>
                         <StringItem index="13" value="[N] Unit Pelayanan Tranfusi Darah"/>
                         <StringItem index="14" value="[O] Analisa, Dashboard &amp; Info Grafik"/>
                         <StringItem index="15" value="[P] Manajemen Surat Masuk &amp; Keluar, Pengumuman E-Pasien"/>
@@ -488,7 +488,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="04/06/2023"/>
+            <StringItem index="0" value="06/06/2023"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
