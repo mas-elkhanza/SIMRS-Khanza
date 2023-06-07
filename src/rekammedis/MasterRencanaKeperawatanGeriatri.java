@@ -41,7 +41,7 @@ public class MasterRencanaKeperawatanGeriatri extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private MasterMasalahKeperawatanMata masalah=new MasterMasalahKeperawatanMata(null,false);
+    private MasterMasalahKeperawatanGeriatri masalah=new MasterMasalahKeperawatanGeriatri(null,false);
 
     /** Creates new form DlgSpesialis
      * @param parent

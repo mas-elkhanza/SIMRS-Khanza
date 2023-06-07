@@ -5150,11 +5150,11 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             
             if(Kabupaten.isEditable()==true){
                 Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
+                kdkab=kab.tampil3(Kabupaten.getText());
             }else if(Kabupaten.isEditable()==false){
                 if(kdkab.equals("")){
                     Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
-                    kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
+                    kdkab=kab.tampil3(Kabupaten.getText());
                 }
             }
             
