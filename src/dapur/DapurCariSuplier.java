@@ -254,7 +254,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/suplierdapur.iyem")<8){
+            if(Valid.daysOld("./cache/suplierdapur.iyem")<30){
                 tampil2();
             }else{
                 tampil();

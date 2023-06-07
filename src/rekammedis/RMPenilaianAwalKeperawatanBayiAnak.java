@@ -4058,7 +4058,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/masalahkeperawatanbayi.iyem")<8){
+            if(Valid.daysOld("./cache/masalahkeperawatanbayi.iyem")<30){
                 tampilMasalah2();
             }else{
                 tampilMasalah();

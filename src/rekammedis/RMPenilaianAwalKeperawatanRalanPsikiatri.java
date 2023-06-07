@@ -4389,17 +4389,10 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<8){
+            if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<30){
                 tampilMasalah2();
             }else{
                 tampilMasalah();
-            }
-        } catch (Exception e) {
-        }
-        
-        try {
-            if(Valid.daysOld("./cache/rencanakeperawatan.iyem")>=7){
-                tampilRencana();
             }
         } catch (Exception e) {
         }

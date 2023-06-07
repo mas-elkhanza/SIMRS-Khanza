@@ -505,7 +505,7 @@ public final class DlgCariCaraBayar2 extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/penjab.iyem")<8){
+            if(Valid.daysOld("./cache/penjab.iyem")<30){
                 tampil2();
             }else{
                 tampil();

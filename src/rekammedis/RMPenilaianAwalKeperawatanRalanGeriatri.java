@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
+ * By Windiarto
  */
 
 
@@ -55,7 +55,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private boolean[] pilih; 
     private String[] kode,masalah;
-    private String masalahkeperawatan="",finger=""; 
+    private String masalahkeperawatangeriatri="",finger=""; 
     private StringBuilder htmlContent;
     private File file;
     private FileWriter fileWriter;
@@ -686,6 +686,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         BtnCariRencana = new widget.Button();
         label13 = new widget.Label();
         TCariRencana = new widget.TextBox();
+        jSeparator11 = new javax.swing.JSeparator();
+        jLabel78 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -883,7 +885,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 1193));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 1693));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -1801,7 +1803,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         TotalHasil.setBounds(774, 770, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2023 09:47:06" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2023 17:17:35" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1999,7 +2001,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator10.setName("jSeparator10"); // NOI18N
         FormInput.add(jSeparator10);
-        jSeparator10.setBounds(0, 1000, 880, 1);
+        jSeparator10.setBounds(0, 1500, 880, 1);
 
         Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll6.setName("Scroll6"); // NOI18N
@@ -2022,13 +2024,13 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         Scroll6.setViewportView(tbMasalahKeperawatan);
 
         FormInput.add(Scroll6);
-        Scroll6.setBounds(10, 1010, 400, 143);
+        Scroll6.setBounds(10, 1510, 400, 143);
 
         label12.setText("Key Word :");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label12);
-        label12.setBounds(16, 1160, 60, 23);
+        label12.setBounds(16, 1660, 60, 23);
 
         BtnTambahMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahMasalah.setMnemonic('3');
@@ -2041,7 +2043,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(BtnTambahMasalah);
-        BtnTambahMasalah.setBounds(363, 1160, 28, 23);
+        BtnTambahMasalah.setBounds(363, 1660, 28, 23);
 
         Bahasa.setEditable(false);
         Bahasa.setFocusTraversalPolicyProvider(true);
@@ -2081,7 +2083,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(BtnAllMasalah);
-        BtnAllMasalah.setBounds(331, 1160, 28, 23);
+        BtnAllMasalah.setBounds(331, 1660, 28, 23);
 
         BtnCariMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariMasalah.setMnemonic('1');
@@ -2099,7 +2101,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(BtnCariMasalah);
-        BtnCariMasalah.setBounds(299, 1160, 28, 23);
+        BtnCariMasalah.setBounds(299, 1660, 28, 23);
 
         TabRencanaKeperawatan.setBackground(new java.awt.Color(255, 255, 254));
         TabRencanaKeperawatan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -2139,7 +2141,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         TabRencanaKeperawatan.addTab("Rencana Keperawatan Lainnya", scrollPane5);
 
         FormInput.add(TabRencanaKeperawatan);
-        TabRencanaKeperawatan.setBounds(433, 1010, 420, 143);
+        TabRencanaKeperawatan.setBounds(433, 1510, 420, 143);
 
         TCariMasalah.setToolTipText("Alt+C");
         TCariMasalah.setName("TCariMasalah"); // NOI18N
@@ -2150,7 +2152,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(TCariMasalah);
-        TCariMasalah.setBounds(80, 1160, 215, 23);
+        TCariMasalah.setBounds(80, 1660, 215, 23);
 
         BtnTambahRencana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahRencana.setMnemonic('3');
@@ -2163,7 +2165,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(BtnTambahRencana);
-        BtnTambahRencana.setBounds(806, 1160, 28, 23);
+        BtnTambahRencana.setBounds(806, 1660, 28, 23);
 
         BtnAllRencana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllRencana.setMnemonic('2');
@@ -2181,7 +2183,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(BtnAllRencana);
-        BtnAllRencana.setBounds(774, 1160, 28, 23);
+        BtnAllRencana.setBounds(774, 1660, 28, 23);
 
         BtnCariRencana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariRencana.setMnemonic('1');
@@ -2199,13 +2201,13 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(BtnCariRencana);
-        BtnCariRencana.setBounds(742, 1160, 28, 23);
+        BtnCariRencana.setBounds(742, 1660, 28, 23);
 
         label13.setText("Key Word :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label13);
-        label13.setBounds(439, 1160, 60, 23);
+        label13.setBounds(439, 1660, 60, 23);
 
         TCariRencana.setToolTipText("Alt+C");
         TCariRencana.setName("TCariRencana"); // NOI18N
@@ -2216,7 +2218,20 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
         FormInput.add(TCariRencana);
-        TCariRencana.setBounds(503, 1160, 235, 23);
+        TCariRencana.setBounds(503, 1660, 235, 23);
+
+        jSeparator11.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator11.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator11.setName("jSeparator11"); // NOI18N
+        FormInput.add(jSeparator11);
+        jSeparator11.setBounds(0, 1000, 880, 1);
+
+        jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel78.setText("VIII. KEBUTUHAN KOMUNIKASI DAN EDUKASI");
+        jLabel78.setName("jLabel78"); // NOI18N
+        FormInput.add(jLabel78);
+        jLabel78.setBounds(10, 1000, 380, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2450,7 +2465,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
-            if(Sequel.menyimpantf("penilaian_awal_keperawatan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",57,new String[]{
+            if(Sequel.menyimpantf("penilaian_awal_keperawatan_ralan_geriatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",57,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
                     Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),BMI.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),AlatBantu.getSelectedItem().toString(),KetBantu.getText(), 
                     Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(), 
@@ -2462,12 +2477,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 })==true){
                     for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                         if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                            Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
+                            Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah_geriatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
                         }
                     }
                     for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                         if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                            Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()});
+                            Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_rencana_geriatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()});
                         }
                     }
                     emptTeks();
@@ -2574,44 +2589,44 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             try{
                 if(TCari.getText().equals("")){
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan.tanggal,"+
-                            "penilaian_awal_keperawatan_ralan.informasi,penilaian_awal_keperawatan_ralan.td,penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,"+
-                            "penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.gcs,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,penilaian_awal_keperawatan_ralan.bmi,penilaian_awal_keperawatan_ralan.keluhan_utama,"+
-                            "penilaian_awal_keperawatan_ralan.rpd,penilaian_awal_keperawatan_ralan.rpk,penilaian_awal_keperawatan_ralan.rpo,penilaian_awal_keperawatan_ralan.alergi,penilaian_awal_keperawatan_ralan.alat_bantu,penilaian_awal_keperawatan_ralan.ket_bantu,penilaian_awal_keperawatan_ralan.prothesa,"+
-                            "penilaian_awal_keperawatan_ralan.ket_pro,penilaian_awal_keperawatan_ralan.adl,penilaian_awal_keperawatan_ralan.status_psiko,penilaian_awal_keperawatan_ralan.ket_psiko,penilaian_awal_keperawatan_ralan.hub_keluarga,penilaian_awal_keperawatan_ralan.tinggal_dengan,"+
-                            "penilaian_awal_keperawatan_ralan.ket_tinggal,penilaian_awal_keperawatan_ralan.ekonomi,penilaian_awal_keperawatan_ralan.edukasi,penilaian_awal_keperawatan_ralan.ket_edukasi,penilaian_awal_keperawatan_ralan.berjalan_a,penilaian_awal_keperawatan_ralan.berjalan_b,"+
-                            "penilaian_awal_keperawatan_ralan.berjalan_c,penilaian_awal_keperawatan_ralan.hasil,penilaian_awal_keperawatan_ralan.lapor,penilaian_awal_keperawatan_ralan.ket_lapor,penilaian_awal_keperawatan_ralan.sg1,penilaian_awal_keperawatan_ralan.nilai1,penilaian_awal_keperawatan_ralan.sg2,penilaian_awal_keperawatan_ralan.nilai2,"+
-                            "penilaian_awal_keperawatan_ralan.total_hasil,penilaian_awal_keperawatan_ralan.nyeri,penilaian_awal_keperawatan_ralan.provokes,penilaian_awal_keperawatan_ralan.ket_provokes,penilaian_awal_keperawatan_ralan.quality,penilaian_awal_keperawatan_ralan.ket_quality,penilaian_awal_keperawatan_ralan.lokasi,penilaian_awal_keperawatan_ralan.menyebar,"+
-                            "penilaian_awal_keperawatan_ralan.skala_nyeri,penilaian_awal_keperawatan_ralan.durasi,penilaian_awal_keperawatan_ralan.nyeri_hilang,penilaian_awal_keperawatan_ralan.ket_nyeri,penilaian_awal_keperawatan_ralan.pada_dokter,penilaian_awal_keperawatan_ralan.ket_dokter,penilaian_awal_keperawatan_ralan.rencana,"+
-                            "penilaian_awal_keperawatan_ralan.nip,petugas.nama,penilaian_awal_keperawatan_ralan.budaya,penilaian_awal_keperawatan_ralan.ket_budaya "+
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_geriatri.tanggal,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.informasi,penilaian_awal_keperawatan_ralan_geriatri.td,penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.gcs,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,penilaian_awal_keperawatan_ralan_geriatri.bmi,penilaian_awal_keperawatan_ralan_geriatri.keluhan_utama,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.rpd,penilaian_awal_keperawatan_ralan_geriatri.rpk,penilaian_awal_keperawatan_ralan_geriatri.rpo,penilaian_awal_keperawatan_ralan_geriatri.alergi,penilaian_awal_keperawatan_ralan_geriatri.alat_bantu,penilaian_awal_keperawatan_ralan_geriatri.ket_bantu,penilaian_awal_keperawatan_ralan_geriatri.prothesa,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.ket_pro,penilaian_awal_keperawatan_ralan_geriatri.adl,penilaian_awal_keperawatan_ralan_geriatri.status_psiko,penilaian_awal_keperawatan_ralan_geriatri.ket_psiko,penilaian_awal_keperawatan_ralan_geriatri.hub_keluarga,penilaian_awal_keperawatan_ralan_geriatri.tinggal_dengan,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.ket_tinggal,penilaian_awal_keperawatan_ralan_geriatri.ekonomi,penilaian_awal_keperawatan_ralan_geriatri.edukasi,penilaian_awal_keperawatan_ralan_geriatri.ket_edukasi,penilaian_awal_keperawatan_ralan_geriatri.berjalan_a,penilaian_awal_keperawatan_ralan_geriatri.berjalan_b,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join penilaian_awal_keperawatan_ralan on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan.no_rawat "+
-                            "inner join petugas on penilaian_awal_keperawatan_ralan.nip=petugas.nip "+
+                            "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
+                            "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
                             "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                             "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
-                            "penilaian_awal_keperawatan_ralan.tanggal between ? and ? order by penilaian_awal_keperawatan_ralan.tanggal");
+                            "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? order by penilaian_awal_keperawatan_ralan_geriatri.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan.tanggal,"+
-                            "penilaian_awal_keperawatan_ralan.informasi,penilaian_awal_keperawatan_ralan.td,penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,"+
-                            "penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.gcs,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,penilaian_awal_keperawatan_ralan.bmi,penilaian_awal_keperawatan_ralan.keluhan_utama,"+
-                            "penilaian_awal_keperawatan_ralan.rpd,penilaian_awal_keperawatan_ralan.rpk,penilaian_awal_keperawatan_ralan.rpo,penilaian_awal_keperawatan_ralan.alergi,penilaian_awal_keperawatan_ralan.alat_bantu,penilaian_awal_keperawatan_ralan.ket_bantu,penilaian_awal_keperawatan_ralan.prothesa,"+
-                            "penilaian_awal_keperawatan_ralan.ket_pro,penilaian_awal_keperawatan_ralan.adl,penilaian_awal_keperawatan_ralan.status_psiko,penilaian_awal_keperawatan_ralan.ket_psiko,penilaian_awal_keperawatan_ralan.hub_keluarga,penilaian_awal_keperawatan_ralan.tinggal_dengan,"+
-                            "penilaian_awal_keperawatan_ralan.ket_tinggal,penilaian_awal_keperawatan_ralan.ekonomi,penilaian_awal_keperawatan_ralan.edukasi,penilaian_awal_keperawatan_ralan.ket_edukasi,penilaian_awal_keperawatan_ralan.berjalan_a,penilaian_awal_keperawatan_ralan.berjalan_b,"+
-                            "penilaian_awal_keperawatan_ralan.berjalan_c,penilaian_awal_keperawatan_ralan.hasil,penilaian_awal_keperawatan_ralan.lapor,penilaian_awal_keperawatan_ralan.ket_lapor,penilaian_awal_keperawatan_ralan.sg1,penilaian_awal_keperawatan_ralan.nilai1,penilaian_awal_keperawatan_ralan.sg2,penilaian_awal_keperawatan_ralan.nilai2,"+
-                            "penilaian_awal_keperawatan_ralan.total_hasil,penilaian_awal_keperawatan_ralan.nyeri,penilaian_awal_keperawatan_ralan.provokes,penilaian_awal_keperawatan_ralan.ket_provokes,penilaian_awal_keperawatan_ralan.quality,penilaian_awal_keperawatan_ralan.ket_quality,penilaian_awal_keperawatan_ralan.lokasi,penilaian_awal_keperawatan_ralan.menyebar,"+
-                            "penilaian_awal_keperawatan_ralan.skala_nyeri,penilaian_awal_keperawatan_ralan.durasi,penilaian_awal_keperawatan_ralan.nyeri_hilang,penilaian_awal_keperawatan_ralan.ket_nyeri,penilaian_awal_keperawatan_ralan.pada_dokter,penilaian_awal_keperawatan_ralan.ket_dokter,penilaian_awal_keperawatan_ralan.rencana,"+
-                            "penilaian_awal_keperawatan_ralan.nip,petugas.nama,penilaian_awal_keperawatan_ralan.budaya,penilaian_awal_keperawatan_ralan.ket_budaya "+
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_geriatri.tanggal,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.informasi,penilaian_awal_keperawatan_ralan_geriatri.td,penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.gcs,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,penilaian_awal_keperawatan_ralan_geriatri.bmi,penilaian_awal_keperawatan_ralan_geriatri.keluhan_utama,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.rpd,penilaian_awal_keperawatan_ralan_geriatri.rpk,penilaian_awal_keperawatan_ralan_geriatri.rpo,penilaian_awal_keperawatan_ralan_geriatri.alergi,penilaian_awal_keperawatan_ralan_geriatri.alat_bantu,penilaian_awal_keperawatan_ralan_geriatri.ket_bantu,penilaian_awal_keperawatan_ralan_geriatri.prothesa,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.ket_pro,penilaian_awal_keperawatan_ralan_geriatri.adl,penilaian_awal_keperawatan_ralan_geriatri.status_psiko,penilaian_awal_keperawatan_ralan_geriatri.ket_psiko,penilaian_awal_keperawatan_ralan_geriatri.hub_keluarga,penilaian_awal_keperawatan_ralan_geriatri.tinggal_dengan,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.ket_tinggal,penilaian_awal_keperawatan_ralan_geriatri.ekonomi,penilaian_awal_keperawatan_ralan_geriatri.edukasi,penilaian_awal_keperawatan_ralan_geriatri.ket_edukasi,penilaian_awal_keperawatan_ralan_geriatri.berjalan_a,penilaian_awal_keperawatan_ralan_geriatri.berjalan_b,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
+                            "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join penilaian_awal_keperawatan_ralan on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan.no_rawat "+
-                            "inner join petugas on penilaian_awal_keperawatan_ralan.nip=petugas.nip "+
+                            "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
+                            "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
                             "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                             "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
-                            "penilaian_awal_keperawatan_ralan.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
-                            "penilaian_awal_keperawatan_ralan.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
-                            "penilaian_awal_keperawatan_ralan.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                            "penilaian_awal_keperawatan_ralan.tanggal between ? and ? and penilaian_awal_keperawatan_ralan.nip like ? or "+
-                            "penilaian_awal_keperawatan_ralan.tanggal between ? and ? and petugas.nama like ? order by penilaian_awal_keperawatan_ralan.tanggal");
+                            "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
+                            "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
+                            "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? and pasien.nm_pasien like ? or "+
+                            "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? and penilaian_awal_keperawatan_ralan_geriatri.nip like ? or "+
+                            "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? and petugas.nama like ? order by penilaian_awal_keperawatan_ralan_geriatri.tanggal");
                 }
 
                 try {
@@ -2652,16 +2667,16 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                         "</tr>"
                     );
                     while(rs.next()){
-                        masalahkeperawatan="";
+                        masalahkeperawatangeriatri="";
                         ps2=koneksi.prepareStatement(
-                            "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                            "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                            "where penilaian_awal_keperawatan_ralan_masalah.no_rawat=? order by kode_masalah");
+                            "select master_masalah_keperawatan_geriatri.kode_masalah,master_masalah_keperawatan_geriatri.nama_masalah from master_masalah_keperawatan_geriatri "+
+                            "inner join penilaian_awal_keperawatan_ralan_masalah_geriatri on penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah=master_masalah_keperawatan_geriatri.kode_masalah "+
+                            "where penilaian_awal_keperawatan_ralan_masalah_geriatri.no_rawat=? order by kode_masalah");
                         try {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
                             while(rs2.next()){
-                                masalahkeperawatan=rs2.getString("nama_masalah")+", "+masalahkeperawatan;
+                                masalahkeperawatangeriatri=rs2.getString("nama_masalah")+", "+masalahkeperawatangeriatri;
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -2901,7 +2916,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                                     "</table>"+
                                 "</td>"+
                                 "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "Masalah Keperawatan : "+masalahkeperawatan+"<br><br>"+
+                                    "Masalah Keperawatan : "+masalahkeperawatangeriatri+"<br><br>"+
                                     "Rencana Keperawatan : "+rs.getString("rencana")+
                                 "</td>"+
                             "</tr>"
@@ -3300,17 +3315,10 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<8){
+            if(Valid.daysOld("./cache/masalahkeperawatangeriatri.iyem")<8){
                 tampilMasalah2();
             }else{
                 tampilMasalah();
-            }
-        } catch (Exception e) {
-        }
-        
-        try {
-            if(Valid.daysOld("./cache/rencanakeperawatan.iyem")>=7){
-                tampilRencana();
             }
         } catch (Exception e) {
         }
@@ -3353,16 +3361,16 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),64).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),63).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())); 
             try {
-                masalahkeperawatan="";
+                masalahkeperawatangeriatri="";
                 ps2=koneksi.prepareStatement(
-                    "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                    "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                    "where penilaian_awal_keperawatan_ralan_masalah.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah.kode_masalah");
+                    "select master_masalah_keperawatan_geriatri.kode_masalah,master_masalah_keperawatan_geriatri.nama_masalah from master_masalah_keperawatan_geriatri "+
+                    "inner join penilaian_awal_keperawatan_ralan_masalah_geriatri on penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah=master_masalah_keperawatan_geriatri.kode_masalah "+
+                    "where penilaian_awal_keperawatan_ralan_masalah_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah");
                 try {
                     ps2.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs2=ps2.executeQuery();
                     while(rs2.next()){
-                        masalahkeperawatan=rs2.getString("nama_masalah")+", "+masalahkeperawatan;
+                        masalahkeperawatangeriatri=rs2.getString("nama_masalah")+", "+masalahkeperawatangeriatri;
                     }
                 } catch (Exception e) {
                     System.out.println("Notif : "+e);
@@ -3377,18 +3385,18 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             }
-            param.put("masalah",masalahkeperawatan);  
+            param.put("masalah",masalahkeperawatangeriatri);  
             try {
-                masalahkeperawatan="";
+                masalahkeperawatangeriatri="";
                 ps2=koneksi.prepareStatement(
-                    "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
-                    "inner join penilaian_awal_keperawatan_ralan_rencana on penilaian_awal_keperawatan_ralan_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
-                    "where penilaian_awal_keperawatan_ralan_rencana.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana.kode_rencana");
+                    "select master_rencana_keperawatan_geriatri.kode_rencana,master_rencana_keperawatan_geriatri.rencana_keperawatan from master_rencana_keperawatan_geriatri "+
+                    "inner join penilaian_awal_keperawatan_ralan_rencana_geriatri on penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana=master_rencana_keperawatan_geriatri.kode_rencana "+
+                    "where penilaian_awal_keperawatan_ralan_rencana_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana");
                 try {
                     ps2.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs2=ps2.executeQuery();
                     while(rs2.next()){
-                        masalahkeperawatan=rs2.getString("rencana_keperawatan")+", "+masalahkeperawatan;
+                        masalahkeperawatangeriatri=rs2.getString("rencana_keperawatan")+", "+masalahkeperawatangeriatri;
                     }
                 } catch (Exception e) {
                     System.out.println("Notif : "+e);
@@ -3403,21 +3411,21 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             }
-            param.put("rencana",masalahkeperawatan); 
+            param.put("rencana",masalahkeperawatangeriatri); 
             Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalan.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan ]::",
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan.tanggal,"+
-                        "penilaian_awal_keperawatan_ralan.informasi,penilaian_awal_keperawatan_ralan.td,penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,"+
-                        "penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.gcs,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,penilaian_awal_keperawatan_ralan.bmi,penilaian_awal_keperawatan_ralan.keluhan_utama,"+
-                        "penilaian_awal_keperawatan_ralan.rpd,penilaian_awal_keperawatan_ralan.rpk,penilaian_awal_keperawatan_ralan.rpo,penilaian_awal_keperawatan_ralan.alergi,penilaian_awal_keperawatan_ralan.alat_bantu,penilaian_awal_keperawatan_ralan.ket_bantu,penilaian_awal_keperawatan_ralan.prothesa,"+
-                        "penilaian_awal_keperawatan_ralan.ket_pro,penilaian_awal_keperawatan_ralan.adl,penilaian_awal_keperawatan_ralan.status_psiko,penilaian_awal_keperawatan_ralan.ket_psiko,penilaian_awal_keperawatan_ralan.hub_keluarga,penilaian_awal_keperawatan_ralan.tinggal_dengan,"+
-                        "penilaian_awal_keperawatan_ralan.ket_tinggal,penilaian_awal_keperawatan_ralan.ekonomi,penilaian_awal_keperawatan_ralan.edukasi,penilaian_awal_keperawatan_ralan.ket_edukasi,penilaian_awal_keperawatan_ralan.berjalan_a,penilaian_awal_keperawatan_ralan.berjalan_b,"+
-                        "penilaian_awal_keperawatan_ralan.berjalan_c,penilaian_awal_keperawatan_ralan.hasil,penilaian_awal_keperawatan_ralan.lapor,penilaian_awal_keperawatan_ralan.ket_lapor,penilaian_awal_keperawatan_ralan.sg1,penilaian_awal_keperawatan_ralan.nilai1,penilaian_awal_keperawatan_ralan.sg2,penilaian_awal_keperawatan_ralan.nilai2,"+
-                        "penilaian_awal_keperawatan_ralan.total_hasil,penilaian_awal_keperawatan_ralan.nyeri,penilaian_awal_keperawatan_ralan.provokes,penilaian_awal_keperawatan_ralan.ket_provokes,penilaian_awal_keperawatan_ralan.quality,penilaian_awal_keperawatan_ralan.ket_quality,penilaian_awal_keperawatan_ralan.lokasi,penilaian_awal_keperawatan_ralan.menyebar,"+
-                        "penilaian_awal_keperawatan_ralan.skala_nyeri,penilaian_awal_keperawatan_ralan.durasi,penilaian_awal_keperawatan_ralan.nyeri_hilang,penilaian_awal_keperawatan_ralan.ket_nyeri,penilaian_awal_keperawatan_ralan.pada_dokter,penilaian_awal_keperawatan_ralan.ket_dokter,penilaian_awal_keperawatan_ralan.rencana,"+
-                        "penilaian_awal_keperawatan_ralan.nip,petugas.nama,penilaian_awal_keperawatan_ralan.budaya,penilaian_awal_keperawatan_ralan.ket_budaya "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_geriatri.tanggal,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.informasi,penilaian_awal_keperawatan_ralan_geriatri.td,penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.gcs,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,penilaian_awal_keperawatan_ralan_geriatri.bmi,penilaian_awal_keperawatan_ralan_geriatri.keluhan_utama,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.rpd,penilaian_awal_keperawatan_ralan_geriatri.rpk,penilaian_awal_keperawatan_ralan_geriatri.rpo,penilaian_awal_keperawatan_ralan_geriatri.alergi,penilaian_awal_keperawatan_ralan_geriatri.alat_bantu,penilaian_awal_keperawatan_ralan_geriatri.ket_bantu,penilaian_awal_keperawatan_ralan_geriatri.prothesa,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.ket_pro,penilaian_awal_keperawatan_ralan_geriatri.adl,penilaian_awal_keperawatan_ralan_geriatri.status_psiko,penilaian_awal_keperawatan_ralan_geriatri.ket_psiko,penilaian_awal_keperawatan_ralan_geriatri.hub_keluarga,penilaian_awal_keperawatan_ralan_geriatri.tinggal_dengan,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.ket_tinggal,penilaian_awal_keperawatan_ralan_geriatri.ekonomi,penilaian_awal_keperawatan_ralan_geriatri.edukasi,penilaian_awal_keperawatan_ralan_geriatri.ket_edukasi,penilaian_awal_keperawatan_ralan_geriatri.berjalan_a,penilaian_awal_keperawatan_ralan_geriatri.berjalan_b,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_awal_keperawatan_ralan on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan.no_rawat "+
-                        "inner join petugas on penilaian_awal_keperawatan_ralan.nip=petugas.nip "+
+                        "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
+                        "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
                         "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                         "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }else{
@@ -3719,6 +3727,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private widget.Label jLabel75;
     private widget.Label jLabel76;
     private widget.Label jLabel77;
+    private widget.Label jLabel78;
     private widget.Label jLabel8;
     private widget.Label jLabel80;
     private widget.Label jLabel81;
@@ -3739,6 +3748,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private widget.Label jLabel97;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -3773,43 +3783,43 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         try{
             if(TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan.tanggal,"+
-                        "penilaian_awal_keperawatan_ralan.informasi,penilaian_awal_keperawatan_ralan.td,penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,"+
-                        "penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.gcs,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,penilaian_awal_keperawatan_ralan.bmi,penilaian_awal_keperawatan_ralan.keluhan_utama,"+
-                        "penilaian_awal_keperawatan_ralan.rpd,penilaian_awal_keperawatan_ralan.rpk,penilaian_awal_keperawatan_ralan.rpo,penilaian_awal_keperawatan_ralan.alergi,penilaian_awal_keperawatan_ralan.alat_bantu,penilaian_awal_keperawatan_ralan.ket_bantu,penilaian_awal_keperawatan_ralan.prothesa,"+
-                        "penilaian_awal_keperawatan_ralan.ket_pro,penilaian_awal_keperawatan_ralan.adl,penilaian_awal_keperawatan_ralan.status_psiko,penilaian_awal_keperawatan_ralan.ket_psiko,penilaian_awal_keperawatan_ralan.hub_keluarga,penilaian_awal_keperawatan_ralan.tinggal_dengan,"+
-                        "penilaian_awal_keperawatan_ralan.ket_tinggal,penilaian_awal_keperawatan_ralan.ekonomi,penilaian_awal_keperawatan_ralan.edukasi,penilaian_awal_keperawatan_ralan.ket_edukasi,penilaian_awal_keperawatan_ralan.berjalan_a,penilaian_awal_keperawatan_ralan.berjalan_b,"+
-                        "penilaian_awal_keperawatan_ralan.berjalan_c,penilaian_awal_keperawatan_ralan.hasil,penilaian_awal_keperawatan_ralan.lapor,penilaian_awal_keperawatan_ralan.ket_lapor,penilaian_awal_keperawatan_ralan.sg1,penilaian_awal_keperawatan_ralan.nilai1,penilaian_awal_keperawatan_ralan.sg2,penilaian_awal_keperawatan_ralan.nilai2,"+
-                        "penilaian_awal_keperawatan_ralan.total_hasil,penilaian_awal_keperawatan_ralan.nyeri,penilaian_awal_keperawatan_ralan.provokes,penilaian_awal_keperawatan_ralan.ket_provokes,penilaian_awal_keperawatan_ralan.quality,penilaian_awal_keperawatan_ralan.ket_quality,penilaian_awal_keperawatan_ralan.lokasi,penilaian_awal_keperawatan_ralan.menyebar,"+
-                        "penilaian_awal_keperawatan_ralan.skala_nyeri,penilaian_awal_keperawatan_ralan.durasi,penilaian_awal_keperawatan_ralan.nyeri_hilang,penilaian_awal_keperawatan_ralan.ket_nyeri,penilaian_awal_keperawatan_ralan.pada_dokter,penilaian_awal_keperawatan_ralan.ket_dokter,penilaian_awal_keperawatan_ralan.rencana,"+
-                        "penilaian_awal_keperawatan_ralan.nip,petugas.nama,penilaian_awal_keperawatan_ralan.budaya,penilaian_awal_keperawatan_ralan.ket_budaya "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_geriatri.tanggal,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.informasi,penilaian_awal_keperawatan_ralan_geriatri.td,penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.gcs,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,penilaian_awal_keperawatan_ralan_geriatri.bmi,penilaian_awal_keperawatan_ralan_geriatri.keluhan_utama,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.rpd,penilaian_awal_keperawatan_ralan_geriatri.rpk,penilaian_awal_keperawatan_ralan_geriatri.rpo,penilaian_awal_keperawatan_ralan_geriatri.alergi,penilaian_awal_keperawatan_ralan_geriatri.alat_bantu,penilaian_awal_keperawatan_ralan_geriatri.ket_bantu,penilaian_awal_keperawatan_ralan_geriatri.prothesa,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.ket_pro,penilaian_awal_keperawatan_ralan_geriatri.adl,penilaian_awal_keperawatan_ralan_geriatri.status_psiko,penilaian_awal_keperawatan_ralan_geriatri.ket_psiko,penilaian_awal_keperawatan_ralan_geriatri.hub_keluarga,penilaian_awal_keperawatan_ralan_geriatri.tinggal_dengan,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.ket_tinggal,penilaian_awal_keperawatan_ralan_geriatri.ekonomi,penilaian_awal_keperawatan_ralan_geriatri.edukasi,penilaian_awal_keperawatan_ralan_geriatri.ket_edukasi,penilaian_awal_keperawatan_ralan_geriatri.berjalan_a,penilaian_awal_keperawatan_ralan_geriatri.berjalan_b,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_awal_keperawatan_ralan on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan.no_rawat "+
-                        "inner join petugas on penilaian_awal_keperawatan_ralan.nip=petugas.nip "+
+                        "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
+                        "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
                         "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                         "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
-                        "penilaian_awal_keperawatan_ralan.tanggal between ? and ? order by penilaian_awal_keperawatan_ralan.tanggal");
+                        "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? order by penilaian_awal_keperawatan_ralan_geriatri.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan.tanggal,"+
-                        "penilaian_awal_keperawatan_ralan.informasi,penilaian_awal_keperawatan_ralan.td,penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,"+
-                        "penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.gcs,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,penilaian_awal_keperawatan_ralan.bmi,penilaian_awal_keperawatan_ralan.keluhan_utama,"+
-                        "penilaian_awal_keperawatan_ralan.rpd,penilaian_awal_keperawatan_ralan.rpk,penilaian_awal_keperawatan_ralan.rpo,penilaian_awal_keperawatan_ralan.alergi,penilaian_awal_keperawatan_ralan.alat_bantu,penilaian_awal_keperawatan_ralan.ket_bantu,penilaian_awal_keperawatan_ralan.prothesa,"+
-                        "penilaian_awal_keperawatan_ralan.ket_pro,penilaian_awal_keperawatan_ralan.adl,penilaian_awal_keperawatan_ralan.status_psiko,penilaian_awal_keperawatan_ralan.ket_psiko,penilaian_awal_keperawatan_ralan.hub_keluarga,penilaian_awal_keperawatan_ralan.tinggal_dengan,"+
-                        "penilaian_awal_keperawatan_ralan.ket_tinggal,penilaian_awal_keperawatan_ralan.ekonomi,penilaian_awal_keperawatan_ralan.edukasi,penilaian_awal_keperawatan_ralan.ket_edukasi,penilaian_awal_keperawatan_ralan.berjalan_a,penilaian_awal_keperawatan_ralan.berjalan_b,"+
-                        "penilaian_awal_keperawatan_ralan.berjalan_c,penilaian_awal_keperawatan_ralan.hasil,penilaian_awal_keperawatan_ralan.lapor,penilaian_awal_keperawatan_ralan.ket_lapor,penilaian_awal_keperawatan_ralan.sg1,penilaian_awal_keperawatan_ralan.nilai1,penilaian_awal_keperawatan_ralan.sg2,penilaian_awal_keperawatan_ralan.nilai2,"+
-                        "penilaian_awal_keperawatan_ralan.total_hasil,penilaian_awal_keperawatan_ralan.nyeri,penilaian_awal_keperawatan_ralan.provokes,penilaian_awal_keperawatan_ralan.ket_provokes,penilaian_awal_keperawatan_ralan.quality,penilaian_awal_keperawatan_ralan.ket_quality,penilaian_awal_keperawatan_ralan.lokasi,penilaian_awal_keperawatan_ralan.menyebar,"+
-                        "penilaian_awal_keperawatan_ralan.skala_nyeri,penilaian_awal_keperawatan_ralan.durasi,penilaian_awal_keperawatan_ralan.nyeri_hilang,penilaian_awal_keperawatan_ralan.ket_nyeri,penilaian_awal_keperawatan_ralan.pada_dokter,penilaian_awal_keperawatan_ralan.ket_dokter,penilaian_awal_keperawatan_ralan.rencana,"+
-                        "penilaian_awal_keperawatan_ralan.nip,petugas.nama,penilaian_awal_keperawatan_ralan.budaya,penilaian_awal_keperawatan_ralan.ket_budaya "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_geriatri.tanggal,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.informasi,penilaian_awal_keperawatan_ralan_geriatri.td,penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.gcs,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,penilaian_awal_keperawatan_ralan_geriatri.bmi,penilaian_awal_keperawatan_ralan_geriatri.keluhan_utama,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.rpd,penilaian_awal_keperawatan_ralan_geriatri.rpk,penilaian_awal_keperawatan_ralan_geriatri.rpo,penilaian_awal_keperawatan_ralan_geriatri.alergi,penilaian_awal_keperawatan_ralan_geriatri.alat_bantu,penilaian_awal_keperawatan_ralan_geriatri.ket_bantu,penilaian_awal_keperawatan_ralan_geriatri.prothesa,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.ket_pro,penilaian_awal_keperawatan_ralan_geriatri.adl,penilaian_awal_keperawatan_ralan_geriatri.status_psiko,penilaian_awal_keperawatan_ralan_geriatri.ket_psiko,penilaian_awal_keperawatan_ralan_geriatri.hub_keluarga,penilaian_awal_keperawatan_ralan_geriatri.tinggal_dengan,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.ket_tinggal,penilaian_awal_keperawatan_ralan_geriatri.ekonomi,penilaian_awal_keperawatan_ralan_geriatri.edukasi,penilaian_awal_keperawatan_ralan_geriatri.ket_edukasi,penilaian_awal_keperawatan_ralan_geriatri.berjalan_a,penilaian_awal_keperawatan_ralan_geriatri.berjalan_b,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_awal_keperawatan_ralan on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan.no_rawat "+
-                        "inner join petugas on penilaian_awal_keperawatan_ralan.nip=petugas.nip "+
+                        "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
+                        "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
                         "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                         "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
-                        "penilaian_awal_keperawatan_ralan.tanggal between ? and ? and "+
+                        "penilaian_awal_keperawatan_ralan_geriatri.tanggal between ? and ? and "+
                         "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_awal_keperawatan_ralan.nip like ? or petugas.nama like ?) "+
-                        "order by penilaian_awal_keperawatan_ralan.tanggal");
+                        "penilaian_awal_keperawatan_ralan_geriatri.nip like ? or petugas.nama like ?) "+
+                        "order by penilaian_awal_keperawatan_ralan_geriatri.tanggal");
             }
                 
             try {
@@ -3990,9 +4000,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             try {
                 Valid.tabelKosong(tabModeMasalah);
                 ps=koneksi.prepareStatement(
-                        "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                        "where penilaian_awal_keperawatan_ralan_masalah.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah.kode_masalah");
+                        "select master_masalah_keperawatan_geriatri.kode_masalah,master_masalah_keperawatan_geriatri.nama_masalah from master_masalah_keperawatan_geriatri "+
+                        "inner join penilaian_awal_keperawatan_ralan_masalah_geriatri on penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah=master_masalah_keperawatan_geriatri.kode_masalah "+
+                        "where penilaian_awal_keperawatan_ralan_masalah_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -4016,9 +4026,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             try {
                 Valid.tabelKosong(tabModeRencana);
                 ps=koneksi.prepareStatement(
-                        "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_rencana on penilaian_awal_keperawatan_ralan_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
-                        "where penilaian_awal_keperawatan_ralan_rencana.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana.kode_rencana");
+                        "select master_rencana_keperawatan_geriatri.kode_rencana,master_rencana_keperawatan_geriatri.rencana_keperawatan from master_rencana_keperawatan_geriatri "+
+                        "inner join penilaian_awal_keperawatan_ralan_rencana_geriatri on penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana=master_rencana_keperawatan_geriatri.kode_rencana "+
+                        "where penilaian_awal_keperawatan_ralan_rencana_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -4086,12 +4096,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan());  
-        BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan());  
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ralan_geriatri());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ralan_geriatri());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ralan_geriatri());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ralan_geriatri());
+        BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan_geriatri());  
+        BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan_geriatri());  
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -4111,11 +4121,11 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private void tampilMasalah() {
         try{
             Valid.tabelKosong(tabModeMasalah);
-            file=new File("./cache/masalahkeperawatan.iyem");
+            file=new File("./cache/masalahkeperawatangeriatri.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan order by master_masalah_keperawatan.kode_masalah");
+            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan_geriatri order by master_masalah_keperawatan_geriatri.kode_masalah");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4132,7 +4142,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     ps.close();
                 }
             }
-            fileWriter.write("{\"masalahkeperawatan\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.write("{\"masalahkeperawatangeriatri\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
             iyem=null;
@@ -4175,9 +4185,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 });
             }
             
-            myObj = new FileReader("./cache/masalahkeperawatan.iyem");
+            myObj = new FileReader("./cache/masalahkeperawatangeriatri.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("masalahkeperawatan");
+            response = root.path("masalahkeperawatangeriatri");
             if(response.isArray()){
                 for(JsonNode list:response){
                     if(list.path("KodeMasalah").asText().toLowerCase().contains(TCariMasalah.getText().toLowerCase())||list.path("NamaMasalah").asText().toLowerCase().contains(TCariMasalah.getText().toLowerCase())){
@@ -4195,11 +4205,11 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     
     private void tampilRencana() {
         try{
-            file=new File("./cache/rencanakeperawatan.iyem");
+            file=new File("./cache/rencanakeperawatangeriatri.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select * from master_rencana_keperawatan order by master_rencana_keperawatan.kode_rencana");
+            ps=koneksi.prepareStatement("select * from master_rencana_keperawatan_geriatri order by master_rencana_keperawatan_geriatri.kode_rencana");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4215,7 +4225,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     ps.close();
                 }
             }
-            fileWriter.write("{\"rencanakeperawatan\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.write("{\"rencanakeperawatangeriatri\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
             iyem=null;
@@ -4258,9 +4268,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 });
             }
 
-            myObj = new FileReader("./cache/rencanakeperawatan.iyem");
+            myObj = new FileReader("./cache/rencanakeperawatangeriatri.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("rencanakeperawatan");
+            response = root.path("rencanakeperawatangeriatri");
             if(response.isArray()){
                 for(i=0;i<tbMasalahKeperawatan.getRowCount();i++){
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
@@ -4305,9 +4315,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             try {
                 Valid.tabelKosong(tabModeDetailMasalah);
                 ps=koneksi.prepareStatement(
-                        "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                        "where penilaian_awal_keperawatan_ralan_masalah.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah.kode_masalah");
+                        "select master_masalah_keperawatan_geriatri.kode_masalah,master_masalah_keperawatan_geriatri.nama_masalah from master_masalah_keperawatan_geriatri "+
+                        "inner join penilaian_awal_keperawatan_ralan_masalah_geriatri on penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah=master_masalah_keperawatan_geriatri.kode_masalah "+
+                        "where penilaian_awal_keperawatan_ralan_masalah_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -4331,9 +4341,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             try {
                 Valid.tabelKosong(tabModeDetailRencana);
                 ps=koneksi.prepareStatement(
-                        "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_rencana on penilaian_awal_keperawatan_ralan_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
-                        "where penilaian_awal_keperawatan_ralan_rencana.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana.kode_rencana");
+                        "select master_rencana_keperawatan_geriatri.kode_rencana,master_rencana_keperawatan_geriatri.rencana_keperawatan from master_rencana_keperawatan_geriatri "+
+                        "inner join penilaian_awal_keperawatan_ralan_rencana_geriatri on penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana=master_rencana_keperawatan_geriatri.kode_rencana "+
+                        "where penilaian_awal_keperawatan_ralan_rencana_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -4367,13 +4377,13 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_awal_keperawatan_ralan where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_awal_keperawatan_ralan_geriatri where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             TNoRM1.setText("");
             TPasien1.setText("");
-            Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             Valid.tabelKosong(tabModeDetailMasalah);
             Valid.tabelKosong(tabModeDetailRencana);
             ChkAccor.setSelected(false);
@@ -4386,7 +4396,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_awal_keperawatan_ralan","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,td=?,nadi=?,rr=?,suhu=?,gcs=?,bb=?,tb=?,bmi=?,keluhan_utama=?,rpd=?,rpk=?,rpo=?,alergi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,adl=?,status_psiko=?,ket_psiko=?,hub_keluarga=?,tinggal_dengan=?,ket_tinggal=?,ekonomi=?,budaya=?,ket_budaya=?,edukasi=?,ket_edukasi=?,berjalan_a=?,berjalan_b=?,berjalan_c=?,hasil=?,lapor=?,ket_lapor=?,sg1=?,nilai1=?,sg2=?,nilai2=?,total_hasil=?,nyeri=?,provokes=?,ket_provokes=?,quality=?,ket_quality=?,lokasi=?,menyebar=?,skala_nyeri=?,durasi=?,nyeri_hilang=?,ket_nyeri=?,pada_dokter=?,ket_dokter=?,rencana=?,nip=?",58,new String[]{
+        if(Sequel.mengedittf("penilaian_awal_keperawatan_ralan_geriatri","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,td=?,nadi=?,rr=?,suhu=?,gcs=?,bb=?,tb=?,bmi=?,keluhan_utama=?,rpd=?,rpk=?,rpo=?,alergi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,adl=?,status_psiko=?,ket_psiko=?,hub_keluarga=?,tinggal_dengan=?,ket_tinggal=?,ekonomi=?,budaya=?,ket_budaya=?,edukasi=?,ket_edukasi=?,berjalan_a=?,berjalan_b=?,berjalan_c=?,hasil=?,lapor=?,ket_lapor=?,sg1=?,nilai1=?,sg2=?,nilai2=?,total_hasil=?,nyeri=?,provokes=?,ket_provokes=?,quality=?,ket_quality=?,lokasi=?,menyebar=?,skala_nyeri=?,durasi=?,nyeri_hilang=?,ket_nyeri=?,pada_dokter=?,ket_dokter=?,rencana=?,nip=?",58,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
                 Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),BMI.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),AlatBantu.getSelectedItem().toString(),KetBantu.getText(), 
                 Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(), 
@@ -4396,16 +4406,16 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 Provokes.getSelectedItem().toString(),KetProvokes.getText(),Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),
                 Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
              })==true){
-                Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
+                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah_geriatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
                     }
                 }
-                Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()});
+                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_rencana_geriatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()});
                     }
                 }
                 getMasalah();

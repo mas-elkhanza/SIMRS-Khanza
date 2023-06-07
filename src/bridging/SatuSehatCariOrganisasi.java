@@ -283,7 +283,7 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/satu_sehat_mapping_departemen.iyem")<8){
+            if(Valid.daysOld("./cache/satu_sehat_mapping_departemen.iyem")<30){
                 tampil2();
             }else{
                 tampil();
