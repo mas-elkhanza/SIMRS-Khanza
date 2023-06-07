@@ -688,6 +688,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         TCariRencana = new widget.TextBox();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel78 = new widget.Label();
+        jLabel90 = new widget.Label();
+        NyeriHilang1 = new widget.ComboBox();
+        jLabel91 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2228,10 +2231,31 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         jSeparator11.setBounds(0, 1000, 880, 1);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("VIII. KEBUTUHAN KOMUNIKASI DAN EDUKASI");
+        jLabel78.setText("IX. KEBUTUHAN KOMUNIKASI DAN EDUKASI");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
         jLabel78.setBounds(10, 1000, 380, 23);
+
+        jLabel90.setText(":");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(0, 1020, 170, 23);
+
+        NyeriHilang1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Kurang", "Tidak Bisa" }));
+        NyeriHilang1.setName("NyeriHilang1"); // NOI18N
+        NyeriHilang1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriHilang1KeyPressed(evt);
+            }
+        });
+        FormInput.add(NyeriHilang1);
+        NyeriHilang1.setBounds(180, 1020, 130, 23);
+
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel91.setText("Kemampuan Baca & Tulis");
+        jLabel91.setName("jLabel91"); // NOI18N
+        FormInput.add(jLabel91);
+        jLabel91.setBounds(40, 1020, 170, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3547,6 +3571,10 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         }
     }//GEN-LAST:event_tbMasalahKeperawatanMouseClicked
 
+    private void NyeriHilang1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriHilang1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NyeriHilang1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3630,6 +3658,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private widget.TextBox NmPetugas;
     private widget.ComboBox Nyeri;
     private widget.ComboBox NyeriHilang;
+    private widget.ComboBox NyeriHilang1;
     private widget.ComboBox PadaDokter;
     private widget.PanelBiasa PanelAccor;
     private usu.widget.glass.PanelGlass PanelWall;
@@ -3740,6 +3769,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private widget.Label jLabel88;
     private widget.Label jLabel89;
     private widget.Label jLabel9;
+    private widget.Label jLabel90;
+    private widget.Label jLabel91;
     private widget.Label jLabel92;
     private widget.Label jLabel93;
     private widget.Label jLabel94;
