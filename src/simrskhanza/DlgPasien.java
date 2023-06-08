@@ -3366,7 +3366,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2023" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2023" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3498,7 +3498,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(743, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-03-2023" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2023" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3548,7 +3548,7 @@ public class DlgPasien extends javax.swing.JDialog {
         R5.setText("Saudara");
         R5.setName("R5"); // NOI18N
         FormInput.add(R5);
-        R5.setBounds(210, 222, 100, 23);
+        R5.setBounds(210, 222, 90, 23);
 
         buttonGroup1.add(R4);
         R4.setText("Suami");
@@ -3566,7 +3566,7 @@ public class DlgPasien extends javax.swing.JDialog {
         R2.setText("Ibu");
         R2.setName("R2"); // NOI18N
         FormInput.add(R2);
-        R2.setBounds(210, 192, 100, 23);
+        R2.setBounds(210, 192, 90, 23);
 
         buttonGroup1.add(R1);
         R1.setText("Ayah");

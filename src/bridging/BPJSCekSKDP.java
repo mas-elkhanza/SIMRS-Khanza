@@ -6592,42 +6592,42 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         }    
 
         if(Kelurahan.isEditable()==true){
-            Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText().replaceAll("KELURAHAN","-")});
-            kdkel=kel.tampil3(Kelurahan.getText().replaceAll("KELURAHAN","-"));
+            Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
+            kdkel=kel.tampil3(Kelurahan.getText());
         }else if(Kelurahan.isEditable()==false){
             if(kdkel.equals("")){
-                Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText().replaceAll("KELURAHAN","-")});
-                kdkel=kel.tampil3(Kelurahan.getText().replaceAll("KELURAHAN","-"));
+                Sequel.queryu4("insert ignore into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText()});
+                kdkel=kel.tampil3(Kelurahan.getText());
             }
         }
 
         if(Kecamatan.isEditable()==true){
-            Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText().replaceAll("KECAMATAN","-")});
-            kdkec=kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-"));
+            Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText()});
+            kdkec=kec.tampil3(Kecamatan.getText());
         }else if(Kecamatan.isEditable()==false){
             if(kdkec.equals("")){
-                Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText().replaceAll("KECAMATAN","-")});
-                kdkec=kec.tampil3(Kecamatan.getText().replaceAll("KECAMATAN","-"));
+                Sequel.queryu4("insert ignore into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText()});
+                kdkec=kec.tampil3(Kecamatan.getText());
             }
         }
 
         if(Kabupaten.isEditable()==true){
-            Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
-            kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
+            Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
+            kdkab=kab.tampil3(Kabupaten.getText());
         }else if(Kabupaten.isEditable()==false){
             if(kdkab.equals("")){
-                Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
-                kdkab=kab.tampil3(Kabupaten.getText().replaceAll("KABUPATEN","-"));
+                Sequel.queryu4("insert ignore into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText()});
+                kdkab=kab.tampil3(Kabupaten.getText());
             }
         }
 
         if(Propinsi.isEditable()==true){
-           Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText().replaceAll("PROPINSI","-")}); 
-           kdprop=propin.tampil3(Propinsi.getText().replaceAll("PROPINSI","-"));
+           Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText()}); 
+           kdprop=propin.tampil3(Propinsi.getText());
         }else if(Propinsi.isEditable()==false){
             if(kdprop.equals("")){
-                Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText().replaceAll("PROPINSI","-")}); 
-                kdprop=propin.tampil3(Propinsi.getText().replaceAll("PROPINSI","-"));
+                Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText()}); 
+                kdprop=propin.tampil3(Propinsi.getText());
             }
         }
         
