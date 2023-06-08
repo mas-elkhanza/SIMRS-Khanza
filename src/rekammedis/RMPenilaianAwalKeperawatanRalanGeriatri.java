@@ -217,7 +217,13 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }else if(i==60){
                 column.setPreferredWidth(90);
             }else if(i==61){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
+            }else if(i==62){
+                column.setPreferredWidth(140);
+            }else if(i==63){
+                column.setPreferredWidth(125);
+            }else if(i==64){
+                column.setPreferredWidth(130);
             }else if(i==85){
                 column.setPreferredWidth(200);
             }else if(i==86){
