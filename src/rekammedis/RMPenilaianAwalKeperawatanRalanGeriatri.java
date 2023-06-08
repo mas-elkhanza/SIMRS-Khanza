@@ -79,7 +79,10 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             "Ket. Tinggal","Ekonomi","Budaya","Ket. Budaya","Edukasi","Ket. Edukasi","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C",
             "Hasil Penilaian Resiko Jatuh","Lapor Dokter","Ket. Lapor","Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Tingkat Nyeri","Provokes",
             "Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri Hilang","Ket. Hilang Nyeri","Lapor Ke Dokter",
-            "Jam Lapor","Rencana Keperawatan Lainnya","NIP","Nama Petugas"
+            "Jam Lapor","Kemampuan Baca & Tulis","Dibutuhkan Penerjamah","Keterangan Penerjemah","Hambatan Edukasi","Kategori Hambatan", 
+            "Keterangan Hambatan","Hambatan Cara Bicara","Bahasa Isyarat","Menerima Informasi","Keterangan Menerima Informasi","Cara Belajar Disukai", 
+            "Kehilangan Berat Badan","Nilai FP1","Aktifitas Fisik","Nilai FP2","Kelelahan","Nilai FP3","Kekuatan","Nilai FP4","Waktu Berjalan", 
+            "Nilai FP5","Total FP","Status Frailty Phenotype","Rencana Keperawatan Lainnya","NIP","Nama Petugas"
         }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -89,7 +92,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 65; i++) {
+        for (i = 0; i < 88; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -215,11 +218,11 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 column.setPreferredWidth(90);
             }else if(i==61){
                 column.setPreferredWidth(70);
-            }else if(i==62){
+            }else if(i==85){
                 column.setPreferredWidth(200);
-            }else if(i==63){
+            }else if(i==86){
                 column.setPreferredWidth(80);
-            }else if(i==64){
+            }else if(i==87){
                 column.setPreferredWidth(150);
             }
         }
@@ -745,7 +748,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         jLabel114 = new widget.Label();
         jLabel115 = new widget.Label();
         TotalNilaiFrailty = new widget.TextBox();
-        StatusSkorFarilty = new widget.TextBox();
+        StatusSkorFrailty = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2692,7 +2695,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         NilaiWaktuBerjalan.setBounds(774, 1280, 80, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel114.setText("Status Skor");
+        jLabel114.setText("Status Skor Frailty Phenotype");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
         jLabel114.setBounds(40, 1310, 340, 23);
@@ -2709,12 +2712,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         FormInput.add(TotalNilaiFrailty);
         TotalNilaiFrailty.setBounds(774, 1310, 80, 23);
 
-        StatusSkorFarilty.setEditable(false);
-        StatusSkorFarilty.setText("Sehat");
-        StatusSkorFarilty.setFocusTraversalPolicyProvider(true);
-        StatusSkorFarilty.setName("StatusSkorFarilty"); // NOI18N
-        FormInput.add(StatusSkorFarilty);
-        StatusSkorFarilty.setBounds(390, 1310, 250, 23);
+        StatusSkorFrailty.setEditable(false);
+        StatusSkorFrailty.setText("Sehat");
+        StatusSkorFrailty.setFocusTraversalPolicyProvider(true);
+        StatusSkorFrailty.setName("StatusSkorFrailty"); // NOI18N
+        FormInput.add(StatusSkorFrailty);
+        StatusSkorFrailty.setBounds(390, 1310, 250, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2948,7 +2951,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
-            if(Sequel.menyimpantf("penilaian_awal_keperawatan_ralan_geriatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",57,new String[]{
+            if(Sequel.menyimpantf("penilaian_awal_keperawatan_ralan_geriatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",80,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
                     Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),BMI.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),AlatBantu.getSelectedItem().toString(),KetBantu.getText(), 
                     Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(), 
@@ -2956,7 +2959,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     KetEdukasi.getText(),ATS.getSelectedItem().toString(),BJM.getSelectedItem().toString(),MSA.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(), 
                     SG1.getSelectedItem().toString(),Nilai1.getSelectedItem().toString(),SG2.getSelectedItem().toString(),Nilai2.getSelectedItem().toString(),TotalHasil.getText(),Nyeri.getSelectedItem().toString(),
                     Provokes.getSelectedItem().toString(),KetProvokes.getText(),Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),
-                    Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),Rencana.getText(),KdPetugas.getText()
+                    Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),KemampuanBacaTulis.getSelectedItem().toString(),DibutuhkanPenerjemah.getSelectedItem().toString(), 
+                    KeteranganPenerjamahLainnya.getText(),HambatanPembelajaran.getSelectedItem().toString(),KategoriHambatanPembelajaran.getSelectedItem().toString(),KeteranganHambatanPembelajaran.getText(),HambatanCaraBicara.getSelectedItem().toString(), 
+                    HambatanBahasaIsyarat.getSelectedItem().toString(),KesediaanMenerimaInformasi.getSelectedItem().toString(),KeteranganKesediaanMenerimaInformasi.getText(),CaraBelajarDisukai.getSelectedItem().toString(), 
+                    KehilanganBeratBadan.getSelectedItem().toString(),NilaiKehilanganBeratBadan.getText(),AktifitasFisik.getSelectedItem().toString(),NilaiAktifitasFisik.getText(),Kelelahan.getSelectedItem().toString(), 
+                    NilaiKelelahan.getText(),Kekuatan.getSelectedItem().toString(),NilaiKekuatan.getText(),WaktuBerjalan.getSelectedItem().toString(),NilaiWaktuBerjalan.getText(),TotalNilaiFrailty.getText(),StatusSkorFrailty.getText(),
+                    Rencana.getText(),KdPetugas.getText()
                 })==true){
                     for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                         if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
@@ -2997,7 +3005,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString())){
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -3033,7 +3041,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -4243,7 +4251,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private widget.ComboBox SkalaNyeri;
     private widget.ComboBox StatusBudaya;
     private widget.ComboBox StatusPsiko;
-    private widget.TextBox StatusSkorFarilty;
+    private widget.TextBox StatusSkorFrailty;
     private widget.TextBox Suhu;
     private widget.TextBox TB;
     private widget.TextBox TCari;
@@ -4421,7 +4429,11 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                         "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
-                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya,penilaian_awal_keperawatan_ralan_geriatri.edukasi_kemampuan_bacatulis,penilaian_awal_keperawatan_ralan_geriatri.edukasi_kebutuhan_penerjemah,penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_kebutuhan_penerjemah,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.edukasi_hambatan,penilaian_awal_keperawatan_ralan_geriatri.edukasi_hambatan_kategori,penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_hambatan,penilaian_awal_keperawatan_ralan_geriatri.edukasi_cara_bicara,penilaian_awal_keperawatan_ralan_geriatri.edukasi_bahasa_isyarat,penilaian_awal_keperawatan_ralan_geriatri.edukasi_menerima_informasi,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_menerima_informasi,penilaian_awal_keperawatan_ralan_geriatri.edukasi_metode_belajar,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_berat_badan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_berat_badan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_aktifitas_fisik,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_aktifitas_fisik_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kelelahan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kelelahan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kekuatan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kekuatan_nilai,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_waktu_berjalan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_waktu_berjalan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_nilai_total,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_status "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
                         "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
@@ -4439,7 +4451,11 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                         "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
-                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya,penilaian_awal_keperawatan_ralan_geriatri.edukasi_kemampuan_bacatulis,penilaian_awal_keperawatan_ralan_geriatri.edukasi_kebutuhan_penerjemah,penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_kebutuhan_penerjemah,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.edukasi_hambatan,penilaian_awal_keperawatan_ralan_geriatri.edukasi_hambatan_kategori,penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_hambatan,penilaian_awal_keperawatan_ralan_geriatri.edukasi_cara_bicara,penilaian_awal_keperawatan_ralan_geriatri.edukasi_bahasa_isyarat,penilaian_awal_keperawatan_ralan_geriatri.edukasi_menerima_informasi,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_menerima_informasi,penilaian_awal_keperawatan_ralan_geriatri.edukasi_metode_belajar,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_berat_badan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_berat_badan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_aktifitas_fisik,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_aktifitas_fisik_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kelelahan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kelelahan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kekuatan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kekuatan_nilai,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_waktu_berjalan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_waktu_berjalan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_nilai_total,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_status "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
                         "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
@@ -4476,7 +4492,13 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                         rs.getString("hasil"),rs.getString("lapor"),rs.getString("ket_lapor"),rs.getString("sg1"),rs.getString("nilai1"),rs.getString("sg2"),rs.getString("nilai2"),
                         rs.getString("total_hasil"),rs.getString("nyeri"),rs.getString("provokes"),rs.getString("ket_provokes"),rs.getString("quality"),rs.getString("ket_quality"),
                         rs.getString("lokasi"),rs.getString("menyebar"),rs.getString("skala_nyeri"),rs.getString("durasi"),rs.getString("nyeri_hilang"),rs.getString("ket_nyeri"),
-                        rs.getString("pada_dokter"),rs.getString("ket_dokter"),rs.getString("rencana"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("pada_dokter"),rs.getString("ket_dokter"),rs.getString("edukasi_kemampuan_bacatulis"),rs.getString("edukasi_kebutuhan_penerjemah"),
+                        rs.getString("edukasi_keterangan_kebutuhan_penerjemah"),rs.getString("edukasi_hambatan"),rs.getString("edukasi_hambatan_kategori"),rs.getString("edukasi_keterangan_hambatan"),
+                        rs.getString("edukasi_cara_bicara"),rs.getString("edukasi_bahasa_isyarat"),rs.getString("edukasi_menerima_informasi"),rs.getString("edukasi_keterangan_menerima_informasi"),
+                        rs.getString("edukasi_metode_belajar"),rs.getString("fraily_phenotype_berat_badan"),rs.getString("fraily_phenotype_berat_badan_nilai"),rs.getString("fraily_phenotype_aktifitas_fisik"),
+                        rs.getString("fraily_phenotype_aktifitas_fisik_nilai"),rs.getString("fraily_phenotype_kelelahan"),rs.getString("fraily_phenotype_kelelahan_nilai"),
+                        rs.getString("fraily_phenotype_kekuatan"),rs.getString("fraily_phenotype_kekuatan_nilai"),rs.getString("fraily_phenotype_waktu_berjalan"),rs.getString("fraily_phenotype_waktu_berjalan_nilai"),
+                        rs.getString("fraily_phenotype_nilai_total"),rs.getString("fraily_phenotype_status"),rs.getString("rencana"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -4568,9 +4590,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         Kelelahan.setSelectedIndex(0);
         Kekuatan.setSelectedIndex(0);
         WaktuBerjalan.setSelectedIndex(0);
-        StatusSkorFarilty.setText("Sehat");
+        StatusSkorFrailty.setText("Sehat");
         TotalNilaiFrailty.setText("0");
-        
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
         }
@@ -4642,7 +4663,30 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             KetNyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
             PadaDokter.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
             KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
-            Rencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            KemampuanBacaTulis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            DibutuhkanPenerjemah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
+            KeteranganPenerjamahLainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+            HambatanPembelajaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString());
+            KategoriHambatanPembelajaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
+            KeteranganHambatanPembelajaran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
+            HambatanCaraBicara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
+            HambatanBahasaIsyarat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
+            KesediaanMenerimaInformasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+            KeteranganKesediaanMenerimaInformasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+            CaraBelajarDisukai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString());
+            KehilanganBeratBadan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
+            NilaiKehilanganBeratBadan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),74).toString());
+            AktifitasFisik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString());
+            NilaiAktifitasFisik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),76).toString());
+            Kelelahan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),77).toString());
+            NilaiKelelahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString());
+            Kekuatan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString());
+            NilaiKekuatan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),80).toString());
+            WaktuBerjalan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),81).toString());
+            NilaiWaktuBerjalan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),82).toString());
+            TotalNilaiFrailty.setText(tbObat.getValueAt(tbObat.getSelectedRow(),83).toString());
+            StatusSkorFrailty.setText(tbObat.getValueAt(tbObat.getSelectedRow(),84).toString());
+            Rencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),85).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             
             try {
@@ -5044,7 +5088,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_awal_keperawatan_ralan_geriatri","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,td=?,nadi=?,rr=?,suhu=?,gcs=?,bb=?,tb=?,bmi=?,keluhan_utama=?,rpd=?,rpk=?,rpo=?,alergi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,adl=?,status_psiko=?,ket_psiko=?,hub_keluarga=?,tinggal_dengan=?,ket_tinggal=?,ekonomi=?,budaya=?,ket_budaya=?,edukasi=?,ket_edukasi=?,berjalan_a=?,berjalan_b=?,berjalan_c=?,hasil=?,lapor=?,ket_lapor=?,sg1=?,nilai1=?,sg2=?,nilai2=?,total_hasil=?,nyeri=?,provokes=?,ket_provokes=?,quality=?,ket_quality=?,lokasi=?,menyebar=?,skala_nyeri=?,durasi=?,nyeri_hilang=?,ket_nyeri=?,pada_dokter=?,ket_dokter=?,rencana=?,nip=?",58,new String[]{
+        if(Sequel.mengedittf("penilaian_awal_keperawatan_ralan_geriatri","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,td=?,nadi=?,rr=?,suhu=?,gcs=?,bb=?,tb=?,bmi=?,keluhan_utama=?,rpd=?,rpk=?,rpo=?,alergi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,"+
+                "adl=?,status_psiko=?,ket_psiko=?,hub_keluarga=?,tinggal_dengan=?,ket_tinggal=?,ekonomi=?,budaya=?,ket_budaya=?,edukasi=?,ket_edukasi=?,berjalan_a=?,berjalan_b=?,berjalan_c=?,hasil=?,lapor=?,ket_lapor=?,sg1=?,nilai1=?,sg2=?,nilai2=?,total_hasil=?,"+
+                "nyeri=?,provokes=?,ket_provokes=?,quality=?,ket_quality=?,lokasi=?,menyebar=?,skala_nyeri=?,durasi=?,nyeri_hilang=?,ket_nyeri=?,pada_dokter=?,ket_dokter=?,edukasi_kemampuan_bacatulis=?,edukasi_kebutuhan_penerjemah=?,edukasi_keterangan_kebutuhan_penerjemah=?,"+
+                "edukasi_hambatan=?,edukasi_hambatan_kategori=?,edukasi_keterangan_hambatan=?,edukasi_cara_bicara=?,edukasi_bahasa_isyarat=?,edukasi_menerima_informasi=?,edukasi_keterangan_menerima_informasi=?,edukasi_metode_belajar=?,fraily_phenotype_berat_badan=?,"+
+                "fraily_phenotype_berat_badan_nilai=?,fraily_phenotype_aktifitas_fisik=?,fraily_phenotype_aktifitas_fisik_nilai=?,fraily_phenotype_kelelahan=?,fraily_phenotype_kelelahan_nilai=?,fraily_phenotype_kekuatan=?,fraily_phenotype_kekuatan_nilai=?,"+
+                "fraily_phenotype_waktu_berjalan=?,fraily_phenotype_waktu_berjalan_nilai=?,fraily_phenotype_nilai_total=?,fraily_phenotype_status=?,rencana=?,nip=?",81,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
                 Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),BMI.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),AlatBantu.getSelectedItem().toString(),KetBantu.getText(), 
                 Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(), 
@@ -5052,7 +5101,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 KetEdukasi.getText(),ATS.getSelectedItem().toString(),BJM.getSelectedItem().toString(),MSA.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(), 
                 SG1.getSelectedItem().toString(),Nilai1.getSelectedItem().toString(),SG2.getSelectedItem().toString(),Nilai2.getSelectedItem().toString(),TotalHasil.getText(),Nyeri.getSelectedItem().toString(),
                 Provokes.getSelectedItem().toString(),KetProvokes.getText(),Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),
-                Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),KemampuanBacaTulis.getSelectedItem().toString(),DibutuhkanPenerjemah.getSelectedItem().toString(), 
+                KeteranganPenerjamahLainnya.getText(),HambatanPembelajaran.getSelectedItem().toString(),KategoriHambatanPembelajaran.getSelectedItem().toString(),KeteranganHambatanPembelajaran.getText(),HambatanCaraBicara.getSelectedItem().toString(), 
+                HambatanBahasaIsyarat.getSelectedItem().toString(),KesediaanMenerimaInformasi.getSelectedItem().toString(),KeteranganKesediaanMenerimaInformasi.getText(),CaraBelajarDisukai.getSelectedItem().toString(), 
+                KehilanganBeratBadan.getSelectedItem().toString(),NilaiKehilanganBeratBadan.getText(),AktifitasFisik.getSelectedItem().toString(),NilaiAktifitasFisik.getText(),Kelelahan.getSelectedItem().toString(), 
+                NilaiKelelahan.getText(),Kekuatan.getSelectedItem().toString(),NilaiKekuatan.getText(),WaktuBerjalan.getSelectedItem().toString(),NilaiWaktuBerjalan.getText(),TotalNilaiFrailty.getText(),StatusSkorFrailty.getText(),
+                Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
              })==true){
                 Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
@@ -5082,16 +5136,16 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         }
         try {
             if(Integer.parseInt(TotalNilaiFrailty.getText())>4){
-                StatusSkorFarilty.setText("Sangat Lemah");
+                StatusSkorFrailty.setText("Sangat Lemah");
             }else if(Integer.parseInt(TotalNilaiFrailty.getText())>2){
-                StatusSkorFarilty.setText("Lemah");
+                StatusSkorFrailty.setText("Lemah");
             }else if(Integer.parseInt(TotalNilaiFrailty.getText())>0){
-                StatusSkorFarilty.setText("Sedikit Lemah");
+                StatusSkorFrailty.setText("Sedikit Lemah");
             }else if(Integer.parseInt(TotalNilaiFrailty.getText())==0){
-                StatusSkorFarilty.setText("Sehat");
+                StatusSkorFrailty.setText("Sehat");
             }
         } catch (Exception e) {
-            StatusSkorFarilty.setText("Sehat");
+            StatusSkorFrailty.setText("Sehat");
         }
     }
 }

@@ -3653,7 +3653,7 @@
                         <Component class="widget.Label" name="jLabel114">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="Status Skor"/>
+                            <Property name="text" type="java.lang.String" value="Status Skor Frailty Phenotype"/>
                             <Property name="name" type="java.lang.String" value="jLabel114" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -3686,12 +3686,12 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="widget.TextBox" name="StatusSkorFarilty">
+                        <Component class="widget.TextBox" name="StatusSkorFrailty">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="Sehat"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                            <Property name="name" type="java.lang.String" value="StatusSkorFarilty" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="StatusSkorFrailty" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
