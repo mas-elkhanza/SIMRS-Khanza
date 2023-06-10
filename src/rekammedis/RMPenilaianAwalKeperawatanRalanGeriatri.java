@@ -3199,6 +3199,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VI. PENILAIAN RESIKO JATUH</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VII. SKRINING GIZI</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VIII. PENILAIAN TINGKAT NYERI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IX. KEBUTUHAN KOMUNIKASI DAN EDUKASI</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>X. FRAILTY PHENOTYPE</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MASALAH & RENCANA KEPERAWATAN</b></td>"+
                         "</tr>"
                     );
@@ -3392,19 +3394,13 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                                 "<td valign='top' cellpadding='0' cellspacing='0'>"+
                                     "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Apakah ada penurunan berat badanyang tidak diinginkan selama enam bulan terakhir?</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("sg1")+"</td>"+
+                                            "<td width='64%' valign='top'>1. Apakah ada penurunan berat badanyang tidak diinginkan selama enam bulan terakhir?</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'>"+rs.getString("sg1")+"</td><td width='10%' valign='top'>"+rs.getString("nilai1")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Apakah nafsu makan berkurang karena tidak nafsu makan?</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("sg2")+"</td>"+
+                                            "<td width='64%' valign='top'>2. Apakah nafsu makan berkurang karena tidak nafsu makan?</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'>"+rs.getString("sg2")+"</td><td width='10%' valign='top'>"+rs.getString("nilai2")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Nilai 1</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("nilai1")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Nilai 2</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("nilai2")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Total Skor</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("total_hasil")+"</td>"+
+                                            "<td width='64%' valign='top'>Total Skor</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'></td><td width='10%' valign='top'>"+rs.getString("total_hasil")+"</td>"+
                                         "</tr>"+
                                     "</table>"+
                                 "</td>"+
@@ -3452,6 +3448,53 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                                     "</table>"+
                                 "</td>"+
                                 "<td valign='top' cellpadding='0' cellspacing='0'>"+
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='34%' valign='top'>Kemampuan Baca & Tulis</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_kemampuan_bacatulis")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='34%' valign='top'>Dibutuhkan Penerjamah</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_kebutuhan_penerjemah")+(rs.getString("edukasi_keterangan_kebutuhan_penerjemah").equals("")?"":", "+rs.getString("edukasi_keterangan_kebutuhan_penerjemah"))+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='34%' valign='top'>Hambatan Dalam Pembelajaran</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_hambatan")+(rs.getString("edukasi_hambatan").equals("Ya")?", "+rs.getString("edukasi_hambatan_kategori"):"")+(rs.getString("edukasi_keterangan_hambatan").equals("")?"":", Lainya : "+rs.getString("edukasi_keterangan_hambatan"))+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='34%' valign='top'>Hambatan Cara Bicara</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_cara_bicara")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='34%' valign='top'>Hambatan Bahasa Isyarat</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_bahasa_isyarat")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='34%' valign='top'>Cara Belajar Yang Disukai</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_metode_belajar")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='34%' valign='top'>Kesediaan Menerima Informasi</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_menerima_informasi")+(rs.getString("edukasi_keterangan_menerima_informasi").equals("")?"":", "+rs.getString("edukasi_keterangan_menerima_informasi"))+"</td>"+
+                                        "</tr>"+
+                                    "</table>"+
+                                "</td>"+
+                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='44%' valign='top'>1. Kehilangan Berat Badan Yang Tidak Diinginkan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_berat_badan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_berat_badan_nilai")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='44%' valign='top'>2. Aktifitas Fisik</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_aktifitas_fisik")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_aktifitas_fisik_nilai")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='44%' valign='top'>3. Kelelahan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_kelelahan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_kelelahan_nilai")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='44%' valign='top'>4. Kekuatan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_kekuatan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_kekuatan_nilai")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='44%' valign='top'>5. Waktu Berjalan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_waktu_berjalan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_waktu_berjalan_nilai")+"</td>"+
+                                        "</tr>"+
+                                        "<tr class='isi2'>"+
+                                            "<td width='44%' valign='top'>Status Skor Frailty Phenotype</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_status")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_nilai_total")+"</td>"+
+                                        "</tr>"+              
+                                    "</table>"+
+                                "</td>"+
+                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
                                     "Masalah Keperawatan : "+masalahkeperawatangeriatri+"<br><br>"+
                                     "Rencana Keperawatan : "+rs.getString("rencana")+
                                 "</td>"+
@@ -3481,7 +3524,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     );
                     bg.close();
 
-                    File f = new File("DataPenilaianAwalKeperawatanRalan.html");            
+                    File f = new File("DataPenilaianAwalKeperawatanRalanGeriatri.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -3491,7 +3534,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL KEPERAWATAN RAWAT JALAN<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL KEPERAWATAN RAWAT JALAN GERIATRI<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")
@@ -3948,7 +3991,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 System.out.println("Notif : "+e);
             }
             param.put("rencana",masalahkeperawatangeriatri); 
-            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalan.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanGeriatri.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan Geriatri ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_geriatri.tanggal,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.informasi,penilaian_awal_keperawatan_ralan_geriatri.td,penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.gcs,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,penilaian_awal_keperawatan_ralan_geriatri.bmi,penilaian_awal_keperawatan_ralan_geriatri.keluhan_utama,"+
@@ -3958,7 +4001,11 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                         "penilaian_awal_keperawatan_ralan_geriatri.berjalan_c,penilaian_awal_keperawatan_ralan_geriatri.hasil,penilaian_awal_keperawatan_ralan_geriatri.lapor,penilaian_awal_keperawatan_ralan_geriatri.ket_lapor,penilaian_awal_keperawatan_ralan_geriatri.sg1,penilaian_awal_keperawatan_ralan_geriatri.nilai1,penilaian_awal_keperawatan_ralan_geriatri.sg2,penilaian_awal_keperawatan_ralan_geriatri.nilai2,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.total_hasil,penilaian_awal_keperawatan_ralan_geriatri.nyeri,penilaian_awal_keperawatan_ralan_geriatri.provokes,penilaian_awal_keperawatan_ralan_geriatri.ket_provokes,penilaian_awal_keperawatan_ralan_geriatri.quality,penilaian_awal_keperawatan_ralan_geriatri.ket_quality,penilaian_awal_keperawatan_ralan_geriatri.lokasi,penilaian_awal_keperawatan_ralan_geriatri.menyebar,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.skala_nyeri,penilaian_awal_keperawatan_ralan_geriatri.durasi,penilaian_awal_keperawatan_ralan_geriatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_geriatri.ket_nyeri,penilaian_awal_keperawatan_ralan_geriatri.pada_dokter,penilaian_awal_keperawatan_ralan_geriatri.ket_dokter,penilaian_awal_keperawatan_ralan_geriatri.rencana,"+
-                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya "+
+                        "penilaian_awal_keperawatan_ralan_geriatri.nip,petugas.nama,penilaian_awal_keperawatan_ralan_geriatri.budaya,penilaian_awal_keperawatan_ralan_geriatri.ket_budaya,penilaian_awal_keperawatan_ralan_geriatri.edukasi_kemampuan_bacatulis,penilaian_awal_keperawatan_ralan_geriatri.edukasi_kebutuhan_penerjemah,penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_kebutuhan_penerjemah,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.edukasi_hambatan,penilaian_awal_keperawatan_ralan_geriatri.edukasi_hambatan_kategori,penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_hambatan,penilaian_awal_keperawatan_ralan_geriatri.edukasi_cara_bicara,penilaian_awal_keperawatan_ralan_geriatri.edukasi_bahasa_isyarat,penilaian_awal_keperawatan_ralan_geriatri.edukasi_menerima_informasi,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.edukasi_keterangan_menerima_informasi,penilaian_awal_keperawatan_ralan_geriatri.edukasi_metode_belajar,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_berat_badan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_berat_badan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_aktifitas_fisik,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_aktifitas_fisik_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kelelahan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kelelahan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kekuatan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_kekuatan_nilai,"+
+                        "penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_waktu_berjalan,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_waktu_berjalan_nilai,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_nilai_total,penilaian_awal_keperawatan_ralan_geriatri.fraily_phenotype_status "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_awal_keperawatan_ralan_geriatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_geriatri.no_rawat "+
                         "inner join petugas on penilaian_awal_keperawatan_ralan_geriatri.nip=petugas.nip "+
