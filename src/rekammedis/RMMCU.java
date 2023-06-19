@@ -985,7 +985,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2022 07:38:31" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022 17:17:33" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1085,7 +1085,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel39.setText("Nyeri Tekan Sinus Frontalis :");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(301, 400, 140, 23);
+        jLabel39.setBounds(271, 400, 170, 23);
 
         jLabel55.setText("Riwayat Penyakit Sekarang :");
         jLabel55.setName("jLabel55"); // NOI18N
@@ -2345,7 +2345,7 @@ public final class RMMCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2359,7 +2359,7 @@ public final class RMMCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2610,86 +2610,86 @@ public final class RMMCU extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='160px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Informasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Riwayat Peyakit Sekarang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Riwayat Penyakit Keluarga</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Riwayat Penyakit Dahulu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Alergi Makan & Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Keadaan Umum</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='77px'><b>Kesadaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>T.D.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30px'><b>Nadi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30px'><b>R.R.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30px'><b>T.B.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30px'><b>B.B.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='32px'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='87px'><b>Submandibula</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='87px'><b>Axilla</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='87px'><b>Supraklavikula</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='87px'><b>Leher</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='87px'><b>Inguinal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='57px'><b>Oedema</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='57px'><b>Frontalis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='57px'><b>Maxilaris</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Palpebra</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Sklera</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Cornea</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Buta Warna</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='68px'><b>Konjungtiva</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='57px'><b>Lensa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='52px'><b>Pupil</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='82px'><b>Lubang Telinga</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='73px'><b>Daun Telinga</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='112px'><b>Selaput Pendengaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Proc.Mastoideus</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>Septum Nasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Lubang Hidung</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Bibir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Caries</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Lidah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54px'><b>Faring</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45px'><b>Tonsil</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Kelenjar Limfe</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Kelenjar Gondok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Gerakan Dada</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Vocal Femitus</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Perkusi Dada</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='69px'><b>Bunyi Napas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='89px'><b>Bunyi Tambahan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Ictus Cordis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='79px'><b>Bunyi Jantung</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Batas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Inspeksi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='131px'><b>Palpasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Hepar</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='92px'><b>Perkusi Abdomen</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='117px'><b>Auskultasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='87px'><b>Limpa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Costovertebral</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>Kondisi Kulit</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Extrimitas Atas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='143px'><b>Keterangan Extrimitas Atas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='93px'><b>Extrimitas Bawah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='153px'><b>Keterangan Extrimitas Bawah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Pemeriksaan Laboratorium</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Rongsen Thorax</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>EKG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Spirometri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Audiometri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Treadmill</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Lain-Lain</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Merokok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Alkohol</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='250px'><b>Kesimpulan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='250px'><b>Anjuran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Kode Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Nama Dokter Penanggung Jawab</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='160px'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='120px'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Informasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Riwayat Peyakit Sekarang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Riwayat Penyakit Keluarga</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Riwayat Penyakit Dahulu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'><b>Alergi Makan & Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'><b>Keadaan Umum</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='77px'><b>Kesadaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45px'><b>T.D.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px'><b>Nadi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px'><b>R.R.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px'><b>T.B.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px'><b>B.B.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='32px'><b>Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='87px'><b>Submandibula</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='87px'><b>Axilla</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='87px'><b>Supraklavikula</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='87px'><b>Leher</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='87px'><b>Inguinal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='57px'><b>Oedema</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='57px'><b>Frontalis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='57px'><b>Maxilaris</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='72px'><b>Palpebra</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='72px'><b>Sklera</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='72px'><b>Cornea</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'><b>Buta Warna</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='68px'><b>Konjungtiva</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='57px'><b>Lensa</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='52px'><b>Pupil</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='82px'><b>Lubang Telinga</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='73px'><b>Daun Telinga</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='112px'><b>Selaput Pendengaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'><b>Proc.Mastoideus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'><b>Septum Nasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Lubang Hidung</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Bibir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='60px'><b>Caries</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45px'><b>Lidah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'><b>Faring</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='45px'><b>Tonsil</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'><b>Kelenjar Limfe</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'><b>Kelenjar Gondok</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Gerakan Dada</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Vocal Femitus</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='72px'><b>Perkusi Dada</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='69px'><b>Bunyi Napas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='89px'><b>Bunyi Tambahan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='72px'><b>Ictus Cordis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='79px'><b>Bunyi Jantung</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Batas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'><b>Inspeksi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='131px'><b>Palpasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'><b>Hepar</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='92px'><b>Perkusi Abdomen</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='117px'><b>Auskultasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='87px'><b>Limpa</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'><b>Costovertebral</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'><b>Kondisi Kulit</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'><b>Extrimitas Atas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='143px'><b>Keterangan Extrimitas Atas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='93px'><b>Extrimitas Bawah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='153px'><b>Keterangan Extrimitas Bawah</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Pemeriksaan Laboratorium</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Rongsen Thorax</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>EKG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Spirometri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Audiometri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Treadmill</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='200px'><b>Lain-Lain</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='120px'><b>Merokok</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='120px'><b>Alkohol</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='250px'><b>Kesimpulan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='250px'><b>Anjuran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'><b>Kode Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center' width='170px'><b>Nama Dokter Penanggung Jawab</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -3816,7 +3816,7 @@ public final class RMMCU extends javax.swing.JDialog {
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", NmDokter,KdDokter.getText());
+            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
@@ -3826,14 +3826,14 @@ public final class RMMCU extends javax.swing.JDialog {
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void hapus() {
         if(Sequel.queryu2tf("delete from penilaian_mcu where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

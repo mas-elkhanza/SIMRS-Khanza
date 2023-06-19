@@ -975,7 +975,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("norujuk",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
             Valid.MyReport("rptBridgingRujukanBPJS.jasper",param,"::[ Surat Rujukan Keluar VClaim ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }else{

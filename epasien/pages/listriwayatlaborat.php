@@ -23,7 +23,7 @@
                         </thead>
                         <tbody>
                         <?php 
-                           $queryperiksa = bukaquery("select permintaan_lab.noorder,permintaan_lab.no_rawat,date_format(permintaan_lab.tgl_permintaan,'%d/%m/%Y') as tanggal,permintaan_lab.jam_permintaan,dokter.nm_dokter,permintaan_lab.diagnosa_klinis,penjab.png_jawab,permintaan_lab.tgl_hasil from permintaan_lab inner join dokter on permintaan_lab.dokter_perujuk=dokter.kd_dokter inner join reg_periksa on reg_periksa.no_rawat=permintaan_lab.no_rawat inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+                           $queryperiksa = bukaquery("select permintaan_lab.noorder,permintaan_lab.no_rawat,date_format(permintaan_lab.tgl_permintaan,'%d/%m/%Y') as tanggal,permintaan_lab.jam_permintaan,dokter.nm_dokter,permintaan_lab.diagnosa_klinis,penjab.png_jawab,permintaan_lab.tgl_hasil from permintaan_lab inner join dokter on permintaan_lab.dokter_perujuk=dokter.kd_dokter inner join reg_periksa on reg_periksa.no_rawat=permintaan_lab.no_rawat inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");
                            while($rsqueryperiksa = mysqli_fetch_array($queryperiksa)) {
                                echo "<tr>
                                         <td align='center' valign='middle'>".$rsqueryperiksa["tanggal"]." ".$rsqueryperiksa["jam_permintaan"]."</td>

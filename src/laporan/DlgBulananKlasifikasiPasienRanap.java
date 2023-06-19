@@ -506,15 +506,15 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='2'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='2'>Jml.Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='63%' colspan='3'>Klasifikasi Ketergantungan Pasien Rawat Inap</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='16%' rowspan='2'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='16%' rowspan='2'>Jml.Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='63%' colspan='3'>Klasifikasi Ketergantungan Pasien Rawat Inap</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Minimal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Partial</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Minimal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Partial</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
                 "</tr>"
             );     
             ps=koneksi.prepareStatement(

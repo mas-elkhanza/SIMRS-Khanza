@@ -6,8 +6,8 @@
     $token      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $token      = json_decode(encrypt_decrypt($token,"d"),true); 
     if (isset($token["noantrian"])) {
-        $noantrian  = $token["noantrian"];
-        $tahun      = $token["tahun"];
+        $noantrian  = cleankar2($token["noantrian"]);
+        $tahun      = cleankar2($token["tahun"]);
         $querysuratkontrol = bukaquery("select skdp_bpjs.tahun,skdp_bpjs.no_rkm_medis,pasien.nm_pasien,skdp_bpjs.diagnosa,skdp_bpjs.terapi,skdp_bpjs.alasan1,skdp_bpjs.alasan2,skdp_bpjs.rtl1,skdp_bpjs.rtl2,skdp_bpjs.tanggal_datang,skdp_bpjs.tanggal_rujukan,skdp_bpjs.no_antrian,skdp_bpjs.kd_dokter,dokter.nm_dokter,skdp_bpjs.status from skdp_bpjs inner join pasien inner join dokter on skdp_bpjs.no_rkm_medis=pasien.no_rkm_medis and skdp_bpjs.kd_dokter=dokter.kd_dokter where skdp_bpjs.no_antrian='$noantrian' and skdp_bpjs.tahun='$tahun'");
         if($rsquerysuratkontrol = mysqli_fetch_array($querysuratkontrol)) {
             $PNG_TEMP_DIR           = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
@@ -18,7 +18,7 @@
             $filename2              = $PNG_TEMP_DIR.$rsquerysuratkontrol["no_antrian"].'.png';
             $errorCorrectionLevel   = 'L';
             $matrixPointSize        = 4;
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysuratkontrol["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratkontrol["kd_dokter"]."'",$rsquerysuratkontrol["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysuratkontrol["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratkontrol["kd_dokter"]."'",$rsquerysuratkontrol["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
             QRcode::png($rsquerysuratkontrol["no_antrian"], $filename2, $errorCorrectionLevel, $matrixPointSize, 2); 
             
             echo "<div class='row clearfix'>

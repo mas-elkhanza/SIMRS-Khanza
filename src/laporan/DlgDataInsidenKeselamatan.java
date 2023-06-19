@@ -145,7 +145,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Tindakan.setDocument(new batasInput((int)150).getKata(Tindakan));
         Identifikasi.setDocument(new batasInput((int)150).getKata(Identifikasi));
         TindakLanjut.setDocument(new batasInput((int)150).getKata(TindakLanjut));
-        Kronologis.setDocument(new batasInput((int)200).getKata(Kronologis));
+        Kronologis.setDocument(new batasInput((int)300).getKata(Kronologis));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -1333,7 +1333,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
     private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",namapetugas,nip.getText());
+            namapetugas.setText(petugas.tampil3(nip.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             DetikLapor.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1856,7 +1856,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getinsiden_keselamatan_pasien()); 
         if(akses.getjml2()>=1){
             nip.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",namapetugas,nip.getText());
+            namapetugas.setText(petugas.tampil3(nip.getText()));
         }            
     }
 

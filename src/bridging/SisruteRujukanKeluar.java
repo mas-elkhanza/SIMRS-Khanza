@@ -2301,7 +2301,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         Sequel.menyimpan2("rujuk","'"+root.path("data").path("RUJUKAN").path("NOMOR").asText()+"','"+
                                 TNoRw.getText()+"','"+Valid.MaxTeks(NmFaskes.getText(),150)+"','"+
                                 Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+"','"+NmDiagnosa.getText()+"','"+
-                                Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText())+
+                                Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText())+
                                 "','-','-','"+KeadaanUmum.getText()+"','"+TanggalRujuk.getSelectedItem().toString().substring(11,19)+"'","No.Rujuk");
                         emptTeks();
                     }
@@ -2506,7 +2506,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                             Sequel.menyimpan2("rujuk","'"+root.path("data").path("RUJUKAN").path("NOMOR").asText()+"','"+
                                 TNoRw.getText()+"','"+Valid.MaxTeks(NmFaskes.getText(),150)+"','"+
                                 Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+"','"+NmDiagnosa.getText()+"','"+
-                                Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText())+
+                                Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText())+
                                 "','-','-','"+KeadaanUmum.getText()+"','"+TanggalRujuk.getSelectedItem().toString().substring(11,19)+"'","No.Rujuk");
                             emptTeks();
                         }
@@ -3491,8 +3491,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
-            Sequel.cariIsi("select no_ktp from pegawai where nik=?",KdPetugas,akses.getkode());
-            Sequel.cariIsi("select nama from pegawai where nik=?",PetugasEntry,akses.getkode());
+            Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",KdPetugas,akses.getkode());
+            PetugasEntry.setText(pegawai.tampil3(akses.getkode()));
         }  
     }
     

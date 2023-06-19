@@ -1009,7 +1009,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }//GEN-LAST:event_BtnSimpan6ActionPerformed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmSubInduk,KdSubInduk.getText());
+        Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",NmSubInduk,KdSubInduk.getText());
         if(NmSubInduk.getText().trim().equals("")){
             JOptionPane.showMessageDialog(rootPane,"Akun Rekening tidak ditemukan");
         }
@@ -1019,7 +1019,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private void KdSubIndukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdSubIndukKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(!KdSubInduk.getText().trim().equals("")){
-                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmSubInduk,KdSubInduk.getText());
+                 Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",NmSubInduk,KdSubInduk.getText());
                 if(NmSubInduk.getText().trim().equals("")){
                     JOptionPane.showMessageDialog(rootPane,"Akun Rekening tidak ditemukan");
                 }

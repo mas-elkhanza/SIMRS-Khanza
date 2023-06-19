@@ -47,7 +47,7 @@ public final class DlgKamar extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String asalform="",ubah_status_kamar=Sequel.cariIsi("select ubah_status_kamar from set_jam_minimal");
+    private String asalform="",ubah_status_kamar=Sequel.cariIsi("select set_jam_minimal.ubah_status_kamar from set_jam_minimal");
 
     /** Creates new form DlgKamar
      * @param parent
@@ -950,7 +950,7 @@ public final class DlgKamar extends javax.swing.JDialog {
 
 private void kd_bangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kd_bangsalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?", TBangsal,kd_bangsal.getText());
+            TBangsal.setText(bangsal.tampil3(kd_bangsal.getText())); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKamarActionPerformed(null);
         }else{
@@ -960,7 +960,7 @@ private void kd_bangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
 private void kdbangsalcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbangsalcariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",BangsalCari,kdbangsalcari.getText());
+            BangsalCari.setText(bangsal.tampil3(kdbangsalcari.getText())); 
             tampil();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKamarCariActionPerformed(null);
@@ -1187,8 +1187,4 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
             MnRestore.setEnabled(false);
         }
      }
-     
-    
-
- 
 }

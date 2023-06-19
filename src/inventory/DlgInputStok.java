@@ -227,6 +227,9 @@ public class DlgInputStok extends javax.swing.JDialog {
         MnKategoriDesc = new javax.swing.JMenuItem();
         MnSatuanDesc = new javax.swing.JMenuItem();
         MnSatuanAsc = new javax.swing.JMenuItem();
+        ppBatch1Bulan = new javax.swing.JMenuItem();
+        ppBatch3Bulan = new javax.swing.JMenuItem();
+        ppBatch6Bulan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -270,7 +273,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
-        ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(250, 26));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBersihkanActionPerformed(evt);
@@ -286,7 +289,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppStok.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppStok.setName("ppStok"); // NOI18N
-        ppStok.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppStok.setPreferredSize(new java.awt.Dimension(250, 26));
         ppStok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppStokActionPerformed(evt);
@@ -302,7 +305,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppBelumOpname.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBelumOpname.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBelumOpname.setName("ppBelumOpname"); // NOI18N
-        ppBelumOpname.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppBelumOpname.setPreferredSize(new java.awt.Dimension(250, 26));
         ppBelumOpname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBelumOpnameActionPerformed(evt);
@@ -318,7 +321,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppSudahOpname.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSudahOpname.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppSudahOpname.setName("ppSudahOpname"); // NOI18N
-        ppSudahOpname.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppSudahOpname.setPreferredSize(new java.awt.Dimension(250, 26));
         ppSudahOpname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppSudahOpnameActionPerformed(evt);
@@ -334,7 +337,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         MnUrut.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut.setName("MnUrut"); // NOI18N
-        MnUrut.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnUrut.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnKodeBarangDesc.setBackground(new java.awt.Color(255, 255, 254));
         MnKodeBarangDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -465,6 +468,54 @@ public class DlgInputStok extends javax.swing.JDialog {
         MnUrut.add(MnSatuanAsc);
 
         Popup.add(MnUrut);
+
+        ppBatch1Bulan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBatch1Bulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBatch1Bulan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBatch1Bulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBatch1Bulan.setText("Tampilkan Data Batch 1 Bulan Terakhir");
+        ppBatch1Bulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBatch1Bulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBatch1Bulan.setName("ppBatch1Bulan"); // NOI18N
+        ppBatch1Bulan.setPreferredSize(new java.awt.Dimension(250, 26));
+        ppBatch1Bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBatch1BulanActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBatch1Bulan);
+
+        ppBatch3Bulan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBatch3Bulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBatch3Bulan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBatch3Bulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBatch3Bulan.setText("Tampilkan Data Batch 3 Bulan Terakhir");
+        ppBatch3Bulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBatch3Bulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBatch3Bulan.setName("ppBatch3Bulan"); // NOI18N
+        ppBatch3Bulan.setPreferredSize(new java.awt.Dimension(250, 26));
+        ppBatch3Bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBatch3BulanActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBatch3Bulan);
+
+        ppBatch6Bulan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBatch6Bulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBatch6Bulan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBatch6Bulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBatch6Bulan.setText("Tampilkan Data Batch 6 Bulan Terakhir");
+        ppBatch6Bulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBatch6Bulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBatch6Bulan.setName("ppBatch6Bulan"); // NOI18N
+        ppBatch6Bulan.setPreferredSize(new java.awt.Dimension(250, 26));
+        ppBatch6Bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBatch6BulanActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBatch6Bulan);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -808,7 +859,7 @@ public class DlgInputStok extends javax.swing.JDialog {
                 }else if(tbDokter.getSelectedColumn()==11){
                     try {
                         if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString().equals("")){
-                            psstok=koneksi.prepareStatement("select * from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.sisa>0 order by data_batch.tgl_kadaluarsa limit 1");
+                            psstok=koneksi.prepareStatement("select data_batch.no_faktur,data_batch."+hppfarmasi+" as dasar from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.sisa>0 order by data_batch.tgl_kadaluarsa limit 1");
                             try {
                                 psstok.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString());
                                 psstok.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
@@ -994,12 +1045,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
 private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
         Tgl.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         BtnGudangActionPerformed(null);
@@ -1317,6 +1368,288 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
+    private void ppBatch1BulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBatch1BulanActionPerformed
+        if(kdgudang.getText().equals("")){
+            try{  
+                Valid.tabelKosong(tabMode);
+                file=new File("./cache/stokopname.iyem");
+                file.createNewFile();
+                fileWriter = new FileWriter(file);
+                iyem="";
+                pstampil=koneksi.prepareStatement(
+                    "select data_batch.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar, "+
+                    "data_batch.sisa,data_batch.no_batch,data_batch.no_faktur from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns where data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 1 MONTH) and current_date() "+
+                    (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                    }
+                    rstampil=pstampil.executeQuery();
+                    while(rstampil.next()){                            
+                        tabMode.addRow(new Object[]{
+                            "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),rstampil.getString("kode_sat"),
+                            rstampil.getDouble("dasar"),rstampil.getDouble("sisa"),0,0,0,0,rstampil.getString("no_batch"),rstampil.getString("no_faktur")
+                        });
+                        iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\",\"NoBatch\":\""+rstampil.getString("no_batch")+"\",\"NoFaktur\":\""+rstampil.getString("no_faktur")+"\",\"Stok\":\""+rstampil.getDouble("sisa")+"\"},";
+                    }  
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rstampil!=null){
+                        rstampil.close();
+                    }
+                    if(pstampil!=null){
+                        pstampil.close();
+                    }
+                }     
+                fileWriter.write("{\"stokopname\":["+iyem.substring(0,iyem.length()-1)+"]}");
+                fileWriter.flush();
+                fileWriter.close();
+                iyem=null; 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
+        }else{
+            try{  
+                Valid.tabelKosong(tabMode);
+                file=new File("./cache/stokopname.iyem");
+                file.createNewFile();
+                fileWriter = new FileWriter(file);
+                iyem="";
+                pstampil=koneksi.prepareStatement(
+                    "select data_batch.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar, "+
+                    "gudangbarang.stok as sisa,data_batch.no_batch,data_batch.no_faktur from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
+                    "where gudangbarang.kd_bangsal=? and data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 1 MONTH) and current_date() "+
+                    (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        pstampil.setString(1,kdgudang.getText());
+                        pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(4,"%"+TCari.getText().trim()+"%");
+                    }else{
+                        pstampil.setString(1,kdgudang.getText());
+                    }
+                    rstampil=pstampil.executeQuery();
+                    while(rstampil.next()){                            
+                        tabMode.addRow(new Object[]{
+                            "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),rstampil.getString("kode_sat"),
+                            rstampil.getDouble("dasar"),rstampil.getDouble("sisa"),0,0,0,0,rstampil.getString("no_batch"),rstampil.getString("no_faktur")
+                        });
+                        iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\",\"NoBatch\":\""+rstampil.getString("no_batch")+"\",\"NoFaktur\":\""+rstampil.getString("no_faktur")+"\",\"Stok\":\""+rstampil.getDouble("sisa")+"\"},";
+                    }  
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rstampil!=null){
+                        rstampil.close();
+                    }
+                    if(pstampil!=null){
+                        pstampil.close();
+                    }
+                }    
+                fileWriter.write("{\"stokopname\":["+iyem.substring(0,iyem.length()-1)+"]}");
+                fileWriter.flush();
+                fileWriter.close();
+                iyem=null; 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
+        }
+    }//GEN-LAST:event_ppBatch1BulanActionPerformed
+
+    private void ppBatch3BulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBatch3BulanActionPerformed
+        if(kdgudang.getText().equals("")){
+            try{  
+                Valid.tabelKosong(tabMode);
+                file=new File("./cache/stokopname.iyem");
+                file.createNewFile();
+                fileWriter = new FileWriter(file);
+                iyem="";
+                pstampil=koneksi.prepareStatement(
+                    "select data_batch.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar, "+
+                    "data_batch.sisa,data_batch.no_batch,data_batch.no_faktur from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns where data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 3 MONTH) and current_date() "+
+                    (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                    }
+                    rstampil=pstampil.executeQuery();
+                    while(rstampil.next()){                            
+                        tabMode.addRow(new Object[]{
+                            "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),rstampil.getString("kode_sat"),
+                            rstampil.getDouble("dasar"),rstampil.getDouble("sisa"),0,0,0,0,rstampil.getString("no_batch"),rstampil.getString("no_faktur")
+                        });
+                        iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\",\"NoBatch\":\""+rstampil.getString("no_batch")+"\",\"NoFaktur\":\""+rstampil.getString("no_faktur")+"\",\"Stok\":\""+rstampil.getDouble("sisa")+"\"},";
+                    }  
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rstampil!=null){
+                        rstampil.close();
+                    }
+                    if(pstampil!=null){
+                        pstampil.close();
+                    }
+                }   
+                fileWriter.write("{\"stokopname\":["+iyem.substring(0,iyem.length()-1)+"]}");
+                fileWriter.flush();
+                fileWriter.close();
+                iyem=null; 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
+        }else{
+            try{  
+                Valid.tabelKosong(tabMode);
+                file=new File("./cache/stokopname.iyem");
+                file.createNewFile();
+                fileWriter = new FileWriter(file);
+                iyem="";
+                pstampil=koneksi.prepareStatement(
+                    "select data_batch.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar, "+
+                    "gudangbarang.stok as sisa,data_batch.no_batch,data_batch.no_faktur from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
+                    "where gudangbarang.kd_bangsal=? and data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 3 MONTH) and current_date() "+
+                    (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        pstampil.setString(1,kdgudang.getText());
+                        pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(4,"%"+TCari.getText().trim()+"%");
+                    }else{
+                        pstampil.setString(1,kdgudang.getText());
+                    }
+                    rstampil=pstampil.executeQuery();
+                    while(rstampil.next()){                            
+                        tabMode.addRow(new Object[]{
+                            "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),rstampil.getString("kode_sat"),
+                            rstampil.getDouble("dasar"),rstampil.getDouble("sisa"),0,0,0,0,rstampil.getString("no_batch"),rstampil.getString("no_faktur")
+                        });
+                        iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\",\"NoBatch\":\""+rstampil.getString("no_batch")+"\",\"NoFaktur\":\""+rstampil.getString("no_faktur")+"\",\"Stok\":\""+rstampil.getDouble("sisa")+"\"},";
+                    }  
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rstampil!=null){
+                        rstampil.close();
+                    }
+                    if(pstampil!=null){
+                        pstampil.close();
+                    }
+                }   
+                fileWriter.write("{\"stokopname\":["+iyem.substring(0,iyem.length()-1)+"]}");
+                fileWriter.flush();
+                fileWriter.close();
+                iyem=null; 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
+        }
+    }//GEN-LAST:event_ppBatch3BulanActionPerformed
+
+    private void ppBatch6BulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBatch6BulanActionPerformed
+        if(kdgudang.getText().equals("")){
+            try{  
+                Valid.tabelKosong(tabMode);
+                file=new File("./cache/stokopname.iyem");
+                file.createNewFile();
+                fileWriter = new FileWriter(file);
+                iyem="";
+                pstampil=koneksi.prepareStatement(
+                    "select data_batch.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar, "+
+                    "data_batch.sisa,data_batch.no_batch,data_batch.no_faktur from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns where data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date() "+
+                    (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                    }
+                    rstampil=pstampil.executeQuery();
+                    while(rstampil.next()){                            
+                        tabMode.addRow(new Object[]{
+                            "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),rstampil.getString("kode_sat"),
+                            rstampil.getDouble("dasar"),rstampil.getDouble("sisa"),0,0,0,0,rstampil.getString("no_batch"),rstampil.getString("no_faktur")
+                        });
+                        iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\",\"NoBatch\":\""+rstampil.getString("no_batch")+"\",\"NoFaktur\":\""+rstampil.getString("no_faktur")+"\",\"Stok\":\""+rstampil.getDouble("sisa")+"\"},";
+                    }  
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rstampil!=null){
+                        rstampil.close();
+                    }
+                    if(pstampil!=null){
+                        pstampil.close();
+                    }
+                }  
+                fileWriter.write("{\"stokopname\":["+iyem.substring(0,iyem.length()-1)+"]}");
+                fileWriter.flush();
+                fileWriter.close();
+                iyem=null; 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
+        }else{
+            try{  
+                Valid.tabelKosong(tabMode);
+                file=new File("./cache/stokopname.iyem");
+                file.createNewFile();
+                fileWriter = new FileWriter(file);
+                iyem="";
+                pstampil=koneksi.prepareStatement(
+                    "select data_batch.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar, "+
+                    "gudangbarang.stok as sisa,data_batch.no_batch,data_batch.no_faktur from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
+                    "where gudangbarang.kd_bangsal=? and data_batch.tgl_beli between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date() "+
+                    (TCari.getText().trim().equals("")?"":"and (data_batch.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+order);
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        pstampil.setString(1,kdgudang.getText());
+                        pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                        pstampil.setString(4,"%"+TCari.getText().trim()+"%");
+                    }else{
+                        pstampil.setString(1,kdgudang.getText());
+                    }
+                    rstampil=pstampil.executeQuery();
+                    while(rstampil.next()){                            
+                        tabMode.addRow(new Object[]{
+                            "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),rstampil.getString("kode_sat"),
+                            rstampil.getDouble("dasar"),rstampil.getDouble("sisa"),0,0,0,0,rstampil.getString("no_batch"),rstampil.getString("no_faktur")
+                        });
+                        iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\",\"NoBatch\":\""+rstampil.getString("no_batch")+"\",\"NoFaktur\":\""+rstampil.getString("no_faktur")+"\",\"Stok\":\""+rstampil.getDouble("sisa")+"\"},";
+                    }  
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rstampil!=null){
+                        rstampil.close();
+                    }
+                    if(pstampil!=null){
+                        pstampil.close();
+                    }
+                }   
+                fileWriter.write("{\"stokopname\":["+iyem.substring(0,iyem.length()-1)+"]}");
+                fileWriter.flush();
+                fileWriter.close();
+                iyem=null; 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
+        }
+    }//GEN-LAST:event_ppBatch6BulanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1371,6 +1704,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi5;
+    private javax.swing.JMenuItem ppBatch1Bulan;
+    private javax.swing.JMenuItem ppBatch3Bulan;
+    private javax.swing.JMenuItem ppBatch6Bulan;
     private javax.swing.JMenuItem ppBelumOpname;
     private javax.swing.JMenuItem ppBersihkan;
     private javax.swing.JMenuItem ppStok;
@@ -1395,7 +1731,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     tabMode.addRow(new Object[]{
                         "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),rstampil.getString("kode_sat"),rstampil.getDouble("dasar"),0,0,0,0,0,"",""
                     });
-                    iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\"},";
+                    iyem=iyem+"{\"KodeBarang\":\""+rstampil.getString("kode_brng")+"\",\"NamaBarang\":\""+rstampil.getString("nama_brng").replaceAll("\"","")+"\",\"Kategori\":\""+rstampil.getString("nama")+"\",\"Satuan\":\""+rstampil.getString("kode_sat")+"\",\"Harga\":\""+rstampil.getString("dasar")+"\",\"NoBatch\":\"\",\"NoFaktur\":\"\",\"Stok\":\"0\"},";
                 }  
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1414,7 +1750,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
     
     private void tampil2() {
@@ -1475,7 +1810,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 for(JsonNode list:response){
                     if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
-                            "",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Kategori").asText(),list.path("Satuan").asText(),list.path("Harga").asDouble(),0,0,0,0,0,"",""
+                            "",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Kategori").asText(),list.path("Satuan").asText(),list.path("Harga").asDouble(),list.path("Stok").asDouble(),0,0,0,0,list.path("NoBatch").asText(),list.path("NoFaktur").asText()
                         });
                     }
                 }
@@ -1484,7 +1819,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
     
        
@@ -1616,7 +1950,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
          if(!akses.getkode().equals("Admin Utama")){
             if(!DEPOAKTIFOBAT.equals("")){
                 kdgudang.setText(DEPOAKTIFOBAT);
-                nmgudang.setText(Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",DEPOAKTIFOBAT));
+                nmgudang.setText(bangsal.tampil3(DEPOAKTIFOBAT));
                 BtnGudang.setEnabled(false);
             }
         }

@@ -46,7 +46,7 @@ print isset($header)?$header:NULL;*/
              <tr>
              <td>
             ";
-        $id=$_GET['id'];
+        $id=validTeks($_GET['id']);
         
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,pegawai.wajibmasuk,departemen.nama as departemen,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,jnj_jabatan.nama as jnj_jabatan,
@@ -792,7 +792,7 @@ print isset($header)?$header:NULL;*/
                                          <TD width='130px' colspan='3'>&nbsp;&nbsp;&nbsp;<i>". Terbilang($ttlditerima)."</i></td>
 				      </TR>
                                        <TR class='isi6'>
-                                         <TD width='130px'></TD><td></td><td><center>".getOne("select kabupaten from setting").", ".date('d-m-Y')."</center> </td>
+                                         <TD width='130px'></TD><td></td><td><center>".getOne("select setting.kabupaten from setting").", ".date('d-m-Y')."</center> </td>
 				      </TR>
 				      <TR class='isi6'>
                                          <TD width='130px'><center>Penerima</center></TD>
@@ -886,7 +886,7 @@ print isset($header)?$header:NULL;*/
 					 <td colspan=3>".Terbilang($jmrj+$ttlditerima)."</td>
 				      </TR>
 				      <TR class='isi6'>
-                                         <TD width='130px'></TD><td></td><td><center>".getOne("select kabupaten from setting").", ".date('d-m-Y')."</center> </td>
+                                         <TD width='130px'></TD><td></td><td><center>".getOne("select setting.kabupaten from setting").", ".date('d-m-Y')."</center> </td>
 				      </TR>
 				      <TR class='isi6'>
                                          <TD width='130px'><center>Penerima</center></TD>

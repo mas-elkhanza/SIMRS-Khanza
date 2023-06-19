@@ -5,15 +5,13 @@
     <div class="entry">    
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" enctype=multipart/form-data>
         <?php
-                antisqlinjection("?page=TampilPulang");
-                echo "";                
-                $keyword      =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $keyword      =cleankar(isset($_GET['keyword'])?$_GET['keyword']:NULL);
                 echo "<input type=hidden name=keyword value=$keyword>";
         ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="20%" >Keyword</td><td width="">:</td>
-                    <td width="80%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="50" maxlength="250" /></td>
+                    <td width="80%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="50" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off"/></td>
                 </tr>  
             </table>
               <div align="center"><input name=BtnCari type=submit class="button" value="Cari"/></div>

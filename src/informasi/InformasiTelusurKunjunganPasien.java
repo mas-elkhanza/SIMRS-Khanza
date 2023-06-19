@@ -173,7 +173,6 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         
     }
     
-    public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private int pilihan=0;
 
     /** This method is called from within the constructor to
@@ -219,7 +218,6 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
 
         Scroll.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "Data Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll.setName("Scroll"); // NOI18N
-        Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(360, 421));
 
         tbKamar.setAutoCreateRowSorter(true);

@@ -484,12 +484,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());            
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -502,12 +502,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());     
+            nmptg.setText(petugas.tampil3(kdptg.getText()));     
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
             kdsup.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptg,kdptg.getText());
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
             TCari.requestFocus();       
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -625,9 +625,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         htmlContent = new StringBuilder();
         htmlContent.append(                             
             "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%' colspan='9'>Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%' colspan='7'>Data Penerimaan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Keterangan</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50%' colspan='9'>Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='35%' colspan='7'>Data Penerimaan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Keterangan</td>"+
             "</tr>");
         LoadHTML.setText(
             "<html>"+
@@ -688,9 +688,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%' colspan='9'>Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%' colspan='7'>Data Penerimaan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Keterangan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50%' colspan='9'>Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='35%' colspan='7'>Data Penerimaan Barang Non Medis dan Penunjang ( Lab & RO )</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Keterangan</td>"+
                 "</tr>");
             
             carifaktur="";carisuplier="";caripegawai="";carikeyword="";
@@ -984,12 +984,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             htmlContent.append(
                     "<tr class='isi'>"+
-                        "<td align='center' valign='middle' bgcolor='#FFFAF8' colspan='4'>Jml.Total Tagihan : "+Valid.SetAngka(jmltotaltagihan)+"</td>"+
-                        "<td align='center' valign='middle' bgcolor='#FFFAF8' colspan='2'>Jumlah Faktur : "+jmlfaktur+"</td>"+
-                        "<td align='center' valign='middle' bgcolor='#FFFAF8' colspan='4'>Jml.Total Sisipan : "+Valid.SetAngka(jmlsisipan)+"</td>"+
-                        "<td align='center' valign='middle' bgcolor='#FFFAF8' colspan='3'>Faktur Sisipan : "+faktursisipan+"</td>"+
-                        "<td align='center' valign='middle' bgcolor='#FFFAF8' colspan='2'>Kirim Rata-rata : "+(Math.round(jmlharikirim/jmlfaktur))+" Hari</td>"+
-                        "<td align='center' valign='middle' bgcolor='#FFFAF8' colspan='2'>Ketepatan Kirim : "+(Math.round(((jmlindextotal/(jmli*2))*100)))+" %</td>"+
+                        "<td align='center' valign='middle' bgcolor='#FFFAFA' colspan='4'>Jml.Total Tagihan : "+Valid.SetAngka(jmltotaltagihan)+"</td>"+
+                        "<td align='center' valign='middle' bgcolor='#FFFAFA' colspan='2'>Jumlah Faktur : "+jmlfaktur+"</td>"+
+                        "<td align='center' valign='middle' bgcolor='#FFFAFA' colspan='4'>Jml.Total Sisipan : "+Valid.SetAngka(jmlsisipan)+"</td>"+
+                        "<td align='center' valign='middle' bgcolor='#FFFAFA' colspan='3'>Faktur Sisipan : "+faktursisipan+"</td>"+
+                        "<td align='center' valign='middle' bgcolor='#FFFAFA' colspan='2'>Kirim Rata-rata : "+(Math.round(jmlharikirim/jmlfaktur))+" Hari</td>"+
+                        "<td align='center' valign='middle' bgcolor='#FFFAFA' colspan='2'>Ketepatan Kirim : "+(Math.round(((jmlindextotal/(jmli*2))*100)))+" %</td>"+
                     "</tr>");
             
             if(internalFrame1.getWidth()>1370){

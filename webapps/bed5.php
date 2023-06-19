@@ -103,7 +103,7 @@
     <div class="container-fluid">
         <!-- Row START -->
         <div class="row">
-           <?php $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+           <?php $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
             ?>
             <div class="col s8" id="header-instansi">
                 <div class="card deep-orange accent-3 white-text">

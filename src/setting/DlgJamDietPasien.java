@@ -458,7 +458,9 @@ public class DlgJamDietPasien extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         for(int i=0;i<tbJadwal.getRowCount();i++){ 
             if(tbJadwal.getValueAt(i,0).toString().equals("true")){
-                Sequel.queryu("delete from jam_diet_pasien where waktu='"+tbJadwal.getValueAt(i,1).toString()+"'");
+                if(Sequel.queryutf2("delete from jam_diet_pasien where waktu='"+tbJadwal.getValueAt(i,1).toString()+"'")==false){
+                    JOptionPane.showMessageDialog(null,"Maaf, Tidak bisa dihapus karena data digunakan...!!!!");     
+                }
             }
         } 
         tampil();

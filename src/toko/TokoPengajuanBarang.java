@@ -658,12 +658,10 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());          
+            nmptg.setText(pegawai.tampil3(kdptg.getText()));         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             Keterangan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             BtnSimpan.requestFocus();  
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
@@ -842,8 +840,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gettoko_pengajuan_barang());
             BtnTambah.setEnabled(akses.gettoko_barang());
-            Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
-            Sequel.cariIsi("select departemen from pegawai where nik=?",Departemen,kdptg.getText());
+            nmptg.setText(pegawai.tampil3(kdptg.getText())); 
+            Departemen.setText(pegawai.tampilDepartemen(kdptg.getText()));
         }        
     }
     

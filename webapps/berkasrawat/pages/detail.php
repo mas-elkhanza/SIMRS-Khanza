@@ -1,11 +1,23 @@
-
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+?>
 <div id="post">
     <div class="entry">        
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
                 $action       = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat     = isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
+                $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+                $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
+                if (isset($norawat["no_rawat"])) {
+                    $no_rawat = validTeks4($norawat["no_rawat"],20);
+                }else{
+                    exit(header("Location:../index.php"));
+                }
                 
                 $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                                 reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
@@ -77,7 +89,7 @@
                     <td width="75%">
                         <select name="kode" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
                             <?php
-                                $_sql = "SELECT kode,nama FROM master_berkas_digital ORDER BY nama";
+                                $_sql = "SELECT master_berkas_digital.kode,master_berkas_digital.nama FROM master_berkas_digital ORDER BY master_berkas_digital.nama";
                                 $hasil=bukaquery($_sql);
 
                                 while($baris = mysqli_fetch_array($hasil)) {
@@ -89,8 +101,8 @@
                     </td>
                 </tr>
                 <tr class="isi2">
-                    <td width="25%" >File Berkas(PDF/JPG)</td><td width="">:</td>
-                    <td width="75%"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
+                    <td width="25%" >File Berkas(PDF/JPG/JPEG)</td><td width="">:</td>
+                    <td width="75%"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="application/pdf,image/jpeg,image/jpg"/>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>        
@@ -100,20 +112,23 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_rawat           = trim($_POST['no_rawat']);
-                    $kode               = trim($_POST['kode']);
-                    $dokumen            = str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']);
-                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                    
-                    if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
-                        switch($action) {
-                            case "TAMBAH":
-                                Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&no_rawat=$no_rawat'>";
-                                break;
+                    $no_rawat           = validTeks(trim($_POST['no_rawat']));
+                    $kode               = validTeks(trim($_POST['kode']));
+                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                        if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
+                            switch($action) {
+                                case "TAMBAH":
+                                    Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."'>";
+                                    break;
+                            }
+                        }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
+                            echo 'Semua field harus isi..!!!';
                         }
-                    }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
-                        echo 'Semua field harus isi..!!!';
+                    }else{
+                        echo "Berkas harus pdf/JPG";
                     }
                 }
             ?>
@@ -140,31 +155,30 @@
                       echo "<tr class='isi'>
                                 <td>
                                     <center>
-                                    <a href='?act=Detail&action=HAPUS&no_rawat=".$baris["no_rawat"]."&kode=".$baris["kode"]."&lokasi_file=".$baris["lokasi_file"]."'>[hapus]</a>
+                                    <a href='?act=Detail&action=HAPUS&iyem=".encrypt_decrypt("{\"no_rawat\":\"".$baris["no_rawat"]."\",\"kode\":\"".$baris["kode"]."\",\"lokasi_file\":\"".$baris["lokasi_file"]."\"}","e")."'>[hapus]</a>
                                    </center>
                                 </td>
                                 <td>".$baris["nama"]."</td>
                                 <td><a target=_blank href=../berkasrawat/pages/upload/".$baris["lokasi_file"].">".str_replace("pages/upload/","",$baris["lokasi_file"])."</a></td>
                            </tr>";
                     }
-                echo "</table>";
-
-            } else {echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    echo "</table>";
+                } else {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='5%'><div align='center'>Proses</div></td>
                                 <td width='30%'><div align='center'>Berkas Digital</div></td>
                                 <td width='65%'><div align='center'>File</div></td>
                             </tr>
                           </table>";}
-        ?>
-        </div>
+            ?>
+            </div>
         </form>
         <?php
             if ($action=="HAPUS") {                
-                unlink($_GET['lokasi_file']);
-                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' and lokasi_file='".$_GET['lokasi_file']."' ","?act=Detail&action=TAMBAH&no_rawat=$no_rawat");
+                unlink($norawat["lokasi_file"]);
+                Hapus(" berkas_digital_perawatan "," no_rawat ='".validTeks($norawat["no_rawat"])."' and kode ='".validTeks($norawat["kode"])."' and lokasi_file='".validTeks($norawat["lokasi_file"])."' ","?act=Detail&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e"));
             }
-
         
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

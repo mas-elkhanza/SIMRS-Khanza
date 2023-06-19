@@ -1,5 +1,8 @@
-
-
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
 <div class="entry"> 
     <div align="center" class="link">
@@ -9,16 +12,16 @@
     </div>   
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-                $action  = isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-                $keyword = validTeks($keyword);
-                echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
+            $action  = isset($_GET['action'])?$_GET['action']:NULL;
+            $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+            $keyword = validTeks($keyword);
+            echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
         <table width="100%" align="center">
             <tr class="head">
                 <td width="25%" >Keyword</td><td width="">:</td>
                 <td width="82%">
-                    <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                    <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,250}" title=" a-zA-Z0-9, ./@_ (Maksimal 250 karakter)" autocomplete="off" autofocus/>
                     <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                 </td>
             </tr>
@@ -37,8 +40,8 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-								<td>
-                                    <center>";?>
+				<td>
+                                 <center>";?>
                                         <a href="?act=ListBidang&action=HAPUS&nama=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
@@ -59,7 +62,7 @@
          
         $hapus = isset($_GET['action'])?$_GET['action']:NULL;
         if ($hapus=="HAPUS") {
-            Hapus(" bidang "," nama ='".$_GET['nama']."' ","?act=ListBidang");
+            Hapus(" bidang "," nama ='".validTeks($_GET['nama'])."' ","?act=ListBidang");
         }
     ?>
     </div>
@@ -67,7 +70,7 @@
         if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/bidang/LaporanBidang.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/bidang/LaporanBidangExel.php?&keyword=$keyword>Excel</a> |</div></td>                        
+                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/bidang/LaporanBidang.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">Laporan</a> | <a target=_blank href=../penggajian/pages/bidang/LaporanBidangExel.php?&keyword=iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">Excel</a> |</div></td>                        
                     </tr>     
                  </table>");
         }

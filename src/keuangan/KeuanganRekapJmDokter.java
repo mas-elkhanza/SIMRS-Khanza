@@ -523,10 +523,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Dokter</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55%'>Nama Dokter</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Pendapatan Jasa</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Kode Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='55%'>Nama Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Pendapatan Jasa</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -569,10 +569,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                            htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Dokter</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55%'>Nama Dokter</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Pendapatan Jasa</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Kode Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='55%'>Nama Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Pendapatan Jasa</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  

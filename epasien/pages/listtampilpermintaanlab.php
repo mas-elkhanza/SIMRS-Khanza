@@ -6,7 +6,7 @@
     $nosurat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $nosurat = json_decode(encrypt_decrypt($nosurat,"d"),true); 
     if (isset($nosurat["nosurat"])) {
-        $nosurat = $nosurat["nosurat"];
+        $nosurat = cleankar2($nosurat["nosurat"]);
         $querysurathamil = bukaquery("select surat_hamil.no_surat,surat_hamil.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.pekerjaan,pasien.umur,date_format(surat_hamil.tanggalperiksa,'%d/%m/%Y') as tanggalperiksa,
                 surat_hamil.hasilperiksa,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,dokter.nm_dokter,reg_periksa.kd_dokter,perusahaan_pasien.nama_perusahaan from surat_hamil 
                 inner join reg_periksa on surat_hamil.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel 
@@ -20,7 +20,7 @@
             $filename               = $PNG_TEMP_DIR.$rsquerysurathamil["kd_dokter"].'.png';
             $errorCorrectionLevel   = 'L';
             $matrixPointSize        = 4;
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysurathamil["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysurathamil["kd_dokter"]."'",$rsquerysurathamil["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysurathamil["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysurathamil["kd_dokter"]."'",$rsquerysurathamil["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
             
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>

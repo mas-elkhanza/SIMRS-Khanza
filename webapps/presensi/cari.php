@@ -15,19 +15,17 @@
         <?php
                 antisqlinjection("?page=ListPesan");
                 echo "";                
-                $action       =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword      =isset($_GET['keyword'])?$_GET['keyword']:NULL;
-                $Thnawal      =isset($_GET['Thnawal'])?$_GET['Thnawal']:NULL;                
+                $action       = isset($_GET['action'])?$_GET['action']:NULL;
+                $keyword      = validTeks(isset($_GET['keyword'])?$_GET['keyword']:NULL);
+                $Thnawal      = validTeks(isset($_GET['Thnawal'])?$_GET['Thnawal']:NULL);                
                 if($Thnawal==""){
                     $Thnawal=date('Y');
                 }                
-                $Blnawal      =isset($_GET['Blnawal'])?$_GET['Blnawal']:NULL;
+                $Blnawal      = validTeks(isset($_GET['Blnawal'])?$_GET['Blnawal']:NULL);
                 if($Blnawal==""){
                     $Blnawal=date('m');
                 } 
 
-                
-                //$keyword     =$_GET['keyword'];
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
@@ -52,7 +50,7 @@
                 </tr>
                 <tr class="head">
                     <td width="20%" >Keyword</td><td width="">:</td>
-                    <td width="80%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="50" maxlength="250" /></td>
+                    <td width="80%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="50" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" autocomplete="off"/></td>
                 </tr> 
             </table>
               <div align="center"><input name=BtnCari type=submit class="button" value="Cari"/></div>
@@ -61,10 +59,8 @@
             
     <div style="width: 100%; height: 350px; overflow: auto; ">
 
-    <?php
-       
-              
-        $order=cleankar(isset($_GET['order']))?cleankar($_GET['order']):NULL;
+    <?php     
+        $order= validTeks(isset($_GET['order']))?cleankar($_GET['order']):NULL;
         if (empty($order)) $order=1;
         
         $urut="pegawai.nik asc";
@@ -104,9 +100,9 @@
         
         $BtnCari=isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
         if (isset($BtnCari)) {      
-              $keyword=trim($_POST['keyword']);
-              $Thnawal=trim($_POST['Thnawal']);
-              $Blnawal=trim($_POST['Blnawal']);           
+              $keyword= validTeks(trim($_POST['keyword']));
+              $Thnawal= validTeks(trim($_POST['Thnawal']));
+              $Blnawal= validTeks(trim($_POST['Blnawal']));           
               
               echo "<meta http-equiv='refresh' content='1;URL=?page=Cari&Thnawal=$Thnawal&Blnawal=$Blnawal&keyword=$keyword'>";
         }

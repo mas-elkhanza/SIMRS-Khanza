@@ -58,7 +58,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
     private double all=0,Laborat=0,Radiologi=0,Obat=0,Ralan_Dokter=0,Ralan_Dokter_paramedis=0,Ralan_Paramedis=0,Tambahan=0,Potongan=0,Registrasi=0,
                     ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlRegistrasi=0,
                    Operasi=0,ttlOperasi=0;
-    private String Keterangan="Belum Lunas",pilihan="";
+    private String Keterangan="Belum Lunas",pilihan="",tampilkan="Semua";
     private StringBuilder htmlContent;
     private int i=0;
 
@@ -257,6 +257,9 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnBilling = new javax.swing.JMenuItem();
+        MnSudahBayar = new javax.swing.JMenuItem();
+        MnBelumBayar = new javax.swing.JMenuItem();
+        MnSemuaStatusBayar = new javax.swing.JMenuItem();
         KdDokter = new widget.TextBox();
         KdPoli = new widget.TextBox();
         KdCaraBayar = new widget.TextBox();
@@ -272,6 +275,8 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
+        label10 = new widget.Label();
+        LCount2 = new widget.Label();
         jLabel10 = new javax.swing.JLabel();
         LCount = new javax.swing.JLabel();
         BtnPrint = new widget.Button();
@@ -302,13 +307,61 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         MnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBilling.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBilling.setName("MnBilling"); // NOI18N
-        MnBilling.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnBilling.setPreferredSize(new java.awt.Dimension(210, 28));
         MnBilling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBillingActionPerformed(evt);
             }
         });
         jPopupMenu1.add(MnBilling);
+
+        MnSudahBayar.setBackground(new java.awt.Color(255, 255, 254));
+        MnSudahBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSudahBayar.setForeground(new java.awt.Color(50, 50, 50));
+        MnSudahBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSudahBayar.setText("Tampilkan Sudah Bayar");
+        MnSudahBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSudahBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSudahBayar.setName("MnSudahBayar"); // NOI18N
+        MnSudahBayar.setPreferredSize(new java.awt.Dimension(210, 28));
+        MnSudahBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSudahBayarActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnSudahBayar);
+
+        MnBelumBayar.setBackground(new java.awt.Color(255, 255, 254));
+        MnBelumBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBelumBayar.setForeground(new java.awt.Color(50, 50, 50));
+        MnBelumBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnBelumBayar.setText("Tampilkan Belum Bayar");
+        MnBelumBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnBelumBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnBelumBayar.setName("MnBelumBayar"); // NOI18N
+        MnBelumBayar.setPreferredSize(new java.awt.Dimension(210, 28));
+        MnBelumBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnBelumBayarActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnBelumBayar);
+
+        MnSemuaStatusBayar.setBackground(new java.awt.Color(255, 255, 254));
+        MnSemuaStatusBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSemuaStatusBayar.setForeground(new java.awt.Color(50, 50, 50));
+        MnSemuaStatusBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSemuaStatusBayar.setText("Tampilkan Semua Status Bayar");
+        MnSemuaStatusBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSemuaStatusBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSemuaStatusBayar.setName("MnSemuaStatusBayar"); // NOI18N
+        MnSemuaStatusBayar.setPreferredSize(new java.awt.Dimension(210, 28));
+        MnSemuaStatusBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSemuaStatusBayarActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnSemuaStatusBayar);
 
         KdDokter.setEditable(false);
         KdDokter.setName("KdDokter"); // NOI18N
@@ -335,6 +388,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -386,7 +440,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         TCari.setToolTipText("Alt+C");
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(135, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(110, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -428,12 +482,23 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         });
         panelGlass5.add(BtnAll);
 
+        label10.setText("Record :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(label10);
+
+        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount2.setText("0");
+        LCount2.setName("LCount2"); // NOI18N
+        LCount2.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelGlass5.add(LCount2);
+
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(50, 50, 50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total :");
         jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(50, 23));
+        jLabel10.setPreferredSize(new java.awt.Dimension(40, 23));
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -441,7 +506,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(130, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass5.add(LCount);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -517,7 +582,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         NmDokter.setEditable(false);
         NmDokter.setName("NmDokter"); // NOI18N
-        NmDokter.setPreferredSize(new java.awt.Dimension(155, 23));
+        NmDokter.setPreferredSize(new java.awt.Dimension(170, 23));
         FormInput.add(NmDokter);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -539,7 +604,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         NmCaraBayar.setEditable(false);
         NmCaraBayar.setName("NmCaraBayar"); // NOI18N
-        NmCaraBayar.setPreferredSize(new java.awt.Dimension(155, 23));
+        NmCaraBayar.setPreferredSize(new java.awt.Dimension(170, 23));
         FormInput.add(NmCaraBayar);
 
         BtnCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -561,7 +626,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         NmPoli.setEditable(false);
         NmPoli.setName("NmPoli"); // NOI18N
-        NmPoli.setPreferredSize(new java.awt.Dimension(155, 23));
+        NmPoli.setPreferredSize(new java.awt.Dimension(170, 23));
         FormInput.add(NmPoli);
 
         BtnPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -611,23 +676,23 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tanggal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.Nota</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Nama Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Poli/Unit</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Perujuk</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Registrasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Obat+Emb+Tsl</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Paket Tindakan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Operasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Laborat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Radiologi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tambahan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Potongan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Total</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Dokter</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Keterangan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.Nota</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Poli/Unit</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Perujuk</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Obat+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Paket Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Total</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Keterangan</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -683,23 +748,23 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tanggal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.Nota</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Nama Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Poli/Unit</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>Perujuk</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Registrasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Obat+Emb+Tsl</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Paket Tindakan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Operasi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Laborat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Radiologi</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tambahan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Potongan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Total</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Dokter</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Keterangan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.Nota</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Poli/Unit</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Perujuk</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Obat+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Paket Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Total</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Keterangan</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -737,7 +802,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
                                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                        "<font size='2' face='Tahoma'>DETAIL JM DOKTER PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                        "<font size='2' face='Tahoma'>REKAP PEMBAYARAN RAWAT JALAN PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                                     "</td>"+
                                                "</tr>"+
                                             "</table>"+
@@ -874,6 +939,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         KdDokter.setText("");
         NmDokter.setText("");
         TCari.setText("");
+        tampilkan="Semua";
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -942,6 +1008,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_TCariKeyPressed
 
+    private void MnSudahBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSudahBayarActionPerformed
+        tampilkan="Sudah Bayar";
+        tampil();
+    }//GEN-LAST:event_MnSudahBayarActionPerformed
+
+    private void MnBelumBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBelumBayarActionPerformed
+        tampilkan="Belum Bayar";
+        tampil();
+    }//GEN-LAST:event_MnBelumBayarActionPerformed
+
+    private void MnSemuaStatusBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSemuaStatusBayarActionPerformed
+        tampilkan="Semua";
+        tampil();
+    }//GEN-LAST:event_MnSemuaStatusBayarActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -972,7 +1053,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox KdDokter;
     private widget.TextBox KdPoli;
     private javax.swing.JLabel LCount;
+    private widget.Label LCount2;
+    private javax.swing.JMenuItem MnBelumBayar;
     private javax.swing.JMenuItem MnBilling;
+    private javax.swing.JMenuItem MnSemuaStatusBayar;
+    private javax.swing.JMenuItem MnSudahBayar;
     private widget.TextBox NmCaraBayar;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPoli;
@@ -985,6 +1070,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.Label label10;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
@@ -1106,37 +1192,82 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         Keterangan="Sudah Bayar";
                     }                
 
-                    tabMode.addRow(new Object[] {
-                        rs.getString("tgl_registrasi"),
-                        Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
-                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("nm_poli"),
-                        Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
-                        Valid.SetAngka(Registrasi),
-                        Valid.SetAngka(Obat),
-                        Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
-                        Valid.SetAngka(Operasi),
-                        Valid.SetAngka(Laborat),
-                        Valid.SetAngka(Radiologi),
-                        Valid.SetAngka(Tambahan),
-                        Valid.SetAngka(Potongan),
-                        Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi),
-                        rs.getString("nm_dokter"),Keterangan
-                    });
+                    if(tampilkan.equals("Belum Bayar")&&Keterangan.equals("Belum Bayar")){
+                        tabMode.addRow(new Object[] {
+                            rs.getString("tgl_registrasi"),
+                            Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                            rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                            rs.getString("nm_poli"),
+                            Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
+                            Valid.SetAngka(Registrasi),
+                            Valid.SetAngka(Obat),
+                            Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
+                            Valid.SetAngka(Operasi),
+                            Valid.SetAngka(Laborat),
+                            Valid.SetAngka(Radiologi),
+                            Valid.SetAngka(Tambahan),
+                            Valid.SetAngka(Potongan),
+                            Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi),
+                            rs.getString("nm_dokter"),Keterangan
+                        });
+                    }else if(tampilkan.equals("Sudah Bayar")&&Keterangan.equals("Sudah Bayar")){
+                        tabMode.addRow(new Object[] {
+                            rs.getString("tgl_registrasi"),
+                            Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                            rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                            rs.getString("nm_poli"),
+                            Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
+                            Valid.SetAngka(Registrasi),
+                            Valid.SetAngka(Obat),
+                            Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
+                            Valid.SetAngka(Operasi),
+                            Valid.SetAngka(Laborat),
+                            Valid.SetAngka(Radiologi),
+                            Valid.SetAngka(Tambahan),
+                            Valid.SetAngka(Potongan),
+                            Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi),
+                            rs.getString("nm_dokter"),Keterangan
+                        });
+                    }else if(tampilkan.equals("Semua")){
+                        tabMode.addRow(new Object[] {
+                            rs.getString("tgl_registrasi"),
+                            Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                            rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                            rs.getString("nm_poli"),
+                            Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
+                            Valid.SetAngka(Registrasi),
+                            Valid.SetAngka(Obat),
+                            Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
+                            Valid.SetAngka(Operasi),
+                            Valid.SetAngka(Laborat),
+                            Valid.SetAngka(Radiologi),
+                            Valid.SetAngka(Tambahan),
+                            Valid.SetAngka(Potongan),
+                            Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi),
+                            rs.getString("nm_dokter"),Keterangan
+                        });
+                    }
                 }
-                tabMode.addRow(new Object[] {
-                        ">> Total",":","","","","",
-                        Valid.SetAngka(ttlRegistrasi),
-                        Valid.SetAngka(ttlObat),
-                        Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),
-                        Valid.SetAngka(ttlOperasi),
-                        Valid.SetAngka(ttlLaborat),
-                        Valid.SetAngka(ttlRadiologi),
-                        Valid.SetAngka(ttlTambahan),
-                        Valid.SetAngka(ttlPotongan),
-                        Valid.SetAngka(ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Paramedis+
-                                ttlTambahan+ttlPotongan+ttlRegistrasi+ttlOperasi),"",""
-                });
+                
+                LCount2.setText(""+tabMode.getRowCount());
+                if(!tampilkan.equals("Belum Bayar")){
+                    tabMode.addRow(new Object[] {
+                                ">> Total",":","","","","",
+                                Valid.SetAngka(ttlRegistrasi),
+                                Valid.SetAngka(ttlObat),
+                                Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),
+                                Valid.SetAngka(ttlOperasi),
+                                Valid.SetAngka(ttlLaborat),
+                                Valid.SetAngka(ttlRadiologi),
+                                Valid.SetAngka(ttlTambahan),
+                                Valid.SetAngka(ttlPotongan),
+                                Valid.SetAngka(ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Paramedis+
+                                        ttlTambahan+ttlPotongan+ttlRegistrasi+ttlOperasi),"",""
+                    });
+                    LCount.setText(Valid.SetAngka(all));
+                }else{
+                    LCount.setText(""+0);
+                }    
             } catch (Exception e) {
                 System.out.println("Notif 1 :"+e);
             } finally{
@@ -1147,7 +1278,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.close();
                 }
             }
-            LCount.setText(Valid.SetAngka(all));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

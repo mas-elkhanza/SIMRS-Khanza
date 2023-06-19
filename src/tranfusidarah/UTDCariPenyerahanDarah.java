@@ -735,7 +735,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdptgcrossKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgcrossKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptgcross,kdptgcross.getText());
+            nmptgcross.setText(petugas.tampil3(kdptgcross.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasCrosActionPerformed(null);
         }else{
@@ -749,7 +749,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdptgpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgpjKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptgpj,kdptgpj.getText());
+            nmptgpj.setText(petugas.tampil3(kdptgpj.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasPJActionPerformed(null);
         }else{
@@ -858,7 +858,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptPenjualanDarah.jasper","report","::[ Transaksi Penjualan Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -890,7 +890,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             kdkomponen.requestFocus();
         }else {
-            Valid.panggilUrl("billing/NotaDarah2.php?nopenyerahan="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());          
+            Valid.panggilUrl("billing/NotaDarah2.php?nopenyerahan="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());          
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppCetakNotaActionPerformed
@@ -1397,10 +1397,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     //data penyerahan
                     tabMode.addRow(new Object[]{
                         rs.getString("no_penyerahan"),rs.getString("tanggal"),rs.getString("dinas"),
-                        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs.getString("nip_cross")),
+                        petugas.tampil3(rs.getString("nip_cross")),
                         rs.getString("keterangan"),rs.getString("status"),rs.getString("pengambil_darah"),
                         rs.getString("alamat_pengambil_darah"),
-                        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs.getString("nip_pj"))
+                        petugas.tampil3(rs.getString("nip_pj"))
                     });
                     //data darah
                     tabMode.addRow(new Object[]{

@@ -580,7 +580,7 @@ public final class TokoStokOpname extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptOpnameToko.jasper","report","::[ Stok Opname Toko ]::","select tokoopname.kode_brng, tokobarang.nama_brng,tokoopname.dasar, tokobarang.kode_sat, tokoopname.tanggal, tokoopname.stok, "+
                   "tokoopname.real, tokoopname.selisih, tokoopname.nomihilang, tokoopname.keterangan, (tokoopname.real*tokoopname.dasar) as totalreal "+
                   "from tokoopname inner join tokobarang on tokoopname.kode_brng=tokobarang.kode_brng "+

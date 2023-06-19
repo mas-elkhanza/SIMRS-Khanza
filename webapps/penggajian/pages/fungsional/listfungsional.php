@@ -1,3 +1,9 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
+
 <div class="t">
 <div class="b">
 <div class="l">
@@ -18,9 +24,7 @@
 	<br/>
     <div style="width: 598px; height: 500px; overflow: auto;">
     <?php
-        $awal=$_GET['awal'];
-        if (empty($awal)) $awal=0;
-        $_sql = "SELECT kode,nama FROM fungsional ORDER BY kode ASC ";
+        $_sql = "SELECT fungsional.kode,fungsional.nama FROM fungsional ORDER BY fungsional.kode ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         
@@ -45,28 +49,26 @@
                              </tr>";
                     }
             echo "</table>";            
-        } else {echo "Data Jabatan Fungsional masih kosong !";}
-
-    ?>
-    
-    <?php
-       if ($action=="HAPUS") {
-            Hapus(" fungsional "," kode ='".$_GET['kode']."' ","?act=ListFungsional");
-       }
-    ?>
-    </div>
-    <?php
-        if(mysqli_num_rows($hasil)!=0) {
-            $hasil1=bukaquery("SELECT kode,nama FROM fungsional");
-            $jumladiv=mysqli_num_rows($hasil1);
-            $i=$jumladiv/19;
-            $i=ceil($i);
-            echo("<br/>Jumlah Record : $jumlah ");
+        } else {
+            echo "<table width='600px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='20%'><div align='center'><font size='2' face='Verdana'><strong>Kode Jabatan</strong></font></div></td>
+                        <td width='57%'><div align='center'><font size='2' face='Verdana'><strong>Jabatan Fungsional</strong></font></div></td>
+                        <td width='23%'><div align='center'><font size='2' face='Verdana'><strong>Proses</strong></font></div></td>
+                    </tr>
+                  </table>";   
+        }
+        
+        if ($action=="HAPUS") {
+            Hapus(" fungsional "," kode ='".validTeks($_GET['kode'])."' ","?act=ListFungsional");
         }
     ?>
     </div>
+    <?php
+        echo "<br/>Jumlah Record : ".mysqli_num_rows($hasil);
+    ?>
+    </div>
 </div>
-
 </div>
 </div>
 </div>

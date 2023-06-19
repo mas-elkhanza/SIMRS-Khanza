@@ -1,5 +1,8 @@
-
-
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputDepartemen&action=TAMBAH>| Input Data |</a>
@@ -11,12 +14,12 @@
             <?php
                 echo "";
                 $action     = isset($_GET['action'])?$_GET['action']:null;
-                $dep_id     = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
+                $dep_id     = validTeks(str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL);
                 if($action == "TAMBAH"){
-                    $dep_id    = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
+                    $dep_id    = validTeks(str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL);
                     $nama      = "";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT * FROM departemen WHERE dep_id='$dep_id'";
+                    $_sql         = "SELECT * FROM departemen WHERE departemen.dep_id='$dep_id'";
                     $hasil        = bukaquery($_sql);
                     $baris        = mysqli_fetch_row($hasil);
                     $dep_id       = $baris[0];
@@ -27,13 +30,13 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Dep ID</td><td width="">:</td>
-                    <td width="67%"><input name="dep_id" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $dep_id;?>" size="10" maxlength="4" autofocus>
+                    <td width="67%"><input name="dep_id" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $dep_id;?>" size="10" maxlength="4" pattern="[a-zA-Z0-9, ./@_]{1,4}" title=" a-zA-Z0-9, ./@_ (Maksimal 4 karakter)" autocomplete="off" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Nama Departemen</td><td width="">:</td>
-                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="40" maxlength="25" />
+                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="40" maxlength="25" pattern="[a-zA-Z0-9, ./@_]{1,25}" title=" a-zA-Z0-9, ./@_ (Maksimal 25 karakter)" autocomplete="off"/>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>

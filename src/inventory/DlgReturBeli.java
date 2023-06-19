@@ -1086,12 +1086,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void KdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());         
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText()));       
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());   
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText())); 
             TglRetur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());   
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText())); 
             NoFaktur.requestFocus();   
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPtgActionPerformed(null);
@@ -1182,12 +1182,12 @@ private void BtnSplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
 private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText())); 
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText())); 
         Kdptg.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());    
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText()));  
         BtnSimpan.requestFocus(); 
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         BtnGudangActionPerformed(null);
@@ -1428,7 +1428,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     public void isCek(){
         autonomer();
         Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi",kdgudang);
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+        nmgudang.setText(bangsal.tampil3(kdgudang.getText())); 
         if(akses.getjml2()>=1){
             Kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
@@ -1437,7 +1437,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             BtnHapus.setEnabled(akses.getretur_ke_suplier());
             BtnBatal.setEnabled(akses.getretur_ke_suplier());
             Kdptg.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip='"+Kdptg.getText()+"'", Nmptg);
+            Nmptg.setText(form.petugas.tampil3(Kdptg.getText()));
         }        
     }
 

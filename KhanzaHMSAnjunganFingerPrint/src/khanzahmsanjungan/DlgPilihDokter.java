@@ -498,6 +498,6 @@ public class DlgPilihDokter extends javax.swing.JDialog {
         LblNoRm.setText(norm);
         LblNama.setText(Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", norm));
         LblKdPoli.setText(kodepoli);
-        LblNamaPoli.setText(Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", kodepoli));
+        LblNamaPoli.setText(Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", kodepoli));
     }
 }

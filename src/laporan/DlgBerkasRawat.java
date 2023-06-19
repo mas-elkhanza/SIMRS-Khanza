@@ -164,10 +164,10 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
                                     Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/pages/upload/","berkasrawat/").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/pages/upload/","berkasrawat/"));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("action=Keluar")){
                                     dispose();
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("GABUNG")){
-                                    norawat=Sequel.cariIsi("select no_rawat from temppanggilnorawat");
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("action=GABUNG")){
+                                    norawat=Sequel.cariIsi("select temppanggilnorawat.no_rawat from temppanggilnorawat");
                                     ps=koneksi.prepareStatement("SELECT berkas_digital_perawatan.lokasi_file "+
                                                   "from berkas_digital_perawatan inner join master_berkas_digital "+
                                                   "on berkas_digital_perawatan.kode=master_berkas_digital.kode "+

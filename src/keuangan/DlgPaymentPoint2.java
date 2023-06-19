@@ -411,7 +411,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary_payment");
+            Sequel.queryu("delete from temporary_payment");
             for(int r=0;r<tabMode.getRowCount();r++){  
                 Sequel.menyimpan("temporary_payment","'0',?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''",6,new String[]{
                     tabMode.getValueAt(r,0).toString(),tabMode.getValueAt(r,1).toString(),
@@ -589,7 +589,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
                 all=0;
                 i=1;
                 while(rs.next()){
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
                         nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                         if(nonota.equals("")){

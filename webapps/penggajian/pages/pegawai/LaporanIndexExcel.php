@@ -1,9 +1,9 @@
 <?php
+    include '../../../conf/conf.php';
     header("Content-type: application/x-msdownload");
     header("Content-Disposition: attachment; filename=LaporanIndex.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
-    include '../../../conf/conf.php';
 ?>
 <html>
     <head>
@@ -28,7 +28,7 @@
 
         $keyword = $_GET['keyword'];
         $keyword = validTeks($keyword);
-        $status  = trim(isset($_GET['status']))?trim($_GET['status']):"AKTIF";
+        $status  = validTeks(trim(isset($_GET['status']))?trim($_GET['status']):"AKTIF");
         $_sql    = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,
                 jnj_jabatan.indek as indekjabatan,CONCAT(FLOOR(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'),

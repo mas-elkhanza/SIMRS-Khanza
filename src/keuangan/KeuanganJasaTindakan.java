@@ -682,16 +682,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         htmlContent = new StringBuilder();
         htmlContent.append(
             "<tr class='isi'>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                 "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
             "</tr>"
         );
         LoadHTML.setText(
@@ -866,16 +866,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -1414,16 +1414,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -1974,16 +1974,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -2534,16 +2534,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -3089,16 +3089,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -3640,16 +3640,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -4188,16 +4188,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -4748,16 +4748,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -5308,16 +5308,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             
@@ -5863,16 +5863,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='isi'>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
-                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Total</td>"+
                 "</tr>"
             );
             

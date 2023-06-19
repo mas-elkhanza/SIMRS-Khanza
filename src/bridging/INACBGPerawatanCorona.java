@@ -1000,7 +1000,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
             Valid.textKosong(NoRM,"Pasien");
         }else{
-            Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",NoJaminan,NoRM.getText());
+            Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",NoJaminan,NoRM.getText());
         }
             
     }//GEN-LAST:event_MnNIKActionPerformed
@@ -1280,7 +1280,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NoRawat.setText(norawat);
         NoRM.setText(norm);
         NamaPasien.setText(namapasien);
-        Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",NoJaminan,norm);
+        Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",NoJaminan,norm);
         Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norawat+"'", DTPCari1);
         TCari.setText(norawat);
         ChkInput.setSelected(true);

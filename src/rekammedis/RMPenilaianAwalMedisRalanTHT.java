@@ -61,7 +61,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama",
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama",
             "Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu","Riwayat Penggunaan Obat","Alergi","TD","Nadi","RR","Suhu","BB","TB",
             "Nyeri","Status Nutrisi","Kondisi Umum","Keterangan Lokalis","Laboratorium","Radiolgi","Tes Pendengaran","Penunjang Lainnya",
             "Diagnosis Kerja","Diagnosis Banding","Permasalahan","Terapi/Pengobatan","Tindakan/Rencana Pengobatan","Tatalaksana Lainnya",
@@ -1157,7 +1157,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022 06:42:00" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022 15:39:52" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1299,7 +1299,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         jLabel108.setBounds(44, 1080, 190, 20);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel107.setText("Tindakan/Rencana Pengobatan :");
+        jLabel107.setText("Tindakan/Rencana Tindakan :");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
         jLabel107.setBounds(44, 1150, 320, 20);
@@ -1409,7 +1409,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1423,7 +1423,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1665,7 +1665,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Nama Pasien</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tgl.Lahir</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Kode Dokter</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Nama Dokter</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'>Tanggal</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Anamnesis</b></td>"+
@@ -1989,8 +1989,8 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            param.put("lokalis",Sequel.cariGambar("select lokalistht from gambar")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            param.put("lokalis",Sequel.cariGambar("select gambar.lokalistht from gambar")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
@@ -2382,7 +2382,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", NmDokter,KdDokter.getText());
+            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
@@ -2392,14 +2392,14 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
     
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
 
     private void hapus() {
         if(Sequel.queryu2tf("delete from penilaian_medis_ralan_tht where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

@@ -1,4 +1,8 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"conf")){
+        exit(header("Location:../index.php"));
+    }
+    
     function title(){
             $judul ="SIMKES Khanza --)(*!!@#$%";
             $judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
@@ -8,7 +12,7 @@
     }
 
     function cekSessiAdmin() {
-        if (isset($_SESSION['ses_admin'])) {
+        if (isset($_SESSION['ses_admin_penerimaanapotek'])) {
             return true;
         } else {
             return false;
@@ -17,7 +21,7 @@
 
 
     function cekUser() {
-        if (isset($_SESSION['ses_admin'])) {
+        if (isset($_SESSION['ses_admin_penerimaanapotek'])) {
             return true;
         } else {
             return false;
@@ -26,7 +30,7 @@
 
     function adminAktif() {
         if (cekSessiAdmin()) {
-            return $_SESSION['ses_admin'];
+            return $_SESSION['ses_admin_penerimaanapotek'];
         }
     }
 

@@ -24,7 +24,7 @@
     <body>
 	
    <?php
-        $id=$_GET['id'];
+        $id=validTeks($_GET['id']);
         
         $_sqlthnini  = "SELECT DAY(LAST_DAY('$tahun-$bulan-01')) ";
         $hasilthnini = bukaquery($_sqlthnini);

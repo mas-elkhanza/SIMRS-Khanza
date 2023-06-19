@@ -581,61 +581,33 @@ public class PanelDiagnosa extends widget.panelisi {
         try{            
             psdiagnosapasien=koneksi.prepareStatement("select reg_periksa.tgl_registrasi,diagnosa_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                     "diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status,diagnosa_pasien.status_penyakit "+
-                    "from diagnosa_pasien inner join reg_periksa inner join pasien inner join penyakit "+
-                    "on diagnosa_pasien.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
-                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and reg_periksa.tgl_registrasi like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and diagnosa_pasien.no_rawat like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and reg_periksa.no_rkm_medis like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and pasien.nm_pasien like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and diagnosa_pasien.kd_penyakit like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and penyakit.nm_penyakit like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and diagnosa_pasien.status_penyakit like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and diagnosa_pasien.status like ? "+
+                    "from diagnosa_pasien inner join reg_periksa on diagnosa_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
+                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? "+
+                    (keyword.trim().equals("")?"":"and (diagnosa_pasien.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or diagnosa_pasien.kd_penyakit like ? or penyakit.nm_penyakit like ? or "+
+                    "diagnosa_pasien.status_penyakit like ? or diagnosa_pasien.status like ?)")+
                     "order by reg_periksa.tgl_registrasi,diagnosa_pasien.prioritas ");
             try {
                 psdiagnosapasien.setString(1,tanggal1);
                 psdiagnosapasien.setString(2,tanggal2);
-                psdiagnosapasien.setString(3,"%"+norm+"%");          
-                psdiagnosapasien.setString(4,"%"+keyword+"%");   
-                psdiagnosapasien.setString(5,tanggal1);
-                psdiagnosapasien.setString(6,tanggal2);
-                psdiagnosapasien.setString(7,"%"+norm+"%");          
-                psdiagnosapasien.setString(8,"%"+keyword+"%");  
-                psdiagnosapasien.setString(9,tanggal1);
-                psdiagnosapasien.setString(10,tanggal2);
-                psdiagnosapasien.setString(11,"%"+norm+"%");          
-                psdiagnosapasien.setString(12,"%"+keyword+"%");  
-                psdiagnosapasien.setString(13,tanggal1);
-                psdiagnosapasien.setString(14,tanggal2);
-                psdiagnosapasien.setString(15,"%"+norm+"%");          
-                psdiagnosapasien.setString(16,"%"+keyword+"%");  
-                psdiagnosapasien.setString(17,tanggal1);
-                psdiagnosapasien.setString(18,tanggal2);
-                psdiagnosapasien.setString(19,"%"+norm+"%");          
-                psdiagnosapasien.setString(20,"%"+keyword+"%");  
-                psdiagnosapasien.setString(21,tanggal1);
-                psdiagnosapasien.setString(22,tanggal2);
-                psdiagnosapasien.setString(23,"%"+norm+"%");          
-                psdiagnosapasien.setString(24,"%"+keyword+"%");  
-                psdiagnosapasien.setString(25,tanggal1);
-                psdiagnosapasien.setString(26,tanggal2);
-                psdiagnosapasien.setString(27,"%"+norm+"%");          
-                psdiagnosapasien.setString(28,"%"+keyword+"%"); 
-                psdiagnosapasien.setString(29,tanggal1);
-                psdiagnosapasien.setString(30,tanggal2);
-                psdiagnosapasien.setString(31,"%"+norm+"%");          
-                psdiagnosapasien.setString(32,"%"+keyword+"%"); 
+                psdiagnosapasien.setString(3,"%"+norm+"%"); 
+                if(!keyword.trim().equals("")){
+                    psdiagnosapasien.setString(4,"%"+keyword+"%");         
+                    psdiagnosapasien.setString(5,"%"+keyword+"%");         
+                    psdiagnosapasien.setString(6,"%"+keyword+"%");         
+                    psdiagnosapasien.setString(7,"%"+keyword+"%");         
+                    psdiagnosapasien.setString(8,"%"+keyword+"%");         
+                    psdiagnosapasien.setString(9,"%"+keyword+"%");          
+                    psdiagnosapasien.setString(10,"%"+keyword+"%");   
+                }
+                    
                 rs=psdiagnosapasien.executeQuery();
                 while(rs.next()){
-                    TabModeDiagnosaPasien.addRow(new Object[]{false,rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   rs.getString(6),
-                                   rs.getString(7),
-                                   rs.getString(8)});
+                    TabModeDiagnosaPasien.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                    });
                 }            
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -813,46 +785,26 @@ public class PanelDiagnosa extends widget.panelisi {
         try{            
             pstindakanpasien=koneksi.prepareStatement("select reg_periksa.tgl_registrasi,prosedur_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                     "prosedur_pasien.kode,icd9.deskripsi_panjang, prosedur_pasien.status "+
-                    "from prosedur_pasien inner join reg_periksa inner join pasien inner join icd9 "+
-                    "on prosedur_pasien.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "and prosedur_pasien.kode=icd9.kode "+
-                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and reg_periksa.tgl_registrasi like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and prosedur_pasien.no_rawat like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and reg_periksa.no_rkm_medis like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and pasien.nm_pasien like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and prosedur_pasien.kode like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and icd9.deskripsi_panjang like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? and prosedur_pasien.status like ? "+
-                    "order by reg_periksa.tgl_registrasi,prosedur_pasien.prioritas ");
+                    "from prosedur_pasien inner join reg_periksa on prosedur_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join icd9 on prosedur_pasien.kode=icd9.kode "+
+                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? "+
+                    (keyword.trim().equals("")?"":"and (prosedur_pasien.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or prosedur_pasien.kode like ? or icd9.deskripsi_panjang like ? or "+
+                    "prosedur_pasien.status like ?) ")+"order by reg_periksa.tgl_registrasi,prosedur_pasien.prioritas ");
             try {
                 pstindakanpasien.setString(1,tanggal1);
                 pstindakanpasien.setString(2,tanggal2);
-                pstindakanpasien.setString(3,"%"+norm+"%");          
-                pstindakanpasien.setString(4,"%"+keyword+"%");   
-                pstindakanpasien.setString(5,tanggal1);
-                pstindakanpasien.setString(6,tanggal2);
-                pstindakanpasien.setString(7,"%"+norm+"%");          
-                pstindakanpasien.setString(8,"%"+keyword+"%");  
-                pstindakanpasien.setString(9,tanggal1);
-                pstindakanpasien.setString(10,tanggal2);
-                pstindakanpasien.setString(11,"%"+norm+"%");          
-                pstindakanpasien.setString(12,"%"+keyword+"%");  
-                pstindakanpasien.setString(13,tanggal1);
-                pstindakanpasien.setString(14,tanggal2);
-                pstindakanpasien.setString(15,"%"+norm+"%");          
-                pstindakanpasien.setString(16,"%"+keyword+"%");  
-                pstindakanpasien.setString(17,tanggal1);
-                pstindakanpasien.setString(18,tanggal2);
-                pstindakanpasien.setString(19,"%"+norm+"%");          
-                pstindakanpasien.setString(20,"%"+keyword+"%");  
-                pstindakanpasien.setString(21,tanggal1);
-                pstindakanpasien.setString(22,tanggal2);
-                pstindakanpasien.setString(23,"%"+norm+"%");          
-                pstindakanpasien.setString(24,"%"+keyword+"%");  
-                pstindakanpasien.setString(25,tanggal1);
-                pstindakanpasien.setString(26,tanggal2);
-                pstindakanpasien.setString(27,"%"+norm+"%");          
-                pstindakanpasien.setString(28,"%"+keyword+"%");  
+                pstindakanpasien.setString(3,"%"+norm+"%");  
+                if(!keyword.trim().equals("")){
+                    pstindakanpasien.setString(4,"%"+keyword+"%");       
+                    pstindakanpasien.setString(5,"%"+keyword+"%");        
+                    pstindakanpasien.setString(6,"%"+keyword+"%");         
+                    pstindakanpasien.setString(7,"%"+keyword+"%");         
+                    pstindakanpasien.setString(8,"%"+keyword+"%");          
+                    pstindakanpasien.setString(9,"%"+keyword+"%");  
+                }
+                     
                 rs=pstindakanpasien.executeQuery();
                 while(rs.next()){
                     TabModeTindakanPasien.addRow(new Object[]{false,rs.getString(1),
@@ -895,18 +847,17 @@ public class PanelDiagnosa extends widget.panelisi {
                 if(tbDiagnosa.getValueAt(i,0).toString().equals("true")){
                     if(Sequel.cariInteger(
                             "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
-                            "inner join reg_periksa inner join pasien on "+
-                            "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
-                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                            "inner join reg_periksa on diagnosa_pasien.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
                             "pasien.no_rkm_medis='"+norm+"' and diagnosa_pasien.kd_penyakit='"+tbDiagnosa.getValueAt(i,1).toString()+"'")>0){
                         Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{
                             norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
-                            Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Lama"
+                            Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='"+status+"'",norawat),"Lama"
                         });
                     }else{
                         Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{
                             norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
-                            Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Baru"
+                            Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='"+status+"'",norawat),"Baru"
                         });
                     }  
                     

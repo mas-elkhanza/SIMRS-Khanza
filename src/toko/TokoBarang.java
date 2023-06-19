@@ -878,7 +878,7 @@ public final class TokoBarang extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 if(TCari.getText().trim().equals("")){
                     Valid.MyReportqry("rptBarangToko.jasper","report","::[ Data Barang Toko / Minimarket / Koperasi ]::",
                        "select tokobarang.kode_brng,tokobarang.nama_brng,kodesatuan.satuan,tokojenisbarang.nm_jenis, "+
@@ -985,7 +985,7 @@ private void nama_brngKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
 private void kode_satKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kode_satKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nama_sat,kode_sat.getText());           
+            Sequel.cariIsi("select kodesatuan.satuan from kodesatuan where kodesatuan.kode_sat=?", nama_sat,kode_sat.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             nama_brng.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){

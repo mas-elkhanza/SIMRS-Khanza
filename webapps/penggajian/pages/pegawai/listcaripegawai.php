@@ -1,4 +1,10 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/pegawai/photo/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+
     $_sql         = "SELECT * FROM set_tahun";
     $hasil        = bukaquery($_sql);
     $baris        = mysqli_fetch_row($hasil);
@@ -33,7 +39,7 @@
         <?php
               $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
               $keyword = validTeks($keyword);
-              $status  = trim(isset($_POST['status']))?trim($_POST['status']):"AKTIF";
+              $status  = validTeks(trim(isset($_POST['status']))?trim($_POST['status']):"AKTIF");
               echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=status value=$status><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
@@ -240,7 +246,7 @@
             }
             $aksi=isset($_GET['action'])?$_GET['action']:NULL;
             if ($aksi=="HAPUS") {
-                Hapus(" pegawai "," id ='".$_GET['id']."' ","?act=ListCariPegawai");
+                Hapus(" pegawai "," id ='".validTeks($_GET['id'])."' ","?act=ListCariPegawai");
             }
         ?>
         </div>

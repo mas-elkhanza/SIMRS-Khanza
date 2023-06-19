@@ -1,37 +1,34 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
-            <?php
-                    echo "";
-                    $tahunawal      =isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL;
-                    $bulanawal      =isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL;
-                    $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
-                    $tahunakhir     =isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL;
-                    $bulanakhir     =isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL;
-                    $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;  
-                    $status         =isset($_GET['status'])?$_GET['status']:NULL;  
-                    $action         =isset($_GET['action'])?$_GET['action']:NULL;
-                    $no_rawat       =isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
-                    $keyword        =str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-                    $carabayar      =str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL;
-                    $poli           =str_replace("_"," ",isset($_GET['poli']))?str_replace("_"," ",$_GET['poli']):NULL;
-                    echo "<input type=hidden name=carabayar value=$carabayar><input type=hidden name=poli value=$poli><input type=hidden name=keyword value=$keyword>";
-            ?>
             <div style="width: 100%; height: 87.4%; overflow: auto;">
-            <?php        
-                $BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+            <?php
+                $carabayar      = encrypt_decrypt($_SESSION["carabayar"],"d");
+                $BtnCari        = isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+                $tahunawal      = "";
+                $bulanawal      = "";
+                $tanggalawal    = "";
+                $tahunakhir     = "";
+                $bulanakhir     = "";
+                $tanggalakhir   = ""; 
+                $keyword        = "";
+                $status         = "";
+                $poli           = "";
                 if (isset($BtnCari)) {      
-                        $tahunawal      =trim($_POST['tahunawal']);
-                        $bulanawal      =trim($_POST['bulanawal']);
-                        $tanggalawal    =trim($_POST['tanggalawal']);
-                        $tahunakhir     =trim($_POST['tahunakhir']);
-                        $bulanakhir     =trim($_POST['bulanakhir']);
-                        $tanggalakhir   =trim($_POST['tanggalakhir']);    
-                        $carabayar      =trim($_POST['carabayar']);
-                        $keyword        =trim($_POST['keyword']);
-                        $status         =trim($_POST['status']);
-                        $poli           =trim($_POST['poli']);
-                        $action         ="no";
+                    $tahunawal      = validTeks4(trim($_POST['tahunawal']),4);
+                    $bulanawal      = validTeks4(trim($_POST['bulanawal']),2);
+                    $tanggalawal    = validTeks4(trim($_POST['tanggalawal']),2);
+                    $tahunakhir     = validTeks4(trim($_POST['tahunakhir']),4);
+                    $bulanakhir     = validTeks4(trim($_POST['bulanakhir']),2);
+                    $tanggalakhir   = validTeks4(trim($_POST['tanggalakhir']),2);    
+                    $keyword        = validTeks4(trim($_POST['keyword']),30);
+                    $status         = validTeks4(trim($_POST['status']),15);
+                    $poli           = validTeks4(trim($_POST['poli']),50);
                 }
                 if(empty($tahunawal)){
                     $tahunawal=date('Y');
@@ -50,32 +47,28 @@
                 }
                 if(empty($tanggalakhir)){
                     $tanggalakhir=date('d');
-                }     
-
-                $keyword    = validTeks($keyword);
-                $poli       = validTeks($poli);
-                $carabayar  = validTeks($carabayar);
-
-                $_sql = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
-                        reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
-                        pasien.umur,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.no_peserta,
-                        reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab 
-                        from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
-                        on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-                        and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli  where  
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_reg like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rawat like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.tgl_registrasi like '%".$keyword."%' or
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.kd_dokter like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  dokter.nm_dokter like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rkm_medis like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.status_lanjut like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.almt_pj like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  pasien.nm_pasien like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  poliklinik.nm_poli like '%".$keyword."%' or 
-                        reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  penjab.png_jawab like '%".$keyword."%' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc ";
-                $hasil=bukaquery($_sql);
-                $jumlah=mysqli_num_rows($hasil);
+                }    
+                
+                $_sql   = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
+                            reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
+                            pasien.umur,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.no_peserta,
+                            reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab 
+                            from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
+                            on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                            and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli  where  
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_reg like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rawat like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.tgl_registrasi like '%".$keyword."%' or
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.kd_dokter like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  dokter.nm_dokter like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.no_rkm_medis like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.status_lanjut like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  reg_periksa.almt_pj like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  pasien.nm_pasien like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  poliklinik.nm_poli like '%".$keyword."%' or 
+                            reg_periksa.status_lanjut like '%".$status."%' and poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  penjab.png_jawab like '%".$keyword."%' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc ";
+                $hasil  = bukaquery($_sql);
+                $jumlah = mysqli_num_rows($hasil);
                 if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
@@ -89,8 +82,8 @@
                                 echo "<tr class='isi'>
                                        <td valign='midle'>
                                             <center>
-                                                <a target=_blank href=../berkasrawat/pages/tampilpdf.php?norawat=".$baris["no_rawat"].">[Gabung]</a><br>
-                                                <a target=_blank href=../berkasrawat/pages/billing.php?norawat=".$baris["no_rawat"].">[Billing]</a>
+                                                <a target=_blank href=../berkasrawat/pages/tampilpdf.php?iyem=".encrypt_decrypt("{\"no_rawat\":\"".$baris["no_rawat"]."\"}","e").">[Gabung]</a><br>
+                                                <a target=_blank href=../berkasrawat/pages/billing.php?iyem=".encrypt_decrypt("{\"no_rawat\":\"".$baris["no_rawat"]."\"}","e").">[Billing]</a>
                                             </center>
                                        </td>
                                        <td bgcolor='#FFFFFF' valign='top'>
@@ -234,7 +227,7 @@
                         Unit/Poli : 
                         <select name="poli" class="text5">
                             <?php
-                                $_sql = "SELECT nm_poli FROM poliklinik  ORDER BY nm_poli";
+                                $_sql = "SELECT poliklinik.nm_poli FROM poliklinik ORDER BY poliklinik.nm_poli";
                                 $hasil=bukaquery($_sql);
                                 if(!empty($poli)){
                                     echo "<option value='$poli'>$poli</option>";
@@ -249,7 +242,7 @@
                 </tr>
                 <tr class="head3">
                     <td>
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="43" maxlength="200" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="43" maxlength="30" pattern="[a-zA-Z0-9, ./@_]{1,30}" title=" a-zA-Z0-9, ./@_ (Maksimal 30 karakter)" autocomplete="off" autofocus />
                         &nbsp;&nbsp;
                         Status : 
                         <select name="status" class="text">

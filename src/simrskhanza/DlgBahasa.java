@@ -169,6 +169,7 @@ public class DlgBahasa extends javax.swing.JDialog {
         panelGlass7.add(jLabel4);
         jLabel4.setBounds(0, 12, 90, 23);
 
+        Nama.setBackground(new java.awt.Color(255, 249, 249));
         Nama.setName("Nama"); // NOI18N
         Nama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -354,9 +355,13 @@ public class DlgBahasa extends javax.swing.JDialog {
         if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Bahasa");
         }else{
-            Sequel.meghapus("bahasa_pasien","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString());  
-            tampil();
-            emptTeks();
+            if(tbkecamatan.getSelectedRow()!= -1){
+                if(Sequel.meghapustf("bahasa_pasien","id",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),0).toString())==true){
+                    tabMode.removeRow(tbkecamatan.getSelectedRow());
+                    emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
+                }
+            }  
         }
             
 }//GEN-LAST:event_BtnHapusActionPerformed

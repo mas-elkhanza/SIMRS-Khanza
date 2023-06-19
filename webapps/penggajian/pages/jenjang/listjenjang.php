@@ -1,5 +1,8 @@
-
-
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div class="entry">   
     <div align="center" class="link">
@@ -18,7 +21,7 @@
             <tr class="head">
                 <td width="25%" >Keyword</td><td width="">:</td>
                 <td width="82%">
-                    <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                    <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" pattern="[a-zA-Z0-9, ./@_]{1,250}" title=" a-zA-Z0-9, ./@_ (Maksimal 250 karakter)" autocomplete="off" autofocus/>
                     <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                 </td>
             </tr>
@@ -26,7 +29,7 @@
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-        $_sql   = "SELECT kode,nama,tnj,indek FROM jnj_jabatan where kode like '%".$keyword."%' or nama like '%".$keyword."%' ORDER BY tnj DESC ";
+        $_sql   = "SELECT jnj_jabatan.kode,jnj_jabatan.nama,jnj_jabatan.tnj,jnj_jabatan.indek FROM jnj_jabatan where jnj_jabatan.kode like '%".$keyword."%' or jnj_jabatan.nama like '%".$keyword."%' ORDER BY jnj_jabatan.tnj DESC ";
         $hasil  = bukaquery($_sql);
         $jumlah = mysqli_num_rows($hasil);
         if(mysqli_num_rows($hasil)!=0) {
@@ -66,21 +69,18 @@
                     </tr>
                   </table>";    
         }
-
-    ?>
-    
-    <?php
-       $aksi=isset($_GET['action'])?$_GET['action']:NULL;
-       if ($aksi=="HAPUS") {
-            Hapus(" jnj_jabatan "," kode ='".$_GET['kode']."' ","?act=ListJenjang");
-       }
+        
+        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
+        if ($aksi=="HAPUS") {
+            Hapus(" jnj_jabatan "," kode ='".validTeks($_GET['kode'])."' ","?act=ListJenjang");
+        }
     ?>
     </div>
     <?php
         if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/jenjang/LaporanJenjang.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/jenjang/LaporanJenjangExel.php?&keyword=$keyword>Excel</a> |</div></td>
+                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/jenjang/LaporanJenjang.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">Laporan</a> | <a target=_blank href=../penggajian/pages/jenjang/LaporanJenjangExel.php?iyem=".encrypt_decrypt("{\"keyword\":\"".$keyword."\",\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">Excel</a> |</div></td>
                     </tr>     
                  </table>");
         }

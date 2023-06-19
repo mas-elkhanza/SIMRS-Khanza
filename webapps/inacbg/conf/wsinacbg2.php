@@ -1,18 +1,21 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"conf")){
+        exit(header("Location:../index.php"));
+    }
     require_once('../../conf/conf.php');
 
     function getKey() {
-       $keyRS = "5c02a6235c3bbf015b913f10a67ef109e5921bdd80c53423e9f8e9653ffe054c";      
+       $keyRS = "a37291254bca23143f46b56c688e8f50f8f58b00fd297082711d6e16c06209c0";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://25.11.80.203/E-Klaim/ws.php";
+        $UrlWS = "http://transmedic.co.id:8181/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "DP";
+        $kelasRS = "BS";
         return $kelasRS;
     }
 

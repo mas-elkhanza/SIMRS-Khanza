@@ -423,7 +423,6 @@ public class frmPengaduan extends javax.swing.JFrame {
         panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
-        R1.setBackground(new java.awt.Color(240, 250, 230));
         R1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R1);
         R1.setSelected(true);
@@ -438,7 +437,6 @@ public class frmPengaduan extends javax.swing.JFrame {
         });
         panelCari.add(R1);
 
-        R2.setBackground(new java.awt.Color(240, 250, 230));
         R2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R2);
         R2.setText("Tanggal Pengaduan :");
@@ -690,7 +688,7 @@ public class frmPengaduan extends javax.swing.JFrame {
     private void BtnHapusTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusTotalActionPerformed
         i=JOptionPane.showConfirmDialog(null, "Yakin semua data pengaduan mau dihapus ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if(i==JOptionPane.YES_OPTION){
-            Sequel.queryu("truncate table pengaduan");
+            Sequel.queryu("delete from pengaduan");
             tampil();
         }
     }//GEN-LAST:event_BtnHapusTotalActionPerformed

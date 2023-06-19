@@ -18,6 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -39,6 +40,7 @@ import javax.swing.table.TableColumn;
 public final class DlgCariBangsal extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
+    private sekuel Sequel=new sekuel();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
@@ -333,7 +335,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/bangsal.iyem")<8){
+            if(Valid.daysOld("./cache/bangsal.iyem")<30){
                 tampil2();
             }else{
                 tampil();
@@ -439,5 +441,39 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    public String tampil3(String kode) {
+        try {
+            if(Valid.daysOld("./cache/bangsal.iyem")>7){
+                tampil();
+            }
+        } catch (Exception e) {
+            if(e.toString().contains("No such file or directory")){
+                tampil();
+            }
+        }
+        
+        iyem="";
+        try {
+            myObj = new FileReader("./cache/bangsal.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("bangsal");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeKamar").asText().toLowerCase().equals(kode)){
+                        iyem=list.path("NamaKamar").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",kode);
+        }
+        return iyem;
     }
 }

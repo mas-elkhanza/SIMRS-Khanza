@@ -5,7 +5,6 @@
    $tahun        = empty($baristh[0])?date("Y"):$baristh[0];
    $bulan        = empty($baristh[1])?date("m"):$baristh[1];
 ?>
-
 <div id="post">
      <div align="center" class="link">
         <a href=?act=ListWarung>| List Warung |</a>
@@ -14,18 +13,17 @@
     <div class="entry">
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                echo "";
                 $action      = isset($_GET['action'])?$_GET['action']:NULL;
-                $id          = str_replace("_"," ",isset($_GET['id']))?str_replace("_"," ",$_GET['id']):NULL;
+                $id          = validTeks(str_replace("_"," ",isset($_GET['id']))?str_replace("_"," ",$_GET['id']):NULL);
                 if($action == "TAMBAH"){
-                    $id          = str_replace("_"," ",isset($_GET['id']))?str_replace("_"," ",$_GET['id']):NULL;
+                    $id          = validTeks(str_replace("_"," ",isset($_GET['id']))?str_replace("_"," ",$_GET['id']):NULL);
                     $persen      = "";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT id,persen FROM pembagian_warung WHERE id='$id' ";
-                    $hasil        = bukaquery($_sql);
-                    $baris        = mysqli_fetch_row($hasil);
-                    $id           = $baris[0];
-                    $persen       = $baris[1];
+                    $_sql        = "SELECT pembagian_warung.id,pembagian_warung.persen FROM pembagian_warung WHERE pembagian_warung.id='$id' ";
+                    $hasil       = bukaquery($_sql);
+                    $baris       = mysqli_fetch_row($hasil);
+                    $id          = $baris[0];
+                    $persen      = $baris[1];
                 }
                 echo"<input type=hidden name=id value=$id><input type=hidden name=action value=$action>";
             ?>
@@ -34,17 +32,16 @@
                     <td width="31%" >Pegawai</td><td width="">:</td>
                     <td width="67%">
                          <select name="id" class="text1" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php                            
                                 if($action == "UBAH"){
-                                    $_sql2  = "SELECT id,nik,nama FROM pegawai where id='$id' ORDER BY nama";
+                                    $_sql2  = "SELECT pegawai.id,pegawai.nik,pegawai.nama FROM pegawai where pegawai.id='$id' ORDER BY pegawai.nama";
                                     $hasil2 = bukaquery($_sql2);
                                     while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi1' value='$baris2[0]'>$baris2[2] $baris2[1]</option>";
                                     }
                                 }
                                 if($action == "TAMBAH"){
-                                    $_sql     = "SELECT id,nik,nama FROM pegawai ORDER BY nama";
+                                    $_sql     = "SELECT pegawai.id,pegawai.nik,pegawai.nama FROM pegawai ORDER BY pegawai.nama";
                                     $hasildep = bukaquery($_sql);
                                     while($barisdep = mysqli_fetch_array($hasildep)) {
                                         echo "<option id='TxtIsi1' value='$barisdep[0]'>$barisdep[2] $barisdep[1]</option>";
@@ -60,7 +57,7 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id          = trim($_POST['id']);
+                    $id          = validTeks(trim($_POST['id']));
                     $persen      = "100";
                     if ((isset($id))&&(isset($persen))) {
                         switch($action) {

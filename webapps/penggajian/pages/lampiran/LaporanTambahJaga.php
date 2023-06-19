@@ -7,9 +7,9 @@
     </head>
     <body>
    <?php
-                $id         = isset($_GET['id'])?$_GET['id']:NULL;
-                $tahun      = isset($_GET['tahun'])?$_GET['tahun']:date('y');
-                $bulan      = isset($_GET['bulan'])?$_GET['bulan']:date('m');
+                $id         = validTeks(isset($_GET['id'])?$_GET['id']:NULL);
+                $tahun      = validTeks(isset($_GET['tahun'])?$_GET['tahun']:date('y'));
+                $bulan      = validTeks(isset($_GET['bulan'])?$_GET['bulan']:date('m'));
 		$_sql       = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil      = bukaquery($_sql);
                 $baris      = mysqli_fetch_row($hasil);

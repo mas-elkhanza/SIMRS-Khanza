@@ -6,7 +6,7 @@
     $nosurat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $nosurat = json_decode(encrypt_decrypt($nosurat,"d"),true); 
     if (isset($nosurat["nosurat"])) {
-        $nosurat = $nosurat["nosurat"];
+        $nosurat = cleankar2($nosurat["nosurat"]);
         $querysuratcovid = bukaquery("select surat_keterangan_covid.no_surat,surat_keterangan_covid.no_rawat,surat_keterangan_covid.kd_dokter,dokter.nm_dokter,
                 reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-laki','Perempuan') as jk,pasien.pekerjaan,
                 date_format(pasien.tgl_lahir,'%d/%m/%Y') as tanggallahir,spesialis.nm_sps,
@@ -26,9 +26,9 @@
             $filename               = $PNG_TEMP_DIR.$rsquerysuratcovid["kd_dokter"].'.png';
             $errorCorrectionLevel   = 'L';
             $matrixPointSize        = 4;
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysuratcovid["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["kd_dokter"]."'",$rsquerysuratcovid["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysuratcovid["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["kd_dokter"]."'",$rsquerysuratcovid["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
             $filename2               = $PNG_TEMP_DIR.$rsquerysuratcovid["nip"].'.png';
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysuratcovid["nip"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["nip"]."'",$rsquerysuratcovid["nip"]), $filename2, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysuratcovid["nip"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["nip"]."'",$rsquerysuratcovid["nip"]), $filename2, $errorCorrectionLevel, $matrixPointSize, 2); 
             
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>

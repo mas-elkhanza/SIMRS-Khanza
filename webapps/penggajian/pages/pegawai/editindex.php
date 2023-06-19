@@ -6,9 +6,9 @@
             <?php
                 echo "";
                 $action      = isset($_GET['action'])?$_GET['action']:NULL;
-                $id          = isset($_GET['id'])?$_GET['id']:NULL;
+                $id          = validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 if($action == "TAMBAH"){
-                    $id    	   = isset($_GET['id'])?$_GET['id']:NULL;
+                    $id    	   = validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                     $nik       = '';
                 }else if($action == "UBAH"){
                     $_sql      = "SELECT id,nik,nama,indek,pengurang, cuti_diambil,dankes FROM pegawai WHERE id='$id'";
@@ -120,7 +120,7 @@
                     if ((isset($pengurang))&&(isset($indek))) {
                         switch($action) {
                             case "UBAH":
-                                Ubah(" pegawai "," pengurang='$pengurang',indek='$indek',cuti_diambil='$cuti_diambil',dankes='$dankes' WHERE id='".$_GET['id']."' ", " Index Pegawai ");
+                                Ubah(" pegawai "," pengurang='$pengurang',indek='$indek',cuti_diambil='$cuti_diambil',dankes='$dankes' WHERE id='".validTeks($_GET['id'])."' ", " Index Pegawai ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=EditIndexPegawai&action=UBAH&id=$id'></head><body></body></html>";
                                 break;
                         }

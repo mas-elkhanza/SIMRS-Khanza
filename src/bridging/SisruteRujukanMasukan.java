@@ -1017,7 +1017,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         if(!norm.equals("")){
                             statuspasien="Lama";
                         }else{
-                            norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",list.path("PASIEN").path("NO_KARTU_JKN").asText());
+                            norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta=?",list.path("PASIEN").path("NO_KARTU_JKN").asText());
                             if(!norm.equals("")){
                                 statuspasien="Lama";
                             }
@@ -1109,9 +1109,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     public void isCek(){
         if(akses.getjml2()>=1){            
-            Sequel.cariIsi("select no_ktp from pegawai where nik=?",Nama,akses.getkode());
+            Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",Nama,akses.getkode());
             BtnPegawai.setEnabled(false);
-            Sequel.cariIsi("select nama from pegawai where nik=?",Nama,akses.getkode());
+            Nama.setText(pegawai.tampil3(akses.getkode()));
         }else{
             BtnPegawai.setEnabled(true);
         }    

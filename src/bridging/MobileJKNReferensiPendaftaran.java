@@ -395,21 +395,21 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'"+r+"','"+
-                                tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian BulananDokter"); 
+                                tabMode.getValueAt(r,0).toString().replaceAll("'","") +"','"+
+                                tabMode.getValueAt(r,1).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,2).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,3).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,4).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,5).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,6).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,7).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,8).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,9).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,10).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,11).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,12).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,13).toString().replaceAll("'","")+"','"+
+                                tabMode.getValueAt(r,14).toString().replaceAll("'","")+"','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian BulananDokter"); 
             }
             
             Map<String, Object> param = new HashMap<>();
@@ -471,9 +471,13 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         if(tbJnsPerawatan.getSelectedRow()!= -1){
-            if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Batal'",1,new String[]{
+            if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Batal',validasi=now()",1,new String[]{
                 tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
             })==true){
+                Sequel.menyimpan2("referensi_mobilejkn_bpjs_batal","?,?,?,now(),?,?,?",6,new String[]{
+                    tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString(), 
+                    tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString(),"Dibatalkan Oleh Admin","Belum",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
+                });
                 tampil();
             }
         }else{
@@ -490,9 +494,10 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCheckinActionPerformed
-        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin'",1,new String[]{
+        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin',validasi=now()",1,new String[]{
             tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
         })==true){
+            Sequel.meghapus("referensi_mobilejkn_bpjs_batal","nobooking",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
             tampil();
         }
     }//GEN-LAST:event_BtnCheckinActionPerformed
@@ -506,9 +511,10 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCheckinKeyPressed
 
     private void BtnBelumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBelumActionPerformed
-        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Belum'",1,new String[]{
+        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Belum',validasi='0000-00-00 00:00:00'",1,new String[]{
             tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
         })==true){
+            Sequel.meghapus("referensi_mobilejkn_bpjs_batal","nobooking",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
             tampil();
         }
     }//GEN-LAST:event_BtnBelumActionPerformed

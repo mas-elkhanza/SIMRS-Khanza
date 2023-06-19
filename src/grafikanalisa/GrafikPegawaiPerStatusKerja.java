@@ -479,7 +479,7 @@ public class GrafikPegawaiPerStatusKerja extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-            Sequel.queryu("truncate table temporary_grafik");
+            Sequel.queryu("delete from temporary_grafik");
             for(int r=0;r<tabMode.getRowCount();r++){
                 Sequel.menyimpan("temporary_grafik","'0','"+
                     tabMode.getValueAt(r,0).toString()+"','"+

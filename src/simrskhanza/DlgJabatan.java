@@ -20,8 +20,8 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -387,9 +387,13 @@ public final class DlgJabatan extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama jabatan");
         }else{
-            Sequel.menyimpan("jabatan","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode Jabatan");
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("jabatan","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode Jabatan")==true){
+                tabMode.addRow(new String[]{
+                    TKd.getText(),TNm.getText()
+                });
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -412,9 +416,15 @@ public final class DlgJabatan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,TKd,"jabatan","kd_jbtn");
-        tampil();
-        emptTeks();
+        if(tbJabatan.getSelectedRow()!= -1){
+            if(Sequel.meghapustf("jabatan","kd_jbtn",tbJabatan.getValueAt(tbJabatan.getSelectedRow(),0).toString())==true){
+                tabMode.removeRow(tbJabatan.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus...!!!!");
+        } 
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -431,9 +441,17 @@ public final class DlgJabatan extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama jabatan");
         }else{
-            Valid.editTable(tabMode,"jabatan","kd_jbtn",TKd,"nm_jbtn='"+TNm.getText()+"'");
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbJabatan.getSelectedRow()>-1){
+                if(Sequel.mengedittf("jabatan","kd_jbtn=?","kd_jbtn=?,nm_jbtn=?",3,new String[]{
+                        TKd.getText(),TNm.getText(),tbJabatan.getValueAt(tbJabatan.getSelectedRow(), 0).toString()
+                    })==true){
+                    tabMode.setValueAt(TKd.getText(),tbJabatan.getSelectedRow(),0);
+                    tabMode.setValueAt(TNm.getText(),tbJabatan.getSelectedRow(),1);
+                    emptTeks();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau diganti...!!!!");
+            } 
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

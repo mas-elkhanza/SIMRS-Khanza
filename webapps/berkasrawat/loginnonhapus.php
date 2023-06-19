@@ -7,18 +7,17 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
-            $_SESSION['ses_admin']="admin";
+            $_SESSION['ses_admin_berkas_rawat']="admin";
             $url = "index.php?act=ListNonHapus";			
         }else{
-                session_start();
-                session_destroy();
-                if (cekSessiAdmin()){
-                    session_unregister("ses_admin");
-                }
-                $url = "index.php?act=HomeAdmin";
+            session_start();
+            session_destroy();
+            if (cekSessiAdmin()){
+                session_unregister("ses_admin_berkas_rawat");
+            }
+            $url = "index.php?act=HomeAdmin";
         }
         header("Location:".$url);
-
     }
     
 ?>

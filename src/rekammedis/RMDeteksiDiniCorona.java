@@ -1229,8 +1229,10 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()> -1){ 
-            Sequel.meghapus("deteksi_dini_corona","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            tampil();
+            if(Sequel.meghapustf("deteksi_dini_corona","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())==true){
+                tabMode.removeRow(tbObat.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+            }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
         }
@@ -1807,11 +1809,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
             kdptg.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
+            nmptg.setText(petugas.tampil3(kdptg.getText()));
         }
     }
     
-    public void setNoRm(String norawat,Date tgl2){
+    public void setNoRm(String norawat,Date tgl1){
         NoRawat.setText(norawat);
         TCari.setText(norawat);
         try {
@@ -1848,7 +1850,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        DTPCari2.setDate(tgl2);  
+        DTPCari1.setDate(tgl1);  
         isLabRad(norawat);
     }
     

@@ -892,7 +892,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             Nip.setEditable(false);
             btnPetugas.setEnabled(false);
             Nip.setText(akses.getkode());
-            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",Nama,Nip.getText());
+            Nama.setText(petugas.tampil3(Nip.getText()));
         } 
     }
 

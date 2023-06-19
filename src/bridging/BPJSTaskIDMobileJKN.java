@@ -502,7 +502,6 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
                         if(nameNode.path("code").asText().equals("200")){
-                            Valid.tabelKosong(tabMode);
                             response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                             if(response.isArray()){
                                 for(JsonNode list:response){
@@ -516,7 +515,7 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
                                 }
                             }
                         }else {
-                            JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                            System.out.println("Notif : "+nameNode.path("message").asText());                  
                         }   
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);

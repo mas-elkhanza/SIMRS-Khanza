@@ -20,9 +20,9 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
+                $id                 =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 $tgl                =$tahun."-".$bulan."-01";
-                $jml                =isset($_GET['jml'])?$_GET['jml']:"0";
+                $jml                = validangka(isset($_GET['jml'])?$_GET['jml']:"0");
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=tgl value=$tgl><input type=hidden name=action value=$action>";
 		        $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
@@ -73,7 +73,7 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 = trim($_POST['id']);
+                    $id                 = validTeks(trim($_POST['id']));
                     $tgl                = $tahun."-".$bulan."-01";
                     $jml                = validangka(trim($_POST['jml']));
                     
@@ -121,7 +121,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" jgmlm "," id ='".$_GET['id']."' and tgl ='".$_GET['tgl']."'","?act=InputJagaMalam&action=TAMBAH&id=$id");
+                Hapus(" jgmlm "," id ='".validTeks($_GET['id'])."' and tgl ='".validTeks($_GET['tgl'])."'","?act=InputJagaMalam&action=TAMBAH&id=$id");
             }
 
 

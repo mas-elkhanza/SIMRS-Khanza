@@ -537,7 +537,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
 
 private void kdpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpjKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-             Sequel.cariIsi("select png_jawab from penjab where kd_pj='"+kdpj.getText()+"'", nmpj);
+             Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj='"+kdpj.getText()+"'", nmpj);
         }else{
              Valid.pindah(evt,TCari,harga);
         }

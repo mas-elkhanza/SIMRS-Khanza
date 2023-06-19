@@ -450,12 +450,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbayarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmbayar,kdbayar.getText()); 
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmbayar,kdbayar.getText()); 
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmbayar,kdbayar.getText()); 
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmbayar,kdbayar.getText()); 
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmbayar,kdbayar.getText()); 
+            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmbayar,kdbayar.getText()); 
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBangsalActionPerformed(null);
@@ -948,7 +948,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
            }
               
             if(totaljm>0){
-                   tabMode.addRow(new Object[]{">> ","Total KSO :"," ","",Valid.SetAngka(totaljm)});
+                   tabMode.addRow(new Object[]{">> ","Total Menejemen :"," ","",Valid.SetAngka(totaljm)});
             }             
         }catch(SQLException e){
             System.out.println("Catatan  "+e);

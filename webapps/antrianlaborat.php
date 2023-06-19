@@ -129,12 +129,12 @@
     <script type="text/javascript"> 
         var auto_refresh = setInterval( 
             function() { 
-                $('#data').load('data_antrianlaborat.php').fadeIn("slow"); 
+                $('#data').load('data_antrianlaborat.php').fadeIn("fast"); 
             }, 9000
         );
         var auto_refresh = setInterval( 
             function() { 
-                $('#judul').load('data_antrianlaboratjudul.php').fadeIn("slow"); 
+                $('#judul').load('data_antrianlaboratjudul.php').fadeIn("fast"); 
             }, 9000
         ); 
     </script>

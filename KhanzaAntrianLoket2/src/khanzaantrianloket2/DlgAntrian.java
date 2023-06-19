@@ -34,11 +34,11 @@ public class DlgAntrian extends javax.swing.JDialog{
     private final Connection koneksi=koneksiDB.condb();
     private final Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();   
     private static final Properties prop = new Properties();
-    private String antri="0",nol_detik,detik;
+    private String antri="0",nol_detik,detik,saatini="";
     private PreparedStatement pshapus,pssimpan,pscari;
     private ResultSet rs;
     private BackgroundMusic music;
-    private int nilai_detik;
+    private int nilai_detik,loket=1;
     private String[] urut={"","./suara/satu.mp3","./suara/dua.mp3","./suara/tiga.mp3","./suara/empat.mp3",
                        "./suara/lima.mp3","./suara/enam.mp3","./suara/tujuh.mp3","./suara/delapan.mp3",
                        "./suara/sembilan.mp3","./suara/sepuluh.mp3","./suara/sebelas.mp3"};
@@ -51,15 +51,17 @@ public class DlgAntrian extends javax.swing.JDialog{
         initComponents();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
         
-        
+        Loket.setDocument(new batasInput((byte)3).getOnlyAngka(Loket));
         Antrian.setDocument(new batasInput((byte)3).getOnlyAngka(Antrian));
         this.setSize(350,400);
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            Loket.setText(prop.getProperty("LOKETANTRIAN"));
+            loket=Integer.parseInt(prop.getProperty("LOKETANTRIAN"));
+            Loket.setText(Integer.toString(loket));
             form1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255,255)), " Antrian Loket "+Loket.getText(), javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 55), new java.awt.Color(255, 255, 51)));
         } catch (IOException ex) {
-            System.out.println(ex);
+            Loket.setText("1");
+            form1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255,255)), " Antrian Loket "+Loket.getText(), javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 55), new java.awt.Color(255, 255, 51)));
         }
         
         jam();
@@ -92,6 +94,7 @@ public class DlgAntrian extends javax.swing.JDialog{
         Antrian = new widget.TextBox();
         BtnBatal2 = new widget.Button();
         Loket = new widget.TextBox();
+        BtnBatal3 = new widget.Button();
 
         DlgDisplay.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         DlgDisplay.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
@@ -238,6 +241,21 @@ public class DlgAntrian extends javax.swing.JDialog{
         panelisi5.add(Loket);
         Loket.setBounds(65, 12, 40, 24);
 
+        BtnBatal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/clock.png"))); // NOI18N
+        BtnBatal3.setMnemonic('8');
+        BtnBatal3.setText("Ulangi");
+        BtnBatal3.setToolTipText("Alt+8");
+        BtnBatal3.setIconTextGap(3);
+        BtnBatal3.setName("BtnBatal3"); // NOI18N
+        BtnBatal3.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatal3ActionPerformed(evt);
+            }
+        });
+        panelisi5.add(BtnBatal3);
+        BtnBatal3.setBounds(130, 100, 100, 30);
+
         internalFrame1.add(panelisi5, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -283,6 +301,7 @@ public class DlgAntrian extends javax.swing.JDialog{
                     pssimpan.close();
                 }
             } 
+            saatini=Antrian.getText();
             System.out.println("Loket : "+Loket.getText()+" Antrian : "+Antrian.getText());
         } catch (Exception e) {
             System.out.println(e);
@@ -336,6 +355,41 @@ public class DlgAntrian extends javax.swing.JDialog{
         }  
     }//GEN-LAST:event_BtnBatal2ActionPerformed
 
+    private void BtnBatal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal3ActionPerformed
+        try {
+            if(!saatini.equals("")){
+                pshapus=koneksi.prepareStatement("delete from antriloket where loket=?");
+                try {
+                    pshapus.setString(1,Loket.getText());
+                    pshapus.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(pshapus!=null){
+                        pshapus.close();
+                    }
+                }
+
+                pssimpan=koneksi.prepareStatement("insert into antriloket values(?,?)");
+                try{
+                    pssimpan.setString(1,Loket.getText());
+                    pssimpan.setString(2,saatini);
+                    pssimpan.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(pssimpan!=null){
+                        pssimpan.close();
+                    }
+                } 
+                System.out.println("Loket : "+Loket.getText()+" Antrian : "+saatini);
+            }
+                    
+        } catch (Exception e) {
+            System.out.println(e);
+        }  
+    }//GEN-LAST:event_BtnBatal3ActionPerformed
+
 
 
     /**
@@ -362,6 +416,7 @@ public class DlgAntrian extends javax.swing.JDialog{
     private widget.Button BtnAntri1;
     private widget.Button BtnBatal1;
     private widget.Button BtnBatal2;
+    private widget.Button BtnBatal3;
     private widget.Button BtnDisplay;
     private widget.Button BtnKeluar;
     private javax.swing.JDialog DlgDisplay;
@@ -514,6 +569,7 @@ public class DlgAntrian extends javax.swing.JDialog{
                             } catch (InterruptedException ex) {
                                System.out.println(e);
                             }
+                            BtnBatal2ActionPerformed(null);
                         }                      
                     }                          
                 }

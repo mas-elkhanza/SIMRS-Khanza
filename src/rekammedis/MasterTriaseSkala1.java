@@ -511,9 +511,13 @@ public class MasterTriaseSkala1 extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,kdskala,"master_triase_skala1","kode_skala1");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,kdskala,"master_triase_skala1","kode_skala1")==true){
+            if(tbSpesialis.getSelectedRow()!= -1){
+                tabMode.removeRow(tbSpesialis.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

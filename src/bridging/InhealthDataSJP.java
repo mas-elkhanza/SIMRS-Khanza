@@ -359,7 +359,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         
         try{
             KdPPK.setText(Sequel.cariIsi("select kode_ppkinhealth from setting")); 
-            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));           
+            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));           
         }catch(Exception e){
             System.out.println(e);
         }
@@ -1526,7 +1526,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                         TglLahir.setText(root.path("TGLLAHIR").asText().substring(0,11));
                         KdPpkRujukan.setText(root.path("KODEPROVIDER").asText());
                         NmPpkRujukan.setText(root.path("NAMAPROVIDER").asText());
-                        jkel=Sequel.cariIsi("select jk from pasien where no_rkm_medis=?",TNoRM.getText());
+                        jkel=Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText());
                         JK.setText(jkel.replaceAll("P","PEREMPUAN").replaceAll("L","LAKI-LAKI"));
                     }else {
                         emptTeks();

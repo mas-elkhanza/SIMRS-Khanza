@@ -6,7 +6,6 @@
         <link href="../../css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-
     <?php
         $_sqlthn         = "SELECT * FROM set_tahun";
         $hasilthn        = bukaquery($_sqlthn);
@@ -24,7 +23,7 @@
 
         $keyword = $_GET['keyword'];
         $keyword = validTeks($keyword);
-        $status  = trim(isset($_GET['status']))?trim($_GET['status']):"AKTIF";
+        $status  = validTeks(trim(isset($_GET['status']))?trim($_GET['status']):"AKTIF");
         $_sql    = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,
                 jnj_jabatan.indek as indekjabatan,CONCAT(FLOOR(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'),
@@ -39,7 +38,6 @@
                 pegawai.pendidikan like '%".$keyword."%' or pegawai.mulai_kerja like '%".$keyword."%') order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
-
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='2950px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <caption><h1 class=title>DAFTAR INDEX PEGAWAI/KARYAWAN</h1></caption>

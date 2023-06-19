@@ -14,7 +14,7 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
+                $id                 =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 				$_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil =bukaquery($_sql);
@@ -88,9 +88,9 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id           = trim($_POST['id']);
-                    $TglAmbil     = trim($_POST['TglAmbil']);
-                    $BlnAmbil     = trim($_POST['BlnAmbil']);
+                    $id           = validTeks(trim($_POST['id']));
+                    $TglAmbil     = validTeks(trim($_POST['TglAmbil']));
+                    $BlnAmbil     = validTeks(trim($_POST['BlnAmbil']));
                     $ktg          = validTeks(trim($_POST['ktg']));
                     $dankes       = validangka(trim($_POST['dankes']));
                     if ((isset($id))&&(isset($dankes))) {
@@ -107,8 +107,6 @@
             ?>
             <div style="width: 100%; height: 400px; overflow: auto;">
             <?php
-                $awal=isset($_GET['awal'])?$_GET['awal']:NULL;
-                if (empty($awal)) $awal=0;
                 $_sql = "SELECT id,tanggal,ktg,dankes from ambil_dankes  where id='$id' and tanggal like '%$tahun%' ORDER BY dankes ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
@@ -144,7 +142,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" ambil_dankes "," id ='".$_GET['id']."' and tanggal ='".$_GET['tanggal']."'","?act=SisaDankes&action=TAMBAH&id=$id");
+                Hapus(" ambil_dankes "," id ='".validTeks($_GET['id'])."' and tanggal ='".validTeks($_GET['tanggal'])."'","?act=SisaDankes&action=TAMBAH&id=$id");
             }
 
         if(mysqli_num_rows($hasil)!=0) {

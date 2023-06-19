@@ -455,7 +455,7 @@
             <Component class="widget.Label" name="label24">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="text" type="java.lang.String" value="Meterai :"/>
+                <Property name="text" type="java.lang.String" value="Biaya Tambahan :"/>
                 <Property name="name" type="java.lang.String" value="label24" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[60, 30]"/>

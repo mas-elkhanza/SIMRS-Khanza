@@ -1010,24 +1010,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.Faktur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.Order</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Suplier</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Petugas</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tgl.Pesan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tgl.Faktur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Jatuh Tempo</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Kadaluarsa</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.Batch</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>Jml.Beli</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Harga Beli(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>SubTotal(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Disk(%)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Bsr.Disk(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Total(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Status Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.Faktur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.Order</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Suplier</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Petugas</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Pesan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Faktur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Jatuh Tempo</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Kadaluarsa</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>No.Batch</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>Satuan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml.Beli</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Harga Beli(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>SubTotal(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>Disk(%)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Bsr.Disk(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Total(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Status Bayar</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -1084,24 +1084,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.Faktur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.Order</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Suplier</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Petugas</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tgl.Pesan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tgl.Faktur</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Jatuh Tempo</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Kadaluarsa</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.Batch</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'>Barang</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Satuan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>Jml.Beli</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Harga Beli(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>SubTotal(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Disk(%)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Bsr.Disk(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Total(Rp)</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Status Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.Faktur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.Order</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Suplier</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Petugas</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Pesan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Tgl.Faktur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Jatuh Tempo</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>Kadaluarsa</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='4%'>No.Batch</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='12%'>Barang</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>Satuan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml.Beli</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Harga Beli(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>SubTotal(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>Disk(%)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>Bsr.Disk(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Total(Rp)</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Status Bayar</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  

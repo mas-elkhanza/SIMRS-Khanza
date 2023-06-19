@@ -160,7 +160,7 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
                  "select * from kategori_pengeluaran_harian "+
                  "where kode_kategori like ? or "+
                  "nama_kategori like ? order by nama_kategori");            
-            ps2=koneksi.prepareStatement("select nm_rek from rekening where kd_rek=?");
+            ps2=koneksi.prepareStatement("select rekening.nm_rek from rekening where rekening.kd_rek=?");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -558,7 +558,7 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
 
     private void KdAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdAkunKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmAkun,KdAkun.getText());
+            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",NmAkun,KdAkun.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnAkunActionPerformed(null);
         }else{            
@@ -576,11 +576,12 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
         }else if(NmKontraAKun.getText().trim().equals("")||KdKontraAkun.getText().trim().equals("")){
             Valid.textKosong(KdKontraAkun,"Kontra Akun Rekening");
         }else{
-            Sequel.menyimpan("kategori_pengeluaran_harian","?,?,?,?","Kode Kategori",4,new String[]{
+            if(Sequel.menyimpantf("kategori_pengeluaran_harian","?,?,?,?","Kode Kategori",4,new String[]{
                 Kd.getText(),Nm.getText(),KdAkun.getText(),KdKontraAkun.getText()
-            });
-            tampil();
-            emptTeks();
+            })==true){
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -781,7 +782,7 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
 
     private void KdKontraAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKontraAkunKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmKontraAKun,KdKontraAkun.getText());
+            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",NmKontraAKun,KdKontraAkun.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnKontraAkunActionPerformed(null);
         }else{            

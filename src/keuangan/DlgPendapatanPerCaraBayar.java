@@ -470,25 +470,25 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
         htmlContent = new StringBuilder();
         htmlContent.append(                             
             "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30px' rowspan='3'>NO.</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px' rowspan='3'>CARA BAYAR</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='600px' colspan='6'>TRANSAKSI</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='380px' colspan='2'>TOTAL</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px' rowspan='3'>NO.</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px' rowspan='3'>CARA BAYAR</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='600px' colspan='6'>TRANSAKSI</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='380px' colspan='2'>TOTAL</td>"+
             "</tr>"+
             "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>RAWAT JALAN</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>MCU</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>RAWAT INAP</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>CASH</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>PENJAMIN</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT JALAN</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>MCU</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT INAP</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>CASH</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>PENJAMIN</td>"+
             "</tr>"+
             "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>NILAI</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>QTY</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>NILAI</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>QTY</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>NILAI</td>"+
-                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>QTY</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
             "</tr>"
         ); 
         LoadHTML.setText(
@@ -548,25 +548,25 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30px' rowspan='3'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px' rowspan='3'>CARA BAYAR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='600px' colspan='6'>TRANSAKSI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='380px' colspan='2'>TOTAL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px' rowspan='3'>NO.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px' rowspan='3'>CARA BAYAR</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='600px' colspan='6'>TRANSAKSI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='380px' colspan='2'>TOTAL</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>RAWAT JALAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>MCU</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>RAWAT INAP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>CASH</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>PENJAMIN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT JALAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>MCU</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT INAP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>CASH</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>PENJAMIN</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>NILAI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>QTY</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>NILAI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>QTY</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>NILAI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>QTY</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
                 "</tr>"
             );   
             

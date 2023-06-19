@@ -65,7 +65,7 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                    HPP_Obat_Rawat_Inap="",Registrasi_Ranap="",Tambahan_Ranap="",Potongan_Ranap="",
                    Retur_Obat_Ranap="",Resep_Pulang_Ranap="",Kamar_Inap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",Utang_Jasa_Medik_Dokter_Operasi_Ranap="",
                    Beban_Jasa_Medik_Paramedis_Operasi_Ranap="",Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Service_Ranap="",
-                   Harian_Ranap="";
+                   Harian_Ranap="",PPN_Keluaran="";
     private double total=0,sisapiutang=0,rugihppralan=0,rugihppranap=0,ttlpiutang=0,ttliur=0,ttlsudahdibayar=0,ttlsisapiutang=0,ttlinacbg=0,rugi=0,lebih=0;
     private boolean sukses=true;
 
@@ -95,7 +95,7 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                 "bhpoperasiralan","pendapatanoperasiralan","jmdokteroperasiranap","jmparamedisoperasiranap","bhpoperasiranap",
                 "pendapatanoperasiranap","obatlangsung","obatralan","hppobatralan","obatranap","hppobatranap","returobat",
                 "tambahanbiaya","potonganbiaya","kamar","reseppulang","harianranap","registrasi","Petugas Validasi",
-                "Akun Rekening","Kontra Akun","Service Ranap"
+                "Akun Rekening","Kontra Akun","Service Ranap","PPN Obat"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -121,7 +121,8 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
+                java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -133,7 +134,7 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 85; i++) {
+        for (i = 0; i < 86; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -199,13 +200,16 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
         }  
 
         try {
-            ps=koneksi.prepareStatement("select * from set_akun");
+            ps=koneksi.prepareStatement(
+                    "select set_akun.Piutang_BPJS_RVP,set_akun.Kerugian_Klaim_BPJS_RVP,set_akun.Lebih_Bayar_Klaim_BPJS_RVP,"+
+                    "set_akun.PPN_Keluaran from set_akun");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
                     Piutang_BPJS_RVP=rs.getString("Piutang_BPJS_RVP");
                     Kerugian_Klaim_BPJS_RVP=rs.getString("Kerugian_Klaim_BPJS_RVP");
                     Lebih_Bayar_Klaim_BPJS_RVP=rs.getString("Lebih_Bayar_Klaim_BPJS_RVP");
+                    PPN_Keluaran=rs.getString("PPN_Keluaran");
                 }
             } catch (Exception e) {
                 System.out.println("Notif Rekening : "+e);
@@ -218,7 +222,24 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                 }
             }   
             
-            ps=koneksi.prepareStatement("select * from set_akun_ralan");
+            ps=koneksi.prepareStatement(
+                    "select Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Tindakan_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Paramedis_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Medik_Paramedis_Tindakan_Ralan,set_akun_ralan.Beban_KSO_Tindakan_Ralan,"+
+                    "set_akun_ralan.Utang_KSO_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Sarana_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Sarana_Tindakan_Ralan,"+
+                    "set_akun_ralan.HPP_BHP_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Menejemen_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Tindakan_Ralan,"+
+                    "set_akun_ralan.Laborat_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Laborat_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Petugas_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Medik_Petugas_Laborat_Ralan,set_akun_ralan.Beban_Kso_Laborat_Ralan,"+
+                    "set_akun_ralan.Utang_Kso_Laborat_Ralan,set_akun_ralan.HPP_Persediaan_Laborat_Rawat_Jalan,set_akun_ralan.Beban_Jasa_Sarana_Laborat_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Sarana_Laborat_Ralan,set_akun_ralan.Beban_Jasa_Perujuk_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Perujuk_Laborat_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Menejemen_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Laborat_Ralan,set_akun_ralan.Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Dokter_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Petugas_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Petugas_Radiologi_Ralan,"+
+                    "set_akun_ralan.Beban_Kso_Radiologi_Ralan,set_akun_ralan.Utang_Kso_Radiologi_Ralan,set_akun_ralan.HPP_Persediaan_Radiologi_Rawat_Jalan,"+
+                    "set_akun_ralan.Beban_Jasa_Sarana_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Sarana_Radiologi_Ralan,set_akun_ralan.Beban_Jasa_Perujuk_Radiologi_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Perujuk_Radiologi_Ralan,set_akun_ralan.Beban_Jasa_Menejemen_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Radiologi_Ralan,"+
+                    "set_akun_ralan.Obat_Ralan,set_akun_ralan.HPP_Obat_Rawat_Jalan,set_akun_ralan.Registrasi_Ralan,set_akun_ralan.Operasi_Ralan,"+
+                    "set_akun_ralan.Beban_Jasa_Medik_Dokter_Operasi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Operasi_Ralan,set_akun_ralan.Beban_Jasa_Medik_Paramedis_Operasi_Ralan,"+
+                    "set_akun_ralan.Utang_Jasa_Medik_Paramedis_Operasi_Ralan,set_akun_ralan.HPP_Obat_Operasi_Ralan,set_akun_ralan.Tambahan_Ralan,set_akun_ralan.Potongan_Ralan from set_akun_ralan");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -285,7 +306,25 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                 }
             } 
             
-            ps=koneksi.prepareStatement("select * from set_akun_ranap");
+            ps=koneksi.prepareStatement(
+                    "select set_akun_ranap.Tindakan_Ranap,set_akun_ranap.Beban_Jasa_Medik_Dokter_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Tindakan_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Paramedis_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Medik_Paramedis_Tindakan_Ranap,set_akun_ranap.Beban_KSO_Tindakan_Ranap,"+
+                    "set_akun_ranap.Utang_KSO_Tindakan_Ranap,set_akun_ranap.Beban_Jasa_Sarana_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Sarana_Tindakan_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Menejemen_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Menejemen_Tindakan_Ranap,set_akun_ranap.HPP_BHP_Tindakan_Ranap,"+
+                    "set_akun_ranap.Laborat_Ranap,Beban_Jasa_Medik_Dokter_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Laborat_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Petugas_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Petugas_Laborat_Ranap,set_akun_ranap.Beban_Kso_Laborat_Ranap,"+
+                    "set_akun_ranap.Utang_Kso_Laborat_Ranap,set_akun_ranap.HPP_Persediaan_Laborat_Rawat_inap,set_akun_ranap.Beban_Jasa_Sarana_Laborat_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Sarana_Laborat_Ranap,set_akun_ranap.Beban_Jasa_Perujuk_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Perujuk_Laborat_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Menejemen_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Menejemen_Laborat_Ranap,set_akun_ranap.Radiologi_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Dokter_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Radiologi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Petugas_Radiologi_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Medik_Petugas_Radiologi_Ranap,set_akun_ranap.Beban_Kso_Radiologi_Ranap,set_akun_ranap.Utang_Kso_Radiologi_Ranap,"+
+                    "set_akun_ranap.HPP_Persediaan_Radiologi_Rawat_Inap,set_akun_ranap.Beban_Jasa_Sarana_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Sarana_Radiologi_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Perujuk_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Perujuk_Radiologi_Ranap,set_akun_ranap.Beban_Jasa_Menejemen_Radiologi_Ranap,"+
+                    "set_akun_ranap.Utang_Jasa_Menejemen_Radiologi_Ranap,set_akun_ranap.Obat_Ranap,set_akun_ranap.HPP_Obat_Rawat_Inap,set_akun_ranap.Registrasi_Ranap,"+
+                    "set_akun_ranap.Tambahan_Ranap,set_akun_ranap.Potongan_Ranap,set_akun_ranap.Retur_Obat_Ranap,set_akun_ranap.Resep_Pulang_Ranap,set_akun_ranap.Kamar_Inap,"+
+                    "set_akun_ranap.Operasi_Ranap,set_akun_ranap.Beban_Jasa_Medik_Dokter_Operasi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Operasi_Ranap,"+
+                    "set_akun_ranap.Beban_Jasa_Medik_Paramedis_Operasi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Paramedis_Operasi_Ranap,set_akun_ranap.HPP_Obat_Operasi_Ranap,"+
+                    "set_akun_ranap.Service_Ranap from set_akun_ranap");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -355,7 +394,7 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                 }
             } 
             
-            ps=koneksi.prepareStatement("select * from set_akun_ranap2");
+            ps=koneksi.prepareStatement("select set_akun_ranap2.Harian_Ranap from set_akun_ranap2");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -374,7 +413,6 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
    
 
@@ -820,7 +858,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             for(i=0;i<row;i++){  
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
                     Sequel.mengedit("piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","status='Belum Lunas'");
-                    Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"' and nama_bayar='"+Sequel.cariIsi("select nama_bayar from akun_piutang where kd_rek=?",tabMode.getValueAt(i,83).toString())+"'","sisapiutang='"+tabMode.getValueAt(i,8).toString()+"'");
+                    Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"' and nama_bayar='"+Sequel.cariIsi("select akun_piutang.nama_bayar from akun_piutang where akun_piutang.kd_rek=?",tabMode.getValueAt(i,83).toString())+"'","sisapiutang='"+tabMode.getValueAt(i,8).toString()+"'");
                     if(Valid.SetAngka(tabMode.getValueAt(i,11).toString())>=100){
                         Sequel.queryu("delete from tampjurnal"); 
                         Sequel.menyimpan("tampjurnal","'"+tabMode.getValueAt(i,83).toString()+"','PIUTANG BPJS','"+tabMode.getValueAt(i,8).toString()+"','0'","debet=debet+'"+tabMode.getValueAt(i,8).toString()+"'","kd_rek='"+tabMode.getValueAt(i,83).toString()+"'");     
@@ -1094,6 +1132,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','0','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"'","kredit=kredit+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
                             Sequel.menyimpan("tampjurnal","'"+Service_Ranap+"','PENDAPATAN SERVICE INAP','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"','0'","debet=debet+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"'","kd_rek='"+Service_Ranap+"'");   
                         }
+                        //PPN
+                        if(Valid.SetAngka(tabMode.getValueAt(i,85).toString())>0){
+                            Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','0','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kredit=kredit+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
+                            Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"','0'","debet=debet+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+PPN_Keluaran+"'");   
+                        }
                         //jurnal pembatalan RVP beban, utang, piutang, pendapatan
                         sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","PEMBATALAN RVP PIUTANG BPJS, OLEH "+akses.getkode());     
 
@@ -1362,6 +1405,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','"+(Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"','0'","debet=debet+'"+(Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
                                 Sequel.menyimpan("tampjurnal","'"+Service_Ranap+"','PENDAPATAN SERVICE INAP','0','"+(Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"'","kredit=kredit+'"+(Valid.SetAngka(tabMode.getValueAt(i,84).toString()))+"'","kd_rek='"+Service_Ranap+"'");   
                             }
+                            //PPN Obat
+                            if(Valid.SetAngka(tabMode.getValueAt(i,85).toString())>0){
+                                Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"','0'","debet=debet+'"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','0','"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kredit=kredit+'"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+PPN_Keluaran+"'");   
+                            }
                             //jurnal pembatalan RVU beban, utang, piutang, pendapatan
                             sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","PEMBATALAN RVP PIUTANG BPJS, OLEH "+akses.getkode());     
                             
@@ -1595,7 +1643,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    "rvp_klaim_bpjs.hppobatralan,rvp_klaim_bpjs.obatranap,rvp_klaim_bpjs.hppobatranap,rvp_klaim_bpjs.returobat,rvp_klaim_bpjs.tambahanbiaya,"+
                    "rvp_klaim_bpjs.potonganbiaya,rvp_klaim_bpjs.kamar,rvp_klaim_bpjs.reseppulang,rvp_klaim_bpjs.registrasi,rvp_klaim_bpjs.harianranap,"+
                    "concat(rvp_klaim_bpjs.nip,' ',petugas.nama) as petugas,reg_periksa.status_lanjut,rvp_klaim_bpjs.kd_rek,rvp_klaim_bpjs.kd_rek_kontra,"+
-                   "rvp_klaim_bpjs.service from rvp_klaim_bpjs inner join reg_periksa on rvp_klaim_bpjs.no_rawat=reg_periksa.no_rawat "+
+                   "rvp_klaim_bpjs.service,rvp_klaim_bpjs.ppn_obat from rvp_klaim_bpjs inner join reg_periksa on rvp_klaim_bpjs.no_rawat=reg_periksa.no_rawat "+
                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join petugas on petugas.nip=rvp_klaim_bpjs.nip "+
                    "where rvp_klaim_bpjs.tanggal_rvp between ? and ? "+
@@ -1643,7 +1691,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getDouble("obatlangsung"),rs.getDouble("obatralan"),rs.getDouble("hppobatralan"),rs.getDouble("obatranap"),
                         rs.getDouble("hppobatranap"),rs.getDouble("returobat"),rs.getDouble("tambahanbiaya"),rs.getDouble("potonganbiaya"),
                         rs.getDouble("kamar"),rs.getDouble("reseppulang"),rs.getDouble("harianranap"),rs.getDouble("registrasi"),
-                        rs.getString("petugas"),rs.getString("kd_rek"),rs.getString("kd_rek_kontra"),rs.getDouble("service")
+                        rs.getString("petugas"),rs.getString("kd_rek"),rs.getString("kd_rek_kontra"),rs.getDouble("service"),rs.getString("ppn_obat")
                     });
                     sisapiutang=sisapiutang+rs.getDouble("sisapiutang");
                     total=total+rs.getDouble("dibayarbpjs");

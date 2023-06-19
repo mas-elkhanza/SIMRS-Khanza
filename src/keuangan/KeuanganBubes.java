@@ -415,14 +415,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void kdrekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdrekKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             kdrek.setText(rekening.getTextField().getText());
-            Sequel.cariIsi("select nm_rek from rekening where kd_rek='"+kdrek.getText()+"'",nmrek);
+            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek='"+kdrek.getText()+"'",nmrek);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kdrek.setText(rekening.getTextField().getText());
-            Sequel.cariIsi("select nm_rek from rekening where kd_rek='"+kdrek.getText()+"'",nmrek);
+            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek='"+kdrek.getText()+"'",nmrek);
             Tahun.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kdrek.setText(rekening.getTextField().getText());
-            Sequel.cariIsi("select nm_rek from rekening where kd_rek='"+kdrek.getText()+"'",nmrek);
+            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek='"+kdrek.getText()+"'",nmrek);
             BtnKeluar.requestFocus();
         }
     }//GEN-LAST:event_kdrekKeyPressed

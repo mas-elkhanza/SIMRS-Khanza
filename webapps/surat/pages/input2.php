@@ -1,9 +1,16 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        if(!strpos($_SERVER['REQUEST_URI'],"pages/upload/")){
+            exit(header("Location:../index.php"));
+        }
+    }
+?>
 <div id="post">
     <div class="entry">        
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 $action =isset($_GET['action'])?$_GET['action']:NULL;
-                $max    = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim=current_date()");
+                $max    = getOne("select ifnull(MAX(CONVERT(RIGHT(surat_keluar.no_urut,3),signed)),0)+1 from surat_keluar where surat_keluar.tgl_kirim=current_date()");
                 $no_urut= "SK".str_replace("-","",getOne("select current_date()")).sprintf("%03s", $max);
                 echo "<input type=hidden name=action value=$action>";
             ?>
@@ -13,14 +20,14 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Keluar</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15">
+                            :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15" pattern="[A-Z0-9-]{1,15}" title=" A-Z0-9- (Maksimal 15 karakter)" autocomplete="off" required>
                             <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Ruang Surat</td>
                         <td width="35%">
                             :&nbsp;<select name="kd_ruang" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi10'));" id="TxtIsi10">
                                 <?php
-                                    $_sql = "SELECT kd,ruang FROM surat_ruang ORDER BY ruang";
+                                    $_sql = "SELECT surat_ruang.kd,surat_ruang.ruang FROM surat_ruang ORDER BY surat_ruang.ruang";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi10' value='$baris[0]'>$baris[1]</option>";
@@ -33,14 +40,14 @@
                     <tr class="isi2">
                         <td width="15%" >Nomor Surat</td>
                         <td width="35%">
-                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35">
+                            :&nbsp;<input name="no_surat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="30" maxlength="35" pattern="[a-zA-Z0-9, ./@_]{1,35}" title=" a-zA-Z0-9, ./@_ (Maksimal 35 karakter)" autocomplete="off" required>
                             <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                         <td width="15%" >Sifat Surat</td>
                         <td width="35%">
                             :&nbsp;<select name="kd_sifat" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi11'));" id="TxtIsi11">
                                 <?php
-                                    $_sql = "SELECT kd,sifat FROM surat_sifat ORDER BY sifat";
+                                    $_sql = "SELECT surat_sifat.kd,surat_sifat.sifat FROM surat_sifat ORDER BY surat_sifat.sifat";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi11' value='$baris[0]'>$baris[1]</option>";
@@ -53,12 +60,12 @@
                     <tr class="isi2">
                         <td width="15%" >Tujuan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                         </td>                        
                         <td width="15%" >Lampiran</td>
                         <td width="35%">
-                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" type=text id="TxtIsi12" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="lampiran" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" type=text id="TxtIsi12" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi12" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -84,14 +91,14 @@
                         </td>                        
                         <td width="15%" >Tembusan</td>
                         <td width="35%">
-                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi13" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
                     <tr class="isi2">
                         <td width="15%" >Perihal</td>
                         <td width="35%">
-                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="perihal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
                         </td> 
                         <td width="15%" >Deadline Balas</td>
@@ -138,7 +145,7 @@
                         <td width="35%">
                             :&nbsp;<select name="kd_balas" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi15'));" id="TxtIsi15">
                                 <?php
-                                    $_sql = "SELECT kd,balas FROM surat_balas ORDER BY balas";
+                                    $_sql = "SELECT surat_balas.kd,surat_balas.balas FROM surat_balas ORDER BY surat_balas.balas";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi15' value='$baris[0]'>$baris[1]</option>";
@@ -153,7 +160,7 @@
                         <td width="35%">
                             :&nbsp;<select name="kd_lemari" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" id="TxtIsi7">
                                 <?php
-                                    $_sql = "SELECT kd,lemari FROM surat_lemari ORDER BY lemari";
+                                    $_sql = "SELECT surat_lemari.kd,surat_lemari.lemari FROM surat_lemari ORDER BY surat_lemari.lemari";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi7' value='$baris[0]'>$baris[1]</option>";
@@ -164,7 +171,7 @@
                         </td>
                         <td width="15%" >Keterangan</td>
                         <td width="35%">
-                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type=text id="TxtIsi16" class="inputbox" value="" size="35" maxlength="300">
+                            :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type=text id="TxtIsi16" class="inputbox" value="" size="35" maxlength="300" pattern="[a-zA-Z 0-9-]{1,300}" title=" a-zA-Z 0-9- (Maksimal 300 karakter)" autocomplete="off" required>
                             <span id="MsgIsi16" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -173,7 +180,7 @@
                         <td width="35%">
                             :&nbsp;<select name="kd_rak" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" id="TxtIsi8">
                                 <?php
-                                    $_sql = "SELECT kd,rak FROM surat_rak ORDER BY rak";
+                                    $_sql = "SELECT surat_rak.kd,surat_rak.rak FROM surat_rak ORDER BY surat_rak.rak";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi8' value='$baris[0]'>$baris[1]</option>";
@@ -186,7 +193,7 @@
                         <td width="35%">
                             :&nbsp;<select name="kd_status" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi17'));" id="TxtIsi17">
                                 <?php
-                                    $_sql = "SELECT kd,status FROM surat_status ORDER BY status";
+                                    $_sql = "SELECT surat_status.kd,surat_status.status FROM surat_status ORDER BY status";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi17' value='$baris[0]'>$baris[1]</option>";
@@ -201,7 +208,7 @@
                         <td width="35%">
                             :&nbsp;<select name="kd_map" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" id="TxtIsi9">
                                 <?php
-                                    $_sql = "SELECT kd,map FROM surat_map ORDER BY map";
+                                    $_sql = "SELECT surat_map.kd,surat_map.map FROM surat_map ORDER BY surat_map.map";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi9' value='$baris[0]'>$baris[1]</option>";
@@ -214,7 +221,7 @@
                         <td width="35%">
                             :&nbsp;<select name="kd_klasifikasi" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi18'));" id="TxtIsi18">
                                 <?php
-                                    $_sql = "SELECT kd,klasifikasi FROM surat_klasifikasi ORDER BY klasifikasi";
+                                    $_sql = "SELECT surat_klasifikasi.kd,surat_klasifikasi.klasifikasi FROM surat_klasifikasi ORDER BY surat_klasifikasi.klasifikasi";
                                     $hasil=bukaquery($_sql);
                                     while($baris = mysqli_fetch_array($hasil)) {
                                         echo "<option id='TxtIsi18' value='$baris[0]'>$baris[1]</option>";
@@ -227,7 +234,7 @@
                     <tr class="isi2">
                         <td width="15%" >File Berkas(PDF/JPG)</td>
                         <td width="35%">
-                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" type=file id="TxtIsi19" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
+                            :&nbsp;<input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" type=file id="TxtIsi19" value="<?php echo $dokumen;?>" size="30" maxlength="255" accept="application/pdf,image/jpeg,image/jpg"/>
                             <span id="MsgIsi19" style="color:#CC0000; font-size:10px;"></span>
                         </td>
                     </tr>
@@ -238,37 +245,40 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_surat   =trim($_POST['no_surat']);
-                    $tujuan     =trim($_POST['tujuan']);
-                    $tgl_surat  =trim($_POST['ThnSurat'])."-".trim($_POST['BlnSurat'])."-".trim($_POST['TglSurat']);
-                    $perihal    =trim($_POST['perihal']);
-                    $tgl_kirim =trim($_POST['ThnKirim'])."-".trim($_POST['BlnKirim'])."-".trim($_POST['TglKirim']);
-                    $kd_lemari  =trim($_POST['kd_lemari']);
-                    $kd_rak     =trim($_POST['kd_rak']);
-                    $kd_map     =trim($_POST['kd_map']);
-                    $kd_ruang   =trim($_POST['kd_ruang']);
-                    $kd_sifat   =trim($_POST['kd_sifat']);
-                    $lampiran   =trim($_POST['lampiran']);
-                    $tembusan   =trim($_POST['tembusan']);
-                    $tgl_deadline_balas=trim($_POST['ThnDeadlineBalas'])."-".trim($_POST['BlnDeadlineBalas'])."-".trim($_POST['TglDeadlineBalas']);
-                    $kd_balas   =trim($_POST['kd_balas']);
-                    $keterangan =trim($_POST['keterangan']);
-                    $kd_status  =trim($_POST['kd_status']);
-                    $kd_klasifikasi=trim($_POST['kd_klasifikasi']);
-                    $max        =getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim='$tgl_kirim'");
-                    $no_urut    ="SK".str_replace("-","",$tgl_kirim).sprintf("%03s", $max);
-                    $dokumen    =str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']);
-                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                    
-                    if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_kirim))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
-                        switch($action) {
-                            case "TAMBAH":
-                                Tambah(" surat_keluar "," '$no_urut','$no_surat','$tujuan','$tgl_surat','$perihal','$tgl_kirim','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
-                                break;
+                    $no_surat   = validTeks(trim($_POST['no_surat']));
+                    $tujuan     = validTeks(trim($_POST['tujuan']));
+                    $tgl_surat  = validTeks(trim($_POST['ThnSurat'])."-".trim($_POST['BlnSurat'])."-".trim($_POST['TglSurat']));
+                    $perihal    = validTeks(trim($_POST['perihal']));
+                    $tgl_kirim  = validTeks(trim($_POST['ThnKirim'])."-".trim($_POST['BlnKirim'])."-".trim($_POST['TglKirim']));
+                    $kd_lemari  = validTeks(trim($_POST['kd_lemari']));
+                    $kd_rak     = validTeks(trim($_POST['kd_rak']));
+                    $kd_map     = validTeks(trim($_POST['kd_map']));
+                    $kd_ruang   = validTeks(trim($_POST['kd_ruang']));
+                    $kd_sifat   = validTeks(trim($_POST['kd_sifat']));
+                    $lampiran   = validTeks(trim($_POST['lampiran']));
+                    $tembusan   = validTeks(trim($_POST['tembusan']));
+                    $tgl_deadline_balas= validTeks(trim($_POST['ThnDeadlineBalas'])."-".trim($_POST['BlnDeadlineBalas'])."-".trim($_POST['TglDeadlineBalas']));
+                    $kd_balas   = validTeks(trim($_POST['kd_balas']));
+                    $keterangan = validTeks(trim($_POST['keterangan']));
+                    $kd_status  = validTeks(trim($_POST['kd_status']));
+                    $kd_klasifikasi = validTeks(trim($_POST['kd_klasifikasi']));
+                    $max        = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim='$tgl_kirim'");
+                    $no_urut    = "SK".str_replace("-","",$tgl_kirim).sprintf("%03s", $max);
+                    $dokumen    = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                        if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_kirim))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
+                            switch($action) {
+                                case "TAMBAH":
+                                    Tambah(" surat_keluar "," '$no_urut','$no_surat','$tujuan','$tgl_surat','$perihal','$tgl_kirim','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " );
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
+                                    break;
+                            }
+                        }else{
+                            echo 'Semua field harus isi..!!!';
                         }
                     }else{
-                        echo 'Semua field harus isi..!!!';
+                        echo "Berkas harus JPEG/JPG";
                     }
                 }
             ?>

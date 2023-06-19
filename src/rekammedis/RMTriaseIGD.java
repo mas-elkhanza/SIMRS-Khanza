@@ -64,6 +64,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private String keputusan="",pilihan="",datatriase="",finger="",kodepetugas="";
     private StringBuilder htmlContent;
+    private boolean sukses=true;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -903,7 +904,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(362, 10, 90, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-11-2021 16:46:58" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022 22:54:21" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
@@ -1330,7 +1331,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(362, 10, 90, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-11-2021 16:46:59" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022 22:54:22" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
@@ -1353,14 +1354,14 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         SekunderZonaKuning.setName("SekunderZonaKuning"); // NOI18N
         SekunderZonaKuning.setPreferredSize(new java.awt.Dimension(40, 20));
         internalFrame12.add(SekunderZonaKuning);
-        SekunderZonaKuning.setBounds(456, 10, 140, 23);
+        SekunderZonaKuning.setBounds(456, 10, 120, 23);
 
         buttonGroup1.add(SekunderZonaHijau);
         SekunderZonaHijau.setForeground(new java.awt.Color(0, 170, 0));
         SekunderZonaHijau.setText("Zona Hijau");
         SekunderZonaHijau.setName("SekunderZonaHijau"); // NOI18N
         internalFrame12.add(SekunderZonaHijau);
-        SekunderZonaHijau.setBounds(590, 10, 140, 23);
+        SekunderZonaHijau.setBounds(590, 10, 100, 23);
 
         label15.setText("Catatan :");
         label15.setName("label15"); // NOI18N
@@ -1624,7 +1625,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-11-2021 16:47:00" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022 22:54:22" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
@@ -1783,7 +1784,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-11-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1797,7 +1798,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-11-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1853,7 +1854,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -2073,6 +2074,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         }else if(KeteranganKedatangan.equals("")){
             Valid.textKosong(btnKasus,"Keterangan");
         }else{
+            Sequel.AutoComitFalse();
+            sukses=true;
             if(TabTriase.getSelectedIndex()==0){
                 jmlskala1=0;jmlskala2=0;
                 for(i=0;i<tbSkala1.getRowCount();i++){ 
@@ -2086,24 +2089,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }
                 }
                 if(PrimerKeluhanUtama.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerKeluhanUtama,"Keluhan Utama");
                 }else if(PrimerSuhu.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerSuhu,"Suhu");
                 }else if(PrimerNyeri.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerNyeri,"Nyeri");
                 }else if(PrimerTensi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerTensi,"Tensi");
                 }else if(PrimerNadi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerNadi,"Nadi");
                 }else if(PrimerSaturasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerSaturasi,"Saturasi O²");
                 }else if(PrimerRespirasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerRespirasi,"Respirasi");
                 }else if(PrimerCatatan.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(PrimerCatatan,"Catatan");
                 }else if(PrimerKodePetugas.getText().trim().equals("")||PrimerNamaPetugas.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(btnPrimerPetugas,"Dokter/Petugas Triase");
                 }else if((jmlskala1==0)&&(jmlskala2==0)){
+                    sukses=false;
                     Valid.textKosong(TCariPemeriksaan,"Skala 1 / Skala 2");
                 }else{
                     if(Sequel.menyimpantf("data_triase_igd","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",13,new String[]{
@@ -2117,33 +2130,41 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         }else if(PrimerKritis.isSelected()==true){
                             keputusan="Ruang Kritis";
                         }
-                        Sequel.menyimpan("data_triase_igdprimer","?,?,?,?,?,?,?", 7,new String[]{
+                        if(Sequel.menyimpantf2("data_triase_igdprimer","?,?,?,?,?,?,?", 7,new String[]{
                             TNoRw.getText(),PrimerKeluhanUtama.getText(),PrimerKubutuhanKusus.getSelectedItem().toString(),PrimerCatatan.getText(),keputusan,
                             Valid.SetTgl(PrimerTanggalTriase.getSelectedItem()+"")+" "+PrimerTanggalTriase.getSelectedItem().toString().substring(11,19), 
                             PrimerKodePetugas.getText()
-                        });
-                        if(TabSkala1dan2.getSelectedIndex()==0){
-                            for(i=0;i<tbSkala1.getRowCount();i++){ 
-                                if(tbSkala1.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
-                                            TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
-                                        })==true){
-                                            tbSkala1.setValueAt(false,i,0);
+                            })==true){
+                            if(TabSkala1dan2.getSelectedIndex()==0){
+                                for(i=0;i<tbSkala1.getRowCount();i++){ 
+                                    if(tbSkala1.getValueAt(i,0).toString().equals("true")){
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
+                                                TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
+                                            })==true){
+                                                tbSkala1.setValueAt(false,i,0);
+                                        }else{
+                                            sukses=false;
+                                        }
+                                    }
+                                }
+                            }else if(TabSkala1dan2.getSelectedIndex()==1){
+                                for(i=0;i<tbSkala2.getRowCount();i++){ 
+                                    if(tbSkala2.getValueAt(i,0).toString().equals("true")){
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
+                                                TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
+                                            })==true){
+                                                tbSkala2.setValueAt(false,i,0);
+                                        }else{
+                                            sukses=false;
+                                        }
                                     }
                                 }
                             }
-                        }else if(TabSkala1dan2.getSelectedIndex()==1){
-                            for(i=0;i<tbSkala2.getRowCount();i++){ 
-                                if(tbSkala2.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
-                                            TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
-                                        })==true){
-                                            tbSkala2.setValueAt(false,i,0);
-                                    }
-                                }
-                            }
+                        }else{
+                            sukses=false;
                         }
-                        emptTeks();
+                    }else{
+                        sukses=false;
                     }
                 }
             }else if(TabTriase.getSelectedIndex()==1){
@@ -2164,24 +2185,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }
                 }
                 if(SekunderAnamnesa.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderAnamnesa,"Anamnesa");
                 }else if(SekunderSuhu.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderSuhu,"Suhu");
                 }else if(SekunderNyeri.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderNyeri,"Nyeri");
                 }else if(SekunderTensi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderTensi,"Tensi");
                 }else if(SekunderNadi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderNadi,"Nadi");
                 }else if(SekunderSaturasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderSaturasi,"Saturasi O²");
                 }else if(SekunderRespirasi.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderRespirasi,"Respirasi");
                 }else if(SekunderCatatan.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(SekunderCatatan,"Catatan");
                 }else if(SekunderKodePetugas.getText().trim().equals("")||SekunderNamaPetugas.getText().trim().equals("")){
+                    sukses=false;
                     Valid.textKosong(btnSekunderPetugas,"Dokter Sekunder");
                 }else if((jmlskala3==0)&&(jmlskala4==0)&&(jmlskala5==0)){
+                    sukses=false;
                     Valid.textKosong(TCariPemeriksaan2,"Skala 3 / Skala 4 / Skala 5");
                 }else{
                     if(Sequel.menyimpantf("data_triase_igd","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",13,new String[]{
@@ -2195,45 +2226,65 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         }else if(SekunderZonaHijau.isSelected()==true){
                             keputusan="Zona Hijau";
                         }
-                        Sequel.menyimpan("data_triase_igdsekunder","?,?,?,?,?,?", 6,new String[]{
+                        if(Sequel.menyimpantf2("data_triase_igdsekunder","?,?,?,?,?,?", 6,new String[]{
                             TNoRw.getText(),SekunderAnamnesa.getText(),SekunderCatatan.getText(),keputusan,
                             Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19), 
                             SekunderKodePetugas.getText()
-                        });
-                        if(TabSkala3dan4dan5.getSelectedIndex()==0){
-                            for(i=0;i<tbSkala3.getRowCount();i++){ 
-                                if(tbSkala3.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
-                                            TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
-                                        })==true){
-                                            tbSkala3.setValueAt(false,i,0);
+                            })==true){
+                            if(TabSkala3dan4dan5.getSelectedIndex()==0){
+                                for(i=0;i<tbSkala3.getRowCount();i++){ 
+                                    if(tbSkala3.getValueAt(i,0).toString().equals("true")){
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
+                                                TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
+                                            })==true){
+                                                tbSkala3.setValueAt(false,i,0);
+                                        }else{
+                                            sukses=false;
+                                        }
+                                    }
+                                }
+                            }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
+                                for(i=0;i<tbSkala4.getRowCount();i++){ 
+                                    if(tbSkala4.getValueAt(i,0).toString().equals("true")){
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
+                                                TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
+                                            })==true){
+                                                tbSkala4.setValueAt(false,i,0);
+                                        }else{
+                                            sukses=false;
+                                        }
+                                    }
+                                }
+                            }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
+                                for(i=0;i<tbSkala5.getRowCount();i++){ 
+                                    if(tbSkala5.getValueAt(i,0).toString().equals("true")){
+                                        if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
+                                                TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
+                                            })==true){
+                                                tbSkala5.setValueAt(false,i,0);
+                                        }else{
+                                            sukses=false;
+                                        }
                                     }
                                 }
                             }
-                        }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
-                            for(i=0;i<tbSkala4.getRowCount();i++){ 
-                                if(tbSkala4.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
-                                            TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
-                                        })==true){
-                                            tbSkala4.setValueAt(false,i,0);
-                                    }
-                                }
-                            }
-                        }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
-                            for(i=0;i<tbSkala5.getRowCount();i++){ 
-                                if(tbSkala5.getValueAt(i,0).toString().equals("true")){
-                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
-                                            TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
-                                        })==true){
-                                            tbSkala5.setValueAt(false,i,0);
-                                    }
-                                }
-                            }
+                        }else{
+                            sukses=false;
                         }
-                        emptTeks();
+                    }else{
+                        sukses=false;
                     }
                 }
+            }
+            if(sukses==true){
+                Sequel.Commit();
+            }else{
+                sukses=false;
+                Sequel.RollBack();
+            }
+            Sequel.AutoComitTrue();
+            if(sukses==true){
+                emptTeks();
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -2586,7 +2637,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                                     "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
                                                 "</tr>"+
                                                 "<tr class='isi2'>"+
-                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
+                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
                                                 "</tr>"+
                                             "</table>"+
                                         "</td>"
@@ -2842,7 +2893,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                                     "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
                                                 "</tr>"+
                                                 "<tr class='isi2'>"+
-                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
+                                                    "<td width='34%' valign='top'>Dokter/Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
                                                 "</tr>"+
                                             "</table>"+
                                         "</td>"
@@ -4705,6 +4756,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         TabPilihan.setSelectedIndex(0);
         TabTriase.setSelectedIndex(0);
         Transportasi.requestFocus();
+        jmlskala1=0;jmlskala2=0;jmlskala3=0;jmlskala4=0;jmlskala5=0;
         kodepetugas="";
     }
     
@@ -5083,7 +5135,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             btnSekunderPetugas.setEnabled(false);
             PrimerKodePetugas.setText(akses.getkode());
             SekunderKodePetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from pegawai where nik=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
+            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
             SekunderNamaPetugas.setText(PrimerNamaPetugas.getText());
         } 
     }
@@ -5279,7 +5331,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Nama Dokter/Petugas</td>"+
-                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
+                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
                             "</tr>"
                         );
                         
@@ -5553,7 +5605,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Nama Dokter/Petugas</td>"+
-                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("nik"))+"</td>"+
+                                "<td valign='middle'>"+rs.getString("nik")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("nik"))+"</td>"+
                             "</tr>"
                         );
                         
@@ -5615,6 +5667,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     }
 
     private void ganti() {
+        Sequel.AutoComitFalse();
+        sukses=true;
         Sequel.meghapus("data_triase_igdprimer","no_rawat",tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
         Sequel.meghapus("data_triase_igddetail_skala1","no_rawat",tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
         Sequel.meghapus("data_triase_igddetail_skala2","no_rawat",tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
@@ -5635,24 +5689,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 }
             }
             if(PrimerKeluhanUtama.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerKeluhanUtama,"Keluhan Utama");
             }else if(PrimerSuhu.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerSuhu,"Suhu");
             }else if(PrimerNyeri.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerNyeri,"Nyeri");
             }else if(PrimerTensi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerTensi,"Tensi");
             }else if(PrimerNadi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerNadi,"Nadi");
             }else if(PrimerSaturasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerSaturasi,"Saturasi O²");
             }else if(PrimerRespirasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerRespirasi,"Respirasi");
             }else if(PrimerCatatan.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(PrimerCatatan,"Catatan");
             }else if(PrimerKodePetugas.getText().trim().equals("")||PrimerNamaPetugas.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(btnPrimerPetugas,"Dokter/Petugas Triase");
             }else if((jmlskala1==0)&&(jmlskala2==0)){
+                sukses=false;
                 Valid.textKosong(TCariPemeriksaan,"Skala 1 / Skala 2");
             }else{
                 if(Sequel.mengedittf("data_triase_igd","no_rawat=?","no_rawat=?,tgl_kunjungan=?,cara_masuk=?,alat_transportasi=?,alasan_kedatangan=?,keterangan_kedatangan=?,kode_kasus=?,tekanan_darah=?,nadi=?,pernapasan=?,suhu=?,saturasi_o2=?,nyeri=?",14,new String[]{
@@ -5666,35 +5730,41 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }else if(PrimerKritis.isSelected()==true){
                         keputusan="Ruang Kritis";
                     }
-                    Sequel.menyimpan("data_triase_igdprimer","?,?,?,?,?,?,?", 7,new String[]{
+                    if(Sequel.menyimpantf2("data_triase_igdprimer","?,?,?,?,?,?,?", 7,new String[]{
                         TNoRw.getText(),PrimerKeluhanUtama.getText(),PrimerKubutuhanKusus.getSelectedItem().toString(),PrimerCatatan.getText(),keputusan,
                         Valid.SetTgl(PrimerTanggalTriase.getSelectedItem()+"")+" "+PrimerTanggalTriase.getSelectedItem().toString().substring(11,19), 
                         PrimerKodePetugas.getText()
-                    });
-                    if(TabSkala1dan2.getSelectedIndex()==0){
-                        for(i=0;i<tbSkala1.getRowCount();i++){ 
-                            if(tbSkala1.getValueAt(i,0).toString().equals("true")){
-                                if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
-                                        TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
-                                    })==true){
-                                        tbSkala1.setValueAt(false,i,0);
+                    })==true){
+                        if(TabSkala1dan2.getSelectedIndex()==0){
+                            for(i=0;i<tbSkala1.getRowCount();i++){ 
+                                if(tbSkala1.getValueAt(i,0).toString().equals("true")){
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
+                                            TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
+                                        })==true){
+                                            tbSkala1.setValueAt(false,i,0);
+                                    }else{
+                                        sukses=false;
+                                    }
+                                }
+                            }
+                        }else if(TabSkala1dan2.getSelectedIndex()==1){
+                            for(i=0;i<tbSkala2.getRowCount();i++){ 
+                                if(tbSkala2.getValueAt(i,0).toString().equals("true")){
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
+                                            TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
+                                        })==true){
+                                            tbSkala2.setValueAt(false,i,0);
+                                    }else{
+                                        sukses=false;
+                                    }
                                 }
                             }
                         }
-                    }else if(TabSkala1dan2.getSelectedIndex()==1){
-                        for(i=0;i<tbSkala2.getRowCount();i++){ 
-                            if(tbSkala2.getValueAt(i,0).toString().equals("true")){
-                                if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
-                                        TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
-                                    })==true){
-                                        tbSkala2.setValueAt(false,i,0);
-                                }
-                            }
-                        }
+                    }else{
+                        sukses=false;
                     }
-                    emptTeks();
-                    tampil();
-                    TabPilihan.setSelectedIndex(1);
+                }else{
+                    sukses=false;
                 }
             }
         }else if(TabTriase.getSelectedIndex()==1){
@@ -5715,24 +5785,34 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 }
             }
             if(SekunderAnamnesa.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderAnamnesa,"Anamnesa");
             }else if(SekunderSuhu.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderSuhu,"Suhu");
             }else if(SekunderNyeri.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderNyeri,"Nyeri");
             }else if(SekunderTensi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderTensi,"Tensi");
             }else if(SekunderNadi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderNadi,"Nadi");
             }else if(SekunderSaturasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderSaturasi,"Saturasi O²");
             }else if(SekunderRespirasi.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderRespirasi,"Respirasi");
             }else if(SekunderCatatan.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(SekunderCatatan,"Catatan");
             }else if(SekunderKodePetugas.getText().trim().equals("")||SekunderNamaPetugas.getText().trim().equals("")){
+                sukses=false;
                 Valid.textKosong(btnSekunderPetugas,"Dokter/Petugas Triase");
             }else if((jmlskala3==0)&&(jmlskala4==0)&&(jmlskala5==0)){
+                sukses=false;
                 Valid.textKosong(TCariPemeriksaan2,"Skala 3 / Skala 4 / Skala 5");
             }else{
                 if(Sequel.mengedittf("data_triase_igd","no_rawat=?","no_rawat=?,tgl_kunjungan=?,cara_masuk=?,alat_transportasi=?,alasan_kedatangan=?,keterangan_kedatangan=?,kode_kasus=?,tekanan_darah=?,nadi=?,pernapasan=?,suhu=?,saturasi_o2=?,nyeri=?",14,new String[]{
@@ -5746,47 +5826,67 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }else if(SekunderZonaHijau.isSelected()==true){
                         keputusan="Zona Hijau";
                     }
-                    Sequel.menyimpan("data_triase_igdsekunder","?,?,?,?,?,?", 6,new String[]{
+                    if(Sequel.menyimpantf2("data_triase_igdsekunder","?,?,?,?,?,?", 6,new String[]{
                         TNoRw.getText(),SekunderAnamnesa.getText(),SekunderCatatan.getText(),keputusan,
                         Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19), 
                         SekunderKodePetugas.getText()
-                    });
-                    if(TabSkala3dan4dan5.getSelectedIndex()==0){
-                        for(i=0;i<tbSkala3.getRowCount();i++){ 
-                            if(tbSkala3.getValueAt(i,0).toString().equals("true")){
-                                if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
-                                        TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
-                                    })==true){
-                                        tbSkala3.setValueAt(false,i,0);
+                    })==true){
+                        if(TabSkala3dan4dan5.getSelectedIndex()==0){
+                            for(i=0;i<tbSkala3.getRowCount();i++){ 
+                                if(tbSkala3.getValueAt(i,0).toString().equals("true")){
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
+                                            TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
+                                        })==true){
+                                            tbSkala3.setValueAt(false,i,0);
+                                    }else{
+                                        sukses=false;
+                                    }
+                                }
+                            }
+                        }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
+                            for(i=0;i<tbSkala4.getRowCount();i++){ 
+                                if(tbSkala4.getValueAt(i,0).toString().equals("true")){
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
+                                            TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
+                                        })==true){
+                                            tbSkala4.setValueAt(false,i,0);
+                                    }else{
+                                        sukses=false;
+                                    }
+                                }
+                            }
+                        }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
+                            for(i=0;i<tbSkala5.getRowCount();i++){ 
+                                if(tbSkala5.getValueAt(i,0).toString().equals("true")){
+                                    if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
+                                            TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
+                                        })==true){
+                                            tbSkala5.setValueAt(false,i,0);
+                                    }else{
+                                        sukses=false;
+                                    }
                                 }
                             }
                         }
-                    }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
-                        for(i=0;i<tbSkala4.getRowCount();i++){ 
-                            if(tbSkala4.getValueAt(i,0).toString().equals("true")){
-                                if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
-                                        TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
-                                    })==true){
-                                        tbSkala4.setValueAt(false,i,0);
-                                }
-                            }
-                        }
-                    }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
-                        for(i=0;i<tbSkala5.getRowCount();i++){ 
-                            if(tbSkala5.getValueAt(i,0).toString().equals("true")){
-                                if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
-                                        TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
-                                    })==true){
-                                        tbSkala5.setValueAt(false,i,0);
-                                }
-                            }
-                        }
+                    }else{
+                        sukses=false;
                     }
-                    emptTeks();
-                    tampil();
-                    TabPilihan.setSelectedIndex(1);
+                }else{
+                    sukses=false;
                 }
             }
+        }
+        if(sukses==true){
+            Sequel.Commit();
+        }else{
+            sukses=false;
+            Sequel.RollBack();
+        }
+        Sequel.AutoComitTrue();
+        if(sukses==true){
+            emptTeks();
+            tampil();
+            TabPilihan.setSelectedIndex(1);
         }
     }
     

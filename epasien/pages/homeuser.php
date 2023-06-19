@@ -36,7 +36,7 @@
             </div>
             <div class="content">
                 <div class="text">KUNJUNGAN</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");?>" data-speed="3000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");?>" data-speed="3000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="content">
                 <div class="text">RAWAT JALAN</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' AND reg_periksa.status_lanjut = 'Ralan'");?>" data-speed="2000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' AND reg_periksa.status_lanjut = 'Ralan'");?>" data-speed="2000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="content">
                 <div class="text">RAWAT INAP</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' AND reg_periksa.status_lanjut = 'Ranap'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' AND reg_periksa.status_lanjut = 'Ranap'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="content">
                 <div class="text">BULAN INI</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi LIKE '%".date('Y-m')."%' AND reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi LIKE '%".date('Y-m')."%' AND reg_periksa.no_rkm_medis = '".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
 
 
 <?php
-    $querybooking = bukaquery("select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.tanggal_periksa,booking_registrasi.kd_dokter,dokter.nm_dokter,booking_registrasi.kd_poli,poliklinik.nm_poli,booking_registrasi.no_reg,booking_registrasi.kd_pj,penjab.png_jawab,booking_registrasi.status from booking_registrasi inner join dokter on booking_registrasi.kd_dokter=dokter.kd_dokter inner join poliklinik on booking_registrasi.kd_poli=poliklinik.kd_poli inner join penjab on booking_registrasi.kd_pj=penjab.kd_pj where booking_registrasi.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and booking_registrasi.status='Belum' and booking_registrasi.tanggal_periksa=current_date()");
+    $querybooking = bukaquery("select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.tanggal_periksa,booking_registrasi.kd_dokter,dokter.nm_dokter,booking_registrasi.kd_poli,poliklinik.nm_poli,booking_registrasi.no_reg,booking_registrasi.kd_pj,penjab.png_jawab,booking_registrasi.status from booking_registrasi inner join dokter on booking_registrasi.kd_dokter=dokter.kd_dokter inner join poliklinik on booking_registrasi.kd_poli=poliklinik.kd_poli inner join penjab on booking_registrasi.kd_pj=penjab.kd_pj where booking_registrasi.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' and booking_registrasi.status='Belum' and booking_registrasi.tanggal_periksa=current_date()");
     if(mysqli_num_rows($querybooking)!=0) {
         echo "<div class='block-header'>
                  <h2><center>BOOKING ANDA</center></h2>
@@ -171,7 +171,7 @@
               </div>";
     }       
     
-    $queryregistrasi = bukaquery("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli,reg_periksa.stts_daftar,penjab.png_jawab from reg_periksa inner join dokter inner join poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and reg_periksa.tgl_registrasi=current_date()");
+    $queryregistrasi = bukaquery("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli,reg_periksa.stts_daftar,penjab.png_jawab from reg_periksa inner join dokter inner join poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' and reg_periksa.tgl_registrasi=current_date()");
     if($rsqueryregistrasi = mysqli_fetch_array($queryregistrasi)) {
         $PNG_TEMP_DIR           = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
         $PNG_WEB_DIR            = 'temp/';
