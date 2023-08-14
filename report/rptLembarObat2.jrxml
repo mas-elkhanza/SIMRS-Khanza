@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="311" pageHeight="595" orientation="Landscape" columnWidth="277" leftMargin="17" rightMargin="17" topMargin="17" bottomMargin="17" uuid="f71eddde-54e0-4c95-bb40-f4df24903e9d">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="143"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="33"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="956"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="penanggung" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="tanggal" class="java.lang.String"/>
+	<parameter name="jam" class="java.lang.String"/>
+	<parameter name="norawat" class="java.lang.String"/>
+	<parameter name="pasien" class="java.lang.String"/>
+	<parameter name="norm" class="java.lang.String"/>
+	<parameter name="peresep" class="java.lang.String"/>
+	<parameter name="noresep" class="java.lang.String"/>
+	<parameter name="finger" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from temporary_resep]]>
+	</queryString>
+	<field name="no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp17"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp18"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp19" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp19"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp20" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp20"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp21" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp21"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp22" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp22"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp23" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp23"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp24" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp24"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp25" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp25"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp26" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp26"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp27" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp27"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp28" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp28"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp29" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp29"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp30" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp30"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp31" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp31"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp32" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp32"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp33" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp33"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp34" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp34"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp35" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp35"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp36" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp36"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<field name="temp37" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp37"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_resep"/>
+	</field>
+	<variable name="no" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{no}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="133" splitType="Stretch">
+			<textField>
+				<reportElement x="48" y="14" width="229" height="14" uuid="31498202-9007-4a25-814a-401a5c13ac09"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="35" width="229" height="14" uuid="73e85403-89cd-40d2-8f5c-6399f58d2d25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="25" width="229" height="14" uuid="3be313cc-f94e-4637-b5fc-af2c58beb2db"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="0" width="229" height="17" uuid="d8be6aea-f634-4f94-9b05-67ac12748fa0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="0" y="2" width="48" height="45" uuid="40e08252-a127-4364-8425-09cfd759a35c"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="48" width="277" height="1" uuid="e6004156-b6ea-49d1-b94b-eaf94eb9b73f"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="54" width="57" height="9" uuid="a6990a46-7241-4ee3-b662-b111b56b35e7"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="63" width="57" height="9" uuid="f57f0d69-3f54-4d22-a1e3-d3491acff7fc"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No. R.M.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="81" width="57" height="9" uuid="ace49622-3dd8-4493-adf1-786efc5635ff"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jenis Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="90" width="57" height="9" uuid="56db52a1-97ee-4f2d-a345-4d3c70dc56fa"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Pemberi Resep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="99" width="57" height="9" uuid="ec67475b-5c21-44ee-9ab3-b0406dccc6bc"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No. Resep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="59" y="63" width="5" height="9" uuid="c6d94a5b-6b36-41ba-9e37-1dbfc3c66572"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="59" y="54" width="5" height="9" uuid="16ca4e52-ed02-42db-b321-605f24dcf75e"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="59" y="90" width="5" height="9" uuid="3e9219d2-6e3b-44ca-8701-4b1ef2887fa9"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="59" y="81" width="5" height="9" uuid="dee3092e-5d8c-431c-be08-9301f2d10372"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="59" y="99" width="5" height="9" uuid="d4725de7-1540-4490-9ed2-40fea2a76c89"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="59" y="72" width="5" height="9" uuid="96ecb7e2-7d84-499c-9310-252a00682d62"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="72" width="57" height="9" uuid="e846b41c-33b4-4a61-a864-39220d38a21e"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No. Rawat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="106" y="112" width="65" height="19" uuid="23d77141-2d57-4ccb-ba7c-01397c0cc3be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[RESEP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="64" y="54" width="126" height="9" uuid="999600e0-6804-4ddf-a931-8e67594bda3b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="63" width="126" height="9" uuid="17668c28-f830-4241-ae32-63a60bf9b543"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{norm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="72" width="126" height="9" uuid="f5720961-e55c-4bbc-91be-f98f363cf58e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{norawat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="90" width="126" height="9" uuid="a4dd6735-384f-405f-a22a-a1b6ead62a69"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{peresep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="81" width="126" height="9" uuid="61106c6f-5148-4067-b816-a0b0721ff315"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{penanggung}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="99" width="126" height="9" uuid="dae4002f-edd7-409b-94fb-f48a11113692"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{noresep}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="110" width="277" height="1" uuid="45a268fe-4879-4414-b5a0-57b8c3821a33"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" mode="Transparent" x="30" y="1" width="185" height="9" uuid="b94f7c44-3742-48d8-b751-bf008502fe96"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="0" width="30" height="10" uuid="5df7cfbc-91c2-494e-bbb9-17ddaad1dcb9"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[R/]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" mode="Transparent" x="215" y="1" width="62" height="9" uuid="c009f027-99cd-4d1b-81d0-1393c0787015"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp3}+" "+$F{temp4}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="100" y="10" width="177" height="9" uuid="db597fec-1351-4c35-b555-2e860706ebe4"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="27" y="19" width="250" height="1" uuid="d462c4a6-684d-4eb6-8a42-64f4bdd83185"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="30" y="9" width="30" height="10" uuid="b3378bd2-bc13-42ac-b28e-6952d1409d09"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[S]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="62" y="14" width="34" height="1" uuid="bab8e0ca-1bdc-4516-b438-2a98802bbe78"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="70" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="130" y="15" width="135" height="10" uuid="1e4fe592-4b55-426f-8a1c-626666ea68b4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kotars}+", "+$P{tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="60" width="135" height="10" uuid="935dbf67-7d80-4d36-956f-837838304a00"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{peresep}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="154" y="25" width="98" height="35" uuid="65ed1fed-1bcf-4bf3-b3d3-21de91f3aaa4"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

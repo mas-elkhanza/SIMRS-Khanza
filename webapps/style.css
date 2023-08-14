@@ -1,0 +1,314 @@
+
+body {
+	background-color:#693;
+	font-family:Tahoma;
+	font-size: 12px;
+}
+#main {
+	margin:0 auto;
+	width: 912px;
+	background-color: #ffffff;
+	border: 1px solid #000000;
+}
+.clear {
+	clear: both;
+	float: none;
+}
+#footer {
+	background-color:#FFFFF
+}
+#head {
+	background-color: #FFFFFF;
+	
+}
+
+#menutop {
+	background-color: #cccccc;
+	background-image:url(images/menutop.gif);
+	border: 1px solid #000000;
+	padding: 13px;
+	
+}
+#menutop li {
+	color: #CF0;
+	display: inline; 
+	font-size: 14px;
+}
+#menutop li a{
+	color: #CCC;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	margin-right:6px;
+	margin-left: 6px;
+}
+#menutop li a:hover {
+	color:#CCC;
+}
+#left {
+	margin: 5px;
+	width: 300px;
+	float: left;
+}
+#middle {
+	margin: 5px;
+	width: 400px;
+	float: left;
+}
+#right {
+	margin: 5px;
+	width: 175px;
+	float: left;
+}
+
+#bg_menu {
+	background-color:white;
+	background-image: url(images/menu1.jpg);
+	border-image: 1px solid #555555;
+	padding: 30px;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 12px;
+}
+#content_menu {
+	background-color:  #9ACD32;
+	border: 1px solid #CCC00;
+	line-height: 16px;
+	padding: 8px;
+	margin-bottom: 1px;
+	
+}
+#container {
+	width: 100%;
+	height: 470px;
+	border: 1px;
+	margin: 0 auto;
+	position:relative;
+}
+#container>img {
+	width:100%;
+	height: 100%;
+	position: absolute;
+	
+}
+#container>.btn {
+	position:absolute;
+	width: 50px;
+	height: 50px;
+	border: none;
+	border-radius: 25px;
+	top:200px;
+	background:#390;
+	color: white;
+	font-size: 20px;
+	
+}
+
+
+#containeri {
+	width: 100%;
+	height: 100px;
+	border: 1px;
+	margin: 0 auto;
+	position:relative;
+}
+#containeri>img {
+	width:100%;
+	height: 200%;
+	position: absolute;
+	
+}
+
+
+#containeri>.btna {
+	position:absolute;
+	width: 20px;
+	height: 20px;
+	border: none;
+	border-radius: 25px;
+	top:20px;
+	background: black;
+	color: white;
+	font-size: 20px;
+	
+}
+
+
+
+#container>#btn1:hover {
+	box-shadow: 10px 0px 20px 0px black;
+}
+#container>#btn2:hover {
+	box-shadow: -10px 0px 20px 0px black;
+}
+#container>#btn2 {
+	position: relative;
+	float: right;
+}
+
+#containeri>#btn3:hover {
+	box-shadow: 10px 0px 20px 0px black;
+}
+#containeri>#btn4:hover {
+	box-shadow: -10px 0px 20px 0px black;
+}
+#containeri>#btn4 {
+	position: relative;
+	float: right;
+}	
+
+#menu-bar {
+  width: 98.5%;
+  margin: 0px 0px 0px 0px;
+  padding: 6px 6px 4px 6px;
+  height: 28px;
+  line-height: 100%;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  box-shadow: 2px 2px 3px #666666;
+  -webkit-box-shadow: 2px 2px 3px #666666;
+  -moz-box-shadow: 2px 2px 3px #666666;
+  background: #8B8B8B;
+  background: linear-gradient(top,  #A9A9A9,  #7A7A7A);
+  background: -ms-linear-gradient(top,  #A9A9A9,  #7A7A7A);
+  background: -webkit-gradient(linear, left top, left bottom, from(#A9A9A9), to(#7A7A7A));
+  background: -moz-linear-gradient(top,  #A9A9A9,  #7A7A7A);
+  border: solid 1px #6D6D6D;
+  position:relative;
+  z-index:999;
+}
+#menu-bar li {
+  margin: 0px 0px 6px 0px;
+  padding: 0px 6px 0px 6px;
+  float: left;
+  position: relative;
+  list-style: none;
+}
+#menu-bar a {
+  font-weight: bold;
+  font-family: arial;
+  font-style: normal;
+  font-size: 12px;
+  color: #E7E5E5;
+  text-decoration: none;
+  display: block;
+  padding: 6px 20px 6px 20px;
+  margin: 0;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  text-shadow: 2px 2px 3px #000000;
+}
+#menu-bar li ul li a {
+  margin: 0;
+}
+#menu-bar .active a, #menu-bar li:hover > a {
+  background: #0399D4;
+  background: linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  background: -ms-linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  background: -webkit-gradient(linear, left top, left bottom, from(#EBEBEB), to(#A1A1A1));
+  background: -moz-linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  color: #444444;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  text-shadow: 2px 2px 3px #FFFFFF;
+}
+#menu-bar ul li:hover a, #menu-bar li:hover li a {
+  background: none;
+  border: none;
+  color: #666;
+  -box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+#menu-bar ul a:hover {
+  background: #0399D4 !important;
+  background: linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  background: -ms-linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#04ACEC), to(#0186BA)) !important;
+  background: -moz-linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  color: #FFFFFF !important;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  text-shadow: 2px 2px 3px #FFFFFF;
+}
+#menu-bar li:hover > ul {
+  display: block;
+}
+#menu-bar ul {
+  background: #DDDDDD;
+  background: linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  background: -ms-linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#CFCFCF));
+  background: -moz-linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 185px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  border: solid 1px #B4B4B4;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 3px #222222;
+  -moz-box-shadow: 2px 2px 3px #222222;
+  box-shadow: 2px 2px 3px #222222;
+}
+#menu-bar ul li {
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+#menu-bar ul a {
+  padding:10px 0px 10px 15px;
+  color:#424242 !important;
+  font-size:12px;
+  font-style:normal;
+  font-family:arial;
+  font-weight: normal;
+  text-shadow: 2px 2px 3px #FFFFFF;
+}
+#menu-bar ul li:first-child > a {
+  border-top-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+}
+#menu-bar ul li:last-child > a {
+  border-bottom-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+}
+#menu-bar:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#menu-bar {
+  display: inline-block;
+}
+  html[xmlns] #menu-bar {
+  display: block;
+}
+* html #menu-bar {
+  height: 1%;
+}
+	 
+		
+	
+	
+
