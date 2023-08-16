@@ -687,55 +687,55 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         jLabel15 = new widget.Label();
         jLabel16 = new widget.Label();
         CariPK = new widget.TextBox();
-        BtnCariPenyakit3 = new widget.Button();
+        BtnCariLaboratoriumPK = new widget.Button();
         Scroll4 = new widget.ScrollPane();
         tbPermintaanPK = new widget.Table();
         Scroll5 = new widget.ScrollPane();
         tbDetailPK = new widget.Table();
         CariDetailPK = new widget.TextBox();
-        BtnCariPenyakit4 = new widget.Button();
+        BtnDetailLaboratPK = new widget.Button();
         jLabel17 = new widget.Label();
-        Diagnosa5 = new widget.TextBox();
-        BtnCariPenyakit5 = new widget.Button();
+        CariPA = new widget.TextBox();
+        BtnCariPA = new widget.Button();
         Scroll6 = new widget.ScrollPane();
         tbPermintaanPA = new widget.Table();
         jLabel18 = new widget.Label();
-        Diagnosa6 = new widget.TextBox();
-        BtnCariPenyakit6 = new widget.Button();
+        CariMB = new widget.TextBox();
+        BtnCariMB = new widget.Button();
         Scroll7 = new widget.ScrollPane();
         tbPermintaanMB = new widget.Table();
-        Diagnosa7 = new widget.TextBox();
-        BtnCariPenyakit7 = new widget.Button();
+        CariDetailMB = new widget.TextBox();
+        BtnCariDetailMB = new widget.Button();
         Scroll8 = new widget.ScrollPane();
         tbDetailMB = new widget.Table();
         jLabel19 = new widget.Label();
-        BtnCariPenyakit8 = new widget.Button();
-        Diagnosa8 = new widget.TextBox();
+        BtnCariObatNonRacikan = new widget.Button();
+        CariObatNonRacikan = new widget.TextBox();
         Scroll9 = new widget.ScrollPane();
         tbResep = new widget.Table();
         jLabel20 = new widget.Label();
         Scroll10 = new widget.ScrollPane();
         tbObatRacikan = new widget.Table();
-        Diagnosa10 = new widget.TextBox();
-        BtnCariPenyakit10 = new widget.Button();
+        CariObatRacikan = new widget.TextBox();
+        BtnCariObatRacikan = new widget.Button();
         Scroll11 = new widget.ScrollPane();
         tbDetailObatRacikan = new widget.Table();
         jLabel21 = new widget.Label();
-        Diagnosa9 = new widget.TextBox();
-        BtnCariPenyakit9 = new widget.Button();
+        CariTindakan = new widget.TextBox();
+        BtnCariTindakan = new widget.Button();
         Scroll12 = new widget.ScrollPane();
         tbTindakan = new widget.Table();
         BtnAllPenyakit = new widget.Button();
         BtnAllProsedur = new widget.Button();
         BtnAllRadiologi = new widget.Button();
-        BtnAllPeriksa3 = new widget.Button();
-        BtnAllPeriksa4 = new widget.Button();
-        BtnAllPeriksa5 = new widget.Button();
-        BtnAllPeriksa6 = new widget.Button();
-        BtnAllPeriksa7 = new widget.Button();
-        BtnAllPeriksa8 = new widget.Button();
-        BtnAllPeriksa9 = new widget.Button();
-        BtnAllPeriksa10 = new widget.Button();
+        BtnAllPatologiKlinis = new widget.Button();
+        BtnAllDetailLaboratPK = new widget.Button();
+        BtnAllPA = new widget.Button();
+        BtnAllMB = new widget.Button();
+        BtnAllDetailMB = new widget.Button();
+        BtnAllObatNonRacikan = new widget.Button();
+        BtnAllObatRacikan = new widget.Button();
+        BtnAllTindakan = new widget.Button();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -1112,18 +1112,18 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(CariPK);
         CariPK.setBounds(16, 1170, 610, 23);
 
-        BtnCariPenyakit3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit3.setMnemonic('1');
-        BtnCariPenyakit3.setToolTipText("Alt+1");
-        BtnCariPenyakit3.setName("BtnCariPenyakit3"); // NOI18N
-        BtnCariPenyakit3.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit3.addActionListener(new java.awt.event.ActionListener() {
+        BtnCariLaboratoriumPK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariLaboratoriumPK.setMnemonic('1');
+        BtnCariLaboratoriumPK.setToolTipText("Alt+1");
+        BtnCariLaboratoriumPK.setName("BtnCariLaboratoriumPK"); // NOI18N
+        BtnCariLaboratoriumPK.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariLaboratoriumPK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit3ActionPerformed(evt);
+                BtnCariLaboratoriumPKActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit3);
-        BtnCariPenyakit3.setBounds(628, 1170, 28, 23);
+        FormInput.add(BtnCariLaboratoriumPK);
+        BtnCariLaboratoriumPK.setBounds(628, 1170, 28, 23);
 
         Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll4.setName("Scroll4"); // NOI18N
@@ -1155,18 +1155,18 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(CariDetailPK);
         CariDetailPK.setBounds(16, 1310, 610, 23);
 
-        BtnCariPenyakit4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit4.setMnemonic('1');
-        BtnCariPenyakit4.setToolTipText("Alt+1");
-        BtnCariPenyakit4.setName("BtnCariPenyakit4"); // NOI18N
-        BtnCariPenyakit4.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit4.addActionListener(new java.awt.event.ActionListener() {
+        BtnDetailLaboratPK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnDetailLaboratPK.setMnemonic('1');
+        BtnDetailLaboratPK.setToolTipText("Alt+1");
+        BtnDetailLaboratPK.setName("BtnDetailLaboratPK"); // NOI18N
+        BtnDetailLaboratPK.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDetailLaboratPK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit4ActionPerformed(evt);
+                BtnDetailLaboratPKActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit4);
-        BtnCariPenyakit4.setBounds(628, 1310, 28, 23);
+        FormInput.add(BtnDetailLaboratPK);
+        BtnDetailLaboratPK.setBounds(628, 1310, 28, 23);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText("Permintaan Laborat Patologi Anatomi :");
@@ -1174,28 +1174,28 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(16, 1560, 250, 23);
 
-        Diagnosa5.setHighlighter(null);
-        Diagnosa5.setName("Diagnosa5"); // NOI18N
-        Diagnosa5.addKeyListener(new java.awt.event.KeyAdapter() {
+        CariPA.setHighlighter(null);
+        CariPA.setName("CariPA"); // NOI18N
+        CariPA.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Diagnosa5KeyPressed(evt);
+                CariPAKeyPressed(evt);
             }
         });
-        FormInput.add(Diagnosa5);
-        Diagnosa5.setBounds(16, 1580, 610, 23);
+        FormInput.add(CariPA);
+        CariPA.setBounds(16, 1580, 610, 23);
 
-        BtnCariPenyakit5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit5.setMnemonic('1');
-        BtnCariPenyakit5.setToolTipText("Alt+1");
-        BtnCariPenyakit5.setName("BtnCariPenyakit5"); // NOI18N
-        BtnCariPenyakit5.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit5.addActionListener(new java.awt.event.ActionListener() {
+        BtnCariPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariPA.setMnemonic('1');
+        BtnCariPA.setToolTipText("Alt+1");
+        BtnCariPA.setName("BtnCariPA"); // NOI18N
+        BtnCariPA.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariPA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit5ActionPerformed(evt);
+                BtnCariPAActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit5);
-        BtnCariPenyakit5.setBounds(628, 1580, 28, 23);
+        FormInput.add(BtnCariPA);
+        BtnCariPA.setBounds(628, 1580, 28, 23);
 
         Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll6.setName("Scroll6"); // NOI18N
@@ -1213,28 +1213,28 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(16, 1740, 270, 23);
 
-        Diagnosa6.setHighlighter(null);
-        Diagnosa6.setName("Diagnosa6"); // NOI18N
-        Diagnosa6.addKeyListener(new java.awt.event.KeyAdapter() {
+        CariMB.setHighlighter(null);
+        CariMB.setName("CariMB"); // NOI18N
+        CariMB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Diagnosa6KeyPressed(evt);
+                CariMBKeyPressed(evt);
             }
         });
-        FormInput.add(Diagnosa6);
-        Diagnosa6.setBounds(16, 1760, 610, 23);
+        FormInput.add(CariMB);
+        CariMB.setBounds(16, 1760, 610, 23);
 
-        BtnCariPenyakit6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit6.setMnemonic('1');
-        BtnCariPenyakit6.setToolTipText("Alt+1");
-        BtnCariPenyakit6.setName("BtnCariPenyakit6"); // NOI18N
-        BtnCariPenyakit6.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit6.addActionListener(new java.awt.event.ActionListener() {
+        BtnCariMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariMB.setMnemonic('1');
+        BtnCariMB.setToolTipText("Alt+1");
+        BtnCariMB.setName("BtnCariMB"); // NOI18N
+        BtnCariMB.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariMB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit6ActionPerformed(evt);
+                BtnCariMBActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit6);
-        BtnCariPenyakit6.setBounds(628, 1760, 28, 23);
+        FormInput.add(BtnCariMB);
+        BtnCariMB.setBounds(628, 1760, 28, 23);
 
         Scroll7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll7.setName("Scroll7"); // NOI18N
@@ -1246,28 +1246,28 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(Scroll7);
         Scroll7.setBounds(16, 1787, 670, 109);
 
-        Diagnosa7.setHighlighter(null);
-        Diagnosa7.setName("Diagnosa7"); // NOI18N
-        Diagnosa7.addKeyListener(new java.awt.event.KeyAdapter() {
+        CariDetailMB.setHighlighter(null);
+        CariDetailMB.setName("CariDetailMB"); // NOI18N
+        CariDetailMB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Diagnosa7KeyPressed(evt);
+                CariDetailMBKeyPressed(evt);
             }
         });
-        FormInput.add(Diagnosa7);
-        Diagnosa7.setBounds(16, 1900, 610, 23);
+        FormInput.add(CariDetailMB);
+        CariDetailMB.setBounds(16, 1900, 610, 23);
 
-        BtnCariPenyakit7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit7.setMnemonic('1');
-        BtnCariPenyakit7.setToolTipText("Alt+1");
-        BtnCariPenyakit7.setName("BtnCariPenyakit7"); // NOI18N
-        BtnCariPenyakit7.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit7.addActionListener(new java.awt.event.ActionListener() {
+        BtnCariDetailMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariDetailMB.setMnemonic('1');
+        BtnCariDetailMB.setToolTipText("Alt+1");
+        BtnCariDetailMB.setName("BtnCariDetailMB"); // NOI18N
+        BtnCariDetailMB.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariDetailMB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit7ActionPerformed(evt);
+                BtnCariDetailMBActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit7);
-        BtnCariPenyakit7.setBounds(628, 1900, 28, 23);
+        FormInput.add(BtnCariDetailMB);
+        BtnCariDetailMB.setBounds(628, 1900, 28, 23);
 
         Scroll8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll8.setName("Scroll8"); // NOI18N
@@ -1285,28 +1285,28 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(jLabel19);
         jLabel19.setBounds(16, 2150, 270, 23);
 
-        BtnCariPenyakit8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit8.setMnemonic('1');
-        BtnCariPenyakit8.setToolTipText("Alt+1");
-        BtnCariPenyakit8.setName("BtnCariPenyakit8"); // NOI18N
-        BtnCariPenyakit8.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit8.addActionListener(new java.awt.event.ActionListener() {
+        BtnCariObatNonRacikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariObatNonRacikan.setMnemonic('1');
+        BtnCariObatNonRacikan.setToolTipText("Alt+1");
+        BtnCariObatNonRacikan.setName("BtnCariObatNonRacikan"); // NOI18N
+        BtnCariObatNonRacikan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariObatNonRacikan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit8ActionPerformed(evt);
+                BtnCariObatNonRacikanActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit8);
-        BtnCariPenyakit8.setBounds(628, 2170, 28, 23);
+        FormInput.add(BtnCariObatNonRacikan);
+        BtnCariObatNonRacikan.setBounds(628, 2170, 28, 23);
 
-        Diagnosa8.setHighlighter(null);
-        Diagnosa8.setName("Diagnosa8"); // NOI18N
-        Diagnosa8.addKeyListener(new java.awt.event.KeyAdapter() {
+        CariObatNonRacikan.setHighlighter(null);
+        CariObatNonRacikan.setName("CariObatNonRacikan"); // NOI18N
+        CariObatNonRacikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Diagnosa8KeyPressed(evt);
+                CariObatNonRacikanKeyPressed(evt);
             }
         });
-        FormInput.add(Diagnosa8);
-        Diagnosa8.setBounds(16, 2170, 610, 23);
+        FormInput.add(CariObatNonRacikan);
+        CariObatNonRacikan.setBounds(16, 2170, 610, 23);
 
         Scroll9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll9.setName("Scroll9"); // NOI18N
@@ -1334,28 +1334,28 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(Scroll10);
         Scroll10.setBounds(16, 2440, 670, 96);
 
-        Diagnosa10.setHighlighter(null);
-        Diagnosa10.setName("Diagnosa10"); // NOI18N
-        Diagnosa10.addKeyListener(new java.awt.event.KeyAdapter() {
+        CariObatRacikan.setHighlighter(null);
+        CariObatRacikan.setName("CariObatRacikan"); // NOI18N
+        CariObatRacikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Diagnosa10KeyPressed(evt);
+                CariObatRacikanKeyPressed(evt);
             }
         });
-        FormInput.add(Diagnosa10);
-        Diagnosa10.setBounds(16, 2540, 610, 23);
+        FormInput.add(CariObatRacikan);
+        CariObatRacikan.setBounds(16, 2540, 610, 23);
 
-        BtnCariPenyakit10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit10.setMnemonic('1');
-        BtnCariPenyakit10.setToolTipText("Alt+1");
-        BtnCariPenyakit10.setName("BtnCariPenyakit10"); // NOI18N
-        BtnCariPenyakit10.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit10.addActionListener(new java.awt.event.ActionListener() {
+        BtnCariObatRacikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariObatRacikan.setMnemonic('1');
+        BtnCariObatRacikan.setToolTipText("Alt+1");
+        BtnCariObatRacikan.setName("BtnCariObatRacikan"); // NOI18N
+        BtnCariObatRacikan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariObatRacikan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit10ActionPerformed(evt);
+                BtnCariObatRacikanActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit10);
-        BtnCariPenyakit10.setBounds(628, 2540, 28, 23);
+        FormInput.add(BtnCariObatRacikan);
+        BtnCariObatRacikan.setBounds(628, 2540, 28, 23);
 
         Scroll11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll11.setName("Scroll11"); // NOI18N
@@ -1373,28 +1373,28 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(jLabel21);
         jLabel21.setBounds(16, 2790, 120, 23);
 
-        Diagnosa9.setHighlighter(null);
-        Diagnosa9.setName("Diagnosa9"); // NOI18N
-        Diagnosa9.addKeyListener(new java.awt.event.KeyAdapter() {
+        CariTindakan.setHighlighter(null);
+        CariTindakan.setName("CariTindakan"); // NOI18N
+        CariTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Diagnosa9KeyPressed(evt);
+                CariTindakanKeyPressed(evt);
             }
         });
-        FormInput.add(Diagnosa9);
-        Diagnosa9.setBounds(16, 2810, 610, 23);
+        FormInput.add(CariTindakan);
+        CariTindakan.setBounds(16, 2810, 610, 23);
 
-        BtnCariPenyakit9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPenyakit9.setMnemonic('1');
-        BtnCariPenyakit9.setToolTipText("Alt+1");
-        BtnCariPenyakit9.setName("BtnCariPenyakit9"); // NOI18N
-        BtnCariPenyakit9.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPenyakit9.addActionListener(new java.awt.event.ActionListener() {
+        BtnCariTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariTindakan.setMnemonic('1');
+        BtnCariTindakan.setToolTipText("Alt+1");
+        BtnCariTindakan.setName("BtnCariTindakan"); // NOI18N
+        BtnCariTindakan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariTindakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPenyakit9ActionPerformed(evt);
+                BtnCariTindakanActionPerformed(evt);
             }
         });
-        FormInput.add(BtnCariPenyakit9);
-        BtnCariPenyakit9.setBounds(628, 2810, 28, 23);
+        FormInput.add(BtnCariTindakan);
+        BtnCariTindakan.setBounds(628, 2810, 28, 23);
 
         Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll12.setName("Scroll12"); // NOI18N
@@ -1445,109 +1445,109 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.add(BtnAllRadiologi);
         BtnAllRadiologi.setBounds(658, 1000, 28, 23);
 
-        BtnAllPeriksa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa3.setMnemonic('2');
-        BtnAllPeriksa3.setToolTipText("Alt+2");
-        BtnAllPeriksa3.setName("BtnAllPeriksa3"); // NOI18N
-        BtnAllPeriksa3.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa3.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllPatologiKlinis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllPatologiKlinis.setMnemonic('2');
+        BtnAllPatologiKlinis.setToolTipText("Alt+2");
+        BtnAllPatologiKlinis.setName("BtnAllPatologiKlinis"); // NOI18N
+        BtnAllPatologiKlinis.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllPatologiKlinis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa3ActionPerformed(evt);
+                BtnAllPatologiKlinisActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa3);
-        BtnAllPeriksa3.setBounds(658, 1170, 28, 23);
+        FormInput.add(BtnAllPatologiKlinis);
+        BtnAllPatologiKlinis.setBounds(658, 1170, 28, 23);
 
-        BtnAllPeriksa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa4.setMnemonic('2');
-        BtnAllPeriksa4.setToolTipText("Alt+2");
-        BtnAllPeriksa4.setName("BtnAllPeriksa4"); // NOI18N
-        BtnAllPeriksa4.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa4.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllDetailLaboratPK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllDetailLaboratPK.setMnemonic('2');
+        BtnAllDetailLaboratPK.setToolTipText("Alt+2");
+        BtnAllDetailLaboratPK.setName("BtnAllDetailLaboratPK"); // NOI18N
+        BtnAllDetailLaboratPK.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllDetailLaboratPK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa4ActionPerformed(evt);
+                BtnAllDetailLaboratPKActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa4);
-        BtnAllPeriksa4.setBounds(658, 1310, 28, 23);
+        FormInput.add(BtnAllDetailLaboratPK);
+        BtnAllDetailLaboratPK.setBounds(658, 1310, 28, 23);
 
-        BtnAllPeriksa5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa5.setMnemonic('2');
-        BtnAllPeriksa5.setToolTipText("Alt+2");
-        BtnAllPeriksa5.setName("BtnAllPeriksa5"); // NOI18N
-        BtnAllPeriksa5.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa5.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllPA.setMnemonic('2');
+        BtnAllPA.setToolTipText("Alt+2");
+        BtnAllPA.setName("BtnAllPA"); // NOI18N
+        BtnAllPA.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllPA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa5ActionPerformed(evt);
+                BtnAllPAActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa5);
-        BtnAllPeriksa5.setBounds(658, 1580, 28, 23);
+        FormInput.add(BtnAllPA);
+        BtnAllPA.setBounds(658, 1580, 28, 23);
 
-        BtnAllPeriksa6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa6.setMnemonic('2');
-        BtnAllPeriksa6.setToolTipText("Alt+2");
-        BtnAllPeriksa6.setName("BtnAllPeriksa6"); // NOI18N
-        BtnAllPeriksa6.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa6.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllMB.setMnemonic('2');
+        BtnAllMB.setToolTipText("Alt+2");
+        BtnAllMB.setName("BtnAllMB"); // NOI18N
+        BtnAllMB.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllMB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa6ActionPerformed(evt);
+                BtnAllMBActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa6);
-        BtnAllPeriksa6.setBounds(658, 1760, 28, 23);
+        FormInput.add(BtnAllMB);
+        BtnAllMB.setBounds(658, 1760, 28, 23);
 
-        BtnAllPeriksa7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa7.setMnemonic('2');
-        BtnAllPeriksa7.setToolTipText("Alt+2");
-        BtnAllPeriksa7.setName("BtnAllPeriksa7"); // NOI18N
-        BtnAllPeriksa7.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa7.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllDetailMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllDetailMB.setMnemonic('2');
+        BtnAllDetailMB.setToolTipText("Alt+2");
+        BtnAllDetailMB.setName("BtnAllDetailMB"); // NOI18N
+        BtnAllDetailMB.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllDetailMB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa7ActionPerformed(evt);
+                BtnAllDetailMBActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa7);
-        BtnAllPeriksa7.setBounds(658, 1900, 28, 23);
+        FormInput.add(BtnAllDetailMB);
+        BtnAllDetailMB.setBounds(658, 1900, 28, 23);
 
-        BtnAllPeriksa8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa8.setMnemonic('2');
-        BtnAllPeriksa8.setToolTipText("Alt+2");
-        BtnAllPeriksa8.setName("BtnAllPeriksa8"); // NOI18N
-        BtnAllPeriksa8.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa8.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllObatNonRacikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllObatNonRacikan.setMnemonic('2');
+        BtnAllObatNonRacikan.setToolTipText("Alt+2");
+        BtnAllObatNonRacikan.setName("BtnAllObatNonRacikan"); // NOI18N
+        BtnAllObatNonRacikan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllObatNonRacikan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa8ActionPerformed(evt);
+                BtnAllObatNonRacikanActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa8);
-        BtnAllPeriksa8.setBounds(658, 2170, 28, 23);
+        FormInput.add(BtnAllObatNonRacikan);
+        BtnAllObatNonRacikan.setBounds(658, 2170, 28, 23);
 
-        BtnAllPeriksa9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa9.setMnemonic('2');
-        BtnAllPeriksa9.setToolTipText("Alt+2");
-        BtnAllPeriksa9.setName("BtnAllPeriksa9"); // NOI18N
-        BtnAllPeriksa9.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa9.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllObatRacikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllObatRacikan.setMnemonic('2');
+        BtnAllObatRacikan.setToolTipText("Alt+2");
+        BtnAllObatRacikan.setName("BtnAllObatRacikan"); // NOI18N
+        BtnAllObatRacikan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllObatRacikan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa9ActionPerformed(evt);
+                BtnAllObatRacikanActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa9);
-        BtnAllPeriksa9.setBounds(658, 2540, 28, 23);
+        FormInput.add(BtnAllObatRacikan);
+        BtnAllObatRacikan.setBounds(658, 2540, 28, 23);
 
-        BtnAllPeriksa10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAllPeriksa10.setMnemonic('2');
-        BtnAllPeriksa10.setToolTipText("Alt+2");
-        BtnAllPeriksa10.setName("BtnAllPeriksa10"); // NOI18N
-        BtnAllPeriksa10.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAllPeriksa10.addActionListener(new java.awt.event.ActionListener() {
+        BtnAllTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllTindakan.setMnemonic('2');
+        BtnAllTindakan.setToolTipText("Alt+2");
+        BtnAllTindakan.setName("BtnAllTindakan"); // NOI18N
+        BtnAllTindakan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllTindakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllPeriksa10ActionPerformed(evt);
+                BtnAllTindakanActionPerformed(evt);
             }
         });
-        FormInput.add(BtnAllPeriksa10);
-        BtnAllPeriksa10.setBounds(658, 2810, 28, 23);
+        FormInput.add(BtnAllTindakan);
+        BtnAllTindakan.setBounds(658, 2810, 28, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2001,68 +2001,70 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_CariRadiologiKeyPressed
 
     private void CariPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariPKKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilPK2();
+        }
     }//GEN-LAST:event_CariPKKeyPressed
 
-    private void BtnCariPenyakit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit3ActionPerformed
+    private void BtnCariLaboratoriumPKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariLaboratoriumPKActionPerformed
+        tampilPK2();
+    }//GEN-LAST:event_BtnCariLaboratoriumPKActionPerformed
 
     private void CariDetailPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariDetailPKKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_CariDetailPKKeyPressed
 
-    private void BtnCariPenyakit4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit4ActionPerformed
+    private void BtnDetailLaboratPKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDetailLaboratPKActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit4ActionPerformed
+    }//GEN-LAST:event_BtnDetailLaboratPKActionPerformed
 
-    private void Diagnosa5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa5KeyPressed
+    private void CariPAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariPAKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Diagnosa5KeyPressed
+    }//GEN-LAST:event_CariPAKeyPressed
 
-    private void BtnCariPenyakit5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit5ActionPerformed
+    private void BtnCariPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit5ActionPerformed
+    }//GEN-LAST:event_BtnCariPAActionPerformed
 
-    private void Diagnosa6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa6KeyPressed
+    private void CariMBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariMBKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Diagnosa6KeyPressed
+    }//GEN-LAST:event_CariMBKeyPressed
 
-    private void BtnCariPenyakit6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit6ActionPerformed
+    private void BtnCariMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariMBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit6ActionPerformed
+    }//GEN-LAST:event_BtnCariMBActionPerformed
 
-    private void Diagnosa7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa7KeyPressed
+    private void CariDetailMBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariDetailMBKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Diagnosa7KeyPressed
+    }//GEN-LAST:event_CariDetailMBKeyPressed
 
-    private void BtnCariPenyakit7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit7ActionPerformed
+    private void BtnCariDetailMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariDetailMBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit7ActionPerformed
+    }//GEN-LAST:event_BtnCariDetailMBActionPerformed
 
-    private void BtnCariPenyakit8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit8ActionPerformed
+    private void BtnCariObatNonRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariObatNonRacikanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit8ActionPerformed
+    }//GEN-LAST:event_BtnCariObatNonRacikanActionPerformed
 
-    private void Diagnosa8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa8KeyPressed
+    private void CariObatNonRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariObatNonRacikanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Diagnosa8KeyPressed
+    }//GEN-LAST:event_CariObatNonRacikanKeyPressed
 
-    private void Diagnosa10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa10KeyPressed
+    private void CariObatRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariObatRacikanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Diagnosa10KeyPressed
+    }//GEN-LAST:event_CariObatRacikanKeyPressed
 
-    private void BtnCariPenyakit10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit10ActionPerformed
+    private void BtnCariObatRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariObatRacikanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit10ActionPerformed
+    }//GEN-LAST:event_BtnCariObatRacikanActionPerformed
 
-    private void Diagnosa9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa9KeyPressed
+    private void CariTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariTindakanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Diagnosa9KeyPressed
+    }//GEN-LAST:event_CariTindakanKeyPressed
 
-    private void BtnCariPenyakit9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit9ActionPerformed
+    private void BtnCariTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariTindakanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPenyakit9ActionPerformed
+    }//GEN-LAST:event_BtnCariTindakanActionPerformed
 
     private void BtnAllPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPenyakitActionPerformed
         Diagnosa.setText("");
@@ -2079,37 +2081,38 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         tampilRadiologi();
     }//GEN-LAST:event_BtnAllRadiologiActionPerformed
 
-    private void BtnAllPeriksa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa3ActionPerformed
+    private void BtnAllPatologiKlinisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPatologiKlinisActionPerformed
+        CariPA.setText("");
+        tampilPK();
+    }//GEN-LAST:event_BtnAllPatologiKlinisActionPerformed
 
-    private void BtnAllPeriksa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa4ActionPerformed
+    private void BtnAllDetailLaboratPKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllDetailLaboratPKActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa4ActionPerformed
+    }//GEN-LAST:event_BtnAllDetailLaboratPKActionPerformed
 
-    private void BtnAllPeriksa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa5ActionPerformed
+    private void BtnAllPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa5ActionPerformed
+    }//GEN-LAST:event_BtnAllPAActionPerformed
 
-    private void BtnAllPeriksa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa6ActionPerformed
+    private void BtnAllMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa6ActionPerformed
+    }//GEN-LAST:event_BtnAllMBActionPerformed
 
-    private void BtnAllPeriksa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa7ActionPerformed
+    private void BtnAllDetailMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllDetailMBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa7ActionPerformed
+    }//GEN-LAST:event_BtnAllDetailMBActionPerformed
 
-    private void BtnAllPeriksa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa8ActionPerformed
+    private void BtnAllObatNonRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllObatNonRacikanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa8ActionPerformed
+    }//GEN-LAST:event_BtnAllObatNonRacikanActionPerformed
 
-    private void BtnAllPeriksa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa9ActionPerformed
+    private void BtnAllObatRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllObatRacikanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa9ActionPerformed
+    }//GEN-LAST:event_BtnAllObatRacikanActionPerformed
 
-    private void BtnAllPeriksa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksa10ActionPerformed
+    private void BtnAllTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllTindakanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAllPeriksa10ActionPerformed
+    }//GEN-LAST:event_BtnAllTindakanActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2129,45 +2132,45 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
+    private widget.Button BtnAllDetailLaboratPK;
+    private widget.Button BtnAllDetailMB;
+    private widget.Button BtnAllMB;
+    private widget.Button BtnAllObatNonRacikan;
+    private widget.Button BtnAllObatRacikan;
+    private widget.Button BtnAllPA;
+    private widget.Button BtnAllPatologiKlinis;
     private widget.Button BtnAllPenyakit;
-    private widget.Button BtnAllPeriksa10;
-    private widget.Button BtnAllPeriksa3;
-    private widget.Button BtnAllPeriksa4;
-    private widget.Button BtnAllPeriksa5;
-    private widget.Button BtnAllPeriksa6;
-    private widget.Button BtnAllPeriksa7;
-    private widget.Button BtnAllPeriksa8;
-    private widget.Button BtnAllPeriksa9;
     private widget.Button BtnAllProsedur;
     private widget.Button BtnAllRadiologi;
+    private widget.Button BtnAllTindakan;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnCariDetailMB;
+    private widget.Button BtnCariLaboratoriumPK;
+    private widget.Button BtnCariMB;
+    private widget.Button BtnCariObatNonRacikan;
+    private widget.Button BtnCariObatRacikan;
+    private widget.Button BtnCariPA;
     private widget.Button BtnCariPenyakit;
-    private widget.Button BtnCariPenyakit10;
-    private widget.Button BtnCariPenyakit3;
-    private widget.Button BtnCariPenyakit4;
-    private widget.Button BtnCariPenyakit5;
-    private widget.Button BtnCariPenyakit6;
-    private widget.Button BtnCariPenyakit7;
-    private widget.Button BtnCariPenyakit8;
-    private widget.Button BtnCariPenyakit9;
     private widget.Button BtnCariProsedur;
     private widget.Button BtnCariRadiologi;
+    private widget.Button BtnCariTindakan;
+    private widget.Button BtnDetailLaboratPK;
     private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
+    public widget.TextBox CariDetailMB;
     public widget.TextBox CariDetailPK;
+    public widget.TextBox CariMB;
+    public widget.TextBox CariObatNonRacikan;
+    public widget.TextBox CariObatRacikan;
+    public widget.TextBox CariPA;
     public widget.TextBox CariPK;
     public widget.TextBox CariRadiologi;
+    public widget.TextBox CariTindakan;
     public widget.TextBox Diagnosa;
-    public widget.TextBox Diagnosa10;
-    public widget.TextBox Diagnosa5;
-    public widget.TextBox Diagnosa6;
-    public widget.TextBox Diagnosa7;
-    public widget.TextBox Diagnosa8;
-    public widget.TextBox Diagnosa9;
     private widget.PanelBiasa FormInput;
     private widget.TextBox Kd;
     private widget.TextBox KdDokter;
@@ -2523,6 +2526,89 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 for(JsonNode list:response){
                     if((list.path("KodePeriksa").asText().toLowerCase().contains(CariRadiologi.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariRadiologi.getText().toLowerCase()))){
                         tabModeRadiologi.addRow(new Object[]{
+                            false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                        });
+                    }
+                }
+            }  
+            myObj.close(); 
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilPK() {         
+        try{
+            file=new File("./cache/permintaanpk.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem=""; 
+        
+            ps=koneksi.prepareStatement(
+                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.kd_pj,jns_perawatan_lab.kelas from jns_perawatan_lab where jns_perawatan_lab.status='1' and jns_perawatan_lab.kategori='PK' order by jns_perawatan_lab.kd_jenis_prw");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KodePJ\":\""+rs.getString(3)+"\",\"Kelas\":\""+rs.getString(4)+"\"},";
+                    tabModePK.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            fileWriter.write("{\"permintaanpk\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi 2 : "+e);
+        }
+    }
+    
+    private void tampilPK2() {         
+        try{
+            jml=0;
+            for(i=0;i<tbPermintaanPK.getRowCount();i++){
+                if(tbPermintaanPK.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=null;
+            pilih=new boolean[jml];
+            kode=null;
+            kode=new String[jml];
+            nama=null;
+            nama=new String[jml];
+            
+            index=0; 
+            for(i=0;i<tbPermintaanPK.getRowCount();i++){
+                if(tbPermintaanPK.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    kode[index]=tbPermintaanPK.getValueAt(i,1).toString();
+                    nama[index]=tbPermintaanPK.getValueAt(i,2).toString();
+                    index++;
+                }
+            }
+
+            Valid.tabelKosong(tabModePK);
+            for(i=0;i<jml;i++){                
+                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+            }    
+        
+            myObj = new FileReader("./cache/permintaanpk.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("permintaanpk");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if((list.path("KodePeriksa").asText().toLowerCase().contains(CariPK.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariPK.getText().toLowerCase()))){
+                        tabModePK.addRow(new Object[]{
                             false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
                         });
                     }
