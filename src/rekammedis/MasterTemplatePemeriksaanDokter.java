@@ -2673,7 +2673,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.tabelKosong(tabModeDetailPK);
             
             for(i=0;i<jml;i++){ 
-                tabMode.addRow(new Object[] {
+                tabModeDetailPK.addRow(new Object[] {
                     pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i]
                 });
             }  
@@ -2700,7 +2700,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             if(!rs.getString("nilai_rujukan_pd").equals("")){
                                 pa=" PA : "+rs.getString("nilai_rujukan_pa");
                             }
-                            tabMode.addRow(new Object[]{
+                            tabModeDetailPK.addRow(new Object[]{
                                 false,"   "+rs.getString("Pemeriksaan"),rs.getString("satuan"),ld+la+pd+pa,rs.getString("id_template")
                             });
                         }
