@@ -862,6 +862,7 @@ import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhDewasa;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhGeriatri;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhLansia;
+import rekammedis.RMPenilaianLanjutanRisikoJatuhPsikiatri;
 import rekammedis.RMPenilaianLevelKecemasanRanapAnak;
 import rekammedis.RMPenilaianPasienKeracunan;
 import rekammedis.RMPenilaianPasienPenyakitMenular;
@@ -1918,7 +1919,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/07/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08/08/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -20584,6 +20585,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnPenilaianRisikoJatuhPsikiatriActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianLanjutanRisikoJatuhPsikiatri aplikasi=new RMPenilaianLanjutanRisikoJatuhPsikiatri(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    
     /**
     * @param args the command line arguments
     */
@@ -21261,7 +21277,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
             btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
             btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare,
-            btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa;
+            btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa,
+            btnPenilaianRisikoJatuhPsikiatri;
     
     public void isWall(){
         try{            
@@ -24933,6 +24950,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
                 Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_risiko_jatuh_psikiatri()==true){
+                Panelmenu.add(btnPenilaianRisikoJatuhPsikiatri);
                 jmlmenu++;
             }
             
@@ -29752,6 +29774,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
             Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_risiko_jatuh_psikiatri()==true){
+            Panelmenu.add(btnPenilaianRisikoJatuhPsikiatri);
             jmlmenu++;
         }
         
@@ -35985,6 +36012,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_lanjutan_resiko_jatuh_psikiatri()==true){
+            if(btnPenilaianRisikoJatuhPsikiatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianRisikoJatuhPsikiatri);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_risiko_dekubitus()==true){
             if(btnPenilaianRisikoDekubitus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianRisikoDekubitus);
@@ -41809,5 +41843,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisHemodialisa.setName("btnPenilaianAwalMedisHemodialisa"); 
         btnPenilaianAwalMedisHemodialisa.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisHemodialisa.addActionListener(this::btnPenilaianAwalMedisHemodialisaActionPerformed);
+        
+        btnPenilaianRisikoJatuhPsikiatri = new widget.ButtonBig();
+        btnPenilaianRisikoJatuhPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9803221_man_fall_holiday_autumn_tradition_icon.png"))); 
+        btnPenilaianRisikoJatuhPsikiatri.setText("Penilaian Lanjutan Risiko Jatuh Psikiatri");
+        btnPenilaianRisikoJatuhPsikiatri.setIconTextGap(0);
+        btnPenilaianRisikoJatuhPsikiatri.setName("btnPenilaianRisikoJatuhPsikiatri"); 
+        btnPenilaianRisikoJatuhPsikiatri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianRisikoJatuhPsikiatri.addActionListener(this::btnPenilaianRisikoJatuhPsikiatriActionPerformed);
     }
 }
