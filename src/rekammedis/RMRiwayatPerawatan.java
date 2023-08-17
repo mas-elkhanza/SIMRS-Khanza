@@ -335,6 +335,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanLanjutanRisikoJatuhLansia = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhGeriatri = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhNeonatus = new widget.CekBox();
+        chkAsuhanLanjutanRisikoJatuhPsikiatri = new widget.CekBox();
         chkAsuhanRisikoDekubitus = new widget.CekBox();
         chkAsuhanGizi = new widget.CekBox();
         chkHasilPemeriksaanUSG = new widget.CekBox();
@@ -624,7 +625,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2560));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2584));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1175,6 +1176,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanLanjutanRisikoJatuhNeonatus.setOpaque(false);
         chkAsuhanLanjutanRisikoJatuhNeonatus.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanLanjutanRisikoJatuhNeonatus);
+
+        chkAsuhanLanjutanRisikoJatuhPsikiatri.setSelected(true);
+        chkAsuhanLanjutanRisikoJatuhPsikiatri.setText("Lanjutan Risiko Jatuh Psikiatri");
+        chkAsuhanLanjutanRisikoJatuhPsikiatri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanLanjutanRisikoJatuhPsikiatri.setName("chkAsuhanLanjutanRisikoJatuhPsikiatri"); // NOI18N
+        chkAsuhanLanjutanRisikoJatuhPsikiatri.setOpaque(false);
+        chkAsuhanLanjutanRisikoJatuhPsikiatri.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanLanjutanRisikoJatuhPsikiatri);
 
         chkAsuhanRisikoDekubitus.setSelected(true);
         chkAsuhanRisikoDekubitus.setText("Risiko Dekubitus");
@@ -2018,6 +2027,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanMedisRalanKulitKelamin.setSelected(true);
             chkPenilaianLevelKecemasanRanapAnak.setSelected(true);
             chkAsuhanMedisHemodialisa.setSelected(true);
+            chkAsuhanLanjutanRisikoJatuhPsikiatri.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2129,6 +2139,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanMedisRalanKulitKelamin.setSelected(false);
             chkPenilaianLevelKecemasanRanapAnak.setSelected(false);
             chkAsuhanMedisHemodialisa.setSelected(false);
+            chkAsuhanLanjutanRisikoJatuhPsikiatri.setSelected(true);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2220,6 +2231,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanLanjutanRisikoJatuhGeriatri;
     private widget.CekBox chkAsuhanLanjutanRisikoJatuhLansia;
     private widget.CekBox chkAsuhanLanjutanRisikoJatuhNeonatus;
+    private widget.CekBox chkAsuhanLanjutanRisikoJatuhPsikiatri;
     private widget.CekBox chkAsuhanMedisHemodialisa;
     private widget.CekBox chkAsuhanMedisIGD;
     private widget.CekBox chkAsuhanMedisRalan;
@@ -2801,6 +2813,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanLanjutanResikoJatuhLansia(rs.getString("no_rawat"));
                     //menampilkan penilaian lanjutan risiko jatuh Geriatri
                     menampilkanLanjutanResikoJatuhGeriatri(rs.getString("no_rawat"));
+                    //menampilkan penilaian lanjutan risiko jatuh psikiatri
+                    menampilkanLanjutanResikoJatuhPsikiatri(rs.getString("no_rawat"));
                     //menampilkan penilaian lanjutan risiko jatuh neonatus
                     menampilkanLanjutanResikoJatuhNeonatus(rs.getString("no_rawat"));
                     //menampilkan penilaian risiko dekubitus
@@ -16780,6 +16794,102 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    private void menampilkanLanjutanResikoJatuhPsikiatri(String norawat) {
+        try {
+            if(chkAsuhanLanjutanRisikoJatuhPsikiatri.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_skala1,penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_nilai1,"+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_skala2,penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_nilai2,"+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_skala3,penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_nilai3,"+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_skala4,penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_nilai4,"+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_skala5,penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_nilai5,"+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_skala6,penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_nilai6,"+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.penilaian_jatuhedmonson_totalnilai,penilaian_lanjutan_resiko_jatuh_psikiatri.hasil_skrining,"+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.saran,penilaian_lanjutan_resiko_jatuh_psikiatri.nip,petugas.nama,penilaian_lanjutan_resiko_jatuh_psikiatri.tanggal "+
+                            "from penilaian_lanjutan_resiko_jatuh_psikiatri inner join petugas on penilaian_lanjutan_resiko_jatuh_psikiatri.nip=petugas.nip where "+
+                            "penilaian_lanjutan_resiko_jatuh_psikiatri.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Lanjutan Risiko Jatuh Psikiatri</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                    "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal & Petugas</td>"+
+                                    "<td valign='top' width='18%' bgcolor='#FFFAF8'>Parameter</td>"+
+                                    "<td valign='top' width='30%' bgcolor='#FFFAF8'>Kriteria</td>"+
+                                    "<td valign='top' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
+                                    "<td valign='top' width='14%' bgcolor='#FFFAF8'>Hasil Skrining</td>"+
+                                    "<td valign='top' width='14%' bgcolor='#FFFAF8'>Saran</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+w+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                    "<td valign='top' align='justify' valign='middle'>1. Usia</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_skala1")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_nilai1")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("hasil_skrining").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("saran").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>2. Status Mental</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_skala2")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_nilai2")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>3. Eliminasi</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_skala3")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_nilai3")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>4. Pengobatan</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_skala4")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_nilai4")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>5. Diagnosa</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_skala5")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_nilai5")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>6. Ambulasi/Keseimbangan</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_skala6")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_nilai6")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='center' valign='middle' colspan='2'>TOTAL</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuhedmonson_totalnilai")+"</td>"+
+                                 "</tr>"
+                            );                                     
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Resiko Jatuh Psikiatri : "+e);
+        }
+    }
+    
     private void menampilkanAsuhanResikoDekubitus(String norawat) {
         try {
             if(chkAsuhanRisikoDekubitus.isSelected()==true){
@@ -19553,13 +19663,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         while(rs2.next()){
                             htmlContent.append(
                                  "<tr>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='11'>"+w+"</td>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='11'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='12'>"+w+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='12'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                     "<td valign='top' align='justify' valign='middle'>1. Gangguan Gaya Berjalan (Diseret, Menghentak, Berayun)</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuh_skala1")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_jatuh_nilai1")+"</td>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='11'>"+rs2.getString("hasil_skrining").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
-                                    "<td valign='top' align='center' valign='middle' rowspan='11'>"+rs2.getString("saran").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='12'>"+rs2.getString("hasil_skrining").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='12'>"+rs2.getString("saran").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
                                     "<td valign='top' align='justify' valign='middle'>2. Pusing/Pingsan Pada Posisi Tegak</td>"+

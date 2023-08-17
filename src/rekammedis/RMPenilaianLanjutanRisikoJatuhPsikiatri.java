@@ -58,10 +58,6 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
         this.setLocation(8,1);
         setSize(628,674);
         
-       
-        //NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText()))+"");
-        //defTeks();
-        
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala Edmonson 1","N.E. 1",
             "Skala Edmonson 2","N.E. 2","Skala Edmonson 3","N.E. 3","Skala Edmonson 4","N.E. 4","Skala Edmonson 5","N.E. 5",
@@ -746,11 +742,6 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
         NilaiResiko1.setEditable(false);
         NilaiResiko1.setFocusTraversalPolicyProvider(true);
         NilaiResiko1.setName("NilaiResiko1"); // NOI18N
-        NilaiResiko1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NilaiResiko1ActionPerformed(evt);
-            }
-        });
         FormInput.add(NilaiResiko1);
         NilaiResiko1.setBounds(729, 90, 60, 23);
 
@@ -788,11 +779,6 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
         NilaiResiko2.setEditable(false);
         NilaiResiko2.setFocusTraversalPolicyProvider(true);
         NilaiResiko2.setName("NilaiResiko2"); // NOI18N
-        NilaiResiko2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NilaiResiko2ActionPerformed(evt);
-            }
-        });
         FormInput.add(NilaiResiko2);
         NilaiResiko2.setBounds(729, 120, 60, 23);
 
@@ -1479,14 +1465,6 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
     private void SkalaResiko6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko6KeyPressed
         Valid.pindah(evt,SkalaResiko5,HasilSkrining);
     }//GEN-LAST:event_SkalaResiko6KeyPressed
-
-    private void NilaiResiko2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NilaiResiko2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiResiko2ActionPerformed
-
-    private void NilaiResiko1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NilaiResiko1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiResiko1ActionPerformed
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
         Valid.pindah2(evt,SkalaResiko6,Saran);
