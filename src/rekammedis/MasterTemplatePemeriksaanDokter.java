@@ -2026,11 +2026,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnDetailLaboratPKActionPerformed
 
     private void CariPAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariPAKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilPA2();
+        }
     }//GEN-LAST:event_CariPAKeyPressed
 
     private void BtnCariPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPAActionPerformed
-        // TODO add your handling code here:
+        tampilPA2();
     }//GEN-LAST:event_BtnCariPAActionPerformed
 
     private void CariMBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariMBKeyPressed
@@ -2101,7 +2103,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllDetailLaboratPKActionPerformed
 
     private void BtnAllPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPAActionPerformed
-        // TODO add your handling code here:
+        CariPA.setText("");
+        tampilPA();
+        tampilPA2();
     }//GEN-LAST:event_BtnAllPAActionPerformed
 
     private void BtnAllMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMBActionPerformed
@@ -2791,7 +2795,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             response = root.path("permintaanpa");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if((list.path("KodePeriksa").asText().toLowerCase().contains(CariPK.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariPK.getText().toLowerCase()))){
+                    if((list.path("KodePeriksa").asText().toLowerCase().contains(CariPA.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariPA.getText().toLowerCase()))){
                         tabModePA.addRow(new Object[]{
                             false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
                         });
