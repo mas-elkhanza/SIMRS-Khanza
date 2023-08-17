@@ -1388,7 +1388,7 @@
                     <Component class="widget.Label" name="TingkatResiko">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Tingkat Resiko : Risiko Rendah (0-5), Tindakan : Intervensi pencegahan risiko jatuh standar"/>
+                        <Property name="text" type="java.lang.String" value="Tingkat Resiko : Tidak Berisiko (0-89), Tindakan : Intervensi pencegahan risiko jatuh standar"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="name" type="java.lang.String" value="TingkatResiko" noResource="true"/>
                       </Properties>

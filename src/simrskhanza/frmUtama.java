@@ -24953,7 +24953,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
-            if(akses.getpenilaian_risiko_jatuh_psikiatri()==true){
+            if(akses.getpenilaian_lanjutan_resiko_jatuh_psikiatri()==true){
                 Panelmenu.add(btnPenilaianRisikoJatuhPsikiatri);
                 jmlmenu++;
             }
@@ -29777,7 +29777,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
-        if(akses.getpenilaian_risiko_jatuh_psikiatri()==true){
+        if(akses.getpenilaian_lanjutan_resiko_jatuh_psikiatri()==true){
             Panelmenu.add(btnPenilaianRisikoJatuhPsikiatri);
             jmlmenu++;
         }

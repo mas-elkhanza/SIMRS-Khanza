@@ -90,27 +90,27 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
             }else if(i==5){
                 column.setPreferredWidth(115);
             }else if(i==6){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(95);
             }else if(i==7){
                 column.setPreferredWidth(40);
             }else if(i==8){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(95);
             }else if(i==9){
                 column.setPreferredWidth(40);
             }else if(i==10){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(95);
             }else if(i==11){
                 column.setPreferredWidth(40);
             }else if(i==12){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(95);
             }else if(i==13){
                 column.setPreferredWidth(40);
             }else if(i==14){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(95);
             }else if(i==15){
                 column.setPreferredWidth(40);
             }else if(i==16){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(95);
             }else if(i==17){
                 column.setPreferredWidth(40);
             }else if(i==18){
@@ -975,7 +975,7 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
         jLabel57.setBounds(14, 70, 120, 23);
 
         TingkatResiko.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-5), Tindakan : Intervensi pencegahan risiko jatuh standar");
+        TingkatResiko.setText("Tingkat Resiko : Tidak Berisiko (0-89), Tindakan : Intervensi pencegahan risiko jatuh standar");
         TingkatResiko.setToolTipText("");
         TingkatResiko.setName("TingkatResiko"); // NOI18N
         FormInput.add(TingkatResiko);
