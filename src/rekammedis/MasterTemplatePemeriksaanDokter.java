@@ -23,7 +23,7 @@ import javax.swing.table.TableColumn;
 
 public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabModeDiagnosa,tabModeProsedur,tabModeRadiologi,tabModePK,tabModeDetailPK,
-                tabModePermintaanPA,tabModeMB,tabModeDetailMB,tabModeObatUmum,tabModeObatRacikan,tabModeDetailObatRacikan,
+                tabModePA,tabModeMB,tabModeDetailMB,tabModeObatUmum,tabModeObatRacikan,tabModeDetailObatRacikan,
                 TabModeTindakan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -258,7 +258,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         
         tbDetailPK.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModePermintaanPA=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
+        tabModePA=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -274,7 +274,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                 return types [columnIndex];
              }
         };
-        tbPermintaanPA.setModel(tabModePermintaanPA);
+        tbPermintaanPA.setModel(tabModePA);
 
         tbPermintaanPA.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPermintaanPA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -2086,11 +2086,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnAllRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllRadiologiActionPerformed
         CariRadiologi.setText("");
         tampilRadiologi();
+        tampilRadiologi2();
     }//GEN-LAST:event_BtnAllRadiologiActionPerformed
 
     private void BtnAllPatologiKlinisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPatologiKlinisActionPerformed
         CariPA.setText("");
         tampilPK();
+        tampilPK2();
     }//GEN-LAST:event_BtnAllPatologiKlinisActionPerformed
 
     private void BtnAllDetailLaboratPKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllDetailLaboratPKActionPerformed
@@ -2485,7 +2487,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();
                 while(rs.next()){
                     iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KodePJ\":\""+rs.getString(3)+"\",\"Kelas\":\""+rs.getString(4)+"\"},";
-                    tabModeRadiologi.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -2534,7 +2535,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
             Valid.tabelKosong(tabModeRadiologi);
             for(i=0;i<jml;i++){                
-                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+                tabModeRadiologi.addRow(new Object[] {pilih[i],kode[i],nama[i]});
             }    
         
             myObj = new FileReader("./cache/permintaanradiologi.iyem");
@@ -2568,7 +2569,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();
                 while(rs.next()){
                     iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KodePJ\":\""+rs.getString(3)+"\",\"Kelas\":\""+rs.getString(4)+"\"},";
-                    tabModePK.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -2617,7 +2617,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
             Valid.tabelKosong(tabModePK);
             for(i=0;i<jml;i++){                
-                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+                tabModePK.addRow(new Object[] {pilih[i],kode[i],nama[i]});
             }    
         
             myObj = new FileReader("./cache/permintaanpk.iyem");
@@ -2680,7 +2680,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             for(i=0;i<tbPermintaanPK.getRowCount();i++){ 
                 if(tbPermintaanPK.getValueAt(i,0).toString().equals("true")){
-                    tabMode.addRow(new Object[]{false,tbPermintaanPK.getValueAt(i,2).toString(),"","",""});
+                    tabModeDetailPK.addRow(new Object[]{false,tbPermintaanPK.getValueAt(i,2).toString(),"","",""});
                     ps=koneksi.prepareStatement("select template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa from template_laboratorium where template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? order by template_laboratorium.urut");
                     try {
                         ps.setString(1,tbPermintaanPK.getValueAt(i,1).toString());
@@ -2719,6 +2719,88 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
         } catch (Exception e) {
             System.out.println("Error Detail : "+e);
+        }
+    }
+    
+    private void tampilPA() {         
+        try{
+            file=new File("./cache/permintaanpa.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem=""; 
+        
+            ps=koneksi.prepareStatement(
+                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.kd_pj,jns_perawatan_lab.kelas from jns_perawatan_lab where jns_perawatan_lab.status='1' and jns_perawatan_lab.kategori='PA' order by jns_perawatan_lab.kd_jenis_prw");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KodePJ\":\""+rs.getString(3)+"\",\"Kelas\":\""+rs.getString(4)+"\"},";
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            fileWriter.write("{\"permintaanpa\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi 2 : "+e);
+        }
+    }
+    
+    private void tampilPA2() {         
+        try{
+            jml=0;
+            for(i=0;i<tbPermintaanPA.getRowCount();i++){
+                if(tbPermintaanPA.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=null;
+            pilih=new boolean[jml];
+            kode=null;
+            kode=new String[jml];
+            nama=null;
+            nama=new String[jml];
+            
+            index=0; 
+            for(i=0;i<tbPermintaanPA.getRowCount();i++){
+                if(tbPermintaanPA.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    kode[index]=tbPermintaanPA.getValueAt(i,1).toString();
+                    nama[index]=tbPermintaanPA.getValueAt(i,2).toString();
+                    index++;
+                }
+            }
+
+            Valid.tabelKosong(tabModePA);
+            for(i=0;i<jml;i++){                
+                tabModePA.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+            }    
+        
+            myObj = new FileReader("./cache/permintaanpa.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("permintaanpa");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if((list.path("KodePeriksa").asText().toLowerCase().contains(CariPK.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariPK.getText().toLowerCase()))){
+                        tabModePA.addRow(new Object[]{
+                            false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                        });
+                    }
+                }
+            }  
+            myObj.close(); 
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
     }
     
