@@ -289,7 +289,7 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
         MnPenilaianLanjutanRisikoJatuh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianLanjutanRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianLanjutanRisikoJatuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setText("Formulir Penilaian Lanjutan Risiko Jatuh Dewasa");
+        MnPenilaianLanjutanRisikoJatuh.setText("Formulir Penilaian Lanjutan Risiko Jatuh Psikiatri");
         MnPenilaianLanjutanRisikoJatuh.setName("MnPenilaianLanjutanRisikoJatuh"); // NOI18N
         MnPenilaianLanjutanRisikoJatuh.setPreferredSize(new java.awt.Dimension(290, 26));
         MnPenilaianLanjutanRisikoJatuh.addActionListener(new java.awt.event.ActionListener() {
