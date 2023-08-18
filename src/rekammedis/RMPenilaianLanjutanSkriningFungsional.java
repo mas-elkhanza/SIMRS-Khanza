@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Kontribusi RSUD Prembun
  */
 
 
@@ -13,12 +12,16 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,6 +36,9 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -50,6 +56,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
+    private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -59,14 +66,10 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
         this.setLocation(8,1);
         setSize(628,674);
         
-       
-        //NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText()))+"");
-        //defTeks();
-        
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala Barthel 1","N.B. 1",
-            "Skala Barthel 2","N.B. 2","Skala Barthel 3","N.B. 3","Skala Barthel 4","N.B. 4","Skala Barthel 5","N.B. 5",
-            "Skala Barthel 6","N.B. 6","Skala Barthel 7","N.B. 7","Skala Barthel 8","N.B. 8","Skala Barthel 9","N.B. 9","Skala Barthel 10","N.B. 10","Total","NIP","Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala Barthel 1","N.B. 1","Skala Barthel 2","N.B. 2","Skala Barthel 3","N.B. 3","Skala Barthel 4",
+            "N.B. 4","Skala Barthel 5","N.B. 5","Skala Barthel 6","N.B. 6","Skala Barthel 7","N.B. 7","Skala Barthel 8","N.B. 8","Skala Barthel 9","N.B. 9","Skala Barthel 10",
+            "N.B. 10","Total","NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -193,6 +196,24 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
         ChkInput.setSelected(false);
         isForm();
         jam();
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
 
 
@@ -208,6 +229,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -302,7 +324,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
         MnPenilaianLanjutanRisikoJatuh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianLanjutanRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianLanjutanRisikoJatuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setText("Formulir Penilaian Lanjutan Risiko Jatuh Dewasa");
+        MnPenilaianLanjutanRisikoJatuh.setText("Formulir Penilaian Lanjutan Skrining Fungsional");
         MnPenilaianLanjutanRisikoJatuh.setName("MnPenilaianLanjutanRisikoJatuh"); // NOI18N
         MnPenilaianLanjutanRisikoJatuh.setPreferredSize(new java.awt.Dimension(290, 26));
         MnPenilaianLanjutanRisikoJatuh.addActionListener(new java.awt.event.ActionListener() {
@@ -314,6 +336,9 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -560,7 +585,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 456));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 446));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -590,7 +615,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 433));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 423));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -914,13 +939,13 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
         jLabel235.setText("Total :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(675, 400, 50, 23);
+        jLabel235.setBounds(675, 390, 50, 23);
 
         NilaiResikoTotal.setEditable(false);
         NilaiResikoTotal.setFocusTraversalPolicyProvider(true);
         NilaiResikoTotal.setName("NilaiResikoTotal"); // NOI18N
         FormInput.add(NilaiResikoTotal);
-        NilaiResikoTotal.setBounds(729, 400, 60, 23);
+        NilaiResikoTotal.setBounds(729, 390, 60, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -1080,7 +1105,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
         TingkatResiko.setToolTipText("");
         TingkatResiko.setName("TingkatResiko"); // NOI18N
         FormInput.add(TingkatResiko);
-        TingkatResiko.setBounds(34, 400, 580, 23);
+        TingkatResiko.setBounds(34, 390, 580, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1108,7 +1133,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
@@ -1159,7 +1184,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1180,7 +1205,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
@@ -1188,7 +1213,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1225,57 +1250,119 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptLanjutanRisikoJatuhPsikiatri.jasper","report","::[ Data Penilaian Lanjutan Skrining Fungsional ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_skrining_fungsional.tanggal,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala1,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai1,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala2,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai2,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala3,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai3,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala4,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai4,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala5,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai5,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala6,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai6,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala7,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai7,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala8,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai8,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala9,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai9,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala10,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai10,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_totalnilai,"+
-                    "penilaian_lanjutan_skrining_fungsional.nip,petugas.nama "+
-                    "from penilaian_lanjutan_skrining_fungsional inner join reg_periksa on penilaian_lanjutan_skrining_fungsional.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_skrining_fungsional.nip=petugas.nip where "+
-                    "penilaian_lanjutan_skrining_fungsional.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "order by penilaian_lanjutan_skrining_fungsional.tanggal",param);
-            }else{
-                Valid.MyReportqry("rptLanjutanRisikoJatuhPsikiatri.jasper","report","::[ Data Penilaian Lanjutan Skrining Fungsional ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_skrining_fungsional.tanggal,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala1,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai1,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala2,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai2,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala3,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai3,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala4,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai4,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala5,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai5,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala6,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai6,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala7,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai7,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala8,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai8,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala9,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai9,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala10,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai10,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_totalnilai,"+
-                    "penilaian_lanjutan_skrining_fungsional.nip,petugas.nama "+
-                    "from penilaian_lanjutan_skrining_fungsional inner join reg_periksa on penilaian_lanjutan_skrining_fungsional.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_skrining_fungsional.nip=petugas.nip where "+
-                    "penilaian_lanjutan_skrining_fungsional.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or penilaian_lanjutan_skrining_fungsional.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by penilaian_lanjutan_skrining_fungsional.tanggal ",param);
-            }  
+            try{
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.R.M.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>JK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                        "</tr>");
+                }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("PenilaianSkriningFungsional.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN LANJUTAN SKRINING FUNGSIONAL<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
+
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1390,8 +1477,8 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),28).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),27).toString():finger)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptFormulirPenilaianLanjutanSkriningFungsional.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Psikiatri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_skrining_fungsional.tanggal,"+
                     "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala1,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai1,"+
@@ -1596,6 +1683,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
     private widget.TextBox NIP;
@@ -1861,9 +1949,9 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>628){
+            if(internalFrame1.getHeight()>618){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,456));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,446));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
