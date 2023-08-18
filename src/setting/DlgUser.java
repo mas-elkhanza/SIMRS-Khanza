@@ -234,7 +234,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Check List Kriteria Keluar ICU","[A]Akses Ke Dokter Lain Rawat Jalan","[M]Follow Up DBD","[M]Penilaian Lanjutan Risiko Jatuh Neonatus","[K]Persetujuan Pengajuan Biaya",
                 "[J]Pemeriksaan Fisik Ralan Per Penyakit","[M]Penilaian Lanjutan Risiko Jatuh Geriatri","[M]Pemantauan EWS Pasien Neonatus","[K]Validasi Persetujuan Pengajuan Biaya",
                 "[L]Riwayat Perawatan ICare BPJS","[K]Rekap Pengajuan Biaya","[M]Penilaian Awal Medis Ralan Kulit & Kelamin","[L]Host To Host Bank Mandiri","[M]Penilaian Awal Medis Pasien Hemodialisa",
-                "[M]Penilaian Level Kecemasan Ranap Anak","[M]Penilaian Lanjutan Risiko Jatuh Psikiatri"
+                "[M]Penilaian Level Kecemasan Ranap Anak","[M]Penilaian Lanjutan Risiko Jatuh Psikiatri","[M]Penilaian Lanjutan Skrining Fungsional"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -519,7 +519,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 976;i++) {
+        for (i = 0; i < 977;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2901,6 +2901,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 975:
                     column.setPreferredWidth(217);
                     break;
+                case 976:
+                    column.setPreferredWidth(211);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3398,7 +3401,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3423,7 +3426,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4446,7 +4449,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "akun_host_to_host_bank_mandiri='"+tbUser.getValueAt(i,972).toString()+"',"+
                     "penilaian_medis_hemodialisa='"+tbUser.getValueAt(i,973).toString()+"',"+
                     "penilaian_level_kecemasan_ranap_anak='"+tbUser.getValueAt(i,974).toString()+"',"+
-                    "penilaian_lanjutan_resiko_jatuh_psikiatri='"+tbUser.getValueAt(i,975).toString()+"'")==true){
+                    "penilaian_lanjutan_resiko_jatuh_psikiatri='"+tbUser.getValueAt(i,975).toString()+"',"+
+                    "penilaian_lanjutan_skrining_fungsional='"+tbUser.getValueAt(i,976).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5620,7 +5624,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "akun_host_to_host_bank_mandiri='"+tbUser.getValueAt(barisdicopy,972).toString()+"',"+
                                         "penilaian_medis_hemodialisa='"+tbUser.getValueAt(barisdicopy,973).toString()+"',"+
                                         "penilaian_level_kecemasan_ranap_anak='"+tbUser.getValueAt(barisdicopy,974).toString()+"',"+
-                                        "penilaian_lanjutan_resiko_jatuh_psikiatri='"+tbUser.getValueAt(barisdicopy,975).toString()+"'");
+                                        "penilaian_lanjutan_resiko_jatuh_psikiatri='"+tbUser.getValueAt(barisdicopy,975).toString()+"',"+
+                                        "penilaian_lanjutan_skrining_fungsional='"+tbUser.getValueAt(barisdicopy,976).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5904,7 +5909,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.checklist_kriteria_keluar_icu,user.akses_dokter_lain_rawat_jalan,user.follow_up_dbd,user.penilaian_risiko_jatuh_neonatus,user.persetujuan_pengajuan_biaya,"+
                 "user.pemeriksaan_fisik_ralan_per_penyakit,user.penilaian_lanjutan_resiko_jatuh_geriatri,user.pemantauan_ews_neonatus,user.validasi_persetujuan_pengajuan_biaya,"+
                 "user.riwayat_perawatan_icare_bpjs,user.rekap_pengajuan_biaya,user.penilaian_awal_medis_ralan_kulit_kelamin,user.akun_host_to_host_bank_mandiri,"+
-                "user.penilaian_medis_hemodialisa,user.penilaian_level_kecemasan_ranap_anak,user.penilaian_lanjutan_resiko_jatuh_psikiatri from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.penilaian_medis_hemodialisa,user.penilaian_level_kecemasan_ranap_anak,user.penilaian_lanjutan_resiko_jatuh_psikiatri,user.penilaian_lanjutan_skrining_fungsional from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6892,7 +6897,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("akun_host_to_host_bank_mandiri"),
                                rs.getBoolean("penilaian_medis_hemodialisa"),
                                rs.getBoolean("penilaian_level_kecemasan_ranap_anak"),
-                               rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri")
+                               rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri"),
+                               rs.getBoolean("penilaian_lanjutan_skrining_fungsional")
                             });
                         }   
                     } catch (Exception e) {
@@ -7869,7 +7875,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("akun_host_to_host_bank_mandiri"),
                            rs.getBoolean("penilaian_medis_hemodialisa"),
                            rs.getBoolean("penilaian_level_kecemasan_ranap_anak"),
-                           rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri")
+                           rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri"),
+                           rs.getBoolean("penilaian_lanjutan_skrining_fungsional")
                         });
                     }                                             
                  }
