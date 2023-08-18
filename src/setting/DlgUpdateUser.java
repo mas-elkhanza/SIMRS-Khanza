@@ -182,7 +182,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             checklist_kriteria_masuk_icu=false,checklist_kriteria_keluar_icu=false,akses_dokter_lain_rawat_jalan=false,follow_up_dbd=false,penilaian_risiko_jatuh_neonatus=false,persetujuan_pengajuan_biaya=false,
             pemeriksaan_fisik_ralan_per_penyakit=false,penilaian_lanjutan_resiko_jatuh_geriatri=false,pemantauan_ews_neonatus=false,validasi_persetujuan_pengajuan_biaya=false,riwayat_perawatan_icare_bpjs=false,
             rekap_pengajuan_biaya=false,penilaian_awal_medis_ralan_kulit_kelamin=false,akun_host_to_host_bank_mandiri=false,penilaian_medis_hemodialisa=false,penilaian_level_kecemasan_ranap_anak=false,
-            penilaian_lanjutan_resiko_jatuh_psikiatri=false,penilaian_lanjutan_skrining_fungsional=false;
+            penilaian_lanjutan_resiko_jatuh_psikiatri=false,penilaian_lanjutan_skrining_fungsional=false,penilaian_medis_ralan_rehab_medik=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -787,7 +787,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         checklist_kriteria_masuk_icu=false;checklist_kriteria_keluar_icu=false;akses_dokter_lain_rawat_jalan=false;follow_up_dbd=false;penilaian_risiko_jatuh_neonatus=false;persetujuan_pengajuan_biaya=false;
         pemeriksaan_fisik_ralan_per_penyakit=false;penilaian_lanjutan_resiko_jatuh_geriatri=false;pemantauan_ews_neonatus=false;validasi_persetujuan_pengajuan_biaya=false;riwayat_perawatan_icare_bpjs=false;
         rekap_pengajuan_biaya=false;penilaian_awal_medis_ralan_kulit_kelamin=false;akun_host_to_host_bank_mandiri=false;penilaian_medis_hemodialisa=false;penilaian_level_kecemasan_ranap_anak=false;
-        penilaian_lanjutan_resiko_jatuh_psikiatri=false;penilaian_lanjutan_skrining_fungsional=false;
+        penilaian_lanjutan_resiko_jatuh_psikiatri=false;penilaian_lanjutan_skrining_fungsional=false;penilaian_medis_ralan_rehab_medik=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1005,7 +1005,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.checklist_kriteria_keluar_icu,user.akses_dokter_lain_rawat_jalan,user.follow_up_dbd,user.penilaian_risiko_jatuh_neonatus,user.persetujuan_pengajuan_biaya,"+
                 "user.pemeriksaan_fisik_ralan_per_penyakit,user.penilaian_lanjutan_resiko_jatuh_geriatri,user.pemantauan_ews_neonatus,user.validasi_persetujuan_pengajuan_biaya,"+
                 "user.riwayat_perawatan_icare_bpjs,user.rekap_pengajuan_biaya,user.penilaian_awal_medis_ralan_kulit_kelamin,user.akun_host_to_host_bank_mandiri,"+
-                "user.penilaian_medis_hemodialisa,user.penilaian_level_kecemasan_ranap_anak,user.penilaian_lanjutan_resiko_jatuh_psikiatri,user.penilaian_lanjutan_skrining_fungsional from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.penilaian_medis_hemodialisa,user.penilaian_level_kecemasan_ranap_anak,user.penilaian_lanjutan_resiko_jatuh_psikiatri,user.penilaian_lanjutan_skrining_fungsional,"+
+                "user.penilaian_medis_ralan_rehab_medik from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1116,7 +1117,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     checklist_kriteria_keluar_hcu=rs.getBoolean("checklist_kriteria_keluar_hcu");penilaian_risiko_dekubitus=rs.getBoolean("penilaian_risiko_dekubitus");master_menolak_anjuran_medis=rs.getBoolean("master_menolak_anjuran_medis");penolakan_anjuran_medis=rs.getBoolean("penolakan_anjuran_medis");laporan_tahunan_penolakan_anjuran_medis=rs.getBoolean("laporan_tahunan_penolakan_anjuran_medis");template_laporan_operasi=rs.getBoolean("template_laporan_operasi");hasil_tindakan_eswl=rs.getBoolean("hasil_tindakan_eswl");checklist_kriteria_masuk_icu=rs.getBoolean("checklist_kriteria_masuk_icu");
                     checklist_kriteria_keluar_icu=rs.getBoolean("checklist_kriteria_keluar_icu");akses_dokter_lain_rawat_jalan=rs.getBoolean("akses_dokter_lain_rawat_jalan");follow_up_dbd=rs.getBoolean("follow_up_dbd");penilaian_risiko_jatuh_neonatus=rs.getBoolean("penilaian_risiko_jatuh_neonatus");persetujuan_pengajuan_biaya=rs.getBoolean("persetujuan_pengajuan_biaya");pemeriksaan_fisik_ralan_per_penyakit=rs.getBoolean("pemeriksaan_fisik_ralan_per_penyakit");penilaian_lanjutan_resiko_jatuh_geriatri=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_geriatri");pemantauan_ews_neonatus=rs.getBoolean("pemantauan_ews_neonatus");
                     validasi_persetujuan_pengajuan_biaya=rs.getBoolean("validasi_persetujuan_pengajuan_biaya");riwayat_perawatan_icare_bpjs=rs.getBoolean("riwayat_perawatan_icare_bpjs");rekap_pengajuan_biaya=rs.getBoolean("rekap_pengajuan_biaya");penilaian_awal_medis_ralan_kulit_kelamin=rs.getBoolean("penilaian_awal_medis_ralan_kulit_kelamin");akun_host_to_host_bank_mandiri=rs.getBoolean("akun_host_to_host_bank_mandiri");penilaian_medis_hemodialisa=rs.getBoolean("penilaian_medis_hemodialisa");penilaian_level_kecemasan_ranap_anak=rs.getBoolean("penilaian_level_kecemasan_ranap_anak");
-                    penilaian_lanjutan_resiko_jatuh_psikiatri=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri");penilaian_lanjutan_skrining_fungsional=rs.getBoolean("penilaian_lanjutan_skrining_fungsional");
+                    penilaian_lanjutan_resiko_jatuh_psikiatri=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri");penilaian_lanjutan_skrining_fungsional=rs.getBoolean("penilaian_lanjutan_skrining_fungsional");penilaian_medis_ralan_rehab_medik=rs.getBoolean("penilaian_medis_ralan_rehab_medik");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -4087,6 +4088,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[M]Penilaian Lanjutan Skrining Fungsional".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Penilaian Lanjutan Skrining Fungsional",penilaian_lanjutan_skrining_fungsional});
+        }
+        
+        if("[M]Penilaian Awal Medis Kedokteran Fisik & Rehabilitasi".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Penilaian Awal Medis Kedokteran Fisik & Rehabilitasi",penilaian_medis_ralan_rehab_medik});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7994,6 +7999,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Penilaian Lanjutan Skrining Fungsional".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_lanjutan_skrining_fungsional='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Penilaian Awal Medis Kedokteran Fisik & Rehabilitasi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_medis_ralan_rehab_medik='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
