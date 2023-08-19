@@ -2791,10 +2791,10 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_medis_ralan_rehab_medik());
+        BtnHapus.setEnabled(akses.getpenilaian_medis_ralan_rehab_medik());
+        BtnEdit.setEnabled(akses.getpenilaian_medis_ralan_rehab_medik());
+        BtnEdit.setEnabled(akses.getpenilaian_medis_ralan_rehab_medik());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -2816,7 +2816,8 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         if(Sequel.queryu2tf("delete from penilaian_medis_ralan_rehab_medik where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");

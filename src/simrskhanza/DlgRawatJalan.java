@@ -104,6 +104,7 @@ import rekammedis.RMPenilaianAwalMedisRalanNeurologi;
 import rekammedis.RMPenilaianAwalMedisRalanOrthopedi;
 import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
+import rekammedis.RMPenilaianAwalMedisRalanRehabMedik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
 import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianKorbanKekerasan;
@@ -1570,6 +1571,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalMedisBedahMulut = new widget.Button();
         BtnAwalMedisGeriatri = new widget.Button();
         BtnAwalMedisKulitKelamin = new widget.Button();
+        BtnAwalMedisRehabMedik = new widget.Button();
         BtnAwalMedisHemodialisa = new widget.Button();
         BtnRujukKeluar = new widget.Button();
         BtnCatatan = new widget.Button();
@@ -1621,7 +1623,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPenilaianTambahanBunuhDiri = new widget.Button();
         BtnPenilaianTambahanPerilakuKekerasan = new widget.Button();
         BtnPenilaianTambahanMelarikanDiri = new widget.Button();
-        BtnAwalMedisRehabMedik = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1789,7 +1790,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1803,7 +1804,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3516,7 +3517,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -4241,6 +4242,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalMedisKulitKelamin);
+
+        BtnAwalMedisRehabMedik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalMedisRehabMedik.setText("Awal Medis Fisik & Rehabilitasi");
+        BtnAwalMedisRehabMedik.setFocusPainted(false);
+        BtnAwalMedisRehabMedik.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalMedisRehabMedik.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalMedisRehabMedik.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalMedisRehabMedik.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalMedisRehabMedik.setName("BtnAwalMedisRehabMedik"); // NOI18N
+        BtnAwalMedisRehabMedik.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnAwalMedisRehabMedik.setRoundRect(false);
+        BtnAwalMedisRehabMedik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalMedisRehabMedikActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalMedisRehabMedik);
 
         BtnAwalMedisHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnAwalMedisHemodialisa.setText("Awal Medis Hemodialisa");
@@ -5108,23 +5126,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPenilaianTambahanMelarikanDiri);
-
-        BtnAwalMedisRehabMedik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnAwalMedisRehabMedik.setText("Awal Medis Kulit & Kelamin");
-        BtnAwalMedisRehabMedik.setFocusPainted(false);
-        BtnAwalMedisRehabMedik.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnAwalMedisRehabMedik.setGlassColor(new java.awt.Color(255, 255, 255));
-        BtnAwalMedisRehabMedik.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnAwalMedisRehabMedik.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnAwalMedisRehabMedik.setName("BtnAwalMedisRehabMedik"); // NOI18N
-        BtnAwalMedisRehabMedik.setPreferredSize(new java.awt.Dimension(190, 23));
-        BtnAwalMedisRehabMedik.setRoundRect(false);
-        BtnAwalMedisRehabMedik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAwalMedisRehabMedikActionPerformed(evt);
-            }
-        });
-        FormMenu.add(BtnAwalMedisRehabMedik);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -8758,7 +8759,20 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnPenilaianLanjutanSkriningFungsionalActionPerformed
 
     private void BtnAwalMedisRehabMedikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalMedisRehabMedikActionPerformed
-        // TODO add your handling code here:
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianAwalMedisRalanRehabMedik form=new RMPenilaianAwalMedisRalanRehabMedik(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
     }//GEN-LAST:event_BtnAwalMedisRehabMedikActionPerformed
 
     /**
@@ -9739,6 +9753,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnPenilaianLanjutanSkriningFungsional.setVisible(akses.getpenilaian_lanjutan_skrining_fungsional()); 
         if(akses.getpenilaian_lanjutan_skrining_fungsional()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalMedisRehabMedik.setVisible(akses.getpenilaian_medis_ralan_rehab_medik()); 
+        if(akses.getpenilaian_medis_ralan_rehab_medik()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
