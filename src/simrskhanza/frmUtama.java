@@ -24776,6 +24776,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getpenilaian_medis_ralan_rehab_medik()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRalanRehabMedik);
+                jmlmenu++;
+            }
+            
             if(akses.getpenilaian_medis_ralan_hemodialisa()==true){
                 Panelmenu.add(btnPenilaianAwalMedisHemodialisa);
                 jmlmenu++;
@@ -29602,6 +29607,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_awal_medis_ralan_kulit_kelamin()==true){
             Panelmenu.add(btnPenilaianAwalMedisRalanKulitKelamin);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_medis_ralan_rehab_medik()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRalanRehabMedik);
             jmlmenu++;
         }
         
@@ -35759,6 +35769,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_awal_medis_ralan_kulit_kelamin()==true){
             if(btnPenilaianAwalMedisRalanKulitKelamin.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisRalanKulitKelamin);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_medis_ralan_rehab_medik()==true){
+            if(btnPenilaianAwalMedisRalanRehabMedik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRalanRehabMedik);
                 jmlmenu++;
             }                
         }
