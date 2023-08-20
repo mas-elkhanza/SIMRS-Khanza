@@ -66,7 +66,7 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
 
         this.setLocation(10,2);
         setSize(628,674);
-        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode ICD X","Nama Penyakit","Spesialis"}){
+        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode ICD X","Nama Penyakit","Non Spesialis"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -84,7 +84,7 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(400);
             }else if(i==3){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(80);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
