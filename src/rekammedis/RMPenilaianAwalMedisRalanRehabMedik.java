@@ -404,11 +404,11 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         jLabel111 = new widget.Label();
         jLabel112 = new widget.Label();
         jLabel113 = new widget.Label();
-        Fisioterapi = new widget.Tanggal();
-        Terapiokupasi = new widget.Tanggal();
-        Terapiwicara = new widget.Tanggal();
-        Terapiakupuntur = new widget.Tanggal();
-        Terapilainnya = new widget.Tanggal();
+        TglFisioterapi = new widget.Tanggal();
+        TglTerapiokupasi = new widget.Tanggal();
+        TglTerapiwicara = new widget.Tanggal();
+        TglTerapiakupuntur = new widget.Tanggal();
+        TglTerapilainnya = new widget.Tanggal();
         jLabel33 = new widget.Label();
         jLabel36 = new widget.Label();
         jLabel41 = new widget.Label();
@@ -417,11 +417,11 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         jLabel42 = new widget.Label();
         jSeparator14 = new javax.swing.JSeparator();
         jSeparator15 = new javax.swing.JSeparator();
-        ChkThorax = new widget.CekBox();
-        ChkThorax1 = new widget.CekBox();
-        ChkThorax2 = new widget.CekBox();
-        ChkThorax3 = new widget.CekBox();
-        ChkThorax4 = new widget.CekBox();
+        ChkTerapiLainnya = new widget.CekBox();
+        ChkFisioterapi = new widget.CekBox();
+        ChkOkupasi = new widget.CekBox();
+        ChkWicara = new widget.CekBox();
+        ChkAkupungtur = new widget.CekBox();
         jSeparator16 = new javax.swing.JSeparator();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1034,7 +1034,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         jLabel40.setText("Kepala :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(0, 320, 113, 23);
+        jLabel40.setBounds(0, 320, 98, 23);
 
         Kepala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
         Kepala.setName("Kepala"); // NOI18N
@@ -1044,17 +1044,17 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
             }
         });
         FormInput.add(Kepala);
-        Kepala.setBounds(117, 320, 128, 23);
+        Kepala.setBounds(102, 320, 128, 23);
 
         jLabel47.setText("Lainnya :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(0, 410, 113, 23);
+        jLabel47.setBounds(0, 410, 98, 23);
 
         jLabel46.setText("Thoraks :");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(0, 350, 113, 23);
+        jLabel46.setBounds(0, 350, 98, 23);
 
         Thoraks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
         Thoraks.setName("Thoraks"); // NOI18N
@@ -1064,12 +1064,12 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
             }
         });
         FormInput.add(Thoraks);
-        Thoraks.setBounds(117, 350, 128, 23);
+        Thoraks.setBounds(102, 350, 128, 23);
 
         jLabel49.setText("Abdomen :");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(0, 380, 113, 23);
+        jLabel49.setBounds(0, 380, 98, 23);
 
         Abdomen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
         Abdomen.setName("Abdomen"); // NOI18N
@@ -1079,7 +1079,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
             }
         });
         FormInput.add(Abdomen);
-        Abdomen.setBounds(117, 380, 128, 23);
+        Abdomen.setBounds(102, 380, 128, 23);
 
         jLabel51.setText("Ekstremitas :");
         jLabel51.setName("jLabel51"); // NOI18N
@@ -1104,7 +1104,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
             }
         });
         FormInput.add(KeteranganKepala);
-        KeteranganKepala.setBounds(248, 320, 175, 23);
+        KeteranganKepala.setBounds(233, 320, 175, 23);
 
         KeteranganThoraks.setFocusTraversalPolicyProvider(true);
         KeteranganThoraks.setName("KeteranganThoraks"); // NOI18N
@@ -1114,7 +1114,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
             }
         });
         FormInput.add(KeteranganThoraks);
-        KeteranganThoraks.setBounds(248, 350, 175, 23);
+        KeteranganThoraks.setBounds(233, 350, 175, 23);
 
         KeteranganMusku.setFocusTraversalPolicyProvider(true);
         KeteranganMusku.setName("KeteranganMusku"); // NOI18N
@@ -1134,7 +1134,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
             }
         });
         FormInput.add(KeteranganAbdomen);
-        KeteranganAbdomen.setBounds(248, 380, 175, 23);
+        KeteranganAbdomen.setBounds(233, 380, 175, 23);
 
         scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane5.setName("scrollPane5"); // NOI18N
@@ -1151,7 +1151,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         scrollPane5.setViewportView(Lainnya);
 
         FormInput.add(scrollPane5);
-        scrollPane5.setBounds(117, 410, 737, 63);
+        scrollPane5.setBounds(102, 410, 752, 63);
 
         KeteranganEkstremitas.setFocusTraversalPolicyProvider(true);
         KeteranganEkstremitas.setName("KeteranganEkstremitas"); // NOI18N
@@ -1429,70 +1429,70 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         FormInput.add(jLabel113);
         jLabel113.setBounds(0, 760, 135, 23);
 
-        Fisioterapi.setForeground(new java.awt.Color(50, 70, 50));
-        Fisioterapi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
-        Fisioterapi.setDisplayFormat("dd-MM-yyyy");
-        Fisioterapi.setName("Fisioterapi"); // NOI18N
-        Fisioterapi.setOpaque(false);
-        Fisioterapi.addKeyListener(new java.awt.event.KeyAdapter() {
+        TglFisioterapi.setForeground(new java.awt.Color(50, 70, 50));
+        TglFisioterapi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglFisioterapi.setDisplayFormat("dd-MM-yyyy");
+        TglFisioterapi.setName("TglFisioterapi"); // NOI18N
+        TglFisioterapi.setOpaque(false);
+        TglFisioterapi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                FisioterapiKeyPressed(evt);
+                TglFisioterapiKeyPressed(evt);
             }
         });
-        FormInput.add(Fisioterapi);
-        Fisioterapi.setBounds(764, 640, 90, 23);
+        FormInput.add(TglFisioterapi);
+        TglFisioterapi.setBounds(764, 640, 90, 23);
 
-        Terapiokupasi.setForeground(new java.awt.Color(50, 70, 50));
-        Terapiokupasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
-        Terapiokupasi.setDisplayFormat("dd-MM-yyyy");
-        Terapiokupasi.setName("Terapiokupasi"); // NOI18N
-        Terapiokupasi.setOpaque(false);
-        Terapiokupasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        TglTerapiokupasi.setForeground(new java.awt.Color(50, 70, 50));
+        TglTerapiokupasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglTerapiokupasi.setDisplayFormat("dd-MM-yyyy");
+        TglTerapiokupasi.setName("TglTerapiokupasi"); // NOI18N
+        TglTerapiokupasi.setOpaque(false);
+        TglTerapiokupasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TerapiokupasiKeyPressed(evt);
+                TglTerapiokupasiKeyPressed(evt);
             }
         });
-        FormInput.add(Terapiokupasi);
-        Terapiokupasi.setBounds(764, 670, 90, 23);
+        FormInput.add(TglTerapiokupasi);
+        TglTerapiokupasi.setBounds(764, 670, 90, 23);
 
-        Terapiwicara.setForeground(new java.awt.Color(50, 70, 50));
-        Terapiwicara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
-        Terapiwicara.setDisplayFormat("dd-MM-yyyy");
-        Terapiwicara.setName("Terapiwicara"); // NOI18N
-        Terapiwicara.setOpaque(false);
-        Terapiwicara.addKeyListener(new java.awt.event.KeyAdapter() {
+        TglTerapiwicara.setForeground(new java.awt.Color(50, 70, 50));
+        TglTerapiwicara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglTerapiwicara.setDisplayFormat("dd-MM-yyyy");
+        TglTerapiwicara.setName("TglTerapiwicara"); // NOI18N
+        TglTerapiwicara.setOpaque(false);
+        TglTerapiwicara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TerapiwicaraKeyPressed(evt);
+                TglTerapiwicaraKeyPressed(evt);
             }
         });
-        FormInput.add(Terapiwicara);
-        Terapiwicara.setBounds(764, 700, 90, 23);
+        FormInput.add(TglTerapiwicara);
+        TglTerapiwicara.setBounds(764, 700, 90, 23);
 
-        Terapiakupuntur.setForeground(new java.awt.Color(50, 70, 50));
-        Terapiakupuntur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
-        Terapiakupuntur.setDisplayFormat("dd-MM-yyyy");
-        Terapiakupuntur.setName("Terapiakupuntur"); // NOI18N
-        Terapiakupuntur.setOpaque(false);
-        Terapiakupuntur.addKeyListener(new java.awt.event.KeyAdapter() {
+        TglTerapiakupuntur.setForeground(new java.awt.Color(50, 70, 50));
+        TglTerapiakupuntur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglTerapiakupuntur.setDisplayFormat("dd-MM-yyyy");
+        TglTerapiakupuntur.setName("TglTerapiakupuntur"); // NOI18N
+        TglTerapiakupuntur.setOpaque(false);
+        TglTerapiakupuntur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TerapiakupunturKeyPressed(evt);
+                TglTerapiakupunturKeyPressed(evt);
             }
         });
-        FormInput.add(Terapiakupuntur);
-        Terapiakupuntur.setBounds(764, 730, 90, 23);
+        FormInput.add(TglTerapiakupuntur);
+        TglTerapiakupuntur.setBounds(764, 730, 90, 23);
 
-        Terapilainnya.setForeground(new java.awt.Color(50, 70, 50));
-        Terapilainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
-        Terapilainnya.setDisplayFormat("dd-MM-yyyy");
-        Terapilainnya.setName("Terapilainnya"); // NOI18N
-        Terapilainnya.setOpaque(false);
-        Terapilainnya.addKeyListener(new java.awt.event.KeyAdapter() {
+        TglTerapilainnya.setForeground(new java.awt.Color(50, 70, 50));
+        TglTerapilainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglTerapilainnya.setDisplayFormat("dd-MM-yyyy");
+        TglTerapilainnya.setName("TglTerapilainnya"); // NOI18N
+        TglTerapilainnya.setOpaque(false);
+        TglTerapilainnya.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TerapilainnyaKeyPressed(evt);
+                TglTerapilainnyaKeyPressed(evt);
             }
         });
-        FormInput.add(Terapilainnya);
-        Terapilainnya.setBounds(764, 760, 90, 23);
+        FormInput.add(TglTerapilainnya);
+        TglTerapilainnya.setBounds(764, 760, 90, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel33.setText("Keluhan Utama");
@@ -1544,70 +1544,70 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         FormInput.add(jSeparator15);
         jSeparator15.setBounds(0, 620, 880, 1);
 
-        ChkThorax.setBorder(null);
-        ChkThorax.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkThorax.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkThorax.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkThorax.setName("ChkThorax"); // NOI18N
-        ChkThorax.addItemListener(new java.awt.event.ItemListener() {
+        ChkTerapiLainnya.setBorder(null);
+        ChkTerapiLainnya.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkTerapiLainnya.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkTerapiLainnya.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkTerapiLainnya.setName("ChkTerapiLainnya"); // NOI18N
+        ChkTerapiLainnya.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ChkThoraxItemStateChanged(evt);
+                ChkTerapiLainnyaItemStateChanged(evt);
             }
         });
-        FormInput.add(ChkThorax);
-        ChkThorax.setBounds(738, 760, 23, 23);
+        FormInput.add(ChkTerapiLainnya);
+        ChkTerapiLainnya.setBounds(738, 760, 23, 23);
 
-        ChkThorax1.setBorder(null);
-        ChkThorax1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkThorax1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkThorax1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkThorax1.setName("ChkThorax1"); // NOI18N
-        ChkThorax1.addItemListener(new java.awt.event.ItemListener() {
+        ChkFisioterapi.setBorder(null);
+        ChkFisioterapi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkFisioterapi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkFisioterapi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkFisioterapi.setName("ChkFisioterapi"); // NOI18N
+        ChkFisioterapi.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ChkThorax1ItemStateChanged(evt);
+                ChkFisioterapiItemStateChanged(evt);
             }
         });
-        FormInput.add(ChkThorax1);
-        ChkThorax1.setBounds(738, 640, 23, 23);
+        FormInput.add(ChkFisioterapi);
+        ChkFisioterapi.setBounds(738, 640, 23, 23);
 
-        ChkThorax2.setBorder(null);
-        ChkThorax2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkThorax2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkThorax2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkThorax2.setName("ChkThorax2"); // NOI18N
-        ChkThorax2.addItemListener(new java.awt.event.ItemListener() {
+        ChkOkupasi.setBorder(null);
+        ChkOkupasi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkOkupasi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkOkupasi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkOkupasi.setName("ChkOkupasi"); // NOI18N
+        ChkOkupasi.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ChkThorax2ItemStateChanged(evt);
+                ChkOkupasiItemStateChanged(evt);
             }
         });
-        FormInput.add(ChkThorax2);
-        ChkThorax2.setBounds(738, 670, 23, 23);
+        FormInput.add(ChkOkupasi);
+        ChkOkupasi.setBounds(738, 670, 23, 23);
 
-        ChkThorax3.setBorder(null);
-        ChkThorax3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkThorax3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkThorax3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkThorax3.setName("ChkThorax3"); // NOI18N
-        ChkThorax3.addItemListener(new java.awt.event.ItemListener() {
+        ChkWicara.setBorder(null);
+        ChkWicara.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkWicara.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkWicara.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkWicara.setName("ChkWicara"); // NOI18N
+        ChkWicara.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ChkThorax3ItemStateChanged(evt);
+                ChkWicaraItemStateChanged(evt);
             }
         });
-        FormInput.add(ChkThorax3);
-        ChkThorax3.setBounds(738, 700, 23, 23);
+        FormInput.add(ChkWicara);
+        ChkWicara.setBounds(738, 700, 23, 23);
 
-        ChkThorax4.setBorder(null);
-        ChkThorax4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkThorax4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkThorax4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkThorax4.setName("ChkThorax4"); // NOI18N
-        ChkThorax4.addItemListener(new java.awt.event.ItemListener() {
+        ChkAkupungtur.setBorder(null);
+        ChkAkupungtur.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkAkupungtur.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkAkupungtur.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkAkupungtur.setName("ChkAkupungtur"); // NOI18N
+        ChkAkupungtur.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ChkThorax4ItemStateChanged(evt);
+                ChkAkupungturItemStateChanged(evt);
             }
         });
-        FormInput.add(ChkThorax4);
-        ChkThorax4.setBounds(738, 730, 23, 23);
+        FormInput.add(ChkAkupungtur);
+        ChkAkupungtur.setBounds(738, 730, 23, 23);
 
         jSeparator16.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator16.setForeground(new java.awt.Color(239, 244, 234));
@@ -1751,17 +1751,17 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         }else if(RPD.getText().trim().equals("")){
             Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
         }else{
-            String dls = Fisioterapi.getSelectedItem().toString();
-            String dls2 = Terapiokupasi.getSelectedItem().toString();
-            String dls3 = Terapiwicara.getSelectedItem().toString();
-            String dls4 = Terapiakupuntur.getSelectedItem().toString();
-            String dls5 = Terapilainnya.getSelectedItem().toString();
+            String dls = TglFisioterapi.getSelectedItem().toString();
+            String dls2 = TglTerapiokupasi.getSelectedItem().toString();
+            String dls3 = TglTerapiwicara.getSelectedItem().toString();
+            String dls4 = TglTerapiakupuntur.getSelectedItem().toString();
+            String dls5 = TglTerapilainnya.getSelectedItem().toString();
             if(Sequel.menyimpantf("penilaian_medis_ralan_rehab_medik","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",48,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
                     KeluhanUtama.getText(),RPS.getText(),RPD.getText(),Alergi.getText(),Kesadaran.getSelectedItem().toString(),Nyeri.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),
                     Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),Ekstremitas.getSelectedItem().toString(),KeteranganEkstremitas.getText(),
                     Columna.getSelectedItem().toString(),KeteranganColumna.getText(),Muskulos.getSelectedItem().toString(),KeteranganMusku.getText(),Lainnya.getText(),Resikojatuh.getSelectedItem().toString(),Resikonutrisional.getSelectedItem().toString(),Kebutuhanfungsional.getSelectedItem().toString(),
-                    DiagnosaMedis.getText(),DiagnosaFungsi.getText(),PenunjangLain.getText(),Fisio.getText(),Okupasi.getText(),Wicara.getText(),Akupuntur.getText(),Tatalainnya.getText(),Frekuensiterapi.getText(),Valid.SetTgl(Fisioterapi.getSelectedItem()+""),Valid.SetTgl(Terapiokupasi.getSelectedItem()+""),Valid.SetTgl(Terapiwicara.getSelectedItem()+""),Valid.SetTgl(Terapiakupuntur.getSelectedItem()+""),Valid.SetTgl(Terapilainnya.getSelectedItem()+""),Edukasi.getText()
+                    DiagnosaMedis.getText(),DiagnosaFungsi.getText(),PenunjangLain.getText(),Fisio.getText(),Okupasi.getText(),Wicara.getText(),Akupuntur.getText(),Tatalainnya.getText(),Frekuensiterapi.getText(),Valid.SetTgl(TglFisioterapi.getSelectedItem()+""),Valid.SetTgl(TglTerapiokupasi.getSelectedItem()+""),Valid.SetTgl(TglTerapiwicara.getSelectedItem()+""),Valid.SetTgl(TglTerapiakupuntur.getSelectedItem()+""),Valid.SetTgl(TglTerapilainnya.getSelectedItem()+""),Edukasi.getText()
                 })==true){
                     emptTeks();
             }
@@ -2321,7 +2321,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
     }//GEN-LAST:event_DiagnosaFungsiKeyPressed
 
     private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        Valid.pindah2(evt,Terapilainnya,BtnSimpan);
+        Valid.pindah2(evt,TglTerapilainnya,BtnSimpan);
     }//GEN-LAST:event_EdukasiKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
@@ -2353,7 +2353,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
     }//GEN-LAST:event_TatalainnyaKeyPressed
 
     private void FrekuensiterapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FrekuensiterapiKeyPressed
-        Valid.pindah(evt,Tatalainnya,Fisioterapi);
+        Valid.pindah(evt,Tatalainnya,TglFisioterapi);
     }//GEN-LAST:event_FrekuensiterapiKeyPressed
 
     private void ResikojatuhKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResikojatuhKeyPressed
@@ -2372,49 +2372,49 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         // TODO add your handling code here:
     }//GEN-LAST:event_KebutuhanfungsionalKeyPressed
 
-    private void FisioterapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisioterapiKeyPressed
+    private void TglFisioterapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglFisioterapiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FisioterapiKeyPressed
+    }//GEN-LAST:event_TglFisioterapiKeyPressed
 
-    private void TerapiokupasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerapiokupasiKeyPressed
+    private void TglTerapiokupasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTerapiokupasiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TerapiokupasiKeyPressed
+    }//GEN-LAST:event_TglTerapiokupasiKeyPressed
 
-    private void TerapiwicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerapiwicaraKeyPressed
+    private void TglTerapiwicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTerapiwicaraKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TerapiwicaraKeyPressed
+    }//GEN-LAST:event_TglTerapiwicaraKeyPressed
 
-    private void TerapiakupunturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerapiakupunturKeyPressed
+    private void TglTerapiakupunturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTerapiakupunturKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TerapiakupunturKeyPressed
+    }//GEN-LAST:event_TglTerapiakupunturKeyPressed
 
-    private void TerapilainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerapilainnyaKeyPressed
+    private void TglTerapilainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTerapilainnyaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TerapilainnyaKeyPressed
+    }//GEN-LAST:event_TglTerapilainnyaKeyPressed
 
-    private void ChkThoraxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkThoraxItemStateChanged
+    private void ChkTerapiLainnyaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkTerapiLainnyaItemStateChanged
         /*if(ChkThorax.isSelected()==true){
             TglThorax.setEnabled(true);
         }else{
             TglThorax.setEnabled(false);
         }*/
-    }//GEN-LAST:event_ChkThoraxItemStateChanged
+    }//GEN-LAST:event_ChkTerapiLainnyaItemStateChanged
 
-    private void ChkThorax1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkThorax1ItemStateChanged
+    private void ChkFisioterapiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkFisioterapiItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChkThorax1ItemStateChanged
+    }//GEN-LAST:event_ChkFisioterapiItemStateChanged
 
-    private void ChkThorax2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkThorax2ItemStateChanged
+    private void ChkOkupasiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkOkupasiItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChkThorax2ItemStateChanged
+    }//GEN-LAST:event_ChkOkupasiItemStateChanged
 
-    private void ChkThorax3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkThorax3ItemStateChanged
+    private void ChkWicaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkWicaraItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChkThorax3ItemStateChanged
+    }//GEN-LAST:event_ChkWicaraItemStateChanged
 
-    private void ChkThorax4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkThorax4ItemStateChanged
+    private void ChkAkupungturItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkAkupungturItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChkThorax4ItemStateChanged
+    }//GEN-LAST:event_ChkAkupungturItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -2447,11 +2447,11 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
-    private widget.CekBox ChkThorax;
-    private widget.CekBox ChkThorax1;
-    private widget.CekBox ChkThorax2;
-    private widget.CekBox ChkThorax3;
-    private widget.CekBox ChkThorax4;
+    private widget.CekBox ChkAkupungtur;
+    private widget.CekBox ChkFisioterapi;
+    private widget.CekBox ChkOkupasi;
+    private widget.CekBox ChkTerapiLainnya;
+    private widget.CekBox ChkWicara;
     private widget.ComboBox Columna;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
@@ -2460,7 +2460,6 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
     private widget.TextArea Edukasi;
     private widget.ComboBox Ekstremitas;
     private widget.TextBox Fisio;
-    private widget.Tanggal Fisioterapi;
     private widget.PanelBiasa FormInput;
     private widget.TextBox Frekuensiterapi;
     private widget.TextBox Hubungan;
@@ -2502,12 +2501,13 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
     private widget.TextBox Tatalainnya;
-    private widget.Tanggal Terapiakupuntur;
-    private widget.Tanggal Terapilainnya;
-    private widget.Tanggal Terapiokupasi;
-    private widget.Tanggal Terapiwicara;
     private widget.Tanggal TglAsuhan;
+    private widget.Tanggal TglFisioterapi;
     private widget.TextBox TglLahir;
+    private widget.Tanggal TglTerapiakupuntur;
+    private widget.Tanggal TglTerapilainnya;
+    private widget.Tanggal TglTerapiokupasi;
+    private widget.Tanggal TglTerapiwicara;
     private widget.ComboBox Thoraks;
     private widget.TextBox Wicara;
     private widget.InternalFrame internalFrame1;
@@ -2708,11 +2708,11 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         Wicara.setText("");
         Akupuntur.setText("");
         Tatalainnya.setText("");
-        Fisioterapi.setDate(new Date());
-        Terapiokupasi.setDate(new Date());
-        Terapiwicara.setDate(new Date());
-        Terapiakupuntur.setDate(new Date());
-        Terapilainnya.setDate(new Date());
+        TglFisioterapi.setDate(new Date());
+        TglTerapiokupasi.setDate(new Date());
+        TglTerapiwicara.setDate(new Date());
+        TglTerapiakupuntur.setDate(new Date());
+        TglTerapilainnya.setDate(new Date());
         Edukasi.setText("");
         TglAsuhan.setDate(new Date());
         TabRawat.setSelectedIndex(0);
@@ -2803,11 +2803,11 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
             Akupuntur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
             Tatalainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
             Frekuensiterapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
-            Valid.SetTgl(Fisioterapi,tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
-            Valid.SetTgl(Terapiokupasi,tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
-            Valid.SetTgl(Terapiwicara,tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            Valid.SetTgl(Terapiakupuntur,tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
-            Valid.SetTgl(Terapilainnya,tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            Valid.SetTgl(TglFisioterapi,tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            Valid.SetTgl(TglTerapiokupasi,tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            Valid.SetTgl(TglTerapiwicara,tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            Valid.SetTgl(TglTerapiakupuntur,tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            Valid.SetTgl(TglTerapilainnya,tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
             Edukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
@@ -2886,7 +2886,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
     }
 
     private void ganti() {
-        String dls = Fisioterapi.getSelectedItem().toString();
+        String dls = TglFisioterapi.getSelectedItem().toString();
         if(Sequel.mengedittf("penilaian_medis_ralan_rehab_medik","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,alergi=?,kesadaran=?,nyeri=?,skala_nyeri=?,td=?,nadi=?,suhu=?,rr=?,bb=?,"+
                 "kepala=?,keterangan_kepala=?,thoraks=?,keterangan_thoraks=?,abdomen=?,keterangan_abdomen=?,ekstremitas=?,keterangan_ekstremitas=?,columna=?,keterangan_columna=?,muskulos=?,keterangan_muskulos=?,lainnya=?,resiko_jatuh=?,resiko_nutrisional=?,kebutuhan_fungsional=?,diagnosa_medis=?,diagnosa_fungsi=?,penunjang_lain=?,"+
                 "fisio=?,okupasi=?,wicara=?,akupuntur=?,tatalain=?,frekuensi_terapi=?,fisioterapi=?,terapi_okupasi=?,terapi_wicara=?,terapi_akupuntur=?,terapi_lainnya=?,edukasi=?",49,new String[]{
@@ -2894,7 +2894,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
                 KeluhanUtama.getText(),RPS.getText(),RPD.getText(),Alergi.getText(),Kesadaran.getSelectedItem().toString(),Nyeri.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),
                 Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),Ekstremitas.getSelectedItem().toString(),KeteranganEkstremitas.getText(),
                 Columna.getSelectedItem().toString(),KeteranganColumna.getText(),Muskulos.getSelectedItem().toString(),KeteranganMusku.getText(),Lainnya.getText(),Resikojatuh.getSelectedItem().toString(),Resikonutrisional.getSelectedItem().toString(),Kebutuhanfungsional.getSelectedItem().toString(),DiagnosaMedis.getText(),DiagnosaFungsi.getText(),PenunjangLain.getText(),Fisio.getText(),Okupasi.getText(),Wicara.getText(),
-                Akupuntur.getText(),Tatalainnya.getText(),Frekuensiterapi.getText(),Valid.SetTgl(Fisioterapi.getSelectedItem()+""),Valid.SetTgl(Terapiokupasi.getSelectedItem()+""),Valid.SetTgl(Terapiwicara.getSelectedItem()+""),Valid.SetTgl(Terapiakupuntur.getSelectedItem()+""),Valid.SetTgl(Terapilainnya.getSelectedItem()+""),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                Akupuntur.getText(),Tatalainnya.getText(),Frekuensiterapi.getText(),Valid.SetTgl(TglFisioterapi.getSelectedItem()+""),Valid.SetTgl(TglTerapiokupasi.getSelectedItem()+""),Valid.SetTgl(TglTerapiwicara.getSelectedItem()+""),Valid.SetTgl(TglTerapiakupuntur.getSelectedItem()+""),Valid.SetTgl(TglTerapilainnya.getSelectedItem()+""),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();
