@@ -627,7 +627,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2604));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2628));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -2801,6 +2801,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanMedisRawatJalanGeriatri(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis rawat jalan kulit kelamin
                     menampilkanAsuhanMedisRawatJalanKulitKelamin(rs.getString("no_rawat"));
+                    //menampilkan asuhan awal medis rawat jalan kedokteran fisik & rehabilitasi
+                    menampilkanAsuhanMedisRawatJalanKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
                     //menampilkan uji fungsi KFR
                     menampilkanUjiFungsiKFR(rs.getString("no_rawat"));
                     //menampilkan hemodialisa
@@ -20910,7 +20912,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     
     private void menampilkanAsuhanMedisRawatJalanKedokteranFisikRehabilitasi(String norawat) {
         try {
-            if(chkAsuhanMedisRalan.isSelected()==true){
+            if(chkAsuhanMedisRalanKedokteranFisik.isSelected()==true){
                 try {
                     rs2=koneksi.prepareStatement(
                             "select penilaian_medis_ralan_rehab_medik.tanggal,penilaian_medis_ralan_rehab_medik.kd_dokter,penilaian_medis_ralan_rehab_medik.anamnesis,penilaian_medis_ralan_rehab_medik.hubungan,penilaian_medis_ralan_rehab_medik.keluhan_utama,"+
@@ -20929,7 +20931,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         htmlContent.append(
                           "<tr class='isi'>"+ 
                             "<td valign='top' width='2%'></td>"+        
-                            "<td valign='top' width='18%'>Penilaian Awal Medis Rawat Jalan Fisik & Rehabilitasi</td>"+
+                            "<td valign='top' width='18%'>Penilaian Awal Medis Rawat Jalan Kedokteran Fisik & Rehabilitasi</td>"+
                             "<td valign='top' width='1%' align='center'>:</td>"+
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
@@ -21032,23 +21034,23 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                                "<td width='70%' border='0'>Fisioterapi : "+rs2.getString("fisio")+"</td>"+
-                                               "<td width='30%' border='0'>"+(rs2.getString("fisioterapi").equals("")?"":"Tgl.Fisioterapi : "+rs2.getString("fisioterapi"))+"</td>"+
+                                               "<td width='30%' border='0'>"+(rs2.getString("fisioterapi")==null?"":"Tanggal : "+rs2.getString("fisioterapi"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                                "<td width='70%' border='0'>Terapi Okupasi : "+rs2.getString("okupasi")+"</td>"+
-                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_okupasi").equals("")?"":"Tgl.Fisioterapi : "+rs2.getString("terapi_okupasi"))+"</td>"+
+                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_okupasi")==null?"":"Tanggal : "+rs2.getString("terapi_okupasi"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                                "<td width='70%' border='0'>Terapi Wicara : "+rs2.getString("wicara")+"</td>"+
-                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_wicara").equals("")?"":"Tgl.Fisioterapi : "+rs2.getString("terapi_wicara"))+"</td>"+
+                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_wicara")==null?"":"Tanggal : "+rs2.getString("terapi_wicara"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                                "<td width='70%' border='0'>Terapi Akupuntur : "+rs2.getString("akupuntur")+"</td>"+
-                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_akupuntur").equals("")?"":"Tgl.Fisioterapi : "+rs2.getString("terapi_akupuntur"))+"</td>"+
+                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_akupuntur")==null?"":"Tanggal : "+rs2.getString("terapi_akupuntur"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                                "<td width='70%' border='0'>Terapi lainnya : "+rs2.getString("tatalain")+"</td>"+
-                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_lainnya").equals("")?"":"Tgl.Fisioterapi : "+rs2.getString("terapi_lainnya"))+"</td>"+
+                                               "<td width='30%' border='0'>"+(rs2.getString("terapi_lainnya")==null?"":"Tanggal : "+rs2.getString("terapi_lainnya"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                                "<td width='100%' colspan='2'>Frekuensi Terapi : "+rs2.getString("frekuensi_terapi")+"</td>"+
