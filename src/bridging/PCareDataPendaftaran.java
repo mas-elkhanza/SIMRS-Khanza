@@ -77,7 +77,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,pscari;
     private ResultSet rs,rscari;
-    private int i=0,pilihan=1,pilihanedit=0;
+    private int i=0,pilihan=1,pilihanedit=0,tacccek=0;
     private PCareCekReferensiPoli poli=new PCareCekReferensiPoli(null,false); 
     private PCareCekReferensiKesadaran kesadaran=new PCareCekReferensiKesadaran(null,false);
     private PCareCekReferensiStatusPulang statuspulang=new PCareCekReferensiStatusPulang(null,false);
@@ -6806,18 +6806,20 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             }
                         }
                     }else if(ChkRujukLanjut.isSelected()==true){
-                        i=0;
+                        tacccek=0;
                         if(StatusDiagnosa1.getText().equals("true")){
-                            i++;
+                            tacccek++;
                         }
                         if(StatusDiagnosa2.getText().equals("true")){
-                            i++;
+                            tacccek++;
                         }
                         if(StatusDiagnosa3.getText().equals("true")){
-                            i++;
+                            tacccek++;
                         }
-                        if(i>0){
-                            if(!KdTACC.getText().trim().equals("")){
+                        if(tacccek>0){
+                            if(KdTACC.getText().trim().equals("")){
+                                JOptionPane.showMessageDialog(null,"Diagnosa non spesialistik harus ada alasan TACC");
+                            }else if(!KdTACC.getText().trim().equals("")){
                                 if(!KdTACC.getText().equals("-1")){
                                     kdtacc=KdTACC.getText();
                                     namatacc=NmTACC.getText();
@@ -6951,10 +6953,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         }
                                     }
                                 }
-                            }else{
-                                JOptionPane.showMessageDialog(null,"Diagnosa non spesialistik harus ada alasan TACC");
                             }
-                        }else if(i==0){
+                        }else if(tacccek==0){
                             if(ChkInternal.isSelected()==true){
                                 if(NmPoliInternal.getText().equals("")){
                                     Valid.textKosong(BtnPoliInternal,"Poli Internal");
