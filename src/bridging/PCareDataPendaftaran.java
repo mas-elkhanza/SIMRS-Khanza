@@ -6817,7 +6817,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             i++;
                         }
                         if(i>0){
-                            if(!KdTACC.getText().equals("")){
+                            if(!KdTACC.getText().trim().equals("")){
                                 if(!KdTACC.getText().equals("-1")){
                                     kdtacc=KdTACC.getText();
                                     namatacc=NmTACC.getText();
