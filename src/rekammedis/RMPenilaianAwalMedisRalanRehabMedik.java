@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
+ * Kontribusi dari RSUD Prembun
  */
 
 
@@ -1258,7 +1258,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         jLabel106.setBounds(0, 790, 135, 23);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("VII. EDUKASI");
+        jLabel109.setText("VI. EDUKASI");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
         jLabel109.setBounds(10, 820, 190, 23);
@@ -1508,7 +1508,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         FormInput.add(jSeparator13);
         jSeparator13.setBounds(0, 300, 880, 1);
 
-        jLabel42.setText("Resiko Jatuh :");
+        jLabel42.setText("Risiko Jatuh :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
         jLabel42.setBounds(0, 480, 113, 23);

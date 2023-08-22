@@ -1545,7 +1545,7 @@
                         <Component class="widget.Label" name="jLabel109">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VII. EDUKASI"/>
+                            <Property name="text" type="java.lang.String" value="VI. EDUKASI"/>
                             <Property name="name" type="java.lang.String" value="jLabel109" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2065,7 +2065,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel42">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Resiko Jatuh :"/>
+                            <Property name="text" type="java.lang.String" value="Risiko Jatuh :"/>
                             <Property name="name" type="java.lang.String" value="jLabel42" noResource="true"/>
                           </Properties>
                           <Constraints>
