@@ -3904,14 +3904,10 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             CAPD.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
             if(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString().equals("Ya")){
                 Valid.SetTgl(TglCAPD,tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
-            }else{
-                TglCAPD.setSelectedItem("00-00-0000");
             }
             Transplantasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
             if(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString().equals("Ya")){
                 Valid.SetTgl(TglTransplantasi,tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
-            }else{
-                TglTransplantasi.setSelectedItem("00-00-0000");
             }
             KeadaanUmum.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
             Kesadaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
@@ -3935,62 +3931,42 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             ChkThorax.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),58).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString().equals("Ya")){
                 Valid.SetTgl(TglThorax,tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
-            }else{
-                TglThorax.setSelectedItem("00-00-0000");
-            }   
+            }  
             ChkEKG.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),60).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString().equals("Ya")){
                 Valid.SetTgl(TglEKG,tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
-            }else{
-                TglEKG.setSelectedItem("00-00-0000");
-            }   
+            }  
             ChkBNO.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),62).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString().equals("Ya")){
                 Valid.SetTgl(TglBNO,tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
-            }else{
-                TglBNO.setSelectedItem("00-00-0000");
-            }   
+            } 
             ChkUSG.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),64).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString().equals("Ya")){
                 Valid.SetTgl(TglUSG,tbObat.getValueAt(tbObat.getSelectedRow(),65).toString());
-            }else{
-                TglUSG.setSelectedItem("00-00-0000");
             }   
             ChkRenogram.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),66).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString().equals("Ya")){
                 Valid.SetTgl(TglRenogram,tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
-            }else{
-                TglRenogram.setSelectedItem("00-00-0000");
             }
             ChkBiopsiGinjal.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),68).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString().equals("Ya")){
                 Valid.SetTgl(TglBiopsi,tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
-            }else{
-                TglBiopsi.setSelectedItem("00-00-0000");
             }
             ChkCTScan.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),70).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString().equals("Ya")){
                 Valid.SetTgl(TglCTscan,tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
-            }else{
-                TglCTscan.setSelectedItem("00-00-0000");
             }
             ChkArteriografi.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),72).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString().equals("Ya")){
                 Valid.SetTgl(TglArteriografi,tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
-            }else{
-                TglArteriografi.setSelectedItem("00-00-0000");
-            }   
+            }  
             ChkKulturUrin.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),74).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),74).toString().equals("Ya")){
                 Valid.SetTgl(TglKultururin,tbObat.getValueAt(tbObat.getSelectedRow(),75).toString());
-            }else{
-                TglKultururin.setSelectedItem("00-00-0000");
             }
             ChkLaborat.setSelected((tbObat.getValueAt(tbObat.getSelectedRow(),76).toString().equals("Ya")?true:false));
             if(tbObat.getValueAt(tbObat.getSelectedRow(),76).toString().equals("Ya")){
                 Valid.SetTgl(TglLaboratorium,tbObat.getValueAt(tbObat.getSelectedRow(),77).toString());
-            }else{
-                TglLaboratorium.setSelectedItem("00-00-0000");
             }
             Hematokrit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString());
             Hemoglobin.setText(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString());

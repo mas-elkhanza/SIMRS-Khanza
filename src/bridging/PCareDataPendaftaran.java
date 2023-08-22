@@ -6954,7 +6954,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             }else{
                                 JOptionPane.showMessageDialog(null,"Diagnosa non spesialistik harus ada alasan TACC");
                             }
-                        }else{
+                        }else if(i==0){
                             if(ChkInternal.isSelected()==true){
                                 if(NmPoliInternal.getText().equals("")){
                                     Valid.textKosong(BtnPoliInternal,"Poli Internal");
