@@ -213,7 +213,7 @@ public final class akses {
             persetujuan_pengajuan_biaya=false,pemeriksaan_fisik_ralan_per_penyakit=false,penilaian_lanjutan_resiko_jatuh_geriatri=false,pemantauan_ews_neonatus=false,
             validasi_persetujuan_pengajuan_biaya=false,riwayat_perawatan_icare_bpjs=false,rekap_pengajuan_biaya=false,penilaian_awal_medis_ralan_kulit_kelamin=false,
             akun_host_to_host_bank_mandiri=false,penilaian_medis_hemodialisa=false,penilaian_level_kecemasan_ranap_anak=false,penilaian_lanjutan_resiko_jatuh_psikiatri=false,
-            penilaian_lanjutan_skrining_fungsional=false,penilaian_medis_ralan_rehab_medik=false,laporan_anastesi=false;
+            penilaian_lanjutan_skrining_fungsional=false,penilaian_medis_ralan_rehab_medik=false,laporan_anastesi=false,template_persetujuan_penolakan_tindakan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1212,6 +1212,7 @@ public final class akses {
                         akses.penilaian_lanjutan_skrining_fungsional=true;
                         akses.penilaian_medis_ralan_rehab_medik=true;
                         akses.laporan_anastesi=true;
+                        akses.template_persetujuan_penolakan_tindakan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2194,6 +2195,7 @@ public final class akses {
                         akses.penilaian_lanjutan_skrining_fungsional=rs2.getBoolean("penilaian_lanjutan_skrining_fungsional");
                         akses.penilaian_medis_ralan_rehab_medik=rs2.getBoolean("penilaian_medis_ralan_rehab_medik");
                         akses.laporan_anastesi=rs2.getBoolean("laporan_anastesi");
+                        akses.template_persetujuan_penolakan_tindakan=rs2.getBoolean("template_persetujuan_penolakan_tindakan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3174,6 +3176,7 @@ public final class akses {
                         akses.penilaian_lanjutan_skrining_fungsional=false;
                         akses.penilaian_medis_ralan_rehab_medik=false;
                         akses.laporan_anastesi=false;
+                        akses.template_persetujuan_penolakan_tindakan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4214,4 +4217,5 @@ public final class akses {
     public static boolean getpenilaian_lanjutan_skrining_fungsional(){return akses.penilaian_lanjutan_skrining_fungsional;}
     public static boolean getpenilaian_medis_ralan_rehab_medik(){return akses.penilaian_medis_ralan_rehab_medik;}
     public static boolean getlaporan_anastesi(){return akses.laporan_anastesi;}
+    public static boolean gettemplate_persetujuan_penolakan_tindakan(){return akses.template_persetujuan_penolakan_tindakan;}
 }   
