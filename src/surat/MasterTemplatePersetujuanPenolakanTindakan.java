@@ -54,8 +54,6 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
         Kd.setDocument(new batasInput((byte)5).getKata(Kd));
-        Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
-        Template.setDocument(new batasInput((int)5000).getKata(Template));  
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -97,11 +95,38 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         FormInput = new widget.PanelBiasa();
         label12 = new widget.Label();
         Kd = new widget.TextBox();
-        label18 = new widget.Label();
-        Nm = new widget.TextBox();
-        jLabel40 = new widget.Label();
-        scrollPane2 = new widget.ScrollPane();
-        Template = new widget.TextArea();
+        jLabel82 = new widget.Label();
+        scrollPane7 = new widget.ScrollPane();
+        Diagnosa = new javax.swing.JTextArea();
+        jLabel83 = new widget.Label();
+        scrollPane8 = new widget.ScrollPane();
+        TindakanKedokteran = new javax.swing.JTextArea();
+        jLabel84 = new widget.Label();
+        scrollPane10 = new widget.ScrollPane();
+        TataCara = new javax.swing.JTextArea();
+        jLabel86 = new widget.Label();
+        scrollPane11 = new widget.ScrollPane();
+        Risiko = new javax.swing.JTextArea();
+        jLabel88 = new widget.Label();
+        scrollPane14 = new widget.ScrollPane();
+        Prognosis = new javax.swing.JTextArea();
+        jLabel90 = new widget.Label();
+        scrollPane16 = new widget.ScrollPane();
+        LainLain = new javax.swing.JTextArea();
+        jLabel85 = new widget.Label();
+        scrollPane9 = new widget.ScrollPane();
+        IndikasiTindakan = new javax.swing.JTextArea();
+        jLabel87 = new widget.Label();
+        scrollPane12 = new widget.ScrollPane();
+        Tujuan = new javax.swing.JTextArea();
+        jLabel89 = new widget.Label();
+        scrollPane13 = new widget.ScrollPane();
+        Komplikasi = new javax.swing.JTextArea();
+        jLabel91 = new widget.Label();
+        scrollPane15 = new widget.ScrollPane();
+        AlternatifResiko = new javax.swing.JTextArea();
+        Biaya = new widget.TextBox();
+        jLabel12 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -123,7 +148,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Template Hasil Pemeriksaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Template Persetujuan Penolakan Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -147,7 +172,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(700, 583));
+        FormInput.setPreferredSize(new java.awt.Dimension(700, 393));
         FormInput.setLayout(null);
 
         label12.setText("No.Template :");
@@ -166,44 +191,250 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         FormInput.add(Kd);
         Kd.setBounds(89, 10, 80, 23);
 
-        label18.setText("Nama Pemeriksaan :");
-        label18.setName("label18"); // NOI18N
-        label18.setPreferredSize(new java.awt.Dimension(75, 23));
-        FormInput.add(label18);
-        label18.setBounds(180, 10, 120, 23);
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("Diagnosa :");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(14, 40, 150, 23);
 
-        Nm.setName("Nm"); // NOI18N
-        Nm.setPreferredSize(new java.awt.Dimension(207, 23));
-        Nm.addKeyListener(new java.awt.event.KeyAdapter() {
+        scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane7.setName("scrollPane7"); // NOI18N
+
+        Diagnosa.setColumns(20);
+        Diagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Diagnosa.setRows(5);
+        Diagnosa.setName("Diagnosa"); // NOI18N
+        Diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmKeyPressed(evt);
+                DiagnosaKeyPressed(evt);
             }
         });
-        FormInput.add(Nm);
-        Nm.setBounds(304, 10, 380, 23);
+        scrollPane7.setViewportView(Diagnosa);
 
-        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel40.setText("Template Hasil Pemeriksaan Radiologi :");
-        jLabel40.setName("jLabel40"); // NOI18N
-        FormInput.add(jLabel40);
-        jLabel40.setBounds(16, 40, 410, 20);
+        FormInput.add(scrollPane7);
+        scrollPane7.setBounds(14, 60, 350, 43);
 
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane2.setName("scrollPane2"); // NOI18N
+        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel83.setText("Tindakan Kedokteran :");
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(374, 40, 150, 23);
 
-        Template.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Template.setColumns(20);
-        Template.setRows(30);
-        Template.setName("Template"); // NOI18N
-        Template.addKeyListener(new java.awt.event.KeyAdapter() {
+        scrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane8.setName("scrollPane8"); // NOI18N
+
+        TindakanKedokteran.setColumns(20);
+        TindakanKedokteran.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TindakanKedokteran.setRows(5);
+        TindakanKedokteran.setName("TindakanKedokteran"); // NOI18N
+        TindakanKedokteran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TemplateKeyPressed(evt);
+                TindakanKedokteranKeyPressed(evt);
             }
         });
-        scrollPane2.setViewportView(Template);
+        scrollPane8.setViewportView(TindakanKedokteran);
 
-        FormInput.add(scrollPane2);
-        scrollPane2.setBounds(16, 60, 670, 510);
+        FormInput.add(scrollPane8);
+        scrollPane8.setBounds(374, 60, 350, 43);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("Tata Cara :");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(374, 110, 150, 23);
+
+        scrollPane10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane10.setName("scrollPane10"); // NOI18N
+
+        TataCara.setColumns(20);
+        TataCara.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TataCara.setRows(5);
+        TataCara.setName("TataCara"); // NOI18N
+        TataCara.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TataCaraKeyPressed(evt);
+            }
+        });
+        scrollPane10.setViewportView(TataCara);
+
+        FormInput.add(scrollPane10);
+        scrollPane10.setBounds(374, 130, 350, 43);
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel86.setText("Risiko :");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(374, 180, 150, 23);
+
+        scrollPane11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane11.setName("scrollPane11"); // NOI18N
+
+        Risiko.setColumns(20);
+        Risiko.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Risiko.setRows(5);
+        Risiko.setName("Risiko"); // NOI18N
+        Risiko.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RisikoKeyPressed(evt);
+            }
+        });
+        scrollPane11.setViewportView(Risiko);
+
+        FormInput.add(scrollPane11);
+        scrollPane11.setBounds(374, 200, 350, 43);
+
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel88.setText("Prognosis :");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(374, 250, 150, 23);
+
+        scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane14.setName("scrollPane14"); // NOI18N
+
+        Prognosis.setColumns(20);
+        Prognosis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Prognosis.setRows(5);
+        Prognosis.setName("Prognosis"); // NOI18N
+        Prognosis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PrognosisKeyPressed(evt);
+            }
+        });
+        scrollPane14.setViewportView(Prognosis);
+
+        FormInput.add(scrollPane14);
+        scrollPane14.setBounds(374, 270, 350, 43);
+
+        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel90.setText("Lain-lain :");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(374, 320, 150, 23);
+
+        scrollPane16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane16.setName("scrollPane16"); // NOI18N
+
+        LainLain.setColumns(20);
+        LainLain.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LainLain.setRows(5);
+        LainLain.setName("LainLain"); // NOI18N
+        LainLain.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LainLainKeyPressed(evt);
+            }
+        });
+        scrollPane16.setViewportView(LainLain);
+
+        FormInput.add(scrollPane16);
+        scrollPane16.setBounds(374, 340, 350, 43);
+
+        jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel85.setText("Indikasi Tindakan :");
+        jLabel85.setName("jLabel85"); // NOI18N
+        FormInput.add(jLabel85);
+        jLabel85.setBounds(14, 110, 150, 23);
+
+        scrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane9.setName("scrollPane9"); // NOI18N
+
+        IndikasiTindakan.setColumns(20);
+        IndikasiTindakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        IndikasiTindakan.setRows(5);
+        IndikasiTindakan.setName("IndikasiTindakan"); // NOI18N
+        IndikasiTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IndikasiTindakanKeyPressed(evt);
+            }
+        });
+        scrollPane9.setViewportView(IndikasiTindakan);
+
+        FormInput.add(scrollPane9);
+        scrollPane9.setBounds(14, 130, 350, 43);
+
+        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel87.setText("Tujuan :");
+        jLabel87.setName("jLabel87"); // NOI18N
+        FormInput.add(jLabel87);
+        jLabel87.setBounds(14, 180, 150, 23);
+
+        scrollPane12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane12.setName("scrollPane12"); // NOI18N
+
+        Tujuan.setColumns(20);
+        Tujuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tujuan.setRows(5);
+        Tujuan.setName("Tujuan"); // NOI18N
+        Tujuan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TujuanKeyPressed(evt);
+            }
+        });
+        scrollPane12.setViewportView(Tujuan);
+
+        FormInput.add(scrollPane12);
+        scrollPane12.setBounds(14, 200, 350, 43);
+
+        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel89.setText("Komplikasi :");
+        jLabel89.setName("jLabel89"); // NOI18N
+        FormInput.add(jLabel89);
+        jLabel89.setBounds(14, 250, 150, 23);
+
+        scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane13.setName("scrollPane13"); // NOI18N
+
+        Komplikasi.setColumns(20);
+        Komplikasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Komplikasi.setRows(5);
+        Komplikasi.setName("Komplikasi"); // NOI18N
+        Komplikasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KomplikasiKeyPressed(evt);
+            }
+        });
+        scrollPane13.setViewportView(Komplikasi);
+
+        FormInput.add(scrollPane13);
+        scrollPane13.setBounds(14, 270, 350, 43);
+
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel91.setText("Alternatif & Resikonya :");
+        jLabel91.setName("jLabel91"); // NOI18N
+        FormInput.add(jLabel91);
+        jLabel91.setBounds(14, 320, 150, 23);
+
+        scrollPane15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane15.setName("scrollPane15"); // NOI18N
+
+        AlternatifResiko.setColumns(20);
+        AlternatifResiko.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        AlternatifResiko.setRows(5);
+        AlternatifResiko.setName("AlternatifResiko"); // NOI18N
+        AlternatifResiko.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlternatifResikoKeyPressed(evt);
+            }
+        });
+        scrollPane15.setViewportView(AlternatifResiko);
+
+        FormInput.add(scrollPane15);
+        scrollPane15.setBounds(14, 340, 350, 43);
+
+        Biaya.setHighlighter(null);
+        Biaya.setName("Biaya"); // NOI18N
+        Biaya.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BiayaKeyPressed(evt);
+            }
+        });
+        FormInput.add(Biaya);
+        Biaya.setBounds(354, 10, 160, 23);
+
+        jLabel12.setText("Perkiraan Biaya Tindakan :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(200, 10, 150, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -471,7 +702,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
 }//GEN-LAST:event_tbDokterKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Nm.getText().trim().equals("")){
+        /*if(Nm.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
@@ -482,7 +713,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
                     emptTeks();
                 }
             }
-        }
+        }*/
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -494,7 +725,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Kd.getText().trim().equals("")){
+        /*if(Kd.getText().trim().equals("")){
             Valid.textKosong(Kd,"No.Template");
         }else if(Nm.getText().trim().equals("")){
             Valid.textKosong(Nm,"Nama Pemeriksaan");
@@ -508,7 +739,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
                 tbDokter.setValueAt(Template.getText(),tbDokter.getSelectedRow(),1);
                 emptTeks();TabRawat.setSelectedIndex(1);
             }
-        }
+        }*/
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -543,7 +774,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Kd.getText().trim().equals("")){
+        /*if(Kd.getText().trim().equals("")){
             Valid.textKosong(Kd,"No.Template");
         }else if(Nm.getText().trim().equals("")){
             Valid.textKosong(Nm,"Nama Pemeriksaan");
@@ -555,14 +786,14 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
             })==true){
                 emptTeks();
             }                
-        }
+        }*/
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Template,BtnBatal);
+            //Valid.pindah(evt,Template,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -582,22 +813,58 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKeyPressed
-        Valid.pindah(evt,TCari,Nm,TCari);
+        //Valid.pindah(evt,TCari,Nm,TCari);
     }//GEN-LAST:event_KdKeyPressed
-
-    private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyPressed
-        Valid.pindah(evt,Kd,Template);
-    }//GEN-LAST:event_NmKeyPressed
-
-    private void TemplateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TemplateKeyPressed
-        Valid.pindah2(evt,Nm,BtnSimpan);
-    }//GEN-LAST:event_TemplateKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
             tampil();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
+
+    private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
+        //Valid.pindah2(evt,NoPenyataan,TindakanKedokteran);
+    }//GEN-LAST:event_DiagnosaKeyPressed
+
+    private void TindakanKedokteranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKedokteranKeyPressed
+        Valid.pindah2(evt,Diagnosa,IndikasiTindakan);
+    }//GEN-LAST:event_TindakanKedokteranKeyPressed
+
+    private void TataCaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TataCaraKeyPressed
+        Valid.pindah2(evt,IndikasiTindakan,Tujuan);
+    }//GEN-LAST:event_TataCaraKeyPressed
+
+    private void RisikoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoKeyPressed
+        Valid.pindah2(evt,Tujuan,Komplikasi);
+    }//GEN-LAST:event_RisikoKeyPressed
+
+    private void PrognosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrognosisKeyPressed
+        Valid.pindah2(evt,Komplikasi,AlternatifResiko);
+    }//GEN-LAST:event_PrognosisKeyPressed
+
+    private void LainLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLainKeyPressed
+        Valid.pindah2(evt,AlternatifResiko,Biaya);
+    }//GEN-LAST:event_LainLainKeyPressed
+
+    private void IndikasiTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IndikasiTindakanKeyPressed
+        Valid.pindah2(evt,TindakanKedokteran,TataCara);
+    }//GEN-LAST:event_IndikasiTindakanKeyPressed
+
+    private void TujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanKeyPressed
+        Valid.pindah2(evt,TataCara,Risiko);
+    }//GEN-LAST:event_TujuanKeyPressed
+
+    private void KomplikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KomplikasiKeyPressed
+        Valid.pindah2(evt,Risiko,Prognosis);
+    }//GEN-LAST:event_KomplikasiKeyPressed
+
+    private void AlternatifResikoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlternatifResikoKeyPressed
+        Valid.pindah2(evt,Prognosis,LainLain);
+    }//GEN-LAST:event_AlternatifResikoKeyPressed
+
+    private void BiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaKeyPressed
+        //Valid.pindah(evt,LainLain,HubunganDenganPasien);
+    }//GEN-LAST:event_BiayaKeyPressed
 
     /**
     * @param args the command line arguments
@@ -616,6 +883,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AlternatifResiko;
+    private widget.TextBox Biaya;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -623,26 +892,51 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
+    private javax.swing.JTextArea Diagnosa;
     private widget.PanelBiasa FormInput;
+    private javax.swing.JTextArea IndikasiTindakan;
     private widget.TextBox Kd;
+    private javax.swing.JTextArea Komplikasi;
     private widget.Label LCount;
-    private widget.TextBox Nm;
+    private javax.swing.JTextArea LainLain;
+    private javax.swing.JTextArea Prognosis;
+    private javax.swing.JTextArea Risiko;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private javax.swing.JTabbedPane TabRawat;
-    private widget.TextArea Template;
+    private javax.swing.JTextArea TataCara;
+    private javax.swing.JTextArea TindakanKedokteran;
+    private javax.swing.JTextArea Tujuan;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
-    private widget.Label jLabel40;
+    private widget.Label jLabel12;
+    private widget.Label jLabel82;
+    private widget.Label jLabel83;
+    private widget.Label jLabel84;
+    private widget.Label jLabel85;
+    private widget.Label jLabel86;
+    private widget.Label jLabel87;
+    private widget.Label jLabel88;
+    private widget.Label jLabel89;
+    private widget.Label jLabel90;
+    private widget.Label jLabel91;
     private widget.Label label10;
     private widget.Label label12;
-    private widget.Label label18;
     private widget.Label label9;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
-    private widget.ScrollPane scrollPane2;
+    private widget.ScrollPane scrollPane10;
+    private widget.ScrollPane scrollPane11;
+    private widget.ScrollPane scrollPane12;
+    private widget.ScrollPane scrollPane13;
+    private widget.ScrollPane scrollPane14;
+    private widget.ScrollPane scrollPane15;
+    private widget.ScrollPane scrollPane16;
+    private widget.ScrollPane scrollPane7;
+    private widget.ScrollPane scrollPane8;
+    private widget.ScrollPane scrollPane9;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
@@ -682,8 +976,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     public void emptTeks() {
         Kd.setText("");
-        Nm.setText("");
-        Template.setText("");
         Valid.autoNomer("template_hasil_radiologi","R",4,Kd);
         TabRawat.setSelectedIndex(0);
         Kd.requestFocus();
@@ -692,8 +984,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void getData() {
         if(tbDokter.getSelectedRow()!= -1){
             Kd.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            Nm.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
-            Template.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
         }
     }
 
