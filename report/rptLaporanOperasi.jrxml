@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="536" leftMargin="39" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7435c0f7-de74-4940-ae33-c2370e46f8e7">
 	<property name="ireport.zoom" value="1.399522140629204"/>
 	<property name="ireport.x" value="0"/>
@@ -493,7 +493,7 @@
 				</textElement>
 				<text><![CDATA[Dokter Bedah ]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="86" y="152" width="199" height="10" uuid="7152e401-b8e3-4c29-ab45-d36916323d60">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -513,7 +513,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" pattern="dd-MM-yyyy">
+			<textField isStretchWithOverflow="true" pattern="dd-MM-yyyy" isBlankWhenNull="true">
 				<reportElement x="86" y="140" width="68" height="10" uuid="7b0a4a59-d19d-4388-b0c1-7daa87b96144">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -565,7 +565,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="396" y="140" width="137" height="10" uuid="e978696a-41ff-492d-b717-417e40ceac95">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -601,7 +601,7 @@
 				</textElement>
 				<text><![CDATA[Keluhan :]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="14" y="179" width="259" height="22" backcolor="#CCCCCC" uuid="c42de0a3-e391-4512-87c7-eb412a6450b6"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isItalic="true" isUnderline="true"/>
@@ -619,7 +619,7 @@
 				</textElement>
 				<text><![CDATA[Pemeriksaan :]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="14" y="215" width="259" height="23" backcolor="#CCCCCC" uuid="f9719824-2c3d-4f4e-b740-959531a9e1af"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isItalic="true" isUnderline="true"/>
@@ -627,7 +627,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pemeriksaan}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="81" y="240" width="41" height="10" uuid="8b671679-23b1-4129-9fef-126723c2f347">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -637,7 +637,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{suhu_tubuh}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="81" y="252" width="41" height="10" uuid="f30adfba-742d-4f99-8501-6dd1849f472e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -667,7 +667,7 @@
 				</textElement>
 				<text><![CDATA[Respirasi (/Mnt).]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="215" y="240" width="41" height="10" uuid="81add23f-f322-4674-b32a-25dcccb80ae9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -677,7 +677,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nadi}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="215" y="252" width="41" height="10" uuid="fc6b970b-2ed0-445c-b2ef-6e0ff6566bc0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -707,7 +707,7 @@
 				</textElement>
 				<text><![CDATA[Berat (Kg).]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="81" y="264" width="41" height="10" uuid="a47d2fce-1ba9-49a8-97ff-6f5adfbbc0f5">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -717,7 +717,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{tinggi}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="81" y="276" width="41" height="10" uuid="5288006d-dfc0-4cdd-b932-bf41e6b3dc9e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -747,7 +747,7 @@
 				</textElement>
 				<text><![CDATA[GCS (E,V,M).]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="203" y="264" width="53" height="10" uuid="7b530356-4d35-4981-8619-6f85d7f83c7b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -778,7 +778,7 @@
 				</textElement>
 				<text><![CDATA[Penilaian :]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="303" y="179" width="230" height="45" backcolor="#CCCCCC" uuid="d2fedd4a-4f50-4e51-ab36-bfa612a3bc9f">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -789,7 +789,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{penilaian}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="303" y="238" width="230" height="45" backcolor="#CCCCCC" uuid="8c5d504d-1b01-4aae-a6c9-47b688874c8f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -854,7 +854,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="15" y="332" width="174" height="10" uuid="32facb19-d8b0-407d-bb77-527b66792233">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -894,7 +894,7 @@
 				</textElement>
 				<text><![CDATA[Perawat Resusitas]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="15" y="380" width="173" height="10" uuid="338ea173-0f5f-4614-a248-745733a46e42">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -904,7 +904,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{perawatresusitas}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="15" y="404" width="173" height="10" uuid="d63fce22-f27a-46bc-a93e-9119ec1c3410">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -934,7 +934,7 @@
 				</textElement>
 				<text><![CDATA[Instrumen]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="224" y="380" width="165" height="10" uuid="d3920a2f-68eb-42ed-afac-18aaf0e58aa2">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -964,7 +964,7 @@
 				</textElement>
 				<text><![CDATA[Dokter Anastesi]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="224" y="332" width="165" height="10" uuid="36f88182-46a6-4a35-a710-c0f10dc60981">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1014,7 +1014,7 @@
 				</textElement>
 				<text><![CDATA[Tanggal & Waktu ]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss" isBlankWhenNull="true">
 				<reportElement x="100" y="308" width="157" height="10" uuid="42972538-de24-4eb8-bb80-9688c776aca4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1064,7 +1064,7 @@
 				</textElement>
 				<text><![CDATA[Asisten Bedah 2]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="224" y="356" width="165" height="10" uuid="cddc44f1-f1c5-419a-a1a5-795b32442789">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1074,7 +1074,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{asistenoperator2}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="14" y="356" width="174" height="10" uuid="1620548d-65a1-43b5-994b-daf7e4eb5afd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1084,7 +1084,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{operator2}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="224" y="404" width="165" height="10" uuid="8605d496-e178-4670-8c3a-83274426e5ba">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1114,7 +1114,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="4" y="530" width="377" height="10" uuid="7a55a73c-554b-43f7-b0b4-867c59455580">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1149,7 +1149,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="224" y="428" width="165" height="10" uuid="f2c044e0-bd0f-4a12-b6fa-2dcfb40937ac">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1209,7 +1209,7 @@
 				</textElement>
 				<text><![CDATA[Dokter Umum]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="15" y="452" width="173" height="10" uuid="e2659d71-1fc0-4323-9cf6-dcd49d373fde">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1239,7 +1239,7 @@
 				</textElement>
 				<text><![CDATA[Onloop]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="224" y="452" width="165" height="10" uuid="9906f95b-e502-4fdb-93aa-620b76d4bafd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1269,7 +1269,7 @@
 				</textElement>
 				<text><![CDATA[Diagnosa Pre-Op / Pre Operation Diagnosis]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="4" y="478" width="377" height="10" uuid="c271e3f2-cb10-4c5d-b678-597024c2abfe">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1286,7 +1286,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{diagnosa_preop}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="4" y="504" width="377" height="10" uuid="c0d08972-3daf-48aa-bad3-ac16ab20fea0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1327,7 +1327,7 @@
 				</textElement>
 				<text><![CDATA[Tipe/Jenis Anastesi]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="397" y="343" width="137" height="32" uuid="a1b5a4a5-cda1-4cdc-9881-9934e2a30679">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1374,7 +1374,7 @@
 				</textElement>
 				<text><![CDATA[REPORT ( PROCEDURES, SPECIFIC FINDINGS AND COMPLICATIONS )]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="397" y="458" width="137" height="10" uuid="643c0d2b-d73e-442d-af67-522a5daf96f0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1394,7 +1394,7 @@
 				</textElement>
 				<text><![CDATA[Tipe/Kategori Operasi]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="255" y="140" width="80" height="10" uuid="64434880-fdb6-4ac1-b7fc-2806af03fb2f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1414,7 +1414,7 @@
 				</textElement>
 				<text><![CDATA[Waktu :]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="3" y="561" width="410" height="235" uuid="758fed8f-a5f3-4637-b876-ba28e0557ac4">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -1440,7 +1440,7 @@
 				</textElement>
 				<text><![CDATA[Dokter Bedah]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="397" y="414" width="137" height="10" uuid="208f576d-93a2-4e6b-9f6e-47993ac096da">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1450,7 +1450,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{permintaan_pa}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss" isBlankWhenNull="true">
 				<reportElement x="397" y="508" width="137" height="10" uuid="67df98b8-b7e1-47b2-b772-9ba6dce7b5e0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
