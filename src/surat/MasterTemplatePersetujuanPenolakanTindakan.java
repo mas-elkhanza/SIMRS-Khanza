@@ -774,19 +774,24 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(Kd.getText().trim().equals("")){
+        if(Kd.getText().trim().equals("")){
             Valid.textKosong(Kd,"No.Template");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Pemeriksaan");
-        }else if(Template.getText().trim().equals("")){
-            Valid.textKosong(Template,"Template Hasil Radiologi");
+        }else if(Biaya.getText().trim().equals("")){
+            Valid.textKosong(Biaya,"Perkiraan Biaya");
+        }else if(Diagnosa.getText().trim().equals("")){
+            Valid.textKosong(Diagnosa,"Diagnosa");
+        }else if(TindakanKedokteran.getText().trim().equals("")){
+            Valid.textKosong(TindakanKedokteran,"Tindakan Kedokteran");
         }else{
-            if(Sequel.menyimpantf("template_hasil_radiologi","?,?,?","No.Template",3,new String[]{
-                Kd.getText(),Nm.getText(),Template.getText() 
+            if(Sequel.menyimpantf("template_persetujuan_penolakan_tindakan","?,?,?,?,?,?,?,?,?,?,?,?",
+                "No.Template",12,new String[]{
+                Kd.getText(),Diagnosa.getText(),TindakanKedokteran.getText(),IndikasiTindakan.getText(), 
+                TataCara.getText(),Tujuan.getText(),Risiko.getText(),Komplikasi.getText(),Prognosis.getText(), 
+                AlternatifResiko.getText(),LainLain.getText(),Biaya.getText()
             })==true){
                 emptTeks();
             }                
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
