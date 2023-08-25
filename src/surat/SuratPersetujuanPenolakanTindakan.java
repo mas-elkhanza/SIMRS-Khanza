@@ -49,6 +49,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private ResultSet rs;
     private int i=0;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private MasterCariTemplatePersetujuanPenolakanTindakan template=new MasterCariTemplatePersetujuanPenolakanTindakan(null,false);
     private StringBuilder htmlContent;
     private String pilihan="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
@@ -279,6 +280,38 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        template.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(template.getTable().getSelectedRow()!= -1){                   
+                    Diagnosa.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),1).toString());
+                    TindakanKedokteran.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
+                    IndikasiTindakan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
+                    TataCara.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
+                    Tujuan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
+                    Risiko.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
+                    Komplikasi.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),7).toString());
+                    Prognosis.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),8).toString());
+                    AlternatifResiko.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),9).toString());
+                    LainLain.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),10).toString());
+                    Biaya.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),11).toString());
+                } 
+                LainLain.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML2.setEditable(true);
         LoadHTML2.setEditorKit(kit);
@@ -401,6 +434,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         BtnPerawat = new widget.Button();
         jLabel42 = new widget.Label();
         SaksiKeluarga = new widget.TextBox();
+        BtnTemplate = new widget.Button();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -726,7 +760,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         HubunganDenganPasien.setBounds(179, 490, 140, 23);
 
         TglPernyataan.setForeground(new java.awt.Color(50, 70, 50));
-        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
+        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2023" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
         TglPernyataan.setOpaque(false);
@@ -1058,7 +1092,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         jLabel39.setBounds(460, 490, 90, 23);
 
         TglLahirPenerima.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
+        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2023" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
         TglLahirPenerima.setOpaque(false);
@@ -1179,6 +1213,19 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormInput.add(SaksiKeluarga);
         SaksiKeluarga.setBounds(574, 600, 280, 23);
 
+        BtnTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnTemplate.setMnemonic('2');
+        BtnTemplate.setToolTipText("Alt+2");
+        BtnTemplate.setName("BtnTemplate"); // NOI18N
+        BtnTemplate.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTemplateActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnTemplate);
+        BtnTemplate.setBounds(224, 440, 28, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1219,7 +1266,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1233,7 +1280,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2147,6 +2194,14 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         }
     }//GEN-LAST:event_TabDataMouseClicked
 
+    private void BtnTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTemplateActionPerformed
+        template.isCek();
+        template.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        template.setLocationRelativeTo(internalFrame1);
+        template.setAlwaysOnTop(false);
+        template.setVisible(true);
+    }//GEN-LAST:event_BtnTemplateActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2179,6 +2234,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.Button BtnPrint;
     private widget.Button BtnRefreshPhoto1;
     private widget.Button BtnSimpan;
+    private widget.Button BtnTemplate;
     private widget.CekBox ChkAccor;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
