@@ -32,8 +32,9 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         super(parent, modal);
         initComponents();
 
-        Object[] row={"No.Template","Nama Pemeriksaan","Template Hasil Radiologi"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "No.Template","Diagnosa","Tindakan Kedokteran","Indikasi Tindakan","Tata Cara","Tujuan","Risiko","Komplikasi","Prognosis","Alternatif & Resikonya","Lain-lain","Biaya"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
@@ -41,19 +42,30 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
-            }else if(i==1){
-                column.setPreferredWidth(200);
-            }else if(i==2){
-                column.setPreferredWidth(500);
+                column.setPreferredWidth(70);
+            }else if(i==11){
+                column.setPreferredWidth(90);
+            }else{
+                column.setPreferredWidth(300);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kd.setDocument(new batasInput((byte)5).getKata(Kd));
+        Kd.setDocument(new batasInput((byte)3).getKata(Kd));
+        Diagnosa.setDocument(new batasInput((int)200).getKata(Diagnosa));
+        TindakanKedokteran.setDocument(new batasInput((int)200).getKata(TindakanKedokteran));
+        IndikasiTindakan.setDocument(new batasInput((int)200).getKata(IndikasiTindakan));
+        TataCara.setDocument(new batasInput((int)400).getKata(TataCara));
+        Tujuan.setDocument(new batasInput((int)200).getKata(Tujuan));
+        Risiko.setDocument(new batasInput((int)200).getKata(Risiko));
+        Komplikasi.setDocument(new batasInput((int)200).getKata(Komplikasi));
+        Prognosis.setDocument(new batasInput((int)200).getKata(Prognosis));
+        AlternatifResiko.setDocument(new batasInput((int)200).getKata(AlternatifResiko));
+        LainLain.setDocument(new batasInput((int)200).getKata(LainLain));
+        Biaya.setDocument(new batasInput((byte)12).getOnlyAngka(Biaya));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -127,6 +139,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         AlternatifResiko = new javax.swing.JTextArea();
         Biaya = new widget.TextBox();
         jLabel12 = new widget.Label();
+        label13 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -156,11 +169,6 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -172,14 +180,15 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(700, 393));
+        FormInput.setPreferredSize(new java.awt.Dimension(700, 743));
         FormInput.setLayout(null);
 
-        label12.setText("No.Template :");
+        label12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label12.setText("No.Template");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label12);
-        label12.setBounds(0, 10, 85, 23);
+        label12.setBounds(14, 10, 85, 23);
 
         Kd.setName("Kd"); // NOI18N
         Kd.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -189,7 +198,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
             }
         });
         FormInput.add(Kd);
-        Kd.setBounds(89, 10, 80, 23);
+        Kd.setBounds(87, 10, 80, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel82.setText("Diagnosa :");
@@ -212,13 +221,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane7.setViewportView(Diagnosa);
 
         FormInput.add(scrollPane7);
-        scrollPane7.setBounds(14, 60, 350, 43);
+        scrollPane7.setBounds(14, 60, 680, 43);
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel83.setText("Tindakan Kedokteran :");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
-        jLabel83.setBounds(374, 40, 150, 23);
+        jLabel83.setBounds(14, 110, 150, 23);
 
         scrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane8.setName("scrollPane8"); // NOI18N
@@ -235,13 +244,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane8.setViewportView(TindakanKedokteran);
 
         FormInput.add(scrollPane8);
-        scrollPane8.setBounds(374, 60, 350, 43);
+        scrollPane8.setBounds(14, 130, 680, 43);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel84.setText("Tata Cara :");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
-        jLabel84.setBounds(374, 110, 150, 23);
+        jLabel84.setBounds(14, 250, 150, 23);
 
         scrollPane10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane10.setName("scrollPane10"); // NOI18N
@@ -258,13 +267,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane10.setViewportView(TataCara);
 
         FormInput.add(scrollPane10);
-        scrollPane10.setBounds(374, 130, 350, 43);
+        scrollPane10.setBounds(14, 270, 680, 43);
 
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel86.setText("Risiko :");
         jLabel86.setName("jLabel86"); // NOI18N
         FormInput.add(jLabel86);
-        jLabel86.setBounds(374, 180, 150, 23);
+        jLabel86.setBounds(14, 390, 150, 23);
 
         scrollPane11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane11.setName("scrollPane11"); // NOI18N
@@ -281,13 +290,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane11.setViewportView(Risiko);
 
         FormInput.add(scrollPane11);
-        scrollPane11.setBounds(374, 200, 350, 43);
+        scrollPane11.setBounds(14, 410, 680, 43);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel88.setText("Prognosis :");
         jLabel88.setName("jLabel88"); // NOI18N
         FormInput.add(jLabel88);
-        jLabel88.setBounds(374, 250, 150, 23);
+        jLabel88.setBounds(14, 530, 150, 23);
 
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
@@ -304,13 +313,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane14.setViewportView(Prognosis);
 
         FormInput.add(scrollPane14);
-        scrollPane14.setBounds(374, 270, 350, 43);
+        scrollPane14.setBounds(14, 550, 680, 43);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("Lain-lain :");
         jLabel90.setName("jLabel90"); // NOI18N
         FormInput.add(jLabel90);
-        jLabel90.setBounds(374, 320, 150, 23);
+        jLabel90.setBounds(14, 670, 150, 23);
 
         scrollPane16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane16.setName("scrollPane16"); // NOI18N
@@ -327,13 +336,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane16.setViewportView(LainLain);
 
         FormInput.add(scrollPane16);
-        scrollPane16.setBounds(374, 340, 350, 43);
+        scrollPane16.setBounds(14, 690, 680, 43);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel85.setText("Indikasi Tindakan :");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(14, 110, 150, 23);
+        jLabel85.setBounds(14, 180, 150, 23);
 
         scrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane9.setName("scrollPane9"); // NOI18N
@@ -350,13 +359,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane9.setViewportView(IndikasiTindakan);
 
         FormInput.add(scrollPane9);
-        scrollPane9.setBounds(14, 130, 350, 43);
+        scrollPane9.setBounds(14, 200, 680, 43);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("Tujuan :");
         jLabel87.setName("jLabel87"); // NOI18N
         FormInput.add(jLabel87);
-        jLabel87.setBounds(14, 180, 150, 23);
+        jLabel87.setBounds(14, 320, 150, 23);
 
         scrollPane12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane12.setName("scrollPane12"); // NOI18N
@@ -373,13 +382,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane12.setViewportView(Tujuan);
 
         FormInput.add(scrollPane12);
-        scrollPane12.setBounds(14, 200, 350, 43);
+        scrollPane12.setBounds(14, 340, 680, 43);
 
         jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel89.setText("Komplikasi :");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
-        jLabel89.setBounds(14, 250, 150, 23);
+        jLabel89.setBounds(14, 460, 150, 23);
 
         scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane13.setName("scrollPane13"); // NOI18N
@@ -396,13 +405,13 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane13.setViewportView(Komplikasi);
 
         FormInput.add(scrollPane13);
-        scrollPane13.setBounds(14, 270, 350, 43);
+        scrollPane13.setBounds(14, 480, 680, 43);
 
         jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel91.setText("Alternatif & Resikonya :");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(14, 320, 150, 23);
+        jLabel91.setBounds(14, 600, 150, 23);
 
         scrollPane15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane15.setName("scrollPane15"); // NOI18N
@@ -419,7 +428,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         scrollPane15.setViewportView(AlternatifResiko);
 
         FormInput.add(scrollPane15);
-        scrollPane15.setBounds(14, 340, 350, 43);
+        scrollPane15.setBounds(14, 620, 680, 43);
 
         Biaya.setHighlighter(null);
         Biaya.setName("Biaya"); // NOI18N
@@ -429,12 +438,18 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
             }
         });
         FormInput.add(Biaya);
-        Biaya.setBounds(354, 10, 160, 23);
+        Biaya.setBounds(374, 10, 160, 23);
 
         jLabel12.setText("Perkiraan Biaya Tindakan :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(200, 10, 150, 23);
+        jLabel12.setBounds(220, 10, 150, 23);
+
+        label13.setText(":");
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(75, 23));
+        FormInput.add(label13);
+        label13.setBounds(0, 10, 83, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -702,18 +717,18 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
 }//GEN-LAST:event_tbDokterKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        /*if(Nm.getText().trim().equals("")){
+        if(TindakanKedokteran.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            if(Valid.hapusTabletf(tabMode,Kd,"template_hasil_radiologi","no_template")==true){
+            if(Valid.hapusTabletf(tabMode,Kd,"template_persetujuan_penolakan_tindakan","kode_template")==true){
                 if(tbDokter.getSelectedRow()!= -1){
                     tabMode.removeRow(tbDokter.getSelectedRow());
                     LCount.setText(""+tabMode.getRowCount());
                     emptTeks();
                 }
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -725,21 +740,33 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(Kd.getText().trim().equals("")){
+        if(Kd.getText().trim().equals("")){
             Valid.textKosong(Kd,"No.Template");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Pemeriksaan");
-        }else if(Template.getText().trim().equals("")){
-            Valid.textKosong(Template,"Template Hasil Radiologi");
+        }else if(Biaya.getText().trim().equals("")){
+            Valid.textKosong(Biaya,"Perkiraan Biaya");
+        }else if(Diagnosa.getText().trim().equals("")){
+            Valid.textKosong(Diagnosa,"Diagnosa");
+        }else if(TindakanKedokteran.getText().trim().equals("")){
+            Valid.textKosong(TindakanKedokteran,"Tindakan Kedokteran");
         }else{
-            if(Valid.editTabletf(tabMode,"template_hasil_radiologi","no_template","?","no_template=?,nama_pemeriksaan=?,template_hasil_radiologi=?",4,new String[]{
-                Kd.getText(),Nm.getText(),Template.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
+            if(Valid.editTabletf(tabMode,"template_persetujuan_penolakan_tindakan","kode_template","?","kode_template=?,diagnosa=?,tindakan=?,indikasi_tindakan=?,tata_cara=?,tujuan=?,risiko=?,komplikasi=?,prognosis=?,alternatif_dan_risikonya=?,lain_lain=?,biaya=?",13,new String[]{
+                Kd.getText(),Diagnosa.getText(),TindakanKedokteran.getText(),IndikasiTindakan.getText(),TataCara.getText(),Tujuan.getText(),Risiko.getText(),Komplikasi.getText(),Prognosis.getText(),AlternatifResiko.getText(),LainLain.getText(),Biaya.getText(),tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString()
             })==true){
                 tbDokter.setValueAt(Kd.getText(),tbDokter.getSelectedRow(),0);
-                tbDokter.setValueAt(Template.getText(),tbDokter.getSelectedRow(),1);
+                tbDokter.setValueAt(Diagnosa.getText(),tbDokter.getSelectedRow(),1);
+                tbDokter.setValueAt(TindakanKedokteran.getText(),tbDokter.getSelectedRow(),2);
+                tbDokter.setValueAt(IndikasiTindakan.getText(),tbDokter.getSelectedRow(),3);
+                tbDokter.setValueAt(TataCara.getText(),tbDokter.getSelectedRow(),4);
+                tbDokter.setValueAt(Tujuan.getText(),tbDokter.getSelectedRow(),5);
+                tbDokter.setValueAt(Risiko.getText(),tbDokter.getSelectedRow(),6);
+                tbDokter.setValueAt(Komplikasi.getText(),tbDokter.getSelectedRow(),7);
+                tbDokter.setValueAt(Prognosis.getText(),tbDokter.getSelectedRow(),8);
+                tbDokter.setValueAt(AlternatifResiko.getText(),tbDokter.getSelectedRow(),9);
+                tbDokter.setValueAt(LainLain.getText(),tbDokter.getSelectedRow(),10);
+                tbDokter.setValueAt(Biaya.getText(),tbDokter.getSelectedRow(),11);
                 emptTeks();TabRawat.setSelectedIndex(1);
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -783,13 +810,16 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         }else if(TindakanKedokteran.getText().trim().equals("")){
             Valid.textKosong(TindakanKedokteran,"Tindakan Kedokteran");
         }else{
-            if(Sequel.menyimpantf("template_persetujuan_penolakan_tindakan","?,?,?,?,?,?,?,?,?,?,?,?",
-                "No.Template",12,new String[]{
-                Kd.getText(),Diagnosa.getText(),TindakanKedokteran.getText(),IndikasiTindakan.getText(), 
-                TataCara.getText(),Tujuan.getText(),Risiko.getText(),Komplikasi.getText(),Prognosis.getText(), 
-                AlternatifResiko.getText(),LainLain.getText(),Biaya.getText()
+            if(Sequel.menyimpantf("template_persetujuan_penolakan_tindakan","?,?,?,?,?,?,?,?,?,?,?,?","No.Template",12,new String[]{
+                Kd.getText(),Diagnosa.getText(),TindakanKedokteran.getText(),IndikasiTindakan.getText(),TataCara.getText(),Tujuan.getText(),
+                Risiko.getText(),Komplikasi.getText(),Prognosis.getText(),AlternatifResiko.getText(),LainLain.getText(),Biaya.getText()
             })==true){
+                tabMode.addRow(new String[]{
+                    Kd.getText(),Diagnosa.getText(),TindakanKedokteran.getText(),IndikasiTindakan.getText(),TataCara.getText(),Tujuan.getText(),
+                    Risiko.getText(),Komplikasi.getText(),Prognosis.getText(),AlternatifResiko.getText(),LainLain.getText(),Biaya.getText()
+                });
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -798,7 +828,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Template,BtnBatal);
+            Valid.pindah(evt,LainLain,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -818,14 +848,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKeyPressed
-        //Valid.pindah(evt,TCari,Nm,TCari);
+        Valid.pindah(evt,TCari,Biaya);
     }//GEN-LAST:event_KdKeyPressed
-
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
 
     private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
         //Valid.pindah2(evt,NoPenyataan,TindakanKedokteran);
@@ -848,7 +872,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_PrognosisKeyPressed
 
     private void LainLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLainKeyPressed
-        Valid.pindah2(evt,AlternatifResiko,Biaya);
+        Valid.pindah2(evt,AlternatifResiko,BtnSimpan);
     }//GEN-LAST:event_LainLainKeyPressed
 
     private void IndikasiTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IndikasiTindakanKeyPressed
@@ -868,7 +892,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_AlternatifResikoKeyPressed
 
     private void BiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaKeyPressed
-        //Valid.pindah(evt,LainLain,HubunganDenganPasien);
+        Valid.pindah(evt,Kd,Diagnosa);
     }//GEN-LAST:event_BiayaKeyPressed
 
     /**
@@ -928,6 +952,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label jLabel91;
     private widget.Label label10;
     private widget.Label label12;
+    private widget.Label label13;
     private widget.Label label9;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -949,10 +974,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select template_hasil_radiologi.no_template,template_hasil_radiologi.nama_pemeriksaan, "+
-                    "template_hasil_radiologi.template_hasil_radiologi from template_hasil_radiologi "+
-                    "where template_hasil_radiologi.no_template like ? or template_hasil_radiologi.nama_pemeriksaan like ? or "+
-                    "template_hasil_radiologi.template_hasil_radiologi like ? order by template_hasil_radiologi.no_template");
+                    "select template_persetujuan_penolakan_tindakan.kode_template,template_persetujuan_penolakan_tindakan.diagnosa,template_persetujuan_penolakan_tindakan.tindakan,"+
+                    "template_persetujuan_penolakan_tindakan.indikasi_tindakan,template_persetujuan_penolakan_tindakan.tata_cara,template_persetujuan_penolakan_tindakan.tujuan,"+
+                    "template_persetujuan_penolakan_tindakan.risiko,template_persetujuan_penolakan_tindakan.komplikasi,template_persetujuan_penolakan_tindakan.prognosis,"+
+                    "template_persetujuan_penolakan_tindakan.alternatif_dan_risikonya,template_persetujuan_penolakan_tindakan.lain_lain,template_persetujuan_penolakan_tindakan.biaya "+
+                    "from template_persetujuan_penolakan_tindakan where template_persetujuan_penolakan_tindakan.kode_template like ? or template_persetujuan_penolakan_tindakan.tindakan like ? or "+
+                    "template_persetujuan_penolakan_tindakan.diagnosa like ? order by template_persetujuan_penolakan_tindakan.kode_template");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -960,7 +987,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3)
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12)
                     });
                 }
             } catch (Exception e) {
@@ -981,7 +1009,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     public void emptTeks() {
         Kd.setText("");
-        Valid.autoNomer("template_hasil_radiologi","R",4,Kd);
+        Diagnosa.setText("");
+        TindakanKedokteran.setText("");
+        IndikasiTindakan.setText("");
+        TataCara.setText("");
+        Tujuan.setText("");
+        Risiko.setText("");
+        Komplikasi.setText("");
+        Prognosis.setText("");
+        AlternatifResiko.setText("");
+        LainLain.setText("");
+        Biaya.setText("0");
+        Valid.autoNomer("template_persetujuan_penolakan_tindakan","",3,Kd);
         TabRawat.setSelectedIndex(0);
         Kd.requestFocus();
     }
@@ -989,6 +1028,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void getData() {
         if(tbDokter.getSelectedRow()!= -1){
             Kd.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            Diagnosa.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
+            TindakanKedokteran.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
+            IndikasiTindakan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
+            TataCara.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+            Tujuan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
+            Risiko.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
+            Komplikasi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
+            Prognosis.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString());
+            AlternatifResiko.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),9).toString());
+            LainLain.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),10).toString());
+            Biaya.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),11).toString());
         }
     }
 
@@ -997,9 +1047,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gettemplate_hasil_radiologi());
-        BtnHapus.setEnabled(akses.gettemplate_hasil_radiologi());
-        BtnEdit.setEnabled(akses.gettemplate_hasil_radiologi());
+        BtnSimpan.setEnabled(akses.gettemplate_persetujuan_penolakan_tindakan());
+        BtnHapus.setEnabled(akses.gettemplate_persetujuan_penolakan_tindakan());
+        BtnEdit.setEnabled(akses.gettemplate_persetujuan_penolakan_tindakan());
     }
     
     public void setTampil(){

@@ -1775,7 +1775,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-11-2022 11:09:33" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-08-2023 01:32:33" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);

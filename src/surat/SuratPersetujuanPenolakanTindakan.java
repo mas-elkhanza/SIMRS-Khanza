@@ -50,7 +50,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private int i=0;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
-    private String finger="",pilihan="";
+    private String pilihan="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     
     /** Creates new form DlgRujuk

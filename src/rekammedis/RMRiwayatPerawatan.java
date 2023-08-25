@@ -2390,7 +2390,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                     "where pasien.no_rkm_medis=?");
             try {
-                ps.setString(1,NoRM.getText().trim());
+                ps.setString(1,NoRM.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
                     NoRM.setText(rs.getString("no_rkm_medis"));
