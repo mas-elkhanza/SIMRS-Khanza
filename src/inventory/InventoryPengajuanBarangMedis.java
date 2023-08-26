@@ -812,6 +812,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 tampil2();
             }else{
                 tampil();
+                tampil2();
             }
         } catch (Exception e) {
         }
@@ -858,6 +859,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         tampil();
+        tampil2();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -919,7 +921,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void tampil() {
         try{
-            Valid.tabelKosong(tabMode);
             file=new File("./cache/pengajuanobat.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
@@ -935,10 +936,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        "",rs.getString("kode_satbesar"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),rs.getString("nama"),
-                        rs.getString("kategori"),rs.getString("golongan"),rs.getDouble("h_beli"),0,0,rs.getDouble("isi"),1
-                    });
                     iyem=iyem+"{\"SatPengajuan\":\""+rs.getString("kode_satbesar")+"\",\"KodeBarang\":\""+rs.getString("kode_brng")+"\",\"NamaBarang\":\""+rs.getString("nama_brng").replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString("kode_sat")+"\",\"JenisObat\":\""+rs.getString("nama")+"\",\"Kategori\":\""+rs.getString("kategori")+"\",\"Golongan\":\""+rs.getString("golongan")+"\",\"HPengajuan\":\""+rs.getString("h_beli")+"\",\"Isi\":\""+rs.getString("isi")+"\"},";
                 } 
             } catch (Exception e) {
