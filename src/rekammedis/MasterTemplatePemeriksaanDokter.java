@@ -1246,6 +1246,11 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         Scroll7.setOpaque(true);
 
         tbPermintaanMB.setName("tbPermintaanMB"); // NOI18N
+        tbPermintaanMB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbPermintaanMBMouseClicked(evt);
+            }
+        });
         Scroll7.setViewportView(tbPermintaanMB);
 
         FormInput.add(Scroll7);
@@ -2036,19 +2041,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariPAActionPerformed
 
     private void CariMBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariMBKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilMB2();
+        }
     }//GEN-LAST:event_CariMBKeyPressed
 
     private void BtnCariMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariMBActionPerformed
-        // TODO add your handling code here:
+        tampilMB2();
     }//GEN-LAST:event_BtnCariMBActionPerformed
 
     private void CariDetailMBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariDetailMBKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilDetailMB();
+        }
     }//GEN-LAST:event_CariDetailMBKeyPressed
 
     private void BtnCariDetailMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariDetailMBActionPerformed
-        // TODO add your handling code here:
+        tampilDetailMB();
     }//GEN-LAST:event_BtnCariDetailMBActionPerformed
 
     private void BtnCariObatNonRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariObatNonRacikanActionPerformed
@@ -2109,11 +2118,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllPAActionPerformed
 
     private void BtnAllMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMBActionPerformed
-        // TODO add your handling code here:
+        CariMB.setText("");
+        tampilMB();
+        tampilMB2();
     }//GEN-LAST:event_BtnAllMBActionPerformed
 
     private void BtnAllDetailMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllDetailMBActionPerformed
-        // TODO add your handling code here:
+        CariDetailMB.setText("");
+        tampilDetailMB();
     }//GEN-LAST:event_BtnAllDetailMBActionPerformed
 
     private void BtnAllObatNonRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllObatNonRacikanActionPerformed
@@ -2137,6 +2149,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
         }
     }//GEN-LAST:event_tbPermintaanPKMouseClicked
+
+    private void tbPermintaanMBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPermintaanMBMouseClicked
+        if(tabModeMB.getRowCount()!=0){
+            try {
+                Valid.tabelKosong(tabModeDetailMB);
+                tampilDetailMB();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbPermintaanMBMouseClicked
 
     /**
     * @param args the command line arguments
@@ -2808,4 +2830,169 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }
     
+    private void tampilMB() {         
+        try{
+            file=new File("./cache/permintaanmb.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem=""; 
+        
+            ps=koneksi.prepareStatement(
+                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.kd_pj,jns_perawatan_lab.kelas from jns_perawatan_lab where jns_perawatan_lab.status='1' and jns_perawatan_lab.kategori='MB' order by jns_perawatan_lab.kd_jenis_prw");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KodePJ\":\""+rs.getString(3)+"\",\"Kelas\":\""+rs.getString(4)+"\"},";
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            fileWriter.write("{\"permintaanmb\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi 2 : "+e);
+        }
+    }
+    
+    private void tampilMB2() {         
+        try{
+            jml=0;
+            for(i=0;i<tbPermintaanMB.getRowCount();i++){
+                if(tbPermintaanMB.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=null;
+            pilih=new boolean[jml];
+            kode=null;
+            kode=new String[jml];
+            nama=null;
+            nama=new String[jml];
+            
+            index=0; 
+            for(i=0;i<tbPermintaanMB.getRowCount();i++){
+                if(tbPermintaanMB.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    kode[index]=tbPermintaanMB.getValueAt(i,1).toString();
+                    nama[index]=tbPermintaanMB.getValueAt(i,2).toString();
+                    index++;
+                }
+            }
+
+            Valid.tabelKosong(tabModeMB);
+            for(i=0;i<jml;i++){                
+                tabModeMB.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+            }    
+        
+            myObj = new FileReader("./cache/permintaanmb.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("permintaanmb");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if((list.path("KodePeriksa").asText().toLowerCase().contains(CariMB.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariMB.getText().toLowerCase()))){
+                        tabModeMB.addRow(new Object[]{
+                            false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                        });
+                    }
+                }
+            }  
+            myObj.close(); 
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilDetailMB() { 
+        try {
+            jml=0;
+            for(i=0;i<tbDetailMB.getRowCount();i++){
+                if(tbDetailMB.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+            
+            pilih=null;
+            pilih=new boolean[jml];
+            nama=null;
+            nama=new String[jml];
+            satuan=null;
+            satuan=new String[jml];
+            nilairujukan=null;
+            nilairujukan=new String[jml];
+            kode=null;
+            kode=new String[jml];
+            
+            index=0; 
+            for(i=0;i<tbDetailMB.getRowCount();i++){
+                if(tbDetailMB.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    nama[index]=tbDetailMB.getValueAt(i,1).toString();
+                    satuan[index]=tbDetailMB.getValueAt(i,2).toString();
+                    nilairujukan[index]=tbDetailMB.getValueAt(i,3).toString();
+                    kode[index]=tbDetailMB.getValueAt(i,4).toString();
+                    index++;
+                }
+            }
+            
+            Valid.tabelKosong(tabModeDetailMB);
+            
+            for(i=0;i<jml;i++){ 
+                tabModeDetailMB.addRow(new Object[] {
+                    pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i]
+                });
+            }  
+            
+            for(i=0;i<tbPermintaanMB.getRowCount();i++){ 
+                if(tbPermintaanMB.getValueAt(i,0).toString().equals("true")){
+                    tabModeDetailMB.addRow(new Object[]{false,tbPermintaanMB.getValueAt(i,2).toString(),"","",""});
+                    ps=koneksi.prepareStatement("select template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa from template_laboratorium where template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? order by template_laboratorium.urut");
+                    try {
+                        ps.setString(1,tbPermintaanMB.getValueAt(i,1).toString());
+                        ps.setString(2,"%"+CariDetailMB.getText().trim()+"%");
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            la="";ld="";pa="";pd="";
+                            if(!rs.getString("nilai_rujukan_ld").equals("")){
+                                ld="LD : "+rs.getString("nilai_rujukan_ld");
+                            }
+                            if(!rs.getString("nilai_rujukan_la").equals("")){
+                                la=", LA : "+rs.getString("nilai_rujukan_la");
+                            }
+                            if(!rs.getString("nilai_rujukan_pa").equals("")){
+                                pd=", PD : "+rs.getString("nilai_rujukan_pd");
+                            }
+                            if(!rs.getString("nilai_rujukan_pd").equals("")){
+                                pa=" PA : "+rs.getString("nilai_rujukan_pa");
+                            }
+                            tabModeDetailMB.addRow(new Object[]{
+                                false,"   "+rs.getString("Pemeriksaan"),rs.getString("satuan"),ld+la+pd+pa,rs.getString("id_template")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }                        
+                                              
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error Detail : "+e);
+        }
+    }
 }
