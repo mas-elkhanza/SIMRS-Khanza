@@ -981,13 +981,13 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         scrollPane1.setViewportView(KeluhanUtama);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(130, 90, 340, 50);
+        scrollPane1.setBounds(130, 90, 370, 53);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Riwayat Penyakit Dahulu :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(490, 90, 140, 23);
+        jLabel30.setBounds(520, 90, 140, 23);
 
         scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane4.setName("scrollPane4"); // NOI18N
@@ -1025,7 +1025,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel94.setText("III. STATUS KELAINAN");
         jLabel94.setName("jLabel94"); // NOI18N
         FormInput.add(jLabel94);
-        jLabel94.setBounds(20, 530, 180, 23);
+        jLabel94.setBounds(10, 530, 180, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1064,7 +1064,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         scrollPane7.setViewportView(KetRPS);
 
         FormInput.add(scrollPane7);
-        scrollPane7.setBounds(580, 120, 270, 63);
+        scrollPane7.setBounds(520, 120, 330, 63);
 
         Kesadaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CM", "Apatis", "Delirium", "Sopor" }));
         Kesadaran.setName("Kesadaran"); // NOI18N
@@ -1145,7 +1145,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel99.setText("I. RIWAYAT KESEHATAN");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
-        jLabel99.setBounds(20, 70, 180, 23);
+        jLabel99.setBounds(10, 70, 180, 23);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
@@ -1154,7 +1154,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2023 21:22:48" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2023 21:22:55" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1185,7 +1185,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel95.setText("II. PEMERIKSAAN FISIK");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
-        jLabel95.setBounds(20, 420, 180, 23);
+        jLabel95.setBounds(10, 420, 180, 23);
 
         jLabel47.setText("Perut :");
         jLabel47.setName("jLabel47"); // NOI18N
@@ -1218,7 +1218,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel113.setText("VII. RENCANA PENATALAKSANAAN");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
-        jLabel113.setBounds(20, 1310, 190, 23);
+        jLabel113.setBounds(10, 1310, 190, 23);
 
         jLabel115.setText("Kesan Umum :");
         jLabel115.setName("jLabel115"); // NOI18N
@@ -1229,7 +1229,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel33.setText("Peristiwa/Faktor Pencetus Terkait :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(10, 210, 180, 23);
+        jLabel33.setBounds(44, 210, 180, 23);
 
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel36.setText("Riwayat Obat Yang Diminum Saat ini :");
@@ -1425,7 +1425,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel118.setText("EDUKASI :");
         jLabel118.setName("jLabel118"); // NOI18N
         FormInput.add(jLabel118);
-        jLabel118.setBounds(30, 1810, 70, 20);
+        jLabel118.setBounds(10, 1810, 70, 20);
 
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
@@ -1802,13 +1802,13 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         scrollPane2.setViewportView(PencetusKeluhan);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(190, 213, 280, 50);
+        scrollPane2.setBounds(220, 210, 280, 53);
 
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel48.setText("Keluhan Utama :");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(40, 90, 90, 23);
+        jLabel48.setBounds(44, 90, 90, 23);
 
         scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane3.setName("scrollPane3"); // NOI18N
@@ -1825,13 +1825,13 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         scrollPane3.setViewportView(GejalaKeluhan);
 
         FormInput.add(scrollPane3);
-        scrollPane3.setBounds(190, 150, 280, 50);
+        scrollPane3.setBounds(190, 150, 310, 53);
 
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel34.setText("Gejala Lain yang menyertai :");
+        jLabel34.setText("Gejala Lain Yang Menyertai :");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(40, 150, 150, 23);
+        jLabel34.setBounds(44, 150, 150, 23);
 
         RPS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         RPS.setName("RPS"); // NOI18N
@@ -1841,7 +1841,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }
         });
         FormInput.add(RPS);
-        RPS.setBounds(490, 120, 80, 23);
+        RPS.setBounds(660, 90, 80, 23);
 
         scrollPane11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane11.setName("scrollPane11"); // NOI18N
@@ -1858,18 +1858,19 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         scrollPane11.setViewportView(RiwayatKehamilan);
 
         FormInput.add(scrollPane11);
-        scrollPane11.setBounds(490, 210, 360, 50);
+        scrollPane11.setBounds(520, 210, 330, 53);
 
         jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel68.setText("Riwayat Masa Kehamilan, Persalinan, dan Perkembangan Anak :");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
-        jLabel68.setBounds(490, 190, 330, 23);
+        jLabel68.setBounds(520, 190, 330, 23);
 
-        jLabel69.setText("Riwayat Sosial dan Riwayat Pekerjaan :");
+        jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel69.setText("Riwayat Sosial & Riwayat Pekerjaan :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(10, 270, 200, 23);
+        jLabel69.setBounds(44, 270, 200, 23);
 
         Sosial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bergaul", "Tidak Bergaul", "Lain-lain" }));
         Sosial.setName("Sosial"); // NOI18N
@@ -2005,7 +2006,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel114.setText("IV. STATUS LOKALISATA");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
-        jLabel114.setBounds(20, 670, 190, 23);
+        jLabel114.setBounds(10, 670, 190, 23);
 
         KeteranganDada.setFocusTraversalPolicyProvider(true);
         KeteranganDada.setName("KeteranganDada"); // NOI18N
@@ -2149,13 +2150,13 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         jLabel130.setText("V. STATUS PSIKIATRIK");
         jLabel130.setName("jLabel130"); // NOI18N
         FormInput.add(jLabel130);
-        jLabel130.setBounds(20, 920, 190, 23);
+        jLabel130.setBounds(10, 920, 190, 23);
 
         jLabel131.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel131.setText("VI. PERMASALAHAN");
         jLabel131.setName("jLabel131"); // NOI18N
         FormInput.add(jLabel131);
-        jLabel131.setBounds(20, 1220, 190, 23);
+        jLabel131.setBounds(10, 1220, 190, 23);
 
         jSeparator22.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator22.setForeground(new java.awt.Color(239, 244, 234));
