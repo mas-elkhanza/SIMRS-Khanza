@@ -1557,7 +1557,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         FormInput.add(jLabel58);
         jLabel58.setBounds(0, 1530, 155, 23);
 
-        Meninggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "<=2 jam", "> 2 jam" }));
+        Meninggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "<= 2 Jam", "> 2 Jam" }));
         Meninggal.setName("Meninggal"); // NOI18N
         Meninggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

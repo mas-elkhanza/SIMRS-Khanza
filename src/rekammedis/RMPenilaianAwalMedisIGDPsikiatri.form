@@ -1866,8 +1866,8 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="3">
                                 <StringItem index="0" value="-"/>
-                                <StringItem index="1" value="&lt;=2 jam"/>
-                                <StringItem index="2" value="&gt; 2 jam"/>
+                                <StringItem index="1" value="&lt;= 2 Jam"/>
+                                <StringItem index="2" value="&gt; 2 Jam"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Meninggal" noResource="true"/>
