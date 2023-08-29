@@ -481,12 +481,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select tokobarang.nama_brng from tokobarang where tokobarang.kode_brng=?",nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select tokobarang.nama_brng from tokobarang where tokobarang.kode_brng=?",nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select tokobarang.nama_brng from tokobarang where tokobarang.kode_brng=?",nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBarangActionPerformed(null);
@@ -588,9 +588,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     totalpenjualan=0;stok=0;totalstok=0;jumlahpiutang=0;totalpiutang=0;jumlahretursup=0;
                     totalretursup=0;jumlahreturjual=0;totalreturjual=0;jumlahreturpiutang=0;
                     totalreturpiutang=0;stokakhir=0;totalstokakhir=0;stokakhir=0;totalstokakhir=0;
-                    tglopname="0000-00-00";
-                    tglopname=Sequel.cariIsi("select tanggal from tokoopname where kode_brng='"+rs.getString(1)+"' and tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by tanggal asc limit 1");
+                    tglopname=Sequel.cariIsi("select tokoopname.tanggal from tokoopname where tokoopname.kode_brng='"+rs.getString(1)+"' and tokoopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by tokoopname.tanggal asc limit 1");
 
+                    if(tglopname.equals("")){
+                        tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
+                    }
+                    
                     stok=rs.getDouble("stok");
                     totalstok=rs.getDouble("totalstok");
                     

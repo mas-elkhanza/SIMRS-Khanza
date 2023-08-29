@@ -658,7 +658,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(ranapvipumum);
-        ranapvipumum.setBounds(550, 10, 50, 23);
+        ranapvipumum.setBounds(553, 10, 50, 23);
 
         label45.setText("Keuntungan di Rawat Inap Kelas VVIP(%) :");
         label45.setName("label45"); // NOI18N
@@ -684,7 +684,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(ranapvvipumum);
-        ranapvvipumum.setBounds(550, 40, 50, 23);
+        ranapvvipumum.setBounds(553, 40, 50, 23);
 
         label46.setText("Keuntungan Jika Beli dari Apotek Lain(%) :");
         label46.setName("label46"); // NOI18N
@@ -710,7 +710,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(beliluarumum);
-        beliluarumum.setBounds(550, 70, 50, 23);
+        beliluarumum.setBounds(553, 70, 50, 23);
 
         label47.setText("Keuntungan di Penjualan Bebas(%) :");
         label47.setName("label47"); // NOI18N
@@ -736,7 +736,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(jualbebasumum);
-        jualbebasumum.setBounds(550, 100, 50, 23);
+        jualbebasumum.setBounds(553, 100, 50, 23);
 
         karyawanumum.setName("karyawanumum"); // NOI18N
         karyawanumum.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -756,7 +756,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(karyawanumum);
-        karyawanumum.setBounds(550, 130, 50, 23);
+        karyawanumum.setBounds(553, 130, 50, 23);
 
         label48.setText("Keuntungan Jika Pasien/Pembeli Karyawan(%) :");
         label48.setName("label48"); // NOI18N
@@ -789,7 +789,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(ralanumum);
-        ralanumum.setBounds(231, 10, 50, 23);
+        ralanumum.setBounds(233, 10, 50, 23);
 
         ranapk1umum.setName("ranapk1umum"); // NOI18N
         ranapk1umum.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -809,7 +809,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(ranapk1umum);
-        ranapk1umum.setBounds(231, 40, 50, 23);
+        ranapk1umum.setBounds(233, 40, 50, 23);
 
         label50.setText("Keuntungan di Rawat Inap Kelas 1(%) :");
         label50.setName("label50"); // NOI18N
@@ -841,7 +841,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(ranapk2umum);
-        ranapk2umum.setBounds(231, 70, 50, 23);
+        ranapk2umum.setBounds(233, 70, 50, 23);
 
         ranapk3umum.setName("ranapk3umum"); // NOI18N
         ranapk3umum.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -861,7 +861,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(ranapk3umum);
-        ranapk3umum.setBounds(231, 100, 50, 23);
+        ranapk3umum.setBounds(233, 100, 50, 23);
 
         label52.setText("Keuntungan di Rawat Inap Kelas 3(%) :");
         label52.setName("label52"); // NOI18N
@@ -893,7 +893,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi3.add(ranaputamaumum);
-        ranaputamaumum.setBounds(231, 130, 50, 23);
+        ranaputamaumum.setBounds(233, 130, 50, 23);
 
         internalFrame4.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -955,7 +955,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(ranapvip);
-        ranapvip.setBounds(550, 10, 50, 23);
+        ranapvip.setBounds(553, 10, 50, 23);
 
         label34.setText("Keuntungan di Rawat Inap Kelas VVIP(%) :");
         label34.setName("label34"); // NOI18N
@@ -981,7 +981,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(ranapvvip);
-        ranapvvip.setBounds(550, 40, 50, 23);
+        ranapvvip.setBounds(553, 40, 50, 23);
 
         label36.setText("Keuntungan Jika Beli dari Apotek Lain(%) :");
         label36.setName("label36"); // NOI18N
@@ -1007,7 +1007,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(beliluar);
-        beliluar.setBounds(550, 70, 50, 23);
+        beliluar.setBounds(553, 70, 50, 23);
 
         label38.setText("Keuntungan di Penjualan Bebas(%) :");
         label38.setName("label38"); // NOI18N
@@ -1033,7 +1033,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(jualbebas);
-        jualbebas.setBounds(550, 100, 50, 23);
+        jualbebas.setBounds(553, 100, 50, 23);
 
         karyawan.setName("karyawan"); // NOI18N
         karyawan.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -1053,7 +1053,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(karyawan);
-        karyawan.setBounds(550, 130, 50, 23);
+        karyawan.setBounds(553, 130, 50, 23);
 
         label39.setText("Keuntungan Jika Pasien/Pembeli Karyawan(%) :");
         label39.setName("label39"); // NOI18N
@@ -1086,7 +1086,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(ralan);
-        ralan.setBounds(231, 10, 50, 23);
+        ralan.setBounds(233, 10, 50, 23);
 
         ranapk1.setName("ranapk1"); // NOI18N
         ranapk1.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -1106,7 +1106,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(ranapk1);
-        ranapk1.setBounds(231, 40, 50, 23);
+        ranapk1.setBounds(233, 40, 50, 23);
 
         label40.setText("Keuntungan di Rawat Inap Kelas 1(%) :");
         label40.setName("label40"); // NOI18N
@@ -1138,7 +1138,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(ranapk2);
-        ranapk2.setBounds(231, 70, 50, 23);
+        ranapk2.setBounds(233, 70, 50, 23);
 
         ranapk3.setName("ranapk3"); // NOI18N
         ranapk3.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -1158,7 +1158,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(ranapk3);
-        ranapk3.setBounds(231, 100, 50, 23);
+        ranapk3.setBounds(233, 100, 50, 23);
 
         label42.setText("Keuntungan di Rawat Inap Kelas 3(%) :");
         label42.setName("label42"); // NOI18N
@@ -1190,7 +1190,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(ranaputama);
-        ranaputama.setBounds(231, 130, 50, 23);
+        ranaputama.setBounds(233, 130, 50, 23);
 
         label20.setText("Jenis Barang :");
         label20.setName("label20"); // NOI18N
@@ -1206,13 +1206,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(kdjns);
-        kdjns.setBounds(231, 162, 50, 23);
+        kdjns.setBounds(233, 162, 50, 23);
 
         nmjns.setEditable(false);
         nmjns.setName("nmjns"); // NOI18N
         nmjns.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi2.add(nmjns);
-        nmjns.setBounds(284, 162, 288, 23);
+        nmjns.setBounds(286, 162, 288, 23);
 
         BtnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnJenis.setMnemonic('2');
@@ -1225,7 +1225,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi2.add(BtnJenis);
-        BtnJenis.setBounds(575, 162, 25, 23);
+        BtnJenis.setBounds(578, 162, 25, 23);
 
         internalFrame2.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
@@ -1352,7 +1352,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(ranapvipperbarang);
-        ranapvipperbarang.setBounds(550, 10, 50, 23);
+        ranapvipperbarang.setBounds(553, 10, 50, 23);
 
         label55.setText("Keuntungan di Rawat Inap Kelas VVIP(%) :");
         label55.setName("label55"); // NOI18N
@@ -1378,7 +1378,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(ranapvvipperbarang);
-        ranapvvipperbarang.setBounds(550, 40, 50, 23);
+        ranapvvipperbarang.setBounds(553, 40, 50, 23);
 
         label56.setText("Keuntungan Jika Beli dari Apotek Lain(%) :");
         label56.setName("label56"); // NOI18N
@@ -1404,7 +1404,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(beliluarperbarang);
-        beliluarperbarang.setBounds(550, 70, 50, 23);
+        beliluarperbarang.setBounds(553, 70, 50, 23);
 
         label57.setText("Keuntungan di Penjualan Bebas(%) :");
         label57.setName("label57"); // NOI18N
@@ -1430,7 +1430,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(jualbebasperbarang);
-        jualbebasperbarang.setBounds(550, 100, 50, 23);
+        jualbebasperbarang.setBounds(553, 100, 50, 23);
 
         karyawanperbarang.setName("karyawanperbarang"); // NOI18N
         karyawanperbarang.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -1450,7 +1450,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(karyawanperbarang);
-        karyawanperbarang.setBounds(550, 130, 50, 23);
+        karyawanperbarang.setBounds(553, 130, 50, 23);
 
         label58.setText("Keuntungan Jika Pasien/Pembeli Karyawan(%) :");
         label58.setName("label58"); // NOI18N
@@ -1483,7 +1483,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(ralanperbarang);
-        ralanperbarang.setBounds(231, 10, 50, 23);
+        ralanperbarang.setBounds(233, 10, 50, 23);
 
         ranapk1perbarang.setName("ranapk1perbarang"); // NOI18N
         ranapk1perbarang.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -1503,7 +1503,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(ranapk1perbarang);
-        ranapk1perbarang.setBounds(231, 40, 50, 23);
+        ranapk1perbarang.setBounds(233, 40, 50, 23);
 
         label60.setText("Keuntungan di Rawat Inap Kelas 1(%) :");
         label60.setName("label60"); // NOI18N
@@ -1535,7 +1535,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(ranapk2perbarang);
-        ranapk2perbarang.setBounds(231, 70, 50, 23);
+        ranapk2perbarang.setBounds(233, 70, 50, 23);
 
         ranapk3perbarang.setName("ranapk3perbarang"); // NOI18N
         ranapk3perbarang.setPreferredSize(new java.awt.Dimension(50, 23));
@@ -1555,7 +1555,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(ranapk3perbarang);
-        ranapk3perbarang.setBounds(231, 100, 50, 23);
+        ranapk3perbarang.setBounds(233, 100, 50, 23);
 
         label62.setText("Keuntungan di Rawat Inap Kelas 3(%) :");
         label62.setName("label62"); // NOI18N
@@ -1587,7 +1587,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(ranaputamaperbarang);
-        ranaputamaperbarang.setBounds(231, 130, 50, 23);
+        ranaputamaperbarang.setBounds(233, 130, 50, 23);
 
         label21.setText("Barang/BHP/Alkes :");
         label21.setName("label21"); // NOI18N
@@ -1603,13 +1603,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdbarang);
-        kdbarang.setBounds(231, 162, 50, 23);
+        kdbarang.setBounds(233, 162, 50, 23);
 
         nmbarang.setEditable(false);
         nmbarang.setName("nmbarang"); // NOI18N
         nmbarang.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi4.add(nmbarang);
-        nmbarang.setBounds(284, 162, 288, 23);
+        nmbarang.setBounds(286, 162, 288, 23);
 
         Btnbarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         Btnbarang.setMnemonic('2');
@@ -1622,7 +1622,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Btnbarang);
-        Btnbarang.setBounds(575, 162, 25, 23);
+        Btnbarang.setBounds(578, 162, 25, 23);
 
         internalFrame5.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
