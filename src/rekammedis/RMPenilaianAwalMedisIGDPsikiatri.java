@@ -1620,12 +1620,12 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }
         });
         FormInput.add(Kesadaran2);
-        Kesadaran2.setBounds(210, 1580, 130, 23);
+        Kesadaran2.setBounds(204, 1580, 130, 23);
 
-        jLabel27.setText("TD :");
+        jLabel27.setText("Tensi Darah :");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(360, 1580, 40, 23);
+        jLabel27.setBounds(357, 1580, 80, 23);
 
         TD1.setFocusTraversalPolicyProvider(true);
         TD1.setName("TD1"); // NOI18N
@@ -1635,13 +1635,13 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }
         });
         FormInput.add(TD1);
-        TD1.setBounds(400, 1580, 76, 23);
+        TD1.setBounds(441, 1580, 76, 23);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("mmHg");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(480, 1580, 50, 23);
+        jLabel31.setBounds(520, 1580, 50, 23);
 
         Nadi1.setFocusTraversalPolicyProvider(true);
         Nadi1.setName("Nadi1"); // NOI18N
@@ -1651,18 +1651,18 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }
         });
         FormInput.add(Nadi1);
-        Nadi1.setBounds(590, 1580, 45, 23);
+        Nadi1.setBounds(622, 1580, 45, 23);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel39.setText("x/menit");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(640, 1580, 50, 23);
+        jLabel39.setBounds(670, 1580, 50, 23);
 
         jLabel40.setText("RR :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(340, 1610, 40, 23);
+        jLabel40.setBounds(298, 1610, 40, 23);
 
         RR1.setFocusTraversalPolicyProvider(true);
         RR1.setName("RR1"); // NOI18N
@@ -1672,13 +1672,13 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }
         });
         FormInput.add(RR1);
-        RR1.setBounds(390, 1610, 45, 23);
+        RR1.setBounds(342, 1610, 45, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel46.setText("x/menit");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(440, 1610, 50, 23);
+        jLabel46.setBounds(390, 1610, 50, 23);
 
         jLabel49.setText("Suhu :");
         jLabel49.setName("jLabel49"); // NOI18N
@@ -1693,17 +1693,17 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }
         });
         FormInput.add(Suhu1);
-        Suhu1.setBounds(210, 1610, 45, 23);
+        Suhu1.setBounds(204, 1610, 45, 23);
 
         jLabel63.setText("Nadi :");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
-        jLabel63.setBounds(520, 1580, 70, 23);
+        jLabel63.setBounds(568, 1580, 50, 23);
 
         jLabel64.setText("GCS(E,V,M) :");
         jLabel64.setName("jLabel64"); // NOI18N
         FormInput.add(jLabel64);
-        jLabel64.setBounds(680, 1580, 110, 23);
+        jLabel64.setBounds(715, 1580, 90, 23);
 
         GCS1.setFocusTraversalPolicyProvider(true);
         GCS1.setName("GCS1"); // NOI18N
@@ -1713,13 +1713,13 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }
         });
         FormInput.add(GCS1);
-        GCS1.setBounds(800, 1580, 45, 23);
+        GCS1.setBounds(809, 1580, 45, 23);
 
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel65.setText("°C");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
-        jLabel65.setBounds(260, 1610, 30, 23);
+        jLabel65.setBounds(252, 1610, 30, 23);
 
         jLabel66.setText("GCS(E,V,M) :");
         jLabel66.setName("jLabel66"); // NOI18N
