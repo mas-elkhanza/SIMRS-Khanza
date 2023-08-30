@@ -2907,7 +2907,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_FisikStatusNutrisiKeyPressed
 
     private void StatusKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusKepalaKeyPressed
-        Valid.pindah(evt,KeteranganStatusDada,KeteranganStatusKepala);
+        Valid.pindah(evt,FisikGCS,KeteranganStatusKepala);
     }//GEN-LAST:event_StatusKepalaKeyPressed
 
     private void StatusAnggotaGerakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusAnggotaGerakKeyPressed
@@ -2919,7 +2919,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_StatusDadaKeyPressed
 
     private void StatusLeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusLeherKeyPressed
-        Valid.pindah(evt,KeteranganStatusPerut,KeteranganStatusLeher);
+        Valid.pindah(evt,KeteranganStatusKepala,KeteranganStatusLeher);
     }//GEN-LAST:event_StatusLeherKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
@@ -2977,7 +2977,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_StatusPerutKeyPressed
 
     private void KeteranganStatusKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganStatusKepalaKeyPressed
-        Valid.pindah(evt,StatusKepala,StatusPerut);
+        Valid.pindah(evt,StatusKepala,StatusLeher);
     }//GEN-LAST:event_KeteranganStatusKepalaKeyPressed
 
     private void KeteranganStatusLeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganStatusLeherKeyPressed
