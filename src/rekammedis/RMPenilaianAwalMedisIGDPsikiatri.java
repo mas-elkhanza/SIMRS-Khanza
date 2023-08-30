@@ -262,7 +262,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         FisikTD.setDocument(new batasInput((int)8).getKata(FisikTD));
         FisikRR.setDocument(new batasInput((int)5).getKata(FisikRR));
         FisikSuhu.setDocument(new batasInput((int)5).getKata(FisikSuhu));
-        FasikNadi.setDocument(new batasInput((int)5).getKata(FasikNadi));
+        FisikNadi.setDocument(new batasInput((int)5).getKata(FisikNadi));
         FisikBB.setDocument(new batasInput((int)5).getKata(FisikBB));
         FisikTB.setDocument(new batasInput((int)5).getKata(FisikTB));
         FisikStatusNutrisi.setDocument(new batasInput((int)100).getKata(FisikStatusNutrisi));
@@ -411,7 +411,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         FisikBB = new widget.TextBox();
         jLabel13 = new widget.Label();
         jLabel16 = new widget.Label();
-        FasikNadi = new widget.TextBox();
+        FisikNadi = new widget.TextBox();
         jLabel17 = new widget.Label();
         jLabel18 = new widget.Label();
         FisikSuhu = new widget.TextBox();
@@ -776,11 +776,6 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setPreferredSize(new java.awt.Dimension(457, 480));
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -913,15 +908,15 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         FormInput.add(jLabel16);
         jLabel16.setBounds(156, 450, 50, 23);
 
-        FasikNadi.setFocusTraversalPolicyProvider(true);
-        FasikNadi.setName("FasikNadi"); // NOI18N
-        FasikNadi.addKeyListener(new java.awt.event.KeyAdapter() {
+        FisikNadi.setFocusTraversalPolicyProvider(true);
+        FisikNadi.setName("FisikNadi"); // NOI18N
+        FisikNadi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                FasikNadiKeyPressed(evt);
+                FisikNadiKeyPressed(evt);
             }
         });
-        FormInput.add(FasikNadi);
-        FasikNadi.setBounds(108, 450, 45, 23);
+        FormInput.add(FisikNadi);
+        FisikNadi.setBounds(108, 450, 45, 23);
 
         jLabel17.setText(" Nadi :");
         jLabel17.setName("jLabel17"); // NOI18N
@@ -1200,7 +1195,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2023 09:07:17" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-08-2023 10:59:08" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2339,7 +2334,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2353,7 +2348,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2431,16 +2426,29 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
         }else if(KeteranganRiwayatPenyakitDahulu.getText().trim().equals("")){
             Valid.textKosong(RiwayatPenyakitDahulu,"Riwayat Penyakit Dahulu");
         }else{
-            if(Sequel.menyimpantf("penilaian_medis_ralan_gawat_darurat_psikiatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",74,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),GejalaMenyertai.getText(),FaktorPencetus.getText(),RiwayatPenyakitDahulu.getSelectedItem().toString(),KeteranganRiwayatPenyakitDahulu.getText(),RiwayatKehamilan.getText(),RiwayatSosial.getSelectedItem().toString(),KeteranganRiwayatSosial.getText(),RiwayatPekerjaan.getSelectedItem().toString(),KeteranganRiwayatPekerjaan.getText(),
-                    RiwayatObatDiminum.getText(),FaktorPremorbid.getText(),FaktorKeturunan.getSelectedItem().toString(),KeteranganFaktorKeturunan.getText(),FaktorOrganik.getSelectedItem().toString(),KeteranganFaktorOrganik.getText(),RiwayatAlergi.getText(),FisikKesadaran.getSelectedItem().toString(),FisikNyeri.getSelectedItem().toString(),FisikTD.getText(),FasikNadi.getText(), 
-                    FisikSuhu.getText(),FisikRR.getText(),FisikBB.getText(),FisikTB.getText(),FisikGCS.getText(),FisikStatusNutrisi.getText(),StatusKepala.getSelectedItem().toString(),KeteranganStatusKepala.getText(),StatusLeher.getSelectedItem().toString(),KeteranganStatusLeher.getText(),StatusAnggotaGerak.getSelectedItem().toString(),KeteranganStatusAnggotaGerak.getText(),
-                    StatusDada.getSelectedItem().toString(),KeteranganStatusDada.getText(),StatusPerut.getSelectedItem().toString(),KeteranganStatusPerut.getText(),StatusLokalisata.getText(),PsikiatriKesanUmum.getText(),PsikiatriSikap.getText(),PsikiatriKesadaran.getText(),PsikiatriOrientasi.getText(),PsikiatriDayaIngat.getText(),PsikiatriPersepsi.getText(),PsikiatriPikiran.getText(),PsikiatriInsight.getText(),
-                    Laborat.getText(),Radiologi.getText(),EKG.getText(),Permasalahan.getText(),Rencana.getText(),Instruksi.getText(),Dipulangkan.getSelectedItem().toString(),KeteranganDipulangkan.getText(),DirawatDiRuang.getText(),IndikasiRanap.getText(),DirujukKe.getText(),Alasandirujuk.getSelectedItem().toString(),
-                    PulangPaksa.getSelectedItem().toString(),KeteranganPulangPaksa.getText(),MeninggalIGD.getSelectedItem().toString(),PenyebabKematian.getText(),PulangKesadaran.getSelectedItem().toString(),PulangTD.getText(),PulangNadi.getText(),PulangRR.getText(),PulangSuhu.getText(),PulangGCS.getText(),Edukasi.getText()
+            if(Sequel.menyimpantf("penilaian_medis_ralan_gawat_darurat_psikiatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",75,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),GejalaMenyertai.getText(),
+                    FaktorPencetus.getText(),RiwayatPenyakitDahulu.getSelectedItem().toString(),KeteranganRiwayatPenyakitDahulu.getText(),RiwayatKehamilan.getText(),RiwayatSosial.getSelectedItem().toString(),KeteranganRiwayatSosial.getText(),RiwayatPekerjaan.getSelectedItem().toString(),
+                    KeteranganRiwayatPekerjaan.getText(),RiwayatObatDiminum.getText(),FaktorPremorbid.getText(),FaktorKeturunan.getSelectedItem().toString(),KeteranganFaktorKeturunan.getText(),FaktorOrganik.getSelectedItem().toString(),KeteranganFaktorOrganik.getText(),RiwayatAlergi.getText(),
+                    FisikKesadaran.getSelectedItem().toString(),FisikTD.getText(),FisikRR.getText(),FisikSuhu.getText(),FisikNyeri.getSelectedItem().toString(),FisikNadi.getText(),FisikBB.getText(),FisikTB.getText(),FisikStatusNutrisi.getText(),FisikGCS.getText(),
+                    StatusKepala.getSelectedItem().toString(),KeteranganStatusKepala.getText(),StatusLeher.getSelectedItem().toString(),KeteranganStatusLeher.getText(),StatusDada.getSelectedItem().toString(),KeteranganStatusDada.getText(),StatusPerut.getSelectedItem().toString(),
+                    KeteranganStatusPerut.getText(),StatusAnggotaGerak.getSelectedItem().toString(),KeteranganStatusAnggotaGerak.getText(),StatusLokalisata.getText(),PsikiatriKesanUmum.getText(),PsikiatriSikap.getText(),PsikiatriKesadaran.getText(),PsikiatriOrientasi.getText(),
+                    PsikiatriDayaIngat.getText(),PsikiatriPersepsi.getText(),PsikiatriPikiran.getText(),PsikiatriInsight.getText(),Laborat.getText(),Radiologi.getText(),EKG.getText(),Diagnosis.getText(),Permasalahan.getText(),Instruksi.getText(),Rencana.getText(),
+                    Dipulangkan.getSelectedItem().toString(),KeteranganDipulangkan.getText(),DirawatDiRuang.getText(),IndikasiRanap.getText(),DirujukKe.getText(),Alasandirujuk.getSelectedItem().toString(),PulangPaksa.getSelectedItem().toString(),KeteranganPulangPaksa.getText(),
+                    MeninggalIGD.getSelectedItem().toString(),PenyebabKematian.getText(),PulangKesadaran.getSelectedItem().toString(),PulangTD.getText(),PulangNadi.getText(),PulangGCS.getText(),PulangSuhu.getText(),PulangRR.getText(),Edukasi.getText()
                 })==true){
-                    emptTeks();
+                    tabMode.addRow(new String[]{
+                        TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),
+                        Hubungan.getText(),KeluhanUtama.getText(),GejalaMenyertai.getText(),FaktorPencetus.getText(),RiwayatPenyakitDahulu.getSelectedItem().toString(),KeteranganRiwayatPenyakitDahulu.getText(),RiwayatKehamilan.getText(),RiwayatSosial.getSelectedItem().toString(),KeteranganRiwayatSosial.getText(),
+                        RiwayatPekerjaan.getSelectedItem().toString(),KeteranganRiwayatPekerjaan.getText(),RiwayatObatDiminum.getText(),FaktorPremorbid.getText(),FaktorKeturunan.getSelectedItem().toString(),KeteranganFaktorKeturunan.getText(),FaktorOrganik.getSelectedItem().toString(),KeteranganFaktorOrganik.getText(),
+                        RiwayatAlergi.getText(),FisikKesadaran.getSelectedItem().toString(),FisikTD.getText(),FisikRR.getText(),FisikSuhu.getText(),FisikNyeri.getSelectedItem().toString(),FisikNadi.getText(),FisikBB.getText(),FisikTB.getText(),FisikStatusNutrisi.getText(),FisikGCS.getText(),
+                        StatusKepala.getSelectedItem().toString(),KeteranganStatusKepala.getText(),StatusLeher.getSelectedItem().toString(),KeteranganStatusLeher.getText(),StatusDada.getSelectedItem().toString(),KeteranganStatusDada.getText(),StatusPerut.getSelectedItem().toString(),
+                        KeteranganStatusPerut.getText(),StatusAnggotaGerak.getSelectedItem().toString(),KeteranganStatusAnggotaGerak.getText(),StatusLokalisata.getText(),PsikiatriKesanUmum.getText(),PsikiatriSikap.getText(),PsikiatriKesadaran.getText(),PsikiatriOrientasi.getText(),
+                        PsikiatriDayaIngat.getText(),PsikiatriPersepsi.getText(),PsikiatriPikiran.getText(),PsikiatriInsight.getText(),Laborat.getText(),Radiologi.getText(),EKG.getText(),Diagnosis.getText(),Permasalahan.getText(),Instruksi.getText(),Rencana.getText(),
+                        Dipulangkan.getSelectedItem().toString(),KeteranganDipulangkan.getText(),DirawatDiRuang.getText(),IndikasiRanap.getText(),DirujukKe.getText(),Alasandirujuk.getSelectedItem().toString(),PulangPaksa.getSelectedItem().toString(),KeteranganPulangPaksa.getText(),
+                        MeninggalIGD.getSelectedItem().toString(),PenyebabKematian.getText(),PulangKesadaran.getSelectedItem().toString(),PulangTD.getText(),PulangNadi.getText(),PulangGCS.getText(),PulangSuhu.getText(),PulangRR.getText(),Edukasi.getText()
+                    });
+                    LCount.setText(""+tabMode.getRowCount());
             }
         }
     
@@ -2786,8 +2794,10 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        TCari.setText("");
-        tampil();
+        if(TabRawat.getSelectedIndex()==1){
+            TCari.setText("");
+            tampil();
+        }
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -2845,27 +2855,27 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void FisikBBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikBBKeyPressed
-        Valid.pindah(evt,FisikRR,FisikTB);
+        Valid.pindah(evt,FisikNadi,FisikTB);
     }//GEN-LAST:event_FisikBBKeyPressed
 
-    private void FasikNadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FasikNadiKeyPressed
-        Valid.pindah(evt,FisikTD,FisikSuhu);
-    }//GEN-LAST:event_FasikNadiKeyPressed
+    private void FisikNadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikNadiKeyPressed
+        Valid.pindah(evt,FisikNyeri,FisikBB);
+    }//GEN-LAST:event_FisikNadiKeyPressed
 
     private void FisikSuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikSuhuKeyPressed
-        Valid.pindah(evt,FasikNadi,FisikRR);
+        Valid.pindah(evt,FisikRR,FisikNyeri);
     }//GEN-LAST:event_FisikSuhuKeyPressed
 
     private void FisikTDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikTDKeyPressed
-        Valid.pindah(evt,FisikNyeri,FasikNadi);
+        Valid.pindah(evt,FisikKesadaran,FisikRR);
     }//GEN-LAST:event_FisikTDKeyPressed
 
     private void FisikRRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikRRKeyPressed
-        Valid.pindah(evt,FisikSuhu,FisikBB);
+        Valid.pindah(evt,FisikTD,FisikSuhu);
     }//GEN-LAST:event_FisikRRKeyPressed
 
     private void RiwayatAlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatAlergiKeyPressed
-        Valid.pindah(evt,RiwayatPenyakitDahulu,KeteranganRiwayatPenyakitDahulu);
+        Valid.pindah(evt,KeteranganFaktorOrganik,FisikKesadaran);
     }//GEN-LAST:event_RiwayatAlergiKeyPressed
 
     private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
@@ -2873,33 +2883,27 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_AnamnesisKeyPressed
 
     private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
-        Valid.pindah2(evt,Hubungan,RiwayatPenyakitDahulu);
+        Valid.pindah2(evt,Hubungan,GejalaMenyertai);
     }//GEN-LAST:event_KeluhanUtamaKeyPressed
 
     private void RiwayatObatDiminumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatObatDiminumKeyPressed
-        Valid.pindah2(evt,RiwayatPenyakitDahulu,RiwayatAlergi);
+        Valid.pindah2(evt,KeteranganRiwayatPekerjaan,FaktorPremorbid);
     }//GEN-LAST:event_RiwayatObatDiminumKeyPressed
 
     private void FisikTBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikTBKeyPressed
         Valid.pindah(evt,FisikBB,FisikStatusNutrisi);
     }//GEN-LAST:event_FisikTBKeyPressed
 
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
-
     private void KeteranganRiwayatPenyakitDahuluKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRiwayatPenyakitDahuluKeyPressed
-        Valid.pindah2(evt,KeluhanUtama,RiwayatPenyakitDahulu);
+        Valid.pindah2(evt,RiwayatPenyakitDahulu,RiwayatKehamilan);
     }//GEN-LAST:event_KeteranganRiwayatPenyakitDahuluKeyPressed
 
     private void FisikKesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikKesadaranKeyPressed
-        Valid.pindah(evt,KeteranganRiwayatPenyakitDahulu,FisikNyeri);
+        Valid.pindah(evt,RiwayatAlergi,FisikTD);
     }//GEN-LAST:event_FisikKesadaranKeyPressed
 
     private void FisikStatusNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikStatusNutrisiKeyPressed
-        Valid.pindah(evt,FisikTB,StatusPerut);
+        Valid.pindah(evt,FisikTB,FisikGCS);
     }//GEN-LAST:event_FisikStatusNutrisiKeyPressed
 
     private void StatusKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusKepalaKeyPressed
@@ -2965,7 +2969,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
     private void FisikNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikNyeriKeyPressed
-         Valid.pindah(evt,FisikKesadaran,FisikTD);
+         Valid.pindah(evt,FisikSuhu,FisikNadi);
     }//GEN-LAST:event_FisikNyeriKeyPressed
 
     private void StatusPerutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusPerutKeyPressed
@@ -3085,59 +3089,59 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_PulangGCSKeyPressed
 
     private void FisikGCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikGCSKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FisikStatusNutrisi,StatusKepala);
     }//GEN-LAST:event_FisikGCSKeyPressed
 
     private void FaktorPencetusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorPencetusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,GejalaMenyertai,RiwayatPenyakitDahulu);
     }//GEN-LAST:event_FaktorPencetusKeyPressed
 
     private void GejalaMenyertaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GejalaMenyertaiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KeluhanUtama,FaktorPencetus);
     }//GEN-LAST:event_GejalaMenyertaiKeyPressed
 
     private void RiwayatPenyakitDahuluKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahuluKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorPencetus,KeteranganRiwayatPenyakitDahulu);
     }//GEN-LAST:event_RiwayatPenyakitDahuluKeyPressed
 
     private void RiwayatKehamilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatKehamilanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KeteranganRiwayatPenyakitDahulu,RiwayatSosial);
     }//GEN-LAST:event_RiwayatKehamilanKeyPressed
 
     private void RiwayatSosialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatSosialKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RiwayatKehamilan,KeteranganRiwayatSosial);
     }//GEN-LAST:event_RiwayatSosialKeyPressed
 
     private void KeteranganRiwayatSosialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRiwayatSosialKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RiwayatSosial,RiwayatPekerjaan);
     }//GEN-LAST:event_KeteranganRiwayatSosialKeyPressed
 
     private void RiwayatPekerjaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPekerjaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRiwayatSosial,KeteranganRiwayatPekerjaan);
     }//GEN-LAST:event_RiwayatPekerjaanKeyPressed
 
     private void KeteranganRiwayatPekerjaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRiwayatPekerjaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RiwayatPekerjaan,RiwayatObatDiminum);
     }//GEN-LAST:event_KeteranganRiwayatPekerjaanKeyPressed
 
     private void FaktorKeturunanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorKeturunanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorPremorbid,KeteranganFaktorKeturunan);
     }//GEN-LAST:event_FaktorKeturunanKeyPressed
 
     private void FaktorPremorbidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorPremorbidKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RiwayatObatDiminum,FaktorKeturunan);
     }//GEN-LAST:event_FaktorPremorbidKeyPressed
 
     private void KeteranganFaktorKeturunanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganFaktorKeturunanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorKeturunan,FaktorOrganik);
     }//GEN-LAST:event_KeteranganFaktorKeturunanKeyPressed
 
     private void FaktorOrganikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorOrganikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganFaktorKeturunan,KeteranganFaktorOrganik);
     }//GEN-LAST:event_FaktorOrganikKeyPressed
 
     private void KeteranganFaktorOrganikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganFaktorOrganikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaktorOrganik,RiwayatAlergi);
     }//GEN-LAST:event_KeteranganFaktorOrganikKeyPressed
 
     private void KeteranganStatusDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganStatusDadaKeyPressed
@@ -3220,10 +3224,10 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     private widget.ComboBox FaktorOrganik;
     private widget.TextArea FaktorPencetus;
     private widget.TextBox FaktorPremorbid;
-    private widget.TextBox FasikNadi;
     private widget.TextBox FisikBB;
     private widget.TextBox FisikGCS;
     private widget.ComboBox FisikKesadaran;
+    private widget.TextBox FisikNadi;
     private widget.ComboBox FisikNyeri;
     private widget.TextBox FisikRR;
     private widget.TextBox FisikStatusNutrisi;
@@ -3546,77 +3550,77 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     public void emptTeks() {
         TglAsuhan.setDate(new Date());
         Anamnesis.setSelectedIndex(0);
-        Hubungan.getText();
-        KeluhanUtama.getText();
-        GejalaMenyertai.getText();
-        FaktorPencetus.getText();
-        RiwayatPenyakitDahulu.getSelectedItem().toString();
-        KeteranganRiwayatPenyakitDahulu.getText();
-        RiwayatKehamilan.getText();
-        RiwayatSosial.getSelectedItem().toString();
-        KeteranganRiwayatSosial.getText();
-        RiwayatPekerjaan.getSelectedItem().toString();
-        KeteranganRiwayatPekerjaan.getText();
-        RiwayatObatDiminum.getText();
-        FaktorPremorbid.getText();
-        FaktorKeturunan.getSelectedItem().toString();
-        KeteranganFaktorKeturunan.getText();
-        FaktorOrganik.getSelectedItem().toString();
-        KeteranganFaktorOrganik.getText();
-        RiwayatAlergi.getText();
-        FisikKesadaran.getSelectedItem().toString();
-        FisikTD.getText();
-        FisikRR.getText();
-        FisikSuhu.getText();
-        FisikNyeri.getSelectedItem().toString();
-        FasikNadi.getText();
-        FisikBB.getText();
-        FisikTB.getText();
-        FisikStatusNutrisi.getText();
-        FisikGCS.getText();
-        StatusKepala.getSelectedItem().toString();
-        KeteranganStatusKepala.getText();
-        StatusLeher.getSelectedItem().toString();
-        KeteranganStatusLeher.getText();
-        StatusDada.getSelectedItem().toString();
-        KeteranganStatusDada.getText();
-        StatusPerut.getSelectedItem().toString();
-        KeteranganStatusPerut.getText();
-        StatusAnggotaGerak.getSelectedItem().toString();
-        KeteranganStatusAnggotaGerak.getText();
-        StatusLokalisata.getText();
-        PsikiatriKesanUmum.getText();
-        PsikiatriSikap.getText();
-        PsikiatriKesadaran.getText();
-        PsikiatriOrientasi.getText();
-        PsikiatriDayaIngat.getText();
-        PsikiatriPersepsi.getText();
-        PsikiatriPikiran.getText();
-        PsikiatriInsight.getText();
-        Laborat.getText();
-        Radiologi.getText();
-        EKG.getText();
-        Diagnosis.getText();
-        Permasalahan.getText();
-        Instruksi.getText();
-        Rencana.getText();
-        Dipulangkan.getSelectedItem().toString();
-        KeteranganDipulangkan.getText();
-        DirawatDiRuang.getText();
-        IndikasiRanap.getText();
-        DirujukKe.getText();
-        Alasandirujuk.getSelectedItem().toString();
-        PulangPaksa.getSelectedItem().toString();
-        KeteranganPulangPaksa.getText();
-        MeninggalIGD.getSelectedItem().toString();
-        PenyebabKematian.getText();
-        PulangKesadaran.getSelectedItem().toString();
-        PulangTD.getText();
-        PulangNadi.getText();
-        PulangGCS.getText();
-        PulangSuhu.getText();
-        PulangRR.getText();
-        Edukasi.getText();
+        Hubungan.setText("");
+        KeluhanUtama.setText("");
+        GejalaMenyertai.setText("");
+        FaktorPencetus.setText("");
+        RiwayatPenyakitDahulu.setSelectedIndex(0);
+        KeteranganRiwayatPenyakitDahulu.setText("");
+        RiwayatKehamilan.setText("");
+        RiwayatSosial.setSelectedIndex(0);
+        KeteranganRiwayatSosial.setText("");
+        RiwayatPekerjaan.setSelectedIndex(0);
+        KeteranganRiwayatPekerjaan.setText("");
+        RiwayatObatDiminum.setText("");
+        FaktorPremorbid.setText("");
+        FaktorKeturunan.setSelectedIndex(0);
+        KeteranganFaktorKeturunan.setText("");
+        FaktorOrganik.setSelectedIndex(0);
+        KeteranganFaktorOrganik.setText("");
+        RiwayatAlergi.setText("");
+        FisikKesadaran.setSelectedIndex(0);
+        FisikTD.setText("");
+        FisikRR.setText("");
+        FisikSuhu.setText("");
+        FisikNyeri.setSelectedIndex(0);
+        FisikNadi.setText("");
+        FisikBB.setText("");
+        FisikTB.setText("");
+        FisikStatusNutrisi.setText("");
+        FisikGCS.setText("");
+        StatusKepala.setSelectedIndex(0);
+        KeteranganStatusKepala.setText("");
+        StatusLeher.setSelectedIndex(0);
+        KeteranganStatusLeher.setText("");
+        StatusDada.setSelectedIndex(0);
+        KeteranganStatusDada.setText("");
+        StatusPerut.setSelectedIndex(0);
+        KeteranganStatusPerut.setText("");
+        StatusAnggotaGerak.setSelectedIndex(0);
+        KeteranganStatusAnggotaGerak.setText("");
+        StatusLokalisata.setText("");
+        PsikiatriKesanUmum.setText("");
+        PsikiatriSikap.setText("");
+        PsikiatriKesadaran.setText("");
+        PsikiatriOrientasi.setText("");
+        PsikiatriDayaIngat.setText("");
+        PsikiatriPersepsi.setText("");
+        PsikiatriPikiran.setText("");
+        PsikiatriInsight.setText("");
+        Laborat.setText("");
+        Radiologi.setText("");
+        EKG.setText("");
+        Diagnosis.setText("");
+        Permasalahan.setText("");
+        Instruksi.setText("");
+        Rencana.setText("");
+        Dipulangkan.setSelectedIndex(0);
+        KeteranganDipulangkan.setText("");
+        DirawatDiRuang.setText("");
+        IndikasiRanap.setText("");
+        DirujukKe.setText("");
+        Alasandirujuk.setSelectedIndex(0);
+        PulangPaksa.setSelectedIndex(0);
+        KeteranganPulangPaksa.setText("");
+        MeninggalIGD.setSelectedIndex(0);
+        PenyebabKematian.setText("");
+        PulangKesadaran.setSelectedIndex(0);
+        PulangTD.setText("");
+        PulangNadi.setText("");
+        PulangGCS.setText("");
+        PulangSuhu.setText("");
+        PulangRR.setText("");
+        Edukasi.setText("");
         TabRawat.setSelectedIndex(0);
         Anamnesis.requestFocus();
     } 
@@ -3650,7 +3654,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             FisikKesadaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
             FisikNyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
             FisikTD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
-            FasikNadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            FisikNadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
             FisikSuhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             FisikRR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
             FisikBB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
@@ -3779,7 +3783,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
                 "tb=?,gcs=?,status_nutrisi=?,kepala=?,keterangan_kepala=?,leher=?,keterangan_leher=?,anggota_gerak=?,keterangan_gerak=?,dada=?,keterangan_dada=?,perut=?,keterangan_perut=?,keterangan_badan=?,kesan_utama=?,sikap=?,kesadaran1=?,orientasi=?,daya_ingat=?,persepsi=?,pikiran=?,insight=?,lab=?,rad=?,penunjang=?,permasalahan=?,rencana=?,instruksi=?,dipulangkan=?,ket_dipulangkan=?,ket_ruang=?,ket_indikasi=?,ket_dirujuk=?,"+
                 "ket_alasandirujuk=?,pulang_paksa=?,ket_pulangpaksa=?,meninggal=?,ket_meninggal=?,kesadaran2=?,td2=?,nadi2=?,rr2=?,suhu2=?,gcs2=?,edukasi=?",75,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                KeluhanUtama.getText(),GejalaMenyertai.getText(),FaktorPencetus.getText(),RiwayatPenyakitDahulu.getSelectedItem().toString(),KeteranganRiwayatPenyakitDahulu.getText(),RiwayatKehamilan.getText(),RiwayatSosial.getSelectedItem().toString(),KeteranganRiwayatSosial.getText(),RiwayatPekerjaan.getSelectedItem().toString(),KeteranganRiwayatPekerjaan.getText(),RiwayatObatDiminum.getText(),FaktorPremorbid.getText(),FaktorKeturunan.getSelectedItem().toString(),KeteranganFaktorKeturunan.getText(),FaktorOrganik.getSelectedItem().toString(),KeteranganFaktorOrganik.getText(),RiwayatAlergi.getText(),FisikKesadaran.getSelectedItem().toString(),FisikNyeri.getSelectedItem().toString(),FisikTD.getText(),FasikNadi.getText(), 
+                KeluhanUtama.getText(),GejalaMenyertai.getText(),FaktorPencetus.getText(),RiwayatPenyakitDahulu.getSelectedItem().toString(),KeteranganRiwayatPenyakitDahulu.getText(),RiwayatKehamilan.getText(),RiwayatSosial.getSelectedItem().toString(),KeteranganRiwayatSosial.getText(),RiwayatPekerjaan.getSelectedItem().toString(),KeteranganRiwayatPekerjaan.getText(),RiwayatObatDiminum.getText(),FaktorPremorbid.getText(),FaktorKeturunan.getSelectedItem().toString(),KeteranganFaktorKeturunan.getText(),FaktorOrganik.getSelectedItem().toString(),KeteranganFaktorOrganik.getText(),RiwayatAlergi.getText(),FisikKesadaran.getSelectedItem().toString(),FisikNyeri.getSelectedItem().toString(),FisikTD.getText(),FisikNadi.getText(), 
                 FisikSuhu.getText(),FisikRR.getText(),FisikBB.getText(),FisikTB.getText(),FisikGCS.getText(),FisikStatusNutrisi.getText(),StatusKepala.getSelectedItem().toString(),KeteranganStatusKepala.getText(),StatusLeher.getSelectedItem().toString(),KeteranganStatusLeher.getText(),StatusAnggotaGerak.getSelectedItem().toString(),KeteranganStatusAnggotaGerak.getText(),StatusDada.getSelectedItem().toString(),KeteranganStatusDada.getText(),StatusPerut.getSelectedItem().toString(),KeteranganStatusPerut.getText(),StatusLokalisata.getText(),PsikiatriKesanUmum.getText(),PsikiatriSikap.getText(),PsikiatriKesadaran.getText(),PsikiatriOrientasi.getText(),PsikiatriDayaIngat.getText(),PsikiatriPersepsi.getText(),PsikiatriPikiran.getText(),
                 PsikiatriInsight.getText(),Laborat.getText(),Radiologi.getText(),EKG.getText(),Permasalahan.getText(),Rencana.getText(),Instruksi.getText(),Dipulangkan.getSelectedItem().toString(),KeteranganDipulangkan.getText(),DirawatDiRuang.getText(),IndikasiRanap.getText(),DirujukKe.getText(),Alasandirujuk.getSelectedItem().toString(),PulangPaksa.getSelectedItem().toString(),KeteranganPulangPaksa.getText(),MeninggalIGD.getSelectedItem().toString(),PenyebabKematian.getText(),PulangKesadaran.getSelectedItem().toString(),PulangTD.getText(),PulangNadi.getText(),PulangRR.getText(),PulangSuhu.getText(),PulangGCS.getText(),
                 Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
@@ -3814,7 +3818,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
                tbObat.setValueAt(FisikKesadaran.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
                tbObat.setValueAt(FisikNyeri.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
                tbObat.setValueAt(FisikTD.getText(),tbObat.getSelectedRow(),29);
-               tbObat.setValueAt(FasikNadi.getText(),tbObat.getSelectedRow(),30);
+               tbObat.setValueAt(FisikNadi.getText(),tbObat.getSelectedRow(),30);
                tbObat.setValueAt(FisikSuhu.getText(),tbObat.getSelectedRow(),31);
                tbObat.setValueAt(FisikRR.getText(),tbObat.getSelectedRow(),32);
                tbObat.setValueAt(FisikBB.getText(),tbObat.getSelectedRow(),33);

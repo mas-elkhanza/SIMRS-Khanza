@@ -881,7 +881,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())){
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -914,7 +914,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1103,7 +1103,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
     private void MnCatatanADIMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanADIMEActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
-            param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
+            param.put("diagnosa",Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.diagnosa_awal<>'' and kamar_inap.no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirCatatanADIMEGizi.jasper","report","::[ Formulir Catatan ADIME Gizi Pasien ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,catatan_adime_gizi.tanggal,catatan_adime_gizi.asesmen,catatan_adime_gizi.diagnosis,"+

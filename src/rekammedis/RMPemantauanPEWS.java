@@ -1068,7 +1068,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
+            param.put("diagnosa",Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.diagnosa_awal<>'' and kamar_inap.no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirPemantauanPEWS.jasper","report","::[ Pemantauan PEWS ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur, "+
                     "pasien.jk,pasien.tgl_lahir,pemantauan_pews_anak.tanggal,pemantauan_pews_anak.parameter_perilaku,pemantauan_pews_anak.skor_perilaku,pemantauan_pews_anak.parameter_crt_atau_warna_kulit,pemantauan_pews_anak.skor_crt_atau_warna_kulit, "+

@@ -1317,7 +1317,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
+            param.put("diagnosa",Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.diagnosa_awal<>'' and kamar_inap.no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirPemantauanEWSNeonatus.jasper","report","::[ Pemantauan EWS Neonatus ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pemantauan_ews_neonatus.tanggal,"+
                     "pemantauan_ews_neonatus.parameter1,pemantauan_ews_neonatus.skor1,pemantauan_ews_neonatus.parameter2,pemantauan_ews_neonatus.skor2,pemantauan_ews_neonatus.parameter3,"+
