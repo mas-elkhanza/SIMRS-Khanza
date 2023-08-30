@@ -2911,11 +2911,11 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_StatusKepalaKeyPressed
 
     private void StatusAnggotaGerakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusAnggotaGerakKeyPressed
-        Valid.pindah(evt,KeteranganStatusLeher,KeteranganStatusAnggotaGerak);
+        Valid.pindah(evt,KeteranganStatusPerut,KeteranganStatusAnggotaGerak);
     }//GEN-LAST:event_StatusAnggotaGerakKeyPressed
 
     private void StatusDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusDadaKeyPressed
-        Valid.pindah(evt,KeteranganStatusAnggotaGerak,KeteranganStatusDada);
+        Valid.pindah(evt,KeteranganStatusLeher,KeteranganStatusDada);
     }//GEN-LAST:event_StatusDadaKeyPressed
 
     private void StatusLeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusLeherKeyPressed
@@ -2981,15 +2981,15 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_KeteranganStatusKepalaKeyPressed
 
     private void KeteranganStatusLeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganStatusLeherKeyPressed
-        Valid.pindah(evt,StatusLeher,StatusAnggotaGerak);
+        Valid.pindah(evt,StatusLeher,StatusDada);
     }//GEN-LAST:event_KeteranganStatusLeherKeyPressed
 
     private void KeteranganStatusAnggotaGerakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganStatusAnggotaGerakKeyPressed
-        Valid.pindah(evt,StatusAnggotaGerak,StatusDada);
+        Valid.pindah(evt,StatusAnggotaGerak,StatusLokalisata);
     }//GEN-LAST:event_KeteranganStatusAnggotaGerakKeyPressed
 
     private void PsikiatriKesanUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriKesanUmumKeyPressed
-        Valid.pindah(evt,StatusDada,StatusPerut);
+        Valid.pindah(evt,StatusLokalisata,PsikiatriSikap);
     }//GEN-LAST:event_PsikiatriKesanUmumKeyPressed
 
     private void KeteranganStatusPerutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganStatusPerutKeyPressed
@@ -2997,15 +2997,15 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_KeteranganStatusPerutKeyPressed
 
     private void StatusLokalisataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusLokalisataKeyPressed
-        Valid.pindah2(evt,KeteranganStatusAnggotaGerak,StatusLokalisata);
+        Valid.pindah2(evt,KeteranganStatusAnggotaGerak,PsikiatriKesanUmum);
     }//GEN-LAST:event_StatusLokalisataKeyPressed
 
     private void EKGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGKeyPressed
-        Valid.pindah2(evt,Radiologi,Rencana);
+        Valid.pindah2(evt,Radiologi,Diagnosis);
     }//GEN-LAST:event_EKGKeyPressed
 
     private void LaboratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LaboratKeyPressed
-        Valid.pindah2(evt,StatusLokalisata,Radiologi);
+        Valid.pindah2(evt,PsikiatriInsight,Radiologi);
     }//GEN-LAST:event_LaboratKeyPressed
 
     private void RadiologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RadiologiKeyPressed
@@ -3013,79 +3013,79 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_RadiologiKeyPressed
 
     private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        Valid.pindah2(evt,Edukasi,BtnSimpan);
+        Valid.pindah2(evt,PulangRR,BtnSimpan);
     }//GEN-LAST:event_EdukasiKeyPressed
 
     private void InstruksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InstruksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Permasalahan,Rencana);
     }//GEN-LAST:event_InstruksiKeyPressed
 
     private void PermasalahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PermasalahanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Diagnosis,Instruksi);
     }//GEN-LAST:event_PermasalahanKeyPressed
 
     private void DipulangkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DipulangkanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Rencana,KeteranganDipulangkan);
     }//GEN-LAST:event_DipulangkanKeyPressed
 
     private void DirawatDiRuangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DirawatDiRuangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganDipulangkan,IndikasiRanap);
     }//GEN-LAST:event_DirawatDiRuangKeyPressed
 
     private void KeteranganPulangPaksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPulangPaksaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PulangPaksa,MeninggalIGD);
     }//GEN-LAST:event_KeteranganPulangPaksaKeyPressed
 
     private void IndikasiRanapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IndikasiRanapKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DirawatDiRuang,DirujukKe);
     }//GEN-LAST:event_IndikasiRanapKeyPressed
 
     private void AlasandirujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasandirujukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DirujukKe,PulangPaksa);
     }//GEN-LAST:event_AlasandirujukKeyPressed
 
     private void DirujukKeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DirujukKeKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,IndikasiRanap,Alasandirujuk);
     }//GEN-LAST:event_DirujukKeKeyPressed
 
     private void MeninggalIGDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MeninggalIGDKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganPulangPaksa,PenyebabKematian);
     }//GEN-LAST:event_MeninggalIGDKeyPressed
 
     private void KeteranganDipulangkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganDipulangkanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Dipulangkan,DirawatDiRuang);
     }//GEN-LAST:event_KeteranganDipulangkanKeyPressed
 
     private void PulangPaksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulangPaksaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Alasandirujuk,KeteranganPulangPaksa);
     }//GEN-LAST:event_PulangPaksaKeyPressed
 
     private void PenyebabKematianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyebabKematianKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MeninggalIGD,PulangKesadaran);
     }//GEN-LAST:event_PenyebabKematianKeyPressed
 
     private void PulangKesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulangKesadaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenyebabKematian,PulangTD);
     }//GEN-LAST:event_PulangKesadaranKeyPressed
 
     private void PulangTDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulangTDKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PulangKesadaran,PulangNadi);
     }//GEN-LAST:event_PulangTDKeyPressed
 
     private void PulangNadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulangNadiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PulangTD,PulangGCS);
     }//GEN-LAST:event_PulangNadiKeyPressed
 
     private void PulangRRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulangRRKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PulangSuhu,Edukasi);
     }//GEN-LAST:event_PulangRRKeyPressed
 
     private void PulangSuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulangSuhuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PulangGCS,PulangRR);
     }//GEN-LAST:event_PulangSuhuKeyPressed
 
     private void PulangGCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulangGCSKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PulangNadi,PulangSuhu);
     }//GEN-LAST:event_PulangGCSKeyPressed
 
     private void FisikGCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikGCSKeyPressed
@@ -3145,43 +3145,43 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
     }//GEN-LAST:event_KeteranganFaktorOrganikKeyPressed
 
     private void KeteranganStatusDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganStatusDadaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,StatusDada,StatusPerut);
     }//GEN-LAST:event_KeteranganStatusDadaKeyPressed
 
     private void PsikiatriSikapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriSikapKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PsikiatriKesanUmum,PsikiatriKesadaran);
     }//GEN-LAST:event_PsikiatriSikapKeyPressed
 
     private void PsikiatriKesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriKesadaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PsikiatriSikap,PsikiatriOrientasi);
     }//GEN-LAST:event_PsikiatriKesadaranKeyPressed
 
     private void PsikiatriOrientasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriOrientasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PsikiatriKesadaran,PsikiatriDayaIngat);
     }//GEN-LAST:event_PsikiatriOrientasiKeyPressed
 
     private void PsikiatriDayaIngatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriDayaIngatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PsikiatriOrientasi,PsikiatriPersepsi);
     }//GEN-LAST:event_PsikiatriDayaIngatKeyPressed
 
     private void PsikiatriPersepsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriPersepsiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PsikiatriDayaIngat,PsikiatriPikiran);
     }//GEN-LAST:event_PsikiatriPersepsiKeyPressed
 
     private void PsikiatriPikiranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriPikiranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PsikiatriPersepsi,PsikiatriInsight);
     }//GEN-LAST:event_PsikiatriPikiranKeyPressed
 
     private void PsikiatriInsightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikiatriInsightKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PsikiatriPikiran,Laborat);
     }//GEN-LAST:event_PsikiatriInsightKeyPressed
 
     private void RencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Instruksi,Dipulangkan);
     }//GEN-LAST:event_RencanaKeyPressed
 
     private void DiagnosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKeyPressed
-        //Valid.pindah2(evt,Laborat,Tatalaksana);
+        Valid.pindah2(evt,EKG,Permasalahan);
     }//GEN-LAST:event_DiagnosisKeyPressed
 
     /**
