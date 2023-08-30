@@ -64,8 +64,8 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
                 "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama",
                 "Gejala Menyertai","Faktor Pencetus","Riwayat Penyakit Dahulu","Keterangan Riwayat Penyakit Dahulu","Riwayat Kehamilan","Riwayat Sosial",
                 "Keterangan Riwayat Sosial","Riwayat Pekerjaan","Keterangan Riwayat Pekerjaan","Riwayat Obat Yang Diminum","Faktor Kepribadian Premorbid",
-                "Faktor Keturunan","Keterangan Faktor Keturunan","Faktor Organik","Keterangan Faktor Organik","Riwayat Alergi","Kesadaran","TD",
-                "RR","Suhu","Nyeri","Nadi","BB","TB","Status Nutrisi","GCS","Kelainan Kepala","Keterangan Kelainan Kepala","Kelainan Leher",
+                "Faktor Keturunan","Keterangan Faktor Keturunan","Faktor Organik","Keterangan Faktor Organik","Riwayat Alergi","Kesadaran","TD(mmHg)",
+                "RR(x/menit)","Suhu(°C)","Nyeri","Nadi(x/menit)","BB(Kg)","TB(Cm)","Status Nutrisi","GCS(E,V,M)","Kelainan Kepala","Keterangan Kelainan Kepala","Kelainan Leher",
                 "Keterangan Kelainan Leher","Kelainan Dada","Keterangan Kelainan Dada","Kelainan Perut","Keterangan Kelainan Perut","Kelainan Anggota Gerak",
                 "Keterangan Kelainan Anggota Gerak","Keterangan Lokalisata","Psikiatrik Kesan Umum","Psikiatrik Sikap Prilaku","Psikiatrik Kesadaran",
                 "Psikiatrik Orientasi","Psikiatrik Daya Ingat","Psikiatrik Persepsi","Psikiatrik Pikiran","Psikiatrik Insight","Penunjang Laboratorium",
@@ -138,6 +138,26 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }else if(i==26){
                 column.setPreferredWidth(150);
             }else if(i==27){
+                column.setPreferredWidth(80);
+            }else if(i==28){
+                column.setPreferredWidth(60);
+            }else if(i==29){
+                column.setPreferredWidth(67);
+            }else if(i==30){
+                column.setPreferredWidth(51);
+            }else if(i==31){
+                column.setPreferredWidth(115);
+            }else if(i==32){
+                column.setPreferredWidth(75);
+            }else if(i==33){
+                column.setPreferredWidth(43);
+            }else if(i==34){
+                column.setPreferredWidth(43);
+            }else if(i==35){
+                column.setPreferredWidth(120);
+            }else if(i==36){
+                column.setPreferredWidth(65);
+            }else if(i==37){
                 column.setPreferredWidth(90);
             }
         }
