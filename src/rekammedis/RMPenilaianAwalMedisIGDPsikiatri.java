@@ -104,7 +104,41 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             }else if(i==9){
                 column.setPreferredWidth(100);
             }else if(i==10){
+                column.setPreferredWidth(250);
+            }else if(i==11){
                 column.setPreferredWidth(200);
+            }else if(i==12){
+                column.setPreferredWidth(200);
+            }else if(i==13){
+                column.setPreferredWidth(129);
+            }else if(i==14){
+                column.setPreferredWidth(200);
+            }else if(i==15){
+                column.setPreferredWidth(200);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(125);
+            }else if(i==19){
+                column.setPreferredWidth(160);
+            }else if(i==20){
+                column.setPreferredWidth(200);
+            }else if(i==21){
+                column.setPreferredWidth(153);
+            }else if(i==22){
+                column.setPreferredWidth(93);
+            }else if(i==23){
+                column.setPreferredWidth(151);
+            }else if(i==24){
+                column.setPreferredWidth(80);
+            }else if(i==25){
+                column.setPreferredWidth(150);
+            }else if(i==26){
+                column.setPreferredWidth(150);
+            }else if(i==27){
+                column.setPreferredWidth(90);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
