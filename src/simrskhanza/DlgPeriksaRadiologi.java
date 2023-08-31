@@ -2234,23 +2234,23 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     
                     mAS="";
                     if(tbPemeriksaan.getValueAt(i,13).toString().length()>10){
-                        kV=tbPemeriksaan.getValueAt(i,13).toString().substring(0,9);
+                        mAS=tbPemeriksaan.getValueAt(i,13).toString().substring(0,9);
                     }else{
-                        kV=tbPemeriksaan.getValueAt(i,13).toString();
+                        mAS=tbPemeriksaan.getValueAt(i,13).toString();
                     }
                     
                     FFD="";
                     if(tbPemeriksaan.getValueAt(i,14).toString().length()>10){
-                        kV=tbPemeriksaan.getValueAt(i,14).toString().substring(0,9);
+                        FFD=tbPemeriksaan.getValueAt(i,14).toString().substring(0,9);
                     }else{
-                        kV=tbPemeriksaan.getValueAt(i,14).toString();
+                        FFD=tbPemeriksaan.getValueAt(i,14).toString();
                     }
                     
                     BSF="";
                     if(tbPemeriksaan.getValueAt(i,15).toString().length()>10){
-                        kV=tbPemeriksaan.getValueAt(i,15).toString().substring(0,9);
+                        BSF=tbPemeriksaan.getValueAt(i,15).toString().substring(0,9);
                     }else{
-                        kV=tbPemeriksaan.getValueAt(i,15).toString();
+                        BSF=tbPemeriksaan.getValueAt(i,15).toString();
                     }
                     
                     inak="";
