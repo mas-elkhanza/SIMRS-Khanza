@@ -21226,8 +21226,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                           "<tr>"+
                                                "<td width='50%'>Dada : "+rs2.getString("status_kelainan_dada")+(rs2.getString("keterangan_status_kelainan_dada").equals("")?"":", "+rs2.getString("keterangan_status_kelainan_dada"))+"</td>"+
-                                          "</tr>"+
-                                          "<tr>"+
                                                "<td width='50%'></td>"+
                                           "</tr>"+
                                        "</table>"+
