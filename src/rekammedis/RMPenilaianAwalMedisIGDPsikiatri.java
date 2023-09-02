@@ -2946,12 +2946,14 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("wajah1",Sequel.cariGambar("select gambar.wajah1 from gambar")); 
-            param.put("wajah2",Sequel.cariGambar("select gambar.wajah2 from gambar")); 
+            try {
+                param.put("lokalis",getClass().getResource("/picture/LokalisOrtho.png").openStream()); 
+            } catch (Exception e) {
+            } 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanGawatDaruratPsikiatri.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Bedah Mulut ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanGawatDaruratPsikiatri.jasper","report","::[ Laporan Penilaian Awal Medis IGD Pesikiatri ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_gawat_darurat_psikiatri.tanggal,"+
                 "penilaian_medis_ralan_gawat_darurat_psikiatri.kd_dokter,penilaian_medis_ralan_gawat_darurat_psikiatri.anamnesis,penilaian_medis_ralan_gawat_darurat_psikiatri.hubungan,penilaian_medis_ralan_gawat_darurat_psikiatri.keluhan_utama,"+
                 "penilaian_medis_ralan_gawat_darurat_psikiatri.gejala_menyertai,penilaian_medis_ralan_gawat_darurat_psikiatri.faktor_pencetus,penilaian_medis_ralan_gawat_darurat_psikiatri.riwayat_penyakit_dahulu,"+
