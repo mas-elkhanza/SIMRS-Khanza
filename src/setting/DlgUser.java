@@ -4468,7 +4468,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_lanjutan_resiko_jatuh_psikiatri='"+tbUser.getValueAt(i,975).toString()+"',"+
                     "penilaian_lanjutan_skrining_fungsional='"+tbUser.getValueAt(i,976).toString()+"',"+
                     "penilaian_medis_ralan_rehab_medik='"+tbUser.getValueAt(i,977).toString()+"',"+
-                    "laporan_anastesi='"+tbUser.getValueAt(i,978).toString()+"',"+
+                    "laporan_anestesi='"+tbUser.getValueAt(i,978).toString()+"',"+
                     "template_persetujuan_penolakan_tindakan='"+tbUser.getValueAt(i,979).toString()+"',"+
                     "penilaian_medis_ralan_gawat_darurat_psikiatri='"+tbUser.getValueAt(i,980).toString()+"'")==true){
                     emptTeks();
@@ -5647,7 +5647,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "penilaian_lanjutan_resiko_jatuh_psikiatri='"+tbUser.getValueAt(barisdicopy,975).toString()+"',"+
                                         "penilaian_lanjutan_skrining_fungsional='"+tbUser.getValueAt(barisdicopy,976).toString()+"',"+
                                         "penilaian_medis_ralan_rehab_medik='"+tbUser.getValueAt(barisdicopy,977).toString()+"',"+
-                                        "laporan_anastesi='"+tbUser.getValueAt(barisdicopy,978).toString()+"',"+
+                                        "laporan_anestesi='"+tbUser.getValueAt(barisdicopy,978).toString()+"',"+
                                         "template_persetujuan_penolakan_tindakan='"+tbUser.getValueAt(barisdicopy,979).toString()+"',"+
                                         "penilaian_medis_ralan_gawat_darurat_psikiatri='"+tbUser.getValueAt(barisdicopy,980).toString()+"'");
                                 }
@@ -5934,7 +5934,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.pemeriksaan_fisik_ralan_per_penyakit,user.penilaian_lanjutan_resiko_jatuh_geriatri,user.pemantauan_ews_neonatus,user.validasi_persetujuan_pengajuan_biaya,"+
                 "user.riwayat_perawatan_icare_bpjs,user.rekap_pengajuan_biaya,user.penilaian_awal_medis_ralan_kulit_kelamin,user.akun_host_to_host_bank_mandiri,"+
                 "user.penilaian_medis_hemodialisa,user.penilaian_level_kecemasan_ranap_anak,user.penilaian_lanjutan_resiko_jatuh_psikiatri,user.penilaian_lanjutan_skrining_fungsional,"+
-                "user.penilaian_medis_ralan_rehab_medik,user.laporan_anastesi,user.template_persetujuan_penolakan_tindakan,user.penilaian_medis_ralan_gawat_darurat_psikiatri from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.penilaian_medis_ralan_rehab_medik,user.laporan_anestesi,user.template_persetujuan_penolakan_tindakan,user.penilaian_medis_ralan_gawat_darurat_psikiatri from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6925,7 +6925,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri"),
                                rs.getBoolean("penilaian_lanjutan_skrining_fungsional"),
                                rs.getBoolean("penilaian_medis_ralan_rehab_medik"),
-                               rs.getBoolean("laporan_anastesi"),
+                               rs.getBoolean("laporan_anestesi"),
                                rs.getBoolean("template_persetujuan_penolakan_tindakan"),
                                rs.getBoolean("penilaian_medis_ralan_gawat_darurat_psikiatri")
                             });
@@ -7907,7 +7907,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri"),
                            rs.getBoolean("penilaian_lanjutan_skrining_fungsional"),
                            rs.getBoolean("penilaian_medis_ralan_rehab_medik"),
-                           rs.getBoolean("laporan_anastesi"),
+                           rs.getBoolean("laporan_anestesi"),
                            rs.getBoolean("template_persetujuan_penolakan_tindakan"),
                             rs.getBoolean("penilaian_medis_ralan_gawat_darurat_psikiatri")
                         });
