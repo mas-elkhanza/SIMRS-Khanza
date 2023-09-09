@@ -12,6 +12,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -124,6 +125,8 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnCekKodeBooking = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -159,6 +162,24 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         NonJKNSelesai = new widget.Label();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnCekKodeBooking.setBackground(new java.awt.Color(255, 255, 254));
+        MnCekKodeBooking.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCekKodeBooking.setForeground(new java.awt.Color(50, 50, 50));
+        MnCekKodeBooking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCekKodeBooking.setText("Cek Kode Booking");
+        MnCekKodeBooking.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCekKodeBooking.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCekKodeBooking.setName("MnCekKodeBooking"); // NOI18N
+        MnCekKodeBooking.setPreferredSize(new java.awt.Dimension(160, 26));
+        MnCekKodeBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCekKodeBookingActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCekKodeBooking);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -171,6 +192,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJnsPerawatan.setComponentPopupMenu(jPopupMenu1);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         Scroll.setViewportView(tbJnsPerawatan);
 
@@ -224,7 +246,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-04-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -238,7 +260,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-04-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -412,8 +434,6 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnCariActionPerformed(null);
-        }else{
-//            Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
@@ -426,6 +446,21 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
             dispose();
         }
     }//GEN-LAST:event_BtnKeluar1KeyPressed
+
+    private void MnCekKodeBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCekKodeBookingActionPerformed
+        if(tbJnsPerawatan.getSelectedRow()!= -1){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            BPJSCekKodeBooking detail=new BPJSCekKodeBooking(null,false);
+            detail.tampil(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+            detail.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            detail.setLocationRelativeTo(internalFrame1);
+            detail.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau dicek...!!!!");
+            tbJnsPerawatan.requestFocus();
+        }
+    }//GEN-LAST:event_MnCekKodeBookingActionPerformed
 
     /**
     * @param args the command line arguments
@@ -481,6 +516,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     private widget.Label MJknBelum;
     private widget.Label MJknCapaian;
     private widget.Label MJknSelesai;
+    private javax.swing.JMenuItem MnCekKodeBooking;
     private widget.Label NonJKNBelum;
     private widget.Label NonJKNSelesai;
     private widget.Label SEPTerbit;
@@ -501,6 +537,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbJnsPerawatan;
