@@ -1792,7 +1792,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1806,7 +1806,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2691,6 +2691,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TTinggi_uteri.setHighlighter(null);
         TTinggi_uteri.setName("TTinggi_uteri"); // NOI18N
+        TTinggi_uteri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TTinggi_uteriActionPerformed(evt);
+            }
+        });
         TTinggi_uteri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TTinggi_uteriKeyPressed(evt);
@@ -3519,7 +3524,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -8811,6 +8816,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalMedisIGDPsikiatriActionPerformed
 
+    private void TTinggi_uteriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TTinggi_uteriActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TTinggi_uteriActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9363,7 +9372,26 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
     
     private void isRawat(){
+        String isiVod;
+        String isiVos;
+        String isiTod;
+        String isiTos;
         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",TNoRM,TNoRw.getText());
+        if(Sequel.cariInteger("SELECT COUNT(no_rawat) FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' ")>0){
+            isiVod = Sequel.cariIsi("SELECT vod FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' ");
+            isiVos = Sequel.cariIsi("SELECT vos FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' ");
+            isiTod = Sequel.cariIsi("SELECT tod FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' ");
+            isiTos = Sequel.cariIsi("SELECT tos FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' ");
+            TKeluhan.setText(Sequel.cariIsi("SELECT keluhan_utama FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+            TPemeriksaan.setText("VOD: "+isiVod+"   VOS: "+isiVos+"\nTOD: "+isiTod+"   TOS: "+isiTos);
+            TSuhu.setText(Sequel.cariIsi("SELECT suhu FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+            TTinggi.setText(Sequel.cariIsi("SELECT tb FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+            TBerat.setText(Sequel.cariIsi("SELECT bb FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+            TTensi.setText(Sequel.cariIsi("SELECT td FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+            TRespirasi.setText(Sequel.cariIsi("SELECT rr FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+            TNadi.setText(Sequel.cariIsi("SELECT nadi FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+            TGCS.setText(Sequel.cariIsi("SELECT gcs FROM penilaian_awal_keperawatan_ralan WHERE no_rawat='"+TNoRw.getText()+"' "));
+        }
         TCariPasien.setText(TNoRM.getText());
     }
 
