@@ -330,10 +330,10 @@ public final class ApotekBPJSCekReferensiSettingPPK extends javax.swing.JDialog 
 
     private void KodePPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePPKKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil(KodePPK.getText());
+            BtnCariActionPerformed(null);
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil(KodePPK.getText());
+            BtnCariActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
