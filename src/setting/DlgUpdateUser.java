@@ -183,7 +183,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             pemeriksaan_fisik_ralan_per_penyakit=false,penilaian_lanjutan_resiko_jatuh_geriatri=false,pemantauan_ews_neonatus=false,validasi_persetujuan_pengajuan_biaya=false,riwayat_perawatan_icare_bpjs=false,
             rekap_pengajuan_biaya=false,penilaian_awal_medis_ralan_kulit_kelamin=false,akun_host_to_host_bank_mandiri=false,penilaian_medis_hemodialisa=false,penilaian_level_kecemasan_ranap_anak=false,
             penilaian_lanjutan_resiko_jatuh_psikiatri=false,penilaian_lanjutan_skrining_fungsional=false,penilaian_medis_ralan_rehab_medik=false,laporan_anestesi=false,template_persetujuan_penolakan_tindakan=false,
-            penilaian_medis_ralan_gawat_darurat_psikiatri=false,bpjs_referensi_setting_apotek=false,bpjs_referensi_obat_apotek=false,bpjs_mapping_obat_apotek=false;
+            penilaian_medis_ralan_gawat_darurat_psikiatri=false,bpjs_referensi_setting_apotek=false,bpjs_referensi_obat_apotek=false,bpjs_mapping_obat_apotek=false,pembayaran_bank_mandiri=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -789,7 +789,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         pemeriksaan_fisik_ralan_per_penyakit=false;penilaian_lanjutan_resiko_jatuh_geriatri=false;pemantauan_ews_neonatus=false;validasi_persetujuan_pengajuan_biaya=false;riwayat_perawatan_icare_bpjs=false;
         rekap_pengajuan_biaya=false;penilaian_awal_medis_ralan_kulit_kelamin=false;akun_host_to_host_bank_mandiri=false;penilaian_medis_hemodialisa=false;penilaian_level_kecemasan_ranap_anak=false;
         penilaian_lanjutan_resiko_jatuh_psikiatri=false;penilaian_lanjutan_skrining_fungsional=false;penilaian_medis_ralan_rehab_medik=false;laporan_anestesi=false;template_persetujuan_penolakan_tindakan=false;
-        penilaian_medis_ralan_gawat_darurat_psikiatri=false;bpjs_referensi_setting_apotek=false;bpjs_referensi_obat_apotek=false;bpjs_mapping_obat_apotek=false;
+        penilaian_medis_ralan_gawat_darurat_psikiatri=false;bpjs_referensi_setting_apotek=false;bpjs_referensi_obat_apotek=false;bpjs_mapping_obat_apotek=false;pembayaran_bank_mandiri=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1009,7 +1009,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.riwayat_perawatan_icare_bpjs,user.rekap_pengajuan_biaya,user.penilaian_awal_medis_ralan_kulit_kelamin,user.akun_host_to_host_bank_mandiri,"+
                 "user.penilaian_medis_hemodialisa,user.penilaian_level_kecemasan_ranap_anak,user.penilaian_lanjutan_resiko_jatuh_psikiatri,user.penilaian_lanjutan_skrining_fungsional,"+
                 "user.penilaian_medis_ralan_rehab_medik,user.laporan_anestesi,user.template_persetujuan_penolakan_tindakan,user.penilaian_medis_ralan_gawat_darurat_psikiatri,"+
-                "user.bpjs_referensi_setting_apotek,user.bpjs_referensi_obat_apotek,user.bpjs_mapping_obat_apotek from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.bpjs_referensi_setting_apotek,user.bpjs_referensi_obat_apotek,user.bpjs_mapping_obat_apotek,user.pembayaran_bank_mandiri from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1121,7 +1121,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     checklist_kriteria_keluar_icu=rs.getBoolean("checklist_kriteria_keluar_icu");akses_dokter_lain_rawat_jalan=rs.getBoolean("akses_dokter_lain_rawat_jalan");follow_up_dbd=rs.getBoolean("follow_up_dbd");penilaian_risiko_jatuh_neonatus=rs.getBoolean("penilaian_risiko_jatuh_neonatus");persetujuan_pengajuan_biaya=rs.getBoolean("persetujuan_pengajuan_biaya");pemeriksaan_fisik_ralan_per_penyakit=rs.getBoolean("pemeriksaan_fisik_ralan_per_penyakit");penilaian_lanjutan_resiko_jatuh_geriatri=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_geriatri");pemantauan_ews_neonatus=rs.getBoolean("pemantauan_ews_neonatus");
                     validasi_persetujuan_pengajuan_biaya=rs.getBoolean("validasi_persetujuan_pengajuan_biaya");riwayat_perawatan_icare_bpjs=rs.getBoolean("riwayat_perawatan_icare_bpjs");rekap_pengajuan_biaya=rs.getBoolean("rekap_pengajuan_biaya");penilaian_awal_medis_ralan_kulit_kelamin=rs.getBoolean("penilaian_awal_medis_ralan_kulit_kelamin");akun_host_to_host_bank_mandiri=rs.getBoolean("akun_host_to_host_bank_mandiri");penilaian_medis_hemodialisa=rs.getBoolean("penilaian_medis_hemodialisa");penilaian_level_kecemasan_ranap_anak=rs.getBoolean("penilaian_level_kecemasan_ranap_anak");
                     penilaian_lanjutan_resiko_jatuh_psikiatri=rs.getBoolean("penilaian_lanjutan_resiko_jatuh_psikiatri");penilaian_lanjutan_skrining_fungsional=rs.getBoolean("penilaian_lanjutan_skrining_fungsional");penilaian_medis_ralan_rehab_medik=rs.getBoolean("penilaian_medis_ralan_rehab_medik");laporan_anestesi=rs.getBoolean("laporan_anestesi");template_persetujuan_penolakan_tindakan=rs.getBoolean("template_persetujuan_penolakan_tindakan");penilaian_medis_ralan_gawat_darurat_psikiatri=rs.getBoolean("penilaian_medis_ralan_gawat_darurat_psikiatri");bpjs_referensi_setting_apotek=rs.getBoolean("bpjs_referensi_setting_apotek");
-                    bpjs_referensi_obat_apotek=rs.getBoolean("bpjs_referensi_obat_apotek");bpjs_mapping_obat_apotek=rs.getBoolean("bpjs_mapping_obat_apotek");
+                    bpjs_referensi_obat_apotek=rs.getBoolean("bpjs_referensi_obat_apotek");bpjs_mapping_obat_apotek=rs.getBoolean("bpjs_mapping_obat_apotek");pembayaran_bank_mandiri=rs.getBoolean("pembayaran_bank_mandiri");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -2972,6 +2972,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[K]Rekap Pengajuan Biaya".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[K]Rekap Pengajuan Biaya",rekap_pengajuan_biaya});
+        }
+        
+        if("[K]Pembayaran Bank Mandiri".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[K]Pembayaran Bank Mandiri",pembayaran_bank_mandiri});
         }
 
         if("[L]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6907,6 +6911,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[K]Rekap Pengajuan Biaya".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","rekap_pengajuan_biaya='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Pembayaran Bank Mandiri".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pembayaran_bank_mandiri='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }
