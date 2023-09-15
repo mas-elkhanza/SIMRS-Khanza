@@ -2642,7 +2642,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
-           Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng","Data Pembayaran HtH BPD Papua","Data Pembayaran HtH BPD Jabar","Data Pembayaran HtH BPD Mandiri"};
+           Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng","Data Pembayaran HtH BPD Papua","Data Pembayaran HtH BPD Jabar","Data Pembayaran HtH Mandiri"};
             
             String input;
             int pilih = 0;
@@ -2663,7 +2663,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                         break;
                     case "Data Pembayaran HtH BPD Jabar":
                         i=5;
-                    case "Data Pembayaran HtH BPD Mandiri":
+                    case "Data Pembayaran HtH Mandiri":
                         i=6;
                         break;
                 }

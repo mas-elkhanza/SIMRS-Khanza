@@ -2554,7 +2554,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnNotaKeyPressed
 
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
-            Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng","Data Pembayaran HtH BPD Papua","Data Pembayaran HtH BPD Jabar","Data Pembayaran HtH BPD Mandiri"};
+            Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng","Data Pembayaran HtH BPD Papua","Data Pembayaran HtH BPD Jabar","Data Pembayaran HtH Mandiri"};
             String input;
             i = 0;
             try{
@@ -2575,7 +2575,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     case "Data Pembayaran HtH BPD Jabar":
                         i=5;
                         break;
-                    case "Data Pembayaran HtH BPD Mandiri":
+                    case "Data Pembayaran HtH Mandiri":
                         i=6;
                         break;
                 }
