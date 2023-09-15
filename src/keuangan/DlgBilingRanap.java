@@ -2642,7 +2642,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
-           Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng","Data Pembayaran HtH BPD Papua","Data Pembayaran HtH BPD Jabar"};
+           Object[] options = {"Tagihan Masuk", "Piutang Pasien","Data Pembayaran HtH BPD Jateng","Data Pembayaran HtH BPD Papua","Data Pembayaran HtH BPD Jabar","Data Pembayaran HtH BPD Mandiri"};
             
             String input;
             int pilih = 0;
@@ -2663,6 +2663,9 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                         break;
                     case "Data Pembayaran HtH BPD Jabar":
                         i=5;
+                    case "Data Pembayaran HtH BPD Mandiri":
+                        i=6;
+                        break;
                 }
             }catch(Exception e){
                 pilih=0;
@@ -2712,7 +2715,16 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     billing.setAlwaysOnTop(false);
                     billing.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
-                }  
+                }else if(i==6){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    DlgLhtBankMandiri billing=new DlgLhtBankMandiri(null,false);
+                    billing.tampil();   
+                    billing.setSize(this.getWidth(),this.getHeight());
+                    billing.setLocationRelativeTo(this);
+                    billing.setAlwaysOnTop(false);
+                    billing.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }   
             }   
     }//GEN-LAST:event_BtnViewActionPerformed
 
