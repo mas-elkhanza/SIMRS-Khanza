@@ -55,7 +55,7 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 22; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -72,6 +72,34 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(65);
             }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(100);
+            }else if(i==10){
+                column.setPreferredWidth(92);
+            }else if(i==11){
+                column.setPreferredWidth(65);
+            }else if(i==12){
+                column.setPreferredWidth(70);
+            }else if(i==13){
+                column.setPreferredWidth(95);
+            }else if(i==14){
+                column.setPreferredWidth(85);
+            }else if(i==15){
+                column.setPreferredWidth(80);
+            }else if(i==16){
+                column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(150);
+            }else if(i==19){
+                column.setPreferredWidth(150);
+            }else if(i==20){
+                column.setPreferredWidth(115);
+            }else if(i==21){
                 column.setPreferredWidth(110);
             }
         }
@@ -290,7 +318,7 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptHtHBankPapua.jasper","report","::[ Data Pembayaran Bank Papua ]::",
+            Valid.MyReportqry("rptHtHBankMandiri.jasper","report","::[ Data Pembayaran Bank Mandiri ]::",
                "select * from tagihan_mandiri where tagihan_mandiri.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
                (TCari.getText().equals("")?"":"and (tagihan_mandiri.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                "tagihan_mandiri.no_nota like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.referensi like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.no_rawat like '%"+TCari.getText().trim()+"%' or "+
