@@ -39,6 +39,7 @@ import bridging.ApotekBPJSCekReferensiObat;
 import bridging.ApotekBPJSCekReferensiPoli;
 import bridging.ApotekBPJSCekReferensiSettingPPK;
 import bridging.ApotekBPJSCekReferensiSpesialistik;
+import bridging.ApotekBPJSMapingObat;
 import bridging.BPJSAntreanPerTanggal;
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekDataSEPInternal;
@@ -20664,6 +20665,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSMapingObatApotekActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSMapingObat form=new ApotekBPJSMapingObat(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }  
+    
     /**
     * @param args the command line arguments
     */
@@ -21343,7 +21356,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare,
             btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa,
             btnPenilaianRisikoJatuhPsikiatri,btnPenilaianLanjutanSkriningFungsional,btnPenilaianAwalMedisRalanRehabMedik,btnTemplatePersetujuanPenolakanTindakan,
-            btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri;
+            btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek;
     
     public void isWall(){
         try{            
@@ -23963,6 +23976,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_referensi_obat_apotek()==true){
                 Panelmenu.add(btnBPJSReferensiObatApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_mapping_obat_apotek()==true){
+                Panelmenu.add(btnBPJSMapingObatApotek);
                 jmlmenu++;
             }
             
@@ -28823,6 +28841,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_referensi_obat_apotek()==true){
             Panelmenu.add(btnBPJSReferensiObatApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_mapping_obat_apotek()==true){
+            Panelmenu.add(btnBPJSMapingObatApotek);
             jmlmenu++;
         }
         
@@ -34674,6 +34697,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_referensi_obat_apotek()==true){
             if(btnBPJSReferensiObatApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiObatApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_mapping_obat_apotek()==true){
+            if(btnBPJSMapingObatApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSMapingObatApotek);
                 jmlmenu++;
             }                
         }
@@ -42091,5 +42121,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPembayaranBankMandiri.setName("btnPembayaranBankMandiri"); 
         btnPembayaranBankMandiri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPembayaranBankMandiri.addActionListener(this::btnPembayaranBankMandiriActionPerformed);
+        
+        btnBPJSMapingObatApotek = new widget.ButtonBig();
+        btnBPJSMapingObatApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnBPJSMapingObatApotek.setText("Mapping Obat Apotek BPJS");
+        btnBPJSMapingObatApotek.setIconTextGap(0);
+        btnBPJSMapingObatApotek.setName("btnBPJSMapingObatApotek"); 
+        btnBPJSMapingObatApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSMapingObatApotek.addActionListener(this::btnBPJSMapingObatApotekActionPerformed);
     }
 }
