@@ -44,7 +44,7 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
         Object[] rowRwJlDr={
-            "No.RM","Nama Pasien","Alamat","J.K.","Tgl.Lahir","Umur","Registrasi","No.Nota/Tagihan","Besar Bayar","No.Rawat","Status Pelayanan","Tgl.Closing",
+            "No.RM","Nama Pasien","Alamat","J.K.","Tgl.Lahir","Umur","Registrasi","No.Nota/Tagihan","Besar Bayar","No.Rawat","No.ID Reg","Status Pelayanan","Tgl.Closing",
             "Status Bayar","Pembatalan","Dibatalkan Oleh","Besar Batal","Kasir","Tambahan 1","Tambahan 2","Tambahan 3","Diupdate Bank","Referensi"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
@@ -55,7 +55,7 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 22; i++) {
+        for (int i = 0; i < 23; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -78,19 +78,19 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(100);
             }else if(i==10){
-                column.setPreferredWidth(92);
+                column.setPreferredWidth(100);
             }else if(i==11){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(92);
             }else if(i==12){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(110);
             }else if(i==13){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(70);
             }else if(i==14){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(95);
             }else if(i==15){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(85);
             }else if(i==16){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(80);
             }else if(i==17){
                 column.setPreferredWidth(150);
             }else if(i==18){
@@ -98,8 +98,10 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
             }else if(i==19){
                 column.setPreferredWidth(150);
             }else if(i==20){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(150);
             }else if(i==21){
+                column.setPreferredWidth(115);
+            }else if(i==22){
                 column.setPreferredWidth(110);
             }
         }
@@ -323,7 +325,7 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
                (TCari.getText().equals("")?"":"and (tagihan_mandiri.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                "tagihan_mandiri.no_nota like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.referensi like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.no_rawat like '%"+TCari.getText().trim()+"%' or "+
                "tagihan_mandiri.status_lanjut like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.status_bayar like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.kasir like '%"+TCari.getText().trim()+"%' or "+
-               "tagihan_mandiri.referensi like '%"+TCari.getText().trim()+"%') ")+"order by tagihan_mandiri.tgl_closing",param);
+               "tagihan_mandiri.referensi like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.no_id like '%"+TCari.getText().trim()+"%') ")+"order by tagihan_mandiri.tgl_closing",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -428,7 +430,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    (TCari.getText().equals("")?"":"and (tagihan_mandiri.no_rkm_medis like ? or tagihan_mandiri.nm_pasien like ? or "+
                    "tagihan_mandiri.no_nota like ? or tagihan_mandiri.referensi like ? or tagihan_mandiri.no_rawat like ? or "+
                    "tagihan_mandiri.status_lanjut like ? or tagihan_mandiri.status_bayar like ? or tagihan_mandiri.kasir like ? or "+
-                   "tagihan_mandiri.referensi like ?) ")+"order by tagihan_mandiri.tgl_closing");
+                   "tagihan_mandiri.referensi like ? or tagihan_mandiri.no_id like ?) ")+"order by tagihan_mandiri.tgl_closing");
             try {
                 ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -451,14 +453,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("alamat"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("umurdaftar"),rs.getString("tgl_registrasi"),rs.getString("no_nota"),rs.getString("besar_bayar"),rs.getString("no_rawat"),
-                        rs.getString("status_lanjut"),rs.getString("tgl_closing"),rs.getString("status_bayar"),rs.getString("pembatalan"),
+                        rs.getString("no_id"),rs.getString("status_lanjut"),rs.getString("tgl_closing"),rs.getString("status_bayar"),rs.getString("pembatalan"),
                         rs.getString("dibatalkan_oleh"),rs.getString("besar_batal"),rs.getString("kasir"),rs.getString("tambahan1"),rs.getString("tambahan2"),
                         rs.getString("tambahan3"),rs.getString("diupdatebank"),rs.getString("referensi")
                     });
                 }
                 if(total>0){
                     tabMode.addRow(new Object[]{
-                        "Total :","","","","","","","",Valid.SetAngka(total),"","","","","","","",""
+                        "Total :","","","","","","","",Valid.SetAngka(total),"","","","","","","","","","","","","",""
                     });
                 }
             } catch (Exception e) {

@@ -113,8 +113,8 @@
                                         if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
                                             $konten = trim(file_get_contents("php://input"));
                                             $decode = json_decode($konten, true);
-                                            if (!empty($decode['regNo'])){ 
-                                                if (!preg_match("/^[0-9]{14}$/",$decode['regNo'])){ 
+                                            if(!empty($decode['regNo'])){ 
+                                                if(!preg_match("/^[0-9]{14}$/",$decode['regNo'])){ 
                                                     $response = array(
                                                         'error' => 'invalid_parameter',
                                                         'error_description' => 'Error regNo'
@@ -125,7 +125,7 @@
                                                                          tagihan_mandiri.jk,tagihan_mandiri.tgl_lahir,tagihan_mandiri.tgl_registrasi,tagihan_mandiri.no_nota,
                                                                          tagihan_mandiri.besar_bayar,tagihan_mandiri.no_rawat,tagihan_mandiri.status_lanjut,tagihan_mandiri.tgl_closing,
                                                                          tagihan_mandiri.status_bayar,tagihan_mandiri.pembatalan,tagihan_mandiri.dibatalkan_oleh,tagihan_mandiri.besar_batal 
-                                                                         from tagihan_mandiri where tagihan_mandiri.no_id='".validTeks3($decode['regNo'],14)."'");
+                                                                         from tagihan_mandiri where tagihan_mandiri.no_id='".validTeks3($decode['regNo'],14)."' and tagihan_mandiri.status_bayar='Pending'");
                                                     if(num_rows($query)>0) {
                                                         if($rsquery = mysqli_fetch_array($query)) {
                                                             $kodelokasi = "";
@@ -141,6 +141,16 @@
                                                                     $namalokasi = $rsqueryralan["nm_poli"];
                                                                     $kodedokter = $rsqueryralan["kd_dokter"];
                                                                     $namadokter = $rsqueryralan["nm_dokter"];
+                                                                }
+                                                            }else if($rsquery["status_lanjut"]=="Ranap"){
+                                                                $queryranap = bukaquery2("select reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli from reg_periksa 
+                                                                                        inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli 
+                                                                                        where reg_periksa.no_rawat='".$rsquery["no_rawat"]."'");
+                                                                if($rsqueryranap = mysqli_fetch_array($queryranap)) {
+                                                                    $kodelokasi = $rsqueryranap["kd_poli"];
+                                                                    $namalokasi = $rsqueryranap["nm_poli"];
+                                                                    $kodedokter = $rsqueryranap["kd_dokter"];
+                                                                    $namadokter = $rsqueryranap["nm_dokter"];
                                                                 }
                                                             }
                                                             $dataarray[] = array(
@@ -188,6 +198,74 @@
                                                             );
                                                             http_response_code(200);
                                                         }
+                                                    }else{
+                                                        $response = array(
+                                                            'code' => 200,
+                                                            'message' => 'success',
+                                                            'inquiryResponse' => array(
+                                                                'rsId' => $idrs,
+                                                                'rmNo' => '',
+                                                                'pasienName' => '',
+                                                                'dob' => '',
+                                                                'gender' => '',
+                                                                'golDarah' => '',
+                                                                'timeStamp' => date('Y-m-d H:i:s'),
+                                                                'status' => array(
+                                                                    'inquryCode' => $decode['regNo'],
+                                                                    'statusCode' => '2',
+                                                                    'statusDescription' => 'Data Tidak Ditemukan'
+                                                                ),
+                                                                'billDetails' => null
+                                                            )
+                                                        );
+                                                        http_response_code(200);
+                                                    }
+                                                }
+                                            }else{
+                                                if(empty($decode['rmNo'])){ 
+                                                    $response = array(
+                                                        'error' => 'invalid_parameter',
+                                                        'error_description' => 'Error rmNo'
+                                                    );
+                                                    http_response_code(401);
+                                                }else if(strpos($decode['rmNo'],"'")||strpos($decode['rmNo'],"\\")){
+                                                    $response = array(
+                                                        'error' => 'invalid_parameter',
+                                                        'error_description' => 'Error rmNo'
+                                                    );
+                                                    http_response_code(401);
+                                                }else if(empty($decode['startDate'])){ 
+                                                    $response = array(
+                                                        'error' => 'invalid_parameter',
+                                                        'error_description' => 'Error startDate'
+                                                    );
+                                                    http_response_code(401);
+                                                }else if(!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$decode['startDate'])){
+                                                    $response = array(
+                                                        'error' => 'invalid_parameter',
+                                                        'error_description' => 'Error startDate'
+                                                    );
+                                                    http_response_code(401);
+                                                }else if(empty($decode['endDate'])){ 
+                                                    $response = array(
+                                                        'error' => 'invalid_parameter',
+                                                        'error_description' => 'Error endDate'
+                                                    );
+                                                    http_response_code(401);
+                                                }else if(!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$decode['endDate'])){
+                                                    $response = array(
+                                                        'error' => 'invalid_parameter',
+                                                        'error_description' => 'Error endDate'
+                                                    );
+                                                    http_response_code(401);
+                                                }else{
+                                                    $query = bukaquery2("select tagihan_mandiri.no_rkm_medis,tagihan_mandiri.nm_pasien,tagihan_mandiri.alamat,tagihan_mandiri.jk,tagihan_mandiri.tgl_lahir,
+                                                                         tagihan_mandiri.tgl_registrasi,tagihan_mandiri.no_nota,tagihan_mandiri.besar_bayar,tagihan_mandiri.no_rawat,tagihan_mandiri.status_lanjut,
+                                                                         tagihan_mandiri.tgl_closing,tagihan_mandiri.status_bayar,tagihan_mandiri.pembatalan,tagihan_mandiri.dibatalkan_oleh,tagihan_mandiri.besar_batal 
+                                                                         from tagihan_mandiri where tagihan_mandiri.no_rkm_medis='".validTeks3($decode['rmNo'],14)."' and tagihan_mandiri.tgl_closing 
+                                                                         between '".validTeks3($decode['startDate'],10)." 00:00:01' and '".validTeks3($decode['endDate'],10)." 23:59:59'");
+                                                    if(num_rows($query)>0) {
+                                                        
                                                     }else{
                                                         $response = array(
                                                             'code' => 200,
