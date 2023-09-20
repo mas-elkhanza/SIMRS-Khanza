@@ -123,7 +123,7 @@
                                                 }else{
                                                     $query = bukaquery2("select tagihan_mandiri.no_rkm_medis,tagihan_mandiri.nm_pasien,tagihan_mandiri.jk,tagihan_mandiri.tgl_lahir,tagihan_mandiri.tgl_registrasi,
                                                                          tagihan_mandiri.no_nota,tagihan_mandiri.besar_bayar,tagihan_mandiri.no_rawat,tagihan_mandiri.status_lanjut,tagihan_mandiri.tgl_closing,
-                                                                         tagihan_mandiri.status_bayar,tagihan_mandiri.pembatalan,tagihan_mandiri.dibatalkan_oleh,tagihan_mandiri.besar_batal 
+                                                                         tagihan_mandiri.status_bayar,tagihan_mandiri.pembatalan,tagihan_mandiri.dibatalkan_oleh,tagihan_mandiri.besar_batal,tagihan_mandiri.no_id 
                                                                          from tagihan_mandiri where tagihan_mandiri.no_id='".validTeks3($decode['regNo'],14)."' and tagihan_mandiri.status_bayar='Pending'");
                                                     if(num_rows($query)>0) {
                                                         if($rsquery = mysqli_fetch_array($query)) {
@@ -153,7 +153,7 @@
                                                             }
                                                             $dataarray[] = array(
                                                                 'billCode' => strval('1'),
-                                                                'regNo' => $decode['regNo'],
+                                                                'regNo' => $rsquery['no_id'],
                                                                 'regDate' => $rsquery["tgl_registrasi"],
                                                                 'noKuitansi' => '',
                                                                 'componentId' => $kodelokasi,
@@ -263,7 +263,7 @@
                                                     if(num_rows($query)>0) {
                                                         if($rsquery = mysqli_fetch_array($query)) {
                                                             $nomor=1;
-                                                            $querycari=bukaquery2("select tagihan_mandiri.tgl_registrasi,tagihan_mandiri.no_nota,tagihan_mandiri.besar_bayar,tagihan_mandiri.no_rawat,
+                                                            $querycari=bukaquery2("select tagihan_mandiri.tgl_registrasi,tagihan_mandiri.no_nota,tagihan_mandiri.besar_bayar,tagihan_mandiri.no_rawat,tagihan_mandiri.no_id,
                                                                                    tagihan_mandiri.status_lanjut,tagihan_mandiri.status_bayar,tagihan_mandiri.pembatalan,tagihan_mandiri.dibatalkan_oleh,
                                                                                    tagihan_mandiri.besar_batal from tagihan_mandiri where tagihan_mandiri.no_rkm_medis='".validTeks3($decode['rmNo'],14)."' and 
                                                                                    tagihan_mandiri.tgl_closing between '".validTeks3($decode['startDate'],10)." 00:00:01' and '".validTeks3($decode['endDate'],10)." 23:59:59'");
@@ -294,7 +294,7 @@
                                                                 }
                                                                 $dataarray[] = array(
                                                                     'billCode' => strval($nomor),
-                                                                    'regNo' => $decode['regNo'],
+                                                                    'regNo' => $rsquerycari['no_id'],
                                                                     'regDate' => $rsquerycari["tgl_registrasi"],
                                                                     'noKuitansi' => '',
                                                                     'componentId' => $kodelokasi,
@@ -455,6 +455,112 @@
         echo '          }'."\n";
         echo '      ],'."\n";
         echo '      "jti": "XXXXX"'."\n";
+        echo '   }'."\n\n";
+        echo "2. Pencarian data dengan nomor registrasi/rawat/id, methode POST\n";
+        echo "   gunakan URL http://ipserverws:port/mandiri/oauth/token \n";
+        echo "   Body berisi : \n";
+        echo '   {'."\n";
+	echo '      "regNo": "xxxxxxxxx",'."\n";
+        echo '      "rmNo": "",'."\n";
+        echo '      "startDate": "",'."\n";
+        echo '      "endDate": "",'."\n";
+        echo '      "timeStamp": "0000-00-00 00:00:00.000"'."\n";
+        echo '   }'."\n\n";
+        echo "   Hasilnya : \n";
+        echo '   {'."\n";
+        echo '      "code": 200,'."\n";
+        echo '      "message": "success",'."\n";
+        echo '      "inquiryResponse": {'."\n";
+        echo '          "rsId": "xxxxxxxxx",'."\n";
+        echo '          "rmNo": "xxxxxxxxx",'."\n";
+        echo '          "pasienName": "xxxxxxxxx",'."\n";
+        echo '          "dob": "0000-00-00",'."\n";
+        echo '          "gender": "x",'."\n";
+        echo '          "golDarah": "x",'."\n";
+        echo '          "timeStamp": "0000-00-00 00:00:00.000",'."\n";
+        echo '          "status": {'."\n";
+        echo '              "inquryCode": "xxxxxxxxx",'."\n";
+        echo '              "statusCode": "0",'."\n";
+        echo '              "statusDescription": "xxxxxxxxx"'."\n";
+        echo '          },'."\n";
+        echo '          "billDetails": {'."\n";
+        echo '              "billDetail": ['."\n";
+        echo '                  {'."\n";
+        echo '                      "billCode": "0",'."\n";
+        echo '                      "regNo": "xxxxxxxxx",'."\n";
+        echo '                      "regDate": "0000-00-00",'."\n";
+        echo '                      "noKuitansi": "",'."\n";
+        echo '                      "componentId": "xxxxxxxxx",'."\n";
+        echo '                      "kodeUnitPoli": "xxxxxxxxx",'."\n";
+        echo '                      "namaDokter": "xxxxxxxxx",'."\n";
+        echo '                      "trxNo": "0000000000000",'."\n";
+        echo '                      "jenisPelayananId": "0",'."\n";
+        echo '                      "paymentTp": "0",'."\n";
+        echo '                      "paidFlag": "0",'."\n";
+        echo '                      "cancelFlag": "0",'."\n";
+        echo '                      "isCancel": "0",'."\n";
+        echo '                      "paymentBill": "000000000",'."\n";
+        echo '                      "cancelNominal": "0",'."\n";
+        echo '                      "additional1": "xxxxxxxxx",'."\n";
+        echo '                      "additional2": "xxxxxxxxx",'."\n";
+        echo '                      "additional3": "xxxxxxxxx"'."\n";
+        echo '                  }'."\n";
+        echo '              ]'."\n";
+        echo '          }'."\n";
+        echo '      }'."\n";
+        echo '   }'."\n\n";
+        echo "3. Pencarian data dengan nomor rekam medis, methode POST\n";
+        echo "   gunakan URL http://ipserverws:port/mandiri/oauth/token \n";
+        echo "   Body berisi : \n";
+        echo '   {'."\n";
+	echo '      "regNo": "",'."\n";
+        echo '      "rmNo": "xxxxxxxxx",'."\n";
+        echo '      "startDate": "0000-00-00",'."\n";
+        echo '      "endDate": "0000-00-00",'."\n";
+        echo '      "timeStamp": "0000-00-00 00:00:00.000"'."\n";
+        echo '   }'."\n\n";
+        echo "   Hasilnya : \n";
+        echo '   {'."\n";
+        echo '      "code": 200,'."\n";
+        echo '      "message": "success",'."\n";
+        echo '      "inquiryResponse": {'."\n";
+        echo '          "rsId": "xxxxxxxxx",'."\n";
+        echo '          "rmNo": "xxxxxxxxx",'."\n";
+        echo '          "pasienName": "xxxxxxxxx",'."\n";
+        echo '          "dob": "0000-00-00",'."\n";
+        echo '          "gender": "x",'."\n";
+        echo '          "golDarah": "x",'."\n";
+        echo '          "timeStamp": "0000-00-00 00:00:00.000",'."\n";
+        echo '          "status": {'."\n";
+        echo '              "inquryCode": "xxxxxxxxx",'."\n";
+        echo '              "statusCode": "0",'."\n";
+        echo '              "statusDescription": "xxxxxxxxx"'."\n";
+        echo '          },'."\n";
+        echo '          "billDetails": {'."\n";
+        echo '              "billDetail": ['."\n";
+        echo '                  {'."\n";
+        echo '                      "billCode": "0",'."\n";
+        echo '                      "regNo": "xxxxxxxxx",'."\n";
+        echo '                      "regDate": "0000-00-00",'."\n";
+        echo '                      "noKuitansi": "",'."\n";
+        echo '                      "componentId": "xxxxxxxxx",'."\n";
+        echo '                      "kodeUnitPoli": "xxxxxxxxx",'."\n";
+        echo '                      "namaDokter": "xxxxxxxxx",'."\n";
+        echo '                      "trxNo": "0000000000000",'."\n";
+        echo '                      "jenisPelayananId": "0",'."\n";
+        echo '                      "paymentTp": "0",'."\n";
+        echo '                      "paidFlag": "0",'."\n";
+        echo '                      "cancelFlag": "0",'."\n";
+        echo '                      "isCancel": "0",'."\n";
+        echo '                      "paymentBill": "000000000",'."\n";
+        echo '                      "cancelNominal": "0",'."\n";
+        echo '                      "additional1": "xxxxxxxxx",'."\n";
+        echo '                      "additional2": "xxxxxxxxx",'."\n";
+        echo '                      "additional3": "xxxxxxxxx"'."\n";
+        echo '                  }'."\n";
+        echo '              ]'."\n";
+        echo '          }'."\n";
+        echo '      }'."\n";
         echo '   }'."\n\n";
     }
 ?>
