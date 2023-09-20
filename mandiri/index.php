@@ -457,7 +457,7 @@
         echo '      "jti": "XXXXX"'."\n";
         echo '   }'."\n\n";
         echo "2. Pencarian data dengan nomor registrasi/rawat/id, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/mandiri/oauth/token \n";
+        echo "   gunakan URL http://ipserverws:port/mandiri/penerimaan/inquirypenerimaan \n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
 	echo '      "regNo": "xxxxxxxxx",'."\n";
@@ -510,7 +510,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "3. Pencarian data dengan nomor rekam medis, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/mandiri/oauth/token \n";
+        echo "   gunakan URL http://ipserverws:port/mandiri/penerimaan/inquirypenerimaan \n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
 	echo '      "regNo": "",'."\n";
