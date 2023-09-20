@@ -82,7 +82,7 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(92);
             }else if(i==12){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(120);
             }else if(i==13){
                 column.setPreferredWidth(70);
             }else if(i==14){
@@ -321,7 +321,7 @@ public final class DlgLhtBankMandiri extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptHtHBankMandiri.jasper","report","::[ Data Pembayaran Bank Mandiri ]::",
-               "select * from tagihan_mandiri where tagihan_mandiri.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+               "select * from tagihan_mandiri where tagihan_mandiri.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' "+
                (TCari.getText().equals("")?"":"and (tagihan_mandiri.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                "tagihan_mandiri.no_nota like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.referensi like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.no_rawat like '%"+TCari.getText().trim()+"%' or "+
                "tagihan_mandiri.status_lanjut like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.status_bayar like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.kasir like '%"+TCari.getText().trim()+"%' or "+
@@ -432,8 +432,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    "tagihan_mandiri.status_lanjut like ? or tagihan_mandiri.status_bayar like ? or tagihan_mandiri.kasir like ? or "+
                    "tagihan_mandiri.referensi like ? or tagihan_mandiri.no_id like ?) ")+"order by tagihan_mandiri.tgl_closing");
             try {
-                ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
                     ps.setString(4,"%"+TCari.getText().trim()+"%");
@@ -444,6 +444,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
                     ps.setString(10,"%"+TCari.getText().trim()+"%");
                     ps.setString(11,"%"+TCari.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
