@@ -114,7 +114,7 @@
                                             $konten = trim(file_get_contents("php://input"));
                                             $decode = json_decode($konten, true);
                                             if(!empty($decode['regNo'])){ 
-                                                if(!preg_match("/^[0-9]{14}$/",$decode['regNo'])){ 
+                                                if(!preg_match("/^[0-9]{1,14}$/",$decode['regNo'])){ 
                                                     $response = array(
                                                         'error' => 'invalid_parameter',
                                                         'error_description' => 'Error regNo'
@@ -261,7 +261,7 @@
                                                                          where tagihan_mandiri.no_rkm_medis='".validTeks3($decode['rmNo'],14)."' and tagihan_mandiri.tgl_closing between  
                                                                          '".validTeks3($decode['startDate'],10)." 00:00:01' and '".validTeks3($decode['endDate'],10)." 23:59:59'");
                                                     if(num_rows($query)>0) {
-                                                        if($rsquery = mysqli_fetch_array($query)) {
+                                                        if($rsquery = mysqli_fetch_array($query)){
                                                             $nomor=1;
                                                             $querycari=bukaquery2("select tagihan_mandiri.tgl_registrasi,tagihan_mandiri.no_nota,tagihan_mandiri.besar_bayar,tagihan_mandiri.no_rawat,tagihan_mandiri.no_id,
                                                                                    tagihan_mandiri.status_lanjut,tagihan_mandiri.status_bayar,tagihan_mandiri.pembatalan,tagihan_mandiri.dibatalkan_oleh,
@@ -361,6 +361,355 @@
                                                         );
                                                         http_response_code(200);
                                                     }
+                                                }
+                                            }
+                                        }else{
+                                            $response = array(
+                                                'error' => 'invalid_authorization',
+                                                'error_description' => 'Error Authorization or rsId'
+                                            );
+                                            http_response_code(401);
+                                        }
+                                    }else{
+                                        $response = array(
+                                            'error' => 'invalid_authorization',
+                                            'error_description' => 'Error Authorization or rsId'
+                                        );
+                                        http_response_code(401);
+                                    }
+                                }else{
+                                    $response = array(
+                                        'error' => 'invalid_authorization',
+                                        'error_description' => 'Error Authorization or rsId'
+                                    );
+                                    http_response_code(401);
+                                }
+                            }else if(($url[2]=="penerimaan")&&($url[3]=="flaggingpenerimaan")){
+                                if ((!empty($header['Authorization'])) && (!empty($header['rsId']))) {
+                                    $idrs = getOne("select set_akun_mandiri.kode_rs from set_akun_mandiri");
+                                    if($header['rsId']==$idrs){
+                                        if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
+                                            $konten = trim(file_get_contents("php://input"));
+                                            $decode = json_decode($konten, true);
+                                            if(empty($decode['regNo'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error regNo'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1,15}$/",$decode['regNo'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error regNo'
+                                                );
+                                                http_response_code(401);
+                                            }else if(empty($decode['rmNo'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error rmNo'
+                                                );
+                                                http_response_code(401);
+                                            }else if(strpos($decode['rmNo'],"'")||strpos($decode['rmNo'],"\\")){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error rmNo'
+                                                );
+                                                http_response_code(401);
+                                            }else if(empty($decode['pasienName'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error rmNo'
+                                                );
+                                                http_response_code(401);
+                                            }else if(strpos($decode['pasienName'],"'")||strpos($decode['pasienName'],"\\")){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error pasienName'
+                                                );
+                                                http_response_code(401);
+                                            }else if(empty($decode['regDate'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error regDate'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$decode['regDate'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error regDate'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['jenisPelayananId'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error jenisPelayananId'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1}$/",$decode['jenisPelayananId'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error jenisPelayananId'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['paymentTp'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error paymentTp'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1}$/",$decode['paymentTp'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error paymentTp'
+                                                );
+                                                http_response_code(401);
+                                            }else if(empty($decode['trxNo'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error trxNo'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1,17}$/",$decode['trxNo'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error trxNo'
+                                                );
+                                                http_response_code(401);
+                                            }else if(empty($decode['noKuitansi'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error noKuitansi'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1,17}$/",$decode['noKuitansi'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error noKuitansi'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['paidFlag'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error paidFlag'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1}$/",$decode['paidFlag'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error paidFlag'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['cancelFlag'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error cancelFlag'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1}$/",$decode['cancelFlag'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error cancelFlag'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['isCancel'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error isCancel'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1}$/",$decode['isCancel'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error isCancel'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['paymentBill'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error paymentBill'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1,15}$/",$decode['paymentBill'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error paymentBill'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['cancelNominal'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error cancelNominal'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1,15}$/",$decode['cancelNominal'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error cancelNominal'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!isset($decode['newPaymentBill'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error newPaymentBill'
+                                                );
+                                                http_response_code(401);
+                                            }else if(!preg_match("/^[0-9]{1,15}$/",$decode['newPaymentBill'])){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error newPaymentBill'
+                                                );
+                                                http_response_code(401);
+                                            }else if(empty($decode['timeStamp'])){ 
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error timeStamp'
+                                                );
+                                                http_response_code(401);
+                                            }else if(strpos($decode['timeStamp'],"'")||strpos($decode['timeStamp'],"\\")){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error timeStamp'
+                                                );
+                                                http_response_code(401);
+                                            }else if(strpos($decode['additional1'],"'")||strpos($decode['additional1'],"\\")){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error additional1'
+                                                );
+                                                http_response_code(401);
+                                            }else if(strpos($decode['additional2'],"'")||strpos($decode['additional2'],"\\")){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error additional2'
+                                                );
+                                                http_response_code(401);
+                                            }else if(strpos($decode['additional3'],"'")||strpos($decode['additional3'],"\\")){
+                                                $response = array(
+                                                    'error' => 'invalid_parameter',
+                                                    'error_description' => 'Error additional3'
+                                                );
+                                                http_response_code(401);
+                                            }else{
+                                                $regNo            = validTeks3($decode['regNo'],14);
+                                                $rmNo             = validTeks3($decode['rmNo'],14);
+                                                $pasienName       = validTeks3($decode['pasienName'],40);
+                                                $regDate          = validTeks3($decode['regDate'],10);
+                                                $jenisPelayananId = validTeks3($decode['jenisPelayananId'],1);
+                                                if($jenisPelayananId=="1"){
+                                                    $jenisPelayananId="Ralan";
+                                                }else if($jenisPelayananId=="2"){
+                                                    $jenisPelayananId="Ranap";
+                                                }
+                                                $paymentTp        = validTeks3($decode['paymentTp'],1);
+                                                $trxNo            = validTeks3($decode['trxNo'],17);
+                                                $noKuitansi       = validTeks3($decode['noKuitansi'],17);
+                                                $paidFlag         = validTeks3($decode['paidFlag'],1);
+                                                $cancelFlag       = validTeks3($decode['cancelFlag'],1);
+                                                $isCancel         = validTeks3($decode['isCancel'],1);
+                                                $paymentBill      = validTeks3($decode['paymentBill'],15);
+                                                $cancelNominal    = validTeks3($decode['cancelNominal'],15);
+                                                $newPaymentBill   = validTeks3($decode['newPaymentBill'],15);
+                                                $additional1      = validTeks3($decode['additional1'],75);
+                                                $additional2      = validTeks3($decode['additional2'],75);
+                                                $additional3      = validTeks3($decode['additional3'],75);
+                                                $timeStamp        = validTeks4($decode['timeStamp'],25);
+                                                $query = bukaquery2("select tagihan_mandiri.besar_bayar from tagihan_mandiri where no_nota='$trxNo' and no_id='$regNo' and no_rkm_medis='$rmNo' and nm_pasien='$pasienName' and tgl_registrasi='$regDate' and status_lanjut='$jenisPelayananId'");
+                                                if(num_rows($query)>0){
+                                                    if($rsquery = mysqli_fetch_array($query)){
+                                                        if($rsquery["besar_bayar"]==$paymentBill){
+                                                            $querybayar = bukaquery2("update tagihan_mandiri set status_bayar='Sudah',besar_bayar='$paymentBill',tambahan1='$additional1',tambahan2='$additional2',tambahan3='$additional3',diupdatebank='$timeStamp',
+                                                                                      referensi='$noKuitansi' where no_nota='$trxNo' and no_id='$regNo' and no_rkm_medis='$rmNo' and nm_pasien='$pasienName' and tgl_registrasi='$regDate' and status_lanjut='$jenisPelayananId'");
+                                                            if($querybayar){
+                                                                $response = array(
+                                                                    'code' => 200,
+                                                                    'message' => 'success',
+                                                                    'flaggingResponse' => array(
+                                                                        'rsId' => $idrs,
+                                                                        'regNo' => $regNo,
+                                                                        'rmNo' => $rmNo,
+                                                                        'pasienName' => $pasienName,
+                                                                        'trxNo' => $trxNo,
+                                                                        'noKuitansi' => $noKuitansi,
+                                                                        'additional1' => $additional1,
+                                                                        'additional2' => $additional2,
+                                                                        'additional3' => $additional3,
+                                                                        'timeStamp' => $timeStamp,
+                                                                        'status' => array(
+                                                                            'statusCode' => '1',
+                                                                            'statusDescription' => 'Sukses'
+                                                                        )
+                                                                    )
+                                                                );
+                                                                http_response_code(200);
+                                                            }else{
+                                                                $response = array(
+                                                                    'code' => 200,
+                                                                    'message' => 'success',
+                                                                    'flaggingResponse' => array(
+                                                                        'rsId' => $idrs,
+                                                                        'regNo' => $regNo,
+                                                                        'rmNo' => $rmNo,
+                                                                        'pasienName' => $pasienName,
+                                                                        'trxNo' => $trxNo,
+                                                                        'noKuitansi' => $noKuitansi,
+                                                                        'additional1' => $additional1,
+                                                                        'additional2' => $additional2,
+                                                                        'additional3' => $additional3,
+                                                                        'timeStamp' => $timeStamp,
+                                                                        'status' => array(
+                                                                            'statusCode' => '2',
+                                                                            'statusDescription' => 'Flagging Gagal'
+                                                                        )
+                                                                    )
+                                                                );
+                                                                http_response_code(200);
+                                                            }
+                                                        }else{
+                                                            $response = array(
+                                                                'code' => 200,
+                                                                'message' => 'success',
+                                                                'flaggingResponse' => array(
+                                                                    'rsId' => $idrs,
+                                                                    'regNo' => $regNo,
+                                                                    'rmNo' => $rmNo,
+                                                                    'pasienName' => $pasienName,
+                                                                    'trxNo' => $trxNo,
+                                                                    'noKuitansi' => $noKuitansi,
+                                                                    'additional1' => $additional1,
+                                                                    'additional2' => $additional2,
+                                                                    'additional3' => $additional3,
+                                                                    'timeStamp' => $timeStamp,
+                                                                    'status' => array(
+                                                                        'statusCode' => '2',
+                                                                        'statusDescription' => 'Flagging Gagal'
+                                                                    )
+                                                                )
+                                                            );
+                                                            http_response_code(200);
+                                                        }
+                                                    }
+                                                }else{
+                                                    $response = array(
+                                                        'code' => 200,
+                                                        'message' => 'success',
+                                                        'flaggingResponse' => array(
+                                                            'rsId' => $idrs,
+                                                            'regNo' => $regNo,
+                                                            'rmNo' => $rmNo,
+                                                            'pasienName' => $pasienName,
+                                                            'trxNo' => $trxNo,
+                                                            'noKuitansi' => $noKuitansi,
+                                                            'additional1' => $additional1,
+                                                            'additional2' => $additional2,
+                                                            'additional3' => $additional3,
+                                                            'timeStamp' => $timeStamp,
+                                                            'status' => array(
+                                                                'statusCode' => '2',
+                                                                'statusDescription' => 'Flagging Gagal'
+                                                            )
+                                                        )
+                                                    );
+                                                    http_response_code(200);
                                                 }
                                             }
                                         }else{
