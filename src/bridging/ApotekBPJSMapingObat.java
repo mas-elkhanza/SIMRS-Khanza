@@ -47,7 +47,7 @@ public final class ApotekBPJSMapingObat extends javax.swing.JDialog {
     private ResultSet rs;    
     private int i=0;
     private DlgBarang barang=new DlgBarang(null,false);
-    private ApotekBPJSCekReferensiObat barangbpjs=new ApotekBPJSCekReferensiObat(null,false);
+    private ApotekBPJSCekReferensiDPHO barangbpjs=new ApotekBPJSCekReferensiDPHO(null,false);
     
 
     /** Creates new form DlgJnsPerawatanRalan
