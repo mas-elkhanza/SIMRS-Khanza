@@ -6116,6 +6116,31 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         MnRujukanKhusus.setEnabled(akses.getbpjs_rujukan_khusus());
     }
     
+    public void isCek2(){
+        BtnSimpan.setEnabled(false);
+        BtnHapus.setEnabled(false);
+        BtnPrint.setEnabled(false);
+        BtnEdit.setEnabled(false);      
+        ppDetailSEPPeserta.setEnabled(false);
+        ppPengajuan.setEnabled(false);
+        ppPengajuan1.setEnabled(false);
+        ppPengajuan2.setEnabled(false);
+        ppPengajuan3.setEnabled(false);
+        ppStatusFinger.setEnabled(false);
+        ppPulang.setEnabled(false);
+        ppSEP.setEnabled(false);               
+        ppRiwayatPerawatan.setEnabled(false);    
+        ppSuratKontrol.setEnabled(false);    
+        ppSuratPRI.setEnabled(false);     
+        ppProgramPRB.setEnabled(false);   
+        ppSuplesiJasaRaharja.setEnabled(false);  
+        ppDataIndukKecelakaan.setEnabled(false);  
+        ppDataSEPInternal.setEnabled(false);    
+        ppRujukan.setEnabled(false); 
+        ppDaftarRujukan.setEnabled(false);
+        MnRujukanKhusus.setEnabled(false);
+    }
+    
     public void tutupInput(){
         TabRawat.setSelectedIndex(1);
     }
