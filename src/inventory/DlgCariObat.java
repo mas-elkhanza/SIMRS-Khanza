@@ -2070,7 +2070,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     public void tampilobat() {        
         z=0;
         for(i=0;i<tbObat.getRowCount();i++){
-            if(!tbObat.getValueAt(i,0).toString().equals("")){
+            if(!tbObat.getValueAt(i,1).toString().equals("")){
                 z++;
             }
         }    

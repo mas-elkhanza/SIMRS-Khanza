@@ -1946,7 +1946,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void tampil() {   
         jml=0;
         for(i=0;i<tbObat.getRowCount();i++){
-            if(!tbObat.getValueAt(i,0).toString().equals("")){
+            if(!tbObat.getValueAt(i,1).toString().equals("")){
                 jml++;
             }
         }

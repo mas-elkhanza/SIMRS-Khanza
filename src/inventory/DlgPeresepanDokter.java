@@ -1544,7 +1544,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     public void tampilobat() {        
         z=0;
         for(i=0;i<tbResep.getRowCount();i++){
-            if(!tbResep.getValueAt(i,0).toString().equals("")){
+            if(!tbResep.getValueAt(i,1).toString().equals("")){
                 z++;
             }
         }    

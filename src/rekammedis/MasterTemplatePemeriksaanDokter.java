@@ -33,6 +33,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
     private int i,index=0,jml=0;
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,satuan,nilairujukan;
     private boolean[] pilih;
+    private double[] jumlah;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
@@ -366,19 +367,19 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         
         tabModeObatUmum=new DefaultTableModel(null,new Object[]{
                 "K","Jumlah","Kode Barang","Nama Barang","Satuan","Komposisi",
-                "Harga(Rp)","Jenis Obat","Aturan Pakai","I.F.","H.Beli","Stok"
+                "Jenis Obat","Aturan Pakai","I.F."
             }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==1)||(colIndex==8)) {
+                if ((colIndex==0)||(colIndex==1)||(colIndex==7)) {
                     a=true;
                 }
                 return a;
              }
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class, 
-                java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,java.lang.Double.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -388,12 +389,12 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                 return types [columnIndex];
              }
         };
-        tbResep.setModel(tabModeObatUmum);
+        tbObatNonRacikan.setModel(tabModeObatUmum);
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
-        tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 12; i++) {
-            TableColumn column = tbResep.getColumnModel().getColumn(i);
+        tbObatNonRacikan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObatNonRacikan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        for (i = 0; i < 9; i++) {
+            TableColumn column = tbObatNonRacikan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
@@ -407,22 +408,15 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(110);
             }else if(i==6){
-                column.setPreferredWidth(85);
-            }else if(i==7){
                 column.setPreferredWidth(110);
-            }else if(i==8){
+            }else if(i==7){
                 column.setPreferredWidth(130);
-            }else if(i==9){
+            }else if(i==8){
                 column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==11){
-                column.setPreferredWidth(50);
-            }                 
+            }               
         }
         warna.kolom=1;
-        tbResep.setDefaultRenderer(Object.class,warna);
+        tbObatNonRacikan.setDefaultRenderer(Object.class,warna);
         
         tabModeObatRacikan=new DefaultTableModel(null,new Object[]{
                 "No","Nama Racikan","Kode Racik","Metode Racik","Jml.Racik",
@@ -712,7 +706,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         BtnCariObatNonRacikan = new widget.Button();
         CariObatNonRacikan = new widget.TextBox();
         Scroll9 = new widget.ScrollPane();
-        tbResep = new widget.Table();
+        tbObatNonRacikan = new widget.Table();
         jLabel20 = new widget.Label();
         Scroll10 = new widget.ScrollPane();
         tbObatRacikan = new widget.Table();
@@ -1322,8 +1316,8 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         Scroll9.setName("Scroll9"); // NOI18N
         Scroll9.setOpaque(true);
 
-        tbResep.setName("tbResep"); // NOI18N
-        Scroll9.setViewportView(tbResep);
+        tbObatNonRacikan.setName("tbObatNonRacikan"); // NOI18N
+        Scroll9.setViewportView(tbObatNonRacikan);
 
         FormInput.add(Scroll9);
         Scroll9.setBounds(16, 2197, 670, 216);
@@ -2280,13 +2274,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public widget.Table tbDetailPK;
     public widget.Table tbDiagnosa;
     private widget.Table tbDokter;
+    public widget.Table tbObatNonRacikan;
     public widget.Table tbObatRacikan;
     public widget.Table tbPermintaanMB;
     public widget.Table tbPermintaanPA;
     public widget.Table tbPermintaanPK;
     public widget.Table tbPermintaanRadiologi;
     public widget.Table tbProsedur;
-    public widget.Table tbResep;
     public widget.Table tbTindakan;
     // End of variables declaration//GEN-END:variables
 
@@ -2993,6 +2987,107 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
         } catch (Exception e) {
             System.out.println("Error Detail : "+e);
+        }
+    }
+    
+    private void tampilObatNonRacikan() {         
+        try{
+            file=new File("./cache/permintaanobatnonracikan.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem=""; 
+            ps=koneksi.prepareStatement(
+                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,databarang.letak_barang,jenis.nama,industrifarmasi.nama_industri "+
+                    "from databarang inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                    "where databarang.status='1' order by databarang.nama_brng");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Komposisi\":\""+rs.getString(4)+"\",\"JenisObat\":\""+rs.getString(5)+"\",\"AturanPakai\":\""+rs.getString(6)+"\"},";
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            fileWriter.write("{\"permintaanobatnonracikan\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi 2 : "+e);
+        }
+    }
+    
+    private void tampilObatNonRacikan2() {         
+        try{
+            jml=0;
+            for(i=0;i<tbObatNonRacikan.getRowCount();i++){
+                if(!tbObatNonRacikan.getValueAt(i,1).toString().equals("")){
+                    jml++;
+                }
+            }
+            
+            pilih=null;
+            pilih=new boolean[jml];
+            jumlah=null;
+            jumlah=new double[jml];
+            kode=null;
+            kode=new String[jml];
+            nama=null;
+            nama=new String[jml];
+            satuan=null;
+            satuan=new String[jml];
+            cirium=null;
+            cirium=new String[jml];
+            kategori=null;
+            kategori=new String[jml];
+            keterangan=null;
+            keterangan=new String[jml];
+            ciripny=null;
+            ciripny=new String[jml];
+            
+            index=0; 
+            for(i=0;i<tbObatNonRacikan.getRowCount();i++){
+                if(!tbObatNonRacikan.getValueAt(i,1).toString().equals("")){
+                    //"K","Jumlah","Kode Barang","Nama Barang","Satuan","Komposisi","Jenis Obat","Aturan Pakai","I.F."
+                    pilih[index]=Boolean.parseBoolean(tbObatNonRacikan.getValueAt(i,0).toString());                
+                    try {
+                        jumlah[index]=Double.parseDouble(tbObatNonRacikan.getValueAt(i,1).toString());
+                    } catch (Exception e) {
+                        jumlah[index]=0;
+                    }
+                    kode[index]=tbObatNonRacikan.getValueAt(i,2).toString();
+                    nama[index]=tbObatNonRacikan.getValueAt(i,3).toString();
+                    index++;
+                }
+            }
+
+            Valid.tabelKosong(tabModeMB);
+            for(i=0;i<jml;i++){                
+                tabModeMB.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+            }    
+        
+            myObj = new FileReader("./cache/permintaanmb.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("permintaanmb");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if((list.path("KodePeriksa").asText().toLowerCase().contains(CariMB.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariMB.getText().toLowerCase()))){
+                        tabModeMB.addRow(new Object[]{
+                            false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                        });
+                    }
+                }
+            }  
+            myObj.close(); 
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
     }
 }
