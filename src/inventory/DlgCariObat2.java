@@ -1946,7 +1946,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void tampil() {   
         jml=0;
         for(i=0;i<tbObat.getRowCount();i++){
-            if(!tbObat.getValueAt(i,1).toString().equals("")){
+            if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){
                 jml++;
             }
         }
@@ -1989,7 +1989,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         
         jml=0;        
         for(i=0;i<tbObat.getRowCount();i++){
-            if(!tbObat.getValueAt(i,1).toString().equals("")){
+            if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){
                 pilih[jml]=Boolean.parseBoolean(tbObat.getValueAt(i,0).toString());                
                 try {
                     jumlah[jml]=Double.parseDouble(tbObat.getValueAt(i,1).toString());

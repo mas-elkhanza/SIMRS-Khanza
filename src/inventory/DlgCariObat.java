@@ -2070,7 +2070,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     public void tampilobat() {        
         z=0;
         for(i=0;i<tbObat.getRowCount();i++){
-            if(!tbObat.getValueAt(i,1).toString().equals("")){
+            if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){
                 z++;
             }
         }    
@@ -2112,7 +2112,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         kadaluarsa=new String[z];
         z=0;        
         for(i=0;i<tbObat.getRowCount();i++){
-            if(!tbObat.getValueAt(i,1).toString().equals("")){
+            if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){
                 pilih[z]=Boolean.parseBoolean(tbObat.getValueAt(i,0).toString());                
                 try {
                     jumlah[z]=Double.parseDouble(tbObat.getValueAt(i,1).toString());

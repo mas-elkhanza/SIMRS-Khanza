@@ -2055,11 +2055,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariDetailMBActionPerformed
 
     private void BtnCariObatNonRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariObatNonRacikanActionPerformed
-        // TODO add your handling code here:
+        tampilObatNonRacikan2();
     }//GEN-LAST:event_BtnCariObatNonRacikanActionPerformed
 
     private void CariObatNonRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariObatNonRacikanKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilObatNonRacikan2();
+        }
     }//GEN-LAST:event_CariObatNonRacikanKeyPressed
 
     private void CariObatRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariObatRacikanKeyPressed
@@ -2123,7 +2125,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllDetailMBActionPerformed
 
     private void BtnAllObatNonRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllObatNonRacikanActionPerformed
-        // TODO add your handling code here:
+        CariObatNonRacikan.setText("");
+        tampilObatNonRacikan();
+        tampilObatNonRacikan2();
     }//GEN-LAST:event_BtnAllObatNonRacikanActionPerformed
 
     private void BtnAllObatRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllObatRacikanActionPerformed
@@ -3003,7 +3007,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Komposisi\":\""+rs.getString(4)+"\",\"JenisObat\":\""+rs.getString(5)+"\",\"AturanPakai\":\""+rs.getString(6)+"\"},";
+                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Komposisi\":\""+rs.getString(4)+"\",\"JenisObat\":\""+rs.getString(5)+"\",\"Industri\":\""+rs.getString(6)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3028,7 +3032,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         try{
             jml=0;
             for(i=0;i<tbObatNonRacikan.getRowCount();i++){
-                if(!tbObatNonRacikan.getValueAt(i,1).toString().equals("")){
+                if(Valid.SetAngka(tbObatNonRacikan.getValueAt(i,1).toString())>0){
                     jml++;
                 }
             }
@@ -3054,8 +3058,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             index=0; 
             for(i=0;i<tbObatNonRacikan.getRowCount();i++){
-                if(!tbObatNonRacikan.getValueAt(i,1).toString().equals("")){
-                    //"K","Jumlah","Kode Barang","Nama Barang","Satuan","Komposisi","Jenis Obat","Aturan Pakai","I.F."
+                if(Valid.SetAngka(tbObatNonRacikan.getValueAt(i,1).toString())>0){
                     pilih[index]=Boolean.parseBoolean(tbObatNonRacikan.getValueAt(i,0).toString());                
                     try {
                         jumlah[index]=Double.parseDouble(tbObatNonRacikan.getValueAt(i,1).toString());
@@ -3064,23 +3067,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     kode[index]=tbObatNonRacikan.getValueAt(i,2).toString();
                     nama[index]=tbObatNonRacikan.getValueAt(i,3).toString();
+                    satuan[index]=tbObatNonRacikan.getValueAt(i,4).toString();
+                    cirium[index]=tbObatNonRacikan.getValueAt(i,5).toString();
+                    kategori[index]=tbObatNonRacikan.getValueAt(i,6).toString();
+                    keterangan[index]=tbObatNonRacikan.getValueAt(i,7).toString();
+                    ciripny[index]=tbObatNonRacikan.getValueAt(i,8).toString();
                     index++;
                 }
             }
 
-            Valid.tabelKosong(tabModeMB);
+            Valid.tabelKosong(tabModeObatUmum);
+                    
             for(i=0;i<jml;i++){                
-                tabModeMB.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+                tabModeObatUmum.addRow(new Object[] {pilih[i],jumlah[i],kode[i],nama[i],satuan[i],cirium[i],kategori[i],keterangan[i],ciripny[i]});
             }    
         
-            myObj = new FileReader("./cache/permintaanmb.iyem");
+            myObj = new FileReader("./cache/permintaanobatnonracikan.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("permintaanmb");
+            response = root.path("permintaanobatnonracikan");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if((list.path("KodePeriksa").asText().toLowerCase().contains(CariMB.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(CariMB.getText().toLowerCase()))){
-                        tabModeMB.addRow(new Object[]{
-                            false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                    if((list.path("KodeBarang").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase())
+                            ||list.path("Komposisi").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase())||list.path("JenisObat").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase()))){
+                        tabModeObatUmum.addRow(new Object[]{
+                            false,"",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Komposisi").asText(),list.path("JenisObat").asText(),"",list.path("Industri").asText()
                         });
                     }
                 }
