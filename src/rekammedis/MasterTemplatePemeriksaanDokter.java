@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -730,6 +731,8 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         BtnAllObatNonRacikan = new widget.Button();
         BtnAllObatRacikan = new widget.Button();
         BtnAllTindakan = new widget.Button();
+        BtnTambah1 = new widget.Button();
+        BtnHapus1 = new widget.Button();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -1346,7 +1349,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(CariObatRacikan);
-        CariObatRacikan.setBounds(16, 2540, 610, 23);
+        CariObatRacikan.setBounds(16, 2540, 550, 23);
 
         BtnCariObatRacikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariObatRacikan.setMnemonic('1');
@@ -1359,7 +1362,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariObatRacikan);
-        BtnCariObatRacikan.setBounds(628, 2540, 28, 23);
+        BtnCariObatRacikan.setBounds(568, 2540, 28, 23);
 
         Scroll11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll11.setName("Scroll11"); // NOI18N
@@ -1538,7 +1541,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnAllObatRacikan);
-        BtnAllObatRacikan.setBounds(658, 2540, 28, 23);
+        BtnAllObatRacikan.setBounds(598, 2540, 28, 23);
 
         BtnAllTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAllTindakan.setMnemonic('2');
@@ -1552,6 +1555,32 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         });
         FormInput.add(BtnAllTindakan);
         BtnAllTindakan.setBounds(658, 2810, 28, 23);
+
+        BtnTambah1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnTambah1.setMnemonic('3');
+        BtnTambah1.setToolTipText("Alt+3");
+        BtnTambah1.setName("BtnTambah1"); // NOI18N
+        BtnTambah1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnTambah1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTambah1ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnTambah1);
+        BtnTambah1.setBounds(628, 2540, 28, 23);
+
+        BtnHapus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapus1.setMnemonic('H');
+        BtnHapus1.setToolTipText("Alt+H");
+        BtnHapus1.setName("BtnHapus1"); // NOI18N
+        BtnHapus1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnHapus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapus1ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnHapus1);
+        BtnHapus1.setBounds(658, 2540, 28, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2158,6 +2187,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_tbPermintaanMBMouseClicked
 
+    private void BtnTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambah1ActionPerformed
+        i=tabModeObatRacikan.getRowCount()+1;
+        if(i==99){
+            JOptionPane.showMessageDialog(null,"Maksimal 98 Racikan..!!");
+        }else{
+            tabModeObatRacikan.addRow(new Object[]{""+i,"","","","","",""});
+        }
+    }//GEN-LAST:event_BtnTambah1ActionPerformed
+
+    private void BtnHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapus1ActionPerformed
+        if(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),1).equals("")&&tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).equals("")&&tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),5).equals("")&&tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),6).equals("")){
+            tabModeObatRacikan.removeRow(tbObatRacikan.getSelectedRow());
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf sudah terisi, gak boleh dihapus..!!");
+        }
+
+    }//GEN-LAST:event_BtnHapus1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2203,8 +2250,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
+    private widget.Button BtnHapus1;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
+    private widget.Button BtnTambah1;
     public widget.TextBox CariDetailMB;
     public widget.TextBox CariDetailPK;
     public widget.TextBox CariMB;
