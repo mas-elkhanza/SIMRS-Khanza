@@ -85,6 +85,32 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
                 column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(115);
+            }else if(i==6){
+                column.setPreferredWidth(81);
+            }else if(i==7){
+                column.setPreferredWidth(82);
+            }else if(i==8){
+                column.setPreferredWidth(120);
+            }else if(i==9){
+                column.setPreferredWidth(87);
+            }else if(i==10){
+                column.setPreferredWidth(120);
+            }else if(i==11){
+                column.setPreferredWidth(120);
+            }else if(i==12){
+                column.setPreferredWidth(57);
+            }else if(i==13){
+                column.setPreferredWidth(61);
+            }else if(i==14){
+                column.setPreferredWidth(60);
+            }else if(i==15){
+                column.setPreferredWidth(85);
+            }else if(i==16){
+                column.setPreferredWidth(120);
+            }else if(i==17){
+                column.setPreferredWidth(90);
+            }else if(i==18){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -160,7 +186,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
+        MnPenilaianUlangNyeri = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -233,19 +259,19 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianLanjutanRisikoJatuh.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianLanjutanRisikoJatuh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianLanjutanRisikoJatuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setText("Formulir Penilaian Lanjutan Risiko Jatuh Dewasa");
-        MnPenilaianLanjutanRisikoJatuh.setName("MnPenilaianLanjutanRisikoJatuh"); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setPreferredSize(new java.awt.Dimension(290, 26));
-        MnPenilaianLanjutanRisikoJatuh.addActionListener(new java.awt.event.ActionListener() {
+        MnPenilaianUlangNyeri.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianUlangNyeri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianUlangNyeri.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianUlangNyeri.setText("Formulir Penilaian Ulang Nyeri");
+        MnPenilaianUlangNyeri.setName("MnPenilaianUlangNyeri"); // NOI18N
+        MnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPenilaianUlangNyeri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianLanjutanRisikoJatuhActionPerformed(evt);
+                MnPenilaianUlangNyeriActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianLanjutanRisikoJatuh);
+        jPopupMenu1.add(MnPenilaianUlangNyeri);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -387,7 +413,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(80, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass8.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -420,7 +446,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-10-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -434,7 +460,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-10-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -443,7 +469,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(90, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
@@ -555,7 +581,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 310, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-10-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -689,7 +715,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator9.setName("jSeparator9"); // NOI18N
         FormInput.add(jSeparator9);
-        jSeparator9.setBounds(335, 75, 1, 170);
+        jSeparator9.setBounds(335, 75, 1, 172);
 
         Nyeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Nyeri", "Nyeri Akut", "Nyeri Kronis" }));
         Nyeri.setName("Nyeri"); // NOI18N
@@ -706,7 +732,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         FormInput.add(jLabel80);
         jLabel80.setBounds(480, 80, 60, 23);
 
-        Provokes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Proses Penyakit", "Benturan", "Lain-lain" }));
+        Provokes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Proses Penyakit", "Benturan", "Lain-lain", "-" }));
         Provokes.setName("Provokes"); // NOI18N
         Provokes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -732,7 +758,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         FormInput.add(jLabel81);
         jLabel81.setBounds(345, 110, 60, 23);
 
-        Quality.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seperti Tertusuk", "Berdenyut", "Teriris", "Tertindih", "Tertiban", "Lain-lain" }));
+        Quality.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seperti Tertusuk", "Berdenyut", "Teriris", "Tertindih", "Tertiban", "Lain-lain", "-" }));
         Quality.setName("Quality"); // NOI18N
         Quality.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -837,7 +863,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         FormInput.add(jLabel89);
         jLabel89.setBounds(345, 220, 110, 23);
 
-        NyeriHilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Istirahat", "Medengar Musik", "Minum Obat" }));
+        NyeriHilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Istirahat", "Medengar Musik", "Minum Obat", "-" }));
         NyeriHilang.setName("NyeriHilang"); // NOI18N
         NyeriHilang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1014,32 +1040,22 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptLanjutanRisikoJatuhDewasa.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Dewasa ]::",
+                Valid.MyReportqry("rptPenilaianUlangNyeri.jasper","report","::[ Data Penilaian Ulang Nyeri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_ulang_nyeri.tanggal,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala1,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala2,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala3,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala4,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala5,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala6,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_totalnilai,penilaian_ulang_nyeri.hasil_skrining,"+
-                    "penilaian_ulang_nyeri.saran,penilaian_ulang_nyeri.nip,petugas.nama "+
+                    "penilaian_ulang_nyeri.nyeri,penilaian_ulang_nyeri.provokes,penilaian_ulang_nyeri.ket_provokes,penilaian_ulang_nyeri.quality,"+
+                    "penilaian_ulang_nyeri.ket_quality,penilaian_ulang_nyeri.lokasi,penilaian_ulang_nyeri.menyebar,penilaian_ulang_nyeri.skala_nyeri,"+
+                    "penilaian_ulang_nyeri.durasi,penilaian_ulang_nyeri.nyeri_hilang,penilaian_ulang_nyeri.ket_nyeri,penilaian_ulang_nyeri.nip,petugas.nama "+
                     "from penilaian_ulang_nyeri inner join reg_periksa on penilaian_ulang_nyeri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on penilaian_ulang_nyeri.nip=petugas.nip where "+
                     "penilaian_ulang_nyeri.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
                     "order by penilaian_ulang_nyeri.tanggal",param);
             }else{
-                Valid.MyReportqry("rptLanjutanRisikoJatuhDewasa.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Dewasa ]::",
+                Valid.MyReportqry("rptPenilaianUlangNyeri.jasper","report","::[ Data Penilaian Ulang Nyeri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_ulang_nyeri.tanggal,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala1,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala2,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala3,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala4,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala5,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala6,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_totalnilai,penilaian_ulang_nyeri.hasil_skrining,"+
-                    "penilaian_ulang_nyeri.saran,penilaian_ulang_nyeri.nip,petugas.nama "+
+                    "penilaian_ulang_nyeri.nyeri,penilaian_ulang_nyeri.provokes,penilaian_ulang_nyeri.ket_provokes,penilaian_ulang_nyeri.quality,"+
+                    "penilaian_ulang_nyeri.ket_quality,penilaian_ulang_nyeri.lokasi,penilaian_ulang_nyeri.menyebar,penilaian_ulang_nyeri.skala_nyeri,"+
+                    "penilaian_ulang_nyeri.durasi,penilaian_ulang_nyeri.nyeri_hilang,penilaian_ulang_nyeri.ket_nyeri,penilaian_ulang_nyeri.nip,petugas.nama "+
                     "from penilaian_ulang_nyeri inner join reg_periksa on penilaian_ulang_nyeri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on penilaian_ulang_nyeri.nip=petugas.nip where "+
@@ -1152,7 +1168,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,Nyeri);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnPenilaianLanjutanRisikoJatuhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
+    private void MnPenilaianUlangNyeriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianUlangNyeriActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1162,23 +1178,17 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhDewasa.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Dewasa ]::",
+            param.put("nyeri",Sequel.cariGambar("select gambar.nyeri from gambar")); 
+            Valid.MyReportqry("rptFormulirPenilaianUlangNyeri.jasper","report","::[ Formulir Penilaian Ulang Nyeri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_ulang_nyeri.tanggal,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala1,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala2,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala3,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala4,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala5,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_skala6,penilaian_ulang_nyeri.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_ulang_nyeri.penilaian_jatuhmorse_totalnilai,penilaian_ulang_nyeri.hasil_skrining,"+
-                    "penilaian_ulang_nyeri.saran,penilaian_ulang_nyeri.nip,petugas.nama "+
+                    "penilaian_ulang_nyeri.nyeri,penilaian_ulang_nyeri.provokes,penilaian_ulang_nyeri.ket_provokes,penilaian_ulang_nyeri.quality,"+
+                    "penilaian_ulang_nyeri.ket_quality,penilaian_ulang_nyeri.lokasi,penilaian_ulang_nyeri.menyebar,penilaian_ulang_nyeri.skala_nyeri,"+
+                    "penilaian_ulang_nyeri.durasi,penilaian_ulang_nyeri.nyeri_hilang,penilaian_ulang_nyeri.ket_nyeri,penilaian_ulang_nyeri.nip,petugas.nama "+
                     "from penilaian_ulang_nyeri inner join reg_periksa on penilaian_ulang_nyeri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on penilaian_ulang_nyeri.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
+    }//GEN-LAST:event_MnPenilaianUlangNyeriActionPerformed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
         Valid.pindah(evt,btnPetugas,Provokes);
@@ -1265,7 +1275,7 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
     private widget.TextBox Lokasi;
     private widget.ComboBox Menit;
     private widget.ComboBox Menyebar;
-    private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
+    private javax.swing.JMenuItem MnPenilaianUlangNyeri;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private widget.ComboBox Nyeri;
@@ -1359,7 +1369,8 @@ public final class RMPenilaianUlangNyeri extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("nyeri"),rs.getString("provokes"),rs.getString("ket_provokes"),rs.getString("quality"),rs.getString("ket_quality"),rs.getString("lokasi"),
-                        rs.getString("menyebar"),rs.getString("skala_nyeri"),rs.getString("durasi"),rs.getString("nyeri_hilang"),rs.getString("ket_nyeri"),rs.getString("nama")
+                        rs.getString("menyebar"),rs.getString("skala_nyeri"),rs.getString("durasi"),rs.getString("nyeri_hilang"),rs.getString("ket_nyeri"),rs.getString("nip"),
+                        rs.getString("nama")
                     });
                 }
             } catch (Exception e) {

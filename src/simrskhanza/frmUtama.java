@@ -883,6 +883,7 @@ import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
 import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
+import rekammedis.RMPenilaianUlangNyeri;
 import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
@@ -20677,6 +20678,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor()); 
     }  
     
+    private void btnPenilaianUlangNyeriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianUlangNyeri aplikasi=new RMPenilaianUlangNyeri(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21356,7 +21370,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare,
             btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa,
             btnPenilaianRisikoJatuhPsikiatri,btnPenilaianLanjutanSkriningFungsional,btnPenilaianAwalMedisRalanRehabMedik,btnTemplatePersetujuanPenolakanTindakan,
-            btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek;
+            btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
+            btnPenilaianUlangNyeri;
     
     public void isWall(){
         try{            
@@ -25068,6 +25083,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_lanjutan_skrining_fungsional()==true){
                 Panelmenu.add(btnPenilaianLanjutanSkriningFungsional);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_ulang_nyeri()==true){
+                Panelmenu.add(btnPenilaianUlangNyeri);
                 jmlmenu++;
             }
             
@@ -29935,6 +29955,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getpenilaian_ulang_nyeri()==true){
+            Panelmenu.add(btnPenilaianUlangNyeri);
+            jmlmenu++;
+        }
+
         if(akses.getpenilaian_risiko_dekubitus()==true){
             Panelmenu.add(btnPenilaianRisikoDekubitus);
             jmlmenu++;
@@ -36226,6 +36251,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_ulang_nyeri()==true){
+            if(btnPenilaianUlangNyeri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianUlangNyeri);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_risiko_dekubitus()==true){
             if(btnPenilaianRisikoDekubitus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianRisikoDekubitus);
@@ -42129,5 +42161,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSMapingObatApotek.setName("btnBPJSMapingObatApotek"); 
         btnBPJSMapingObatApotek.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSMapingObatApotek.addActionListener(this::btnBPJSMapingObatApotekActionPerformed);
+        
+        btnPenilaianUlangNyeri = new widget.ButtonBig();
+        btnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5725022_head_headache_migraine_pain_severe_icon.png")));
+        btnPenilaianUlangNyeri.setText("Penilaian Ulang Nyeri");
+        btnPenilaianUlangNyeri.setIconTextGap(0);
+        btnPenilaianUlangNyeri.setName("btnPenilaianUlangNyeri"); 
+        btnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianUlangNyeri.addActionListener(this::btnPenilaianUlangNyeriActionPerformed);
     }
 }

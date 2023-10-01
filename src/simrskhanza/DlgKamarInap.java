@@ -126,6 +126,7 @@ import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
 import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
+import rekammedis.RMPenilaianUlangNyeri;
 import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRekonsiliasiObat;
 import rekammedis.RMSignInSebelumAnastesi;
@@ -838,6 +839,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnMonitoringReaksiTranfusi = new javax.swing.JMenuItem();
         MnHasilPemeriksaanUSG = new javax.swing.JMenuItem();
         MnDokumentasiTindakanESWL = new javax.swing.JMenuItem();
+        MnPenilaianUlangNyeri = new javax.swing.JMenuItem();
         MnDiagnosa = new javax.swing.JMenuItem();
         MnGizi = new javax.swing.JMenu();
         ppSkriningNutrisiDewasa = new javax.swing.JMenuItem();
@@ -2435,6 +2437,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnObservasi.add(MnDokumentasiTindakanESWL);
+
+        MnPenilaianUlangNyeri.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianUlangNyeri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianUlangNyeri.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianUlangNyeri.setText("Penilaian Ulang Nyeri");
+        MnPenilaianUlangNyeri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianUlangNyeri.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianUlangNyeri.setName("MnPenilaianUlangNyeri"); // NOI18N
+        MnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPenilaianUlangNyeri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPenilaianUlangNyeriActionPerformed(evt);
+            }
+        });
+        MnObservasi.add(MnPenilaianUlangNyeri);
 
         MnDataRM.add(MnObservasi);
 
@@ -15361,6 +15379,73 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }//GEN-LAST:event_MnPenilaianLanjutanSkriningFungsionalActionPerformed
 
+    private void MnPenilaianUlangNyeriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianUlangNyeriActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
+                    try {
+                        psanak=koneksi.prepareStatement(
+                            "select ranap_gabung.no_rawat2 from ranap_gabung where ranap_gabung.no_rawat=?");            
+                        try {
+                            psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
+                            rs2=psanak.executeQuery();
+                            if(rs2.next()){
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                RMPenilaianUlangNyeri form=new RMPenilaianUlangNyeri(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
+                                if(R1.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                }else if(R2.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),DTPCari2.getDate());
+                                }else if(R3.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
+                                }
+                                form.tampil();
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                tbKamIn.requestFocus();
+                            }
+                        } catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }finally{
+                              if(rs2 != null){
+                                  rs2.close();
+                              }
+                              if(psanak != null){
+                                  psanak.close();
+                              }
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }else{
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    RMPenilaianUlangNyeri form=new RMPenilaianUlangNyeri(null,false);
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.setVisible(true);
+                    if(R1.isSelected()==true){
+                        form.setNoRm(norawat.getText(),new Date());
+                    }else if(R2.isSelected()==true){
+                        form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                    }else if(R3.isSelected()==true){
+                        form.setNoRm(norawat.getText(),DTPCari4.getDate());
+                    }   
+                    form.tampil();
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            }
+        } 
+    }//GEN-LAST:event_MnPenilaianUlangNyeriActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -15525,6 +15610,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnPenilaianTambahanGeriatri;
     private javax.swing.JMenuItem MnPenilaianTambahanMalarikanDiri;
     private javax.swing.JMenuItem MnPenilaianTambahanPerilakuKekerasan;
+    private javax.swing.JMenuItem MnPenilaianUlangNyeri;
     private javax.swing.JMenuItem MnPenjab;
     private javax.swing.JMenuItem MnPenjualan1;
     private javax.swing.JMenuItem MnPenolakanAnjuranMedis;
@@ -16254,6 +16340,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnPenilaianKecemasanAnak.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
         MnPenilaianRisikoJatuhPsikiatri.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_psikiatri());
         MnPenilaianLanjutanSkriningFungsional.setEnabled(akses.getpenilaian_lanjutan_skrining_fungsional());
+        MnPenilaianUlangNyeri.setEnabled(akses.getpenilaian_ulang_nyeri());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);

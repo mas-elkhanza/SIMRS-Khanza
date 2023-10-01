@@ -131,6 +131,7 @@ import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
 import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
+import rekammedis.RMPenilaianUlangNyeri;
 import rekammedis.RMRekonsiliasiObat;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
@@ -688,6 +689,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnRMCatatanMonitoring = new javax.swing.JMenu();
         MnCatatanCekGDS = new javax.swing.JMenuItem();
         MnMonitoringReaksiTranfusi = new javax.swing.JMenuItem();
+        MnPenilaianUlangNyeri = new javax.swing.JMenuItem();
         MnGizi = new javax.swing.JMenu();
         ppSkriningNutrisiDewasa = new javax.swing.JMenuItem();
         ppSkriningNutrisiLansia = new javax.swing.JMenuItem();
@@ -1686,6 +1688,22 @@ public final class DlgIGD extends javax.swing.JDialog {
             }
         });
         MnRMCatatanMonitoring.add(MnMonitoringReaksiTranfusi);
+
+        MnPenilaianUlangNyeri.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianUlangNyeri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianUlangNyeri.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianUlangNyeri.setText("Penilaian Ulang Nyeri");
+        MnPenilaianUlangNyeri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianUlangNyeri.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianUlangNyeri.setName("MnPenilaianUlangNyeri"); // NOI18N
+        MnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnPenilaianUlangNyeri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPenilaianUlangNyeriActionPerformed(evt);
+            }
+        });
+        MnRMCatatanMonitoring.add(MnPenilaianUlangNyeri);
 
         MnDataRM.add(MnRMCatatanMonitoring);
 
@@ -4599,7 +4617,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4613,7 +4631,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4705,7 +4723,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-08-2023" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2023" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -10544,6 +10562,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPeniliaianAwalMedisIGDPsikiatriActionPerformed
 
+    private void MnPenilaianUlangNyeriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianUlangNyeriActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianUlangNyeri form=new RMPenilaianUlangNyeri(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPenilaianUlangNyeriActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -10709,6 +10750,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPenilaianTambahanGeriatri;
     private javax.swing.JMenuItem MnPenilaianTambahanMelarikanDiri;
     private javax.swing.JMenuItem MnPenilaianTambahanPerilakuKekerasan;
+    private javax.swing.JMenuItem MnPenilaianUlangNyeri;
     private javax.swing.JMenuItem MnPeniliaianAwalMedisHemodialisa;
     private javax.swing.JMenuItem MnPeniliaianAwalMedisIGD;
     private javax.swing.JMenuItem MnPeniliaianAwalMedisIGDPsikiatri;
@@ -11248,6 +11290,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianRisikoJatuhPsikiatri.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_psikiatri());
         MnPenilaianLanjutanSkriningFungsional.setEnabled(akses.getpenilaian_lanjutan_skrining_fungsional());
         MnPeniliaianAwalMedisIGDPsikiatri.setEnabled(akses.getpenilaian_medis_ralan_gawat_darurat_psikiatri());
+        MnPenilaianUlangNyeri.setEnabled(akses.getpenilaian_ulang_nyeri());
     }
     
     private void isNumber(){

@@ -100,6 +100,7 @@ import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
 import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
+import rekammedis.RMPenilaianUlangNyeri;
 import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRekonsiliasiObat;
 import rekammedis.RMSignInSebelumAnastesi;
@@ -1329,6 +1330,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnFollowUpDBD = new widget.Button();
         BtnCatatanKeperawatan = new widget.Button();
         BtnCatatanCekGDS = new widget.Button();
+        BtnPenilaianUlangNyeri = new widget.Button();
         BtnPemantauanPEWSAnak = new widget.Button();
         BtnPemantauanPEWSDewasa = new widget.Button();
         BtnPemantauanMEOWS = new widget.Button();
@@ -1560,7 +1562,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-10-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1574,7 +1576,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-10-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3227,7 +3229,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TPasien.setBounds(283, 10, 260, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-10-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -4126,6 +4128,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnCatatanCekGDS);
+
+        BtnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPenilaianUlangNyeri.setText("Penilaian Ulang Nyeri");
+        BtnPenilaianUlangNyeri.setFocusPainted(false);
+        BtnPenilaianUlangNyeri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPenilaianUlangNyeri.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianUlangNyeri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianUlangNyeri.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianUlangNyeri.setName("BtnPenilaianUlangNyeri"); // NOI18N
+        BtnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPenilaianUlangNyeri.setRoundRect(false);
+        BtnPenilaianUlangNyeri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPenilaianUlangNyeriActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPenilaianUlangNyeri);
 
         BtnPemantauanPEWSAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnPemantauanPEWSAnak.setText("Pemantauan PEWS Anak");
@@ -8285,6 +8304,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnPenilaianLanjutanSkriningFungsionalActionPerformed
 
+    private void BtnPenilaianUlangNyeriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianUlangNyeriActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianUlangNyeri form=new RMPenilaianUlangNyeri(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPenilaianUlangNyeriActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8367,6 +8404,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPenilaianTambahanGeriatri;
     private widget.Button BtnPenilaianTambahanMelarikanDiri;
     private widget.Button BtnPenilaianTambahanPerilakuKekerasan;
+    private widget.Button BtnPenilaianUlangNyeri;
     private widget.Button BtnPerencanaanPemulangan;
     private widget.Button BtnPermintaanLab;
     private widget.Button BtnPermintaanRad;
@@ -9269,6 +9307,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnPenilaianLanjutanSkriningFungsional.setVisible(akses.getpenilaian_lanjutan_skrining_fungsional()); 
         if(akses.getpenilaian_lanjutan_skrining_fungsional()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianUlangNyeri.setVisible(akses.getpenilaian_ulang_nyeri()); 
+        if(akses.getpenilaian_ulang_nyeri()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
