@@ -315,6 +315,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanapPostPartum = new widget.CekBox();
         chkFollowUpDBD = new widget.CekBox();
         chkCatatanCekGDS = new widget.CekBox();
+        chkPenilaianUlangNyeri = new widget.CekBox();
         chkCatatanKeperawatanRanap = new widget.CekBox();
         chkPemantauanPEWSAnak = new widget.CekBox();
         chkPemantauanPEWSDewasa = new widget.CekBox();
@@ -628,7 +629,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2650));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2675));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1019,6 +1020,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanCekGDS.setOpaque(false);
         chkCatatanCekGDS.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanCekGDS);
+
+        chkPenilaianUlangNyeri.setSelected(true);
+        chkPenilaianUlangNyeri.setText("Penilaian Ulang Nyeri");
+        chkPenilaianUlangNyeri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPenilaianUlangNyeri.setName("chkPenilaianUlangNyeri"); // NOI18N
+        chkPenilaianUlangNyeri.setOpaque(false);
+        chkPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkPenilaianUlangNyeri);
 
         chkCatatanKeperawatanRanap.setSelected(true);
         chkCatatanKeperawatanRanap.setText("Catatan Keperawatan Ranap");
@@ -2058,6 +2067,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanLanjutanSkriningFungsional.setSelected(true);
             chkAsuhanMedisRalanKedokteranFisik.setSelected(true);
             chkAsuhanMedisIGDPsikiatri.setSelected(true);
+            chkPenilaianUlangNyeri.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2173,6 +2183,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanLanjutanSkriningFungsional.setSelected(false);
             chkAsuhanMedisRalanKedokteranFisik.setSelected(false);
             chkAsuhanMedisIGDPsikiatri.setSelected(false);
+            chkPenilaianUlangNyeri.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2339,6 +2350,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkPenilaianPasienKeracunan;
     private widget.CekBox chkPenilaianPasienPenyakitMenular;
     private widget.CekBox chkPenilaianPasienTerminal;
+    private widget.CekBox chkPenilaianUlangNyeri;
     private widget.CekBox chkPerencanaanPemulangan;
     private widget.CekBox chkPotonganBiaya;
     private widget.CekBox chkProsedurTindakan;
@@ -9787,6 +9799,65 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi Cek GDS : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+            
+            //menampilkan penilaian ulang nyeri
+            if(chkPenilaianUlangNyeri.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select penilaian_ulang_nyeri.tanggal,penilaian_ulang_nyeri.nyeri,penilaian_ulang_nyeri.provokes,penilaian_ulang_nyeri.ket_provokes,penilaian_ulang_nyeri.quality,"+
+                        "penilaian_ulang_nyeri.ket_quality,penilaian_ulang_nyeri.lokasi,penilaian_ulang_nyeri.menyebar,penilaian_ulang_nyeri.skala_nyeri,"+
+                        "penilaian_ulang_nyeri.durasi,penilaian_ulang_nyeri.nyeri_hilang,penilaian_ulang_nyeri.ket_nyeri,penilaian_ulang_nyeri.nip,petugas.nama "+
+                        "from penilaian_ulang_nyeri inner join petugas on penilaian_ulang_nyeri.nip=petugas.nip "+
+                        "where penilaian_ulang_nyeri.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Ulang Nyeri</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                    "<td width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                    "<td width='60%' bgcolor='#FFFAF8'>Hasil Penilaian</td>"+
+                                    "<td width='21%' bgcolor='#FFFAF8'>Perawat/Paramedis</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center'>"+w+"</td>"+
+                                    "<td valign='top'>"+rs2.getString("tanggal")+"</td>"+
+                                    "<td valign='top' align='left'>"+
+                                        "Tingkat Nyeri : "+rs2.getString("nyeri")+", Waktu / Durasi : "+rs2.getString("durasi")+" Menit<br>"+
+                                        "Penyebab : "+rs2.getString("provokes")+(rs2.getString("ket_provokes").equals("")?"":", "+rs2.getString("ket_provokes"))+"<br>"+
+                                        "Kualitas : "+rs2.getString("quality")+(rs2.getString("ket_quality").equals("")?"":", "+rs2.getString("ket_quality"))+"<br>"+
+                                        "Severity : Skala Nyeri "+rs2.getString("skala_nyeri")+"<br>"+
+                                        "Wilayah :<br>"+
+                                        "&nbsp;&nbsp;&nbsp;&nbsp;Lokasi : "+rs2.getString("lokasi")+"<br>"+
+                                        "Menyebar : "+rs2.getString("menyebar")+"<br>"+
+                                        "Nyeri Hilang Bila : "+rs2.getString("nyeri_hilang")+(rs2.getString("ket_nyeri").equals("")?"":", "+rs2.getString("ket_nyeri"))+       
+                                    "</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                 "</tr>");                                        
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi Penilaian Ulang Nyeri : "+e);
                 } finally{
                     if(rs2!=null){
                         rs2.close();
