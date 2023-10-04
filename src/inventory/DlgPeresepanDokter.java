@@ -288,12 +288,12 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                 if(aturanpakai.getTable().getSelectedRow()!= -1){  
                     if(TabRawat.getSelectedIndex()==0){
                         tbResep.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbResep.getSelectedRow(),8);
+                        tbResep.requestFocus();
                     }else if(TabRawat.getSelectedIndex()==1){
                         tbObatResepRacikan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObatResepRacikan.getSelectedRow(),5);
                         tbObatResepRacikan.requestFocus();
                     }   
-                }   
-                tbResep.requestFocus();
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -1355,7 +1355,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 if(i==5){
                     akses.setform("DlgCariObat");
-                    aturanpakai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame1);
                     aturanpakai.setVisible(true);
                 }else if(i==3){
@@ -1364,7 +1364,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         tbObatResepRacikan.requestFocus();
                     }else{
                         metoderacik.isCek();
-                        metoderacik.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                        metoderacik.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         metoderacik.setLocationRelativeTo(internalFrame1);
                         metoderacik.setVisible(true);
                     }

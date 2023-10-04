@@ -1217,6 +1217,9 @@
                               <Properties>
                                 <Property name="name" type="java.lang.String" value="tbObatNonRacikan" noResource="true"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbObatNonRacikanKeyPressed"/>
+                              </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
@@ -1259,6 +1262,9 @@
                               <Properties>
                                 <Property name="name" type="java.lang.String" value="tbObatRacikan" noResource="true"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbObatRacikanKeyPressed"/>
+                              </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
