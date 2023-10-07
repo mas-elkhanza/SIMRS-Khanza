@@ -36,16 +36,17 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,psprosedur,pspenyakit;
     private ResultSet rs;
-    private int i,index=0,jml=0;
-    private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,satuan,nilairujukan;
+    private int i,index=0,jml=0,r=0;
+    private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,satuan,nilairujukan,no;
     private boolean[] pilih;
-    private double[] jumlah;
+    private double[] jumlah,p1,p2,kps;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
     private File file;
     private FileWriter fileWriter;
-    private String iyem,la="",ld="",pa="",pd="";
+    private String iyem,la="",ld="",pa="",pd="",noracik="";
+    private double jumlahracik=0,persenracik=0,kapasitasracik=0;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -480,7 +481,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==9)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
+                if ((colIndex==6)||(colIndex==8)||(colIndex==9)||(colIndex==10)) {
                     a=true;
                 }
                 return a;
@@ -1440,6 +1441,11 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         Scroll11.setOpaque(true);
 
         tbDetailObatRacikan.setName("tbDetailObatRacikan"); // NOI18N
+        tbDetailObatRacikan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbDetailObatRacikanKeyPressed(evt);
+            }
+        });
         Scroll11.setViewportView(tbDetailObatRacikan);
 
         FormInput.add(Scroll11);
@@ -2169,15 +2175,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_CariObatRacikanKeyPressed
 
     private void BtnCariObatRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariObatRacikanActionPerformed
-        if(tbDetailObatRacikan.getRowCount()!=0){
-            if(tbDetailObatRacikan.getSelectedRow()!= -1){
-                if(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),0).toString().equals("")||
-                        tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),1).toString().equals("")||
-                        tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),2).toString().equals("")||
-                        tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),3).toString().equals("")||
-                        tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),4).toString().equals("")||
-                        tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),5).toString().equals("")||
-                        tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),6).toString().equals("")){
+        if(tbObatRacikan.getRowCount()!=0){
+            if(tbObatRacikan.getSelectedRow()!= -1){
+                if(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),0).toString().equals("")||
+                        tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),1).toString().equals("")||
+                        tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),2).toString().equals("")||
+                        tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),3).toString().equals("")||
+                        tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString().equals("")||
+                        tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),5).toString().equals("")||
+                        tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),6).toString().equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi data racikan..!!");
                 }else{
                     tampilDetailObatRacikan();
@@ -2249,7 +2255,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllObatNonRacikanActionPerformed
 
     private void BtnAllObatRacikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllObatRacikanActionPerformed
-        // TODO add your handling code here:
+        CariObatRacikan.setText("");
+        tampilObatNonRacikan();
+        BtnCariObatRacikanActionPerformed(null);
     }//GEN-LAST:event_BtnAllObatRacikanActionPerformed
 
     private void BtnAllTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllTindakanActionPerformed
@@ -2346,6 +2354,63 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
         }
     }//GEN-LAST:event_tbObatRacikanKeyPressed
+
+    private void tbDetailObatRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDetailObatRacikanKeyPressed
+        if(tbDetailObatRacikan.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_RIGHT)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                i=tbDetailObatRacikan.getSelectedColumn();
+                if((i==8)||(i==5)||(i==10)||(i==11)){
+                    try {
+                        if(!tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString())){
+                            if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString())==0){
+                                JOptionPane.showMessageDialog(null,"Kapasitas obat masih kosong..!!!");
+                            }else{
+                                tbDetailObatRacikan.setValueAt(Valid.SetAngka8(Valid.SetAngka(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),5).toString())*
+                                    (Valid.SetAngka(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),6).toString())/Valid.SetAngka(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString())),1),
+                                        tbDetailObatRacikan.getSelectedRow(),9);
+                            }                                
+                        }
+                    } catch (Exception e) {
+                        tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),9);
+                    }      
+                }else if(i==9){
+                    if(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString().contains("%")){
+                        if(tbDetailObatRacikan.getSelectedRow()!= -1){
+                            try {
+                                r=tbDetailObatRacikan.getSelectedRow();
+                                noracik=tbDetailObatRacikan.getValueAt(r,0).toString();
+                                jumlahracik=0;
+                                persenracik=Double.parseDouble(tbDetailObatRacikan.getValueAt(r,9).toString().replaceAll("%",""));
+                                kapasitasracik=Double.parseDouble(tbDetailObatRacikan.getValueAt(r,5).toString());
+                                for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
+                                    if(noracik==tbDetailObatRacikan.getValueAt(i,0).toString()){
+                                        if(!tbDetailObatRacikan.getValueAt(i,9).toString().contains("%")){
+                                            jumlahracik=jumlahracik+(Double.parseDouble(tbDetailObatRacikan.getValueAt(i,5).toString())*
+                                                    Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()));
+                                        }
+                                    }
+                                }
+                                tbDetailObatRacikan.setValueAt(Valid.SetAngka8((jumlahracik*(persenracik/100))/kapasitasracik,1),r,10);
+                            } catch (Exception e) {
+                                tbDetailObatRacikan.setValueAt(0,r,10);
+                            }
+                        }
+                    }else{
+                        if(tbDetailObatRacikan.getSelectedRow()!= -1){
+                            try {
+                                tbDetailObatRacikan.setValueAt(Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
+                                                *Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString()))
+                                                /Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),5).toString()),1)
+                                                ,tbDetailObatRacikan.getSelectedRow(),10);
+                            } catch (Exception e) {
+                                tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),10);
+                            }
+                        }
+                    }  
+                }
+            }
+        }
+    }//GEN-LAST:event_tbDetailObatRacikanKeyPressed
 
     /**
     * @param args the command line arguments
@@ -3192,13 +3257,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             fileWriter = new FileWriter(file);
             iyem=""; 
             ps=koneksi.prepareStatement(
-                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,databarang.letak_barang,jenis.nama,industrifarmasi.nama_industri "+
+                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,databarang.letak_barang,jenis.nama,industrifarmasi.nama_industri,databarang.kapasitas "+
                     "from databarang inner join jenis on databarang.kdjns=jenis.kdjns inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
                     "where databarang.status='1' order by databarang.nama_brng");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Komposisi\":\""+rs.getString(4)+"\",\"JenisObat\":\""+rs.getString(5)+"\",\"Industri\":\""+rs.getString(6)+"\"},";
+                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Komposisi\":\""+rs.getString(4)+"\",\"JenisObat\":\""+rs.getString(5)+"\",\"Industri\":\""+rs.getString(6)+"\",\"Kapasitas\":\""+rs.getString(7)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3293,12 +3358,99 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     private void tampilDetailObatRacikan(){
-        //"No","Kode Barang","Nama Barang","Satuan","Jenis Obat","Kps","P1","/","P2","Kandungan","Jml","I.F.","Komposisi"
-        jml=0;
-        for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
-            if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
-                jml++;
+        try {
+            jml=0;
+            for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
+                if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
+                    jml++;
+                }
+            } 
+
+            no=null;
+            no=new String[jml]; 
+            kode=null;
+            kode=new String[jml];
+            nama=null;
+            nama=new String[jml];
+            satuan=null;
+            satuan=new String[jml];
+            kategori=null;
+            kategori=new String[jml];
+            kps=null;
+            kps=new double[jml];
+            p1=null;
+            p1=new double[jml];
+            p2=null;
+            p2=new double[jml];
+            keterangan=null;
+            keterangan=new String[jml];
+            jumlah=null;
+            jumlah=new double[jml];
+            cirium=null;
+            cirium=new String[jml];
+            ciripny=null;
+            ciripny=new String[jml];
+
+            index=0;        
+            for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
+                if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
+                    no[index]=tbDetailObatRacikan.getValueAt(i,0).toString();
+                    kode[index]=tbDetailObatRacikan.getValueAt(i,1).toString();
+                    nama[index]=tbDetailObatRacikan.getValueAt(i,2).toString();
+                    satuan[index]=tbDetailObatRacikan.getValueAt(i,3).toString();
+                    kategori[index]=tbDetailObatRacikan.getValueAt(i,4).toString();
+                    try {
+                        kps[index]=Double.parseDouble(tbDetailObatRacikan.getValueAt(i,5).toString());
+                    }catch (Exception e) {
+                        kps[index]=0;
+                    }
+                    try {
+                        p1[index]=Double.parseDouble(tbDetailObatRacikan.getValueAt(i,6).toString());
+                    }catch (Exception e) {
+                        p1[index]=0;
+                    }
+                    try {
+                        p2[index]=Double.parseDouble(tbDetailObatRacikan.getValueAt(i,8).toString());
+                    }catch (Exception e) {
+                        p2[index]=0;
+                    }
+                    keterangan[index]=tbDetailObatRacikan.getValueAt(i,9).toString();
+                    try {
+                        jumlah[index]=Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString());
+                    }catch (Exception e) {
+                        jumlah[index]=0;
+                    }
+                    cirium[index]=tbDetailObatRacikan.getValueAt(i,11).toString();
+                    ciripny[index]=tbDetailObatRacikan.getValueAt(i,12).toString();
+                    index++;
+                }
             }
-        } 
+
+            Valid.tabelKosong(tabModeDetailObatRacikan); 
+            for(i=0;i<index;i++){
+                tabModeDetailObatRacikan.addRow(new Object[] {
+                    no[i],kode[i],nama[i],satuan[i],kategori[i],kps[i],p1[i],"/",p2[i],keterangan[i],jumlah[i],cirium[i],ciripny[i]
+                });
+            }
+            
+            myObj = new FileReader("./cache/permintaanobatnonracikan.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("permintaanobatnonracikan");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    //"No","Kode Barang","Nama Barang","Satuan","Jenis Obat","Kps","P1","/","P2","Kandungan","Jml","I.F.","Komposisi"
+                    if((list.path("KodeBarang").asText().toLowerCase().contains(CariObatRacikan.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(CariObatRacikan.getText().toLowerCase())
+                            ||list.path("Komposisi").asText().toLowerCase().contains(CariObatRacikan.getText().toLowerCase())||list.path("JenisObat").asText().toLowerCase().contains(CariObatRacikan.getText().toLowerCase()))){
+                        tabModeDetailObatRacikan.addRow(new Object[]{
+                            tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),
+                            list.path("JenisObat").asText(),list.path("Kapasitas").asDouble(),1,"/",1,"",0,list.path("Industri").asText(),list.path("Komposisi").asText()
+                        });
+                    }
+                }
+            }  
+            myObj.close(); 
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
     }
 }
