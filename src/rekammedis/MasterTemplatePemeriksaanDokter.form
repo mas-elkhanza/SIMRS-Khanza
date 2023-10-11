@@ -348,7 +348,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Template2">
+                            <Component class="widget.TextArea" name="Asesmen">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -357,10 +357,10 @@
                                 </Property>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="7"/>
-                                <Property name="name" type="java.lang.String" value="Template2" noResource="true"/>
+                                <Property name="name" type="java.lang.String" value="Asesmen" noResource="true"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Template2KeyPressed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AsesmenKeyPressed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -394,7 +394,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Template3">
+                            <Component class="widget.TextArea" name="Plan">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -403,10 +403,10 @@
                                 </Property>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="7"/>
-                                <Property name="name" type="java.lang.String" value="Template3" noResource="true"/>
+                                <Property name="name" type="java.lang.String" value="Plan" noResource="true"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Template3KeyPressed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PlanKeyPressed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -440,7 +440,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Template4">
+                            <Component class="widget.TextArea" name="Instruksi">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -449,10 +449,10 @@
                                 </Property>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="7"/>
-                                <Property name="name" type="java.lang.String" value="Template4" noResource="true"/>
+                                <Property name="name" type="java.lang.String" value="Instruksi" noResource="true"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Template4KeyPressed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="InstruksiKeyPressed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -486,7 +486,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.TextArea" name="Template5">
+                            <Component class="widget.TextArea" name="Evaluasi">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -495,10 +495,10 @@
                                 </Property>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="7"/>
-                                <Property name="name" type="java.lang.String" value="Template5" noResource="true"/>
+                                <Property name="name" type="java.lang.String" value="Evaluasi" noResource="true"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Template5KeyPressed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EvaluasiKeyPressed"/>
                               </Events>
                             </Component>
                           </SubComponents>
