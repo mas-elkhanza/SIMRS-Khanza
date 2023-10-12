@@ -227,7 +227,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         }
         tbPermintaanPK.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeDetailPK=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template"}){
+        tabModeDetailPK=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template","Kode Jenis"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
                     if (colIndex==0) {
@@ -236,7 +236,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                     return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
+                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -250,7 +250,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         tbDetailPK.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDetailPK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 6; i++) {
             TableColumn column = tbDetailPK.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -261,6 +261,9 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(315);
             }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);                
+            }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                
             }
@@ -333,7 +336,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         }
         tbPermintaanMB.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeDetailMB=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template"}){
+        tabModeDetailMB=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template","Kode Jenis"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
                     if (colIndex==0) {
@@ -342,7 +345,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                     return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
+                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -356,7 +359,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         tbDetailMB.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDetailMB.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 6; i++) {
             TableColumn column = tbDetailMB.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -370,13 +373,16 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }else if(i==4){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                
+            }else if(i==5){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);                
             }
         }
         tbDetailMB.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeObatUmum=new DefaultTableModel(null,new Object[]{
                 "K","Jumlah","Kode Barang","Nama Barang","Satuan","Komposisi",
-                "Jenis Obat","Aturan Pakai","I.F."
+                "Jenis Obat","Aturan Pakai","I.F.","Kapasitas"
             }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -388,7 +394,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
-                java.lang.Object.class
+                java.lang.Object.class,java.lang.Double.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -402,7 +408,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbObatNonRacikan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObatNonRacikan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbObatNonRacikan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -422,7 +428,10 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                 column.setPreferredWidth(130);
             }else if(i==8){
                 column.setPreferredWidth(100);
-            }               
+            }else if(i==9){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }                
         }
         warna.kolom=1;
         tbObatNonRacikan.setDefaultRenderer(Object.class,warna);
@@ -2019,6 +2028,53 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                         });
                     }
                 }
+                for(i=0;i<tbDetailPK.getRowCount();i++){ 
+                    if((!tbDetailPK.getValueAt(i,4).toString().equals(""))&&tbDetailPK.getValueAt(i,0).toString().equals("true")){  
+                        Sequel.menyimpan("template_pemeriksaan_dokter_detail_permintaan_lab","?,?,?","Detail Pemeriksaan Laboratorium PK",3,new String[]{
+                            Kd.getText(),tbDetailPK.getValueAt(i,5).toString(),tbDetailPK.getValueAt(i,4).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbPermintaanPA.getRowCount();i++){ 
+                    if(tbPermintaanPA.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_permintaan_lab","?,?","Pemeriksaan Laboratorium PA",2,new String[]{
+                            Kd.getText(),tbPermintaanPA.getValueAt(i,1).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbPermintaanMB.getRowCount();i++){ 
+                    if(tbPermintaanMB.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_permintaan_lab","?,?","Pemeriksaan Laboratorium PK",2,new String[]{
+                            Kd.getText(),tbPermintaanMB.getValueAt(i,1).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbDetailMB.getRowCount();i++){ 
+                    if((!tbDetailMB.getValueAt(i,4).toString().equals(""))&&tbDetailMB.getValueAt(i,0).toString().equals("true")){  
+                        Sequel.menyimpan("template_pemeriksaan_dokter_detail_permintaan_lab","?,?,?","Detail Pemeriksaan Laboratorium PK",3,new String[]{
+                            Kd.getText(),tbDetailMB.getValueAt(i,5).toString(),tbDetailMB.getValueAt(i,4).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbObatNonRacikan.getRowCount();i++){ 
+                    if(Valid.SetAngka(tbObatNonRacikan.getValueAt(i,1).toString())>0){  
+                        if(tbObatNonRacikan.getValueAt(i,0).toString().equals("true")){
+                            if(Valid.SetAngka(tbObatNonRacikan.getValueAt(i,9).toString())>0){
+                                Sequel.menyimpan("template_pemeriksaan_dokter_resep","?,?,?,?","Obat Non Racikan",4,new String[]{
+                                    Kd.getText(),tbObatNonRacikan.getValueAt(i,2).toString(),""+(Double.parseDouble(tbObatNonRacikan.getValueAt(i,1).toString())/Valid.SetAngka(tbObatNonRacikan.getValueAt(i,9).toString())),tbObatNonRacikan.getValueAt(i,7).toString()
+                                });
+                            }else{
+                                Sequel.menyimpan("template_pemeriksaan_dokter_resep","?,?,?,?","Obat Non Racikan",4,new String[]{
+                                    Kd.getText(),tbObatNonRacikan.getValueAt(i,2).toString(),""+Double.parseDouble(tbObatNonRacikan.getValueAt(i,1).toString()),tbObatNonRacikan.getValueAt(i,7).toString()
+                                });
+                            }
+                        }else{
+                            Sequel.menyimpan("template_pemeriksaan_dokter_resep","?,?,?,?","Obat Non Racikan",4,new String[]{
+                                Kd.getText(),tbObatNonRacikan.getValueAt(i,2).toString(),""+Double.parseDouble(tbObatNonRacikan.getValueAt(i,1).toString()),tbObatNonRacikan.getValueAt(i,7).toString()
+                            });
+                        }
+                    }
+                }
             }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -3030,6 +3086,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             nilairujukan=new String[jml];
             kode=null;
             kode=new String[jml];
+            kode2=null;
+            kode2=new String[jml];
             
             index=0; 
             for(i=0;i<tbDetailPK.getRowCount();i++){
@@ -3039,6 +3097,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     satuan[index]=tbDetailPK.getValueAt(i,2).toString();
                     nilairujukan[index]=tbDetailPK.getValueAt(i,3).toString();
                     kode[index]=tbDetailPK.getValueAt(i,4).toString();
+                    kode2[index]=tbDetailPK.getValueAt(i,5).toString();
                     index++;
                 }
             }
@@ -3047,13 +3106,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             for(i=0;i<jml;i++){ 
                 tabModeDetailPK.addRow(new Object[] {
-                    pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i]
+                    pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i],kode2[i]
                 });
             }  
             
             for(i=0;i<tbPermintaanPK.getRowCount();i++){ 
                 if(tbPermintaanPK.getValueAt(i,0).toString().equals("true")){
-                    tabModeDetailPK.addRow(new Object[]{false,tbPermintaanPK.getValueAt(i,2).toString(),"","",""});
+                    tabModeDetailPK.addRow(new Object[]{false,tbPermintaanPK.getValueAt(i,2).toString(),"","","",""});
                     ps=koneksi.prepareStatement("select template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa from template_laboratorium where template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? order by template_laboratorium.urut");
                     try {
                         ps.setString(1,tbPermintaanPK.getValueAt(i,1).toString());
@@ -3074,7 +3133,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 pa=" PA : "+rs.getString("nilai_rujukan_pa");
                             }
                             tabModeDetailPK.addRow(new Object[]{
-                                false,"   "+rs.getString("Pemeriksaan"),rs.getString("satuan"),ld+la+pd+pa,rs.getString("id_template")
+                                false,"   "+rs.getString("Pemeriksaan"),rs.getString("satuan"),ld+la+pd+pa,rs.getString("id_template"),tbPermintaanPK.getValueAt(i,1).toString()
                             });
                         }
                     } catch (Exception e) {
@@ -3086,8 +3145,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(ps!=null){
                             ps.close();
                         }
-                    }                        
-                                              
+                    }                         
                 }
             }
         } catch (Exception e) {
@@ -3278,6 +3336,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             nilairujukan=new String[jml];
             kode=null;
             kode=new String[jml];
+            kode2=null;
+            kode2=new String[jml];
             
             index=0; 
             for(i=0;i<tbDetailMB.getRowCount();i++){
@@ -3287,6 +3347,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     satuan[index]=tbDetailMB.getValueAt(i,2).toString();
                     nilairujukan[index]=tbDetailMB.getValueAt(i,3).toString();
                     kode[index]=tbDetailMB.getValueAt(i,4).toString();
+                    kode2[index]=tbDetailMB.getValueAt(i,5).toString();
                     index++;
                 }
             }
@@ -3295,13 +3356,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             for(i=0;i<jml;i++){ 
                 tabModeDetailMB.addRow(new Object[] {
-                    pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i]
+                    pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i],kode2[i]
                 });
             }  
             
             for(i=0;i<tbPermintaanMB.getRowCount();i++){ 
                 if(tbPermintaanMB.getValueAt(i,0).toString().equals("true")){
-                    tabModeDetailMB.addRow(new Object[]{false,tbPermintaanMB.getValueAt(i,2).toString(),"","",""});
+                    tabModeDetailMB.addRow(new Object[]{false,tbPermintaanMB.getValueAt(i,2).toString(),"","","",""});
                     ps=koneksi.prepareStatement("select template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa from template_laboratorium where template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? order by template_laboratorium.urut");
                     try {
                         ps.setString(1,tbPermintaanMB.getValueAt(i,1).toString());
@@ -3322,7 +3383,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 pa=" PA : "+rs.getString("nilai_rujukan_pa");
                             }
                             tabModeDetailMB.addRow(new Object[]{
-                                false,"   "+rs.getString("Pemeriksaan"),rs.getString("satuan"),ld+la+pd+pa,rs.getString("id_template")
+                                false,"   "+rs.getString("Pemeriksaan"),rs.getString("satuan"),ld+la+pd+pa,rs.getString("id_template"),tbPermintaanMB.getValueAt(i,1).toString()
                             });
                         }
                     } catch (Exception e) {
@@ -3404,6 +3465,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             keterangan=new String[jml];
             ciripny=null;
             ciripny=new String[jml];
+            kps=null;
+            kps=new double[jml];
             
             index=0; 
             for(i=0;i<tbObatNonRacikan.getRowCount();i++){
@@ -3421,6 +3484,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     kategori[index]=tbObatNonRacikan.getValueAt(i,6).toString();
                     keterangan[index]=tbObatNonRacikan.getValueAt(i,7).toString();
                     ciripny[index]=tbObatNonRacikan.getValueAt(i,8).toString();
+                    try {
+                        kps[index]=Double.parseDouble(tbObatNonRacikan.getValueAt(i,9).toString());
+                    } catch (Exception e) {
+                        kps[index]=0;
+                    }
                     index++;
                 }
             }
@@ -3428,7 +3496,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.tabelKosong(tabModeObatUmum);
                     
             for(i=0;i<jml;i++){                
-                tabModeObatUmum.addRow(new Object[] {pilih[i],jumlah[i],kode[i],nama[i],satuan[i],cirium[i],kategori[i],keterangan[i],ciripny[i]});
+                tabModeObatUmum.addRow(new Object[] {pilih[i],jumlah[i],kode[i],nama[i],satuan[i],cirium[i],kategori[i],keterangan[i],ciripny[i],kps[i]});
             }    
         
             myObj = new FileReader("./cache/permintaanobatnonracikan.iyem");
@@ -3439,7 +3507,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     if((list.path("KodeBarang").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase())
                             ||list.path("Komposisi").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase())||list.path("JenisObat").asText().toLowerCase().contains(CariObatNonRacikan.getText().toLowerCase()))){
                         tabModeObatUmum.addRow(new Object[]{
-                            false,"",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Komposisi").asText(),list.path("JenisObat").asText(),"",list.path("Industri").asText()
+                            false,"",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Komposisi").asText(),list.path("JenisObat").asText(),"",list.path("Industri").asText(),list.path("Kapasitas").asDouble()
                         });
                     }
                 }
