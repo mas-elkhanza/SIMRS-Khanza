@@ -548,7 +548,8 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         tbDetailObatRacikan.setDefaultRenderer(Object.class,warna3);
         
         TabModeTindakan=new DefaultTableModel(null,new Object[]{
-            "P","Kode","Nama Perawatan","Kategori Perawatan"}){
+                "P","Kode","Nama Perawatan","Kategori Perawatan"
+            }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -2073,6 +2074,31 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                                 Kd.getText(),tbObatNonRacikan.getValueAt(i,2).toString(),""+Double.parseDouble(tbObatNonRacikan.getValueAt(i,1).toString()),tbObatNonRacikan.getValueAt(i,7).toString()
                             });
                         }
+                    }
+                }
+                for(i=0;i<tbObatRacikan.getRowCount();i++){ 
+                    if(Valid.SetAngka(tbObatRacikan.getValueAt(i,4).toString())>0){ 
+                        Sequel.menyimpan("template_pemeriksaan_dokter_resep_racikan","?,?,?,?,?,?,?","Obat Racikan",7,new String[]{
+                           Kd.getText(),tbObatRacikan.getValueAt(i,0).toString(),tbObatRacikan.getValueAt(i,1).toString(),
+                           tbObatRacikan.getValueAt(i,2).toString(),tbObatRacikan.getValueAt(i,4).toString(),
+                           tbObatRacikan.getValueAt(i,5).toString(),tbObatRacikan.getValueAt(i,6).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
+                    if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_resep_racikan_detail","?,?,?,?,?,?,?","Detail Obat Racikan",7,new String[]{
+                           Kd.getText(),tbDetailObatRacikan.getValueAt(i,0).toString(),tbDetailObatRacikan.getValueAt(i,1).toString(),
+                           tbDetailObatRacikan.getValueAt(i,6).toString(),tbDetailObatRacikan.getValueAt(i,8).toString(),
+                           tbDetailObatRacikan.getValueAt(i,9).toString(),tbDetailObatRacikan.getValueAt(i,10).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbTindakan.getRowCount();i++){ 
+                    if(tbTindakan.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_tindakan","?,?","Tindakan Dokter",2,new String[]{
+                            Kd.getText(),tbTindakan.getValueAt(i,1).toString()
+                        });
                     }
                 }
             }                
