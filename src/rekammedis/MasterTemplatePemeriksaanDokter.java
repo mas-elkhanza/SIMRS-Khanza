@@ -1989,9 +1989,36 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             Valid.textKosong(Subjek,"Subjek");
         }else{
             if(Sequel.menyimpantf("template_pemeriksaan_dokter","?,?,?,?,?,?,?,?","No.Template",8,new String[]{
-                Kd.getText()
+                Kd.getText(),KdDokter.getText(),Subjek.getText(),Objek.getText(),Asesmen.getText(),Plan.getText(),Instruksi.getText(),Evaluasi.getText()
             })==true){
-                emptTeks();
+                for(i=0;i<tbDiagnosa.getRowCount();i++){ 
+                    if(tbDiagnosa.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_penyakit","?,?","ICD X",2,new String[]{
+                            Kd.getText(),tbDiagnosa.getValueAt(i,1).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbProsedur.getRowCount();i++){ 
+                    if(tbProsedur.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_prosedur","?,?","ICD 9",2,new String[]{
+                            Kd.getText(),tbProsedur.getValueAt(i,1).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbPermintaanRadiologi.getRowCount();i++){ 
+                    if(tbPermintaanRadiologi.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_permintaan_radiologi","?,?","Pemeriksaan Radiologi",2,new String[]{
+                            Kd.getText(),tbPermintaanRadiologi.getValueAt(i,1).toString()
+                        });
+                    }
+                }
+                for(i=0;i<tbPermintaanPK.getRowCount();i++){ 
+                    if(tbPermintaanPK.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("template_pemeriksaan_dokter_permintaan_lab","?,?","Pemeriksaan Laboratorium PK",2,new String[]{
+                            Kd.getText(),tbPermintaanPK.getValueAt(i,1).toString()
+                        });
+                    }
+                }
             }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed

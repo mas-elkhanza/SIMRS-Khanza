@@ -110,7 +110,13 @@
                                 if ((!empty($header['Authorization'])) && (!empty($header['rsId']))) {
                                     $idrs = getOne("select set_akun_mandiri.kode_rs from set_akun_mandiri");
                                     if($header['rsId']==$idrs){
-                                        if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
+                                        if(!str_contains($header['Authorization'],"bearer ")){
+                                            $response = array(
+                                                'error' => 'invalid_client',
+                                                'error_description' => 'Bad client credentials'
+                                            );
+                                            http_response_code(401);
+                                        }else if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
                                             $konten = trim(file_get_contents("php://input"));
                                             $decode = json_decode($konten, true);
                                             if(!empty($decode['regNo'])){ 
@@ -388,7 +394,13 @@
                                 if ((!empty($header['Authorization'])) && (!empty($header['rsId']))) {
                                     $idrs = getOne("select set_akun_mandiri.kode_rs from set_akun_mandiri");
                                     if($header['rsId']==$idrs){
-                                        if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
+                                        if(!str_contains($header['Authorization'],"bearer ")){
+                                            $response = array(
+                                                'error' => 'invalid_client',
+                                                'error_description' => 'Bad client credentials'
+                                            );
+                                            http_response_code(401);
+                                        }else if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
                                             $konten = trim(file_get_contents("php://input"));
                                             $decode = json_decode($konten, true);
                                             if(empty($decode['regNo'])){ 
@@ -737,7 +749,13 @@
                                 if ((!empty($header['Authorization'])) && (!empty($header['rsId']))) {
                                     $idrs = getOne("select set_akun_mandiri.kode_rs from set_akun_mandiri");
                                     if($header['rsId']==$idrs){
-                                        if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
+                                        if(!str_contains($header['Authorization'],"bearer ")){
+                                            $response = array(
+                                                'error' => 'invalid_client',
+                                                'error_description' => 'Bad client credentials'
+                                            );
+                                            http_response_code(401);
+                                        }else if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
                                             $konten = trim(file_get_contents("php://input"));
                                             $decode = json_decode($konten, true);
                                             if(empty($decode['noKuitansi'])){ 
@@ -885,7 +903,13 @@
                                 if ((!empty($header['Authorization'])) && (!empty($header['rsId']))) {
                                     $idrs = getOne("select set_akun_mandiri.kode_rs from set_akun_mandiri");
                                     if($header['rsId']==$idrs){
-                                        if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
+                                        if(!str_contains($header['Authorization'],"bearer ")){
+                                            $response = array(
+                                                'error' => 'invalid_client',
+                                                'error_description' => 'Bad client credentials'
+                                            );
+                                            http_response_code(401);
+                                        }else if(cektoken(str_replace("bearer ","",$header['Authorization']))=="true"){
                                             $konten = trim(file_get_contents("php://input"));
                                             $decode = json_decode($konten, true);
                                             if(empty($decode['regNo'])){ 
