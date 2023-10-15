@@ -1239,7 +1239,7 @@ public final class SuratPernyataanPasienUmum extends javax.swing.JDialog {
     private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
         if(tbObat.getSelectedRow()>-1){
             if(lokasifile.equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan ambil photo bukti penolakan anjuran medis terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan ambil photo bukti pernyataan pasien umum terlebih dahulu..!!!!");
             }else{
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars",akses.getnamars());
