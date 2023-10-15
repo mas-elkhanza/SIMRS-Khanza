@@ -2716,23 +2716,58 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabMode);
         try{
             if(akses.getkode().equals("Admin Utama")){
-                
+                ps=koneksi.prepareStatement(
+                        "select template_pemeriksaan_dokter.no_template,template_pemeriksaan_dokter.kd_dokter,dokter.nm_dokter,"+
+                        "template_pemeriksaan_dokter.keluhan,template_pemeriksaan_dokter.pemeriksaan,template_pemeriksaan_dokter.penilaian,"+
+                        "template_pemeriksaan_dokter.rencana,template_pemeriksaan_dokter.instruksi,template_pemeriksaan_dokter.evaluasi "+
+                        "from template_pemeriksaan_dokter inner join dokter on dokter.kd_dokter=template_pemeriksaan_dokter.kd_dokter "+
+                        (TCari.getText().equals("")?"":"where template_pemeriksaan_dokter.no_template like ? or template_pemeriksaan_dokter.nm_dokter like ? or "+
+                        "template_pemeriksaan_dokter.keluhan like ? or template_pemeriksaan_dokter.pemeriksaan like ? or "+
+                        "template_pemeriksaan_dokter.penilaian like ? or template_pemeriksaan_dokter.rencana like ? or "+
+                        "template_pemeriksaan_dokter.instruksi like ? or template_pemeriksaan_dokter.evaluasi like ? ")+
+                        "order by template_pemeriksaan_dokter.no_template");
             }else{
-                
+                ps=koneksi.prepareStatement(
+                        "select template_pemeriksaan_dokter.no_template,template_pemeriksaan_dokter.kd_dokter,dokter.nm_dokter,"+
+                        "template_pemeriksaan_dokter.keluhan,template_pemeriksaan_dokter.pemeriksaan,template_pemeriksaan_dokter.penilaian,"+
+                        "template_pemeriksaan_dokter.rencana,template_pemeriksaan_dokter.instruksi,template_pemeriksaan_dokter.evaluasi "+
+                        "from template_pemeriksaan_dokter inner join dokter on dokter.kd_dokter=template_pemeriksaan_dokter.kd_dokter "+
+                        "where template_pemeriksaan_dokter.kd_dokter=? "+(TCari.getText().equals("")?"":"and (template_pemeriksaan_dokter.no_template like ? or "+
+                        "template_pemeriksaan_dokter.keluhan like ? or template_pemeriksaan_dokter.pemeriksaan like ? or "+
+                        "template_pemeriksaan_dokter.penilaian like ? or template_pemeriksaan_dokter.rencana like ? or "+
+                        "template_pemeriksaan_dokter.instruksi like ? or template_pemeriksaan_dokter.evaluasi like ?) ")+
+                        "order by template_pemeriksaan_dokter.no_template");
             }
-            ps=koneksi.prepareStatement(
-                    "select template_hasil_radiologi.no_template,template_hasil_radiologi.nama_pemeriksaan, "+
-                    "template_hasil_radiologi.template_hasil_radiologi from template_hasil_radiologi "+
-                    "where template_hasil_radiologi.no_template like ? or template_hasil_radiologi.nama_pemeriksaan like ? or "+
-                    "template_hasil_radiologi.template_hasil_radiologi like ? order by template_hasil_radiologi.no_template");
+                
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                if(akses.getkode().equals("Admin Utama")){
+                    if(!TCari.getText().equals("")){
+                        ps.setString(1,"%"+TCari.getText().trim()+"%");
+                        ps.setString(2,"%"+TCari.getText().trim()+"%");
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
+                        ps.setString(4,"%"+TCari.getText().trim()+"%");
+                        ps.setString(5,"%"+TCari.getText().trim()+"%");
+                        ps.setString(6,"%"+TCari.getText().trim()+"%");
+                        ps.setString(7,"%"+TCari.getText().trim()+"%");
+                        ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    }
+                }else{
+                    ps.setString(1,akses.getkode());
+                    if(!TCari.getText().equals("")){
+                        ps.setString(2,"%"+TCari.getText().trim()+"%");
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
+                        ps.setString(4,"%"+TCari.getText().trim()+"%");
+                        ps.setString(5,"%"+TCari.getText().trim()+"%");
+                        ps.setString(6,"%"+TCari.getText().trim()+"%");
+                        ps.setString(7,"%"+TCari.getText().trim()+"%");
+                        ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    }
+                }
+                
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3)
+                        rs.getString("no_template"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("keluhan"),rs.getString("pemeriksaan"),rs.getString("penilaian"),rs.getString("rencana"),rs.getString("instruksi"),rs.getString("evaluasi")
                     });
                 }
             } catch (Exception e) {
