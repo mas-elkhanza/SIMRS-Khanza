@@ -62,7 +62,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private PreparedStatement pstindakan,pstampil,pstampil2,pstampil3,pstampil4,pslica,
             psset_tarif,pssetpj,psrekening;
-    private ResultSet rstindakan,rstampil,rscari,rsset_tarif,rssetpj,rsrekening,rslica;
+    private ResultSet rstindakan,rstampil,rsset_tarif,rssetpj,rsrekening,rslica;
     private boolean[] pilih,pilih2; 
     private String[] kode,nama,pemeriksaan2,hasil2,satuan2,nilai_rujukan2,keterangan2,idtemplate2;
     private double[] total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen,
@@ -3027,7 +3027,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     tbPemeriksaan.getValueAt(i,12).toString(),tbPemeriksaan.getValueAt(i,13).toString(),tbPemeriksaan.getValueAt(i,14).toString(),tbPemeriksaan.getValueAt(i,7).toString()
                                 })==true){
                                 if(!noorder.equals("")){
-                                    if(Sequel.cariIsi("select permintaan_detail_permintaan_lab.stts_bayar from permintaan_detail_permintaan_lab where permintaan_detail_permintaan_lab.noorder='"+noorder+"' and permintaan_detail_permintaan_lab.kd_jenis_prw='"+rscari.getString(1)+"' and permintaan_detail_permintaan_lab.id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
+                                    if(Sequel.cariIsi("select permintaan_detail_permintaan_lab.stts_bayar from permintaan_detail_permintaan_lab where permintaan_detail_permintaan_lab.noorder='"+noorder+"' and permintaan_detail_permintaan_lab.kd_jenis_prw='"+tbPemeriksaan.getValueAt(i,15).toString()+"' and permintaan_detail_permintaan_lab.id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
                                         ttlbhp=ttlbhp+Double.parseDouble(tbPemeriksaan.getValueAt(i,9).toString());
                                         ttljmdokter=ttljmdokter+Double.parseDouble(tbPemeriksaan.getValueAt(i,11).toString());
                                         ttljmpetugas=ttljmpetugas+Double.parseDouble(tbPemeriksaan.getValueAt(i,12).toString());
