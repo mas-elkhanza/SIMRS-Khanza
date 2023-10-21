@@ -4350,6 +4350,57 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ps.close();
                         }
                     }
+                    
+                    ps=koneksi.prepareStatement(
+                            "select template_pemeriksaan_dokter_resep.kode_brng,databarang.nama_brng,databarang.kode_sat,template_pemeriksaan_dokter_resep.jml,template_pemeriksaan_dokter_resep.aturan_pakai "+
+                            "from template_pemeriksaan_dokter_resep inner join databarang on template_pemeriksaan_dokter_resep.kode_brng=databarang.kode_brng where template_pemeriksaan_dokter_resep.no_template=? "+
+                            "order by databarang.nama_brng");
+                    try {
+                        ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='top' align='left' width='100%'>"+
+                                        "Obat Non Racikan : "+
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi'>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Jumlah</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Kode Barang</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45%'>Nama Barang</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Satuan</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'>Aturan Pakai</td>"+
+                                            "</tr>"
+                            );
+                            rs.beforeFirst();
+                            while(rs.next()){
+                                htmlContent.append(
+                                            "<tr class='isi'>"+
+                                                "<td align='center'>"+rs.getString("jml")+"</td>"+
+                                                "<td align='center'>"+rs.getString("kode_brng")+"</td>"+
+                                                "<td>"+rs.getString("nama_brng")+"</td>"+
+                                                "<td align='center'>"+rs.getString("kode_sat")+"</td>"+
+                                                "<td>"+rs.getString("aturan_pakai")+"</td>"+
+                                            "</tr>"
+                                );
+                            }
+                            htmlContent.append( 
+                                        "</table>"+
+                                    "</td>"+
+                                "</tr>"
+                            ); 
+
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
 
                     LoadHTML.setText(
                         "<html>"+
