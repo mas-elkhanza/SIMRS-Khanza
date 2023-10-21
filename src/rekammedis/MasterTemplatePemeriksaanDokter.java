@@ -2935,8 +2935,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void getData() {
         if(tbDokter.getSelectedRow()!= -1){
             Kd.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            //Nm.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
-            Subjek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
+            Subjek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
+            Objek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+            Asesmen.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
+            Plan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
+            Instruksi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
+            Evaluasi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString());
         }
     }
 
