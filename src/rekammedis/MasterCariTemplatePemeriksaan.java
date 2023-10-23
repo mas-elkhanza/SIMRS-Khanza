@@ -73,15 +73,8 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeDiagnosa=new DefaultTableModel(null,new Object[]{
-            "Kode","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Ktg.Penyakit","Ciri-ciri Umum"}){
-            @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
+        tabModeDiagnosa=new DefaultTableModel(null,new Object[]{"Kode","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Ktg.Penyakit","Ciri-ciri Umum"}){
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -113,15 +106,8 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         }
         tbDiagnosa.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeProsedur=new DefaultTableModel(null,new Object[]{
-            "Kode","Deskripsi Panjang","Deskripsi Pendek"}){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
+        tabModeProsedur=new DefaultTableModel(null,new Object[]{"Kode","Deskripsi Panjang","Deskripsi Pendek"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
@@ -148,15 +134,9 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         tbProsedur.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeRadiologi=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -169,28 +149,20 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         tbPermintaanRadiologi.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPermintaanRadiologi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 3; i++) {
+        for(i = 0; i < 2; i++) {
             TableColumn column = tbPermintaanRadiologi.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(130);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(490);
             }
         }
         tbPermintaanRadiologi.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModePK=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
+        tabModePK=new DefaultTableModel(null,new Object[]{"Kode Periksa","Nama Pemeriksaan"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -202,28 +174,20 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         tbPermintaanPK.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPermintaanPK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 3; i++) {
+        for(i = 0; i < 2; i++) {
             TableColumn column = tbPermintaanPK.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(100);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(520);
             }
         }
         tbPermintaanPK.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeDetailPK=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template","Kode Jenis"}){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                    boolean a = false;
-                    if (colIndex==0) {
-                        a=true;
-                    }
-                    return a;
-             }
+        tabModeDetailPK=new DefaultTableModel(null,new Object[]{"Pemeriksaan","Satuan","Nilai Rujukan","id_template","Kode Jenis"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
+                java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -232,25 +196,21 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         };
         
         tbDetailPK.setModel(tabModeDetailPK);
-        //tampilPr();
-
         tbDetailPK.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDetailPK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 5; i++) {
             TableColumn column = tbDetailPK.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(326);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(50);
-            }else if(i==3){
+            }else if(i==2){
                 column.setPreferredWidth(315);
-            }else if(i==4){
+            }else if(i==3){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                
-            }else if(i==5){
+            }else if(i==4){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                
             }
@@ -258,16 +218,10 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         
         tbDetailPK.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModePA=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
+        tabModePA=new DefaultTableModel(null,new Object[]{"Kode Periksa","Nama Pemeriksaan"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -279,28 +233,20 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         tbPermintaanPA.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPermintaanPA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 3; i++) {
+        for(i = 0; i < 2; i++) {
             TableColumn column = tbPermintaanPA.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(100);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(520);
             }
         }
         tbPermintaanPA.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeMB=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
+        tabModeMB=new DefaultTableModel(null,new Object[]{"Kode Periksa","Nama Pemeriksaan"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -311,28 +257,20 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
 
         tbPermintaanMB.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPermintaanMB.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for(i = 0; i < 3; i++) {
+        for(i = 0; i < 2; i++) {
             TableColumn column = tbPermintaanMB.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(100);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(520);
             }
         }
         tbPermintaanMB.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeDetailMB=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template","Kode Jenis"}){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                    boolean a = false;
-                    if (colIndex==0) {
-                        a=true;
-                    }
-                    return a;
-             }
+        tabModeDetailMB=new DefaultTableModel(null,new Object[]{"Pemeriksaan","Satuan","Nilai Rujukan","id_template","Kode Jenis"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
+                java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -341,26 +279,22 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         };
         
         tbDetailMB.setModel(tabModeDetailMB);
-        //tampilPr();
-
         tbDetailMB.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDetailMB.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 5; i++) {
             TableColumn column = tbDetailMB.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(326);
-            }else if(i==2){
+            }else if(i==1){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);  
-            }else if(i==3){
+            }else if(i==2){
                 column.setPreferredWidth(315);
-            }else if(i==4){
+            }else if(i==3){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                
-            }else if(i==5){
+            }else if(i==4){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                
             }
@@ -368,24 +302,14 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         tbDetailMB.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeObatUmum=new DefaultTableModel(null,new Object[]{
-                "K","Jumlah","Kode Barang","Nama Barang","Satuan","Komposisi",
-                "Jenis Obat","Aturan Pakai","I.F.","Kapasitas"
+                "Jumlah","Kode Barang","Nama Barang","Satuan","Komposisi","Jenis Obat","Aturan Pakai","I.F.","Kapasitas"
             }){
-            @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if ((colIndex==0)||(colIndex==1)||(colIndex==7)) {
-                    a=true;
-                }
-                return a;
-             }
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
-                java.lang.Object.class,java.lang.Double.class
+                java.lang.Double.class
              };
-             /*Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-             };*/
              @Override
              public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
@@ -395,44 +319,33 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbObatNonRacikan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObatNonRacikan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbObatNonRacikan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(45);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(70);
-            }else if(i==3){
+            }else if(i==2){
                 column.setPreferredWidth(240);
-            }else if(i==4){
+            }else if(i==3){
                 column.setPreferredWidth(75);
+            }else if(i==4){
+                column.setPreferredWidth(110);
             }else if(i==5){
                 column.setPreferredWidth(110);
             }else if(i==6){
-                column.setPreferredWidth(110);
-            }else if(i==7){
                 column.setPreferredWidth(130);
-            }else if(i==8){
+            }else if(i==7){
                 column.setPreferredWidth(100);
-            }else if(i==9){
+            }else if(i==8){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }                
         }
         tbObatNonRacikan.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeObatRacikan=new DefaultTableModel(null,new Object[]{
-                "No","Nama Racikan","Kode Racik","Metode Racik","Jml.Racik",
-                "Aturan Pakai","Keterangan"
-            }){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = true;
-                if ((colIndex==0)||(colIndex==2)||(colIndex==3)) {
-                    a=false;
-                }
-                return a;
-             }
+        tabModeObatRacikan=new DefaultTableModel(null,new Object[]{"No","Nama Racikan","Kode Racik","Metode Racik","Jml.Racik","Aturan Pakai","Keterangan"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -472,13 +385,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                 "No","Kode Barang","Nama Barang","Satuan","Jenis Obat",
                 "Kps","P1","/","P2","Kandungan","Jml","I.F.","Komposisi"
             }){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if ((colIndex==6)||(colIndex==8)||(colIndex==9)||(colIndex==10)) {
-                    a=true;
-                }
-                return a;
-             }             
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}            
              Class[] types = new Class[] {
                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,
@@ -530,18 +437,10 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
 
         tbDetailObatRacikan.setDefaultRenderer(Object.class, new WarnaTable());
         
-        TabModeTindakan=new DefaultTableModel(null,new Object[]{
-                "P","Kode","Nama Perawatan/Tindakan","Kategori"
-            }){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
+        TabModeTindakan=new DefaultTableModel(null,new Object[]{"Kode","Nama Perawatan/Tindakan","Kategori"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -551,15 +450,13 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         tbTindakan.setModel(TabModeTindakan);
         tbTindakan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbTindakan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < 3; i++) {
             TableColumn column = tbTindakan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
                 column.setPreferredWidth(90);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(380);
-            }else if(i==3){
+            }else if(i==2){
                 column.setPreferredWidth(150);
             }
         }
@@ -1165,7 +1062,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         rs=ps.executeQuery();
                         while(rs.next()){
                             tabModeDiagnosa.addRow(new Object[]{
-                                true,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
+                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
                             });
                         }
                     } catch (Exception e) {
@@ -1188,9 +1085,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabModeProsedur.addRow(new Object[]{
-                                true,rs.getString(1),rs.getString(2),rs.getString(3)
-                            });
+                            tabModeProsedur.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1212,9 +1107,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabModeRadiologi.addRow(new Object[]{
-                                true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")
-                            });
+                            tabModeRadiologi.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1237,11 +1130,9 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabModePK.addRow(new Object[]{
-                                true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")
-                            });
+                            tabModePK.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
                             try {
-                                tabModeDetailPK.addRow(new Object[]{true,rs.getString("nm_perawatan"),"","","",""});
+                                tabModeDetailPK.addRow(new Object[]{rs.getString("nm_perawatan"),"","","",""});
                                 ps2=koneksi.prepareStatement(
                                         "select template_pemeriksaan_dokter_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa "+
                                         "from template_pemeriksaan_dokter_detail_permintaan_lab inner join template_laboratorium on template_pemeriksaan_dokter_detail_permintaan_lab.id_template=template_laboratorium.id_template where template_pemeriksaan_dokter_detail_permintaan_lab.no_template=? and "+
@@ -1264,7 +1155,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                                         pa=" PA : "+rs2.getString("nilai_rujukan_pa");
                                     }
                                     tabModeDetailPK.addRow(new Object[]{
-                                        true,"   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
+                                        "   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
                                     });
                                 }
                             } catch (Exception e) {
@@ -1298,9 +1189,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabModePA.addRow(new Object[]{
-                                true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")
-                            });
+                            tabModePA.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1323,11 +1212,9 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabModeMB.addRow(new Object[]{
-                                true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")
-                            });
+                            tabModeMB.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")});
                             try {
-                                tabModeDetailMB.addRow(new Object[]{true,rs.getString("nm_perawatan"),"","","",""});
+                                tabModeDetailMB.addRow(new Object[]{rs.getString("nm_perawatan"),"","","",""});
                                 ps2=koneksi.prepareStatement(
                                         "select template_pemeriksaan_dokter_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,template_laboratorium.nilai_rujukan_pa "+
                                         "from template_pemeriksaan_dokter_detail_permintaan_lab inner join template_laboratorium on template_pemeriksaan_dokter_detail_permintaan_lab.id_template=template_laboratorium.id_template where template_pemeriksaan_dokter_detail_permintaan_lab.no_template=? and "+
@@ -1350,7 +1237,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                                         pa=" PA : "+rs2.getString("nilai_rujukan_pa");
                                     }
                                     tabModeDetailMB.addRow(new Object[]{
-                                        true,"   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
+                                        "   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
                                     });
                                 }
                             } catch (Exception e) {
@@ -1385,7 +1272,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         rs=ps.executeQuery();
                         while(rs.next()){
                             tabModeObatUmum.addRow(new Object[]{
-                                false,rs.getString("jml"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("letak_barang"),rs.getString("nama"),rs.getString("aturan_pakai"),rs.getString("nama_industri"),rs.getDouble("kapasitas")
+                                rs.getString("jml"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("letak_barang"),rs.getString("nama"),rs.getString("aturan_pakai"),rs.getString("nama_industri"),rs.getDouble("kapasitas")
                             });
                         }
                     } catch (Exception e) {
@@ -1459,9 +1346,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            TabModeTindakan.addRow(new Object[]{
-                                true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori")
-                            });
+                            TabModeTindakan.addRow(new Object[]{rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori")});
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
