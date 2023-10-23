@@ -133,7 +133,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         }
         tbProsedur.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeRadiologi=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
+        tabModeRadiologi=new DefaultTableModel(null,new Object[]{"Kode Periksa","Nama Pemeriksaan"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class
@@ -1025,11 +1025,12 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //jabatan.setModal(true);
-        MasterTemplateLaporanOperasi form=new MasterTemplateLaporanOperasi(null,false);
+        MasterTemplatePemeriksaanDokter form=new MasterTemplatePemeriksaanDokter(null,false);
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
         form.emptTeks();
+        form.isCek();
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
         
