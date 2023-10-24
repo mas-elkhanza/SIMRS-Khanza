@@ -748,7 +748,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_END);
 
-        scrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), "Detail Template", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        scrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), "Detail Template :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         scrollPane2.setName("scrollPane2"); // NOI18N
 
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
@@ -1406,6 +1406,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         }
                     }
 
+                    Valid.tabelKosong(TabModeTindakan);
                     ps=koneksi.prepareStatement(
                             "select template_pemeriksaan_dokter_tindakan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,jns_perawatan.total_byrdr,jns_perawatan.bhp,jns_perawatan.material,"+
                             "jns_perawatan.tarif_tindakandr,jns_perawatan.kso,jns_perawatan.menejemen from template_pemeriksaan_dokter_tindakan inner join jns_perawatan "+
@@ -1416,8 +1417,8 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         rs=ps.executeQuery();
                         while(rs.next()){
                             TabModeTindakan.addRow(new Object[]{
-                                rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori"),rs.getDouble("total_byrdr"),rs.getDouble("material"),
-                                rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),rs.getDouble("menejemen")
+                                rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori"),rs.getDouble("total_byrdr"),
+                                rs.getDouble("material"),rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),rs.getDouble("kso"),rs.getDouble("menejemen")
                             });
                         }
                     } catch (Exception e) {
@@ -1663,6 +1664,9 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                 }
 
                 Sequel.AutoComitTrue();
+                if(sukses==true){
+                    dispose();
+                }
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data template pemeriksaan terlebih dahulu..!!");
             }
