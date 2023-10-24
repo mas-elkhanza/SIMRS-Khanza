@@ -946,7 +946,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kd);
-        Kd.setBounds(89, 10, 120, 23);
+        Kd.setBounds(89, 10, 150, 23);
 
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel40.setText("Subjek :");
