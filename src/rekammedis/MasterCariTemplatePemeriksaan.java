@@ -1462,7 +1462,24 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                     }
                     
                     if(tabModeMB.getRowCount()>0){
-                        
+                        nomor=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(permintaan_labmb.noorder,4),signed)),0) from permintaan_labmb where permintaan_labmb.tgl_permintaan='"+tanggaldilakukan+"' ","MB"+tanggaldilakukan.replaceAll("-",""),4);  
+                        if(Sequel.menyimpantf("permintaan_labmb","?,?,?,?,?,?,?,?,?,?,?,?","No.Permintaan",12,new String[]{
+                                nomor,noperawatan,tanggaldilakukan,jamdilakukan,"0000-00-00","00:00:00","0000-00-00","00:00:00",kodedokter,"ralan","-",Asesmen.getText()
+                            })==true){
+                            for(i=0;i<tbPermintaanMB.getRowCount();i++){ 
+                                Sequel.menyimpan("permintaan_pemeriksaan_labmb","?,?,?","Permintaan Lab MB"+tbPermintaanMB.getValueAt(i,1).toString(),3,new String[]{
+                                    nomor,tbPermintaanMB.getValueAt(i,0).toString(),"Belum"
+                                });                  
+                            } 
+
+                            for(i=0;i<tbDetailMB.getRowCount();i++){ 
+                                if(!tbDetailMB.getValueAt(i,3).toString().equals("")){                                
+                                    Sequel.menyimpan("permintaan_detail_permintaan_labmb","?,?,?,?","Detail Permintaan Lab MB "+tbDetailMB.getValueAt(i,0).toString().replaceAll("   ",""),4,new String[]{
+                                        nomor,tbDetailMB.getValueAt(i,4).toString(),tbDetailMB.getValueAt(i,3).toString(),"Belum"
+                                    });
+                                }                        
+                            }
+                        }
                     }
                 }else{
                     JOptionPane.showMessageDialog(rootPane,"Gagal menyimpan pemeriksaan rawat jalan..!!");
