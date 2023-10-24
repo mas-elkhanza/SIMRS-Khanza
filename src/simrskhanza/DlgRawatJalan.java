@@ -8870,27 +8870,20 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dokter pemberi asuhan...!!!");
             TCari.requestFocus();
         }else{
-            if(akses.getkode().equals("Admin Utama")){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                MasterCariTemplatePemeriksaan templatepemeriksaan=new MasterCariTemplatePemeriksaan(null,false);
-                templatepemeriksaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                templatepemeriksaan.setLocationRelativeTo(internalFrame1);
-                templatepemeriksaan.isCek();
-                templatepemeriksaan.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
-            }else{
-                if(dokter.tampil3(KdPeg.getText()).equals("")){
-                    JOptionPane.showMessageDialog(null,"Template pemeriksaan hanya untuk dokter...!!");
-                }else{
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    MasterCariTemplatePemeriksaan templatepemeriksaan=new MasterCariTemplatePemeriksaan(null,false);
-                    templatepemeriksaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    templatepemeriksaan.setLocationRelativeTo(internalFrame1);
-                    templatepemeriksaan.isCek();
-                    templatepemeriksaan.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
-                }
+            jmlparsial=0;
+            if(aktifkanparsial.equals("yes")){
+                jmlparsial=Sequel.cariInteger("select count(set_input_parsial.kd_pj) from set_input_parsial where set_input_parsial.kd_pj=?",Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
             }
+            if(jmlparsial>0){    
+                inputTemplate();
+            }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{
+                    inputTemplate();
+                }
+            } 
         }
     }//GEN-LAST:event_BtnTemplatePemeriksaanActionPerformed
 
@@ -11108,6 +11101,22 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());  
         dlgki.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void inputTemplate(){
+        if(dokter.tampil3(KdPeg.getText()).equals("")){
+            JOptionPane.showMessageDialog(null,"Template pemeriksaan hanya untuk dokter...!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            MasterCariTemplatePemeriksaan templatepemeriksaan=new MasterCariTemplatePemeriksaan(null,false);
+            templatepemeriksaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            templatepemeriksaan.setLocationRelativeTo(internalFrame1);
+            templatepemeriksaan.isCek();
+            templatepemeriksaan.setDokter(KdPeg.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),TNoRM.getText());
+            templatepemeriksaan.tampil();
+            templatepemeriksaan.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
     }
     
     public void emptTeks(){

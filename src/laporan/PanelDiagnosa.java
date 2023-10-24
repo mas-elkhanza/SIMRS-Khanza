@@ -930,7 +930,7 @@ public class PanelDiagnosa extends widget.panelisi {
             for(i=0;i<tbProsedur.getRowCount();i++){ 
                 if(tbProsedur.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("prosedur_pasien","?,?,?,?","ICD 9",4,new String[]{
-                        norawat,tbProsedur.getValueAt(i,1).toString(),status,Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from prosedur_pasien where no_rawat=? and status='"+status+"'",norawat)
+                        norawat,tbProsedur.getValueAt(i,1).toString(),status,Sequel.cariIsi("select ifnull(MAX(prosedur_pasien.prioritas)+1,1) from prosedur_pasien where prosedur_pasien.no_rawat=? and prosedur_pasien.status='"+status+"'",norawat)
                     });
                     
                     if(index==1){
