@@ -262,7 +262,12 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
         } 
         
         try {
-            psrekening=koneksi.prepareStatement("select * from set_akun_ralan");
+            psrekening=koneksi.prepareStatement(
+                "select set_akun_ralan.Suspen_Piutang_Tindakan_Ralan,set_akun_ralan.Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Medik_Dokter_Tindakan_Ralan,"+
+                "set_akun_ralan.Utang_Jasa_Medik_Dokter_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Medik_Paramedis_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Medik_Paramedis_Tindakan_Ralan,"+
+                "set_akun_ralan.Beban_KSO_Tindakan_Ralan,set_akun_ralan.Utang_KSO_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Sarana_Tindakan_Ralan,"+
+                "set_akun_ralan.Utang_Jasa_Sarana_Tindakan_Ralan,set_akun_ralan.Beban_Jasa_Menejemen_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Menejemen_Tindakan_Ralan,"+
+                "set_akun_ralan.HPP_BHP_Tindakan_Ralan,set_akun_ralan.Persediaan_BHP_Tindakan_Ralan from set_akun_ralan");
             try {
                 rsrekening=psrekening.executeQuery();
                 while(rsrekening.next()){
