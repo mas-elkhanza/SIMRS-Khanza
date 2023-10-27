@@ -134,18 +134,18 @@
                                                                                     inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli 
                                                                                     where reg_periksa.no_rawat='".$rsquery["no_rawat"]."'");
                                                             if($rsqueryralan = mysqli_fetch_array($queryralan)) {
-                                                                $kodelokasi = $rsqueryralan["kd_poli"];
+                                                                $kodelokasi = "0001";
                                                                 $namalokasi = $rsqueryralan["nm_poli"];
-                                                                $kodedokter = $rsqueryralan["kd_dokter"];
+                                                                $kodedokter = $rsqueryralan["kd_poli"];
                                                                 $namadokter = $rsqueryralan["nm_dokter"];
                                                             }
                                                         }else if($rsquery["status_lanjut"]=="Ranap"){
                                                             $queryranap = bukaquery2("select kamar_inap.kd_kamar,kamar.kelas,bangsal.kd_bangsal,bangsal.nm_bangsal from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar
                                                                                       inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat='".$rsquery["no_rawat"]."' order by kamar_inap.tgl_masuk desc limit 1");
                                                             if($rsqueryranap = mysqli_fetch_array($queryranap)) {
-                                                                $kodelokasi = $rsqueryranap["kd_bangsal"];
+                                                                $kodelokasi = "0002";
                                                                 $namalokasi = $rsqueryranap["nm_bangsal"];
-                                                                $kodedokter = $rsqueryranap["kd_kamar"];
+                                                                $kodedokter = $rsqueryranap["kd_bangsal"];
                                                                 $namadokter = $rsqueryranap["kelas"];
                                                             }
                                                         }
@@ -181,7 +181,7 @@
                                                                 'golDarah' => '-',
                                                                 'timeStamp' => $rsquery["tgl_closing"].'.000',
                                                                 'status' => array(
-                                                                    'inquryCode' => $decode['regNo'],
+                                                                    'inquiryCode' => $decode['regNo'],
                                                                     'statusCode' => '1',
                                                                     'statusDescription' => 'Sukses'
                                                                 ),
@@ -207,7 +207,7 @@
                                                             'golDarah' => '',
                                                             'timeStamp' => date('Y-m-d H:i:s'),
                                                             'status' => array(
-                                                                'inquryCode' => $decode['regNo'],
+                                                                'inquiryCode' => $decode['regNo'],
                                                                 'statusCode' => '2',
                                                                 'statusDescription' => 'Data Tidak Ditemukan'
                                                             ),
@@ -324,7 +324,7 @@
                                                                 'golDarah' => '-',
                                                                 'timeStamp' => date('Y-m-d H:i:s').'.000',
                                                                 'status' => array(
-                                                                    'inquryCode' => $rsquery["no_rkm_medis"],
+                                                                    'inquiryCode' => $rsquery["no_rkm_medis"],
                                                                     'statusCode' => '1',
                                                                     'statusDescription' => 'Sukses'
                                                                 ),
@@ -350,7 +350,7 @@
                                                             'golDarah' => '',
                                                             'timeStamp' => date('Y-m-d H:i:s'),
                                                             'status' => array(
-                                                                'inquryCode' => $decode['regNo'],
+                                                                'inquiryCode' => $decode['regNo'],
                                                                 'statusCode' => '2',
                                                                 'statusDescription' => 'Data Tidak Ditemukan'
                                                             ),
@@ -768,21 +768,21 @@
                                                     $namadokter = "";
                                                     if($rsquery["status_lanjut"]=="Ralan"){
                                                         $queryralan = bukaquery2("select reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli from reg_periksa 
-                                                                                  inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli 
-                                                                                  where reg_periksa.no_rawat='".$rsquery["no_rawat"]."'");
+                                                                                inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli 
+                                                                                where reg_periksa.no_rawat='".$rsquery["no_rawat"]."'");
                                                         if($rsqueryralan = mysqli_fetch_array($queryralan)) {
-                                                            $kodelokasi = $rsqueryralan["kd_poli"];
+                                                            $kodelokasi = "0001";
                                                             $namalokasi = $rsqueryralan["nm_poli"];
-                                                            $kodedokter = $rsqueryralan["kd_dokter"];
+                                                            $kodedokter = $rsqueryralan["kd_poli"];
                                                             $namadokter = $rsqueryralan["nm_dokter"];
                                                         }
                                                     }else if($rsquery["status_lanjut"]=="Ranap"){
                                                         $queryranap = bukaquery2("select kamar_inap.kd_kamar,kamar.kelas,bangsal.kd_bangsal,bangsal.nm_bangsal from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar
                                                                                   inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat='".$rsquery["no_rawat"]."' order by kamar_inap.tgl_masuk desc limit 1");
                                                         if($rsqueryranap = mysqli_fetch_array($queryranap)) {
-                                                            $kodelokasi = $rsqueryranap["kd_bangsal"];
+                                                            $kodelokasi = "0002";
                                                             $namalokasi = $rsqueryranap["nm_bangsal"];
-                                                            $kodedokter = $rsqueryranap["kd_kamar"];
+                                                            $kodedokter = $rsqueryranap["kd_bangsal"];
                                                             $namadokter = $rsqueryranap["kelas"];
                                                         }
                                                     }
@@ -818,7 +818,7 @@
                                                             'golDarah' => '-',
                                                             'timeStamp' => $rsquery["tgl_closing"].'.000',
                                                             'status' => array(
-                                                                'inquryCode' => $rsquery["referensi"],
+                                                                'inquiryCode' => $rsquery["referensi"],
                                                                 'statusCode' => '1',
                                                                 'statusDescription' => 'Sukses'
                                                             ),
@@ -844,7 +844,7 @@
                                                         'golDarah' => '',
                                                         'timeStamp' => date('Y-m-d H:i:s'),
                                                         'status' => array(
-                                                            'inquryCode' => $decode['noKuitansi'],
+                                                            'inquiryCode' => $decode['noKuitansi'],
                                                             'statusCode' => '2',
                                                             'statusDescription' => 'Data Tidak Ditemukan'
                                                         ),
@@ -1331,7 +1331,7 @@
         echo '          "golDarah": "x",'."\n";
         echo '          "timeStamp": "0000-00-00 00:00:00.000",'."\n";
         echo '          "status": {'."\n";
-        echo '              "inquryCode": "xxxxxxxxx",'."\n";
+        echo '              "inquiryCode": "xxxxxxxxx",'."\n";
         echo '              "statusCode": "0",'."\n";
         echo '              "statusDescription": "xxxxxxxxx"'."\n";
         echo '          },'."\n";
@@ -1385,7 +1385,7 @@
         echo '          "golDarah": "x",'."\n";
         echo '          "timeStamp": "0000-00-00 00:00:00.000",'."\n";
         echo '          "status": {'."\n";
-        echo '              "inquryCode": "xxxxxxxxx",'."\n";
+        echo '              "inquiryCode": "xxxxxxxxx",'."\n";
         echo '              "statusCode": "0",'."\n";
         echo '              "statusDescription": "xxxxxxxxx"'."\n";
         echo '          },'."\n";
@@ -1481,7 +1481,7 @@
         echo '          "golDarah": "x",'."\n";
         echo '          "timeStamp": "0000-00-00 00:00:00.000",'."\n";
         echo '          "status": {'."\n";
-        echo '              "inquryCode": "xxxxxxxxx",'."\n";
+        echo '              "inquiryCode": "xxxxxxxxx",'."\n";
         echo '              "statusCode": "0",'."\n";
         echo '              "statusDescription": "xxxxxxxxx"'."\n";
         echo '          },'."\n";
