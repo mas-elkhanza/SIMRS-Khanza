@@ -104,10 +104,10 @@
 
 		while ($data = mysqli_fetch_array ($hasil)){
 			echo "<tr class='isi7' >
-					<td align='left'><font size='5' color='#BB00BB' face='Tahoma'>".$data['nm_dokter']."</font></td>
-					<td align='center'><font size='5' color='gray' face='Tahoma'>".$data['nm_poli']."</font></td>
-					<td align='center'><font color='#DDDD00' size='5'  face='Tahoma'>".$data['jam_mulai']."</font></td>
-					<td align='center'><font color='gren' size='5'  face='Tahoma'>".$data['jam_selesai']."</font></td>
+					<td align='left'><font size='5' color='#555555' face='Tahoma'>".$data['nm_dokter']."</font></td>
+					<td align='center'><font size='5' color='#555555' face='Tahoma'>".$data['nm_poli']."</font></td>
+					<td align='center'><font color='#555555' size='5'  face='Tahoma'>".$data['jam_mulai']."</font></td>
+					<td align='center'><font color='#555555' size='5'  face='Tahoma'>".$data['jam_selesai']."</font></td>
 				</tr> ";
 		}
 	?>

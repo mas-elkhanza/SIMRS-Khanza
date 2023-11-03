@@ -1012,37 +1012,40 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
     private void tbResepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbResepKeyPressed
         if(tbResep.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_DELETE){
-                i=tbResep.getSelectedColumn();
-                if((i==1)||(i==8)){
-                    if(tbResep.getSelectedRow()!= -1){
-                        tbResep.setValueAt("",tbResep.getSelectedRow(),i);
+            try {
+                if(evt.getKeyCode()==KeyEvent.VK_DELETE){
+                    i=tbResep.getSelectedColumn();
+                    if((i==1)||(i==8)){
+                        if(tbResep.getSelectedRow()!= -1){
+                            tbResep.setValueAt("",tbResep.getSelectedRow(),i);
+                        }
+                    }   
+                }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                    i=tbResep.getSelectedColumn();
+                    if(i!=11){
+                        TCari.requestFocus();
+                    }                
+                }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
+                    getCekStok();
+                    i=tbResep.getSelectedColumn();
+                    if(i==8){
+                        akses.setform("DlgCariObat");
+                        aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        aturanpakai.setLocationRelativeTo(internalFrame1);
+                        aturanpakai.setVisible(true);
+                    }else if(i==2){
+                        hitungResep();
                     }
+                }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                    getCekStok();
+                    i=tbResep.getSelectedColumn();
+                    if((i==8)||(i==9)){
+                        hitungResep();
+                        TCari.requestFocus();
+                    } 
                 }   
-            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
-                i=tbResep.getSelectedColumn();
-                if(i!=11){
-                    TCari.requestFocus();
-                }                
-            }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
-                getCekStok();
-                i=tbResep.getSelectedColumn();
-                if(i==8){
-                    akses.setform("DlgCariObat");
-                    aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    aturanpakai.setLocationRelativeTo(internalFrame1);
-                    aturanpakai.setVisible(true);
-                }else if(i==2){
-                    hitungResep();
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                getCekStok();
-                i=tbResep.getSelectedColumn();
-                if((i==8)||(i==9)){
-                    hitungResep();
-                    TCari.requestFocus();
-                } 
-            }   
+            } catch (Exception e) {
+            }
         }
 }//GEN-LAST:event_tbResepKeyPressed
 
@@ -1351,32 +1354,35 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void tbObatResepRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatResepRacikanKeyPressed
         if(tbObatResepRacikan.getRowCount()!=0){
-            i=tbObatResepRacikan.getSelectedColumn();
-            if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
-                if(i==5){
-                    akses.setform("DlgCariObat");
-                    aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    aturanpakai.setLocationRelativeTo(internalFrame1);
-                    aturanpakai.setVisible(true);
-                }else if(i==3){
-                    if(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),1).equals("")){
-                        JOptionPane.showMessageDialog(null,"Silahkan masukkan nama racikan..!!");
-                        tbObatResepRacikan.requestFocus();
-                    }else{
-                        metoderacik.isCek();
-                        metoderacik.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        metoderacik.setLocationRelativeTo(internalFrame1);
-                        metoderacik.setVisible(true);
+            try {
+                i=tbObatResepRacikan.getSelectedColumn();
+                if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
+                    if(i==5){
+                        akses.setform("DlgCariObat");
+                        aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        aturanpakai.setLocationRelativeTo(internalFrame1);
+                        aturanpakai.setVisible(true);
+                    }else if(i==3){
+                        if(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),1).equals("")){
+                            JOptionPane.showMessageDialog(null,"Silahkan masukkan nama racikan..!!");
+                            tbObatResepRacikan.requestFocus();
+                        }else{
+                            metoderacik.isCek();
+                            metoderacik.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            metoderacik.setLocationRelativeTo(internalFrame1);
+                            metoderacik.setVisible(true);
+                        }
+                    }
+                }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                    if(i==6){
+                        TCari.requestFocus();
+                    }
+                }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                    if(i==6){
+                        tampildetailracikanresep();
                     }
                 }
-            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
-                if(i==6){
-                    TCari.requestFocus();
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                if(i==6){
-                    tampildetailracikanresep();
-                }
+            } catch (Exception e) {
             }
         }
     }//GEN-LAST:event_tbObatResepRacikanKeyPressed
@@ -1387,7 +1393,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }else{
             JOptionPane.showMessageDialog(null,"Maaf sudah terisi, gak boleh dihapus..!!");
         }
-
     }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambah1ActionPerformed
@@ -1401,32 +1406,35 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void tbDetailResepObatRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDetailResepObatRacikanKeyPressed
         if(tbDetailResepObatRacikan.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_RIGHT)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                i=tbDetailResepObatRacikan.getSelectedColumn();
-                if((i==11)||(i==9)||(i==13)||(i==14)){
-                    try {
-                        if(!tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),11).toString().equals(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),9).toString())){
-                            if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())==0){
-                                JOptionPane.showMessageDialog(null,"Kapasitas obat masih kosong..!!!");
-                            }else{
-                                tbDetailResepObatRacikan.setValueAt(Valid.SetAngka8(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())*
-                                    (Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),9).toString())/Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),11).toString())),1),
-                                        tbDetailResepObatRacikan.getSelectedRow(),12);
-                            }                                
-                        }
-                    } catch (Exception e) {
-                        tbDetailResepObatRacikan.setValueAt(0,tbDetailResepObatRacikan.getSelectedRow(),12);
-                    }      
-                    getCekStokRacikan();
-                }else if(i==12){
-                    if(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),12).toString().contains("%")){
-                        getDatadetailresepracikan2();
-                    }else{
-                        getDatadetailresepracikan();
-                    }  
-                    getCekStokRacikan();
+            try {
+                if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_RIGHT)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                    i=tbDetailResepObatRacikan.getSelectedColumn();
+                    if((i==11)||(i==9)||(i==13)||(i==14)){
+                        try {
+                            if(!tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),11).toString().equals(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),9).toString())){
+                                if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())==0){
+                                    JOptionPane.showMessageDialog(null,"Kapasitas obat masih kosong..!!!");
+                                }else{
+                                    tbDetailResepObatRacikan.setValueAt(Valid.SetAngka8(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())*
+                                        (Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),9).toString())/Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),11).toString())),1),
+                                            tbDetailResepObatRacikan.getSelectedRow(),12);
+                                }                                
+                            }
+                        } catch (Exception e) {
+                            tbDetailResepObatRacikan.setValueAt(0,tbDetailResepObatRacikan.getSelectedRow(),12);
+                        }      
+                        getCekStokRacikan();
+                    }else if(i==12){
+                        if(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),12).toString().contains("%")){
+                            getDatadetailresepracikan2();
+                        }else{
+                            getDatadetailresepracikan();
+                        }  
+                        getCekStokRacikan();
+                    }
+                    hitungResep();
                 }
-                hitungResep();
+            } catch (Exception e) {
             }
         }
     }//GEN-LAST:event_tbDetailResepObatRacikanKeyPressed
@@ -1450,8 +1458,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void tbResepPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbResepPropertyChange
         if(this.isVisible()==true){
-            getCekStok();
-            hitungResep();
+            try {
+                getCekStok();
+                hitungResep();
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_tbResepPropertyChange
 

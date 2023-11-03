@@ -5,7 +5,7 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "7cc1173918078a8861cfe7c2cd56595b3abffa17cdedba978e414d42dfe3bf97";   
+       $keyRS = "c4f0308d117078d4a88d981b48d3a3db3d9687d7b4d59b82efe69e8879b217eb";   
        return $keyRS;
     }
 
@@ -15,7 +15,7 @@
     }
     
     function getKelasRS() {
-        $kelasRS = "BS";
+        $kelasRS = "CS";
         return $kelasRS;
     }
 

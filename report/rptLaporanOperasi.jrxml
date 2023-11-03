@@ -1014,7 +1014,7 @@
 				</textElement>
 				<text><![CDATA[Tanggal & Waktu ]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss" isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
 				<reportElement x="100" y="308" width="157" height="10" uuid="42972538-de24-4eb8-bb80-9688c776aca4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1450,7 +1450,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{permintaan_pa}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss" isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
 				<reportElement x="397" y="508" width="137" height="10" uuid="67df98b8-b7e1-47b2-b772-9ba6dce7b5e0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>

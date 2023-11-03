@@ -626,7 +626,7 @@
                     $alamat         = validTeks6(str_replace("'","`",trim($_POST['alamat'])),60);
                     $kota           = validTeks4(str_replace("'","`",trim($_POST['kota'])),20);
                     $mulai_kerja    = validTeks4(trim($_POST['ThnMulai'])."-".trim($_POST['BlnMulai'])."-".trim($_POST['TglMulai']),20);
-                    $ms_kerja       = validTeks4(str_replace("'","`",trim($_POST['ms_kerja'])),6);
+                    $ms_kerja       = validTeks7(str_replace("'","`",trim($_POST['ms_kerja'])),6);
                     $indexins       = validTeks4(trim($_POST['indexins']),4);
                     $bpd            = validTeks4(str_replace("'","`",trim($_POST['bpd'])),50);
                     $rekening       = validTeks4(str_replace("'","`",trim($_POST['rekening'])),25);

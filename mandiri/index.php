@@ -495,30 +495,6 @@
                                                 'error_description' => 'Error paidFlag'
                                             );
                                             http_response_code(401);
-                                        }else if(!isset($decode['cancelFlag'])){ 
-                                            $response = array(
-                                                'error' => 'invalid_parameter',
-                                                'error_description' => 'Error cancelFlag'
-                                            );
-                                            http_response_code(401);
-                                        }else if(!preg_match("/^[0-9]{1}$/",$decode['cancelFlag'])){
-                                            $response = array(
-                                                'error' => 'invalid_parameter',
-                                                'error_description' => 'Error cancelFlag'
-                                            );
-                                            http_response_code(401);
-                                        }else if(!isset($decode['isCancel'])){ 
-                                            $response = array(
-                                                'error' => 'invalid_parameter',
-                                                'error_description' => 'Error isCancel'
-                                            );
-                                            http_response_code(401);
-                                        }else if(!preg_match("/^[0-9]{1}$/",$decode['isCancel'])){
-                                            $response = array(
-                                                'error' => 'invalid_parameter',
-                                                'error_description' => 'Error isCancel'
-                                            );
-                                            http_response_code(401);
                                         }else if(!isset($decode['paymentBill'])){ 
                                             $response = array(
                                                 'error' => 'invalid_parameter',
@@ -529,18 +505,6 @@
                                             $response = array(
                                                 'error' => 'invalid_parameter',
                                                 'error_description' => 'Error paymentBill'
-                                            );
-                                            http_response_code(401);
-                                        }else if(!isset($decode['cancelNominal'])){ 
-                                            $response = array(
-                                                'error' => 'invalid_parameter',
-                                                'error_description' => 'Error cancelNominal'
-                                            );
-                                            http_response_code(401);
-                                        }else if(!preg_match("/^[0-9]{1,15}$/",$decode['cancelNominal'])){
-                                            $response = array(
-                                                'error' => 'invalid_parameter',
-                                                'error_description' => 'Error cancelNominal'
                                             );
                                             http_response_code(401);
                                         }else if(!isset($decode['newPaymentBill'])){ 
@@ -600,10 +564,7 @@
                                             $trxNo            = validTeks3($decode['trxNo'],17);
                                             $noKuitansi       = validTeks3($decode['noKuitansi'],17);
                                             $paidFlag         = validTeks3($decode['paidFlag'],1);
-                                            $cancelFlag       = validTeks3($decode['cancelFlag'],1);
-                                            $isCancel         = validTeks3($decode['isCancel'],1);
                                             $paymentBill      = validTeks3($decode['paymentBill'],15);
-                                            $cancelNominal    = validTeks3($decode['cancelNominal'],15);
                                             $newPaymentBill   = validTeks3($decode['newPaymentBill'],15);
                                             $additional1      = validTeks3($decode['additional1'],75);
                                             $additional2      = validTeks3($decode['additional2'],75);
