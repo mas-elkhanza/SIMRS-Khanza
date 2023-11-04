@@ -1221,6 +1221,7 @@ public final class akses {
                         akses.bpjs_mapping_obat_apotek=true;
                         akses.pembayaran_bank_mandiri=true;
                         akses.penilaian_ulang_nyeri=true;
+                        akses.penilaian_terapi_wicara=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();

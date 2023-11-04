@@ -127,6 +127,7 @@ import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
 import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
+import rekammedis.RMPenilaianTerapiWicara;
 import rekammedis.RMPenilaianUlangNyeri;
 import rekammedis.RMRekonsiliasiObat;
 import rekammedis.RMRiwayatPerawatan;
@@ -1561,6 +1562,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalKeperawatanPsikiatri = new widget.Button();
         BtnAwalKeperawatanGeriatri = new widget.Button();
         BtnAwalFisioterapi = new widget.Button();
+        BtnAwalTerapiWicara = new widget.Button();
         BtnAwalMedisIGD = new widget.Button();
         BtnAwalMedisIGDPsikiatri = new widget.Button();
         BtnAwalMedis = new widget.Button();
@@ -1796,7 +1798,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1810,7 +1812,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3535,7 +3537,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -4022,6 +4024,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalFisioterapi);
+
+        BtnAwalTerapiWicara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalTerapiWicara.setText("Terapi Wicara");
+        BtnAwalTerapiWicara.setFocusPainted(false);
+        BtnAwalTerapiWicara.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalTerapiWicara.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalTerapiWicara.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalTerapiWicara.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalTerapiWicara.setName("BtnAwalTerapiWicara"); // NOI18N
+        BtnAwalTerapiWicara.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnAwalTerapiWicara.setRoundRect(false);
+        BtnAwalTerapiWicara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalTerapiWicaraActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalTerapiWicara);
 
         BtnAwalMedisIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnAwalMedisIGD.setText("Awal Medis IGD");
@@ -8887,6 +8906,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnTemplatePemeriksaanActionPerformed
 
+    private void BtnAwalTerapiWicaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalTerapiWicaraActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianTerapiWicara form=new RMPenilaianTerapiWicara(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAwalTerapiWicaraActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8932,6 +8968,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAwalMedisPsikiatri;
     private widget.Button BtnAwalMedisRehabMedik;
     private widget.Button BtnAwalMedisTHT;
+    private widget.Button BtnAwalTerapiWicara;
     private widget.Button BtnBatal;
     private widget.Button BtnBerkasDigital;
     private widget.Button BtnCari;
@@ -9881,6 +9918,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnPenilaianUlangNyeri.setVisible(akses.getpenilaian_ulang_nyeri()); 
         if(akses.getpenilaian_ulang_nyeri()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalTerapiWicara.setVisible(akses.getpenilaian_terapi_wicara()); 
+        if(akses.getpenilaian_terapi_wicara()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));

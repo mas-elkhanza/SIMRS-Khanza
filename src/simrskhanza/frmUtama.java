@@ -883,6 +883,7 @@ import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
 import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
+import rekammedis.RMPenilaianTerapiWicara;
 import rekammedis.RMPenilaianUlangNyeri;
 import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
@@ -20692,6 +20693,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianTerapiWicaraActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianTerapiWicara aplikasi=new RMPenilaianTerapiWicara(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21372,7 +21386,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa,
             btnPenilaianRisikoJatuhPsikiatri,btnPenilaianLanjutanSkriningFungsional,btnPenilaianAwalMedisRalanRehabMedik,btnTemplatePersetujuanPenolakanTindakan,
             btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
-            btnPenilaianUlangNyeri;
+            btnPenilaianUlangNyeri,btnPenilaianTerapiWicara;
     
     public void isWall(){
         try{            
@@ -24984,6 +24998,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_fisioterapi()==true){
                 Panelmenu.add(btnFisioterapi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_terapi_wicara()==true){
+                Panelmenu.add(btnPenilaianTerapiWicara);
                 jmlmenu++;
             }
             
@@ -29853,6 +29872,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_fisioterapi()==true){
             Panelmenu.add(btnFisioterapi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_terapi_wicara()==true){
+            Panelmenu.add(btnPenilaianTerapiWicara);
             jmlmenu++;
         }
         
@@ -36112,6 +36136,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_terapi_wicara()==true){
+            if(btnPenilaianTerapiWicara.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianTerapiWicara);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_psikologi()==true){
             if(btnPenilaianPsikologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianPsikologi);
@@ -42170,5 +42201,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianUlangNyeri.setName("btnPenilaianUlangNyeri"); 
         btnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianUlangNyeri.addActionListener(this::btnPenilaianUlangNyeriActionPerformed);
+        
+        btnPenilaianTerapiWicara = new widget.ButtonBig();
+        btnPenilaianTerapiWicara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2185069_dental_dentist_halitosis_human_mouth_icon.png")));
+        btnPenilaianTerapiWicara.setText("Penilaian Terapi Wicara");
+        btnPenilaianTerapiWicara.setIconTextGap(0);
+        btnPenilaianTerapiWicara.setName("btnPenilaianTerapiWicara"); 
+        btnPenilaianTerapiWicara.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianTerapiWicara.addActionListener(this::btnPenilaianTerapiWicaraActionPerformed);
     }
 }

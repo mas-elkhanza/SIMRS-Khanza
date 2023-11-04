@@ -1090,7 +1090,7 @@
                                             if(num_rows($query)>0){
                                                 if($rsquery = mysqli_fetch_array($query)){
                                                     if($rsquery["besar_bayar"]==$paymentBill){
-                                                        $querybayar = bukaquery2("update tagihan_mandiri set status_bayar='Sudah',besar_bayar='$newPaymentBill',tambahan1='$additional1',tambahan2='$additional2',tambahan3='$additional3',diupdatebank='$timeStamp',pembatalan='$cancelFlag',dibatalkan_oleh='$isCancel',besar_batal='$cancelNominal',
+                                                        $querybayar = bukaquery2("update tagihan_mandiri set status_bayar='Sudah',besar_bayar='$newPaymentBill',tambahan1='$additional1',tambahan2='$additional2',tambahan3='$additional3',diupdatebank='$timeStamp',pembatalan='Belum Dibatalkan',dibatalkan_oleh='MHAS',besar_batal='$cancelNominal',
                                                                                   referensi='$noKuitansi' where referensi='$oldNoKuitansi' and no_nota='$trxNo' and no_id='$regNo' and no_rkm_medis='$rmNo' and nm_pasien='$pasienName' and tgl_registrasi='$regDate' and status_lanjut='$jenisPelayananId'");
                                                         if($querybayar){
                                                             $response = array(
