@@ -179,9 +179,39 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        KeluhanUtama.setDocument(new batasInput((int)150).getKata(KeluhanUtama));
-        RiwayatPenyakitSekarang.setDocument(new batasInput((int)100).getKata(RiwayatPenyakitSekarang));
-        RiwayatPenyakitDahulu.setDocument(new batasInput((int)100).getKata(RiwayatPenyakitDahulu));
+        DiagnosaTerapiWicara.setDocument(new batasInput((int)100).getKata(DiagnosaTerapiWicara));
+        DiagnosaMedis.setDocument(new batasInput((int)100).getKata(DiagnosaMedis));
+        Anamnesa.setDocument(new batasInput((int)300).getKata(Anamnesa));
+        Suhu.setDocument(new batasInput((int)5).getKata(Suhu));
+        RR.setDocument(new batasInput((int)5).getKata(RR));
+        Nadi.setDocument(new batasInput((int)5).getKata(Nadi));
+        TD.setDocument(new batasInput((int)8).getKata(TD));
+        KontakMata.setDocument(new batasInput((int)50).getKata(KontakMata));
+        Atensi.setDocument(new batasInput((int)50).getKata(Atensi));
+        Perilaku.setDocument(new batasInput((int)50).getKata(Perilaku));
+        BicaraSpontan.setDocument(new batasInput((int)50).getKata(BicaraSpontan));
+        PemahamanBahasa.setDocument(new batasInput((int)50).getKata(PemahamanBahasa));
+        Pengujaran.setDocument(new batasInput((int)50).getKata(Pengujaran));
+        Membaca.setDocument(new batasInput((int)50).getKata(Membaca));
+        Penamaan.setDocument(new batasInput((int)50).getKata(Penamaan));
+        LipAnatomis.setDocument(new batasInput((int)30).getKata(LipAnatomis));
+        TongueAnatomis.setDocument(new batasInput((int)30).getKata(TongueAnatomis));
+        HardPalateAnatomis.setDocument(new batasInput((int)30).getKata(HardPalateAnatomis));
+        SoftPalateAnatomis.setDocument(new batasInput((int)30).getKata(SoftPalateAnatomis));
+        UvulaAnatomis.setDocument(new batasInput((int)30).getKata(UvulaAnatomis));
+        MandibulaAnatomis.setDocument(new batasInput((int)30).getKata(MandibulaAnatomis));
+        MaxillaAnatomis.setDocument(new batasInput((int)30).getKata(MaxillaAnatomis));
+        DentalAnatomis.setDocument(new batasInput((int)30).getKata(DentalAnatomis));
+        FaringAnatomis.setDocument(new batasInput((int)30).getKata(FaringAnatomis));
+        LipFisiologis.setDocument(new batasInput((int)30).getKata(LipFisiologis));
+        TongueFisiologis.setDocument(new batasInput((int)30).getKata(TongueFisiologis));
+        HardPalateFisiologis.setDocument(new batasInput((int)30).getKata(HardPalateFisiologis));
+        SoftPalateFisiologis.setDocument(new batasInput((int)30).getKata(SoftPalateFisiologis));
+        UvulaFisiologis.setDocument(new batasInput((int)30).getKata(UvulaFisiologis));
+        MandibulaFisiologis.setDocument(new batasInput((int)30).getKata(MandibulaFisiologis));
+        MaxillaFisiologis.setDocument(new batasInput((int)30).getKata(MaxillaFisiologis));
+        DentalFisiologis.setDocument(new batasInput((int)30).getKata(DentalFisiologis));
+        FaringFisiologis.setDocument(new batasInput((int)30).getKata(FaringFisiologis));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -292,15 +322,15 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new widget.Label();
         scrollPane1 = new widget.ScrollPane();
-        KeluhanUtama = new widget.TextArea();
+        DiagnosaTerapiWicara = new widget.TextArea();
         jLabel30 = new widget.Label();
         scrollPane2 = new widget.ScrollPane();
-        RiwayatPenyakitSekarang = new widget.TextArea();
+        Anamnesa = new widget.TextArea();
         jLabel31 = new widget.Label();
         scrollPane4 = new widget.ScrollPane();
-        RiwayatPenyakitDahulu = new widget.TextArea();
+        Menghisap = new widget.TextArea();
         scrollPane3 = new widget.ScrollPane();
-        KeluhanUtama1 = new widget.TextArea();
+        DiagnosaMedis = new widget.TextArea();
         jLabel32 = new widget.Label();
         jLabel22 = new widget.Label();
         TD = new widget.TextBox();
@@ -317,133 +347,133 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         jLabel33 = new widget.Label();
         jLabel34 = new widget.Label();
         jLabel29 = new widget.Label();
-        Nyeri = new widget.TextBox();
+        KontakMata = new widget.TextBox();
         jLabel35 = new widget.Label();
-        Nyeri1 = new widget.TextBox();
+        Perilaku = new widget.TextBox();
         jLabel36 = new widget.Label();
-        Nyeri2 = new widget.TextBox();
+        Atensi = new widget.TextBox();
         jLabel37 = new widget.Label();
         jLabel38 = new widget.Label();
-        Nyeri3 = new widget.TextBox();
+        Pengujaran = new widget.TextBox();
         jLabel39 = new widget.Label();
-        Nyeri4 = new widget.TextBox();
+        BicaraSpontan = new widget.TextBox();
         jLabel40 = new widget.Label();
-        Nyeri5 = new widget.TextBox();
+        Membaca = new widget.TextBox();
         jLabel41 = new widget.Label();
-        Nyeri6 = new widget.TextBox();
+        PemahamanBahasa = new widget.TextBox();
         jLabel42 = new widget.Label();
-        Nyeri7 = new widget.TextBox();
+        Penamaan = new widget.TextBox();
         jLabel43 = new widget.Label();
         jLabel44 = new widget.Label();
         jLabel45 = new widget.Label();
-        Nyeri8 = new widget.TextBox();
+        LipAnatomis = new widget.TextBox();
         jLabel46 = new widget.Label();
-        Nyeri9 = new widget.TextBox();
+        TongueAnatomis = new widget.TextBox();
         jLabel47 = new widget.Label();
-        Nyeri10 = new widget.TextBox();
+        HardPalateAnatomis = new widget.TextBox();
         jLabel48 = new widget.Label();
-        Nyeri11 = new widget.TextBox();
-        Nyeri12 = new widget.TextBox();
+        MandibulaAnatomis = new widget.TextBox();
+        UvulaAnatomis = new widget.TextBox();
         jLabel49 = new widget.Label();
-        Nyeri13 = new widget.TextBox();
+        SoftPalateAnatomis = new widget.TextBox();
         jLabel50 = new widget.Label();
         jLabel51 = new widget.Label();
-        Nyeri14 = new widget.TextBox();
-        Nyeri15 = new widget.TextBox();
+        FaringAnatomis = new widget.TextBox();
+        DentalAnatomis = new widget.TextBox();
         jLabel52 = new widget.Label();
-        Nyeri16 = new widget.TextBox();
+        MaxillaAnatomis = new widget.TextBox();
         jLabel53 = new widget.Label();
         jLabel54 = new widget.Label();
         jLabel55 = new widget.Label();
-        Nyeri17 = new widget.TextBox();
+        LipFisiologis = new widget.TextBox();
         jLabel56 = new widget.Label();
-        Nyeri18 = new widget.TextBox();
+        TongueFisiologis = new widget.TextBox();
         jLabel57 = new widget.Label();
-        Nyeri19 = new widget.TextBox();
+        HardPalateFisiologis = new widget.TextBox();
         jLabel58 = new widget.Label();
-        Nyeri20 = new widget.TextBox();
+        SoftPalateFisiologis = new widget.TextBox();
         jLabel59 = new widget.Label();
-        Nyeri21 = new widget.TextBox();
+        UvulaFisiologis = new widget.TextBox();
         jLabel60 = new widget.Label();
-        Nyeri22 = new widget.TextBox();
+        MandibulaFisiologis = new widget.TextBox();
         jLabel61 = new widget.Label();
-        Nyeri23 = new widget.TextBox();
+        MaxillaFisiologis = new widget.TextBox();
         jLabel62 = new widget.Label();
-        Nyeri24 = new widget.TextBox();
+        DentalFisiologis = new widget.TextBox();
         jLabel63 = new widget.Label();
-        Nyeri25 = new widget.TextBox();
+        FaringFisiologis = new widget.TextBox();
         jLabel64 = new widget.Label();
         jLabel12 = new widget.Label();
         scrollPane5 = new widget.ScrollPane();
-        RiwayatPenyakitDahulu1 = new widget.TextArea();
+        Mengunyah = new widget.TextArea();
         scrollPane6 = new widget.ScrollPane();
-        RiwayatPenyakitDahulu2 = new widget.TextArea();
+        Meniup = new widget.TextArea();
         jLabel13 = new widget.Label();
         jLabel65 = new widget.Label();
         jLabel14 = new widget.Label();
         jLabel15 = new widget.Label();
         scrollPane7 = new widget.ScrollPane();
-        RiwayatPenyakitDahulu3 = new widget.TextArea();
+        Subtitusi = new widget.TextArea();
         scrollPane8 = new widget.ScrollPane();
-        RiwayatPenyakitDahulu4 = new widget.TextArea();
+        Omisi = new widget.TextArea();
         jLabel24 = new widget.Label();
         jLabel27 = new widget.Label();
         scrollPane9 = new widget.ScrollPane();
-        RiwayatPenyakitDahulu5 = new widget.TextArea();
+        Distorsi = new widget.TextArea();
         scrollPane10 = new widget.ScrollPane();
-        RiwayatPenyakitDahulu6 = new widget.TextArea();
+        Adisi = new widget.TextArea();
         jLabel67 = new widget.Label();
-        Anamnesis = new widget.ComboBox();
+        Resonasi = new widget.ComboBox();
         jLabel66 = new widget.Label();
         jLabel68 = new widget.Label();
         jLabel69 = new widget.Label();
         jLabel70 = new widget.Label();
-        Anamnesis1 = new widget.ComboBox();
+        Nada = new widget.ComboBox();
         jLabel71 = new widget.Label();
-        Anamnesis2 = new widget.ComboBox();
-        Anamnesis3 = new widget.ComboBox();
+        Kualitas = new widget.ComboBox();
+        KemampuanIramaKelancaran = new widget.ComboBox();
         jLabel72 = new widget.Label();
         jLabel73 = new widget.Label();
-        Anamnesis4 = new widget.ComboBox();
+        Kenyaringan = new widget.ComboBox();
         jLabel74 = new widget.Label();
         scrollPane11 = new widget.ScrollPane();
-        RiwayatPenyakitSekarang1 = new widget.TextArea();
+        KemampuanMenelan = new widget.TextArea();
         jLabel75 = new widget.Label();
         scrollPane12 = new widget.ScrollPane();
-        RiwayatPenyakitSekarang2 = new widget.TextArea();
+        Pernapasan = new widget.TextArea();
         jLabel76 = new widget.Label();
         jLabel77 = new widget.Label();
         jLabel78 = new widget.Label();
-        Nyeri26 = new widget.TextBox();
+        Pendengaran = new widget.TextBox();
         jLabel79 = new widget.Label();
-        Nyeri27 = new widget.TextBox();
+        Penglihatan = new widget.TextBox();
         jLabel80 = new widget.Label();
-        Nyeri28 = new widget.TextBox();
+        Kinesek = new widget.TextBox();
         jLabel81 = new widget.Label();
         jLabel82 = new widget.Label();
-        Nyeri29 = new widget.TextBox();
+        Bicara = new widget.TextBox();
         jLabel83 = new widget.Label();
-        Nyeri30 = new widget.TextBox();
-        Nyeri31 = new widget.TextBox();
+        Tulisan = new widget.TextBox();
+        Gesture = new widget.TextBox();
         jLabel84 = new widget.Label();
-        Nyeri32 = new widget.TextBox();
+        Mimik = new widget.TextBox();
         jLabel85 = new widget.Label();
         jLabel86 = new widget.Label();
         scrollPane13 = new widget.ScrollPane();
-        RiwayatPenyakitSekarang3 = new widget.TextArea();
+        PenunjangMedis = new widget.TextArea();
         jLabel87 = new widget.Label();
         jLabel88 = new widget.Label();
         scrollPane14 = new widget.ScrollPane();
-        KeluhanUtama2 = new widget.TextArea();
+        TujuanTerapiWicara = new widget.TextArea();
         jLabel89 = new widget.Label();
         scrollPane15 = new widget.ScrollPane();
-        KeluhanUtama3 = new widget.TextArea();
+        ProgramTerapiWicara = new widget.TextArea();
         jLabel90 = new widget.Label();
         scrollPane16 = new widget.ScrollPane();
-        RiwayatPenyakitSekarang4 = new widget.TextArea();
+        Edukasi = new widget.TextArea();
         jLabel91 = new widget.Label();
         scrollPane17 = new widget.ScrollPane();
-        RiwayatPenyakitSekarang5 = new widget.TextArea();
+        TindakLanjut = new widget.TextArea();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -766,16 +796,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
 
-        KeluhanUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        KeluhanUtama.setColumns(20);
-        KeluhanUtama.setRows(5);
-        KeluhanUtama.setName("KeluhanUtama"); // NOI18N
-        KeluhanUtama.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosaTerapiWicara.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        DiagnosaTerapiWicara.setColumns(20);
+        DiagnosaTerapiWicara.setRows(5);
+        DiagnosaTerapiWicara.setName("DiagnosaTerapiWicara"); // NOI18N
+        DiagnosaTerapiWicara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeluhanUtamaKeyPressed(evt);
+                DiagnosaTerapiWicaraKeyPressed(evt);
             }
         });
-        scrollPane1.setViewportView(KeluhanUtama);
+        scrollPane1.setViewportView(DiagnosaTerapiWicara);
 
         FormInput.add(scrollPane1);
         scrollPane1.setBounds(20, 100, 400, 43);
@@ -789,16 +819,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
 
-        RiwayatPenyakitSekarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang.setColumns(20);
-        RiwayatPenyakitSekarang.setRows(5);
-        RiwayatPenyakitSekarang.setName("RiwayatPenyakitSekarang"); // NOI18N
-        RiwayatPenyakitSekarang.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Anamnesa.setColumns(20);
+        Anamnesa.setRows(5);
+        Anamnesa.setName("Anamnesa"); // NOI18N
+        Anamnesa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarangKeyPressed(evt);
+                AnamnesaKeyPressed(evt);
             }
         });
-        scrollPane2.setViewportView(RiwayatPenyakitSekarang);
+        scrollPane2.setViewportView(Anamnesa);
 
         FormInput.add(scrollPane2);
         scrollPane2.setBounds(20, 170, 834, 53);
@@ -812,16 +842,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane4.setName("scrollPane4"); // NOI18N
 
-        RiwayatPenyakitDahulu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitDahulu.setColumns(20);
-        RiwayatPenyakitDahulu.setRows(5);
-        RiwayatPenyakitDahulu.setName("RiwayatPenyakitDahulu"); // NOI18N
-        RiwayatPenyakitDahulu.addKeyListener(new java.awt.event.KeyAdapter() {
+        Menghisap.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Menghisap.setColumns(20);
+        Menghisap.setRows(5);
+        Menghisap.setName("Menghisap"); // NOI18N
+        Menghisap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitDahuluKeyPressed(evt);
+                MenghisapKeyPressed(evt);
             }
         });
-        scrollPane4.setViewportView(RiwayatPenyakitDahulu);
+        scrollPane4.setViewportView(Menghisap);
 
         FormInput.add(scrollPane4);
         scrollPane4.setBounds(80, 750, 245, 63);
@@ -829,16 +859,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane3.setName("scrollPane3"); // NOI18N
 
-        KeluhanUtama1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        KeluhanUtama1.setColumns(20);
-        KeluhanUtama1.setRows(5);
-        KeluhanUtama1.setName("KeluhanUtama1"); // NOI18N
-        KeluhanUtama1.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosaMedis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        DiagnosaMedis.setColumns(20);
+        DiagnosaMedis.setRows(5);
+        DiagnosaMedis.setName("DiagnosaMedis"); // NOI18N
+        DiagnosaMedis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeluhanUtama1KeyPressed(evt);
+                DiagnosaMedisKeyPressed(evt);
             }
         });
-        scrollPane3.setViewportView(KeluhanUtama1);
+        scrollPane3.setViewportView(DiagnosaMedis);
 
         FormInput.add(scrollPane3);
         scrollPane3.setBounds(454, 100, 400, 43);
@@ -950,45 +980,45 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel29);
         jLabel29.setBounds(0, 300, 114, 23);
 
-        Nyeri.setFocusTraversalPolicyProvider(true);
-        Nyeri.setName("Nyeri"); // NOI18N
-        Nyeri.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontakMata.setFocusTraversalPolicyProvider(true);
+        KontakMata.setName("KontakMata"); // NOI18N
+        KontakMata.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NyeriKeyPressed(evt);
+                KontakMataKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri);
-        Nyeri.setBounds(118, 300, 325, 23);
+        FormInput.add(KontakMata);
+        KontakMata.setBounds(118, 300, 325, 23);
 
         jLabel35.setText("Perilaku :");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
         jLabel35.setBounds(0, 330, 114, 23);
 
-        Nyeri1.setFocusTraversalPolicyProvider(true);
-        Nyeri1.setName("Nyeri1"); // NOI18N
-        Nyeri1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Perilaku.setFocusTraversalPolicyProvider(true);
+        Perilaku.setName("Perilaku"); // NOI18N
+        Perilaku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri1KeyPressed(evt);
+                PerilakuKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri1);
-        Nyeri1.setBounds(118, 330, 325, 23);
+        FormInput.add(Perilaku);
+        Perilaku.setBounds(118, 330, 325, 23);
 
         jLabel36.setText("Atensi :");
         jLabel36.setName("jLabel36"); // NOI18N
         FormInput.add(jLabel36);
         jLabel36.setBounds(445, 300, 80, 23);
 
-        Nyeri2.setFocusTraversalPolicyProvider(true);
-        Nyeri2.setName("Nyeri2"); // NOI18N
-        Nyeri2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Atensi.setFocusTraversalPolicyProvider(true);
+        Atensi.setName("Atensi"); // NOI18N
+        Atensi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri2KeyPressed(evt);
+                AtensiKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri2);
-        Nyeri2.setBounds(529, 300, 325, 23);
+        FormInput.add(Atensi);
+        Atensi.setBounds(529, 300, 325, 23);
 
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel37.setText("Kemampuan Bahasa :");
@@ -1001,75 +1031,75 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel38);
         jLabel38.setBounds(0, 380, 114, 23);
 
-        Nyeri3.setFocusTraversalPolicyProvider(true);
-        Nyeri3.setName("Nyeri3"); // NOI18N
-        Nyeri3.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pengujaran.setFocusTraversalPolicyProvider(true);
+        Pengujaran.setName("Pengujaran"); // NOI18N
+        Pengujaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri3KeyPressed(evt);
+                PengujaranKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri3);
-        Nyeri3.setBounds(118, 380, 300, 23);
+        FormInput.add(Pengujaran);
+        Pengujaran.setBounds(118, 380, 300, 23);
 
         jLabel39.setText("Bicara Spontan :");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
         jLabel39.setBounds(430, 380, 120, 23);
 
-        Nyeri4.setFocusTraversalPolicyProvider(true);
-        Nyeri4.setName("Nyeri4"); // NOI18N
-        Nyeri4.addKeyListener(new java.awt.event.KeyAdapter() {
+        BicaraSpontan.setFocusTraversalPolicyProvider(true);
+        BicaraSpontan.setName("BicaraSpontan"); // NOI18N
+        BicaraSpontan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri4KeyPressed(evt);
+                BicaraSpontanKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri4);
-        Nyeri4.setBounds(554, 380, 300, 23);
+        FormInput.add(BicaraSpontan);
+        BicaraSpontan.setBounds(554, 380, 300, 23);
 
         jLabel40.setText("Membaca :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
         jLabel40.setBounds(0, 410, 114, 23);
 
-        Nyeri5.setFocusTraversalPolicyProvider(true);
-        Nyeri5.setName("Nyeri5"); // NOI18N
-        Nyeri5.addKeyListener(new java.awt.event.KeyAdapter() {
+        Membaca.setFocusTraversalPolicyProvider(true);
+        Membaca.setName("Membaca"); // NOI18N
+        Membaca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri5KeyPressed(evt);
+                MembacaKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri5);
-        Nyeri5.setBounds(118, 410, 300, 23);
+        FormInput.add(Membaca);
+        Membaca.setBounds(118, 410, 300, 23);
 
         jLabel41.setText("Pemahaman Bahasa :");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
         jLabel41.setBounds(430, 410, 120, 23);
 
-        Nyeri6.setFocusTraversalPolicyProvider(true);
-        Nyeri6.setName("Nyeri6"); // NOI18N
-        Nyeri6.addKeyListener(new java.awt.event.KeyAdapter() {
+        PemahamanBahasa.setFocusTraversalPolicyProvider(true);
+        PemahamanBahasa.setName("PemahamanBahasa"); // NOI18N
+        PemahamanBahasa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri6KeyPressed(evt);
+                PemahamanBahasaKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri6);
-        Nyeri6.setBounds(554, 410, 300, 23);
+        FormInput.add(PemahamanBahasa);
+        PemahamanBahasa.setBounds(554, 410, 300, 23);
 
         jLabel42.setText("Penamaan :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
         jLabel42.setBounds(0, 440, 114, 23);
 
-        Nyeri7.setFocusTraversalPolicyProvider(true);
-        Nyeri7.setName("Nyeri7"); // NOI18N
-        Nyeri7.addKeyListener(new java.awt.event.KeyAdapter() {
+        Penamaan.setFocusTraversalPolicyProvider(true);
+        Penamaan.setName("Penamaan"); // NOI18N
+        Penamaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri7KeyPressed(evt);
+                PenamaanKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri7);
-        Nyeri7.setBounds(118, 440, 300, 23);
+        FormInput.add(Penamaan);
+        Penamaan.setBounds(118, 440, 300, 23);
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel43.setText("Wicara :");
@@ -1088,85 +1118,85 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel45);
         jLabel45.setBounds(0, 510, 142, 23);
 
-        Nyeri8.setFocusTraversalPolicyProvider(true);
-        Nyeri8.setName("Nyeri8"); // NOI18N
-        Nyeri8.addKeyListener(new java.awt.event.KeyAdapter() {
+        LipAnatomis.setFocusTraversalPolicyProvider(true);
+        LipAnatomis.setName("LipAnatomis"); // NOI18N
+        LipAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri8KeyPressed(evt);
+                LipAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri8);
-        Nyeri8.setBounds(146, 510, 180, 23);
+        FormInput.add(LipAnatomis);
+        LipAnatomis.setBounds(146, 510, 180, 23);
 
         jLabel46.setText("Tongue :");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
         jLabel46.setBounds(326, 510, 70, 23);
 
-        Nyeri9.setFocusTraversalPolicyProvider(true);
-        Nyeri9.setName("Nyeri9"); // NOI18N
-        Nyeri9.addKeyListener(new java.awt.event.KeyAdapter() {
+        TongueAnatomis.setFocusTraversalPolicyProvider(true);
+        TongueAnatomis.setName("TongueAnatomis"); // NOI18N
+        TongueAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri9KeyPressed(evt);
+                TongueAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri9);
-        Nyeri9.setBounds(400, 510, 180, 23);
+        FormInput.add(TongueAnatomis);
+        TongueAnatomis.setBounds(400, 510, 180, 23);
 
         jLabel47.setText("Hard Palate :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
         jLabel47.setBounds(580, 510, 90, 23);
 
-        Nyeri10.setFocusTraversalPolicyProvider(true);
-        Nyeri10.setName("Nyeri10"); // NOI18N
-        Nyeri10.addKeyListener(new java.awt.event.KeyAdapter() {
+        HardPalateAnatomis.setFocusTraversalPolicyProvider(true);
+        HardPalateAnatomis.setName("HardPalateAnatomis"); // NOI18N
+        HardPalateAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri10KeyPressed(evt);
+                HardPalateAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri10);
-        Nyeri10.setBounds(674, 510, 180, 23);
+        FormInput.add(HardPalateAnatomis);
+        HardPalateAnatomis.setBounds(674, 510, 180, 23);
 
         jLabel48.setText("Mandibula :");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
         jLabel48.setBounds(580, 540, 90, 23);
 
-        Nyeri11.setFocusTraversalPolicyProvider(true);
-        Nyeri11.setName("Nyeri11"); // NOI18N
-        Nyeri11.addKeyListener(new java.awt.event.KeyAdapter() {
+        MandibulaAnatomis.setFocusTraversalPolicyProvider(true);
+        MandibulaAnatomis.setName("MandibulaAnatomis"); // NOI18N
+        MandibulaAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri11KeyPressed(evt);
+                MandibulaAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri11);
-        Nyeri11.setBounds(674, 540, 180, 23);
+        FormInput.add(MandibulaAnatomis);
+        MandibulaAnatomis.setBounds(674, 540, 180, 23);
 
-        Nyeri12.setFocusTraversalPolicyProvider(true);
-        Nyeri12.setName("Nyeri12"); // NOI18N
-        Nyeri12.addKeyListener(new java.awt.event.KeyAdapter() {
+        UvulaAnatomis.setFocusTraversalPolicyProvider(true);
+        UvulaAnatomis.setName("UvulaAnatomis"); // NOI18N
+        UvulaAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri12KeyPressed(evt);
+                UvulaAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri12);
-        Nyeri12.setBounds(400, 540, 180, 23);
+        FormInput.add(UvulaAnatomis);
+        UvulaAnatomis.setBounds(400, 540, 180, 23);
 
         jLabel49.setText("Uvula :");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
         jLabel49.setBounds(326, 540, 70, 23);
 
-        Nyeri13.setFocusTraversalPolicyProvider(true);
-        Nyeri13.setName("Nyeri13"); // NOI18N
-        Nyeri13.addKeyListener(new java.awt.event.KeyAdapter() {
+        SoftPalateAnatomis.setFocusTraversalPolicyProvider(true);
+        SoftPalateAnatomis.setName("SoftPalateAnatomis"); // NOI18N
+        SoftPalateAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri13KeyPressed(evt);
+                SoftPalateAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri13);
-        Nyeri13.setBounds(146, 540, 180, 23);
+        FormInput.add(SoftPalateAnatomis);
+        SoftPalateAnatomis.setBounds(146, 540, 180, 23);
 
         jLabel50.setText("Soft Palate :");
         jLabel50.setName("jLabel50"); // NOI18N
@@ -1178,40 +1208,40 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel51);
         jLabel51.setBounds(580, 570, 90, 23);
 
-        Nyeri14.setFocusTraversalPolicyProvider(true);
-        Nyeri14.setName("Nyeri14"); // NOI18N
-        Nyeri14.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaringAnatomis.setFocusTraversalPolicyProvider(true);
+        FaringAnatomis.setName("FaringAnatomis"); // NOI18N
+        FaringAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri14KeyPressed(evt);
+                FaringAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri14);
-        Nyeri14.setBounds(674, 570, 180, 23);
+        FormInput.add(FaringAnatomis);
+        FaringAnatomis.setBounds(674, 570, 180, 23);
 
-        Nyeri15.setFocusTraversalPolicyProvider(true);
-        Nyeri15.setName("Nyeri15"); // NOI18N
-        Nyeri15.addKeyListener(new java.awt.event.KeyAdapter() {
+        DentalAnatomis.setFocusTraversalPolicyProvider(true);
+        DentalAnatomis.setName("DentalAnatomis"); // NOI18N
+        DentalAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri15KeyPressed(evt);
+                DentalAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri15);
-        Nyeri15.setBounds(400, 570, 180, 23);
+        FormInput.add(DentalAnatomis);
+        DentalAnatomis.setBounds(400, 570, 180, 23);
 
         jLabel52.setText("Dental :");
         jLabel52.setName("jLabel52"); // NOI18N
         FormInput.add(jLabel52);
         jLabel52.setBounds(326, 570, 70, 23);
 
-        Nyeri16.setFocusTraversalPolicyProvider(true);
-        Nyeri16.setName("Nyeri16"); // NOI18N
-        Nyeri16.addKeyListener(new java.awt.event.KeyAdapter() {
+        MaxillaAnatomis.setFocusTraversalPolicyProvider(true);
+        MaxillaAnatomis.setName("MaxillaAnatomis"); // NOI18N
+        MaxillaAnatomis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri16KeyPressed(evt);
+                MaxillaAnatomisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri16);
-        Nyeri16.setBounds(146, 570, 180, 23);
+        FormInput.add(MaxillaAnatomis);
+        MaxillaAnatomis.setBounds(146, 570, 180, 23);
 
         jLabel53.setText("Maxilla :");
         jLabel53.setName("jLabel53"); // NOI18N
@@ -1229,135 +1259,135 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel55);
         jLabel55.setBounds(0, 620, 142, 23);
 
-        Nyeri17.setFocusTraversalPolicyProvider(true);
-        Nyeri17.setName("Nyeri17"); // NOI18N
-        Nyeri17.addKeyListener(new java.awt.event.KeyAdapter() {
+        LipFisiologis.setFocusTraversalPolicyProvider(true);
+        LipFisiologis.setName("LipFisiologis"); // NOI18N
+        LipFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri17KeyPressed(evt);
+                LipFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri17);
-        Nyeri17.setBounds(146, 620, 180, 23);
+        FormInput.add(LipFisiologis);
+        LipFisiologis.setBounds(146, 620, 180, 23);
 
         jLabel56.setText("Tongue :");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
         jLabel56.setBounds(326, 620, 70, 23);
 
-        Nyeri18.setFocusTraversalPolicyProvider(true);
-        Nyeri18.setName("Nyeri18"); // NOI18N
-        Nyeri18.addKeyListener(new java.awt.event.KeyAdapter() {
+        TongueFisiologis.setFocusTraversalPolicyProvider(true);
+        TongueFisiologis.setName("TongueFisiologis"); // NOI18N
+        TongueFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri18KeyPressed(evt);
+                TongueFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri18);
-        Nyeri18.setBounds(400, 620, 180, 23);
+        FormInput.add(TongueFisiologis);
+        TongueFisiologis.setBounds(400, 620, 180, 23);
 
         jLabel57.setText("Hard Palate :");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
         jLabel57.setBounds(580, 620, 90, 23);
 
-        Nyeri19.setFocusTraversalPolicyProvider(true);
-        Nyeri19.setName("Nyeri19"); // NOI18N
-        Nyeri19.addKeyListener(new java.awt.event.KeyAdapter() {
+        HardPalateFisiologis.setFocusTraversalPolicyProvider(true);
+        HardPalateFisiologis.setName("HardPalateFisiologis"); // NOI18N
+        HardPalateFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri19KeyPressed(evt);
+                HardPalateFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri19);
-        Nyeri19.setBounds(674, 620, 180, 23);
+        FormInput.add(HardPalateFisiologis);
+        HardPalateFisiologis.setBounds(674, 620, 180, 23);
 
         jLabel58.setText("Soft Palate :");
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
         jLabel58.setBounds(0, 650, 142, 23);
 
-        Nyeri20.setFocusTraversalPolicyProvider(true);
-        Nyeri20.setName("Nyeri20"); // NOI18N
-        Nyeri20.addKeyListener(new java.awt.event.KeyAdapter() {
+        SoftPalateFisiologis.setFocusTraversalPolicyProvider(true);
+        SoftPalateFisiologis.setName("SoftPalateFisiologis"); // NOI18N
+        SoftPalateFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri20KeyPressed(evt);
+                SoftPalateFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri20);
-        Nyeri20.setBounds(146, 650, 180, 23);
+        FormInput.add(SoftPalateFisiologis);
+        SoftPalateFisiologis.setBounds(146, 650, 180, 23);
 
         jLabel59.setText("Uvula :");
         jLabel59.setName("jLabel59"); // NOI18N
         FormInput.add(jLabel59);
         jLabel59.setBounds(326, 650, 70, 23);
 
-        Nyeri21.setFocusTraversalPolicyProvider(true);
-        Nyeri21.setName("Nyeri21"); // NOI18N
-        Nyeri21.addKeyListener(new java.awt.event.KeyAdapter() {
+        UvulaFisiologis.setFocusTraversalPolicyProvider(true);
+        UvulaFisiologis.setName("UvulaFisiologis"); // NOI18N
+        UvulaFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri21KeyPressed(evt);
+                UvulaFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri21);
-        Nyeri21.setBounds(400, 650, 180, 23);
+        FormInput.add(UvulaFisiologis);
+        UvulaFisiologis.setBounds(400, 650, 180, 23);
 
         jLabel60.setText("Mandibula :");
         jLabel60.setName("jLabel60"); // NOI18N
         FormInput.add(jLabel60);
         jLabel60.setBounds(580, 650, 90, 23);
 
-        Nyeri22.setFocusTraversalPolicyProvider(true);
-        Nyeri22.setName("Nyeri22"); // NOI18N
-        Nyeri22.addKeyListener(new java.awt.event.KeyAdapter() {
+        MandibulaFisiologis.setFocusTraversalPolicyProvider(true);
+        MandibulaFisiologis.setName("MandibulaFisiologis"); // NOI18N
+        MandibulaFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri22KeyPressed(evt);
+                MandibulaFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri22);
-        Nyeri22.setBounds(674, 650, 180, 23);
+        FormInput.add(MandibulaFisiologis);
+        MandibulaFisiologis.setBounds(674, 650, 180, 23);
 
         jLabel61.setText("Maxilla :");
         jLabel61.setName("jLabel61"); // NOI18N
         FormInput.add(jLabel61);
         jLabel61.setBounds(0, 680, 142, 23);
 
-        Nyeri23.setFocusTraversalPolicyProvider(true);
-        Nyeri23.setName("Nyeri23"); // NOI18N
-        Nyeri23.addKeyListener(new java.awt.event.KeyAdapter() {
+        MaxillaFisiologis.setFocusTraversalPolicyProvider(true);
+        MaxillaFisiologis.setName("MaxillaFisiologis"); // NOI18N
+        MaxillaFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri23KeyPressed(evt);
+                MaxillaFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri23);
-        Nyeri23.setBounds(146, 680, 180, 23);
+        FormInput.add(MaxillaFisiologis);
+        MaxillaFisiologis.setBounds(146, 680, 180, 23);
 
         jLabel62.setText("Dental :");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
         jLabel62.setBounds(326, 680, 70, 23);
 
-        Nyeri24.setFocusTraversalPolicyProvider(true);
-        Nyeri24.setName("Nyeri24"); // NOI18N
-        Nyeri24.addKeyListener(new java.awt.event.KeyAdapter() {
+        DentalFisiologis.setFocusTraversalPolicyProvider(true);
+        DentalFisiologis.setName("DentalFisiologis"); // NOI18N
+        DentalFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri24KeyPressed(evt);
+                DentalFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri24);
-        Nyeri24.setBounds(400, 680, 180, 23);
+        FormInput.add(DentalFisiologis);
+        DentalFisiologis.setBounds(400, 680, 180, 23);
 
         jLabel63.setText("Faring :");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
         jLabel63.setBounds(580, 680, 90, 23);
 
-        Nyeri25.setFocusTraversalPolicyProvider(true);
-        Nyeri25.setName("Nyeri25"); // NOI18N
-        Nyeri25.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaringFisiologis.setFocusTraversalPolicyProvider(true);
+        FaringFisiologis.setName("FaringFisiologis"); // NOI18N
+        FaringFisiologis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri25KeyPressed(evt);
+                FaringFisiologisKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri25);
-        Nyeri25.setBounds(674, 680, 180, 23);
+        FormInput.add(FaringFisiologis);
+        FaringFisiologis.setBounds(674, 680, 180, 23);
 
         jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel64.setText("Aktifitas Oral :");
@@ -1374,16 +1404,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane5.setName("scrollPane5"); // NOI18N
 
-        RiwayatPenyakitDahulu1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitDahulu1.setColumns(20);
-        RiwayatPenyakitDahulu1.setRows(5);
-        RiwayatPenyakitDahulu1.setName("RiwayatPenyakitDahulu1"); // NOI18N
-        RiwayatPenyakitDahulu1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Mengunyah.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Mengunyah.setColumns(20);
+        Mengunyah.setRows(5);
+        Mengunyah.setName("Mengunyah"); // NOI18N
+        Mengunyah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitDahulu1KeyPressed(evt);
+                MengunyahKeyPressed(evt);
             }
         });
-        scrollPane5.setViewportView(RiwayatPenyakitDahulu1);
+        scrollPane5.setViewportView(Mengunyah);
 
         FormInput.add(scrollPane5);
         scrollPane5.setBounds(345, 750, 245, 63);
@@ -1391,16 +1421,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane6.setName("scrollPane6"); // NOI18N
 
-        RiwayatPenyakitDahulu2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitDahulu2.setColumns(20);
-        RiwayatPenyakitDahulu2.setRows(5);
-        RiwayatPenyakitDahulu2.setName("RiwayatPenyakitDahulu2"); // NOI18N
-        RiwayatPenyakitDahulu2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Meniup.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Meniup.setColumns(20);
+        Meniup.setRows(5);
+        Meniup.setName("Meniup"); // NOI18N
+        Meniup.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitDahulu2KeyPressed(evt);
+                MeniupKeyPressed(evt);
             }
         });
-        scrollPane6.setViewportView(RiwayatPenyakitDahulu2);
+        scrollPane6.setViewportView(Meniup);
 
         FormInput.add(scrollPane6);
         scrollPane6.setBounds(609, 750, 245, 63);
@@ -1432,16 +1462,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane7.setName("scrollPane7"); // NOI18N
 
-        RiwayatPenyakitDahulu3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitDahulu3.setColumns(20);
-        RiwayatPenyakitDahulu3.setRows(5);
-        RiwayatPenyakitDahulu3.setName("RiwayatPenyakitDahulu3"); // NOI18N
-        RiwayatPenyakitDahulu3.addKeyListener(new java.awt.event.KeyAdapter() {
+        Subtitusi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Subtitusi.setColumns(20);
+        Subtitusi.setRows(5);
+        Subtitusi.setName("Subtitusi"); // NOI18N
+        Subtitusi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitDahulu3KeyPressed(evt);
+                SubtitusiKeyPressed(evt);
             }
         });
-        scrollPane7.setViewportView(RiwayatPenyakitDahulu3);
+        scrollPane7.setViewportView(Subtitusi);
 
         FormInput.add(scrollPane7);
         scrollPane7.setBounds(80, 860, 375, 43);
@@ -1449,16 +1479,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane8.setName("scrollPane8"); // NOI18N
 
-        RiwayatPenyakitDahulu4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitDahulu4.setColumns(20);
-        RiwayatPenyakitDahulu4.setRows(5);
-        RiwayatPenyakitDahulu4.setName("RiwayatPenyakitDahulu4"); // NOI18N
-        RiwayatPenyakitDahulu4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Omisi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Omisi.setColumns(20);
+        Omisi.setRows(5);
+        Omisi.setName("Omisi"); // NOI18N
+        Omisi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitDahulu4KeyPressed(evt);
+                OmisiKeyPressed(evt);
             }
         });
-        scrollPane8.setViewportView(RiwayatPenyakitDahulu4);
+        scrollPane8.setViewportView(Omisi);
 
         FormInput.add(scrollPane8);
         scrollPane8.setBounds(479, 860, 375, 43);
@@ -1478,16 +1508,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane9.setName("scrollPane9"); // NOI18N
 
-        RiwayatPenyakitDahulu5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitDahulu5.setColumns(20);
-        RiwayatPenyakitDahulu5.setRows(5);
-        RiwayatPenyakitDahulu5.setName("RiwayatPenyakitDahulu5"); // NOI18N
-        RiwayatPenyakitDahulu5.addKeyListener(new java.awt.event.KeyAdapter() {
+        Distorsi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Distorsi.setColumns(20);
+        Distorsi.setRows(5);
+        Distorsi.setName("Distorsi"); // NOI18N
+        Distorsi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitDahulu5KeyPressed(evt);
+                DistorsiKeyPressed(evt);
             }
         });
-        scrollPane9.setViewportView(RiwayatPenyakitDahulu5);
+        scrollPane9.setViewportView(Distorsi);
 
         FormInput.add(scrollPane9);
         scrollPane9.setBounds(80, 930, 375, 43);
@@ -1495,16 +1525,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane10.setName("scrollPane10"); // NOI18N
 
-        RiwayatPenyakitDahulu6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitDahulu6.setColumns(20);
-        RiwayatPenyakitDahulu6.setRows(5);
-        RiwayatPenyakitDahulu6.setName("RiwayatPenyakitDahulu6"); // NOI18N
-        RiwayatPenyakitDahulu6.addKeyListener(new java.awt.event.KeyAdapter() {
+        Adisi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Adisi.setColumns(20);
+        Adisi.setRows(5);
+        Adisi.setName("Adisi"); // NOI18N
+        Adisi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitDahulu6KeyPressed(evt);
+                AdisiKeyPressed(evt);
             }
         });
-        scrollPane10.setViewportView(RiwayatPenyakitDahulu6);
+        scrollPane10.setViewportView(Adisi);
 
         FormInput.add(scrollPane10);
         scrollPane10.setBounds(479, 930, 375, 43);
@@ -1514,15 +1544,15 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel67);
         jLabel67.setBounds(0, 980, 107, 23);
 
-        Anamnesis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hiponasal", "Hipernasal", "Normal" }));
-        Anamnesis.setName("Anamnesis"); // NOI18N
-        Anamnesis.addKeyListener(new java.awt.event.KeyAdapter() {
+        Resonasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hiponasal", "Hipernasal", "Normal" }));
+        Resonasi.setName("Resonasi"); // NOI18N
+        Resonasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AnamnesisKeyPressed(evt);
+                ResonasiKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis);
-        Anamnesis.setBounds(111, 980, 110, 23);
+        FormInput.add(Resonasi);
+        Resonasi.setBounds(111, 980, 110, 23);
 
         jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel66.setText("Resonansi :");
@@ -1547,40 +1577,40 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel70);
         jLabel70.setBounds(0, 1030, 82, 23);
 
-        Anamnesis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Resonansi", "Rendah", "Monoton", "Normal" }));
-        Anamnesis1.setName("Anamnesis1"); // NOI18N
-        Anamnesis1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Nada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Resonansi", "Rendah", "Monoton", "Normal" }));
+        Nada.setName("Nada"); // NOI18N
+        Nada.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis1KeyPressed(evt);
+                NadaKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis1);
-        Anamnesis1.setBounds(86, 1030, 105, 23);
+        FormInput.add(Nada);
+        Nada.setBounds(86, 1030, 105, 23);
 
         jLabel71.setText("Kualitas :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
         jLabel71.setBounds(190, 1030, 60, 23);
 
-        Anamnesis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hoarssness", "Hassness", "Normal" }));
-        Anamnesis2.setName("Anamnesis2"); // NOI18N
-        Anamnesis2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kualitas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hoarssness", "Hassness", "Normal" }));
+        Kualitas.setName("Kualitas"); // NOI18N
+        Kualitas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis2KeyPressed(evt);
+                KualitasKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis2);
-        Anamnesis2.setBounds(254, 1030, 110, 23);
+        FormInput.add(Kualitas);
+        Kualitas.setBounds(254, 1030, 110, 23);
 
-        Anamnesis3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gagap Primer", "Gagap Sekunder" }));
-        Anamnesis3.setName("Anamnesis3"); // NOI18N
-        Anamnesis3.addKeyListener(new java.awt.event.KeyAdapter() {
+        KemampuanIramaKelancaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gagap Primer", "Gagap Sekunder" }));
+        KemampuanIramaKelancaran.setName("KemampuanIramaKelancaran"); // NOI18N
+        KemampuanIramaKelancaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis3KeyPressed(evt);
+                KemampuanIramaKelancaranKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis3);
-        Anamnesis3.setBounds(724, 1010, 130, 23);
+        FormInput.add(KemampuanIramaKelancaran);
+        KemampuanIramaKelancaran.setBounds(724, 1010, 130, 23);
 
         jLabel72.setText("Kenyaringan :");
         jLabel72.setName("jLabel72"); // NOI18N
@@ -1592,15 +1622,15 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel73);
         jLabel73.setBounds(520, 1010, 200, 23);
 
-        Anamnesis4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nyaring", "Tidak Nyaring" }));
-        Anamnesis4.setName("Anamnesis4"); // NOI18N
-        Anamnesis4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kenyaringan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nyaring", "Tidak Nyaring" }));
+        Kenyaringan.setName("Kenyaringan"); // NOI18N
+        Kenyaringan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis4KeyPressed(evt);
+                KenyaringanKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis4);
-        Anamnesis4.setBounds(446, 1030, 120, 23);
+        FormInput.add(Kenyaringan);
+        Kenyaringan.setBounds(446, 1030, 120, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel74.setText("Kemampuan Menelan :");
@@ -1611,16 +1641,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane11.setName("scrollPane11"); // NOI18N
 
-        RiwayatPenyakitSekarang1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang1.setColumns(20);
-        RiwayatPenyakitSekarang1.setRows(5);
-        RiwayatPenyakitSekarang1.setName("RiwayatPenyakitSekarang1"); // NOI18N
-        RiwayatPenyakitSekarang1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KemampuanMenelan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        KemampuanMenelan.setColumns(20);
+        KemampuanMenelan.setRows(5);
+        KemampuanMenelan.setName("KemampuanMenelan"); // NOI18N
+        KemampuanMenelan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarang1KeyPressed(evt);
+                KemampuanMenelanKeyPressed(evt);
             }
         });
-        scrollPane11.setViewportView(RiwayatPenyakitSekarang1);
+        scrollPane11.setViewportView(KemampuanMenelan);
 
         FormInput.add(scrollPane11);
         scrollPane11.setBounds(20, 1080, 834, 43);
@@ -1634,16 +1664,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane12.setName("scrollPane12"); // NOI18N
 
-        RiwayatPenyakitSekarang2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang2.setColumns(20);
-        RiwayatPenyakitSekarang2.setRows(5);
-        RiwayatPenyakitSekarang2.setName("RiwayatPenyakitSekarang2"); // NOI18N
-        RiwayatPenyakitSekarang2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pernapasan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Pernapasan.setColumns(20);
+        Pernapasan.setRows(5);
+        Pernapasan.setName("Pernapasan"); // NOI18N
+        Pernapasan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarang2KeyPressed(evt);
+                PernapasanKeyPressed(evt);
             }
         });
-        scrollPane12.setViewportView(RiwayatPenyakitSekarang2);
+        scrollPane12.setViewportView(Pernapasan);
 
         FormInput.add(scrollPane12);
         scrollPane12.setBounds(20, 1150, 834, 43);
@@ -1665,45 +1695,45 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel78);
         jLabel78.setBounds(0, 1240, 166, 23);
 
-        Nyeri26.setFocusTraversalPolicyProvider(true);
-        Nyeri26.setName("Nyeri26"); // NOI18N
-        Nyeri26.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pendengaran.setFocusTraversalPolicyProvider(true);
+        Pendengaran.setName("Pendengaran"); // NOI18N
+        Pendengaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri26KeyPressed(evt);
+                PendengaranKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri26);
-        Nyeri26.setBounds(170, 1240, 290, 23);
+        FormInput.add(Pendengaran);
+        Pendengaran.setBounds(170, 1240, 290, 23);
 
         jLabel79.setText("S2 : Penglihatan");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
         jLabel79.setBounds(470, 1240, 90, 23);
 
-        Nyeri27.setFocusTraversalPolicyProvider(true);
-        Nyeri27.setName("Nyeri27"); // NOI18N
-        Nyeri27.addKeyListener(new java.awt.event.KeyAdapter() {
+        Penglihatan.setFocusTraversalPolicyProvider(true);
+        Penglihatan.setName("Penglihatan"); // NOI18N
+        Penglihatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri27KeyPressed(evt);
+                PenglihatanKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri27);
-        Nyeri27.setBounds(564, 1240, 290, 23);
+        FormInput.add(Penglihatan);
+        Penglihatan.setBounds(564, 1240, 290, 23);
 
         jLabel80.setText("S3 : Tak l Kinesek");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
         jLabel80.setBounds(0, 1270, 166, 23);
 
-        Nyeri28.setFocusTraversalPolicyProvider(true);
-        Nyeri28.setName("Nyeri28"); // NOI18N
-        Nyeri28.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kinesek.setFocusTraversalPolicyProvider(true);
+        Kinesek.setName("Kinesek"); // NOI18N
+        Kinesek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri28KeyPressed(evt);
+                KinesekKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri28);
-        Nyeri28.setBounds(170, 1270, 290, 23);
+        FormInput.add(Kinesek);
+        Kinesek.setBounds(170, 1270, 290, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel81.setText("Enkoding :");
@@ -1716,55 +1746,55 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(jLabel82);
         jLabel82.setBounds(0, 1320, 136, 23);
 
-        Nyeri29.setFocusTraversalPolicyProvider(true);
-        Nyeri29.setName("Nyeri29"); // NOI18N
-        Nyeri29.addKeyListener(new java.awt.event.KeyAdapter() {
+        Bicara.setFocusTraversalPolicyProvider(true);
+        Bicara.setName("Bicara"); // NOI18N
+        Bicara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri29KeyPressed(evt);
+                BicaraKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri29);
-        Nyeri29.setBounds(140, 1320, 310, 23);
+        FormInput.add(Bicara);
+        Bicara.setBounds(140, 1320, 310, 23);
 
         jLabel83.setText("T2 : Tulisan");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
         jLabel83.setBounds(450, 1320, 90, 23);
 
-        Nyeri30.setFocusTraversalPolicyProvider(true);
-        Nyeri30.setName("Nyeri30"); // NOI18N
-        Nyeri30.addKeyListener(new java.awt.event.KeyAdapter() {
+        Tulisan.setFocusTraversalPolicyProvider(true);
+        Tulisan.setName("Tulisan"); // NOI18N
+        Tulisan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri30KeyPressed(evt);
+                TulisanKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri30);
-        Nyeri30.setBounds(544, 1320, 310, 23);
+        FormInput.add(Tulisan);
+        Tulisan.setBounds(544, 1320, 310, 23);
 
-        Nyeri31.setFocusTraversalPolicyProvider(true);
-        Nyeri31.setName("Nyeri31"); // NOI18N
-        Nyeri31.addKeyListener(new java.awt.event.KeyAdapter() {
+        Gesture.setFocusTraversalPolicyProvider(true);
+        Gesture.setName("Gesture"); // NOI18N
+        Gesture.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri31KeyPressed(evt);
+                GestureKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri31);
-        Nyeri31.setBounds(544, 1350, 310, 23);
+        FormInput.add(Gesture);
+        Gesture.setBounds(544, 1350, 310, 23);
 
         jLabel84.setText("T4 : Gesture");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
         jLabel84.setBounds(450, 1350, 90, 23);
 
-        Nyeri32.setFocusTraversalPolicyProvider(true);
-        Nyeri32.setName("Nyeri32"); // NOI18N
-        Nyeri32.addKeyListener(new java.awt.event.KeyAdapter() {
+        Mimik.setFocusTraversalPolicyProvider(true);
+        Mimik.setName("Mimik"); // NOI18N
+        Mimik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nyeri32KeyPressed(evt);
+                MimikKeyPressed(evt);
             }
         });
-        FormInput.add(Nyeri32);
-        Nyeri32.setBounds(140, 1350, 310, 23);
+        FormInput.add(Mimik);
+        Mimik.setBounds(140, 1350, 310, 23);
 
         jLabel85.setText("T3 : Mimik");
         jLabel85.setName("jLabel85"); // NOI18N
@@ -1780,16 +1810,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane13.setName("scrollPane13"); // NOI18N
 
-        RiwayatPenyakitSekarang3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang3.setColumns(20);
-        RiwayatPenyakitSekarang3.setRows(5);
-        RiwayatPenyakitSekarang3.setName("RiwayatPenyakitSekarang3"); // NOI18N
-        RiwayatPenyakitSekarang3.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenunjangMedis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        PenunjangMedis.setColumns(20);
+        PenunjangMedis.setRows(5);
+        PenunjangMedis.setName("PenunjangMedis"); // NOI18N
+        PenunjangMedis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarang3KeyPressed(evt);
+                PenunjangMedisKeyPressed(evt);
             }
         });
-        scrollPane13.setViewportView(RiwayatPenyakitSekarang3);
+        scrollPane13.setViewportView(PenunjangMedis);
 
         FormInput.add(scrollPane13);
         scrollPane13.setBounds(20, 1400, 834, 43);
@@ -1809,16 +1839,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
 
-        KeluhanUtama2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        KeluhanUtama2.setColumns(20);
-        KeluhanUtama2.setRows(5);
-        KeluhanUtama2.setName("KeluhanUtama2"); // NOI18N
-        KeluhanUtama2.addKeyListener(new java.awt.event.KeyAdapter() {
+        TujuanTerapiWicara.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        TujuanTerapiWicara.setColumns(20);
+        TujuanTerapiWicara.setRows(5);
+        TujuanTerapiWicara.setName("TujuanTerapiWicara"); // NOI18N
+        TujuanTerapiWicara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeluhanUtama2KeyPressed(evt);
+                TujuanTerapiWicaraKeyPressed(evt);
             }
         });
-        scrollPane14.setViewportView(KeluhanUtama2);
+        scrollPane14.setViewportView(TujuanTerapiWicara);
 
         FormInput.add(scrollPane14);
         scrollPane14.setBounds(50, 1490, 390, 53);
@@ -1832,16 +1862,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane15.setName("scrollPane15"); // NOI18N
 
-        KeluhanUtama3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        KeluhanUtama3.setColumns(20);
-        KeluhanUtama3.setRows(5);
-        KeluhanUtama3.setName("KeluhanUtama3"); // NOI18N
-        KeluhanUtama3.addKeyListener(new java.awt.event.KeyAdapter() {
+        ProgramTerapiWicara.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ProgramTerapiWicara.setColumns(20);
+        ProgramTerapiWicara.setRows(5);
+        ProgramTerapiWicara.setName("ProgramTerapiWicara"); // NOI18N
+        ProgramTerapiWicara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeluhanUtama3KeyPressed(evt);
+                ProgramTerapiWicaraKeyPressed(evt);
             }
         });
-        scrollPane15.setViewportView(KeluhanUtama3);
+        scrollPane15.setViewportView(ProgramTerapiWicara);
 
         FormInput.add(scrollPane15);
         scrollPane15.setBounds(464, 1490, 390, 53);
@@ -1855,16 +1885,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane16.setName("scrollPane16"); // NOI18N
 
-        RiwayatPenyakitSekarang4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang4.setColumns(20);
-        RiwayatPenyakitSekarang4.setRows(5);
-        RiwayatPenyakitSekarang4.setName("RiwayatPenyakitSekarang4"); // NOI18N
-        RiwayatPenyakitSekarang4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Edukasi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Edukasi.setColumns(20);
+        Edukasi.setRows(5);
+        Edukasi.setName("Edukasi"); // NOI18N
+        Edukasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarang4KeyPressed(evt);
+                EdukasiKeyPressed(evt);
             }
         });
-        scrollPane16.setViewportView(RiwayatPenyakitSekarang4);
+        scrollPane16.setViewportView(Edukasi);
 
         FormInput.add(scrollPane16);
         scrollPane16.setBounds(20, 1570, 834, 43);
@@ -1878,16 +1908,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
 
-        RiwayatPenyakitSekarang5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RiwayatPenyakitSekarang5.setColumns(20);
-        RiwayatPenyakitSekarang5.setRows(5);
-        RiwayatPenyakitSekarang5.setName("RiwayatPenyakitSekarang5"); // NOI18N
-        RiwayatPenyakitSekarang5.addKeyListener(new java.awt.event.KeyAdapter() {
+        TindakLanjut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        TindakLanjut.setColumns(20);
+        TindakLanjut.setRows(5);
+        TindakLanjut.setName("TindakLanjut"); // NOI18N
+        TindakLanjut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatPenyakitSekarang5KeyPressed(evt);
+                TindakLanjutKeyPressed(evt);
             }
         });
-        scrollPane17.setViewportView(RiwayatPenyakitSekarang5);
+        scrollPane17.setViewportView(TindakLanjut);
 
         FormInput.add(scrollPane17);
         scrollPane17.setBounds(20, 1640, 834, 43);
@@ -2438,17 +2468,17 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         
     }//GEN-LAST:event_formWindowOpened
 
-    private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
+    private void DiagnosaTerapiWicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaTerapiWicaraKeyPressed
         //Valid.pindah2(evt,Informasi,RiwayatPenyakitSekarang);
-    }//GEN-LAST:event_KeluhanUtamaKeyPressed
+    }//GEN-LAST:event_DiagnosaTerapiWicaraKeyPressed
 
-    private void RiwayatPenyakitSekarangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSekarangKeyPressed
-        Valid.pindah2(evt,KeluhanUtama,RiwayatPenyakitDahulu);
-    }//GEN-LAST:event_RiwayatPenyakitSekarangKeyPressed
+    private void AnamnesaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesaKeyPressed
+        Valid.pindah2(evt,DiagnosaTerapiWicara,Menghisap);
+    }//GEN-LAST:event_AnamnesaKeyPressed
 
-    private void RiwayatPenyakitDahuluKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahuluKeyPressed
+    private void MenghisapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenghisapKeyPressed
         //Valid.pindah2(evt,RiwayatPenyakitSekarang,TD);
-    }//GEN-LAST:event_RiwayatPenyakitDahuluKeyPressed
+    }//GEN-LAST:event_MenghisapKeyPressed
 
     private void MnPenilaianFisioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianFisioActionPerformed
         if(tbObat.getSelectedRow()>-1){
@@ -2482,9 +2512,9 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnPenilaianFisioActionPerformed
 
-    private void KeluhanUtama1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtama1KeyPressed
+    private void DiagnosaMedisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaMedisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeluhanUtama1KeyPressed
+    }//GEN-LAST:event_DiagnosaMedisKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
         //Valid.pindah(evt,Alergi,BB);
@@ -2502,209 +2532,209 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         //Valid.pindah(evt,Nadi,Nyeri);
     }//GEN-LAST:event_RRKeyPressed
 
-    private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
+    private void KontakMataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakMataKeyPressed
         //Valid.pindah(evt,RR,StatusNutrisi);
-    }//GEN-LAST:event_NyeriKeyPressed
+    }//GEN-LAST:event_KontakMataKeyPressed
 
-    private void Nyeri1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri1KeyPressed
+    private void PerilakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerilakuKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri1KeyPressed
+    }//GEN-LAST:event_PerilakuKeyPressed
 
-    private void Nyeri2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri2KeyPressed
+    private void AtensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AtensiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri2KeyPressed
+    }//GEN-LAST:event_AtensiKeyPressed
 
-    private void Nyeri3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri3KeyPressed
+    private void PengujaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PengujaranKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri3KeyPressed
+    }//GEN-LAST:event_PengujaranKeyPressed
 
-    private void Nyeri4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri4KeyPressed
+    private void BicaraSpontanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BicaraSpontanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri4KeyPressed
+    }//GEN-LAST:event_BicaraSpontanKeyPressed
 
-    private void Nyeri5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri5KeyPressed
+    private void MembacaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MembacaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri5KeyPressed
+    }//GEN-LAST:event_MembacaKeyPressed
 
-    private void Nyeri6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri6KeyPressed
+    private void PemahamanBahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemahamanBahasaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri6KeyPressed
+    }//GEN-LAST:event_PemahamanBahasaKeyPressed
 
-    private void Nyeri7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri7KeyPressed
+    private void PenamaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenamaanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri7KeyPressed
+    }//GEN-LAST:event_PenamaanKeyPressed
 
-    private void Nyeri8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri8KeyPressed
+    private void LipAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LipAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri8KeyPressed
+    }//GEN-LAST:event_LipAnatomisKeyPressed
 
-    private void Nyeri9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri9KeyPressed
+    private void TongueAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TongueAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri9KeyPressed
+    }//GEN-LAST:event_TongueAnatomisKeyPressed
 
-    private void Nyeri10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri10KeyPressed
+    private void HardPalateAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HardPalateAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri10KeyPressed
+    }//GEN-LAST:event_HardPalateAnatomisKeyPressed
 
-    private void Nyeri11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri11KeyPressed
+    private void MandibulaAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MandibulaAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri11KeyPressed
+    }//GEN-LAST:event_MandibulaAnatomisKeyPressed
 
-    private void Nyeri12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri12KeyPressed
+    private void UvulaAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UvulaAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri12KeyPressed
+    }//GEN-LAST:event_UvulaAnatomisKeyPressed
 
-    private void Nyeri13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri13KeyPressed
+    private void SoftPalateAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SoftPalateAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri13KeyPressed
+    }//GEN-LAST:event_SoftPalateAnatomisKeyPressed
 
-    private void Nyeri14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri14KeyPressed
+    private void FaringAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaringAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri14KeyPressed
+    }//GEN-LAST:event_FaringAnatomisKeyPressed
 
-    private void Nyeri15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri15KeyPressed
+    private void DentalAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DentalAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri15KeyPressed
+    }//GEN-LAST:event_DentalAnatomisKeyPressed
 
-    private void Nyeri16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri16KeyPressed
+    private void MaxillaAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MaxillaAnatomisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri16KeyPressed
+    }//GEN-LAST:event_MaxillaAnatomisKeyPressed
 
-    private void Nyeri17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri17KeyPressed
+    private void LipFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LipFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri17KeyPressed
+    }//GEN-LAST:event_LipFisiologisKeyPressed
 
-    private void Nyeri18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri18KeyPressed
+    private void TongueFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TongueFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri18KeyPressed
+    }//GEN-LAST:event_TongueFisiologisKeyPressed
 
-    private void Nyeri19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri19KeyPressed
+    private void HardPalateFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HardPalateFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri19KeyPressed
+    }//GEN-LAST:event_HardPalateFisiologisKeyPressed
 
-    private void Nyeri20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri20KeyPressed
+    private void SoftPalateFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SoftPalateFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri20KeyPressed
+    }//GEN-LAST:event_SoftPalateFisiologisKeyPressed
 
-    private void Nyeri21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri21KeyPressed
+    private void UvulaFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UvulaFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri21KeyPressed
+    }//GEN-LAST:event_UvulaFisiologisKeyPressed
 
-    private void Nyeri22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri22KeyPressed
+    private void MandibulaFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MandibulaFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri22KeyPressed
+    }//GEN-LAST:event_MandibulaFisiologisKeyPressed
 
-    private void Nyeri23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri23KeyPressed
+    private void MaxillaFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MaxillaFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri23KeyPressed
+    }//GEN-LAST:event_MaxillaFisiologisKeyPressed
 
-    private void Nyeri24KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri24KeyPressed
+    private void DentalFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DentalFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri24KeyPressed
+    }//GEN-LAST:event_DentalFisiologisKeyPressed
 
-    private void Nyeri25KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri25KeyPressed
+    private void FaringFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaringFisiologisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri25KeyPressed
+    }//GEN-LAST:event_FaringFisiologisKeyPressed
 
-    private void RiwayatPenyakitDahulu1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahulu1KeyPressed
+    private void MengunyahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MengunyahKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitDahulu1KeyPressed
+    }//GEN-LAST:event_MengunyahKeyPressed
 
-    private void RiwayatPenyakitDahulu2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahulu2KeyPressed
+    private void MeniupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MeniupKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitDahulu2KeyPressed
+    }//GEN-LAST:event_MeniupKeyPressed
 
-    private void RiwayatPenyakitDahulu3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahulu3KeyPressed
+    private void SubtitusiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SubtitusiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitDahulu3KeyPressed
+    }//GEN-LAST:event_SubtitusiKeyPressed
 
-    private void RiwayatPenyakitDahulu4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahulu4KeyPressed
+    private void OmisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OmisiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitDahulu4KeyPressed
+    }//GEN-LAST:event_OmisiKeyPressed
 
-    private void RiwayatPenyakitDahulu5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahulu5KeyPressed
+    private void DistorsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DistorsiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitDahulu5KeyPressed
+    }//GEN-LAST:event_DistorsiKeyPressed
 
-    private void RiwayatPenyakitDahulu6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahulu6KeyPressed
+    private void AdisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AdisiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitDahulu6KeyPressed
+    }//GEN-LAST:event_AdisiKeyPressed
 
-    private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
+    private void ResonasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResonasiKeyPressed
         //Valid.pindah(evt,TglAsuhan,Hubungan);
-    }//GEN-LAST:event_AnamnesisKeyPressed
+    }//GEN-LAST:event_ResonasiKeyPressed
 
-    private void Anamnesis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis1KeyPressed
+    private void NadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis1KeyPressed
+    }//GEN-LAST:event_NadaKeyPressed
 
-    private void Anamnesis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis2KeyPressed
+    private void KualitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KualitasKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis2KeyPressed
+    }//GEN-LAST:event_KualitasKeyPressed
 
-    private void Anamnesis3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis3KeyPressed
+    private void KemampuanIramaKelancaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KemampuanIramaKelancaranKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis3KeyPressed
+    }//GEN-LAST:event_KemampuanIramaKelancaranKeyPressed
 
-    private void Anamnesis4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis4KeyPressed
+    private void KenyaringanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KenyaringanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis4KeyPressed
+    }//GEN-LAST:event_KenyaringanKeyPressed
 
-    private void RiwayatPenyakitSekarang1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSekarang1KeyPressed
+    private void KemampuanMenelanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KemampuanMenelanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitSekarang1KeyPressed
+    }//GEN-LAST:event_KemampuanMenelanKeyPressed
 
-    private void RiwayatPenyakitSekarang2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSekarang2KeyPressed
+    private void PernapasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernapasanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitSekarang2KeyPressed
+    }//GEN-LAST:event_PernapasanKeyPressed
 
-    private void Nyeri26KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri26KeyPressed
+    private void PendengaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendengaranKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri26KeyPressed
+    }//GEN-LAST:event_PendengaranKeyPressed
 
-    private void Nyeri27KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri27KeyPressed
+    private void PenglihatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenglihatanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri27KeyPressed
+    }//GEN-LAST:event_PenglihatanKeyPressed
 
-    private void Nyeri28KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri28KeyPressed
+    private void KinesekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KinesekKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri28KeyPressed
+    }//GEN-LAST:event_KinesekKeyPressed
 
-    private void Nyeri29KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri29KeyPressed
+    private void BicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BicaraKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri29KeyPressed
+    }//GEN-LAST:event_BicaraKeyPressed
 
-    private void Nyeri30KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri30KeyPressed
+    private void TulisanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TulisanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri30KeyPressed
+    }//GEN-LAST:event_TulisanKeyPressed
 
-    private void Nyeri31KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri31KeyPressed
+    private void GestureKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GestureKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri31KeyPressed
+    }//GEN-LAST:event_GestureKeyPressed
 
-    private void Nyeri32KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nyeri32KeyPressed
+    private void MimikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MimikKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nyeri32KeyPressed
+    }//GEN-LAST:event_MimikKeyPressed
 
-    private void RiwayatPenyakitSekarang3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSekarang3KeyPressed
+    private void PenunjangMedisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenunjangMedisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitSekarang3KeyPressed
+    }//GEN-LAST:event_PenunjangMedisKeyPressed
 
-    private void KeluhanUtama2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtama2KeyPressed
+    private void TujuanTerapiWicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanTerapiWicaraKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeluhanUtama2KeyPressed
+    }//GEN-LAST:event_TujuanTerapiWicaraKeyPressed
 
-    private void KeluhanUtama3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtama3KeyPressed
+    private void ProgramTerapiWicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProgramTerapiWicaraKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeluhanUtama3KeyPressed
+    }//GEN-LAST:event_ProgramTerapiWicaraKeyPressed
 
-    private void RiwayatPenyakitSekarang4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSekarang4KeyPressed
+    private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitSekarang4KeyPressed
+    }//GEN-LAST:event_EdukasiKeyPressed
 
-    private void RiwayatPenyakitSekarang5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSekarang5KeyPressed
+    private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatPenyakitSekarang5KeyPressed
+    }//GEN-LAST:event_TindakLanjutKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2723,11 +2753,11 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ComboBox Anamnesis;
-    private widget.ComboBox Anamnesis1;
-    private widget.ComboBox Anamnesis2;
-    private widget.ComboBox Anamnesis3;
-    private widget.ComboBox Anamnesis4;
+    private widget.TextArea Adisi;
+    private widget.TextArea Anamnesa;
+    private widget.TextBox Atensi;
+    private widget.TextBox Bicara;
+    private widget.TextBox BicaraSpontan;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -2739,66 +2769,59 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     private widget.Button BtnSimpan;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.TextBox DentalAnatomis;
+    private widget.TextBox DentalFisiologis;
+    private widget.TextArea DiagnosaMedis;
+    private widget.TextArea DiagnosaTerapiWicara;
+    private widget.TextArea Distorsi;
+    private widget.TextArea Edukasi;
+    private widget.TextBox FaringAnatomis;
+    private widget.TextBox FaringFisiologis;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox Gesture;
+    private widget.TextBox HardPalateAnatomis;
+    private widget.TextBox HardPalateFisiologis;
     private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
-    private widget.TextArea KeluhanUtama;
-    private widget.TextArea KeluhanUtama1;
-    private widget.TextArea KeluhanUtama2;
-    private widget.TextArea KeluhanUtama3;
+    private widget.ComboBox KemampuanIramaKelancaran;
+    private widget.TextArea KemampuanMenelan;
+    private widget.ComboBox Kenyaringan;
+    private widget.TextBox Kinesek;
+    private widget.TextBox KontakMata;
+    private widget.ComboBox Kualitas;
     private widget.Label LCount;
+    private widget.TextBox LipAnatomis;
+    private widget.TextBox LipFisiologis;
     private widget.editorpane LoadHTML;
+    private widget.TextBox MandibulaAnatomis;
+    private widget.TextBox MandibulaFisiologis;
+    private widget.TextBox MaxillaAnatomis;
+    private widget.TextBox MaxillaFisiologis;
+    private widget.TextBox Membaca;
+    private widget.TextArea Menghisap;
+    private widget.TextArea Mengunyah;
+    private widget.TextArea Meniup;
+    private widget.TextBox Mimik;
     private javax.swing.JMenuItem MnPenilaianFisio;
+    private widget.ComboBox Nada;
     private widget.TextBox Nadi;
     private widget.TextBox NmPetugas;
-    private widget.TextBox Nyeri;
-    private widget.TextBox Nyeri1;
-    private widget.TextBox Nyeri10;
-    private widget.TextBox Nyeri11;
-    private widget.TextBox Nyeri12;
-    private widget.TextBox Nyeri13;
-    private widget.TextBox Nyeri14;
-    private widget.TextBox Nyeri15;
-    private widget.TextBox Nyeri16;
-    private widget.TextBox Nyeri17;
-    private widget.TextBox Nyeri18;
-    private widget.TextBox Nyeri19;
-    private widget.TextBox Nyeri2;
-    private widget.TextBox Nyeri20;
-    private widget.TextBox Nyeri21;
-    private widget.TextBox Nyeri22;
-    private widget.TextBox Nyeri23;
-    private widget.TextBox Nyeri24;
-    private widget.TextBox Nyeri25;
-    private widget.TextBox Nyeri26;
-    private widget.TextBox Nyeri27;
-    private widget.TextBox Nyeri28;
-    private widget.TextBox Nyeri29;
-    private widget.TextBox Nyeri3;
-    private widget.TextBox Nyeri30;
-    private widget.TextBox Nyeri31;
-    private widget.TextBox Nyeri32;
-    private widget.TextBox Nyeri4;
-    private widget.TextBox Nyeri5;
-    private widget.TextBox Nyeri6;
-    private widget.TextBox Nyeri7;
-    private widget.TextBox Nyeri8;
-    private widget.TextBox Nyeri9;
+    private widget.TextArea Omisi;
+    private widget.TextBox PemahamanBahasa;
+    private widget.TextBox Penamaan;
+    private widget.TextBox Pendengaran;
+    private widget.TextBox Penglihatan;
+    private widget.TextBox Pengujaran;
+    private widget.TextArea PenunjangMedis;
+    private widget.TextBox Perilaku;
+    private widget.TextArea Pernapasan;
+    private widget.TextArea ProgramTerapiWicara;
     private widget.TextBox RR;
-    private widget.TextArea RiwayatPenyakitDahulu;
-    private widget.TextArea RiwayatPenyakitDahulu1;
-    private widget.TextArea RiwayatPenyakitDahulu2;
-    private widget.TextArea RiwayatPenyakitDahulu3;
-    private widget.TextArea RiwayatPenyakitDahulu4;
-    private widget.TextArea RiwayatPenyakitDahulu5;
-    private widget.TextArea RiwayatPenyakitDahulu6;
-    private widget.TextArea RiwayatPenyakitSekarang;
-    private widget.TextArea RiwayatPenyakitSekarang1;
-    private widget.TextArea RiwayatPenyakitSekarang2;
-    private widget.TextArea RiwayatPenyakitSekarang3;
-    private widget.TextArea RiwayatPenyakitSekarang4;
-    private widget.TextArea RiwayatPenyakitSekarang5;
+    private widget.ComboBox Resonasi;
     private widget.ScrollPane Scroll;
+    private widget.TextBox SoftPalateAnatomis;
+    private widget.TextBox SoftPalateFisiologis;
+    private widget.TextArea Subtitusi;
     private widget.TextBox Suhu;
     private widget.TextBox TCari;
     private widget.TextBox TD;
@@ -2808,6 +2831,13 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
+    private widget.TextArea TindakLanjut;
+    private widget.TextBox TongueAnatomis;
+    private widget.TextBox TongueFisiologis;
+    private widget.TextArea TujuanTerapiWicara;
+    private widget.TextBox Tulisan;
+    private widget.TextBox UvulaAnatomis;
+    private widget.TextBox UvulaFisiologis;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -3003,9 +3033,9 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
 
     public void emptTeks() {
         TglAsuhan.setDate(new Date());
-        KeluhanUtama.setText("");
-        RiwayatPenyakitDahulu.setText("");
-        RiwayatPenyakitSekarang.setText("");
+        DiagnosaTerapiWicara.setText("");
+        Menghisap.setText("");
+        Anamnesa.setText("");
         
         TabRawat.setSelectedIndex(0);
     } 
