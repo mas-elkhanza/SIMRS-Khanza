@@ -389,7 +389,7 @@
                                         $noReg           = noRegPoli($cek_kouta['kd_poli'], validTeks4($decode['tanggalperiksa'],20));
                                         $max             = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0)+1 from reg_periksa where tgl_registrasi='".validTeks4($decode['tanggalperiksa'],20)."'");
                                         $no_rawat        = str_replace("-","/",$decode['tanggalperiksa']."/").sprintf("%06s", $max);
-                                        $statuspoli      = getOne2("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='".$datapeserta[no_rkm_medis]."' and kd_poli='$cek_kouta[kd_poli]')>0,'Lama','Baru' )");
+                                        $statuspoli      = getOne2("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='".$datapeserta["no_rkm_medis"]."' and kd_poli='".$cek_kouta["kd_poli"]."')>0,'Lama','Baru' )");
                                         if($datapeserta["tahun"] > 0){
                                             $umur       = $datapeserta["tahun"];
                                             $sttsumur   = "Th";

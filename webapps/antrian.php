@@ -118,9 +118,9 @@
 
                 while ($data = mysqli_fetch_array ($hasil)){
                         echo "<tr class='isi7' >
-                                <td align='center'><font size='5' color='gray' face='Tahoma'>".$data['no_reg']."</font></td>
-                                <td align='center'><font color='#DDDD00' size='5'  face='Tahoma'>".$data['no_rawat']."</font></td>
-                                <td align='center'><font color='gren' size='5'  face='Tahoma'>".$data['nm_pasien']."</font></td>
+                                <td align='center'><font size='5' color='#555555' face='Tahoma'>".$data['no_reg']."</font></td>
+                                <td align='center'><font color='#555555' size='5'  face='Tahoma'>".$data['no_rawat']."</font></td>
+                                <td align='center'><font color='#555555' size='5'  face='Tahoma'>".$data['nm_pasien']."</font></td>
                             </tr> ";
                 }
         ?>

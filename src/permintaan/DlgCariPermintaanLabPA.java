@@ -1498,8 +1498,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{
                     if(Sampel.equals("")||akses.getkode().equals("Admin Utama")){
-                        if((Sequel.cariInteger("select count(noorder) from permintaan_pemeriksaan_labpa where stts_bayar='Sudah' and noorder=?",NoPermintaan)+
-                                Sequel.cariInteger("select count(noorder) from permintaan_detail_permintaan_labpa where stts_bayar='Sudah' and noorder=?",NoPermintaan))>0){
+                        if(Sequel.cariInteger("select count(permintaan_pemeriksaan_labpa.noorder) from permintaan_pemeriksaan_labpa where permintaan_pemeriksaan_labpa.stts_bayar='Sudah' and permintaan_pemeriksaan_labpa.noorder=?",NoPermintaan)>0){
                             JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilahkan hubungi kasir...!!!!");
                         }else{
                             Sequel.meghapus("permintaan_labpa","noorder",NoPermintaan);
@@ -1526,8 +1525,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{
                     if(Sampel.equals("")||akses.getkode().equals("Admin Utama")){
-                        if((Sequel.cariInteger("select count(noorder) from permintaan_pemeriksaan_labpa where stts_bayar='Sudah' and noorder=?",NoPermintaan)+
-                                Sequel.cariInteger("select count(noorder) from permintaan_detail_permintaan_labpa where stts_bayar='Sudah' and noorder=?",NoPermintaan))>0){
+                        if(Sequel.cariInteger("select count(permintaan_pemeriksaan_labpa.noorder) from permintaan_pemeriksaan_labpa where permintaan_pemeriksaan_labpa.stts_bayar='Sudah' and permintaan_pemeriksaan_labpa.noorder=?",NoPermintaan)>0){
                             JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilahkan hubungi kasir...!!!!");
                         }else{
                             Sequel.meghapus("permintaan_labpa","noorder",NoPermintaan);
