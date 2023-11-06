@@ -2490,15 +2490,15 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void DiagnosaTerapiWicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaTerapiWicaraKeyPressed
-        //Valid.pindah2(evt,Informasi,RiwayatPenyakitSekarang);
+        Valid.pindah2(evt,TglAsuhan,DiagnosaMedis);
     }//GEN-LAST:event_DiagnosaTerapiWicaraKeyPressed
 
     private void AnamnesaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesaKeyPressed
-        Valid.pindah2(evt,DiagnosaTerapiWicara,Menghisap);
+        Valid.pindah2(evt,DiagnosaMedis,TD);
     }//GEN-LAST:event_AnamnesaKeyPressed
 
     private void MenghisapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenghisapKeyPressed
-        //Valid.pindah2(evt,RiwayatPenyakitSekarang,TD);
+        Valid.pindah2(evt,FaringFisiologis,Mengunyah);
     }//GEN-LAST:event_MenghisapKeyPressed
 
     private void MnPenilaianFisioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianFisioActionPerformed
@@ -2534,15 +2534,15 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     }//GEN-LAST:event_MnPenilaianFisioActionPerformed
 
     private void DiagnosaMedisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaMedisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,DiagnosaTerapiWicara,Anamnesa);
     }//GEN-LAST:event_DiagnosaMedisKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        //Valid.pindah(evt,Alergi,BB);
+        Valid.pindah(evt,Anamnesa,Suhu);
     }//GEN-LAST:event_TDKeyPressed
 
     private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        //Valid.pindah(evt,BB,Nadi);
+        Valid.pindah(evt,TD,Nadi);
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
@@ -2550,155 +2550,155 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     }//GEN-LAST:event_NadiKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        //Valid.pindah(evt,Nadi,Nyeri);
+        Valid.pindah(evt,Nadi,KontakMata);
     }//GEN-LAST:event_RRKeyPressed
 
     private void KontakMataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakMataKeyPressed
-        //Valid.pindah(evt,RR,StatusNutrisi);
+        Valid.pindah(evt,RR,Atensi);
     }//GEN-LAST:event_KontakMataKeyPressed
 
     private void PerilakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerilakuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Atensi,Pengujaran);
     }//GEN-LAST:event_PerilakuKeyPressed
 
     private void AtensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AtensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakMata,Perilaku);
     }//GEN-LAST:event_AtensiKeyPressed
 
     private void PengujaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PengujaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Perilaku,BicaraSpontan);
     }//GEN-LAST:event_PengujaranKeyPressed
 
     private void BicaraSpontanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BicaraSpontanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pengujaran,Membaca);
     }//GEN-LAST:event_BicaraSpontanKeyPressed
 
     private void MembacaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MembacaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BicaraSpontan,PemahamanBahasa);
     }//GEN-LAST:event_MembacaKeyPressed
 
     private void PemahamanBahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemahamanBahasaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Membaca,Penamaan);
     }//GEN-LAST:event_PemahamanBahasaKeyPressed
 
     private void PenamaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenamaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PemahamanBahasa,LipAnatomis);
     }//GEN-LAST:event_PenamaanKeyPressed
 
     private void LipAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LipAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Penamaan,TongueAnatomis);
     }//GEN-LAST:event_LipAnatomisKeyPressed
 
     private void TongueAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TongueAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LipAnatomis,HardPalateAnatomis);
     }//GEN-LAST:event_TongueAnatomisKeyPressed
 
     private void HardPalateAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HardPalateAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TongueAnatomis,SoftPalateAnatomis);
     }//GEN-LAST:event_HardPalateAnatomisKeyPressed
 
     private void MandibulaAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MandibulaAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,UvulaAnatomis,MaxillaAnatomis);
     }//GEN-LAST:event_MandibulaAnatomisKeyPressed
 
     private void UvulaAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UvulaAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SoftPalateAnatomis,MandibulaAnatomis);
     }//GEN-LAST:event_UvulaAnatomisKeyPressed
 
     private void SoftPalateAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SoftPalateAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HardPalateAnatomis,UvulaAnatomis);
     }//GEN-LAST:event_SoftPalateAnatomisKeyPressed
 
     private void FaringAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaringAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DentalAnatomis,LipFisiologis);
     }//GEN-LAST:event_FaringAnatomisKeyPressed
 
     private void DentalAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DentalAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MaxillaAnatomis,FaringAnatomis);
     }//GEN-LAST:event_DentalAnatomisKeyPressed
 
     private void MaxillaAnatomisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MaxillaAnatomisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MandibulaAnatomis,DentalAnatomis);
     }//GEN-LAST:event_MaxillaAnatomisKeyPressed
 
     private void LipFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LipFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FaringAnatomis,TongueFisiologis);
     }//GEN-LAST:event_LipFisiologisKeyPressed
 
     private void TongueFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TongueFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LipFisiologis,HardPalateFisiologis);
     }//GEN-LAST:event_TongueFisiologisKeyPressed
 
     private void HardPalateFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HardPalateFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TongueFisiologis,SoftPalateFisiologis);
     }//GEN-LAST:event_HardPalateFisiologisKeyPressed
 
     private void SoftPalateFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SoftPalateFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HardPalateFisiologis,UvulaFisiologis);
     }//GEN-LAST:event_SoftPalateFisiologisKeyPressed
 
     private void UvulaFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UvulaFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SoftPalateFisiologis,MandibulaFisiologis);
     }//GEN-LAST:event_UvulaFisiologisKeyPressed
 
     private void MandibulaFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MandibulaFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,UvulaFisiologis,MaxillaFisiologis);
     }//GEN-LAST:event_MandibulaFisiologisKeyPressed
 
     private void MaxillaFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MaxillaFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MandibulaFisiologis,DentalFisiologis);
     }//GEN-LAST:event_MaxillaFisiologisKeyPressed
 
     private void DentalFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DentalFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MaxillaFisiologis,FaringFisiologis);
     }//GEN-LAST:event_DentalFisiologisKeyPressed
 
     private void FaringFisiologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaringFisiologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DentalFisiologis,Menghisap);
     }//GEN-LAST:event_FaringFisiologisKeyPressed
 
     private void MengunyahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MengunyahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Menghisap,Meniup);
     }//GEN-LAST:event_MengunyahKeyPressed
 
     private void MeniupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MeniupKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Mengunyah,Subtitusi);
     }//GEN-LAST:event_MeniupKeyPressed
 
     private void SubtitusiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SubtitusiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Meniup,Omisi);
     }//GEN-LAST:event_SubtitusiKeyPressed
 
     private void OmisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OmisiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Subtitusi,Distorsi);
     }//GEN-LAST:event_OmisiKeyPressed
 
     private void DistorsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DistorsiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Omisi,Adisi);
     }//GEN-LAST:event_DistorsiKeyPressed
 
     private void AdisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AdisiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Distorsi,Resonasi);
     }//GEN-LAST:event_AdisiKeyPressed
 
     private void ResonasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResonasiKeyPressed
-        //Valid.pindah(evt,TglAsuhan,Hubungan);
+        Valid.pindah(evt,Adisi,Nada);
     }//GEN-LAST:event_ResonasiKeyPressed
 
     private void NadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Resonasi,Kualitas);
     }//GEN-LAST:event_NadaKeyPressed
 
     private void KualitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KualitasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Nada,Kenyaringan);
     }//GEN-LAST:event_KualitasKeyPressed
 
     private void KemampuanIramaKelancaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KemampuanIramaKelancaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kenyaringan,KemampuanMenelan);
     }//GEN-LAST:event_KemampuanIramaKelancaranKeyPressed
 
     private void KenyaringanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KenyaringanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kualitas,KemampuanIramaKelancaran);
     }//GEN-LAST:event_KenyaringanKeyPressed
 
     private void KemampuanMenelanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KemampuanMenelanKeyPressed
@@ -3086,9 +3086,34 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         MandibulaFisiologis.setText("");
         MaxillaFisiologis.setText("");
         DentalFisiologis.setText("");
-        FaringFisiologis.setText("");
-        
+        Menghisap.setText("");
+        Mengunyah.setText("");
+        Meniup.setText("");
+        Subtitusi.setText("");
+        Omisi.setText("");
+        Distorsi.setText("");
+        Adisi.setText("");
+        Resonasi.setSelectedItem(0);
+        Nada.setSelectedIndex(0);
+        Kualitas.setSelectedIndex(0);
+        Kenyaringan.setSelectedIndex(0);
+        KemampuanIramaKelancaran.setSelectedIndex(0);
+        KemampuanMenelan.setText("");
+        Pernapasan.setText("");
+        Pendengaran.setText("");
+        Penglihatan.setText("");
+        Kinesek.setText("");
+        Bicara.setText("");
+        Tulisan.setText("");
+        Mimik.setText("");
+        Gesture.setText("");
+        PenunjangMedis.setText("");
+        TujuanTerapiWicara.setText("");
+        ProgramTerapiWicara.setText("");
+        Edukasi.setText("");
+        TindakLanjut.setText("");
         TabRawat.setSelectedIndex(0);
+        DiagnosaTerapiWicara.requestFocus();
     } 
 
     private void getData() {
