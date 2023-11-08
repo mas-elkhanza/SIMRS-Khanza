@@ -61,12 +61,14 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","J.K.","Tgl.Lahir","Tanggal","Informasi","Keluhan Utama","Riwayat Peyakit Sekarang","Riwayat Penyakit Dahulu & Penyerta", 
-            "TD","HR","RR","Suhu","Nyeri Tekan","Nyeri Gerak","Nyeri Diam","Palpasi","Luas Gerak Sendi","Kekuatan Otot","Statis","Dinamis","Kognitif","Auskultasi",
-            "Alat Bantu","Ket Alat Bantu","Prothesa","Keteranga Prothesa","Deformitas","Keterangan Deformitas","Resiko Jatuh","Keterangan Resiko Jatuh","ADL","Fungsional Lain",
-            "Keterangan Fisik","Pemeriksaan Musculoskeletal","Pemeriksaan Neuromuscular","Pemeriksaan Cardiopulmonal","Pemeriksaan Integument","Pengukuran Musculoskeletal", 
-            "Pengukuran Neuromuscular","Pengukuran Cardiopulmonal","Pengukuran Integument","Pemeriksaan Penunjang", "Diagnosis Fisio", "Rencana Intervensi Fisioterapi",
-            "NIP","Nama Petugas"
+            "No.Rawat","No.RM","Nama Pasien","J.K.","Tgl.Lahir","Tanggal","Diagnosa Terapi Wicara","Diagnosa Medis","Anamnesa","Suhu(°C)","RR(x/menit)","Nadi(x/menit)",
+            "TD(mmHg)","Kontak Mata","Atensi","Perilaku","Bicara Spontan","Pemahaman Bahasa","Pengujaran","Membaca","Penamaan","Anatomis Lip", "Anatomis Tongue", 
+            "Anatomis Hard Palate","Anatomis Soft Palate","Anatomis Uvula","Anatomis Mandibula","Anatomis Maxila","Anatomis Dental","Anatomis Faring", 
+            "Fisiologis Lip","Fisiologis Tongue","Fisiologis Hard Palate","Fisiologis Soft Palate","Fisiologis Uvula","Fisiologis Mandibula","Fisiologis Maxilla", 
+            "Fisiologis Dental","Fisiologis Faring","Menghisap","Mengunyah","Meniup","Subtitusi","Omisi","Distorsi","Adisi","Resonasi","Nada Suara", 
+            "Kualitas Suara","Kenyaringan Suara","Kemampuan Irama Kelancaran","Kemampuan Menelan","Pernapasan","Dekoding Pendengaran","Dekoding Penglihatan", 
+            "Dekoding Kinesik","Enkoding Bicara","Enkoding Tulisan","Enkoding Mimik","Enkoding Gesture","Penunjang Medis","Tujuan Terapi Wicara",
+            "Program Terapi Wicara","Edukasi","Tindak Lanjut","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -91,27 +93,27 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(120);
             }else if(i==6){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(250);
             }else if(i==7){
-                column.setPreferredWidth(270);
+                column.setPreferredWidth(250);
             }else if(i==8){
-                column.setPreferredWidth(184);
+                column.setPreferredWidth(250);
             }else if(i==9){
-                column.setPreferredWidth(184);
+                column.setPreferredWidth(53);
             }else if(i==10){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(68);
             }else if(i==11){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(75);
             }else if(i==12){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(62);
             }else if(i==13){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(130);
             }else if(i==14){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(130);
             }else if(i==15){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(130);
             }else if(i==16){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(130);
             }else if(i==17){
                 column.setPreferredWidth(130);
             }else if(i==18){
@@ -121,59 +123,23 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
             }else if(i==20){
                 column.setPreferredWidth(130);
             }else if(i==21){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(100);
             }else if(i==22){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(100);
             }else if(i==23){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(100);
             }else if(i==24){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(100);
             }else if(i==25){
                 column.setPreferredWidth(100);
             }else if(i==26){
-                column.setPreferredWidth(53);
+                column.setPreferredWidth(100);
             }else if(i==27){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(100);
             }else if(i==28){
-                column.setPreferredWidth(62);
+                column.setPreferredWidth(100);
             }else if(i==29){
-                column.setPreferredWidth(120);
-            }else if(i==30){
-                column.setPreferredWidth(70);
-            }else if(i==31){
-                column.setPreferredWidth(130);
-            }else if(i==32){
-                column.setPreferredWidth(55);
-            }else if(i==33){
-                column.setPreferredWidth(120);
-            }else if(i==34){
-                column.setPreferredWidth(270);
-            }else if(i==35){
-                column.setPreferredWidth(160);
-            }else if(i==36){
-                column.setPreferredWidth(160);
-            }else if(i==37){
-                column.setPreferredWidth(160);
-            }else if(i==38){
-                column.setPreferredWidth(160);
-            }else if(i==39){
-                column.setPreferredWidth(160);
-            }else if(i==40){
-                column.setPreferredWidth(160);
-            }else if(i==41){
-                column.setPreferredWidth(160);
-            }else if(i==42){
-                column.setPreferredWidth(160);
-            }else if(i==43){
-                column.setPreferredWidth(200);
-            }else if(i==44){
-                column.setPreferredWidth(150);
-            }else if(i==45){
-                column.setPreferredWidth(200);
-            }else if(i==46){
-                column.setPreferredWidth(80);
-            }else if(i==47){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(100);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -678,11 +644,6 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -789,7 +750,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         jLabel11.setBounds(740, 10, 30, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2023 06:29:34" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2023 18:37:23" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1984,7 +1945,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1998,7 +1959,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2067,27 +2028,41 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
 }//GEN-LAST:event_TNoRwKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-       /* if(TNoRM.getText().trim().equals("")){
+       if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(KeluhanUtama.getText().trim().equals("")){
-            Valid.textKosong(KeluhanUtama,"Keluhan Utama");
-        }else if(RiwayatPenyakitSekarang.getText().trim().equals("")){
-            Valid.textKosong(RiwayatPenyakitSekarang,"Riwayat Penyakit Sekarang");
+        }else if(DiagnosaTerapiWicara.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaTerapiWicara,"Diagnosa Terapi Wicara");
+        }else if(DiagnosaMedis.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaMedis,"Diagnosa Medis");
+        }else if(Anamnesa.getText().trim().equals("")){
+            Valid.textKosong(Anamnesa,"Anamnesa");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
-           if(Sequel.menyimpantf("penilaian_fisioterapi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",43,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),KeluhanUtama.getText(),
-                    RiwayatPenyakitSekarang.getText(),RiwayatPenyakitDahulu.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),NyeriTekan.getText(),NyeriGerak.getText(),NyeriDiam.getText(),
-                    Palpasi.getText(),LuasGerakSendi.getText(),KekuatanOtot.getText(),Statis.getText(),Dinamis.getText(),Kognitif.getText(),Auskultasi.getText(),AlatBantu.getSelectedItem().toString(),
-                    KetBantu.getText(),Prothesa.getSelectedItem().toString(),KetProthesa.getText(),Deformitas.getSelectedItem().toString(),KetDeformitas.getText(),ResikoJatuh.getSelectedItem().toString(),
-                    KetResikoJatuh.getText(),ADL.getSelectedItem().toString(),LainlainFungsioal.getText(),KetFisik.getText(),PemeriksaanMuscu.getText(),PemeriksaanNeuro.getText(),PemeriksaanCardio.getText(),
-                    PemeriksaanInte.getText(),PengukuranMuscu.getText(),PengukuranNeuro.getText(),PengukuranCardio.getText(),PengukuranInte.getText(),Penunjang.getText(),Diagnosis.getText(),Rencana.getText(),
-                    KdPetugas.getText()
+           if(Sequel.menyimpantf("penilaian_terapi_wicara","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",62,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),DiagnosaTerapiWicara.getText(),DiagnosaMedis.getText(),Anamnesa.getText(), 
+                    Suhu.getText(),RR.getText(),Nadi.getText(),TD.getText(),KontakMata.getText(),Atensi.getText(),Perilaku.getText(),BicaraSpontan.getText(),PemahamanBahasa.getText(),Pengujaran.getText(),Membaca.getText(), 
+                    Penamaan.getText(),LipAnatomis.getText(),TongueAnatomis.getText(),HardPalateAnatomis.getText(),SoftPalateAnatomis.getText(),UvulaAnatomis.getText(),MandibulaAnatomis.getText(),MaxillaAnatomis.getText(), 
+                    DentalAnatomis.getText(),FaringAnatomis.getText(),LipFisiologis.getText(),TongueFisiologis.getText(),HardPalateFisiologis.getText(),SoftPalateFisiologis.getText(),UvulaFisiologis.getText(),
+                    MandibulaFisiologis.getText(),MaxillaFisiologis.getText(),DentalFisiologis.getText(),FaringFisiologis.getText(),Menghisap.getText(),Mengunyah.getText(),Meniup.getText(),Subtitusi.getText(),Omisi.getText(),
+                    Distorsi.getText(),Adisi.getText(),Resonasi.getSelectedItem().toString(),Nada.getSelectedItem().toString(),Kualitas.getSelectedItem().toString(),Kenyaringan.getSelectedItem().toString(),
+                    KemampuanIramaKelancaran.getSelectedItem().toString(),KemampuanMenelan.getText(),Pernapasan.getText(),Pendengaran.getText(),Penglihatan.getText(),Kinesek.getText(),Bicara.getText(),Tulisan.getText(), 
+                    Mimik.getText(),Gesture.getText(),PenunjangMedis.getText(),TujuanTerapiWicara.getText(),ProgramTerapiWicara.getText(),Edukasi.getText(),TindakLanjut.getText(),KdPetugas.getText()
                 })==true){
+                    tabMode.addRow(new String[]{
+                        TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
+                        DiagnosaTerapiWicara.getText(),DiagnosaMedis.getText(),Anamnesa.getText(),Suhu.getText(),RR.getText(),Nadi.getText(),TD.getText(),KontakMata.getText(),Atensi.getText(),Perilaku.getText(),BicaraSpontan.getText(),
+                        PemahamanBahasa.getText(),Pengujaran.getText(),Membaca.getText(),Penamaan.getText(),LipAnatomis.getText(),TongueAnatomis.getText(),HardPalateAnatomis.getText(),SoftPalateAnatomis.getText(),UvulaAnatomis.getText(),
+                        MandibulaAnatomis.getText(),MaxillaAnatomis.getText(),DentalAnatomis.getText(),FaringAnatomis.getText(),LipFisiologis.getText(),TongueFisiologis.getText(),HardPalateFisiologis.getText(),SoftPalateFisiologis.getText(),
+                        UvulaFisiologis.getText(),MandibulaFisiologis.getText(),MaxillaFisiologis.getText(),DentalFisiologis.getText(),FaringFisiologis.getText(),Menghisap.getText(),Mengunyah.getText(),Meniup.getText(),Subtitusi.getText(),
+                        Omisi.getText(),Distorsi.getText(),Adisi.getText(),Resonasi.getSelectedItem().toString(),Nada.getSelectedItem().toString(),Kualitas.getSelectedItem().toString(),Kenyaringan.getSelectedItem().toString(),
+                        KemampuanIramaKelancaran.getSelectedItem().toString(),KemampuanMenelan.getText(),Pernapasan.getText(),Pendengaran.getText(),Penglihatan.getText(),Kinesek.getText(),Bicara.getText(),Tulisan.getText(),Mimik.getText(),
+                        Gesture.getText(),PenunjangMedis.getText(),TujuanTerapiWicara.getText(),ProgramTerapiWicara.getText(),Edukasi.getText(),TindakLanjut.getText(),KdPetugas.getText(),NmPetugas.getText()
+                    });
+                    LCount.setText(""+tabMode.getRowCount());
                     emptTeks();
             }
-        }*/
+        }
     
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -2183,34 +2158,34 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
             try{
                 if(TCari.getText().equals("")){
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_fisioterapi.tanggal,penilaian_fisioterapi.informasi,penilaian_fisioterapi.keluhan_utama,"+
-                            "penilaian_fisioterapi.rps,penilaian_fisioterapi.rpd,penilaian_fisioterapi.td,penilaian_fisioterapi.hr,penilaian_fisioterapi.rr,penilaian_fisioterapi.suhu,penilaian_fisioterapi.nyeri_tekan,penilaian_fisioterapi.nyeri_gerak,"+
-                            "penilaian_fisioterapi.nyeri_diam,penilaian_fisioterapi.palpasi,penilaian_fisioterapi.luas_gerak_sendi,penilaian_fisioterapi.kekuatan_otot,penilaian_fisioterapi.statis,penilaian_fisioterapi.dinamis,penilaian_fisioterapi.kognitif,"+
-                            "penilaian_fisioterapi.auskultasi,penilaian_fisioterapi.alat_bantu,penilaian_fisioterapi.ket_bantu,penilaian_fisioterapi.prothesa,penilaian_fisioterapi.ket_pro,penilaian_fisioterapi.deformitas,penilaian_fisioterapi.ket_deformitas,"+
-                            "penilaian_fisioterapi.resikojatuh,penilaian_fisioterapi.ket_resikojatuh,penilaian_fisioterapi.adl,penilaian_fisioterapi.lainlain_fungsional,penilaian_fisioterapi.ket_fisik,penilaian_fisioterapi.pemeriksaan_musculoskeletal,"+
-                            "penilaian_fisioterapi.pemeriksaan_neuromuscular,penilaian_fisioterapi.pemeriksaan_cardiopulmonal,penilaian_fisioterapi.pemeriksaan_integument,penilaian_fisioterapi.pengukuran_musculoskeletal,penilaian_fisioterapi.pengukuran_neuromuscular,"+
-                            "penilaian_fisioterapi.pengukuran_cardiopulmonal,penilaian_fisioterapi.pengukuran_integument,penilaian_fisioterapi.penunjang,penilaian_fisioterapi.diagnosis_fisio,penilaian_fisioterapi.rencana_terapi,penilaian_fisioterapi.nip,petugas.nama "+
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_terapi_wicara.tanggal,penilaian_terapi_wicara.informasi,penilaian_terapi_wicara.keluhan_utama,"+
+                            "penilaian_terapi_wicara.rps,penilaian_terapi_wicara.rpd,penilaian_terapi_wicara.td,penilaian_terapi_wicara.hr,penilaian_terapi_wicara.rr,penilaian_terapi_wicara.suhu,penilaian_terapi_wicara.nyeri_tekan,penilaian_terapi_wicara.nyeri_gerak,"+
+                            "penilaian_terapi_wicara.nyeri_diam,penilaian_terapi_wicara.palpasi,penilaian_terapi_wicara.luas_gerak_sendi,penilaian_terapi_wicara.kekuatan_otot,penilaian_terapi_wicara.statis,penilaian_terapi_wicara.dinamis,penilaian_terapi_wicara.kognitif,"+
+                            "penilaian_terapi_wicara.auskultasi,penilaian_terapi_wicara.alat_bantu,penilaian_terapi_wicara.ket_bantu,penilaian_terapi_wicara.prothesa,penilaian_terapi_wicara.ket_pro,penilaian_terapi_wicara.deformitas,penilaian_terapi_wicara.ket_deformitas,"+
+                            "penilaian_terapi_wicara.resikojatuh,penilaian_terapi_wicara.ket_resikojatuh,penilaian_terapi_wicara.adl,penilaian_terapi_wicara.lainlain_fungsional,penilaian_terapi_wicara.ket_fisik,penilaian_terapi_wicara.pemeriksaan_musculoskeletal,"+
+                            "penilaian_terapi_wicara.pemeriksaan_neuromuscular,penilaian_terapi_wicara.pemeriksaan_cardiopulmonal,penilaian_terapi_wicara.pemeriksaan_integument,penilaian_terapi_wicara.pengukuran_musculoskeletal,penilaian_terapi_wicara.pengukuran_neuromuscular,"+
+                            "penilaian_terapi_wicara.pengukuran_cardiopulmonal,penilaian_terapi_wicara.pengukuran_integument,penilaian_terapi_wicara.penunjang,penilaian_terapi_wicara.diagnosis_fisio,penilaian_terapi_wicara.rencana_terapi,penilaian_terapi_wicara.nip,petugas.nama "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join penilaian_fisioterapi on reg_periksa.no_rawat=penilaian_fisioterapi.no_rawat "+
-                            "inner join petugas on penilaian_fisioterapi.nip=petugas.nip where "+
-                            "penilaian_fisioterapi.tanggal between ? and ? order by penilaian_fisioterapi.tanggal");
+                            "inner join penilaian_terapi_wicara on reg_periksa.no_rawat=penilaian_terapi_wicara.no_rawat "+
+                            "inner join petugas on penilaian_terapi_wicara.nip=petugas.nip where "+
+                            "penilaian_terapi_wicara.tanggal between ? and ? order by penilaian_terapi_wicara.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_fisioterapi.tanggal,penilaian_fisioterapi.informasi,penilaian_fisioterapi.keluhan_utama,"+
-                            "penilaian_fisioterapi.rps,penilaian_fisioterapi.rpd,penilaian_fisioterapi.td,penilaian_fisioterapi.hr,penilaian_fisioterapi.rr,penilaian_fisioterapi.suhu,penilaian_fisioterapi.nyeri_tekan,penilaian_fisioterapi.nyeri_gerak,"+
-                            "penilaian_fisioterapi.nyeri_diam,penilaian_fisioterapi.palpasi,penilaian_fisioterapi.luas_gerak_sendi,penilaian_fisioterapi.kekuatan_otot,penilaian_fisioterapi.statis,penilaian_fisioterapi.dinamis,penilaian_fisioterapi.kognitif,"+
-                            "penilaian_fisioterapi.auskultasi,penilaian_fisioterapi.alat_bantu,penilaian_fisioterapi.ket_bantu,penilaian_fisioterapi.prothesa,penilaian_fisioterapi.ket_pro,penilaian_fisioterapi.deformitas,penilaian_fisioterapi.ket_deformitas,"+
-                            "penilaian_fisioterapi.resikojatuh,penilaian_fisioterapi.ket_resikojatuh,penilaian_fisioterapi.adl,penilaian_fisioterapi.lainlain_fungsional,penilaian_fisioterapi.ket_fisik,penilaian_fisioterapi.pemeriksaan_musculoskeletal,"+
-                            "penilaian_fisioterapi.pemeriksaan_neuromuscular,penilaian_fisioterapi.pemeriksaan_cardiopulmonal,penilaian_fisioterapi.pemeriksaan_integument,penilaian_fisioterapi.pengukuran_musculoskeletal,penilaian_fisioterapi.pengukuran_neuromuscular,"+
-                            "penilaian_fisioterapi.pengukuran_cardiopulmonal,penilaian_fisioterapi.pengukuran_integument,penilaian_fisioterapi.penunjang,penilaian_fisioterapi.diagnosis_fisio,penilaian_fisioterapi.rencana_terapi,penilaian_fisioterapi.nip,petugas.nama "+
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_terapi_wicara.tanggal,penilaian_terapi_wicara.informasi,penilaian_terapi_wicara.keluhan_utama,"+
+                            "penilaian_terapi_wicara.rps,penilaian_terapi_wicara.rpd,penilaian_terapi_wicara.td,penilaian_terapi_wicara.hr,penilaian_terapi_wicara.rr,penilaian_terapi_wicara.suhu,penilaian_terapi_wicara.nyeri_tekan,penilaian_terapi_wicara.nyeri_gerak,"+
+                            "penilaian_terapi_wicara.nyeri_diam,penilaian_terapi_wicara.palpasi,penilaian_terapi_wicara.luas_gerak_sendi,penilaian_terapi_wicara.kekuatan_otot,penilaian_terapi_wicara.statis,penilaian_terapi_wicara.dinamis,penilaian_terapi_wicara.kognitif,"+
+                            "penilaian_terapi_wicara.auskultasi,penilaian_terapi_wicara.alat_bantu,penilaian_terapi_wicara.ket_bantu,penilaian_terapi_wicara.prothesa,penilaian_terapi_wicara.ket_pro,penilaian_terapi_wicara.deformitas,penilaian_terapi_wicara.ket_deformitas,"+
+                            "penilaian_terapi_wicara.resikojatuh,penilaian_terapi_wicara.ket_resikojatuh,penilaian_terapi_wicara.adl,penilaian_terapi_wicara.lainlain_fungsional,penilaian_terapi_wicara.ket_fisik,penilaian_terapi_wicara.pemeriksaan_musculoskeletal,"+
+                            "penilaian_terapi_wicara.pemeriksaan_neuromuscular,penilaian_terapi_wicara.pemeriksaan_cardiopulmonal,penilaian_terapi_wicara.pemeriksaan_integument,penilaian_terapi_wicara.pengukuran_musculoskeletal,penilaian_terapi_wicara.pengukuran_neuromuscular,"+
+                            "penilaian_terapi_wicara.pengukuran_cardiopulmonal,penilaian_terapi_wicara.pengukuran_integument,penilaian_terapi_wicara.penunjang,penilaian_terapi_wicara.diagnosis_fisio,penilaian_terapi_wicara.rencana_terapi,penilaian_terapi_wicara.nip,petugas.nama "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join penilaian_fisioterapi on reg_periksa.no_rawat=penilaian_fisioterapi.no_rawat "+
-                            "inner join petugas on penilaian_fisioterapi.nip=petugas.nip where "+
-                            "penilaian_fisioterapi.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
-                            "penilaian_fisioterapi.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
-                            "penilaian_fisioterapi.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                            "penilaian_fisioterapi.tanggal between ? and ? and penilaian_fisioterapi.nip like ? or "+
-                            "penilaian_fisioterapi.tanggal between ? and ? and petugas.nama like ? order by penilaian_fisioterapi.tanggal");
+                            "inner join penilaian_terapi_wicara on reg_periksa.no_rawat=penilaian_terapi_wicara.no_rawat "+
+                            "inner join petugas on penilaian_terapi_wicara.nip=petugas.nip where "+
+                            "penilaian_terapi_wicara.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
+                            "penilaian_terapi_wicara.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
+                            "penilaian_terapi_wicara.tanggal between ? and ? and pasien.nm_pasien like ? or "+
+                            "penilaian_terapi_wicara.tanggal between ? and ? and penilaian_terapi_wicara.nip like ? or "+
+                            "penilaian_terapi_wicara.tanggal between ? and ? and petugas.nama like ? order by penilaian_terapi_wicara.tanggal");
                 }
 
                 try {
@@ -2479,12 +2454,6 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         //Valid.pindah(evt,Rencana,Informasi);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
     }//GEN-LAST:event_formWindowOpened
@@ -2520,16 +2489,16 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),47).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),46).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()));
 
             Valid.MyReportqry("rptCetakPenilaianAwalFisioterapi.jasper","report","::[ Laporan Penilaian Awal Fisioterapi ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_fisioterapi.tanggal,penilaian_fisioterapi.informasi,penilaian_fisioterapi.keluhan_utama,"+
-                "penilaian_fisioterapi.rps,penilaian_fisioterapi.rpd,penilaian_fisioterapi.td,penilaian_fisioterapi.hr,penilaian_fisioterapi.rr,penilaian_fisioterapi.suhu,penilaian_fisioterapi.nyeri_tekan,penilaian_fisioterapi.nyeri_gerak,"+
-                "penilaian_fisioterapi.nyeri_diam,penilaian_fisioterapi.palpasi,penilaian_fisioterapi.luas_gerak_sendi,penilaian_fisioterapi.kekuatan_otot,penilaian_fisioterapi.statis,penilaian_fisioterapi.dinamis,penilaian_fisioterapi.kognitif,"+
-                "penilaian_fisioterapi.auskultasi,penilaian_fisioterapi.alat_bantu,penilaian_fisioterapi.ket_bantu,penilaian_fisioterapi.prothesa,penilaian_fisioterapi.ket_pro,penilaian_fisioterapi.deformitas,penilaian_fisioterapi.ket_deformitas,"+
-                "penilaian_fisioterapi.resikojatuh,penilaian_fisioterapi.ket_resikojatuh,penilaian_fisioterapi.adl,penilaian_fisioterapi.lainlain_fungsional,penilaian_fisioterapi.ket_fisik,penilaian_fisioterapi.pemeriksaan_musculoskeletal,"+
-                "penilaian_fisioterapi.pemeriksaan_neuromuscular,penilaian_fisioterapi.pemeriksaan_cardiopulmonal,penilaian_fisioterapi.pemeriksaan_integument,penilaian_fisioterapi.pengukuran_musculoskeletal,penilaian_fisioterapi.pengukuran_neuromuscular,"+
-                "penilaian_fisioterapi.pengukuran_cardiopulmonal,penilaian_fisioterapi.pengukuran_integument,penilaian_fisioterapi.penunjang,penilaian_fisioterapi.diagnosis_fisio,penilaian_fisioterapi.rencana_terapi,penilaian_fisioterapi.nip,petugas.nama "+
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_terapi_wicara.tanggal,penilaian_terapi_wicara.informasi,penilaian_terapi_wicara.keluhan_utama,"+
+                "penilaian_terapi_wicara.rps,penilaian_terapi_wicara.rpd,penilaian_terapi_wicara.td,penilaian_terapi_wicara.hr,penilaian_terapi_wicara.rr,penilaian_terapi_wicara.suhu,penilaian_terapi_wicara.nyeri_tekan,penilaian_terapi_wicara.nyeri_gerak,"+
+                "penilaian_terapi_wicara.nyeri_diam,penilaian_terapi_wicara.palpasi,penilaian_terapi_wicara.luas_gerak_sendi,penilaian_terapi_wicara.kekuatan_otot,penilaian_terapi_wicara.statis,penilaian_terapi_wicara.dinamis,penilaian_terapi_wicara.kognitif,"+
+                "penilaian_terapi_wicara.auskultasi,penilaian_terapi_wicara.alat_bantu,penilaian_terapi_wicara.ket_bantu,penilaian_terapi_wicara.prothesa,penilaian_terapi_wicara.ket_pro,penilaian_terapi_wicara.deformitas,penilaian_terapi_wicara.ket_deformitas,"+
+                "penilaian_terapi_wicara.resikojatuh,penilaian_terapi_wicara.ket_resikojatuh,penilaian_terapi_wicara.adl,penilaian_terapi_wicara.lainlain_fungsional,penilaian_terapi_wicara.ket_fisik,penilaian_terapi_wicara.pemeriksaan_musculoskeletal,"+
+                "penilaian_terapi_wicara.pemeriksaan_neuromuscular,penilaian_terapi_wicara.pemeriksaan_cardiopulmonal,penilaian_terapi_wicara.pemeriksaan_integument,penilaian_terapi_wicara.pengukuran_musculoskeletal,penilaian_terapi_wicara.pengukuran_neuromuscular,"+
+                "penilaian_terapi_wicara.pengukuran_cardiopulmonal,penilaian_terapi_wicara.pengukuran_integument,penilaian_terapi_wicara.penunjang,penilaian_terapi_wicara.diagnosis_fisio,penilaian_terapi_wicara.rencana_terapi,penilaian_terapi_wicara.nip,petugas.nama "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join penilaian_fisioterapi on reg_periksa.no_rawat=penilaian_fisioterapi.no_rawat "+
-                "inner join petugas on penilaian_fisioterapi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join penilaian_terapi_wicara on reg_periksa.no_rawat=penilaian_terapi_wicara.no_rawat "+
+                "inner join petugas on penilaian_terapi_wicara.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianFisioActionPerformed
 
@@ -2702,59 +2671,59 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     }//GEN-LAST:event_KenyaringanKeyPressed
 
     private void KemampuanMenelanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KemampuanMenelanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KemampuanIramaKelancaran,Pernapasan);
     }//GEN-LAST:event_KemampuanMenelanKeyPressed
 
     private void PernapasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernapasanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KemampuanMenelan,Pendengaran);
     }//GEN-LAST:event_PernapasanKeyPressed
 
     private void PendengaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendengaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pernapasan,Penglihatan);
     }//GEN-LAST:event_PendengaranKeyPressed
 
     private void PenglihatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenglihatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pendengaran,Kinesek);
     }//GEN-LAST:event_PenglihatanKeyPressed
 
     private void KinesekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KinesekKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Penglihatan,Bicara);
     }//GEN-LAST:event_KinesekKeyPressed
 
     private void BicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BicaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kinesek,Tulisan);
     }//GEN-LAST:event_BicaraKeyPressed
 
     private void TulisanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TulisanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Bicara,Mimik);
     }//GEN-LAST:event_TulisanKeyPressed
 
     private void GestureKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GestureKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Mimik,PenunjangMedis);
     }//GEN-LAST:event_GestureKeyPressed
 
     private void MimikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MimikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tulisan,Gesture);
     }//GEN-LAST:event_MimikKeyPressed
 
     private void PenunjangMedisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenunjangMedisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Gesture,TujuanTerapiWicara);
     }//GEN-LAST:event_PenunjangMedisKeyPressed
 
     private void TujuanTerapiWicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanTerapiWicaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,PenunjangMedis,ProgramTerapiWicara);
     }//GEN-LAST:event_TujuanTerapiWicaraKeyPressed
 
     private void ProgramTerapiWicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProgramTerapiWicaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,TujuanTerapiWicara,Edukasi);
     }//GEN-LAST:event_ProgramTerapiWicaraKeyPressed
 
     private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,ProgramTerapiWicara,TindakLanjut);
     }//GEN-LAST:event_EdukasiKeyPressed
 
     private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Edukasi,BtnSimpan);
     }//GEN-LAST:event_TindakLanjutKeyPressed
 
     /**
@@ -2979,31 +2948,41 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         try{
             if(TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_fisioterapi.tanggal,penilaian_fisioterapi.informasi,penilaian_fisioterapi.keluhan_utama,"+
-                        "penilaian_fisioterapi.rps,penilaian_fisioterapi.rpd,penilaian_fisioterapi.td,penilaian_fisioterapi.hr,penilaian_fisioterapi.rr,penilaian_fisioterapi.suhu,penilaian_fisioterapi.nyeri_tekan,penilaian_fisioterapi.nyeri_gerak,"+
-                        "penilaian_fisioterapi.nyeri_diam,penilaian_fisioterapi.palpasi,penilaian_fisioterapi.luas_gerak_sendi,penilaian_fisioterapi.kekuatan_otot,penilaian_fisioterapi.statis,penilaian_fisioterapi.dinamis,penilaian_fisioterapi.kognitif,"+
-                        "penilaian_fisioterapi.auskultasi,penilaian_fisioterapi.alat_bantu,penilaian_fisioterapi.ket_bantu,penilaian_fisioterapi.prothesa,penilaian_fisioterapi.ket_pro,penilaian_fisioterapi.deformitas,penilaian_fisioterapi.ket_deformitas,"+
-                        "penilaian_fisioterapi.resikojatuh,penilaian_fisioterapi.ket_resikojatuh,penilaian_fisioterapi.adl,penilaian_fisioterapi.lainlain_fungsional,penilaian_fisioterapi.ket_fisik,penilaian_fisioterapi.pemeriksaan_musculoskeletal,"+
-                        "penilaian_fisioterapi.pemeriksaan_neuromuscular,penilaian_fisioterapi.pemeriksaan_cardiopulmonal,penilaian_fisioterapi.pemeriksaan_integument,penilaian_fisioterapi.pengukuran_musculoskeletal,penilaian_fisioterapi.pengukuran_neuromuscular,"+
-                        "penilaian_fisioterapi.pengukuran_cardiopulmonal,penilaian_fisioterapi.pengukuran_integument,penilaian_fisioterapi.penunjang,penilaian_fisioterapi.diagnosis_fisio,penilaian_fisioterapi.rencana_terapi,penilaian_fisioterapi.nip,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_terapi_wicara.tanggal,penilaian_terapi_wicara.diagnosa_terapi_wicara,penilaian_terapi_wicara.diagnosa_medis,"+
+                        "penilaian_terapi_wicara.anamnesa,penilaian_terapi_wicara.suhu,penilaian_terapi_wicara.rr,penilaian_terapi_wicara.nadi,penilaian_terapi_wicara.td,penilaian_terapi_wicara.perilaku_adaptif_kontak_mata,penilaian_terapi_wicara.perilaku_adaptif_atensi,"+
+                        "penilaian_terapi_wicara.perilaku_adaptif_perilaku,penilaian_terapi_wicara.kemampuan_bahasa_bicara_spontan,penilaian_terapi_wicara.kemampuan_bahasa_pemahaman_bahasa,penilaian_terapi_wicara.kemampuan_bahasa_pengujaran,penilaian_terapi_wicara.kemampuan_bahasa_membaca,"+
+                        "penilaian_terapi_wicara.kemampuan_bahasa_penamaan,penilaian_terapi_wicara.organ_wicara_anatomis_lip,penilaian_terapi_wicara.organ_wicara_anatomis_tongue,penilaian_terapi_wicara.organ_wicara_anatomis_hard_palate,penilaian_terapi_wicara.organ_wicara_anatomis_soft_palate,"+
+                        "penilaian_terapi_wicara.organ_wicara_anatomis_uvula,penilaian_terapi_wicara.organ_wicara_anatomis_mandibula,penilaian_terapi_wicara.organ_wicara_anatomis_maxila,penilaian_terapi_wicara.organ_wicara_anatomis_dental,penilaian_terapi_wicara.organ_wicara_anatomis_faring,"+
+                        "penilaian_terapi_wicara.organ_wicara_fisiologis_lip,penilaian_terapi_wicara.organ_wicara_fisiologis_tongue,penilaian_terapi_wicara.organ_wicara_fisiologis_hard_palate,penilaian_terapi_wicara.organ_wicara_fisiologis_soft_palate,penilaian_terapi_wicara.organ_wicara_fisiologis_uvula,"+
+                        "penilaian_terapi_wicara.organ_wicara_fisiologis_mandibula,penilaian_terapi_wicara.organ_wicara_fisiologis_maxilla,penilaian_terapi_wicara.organ_wicara_fisiologis_dental,penilaian_terapi_wicara.organ_wicara_fisiologis_faring,penilaian_terapi_wicara.aktifitas_oral_menghisap,"+
+                        "penilaian_terapi_wicara.aktifitas_oral_mengunyah,penilaian_terapi_wicara.aktifitas_oral_meniup,penilaian_terapi_wicara.kemampuan_artikulasi_subtitusi,penilaian_terapi_wicara.kemampuan_artikulasi_omisi,penilaian_terapi_wicara.kemampuan_artikulasi_distorsi,"+
+                        "penilaian_terapi_wicara.kemampuan_artikulasi_adisi,penilaian_terapi_wicara.resonasi,penilaian_terapi_wicara.kemampuan_suara_nada,penilaian_terapi_wicara.kemampuan_suara_kualitas,penilaian_terapi_wicara.kemampuan_suara_kenyaringan,penilaian_terapi_wicara.kemampuan_irama_kelancaran,"+
+                        "penilaian_terapi_wicara.kemampuan_menelan,penilaian_terapi_wicara.pernafasan,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_pendengaran,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_penglihatan,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_kinesik,"+
+                        "penilaian_terapi_wicara.tingkat_komunikasi_enkoding_bicara,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_tulisan,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_mimik,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_gesture,penilaian_terapi_wicara.penunjang_medis,"+
+                        "penilaian_terapi_wicara.perencanaan_terapi_tujuan,penilaian_terapi_wicara.perencanaan_terapi_program,penilaian_terapi_wicara.edukasi,penilaian_terapi_wicara.tindak_lanjut,penilaian_terapi_wicara.nip,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_fisioterapi on reg_periksa.no_rawat=penilaian_fisioterapi.no_rawat "+
-                        "inner join petugas on penilaian_fisioterapi.nip=petugas.nip where "+
-                        "penilaian_fisioterapi.tanggal between ? and ? order by penilaian_fisioterapi.tanggal");
+                        "inner join penilaian_terapi_wicara on reg_periksa.no_rawat=penilaian_terapi_wicara.no_rawat "+
+                        "inner join petugas on penilaian_terapi_wicara.nip=petugas.nip where "+
+                        "penilaian_terapi_wicara.tanggal between ? and ? order by penilaian_terapi_wicara.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_fisioterapi.tanggal,penilaian_fisioterapi.informasi,penilaian_fisioterapi.keluhan_utama,"+
-                        "penilaian_fisioterapi.rps,penilaian_fisioterapi.rpd,penilaian_fisioterapi.td,penilaian_fisioterapi.hr,penilaian_fisioterapi.rr,penilaian_fisioterapi.suhu,penilaian_fisioterapi.nyeri_tekan,penilaian_fisioterapi.nyeri_gerak,"+
-                        "penilaian_fisioterapi.nyeri_diam,penilaian_fisioterapi.palpasi,penilaian_fisioterapi.luas_gerak_sendi,penilaian_fisioterapi.kekuatan_otot,penilaian_fisioterapi.statis,penilaian_fisioterapi.dinamis,penilaian_fisioterapi.kognitif,"+
-                        "penilaian_fisioterapi.auskultasi,penilaian_fisioterapi.alat_bantu,penilaian_fisioterapi.ket_bantu,penilaian_fisioterapi.prothesa,penilaian_fisioterapi.ket_pro,penilaian_fisioterapi.deformitas,penilaian_fisioterapi.ket_deformitas,"+
-                        "penilaian_fisioterapi.resikojatuh,penilaian_fisioterapi.ket_resikojatuh,penilaian_fisioterapi.adl,penilaian_fisioterapi.lainlain_fungsional,penilaian_fisioterapi.ket_fisik,penilaian_fisioterapi.pemeriksaan_musculoskeletal,"+
-                        "penilaian_fisioterapi.pemeriksaan_neuromuscular,penilaian_fisioterapi.pemeriksaan_cardiopulmonal,penilaian_fisioterapi.pemeriksaan_integument,penilaian_fisioterapi.pengukuran_musculoskeletal,penilaian_fisioterapi.pengukuran_neuromuscular,"+
-                        "penilaian_fisioterapi.pengukuran_cardiopulmonal,penilaian_fisioterapi.pengukuran_integument,penilaian_fisioterapi.penunjang,penilaian_fisioterapi.diagnosis_fisio,penilaian_fisioterapi.rencana_terapi,penilaian_fisioterapi.nip,petugas.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_terapi_wicara.tanggal,penilaian_terapi_wicara.diagnosa_terapi_wicara,penilaian_terapi_wicara.diagnosa_medis,"+
+                        "penilaian_terapi_wicara.anamnesa,penilaian_terapi_wicara.suhu,penilaian_terapi_wicara.rr,penilaian_terapi_wicara.nadi,penilaian_terapi_wicara.td,penilaian_terapi_wicara.perilaku_adaptif_kontak_mata,penilaian_terapi_wicara.perilaku_adaptif_atensi,"+
+                        "penilaian_terapi_wicara.perilaku_adaptif_perilaku,penilaian_terapi_wicara.kemampuan_bahasa_bicara_spontan,penilaian_terapi_wicara.kemampuan_bahasa_pemahaman_bahasa,penilaian_terapi_wicara.kemampuan_bahasa_pengujaran,penilaian_terapi_wicara.kemampuan_bahasa_membaca,"+
+                        "penilaian_terapi_wicara.kemampuan_bahasa_penamaan,penilaian_terapi_wicara.organ_wicara_anatomis_lip,penilaian_terapi_wicara.organ_wicara_anatomis_tongue,penilaian_terapi_wicara.organ_wicara_anatomis_hard_palate,penilaian_terapi_wicara.organ_wicara_anatomis_soft_palate,"+
+                        "penilaian_terapi_wicara.organ_wicara_anatomis_uvula,penilaian_terapi_wicara.organ_wicara_anatomis_mandibula,penilaian_terapi_wicara.organ_wicara_anatomis_maxila,penilaian_terapi_wicara.organ_wicara_anatomis_dental,penilaian_terapi_wicara.organ_wicara_anatomis_faring,"+
+                        "penilaian_terapi_wicara.organ_wicara_fisiologis_lip,penilaian_terapi_wicara.organ_wicara_fisiologis_tongue,penilaian_terapi_wicara.organ_wicara_fisiologis_hard_palate,penilaian_terapi_wicara.organ_wicara_fisiologis_soft_palate,penilaian_terapi_wicara.organ_wicara_fisiologis_uvula,"+
+                        "penilaian_terapi_wicara.organ_wicara_fisiologis_mandibula,penilaian_terapi_wicara.organ_wicara_fisiologis_maxilla,penilaian_terapi_wicara.organ_wicara_fisiologis_dental,penilaian_terapi_wicara.organ_wicara_fisiologis_faring,penilaian_terapi_wicara.aktifitas_oral_menghisap,"+
+                        "penilaian_terapi_wicara.aktifitas_oral_mengunyah,penilaian_terapi_wicara.aktifitas_oral_meniup,penilaian_terapi_wicara.kemampuan_artikulasi_subtitusi,penilaian_terapi_wicara.kemampuan_artikulasi_omisi,penilaian_terapi_wicara.kemampuan_artikulasi_distorsi,"+
+                        "penilaian_terapi_wicara.kemampuan_artikulasi_adisi,penilaian_terapi_wicara.resonasi,penilaian_terapi_wicara.kemampuan_suara_nada,penilaian_terapi_wicara.kemampuan_suara_kualitas,penilaian_terapi_wicara.kemampuan_suara_kenyaringan,penilaian_terapi_wicara.kemampuan_irama_kelancaran,"+
+                        "penilaian_terapi_wicara.kemampuan_menelan,penilaian_terapi_wicara.pernafasan,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_pendengaran,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_penglihatan,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_kinesik,"+
+                        "penilaian_terapi_wicara.tingkat_komunikasi_enkoding_bicara,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_tulisan,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_mimik,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_gesture,penilaian_terapi_wicara.penunjang_medis,"+
+                        "penilaian_terapi_wicara.perencanaan_terapi_tujuan,penilaian_terapi_wicara.perencanaan_terapi_program,penilaian_terapi_wicara.edukasi,penilaian_terapi_wicara.tindak_lanjut,penilaian_terapi_wicara.nip,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_fisioterapi on reg_periksa.no_rawat=penilaian_fisioterapi.no_rawat "+
-                        "inner join petugas on penilaian_fisioterapi.nip=petugas.nip where penilaian_fisioterapi.tanggal between ? and ? and "+
+                        "inner join penilaian_terapi_wicara on reg_periksa.no_rawat=penilaian_terapi_wicara.no_rawat "+
+                        "inner join petugas on penilaian_terapi_wicara.nip=petugas.nip where penilaian_terapi_wicara.tanggal between ? and ? and "+
                         "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_fisioterapi.nip like ? or petugas.nama like ?) order by penilaian_fisioterapi.tanggal");
+                        "penilaian_terapi_wicara.nip like ? or petugas.nama like ?) order by penilaian_terapi_wicara.tanggal");
             }
                 
             try {
@@ -3023,16 +3002,24 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tanggal"),rs.getString("informasi"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),
-                        rs.getString("td"),rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("nyeri_tekan"),rs.getString("nyeri_gerak"),
-                        rs.getString("nyeri_diam"),rs.getString("palpasi"),rs.getString("luas_gerak_sendi"),rs.getString("kekuatan_otot"),rs.getString("statis"),
-                        rs.getString("dinamis"),rs.getString("kognitif"),rs.getString("auskultasi"),rs.getString("alat_bantu"),rs.getString("ket_bantu"),
-                        rs.getString("prothesa"),rs.getString("ket_pro"),rs.getString("deformitas"),rs.getString("ket_deformitas"),rs.getString("resikojatuh"),
-                        rs.getString("ket_resikojatuh"),rs.getString("adl"),rs.getString("lainlain_fungsional"),rs.getString("ket_fisik"),
-                        rs.getString("pemeriksaan_musculoskeletal"),rs.getString("pemeriksaan_neuromuscular"),rs.getString("pemeriksaan_cardiopulmonal"),
-                        rs.getString("pemeriksaan_integument"),rs.getString("pengukuran_musculoskeletal"),rs.getString("pengukuran_neuromuscular"),
-                        rs.getString("pengukuran_cardiopulmonal"),rs.getString("pengukuran_integument"),rs.getString("penunjang"),rs.getString("diagnosis_fisio"),
-                        rs.getString("rencana_terapi"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("tanggal"),rs.getString("diagnosa_terapi_wicara"),rs.getString("diagnosa_medis"),rs.getString("anamnesa"),rs.getString("suhu"),
+                        rs.getString("rr"),rs.getString("nadi"),rs.getString("td"),rs.getString("perilaku_adaptif_kontak_mata"),rs.getString("perilaku_adaptif_atensi"),
+                        rs.getString("perilaku_adaptif_perilaku"),rs.getString("kemampuan_bahasa_bicara_spontan"),rs.getString("kemampuan_bahasa_pemahaman_bahasa"),
+                        rs.getString("kemampuan_bahasa_pengujaran"),rs.getString("kemampuan_bahasa_membaca"),rs.getString("kemampuan_bahasa_penamaan"),
+                        rs.getString("organ_wicara_anatomis_lip"),rs.getString("organ_wicara_anatomis_tongue"),rs.getString("organ_wicara_anatomis_hard_palate"),
+                        rs.getString("organ_wicara_anatomis_soft_palate"),rs.getString("organ_wicara_anatomis_uvula"),rs.getString("organ_wicara_anatomis_mandibula"),
+                        rs.getString("organ_wicara_anatomis_maxila"),rs.getString("organ_wicara_anatomis_dental"),rs.getString("organ_wicara_anatomis_faring"),
+                        rs.getString("organ_wicara_fisiologis_lip"),rs.getString("organ_wicara_fisiologis_tongue"),rs.getString("organ_wicara_fisiologis_hard_palate"),
+                        rs.getString("organ_wicara_fisiologis_soft_palate"),rs.getString("organ_wicara_fisiologis_uvula"),rs.getString("organ_wicara_fisiologis_mandibula"),
+                        rs.getString("organ_wicara_fisiologis_maxilla"),rs.getString("organ_wicara_fisiologis_dental"),rs.getString("organ_wicara_fisiologis_faring"),
+                        rs.getString("aktifitas_oral_menghisap"),rs.getString("aktifitas_oral_mengunyah"),rs.getString("aktifitas_oral_meniup"),
+                        rs.getString("kemampuan_artikulasi_subtitusi"),rs.getString("kemampuan_artikulasi_omisi"),rs.getString("kemampuan_artikulasi_distorsi"),
+                        rs.getString("kemampuan_artikulasi_adisi"),rs.getString("resonasi"),rs.getString("kemampuan_suara_nada"),rs.getString("kemampuan_suara_kualitas"),
+                        rs.getString("kemampuan_suara_kenyaringan"),rs.getString("kemampuan_irama_kelancaran"),rs.getString("kemampuan_menelan"),rs.getString("pernafasan"),
+                        rs.getString("tingkat_komunikasi_dekoding_pendengaran"),rs.getString("tingkat_komunikasi_dekoding_penglihatan"),rs.getString("tingkat_komunikasi_dekoding_kinesik"),
+                        rs.getString("tingkat_komunikasi_enkoding_bicara"),rs.getString("tingkat_komunikasi_enkoding_tulisan"),rs.getString("tingkat_komunikasi_enkoding_mimik"),
+                        rs.getString("tingkat_komunikasi_enkoding_gesture"),rs.getString("penunjang_medis"),rs.getString("perencanaan_terapi_tujuan"),
+                        rs.getString("perencanaan_terapi_program"),rs.getString("edukasi"),rs.getString("tindak_lanjut"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -3186,7 +3173,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     }
     
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_fisioterapi where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_terapi_wicara where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -3197,7 +3184,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penilaian_fisioterapi","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,keluhan_utama=?,rps=?,rpd=?,td=?,hr=?,rr=?,suhu=?,nyeri_tekan=?,nyeri_gerak=?,nyeri_diam=?,palpasi=?,luas_gerak_sendi=?,kekuatan_otot=?,statis=?,dinamis=?,kognitif=?,auskultasi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,deformitas=?,ket_deformitas=?,resikojatuh=?,ket_resikojatuh=?,adl=?,lainlain_fungsional=?,ket_fisik=?,pemeriksaan_musculoskeletal=?,pemeriksaan_neuromuscular=?,pemeriksaan_cardiopulmonal=?,pemeriksaan_integument=?,pengukuran_musculoskeletal=?,pengukuran_neuromuscular=?,pengukuran_cardiopulmonal=?,pengukuran_integument=?,penunjang=?,diagnosis_fisio=?,rencana_terapi=?,nip=?",44,new String[]{
+        /*if(Sequel.mengedittf("penilaian_terapi_wicara","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,keluhan_utama=?,rps=?,rpd=?,td=?,hr=?,rr=?,suhu=?,nyeri_tekan=?,nyeri_gerak=?,nyeri_diam=?,palpasi=?,luas_gerak_sendi=?,kekuatan_otot=?,statis=?,dinamis=?,kognitif=?,auskultasi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,deformitas=?,ket_deformitas=?,resikojatuh=?,ket_resikojatuh=?,adl=?,lainlain_fungsional=?,ket_fisik=?,pemeriksaan_musculoskeletal=?,pemeriksaan_neuromuscular=?,pemeriksaan_cardiopulmonal=?,pemeriksaan_integument=?,pengukuran_musculoskeletal=?,pengukuran_neuromuscular=?,pengukuran_cardiopulmonal=?,pengukuran_integument=?,penunjang=?,diagnosis_fisio=?,rencana_terapi=?,nip=?",44,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),KeluhanUtama.getText(),
                 RiwayatPenyakitSekarang.getText(),RiwayatPenyakitDahulu.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),NyeriTekan.getText(),NyeriGerak.getText(),NyeriDiam.getText(),
                 Palpasi.getText(),LuasGerakSendi.getText(),KekuatanOtot.getText(),Statis.getText(),Dinamis.getText(),Kognitif.getText(),Auskultasi.getText(),AlatBantu.getSelectedItem().toString(),
