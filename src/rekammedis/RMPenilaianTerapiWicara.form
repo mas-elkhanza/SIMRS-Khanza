@@ -2265,7 +2265,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel80">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="S3 : Tak l Kinesek"/>
+                            <Property name="text" type="java.lang.String" value="S3 : Tak | Kinesek"/>
                             <Property name="name" type="java.lang.String" value="jLabel80" noResource="true"/>
                           </Properties>
                           <Constraints>

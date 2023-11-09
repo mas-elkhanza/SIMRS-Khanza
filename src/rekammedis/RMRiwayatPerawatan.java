@@ -279,6 +279,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanKeperawatanRalanPsikiatri = new widget.CekBox();
         chkAsuhanKeperawatanRalanGeriatri = new widget.CekBox();
         chkAsuhanFisioterapi = new widget.CekBox();
+        chkAsuhanTerapiWicara = new widget.CekBox();
         chkAsuhanPsikolog = new widget.CekBox();
         chkAsuhanKeperawatanRanap = new widget.CekBox();
         chkAsuhanKeperawatanRanapKandungan = new widget.CekBox();
@@ -732,6 +733,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanFisioterapi.setOpaque(false);
         chkAsuhanFisioterapi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanFisioterapi);
+
+        chkAsuhanTerapiWicara.setSelected(true);
+        chkAsuhanTerapiWicara.setText("Penilaian Terapi Wicara");
+        chkAsuhanTerapiWicara.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanTerapiWicara.setName("chkAsuhanTerapiWicara"); // NOI18N
+        chkAsuhanTerapiWicara.setOpaque(false);
+        chkAsuhanTerapiWicara.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanTerapiWicara);
 
         chkAsuhanPsikolog.setSelected(true);
         chkAsuhanPsikolog.setText("Penilaian Psikolog");
@@ -2068,6 +2077,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanMedisRalanKedokteranFisik.setSelected(true);
             chkAsuhanMedisIGDPsikiatri.setSelected(true);
             chkPenilaianUlangNyeri.setSelected(true);
+            chkAsuhanTerapiWicara.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2184,6 +2194,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanMedisRalanKedokteranFisik.setSelected(false);
             chkAsuhanMedisIGDPsikiatri.setSelected(false);
             chkPenilaianUlangNyeri.setSelected(false);
+            chkAsuhanTerapiWicara.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2304,6 +2315,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanTambahanGeriatri;
     private widget.CekBox chkAsuhanTambahanMelarikanDiri;
     private widget.CekBox chkAsuhanTambahanPerilakuKekerasan;
+    private widget.CekBox chkAsuhanTerapiWicara;
     private widget.CekBox chkBerkasDigital;
     private widget.CekBox chkCatatanADIMEGizi;
     private widget.CekBox chkCatatanCekGDS;
@@ -2795,6 +2807,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanKeperawatanRalanGeriatri(rs.getString("no_rawat"));
                     //menampilkan asuhan fisioterapi
                     menampilkanAsuhanFisioterapi(rs.getString("no_rawat"));
+                    //menampilkan asuhan terapi wicara
+                    menampilkanPenilaianTerapiWicara(rs.getString("no_rawat"));
                     //menampilkan asuhan psikolog
                     menampilkanAsuhanPsikolog(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis IGD
@@ -21417,6 +21431,262 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                                "<td width='100%' border='0'>"+rs2.getString("edukasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Asuhan Medis IGD Psikiatri : "+e);
+        }
+    }
+    
+    private void menampilkanPenilaianTerapiWicara(String norawat) {
+        try {
+            if(chkAsuhanTerapiWicara.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_terapi_wicara.tanggal,penilaian_terapi_wicara.diagnosa_terapi_wicara,penilaian_terapi_wicara.diagnosa_medis,penilaian_terapi_wicara.anamnesa,penilaian_terapi_wicara.suhu,penilaian_terapi_wicara.rr,penilaian_terapi_wicara.nadi,penilaian_terapi_wicara.td,"+
+                            "penilaian_terapi_wicara.perilaku_adaptif_kontak_mata,penilaian_terapi_wicara.perilaku_adaptif_atensi,penilaian_terapi_wicara.perilaku_adaptif_perilaku,penilaian_terapi_wicara.kemampuan_bahasa_bicara_spontan,penilaian_terapi_wicara.kemampuan_bahasa_pemahaman_bahasa,"+
+                            "penilaian_terapi_wicara.kemampuan_bahasa_pengujaran,penilaian_terapi_wicara.kemampuan_bahasa_membaca,penilaian_terapi_wicara.kemampuan_bahasa_penamaan,penilaian_terapi_wicara.organ_wicara_anatomis_lip,penilaian_terapi_wicara.organ_wicara_anatomis_tongue,"+
+                            "penilaian_terapi_wicara.organ_wicara_anatomis_hard_palate,penilaian_terapi_wicara.organ_wicara_anatomis_soft_palate,penilaian_terapi_wicara.organ_wicara_anatomis_uvula,penilaian_terapi_wicara.organ_wicara_anatomis_mandibula,penilaian_terapi_wicara.organ_wicara_anatomis_maxila,"+
+                            "penilaian_terapi_wicara.organ_wicara_anatomis_dental,penilaian_terapi_wicara.organ_wicara_anatomis_faring,penilaian_terapi_wicara.organ_wicara_fisiologis_lip,penilaian_terapi_wicara.organ_wicara_fisiologis_tongue,penilaian_terapi_wicara.organ_wicara_fisiologis_hard_palate,"+
+                            "penilaian_terapi_wicara.organ_wicara_fisiologis_soft_palate,penilaian_terapi_wicara.organ_wicara_fisiologis_uvula,penilaian_terapi_wicara.organ_wicara_fisiologis_mandibula,penilaian_terapi_wicara.organ_wicara_fisiologis_maxilla,penilaian_terapi_wicara.organ_wicara_fisiologis_dental,"+
+                            "penilaian_terapi_wicara.organ_wicara_fisiologis_faring,penilaian_terapi_wicara.aktifitas_oral_menghisap,penilaian_terapi_wicara.aktifitas_oral_mengunyah,penilaian_terapi_wicara.aktifitas_oral_meniup,penilaian_terapi_wicara.kemampuan_artikulasi_subtitusi,"+
+                            "penilaian_terapi_wicara.kemampuan_artikulasi_omisi,penilaian_terapi_wicara.kemampuan_artikulasi_distorsi,penilaian_terapi_wicara.kemampuan_artikulasi_adisi,penilaian_terapi_wicara.resonasi,penilaian_terapi_wicara.kemampuan_suara_nada,penilaian_terapi_wicara.kemampuan_suara_kualitas,"+
+                            "penilaian_terapi_wicara.kemampuan_suara_kenyaringan,penilaian_terapi_wicara.kemampuan_irama_kelancaran,penilaian_terapi_wicara.kemampuan_menelan,penilaian_terapi_wicara.pernafasan,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_pendengaran,"+
+                            "penilaian_terapi_wicara.tingkat_komunikasi_dekoding_penglihatan,penilaian_terapi_wicara.tingkat_komunikasi_dekoding_kinesik,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_bicara,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_tulisan,"+
+                            "penilaian_terapi_wicara.tingkat_komunikasi_enkoding_mimik,penilaian_terapi_wicara.tingkat_komunikasi_enkoding_gesture,penilaian_terapi_wicara.penunjang_medis,penilaian_terapi_wicara.perencanaan_terapi_tujuan,penilaian_terapi_wicara.perencanaan_terapi_program,"+
+                            "penilaian_terapi_wicara.edukasi,penilaian_terapi_wicara.tindak_lanjut,penilaian_terapi_wicara.nip,petugas.nama from penilaian_terapi_wicara inner join petugas on penilaian_terapi_wicara.nip=petugas.nip where penilaian_terapi_wicara.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Terapi Wicara</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='67%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "DATA PENILAIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Diagnosa Terapi Wicara : "+rs2.getString("diagnosa_terapi_wicara").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Diagnosa Medis : "+rs2.getString("diagnosa_medis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Anamnesa : "+rs2.getString("anamnesa").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>"+
+                                                    "Tanda-tanda Vital :"+
+                                                    "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                        "<tr>"+
+                                                           "<td width='25%' valign='top' border='0'>Tensi Darah : "+rs2.getString("td")+" mmHg</td>"+
+                                                           "<td width='25%' valign='top' border='0'>Suhu : "+rs2.getString("suhu")+" °C</td>"+
+                                                           "<td width='25%' valign='top' border='0'>Nadi : "+rs2.getString("nadi")+" x/menit</td>"+
+                                                           "<td width='25%' valign='top' border='0'>RR : "+rs2.getString("rr")+" x/menit</td>"+
+                                                        "</tr>"+
+                                                    "</table>"+
+                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>"+
+                                                    "Perilaku Adaptif :"+
+                                                    "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                        "<tr>"+
+                                                           "<td width='50%' valign='top' border='0'>Kontak Mata : "+rs2.getString("perilaku_adaptif_kontak_mata")+"</td>"+
+                                                           "<td width='50%' valign='top' border='0'>Atensi : "+rs2.getString("perilaku_adaptif_atensi")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='50%' valign='top' colspan='2' border='0'>Perilaku : "+rs2.getString("perilaku_adaptif_perilaku")+"</td>"+
+                                                        "</tr>"+
+                                                    "</table>"+
+                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>"+
+                                                    "Kemampuan Bahasa :"+
+                                                    "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                        "<tr>"+
+                                                           "<td width='50%' valign='top' border='0'>Pengujaran : "+rs2.getString("kemampuan_bahasa_pengujaran")+"</td>"+
+                                                           "<td width='50%' valign='top' border='0'>Bicara Spontan : "+rs2.getString("kemampuan_bahasa_bicara_spontan")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='50%' valign='top' border='0'>Membaca : "+rs2.getString("kemampuan_bahasa_membaca")+"</td>"+
+                                                           "<td width='50%' valign='top' border='0'>Pemahaman Bahasa : "+rs2.getString("kemampuan_bahasa_pemahaman_bahasa")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='50%' valign='top' colspan='2' border='0'>Penamaan : "+rs2.getString("kemampuan_bahasa_penamaan")+"</td>"+
+                                                        "</tr>"+
+                                                    "</table>"+
+                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>"+
+                                                    "Wicara :"+
+                                                    "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0' colspan='3'>Organ Wicara Anatomis :</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Lip : "+rs2.getString("organ_wicara_anatomis_lip")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Tongue : "+rs2.getString("organ_wicara_anatomis_tongue")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Hard Palate : "+rs2.getString("organ_wicara_anatomis_hard_palate")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Soft Palate : "+rs2.getString("organ_wicara_anatomis_soft_palate")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Uvula : "+rs2.getString("organ_wicara_anatomis_uvula")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Mandibula : "+rs2.getString("organ_wicara_anatomis_mandibula")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Maxilla : "+rs2.getString("organ_wicara_anatomis_maxila")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Dental : "+rs2.getString("organ_wicara_anatomis_dental")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Faring : "+rs2.getString("organ_wicara_anatomis_faring")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0' colspan='3'>Organ Wicara Fisiologis :</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Lip : "+rs2.getString("organ_wicara_fisiologis_lip")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Tongue : "+rs2.getString("organ_wicara_fisiologis_tongue")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Hard Palate : "+rs2.getString("organ_wicara_fisiologis_hard_palate")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Soft Palate : "+rs2.getString("organ_wicara_fisiologis_soft_palate")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Uvula : "+rs2.getString("organ_wicara_fisiologis_uvula")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Mandibula : "+rs2.getString("organ_wicara_fisiologis_mandibula")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Maxilla : "+rs2.getString("organ_wicara_fisiologis_maxilla")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Dental : "+rs2.getString("organ_wicara_fisiologis_dental")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Faring : "+rs2.getString("organ_wicara_fisiologis_faring")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0' colspan='3'>Aktifitas Oral :</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Menghisap : "+rs2.getString("aktifitas_oral_menghisap").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Mengunyah : "+rs2.getString("aktifitas_oral_mengunyah").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Meniup : "+rs2.getString("aktifitas_oral_meniup").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0' colspan='3'>Kemampuan Artikulasi :</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px'>Subtitusi : "+rs2.getString("kemampuan_artikulasi_subtitusi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Omisi : "+rs2.getString("kemampuan_artikulasi_omisi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Distorsi : "+rs2.getString("kemampuan_artikulasi_distorsi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='34%' valign='top' border='0' style='margin-left: 10px' colspan='3'>Adisi : "+rs2.getString("kemampuan_artikulasi_adisi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0' colspan='3'>Resonansi : "+rs2.getString("resonasi")+"</td>"+
+                                                        "</tr>"+
+                                                    "</table>"+
+                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>"+
+                                                    "Kemampuan Suara :"+
+                                                    "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                        "<tr>"+
+                                                           "<td width='33%' valign='top' border='0'>Nada : "+rs2.getString("kemampuan_suara_nada")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Kualitas : "+rs2.getString("kemampuan_suara_kualitas")+"</td>"+
+                                                           "<td width='33%' valign='top' border='0'>Kenyaringan : "+rs2.getString("kemampuan_suara_kenyaringan")+"</td>"+
+                                                        "</tr>"+
+                                                    "</table>"+
+                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Kemampuan Irama Kelancaran : "+rs2.getString("kemampuan_irama_kelancaran")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Kemampuan Menelan : "+rs2.getString("kemampuan_menelan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Pernapasan : "+rs2.getString("pernafasan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>"+
+                                                    "Tingkat Komunikasi :"+
+                                                    "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0' colspan='3'>Dekoding :</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='51%' valign='top' border='0' style='margin-left: 10px'>S1 : Pendengaran <u>"+rs2.getString("tingkat_komunikasi_dekoding_pendengaran")+"</u></td>"+
+                                                           "<td width='49%' valign='top' border='0'>S2 : Penglihatan <u>"+rs2.getString("tingkat_komunikasi_dekoding_penglihatan")+"</u></td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='51%' valign='top' border='0' style='margin-left: 10px' colspan='2'>S3 : Tak | Kinesek <u>"+rs2.getString("tingkat_komunikasi_dekoding_kinesik")+"</u></td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0' colspan='3'>Enkoding :</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='51%' valign='top' border='0' style='margin-left: 10px'>T1 : Bicara <u>"+rs2.getString("tingkat_komunikasi_enkoding_bicara")+"</u></td>"+
+                                                           "<td width='49%' valign='top' border='0'>T2 : Tulisan <u>"+rs2.getString("tingkat_komunikasi_enkoding_tulisan")+"</u></td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='51%' valign='top' border='0' style='margin-left: 10px'>T3 : Mimik <u>"+rs2.getString("tingkat_komunikasi_enkoding_mimik")+"</u></td>"+
+                                                           "<td width='49%' valign='top' border='0'>T4 : Gesture <u>"+rs2.getString("tingkat_komunikasi_enkoding_gesture")+"</u></td>"+
+                                                        "</tr>"+
+                                                    "</table>"+
+                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Penunjang Medis : "+rs2.getString("penunjang_medis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>"+
+                                                    "Perencanaan Terapi Wicara :"+
+                                                    "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0'>Tujuan Terapi Wicara : "+rs2.getString("perencanaan_terapi_tujuan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr>"+
+                                                           "<td width='100%' valign='top' border='0'>Program Terapi Wicara : "+rs2.getString("perencanaan_terapi_program").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                        "</tr>"+
+                                                    "</table>"+
+                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Edukasi : "+rs2.getString("edukasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%'>Tindak Lanjut : "+rs2.getString("tindak_lanjut").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+

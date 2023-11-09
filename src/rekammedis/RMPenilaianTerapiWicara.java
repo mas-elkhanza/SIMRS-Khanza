@@ -1776,7 +1776,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         FormInput.add(Penglihatan);
         Penglihatan.setBounds(564, 1240, 290, 23);
 
-        jLabel80.setText("S3 : Tak l Kinesek");
+        jLabel80.setText("S3 : Tak | Kinesek");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
         jLabel80.setBounds(0, 1270, 166, 23);
