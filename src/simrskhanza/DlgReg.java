@@ -116,6 +116,7 @@ import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanEWSD;
 import rekammedis.RMPemantauanEWSNeonatus;
+import rekammedis.RMPengkajianRestrain;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanIGD;
@@ -948,6 +949,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnPenilaianAwalMedisIGDPsikiatri = new javax.swing.JMenuItem();
         MnPenilaianPasienKeracunan = new javax.swing.JMenuItem();
         MnCatatanObservasiIGD = new javax.swing.JMenuItem();
+        MnPengkajianRestrain = new javax.swing.JMenuItem();
         MnPemantauanPEWSAnak = new javax.swing.JMenuItem();
         MnPemantauanPEWSDewasa = new javax.swing.JMenuItem();
         MnPemantauanMEOWSObstetri = new javax.swing.JMenuItem();
@@ -1894,6 +1896,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         MnRMIGD.add(MnCatatanObservasiIGD);
+
+        MnPengkajianRestrain.setBackground(new java.awt.Color(255, 255, 254));
+        MnPengkajianRestrain.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPengkajianRestrain.setForeground(new java.awt.Color(50, 50, 50));
+        MnPengkajianRestrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPengkajianRestrain.setText("Pengkajian Restrain");
+        MnPengkajianRestrain.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPengkajianRestrain.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPengkajianRestrain.setName("MnPengkajianRestrain"); // NOI18N
+        MnPengkajianRestrain.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPengkajianRestrain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPengkajianRestrainActionPerformed(evt);
+            }
+        });
+        MnRMIGD.add(MnPengkajianRestrain);
 
         MnPemantauanPEWSAnak.setBackground(new java.awt.Color(255, 255, 254));
         MnPemantauanPEWSAnak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -14345,6 +14363,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPenilaianTerapiWicaraActionPerformed
 
+    private void MnPengkajianRestrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPengkajianRestrainActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPengkajianRestrain form=new RMPengkajianRestrain(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPengkajianRestrainActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14514,6 +14555,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPemantauanPEWSDewasa;
     private javax.swing.JMenuItem MnPemberianObat;
     private javax.swing.JMenuItem MnPemberianObat1;
+    private javax.swing.JMenuItem MnPengkajianRestrain;
     private javax.swing.JMenuItem MnPenilaianAwalKeperawatanBayiAnak;
     private javax.swing.JMenuItem MnPenilaianAwalKeperawatanGigi;
     private javax.swing.JMenuItem MnPenilaianAwalKeperawatanIGD;
@@ -15314,6 +15356,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianAwalMedisIGDPsikiatri.setEnabled(akses.getpenilaian_medis_ralan_gawat_darurat_psikiatri());
         MnPenilaianUlangNyeri.setEnabled(akses.getpenilaian_ulang_nyeri());
         MnPenilaianTerapiWicara.setEnabled(akses.getpenilaian_terapi_wicara());
+        MnPengkajianRestrain.setEnabled(akses.getpengkajian_restrain());
     }
     
     private void isNumber(){         
