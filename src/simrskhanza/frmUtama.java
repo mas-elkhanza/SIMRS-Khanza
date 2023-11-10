@@ -834,6 +834,7 @@ import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanEWSD;
 import rekammedis.RMPemantauanEWSNeonatus;
+import rekammedis.RMPengkajianRestrain;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanIGD;
@@ -20707,6 +20708,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPengkajianRestrainActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPengkajianRestrain aplikasi=new RMPengkajianRestrain(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21387,7 +21401,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa,
             btnPenilaianRisikoJatuhPsikiatri,btnPenilaianLanjutanSkriningFungsional,btnPenilaianAwalMedisRalanRehabMedik,btnTemplatePersetujuanPenolakanTindakan,
             btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
-            btnPenilaianUlangNyeri,btnPenilaianTerapiWicara;
+            btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain;
     
     public void isWall(){
         try{            
@@ -25144,6 +25158,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettransfer_pasien_antar_ruang()==true){
                 Panelmenu.add(btnTransferPasienAntarRuang);
+                jmlmenu++;
+            }
+            
+            if(akses.getpengkajian_restrain()==true){
+                Panelmenu.add(btnPengkajianRestrain);
                 jmlmenu++;
             }
             
@@ -30018,6 +30037,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettransfer_pasien_antar_ruang()==true){
             Panelmenu.add(btnTransferPasienAntarRuang);
+            jmlmenu++;
+        }
+        
+        if(akses.getpengkajian_restrain()==true){
+            Panelmenu.add(btnPengkajianRestrain);
             jmlmenu++;
         }
         
@@ -36340,6 +36364,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpengkajian_restrain()==true){
+            if(btnPengkajianRestrain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengkajianRestrain);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getcatatan_cek_gds()==true){
             if(btnCatatanCekGDS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanCekGDS);
@@ -42210,5 +42241,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianTerapiWicara.setName("btnPenilaianTerapiWicara"); 
         btnPenilaianTerapiWicara.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianTerapiWicara.addActionListener(this::btnPenilaianTerapiWicaraActionPerformed);
+        
+        btnPengkajianRestrain = new widget.ButtonBig();
+        btnPengkajianRestrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5982122_camping_forest_holidays_nature_rope_icon.png")));
+        btnPengkajianRestrain.setText("Pengkajian Restrain");
+        btnPengkajianRestrain.setIconTextGap(0);
+        btnPengkajianRestrain.setName("btnPengkajianRestrain"); 
+        btnPengkajianRestrain.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengkajianRestrain.addActionListener(this::btnPengkajianRestrainActionPerformed);
     }
 }

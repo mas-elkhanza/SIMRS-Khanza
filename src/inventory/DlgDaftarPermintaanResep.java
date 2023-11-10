@@ -562,6 +562,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         BtnKonselingFarmasi = new widget.Button();
         BtnInformasiObat = new widget.Button();
         BtnSEPBPJS = new widget.Button();
+        BtnObat23HariBPJS = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -598,7 +599,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-09-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -612,7 +613,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-09-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1308,6 +1309,23 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnSEPBPJS);
+
+        BtnObat23HariBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnObat23HariBPJS.setText("Obat 23 Hari BPJS");
+        BtnObat23HariBPJS.setFocusPainted(false);
+        BtnObat23HariBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnObat23HariBPJS.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnObat23HariBPJS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnObat23HariBPJS.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnObat23HariBPJS.setName("BtnObat23HariBPJS"); // NOI18N
+        BtnObat23HariBPJS.setPreferredSize(new java.awt.Dimension(135, 23));
+        BtnObat23HariBPJS.setRoundRect(false);
+        BtnObat23HariBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnObat23HariBPJSActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnObat23HariBPJS);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -2727,6 +2745,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnSEPBPJSActionPerformed
 
+    private void BtnObat23HariBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnObat23HariBPJSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnObat23HariBPJSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2751,6 +2773,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnInformasiObat;
     private widget.Button BtnKeluar;
     private widget.Button BtnKonselingFarmasi;
+    private widget.Button BtnObat23HariBPJS;
     private widget.Button BtnPemberianObat;
     private widget.Button BtnPenyerahan;
     private widget.Button BtnPiutangObat;
@@ -2991,6 +3014,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnInformasiObat.setEnabled(akses.getpelayanan_informasi_obat());
         BtnRiwayat.setEnabled(akses.getresume_pasien()); 
         BtnSEPBPJS.setEnabled(akses.getbpjs_sep()); 
+        BtnObat23HariBPJS.setEnabled(akses.getbpjs_obat_23hari_apotek()); 
     }
     
     public void setCari(String cari){
