@@ -56,16 +56,16 @@ public class WindowInputPassword extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Password ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Password ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame6.setLayout(null);
 
         PassLama.setHighlighter(null);
         internalFrame6.add(PassLama);
-        PassLama.setBounds(128, 30, 190, 23);
+        PassLama.setBounds(108, 30, 210, 23);
 
         jLabel9.setText("Password Lama :");
         internalFrame6.add(jLabel9);
-        jLabel9.setBounds(0, 30, 125, 23);
+        jLabel9.setBounds(0, 30, 105, 23);
 
         BtnClosePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
         BtnClosePass.setMnemonic('2');
@@ -103,19 +103,19 @@ public class WindowInputPassword extends javax.swing.JDialog {
 
         jLabel10.setText("Password Baru :");
         internalFrame6.add(jLabel10);
-        jLabel10.setBounds(0, 60, 125, 23);
+        jLabel10.setBounds(0, 60, 105, 23);
 
         Passbaru1.setHighlighter(null);
         internalFrame6.add(Passbaru1);
-        Passbaru1.setBounds(128, 60, 190, 23);
+        Passbaru1.setBounds(108, 60, 210, 23);
 
         jLabel12.setText("Password Baru :");
         internalFrame6.add(jLabel12);
-        jLabel12.setBounds(0, 90, 125, 23);
+        jLabel12.setBounds(0, 90, 105, 23);
 
         PassBaru2.setHighlighter(null);
         internalFrame6.add(PassBaru2);
-        PassBaru2.setBounds(128, 90, 190, 23);
+        PassBaru2.setBounds(108, 90, 210, 23);
 
         getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 

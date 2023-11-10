@@ -2012,7 +2012,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         TNoRw.setText(norwt);
         this.status=posisi;
         try {
-            pssetpj=koneksi.prepareStatement("select * from set_pjlab");
+            pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlabmb from set_pjlab");
             try {                              
                 rssetpj=pssetpj.executeQuery();
                 while(rssetpj.next()){
@@ -2263,7 +2263,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         this.status=posisi;
         isRawat();
         try {
-            pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlab from set_pjlab");
+            pssetpj=koneksi.prepareStatement("select set_pjlab.kd_dokterlabmb from set_pjlab");
             try {                              
                 rssetpj=pssetpj.executeQuery();
                 while(rssetpj.next()){

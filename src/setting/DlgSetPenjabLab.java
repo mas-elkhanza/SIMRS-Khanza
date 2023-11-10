@@ -21,8 +21,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -38,7 +38,9 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    public  DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private int pilihan=0,i=0;
 
     /** Creates new form DlgAdmin
@@ -48,8 +50,10 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"P.J.Laboratorium PK","P.J.Radiologi","P.J.Hemodialisa","P.J.Tranfusi Darah","P.J.Laboratorium PA"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "P.J.Laboratorium PK","P.J.Radiologi","P.J.Hemodialisa","P.J.Tranfusi Darah","P.J.Laboratorium PA","P.J.Laboratorium MB",
+                "Kode PK","Kode Radiologi","Kode Hemodialisa","Kode Tranfusi Darah","Kode PA","Kode MB"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -57,7 +61,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbAdmin.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(220);
@@ -69,6 +73,11 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
                 column.setPreferredWidth(220);
             }else if(i==4){
                 column.setPreferredWidth(220);
+            }else if(i==5){
+                column.setPreferredWidth(220);
+            }else{
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
 
@@ -78,6 +87,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         kddokter3.setDocument(new batasInput((byte)20).getKata(kddokter3));
         kddokter4.setDocument(new batasInput((byte)20).getKata(kddokter4));
         kddokter5.setDocument(new batasInput((byte)20).getKata(kddokter5));
+        kddokter6.setDocument(new batasInput((byte)20).getKata(kddokter6));
 
         dokter.addWindowListener(new WindowListener() {
             @Override
@@ -107,6 +117,10 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
                         kddokter5.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                         TDokter5.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                         kddokter5.requestFocus();
+                    }else if(pilihan==6){
+                        kddokter6.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        TDokter6.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        kddokter6.requestFocus();
                     }
                 }                
             }
@@ -155,6 +169,10 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         kddokter5 = new widget.TextBox();
         TDokter5 = new widget.TextBox();
         BtnDokter5 = new widget.Button();
+        jLabel18 = new widget.Label();
+        kddokter6 = new widget.TextBox();
+        TDokter6 = new widget.TextBox();
+        BtnDokter6 = new widget.Button();
         panelGlass5 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -197,7 +215,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 167));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 197));
         panelGlass7.setLayout(null);
 
         jLabel13.setText("P.J.Laboratorium PK :");
@@ -360,6 +378,38 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         panelGlass7.add(BtnDokter5);
         BtnDokter5.setBounds(485, 132, 28, 23);
 
+        jLabel18.setText("P.J.Laboratorium MB :");
+        jLabel18.setName("jLabel18"); // NOI18N
+        panelGlass7.add(jLabel18);
+        jLabel18.setBounds(0, 162, 120, 23);
+
+        kddokter6.setHighlighter(null);
+        kddokter6.setName("kddokter6"); // NOI18N
+        kddokter6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kddokter6KeyPressed(evt);
+            }
+        });
+        panelGlass7.add(kddokter6);
+        kddokter6.setBounds(122, 162, 95, 23);
+
+        TDokter6.setEditable(false);
+        TDokter6.setName("TDokter6"); // NOI18N
+        panelGlass7.add(TDokter6);
+        TDokter6.setBounds(218, 162, 264, 23);
+
+        BtnDokter6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter6.setMnemonic('3');
+        BtnDokter6.setToolTipText("ALt+3");
+        BtnDokter6.setName("BtnDokter6"); // NOI18N
+        BtnDokter6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokter6ActionPerformed(evt);
+            }
+        });
+        panelGlass7.add(BtnDokter6);
+        BtnDokter6.setBounds(485, 162, 28, 23);
+
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
         panelGlass5.setName("panelGlass5"); // NOI18N
@@ -478,12 +528,18 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             Valid.textKosong(kddokter4,"Penanggung Jawab Unit Tranfusi Darah");
         }else if(TDokter5.getText().trim().equals("")||kddokter5.getText().trim().equals("")){
             Valid.textKosong(kddokter5,"Penanggung Jawab Laborat PA");
+        }else if(TDokter6.getText().trim().equals("")||kddokter6.getText().trim().equals("")){
+            Valid.textKosong(kddokter6,"Penanggung Jawab Laborat MB");
         }else if(tabMode.getRowCount()==0){
-            Sequel.menyimpan("set_pjlab","?,?,?,?,?","Penanggung Jawab",5,new String[]{
-                kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText()
-            });
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("set_pjlab","?,?,?,?,?,?","Penanggung Jawab",6,new String[]{
+                kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
+            })==true){
+                tabMode.addRow(new String[]{
+                    TDokter.getText(),TDokter2.getText(),TDokter3.getText(),TDokter4.getText(),TDokter5.getText(),TDokter6.getText(),
+                    kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
+                });
+                emptTeks();
+            }
         }else if(tabMode.getRowCount()>0){
             JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu Admin Utama ...!!!!");
             kddokter.requestFocus();
@@ -514,7 +570,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             kddokter.requestFocus();
         }else{
             Sequel.queryu("delete from set_pjlab");
-            tampil();
+            Valid.tabelKosong(tabMode);
             emptTeks();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -529,7 +585,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TDokter.getText().trim().equals("")||kddokter.getText().trim().equals("")){
-            Valid.textKosong(kddokter,"Penanggung Jawab Laborat");
+            Valid.textKosong(kddokter,"Penanggung Jawab Laborat PK");
         }else if(TDokter2.getText().trim().equals("")||kddokter2.getText().trim().equals("")){
             Valid.textKosong(kddokter2,"Penanggung Jawab Radiologi");
         }else if(TDokter3.getText().trim().equals("")||kddokter3.getText().trim().equals("")){
@@ -538,13 +594,20 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             Valid.textKosong(kddokter4,"Penanggung Jawab Unit Tranfusi Darah");
         }else if(TDokter5.getText().trim().equals("")||kddokter5.getText().trim().equals("")){
             Valid.textKosong(kddokter5,"Penanggung Jawab Laborat PA");
+        }else if(TDokter6.getText().trim().equals("")||kddokter6.getText().trim().equals("")){
+            Valid.textKosong(kddokter6,"Penanggung Jawab Laborat MB");
         }else{
             Sequel.queryu("delete from set_pjlab");
-            Sequel.menyimpan("set_pjlab","?,?,?,?,?","Penanggung Jawab",5,new String[]{
-                kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText()
-            });
-            tampil();
-            emptTeks();
+            Valid.tabelKosong(tabMode);
+            if(Sequel.menyimpantf("set_pjlab","?,?,?,?,?,?","Penanggung Jawab",6,new String[]{
+                kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
+            })==true){
+                tabMode.addRow(new String[]{
+                    TDokter.getText(),TDokter2.getText(),TDokter3.getText(),TDokter4.getText(),TDokter5.getText(),TDokter6.getText(),
+                    kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
+                });
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -597,7 +660,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,kddokter.getText());
+            TDokter.setText(dokter.tampil3(kddokter.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }else{
@@ -616,7 +679,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter2,kddokter2.getText());
+            TDokter2.setText(dokter.tampil3(kddokter2.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter2ActionPerformed(null);
         }else{
@@ -635,7 +698,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter3,kddokter3.getText());
+            TDokter3.setText(dokter.tampil3(kddokter3.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter3ActionPerformed(null);
         }else{
@@ -654,7 +717,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter4KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter4,kddokter4.getText());
+            TDokter4.setText(dokter.tampil3(kddokter4.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter4ActionPerformed(null);
         }else{
@@ -673,11 +736,11 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter5KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter5,kddokter5.getText());
+            TDokter5.setText(dokter.tampil3(kddokter5.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter5ActionPerformed(null);
         }else{
-            Valid.pindah(evt,kddokter4,BtnSimpan);
+            Valid.pindah(evt,kddokter4,kddokter6);
         }
     }//GEN-LAST:event_kddokter5KeyPressed
 
@@ -689,6 +752,25 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokter5ActionPerformed
+
+    private void kddokter6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter6KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            TDokter6.setText(dokter.tampil3(kddokter6.getText()));
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnDokter6ActionPerformed(null);
+        }else{
+            Valid.pindah(evt,kddokter5,BtnSimpan);
+        }
+    }//GEN-LAST:event_kddokter6KeyPressed
+
+    private void BtnDokter6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter6ActionPerformed
+        pilihan=6;
+        dokter.isCek();
+        dokter.TCari.requestFocus();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setVisible(true);
+    }//GEN-LAST:event_BtnDokter6ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -713,6 +795,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
     private widget.Button BtnDokter3;
     private widget.Button BtnDokter4;
     private widget.Button BtnDokter5;
+    private widget.Button BtnDokter6;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
@@ -723,17 +806,20 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
     private widget.TextBox TDokter3;
     private widget.TextBox TDokter4;
     private widget.TextBox TDokter5;
+    private widget.TextBox TDokter6;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
+    private widget.Label jLabel18;
     private widget.TextBox kddokter;
     private widget.TextBox kddokter2;
     private widget.TextBox kddokter3;
     private widget.TextBox kddokter4;
     private widget.TextBox kddokter5;
+    private widget.TextBox kddokter6;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
     private widget.Table tbAdmin;
@@ -742,34 +828,49 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ResultSet rs=koneksi.prepareStatement("select * from set_pjlab").executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{
-                    rs.getString(1)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(1)),
-                    rs.getString(2)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(2)),
-                    rs.getString(3)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(3)),
-                    rs.getString(4)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(4)),
-                    rs.getString(5)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(5))
-                });
+            ps=koneksi.prepareStatement("select * from set_pjlab");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(1)),
+                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(2)),
+                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(3)),
+                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(4)),
+                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(5)),
+                        Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(6)),
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs != null){
+                    rs.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
     }
 
     private void getData() {
-        int row=tbAdmin.getSelectedRow();
-        if(row!= -1){
-            kddokter.setText(Sequel.cariIsi("select kd_dokterlab from set_pjlab"));
-            kddokter2.setText(Sequel.cariIsi("select kd_dokterrad from set_pjlab"));
-            kddokter3.setText(Sequel.cariIsi("select kd_dokterhemodialisa from set_pjlab"));
-            kddokter4.setText(Sequel.cariIsi("select kd_dokterutd from set_pjlab"));
-            kddokter5.setText(Sequel.cariIsi("select kd_dokterlabpa from set_pjlab"));
-            TDokter.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter.getText()));
-            TDokter2.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter2.getText()));
-            TDokter3.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter3.getText()));
-            TDokter4.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter4.getText()));
-            TDokter5.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter5.getText()));
+        if(tbAdmin.getSelectedRow()!= -1){
+            TDokter.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString());
+            TDokter2.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),1).toString());
+            TDokter3.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),2).toString());
+            TDokter4.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),3).toString());
+            TDokter5.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),4).toString());
+            TDokter6.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),5).toString());
+            kddokter.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),6).toString());
+            kddokter2.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),7).toString());
+            kddokter3.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),8).toString());
+            kddokter4.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),9).toString());
+            kddokter5.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),10).toString());
+            kddokter6.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),11).toString());
         }
     }
 
@@ -784,6 +885,8 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         TDokter4.setText("");
         kddokter5.setText("");
         TDokter5.setText("");
+        kddokter6.setText("");
+        TDokter6.setText("");
         kddokter.requestFocus();
     }
 }
