@@ -261,6 +261,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         jLabel39 = new widget.Label();
         jLabel34 = new widget.Label();
         GCS4 = new widget.TextBox();
+        jLabel101 = new widget.Label();
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -592,7 +593,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 70, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2023 21:06:04" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2023 22:27:43" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -644,15 +645,16 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         jLabel99.setBounds(10, 70, 180, 23);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("a. Kesadaran :");
+        jLabel100.setText("a. Kesadaran");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
         jLabel100.setBounds(25, 90, 180, 23);
 
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel28.setText("Refleka Cahaya :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(40, 110, 110, 23);
+        jLabel28.setBounds(60, 110, 110, 23);
 
         GCS.setFocusTraversalPolicyProvider(true);
         GCS.setName("GCS"); // NOI18N
@@ -662,12 +664,12 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             }
         });
         FormInput.add(GCS);
-        GCS.setBounds(130, 130, 60, 23);
+        GCS.setBounds(124, 130, 60, 23);
 
         jLabel29.setText("Kanan :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(40, 130, 90, 23);
+        jLabel29.setBounds(40, 130, 80, 23);
 
         GCS1.setFocusTraversalPolicyProvider(true);
         GCS1.setName("GCS1"); // NOI18N
@@ -677,12 +679,12 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             }
         });
         FormInput.add(GCS1);
-        GCS1.setBounds(240, 130, 60, 23);
+        GCS1.setBounds(224, 130, 60, 23);
 
         jLabel30.setText("Kiri :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(180, 130, 50, 23);
+        jLabel30.setBounds(180, 130, 40, 23);
 
         GCS2.setFocusTraversalPolicyProvider(true);
         GCS2.setName("GCS2"); // NOI18N
@@ -692,12 +694,12 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             }
         });
         FormInput.add(GCS2);
-        GCS2.setBounds(510, 130, 60, 23);
+        GCS2.setBounds(496, 130, 60, 23);
 
         jLabel31.setText("Kiri :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(450, 130, 50, 23);
+        jLabel31.setBounds(450, 130, 42, 23);
 
         GCS3.setFocusTraversalPolicyProvider(true);
         GCS3.setName("GCS3"); // NOI18N
@@ -707,34 +709,34 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             }
         });
         FormInput.add(GCS3);
-        GCS3.setBounds(380, 130, 60, 23);
+        GCS3.setBounds(369, 130, 60, 23);
 
         jLabel32.setText("Kanan :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
-        jLabel32.setBounds(310, 130, 70, 23);
+        jLabel32.setBounds(295, 130, 70, 23);
 
         jLabel33.setText("Ukuran Pupil :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(310, 110, 80, 23);
+        jLabel33.setBounds(295, 110, 80, 23);
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel38.setText("mm");
         jLabel38.setName("jLabel38"); // NOI18N
         FormInput.add(jLabel38);
-        jLabel38.setBounds(570, 130, 30, 23);
+        jLabel38.setBounds(558, 130, 30, 23);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel39.setText("mm");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(440, 130, 30, 23);
+        jLabel39.setBounds(431, 130, 30, 23);
 
         jLabel34.setText("GCS(E,V,M) :");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(600, 110, 70, 23);
+        jLabel34.setBounds(589, 110, 80, 23);
 
         GCS4.setFocusTraversalPolicyProvider(true);
         GCS4.setName("GCS4"); // NOI18N
@@ -744,7 +746,13 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             }
         });
         FormInput.add(GCS4);
-        GCS4.setBounds(680, 110, 60, 23);
+        GCS4.setBounds(673, 110, 60, 23);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("b. Tanda-tanda Vital");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(25, 160, 180, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1356,6 +1364,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
+    private widget.Label jLabel101;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel19;
