@@ -250,19 +250,19 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         jLabel99 = new widget.Label();
         jLabel100 = new widget.Label();
         jLabel28 = new widget.Label();
-        GCS = new widget.TextBox();
+        ReflekaCahayaKanan = new widget.TextBox();
         jLabel29 = new widget.Label();
-        GCS1 = new widget.TextBox();
+        ReflekaCahayaKiri = new widget.TextBox();
         jLabel30 = new widget.Label();
-        GCS2 = new widget.TextBox();
+        UkuranPupilKiri = new widget.TextBox();
         jLabel31 = new widget.Label();
-        GCS3 = new widget.TextBox();
+        UkuranPupilKanan = new widget.TextBox();
         jLabel32 = new widget.Label();
         jLabel33 = new widget.Label();
         jLabel38 = new widget.Label();
         jLabel39 = new widget.Label();
         jLabel34 = new widget.Label();
-        GCS4 = new widget.TextBox();
+        GCS = new widget.TextBox();
         jLabel101 = new widget.Label();
         TD = new widget.TextBox();
         jLabel22 = new widget.Label();
@@ -277,27 +277,27 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         RR = new widget.TextBox();
         jLabel35 = new widget.Label();
         jLabel36 = new widget.Label();
-        Resonasi = new widget.ComboBox();
+        HasilObservasi = new widget.ComboBox();
         jLabel102 = new widget.Label();
         jLabel103 = new widget.Label();
         jLabel105 = new widget.Label();
-        Resonasi1 = new widget.ComboBox();
+        PertimbanganKlinis = new widget.ComboBox();
         jLabel104 = new widget.Label();
         jLabel106 = new widget.Label();
         jLabel108 = new widget.Label();
-        Resonasi2 = new widget.ComboBox();
+        RestrainNonFarmakologi = new widget.ComboBox();
         jLabel107 = new widget.Label();
-        Nadi1 = new widget.TextBox();
+        KeteranganNonRestrainFarmakologi = new widget.TextBox();
         scrollPane1 = new widget.ScrollPane();
-        KeluhanUtama = new widget.TextArea();
+        RestrainFarmakologi = new widget.TextArea();
         jLabel110 = new widget.Label();
         jLabel109 = new widget.Label();
         jLabel111 = new widget.Label();
         jLabel112 = new widget.Label();
         jLabel113 = new widget.Label();
-        Resonasi3 = new widget.ComboBox();
+        SudahDijelaskan = new widget.ComboBox();
         jLabel37 = new widget.Label();
-        Nadi2 = new widget.TextBox();
+        Keluarga = new widget.TextBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         FormPhoto = new widget.PanelBiasa();
@@ -717,60 +717,60 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         FormInput.add(jLabel28);
         jLabel28.setBounds(60, 110, 110, 23);
 
-        GCS.setFocusTraversalPolicyProvider(true);
-        GCS.setName("GCS"); // NOI18N
-        GCS.addKeyListener(new java.awt.event.KeyAdapter() {
+        ReflekaCahayaKanan.setFocusTraversalPolicyProvider(true);
+        ReflekaCahayaKanan.setName("ReflekaCahayaKanan"); // NOI18N
+        ReflekaCahayaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCSKeyPressed(evt);
+                ReflekaCahayaKananKeyPressed(evt);
             }
         });
-        FormInput.add(GCS);
-        GCS.setBounds(124, 130, 60, 23);
+        FormInput.add(ReflekaCahayaKanan);
+        ReflekaCahayaKanan.setBounds(124, 130, 60, 23);
 
         jLabel29.setText("Kanan :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
         jLabel29.setBounds(40, 130, 80, 23);
 
-        GCS1.setFocusTraversalPolicyProvider(true);
-        GCS1.setName("GCS1"); // NOI18N
-        GCS1.addKeyListener(new java.awt.event.KeyAdapter() {
+        ReflekaCahayaKiri.setFocusTraversalPolicyProvider(true);
+        ReflekaCahayaKiri.setName("ReflekaCahayaKiri"); // NOI18N
+        ReflekaCahayaKiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCS1KeyPressed(evt);
+                ReflekaCahayaKiriKeyPressed(evt);
             }
         });
-        FormInput.add(GCS1);
-        GCS1.setBounds(224, 130, 60, 23);
+        FormInput.add(ReflekaCahayaKiri);
+        ReflekaCahayaKiri.setBounds(224, 130, 60, 23);
 
         jLabel30.setText("Kiri :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
         jLabel30.setBounds(180, 130, 40, 23);
 
-        GCS2.setFocusTraversalPolicyProvider(true);
-        GCS2.setName("GCS2"); // NOI18N
-        GCS2.addKeyListener(new java.awt.event.KeyAdapter() {
+        UkuranPupilKiri.setFocusTraversalPolicyProvider(true);
+        UkuranPupilKiri.setName("UkuranPupilKiri"); // NOI18N
+        UkuranPupilKiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCS2KeyPressed(evt);
+                UkuranPupilKiriKeyPressed(evt);
             }
         });
-        FormInput.add(GCS2);
-        GCS2.setBounds(496, 130, 60, 23);
+        FormInput.add(UkuranPupilKiri);
+        UkuranPupilKiri.setBounds(496, 130, 60, 23);
 
         jLabel31.setText("Kiri :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
         jLabel31.setBounds(450, 130, 42, 23);
 
-        GCS3.setFocusTraversalPolicyProvider(true);
-        GCS3.setName("GCS3"); // NOI18N
-        GCS3.addKeyListener(new java.awt.event.KeyAdapter() {
+        UkuranPupilKanan.setFocusTraversalPolicyProvider(true);
+        UkuranPupilKanan.setName("UkuranPupilKanan"); // NOI18N
+        UkuranPupilKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCS3KeyPressed(evt);
+                UkuranPupilKananKeyPressed(evt);
             }
         });
-        FormInput.add(GCS3);
-        GCS3.setBounds(372, 130, 60, 23);
+        FormInput.add(UkuranPupilKanan);
+        UkuranPupilKanan.setBounds(372, 130, 60, 23);
 
         jLabel32.setText("Kanan :");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -799,15 +799,15 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         FormInput.add(jLabel34);
         jLabel34.setBounds(589, 110, 80, 23);
 
-        GCS4.setFocusTraversalPolicyProvider(true);
-        GCS4.setName("GCS4"); // NOI18N
-        GCS4.addKeyListener(new java.awt.event.KeyAdapter() {
+        GCS.setFocusTraversalPolicyProvider(true);
+        GCS.setName("GCS"); // NOI18N
+        GCS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCS4KeyPressed(evt);
+                GCSKeyPressed(evt);
             }
         });
-        FormInput.add(GCS4);
-        GCS4.setBounds(673, 110, 60, 23);
+        FormInput.add(GCS);
+        GCS.setBounds(673, 110, 60, 23);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("b. Tanda-tanda Vital :");
@@ -905,15 +905,15 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         FormInput.add(jLabel36);
         jLabel36.setBounds(0, 180, 125, 23);
 
-        Resonasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pasien Gelisah/Delirium Dan Berontak", "Pasien Tidak Kooperatif", "Ketidakmampuan Dalam Mengikuti Perintah Untuk Tidak Meninggalkan Tempat Tidur" }));
-        Resonasi.setName("Resonasi"); // NOI18N
-        Resonasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        HasilObservasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pasien Gelisah/Delirium Dan Berontak", "Pasien Tidak Kooperatif", "Ketidakmampuan Dalam Mengikuti Perintah Untuk Tidak Meninggalkan Tempat Tidur" }));
+        HasilObservasi.setName("HasilObservasi"); // NOI18N
+        HasilObservasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ResonasiKeyPressed(evt);
+                HasilObservasiKeyPressed(evt);
             }
         });
-        FormInput.add(Resonasi);
-        Resonasi.setBounds(122, 210, 465, 23);
+        FormInput.add(HasilObservasi);
+        HasilObservasi.setBounds(122, 210, 465, 23);
 
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel102.setText("c. Hasil Observasi");
@@ -931,15 +931,15 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         FormInput.add(jLabel105);
         jLabel105.setBounds(0, 340, 115, 23);
 
-        Resonasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Membahayakan Diri Sendiri", "Membahayakan Orang Lain" }));
-        Resonasi1.setName("Resonasi1"); // NOI18N
-        Resonasi1.addKeyListener(new java.awt.event.KeyAdapter() {
+        PertimbanganKlinis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Membahayakan Diri Sendiri", "Membahayakan Orang Lain" }));
+        PertimbanganKlinis.setName("PertimbanganKlinis"); // NOI18N
+        PertimbanganKlinis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Resonasi1KeyPressed(evt);
+                PertimbanganKlinisKeyPressed(evt);
             }
         });
-        FormInput.add(Resonasi1);
-        Resonasi1.setBounds(119, 340, 185, 23);
+        FormInput.add(PertimbanganKlinis);
+        PertimbanganKlinis.setBounds(119, 340, 185, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel104.setText("Pertimbangan Klinis");
@@ -958,15 +958,15 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         FormInput.add(jLabel108);
         jLabel108.setBounds(0, 260, 158, 23);
 
-        Resonasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Restrain Pergelangan Tangan", "Restrain Pergelangan Kaki", "Restrain Badan", "Lain-lain" }));
-        Resonasi2.setName("Resonasi2"); // NOI18N
-        Resonasi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        RestrainNonFarmakologi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Restrain Pergelangan Tangan", "Restrain Pergelangan Kaki", "Restrain Badan", "Lain-lain" }));
+        RestrainNonFarmakologi.setName("RestrainNonFarmakologi"); // NOI18N
+        RestrainNonFarmakologi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Resonasi2KeyPressed(evt);
+                RestrainNonFarmakologiKeyPressed(evt);
             }
         });
-        FormInput.add(Resonasi2);
-        Resonasi2.setBounds(162, 260, 200, 23);
+        FormInput.add(RestrainNonFarmakologi);
+        RestrainNonFarmakologi.setBounds(162, 260, 200, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("Restrain Non Farmakologi");
@@ -974,29 +974,29 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         FormInput.add(jLabel107);
         jLabel107.setBounds(25, 260, 150, 23);
 
-        Nadi1.setFocusTraversalPolicyProvider(true);
-        Nadi1.setName("Nadi1"); // NOI18N
-        Nadi1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganNonRestrainFarmakologi.setFocusTraversalPolicyProvider(true);
+        KeteranganNonRestrainFarmakologi.setName("KeteranganNonRestrainFarmakologi"); // NOI18N
+        KeteranganNonRestrainFarmakologi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nadi1KeyPressed(evt);
+                KeteranganNonRestrainFarmakologiKeyPressed(evt);
             }
         });
-        FormInput.add(Nadi1);
-        Nadi1.setBounds(366, 260, 367, 23);
+        FormInput.add(KeteranganNonRestrainFarmakologi);
+        KeteranganNonRestrainFarmakologi.setBounds(366, 260, 367, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
 
-        KeluhanUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        KeluhanUtama.setColumns(20);
-        KeluhanUtama.setRows(5);
-        KeluhanUtama.setName("KeluhanUtama"); // NOI18N
-        KeluhanUtama.addKeyListener(new java.awt.event.KeyAdapter() {
+        RestrainFarmakologi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RestrainFarmakologi.setColumns(20);
+        RestrainFarmakologi.setRows(5);
+        RestrainFarmakologi.setName("RestrainFarmakologi"); // NOI18N
+        RestrainFarmakologi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeluhanUtamaKeyPressed(evt);
+                RestrainFarmakologiKeyPressed(evt);
             }
         });
-        scrollPane1.setViewportView(KeluhanUtama);
+        scrollPane1.setViewportView(RestrainFarmakologi);
 
         FormInput.add(scrollPane1);
         scrollPane1.setBounds(140, 290, 594, 43);
@@ -1029,30 +1029,30 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         FormInput.add(jLabel113);
         jLabel113.setBounds(0, 390, 248, 23);
 
-        Resonasi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sudah", "Belum" }));
-        Resonasi3.setName("Resonasi3"); // NOI18N
-        Resonasi3.addKeyListener(new java.awt.event.KeyAdapter() {
+        SudahDijelaskan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sudah", "Belum" }));
+        SudahDijelaskan.setName("SudahDijelaskan"); // NOI18N
+        SudahDijelaskan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Resonasi3KeyPressed(evt);
+                SudahDijelaskanKeyPressed(evt);
             }
         });
-        FormInput.add(Resonasi3);
-        Resonasi3.setBounds(252, 390, 82, 23);
+        FormInput.add(SudahDijelaskan);
+        SudahDijelaskan.setBounds(252, 390, 82, 23);
 
         jLabel37.setText("Keluarga Yang Menyetujui :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
         jLabel37.setBounds(334, 390, 150, 23);
 
-        Nadi2.setFocusTraversalPolicyProvider(true);
-        Nadi2.setName("Nadi2"); // NOI18N
-        Nadi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Keluarga.setFocusTraversalPolicyProvider(true);
+        Keluarga.setName("Keluarga"); // NOI18N
+        Keluarga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nadi2KeyPressed(evt);
+                KeluargaKeyPressed(evt);
             }
         });
-        FormInput.add(Nadi2);
-        Nadi2.setBounds(488, 390, 245, 23);
+        FormInput.add(Keluarga);
+        Keluarga.setBounds(488, 390, 245, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1565,25 +1565,25 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         }*/
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
-    private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
+    private void ReflekaCahayaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReflekaCahayaKananKeyPressed
         //Valid.pindah(evt,Suhu,BB);
+    }//GEN-LAST:event_ReflekaCahayaKananKeyPressed
+
+    private void ReflekaCahayaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReflekaCahayaKiriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReflekaCahayaKiriKeyPressed
+
+    private void UkuranPupilKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UkuranPupilKiriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UkuranPupilKiriKeyPressed
+
+    private void UkuranPupilKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UkuranPupilKananKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UkuranPupilKananKeyPressed
+
+    private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
+        // TODO add your handling code here:
     }//GEN-LAST:event_GCSKeyPressed
-
-    private void GCS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GCS1KeyPressed
-
-    private void GCS2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GCS2KeyPressed
-
-    private void GCS3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GCS3KeyPressed
-
-    private void GCS4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GCS4KeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
         //Valid.pindah(evt,Anamnesa,Suhu);
@@ -1601,33 +1601,33 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         //Valid.pindah(evt,Nadi,KontakMata);
     }//GEN-LAST:event_RRKeyPressed
 
-    private void ResonasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResonasiKeyPressed
+    private void HasilObservasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilObservasiKeyPressed
         //Valid.pindah(evt,Adisi,Nada);
-    }//GEN-LAST:event_ResonasiKeyPressed
+    }//GEN-LAST:event_HasilObservasiKeyPressed
 
-    private void Resonasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Resonasi1KeyPressed
+    private void PertimbanganKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertimbanganKlinisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Resonasi1KeyPressed
+    }//GEN-LAST:event_PertimbanganKlinisKeyPressed
 
-    private void Resonasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Resonasi2KeyPressed
+    private void RestrainNonFarmakologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RestrainNonFarmakologiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Resonasi2KeyPressed
+    }//GEN-LAST:event_RestrainNonFarmakologiKeyPressed
 
-    private void Nadi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nadi1KeyPressed
+    private void KeteranganNonRestrainFarmakologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganNonRestrainFarmakologiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nadi1KeyPressed
+    }//GEN-LAST:event_KeteranganNonRestrainFarmakologiKeyPressed
 
-    private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
+    private void RestrainFarmakologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RestrainFarmakologiKeyPressed
         //Valid.pindah2(evt,Hubungan,RPS);
-    }//GEN-LAST:event_KeluhanUtamaKeyPressed
+    }//GEN-LAST:event_RestrainFarmakologiKeyPressed
 
-    private void Resonasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Resonasi3KeyPressed
+    private void SudahDijelaskanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SudahDijelaskanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Resonasi3KeyPressed
+    }//GEN-LAST:event_SudahDijelaskanKeyPressed
 
-    private void Nadi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nadi2KeyPressed
+    private void KeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluargaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nadi2KeyPressed
+    }//GEN-LAST:event_KeluargaKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1664,30 +1664,28 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
     private widget.TextBox GCS;
-    private widget.TextBox GCS1;
-    private widget.TextBox GCS2;
-    private widget.TextBox GCS3;
-    private widget.TextBox GCS4;
+    private widget.ComboBox HasilObservasi;
     private widget.TextBox JK;
-    private widget.TextArea KeluhanUtama;
+    private widget.TextBox Keluarga;
+    private widget.TextBox KeteranganNonRestrainFarmakologi;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.TextBox LahirPasien;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
     private widget.TextBox Nadi;
-    private widget.TextBox Nadi1;
-    private widget.TextBox Nadi2;
     private widget.TextBox NamaPetugas;
     private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox PertimbanganKlinis;
     private widget.TextBox RR;
-    private widget.ComboBox Resonasi;
-    private widget.ComboBox Resonasi1;
-    private widget.ComboBox Resonasi2;
-    private widget.ComboBox Resonasi3;
+    private widget.TextBox ReflekaCahayaKanan;
+    private widget.TextBox ReflekaCahayaKiri;
+    private widget.TextArea RestrainFarmakologi;
+    private widget.ComboBox RestrainNonFarmakologi;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
+    private widget.ComboBox SudahDijelaskan;
     private widget.TextBox Suhu;
     private widget.TextBox TCari;
     private widget.TextBox TD;
@@ -1695,6 +1693,8 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
+    private widget.TextBox UkuranPupilKanan;
+    private widget.TextBox UkuranPupilKiri;
     private widget.TextBox Umur;
     private widget.Button btnAmbil;
     private widget.Button btnPetugas;
