@@ -3755,16 +3755,56 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                         "</tr>");
                                                     rs3.beforeFirst();
                                                     while(rs3.next()){
-                                                        htmlContent.append(
-                                                            "<tr>"+
-                                                               "<td valign='top' align='center'></td>"+
-                                                               "<td valign='top'></td>"+
-                                                               "<td valign='top'></td>"+
-                                                               "<td valign='top'>"+rs3.getString("Pemeriksaan")+"</td>"+
-                                                               "<td valign='top'>"+rs3.getString("nilai")+" "+rs3.getString("satuan")+"</td>"+
-                                                               "<td valign='top'>"+rs3.getString("nilai_rujukan")+"</td>"+
-                                                               "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_item"))+"</td>"+
-                                                            "</tr>"); 
+                                                        switch (rs3.getString("keterangan").toLowerCase()) {
+                                                            case "l":
+                                                                htmlContent.append(
+                                                                    "<tr>"+
+                                                                       "<td valign='top' align='center'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'>"+rs3.getString("Pemeriksaan")+"</td>"+
+                                                                       "<td valign='top' style='color:#0000FF'>"+rs3.getString("nilai")+" "+rs3.getString("satuan")+"</td>"+
+                                                                       "<td valign='top'>"+rs3.getString("nilai_rujukan")+"</td>"+
+                                                                       "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_item"))+"</td>"+
+                                                                    "</tr>"); 
+                                                                break;
+                                                            case "h":
+                                                                htmlContent.append(
+                                                                    "<tr>"+
+                                                                       "<td valign='top' align='center'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'>"+rs3.getString("Pemeriksaan")+"</td>"+
+                                                                       "<td valign='top' style='color:#FF0000'>"+rs3.getString("nilai")+" "+rs3.getString("satuan")+"</td>"+
+                                                                       "<td valign='top'>"+rs3.getString("nilai_rujukan")+"</td>"+
+                                                                       "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_item"))+"</td>"+
+                                                                    "</tr>"); 
+                                                                break;
+                                                            case "t":
+                                                                htmlContent.append(
+                                                                    "<tr>"+
+                                                                       "<td valign='top' align='center'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'>"+rs3.getString("Pemeriksaan")+"</td>"+
+                                                                       "<td valign='top'><b>"+rs3.getString("nilai")+" "+rs3.getString("satuan")+"</bb></td>"+
+                                                                       "<td valign='top'>"+rs3.getString("nilai_rujukan")+"</td>"+
+                                                                       "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_item"))+"</td>"+
+                                                                    "</tr>"); 
+                                                                break;
+                                                            default:
+                                                                htmlContent.append(
+                                                                    "<tr>"+
+                                                                       "<td valign='top' align='center'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'></td>"+
+                                                                       "<td valign='top'>"+rs3.getString("Pemeriksaan")+"</td>"+
+                                                                       "<td valign='top'>"+rs3.getString("nilai")+" "+rs3.getString("satuan")+"</td>"+
+                                                                       "<td valign='top'>"+rs3.getString("nilai_rujukan")+"</td>"+
+                                                                       "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_item"))+"</td>"+
+                                                                    "</tr>"); 
+                                                        }
+                                                        
                                                         biayaperawatan=biayaperawatan+rs3.getDouble("biaya_item");
                                                     }                                               
                                                 }
