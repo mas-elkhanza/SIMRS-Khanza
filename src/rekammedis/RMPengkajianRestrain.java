@@ -57,8 +57,10 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Persetujuan","No.Rawat","No.R.M.","Nama Pasien","Umur","J.K.","Tgl.Lahir","Tanggal","Kode","Penolakan Anjuran","Alasan Penolakan",
-            "Risiko Penolakan","Nama Penanggung Jawab","Umur P.J.","Nomor KTP P.J.","J.K. P.J.","Nomor Telp/HP","Hubungan","NIP","Nama Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","J.K.","Tgl.Lahir","Tanggal","GCS(E,V,M)","Refleka Kanan","Refleka Kiri",
+            "Pupil Kanan","Pupil Kiri","TD(mmHg)","Suhu(°C)","RR(x/menit)","Nadi(x/menit)","Hasil Observasi","Pertimbangan Klinis",
+            "Restrain Non Farmakologi","Keterangan Restrain Non Farmakologi","Restrain Farmakologi","Dijelaskan Keluarga",
+            "Keluarga Yang Menyetujui","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -68,54 +70,76 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 25; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
             }else if(i==1){
-                column.setPreferredWidth(105);
-            }else if(i==2){
                 column.setPreferredWidth(70);
+            }else if(i==2){
+                column.setPreferredWidth(150);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(45);
             }else if(i==4){
-                column.setPreferredWidth(45);
-            }else if(i==5){
                 column.setPreferredWidth(25);
-            }else if(i==6){
+            }else if(i==5){
                 column.setPreferredWidth(65);
-            }else if(i==7){
+            }else if(i==6){
                 column.setPreferredWidth(115);
+            }else if(i==7){
+                column.setPreferredWidth(63);
             }else if(i==8){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(79);
             }else if(i==9){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(65);
             }else if(i==10){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(66);
             }else if(i==11){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(52);
             }else if(i==12){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(61);
             }else if(i==13){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(52);
             }else if(i==14){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(68);
             }else if(i==15){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(75);
             }else if(i==16){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(200);
             }else if(i==17){
-                column.setPreferredWidth(88);
+                column.setPreferredWidth(140);
             }else if(i==18){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==19){
+                column.setPreferredWidth(195);
+            }else if(i==20){
+                column.setPreferredWidth(200);
+            }else if(i==21){
+                column.setPreferredWidth(105);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(90);
+            }else if(i==24){
                 column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));  
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));  
+        ReflekaCahayaKanan.setDocument(new batasInput((int)3).getKata(ReflekaCahayaKanan));  
+        ReflekaCahayaKiri.setDocument(new batasInput((int)3).getKata(ReflekaCahayaKiri));  
+        UkuranPupilKanan.setDocument(new batasInput((int)3).getKata(UkuranPupilKanan));  
+        UkuranPupilKiri.setDocument(new batasInput((int)3).getKata(UkuranPupilKiri));  
+        GCS.setDocument(new batasInput((int)5).getKata(GCS));  
+        TD.setDocument(new batasInput((int)8).getKata(TD));  
+        Suhu.setDocument(new batasInput((int)5).getKata(Suhu));  
+        Nadi.setDocument(new batasInput((int)5).getKata(Nadi));
+        RR.setDocument(new batasInput((int)5).getKata(RR));
+        KeteranganNonRestrainFarmakologi.setDocument(new batasInput((int)50).getKata(KeteranganNonRestrainFarmakologi));
+        RestrainFarmakologi.setDocument(new batasInput((int)200).getKata(RestrainFarmakologi));
+        Keluarga.setDocument(new batasInput((int)100).getKata(Keluarga));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -1157,49 +1181,35 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
     
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
-        }else if(NamaPJ.getText().trim().equals("")){
-            Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(UmurPJ.getText().trim().equals("")){
-            Valid.textKosong(UmurPJ,"Umur");
-        }else if(NoTelp.getText().trim().equals("")){
-            Valid.textKosong(NoTelp,"Nomor Telp");
-        }else if(NoKTP.getText().trim().equals("")){
-            Valid.textKosong(NoKTP,"Nomor KTP");
         }else if(NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(btnPetugas,"Petugas");
-        }else if(NamaPenolakan.getText().trim().equals("")){
-            Valid.textKosong(btnPenolakan,"Penolakan Anjuran");
-        }else if(NoPernyataan.getText().trim().equals("")){
-            Valid.textKosong(NoPernyataan,"No.Penolakan");
-        }else if(AlasanPenolakan.getText().trim().equals("")){
-            Valid.textKosong(AlasanPenolakan,"Alasan Penolakan");
-        }else if(RisikoPenolakan.getText().trim().equals("")){
-            Valid.textKosong(RisikoPenolakan,"Risiko Penolakan");
         }else{
-            if(Sequel.menyimpantf("surat_penolakan_anjuran_medis","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
-                    NoPernyataan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    Hubungan.getSelectedItem().toString(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),
-                    NoTelp.getText(),KodePenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),KodePetugas.getText()
+            if(Sequel.menyimpantf("pengkajian_restrain","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePetugas.getText(),
+                    GCS.getText(),ReflekaCahayaKanan.getText(),ReflekaCahayaKiri.getText(),UkuranPupilKanan.getText(),UkuranPupilKiri.getText(),TD.getText(), 
+                    Suhu.getText(),RR.getText(),Nadi.getText(),HasilObservasi.getSelectedItem().toString(),PertimbanganKlinis.getSelectedItem().toString(), 
+                    RestrainNonFarmakologi.getSelectedItem().toString(),KeteranganNonRestrainFarmakologi.getText(),RestrainFarmakologi.getText(), 
+                    SudahDijelaskan.getSelectedItem().toString(),Keluarga.getText()
                 })==true){
                 tabMode.addRow(new String[]{
-                    NoPernyataan.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
-                    Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePenolakan.getText(),
-                    NamaPenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),
-                    JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),Hubungan.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                    GCS.getText(),ReflekaCahayaKanan.getText(),ReflekaCahayaKiri.getText(),UkuranPupilKanan.getText(),UkuranPupilKiri.getText(),TD.getText(),Suhu.getText(),RR.getText(),Nadi.getText(),
+                    HasilObservasi.getSelectedItem().toString(),PertimbanganKlinis.getSelectedItem().toString(),RestrainNonFarmakologi.getSelectedItem().toString(),KeteranganNonRestrainFarmakologi.getText(),
+                    RestrainFarmakologi.getText(),SudahDijelaskan.getSelectedItem().toString(),Keluarga.getText(),KodePetugas.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,JKPJ,BtnBatal);
+            Valid.pindah(evt,Keluarga,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1220,7 +1230,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KodePetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString())){
+                if(KodePetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1241,32 +1251,16 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
-        }else if(NamaPJ.getText().trim().equals("")){
-            Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(UmurPJ.getText().trim().equals("")){
-            Valid.textKosong(UmurPJ,"Umur");
-        }else if(NoTelp.getText().trim().equals("")){
-            Valid.textKosong(NoTelp,"Nomor Telp");
-        }else if(NoKTP.getText().trim().equals("")){
-            Valid.textKosong(NoKTP,"Nomor KTP");
         }else if(NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(btnPetugas,"Petugas");
-        }else if(NamaPenolakan.getText().trim().equals("")){
-            Valid.textKosong(btnPenolakan,"Penolakan Anjuran");
-        }else if(NoPernyataan.getText().trim().equals("")){
-            Valid.textKosong(NoPernyataan,"No.Penolakan");
-        }else if(AlasanPenolakan.getText().trim().equals("")){
-            Valid.textKosong(AlasanPenolakan,"Alasan Penolakan");
-        }else if(RisikoPenolakan.getText().trim().equals("")){
-            Valid.textKosong(RisikoPenolakan,"Risiko Penolakan");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KodePetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString())){
+                    if(KodePetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1275,7 +1269,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1504,7 +1498,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             if(tbObat.getSelectedRow()>-1){
                 Sequel.queryu("delete from antripenolakananjuranmedis");
                 Sequel.queryu("insert into antripenolakananjuranmedis values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from surat_penolakan_anjuran_medis_pembuat_pernyataan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from pengkajian_restrain_pembuat_pernyataan where no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
             }
@@ -1531,7 +1525,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        //Valid.pindah(evt,Tanggal,NoPernyataan);
+        Valid.pindah(evt,Tanggal,ReflekaCahayaKanan);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
@@ -1548,17 +1542,17 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                 param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penolakananjuranmedis/"+lokasifile);
-                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),18).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())+" "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,19));
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),18).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())+" "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,19));
                 Valid.MyReportqry("rptSuratPenolakanAnjuranMedis.jasper","report","::[ Surat Penolakan Anjuran Medis ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,pasien.pekerjaan,pasien.tmp_lahir,reg_periksa.umurdaftar,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.sttsumur,"+
-                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat_pasien,surat_penolakan_anjuran_medis.no_surat,surat_penolakan_anjuran_medis.tanggal,surat_penolakan_anjuran_medis.kode_penolakan,"+
-                    "master_menolak_anjuran_medis.nama_penolakan,surat_penolakan_anjuran_medis.alasan_penolakan,surat_penolakan_anjuran_medis.informasi_risiko_penolakan,surat_penolakan_anjuran_medis.nama_pj,surat_penolakan_anjuran_medis.umur_pj,surat_penolakan_anjuran_medis.no_ktppj,"+
-                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.hubungan,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nik,pegawai.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join master_menolak_anjuran_medis on master_menolak_anjuran_medis.kode_penolakan=surat_penolakan_anjuran_medis.kode_penolakan "+
-                    "inner join pegawai on surat_penolakan_anjuran_medis.nik=pegawai.nik inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat_pasien,pengkajian_restrain.no_rawat,pengkajian_restrain.tanggal,pengkajian_restrain.kode_penolakan,"+
+                    "master_menolak_anjuran_medis.nama_penolakan,pengkajian_restrain.alasan_penolakan,pengkajian_restrain.informasi_risiko_penolakan,pengkajian_restrain.nama_pj,pengkajian_restrain.umur_pj,pengkajian_restrain.no_ktppj,"+
+                    "pengkajian_restrain.jkpj,pengkajian_restrain.hubungan,pengkajian_restrain.no_telp,pengkajian_restrain.nip,petugas.nama from pengkajian_restrain inner join reg_periksa on pengkajian_restrain.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join master_menolak_anjuran_medis on master_menolak_anjuran_medis.kode_penolakan=pengkajian_restrain.kode_penolakan "+
+                    "inner join petugas on pengkajian_restrain.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                     "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where surat_penolakan_anjuran_medis.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where pengkajian_restrain.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1566,27 +1560,27 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
     private void ReflekaCahayaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReflekaCahayaKananKeyPressed
-        //Valid.pindah(evt,Suhu,BB);
+        Valid.pindah(evt,btnPetugas,ReflekaCahayaKiri);
     }//GEN-LAST:event_ReflekaCahayaKananKeyPressed
 
     private void ReflekaCahayaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReflekaCahayaKiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ReflekaCahayaKanan,UkuranPupilKanan);
     }//GEN-LAST:event_ReflekaCahayaKiriKeyPressed
 
     private void UkuranPupilKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UkuranPupilKiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,UkuranPupilKanan,GCS);
     }//GEN-LAST:event_UkuranPupilKiriKeyPressed
 
     private void UkuranPupilKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UkuranPupilKananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ReflekaCahayaKiri,UkuranPupilKiri);
     }//GEN-LAST:event_UkuranPupilKananKeyPressed
 
     private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,UkuranPupilKiri,TD);
     }//GEN-LAST:event_GCSKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        //Valid.pindah(evt,Anamnesa,Suhu);
+        Valid.pindah(evt,GCS,Suhu);
     }//GEN-LAST:event_TDKeyPressed
 
     private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
@@ -1598,35 +1592,35 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     }//GEN-LAST:event_NadiKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        //Valid.pindah(evt,Nadi,KontakMata);
+        Valid.pindah(evt,Nadi,HasilObservasi);
     }//GEN-LAST:event_RRKeyPressed
 
     private void HasilObservasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilObservasiKeyPressed
-        //Valid.pindah(evt,Adisi,Nada);
+        Valid.pindah(evt,RR,RestrainNonFarmakologi);
     }//GEN-LAST:event_HasilObservasiKeyPressed
 
     private void PertimbanganKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertimbanganKlinisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RestrainFarmakologi,SudahDijelaskan);
     }//GEN-LAST:event_PertimbanganKlinisKeyPressed
 
     private void RestrainNonFarmakologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RestrainNonFarmakologiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HasilObservasi,KeteranganNonRestrainFarmakologi);
     }//GEN-LAST:event_RestrainNonFarmakologiKeyPressed
 
     private void KeteranganNonRestrainFarmakologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganNonRestrainFarmakologiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RestrainNonFarmakologi,RestrainFarmakologi);
     }//GEN-LAST:event_KeteranganNonRestrainFarmakologiKeyPressed
 
     private void RestrainFarmakologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RestrainFarmakologiKeyPressed
-        //Valid.pindah2(evt,Hubungan,RPS);
+        Valid.pindah2(evt,KeteranganNonRestrainFarmakologi,PertimbanganKlinis);
     }//GEN-LAST:event_RestrainFarmakologiKeyPressed
 
     private void SudahDijelaskanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SudahDijelaskanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PertimbanganKlinis,Keluarga);
     }//GEN-LAST:event_SudahDijelaskanKeyPressed
 
     private void KeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluargaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SudahDijelaskan,BtnSimpan);
     }//GEN-LAST:event_KeluargaKeyPressed
 
     /**
@@ -1756,32 +1750,26 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select surat_penolakan_anjuran_medis.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_penolakan_anjuran_medis.tanggal,surat_penolakan_anjuran_medis.kode_penolakan,"+
-                    "master_menolak_anjuran_medis.nama_penolakan,surat_penolakan_anjuran_medis.alasan_penolakan,surat_penolakan_anjuran_medis.informasi_risiko_penolakan,"+
-                    "surat_penolakan_anjuran_medis.nama_pj,surat_penolakan_anjuran_medis.umur_pj,surat_penolakan_anjuran_medis.no_ktppj,"+
-                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.hubungan,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nik,"+
-                    "pegawai.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join master_menolak_anjuran_medis on master_menolak_anjuran_medis.kode_penolakan=surat_penolakan_anjuran_medis.kode_penolakan "+
-                    "inner join pegawai on surat_penolakan_anjuran_medis.nik=pegawai.nik where "+
-                    "surat_penolakan_anjuran_medis.tanggal between ? and ? order by surat_penolakan_anjuran_medis.tanggal");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "pengkajian_restrain.tanggal,pengkajian_restrain.gcs,pengkajian_restrain.refleka_cahaya_ka,pengkajian_restrain.refleka_cahaya_ki,"+
+                    "pengkajian_restrain.ukuran_pupil_ka,pengkajian_restrain.ukuran_pupil_ki,pengkajian_restrain.td,pengkajian_restrain.suhu,pengkajian_restrain.rr,"+
+                    "pengkajian_restrain.nadi,pengkajian_restrain.hasil_observasi,pengkajian_restrain.pertimbangan_klinis,pengkajian_restrain.restrain_non_farmakologi,"+
+                    "pengkajian_restrain.restrain_non_farmakologi_keterangan,pengkajian_restrain.restrain_farmakologi,pengkajian_restrain.sudah_dijelaskan_keluarga,"+
+                    "pengkajian_restrain.keluarga_yang_menyetujui,pengkajian_restrain.nip,petugas.nama from pengkajian_restrain inner join reg_periksa "+
+                    "on pengkajian_restrain.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
+                    "on pengkajian_restrain.nip=petugas.nip where pengkajian_restrain.tanggal between ? and ? order by pengkajian_restrain.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select surat_penolakan_anjuran_medis.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_penolakan_anjuran_medis.tanggal,surat_penolakan_anjuran_medis.kode_penolakan,"+
-                    "master_menolak_anjuran_medis.nama_penolakan,surat_penolakan_anjuran_medis.alasan_penolakan,surat_penolakan_anjuran_medis.informasi_risiko_penolakan,"+
-                    "surat_penolakan_anjuran_medis.nama_pj,surat_penolakan_anjuran_medis.umur_pj,surat_penolakan_anjuran_medis.no_ktppj,"+
-                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.hubungan,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nik,"+
-                    "pegawai.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join master_menolak_anjuran_medis on master_menolak_anjuran_medis.kode_penolakan=surat_penolakan_anjuran_medis.kode_penolakan "+
-                    "inner join pegawai on surat_penolakan_anjuran_medis.nik=pegawai.nik where "+
-                    "surat_penolakan_anjuran_medis.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                    "surat_penolakan_anjuran_medis.no_telp like ? or surat_penolakan_anjuran_medis.nama_pj like ? or "+
-                    "surat_penolakan_anjuran_medis.nik like ? or pegawai.nama like ? or master_menolak_anjuran_medis.nama_penolakan like ?) "+
-                    "order by surat_penolakan_anjuran_medis.tanggal");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "pengkajian_restrain.tanggal,pengkajian_restrain.gcs,pengkajian_restrain.refleka_cahaya_ka,pengkajian_restrain.refleka_cahaya_ki,"+
+                    "pengkajian_restrain.ukuran_pupil_ka,pengkajian_restrain.ukuran_pupil_ki,pengkajian_restrain.td,pengkajian_restrain.suhu,pengkajian_restrain.rr,"+
+                    "pengkajian_restrain.nadi,pengkajian_restrain.hasil_observasi,pengkajian_restrain.pertimbangan_klinis,pengkajian_restrain.restrain_non_farmakologi,"+
+                    "pengkajian_restrain.restrain_non_farmakologi_keterangan,pengkajian_restrain.restrain_farmakologi,pengkajian_restrain.sudah_dijelaskan_keluarga,"+
+                    "pengkajian_restrain.keluarga_yang_menyetujui,pengkajian_restrain.nip,petugas.nama from pengkajian_restrain inner join reg_periksa "+
+                    "on pengkajian_restrain.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
+                    "on pengkajian_restrain.nip=petugas.nip where pengkajian_restrain.tanggal between ? and ? and "+
+                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pengkajian_restrain.nip like ? or petugas.nama like ?) "+
+                    "order by pengkajian_restrain.tanggal");
             }
                 
             try {
@@ -1796,19 +1784,16 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,"%"+TCari.getText()+"%");
                 }
                   
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tanggal"),rs.getString("kode_penolakan"),rs.getString("nama_penolakan"),rs.getString("alasan_penolakan"),
-                        rs.getString("informasi_risiko_penolakan"),rs.getString("nama_pj"),rs.getString("umur_pj"),rs.getString("no_ktppj"),
-                        rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("hubungan"),rs.getString("nik"),rs.getString("nama") 
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                        rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("gcs"),rs.getString("refleka_cahaya_ka"),rs.getString("refleka_cahaya_ki"),
+                        rs.getString("ukuran_pupil_ka"),rs.getString("ukuran_pupil_ki"),rs.getString("td"),rs.getString("suhu"),rs.getString("rr"),rs.getString("nadi"),
+                        rs.getString("hasil_observasi"),rs.getString("pertimbangan_klinis"),rs.getString("restrain_non_farmakologi"),rs.getString("restrain_non_farmakologi_keterangan"),
+                        rs.getString("restrain_farmakologi"),rs.getString("sudah_dijelaskan_keluarga"),rs.getString("keluarga_yang_menyetujui"),rs.getString("nip"),rs.getString("nama") 
                     });
                 }
             } catch (Exception e) {
@@ -1828,43 +1813,52 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        /*NamaPJ.setText("");
-        UmurPJ.setText("");
+        ReflekaCahayaKanan.setText("");
+        ReflekaCahayaKiri.setText("");
+        UkuranPupilKanan.setText("");
+        UkuranPupilKiri.setText("");
+        GCS.setText("");
+        TD.setText("");
+        Suhu.setText("");
+        Nadi.setText("");
+        RR.setText("");
+        HasilObservasi.setSelectedIndex(0);
+        RestrainNonFarmakologi.setSelectedIndex(0);
+        KeteranganNonRestrainFarmakologi.setText("");
+        RestrainFarmakologi.setText("");
+        PertimbanganKlinis.setSelectedIndex(0);
+        SudahDijelaskan.setSelectedIndex(0);
+        Keluarga.setText("");
         Tanggal.setDate(new Date());
-        KodePenolakan.setText("");
-        NamaPenolakan.setText("");
-        AlasanPenolakan.setText("");
-        RisikoPenolakan.setText("");
-        Hubungan.setSelectedIndex(0);
-        JKPJ.setSelectedIndex(0);
-        NoTelp.setText("");
-        NoKTP.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_penolakan_anjuran_medis.no_surat,3),signed)),0) from surat_penolakan_anjuran_medis where surat_penolakan_anjuran_medis.tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
-                "PAM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPernyataan);
-        AlasanPenolakan.requestFocus();*/
+        ReflekaCahayaKanan.requestFocus();
     }
 
  
     private void getData() {
          if(tbObat.getSelectedRow()!= -1){
-            /*NoPernyataan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            LahirPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            KodePenolakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
-            NamaPenolakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 
-            AlasanPenolakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()); 
-            RisikoPenolakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()); 
-            NamaPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
-            UmurPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());  
-            NoKTP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()); 
-            JKPJ.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
-            NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()); 
-            Hubungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());  
-            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());*/
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            LahirPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()); 
+            ReflekaCahayaKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
+            ReflekaCahayaKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 
+            UkuranPupilKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()); 
+            UkuranPupilKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()); 
+            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
+            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()); 
+            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()); 
+            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString()); 
+            HasilObservasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()); 
+            PertimbanganKlinis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            RestrainNonFarmakologi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()); 
+            KeteranganNonRestrainFarmakologi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()); 
+            RestrainFarmakologi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString()); 
+            SudahDijelaskan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString()); 
+            Keluarga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()); 
+            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
 
@@ -1944,37 +1938,45 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     }
   
     private void ganti() {
-        /*if(Sequel.mengedittf("surat_penolakan_anjuran_medis","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,hubungan=?,nama_pj=?,umur_pj=?,no_ktppj=?,jkpj=?,no_telp=?,kode_penolakan=?,"+
-            "alasan_penolakan=?,informasi_risiko_penolakan=?,nik=?",14,new String[]{
-            NoPernyataan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-            Hubungan.getSelectedItem().toString(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),
-            KodePenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("pengkajian_restrain","no_rawat=?","no_rawat=?,tanggal=?,nip=?,gcs=?,refleka_cahaya_ka=?,refleka_cahaya_ki=?,ukuran_pupil_ka=?,ukuran_pupil_ki=?,"+
+            "td=?,suhu=?,rr=?,nadi=?,hasil_observasi=?,pertimbangan_klinis=?,restrain_non_farmakologi=?,restrain_non_farmakologi_keterangan=?,restrain_farmakologi=?,"+
+            "sudah_dijelaskan_keluarga=?,keluarga_yang_menyetujui=?",20,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePetugas.getText(),
+            GCS.getText(),ReflekaCahayaKanan.getText(),ReflekaCahayaKiri.getText(),UkuranPupilKanan.getText(),UkuranPupilKiri.getText(),TD.getText(), 
+            Suhu.getText(),RR.getText(),Nadi.getText(),HasilObservasi.getSelectedItem().toString(),PertimbanganKlinis.getSelectedItem().toString(), 
+            RestrainNonFarmakologi.getSelectedItem().toString(),KeteranganNonRestrainFarmakologi.getText(),RestrainFarmakologi.getText(), 
+            SudahDijelaskan.getSelectedItem().toString(),Keluarga.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tbObat.setValueAt(NoPernyataan.getText(),tbObat.getSelectedRow(),0);
-            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
-            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
-            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
-            tbObat.setValueAt(Umur.getText(),tbObat.getSelectedRow(),4);
-            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(LahirPasien.getText(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(KodePenolakan.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(NamaPenolakan.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(AlasanPenolakan.getText(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(RisikoPenolakan.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(NamaPJ.getText(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(UmurPJ.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(NoKTP.getText(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(JKPJ.getSelectedItem().toString().substring(0,1),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(NoTelp.getText(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(Hubungan.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),19);
-        }*/
+            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+            tbObat.setValueAt(Umur.getText(),tbObat.getSelectedRow(),3);
+            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(LahirPasien.getText(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(GCS.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(ReflekaCahayaKanan.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(ReflekaCahayaKiri.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(UkuranPupilKanan.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(UkuranPupilKiri.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(TD.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(Suhu.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(RR.getText(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(Nadi.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(HasilObservasi.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(PertimbanganKlinis.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(RestrainNonFarmakologi.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(KeteranganNonRestrainFarmakologi.getText(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(RestrainFarmakologi.getText(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(SudahDijelaskan.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(Keluarga.getText(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),24);
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from surat_penolakan_anjuran_medis where no_surat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from pengkajian_restrain where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2003,7 +2005,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         if(FormPhoto.isVisible()==true){
             lokasifile="";
             try {
-                ps=koneksi.prepareStatement("select surat_penolakan_anjuran_medis_pembuat_pernyataan.photo from surat_penolakan_anjuran_medis_pembuat_pernyataan where surat_penolakan_anjuran_medis_pembuat_pernyataan.no_surat=?");
+                ps=koneksi.prepareStatement("select pengkajian_restrain_pembuat_pernyataan.photo from pengkajian_restrain_pembuat_pernyataan where pengkajian_restrain_pembuat_pernyataan.no_rawat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();

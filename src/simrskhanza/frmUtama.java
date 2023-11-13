@@ -42243,7 +42243,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianTerapiWicara.addActionListener(this::btnPenilaianTerapiWicaraActionPerformed);
         
         btnPengkajianRestrain = new widget.ButtonBig();
-        btnPengkajianRestrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5982122_camping_forest_holidays_nature_rope_icon.png")));
+        btnPengkajianRestrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3841816_chain_hyperlink_interface_link_multimedia_icon.png")));
         btnPengkajianRestrain.setText("Pengkajian Restrain");
         btnPengkajianRestrain.setIconTextGap(0);
         btnPengkajianRestrain.setName("btnPengkajianRestrain"); 
