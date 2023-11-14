@@ -23,6 +23,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -1301,7 +1303,6 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                 htmlContent = new StringBuilder();
                 htmlContent.append(                             
                     "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Persetujuan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.R.M.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
@@ -1309,16 +1310,22 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penolakan Anjuran</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alasan Penolakan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko Penolakan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Penanggung Jawab</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur P.J.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nomor KTP P.J.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K. P.J.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nomor Telp/HP</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hubungan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GCS(E,V,M)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refleka Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refleka Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pupil Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pupil Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD(mmHg)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu(°C)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR(x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi(x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Observasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pertimbangan Klinis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Restrain Non Farmakologi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Restrain Non Farmakologi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Restrain Farmakologi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dijelaskan Keluarga</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Yang Menyetujui</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                     "</tr>"
@@ -1347,12 +1354,17 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
                         "</tr>");
                 }
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1373,17 +1385,17 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataPenolakanAnjuranMedis.html");            
+                File f = new File("DataPengkajianRestrain.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENOLAKAN ANJURAN MEDIS<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN RESTRAIN<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1496,11 +1508,11 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("delete from antripenolakananjuranmedis");
-                Sequel.queryu("insert into antripenolakananjuranmedis values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from pengkajian_restrain_pembuat_pernyataan where no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from antripengkajianrestrain");
+                Sequel.queryu("insert into antripengkajianrestrain values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"')");
+                Sequel.queryu("delete from pengkajian_restrain_yang_menyetujui where no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Rawat terlebih dahulu..!!");
             }
         }
     }//GEN-LAST:event_btnAmbilActionPerformed
@@ -1529,7 +1541,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
-        /*if(tbObat.getSelectedRow()>-1){
+        if(tbObat.getSelectedRow()>-1){
             if(lokasifile.equals("")){
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan ambil photo bukti penolakan anjuran medis terlebih dahulu..!!!!");
             }else{
@@ -1542,21 +1554,21 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                 param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penolakananjuranmedis/"+lokasifile);
-                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),18).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())+" "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,19));
-                Valid.MyReportqry("rptSuratPenolakanAnjuranMedis.jasper","report","::[ Surat Penolakan Anjuran Medis ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,pasien.pekerjaan,pasien.tmp_lahir,reg_periksa.umurdaftar,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.sttsumur,"+
-                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat_pasien,pengkajian_restrain.no_rawat,pengkajian_restrain.tanggal,pengkajian_restrain.kode_penolakan,"+
-                    "master_menolak_anjuran_medis.nama_penolakan,pengkajian_restrain.alasan_penolakan,pengkajian_restrain.informasi_risiko_penolakan,pengkajian_restrain.nama_pj,pengkajian_restrain.umur_pj,pengkajian_restrain.no_ktppj,"+
-                    "pengkajian_restrain.jkpj,pengkajian_restrain.hubungan,pengkajian_restrain.no_telp,pengkajian_restrain.nip,petugas.nama from pengkajian_restrain inner join reg_periksa on pengkajian_restrain.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join master_menolak_anjuran_medis on master_menolak_anjuran_medis.kode_penolakan=pengkajian_restrain.kode_penolakan "+
-                    "inner join petugas on pengkajian_restrain.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where pengkajian_restrain.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),24).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),23).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())+" "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(11,19));
+                Valid.MyReportqry("rptFormulirPersetujuanRestrain.jasper","report","::[ Formulir Persetujuan Restrain ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "pengkajian_restrain.tanggal,pengkajian_restrain.gcs,pengkajian_restrain.refleka_cahaya_ka,pengkajian_restrain.refleka_cahaya_ki,"+
+                    "pengkajian_restrain.ukuran_pupil_ka,pengkajian_restrain.ukuran_pupil_ki,pengkajian_restrain.td,pengkajian_restrain.suhu,pengkajian_restrain.rr,"+
+                    "pengkajian_restrain.nadi,pengkajian_restrain.hasil_observasi,pengkajian_restrain.pertimbangan_klinis,pengkajian_restrain.restrain_non_farmakologi,"+
+                    "pengkajian_restrain.restrain_non_farmakologi_keterangan,pengkajian_restrain.restrain_farmakologi,pengkajian_restrain.sudah_dijelaskan_keluarga,"+
+                    "pengkajian_restrain.keluarga_yang_menyetujui,pengkajian_restrain.nip,petugas.nama from pengkajian_restrain inner join reg_periksa "+
+                    "on pengkajian_restrain.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
+                    "on pengkajian_restrain.nip=petugas.nip where pengkajian_restrain.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
-        }*/
+        }
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
     private void ReflekaCahayaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReflekaCahayaKananKeyPressed
@@ -1925,15 +1937,19 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
        
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenolakan_anjuran_medis());
-        BtnHapus.setEnabled(akses.getpenolakan_anjuran_medis());
-        BtnEdit.setEnabled(akses.getpenolakan_anjuran_medis());
-        BtnPrint.setEnabled(akses.getpenolakan_anjuran_medis()); 
+        BtnSimpan.setEnabled(akses.getpengkajian_restrain());
+        BtnHapus.setEnabled(akses.getpengkajian_restrain());
+        BtnEdit.setEnabled(akses.getpengkajian_restrain());
+        BtnPrint.setEnabled(akses.getpengkajian_restrain()); 
         if(akses.getjml2()>=1){
             KodePetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
             NamaPetugas.setText(petugas.tampil3(KodePetugas.getText()));
+            if(NamaPetugas.getText().equals("")){
+                KodePetugas.setText("");
+                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
+            }
         }            
     }
   
@@ -2005,7 +2021,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         if(FormPhoto.isVisible()==true){
             lokasifile="";
             try {
-                ps=koneksi.prepareStatement("select pengkajian_restrain_pembuat_pernyataan.photo from pengkajian_restrain_pembuat_pernyataan where pengkajian_restrain_pembuat_pernyataan.no_rawat=?");
+                ps=koneksi.prepareStatement("select pengkajian_restrain_yang_menyetujui.photo from pengkajian_restrain_yang_menyetujui where pengkajian_restrain_yang_menyetujui.no_rawat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -2015,7 +2031,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
                             lokasifile=rs.getString("photo");
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penolakananjuranmedis/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pengkajianrestrain/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         lokasifile="";

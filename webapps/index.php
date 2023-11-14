@@ -105,9 +105,9 @@
                                 </tr>
                                 <tr width='100%' align='center'>
                                     <td width='33%' align='center'>
-                                      <a target=_blank href=penolakananjuranmedis/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
-                                         <img src='images/8960611_hospitals_hospital_building_medic_health_icon.png'/><br>
-                                         Penolakan Anjuran Medis                                               
+                                      <a target=_blank href=pengkajianrestrain/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/3841816_chain_hyperlink_interface_link_multimedia_icon.png'/><br>
+                                         Persetujuan Restrain                                               
                                       </a>
                                     </td>
                                     <td width='33%' align='center'>
