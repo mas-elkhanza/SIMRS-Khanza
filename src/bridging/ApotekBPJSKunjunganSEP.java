@@ -160,9 +160,9 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel16.setText("No.SEP :");
+        jLabel16.setText("Nomor SEP :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(50, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass6.add(jLabel16);
 
         NoSEP.setName("NoSEP"); // NOI18N
@@ -254,8 +254,7 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
-                                tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,1).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -267,7 +266,7 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptCariBPJSReferensiPoliApotek.jasper","report","[ Pencarian Referensi Poli Apotek BPJS ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptCariBPJSKunjunganSEPApotek.jasper","report","[ Pencarian SEP Apotek BPJS ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }     
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -371,6 +370,42 @@ public final class ApotekBPJSKunjunganSEP extends javax.swing.JDialog {
                 });
                 tabMode.addRow(new Object[]{
                     "Kode Jenis Peserta",": "+response.path("kdjenispeserta").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nama Jenis Peserta",": "+response.path("nmjenispeserta").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Kode BU",": "+response.path("kodebu").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nama BU",": "+response.path("namabu").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Tanggal SEP",": "+response.path("tglsep").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Tanggal Pulang SEP",": "+response.path("tglplgsep").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Jenis Pelayanan",": "+response.path("jnspelayanan").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nama Diagnosa",": "+response.path("nmdiag").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Layanan/Poli",": "+response.path("poli").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Flag PRB",": "+response.path("flagprb").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nama PRB",": "+response.path("namaprb").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Kode Dokter",": "+response.path("kodedokter").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nama Dokter",": "+response.path("namadokter").asText()
                 });
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
