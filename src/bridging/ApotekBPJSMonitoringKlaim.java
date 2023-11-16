@@ -89,7 +89,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(120);
             }else if(i==6){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(76);
             }else if(i==7){
                 column.setPreferredWidth(110);
             }else if(i==8){
@@ -439,6 +439,9 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
 
     private void tampil() {
         try {
+            LCountPengajuan.setText("0");
+            LCountDisetujui.setText("0");
+            LCount.setText("0");
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("x-cons-id",koneksiDB.CONSIDAPIAPOTEKBPJS());
