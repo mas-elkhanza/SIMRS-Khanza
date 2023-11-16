@@ -41,6 +41,7 @@ import bridging.ApotekBPJSCekReferensiSettingPPK;
 import bridging.ApotekBPJSCekReferensiSpesialistik;
 import bridging.ApotekBPJSKunjunganSEP;
 import bridging.ApotekBPJSMapingObat;
+import bridging.ApotekBPJSMonitoringKlaim;
 import bridging.BPJSAntreanPerTanggal;
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekDataSEPInternal;
@@ -20732,6 +20733,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor()); 
     } 
+    
+    private void btnBPJSMonitoringKlaimApotekActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSMonitoringKlaim form=new ApotekBPJSMonitoringKlaim(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    } 
     /**
     * @param args the command line arguments
     */
@@ -21412,7 +21424,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa,
             btnPenilaianRisikoJatuhPsikiatri,btnPenilaianLanjutanSkriningFungsional,btnPenilaianAwalMedisRalanRehabMedik,btnTemplatePersetujuanPenolakanTindakan,
             btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
-            btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain,btnBPJSKunjunganSEPApotek;
+            btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain,btnBPJSKunjunganSEPApotek,btnBPJSMonitoringKlaimApotek;
     
     public void isWall(){
         try{            
@@ -24042,6 +24054,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_kunjungan_sep_apotek()==true){
                 Panelmenu.add(btnBPJSKunjunganSEPApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_monitoring_klaim_apotek()==true){
+                Panelmenu.add(btnBPJSMonitoringKlaimApotek);
                 jmlmenu++;
             }
             
@@ -28927,6 +28944,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_kunjungan_sep_apotek()==true){
             Panelmenu.add(btnBPJSKunjunganSEPApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_monitoring_klaim_apotek()==true){
+            Panelmenu.add(btnBPJSMonitoringKlaimApotek);
             jmlmenu++;
         }
         
@@ -34807,6 +34829,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_kunjungan_sep_apotek()==true){
             if(btnBPJSKunjunganSEPApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSKunjunganSEPApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_monitoring_klaim_apotek()==true){
+            if(btnBPJSMonitoringKlaimApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSMonitoringKlaimApotek);
                 jmlmenu++;
             }                
         }
@@ -42285,5 +42314,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSKunjunganSEPApotek.setName("btnBPJSKunjunganSEPApotek"); 
         btnBPJSKunjunganSEPApotek.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSKunjunganSEPApotek.addActionListener(this::btnBPJSKunjunganSEPApotekActionPerformed);
+        
+        btnBPJSMonitoringKlaimApotek = new widget.ButtonBig();
+        btnBPJSMonitoringKlaimApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnBPJSMonitoringKlaimApotek.setText("Monitoring Klaim Apotek BPJS");
+        btnBPJSMonitoringKlaimApotek.setIconTextGap(0);
+        btnBPJSMonitoringKlaimApotek.setName("btnBPJSMonitoringKlaimApotek"); 
+        btnBPJSMonitoringKlaimApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSMonitoringKlaimApotek.addActionListener(this::btnBPJSMonitoringKlaimApotekActionPerformed);
     }
 }
