@@ -80,6 +80,20 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
                 column.setPreferredWidth(110);
             }else if(i==1){
                 column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(90);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(90);
+            }else if(i==5){
+                column.setPreferredWidth(120);
+            }else if(i==6){
+                column.setPreferredWidth(75);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(110);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -445,9 +459,11 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
                 LCount.setText(response.path("rekap").path("jumlahdata").asText());
                 if(response.path("rekap").path("listsep").isArray()){
                     for(JsonNode list:response.path("rekap").path("listsep")){
-                        //"No.SEP Apotek","No.SEP Asal","Nomor Kartu","Nama Peserta","No.Resep","Jenis Obat","Tgl.Pelayanan","Biaya Pengajuan","Biaya Disetujui"
                         tabMode.addRow(new Object[]{
-                            list.path("kode").asText(),list.path("nama").asText(),list.path("harga").asText()
+                            list.path("nosepapotek").asText(),list.path("nosepaasal").asText(),list.path("nokartu").asText(),
+                            list.path("namapeserta").asText(),list.path("noresep").asText(),list.path("jnsobat").asText(),
+                            list.path("tglpelayanan").asText(),Valid.SetAngka(list.path("biayapengajuan").asDouble()),
+                            Valid.SetAngka(list.path("biayasetuju").asDouble())
                         });
                     }
                 }
