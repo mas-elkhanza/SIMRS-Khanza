@@ -5275,7 +5275,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "<td valign='top' width='79%'>"+CacatFisik.getText()+"</td>"+
                                        "</tr>"+
                                     "</table>"            
-                      )
+                      ).
+                      replaceAll((getClass().getResource("/picture/"))+"","./gambar/")
             );  
             bw.close();
             Desktop.getDesktop().browse(f.toURI());
@@ -10757,6 +10758,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>"+
                                        "III. STATUS LOKALIS"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td width='100%' border='0' align='center'><img alt='Gambar Lokalis' src='"+(getClass().getResource("/picture/semua.png"))+"' width='100%' height='400'/></td>"+
+                                          "</tr>"+
                                           "<tr>"+
                                                "<td width='100%' border='0'>"+rs2.getString("ket_lokalis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
