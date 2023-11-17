@@ -4523,7 +4523,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_kunjungan_sep_apotek='"+tbUser.getValueAt(i,989).toString()+"',"+
                     "bpjs_monitoring_klaim_apotek='"+tbUser.getValueAt(i,990).toString()+"',"+
                     "bpjs_daftar_pelayanan_obat_apotek='"+tbUser.getValueAt(i,991).toString()+"',"+
-                    "penilaian_medis_ralan_paru='"+tbUser.getValueAt(i,992).toString()+"'")==true){
+                    "penilaian_awal_medis_ralan_paru='"+tbUser.getValueAt(i,992).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5714,7 +5714,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "bpjs_kunjungan_sep_apotek='"+tbUser.getValueAt(barisdicopy,989).toString()+"',"+
                                         "bpjs_monitoring_klaim_apotek='"+tbUser.getValueAt(barisdicopy,990).toString()+"',"+
                                         "bpjs_daftar_pelayanan_obat_apotek='"+tbUser.getValueAt(barisdicopy,991).toString()+"',"+
-                                        "penilaian_medis_ralan_paru='"+tbUser.getValueAt(barisdicopy,992).toString()+"'");
+                                        "penilaian_awal_medis_ralan_paru='"+tbUser.getValueAt(barisdicopy,992).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6002,7 +6002,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.penilaian_medis_ralan_rehab_medik,user.laporan_anestesi,user.template_persetujuan_penolakan_tindakan,user.penilaian_medis_ralan_gawat_darurat_psikiatri,"+
                 "user.bpjs_referensi_setting_apotek,user.bpjs_referensi_obat_apotek,user.bpjs_mapping_obat_apotek,user.pembayaran_bank_mandiri,user.penilaian_ulang_nyeri,"+
                 "user.penilaian_terapi_wicara,user.bpjs_obat_23hari_apotek,user.pengkajian_restrain,user.bpjs_kunjungan_sep_apotek,user.bpjs_monitoring_klaim_apotek,"+
-                "user.bpjs_daftar_pelayanan_obat_apotek,user.penilaian_medis_ralan_paru from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.bpjs_daftar_pelayanan_obat_apotek,user.penilaian_awal_medis_ralan_paru from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7007,7 +7007,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_kunjungan_sep_apotek"),
                                rs.getBoolean("bpjs_monitoring_klaim_apotek"),
                                rs.getBoolean("bpjs_daftar_pelayanan_obat_apotek"),
-                               rs.getBoolean("penilaian_medis_ralan_paru")
+                               rs.getBoolean("penilaian_awal_medis_ralan_paru")
                             });
                         }   
                     } catch (Exception e) {
@@ -8001,7 +8001,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_kunjungan_sep_apotek"),
                            rs.getBoolean("bpjs_monitoring_klaim_apotek"),
                            rs.getBoolean("bpjs_daftar_pelayanan_obat_apotek"),
-                           rs.getBoolean("penilaian_medis_ralan_paru")
+                           rs.getBoolean("penilaian_awal_medis_ralan_paru")
                         });
                     }                                             
                  }

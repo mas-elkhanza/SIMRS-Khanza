@@ -216,7 +216,7 @@ public final class akses {
             penilaian_lanjutan_skrining_fungsional=false,penilaian_medis_ralan_rehab_medik=false,laporan_anestesi=false,template_persetujuan_penolakan_tindakan=false,
             penilaian_medis_ralan_gawat_darurat_psikiatri=false,bpjs_referensi_setting_apotek=false,bpjs_referensi_obat_apotek=false,bpjs_mapping_obat_apotek=false,
             pembayaran_bank_mandiri=false,penilaian_ulang_nyeri=false,penilaian_terapi_wicara=false,bpjs_obat_23hari_apotek=false,pengkajian_restrain=false,
-            bpjs_kunjungan_sep_apotek=false,bpjs_monitoring_klaim_apotek=false,bpjs_daftar_pelayanan_obat_apotek=false,penilaian_medis_ralan_paru=false;
+            bpjs_kunjungan_sep_apotek=false,bpjs_monitoring_klaim_apotek=false,bpjs_daftar_pelayanan_obat_apotek=false,penilaian_awal_medis_ralan_paru=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1228,7 +1228,7 @@ public final class akses {
                         akses.bpjs_kunjungan_sep_apotek=true;
                         akses.bpjs_monitoring_klaim_apotek=true;
                         akses.bpjs_daftar_pelayanan_obat_apotek=true;
-                        akses.penilaian_medis_ralan_paru=true;
+                        akses.penilaian_awal_medis_ralan_paru=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2224,7 +2224,7 @@ public final class akses {
                         akses.bpjs_kunjungan_sep_apotek=rs2.getBoolean("bpjs_kunjungan_sep_apotek");
                         akses.bpjs_monitoring_klaim_apotek=rs2.getBoolean("bpjs_monitoring_klaim_apotek");
                         akses.bpjs_daftar_pelayanan_obat_apotek=rs2.getBoolean("bpjs_daftar_pelayanan_obat_apotek");
-                        akses.penilaian_medis_ralan_paru=rs2.getBoolean("penilaian_medis_ralan_paru");
+                        akses.penilaian_awal_medis_ralan_paru=rs2.getBoolean("penilaian_awal_medis_ralan_paru");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3218,7 +3218,7 @@ public final class akses {
                         akses.bpjs_kunjungan_sep_apotek=false;
                         akses.bpjs_monitoring_klaim_apotek=false;
                         akses.bpjs_daftar_pelayanan_obat_apotek=false;
-                        akses.penilaian_medis_ralan_paru=false;
+                        akses.penilaian_awal_medis_ralan_paru=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4235,7 +4235,7 @@ public final class akses {
         akses.bpjs_kunjungan_sep_apotek=false;
         akses.bpjs_monitoring_klaim_apotek=false;
         akses.bpjs_daftar_pelayanan_obat_apotek=false;
-        akses.penilaian_medis_ralan_paru=false;
+        akses.penilaian_awal_medis_ralan_paru=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5268,5 +5268,5 @@ public final class akses {
     public static boolean getbpjs_kunjungan_sep_apotek(){return akses.bpjs_kunjungan_sep_apotek;}
     public static boolean getbpjs_monitoring_klaim_apotek(){return akses.bpjs_monitoring_klaim_apotek;}
     public static boolean getbpjs_daftar_pelayanan_obat_apotek(){return akses.bpjs_daftar_pelayanan_obat_apotek;}
-    public static boolean getpenilaian_medis_ralan_paru(){return akses.penilaian_medis_ralan_paru;}
+    public static boolean getpenilaian_awal_medis_ralan_paru(){return akses.penilaian_awal_medis_ralan_paru;}
 }   
