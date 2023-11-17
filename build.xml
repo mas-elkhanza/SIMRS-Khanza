@@ -73,7 +73,8 @@
     <target name="-post-compile">
         <mkdir dir="${build.dir}/report" />        
         <mkdir dir="${build.dir}/setting" />       
-        <mkdir dir="${build.dir}/suara" />      
+        <mkdir dir="${build.dir}/suara" />        
+        <mkdir dir="${build.dir}/gambar" />      
         <copy todir="${build.dir}/report">
             <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
         </copy>                
@@ -83,12 +84,16 @@
         <copy todir="${build.dir}/suara">
             <fileset dir="suara/" includes="**/*.mp3" />
         </copy>
+        <copy todir="${build.dir}/gambar">
+            <fileset dir="gambar/" includes="**/*.png, **/*.jpg" />
+        </copy>
     </target>
 
     <target name="-post-jar">
         <mkdir dir="${dist.dir}/report" />        
         <mkdir dir="${dist.dir}/setting" />       
-        <mkdir dir="${dist.dir}/suara" />       
+        <mkdir dir="${dist.dir}/suara" />         
+        <mkdir dir="${dist.dir}/gambar" />       
         <copy todir="${dist.dir}/report">
             <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
         </copy>               
@@ -98,5 +103,8 @@
         <copy todir="${dist.dir}/suara">
             <fileset dir="suara/" includes="**/*.mp3" />
         </copy> 
+        <copy todir="${build.dir}/gambar">
+            <fileset dir="gambar/" includes="**/*.png, **/*.jpg" />
+        </copy>
     </target>
 </project>
