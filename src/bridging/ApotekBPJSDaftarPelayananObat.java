@@ -63,7 +63,10 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        tabMode=new DefaultTableModel(null,new String[]{"Kode Obat","Nama Obat","PRB","Kronis","Kemo","Harga","Restriksi","Generik","Aktif"}){
+        tabMode=new DefaultTableModel(null,new String[]{
+                "No.SEP Apotek","No.SEP Asal","No.Resep","No.Kartu","Nama Peserta","Kode Jenis","Jenis Obat","Tgl.Pelayanan",
+                "Kode Obat","Nama Obat","Tipe Obat","Signa 1","Signa 2","Hari","Permintaan","Jumlah","Harga"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -72,26 +75,42 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 9; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(110);
             }else if(i==1){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(110);
             }else if(i==2){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(100);
             }else if(i==3){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(150);
             }else if(i==5){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(65);
             }else if(i==6){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(100);
             }else if(i==7){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(75);
             }else if(i==8){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(90);
+            }else if(i==9){
+                column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(57);
+            }else if(i==11){
+                column.setPreferredWidth(46);
+            }else if(i==12){
+                column.setPreferredWidth(46);
+            }else if(i==13){
+                column.setPreferredWidth(35);
+            }else if(i==14){
+                column.setPreferredWidth(67);
+            }else if(i==15){
+                column.setPreferredWidth(50);
+            }else if(i==16){
+                column.setPreferredWidth(100);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -325,9 +344,13 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
     }//GEN-LAST:event_NomorSEPKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(NomorSEP.getText());
-        this.setCursor(Cursor.getDefaultCursor());
+        if(NomorSEP.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan masukkan nomor SEP terlebih dahulu..!!!");  
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            tampil(NomorSEP.getText());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -390,24 +413,19 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
 	    headers.add("x-signature",api.getHmac(utc));
 	    headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             requestEntity = new HttpEntity(headers);
-            URL = link+"/referensi/dpho";	
+            URL = link+"/obat/daftar/"+keyword;	
             System.out.println(URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                if(response.path("list").isArray()){
-                    for(JsonNode list:response.path("list")){
-                        if(list.path("namaobat").asText().toLowerCase().contains(keyword.toLowerCase())||
-                           list.path("kodeobat").asText().toLowerCase().contains(keyword.toLowerCase())||
-                           list.path("restriksi").asText().toLowerCase().contains(keyword.toLowerCase())||
-                           list.path("generik").asText().toLowerCase().contains(keyword.toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("kodeobat").asText(),list.path("namaobat").asText(),list.path("prb").asText(),list.path("kronis").asText(),list.path("kemo").asText(),
-                                Valid.SetAngka(list.path("harga").asDouble()),list.path("restriksi").asText(),list.path("generik").asText(),list.path("aktif").asText()
-                            });
-                        }
+                if(response.path("detailsep").path("listobat").isArray()){
+                    for(JsonNode list:response.path("detailsep").path("listobat")){
+                        tabMode.addRow(new Object[]{
+                            list.path("kodeobat").asText(),list.path("namaobat").asText(),list.path("prb").asText(),list.path("kronis").asText(),list.path("kemo").asText(),
+                            Valid.SetAngka(list.path("harga").asDouble()),list.path("restriksi").asText(),list.path("generik").asText(),list.path("aktif").asText()
+                        });
                     }
                 }
             }else {

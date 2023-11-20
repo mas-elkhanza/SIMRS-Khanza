@@ -2363,7 +2363,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     tbPemeriksaan.getValueAt(i,12).toString(),tbPemeriksaan.getValueAt(i,13).toString(),tbPemeriksaan.getValueAt(i,14).toString(),tbPemeriksaan.getValueAt(i,7).toString()
                                 })==true){
                                     if(!noorder.equals("")){
-                                        if(Sequel.cariIsi("select permintaan_detail_permintaan_labmb.stts_bayar from permintaan_detail_permintaan_labmb where permintaan_detail_permintaan_labmb.noorder='"+noorder+"' and permintaan_detail_permintaan_labmb.kd_jenis_prw='"+rscari.getString(1)+"' and permintaan_detail_permintaan_labmb.id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
+                                        if(Sequel.cariIsi("select permintaan_detail_permintaan_labmb.stts_bayar from permintaan_detail_permintaan_labmb where permintaan_detail_permintaan_labmb.noorder='"+noorder+"' and permintaan_detail_permintaan_labmb.kd_jenis_prw='"+tbPemeriksaan.getValueAt(i,15).toString()+"' and permintaan_detail_permintaan_labmb.id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
                                             ttlbhp=ttlbhp+Double.parseDouble(tbPemeriksaan.getValueAt(i,9).toString());
                                             ttljmdokter=ttljmdokter+Double.parseDouble(tbPemeriksaan.getValueAt(i,11).toString());
                                             ttljmpetugas=ttljmpetugas+Double.parseDouble(tbPemeriksaan.getValueAt(i,12).toString());

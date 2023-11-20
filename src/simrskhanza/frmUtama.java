@@ -39,6 +39,7 @@ import bridging.ApotekBPJSCekReferensiObat;
 import bridging.ApotekBPJSCekReferensiPoli;
 import bridging.ApotekBPJSCekReferensiSettingPPK;
 import bridging.ApotekBPJSCekReferensiSpesialistik;
+import bridging.ApotekBPJSDaftarPelayananObat;
 import bridging.ApotekBPJSKunjunganSEP;
 import bridging.ApotekBPJSMapingObat;
 import bridging.ApotekBPJSMonitoringKlaim;
@@ -20759,6 +20760,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnBPJSDaftarPelayananObatApotekActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSDaftarPelayananObat form=new ApotekBPJSDaftarPelayananObat(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    } 
     /**
     * @param args the command line arguments
     */
@@ -21439,7 +21451,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri,btnPenilaianLevelKecemasanRanapAnak,btnPenilaianAwalMedisHemodialisa,
             btnPenilaianRisikoJatuhPsikiatri,btnPenilaianLanjutanSkriningFungsional,btnPenilaianAwalMedisRalanRehabMedik,btnTemplatePersetujuanPenolakanTindakan,
             btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
-            btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain,btnBPJSKunjunganSEPApotek,btnBPJSMonitoringKlaimApotek,btnPenilaianAwalMedisRalanParu;
+            btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain,btnBPJSKunjunganSEPApotek,btnBPJSMonitoringKlaimApotek,btnPenilaianAwalMedisRalanParu,
+            btnBPJSDaftarPelayananObatApotek;
     
     public void isWall(){
         try{            
@@ -24074,6 +24087,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_monitoring_klaim_apotek()==true){
                 Panelmenu.add(btnBPJSMonitoringKlaimApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_daftar_pelayanan_obat_apotek()==true){
+                Panelmenu.add(btnBPJSDaftarPelayananObatApotek);
                 jmlmenu++;
             }
             
@@ -28969,6 +28987,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_monitoring_klaim_apotek()==true){
             Panelmenu.add(btnBPJSMonitoringKlaimApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_daftar_pelayanan_obat_apotek()==true){
+            Panelmenu.add(btnBPJSDaftarPelayananObatApotek);
             jmlmenu++;
         }
         
@@ -34861,6 +34884,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_monitoring_klaim_apotek()==true){
             if(btnBPJSMonitoringKlaimApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSMonitoringKlaimApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_daftar_pelayanan_obat_apotek()==true){
+            if(btnBPJSDaftarPelayananObatApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSDaftarPelayananObatApotek);
                 jmlmenu++;
             }                
         }
@@ -42355,7 +42385,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSMonitoringKlaimApotek.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSMonitoringKlaimApotek.addActionListener(this::btnBPJSMonitoringKlaimApotekActionPerformed);
         
-        
         btnPenilaianAwalMedisRalanParu = new widget.ButtonBig();
         btnPenilaianAwalMedisRalanParu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6217209_anatomy_human_lung_medical_organ_icon.png"))); 
         btnPenilaianAwalMedisRalanParu.setText("Penilaian Awal Medis Ralan Paru");
@@ -42363,5 +42392,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRalanParu.setName("btnPenilaianAwalMedisRalanParu"); 
         btnPenilaianAwalMedisRalanParu.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRalanParu.addActionListener(this::btnPenilaianAwalMedisRalanParuActionPerformed);
+        
+        btnBPJSDaftarPelayananObatApotek = new widget.ButtonBig();
+        btnBPJSDaftarPelayananObatApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnBPJSDaftarPelayananObatApotek.setText("Daftar Pelayanan Obat Apotek BPJS");
+        btnBPJSDaftarPelayananObatApotek.setIconTextGap(0);
+        btnBPJSDaftarPelayananObatApotek.setName("btnBPJSDaftarPelayananObatApotek"); 
+        btnBPJSDaftarPelayananObatApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSDaftarPelayananObatApotek.addActionListener(this::btnBPJSDaftarPelayananObatApotekActionPerformed);
     }
 }
