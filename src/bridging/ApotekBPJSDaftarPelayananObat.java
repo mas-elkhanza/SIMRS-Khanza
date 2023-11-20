@@ -26,14 +26,27 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
+import java.net.URI;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -45,7 +58,7 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private ApiApotekBPJS api=new ApiApotekBPJS();
-    private String URL="",link="",utc="";
+    private String URL="",link="",utc="",requestJson="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -302,18 +315,24 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'"+r+"','"+
-                                tabMode.getValueAt(r,0).toString()+"','"+
-                                tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','"+
-                                tabMode.getValueAt(r,3).toString()+"','"+
-                                tabMode.getValueAt(r,4).toString()+"','"+
-                                tabMode.getValueAt(r,5).toString()+"','"+
-                                tabMode.getValueAt(r,6).toString()+"','"+
-                                tabMode.getValueAt(r,7).toString()+"','"+
-                                tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
+            for(int i=0;i<tabMode.getRowCount();i++){  
+                Sequel.menyimpan("temporary","'"+i+"','"+
+                                tabMode.getValueAt(i,0).toString()+"','"+
+                                tabMode.getValueAt(i,1).toString()+"','"+
+                                tabMode.getValueAt(i,2).toString()+"','"+
+                                tabMode.getValueAt(i,3).toString()+"','"+
+                                tabMode.getValueAt(i,4).toString()+"','"+
+                                tabMode.getValueAt(i,5).toString()+"','"+
+                                tabMode.getValueAt(i,6).toString()+"','"+
+                                tabMode.getValueAt(i,7).toString()+"','"+
+                                tabMode.getValueAt(i,8).toString()+"','"+
+                                tabMode.getValueAt(i,9).toString()+"','"+
+                                tabMode.getValueAt(i,10).toString()+"','"+
+                                tabMode.getValueAt(i,11).toString()+"','"+
+                                tabMode.getValueAt(i,12).toString()+"','"+
+                                tabMode.getValueAt(i,14).toString()+"','"+
+                                tabMode.getValueAt(i,15).toString()+"','"+
+                                tabMode.getValueAt(i,16).toString()+"','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Daftar Pelayanan Obat Apotek BPJS"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -325,7 +344,7 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptCariBPJSReferensiDPHOApotek.jasper","report","[ Pencarian Referensi DPHO Apotek BPJS ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptApotekBPJSDaftarPelayananKlaim.jasper","report","[ Daftar Pelayanan Apotek BPJS ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -362,7 +381,15 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        
+        if(tbKamar.getSelectedRow()!= -1){
+            try {
+                bodyWithDeleteRequest();
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+        }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -441,5 +468,72 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbKamar;
+    }
+    
+    public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
+        public HttpEntityEnclosingDeleteRequest(final URI uri) {
+            super();
+            setURI(uri);
+        }
+
+        @Override
+        public String getMethod() {
+            return "DELETE";
+        }
+    }
+
+    @Test
+    public void bodyWithDeleteRequest() throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+        SSLContext sslContext = SSLContext.getInstance("SSL");
+        javax.net.ssl.TrustManager[] trustManagers= {
+            new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() {return null;}
+                public void checkServerTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+                public void checkClientTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+            }
+        };
+        sslContext.init(null,trustManagers , new SecureRandom());
+        SSLSocketFactory sslFactory=new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        Scheme scheme=new Scheme("https",443,sslFactory);
+    
+        HttpComponentsClientHttpRequestFactory factory=new HttpComponentsClientHttpRequestFactory(){
+            @Override
+            protected HttpUriRequest createHttpUriRequest(HttpMethod httpMethod, URI uri) {
+                if (HttpMethod.DELETE == httpMethod) {
+                    return new HttpEntityEnclosingDeleteRequest(uri);
+                }
+                return super.createHttpUriRequest(httpMethod, uri);
+            }
+        };
+        factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
+        restTemplate.setRequestFactory(factory);
+        
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+            URL = link+"/pelayanan/obat/hapus/";
+            requestJson ="{\"nosepapotek\":\""+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"\",\"noresep\":\""+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"\",\"kodeobat\":\""+tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString()+"\",\"tipeobat\":\""+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()+"\"}  ";            
+            requestEntity = new HttpEntity(requestJson,headers);
+            root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            System.out.println("code : "+nameNode.path("code").asText());
+            System.out.println("message : "+nameNode.path("message").asText());
+            if(nameNode.path("code").asText().equals("200")){
+                tabMode.removeRow(tbKamar.getSelectedRow());
+            }else{
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+            }
+        } catch (Exception e) {   
+            System.out.println("Notif : "+e);
+            if(e.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+            }
+        }
     }
 }
