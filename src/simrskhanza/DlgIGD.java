@@ -800,6 +800,8 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList5 = new javax.swing.JMenuItem();
         MnCheckList6 = new javax.swing.JMenuItem();
         MnCheckList7 = new javax.swing.JMenuItem();
+        MnCheckList8 = new javax.swing.JMenuItem();
+        MnCheckList9 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MnCheckList = new javax.swing.JMenuItem();
         MnCheckList1 = new javax.swing.JMenuItem();
@@ -3417,6 +3419,39 @@ public final class DlgIGD extends javax.swing.JDialog {
         });
         jMenu5.add(MnCheckList7);
 
+        MnCheckList8.setBackground(new java.awt.Color(255, 255, 254));
+        MnCheckList8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCheckList8.setForeground(new java.awt.Color(50, 50, 50));
+        MnCheckList8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCheckList8.setText("Lembar Periksa Pasien Kanan 3");
+        MnCheckList8.setToolTipText("");
+        MnCheckList8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCheckList8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCheckList8.setName("MnCheckList8"); // NOI18N
+        MnCheckList8.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnCheckList8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCheckList8ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(MnCheckList8);
+
+        MnCheckList9.setBackground(new java.awt.Color(255, 255, 254));
+        MnCheckList9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCheckList9.setForeground(new java.awt.Color(50, 50, 50));
+        MnCheckList9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCheckList9.setText("Lembar Periksa Pasien Kiri 3");
+        MnCheckList9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCheckList9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCheckList9.setName("MnCheckList9"); // NOI18N
+        MnCheckList9.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnCheckList9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCheckList9ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(MnCheckList9);
+
         jPopupMenu1.add(jMenu5);
 
         jMenu3.setBackground(new java.awt.Color(255, 255, 254));
@@ -3434,7 +3469,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCheckList.setForeground(new java.awt.Color(50, 50, 50));
         MnCheckList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCheckList.setText("Chekc List Kelengkapan Pendaftaran Kanan");
+        MnCheckList.setText("Check List Kelengkapan Pendaftaran Kanan");
         MnCheckList.setToolTipText("");
         MnCheckList.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCheckList.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -3451,7 +3486,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCheckList1.setForeground(new java.awt.Color(50, 50, 50));
         MnCheckList1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCheckList1.setText("Chekc List Kelengkapan Pendaftaran Kiri");
+        MnCheckList1.setText("Check List Kelengkapan Pendaftaran Kiri");
         MnCheckList1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCheckList1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCheckList1.setName("MnCheckList1"); // NOI18N
@@ -3467,7 +3502,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCheckList2.setForeground(new java.awt.Color(50, 50, 50));
         MnCheckList2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCheckList2.setText("Chekc List Kelengkapan Pendaftaran Kanan+Tracker");
+        MnCheckList2.setText("Check List Kelengkapan Pendaftaran Kanan+Tracker");
         MnCheckList2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCheckList2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCheckList2.setName("MnCheckList2"); // NOI18N
@@ -3483,9 +3518,9 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCheckList3.setForeground(new java.awt.Color(50, 50, 50));
         MnCheckList3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCheckList3.setText("Check List Kelengkapan Pendaftaran Kiri+Tracker");
         MnCheckList3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCheckList3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnCheckList3.setLabel("Chekc List Kelengkapan Pendaftaran Kiri+Tracker");
         MnCheckList3.setName("MnCheckList3"); // NOI18N
         MnCheckList3.setPreferredSize(new java.awt.Dimension(330, 26));
         MnCheckList3.addActionListener(new java.awt.event.ActionListener() {
@@ -4635,7 +4670,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4649,7 +4684,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4741,7 +4776,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2023" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2023" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -10626,6 +10661,58 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPengkajianRestrainActionPerformed
 
+    private void MnCheckList8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCheckList8ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(!TPasien.getText().equals("")){
+            Map<String, Object> param = new HashMap<>();
+            param.put("poli",TPoli.getText());
+            param.put("antrian",TNoReg.getText());
+            param.put("nama",TPasien.getText());
+            param.put("norm",TNoRM.getText());
+            param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TNoRM.getText()));
+            param.put("dokter",TDokter.getText());
+            param.put("no_rawat",TNoRw.getText());
+            param.put("bayar",nmpnj.getText());
+            param.put("penjab",TPngJwb.getText());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            Valid.MyReportqry("rptLembarPeriksa5.jasper","report","::[ Lembar Periksa]::",
+                "select date_format(current_date(),'%d/%m/%Y') as sekarang",param);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnCheckList8ActionPerformed
+
+    private void MnCheckList9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCheckList9ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(!TPasien.getText().equals("")){
+            Map<String, Object> param = new HashMap<>();
+            param.put("poli",TPoli.getText());
+            param.put("antrian",TNoReg.getText());
+            param.put("nama",TPasien.getText());
+            param.put("norm",TNoRM.getText());
+            param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TNoRM.getText()));
+            param.put("dokter",TDokter.getText());
+            param.put("no_rawat",TNoRw.getText());
+            param.put("bayar",nmpnj.getText());
+            param.put("penjab",TPngJwb.getText());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            Valid.MyReportqry("rptLembarPeriksa6.jasper","report","::[ Lembar Periksa]::",
+                "select date_format(current_date(),'%d/%m/%Y') as sekarang",param);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnCheckList9ActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -10716,6 +10803,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnCheckList5;
     private javax.swing.JMenuItem MnCheckList6;
     private javax.swing.JMenuItem MnCheckList7;
+    private javax.swing.JMenuItem MnCheckList8;
+    private javax.swing.JMenuItem MnCheckList9;
     private javax.swing.JMenuItem MnCheckListKriteriaMasukHCU;
     private javax.swing.JMenuItem MnCheckListKriteriaMasukICU;
     private javax.swing.JMenuItem MnChecklistPostOperasi;
