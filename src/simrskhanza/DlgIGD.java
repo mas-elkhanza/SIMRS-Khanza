@@ -10665,7 +10665,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(!TPasien.getText().equals("")){
             Map<String, Object> param = new HashMap<>();
-            param.put("poli",TPoli.getText());
+            param.put("poli","UGD/IGD");
             param.put("antrian",TNoReg.getText());
             param.put("nama",TPasien.getText());
             param.put("norm",TNoRM.getText());
@@ -10691,7 +10691,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(!TPasien.getText().equals("")){
             Map<String, Object> param = new HashMap<>();
-            param.put("poli",TPoli.getText());
+            param.put("poli","UGD/IGD");
             param.put("antrian",TNoReg.getText());
             param.put("nama",TPasien.getText());
             param.put("norm",TNoRM.getText());
