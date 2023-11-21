@@ -14481,7 +14481,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                Valid.MyReportqry("rptLembarPeriksa5.jasper","report","::[ Lembar Periksa]::",
+                Valid.MyReportqry("rptLembarPeriksa6.jasper","report","::[ Lembar Periksa]::",
                         "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
             }
         this.setCursor(Cursor.getDefaultCursor());
@@ -14507,7 +14507,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                Valid.MyReportqry("rptLembarPeriksa6.jasper","report","::[ Lembar Periksa]::",
+                Valid.MyReportqry("rptLembarPeriksa5.jasper","report","::[ Lembar Periksa]::",
                         "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
             }
         this.setCursor(Cursor.getDefaultCursor());
