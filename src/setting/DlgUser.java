@@ -237,7 +237,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Penilaian Level Kecemasan Ranap Anak","[M]Penilaian Lanjutan Risiko Jatuh Psikiatri","[M]Penilaian Lanjutan Skrining Fungsional","[M]Penilaian Awal Medis Ralan Fisik & Rehabilitasi",
                 "[M]Laporan Anestesi","[P]Template Persetujuan Penolakan Tindakan","[M]Penilaian Awal Medis IGD Psikiatri","[L]Referensi Setting PPK Apotek BPJS","[L]Referensi Obat Apotek BPJS",
                 "[L]Mapping Obat Apotek BPJS","[K]Pembayaran Bank Mandiri","[M]Penilaian Ulang Nyeri","[M]Penilaian Terapi Wicara","[L]Obat 23 Hari Apotek BPJS","[M]Pengkajian Restrain",
-                "[L]Pencarian SEP Apotek BPJS","[L]Monitoring Klaim Apotek BPJS","[L]Daftar Pelayanan Obat Apotek BPJS","[M]Penilaian Awal Medis Ralan Paru"
+                "[L]Pencarian SEP Apotek BPJS","[L]Monitoring Klaim Apotek BPJS","[L]Daftar Pelayanan Obat Apotek BPJS","[M]Penilaian Awal Medis Ralan Paru","[M]Catatan Keperawatan Ralan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -527,7 +527,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 993;i++) {
+        for (i = 0; i < 994;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2960,6 +2960,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 992:
                     column.setPreferredWidth(183);
                     break;
+                case 993:
+                    column.setPreferredWidth(161);
+                    break;
                 default:
                     column.setPreferredWidth(134);
                     break;
@@ -3458,7 +3461,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3483,7 +3486,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4523,7 +4526,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_kunjungan_sep_apotek='"+tbUser.getValueAt(i,989).toString()+"',"+
                     "bpjs_monitoring_klaim_apotek='"+tbUser.getValueAt(i,990).toString()+"',"+
                     "bpjs_daftar_pelayanan_obat_apotek='"+tbUser.getValueAt(i,991).toString()+"',"+
-                    "penilaian_awal_medis_ralan_paru='"+tbUser.getValueAt(i,992).toString()+"'")==true){
+                    "penilaian_awal_medis_ralan_paru='"+tbUser.getValueAt(i,992).toString()+"',"+
+                    "catatan_keperawatan_ralan='"+tbUser.getValueAt(i,993).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5714,7 +5718,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "bpjs_kunjungan_sep_apotek='"+tbUser.getValueAt(barisdicopy,989).toString()+"',"+
                                         "bpjs_monitoring_klaim_apotek='"+tbUser.getValueAt(barisdicopy,990).toString()+"',"+
                                         "bpjs_daftar_pelayanan_obat_apotek='"+tbUser.getValueAt(barisdicopy,991).toString()+"',"+
-                                        "penilaian_awal_medis_ralan_paru='"+tbUser.getValueAt(barisdicopy,992).toString()+"'");
+                                        "penilaian_awal_medis_ralan_paru='"+tbUser.getValueAt(barisdicopy,992).toString()+"',"+
+                                        "catatan_keperawatan_ralan='"+tbUser.getValueAt(barisdicopy,993).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6002,7 +6007,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.penilaian_medis_ralan_rehab_medik,user.laporan_anestesi,user.template_persetujuan_penolakan_tindakan,user.penilaian_medis_ralan_gawat_darurat_psikiatri,"+
                 "user.bpjs_referensi_setting_apotek,user.bpjs_referensi_obat_apotek,user.bpjs_mapping_obat_apotek,user.pembayaran_bank_mandiri,user.penilaian_ulang_nyeri,"+
                 "user.penilaian_terapi_wicara,user.bpjs_obat_23hari_apotek,user.pengkajian_restrain,user.bpjs_kunjungan_sep_apotek,user.bpjs_monitoring_klaim_apotek,"+
-                "user.bpjs_daftar_pelayanan_obat_apotek,user.penilaian_awal_medis_ralan_paru from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.bpjs_daftar_pelayanan_obat_apotek,user.penilaian_awal_medis_ralan_paru,user.catatan_keperawatan_ralan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7007,7 +7012,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_kunjungan_sep_apotek"),
                                rs.getBoolean("bpjs_monitoring_klaim_apotek"),
                                rs.getBoolean("bpjs_daftar_pelayanan_obat_apotek"),
-                               rs.getBoolean("penilaian_awal_medis_ralan_paru")
+                               rs.getBoolean("penilaian_awal_medis_ralan_paru"),
+                               rs.getBoolean("catatan_keperawatan_ralan")
                             });
                         }   
                     } catch (Exception e) {
@@ -8001,7 +8007,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_kunjungan_sep_apotek"),
                            rs.getBoolean("bpjs_monitoring_klaim_apotek"),
                            rs.getBoolean("bpjs_daftar_pelayanan_obat_apotek"),
-                           rs.getBoolean("penilaian_awal_medis_ralan_paru")
+                           rs.getBoolean("penilaian_awal_medis_ralan_paru"),
+                           rs.getBoolean("catatan_keperawatan_ralan")
                         });
                     }                                             
                  }
