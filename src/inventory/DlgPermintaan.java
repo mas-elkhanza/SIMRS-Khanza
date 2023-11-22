@@ -1014,11 +1014,19 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             root = mapper.readTree(myObj);
             response = root.path("permintaanobat");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("JenisObat").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Golongan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             "",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("JenisObat").asText(),list.path("Kategori").asText(),list.path("Golongan").asText(),""
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("JenisObat").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Golongan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                "",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("JenisObat").asText(),list.path("Kategori").asText(),list.path("Golongan").asText(),""
+                            });
+                        }
                     }
                 }
             }

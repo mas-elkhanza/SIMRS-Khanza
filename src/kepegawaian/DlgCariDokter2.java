@@ -401,11 +401,9 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             iyem="";
             ps=koneksi.prepareStatement(
-                "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir, "+
-                "dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
-                "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek,jadwal.kuota "+
-                "from dokter inner join spesialis inner join jadwal inner join poliklinik "+
-                "on dokter.kd_sps=spesialis.kd_sps and dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
+                "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir,dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
+                "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek,jadwal.kuota from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps "+
+                "inner join jadwal on dokter.kd_dokter=jadwal.kd_dokter inner join poliklinik on poliklinik.kd_poli=jadwal.kd_poli "+
                 "where jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' order by dokter.nm_dokter");
             try{
                 if(day==1){
@@ -485,11 +483,19 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("dokter");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Spesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("KodeDokter").asText(),list.path("NamaDokter").asText(),list.path("JK").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("GD").asText(),list.path("Agama").asText(),list.path("AlamatTinggal").asText(),list.path("NoTelp").asText(),list.path("SttsNikah").asText(),list.path("Spesialis").asText(),list.path("Alumni").asText(),list.path("NoIjinPraktek").asText(),list.path("Kuota").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Spesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("KodeDokter").asText(),list.path("NamaDokter").asText(),list.path("JK").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("GD").asText(),list.path("Agama").asText(),list.path("AlamatTinggal").asText(),list.path("NoTelp").asText(),list.path("SttsNikah").asText(),list.path("Spesialis").asText(),list.path("Alumni").asText(),list.path("NoIjinPraktek").asText(),list.path("Kuota").asText()
+                            });
+                        }
                     }
                 }
             }

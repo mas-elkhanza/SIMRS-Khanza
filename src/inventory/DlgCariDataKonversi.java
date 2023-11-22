@@ -372,8 +372,7 @@ public final class DlgCariDataKonversi extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select nilai, kode_sat, nilai_konversi, sat_konversi  "+
-                " from konver_sat where sat_konversi=? and kode_sat like ?");
+            ps=koneksi.prepareStatement("select konver_sat.nilai,konver_sat.kode_sat,konver_sat.nilai_konversi,konver_sat.sat_konversi from konver_sat where konver_sat.sat_konversi=? and konver_sat.kode_sat like ?");
             try {
                 ps.setString(1,KodeSatuanKecil.getText().trim());
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

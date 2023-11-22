@@ -2031,11 +2031,19 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             root = mapper.readTree(myObj);
             response = root.path("stokopname");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             "",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Kategori").asText(),list.path("Satuan").asText(),list.path("Harga").asDouble(),list.path("Stok").asDouble(),0,0,0,0,list.path("NoBatch").asText(),list.path("NoFaktur").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                "",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Kategori").asText(),list.path("Satuan").asText(),list.path("Harga").asDouble(),list.path("Stok").asDouble(),0,0,0,0,list.path("NoBatch").asText(),list.path("NoFaktur").asText()
+                            });
+                        }
                     }
                 }
             }

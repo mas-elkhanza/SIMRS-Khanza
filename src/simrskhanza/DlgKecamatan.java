@@ -533,11 +533,19 @@ public class DlgKecamatan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("masterkecamatan");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("NamaKec").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("NamaKec").asText(),list.path("KodeKec").asText()
                         });
+                    } 
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("NamaKec").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("NamaKec").asText(),list.path("KodeKec").asText()
+                            });
+                        }
                     }
                 }
             }

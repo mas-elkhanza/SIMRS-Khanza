@@ -1383,7 +1383,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     public void emptTeksobat() {
         if(ChkRM.isSelected()==true){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,3),signed)),0) from resep_luar where tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' ",
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(resep_luar.no_resep,3),signed)),0) from resep_luar where resep_luar.tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' ",
                 "RL"+DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),3,NoResep);        
         } 
     }

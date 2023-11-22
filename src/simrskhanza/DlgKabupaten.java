@@ -534,11 +534,19 @@ public class DlgKabupaten extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("masterkabupaten");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("NamaKab").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("NamaKab").asText(),list.path("KodeKab").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("NamaKab").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("NamaKab").asText(),list.path("KodeKab").asText()
+                            });
+                        }
                     }
                 }
             }

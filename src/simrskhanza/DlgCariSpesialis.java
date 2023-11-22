@@ -404,11 +404,20 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("spesialis");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeSpesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaSpesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("KodeSpesialis").asText(),list.path("NamaSpesialis").asText()
-                        });                    }
+                        }); 
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeSpesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaSpesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("KodeSpesialis").asText(),list.path("NamaSpesialis").asText()
+                            });                    
+                        }
+                    }
                 }
             }
             myObj.close();

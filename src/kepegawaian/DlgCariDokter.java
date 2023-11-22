@@ -465,11 +465,19 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("dokter");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Spesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("KodeDokter").asText(),list.path("NamaDokter").asText(),list.path("JK").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("GD").asText(),list.path("Agama").asText(),list.path("AlamatTinggal").asText(),list.path("NoTelp").asText(),list.path("SttsNikah").asText(),list.path("Spesialis").asText(),list.path("Alumni").asText(),list.path("NoIjinPraktek").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Spesialis").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("KodeDokter").asText(),list.path("NamaDokter").asText(),list.path("JK").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("GD").asText(),list.path("Agama").asText(),list.path("AlamatTinggal").asText(),list.path("NoTelp").asText(),list.path("SttsNikah").asText(),list.path("Spesialis").asText(),list.path("Alumni").asText(),list.path("NoIjinPraktek").asText()
+                            });
+                        }
                     }
                 }
             }

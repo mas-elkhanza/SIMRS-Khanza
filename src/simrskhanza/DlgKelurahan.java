@@ -533,11 +533,19 @@ public class DlgKelurahan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("masterkelurahan");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("NamaKel").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("NamaKel").asText(),list.path("KodeKel").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("NamaKel").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("NamaKel").asText(),list.path("KodeKel").asText()
+                            });
+                        }
                     }
                 }
             }

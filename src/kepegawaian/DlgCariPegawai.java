@@ -445,11 +445,19 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("pegawai");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("NIP").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Nama").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jabatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Bidang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Departemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("NIP").asText(),list.path("Nama").asText(),list.path("JK").asText(),list.path("Jabatan").asText(),list.path("KodeJenjang").asText(),list.path("Departemen").asText(),list.path("Bidang").asText(),list.path("Status").asText(),list.path("StatusKaryawan").asText(),list.path("NPWP").asText(),list.path("Pendidikan").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("Alamat").asText(),list.path("Kota").asText(),list.path("MulaiKerja").asText(),list.path("KodeMsKerja").asText(),list.path("KodeIndex").asText(),list.path("BPD").asText(),list.path("Rekening").asText(),list.path("SttsAktif").asText(),list.path("WajibMasuk").asText(),list.path("MulaiKontrak").asText(),list.path("NoKTP").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("NIP").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Nama").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jabatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Bidang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Departemen").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("NIP").asText(),list.path("Nama").asText(),list.path("JK").asText(),list.path("Jabatan").asText(),list.path("KodeJenjang").asText(),list.path("Departemen").asText(),list.path("Bidang").asText(),list.path("Status").asText(),list.path("StatusKaryawan").asText(),list.path("NPWP").asText(),list.path("Pendidikan").asText(),list.path("TmpLahir").asText(),list.path("TglLahir").asText(),list.path("Alamat").asText(),list.path("Kota").asText(),list.path("MulaiKerja").asText(),list.path("KodeMsKerja").asText(),list.path("KodeIndex").asText(),list.path("BPD").asText(),list.path("Rekening").asText(),list.path("SttsAktif").asText(),list.path("WajibMasuk").asText(),list.path("MulaiKontrak").asText(),list.path("NoKTP").asText()
+                            });
+                        }
                     }
                 }
             }

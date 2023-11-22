@@ -864,18 +864,16 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             " select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,gudangbarang.stok,"+
                             " databarang.letak_barang,data_batch.no_batch,data_batch.no_faktur from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
-                            " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                            " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                            " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");  
+                            " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and "+
+                            " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");  
                 }else{
                     psobat=koneksi.prepareStatement(
                             " select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,data_batch.utama,"+
                             " data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.karyawan,data_batch.h_beli,databarang.letak_barang,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur "+
                             " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
-                            " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                            " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                            " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng"); 
+                            " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and "+
+                            " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng"); 
                 }   
 
                 try {
@@ -883,10 +881,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         psobat.setDouble(1,kenaikan);
                         psobat.setString(2,kdgudang.getText());
                         psobat.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(4,kdgudang.getText());
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
                         psobat.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(6,kdgudang.getText());
-                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
                         rs=psobat.executeQuery();
                         while(rs.next()){
                             tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),"",rs.getString("letak_barang"),Valid.SetAngka2(Valid.roundUp(rs.getDouble("harga"),100)),rs.getString("nama"),rs.getString("no_batch"),rs.getString("no_faktur"),rs.getDouble("stok")});
@@ -894,10 +890,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }else{
                         psobat.setString(1,kdgudang.getText());
                         psobat.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(3,kdgudang.getText());
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
                         psobat.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(5,kdgudang.getText());
-                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
                         rs=psobat.executeQuery();
                         if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
                             while(rs.next()){
@@ -919,7 +913,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             while(rs.next()){
                                 tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),"",rs.getString("letak_barang"),Valid.SetAngka2(Valid.roundUp(rs.getDouble("vip"),100)),rs.getString("nama"),rs.getString("no_batch"),rs.getString("no_faktur"),rs.getDouble("stok")});
                             }
-                         }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
+                        }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                             while(rs.next()){
                                 tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),"",rs.getString("letak_barang"),Valid.SetAngka2(Valid.roundUp(rs.getDouble("vvip"),100)),rs.getString("nama"),rs.getString("no_batch"),rs.getString("no_faktur"),rs.getDouble("stok")});
                             }
@@ -952,17 +946,15 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     psobat=koneksi.prepareStatement(
                             " select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,gudangbarang.stok,"+
                             " databarang.letak_barang from databarang inner join jenis on databarang.kdjns=jenis.kdjns inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
-                            " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and databarang.kode_brng like ? or "+
-                            " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and databarang.nama_brng like ? or "+
-                            " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");  
+                            " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and "+
+                            " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");  
                 }else{
                     psobat=koneksi.prepareStatement(
                             " select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,databarang.kelas1,databarang.kelas2,databarang.kelas3,databarang.utama,"+
                             " databarang.vip,databarang.vvip,databarang.beliluar,databarang.karyawan,databarang.h_beli,databarang.letak_barang,gudangbarang.stok "+
                             " from databarang inner join jenis on databarang.kdjns=jenis.kdjns inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
-                            " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and databarang.kode_brng like ? or "+
-                            " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and databarang.nama_brng like ? or "+
-                            " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng"); 
+                            " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.status='1' and "+
+                            " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng"); 
                 }   
 
                 try {
@@ -970,10 +962,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         psobat.setDouble(1,kenaikan);
                         psobat.setString(2,kdgudang.getText());
                         psobat.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(4,kdgudang.getText());
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
                         psobat.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(6,kdgudang.getText());
-                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
                         rs=psobat.executeQuery();
                         while(rs.next()){
                             tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),"",rs.getString("letak_barang"),Valid.SetAngka2(Valid.roundUp(rs.getDouble("harga"),100)),rs.getString("nama"),"","",rs.getDouble("stok")});
@@ -981,10 +971,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }else{
                         psobat.setString(1,kdgudang.getText());
                         psobat.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(3,kdgudang.getText());
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
                         psobat.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobat.setString(5,kdgudang.getText());
-                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
                         rs=psobat.executeQuery();
                         if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
                             while(rs.next()){
@@ -1074,7 +1062,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt));
         kelas.setText(Sequel.cariIsi(
                 "select kamar.kelas from kamar inner join kamar_inap on kamar.kd_kamar=kamar_inap.kd_kamar "+
-                "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norwt));
+                "where kamar_inap.no_rawat=? and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norwt));
         if(kelas.getText().equals("Kelas 1")){
             Jeniskelas.setSelectedItem("Kelas 1");
         }else if(kelas.getText().equals("Kelas 2")){

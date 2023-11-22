@@ -1125,8 +1125,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     ps=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar,data_batch.no_batch,data_batch.no_faktur, "+
                         " gudangbarang.stok,ifnull(data_batch.tgl_kadaluarsa,'0000-00-00') as tgl_kadaluarsa from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                         " inner join gudangbarang on data_batch.kode_brng=gudangbarang.kode_brng and data_batch.no_batch=gudangbarang.no_batch and data_batch.no_faktur=gudangbarang.no_faktur "+
-                        " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                        " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? order by databarang.nama_brng");
+                        " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and (databarang.kode_brng like ? or databarang.nama_brng like ?) order by databarang.nama_brng");
                 }
 
                 try {
@@ -1135,8 +1134,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     }else{
                         ps.setString(1,kddari.getText());
                         ps.setString(2,"%"+TCari.getText().trim()+"%");
-                        ps.setString(3,kddari.getText());
-                        ps.setString(4,"%"+TCari.getText().trim()+"%");
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
                     }
                     rs=ps.executeQuery();
                     while(rs.next()){                
@@ -1160,8 +1158,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }else{
                     ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,databarang.kode_sat,databarang."+hppfarmasi+" as dasar,gudangbarang.stok,ifnull(databarang.expire,'0000-00-00') as expire "+
                         " from databarang inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
-                        " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                        " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? order by databarang.nama_brng");
+                        " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? "+
+                        " and (databarang.kode_brng like ? or databarang.nama_brng like ?) order by databarang.nama_brng");
                 }
 
                 try {
@@ -1170,8 +1168,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     }else{
                         ps.setString(1,kddari.getText());
                         ps.setString(2,"%"+TCari.getText().trim()+"%");
-                        ps.setString(3,kddari.getText());
-                        ps.setString(4,"%"+TCari.getText().trim()+"%");
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
                     }
                     rs=ps.executeQuery();
                     while(rs.next()){                
