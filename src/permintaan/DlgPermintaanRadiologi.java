@@ -446,7 +446,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 42, 92, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -484,11 +484,6 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkJln.setName("ChkJln"); // NOI18N
-        ChkJln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkJlnActionPerformed(evt);
-            }
-        });
         PanelInput.add(ChkJln);
         ChkJln.setBounds(384, 72, 23, 23);
 
@@ -696,10 +691,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     form.setVisible(true);
     this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
-
-private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkJlnActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_ChkJlnActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1090,41 +1081,79 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             response = root.path("permintaanradiologi");
             if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("No")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if((list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
-                            tabMode.addRow(new Object[]{
-                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                            });
+                    if(TCariPeriksa.getText().trim().equals("")){
+                        for(JsonNode list:response){
+                            if((list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                });
+                            }
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if((list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                });
+                            }
                         }
                     }
                 }
             }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("No")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())){
+                    if(TCariPeriksa.getText().trim().equals("")){
+                        for(JsonNode list:response){
                             tabMode.addRow(new Object[]{
                                 false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
                             });
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                });
+                            }
                         }
                     }
                 }
             }else if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("Yes")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
-                            tabMode.addRow(new Object[]{
-                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                            });
+                    if(TCariPeriksa.getText().trim().equals("")){
+                        for(JsonNode list:response){
+                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                });
+                            }
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                });
+                            }
                         }
                     }
                 }
             }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("Yes")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
-                            tabMode.addRow(new Object[]{
-                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                            });
+                    if(TCariPeriksa.getText().trim().equals("")){
+                        for(JsonNode list:response){
+                            if(list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-")){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                });
+                            }
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                });
+                            }
                         }
                     }
                 }

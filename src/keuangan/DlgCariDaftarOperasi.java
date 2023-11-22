@@ -477,41 +477,79 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             response = root.path("paketoperasi");
             if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("No")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if((list.path("KodePJ").asText().equals(kd_pj.trim())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase()))){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
-                            });
+                    if(TCari.getText().trim().equals("")){
+                        for(JsonNode list:response){
+                            if(list.path("KodePJ").asText().equals(kd_pj.trim())||list.path("KodePJ").asText().equals("-")){
+                                tabMode.addRow(new Object[]{
+                                    list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
+                                });
+                            }
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if((list.path("KodePJ").asText().equals(kd_pj.trim())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase()))){
+                                tabMode.addRow(new Object[]{
+                                    list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
+                                });
+                            }
                         }
                     }
                 }
             }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("No")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                    if(TCari.getText().trim().equals("")){
+                        for(JsonNode list:response){
                             tabMode.addRow(new Object[]{
                                 list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
                             });
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                                tabMode.addRow(new Object[]{
+                                    list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
+                                });
+                            }
                         }
                     }
                 }
             }else if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("Yes")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(kd_pj.trim())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase()))){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
-                            });
+                    if(TCari.getText().trim().equals("")){
+                        for(JsonNode list:response){
+                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(kd_pj.trim())||list.path("KodePJ").asText().equals("-"))){
+                                tabMode.addRow(new Object[]{
+                                    list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
+                                });
+                            }
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(kd_pj.trim())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase()))){
+                                tabMode.addRow(new Object[]{
+                                    list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
+                                });
+                            }
                         }
                     }
                 }
             }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("Yes")){
                 if(response.isArray()){
-                    for(JsonNode list:response){
-                        if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase()))){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
-                            });
+                    if(TCari.getText().trim().equals("")){
+                        for(JsonNode list:response){
+                            if(list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-")){
+                                tabMode.addRow(new Object[]{
+                                    list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
+                                });
+                            }
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePaket").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaOperasi").asText().toLowerCase().contains(TCari.getText().toLowerCase()))){
+                                tabMode.addRow(new Object[]{
+                                    list.path("KodePaket").asText(),list.path("NamaOperasi").asText(),list.path("Kategori").asText(),list.path("Operator1").asDouble(),list.path("Operator2").asDouble(),list.path("Operator3").asDouble(),list.path("AsistenOp1").asDouble(),list.path("AsistenOp2").asDouble(),list.path("AsistenOp3").asDouble(),list.path("Instrumen").asDouble(),list.path("drAnak").asDouble(),list.path("PerawatResus").asDouble(),list.path("drAnastesi").asDouble(),list.path("AsistenAnast1").asDouble(),list.path("AsistenAnast2").asDouble(),list.path("Bidan1").asDouble(),list.path("Bidan2").asDouble(),list.path("Bidan3").asDouble(),list.path("PerawatLuar").asDouble(),list.path("Alat").asDouble(),list.path("SewaOK/VK").asDouble(),list.path("Akomodasi").asDouble(),list.path("NMS").asDouble(),list.path("Onloop1").asDouble(),list.path("Onloop2").asDouble(),list.path("Onloop3").asDouble(),list.path("Onloop4").asDouble(),list.path("Onloop5").asDouble(),list.path("Sarpras").asDouble(),list.path("drPjAnak").asDouble(),list.path("drUmum").asDouble(),list.path("Total").asDouble()
+                                });
+                            }
                         }
                     }
                 }
