@@ -212,8 +212,8 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         BtnJenis = new widget.Button();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
-        BtnAll = new widget.Button();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnHapus = new widget.Button();
         label10 = new widget.Label();
@@ -484,24 +484,6 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         });
         panelisi3.add(TCari);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('3');
-        BtnAll.setToolTipText("Alt+3");
-        BtnAll.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelisi3.add(BtnAll);
-
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
         BtnCari.setToolTipText("Alt+2");
@@ -519,6 +501,24 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
             }
         });
         panelisi3.add(BtnCari);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('3');
+        BtnAll.setToolTipText("Alt+3");
+        BtnAll.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi3.add(BtnAll);
 
         jPanel1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 

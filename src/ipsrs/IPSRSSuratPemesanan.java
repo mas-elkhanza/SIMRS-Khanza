@@ -1468,13 +1468,21 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             root = mapper.readTree(myObj);
             response = root.path("suratpemesananipsrs");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             "",list.path("Satuan").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Harga").asDouble(),0,0,0,0
                         });
                     }
-                }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                "",list.path("Satuan").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Harga").asDouble(),0,0,0,0
+                            });
+                        }
+                    }
+                }   
             }
             myObj.close();
         }catch(Exception e){
