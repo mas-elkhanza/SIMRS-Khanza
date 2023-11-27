@@ -333,6 +333,30 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         label52 = new widget.Label();
         label53 = new widget.Label();
         Diagnosa22 = new widget.TextBox();
+        label54 = new widget.Label();
+        label55 = new widget.Label();
+        jLabel23 = new widget.Label();
+        TD = new widget.TextBox();
+        jLabel27 = new widget.Label();
+        jLabel20 = new widget.Label();
+        HR = new widget.TextBox();
+        jLabel17 = new widget.Label();
+        jLabel28 = new widget.Label();
+        RR = new widget.TextBox();
+        jLabel25 = new widget.Label();
+        jLabel22 = new widget.Label();
+        Suhu = new widget.TextBox();
+        jLabel26 = new widget.Label();
+        jLabel24 = new widget.Label();
+        label57 = new widget.Label();
+        Diagnosa23 = new widget.TextBox();
+        label56 = new widget.Label();
+        label58 = new widget.Label();
+        Diagnosa24 = new widget.TextBox();
+        label59 = new widget.Label();
+        label60 = new widget.Label();
+        scrollPane21 = new widget.ScrollPane();
+        UraianTindakan1 = new widget.TextArea();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -659,7 +683,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         scrollPane20.setViewportView(UraianTindakan);
 
         FormInput.add(scrollPane20);
-        scrollPane20.setBounds(40, 120, 684, 213);
+        scrollPane20.setBounds(40, 120, 684, 223);
 
         label12.setText("Mulai Persalinan :");
         label12.setName("label12"); // NOI18N
@@ -724,21 +748,21 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa);
-        Diagnosa.setBounds(286, 360, 60, 23);
+        Diagnosa.setBounds(296, 370, 60, 23);
 
         label16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label16.setText("1. Waktu Persalinan : Kala I + Kala II + Kala III");
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label16);
-        label16.setBounds(40, 360, 250, 23);
+        label16.setBounds(40, 370, 250, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator2.setName("jSeparator2"); // NOI18N
         FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 340, 750, 1);
+        jSeparator2.setBounds(0, 350, 750, 1);
 
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel53.setText("CATATAN PERSALINAN");
@@ -750,27 +774,27 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         jLabel54.setText("KESIMPULAN POSTPARTUM");
         jLabel54.setName("jLabel54"); // NOI18N
         FormInput.add(jLabel54);
-        jLabel54.setBounds(10, 340, 180, 23);
+        jLabel54.setBounds(10, 350, 180, 23);
 
         label17.setText("=");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label17);
-        label17.setBounds(0, 360, 282, 23);
+        label17.setBounds(0, 370, 285, 23);
 
         label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label18.setText("+");
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label18);
-        label18.setBounds(349, 360, 23, 23);
+        label18.setBounds(359, 370, 23, 23);
 
         label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label19.setText("+");
         label19.setName("label19"); // NOI18N
         label19.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label19);
-        label19.setBounds(438, 360, 23, 23);
+        label19.setBounds(448, 370, 23, 23);
 
         Diagnosa1.setName("Diagnosa1"); // NOI18N
         Diagnosa1.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -780,14 +804,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa1);
-        Diagnosa1.setBounds(375, 360, 60, 23);
+        Diagnosa1.setBounds(385, 370, 60, 23);
 
         label20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label20.setText("=");
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label20);
-        label20.setBounds(527, 360, 23, 23);
+        label20.setBounds(537, 370, 23, 23);
 
         Diagnosa2.setName("Diagnosa2"); // NOI18N
         Diagnosa2.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -797,14 +821,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa2);
-        Diagnosa2.setBounds(464, 360, 60, 23);
+        Diagnosa2.setBounds(474, 370, 60, 23);
 
         label21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label21.setText("Jam");
         label21.setName("label21"); // NOI18N
         label21.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label21);
-        label21.setBounds(626, 360, 50, 23);
+        label21.setBounds(636, 370, 50, 23);
 
         Diagnosa3.setName("Diagnosa3"); // NOI18N
         Diagnosa3.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -814,13 +838,13 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa3);
-        Diagnosa3.setBounds(553, 360, 70, 23);
+        Diagnosa3.setBounds(563, 370, 70, 23);
 
         label23.setText(":");
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label23);
-        label23.setBounds(0, 390, 106, 23);
+        label23.setBounds(0, 400, 106, 23);
 
         Kesadaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Utuh", "Rupture", "Episiotomi" }));
         Kesadaran.setName("Kesadaran"); // NOI18N
@@ -830,20 +854,20 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesadaran);
-        Kesadaran.setBounds(110, 390, 105, 23);
+        Kesadaran.setBounds(110, 400, 105, 23);
 
         label22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label22.setText("2. Perineum");
         label22.setName("label22"); // NOI18N
         label22.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label22);
-        label22.setBounds(40, 390, 80, 23);
+        label22.setBounds(40, 400, 80, 23);
 
         label24.setText("Jahitan Luar :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label24);
-        label24.setBounds(228, 390, 85, 23);
+        label24.setBounds(228, 400, 85, 23);
 
         Diagnosa4.setName("Diagnosa4"); // NOI18N
         Diagnosa4.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -853,7 +877,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa4);
-        Diagnosa4.setBounds(317, 390, 60, 23);
+        Diagnosa4.setBounds(317, 400, 60, 23);
 
         Diagnosa5.setName("Diagnosa5"); // NOI18N
         Diagnosa5.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -863,20 +887,20 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa5);
-        Diagnosa5.setBounds(406, 390, 60, 23);
+        Diagnosa5.setBounds(406, 400, 60, 23);
 
         label25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label25.setText("dg");
         label25.setName("label25"); // NOI18N
         label25.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label25);
-        label25.setBounds(380, 390, 23, 23);
+        label25.setBounds(380, 400, 23, 23);
 
         label26.setText("Jahitan Dalam :");
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label26);
-        label26.setBounds(481, 390, 90, 23);
+        label26.setBounds(481, 400, 90, 23);
 
         Diagnosa6.setName("Diagnosa6"); // NOI18N
         Diagnosa6.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -886,14 +910,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa6);
-        Diagnosa6.setBounds(575, 390, 60, 23);
+        Diagnosa6.setBounds(575, 400, 60, 23);
 
         label27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label27.setText("dg");
         label27.setName("label27"); // NOI18N
         label27.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label27);
-        label27.setBounds(638, 390, 23, 23);
+        label27.setBounds(638, 400, 23, 23);
 
         Diagnosa7.setName("Diagnosa7"); // NOI18N
         Diagnosa7.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -903,20 +927,20 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa7);
-        Diagnosa7.setBounds(664, 390, 60, 23);
+        Diagnosa7.setBounds(664, 400, 60, 23);
 
         label28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label28.setText("3. Anak");
         label28.setName("label28"); // NOI18N
         label28.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label28);
-        label28.setBounds(40, 420, 50, 23);
+        label28.setBounds(40, 430, 50, 23);
 
         label29.setText(":");
         label29.setName("label29"); // NOI18N
         label29.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label29);
-        label29.setBounds(0, 420, 84, 23);
+        label29.setBounds(0, 430, 84, 23);
 
         Kesadaran1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
         Kesadaran1.setName("Kesadaran1"); // NOI18N
@@ -926,13 +950,13 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesadaran1);
-        Kesadaran1.setBounds(88, 420, 110, 23);
+        Kesadaran1.setBounds(88, 430, 110, 23);
 
         label30.setText("Status :");
         label30.setName("label30"); // NOI18N
         label30.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label30);
-        label30.setBounds(215, 420, 50, 23);
+        label30.setBounds(215, 430, 50, 23);
 
         Kesadaran2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hidup", "Mati" }));
         Kesadaran2.setName("Kesadaran2"); // NOI18N
@@ -942,13 +966,13 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesadaran2);
-        Kesadaran2.setBounds(269, 420, 85, 23);
+        Kesadaran2.setBounds(269, 430, 85, 23);
 
         label31.setText("APGAR Score :");
         label31.setName("label31"); // NOI18N
         label31.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label31);
-        label31.setBounds(363, 420, 90, 23);
+        label31.setBounds(363, 430, 90, 23);
 
         Diagnosa8.setName("Diagnosa8"); // NOI18N
         Diagnosa8.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -958,13 +982,13 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa8);
-        Diagnosa8.setBounds(457, 420, 130, 23);
+        Diagnosa8.setBounds(457, 430, 130, 23);
 
         label32.setText("BB :");
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label32);
-        label32.setBounds(601, 420, 30, 23);
+        label32.setBounds(601, 430, 30, 23);
 
         Diagnosa9.setName("Diagnosa9"); // NOI18N
         Diagnosa9.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -974,20 +998,20 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa9);
-        Diagnosa9.setBounds(635, 420, 60, 23);
+        Diagnosa9.setBounds(635, 430, 60, 23);
 
         label33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label33.setText("cm");
         label33.setName("label33"); // NOI18N
         label33.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label33);
-        label33.setBounds(138, 450, 40, 23);
+        label33.setBounds(138, 460, 40, 23);
 
-        label34.setText("PB :");
+        label34.setText(":");
         label34.setName("label34"); // NOI18N
         label34.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label34);
-        label34.setBounds(0, 450, 71, 23);
+        label34.setBounds(0, 460, 71, 23);
 
         Diagnosa10.setName("Diagnosa10"); // NOI18N
         Diagnosa10.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -997,20 +1021,20 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa10);
-        Diagnosa10.setBounds(75, 450, 60, 23);
+        Diagnosa10.setBounds(75, 460, 60, 23);
 
         label35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label35.setText("gr");
         label35.setName("label35"); // NOI18N
         label35.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label35);
-        label35.setBounds(432, 480, 30, 23);
+        label35.setBounds(432, 490, 30, 23);
 
         label36.setText("Kelainan :");
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label36);
-        label36.setBounds(160, 450, 70, 23);
+        label36.setBounds(160, 460, 70, 23);
 
         Diagnosa11.setName("Diagnosa11"); // NOI18N
         Diagnosa11.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1020,13 +1044,13 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa11);
-        Diagnosa11.setBounds(234, 450, 490, 23);
+        Diagnosa11.setBounds(234, 460, 490, 23);
 
         label38.setText(":");
         label38.setName("label38"); // NOI18N
         label38.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label38);
-        label38.setBounds(0, 480, 99, 23);
+        label38.setBounds(0, 490, 99, 23);
 
         Diagnosa12.setName("Diagnosa12"); // NOI18N
         Diagnosa12.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1036,14 +1060,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa12);
-        Diagnosa12.setBounds(103, 480, 75, 23);
+        Diagnosa12.setBounds(103, 490, 75, 23);
 
         label37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label37.setText("4. Ketuban");
         label37.setName("label37"); // NOI18N
         label37.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label37);
-        label37.setBounds(40, 480, 80, 23);
+        label37.setBounds(40, 490, 80, 23);
 
         Diagnosa13.setName("Diagnosa13"); // NOI18N
         Diagnosa13.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1053,19 +1077,19 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa13);
-        Diagnosa13.setBounds(240, 480, 75, 23);
+        Diagnosa13.setBounds(240, 490, 75, 23);
 
         label39.setText("Placenta :");
         label39.setName("label39"); // NOI18N
         label39.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label39);
-        label39.setBounds(176, 480, 60, 23);
+        label39.setBounds(176, 490, 60, 23);
 
         label40.setText("Ukuran :");
         label40.setName("label40"); // NOI18N
         label40.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label40);
-        label40.setBounds(305, 480, 60, 23);
+        label40.setBounds(305, 490, 60, 23);
 
         Diagnosa14.setName("Diagnosa14"); // NOI18N
         Diagnosa14.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1075,21 +1099,21 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa14);
-        Diagnosa14.setBounds(369, 480, 60, 23);
+        Diagnosa14.setBounds(369, 490, 60, 23);
 
         label41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label41.setText("gram");
         label41.setName("label41"); // NOI18N
         label41.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label41);
-        label41.setBounds(698, 420, 40, 23);
+        label41.setBounds(698, 430, 40, 23);
 
         label42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label42.setText("cm");
         label42.setName("label42"); // NOI18N
         label42.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label42);
-        label42.setBounds(574, 480, 40, 23);
+        label42.setBounds(574, 490, 40, 23);
 
         Diagnosa15.setName("Diagnosa15"); // NOI18N
         Diagnosa15.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1099,19 +1123,19 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa15);
-        Diagnosa15.setBounds(511, 480, 60, 23);
+        Diagnosa15.setBounds(511, 490, 60, 23);
 
         label43.setText("Tali Pusat :");
         label43.setName("label43"); // NOI18N
         label43.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label43);
-        label43.setBounds(437, 480, 70, 23);
+        label43.setBounds(437, 490, 70, 23);
 
         label44.setText("Insertio :");
         label44.setName("label44"); // NOI18N
         label44.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label44);
-        label44.setBounds(585, 480, 60, 23);
+        label44.setBounds(585, 490, 60, 23);
 
         Diagnosa16.setName("Diagnosa16"); // NOI18N
         Diagnosa16.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1121,14 +1145,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa16);
-        Diagnosa16.setBounds(649, 480, 75, 23);
+        Diagnosa16.setBounds(649, 490, 75, 23);
 
         label45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label45.setText("cc");
         label45.setName("label45"); // NOI18N
         label45.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label45);
-        label45.setBounds(712, 510, 30, 23);
+        label45.setBounds(712, 520, 30, 23);
 
         Diagnosa17.setName("Diagnosa17"); // NOI18N
         Diagnosa17.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1138,14 +1162,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa17);
-        Diagnosa17.setBounds(657, 510, 52, 23);
+        Diagnosa17.setBounds(659, 520, 50, 23);
 
         label46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label46.setText("=");
         label46.setName("label46"); // NOI18N
         label46.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label46);
-        label46.setBounds(631, 510, 23, 23);
+        label46.setBounds(633, 520, 23, 23);
 
         Diagnosa18.setName("Diagnosa18"); // NOI18N
         Diagnosa18.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1155,14 +1179,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa18);
-        Diagnosa18.setBounds(499, 510, 50, 23);
+        Diagnosa18.setBounds(501, 520, 50, 23);
 
         label47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label47.setText("+");
         label47.setName("label47"); // NOI18N
         label47.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label47);
-        label47.setBounds(473, 510, 23, 23);
+        label47.setBounds(475, 520, 23, 23);
 
         Diagnosa19.setName("Diagnosa19"); // NOI18N
         Diagnosa19.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1172,14 +1196,14 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa19);
-        Diagnosa19.setBounds(420, 510, 50, 23);
+        Diagnosa19.setBounds(422, 520, 50, 23);
 
         label48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label48.setText("+");
         label48.setName("label48"); // NOI18N
         label48.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label48);
-        label48.setBounds(394, 510, 23, 23);
+        label48.setBounds(396, 520, 23, 23);
 
         Diagnosa20.setName("Diagnosa20"); // NOI18N
         Diagnosa20.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1189,27 +1213,27 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa20);
-        Diagnosa20.setBounds(341, 510, 50, 23);
+        Diagnosa20.setBounds(343, 520, 50, 23);
 
         label49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label49.setText("5. Darah Yang Keluar : Kala I + Kala II + Kala III + Kala IV");
         label49.setName("label49"); // NOI18N
         label49.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label49);
-        label49.setBounds(40, 510, 290, 23);
+        label49.setBounds(40, 520, 290, 23);
 
         label50.setText("=");
         label50.setName("label50"); // NOI18N
         label50.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label50);
-        label50.setBounds(0, 510, 337, 23);
+        label50.setBounds(0, 520, 337, 23);
 
         label51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label51.setText("+");
         label51.setName("label51"); // NOI18N
         label51.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label51);
-        label51.setBounds(552, 510, 23, 23);
+        label51.setBounds(554, 520, 23, 23);
 
         Diagnosa21.setName("Diagnosa21"); // NOI18N
         Diagnosa21.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1219,20 +1243,20 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa21);
-        Diagnosa21.setBounds(578, 510, 50, 23);
+        Diagnosa21.setBounds(580, 520, 50, 23);
 
         label52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label52.setText("6. Keadaan Ibu Post Partum (2 jam) :");
         label52.setName("label52"); // NOI18N
         label52.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label52);
-        label52.setBounds(40, 540, 290, 23);
+        label52.setBounds(40, 550, 290, 23);
 
-        label53.setText("Kondisi Umum :");
+        label53.setText(":");
         label53.setName("label53"); // NOI18N
         label53.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label53);
-        label53.setBounds(0, 560, 130, 23);
+        label53.setBounds(0, 570, 130, 23);
 
         Diagnosa22.setName("Diagnosa22"); // NOI18N
         Diagnosa22.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -1242,7 +1266,181 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa22);
-        Diagnosa22.setBounds(144, 560, 580, 23);
+        Diagnosa22.setBounds(134, 570, 590, 23);
+
+        label54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label54.setText("PB");
+        label54.setName("label54"); // NOI18N
+        label54.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label54);
+        label54.setBounds(52, 460, 30, 23);
+
+        label55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label55.setText("Kondisi Umum");
+        label55.setName("label55"); // NOI18N
+        label55.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label55);
+        label55.setBounds(52, 570, 130, 23);
+
+        jLabel23.setText(":");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(0, 600, 73, 23);
+
+        TD.setFocusTraversalPolicyProvider(true);
+        TD.setName("TD"); // NOI18N
+        TD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TDKeyPressed(evt);
+            }
+        });
+        FormInput.add(TD);
+        TD.setBounds(77, 600, 75, 23);
+
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel27.setText("mmHg");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(155, 600, 40, 23);
+
+        jLabel20.setText("Nadi :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(236, 600, 40, 23);
+
+        HR.setFocusTraversalPolicyProvider(true);
+        HR.setName("HR"); // NOI18N
+        HR.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HRKeyPressed(evt);
+            }
+        });
+        FormInput.add(HR);
+        HR.setBounds(280, 600, 60, 23);
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setText("x/menit");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(343, 600, 50, 23);
+
+        jLabel28.setText("RR :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(413, 600, 40, 23);
+
+        RR.setFocusTraversalPolicyProvider(true);
+        RR.setName("RR"); // NOI18N
+        RR.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RRKeyPressed(evt);
+            }
+        });
+        FormInput.add(RR);
+        RR.setBounds(457, 600, 60, 23);
+
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel25.setText("x/menit");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(520, 600, 50, 23);
+
+        jLabel22.setText("Suhu :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(594, 600, 50, 23);
+
+        Suhu.setFocusTraversalPolicyProvider(true);
+        Suhu.setName("Suhu"); // NOI18N
+        Suhu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SuhuKeyPressed(evt);
+            }
+        });
+        FormInput.add(Suhu);
+        Suhu.setBounds(648, 600, 60, 23);
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("°C");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(711, 600, 30, 23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("TD");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(52, 600, 40, 23);
+
+        label57.setText(":");
+        label57.setName("label57"); // NOI18N
+        label57.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label57);
+        label57.setBounds(0, 630, 140, 23);
+
+        Diagnosa23.setName("Diagnosa23"); // NOI18N
+        Diagnosa23.setPreferredSize(new java.awt.Dimension(80, 23));
+        Diagnosa23.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Diagnosa23KeyPressed(evt);
+            }
+        });
+        FormInput.add(Diagnosa23);
+        Diagnosa23.setBounds(144, 630, 580, 23);
+
+        label56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label56.setText("Kontraksi Uterus");
+        label56.setName("label56"); // NOI18N
+        label56.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label56);
+        label56.setBounds(52, 630, 130, 23);
+
+        label58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label58.setText("Perdarahan Per Vaginam (PPV)");
+        label58.setName("label58"); // NOI18N
+        label58.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label58);
+        label58.setBounds(52, 660, 170, 23);
+
+        Diagnosa24.setName("Diagnosa24"); // NOI18N
+        Diagnosa24.setPreferredSize(new java.awt.Dimension(80, 23));
+        Diagnosa24.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Diagnosa24KeyPressed(evt);
+            }
+        });
+        FormInput.add(Diagnosa24);
+        Diagnosa24.setBounds(214, 660, 510, 23);
+
+        label59.setText(":");
+        label59.setName("label59"); // NOI18N
+        label59.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label59);
+        label59.setBounds(0, 660, 210, 23);
+
+        label60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label60.setText("7. Pengobatan :");
+        label60.setName("label60"); // NOI18N
+        label60.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label60);
+        label60.setBounds(40, 690, 290, 23);
+
+        scrollPane21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane21.setName("scrollPane21"); // NOI18N
+
+        UraianTindakan1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        UraianTindakan1.setColumns(20);
+        UraianTindakan1.setRows(20);
+        UraianTindakan1.setName("UraianTindakan1"); // NOI18N
+        UraianTindakan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UraianTindakan1KeyPressed(evt);
+            }
+        });
+        scrollPane21.setViewportView(UraianTindakan1);
+
+        FormInput.add(scrollPane21);
+        scrollPane21.setBounds(52, 710, 672, 53);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1838,6 +2036,34 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Diagnosa22KeyPressed
 
+    private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
+        //Valid.pindah(evt,GCS,HR);
+    }//GEN-LAST:event_TDKeyPressed
+
+    private void HRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HRKeyPressed
+        Valid.pindah(evt,TD,RR);
+    }//GEN-LAST:event_HRKeyPressed
+
+    private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
+        Valid.pindah(evt,HR,Suhu);
+    }//GEN-LAST:event_RRKeyPressed
+
+    private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
+        //Valid.pindah(evt,RR,SPO);
+    }//GEN-LAST:event_SuhuKeyPressed
+
+    private void Diagnosa23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa23KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Diagnosa23KeyPressed
+
+    private void Diagnosa24KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa24KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Diagnosa24KeyPressed
+
+    private void UraianTindakan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UraianTindakan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UraianTindakan1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1883,6 +2109,8 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.TextBox Diagnosa20;
     private widget.TextBox Diagnosa21;
     private widget.TextBox Diagnosa22;
+    private widget.TextBox Diagnosa23;
+    private widget.TextBox Diagnosa24;
     private widget.TextBox Diagnosa3;
     private widget.TextBox Diagnosa4;
     private widget.TextBox Diagnosa5;
@@ -1891,6 +2119,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.TextBox Diagnosa8;
     private widget.TextBox Diagnosa9;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox HR;
     private widget.TextBox Jk;
     private widget.TextBox KdDokter;
     private widget.ComboBox Kesadaran;
@@ -1902,14 +2131,18 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.TextBox NIP;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPetugas;
+    private widget.TextBox RR;
     private widget.ScrollPane Scroll;
+    private widget.TextBox Suhu;
     private widget.TextBox TCari;
+    private widget.TextBox TD;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
     private widget.TextBox TglLahir;
     private widget.TextArea UraianTindakan;
+    private widget.TextArea UraianTindakan1;
     private widget.Tanggal WaktuMulai;
     private widget.Tanggal WaktuSelesai;
     private widget.InternalFrame internalFrame1;
@@ -1917,8 +2150,17 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
+    private widget.Label jLabel17;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
+    private widget.Label jLabel24;
+    private widget.Label jLabel25;
+    private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
     private widget.Label jLabel53;
     private widget.Label jLabel54;
     private widget.Label jLabel6;
@@ -1969,10 +2211,18 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.Label label51;
     private widget.Label label52;
     private widget.Label label53;
+    private widget.Label label54;
+    private widget.Label label55;
+    private widget.Label label56;
+    private widget.Label label57;
+    private widget.Label label58;
+    private widget.Label label59;
+    private widget.Label label60;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane20;
+    private widget.ScrollPane scrollPane21;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 

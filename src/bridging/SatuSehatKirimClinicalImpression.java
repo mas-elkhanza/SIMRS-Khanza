@@ -601,7 +601,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                         json = "{" +
                                     "\"resourceType\": \"ClinicalImpression\"," +
                                     "\"status\": \"completed\"," +
-                                    "\"description\" : \""+tbObat.getValueAt(i,10).toString().replaceAll("(\r\n|\r|\n|\n\r)"," ") +"\"," +
+                                    "\"description\" : \""+tbObat.getValueAt(i,10).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>") +"\"," +
                                     "\"subject\" : {"+
                                        "\"reference\" : \"Patient/"+idpasien+"\","+
                                        "\"display\" : \""+tbObat.getValueAt(i,4).toString()+"\""+
@@ -615,7 +615,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                                     "\"assessor\" : {"+
                                       "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                     "},"+
-                                    "\"summary\" : \""+tbObat.getValueAt(i,11).toString().replaceAll("(\r\n|\r|\n|\n\r)"," ")+"\","+
+                                    "\"summary\" : \""+tbObat.getValueAt(i,11).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\","+
                                     "\"finding\": [" +
                                         "{" +
                                             "\"itemCodeableConcept\": {"+
@@ -693,7 +693,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                                     "\"resourceType\": \"ClinicalImpression\"," +
                                     "\"id\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                     "\"status\": \"completed\"," +
-                                    "\"description\" : \""+tbObat.getValueAt(i,10).toString().replaceAll("(\r\n|\r|\n|\n\r)"," ")+"\"," +
+                                    "\"description\" : \""+tbObat.getValueAt(i,10).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"," +
                                     "\"subject\" : {"+
                                        "\"reference\" : \"Patient/"+idpasien+"\","+
                                        "\"display\" : \""+tbObat.getValueAt(i,4).toString()+"\""+
@@ -707,7 +707,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                                     "\"assessor\" : {"+
                                       "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                     "},"+
-                                    "\"summary\" : \""+tbObat.getValueAt(i,11).toString().replaceAll("(\r\n|\r|\n|\n\r)"," ")+"\","+
+                                    "\"summary\" : \""+tbObat.getValueAt(i,11).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\","+
                                     "\"finding\": [" +
                                         "{" +
                                             "\"itemCodeableConcept\": {"+
