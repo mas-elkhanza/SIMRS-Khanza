@@ -3979,7 +3979,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         FormMenu.add(BtnPenilaianResikoDekubitus);
 
         BtnHasilPemeriksaanUSG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnHasilPemeriksaanUSG.setText("Hasil Pemeriksaan USG");
+        BtnHasilPemeriksaanUSG.setText("Hasil USG Kandungan");
         BtnHasilPemeriksaanUSG.setFocusPainted(false);
         BtnHasilPemeriksaanUSG.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnHasilPemeriksaanUSG.setGlassColor(new java.awt.Color(255, 255, 255));

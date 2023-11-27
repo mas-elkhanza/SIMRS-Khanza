@@ -1266,7 +1266,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.add(chkAsuhanGizi);
 
         chkHasilPemeriksaanUSG.setSelected(true);
-        chkHasilPemeriksaanUSG.setText("Hasil Pemeriksaan USG");
+        chkHasilPemeriksaanUSG.setText("Hasil USG Kandungan");
         chkHasilPemeriksaanUSG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkHasilPemeriksaanUSG.setName("chkHasilPemeriksaanUSG"); // NOI18N
         chkHasilPemeriksaanUSG.setOpaque(false);
@@ -12454,7 +12454,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         htmlContent.append(
                           "<tr class='isi'>"+ 
                             "<td valign='top' width='2%'></td>"+        
-                            "<td valign='top' width='18%'>Hasil Pemeriksaan USG</td>"+
+                            "<td valign='top' width='18%'>Hasil USG Kandungan</td>"+
                             "<td valign='top' width='1%' align='center'>:</td>"+
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"

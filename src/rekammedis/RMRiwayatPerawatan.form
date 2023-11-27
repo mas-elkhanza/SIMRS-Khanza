@@ -1447,7 +1447,7 @@
                             <Component class="widget.CekBox" name="chkHasilPemeriksaanUSG">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Hasil Pemeriksaan USG"/>
+                                <Property name="text" type="java.lang.String" value="Hasil USG Kandungan"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkHasilPemeriksaanUSG" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
