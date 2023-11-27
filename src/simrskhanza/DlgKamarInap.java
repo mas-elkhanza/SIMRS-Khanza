@@ -76,6 +76,7 @@ import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.RMCatatanADIMEGizi;
+import rekammedis.RMCatatanPersalinan;
 import rekammedis.RMChecklistKriteriaKeluarHCU;
 import rekammedis.RMChecklistKriteriaKeluarICU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
@@ -842,6 +843,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilPemeriksaanUSG = new javax.swing.JMenuItem();
         MnDokumentasiTindakanESWL = new javax.swing.JMenuItem();
         MnPenilaianUlangNyeri = new javax.swing.JMenuItem();
+        MnCatatanPersalinan = new javax.swing.JMenuItem();
         MnDiagnosa = new javax.swing.JMenuItem();
         MnGizi = new javax.swing.JMenu();
         ppSkriningNutrisiDewasa = new javax.swing.JMenuItem();
@@ -2471,6 +2473,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnObservasi.add(MnPenilaianUlangNyeri);
+
+        MnCatatanPersalinan.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanPersalinan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanPersalinan.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanPersalinan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanPersalinan.setText("Catatan Persalinan");
+        MnCatatanPersalinan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCatatanPersalinan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCatatanPersalinan.setName("MnCatatanPersalinan"); // NOI18N
+        MnCatatanPersalinan.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnCatatanPersalinan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCatatanPersalinanActionPerformed(evt);
+            }
+        });
+        MnObservasi.add(MnCatatanPersalinan);
 
         MnDataRM.add(MnObservasi);
 
@@ -5561,7 +5579,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5584,7 +5602,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5610,7 +5628,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2023" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2023" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -5633,7 +5651,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2023" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2023" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -14834,7 +14852,13 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     resume.setLocationRelativeTo(internalFrame1);
                                     resume.setVisible(true);
                                     resume.emptTeks();
-                                    resume.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                    if(R1.isSelected()==true){
+                                        resume.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                    }else if(R2.isSelected()==true){
+                                        resume.setNoRm(rs2.getString("no_rawat2"),DTPCari2.getDate());
+                                    }else if(R3.isSelected()==true){
+                                        resume.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
+                                    }
                                     resume.tampil();
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
@@ -14862,7 +14886,13 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     resume.setLocationRelativeTo(internalFrame1);
                     resume.setVisible(true);
                     resume.emptTeks();
-                    resume.setNoRm(TNoRwCari.getText(),new Date());
+                    if(R1.isSelected()==true){
+                        resume.setNoRm(norawat.getText(),new Date());
+                    }else if(R2.isSelected()==true){
+                        resume.setNoRm(norawat.getText(),DTPCari2.getDate());
+                    }else if(R3.isSelected()==true){
+                        resume.setNoRm(norawat.getText(),DTPCari4.getDate());
+                    }
                     resume.tampil();
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -14891,7 +14921,13 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     resume.setLocationRelativeTo(internalFrame1);
                                     resume.setVisible(true);
                                     resume.emptTeks();
-                                    resume.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                    if(R1.isSelected()==true){
+                                        resume.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                    }else if(R2.isSelected()==true){
+                                        resume.setNoRm(rs2.getString("no_rawat2"),DTPCari2.getDate());
+                                    }else if(R3.isSelected()==true){
+                                        resume.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
+                                    }
                                     resume.tampil();
                                     this.setCursor(Cursor.getDefaultCursor());
                               }else{
@@ -14919,7 +14955,13 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     resume.setLocationRelativeTo(internalFrame1);
                     resume.setVisible(true);
                     resume.emptTeks();
-                    resume.setNoRm(TNoRwCari.getText(),new Date());
+                    if(R1.isSelected()==true){
+                        resume.setNoRm(norawat.getText(),new Date());
+                    }else if(R2.isSelected()==true){
+                        resume.setNoRm(norawat.getText(),DTPCari2.getDate());
+                    }else if(R3.isSelected()==true){
+                        resume.setNoRm(norawat.getText(),DTPCari4.getDate());
+                    }
                     resume.tampil();
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -15527,6 +15569,32 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         } 
     }//GEN-LAST:event_MnPengkajianRestrainActionPerformed
 
+    private void MnCatatanPersalinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanPersalinanActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMCatatanPersalinan form=new RMCatatanPersalinan(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                if(R1.isSelected()==true){
+                    form.setNoRm(norawat.getText(),new Date());
+                }else if(R2.isSelected()==true){
+                    form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                }else if(R3.isSelected()==true){
+                    form.setNoRm(norawat.getText(),DTPCari4.getDate());
+                } 
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        } 
+    }//GEN-LAST:event_MnCatatanPersalinanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -15597,6 +15665,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnCatatanObservasiRanap;
     private javax.swing.JMenuItem MnCatatanObservasiRanapKebidanan;
     private javax.swing.JMenuItem MnCatatanObservasiRanapPostPartum;
+    private javax.swing.JMenuItem MnCatatanPersalinan;
     private javax.swing.JMenuItem MnCekKepesertaan;
     private javax.swing.JMenuItem MnCekNIK;
     private javax.swing.JMenuItem MnCetakSuratSakit;
@@ -16424,6 +16493,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnPenilaianLanjutanSkriningFungsional.setEnabled(akses.getpenilaian_lanjutan_skrining_fungsional());
         MnPenilaianUlangNyeri.setEnabled(akses.getpenilaian_ulang_nyeri());
         MnPengkajianRestrain.setEnabled(akses.getpengkajian_restrain());
+        MnCatatanPersalinan.setEnabled(akses.getcatatan_persalinan());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);
