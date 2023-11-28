@@ -51,6 +51,7 @@ import widget.ComboBox;
 import widget.Tanggal;
 import widget.TextArea;
 import java.io.File;
+import widget.TextBox;
 /**
  *
  * @author Owner
@@ -973,6 +974,22 @@ public final class validasi {
     }
     
     public void pindah2(KeyEvent evt, ComboBox kiri, Button kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+
+    public void pindah2(KeyEvent evt, TextArea kiri, Tanggal kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+
+    public void pindah2(KeyEvent evt, Button kiri, TextBox kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
