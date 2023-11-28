@@ -66,7 +66,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Dokter Penanggung Jawab","NIP","Nama Bidan","Mulai Persalinan","Selesai Persalinan",
             "Catatan Persalinan","W.P.Kala 1","W.P.Kala 2","W.P.Kala 3","W.P.Jumlah","Perineum","Jahitan Luar 1","Jahitan Luar 2","Jahitan Dalam 1","Jahitan Dalam 2",
             "J.K. Anak","Status Lahir","APGAR Score","BB(gram)","PB(cm)","Kelainan","Ketuban","Placenta","Ukuran(gr)","Tali Pusat(cm)","Insertio","D.K.Kala 1",
-            "D.K.Kala 2","D.K.Kala 3","D.K.Kala 4","D.K. Jumlah","Kondisi_umum","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu(°C)","Kontraksi Uterus",
+            "D.K.Kala 2","D.K.Kala 3","D.K.Kala 4","D.K. Jumlah","Kondisi Umum","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu(°C)","Kontraksi Uterus",
             "Perdarahan Per Vaginam (PPV)","Pengobatan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -76,7 +76,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 23; i++) {
+        for (i = 0; i < 45; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -116,6 +116,58 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
                 column.setPreferredWidth(78);
             }else if(i==18){
                 column.setPreferredWidth(78);
+            }else if(i==19){
+                column.setPreferredWidth(87);
+            }else if(i==20){
+                column.setPreferredWidth(87);
+            }else if(i==21){
+                column.setPreferredWidth(63);
+            }else if(i==22){
+                column.setPreferredWidth(66);
+            }else if(i==23){
+                column.setPreferredWidth(100);
+            }else if(i==24){
+                column.setPreferredWidth(55);
+            }else if(i==25){
+                column.setPreferredWidth(45);
+            }else if(i==26){
+                column.setPreferredWidth(180);
+            }else if(i==27){
+                column.setPreferredWidth(70);
+            }else if(i==28){
+                column.setPreferredWidth(70);
+            }else if(i==29){
+                column.setPreferredWidth(60);
+            }else if(i==30){
+                column.setPreferredWidth(79);
+            }else if(i==31){
+                column.setPreferredWidth(70);
+            }else if(i==32){
+                column.setPreferredWidth(59);
+            }else if(i==33){
+                column.setPreferredWidth(59);
+            }else if(i==34){
+                column.setPreferredWidth(59);
+            }else if(i==35){
+                column.setPreferredWidth(59);
+            }else if(i==36){
+                column.setPreferredWidth(68);
+            }else if(i==37){
+                column.setPreferredWidth(180);
+            }else if(i==38){
+                column.setPreferredWidth(60);
+            }else if(i==39){
+                column.setPreferredWidth(77);
+            }else if(i==40){
+                column.setPreferredWidth(68);
+            }else if(i==41){
+                column.setPreferredWidth(53);
+            }else if(i==42){
+                column.setPreferredWidth(180);
+            }else if(i==43){
+                column.setPreferredWidth(180);
+            }else if(i==44){
+                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
