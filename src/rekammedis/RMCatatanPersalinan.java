@@ -53,7 +53,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
-    private String finger="";
+    private String finger="",finger2="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -275,6 +275,111 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        WaktuPersalinanKala1.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+        });
+        
+        WaktuPersalinanKala2.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+        });
+        
+        WaktuPersalinanKala3.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isWaktuPersalinan();
+            }
+        });
+        
+        DarahKeluarKala1.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+        });
+        
+        DarahKeluarKala2.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+        });
+        
+        DarahKeluarKala3.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+        });
+        
+        DarahKeluarKala4.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDarahKeluar();
+            }
+        });
+        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
@@ -306,7 +411,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnDokumenESWL = new javax.swing.JMenuItem();
+        MnCatatanPersalinan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -428,8 +533,8 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         label57 = new widget.Label();
         KontraksiUterus = new widget.TextBox();
         label56 = new widget.Label();
-        label58 = new widget.Label();
         Perdarahan = new widget.TextBox();
+        label58 = new widget.Label();
         label59 = new widget.Label();
         label60 = new widget.Label();
         scrollPane21 = new widget.ScrollPane();
@@ -453,19 +558,19 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnDokumenESWL.setBackground(new java.awt.Color(255, 255, 254));
-        MnDokumenESWL.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDokumenESWL.setForeground(new java.awt.Color(50, 50, 50));
-        MnDokumenESWL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnDokumenESWL.setText("Laporan/Dokumentasi Tindakan ESWL");
-        MnDokumenESWL.setName("MnDokumenESWL"); // NOI18N
-        MnDokumenESWL.setPreferredSize(new java.awt.Dimension(240, 26));
-        MnDokumenESWL.addActionListener(new java.awt.event.ActionListener() {
+        MnCatatanPersalinan.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanPersalinan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanPersalinan.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanPersalinan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanPersalinan.setText("Catatan Persalinan");
+        MnCatatanPersalinan.setName("MnCatatanPersalinan"); // NOI18N
+        MnCatatanPersalinan.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnCatatanPersalinan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnDokumenESWLActionPerformed(evt);
+                MnCatatanPersalinanActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnDokumenESWL);
+        jPopupMenu1.add(MnCatatanPersalinan);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1467,13 +1572,6 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         FormInput.add(label56);
         label56.setBounds(52, 630, 130, 23);
 
-        label58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label58.setText("Perdarahan Per Vaginam (PPV)");
-        label58.setName("label58"); // NOI18N
-        label58.setPreferredSize(new java.awt.Dimension(70, 23));
-        FormInput.add(label58);
-        label58.setBounds(52, 660, 170, 23);
-
         Perdarahan.setName("Perdarahan"); // NOI18N
         Perdarahan.setPreferredSize(new java.awt.Dimension(80, 23));
         Perdarahan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1483,6 +1581,13 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         });
         FormInput.add(Perdarahan);
         Perdarahan.setBounds(214, 660, 510, 23);
+
+        label58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label58.setText("Perdarahan Per Vaginam (PPV)");
+        label58.setName("label58"); // NOI18N
+        label58.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label58);
+        label58.setBounds(52, 660, 170, 23);
 
         label59.setText(":");
         label59.setName("label59"); // NOI18N
@@ -2010,7 +2115,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         Valid.pindah2(evt,WaktuMulai,BtnDokter);
     }//GEN-LAST:event_WaktuSelesaiKeyPressed
 
-    private void MnDokumenESWLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDokumenESWLActionPerformed
+    private void MnCatatanPersalinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanPersalinanActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -2022,19 +2127,23 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString())); 
-            
-            Valid.MyReportqry("rptCetakDokumentasiTindakanESWL.jasper","report","::[ Laporan Dokumentasi Tindakan ESWL ]::",
+            finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),7).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString())); 
+            Valid.MyReportqry("rptCetakCatatanPersalinan.jasper","report","::[ Laporan Catatan Persalinan ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,catatan_persalinan.mulai,"+
-                "catatan_persalinan.selesai,catatan_persalinan.kd_dokter,catatan_persalinan.nip,catatan_persalinan.diagnosa,catatan_persalinan.tindakan,catatan_persalinan.obat_analgesik,"+
-                "catatan_persalinan.obat_lain,catatan_persalinan.uraian_tindakan,catatan_persalinan.uraian_tindakan_focus,catatan_persalinan.uraian_tindakan_rate,"+
-                "catatan_persalinan.uraian_tindakan_power,catatan_persalinan.uraian_tindakan_shock,catatan_persalinan.diintegrasi,catatan_persalinan.kekurangan,catatan_persalinan.anjungan,"+
-                "dokter.nm_dokter,petugas.nama from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "catatan_persalinan.selesai,catatan_persalinan.kd_dokter,catatan_persalinan.nip,catatan_persalinan.catatan,catatan_persalinan.waktu_persalinan_kala_1,"+
+                "catatan_persalinan.waktu_persalinan_kala_2,catatan_persalinan.waktu_persalinan_kala_3,catatan_persalinan.waktu_persalinan_jumlah,catatan_persalinan.perineum,"+
+                "catatan_persalinan.jahitan_luar_1,catatan_persalinan.jahitan_luar_2,catatan_persalinan.jahitan_dalam_1,catatan_persalinan.jahitan_dalam_2,catatan_persalinan.anak,"+
+                "catatan_persalinan.status_lahir,catatan_persalinan.apgar_score,catatan_persalinan.bb,catatan_persalinan.pb,catatan_persalinan.kelainan,catatan_persalinan.ketuban,"+
+                "catatan_persalinan.placenta,catatan_persalinan.ukuran,catatan_persalinan.tali_pusat,catatan_persalinan.insertio,catatan_persalinan.darah_keluar_kala_1,"+
+                "catatan_persalinan.darah_keluar_kala_2,catatan_persalinan.darah_keluar_kala_3,catatan_persalinan.darah_keluar_kala_4,catatan_persalinan.darah_keluar_jumlah,"+
+                "catatan_persalinan.kondisi_umum,catatan_persalinan.td,catatan_persalinan.nadi,catatan_persalinan.rr,catatan_persalinan.suhu,catatan_persalinan.kontraksi_uterus,"+
+                "catatan_persalinan.ppv,catatan_persalinan.pengobatan,dokter.nm_dokter,petugas.nama from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join catatan_persalinan on reg_periksa.no_rawat=catatan_persalinan.no_rawat "+
                 "inner join dokter on catatan_persalinan.kd_dokter=dokter.kd_dokter "+
-                "inner join petugas on catatan_persalinan.nip=petugas.nip where catatan_persalinan.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
-                "and catatan_persalinan.mulai='"+tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()+"'",param);
+                "inner join petugas on catatan_persalinan.nip=petugas.nip where catatan_persalinan.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnDokumenESWLActionPerformed
+    }//GEN-LAST:event_MnCatatanPersalinanActionPerformed
 
     private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
         Valid.pindah2(evt,BtnDokter,WaktuPersalinanKala1);
@@ -2240,7 +2349,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
     private widget.TextBox KontraksiUterus;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnDokumenESWL;
+    private javax.swing.JMenuItem MnCatatanPersalinan;
     private widget.TextBox NIP;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
@@ -2648,6 +2757,26 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
                tbObat.setValueAt(Pengobatan.getText(),tbObat.getSelectedRow(),44);
                emptTeks();
                TabRawat.setSelectedIndex(1);
+        }
+    }
+    
+    private void isWaktuPersalinan(){
+        if((!WaktuPersalinanKala1.getText().equals(""))&&(!WaktuPersalinanKala2.getText().equals(""))&&(!WaktuPersalinanKala3.getText().equals(""))){
+            try {
+                WaktuPersalinanJumlah.setText(Valid.SetAngka8(Valid.SetAngka(WaktuPersalinanKala1.getText())+Valid.SetAngka(WaktuPersalinanKala2.getText())+Valid.SetAngka(WaktuPersalinanKala3.getText()),2)+"");
+            } catch (Exception e) {
+                WaktuPersalinanJumlah.setText("");
+            }
+        }
+    }
+    
+    private void isDarahKeluar(){
+        if((!DarahKeluarKala1.getText().equals(""))&&(!DarahKeluarKala2.getText().equals(""))&&(!DarahKeluarKala3.getText().equals(""))&&(!DarahKeluarKala4.getText().equals(""))){
+            try {
+                DarahKeluarJumlah.setText(Valid.SetAngka8(Valid.SetAngka(DarahKeluarKala1.getText())+Valid.SetAngka(DarahKeluarKala2.getText())+Valid.SetAngka(DarahKeluarKala3.getText())+Valid.SetAngka(DarahKeluarKala4.getText()),2)+"");
+            } catch (Exception e) {
+                DarahKeluarJumlah.setText("");
+            }
         }
     }
 }

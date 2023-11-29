@@ -22202,7 +22202,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='50%' border='0'>Dokter Penanggung Jawab : "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
-                                              "<td width='50%' border='0'>Bidan : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                              "<td width='50%' border='0'>Bidan/Perawat : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -22212,7 +22212,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "CATATAN PERSALINAN"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='100%' align='justify'>"+rs2.getString("catatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                              "<td width='100%' border='0' align='justify'>"+rs2.getString("catatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -22222,38 +22222,48 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "KESIMPULAN POSTPARTUM"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                               "<td width='4%' align='center' valign='middle' border='0'>1.</td>"+
-                                               "<td width='96%' align='justify' border='0'>Waktu Persalinan : Kala I + Kala II + Kala III = "+rs2.getString("waktu_persalinan_kala_1")+" + "+rs2.getString("waktu_persalinan_kala_2")+" + "+rs2.getString("waktu_persalinan_kala_3")+" = "+rs2.getString("waktu_persalinan_jumlah")+"</td>"+
+                                               "<td width='3%' align='left' valign='top' border='0'>1.</td>"+
+                                               "<td width='97%' align='justify' valign='top' border='0'>Waktu Persalinan : Kala I + Kala II + Kala III = "+rs2.getString("waktu_persalinan_kala_1")+" + "+rs2.getString("waktu_persalinan_kala_2")+" + "+rs2.getString("waktu_persalinan_kala_3")+" = "+rs2.getString("waktu_persalinan_jumlah")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                               "<td width='4%' align='center' valign='middle' border='0'>2.</td>"+
-                                               "<td width='96%' align='justify' border='0'>Perineum : "+rs2.getString("perineum")+".&nbsp;&nbsp;&nbsp;&nbsp;Jahitan Luar : "+rs2.getString("jahitan_luar_1")+" dg "+rs2.getString("jahitan_luar_2")+".&nbsp;&nbsp;&nbsp;&nbsp;Jahitan Dalam : "+rs2.getString("jahitan_dalam_1")+" dg "+rs2.getString("jahitan_dalam_2")+"</td>"+
+                                               "<td width='3%' align='left' valign='top' border='0'>2.</td>"+
+                                               "<td width='97%' align='justify' valign='top' border='0'>Perineum : "+rs2.getString("perineum")+".&nbsp;&nbsp;&nbsp;&nbsp;Jahitan Luar : "+rs2.getString("jahitan_luar_1")+" dg "+rs2.getString("jahitan_luar_2")+".&nbsp;&nbsp;&nbsp;&nbsp;Jahitan Dalam : "+rs2.getString("jahitan_dalam_1")+" dg "+rs2.getString("jahitan_dalam_2")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                               "<td width='4%' align='center' valign='middle' border='0'>3.</td>"+
-                                               "<td width='96%' align='justify' border='0'>Anak : "+rs2.getString("anak")+".&nbsp;&nbsp;&nbsp;&nbsp;Status : "+rs2.getString("status_lahir")+".&nbsp;&nbsp;&nbsp;&nbsp;APGAR Score : "+rs2.getString("apgar_score")+".&nbsp;&nbsp;&nbsp;&nbsp;BB : "+rs2.getString("bb")+" gram.&nbsp;&nbsp;&nbsp;&nbsp;PB : "+rs2.getString("pb")+" cm.&nbsp;&nbsp;&nbsp;&nbsp;Kelainan : "+rs2.getString("kelainan")+"</td>"+
+                                               "<td width='3%' align='left' valign='top' border='0'>3.</td>"+
+                                               "<td width='97%' align='justify' valign='top' border='0'>Anak : "+rs2.getString("anak")+".&nbsp;&nbsp;&nbsp;&nbsp;Status : "+rs2.getString("status_lahir")+".&nbsp;&nbsp;&nbsp;&nbsp;APGAR Score : "+rs2.getString("apgar_score")+".&nbsp;&nbsp;&nbsp;&nbsp;BB : "+rs2.getString("bb")+" gram.&nbsp;&nbsp;&nbsp;&nbsp;PB : "+rs2.getString("pb")+" cm.&nbsp;&nbsp;&nbsp;&nbsp;Kelainan : "+rs2.getString("kelainan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                               "<td width='4%' align='center' valign='middle' border='0'>4.</td>"+
-                                               "<td width='96%' align='justify' border='0'>Ketuban : "+rs2.getString("ketuban")+".&nbsp;&nbsp;&nbsp;&nbsp;Placenta : "+rs2.getString("placenta")+".&nbsp;&nbsp;&nbsp;&nbsp;Ukuran : "+rs2.getString("ukuran")+" gr.&nbsp;&nbsp;&nbsp;&nbsp;Tali Pusat : "+rs2.getString("tali_pusat")+" cm.&nbsp;&nbsp;&nbsp;&nbsp;Insertio : "+rs2.getString("insertio")+"</td>"+
+                                               "<td width='3%' align='left' valign='top' border='0'>4.</td>"+
+                                               "<td width='97%' align='justify' valign='top' border='0'>Ketuban : "+rs2.getString("ketuban")+".&nbsp;&nbsp;&nbsp;&nbsp;Placenta : "+rs2.getString("placenta")+".&nbsp;&nbsp;&nbsp;&nbsp;Ukuran : "+rs2.getString("ukuran")+" gr.&nbsp;&nbsp;&nbsp;&nbsp;Tali Pusat : "+rs2.getString("tali_pusat")+" cm.&nbsp;&nbsp;&nbsp;&nbsp;Insertio : "+rs2.getString("insertio")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                               "<td width='4%' align='center' valign='middle' border='0'>5.</td>"+
-                                               "<td width='96%' align='justify' border='0'>Darah Yang Keluar : Kala I + Kala II + Kala III + Kala IV = "+rs2.getString("darah_keluar_kala_1")+" + "+rs2.getString("darah_keluar_kala_2")+" + "+rs2.getString("darah_keluar_kala_3")+" + "+rs2.getString("darah_keluar_kala_4")+" = "+rs2.getString("darah_keluar_jumlah")+"</td>"+
+                                               "<td width='3%' align='left' valign='top' border='0'>5.</td>"+
+                                               "<td width='97%' align='justify' valign='top' border='0'>Darah Yang Keluar : Kala I + Kala II + Kala III + Kala IV = "+rs2.getString("darah_keluar_kala_1")+" + "+rs2.getString("darah_keluar_kala_2")+" + "+rs2.getString("darah_keluar_kala_3")+" + "+rs2.getString("darah_keluar_kala_4")+" = "+rs2.getString("darah_keluar_jumlah")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                               "<td width='4%' align='center' valign='middle' border='0'>6.</td>"+
-                                               "<td width='96%' align='justify' border='0'>"+
-                                                   "6. Keadaan Ibu Post Partum (2 jam) :"+
-                                                   "<table width='100%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                               "<td width='3%' align='left' valign='top' border='0'>6.</td>"+
+                                               "<td width='97%' align='justify' valign='top' border='0'>"+
+                                                   "Keadaan Ibu Post Partum (2 jam) :"+
+                                                   "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                        "<tr>"+
-                                                            "<td width='99%' align='justify' border='0'>Kondisi Umum : "+rs2.getString("kondisi_umum")+"</td>"+
+                                                            "<td width='100%' align='justify' border='0'>Kondisi Umum : "+rs2.getString("kondisi_umum")+"</td>"+
                                                        "</tr>"+
                                                        "<tr>"+
-                                                            "<td width='99%' align='justify' border='0'>Tensi Darah : "+rs2.getString("td")+" mmHg.&nbsp;&nbsp;&nbsp;&nbsp;</td>"+
+                                                            "<td width='100%' align='justify' border='0'>Tensi Darah : "+rs2.getString("td")+" mmHg.&nbsp;&nbsp;&nbsp;&nbsp;Nadi : "+rs2.getString("nadi")+" x/menit.&nbsp;&nbsp;&nbsp;&nbsp;RR : "+rs2.getString("rr")+" x/menit.&nbsp;&nbsp;&nbsp;&nbsp;Suhu : "+rs2.getString("suhu")+" °C</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                            "<td width='100%' align='justify' border='0'>Kontraksi Uterus : "+rs2.getString("kontraksi_uterus")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                            "<td width='100%' align='justify' border='0'>Perdarahan Per Vaginam (PPV) : "+rs2.getString("ppv")+"</td>"+
                                                        "</tr>"+
                                                    "</table>"+
                                                "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='3%' align='left' valign='top' border='0'>7.</td>"+
+                                               "<td width='97%' align='justify' valign='top' border='0'>Pengobatan : "+rs2.getString("pengobatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
