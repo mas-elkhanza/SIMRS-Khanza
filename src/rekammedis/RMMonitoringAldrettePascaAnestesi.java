@@ -292,13 +292,13 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel31 = new widget.Label();
         scrollPane2 = new widget.ScrollPane();
         Instruksi = new widget.TextArea();
-        jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         NmDokter = new widget.TextBox();
         BtnDokter = new widget.Button();
         KdDokter = new widget.TextBox();
         label14 = new widget.Label();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -503,7 +503,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-10-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -517,7 +517,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-10-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -608,13 +608,13 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 443));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 453));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(10, 10, 80, 23);
+        jLabel4.setBounds(0, 10, 70, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
@@ -624,7 +624,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(100, 10, 130, 23);
+        TNoRw.setBounds(74, 10, 136, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
@@ -635,10 +635,10 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(340, 10, 285, 23);
+        TPasien.setBounds(326, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-10-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -648,7 +648,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(500, 40, 90, 23);
+        Tanggal.setBounds(74, 70, 90, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
@@ -659,13 +659,13 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(TNoRM);
-        TNoRM.setBounds(232, 10, 110, 23);
+        TNoRM.setBounds(212, 10, 112, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel16);
-        jLabel16.setBounds(420, 40, 80, 23);
+        jLabel16.setBounds(0, 70, 70, 23);
 
         Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam.setName("Jam"); // NOI18N
@@ -675,7 +675,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(Jam);
-        Jam.setBounds(600, 40, 62, 23);
+        Jam.setBounds(168, 70, 62, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Menit.setName("Menit"); // NOI18N
@@ -685,7 +685,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(Menit);
-        Menit.setBounds(660, 40, 62, 23);
+        Menit.setBounds(234, 70, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Detik.setName("Detik"); // NOI18N
@@ -695,7 +695,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(Detik);
-        Detik.setBounds(730, 40, 62, 23);
+        Detik.setBounds(300, 70, 62, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -704,23 +704,23 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(790, 40, 23, 23);
+        ChkKejadian.setBounds(366, 70, 23, 23);
 
         jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(20, 70, 70, 23);
+        jLabel18.setBounds(0, 40, 70, 23);
 
         NIP.setEditable(false);
         NIP.setHighlighter(null);
         NIP.setName("NIP"); // NOI18N
         FormInput.add(NIP);
-        NIP.setBounds(100, 70, 94, 23);
+        NIP.setBounds(74, 40, 94, 23);
 
         NamaPetugas.setEditable(false);
         NamaPetugas.setName("NamaPetugas"); // NOI18N
         FormInput.add(NamaPetugas);
-        NamaPetugas.setBounds(200, 70, 187, 23);
+        NamaPetugas.setBounds(170, 40, 175, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -737,36 +737,36 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(btnPetugas);
-        btnPetugas.setBounds(390, 70, 28, 23);
+        btnPetugas.setBounds(348, 40, 28, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(650, 10, 60, 23);
+        jLabel8.setBounds(625, 10, 60, 23);
 
         TglLahir.setHighlighter(null);
         TglLahir.setName("TglLahir"); // NOI18N
         FormInput.add(TglLahir);
-        TglLahir.setBounds(710, 10, 100, 23);
+        TglLahir.setBounds(689, 10, 100, 23);
 
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel57.setText("Skala :");
+        jLabel57.setText("Kriteria :");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(20, 100, 80, 23);
+        jLabel57.setBounds(14, 100, 80, 23);
 
         jLabel217.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel217.setText("1. Aktivitas");
         jLabel217.setName("jLabel217"); // NOI18N
         FormInput.add(jLabel217);
-        jLabel217.setBounds(40, 120, 260, 23);
+        jLabel217.setBounds(34, 120, 260, 23);
 
         jLabel219.setText("Skala :");
         jLabel219.setName("jLabel219"); // NOI18N
         FormInput.add(jLabel219);
         jLabel219.setBounds(250, 120, 80, 23);
 
-        SkalaResiko1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Sanggup menggerakan satupun anggota gerak", "Sanggup gerak 2 anggota tubuh", "Sanggup gerak 4 anggota tubuh" }));
+        SkalaResiko1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Sanggup Menggerakan Satupun Anggota Gerak", "Sanggup Gerak 2 Anggota Tubuh", "Sanggup Gerak 4 Anggota Tubuh" }));
         SkalaResiko1.setName("SkalaResiko1"); // NOI18N
         SkalaResiko1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -779,31 +779,32 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(SkalaResiko1);
-        SkalaResiko1.setBounds(340, 120, 310, 23);
+        SkalaResiko1.setBounds(334, 120, 330, 23);
 
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
         FormInput.add(jLabel218);
-        jLabel218.setBounds(660, 120, 70, 23);
+        jLabel218.setBounds(655, 120, 70, 23);
 
         NilaiResiko1.setEditable(false);
         NilaiResiko1.setFocusTraversalPolicyProvider(true);
         NilaiResiko1.setName("NilaiResiko1"); // NOI18N
         FormInput.add(NilaiResiko1);
-        NilaiResiko1.setBounds(730, 120, 60, 23);
+        NilaiResiko1.setBounds(729, 120, 60, 23);
 
         jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel220.setText("2. Respirasi");
         jLabel220.setName("jLabel220"); // NOI18N
         FormInput.add(jLabel220);
-        jLabel220.setBounds(40, 150, 260, 23);
+        jLabel220.setBounds(34, 150, 260, 23);
 
         jLabel221.setText("Skala :");
         jLabel221.setName("jLabel221"); // NOI18N
         FormInput.add(jLabel221);
         jLabel221.setBounds(250, 150, 80, 23);
+        jLabel221.getAccessibleContext().setAccessibleName("Skor :");
 
-        SkalaResiko2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apnea atau napas tidak adekuat", "Sesak atau pernapasan sedikit terbatas", "Sanggup bernafas dalam serta disuruh batuk" }));
+        SkalaResiko2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apnea Atau Napas Tidak Adekuat", "Sesak Atau Pernapasan Sedikit Terbatas", "Sanggup Bernafas Dalam Serta Disuruh Batuk" }));
         SkalaResiko2.setName("SkalaResiko2"); // NOI18N
         SkalaResiko2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -816,31 +817,32 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(SkalaResiko2);
-        SkalaResiko2.setBounds(340, 150, 310, 23);
+        SkalaResiko2.setBounds(334, 150, 330, 23);
 
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
         FormInput.add(jLabel222);
-        jLabel222.setBounds(660, 150, 70, 23);
+        jLabel222.setBounds(655, 150, 70, 23);
 
         NilaiResiko2.setEditable(false);
         NilaiResiko2.setFocusTraversalPolicyProvider(true);
         NilaiResiko2.setName("NilaiResiko2"); // NOI18N
         FormInput.add(NilaiResiko2);
-        NilaiResiko2.setBounds(730, 150, 60, 23);
+        NilaiResiko2.setBounds(729, 150, 60, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel223.setText("3. Tekanan Darah");
         jLabel223.setName("jLabel223"); // NOI18N
         FormInput.add(jLabel223);
-        jLabel223.setBounds(40, 180, 260, 23);
+        jLabel223.setBounds(34, 180, 260, 23);
 
         jLabel224.setText("Skala :");
         jLabel224.setName("jLabel224"); // NOI18N
         FormInput.add(jLabel224);
         jLabel224.setBounds(250, 180, 80, 23);
+        jLabel224.getAccessibleContext().setAccessibleName("Skor :");
 
-        SkalaResiko3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "± 50% Tekanan Darah Pra Anestesi", "± 20% - 50% Tekanan Darah Pra Anestesi", "± 20% Tekanan Darah Pra Anestesi", " ", " " }));
+        SkalaResiko3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "± 50% Tekanan Darah Pra Anestesi", "± 20% - 50% Tekanan Darah Pra Anestesi", "± 20% Tekanan Darah Pra Anestesi" }));
         SkalaResiko3.setName("SkalaResiko3"); // NOI18N
         SkalaResiko3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -853,29 +855,30 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(SkalaResiko3);
-        SkalaResiko3.setBounds(340, 180, 310, 23);
+        SkalaResiko3.setBounds(334, 180, 330, 23);
 
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
         FormInput.add(jLabel225);
-        jLabel225.setBounds(660, 180, 70, 23);
+        jLabel225.setBounds(655, 180, 70, 23);
 
         NilaiResiko3.setEditable(false);
         NilaiResiko3.setFocusTraversalPolicyProvider(true);
         NilaiResiko3.setName("NilaiResiko3"); // NOI18N
         FormInput.add(NilaiResiko3);
-        NilaiResiko3.setBounds(730, 180, 60, 23);
+        NilaiResiko3.setBounds(729, 180, 60, 23);
 
         jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel226.setText("4. Kesadaran");
         jLabel226.setName("jLabel226"); // NOI18N
         FormInput.add(jLabel226);
-        jLabel226.setBounds(40, 210, 260, 23);
+        jLabel226.setBounds(34, 210, 260, 23);
 
         jLabel227.setText("Skala :");
         jLabel227.setName("jLabel227"); // NOI18N
         FormInput.add(jLabel227);
         jLabel227.setBounds(250, 210, 80, 23);
+        jLabel227.getAccessibleContext().setAccessibleName("Skor :");
 
         SkalaResiko4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Respon", "Respon Terhadap Panggilan", "Sadar Penuh" }));
         SkalaResiko4.setName("SkalaResiko4"); // NOI18N
@@ -890,29 +893,30 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(SkalaResiko4);
-        SkalaResiko4.setBounds(340, 210, 310, 23);
+        SkalaResiko4.setBounds(334, 210, 330, 23);
 
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
         FormInput.add(jLabel228);
-        jLabel228.setBounds(660, 210, 70, 23);
+        jLabel228.setBounds(655, 210, 70, 23);
 
         NilaiResiko4.setEditable(false);
         NilaiResiko4.setFocusTraversalPolicyProvider(true);
         NilaiResiko4.setName("NilaiResiko4"); // NOI18N
         FormInput.add(NilaiResiko4);
-        NilaiResiko4.setBounds(730, 210, 60, 23);
+        NilaiResiko4.setBounds(729, 210, 60, 23);
 
         jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel229.setText("5. Warna Kulit");
         jLabel229.setName("jLabel229"); // NOI18N
         FormInput.add(jLabel229);
-        jLabel229.setBounds(40, 240, 260, 23);
+        jLabel229.setBounds(34, 240, 260, 23);
 
         jLabel230.setText("Skala :");
         jLabel230.setName("jLabel230"); // NOI18N
         FormInput.add(jLabel230);
         jLabel230.setBounds(250, 240, 80, 23);
+        jLabel230.getAccessibleContext().setAccessibleName("Skor :");
 
         SkalaResiko5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cianosis", "Pucat", "Kemerahan / Normal" }));
         SkalaResiko5.setName("SkalaResiko5"); // NOI18N
@@ -927,36 +931,36 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(SkalaResiko5);
-        SkalaResiko5.setBounds(340, 240, 310, 23);
+        SkalaResiko5.setBounds(334, 240, 330, 23);
 
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N
         FormInput.add(jLabel231);
-        jLabel231.setBounds(660, 240, 70, 23);
+        jLabel231.setBounds(655, 240, 70, 23);
 
         NilaiResiko5.setEditable(false);
         NilaiResiko5.setFocusTraversalPolicyProvider(true);
         NilaiResiko5.setName("NilaiResiko5"); // NOI18N
         FormInput.add(NilaiResiko5);
-        NilaiResiko5.setBounds(730, 240, 60, 23);
+        NilaiResiko5.setBounds(729, 240, 60, 23);
 
         TingkatResiko.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko.setText("Pasien dipindahkan ke ruang perawatan bila nilai > 8");
+        TingkatResiko.setText("Pasien Dipindahkan Ke Ruang Perawatan Bila Nilai > 8");
         TingkatResiko.setToolTipText("");
         TingkatResiko.setName("TingkatResiko"); // NOI18N
         FormInput.add(TingkatResiko);
-        TingkatResiko.setBounds(30, 270, 640, 23);
+        TingkatResiko.setBounds(34, 270, 640, 23);
 
         jLabel235.setText("Total :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(660, 270, 70, 23);
+        jLabel235.setBounds(655, 270, 70, 23);
 
         NilaiResikoTotal.setEditable(false);
         NilaiResikoTotal.setFocusTraversalPolicyProvider(true);
         NilaiResikoTotal.setName("NilaiResikoTotal"); // NOI18N
         FormInput.add(NilaiResikoTotal);
-        NilaiResikoTotal.setBounds(730, 270, 60, 23);
+        NilaiResikoTotal.setBounds(729, 270, 60, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Keluar :");
@@ -1004,13 +1008,6 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         FormInput.add(scrollPane2);
         scrollPane2.setBounds(40, 390, 755, 50);
 
-        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 100, 810, 3);
-
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
@@ -1029,7 +1026,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         NmDokter.setName("NmDokter"); // NOI18N
         NmDokter.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmDokter);
-        NmDokter.setBounds(200, 40, 180, 23);
+        NmDokter.setBounds(583, 40, 175, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -1047,7 +1044,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(BtnDokter);
-        BtnDokter.setBounds(380, 40, 28, 23);
+        BtnDokter.setBounds(761, 40, 28, 23);
 
         KdDokter.setEditable(false);
         KdDokter.setName("KdDokter"); // NOI18N
@@ -1058,13 +1055,20 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }
         });
         FormInput.add(KdDokter);
-        KdDokter.setBounds(100, 40, 100, 23);
+        KdDokter.setBounds(481, 40, 100, 23);
 
-        label14.setText("Dokter Anestesi:");
+        label14.setText("Dokter Anestesi :");
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label14);
-        label14.setBounds(-10, 40, 100, 23);
+        label14.setBounds(378, 40, 99, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 100, 810, 1);
 
         scrollInput.setViewportView(FormInput);
 
