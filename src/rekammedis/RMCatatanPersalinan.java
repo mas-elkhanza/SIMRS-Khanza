@@ -2668,7 +2668,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
         BtnEdit.setEnabled(akses.getcatatan_persalinan());
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
-            BtnDokter.setEnabled(false);
+            BtnPetugas.setEnabled(false);
             NIP.setText(akses.getkode());
             NmPetugas.setText(petugas.tampil3(NIP.getText()));
             if(NmPetugas.getText().equals("")){

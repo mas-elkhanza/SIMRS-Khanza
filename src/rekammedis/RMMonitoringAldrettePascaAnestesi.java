@@ -1,3 +1,6 @@
+/*
+ * Kontribusi dari Mega Khairunnisa RS Simpangan Depok
+ */
 package rekammedis;
 
 import fungsi.WarnaTable;
@@ -45,7 +48,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String finger="";
+    private String finger="",finger2="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -56,9 +59,9 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         setSize(800,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala 1","N.M. 1",
-            "Skala 2","N.M. 2","Skala 3","N.M. 3","Skala 4","N.M. 4","Skala 5","N.M. 5",
-            "Total","Keluar","Instruksi","Kode Dokter","Nama Dokter","NIP","Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","1. Aktivitas","N.K. 1","2. Respirasi","N.K. 2",
+            "3. Tekanan Darah","N.K. 3","4. Kesadaran","N.K. 4","5. Warna Kulit","N.K. 5","Total","Keluar","Instruksi",
+            "Kode Dokter","Nama Dokter","NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -83,11 +86,11 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }else if(i==5){
                 column.setPreferredWidth(115);
             }else if(i==6){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(40);
             }else if(i==8){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(150);
             }else if(i==9){
                 column.setPreferredWidth(40);
             }else if(i==10){
@@ -95,19 +98,19 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }else if(i==11){
                 column.setPreferredWidth(50);
             }else if(i==12){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(150);
             }else if(i==13){
                 column.setPreferredWidth(40);
             }else if(i==14){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(150);
             }else if(i==15){
                 column.setPreferredWidth(40);
             }else if(i==16){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(40);
             }else if(i==17){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(200);
             }else if(i==18){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(200);
             }else if(i==19){
                 column.setPreferredWidth(200);
             }else if(i==20){
@@ -124,7 +127,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         KdDokter.setDocument(new batasInput((byte)20).getKata(KdDokter));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
         Keluar.setDocument(new batasInput((int)200).getKata(Keluar));
-        Instruksi.setDocument(new batasInput((int)200).getKata(Instruksi));
+        Instruksi.setDocument(new batasInput((int)250).getKata(Instruksi));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -260,32 +263,32 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel57 = new widget.Label();
         jLabel217 = new widget.Label();
         jLabel219 = new widget.Label();
-        SkalaResiko1 = new widget.ComboBox();
+        SkalaKriteria1 = new widget.ComboBox();
         jLabel218 = new widget.Label();
-        NilaiResiko1 = new widget.TextBox();
+        NilaKriteria1 = new widget.TextBox();
         jLabel220 = new widget.Label();
         jLabel221 = new widget.Label();
-        SkalaResiko2 = new widget.ComboBox();
+        SkalaKriteria2 = new widget.ComboBox();
         jLabel222 = new widget.Label();
-        NilaiResiko2 = new widget.TextBox();
+        NilaKriteria2 = new widget.TextBox();
         jLabel223 = new widget.Label();
         jLabel224 = new widget.Label();
-        SkalaResiko3 = new widget.ComboBox();
+        SkalaKriteria3 = new widget.ComboBox();
         jLabel225 = new widget.Label();
-        NilaiResiko3 = new widget.TextBox();
+        NilaKriteria3 = new widget.TextBox();
         jLabel226 = new widget.Label();
         jLabel227 = new widget.Label();
-        SkalaResiko4 = new widget.ComboBox();
+        SkalaKriteria4 = new widget.ComboBox();
         jLabel228 = new widget.Label();
-        NilaiResiko4 = new widget.TextBox();
+        NilaKriteria4 = new widget.TextBox();
         jLabel229 = new widget.Label();
         jLabel230 = new widget.Label();
-        SkalaResiko5 = new widget.ComboBox();
+        SkalaKriteria5 = new widget.ComboBox();
         jLabel231 = new widget.Label();
-        NilaiResiko5 = new widget.TextBox();
-        TingkatResiko = new widget.Label();
+        NilaKriteria5 = new widget.TextBox();
+        TingkatSkor = new widget.Label();
         jLabel235 = new widget.Label();
-        NilaiResikoTotal = new widget.TextBox();
+        NilaiKriteriaTotal = new widget.TextBox();
         jLabel30 = new widget.Label();
         scrollPane1 = new widget.ScrollPane();
         Keluar = new widget.TextArea();
@@ -320,7 +323,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         MnMonitoringSkorAldrette2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnMonitoringSkorAldrette2.setForeground(new java.awt.Color(50, 50, 50));
         MnMonitoringSkorAldrette2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnMonitoringSkorAldrette2.setText("Formulir Monitoring Skor Aldrette 2");
+        MnMonitoringSkorAldrette2.setText("Rekap Monitoring Skor Aldrette Pasca Anestesi");
         MnMonitoringSkorAldrette2.setName("MnMonitoringSkorAldrette2"); // NOI18N
         MnMonitoringSkorAldrette2.setPreferredSize(new java.awt.Dimension(230, 26));
         MnMonitoringSkorAldrette2.addActionListener(new java.awt.event.ActionListener() {
@@ -503,7 +506,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -517,7 +520,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -578,7 +581,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 466));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 476));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -603,7 +606,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
 
         scrollInput.setName("scrollInput"); // NOI18N
-        scrollInput.setPreferredSize(new java.awt.Dimension(102, 557));
+        scrollInput.setPreferredSize(new java.awt.Dimension(102, 570));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
@@ -638,7 +641,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         TPasien.setBounds(326, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -766,31 +769,31 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         FormInput.add(jLabel219);
         jLabel219.setBounds(250, 120, 80, 23);
 
-        SkalaResiko1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Sanggup Menggerakan Satupun Anggota Gerak", "Sanggup Gerak 2 Anggota Tubuh", "Sanggup Gerak 4 Anggota Tubuh" }));
-        SkalaResiko1.setName("SkalaResiko1"); // NOI18N
-        SkalaResiko1.addItemListener(new java.awt.event.ItemListener() {
+        SkalaKriteria1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Sanggup Menggerakan Satupun Anggota Gerak", "Sanggup Gerak 2 Anggota Tubuh", "Sanggup Gerak 4 Anggota Tubuh" }));
+        SkalaKriteria1.setName("SkalaKriteria1"); // NOI18N
+        SkalaKriteria1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko1ItemStateChanged(evt);
+                SkalaKriteria1ItemStateChanged(evt);
             }
         });
-        SkalaResiko1.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaKriteria1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko1KeyPressed(evt);
+                SkalaKriteria1KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko1);
-        SkalaResiko1.setBounds(334, 120, 330, 23);
+        FormInput.add(SkalaKriteria1);
+        SkalaKriteria1.setBounds(334, 120, 330, 23);
 
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
         FormInput.add(jLabel218);
         jLabel218.setBounds(655, 120, 70, 23);
 
-        NilaiResiko1.setEditable(false);
-        NilaiResiko1.setFocusTraversalPolicyProvider(true);
-        NilaiResiko1.setName("NilaiResiko1"); // NOI18N
-        FormInput.add(NilaiResiko1);
-        NilaiResiko1.setBounds(729, 120, 60, 23);
+        NilaKriteria1.setEditable(false);
+        NilaKriteria1.setFocusTraversalPolicyProvider(true);
+        NilaKriteria1.setName("NilaKriteria1"); // NOI18N
+        FormInput.add(NilaKriteria1);
+        NilaKriteria1.setBounds(729, 120, 60, 23);
 
         jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel220.setText("2. Respirasi");
@@ -804,31 +807,31 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel221.setBounds(250, 150, 80, 23);
         jLabel221.getAccessibleContext().setAccessibleName("Skor :");
 
-        SkalaResiko2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apnea Atau Napas Tidak Adekuat", "Sesak Atau Pernapasan Sedikit Terbatas", "Sanggup Bernafas Dalam Serta Disuruh Batuk" }));
-        SkalaResiko2.setName("SkalaResiko2"); // NOI18N
-        SkalaResiko2.addItemListener(new java.awt.event.ItemListener() {
+        SkalaKriteria2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apnea Atau Napas Tidak Adekuat", "Sesak Atau Pernapasan Sedikit Terbatas", "Sanggup Bernafas Dalam Serta Disuruh Batuk" }));
+        SkalaKriteria2.setName("SkalaKriteria2"); // NOI18N
+        SkalaKriteria2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko2ItemStateChanged(evt);
+                SkalaKriteria2ItemStateChanged(evt);
             }
         });
-        SkalaResiko2.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaKriteria2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko2KeyPressed(evt);
+                SkalaKriteria2KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko2);
-        SkalaResiko2.setBounds(334, 150, 330, 23);
+        FormInput.add(SkalaKriteria2);
+        SkalaKriteria2.setBounds(334, 150, 330, 23);
 
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
         FormInput.add(jLabel222);
         jLabel222.setBounds(655, 150, 70, 23);
 
-        NilaiResiko2.setEditable(false);
-        NilaiResiko2.setFocusTraversalPolicyProvider(true);
-        NilaiResiko2.setName("NilaiResiko2"); // NOI18N
-        FormInput.add(NilaiResiko2);
-        NilaiResiko2.setBounds(729, 150, 60, 23);
+        NilaKriteria2.setEditable(false);
+        NilaKriteria2.setFocusTraversalPolicyProvider(true);
+        NilaKriteria2.setName("NilaKriteria2"); // NOI18N
+        FormInput.add(NilaKriteria2);
+        NilaKriteria2.setBounds(729, 150, 60, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel223.setText("3. Tekanan Darah");
@@ -842,31 +845,31 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel224.setBounds(250, 180, 80, 23);
         jLabel224.getAccessibleContext().setAccessibleName("Skor :");
 
-        SkalaResiko3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "± 50% Tekanan Darah Pra Anestesi", "± 20% - 50% Tekanan Darah Pra Anestesi", "± 20% Tekanan Darah Pra Anestesi" }));
-        SkalaResiko3.setName("SkalaResiko3"); // NOI18N
-        SkalaResiko3.addItemListener(new java.awt.event.ItemListener() {
+        SkalaKriteria3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "± 50% Tekanan Darah Pra Anestesi", "± 20% - 50% Tekanan Darah Pra Anestesi", "± 20% Tekanan Darah Pra Anestesi" }));
+        SkalaKriteria3.setName("SkalaKriteria3"); // NOI18N
+        SkalaKriteria3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko3ItemStateChanged(evt);
+                SkalaKriteria3ItemStateChanged(evt);
             }
         });
-        SkalaResiko3.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaKriteria3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko3KeyPressed(evt);
+                SkalaKriteria3KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko3);
-        SkalaResiko3.setBounds(334, 180, 330, 23);
+        FormInput.add(SkalaKriteria3);
+        SkalaKriteria3.setBounds(334, 180, 330, 23);
 
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
         FormInput.add(jLabel225);
         jLabel225.setBounds(655, 180, 70, 23);
 
-        NilaiResiko3.setEditable(false);
-        NilaiResiko3.setFocusTraversalPolicyProvider(true);
-        NilaiResiko3.setName("NilaiResiko3"); // NOI18N
-        FormInput.add(NilaiResiko3);
-        NilaiResiko3.setBounds(729, 180, 60, 23);
+        NilaKriteria3.setEditable(false);
+        NilaKriteria3.setFocusTraversalPolicyProvider(true);
+        NilaKriteria3.setName("NilaKriteria3"); // NOI18N
+        FormInput.add(NilaKriteria3);
+        NilaKriteria3.setBounds(729, 180, 60, 23);
 
         jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel226.setText("4. Kesadaran");
@@ -880,31 +883,31 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel227.setBounds(250, 210, 80, 23);
         jLabel227.getAccessibleContext().setAccessibleName("Skor :");
 
-        SkalaResiko4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Respon", "Respon Terhadap Panggilan", "Sadar Penuh" }));
-        SkalaResiko4.setName("SkalaResiko4"); // NOI18N
-        SkalaResiko4.addItemListener(new java.awt.event.ItemListener() {
+        SkalaKriteria4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Respon", "Respon Terhadap Panggilan", "Sadar Penuh" }));
+        SkalaKriteria4.setName("SkalaKriteria4"); // NOI18N
+        SkalaKriteria4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko4ItemStateChanged(evt);
+                SkalaKriteria4ItemStateChanged(evt);
             }
         });
-        SkalaResiko4.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaKriteria4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko4KeyPressed(evt);
+                SkalaKriteria4KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko4);
-        SkalaResiko4.setBounds(334, 210, 330, 23);
+        FormInput.add(SkalaKriteria4);
+        SkalaKriteria4.setBounds(334, 210, 330, 23);
 
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
         FormInput.add(jLabel228);
         jLabel228.setBounds(655, 210, 70, 23);
 
-        NilaiResiko4.setEditable(false);
-        NilaiResiko4.setFocusTraversalPolicyProvider(true);
-        NilaiResiko4.setName("NilaiResiko4"); // NOI18N
-        FormInput.add(NilaiResiko4);
-        NilaiResiko4.setBounds(729, 210, 60, 23);
+        NilaKriteria4.setEditable(false);
+        NilaKriteria4.setFocusTraversalPolicyProvider(true);
+        NilaKriteria4.setName("NilaKriteria4"); // NOI18N
+        FormInput.add(NilaKriteria4);
+        NilaKriteria4.setBounds(729, 210, 60, 23);
 
         jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel229.setText("5. Warna Kulit");
@@ -918,55 +921,55 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel230.setBounds(250, 240, 80, 23);
         jLabel230.getAccessibleContext().setAccessibleName("Skor :");
 
-        SkalaResiko5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cianosis", "Pucat", "Kemerahan / Normal" }));
-        SkalaResiko5.setName("SkalaResiko5"); // NOI18N
-        SkalaResiko5.addItemListener(new java.awt.event.ItemListener() {
+        SkalaKriteria5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cianosis", "Pucat", "Kemerahan / Normal" }));
+        SkalaKriteria5.setName("SkalaKriteria5"); // NOI18N
+        SkalaKriteria5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko5ItemStateChanged(evt);
+                SkalaKriteria5ItemStateChanged(evt);
             }
         });
-        SkalaResiko5.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaKriteria5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko5KeyPressed(evt);
+                SkalaKriteria5KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko5);
-        SkalaResiko5.setBounds(334, 240, 330, 23);
+        FormInput.add(SkalaKriteria5);
+        SkalaKriteria5.setBounds(334, 240, 330, 23);
 
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N
         FormInput.add(jLabel231);
         jLabel231.setBounds(655, 240, 70, 23);
 
-        NilaiResiko5.setEditable(false);
-        NilaiResiko5.setFocusTraversalPolicyProvider(true);
-        NilaiResiko5.setName("NilaiResiko5"); // NOI18N
-        FormInput.add(NilaiResiko5);
-        NilaiResiko5.setBounds(729, 240, 60, 23);
+        NilaKriteria5.setEditable(false);
+        NilaKriteria5.setFocusTraversalPolicyProvider(true);
+        NilaKriteria5.setName("NilaKriteria5"); // NOI18N
+        FormInput.add(NilaKriteria5);
+        NilaKriteria5.setBounds(729, 240, 60, 23);
 
-        TingkatResiko.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko.setText("Pasien Dipindahkan Ke Ruang Perawatan Bila Nilai > 8");
-        TingkatResiko.setToolTipText("");
-        TingkatResiko.setName("TingkatResiko"); // NOI18N
-        FormInput.add(TingkatResiko);
-        TingkatResiko.setBounds(34, 270, 640, 23);
+        TingkatSkor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TingkatSkor.setText("Pasien Bisa Dipindahkan Ke Ruang Perawatan Bila Skor Minimal 8");
+        TingkatSkor.setToolTipText("");
+        TingkatSkor.setName("TingkatSkor"); // NOI18N
+        FormInput.add(TingkatSkor);
+        TingkatSkor.setBounds(34, 270, 640, 23);
 
         jLabel235.setText("Total :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
         jLabel235.setBounds(655, 270, 70, 23);
 
-        NilaiResikoTotal.setEditable(false);
-        NilaiResikoTotal.setFocusTraversalPolicyProvider(true);
-        NilaiResikoTotal.setName("NilaiResikoTotal"); // NOI18N
-        FormInput.add(NilaiResikoTotal);
-        NilaiResikoTotal.setBounds(729, 270, 60, 23);
+        NilaiKriteriaTotal.setEditable(false);
+        NilaiKriteriaTotal.setFocusTraversalPolicyProvider(true);
+        NilaiKriteriaTotal.setName("NilaiKriteriaTotal"); // NOI18N
+        FormInput.add(NilaiKriteriaTotal);
+        NilaiKriteriaTotal.setBounds(729, 270, 60, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Keluar :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(20, 300, 80, 23);
+        jLabel30.setBounds(14, 300, 80, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -983,13 +986,13 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         scrollPane1.setViewportView(Keluar);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(40, 320, 755, 43);
+        scrollPane1.setBounds(34, 320, 755, 43);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel31.setText("Instruksi / Tindakan di ruang pemulihan (RR) :");
+        jLabel31.setText("Instruksi / Tindakan Di Ruang Pemulihan (RR) :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(20, 370, 280, 23);
+        jLabel31.setBounds(14, 370, 280, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -1006,7 +1009,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         scrollPane2.setViewportView(Instruksi);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(40, 390, 755, 50);
+        scrollPane2.setBounds(34, 390, 755, 53);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
@@ -1108,15 +1111,15 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         }else{
             if(Sequel.menyimpantf("skor_aldrette_pasca_anestesi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),
-                SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(), 
-                NilaiResikoTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText()
+                SkalaKriteria1.getSelectedItem().toString(),NilaKriteria1.getText(),SkalaKriteria2.getSelectedItem().toString(),NilaKriteria2.getText(),SkalaKriteria3.getSelectedItem().toString(),NilaKriteria3.getText(),
+                SkalaKriteria4.getSelectedItem().toString(),NilaKriteria4.getText(),SkalaKriteria5.getSelectedItem().toString(),NilaKriteria5.getText(), 
+                NilaiKriteriaTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),
-                    SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),
-                    NilaiResikoTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NmDokter.getText(),NIP.getText(),NamaPetugas.getText()
+                    SkalaKriteria1.getSelectedItem().toString(),NilaKriteria1.getText(),SkalaKriteria2.getSelectedItem().toString(),NilaKriteria2.getText(),SkalaKriteria3.getSelectedItem().toString(),NilaKriteria3.getText(),
+                    SkalaKriteria4.getSelectedItem().toString(),NilaKriteria4.getText(),SkalaKriteria5.getSelectedItem().toString(),NilaKriteria5.getText(),
+                    NilaiKriteriaTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NmDokter.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -1345,7 +1348,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,SkalaResiko1);
+        Valid.pindah(evt,Detik,SkalaKriteria1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnMonitoringSkorAldretteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnMonitoringSkorAldretteActionPerformed
@@ -1358,9 +1361,10 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            param.put("finger2",Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDokter.getText())); 
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),20).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),19).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptMonitoringSkorAldrette.jasper","report","::[ Monitoring Skor Aldrette Pasca Anestesi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_aldrette_pasca_anestesi.tanggal,"+
                     "skor_aldrette_pasca_anestesi.penilaian_skala1,skor_aldrette_pasca_anestesi.penilaian_nilai1,"+
@@ -1377,80 +1381,80 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         }
     }//GEN-LAST:event_MnMonitoringSkorAldretteActionPerformed
 
-    private void SkalaResiko1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko1ItemStateChanged
-        if(SkalaResiko1.getSelectedIndex()==0){
-            NilaiResiko1.setText("0");
-        }else if(SkalaResiko1.getSelectedIndex()==1){
-            NilaiResiko1.setText("1");
+    private void SkalaKriteria1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKriteria1ItemStateChanged
+        if(SkalaKriteria1.getSelectedIndex()==0){
+            NilaKriteria1.setText("0");
+        }else if(SkalaKriteria1.getSelectedIndex()==1){
+            NilaKriteria1.setText("1");
         }else{
-            NilaiResiko1.setText("2");
+            NilaKriteria1.setText("2");
         }
         isTotalResiko();
-    }//GEN-LAST:event_SkalaResiko1ItemStateChanged
+    }//GEN-LAST:event_SkalaKriteria1ItemStateChanged
 
-    private void SkalaResiko1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko1KeyPressed
-        Valid.pindah(evt,btnPetugas,SkalaResiko2);
-    }//GEN-LAST:event_SkalaResiko1KeyPressed
+    private void SkalaKriteria1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaKriteria1KeyPressed
+        Valid.pindah(evt,btnPetugas,SkalaKriteria2);
+    }//GEN-LAST:event_SkalaKriteria1KeyPressed
 
-    private void SkalaResiko2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko2ItemStateChanged
-         if(SkalaResiko2.getSelectedIndex()==0){
-            NilaiResiko2.setText("0");
-        }else if(SkalaResiko2.getSelectedIndex()==1){
-            NilaiResiko2.setText("1");
+    private void SkalaKriteria2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKriteria2ItemStateChanged
+         if(SkalaKriteria2.getSelectedIndex()==0){
+            NilaKriteria2.setText("0");
+        }else if(SkalaKriteria2.getSelectedIndex()==1){
+            NilaKriteria2.setText("1");
         }else{
-            NilaiResiko2.setText("2");
+            NilaKriteria2.setText("2");
         }
         isTotalResiko();
-    }//GEN-LAST:event_SkalaResiko2ItemStateChanged
+    }//GEN-LAST:event_SkalaKriteria2ItemStateChanged
 
-    private void SkalaResiko2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko2KeyPressed
-        Valid.pindah(evt,SkalaResiko1,SkalaResiko3);
-    }//GEN-LAST:event_SkalaResiko2KeyPressed
+    private void SkalaKriteria2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaKriteria2KeyPressed
+        Valid.pindah(evt,SkalaKriteria1,SkalaKriteria3);
+    }//GEN-LAST:event_SkalaKriteria2KeyPressed
 
-    private void SkalaResiko3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko3ItemStateChanged
-         if(SkalaResiko3.getSelectedIndex()==0){
-            NilaiResiko3.setText("0");
-        }else if(SkalaResiko3.getSelectedIndex()==1){
-            NilaiResiko3.setText("1");
+    private void SkalaKriteria3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKriteria3ItemStateChanged
+         if(SkalaKriteria3.getSelectedIndex()==0){
+            NilaKriteria3.setText("0");
+        }else if(SkalaKriteria3.getSelectedIndex()==1){
+            NilaKriteria3.setText("1");
         }else{
-            NilaiResiko3.setText("2");
+            NilaKriteria3.setText("2");
         }
         isTotalResiko();
-    }//GEN-LAST:event_SkalaResiko3ItemStateChanged
+    }//GEN-LAST:event_SkalaKriteria3ItemStateChanged
 
-    private void SkalaResiko3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko3KeyPressed
-        Valid.pindah(evt,SkalaResiko2,SkalaResiko4);
-    }//GEN-LAST:event_SkalaResiko3KeyPressed
+    private void SkalaKriteria3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaKriteria3KeyPressed
+        Valid.pindah(evt,SkalaKriteria2,SkalaKriteria4);
+    }//GEN-LAST:event_SkalaKriteria3KeyPressed
 
-    private void SkalaResiko4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko4ItemStateChanged
-        if(SkalaResiko4.getSelectedIndex()==0){
-            NilaiResiko4.setText("0");
-        }else if(SkalaResiko4.getSelectedIndex()==1){
-            NilaiResiko4.setText("1");
+    private void SkalaKriteria4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKriteria4ItemStateChanged
+        if(SkalaKriteria4.getSelectedIndex()==0){
+            NilaKriteria4.setText("0");
+        }else if(SkalaKriteria4.getSelectedIndex()==1){
+            NilaKriteria4.setText("1");
         }else{
-            NilaiResiko4.setText("2");
+            NilaKriteria4.setText("2");
         }
         isTotalResiko();
-    }//GEN-LAST:event_SkalaResiko4ItemStateChanged
+    }//GEN-LAST:event_SkalaKriteria4ItemStateChanged
 
-    private void SkalaResiko4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko4KeyPressed
-        Valid.pindah(evt,SkalaResiko3,SkalaResiko5);
-    }//GEN-LAST:event_SkalaResiko4KeyPressed
+    private void SkalaKriteria4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaKriteria4KeyPressed
+        Valid.pindah(evt,SkalaKriteria3,SkalaKriteria5);
+    }//GEN-LAST:event_SkalaKriteria4KeyPressed
 
-    private void SkalaResiko5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko5ItemStateChanged
-         if(SkalaResiko5.getSelectedIndex()==0){
-            NilaiResiko5.setText("0");
-        }else if(SkalaResiko5.getSelectedIndex()==1){
-            NilaiResiko5.setText("1");
+    private void SkalaKriteria5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKriteria5ItemStateChanged
+         if(SkalaKriteria5.getSelectedIndex()==0){
+            NilaKriteria5.setText("0");
+        }else if(SkalaKriteria5.getSelectedIndex()==1){
+            NilaKriteria5.setText("1");
         }else{
-            NilaiResiko5.setText("2");
+            NilaKriteria5.setText("2");
         }
         isTotalResiko();
-    }//GEN-LAST:event_SkalaResiko5ItemStateChanged
+    }//GEN-LAST:event_SkalaKriteria5ItemStateChanged
 
-    private void SkalaResiko5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko5KeyPressed
-        Valid.pindah(evt,SkalaResiko4,NilaiResikoTotal);
-    }//GEN-LAST:event_SkalaResiko5KeyPressed
+    private void SkalaKriteria5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaKriteria5KeyPressed
+        Valid.pindah(evt,SkalaKriteria4,NilaiKriteriaTotal);
+    }//GEN-LAST:event_SkalaKriteria5KeyPressed
 
     private void KeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluarKeyPressed
         Valid.pindah2(evt,Keluar,Instruksi);
@@ -1565,27 +1569,27 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
     private javax.swing.JMenuItem MnMonitoringSkorAldrette2;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
-    private widget.TextBox NilaiResiko1;
-    private widget.TextBox NilaiResiko2;
-    private widget.TextBox NilaiResiko3;
-    private widget.TextBox NilaiResiko4;
-    private widget.TextBox NilaiResiko5;
-    private widget.TextBox NilaiResikoTotal;
+    private widget.TextBox NilaKriteria1;
+    private widget.TextBox NilaKriteria2;
+    private widget.TextBox NilaKriteria3;
+    private widget.TextBox NilaKriteria4;
+    private widget.TextBox NilaKriteria5;
+    private widget.TextBox NilaiKriteriaTotal;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
-    private widget.ComboBox SkalaResiko1;
-    private widget.ComboBox SkalaResiko2;
-    private widget.ComboBox SkalaResiko3;
-    private widget.ComboBox SkalaResiko4;
-    private widget.ComboBox SkalaResiko5;
+    private widget.ComboBox SkalaKriteria1;
+    private widget.ComboBox SkalaKriteria2;
+    private widget.ComboBox SkalaKriteria3;
+    private widget.ComboBox SkalaKriteria4;
+    private widget.ComboBox SkalaKriteria5;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
-    private widget.Label TingkatResiko;
+    private widget.Label TingkatSkor;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
@@ -1661,7 +1665,8 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join dokter on skor_aldrette_pasca_anestesi.kd_dokter=dokter.kd_dokter "+
                     "inner join petugas on skor_aldrette_pasca_anestesi.nip=petugas.nip where "+
-                    "skor_aldrette_pasca_anestesi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or skor_aldrette_pasca_anestesi.kd_dokter like ? or dokter.nm_dokter like ? or skor_aldrette_pasca_anestesi.nip like ? or petugas.nama like ?) "+
+                    "skor_aldrette_pasca_anestesi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? "+
+                    "or skor_aldrette_pasca_anestesi.kd_dokter like ? or dokter.nm_dokter like ? or skor_aldrette_pasca_anestesi.nip like ? or petugas.nama like ?) "+
                     "order by skor_aldrette_pasca_anestesi.tanggal ");
             }
                 
@@ -1685,8 +1690,8 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("penilaian_skala1"),rs.getString("penilaian_nilai1"),rs.getString("penilaian_skala2"),rs.getString("penilaian_nilai2"),rs.getString("penilaian_skala3"),rs.getString("penilaian_nilai3"),
-                        rs.getString("penilaian_skala4"),rs.getString("penilaian_nilai4"),rs.getString("penilaian_skala5"),rs.getString("penilaian_nilai5"),
+                        rs.getString("penilaian_skala1"),rs.getString("penilaian_nilai1"),rs.getString("penilaian_skala2"),rs.getString("penilaian_nilai2"),rs.getString("penilaian_skala3"),
+                        rs.getString("penilaian_nilai3"),rs.getString("penilaian_skala4"),rs.getString("penilaian_nilai4"),rs.getString("penilaian_skala5"),rs.getString("penilaian_nilai5"),
                         rs.getString("penilaian_totalnilai"),rs.getString("keluar"),rs.getString("instruksi"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
@@ -1708,20 +1713,21 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        SkalaResiko1.setSelectedIndex(0);
-        NilaiResiko1.setText("0");
-        SkalaResiko2.setSelectedIndex(0);
-        NilaiResiko2.setText("0");
-        SkalaResiko3.setSelectedIndex(0);
-        NilaiResiko3.setText("0");
-        SkalaResiko4.setSelectedIndex(0);
-        NilaiResiko4.setText("0");
-        SkalaResiko5.setSelectedIndex(0);
-        NilaiResiko5.setText("0");
-        NilaiResikoTotal.setText("0");
+        SkalaKriteria1.setSelectedIndex(0);
+        NilaKriteria1.setText("0");
+        SkalaKriteria2.setSelectedIndex(0);
+        NilaKriteria2.setText("0");
+        SkalaKriteria3.setSelectedIndex(0);
+        NilaKriteria3.setText("0");
+        SkalaKriteria4.setSelectedIndex(0);
+        NilaKriteria4.setText("0");
+        SkalaKriteria5.setSelectedIndex(0);
+        NilaKriteria5.setText("0");
+        NilaiKriteriaTotal.setText("0");
         Keluar.setText("");
         Instruksi.setText("");
-        SkalaResiko1.requestFocus();
+        TingkatSkor.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
+        SkalaKriteria1.requestFocus();
     } 
 
     private void getData() {
@@ -1731,19 +1737,21 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            SkalaResiko1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            NilaiResiko1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            SkalaResiko2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            NilaiResiko2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            SkalaResiko3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            NilaiResiko3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            SkalaResiko4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            NilaiResiko4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            SkalaResiko5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            NilaiResiko5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            NilaiResikoTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            SkalaKriteria1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            NilaKriteria1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            SkalaKriteria2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NilaKriteria2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            SkalaKriteria3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NilaKriteria3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            SkalaKriteria4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NilaKriteria4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            SkalaKriteria5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            NilaKriteria5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            NilaiKriteriaTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             Keluar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             Instruksi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
@@ -1793,14 +1801,14 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>838){
+            if(internalFrame1.getHeight()>648){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,666));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,476));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-250));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }
@@ -1888,9 +1896,9 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
                 "penilaian_nilai4=?,penilaian_skala5=?,penilaian_nilai5=?,"+
                 "penilaian_totalnilai=?,keluar=?,instruksi=?,kd_dokter=?,nip=?",19,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),
-                SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(), 
-                NilaiResikoTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
+                SkalaKriteria1.getSelectedItem().toString(),NilaKriteria1.getText(),SkalaKriteria2.getSelectedItem().toString(),NilaKriteria2.getText(),SkalaKriteria3.getSelectedItem().toString(),NilaKriteria3.getText(),
+                SkalaKriteria4.getSelectedItem().toString(),NilaKriteria4.getText(),SkalaKriteria5.getSelectedItem().toString(),NilaKriteria5.getText(), 
+                NilaiKriteriaTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -1899,17 +1907,17 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(SkalaResiko1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(NilaiResiko1.getText(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(SkalaResiko2.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(NilaiResiko2.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(SkalaResiko3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(NilaiResiko3.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(SkalaResiko4.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(NilaiResiko4.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(SkalaResiko5.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(NilaiResiko5.getText(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(NilaiResikoTotal.getText(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(SkalaKriteria1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(NilaKriteria1.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(SkalaKriteria2.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(NilaKriteria2.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(SkalaKriteria3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(NilaKriteria3.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(SkalaKriteria4.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(NilaKriteria4.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(SkalaKriteria5.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(NilaKriteria5.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(NilaiKriteriaTotal.getText(),tbObat.getSelectedRow(),16);
             tbObat.setValueAt(Keluar.getText(),tbObat.getSelectedRow(),17);
             tbObat.setValueAt(Instruksi.getText(),tbObat.getSelectedRow(),18);
             tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),19);
@@ -1934,15 +1942,15 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
     
     private void isTotalResiko(){
         try {
-            NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+Integer.parseInt(NilaiResiko5.getText()))+"");
-            if(Integer.parseInt(NilaiResikoTotal.getText())>8){
-                TingkatResiko.setText("Pasien dipindahkan ke ruang perawatan bila nilai >8");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=10){
-                TingkatResiko.setText("Pasien dipindahkan ke ruang perawatan bila nilai >8");
+            NilaiKriteriaTotal.setText((Integer.parseInt(NilaKriteria1.getText())+Integer.parseInt(NilaKriteria2.getText())+Integer.parseInt(NilaKriteria3.getText())+Integer.parseInt(NilaKriteria4.getText())+Integer.parseInt(NilaKriteria5.getText()))+"");
+            if(Integer.parseInt(NilaiKriteriaTotal.getText())>=8){
+                TingkatSkor.setText("Pasien Bisa Dipindahkan Ke Ruang Perawatan Bila Skor Minimal 8");
+            }else if(Integer.parseInt(NilaiKriteriaTotal.getText())<8){
+                TingkatSkor.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
             }
         } catch (Exception e) {
-            NilaiResikoTotal.setText("0");
-            TingkatResiko.setText("Pasien tidak dapat dipindahkan keruangan perawatan, karena kondisi yang lemah");
+            NilaiKriteriaTotal.setText("0");
+            TingkatSkor.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
         }
     }
 }

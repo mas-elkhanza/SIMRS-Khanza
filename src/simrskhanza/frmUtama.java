@@ -835,6 +835,7 @@ import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMMCU;
+import rekammedis.RMMonitoringAldrettePascaAnestesi;
 import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanEWSD;
@@ -20799,6 +20800,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSkorAldrettePascaAnestesiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMMonitoringAldrettePascaAnestesi aplikasi=new RMMonitoringAldrettePascaAnestesi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -21480,7 +21494,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianRisikoJatuhPsikiatri,btnPenilaianLanjutanSkriningFungsional,btnPenilaianAwalMedisRalanRehabMedik,btnTemplatePersetujuanPenolakanTindakan,
             btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
             btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain,btnBPJSKunjunganSEPApotek,btnBPJSMonitoringKlaimApotek,btnPenilaianAwalMedisRalanParu,
-            btnBPJSDaftarPelayananObatApotek,btnCatatanKeperawatanRalan,btnCatatanPersalinan;
+            btnBPJSDaftarPelayananObatApotek,btnCatatanKeperawatanRalan,btnCatatanPersalinan,btnSkorAldrettePascaAnestesi;
     
     public void isWall(){
         try{            
@@ -25167,6 +25181,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_pre_anestesi()==true){
                 Panelmenu.add(btnPenilaianPreAnastesi);
+                jmlmenu++;
+            }
+            
+            if(akses.getskor_aldrette_pasca_anestesi()==true){
+                Panelmenu.add(btnSkorAldrettePascaAnestesi);
                 jmlmenu++;
             }
             
@@ -30076,6 +30095,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_pre_anestesi()==true){
             Panelmenu.add(btnPenilaianPreAnastesi);
+            jmlmenu++;
+        }
+        
+        if(akses.getskor_aldrette_pasca_anestesi()==true){
+            Panelmenu.add(btnSkorAldrettePascaAnestesi);
             jmlmenu++;
         }
         
@@ -36405,6 +36429,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskor_aldrette_pasca_anestesi()==true){
+            if(btnSkorAldrettePascaAnestesi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkorAldrettePascaAnestesi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getchecklist_kriteria_masuk_hcu()==true){
             if(btnChecklistKriteriaMasukHCU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnChecklistKriteriaMasukHCU);
@@ -42478,5 +42509,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCatatanPersalinan.setName("btnCatatanPersalinan"); 
         btnCatatanPersalinan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnCatatanPersalinan.addActionListener(this::btnCatatanPersalinanActionPerformed);
+        
+        btnSkorAldrettePascaAnestesi = new widget.ButtonBig();
+        btnSkorAldrettePascaAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8168606_stocks_chart_graph_analytics_icon.png")));
+        btnSkorAldrettePascaAnestesi.setText("Skor Aldrette Pasca Anestesi");
+        btnSkorAldrettePascaAnestesi.setIconTextGap(0);
+        btnSkorAldrettePascaAnestesi.setName("btnSkorAldrettePascaAnestesi"); 
+        btnSkorAldrettePascaAnestesi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkorAldrettePascaAnestesi.addActionListener(this::btnSkorAldrettePascaAnestesiActionPerformed);
     }
 }
