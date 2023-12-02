@@ -98,7 +98,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Skor Aldrette Pasca Anestesi ]::">
+            <TitledBorder title="::[ Skor Aldrette Pasca Anestesi (General Anastesi) ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -993,7 +993,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="120" width="70" height="23"/>
+                          <AbsoluteConstraints x="675" y="120" width="50" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1063,7 +1063,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="150" width="70" height="23"/>
+                          <AbsoluteConstraints x="675" y="150" width="50" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1133,7 +1133,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="180" width="70" height="23"/>
+                          <AbsoluteConstraints x="675" y="180" width="50" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1203,7 +1203,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="210" width="70" height="23"/>
+                          <AbsoluteConstraints x="675" y="210" width="50" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1273,7 +1273,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="240" width="70" height="23"/>
+                          <AbsoluteConstraints x="675" y="240" width="50" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1309,7 +1309,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="655" y="270" width="70" height="23"/>
+                          <AbsoluteConstraints x="675" y="270" width="50" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>

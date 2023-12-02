@@ -340,7 +340,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Skor Aldrette Pasca Anestesi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Skor Aldrette Pasca Anestesi (General Anastesi) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -787,7 +787,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
         FormInput.add(jLabel218);
-        jLabel218.setBounds(655, 120, 70, 23);
+        jLabel218.setBounds(675, 120, 50, 23);
 
         NilaKriteria1.setEditable(false);
         NilaKriteria1.setFocusTraversalPolicyProvider(true);
@@ -825,7 +825,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
         FormInput.add(jLabel222);
-        jLabel222.setBounds(655, 150, 70, 23);
+        jLabel222.setBounds(675, 150, 50, 23);
 
         NilaKriteria2.setEditable(false);
         NilaKriteria2.setFocusTraversalPolicyProvider(true);
@@ -863,7 +863,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
         FormInput.add(jLabel225);
-        jLabel225.setBounds(655, 180, 70, 23);
+        jLabel225.setBounds(675, 180, 50, 23);
 
         NilaKriteria3.setEditable(false);
         NilaKriteria3.setFocusTraversalPolicyProvider(true);
@@ -901,7 +901,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
         FormInput.add(jLabel228);
-        jLabel228.setBounds(655, 210, 70, 23);
+        jLabel228.setBounds(675, 210, 50, 23);
 
         NilaKriteria4.setEditable(false);
         NilaKriteria4.setFocusTraversalPolicyProvider(true);
@@ -939,7 +939,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N
         FormInput.add(jLabel231);
-        jLabel231.setBounds(655, 240, 70, 23);
+        jLabel231.setBounds(675, 240, 50, 23);
 
         NilaKriteria5.setEditable(false);
         NilaKriteria5.setFocusTraversalPolicyProvider(true);
@@ -957,7 +957,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         jLabel235.setText("Total :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(655, 270, 70, 23);
+        jLabel235.setBounds(675, 270, 50, 23);
 
         NilaiKriteriaTotal.setEditable(false);
         NilaiKriteriaTotal.setFocusTraversalPolicyProvider(true);
@@ -1364,7 +1364,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),20).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),19).toString():finger)+"\n"+Tanggal.getSelectedItem());
             finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger2)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptMonitoringSkorAldrette.jasper","report","::[ Monitoring Skor Aldrette Pasca Anestesi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_aldrette_pasca_anestesi.tanggal,"+
                     "skor_aldrette_pasca_anestesi.penilaian_skala1,skor_aldrette_pasca_anestesi.penilaian_nilai1,"+
