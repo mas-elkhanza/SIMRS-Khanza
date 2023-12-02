@@ -112,9 +112,9 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
             }else if(i==18){
                 column.setPreferredWidth(200);
             }else if(i==19){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(85);
             }else if(i==20){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(150);
             }else if(i==21){
                 column.setPreferredWidth(85);
             }else if(i==22){
@@ -1052,11 +1052,6 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         KdDokter.setEditable(false);
         KdDokter.setName("KdDokter"); // NOI18N
         KdDokter.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdDokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdDokterKeyPressed(evt);
-            }
-        });
         FormInput.add(KdDokter);
         KdDokter.setBounds(481, 40, 100, 23);
 
@@ -1473,12 +1468,8 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Monitoring,BtnSimpan);
+        Valid.pindah(evt,btnPetugas,BtnSimpan);
     }//GEN-LAST:event_BtnDokterKeyPressed
-
-    private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
-
-    }//GEN-LAST:event_KdDokterKeyPressed
 
     private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
         if(tabMode.getRowCount()!=0){
@@ -1944,7 +1935,7 @@ public final class RMMonitoringAldrettePascaAnestesi extends javax.swing.JDialog
         try {
             NilaiKriteriaTotal.setText((Integer.parseInt(NilaKriteria1.getText())+Integer.parseInt(NilaKriteria2.getText())+Integer.parseInt(NilaKriteria3.getText())+Integer.parseInt(NilaKriteria4.getText())+Integer.parseInt(NilaKriteria5.getText()))+"");
             if(Integer.parseInt(NilaiKriteriaTotal.getText())>=8){
-                TingkatSkor.setText("Pasien Bisa Dipindahkan Ke Ruang Perawatan Bila Skor Minimal 8");
+                TingkatSkor.setText("Pasien Bisa Dipindahkan Ke Ruangan Perawatan Bila Skor Minimal 8");
             }else if(Integer.parseInt(NilaiKriteriaTotal.getText())<8){
                 TingkatSkor.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
             }

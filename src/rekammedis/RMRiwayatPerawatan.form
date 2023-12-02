@@ -496,7 +496,7 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="FormMenu" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[255, 2825]"/>
+                              <Dimension value="[255, 2850]"/>
                             </Property>
                           </Properties>
 
@@ -1288,6 +1288,30 @@
                                 </Property>
                               </Properties>
                             </Component>
+                            <Component class="widget.CekBox" name="chkSkorAldrettePascaAnestesi">
+                              <Properties>
+                                <Property name="selected" type="boolean" value="true"/>
+                                <Property name="text" type="java.lang.String" value="Skor Aldrette Pasca Anestesi"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="chkSkorAldrettePascaAnestesi" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[245, 22]"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="widget.CekBox" name="chkSkorStewardPascaAnestesi">
+                              <Properties>
+                                <Property name="selected" type="boolean" value="true"/>
+                                <Property name="text" type="java.lang.String" value="Skor Steward Pasca Anestesi"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="chkSkorStewardPascaAnestesi" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[245, 22]"/>
+                                </Property>
+                              </Properties>
+                            </Component>
                             <Component class="widget.CekBox" name="chkChecklistKriteriaMasukHCU">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
@@ -1954,18 +1978,6 @@
                                 <Property name="text" type="java.lang.String" value="Potongan Biaya"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkPotonganBiaya" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
-                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[245, 22]"/>
-                                </Property>
-                              </Properties>
-                            </Component>
-                            <Component class="widget.CekBox" name="chkSkorAldrettePascaAnestesi">
-                              <Properties>
-                                <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Skor Aldrette Pasca Anestesi"/>
-                                <Property name="horizontalAlignment" type="int" value="2"/>
-                                <Property name="name" type="java.lang.String" value="chkSkorAldrettePascaAnestesi" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[245, 22]"/>

@@ -625,7 +625,7 @@
 			</textField>
 			<textField>
 				<reportElement positionType="Float" x="263" y="77" width="285" height="20" uuid="68809d68-0de2-4433-a202-9715d92be571"/>
-				<textElement verticalAlignment="Top">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -633,7 +633,7 @@
 			</textField>
 			<textField>
 				<reportElement positionType="Float" x="263" y="101" width="285" height="20" uuid="b67e9aaf-7270-4df2-b506-a25a309555aa"/>
-				<textElement verticalAlignment="Top">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
