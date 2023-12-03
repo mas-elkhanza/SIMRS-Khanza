@@ -1,3 +1,6 @@
+/*
+ * Kontribusi dari Mega Khairunnisa RS Simpangan Depok
+ */
 package rekammedis;
 
 import fungsi.WarnaTable;
