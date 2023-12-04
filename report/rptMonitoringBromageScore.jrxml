@@ -540,14 +540,14 @@
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="0" y="9" width="356" height="20" forecolor="#000000" backcolor="#F0F0DC" uuid="4eda92d3-0098-4c94-8a41-d61993a88ca6">
+				<reportElement positionType="Float" mode="Transparent" x="0" y="9" width="410" height="20" forecolor="#000000" backcolor="#F0F0DC" uuid="4eda92d3-0098-4c94-8a41-d61993a88ca6">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="11" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Pasien Bisa Dipindahkan Dari Ruang Pulih Bila Nilai > 2]]></text>
+				<text><![CDATA[Pasien Bisa Dipindahkan Dari Ruang Pemulihan Bila Nilai <= 2]]></text>
 			</staticText>
 			<componentElement>
 				<reportElement x="188" y="63" width="143" height="92" isRemoveLineWhenBlank="true" uuid="45880b1e-1924-4f03-8736-9183147e0eeb">

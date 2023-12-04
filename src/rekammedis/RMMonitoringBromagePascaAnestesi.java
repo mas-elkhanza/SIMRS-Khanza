@@ -1390,8 +1390,8 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        SkalaKriteria.setSelectedIndex(0);
-        NilaiKriteria.setText("0");
+        SkalaKriteria.setSelectedIndex(3);
+        NilaiKriteria.setText("3");
         TingkatKriteria.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
         Keluar.setText("");
         Instruksi.setText("");
@@ -1588,8 +1588,8 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     
     private void isTotalResiko(){
         try {
-            if(Integer.parseInt(NilaiKriteria.getText())>2){
-                TingkatKriteria.setText("Pasien Bisa Dipindahkan Dari Ruang Pulih Bila Nilai > 2");
+            if(Integer.parseInt(NilaiKriteria.getText())<=2){
+                TingkatKriteria.setText("Pasien Bisa Dipindahkan Dari Ruang Pemulihan Bila Nilai <= 2");
             }else{
                 TingkatKriteria.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
             }

@@ -22551,7 +22551,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<img alt='Gambar Lokalis' src='"+(getClass().getResource("/picture/bromage_score.png"))+"' width='100%' height='200'/>"+
                                     "</td>"+
                                     "<td valign='middle' align='center' colspan='2' border='0'>"+
-                                        "Pasien Bisa Dipindahkan Dari Ruang Pulih Bila Nilai > 2"+
+                                        "Pasien Bisa Dipindahkan Dari Ruang Pemulihan Bila Nilai <= 2"+
                                     "</td>"+
                                  "</tr>"+
                               "</table>"+
