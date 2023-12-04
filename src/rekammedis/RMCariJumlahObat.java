@@ -14,6 +14,7 @@ package rekammedis;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
+import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -33,6 +34,7 @@ public final class RMCariJumlahObat extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private sekuel Sequel=new sekuel();
     private PreparedStatement ps;
     private ResultSet rs;
     private String norawat="";
@@ -332,10 +334,10 @@ public final class RMCariJumlahObat extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,databarang.nama_brng, detail_pemberian_obat.jml, "+
-                    "databarang.kode_sat from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng where "+
-                    "detail_pemberian_obat.no_rawat=? and (detail_pemberian_obat.tgl_perawatan like ? or databarang.nama_brng like ?) "+
-                    "order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam");
+                    "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,databarang.nama_brng,detail_pemberian_obat.jml,databarang.kode_sat,"+
+                    "detail_pemberian_obat.no_rawat,detail_pemberian_obat.kode_brng from detail_pemberian_obat inner join databarang "+
+                    "on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat=? and "+
+                    "(detail_pemberian_obat.tgl_perawatan like ? or databarang.nama_brng like ?) order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam");
             try{
                 ps.setString(1,norawat);
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -343,7 +345,7 @@ public final class RMCariJumlahObat extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {
-                        rs.getString(1),rs.getString(2),rs.getString(3)+" : "+rs.getString(4)+" "+rs.getString(5)
+                        rs.getString(1),rs.getString(2),rs.getString(3)+" : "+rs.getString(4)+" "+rs.getString(5)+" "+Sequel.cariIsi("select aturan_pakai.aturan from aturan_pakai where aturan_pakai.tgl_perawatan='"+rs.getString("tgl_perawatan")+"' and aturan_pakai.jam='"+rs.getString("jam")+"' and aturan_pakai.no_rawat='"+rs.getString("no_rawat")+"' and aturan_pakai.kode_brng='"+rs.getString("kode_brng")+"'")
                     });
                 }
             }catch(Exception ex){
