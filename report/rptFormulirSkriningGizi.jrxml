@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f505995-42c1-4cc5-b34d-0896041d3a11">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -113,7 +113,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="178" splitType="Stretch">
+		<band height="179" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="0" y="54" width="552" height="23" uuid="ac6b5ade-def5-4da3-a9ec-6b5ba71a59b8"/>
@@ -244,7 +244,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="6" y="160" width="34" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="98d078b9-f110-4db1-8bb6-c585c227601c">
+				<reportElement mode="Transparent" x="6" y="160" width="24" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="98d078b9-f110-4db1-8bb6-c585c227601c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -254,7 +254,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[BB :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="40" y="160" width="64" height="14" uuid="f3882825-3fad-4371-979f-ec0ead081020">
+				<reportElement positionType="Float" x="30" y="160" width="64" height="14" uuid="f3882825-3fad-4371-979f-ec0ead081020">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -264,7 +264,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{skrining_bb}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="110" y="160" width="34" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="18d8804d-22c0-4953-b66f-93a6f439f0e1">
+				<reportElement mode="Transparent" x="98" y="160" width="22" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="18d8804d-22c0-4953-b66f-93a6f439f0e1">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -274,7 +274,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[TB :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="144" y="160" width="64" height="14" uuid="2afe983c-b513-4d00-88ed-58be456bd45e">
+				<reportElement positionType="Float" x="121" y="160" width="64" height="14" uuid="2afe983c-b513-4d00-88ed-58be456bd45e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -284,7 +284,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{skrining_tb}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="221" y="160" width="50" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e42d6df2-c74d-44e9-ad40-28c2e0973639">
+				<reportElement mode="Transparent" x="324" y="160" width="36" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e42d6df2-c74d-44e9-ad40-28c2e0973639">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -294,7 +294,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[Alergi :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="275" y="160" width="273" height="14" uuid="22021de1-7f3d-40b3-bd7d-6f6725c43735">
+				<reportElement positionType="Float" x="360" y="160" width="188" height="14" uuid="22021de1-7f3d-40b3-bd7d-6f6725c43735">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -345,6 +345,36 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="218" y="160" width="42" height="14" uuid="b3052a7c-22f5-44ff-b866-02f94b4f6f28">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{skor_imt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="189" y="160" width="28" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="194a8fac-ab95-4788-89f0-876536624974">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[IMT :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="261" y="160" width="28" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="1f581bbe-fbe4-4ff4-8964-74be0514250f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Kg/Cm]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
