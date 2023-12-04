@@ -1,3 +1,6 @@
+/*
+ * Kontribusi dari Mega Khairunnisa RS Simpangan Depok
+ */
 package rekammedis;
 
 import fungsi.WarnaTable;
@@ -45,7 +48,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String finger="";
+    private String finger="",finger2="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -56,9 +59,8 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         setSize(700,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala 1","N.M. 1",
-            "Total","Keluar","Instruksi","Kode Dokter","Nama Dokter","NIP","Petugas"
-        }){
+                "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala","Nilai","Keluar","Instruksi","Kode Dokter","Nama Dokter","NIP","Petugas"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
@@ -67,7 +69,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -82,23 +84,21 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             }else if(i==5){
                 column.setPreferredWidth(115);
             }else if(i==6){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(200);
             }else if(i==7){
                 column.setPreferredWidth(40);
             }else if(i==8){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(200);
             }else if(i==9){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(200);
             }else if(i==10){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(90);
             }else if(i==11){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(150);
             }else if(i==12){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(90);
             }else if(i==13){
-                column.setPreferredWidth(40);
-            }else if(i==14){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -226,20 +226,16 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         FormInput = new widget.PanelBiasa();
         PanelWall = new usu.widget.glass.PanelGlass();
         jLabel219 = new widget.Label();
-        SkalaKriteria1 = new widget.ComboBox();
+        SkalaKriteria = new widget.ComboBox();
         jLabel218 = new widget.Label();
-        NilaiResiko1 = new widget.TextBox();
-        jLabel235 = new widget.Label();
-        NilaiResikoTotal = new widget.TextBox();
+        NilaiKriteria = new widget.TextBox();
         jLabel30 = new widget.Label();
         scrollPane1 = new widget.ScrollPane();
         Keluar = new widget.TextArea();
         jLabel31 = new widget.Label();
         scrollPane2 = new widget.ScrollPane();
         Instruksi = new widget.TextArea();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        TingkatResiko1 = new widget.Label();
+        TingkatKriteria = new widget.Label();
         jLabel4 = new widget.Label();
         TNoRw = new widget.TextBox();
         TPasien = new widget.TextBox();
@@ -262,6 +258,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         KdDokter = new widget.TextBox();
         label14 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel220 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -269,7 +266,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         MnMonitoringBromageScore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnMonitoringBromageScore.setForeground(new java.awt.Color(50, 50, 50));
         MnMonitoringBromageScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnMonitoringBromageScore.setText("Monitoring Bromage Score Pasca Anestesi");
+        MnMonitoringBromageScore.setText("Monitoring Skor Bromage Pasca Anestesi");
         MnMonitoringBromageScore.setName("MnMonitoringBromageScore"); // NOI18N
         MnMonitoringBromageScore.setPreferredSize(new java.awt.Dimension(290, 26));
         MnMonitoringBromageScore.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +280,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         MnMonitoringBromageScore2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnMonitoringBromageScore2.setForeground(new java.awt.Color(50, 50, 50));
         MnMonitoringBromageScore2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnMonitoringBromageScore2.setText("Formulir Monitoring Bromage Score 2");
+        MnMonitoringBromageScore2.setText("Rekap Monitoring Skor Bromage Pasca Anestesi");
         MnMonitoringBromageScore2.setName("MnMonitoringBromageScore2"); // NOI18N
         MnMonitoringBromageScore2.setPreferredSize(new java.awt.Dimension(230, 26));
         MnMonitoringBromageScore2.addActionListener(new java.awt.event.ActionListener() {
@@ -466,7 +463,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -480,7 +477,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -541,7 +538,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 466));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 443));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -571,7 +568,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 443));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 413));
         FormInput.setLayout(null);
 
         PanelWall.setBackground(new java.awt.Color(29, 29, 29));
@@ -582,67 +579,57 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         PanelWall.setWarna(new java.awt.Color(110, 110, 110));
         PanelWall.setLayout(null);
         FormInput.add(PanelWall);
-        PanelWall.setBounds(34, 120, 330, 130);
+        PanelWall.setBounds(34, 120, 430, 233);
 
-        jLabel219.setText("Skala :");
+        jLabel219.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel219.setText("Skala");
         jLabel219.setName("jLabel219"); // NOI18N
         FormInput.add(jLabel219);
-        jLabel219.setBounds(370, 120, 80, 23);
+        jLabel219.setBounds(34, 360, 50, 23);
 
-        SkalaKriteria1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gerakan penuh dari tungkai", "Tidak mampu extensi tungkai", "Tidak mampu flexi lutut", "Tidak mampu flexi pergelangan kaki" }));
-        SkalaKriteria1.setName("SkalaKriteria1"); // NOI18N
-        SkalaKriteria1.addItemListener(new java.awt.event.ItemListener() {
+        SkalaKriteria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gerakan Penuh Dari Tungkai", "Tidak Mampu Extensi Tungkai", "Tidak Mampu Flexi Lutut", "Tidak Mampu Flexi Pergelangan Kaki" }));
+        SkalaKriteria.setName("SkalaKriteria"); // NOI18N
+        SkalaKriteria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaKriteria1ItemStateChanged(evt);
+                SkalaKriteriaItemStateChanged(evt);
             }
         });
-        SkalaKriteria1.addActionListener(new java.awt.event.ActionListener() {
+        SkalaKriteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SkalaKriteria1ActionPerformed(evt);
+                SkalaKriteriaActionPerformed(evt);
             }
         });
-        SkalaKriteria1.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaKriteria.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaKriteria1KeyPressed(evt);
+                SkalaKriteriaKeyPressed(evt);
             }
         });
-        FormInput.add(SkalaKriteria1);
-        SkalaKriteria1.setBounds(460, 120, 240, 23);
+        FormInput.add(SkalaKriteria);
+        SkalaKriteria.setBounds(71, 360, 260, 23);
 
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
         FormInput.add(jLabel218);
-        jLabel218.setBounds(680, 120, 70, 23);
+        jLabel218.setBounds(330, 360, 70, 23);
 
-        NilaiResiko1.setEditable(false);
-        NilaiResiko1.setFocusTraversalPolicyProvider(true);
-        NilaiResiko1.setName("NilaiResiko1"); // NOI18N
-        FormInput.add(NilaiResiko1);
-        NilaiResiko1.setBounds(750, 120, 60, 23);
-
-        jLabel235.setText("Total :");
-        jLabel235.setName("jLabel235"); // NOI18N
-        FormInput.add(jLabel235);
-        jLabel235.setBounds(680, 160, 70, 23);
-
-        NilaiResikoTotal.setEditable(false);
-        NilaiResikoTotal.setFocusTraversalPolicyProvider(true);
-        NilaiResikoTotal.setName("NilaiResikoTotal"); // NOI18N
-        FormInput.add(NilaiResikoTotal);
-        NilaiResikoTotal.setBounds(750, 160, 60, 23);
+        NilaiKriteria.setEditable(false);
+        NilaiKriteria.setFocusTraversalPolicyProvider(true);
+        NilaiKriteria.setName("NilaiKriteria"); // NOI18N
+        FormInput.add(NilaiKriteria);
+        NilaiKriteria.setBounds(404, 360, 60, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Keluar :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(20, 260, 80, 23);
+        jLabel30.setBounds(500, 100, 80, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
 
         Keluar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Keluar.setColumns(20);
-        Keluar.setRows(5);
+        Keluar.setRows(20);
         Keluar.setName("Keluar"); // NOI18N
         Keluar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -652,20 +639,20 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         scrollPane1.setViewportView(Keluar);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(40, 280, 755, 43);
+        scrollPane1.setBounds(500, 120, 289, 133);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("Instruksi / Tindakan di ruang pemulihan (RR) :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(20, 330, 280, 23);
+        jLabel31.setBounds(500, 260, 280, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
 
         Instruksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Instruksi.setColumns(20);
-        Instruksi.setRows(5);
+        Instruksi.setRows(20);
         Instruksi.setName("Instruksi"); // NOI18N
         Instruksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -675,28 +662,14 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         scrollPane2.setViewportView(Instruksi);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(40, 350, 755, 50);
+        scrollPane2.setBounds(500, 280, 289, 133);
 
-        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator3.setName("jSeparator3"); // NOI18N
-        FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 260, 810, 1);
-
-        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator4.setName("jSeparator4"); // NOI18N
-        FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 330, 810, 1);
-
-        TingkatResiko1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko1.setText("Pasien bisa dipindahkan dari ruang pulih bila nilai > 2");
-        TingkatResiko1.setToolTipText("");
-        TingkatResiko1.setName("TingkatResiko1"); // NOI18N
-        FormInput.add(TingkatResiko1);
-        TingkatResiko1.setBounds(420, 190, 280, 30);
+        TingkatKriteria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TingkatKriteria.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
+        TingkatKriteria.setToolTipText("");
+        TingkatKriteria.setName("TingkatKriteria"); // NOI18N
+        FormInput.add(TingkatKriteria);
+        TingkatKriteria.setBounds(34, 390, 440, 30);
 
         jLabel4.setText("No.Rawat :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -725,7 +698,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         TPasien.setBounds(326, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -885,6 +858,11 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         FormInput.add(jSeparator2);
         jSeparator2.setBounds(0, 100, 810, 1);
 
+        jLabel220.setText(":");
+        jLabel220.setName("jLabel220"); // NOI18N
+        FormInput.add(jLabel220);
+        jLabel220.setBounds(0, 360, 67, 23);
+
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -908,15 +886,13 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         }else if(Instruksi.getText().trim().equals("")){
             Valid.textKosong(Instruksi,"Instruksi");
         }else{
-            if(Sequel.menyimpantf("skor_bromage_pasca_anestesi","?,?,?,?,?,?,?,?,?","Data",9,new String[]{
+            if(Sequel.menyimpantf("skor_bromage_pasca_anestesi","?,?,?,?,?,?,?,?","Data",8,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SkalaKriteria1.getSelectedItem().toString(),NilaiResiko1.getText(),
-                NilaiResikoTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText()
+                SkalaKriteria.getSelectedItem().toString(),NilaiKriteria.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    SkalaKriteria1.getSelectedItem().toString(),NilaiResiko1.getText(), 
-                    NilaiResikoTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NmDokter.getText(),NIP.getText(),NamaPetugas.getText()
+                    SkalaKriteria.getSelectedItem().toString(),NilaiKriteria.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NmDokter.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -949,7 +925,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -984,7 +960,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1032,8 +1008,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptBromageScorePascaAnestesi.jasper","report","::[ Data Monitoring Bromage Score Pasca Anestesi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_bromage_pasca_anestesi.tanggal,"+
-                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,"+
-                    "skor_bromage_pasca_anestesi.penilaian_totalnilai,skor_bromage_pasca_anestesi.keluar,"+
+                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,skor_bromage_pasca_anestesi.keluar,"+
                     "skor_bromage_pasca_anestesi.instruksi,skor_bromage_pasca_anestesi.kd_dokter,dokter.nm_dokter,skor_bromage_pasca_anestesi.nip,petugas.nama "+
                     "from skor_bromage_pasca_anestesi inner join reg_periksa on skor_bromage_pasca_anestesi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1044,8 +1019,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             }else{
                 Valid.MyReportqry("rptBromageScorePascaAnestesi.jasper","report","::[ Data Monitoring Bromage Score Pasca Anestesi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_bromage_pasca_anestesi.tanggal,"+
-                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,"+
-                    "skor_bromage_pasca_anestesi.penilaian_totalnilai,skor_bromage_pasca_anestesi.keluar,"+
+                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,skor_bromage_pasca_anestesi.keluar,"+
                     "skor_bromage_pasca_anestesi.instruksi,skor_bromage_pasca_anestesi.kd_dokter,dokter.nm_dokter,skor_bromage_pasca_anestesi.nip,petugas.nama "+
                     "from skor_bromage_pasca_anestesi inner join reg_periksa on skor_bromage_pasca_anestesi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1118,13 +1092,17 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            param.put("finger2",Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDokter.getText())); 
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),13).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),10).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),12).toString():finger2)+"\n"+Tanggal.getSelectedItem());
+            try {
+                param.put("gambar",getClass().getResource("/picture/bromage_score.png").openStream()); 
+            } catch (Exception e) {
+            } 
             Valid.MyReportqry("rptMonitoringBromageScore.jasper","report","::[ Monitoring Bromage Score Pasca Anestesi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_bromage_pasca_anestesi.tanggal,"+
-                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,"+
-                    "skor_bromage_pasca_anestesi.penilaian_totalnilai,skor_bromage_pasca_anestesi.keluar,"+
+                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,skor_bromage_pasca_anestesi.keluar,"+
                     "skor_bromage_pasca_anestesi.instruksi,skor_bromage_pasca_anestesi.kd_dokter,dokter.nm_dokter,skor_bromage_pasca_anestesi.nip,petugas.nama "+
                     "from skor_bromage_pasca_anestesi inner join reg_periksa on skor_bromage_pasca_anestesi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1133,22 +1111,22 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         }
     }//GEN-LAST:event_MnMonitoringBromageScoreActionPerformed
 
-    private void SkalaKriteria1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKriteria1ItemStateChanged
-        if(SkalaKriteria1.getSelectedIndex()==0){
-            NilaiResiko1.setText("0");
-        }else if(SkalaKriteria1.getSelectedIndex()==1){
-            NilaiResiko1.setText("1");
-        }else if(SkalaKriteria1.getSelectedIndex()==2){
-            NilaiResiko1.setText("2");
+    private void SkalaKriteriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKriteriaItemStateChanged
+        if(SkalaKriteria.getSelectedIndex()==0){
+            NilaiKriteria.setText("0");
+        }else if(SkalaKriteria.getSelectedIndex()==1){
+            NilaiKriteria.setText("1");
+        }else if(SkalaKriteria.getSelectedIndex()==2){
+            NilaiKriteria.setText("2");
         }else{
-            NilaiResiko1.setText("3");
+            NilaiKriteria.setText("3");
         }
         isTotalResiko();
-    }//GEN-LAST:event_SkalaKriteria1ItemStateChanged
+    }//GEN-LAST:event_SkalaKriteriaItemStateChanged
 
-    private void SkalaKriteria1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaKriteria1KeyPressed
-        Valid.pindah(evt,btnPetugas,NilaiResiko1);
-    }//GEN-LAST:event_SkalaKriteria1KeyPressed
+    private void SkalaKriteriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaKriteriaKeyPressed
+        Valid.pindah(evt,btnPetugas,NilaiKriteria);
+    }//GEN-LAST:event_SkalaKriteriaKeyPressed
 
     private void KeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluarKeyPressed
         Valid.pindah2(evt,Keluar,Instruksi);
@@ -1178,9 +1156,9 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         }
     }//GEN-LAST:event_tbObatMouseClicked
 
-    private void SkalaKriteria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkalaKriteria1ActionPerformed
+    private void SkalaKriteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkalaKriteriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaKriteria1ActionPerformed
+    }//GEN-LAST:event_SkalaKriteriaActionPerformed
 
     private void MnMonitoringBromageScore2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnMonitoringBromageScore2ActionPerformed
         if(tbObat.getSelectedRow()>-1){
@@ -1192,10 +1170,9 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-            Valid.MyReportqry("rptFormulirMonitoringBromageScore2.jasper","report","::[ Formulir Monitoring Bromage Score Pasca Anestesi ]::",
+            Valid.MyReportqry("rptFormulirMonitoringBromageScore.jasper","report","::[ Formulir Monitoring Bromage Score Pasca Anestesi ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_bromage_pasca_anestesi.tanggal,"+
-                "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,"+
-                "skor_bromage_pasca_anestesi.penilaian_totalnilai,skor_bromage_pasca_anestesi.keluar,"+
+                "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,skor_bromage_pasca_anestesi.keluar,"+
                 "skor_bromage_pasca_anestesi.instruksi,skor_bromage_pasca_anestesi.kd_dokter,dokter.nm_dokter,skor_bromage_pasca_anestesi.nip,petugas.nama "+
                 "from skor_bromage_pasca_anestesi inner join reg_periksa on skor_bromage_pasca_anestesi.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1246,7 +1223,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,SkalaKriteria1);
+        Valid.pindah(evt,Detik,SkalaKriteria);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
@@ -1304,20 +1281,19 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     private javax.swing.JMenuItem MnMonitoringBromageScore2;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
-    private widget.TextBox NilaiResiko1;
-    private widget.TextBox NilaiResikoTotal;
+    private widget.TextBox NilaiKriteria;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private usu.widget.glass.PanelGlass PanelWall;
     private widget.ScrollPane Scroll;
-    private widget.ComboBox SkalaKriteria1;
+    private widget.ComboBox SkalaKriteria;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
-    private widget.Label TingkatResiko1;
+    private widget.Label TingkatKriteria;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
@@ -1326,7 +1302,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     private widget.Label jLabel21;
     private widget.Label jLabel218;
     private widget.Label jLabel219;
-    private widget.Label jLabel235;
+    private widget.Label jLabel220;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
     private widget.Label jLabel4;
@@ -1337,8 +1313,6 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private widget.Label label14;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1354,8 +1328,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_bromage_pasca_anestesi.tanggal,"+
-                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,"+
-                    "skor_bromage_pasca_anestesi.penilaian_totalnilai,skor_bromage_pasca_anestesi.keluar,"+
+                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,skor_bromage_pasca_anestesi.keluar,"+
                     "skor_bromage_pasca_anestesi.instruksi,skor_bromage_pasca_anestesi.kd_dokter,dokter.nm_dokter,skor_bromage_pasca_anestesi.nip,petugas.nama "+
                     "from skor_bromage_pasca_anestesi inner join reg_periksa on skor_bromage_pasca_anestesi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1365,8 +1338,7 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skor_bromage_pasca_anestesi.tanggal,"+
-                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,"+
-                    "skor_bromage_pasca_anestesi.penilaian_totalnilai,skor_bromage_pasca_anestesi.keluar,"+
+                    "skor_bromage_pasca_anestesi.penilaian_skala1,skor_bromage_pasca_anestesi.penilaian_nilai1,skor_bromage_pasca_anestesi.keluar,"+
                     "skor_bromage_pasca_anestesi.instruksi,skor_bromage_pasca_anestesi.kd_dokter,dokter.nm_dokter,skor_bromage_pasca_anestesi.nip,petugas.nama "+
                     "from skor_bromage_pasca_anestesi inner join reg_periksa on skor_bromage_pasca_anestesi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1396,8 +1368,8 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("penilaian_skala1"),rs.getString("penilaian_nilai1"),
-                        rs.getString("penilaian_totalnilai"),rs.getString("keluar"),rs.getString("instruksi"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("penilaian_skala1"),rs.getString("penilaian_nilai1"),rs.getString("keluar"),rs.getString("instruksi"),rs.getString("kd_dokter"),
+                        rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1418,12 +1390,12 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        SkalaKriteria1.setSelectedIndex(0);
-        NilaiResiko1.setText("0");
-        NilaiResikoTotal.setText("0");
+        SkalaKriteria.setSelectedIndex(0);
+        NilaiKriteria.setText("0");
+        TingkatKriteria.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
         Keluar.setText("");
         Instruksi.setText("");
-        SkalaKriteria1.requestFocus();
+        SkalaKriteria.requestFocus();
     } 
 
     private void getData() {
@@ -1433,11 +1405,12 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            SkalaKriteria1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            NilaiResiko1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            NilaiResikoTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Keluar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Instruksi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            SkalaKriteria.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            NilaiKriteria.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Keluar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Instruksi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(6,7));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(8,10));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
@@ -1487,14 +1460,14 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>700){
+            if(internalFrame1.getHeight()>615){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,766));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,443));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-250));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }
@@ -1578,11 +1551,10 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
 
     private void ganti() {
         if(Sequel.mengedittf("skor_bromage_pasca_anestesi","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_skala1=?,penilaian_nilai1=?,"+
-                "penilaian_totalnilai=?,keluar=?,instruksi=?,kd_dokter=?,nip=?",11,new String[]{
+                "keluar=?,instruksi=?,kd_dokter=?,nip=?",10,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SkalaKriteria1.getSelectedItem().toString(),NilaiResiko1.getText(),
-                NilaiResikoTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                SkalaKriteria.getSelectedItem().toString(),NilaiKriteria.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1590,15 +1562,14 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(SkalaKriteria1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(NilaiResiko1.getText(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(NilaiResikoTotal.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(Keluar.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(Instruksi.getText(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(SkalaKriteria.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(NilaiKriteria.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(Keluar.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(Instruksi.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),13);
             emptTeks();
         }
     }
@@ -1616,16 +1587,14 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
     }
     
     private void isTotalResiko(){
-        /*try {
-            NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText()))+"");
-            if(Integer.parseInt(NilaiResikoTotal.getText())>2){
-                TingkatResiko.setText("Pasien bisa dipindahkan dari ruang pulih bila nilai > 2");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=1){
-                TingkatResiko.setText("Pasien bisa dipindahkan dari ruang pulih bila nilai > 2");
+        try {
+            if(Integer.parseInt(NilaiKriteria.getText())>2){
+                TingkatKriteria.setText("Pasien Bisa Dipindahkan Dari Ruang Pulih Bila Nilai > 2");
+            }else{
+                TingkatKriteria.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
             }
         } catch (Exception e) {
-            NilaiResikoTotal.setText("0");
-            TingkatResiko.setText("Pasien dapat dipindahkan keruangan perawatan");
-        }*/
+            TingkatKriteria.setText("Pasien Tidak Dapat Dipindahkan Ke Ruangan Perawatan, Karena Kondisi Yang Lemah");
+        }
     }
 }

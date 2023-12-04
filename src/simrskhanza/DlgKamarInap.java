@@ -186,6 +186,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     public DlgKamarInap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        initKamarInap();
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","Nomer RM","Nama Pasien","Alamat Pasien","Penanggung Jawab","Hubungan P.J.","Jenis Bayar","Kamar","Tarif Kamar",
             "Diagnosa Awal","Diagnosa Akhir","Tgl.Masuk","Jam Masuk","Tgl.Keluar","Jam Keluar",
@@ -802,7 +803,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPenilaianPreAnestesi = new javax.swing.JMenuItem();
         MnSkorAldrettePascaAnestesi = new javax.swing.JMenuItem();
         MnSkorStewardPascaAnestesi = new javax.swing.JMenuItem();
-        MnSkorBromagePascaAnestesi = new javax.swing.JMenuItem();
         MnRMHCU = new javax.swing.JMenu();
         MnCheckListKriteriaMasukHCU = new javax.swing.JMenuItem();
         MnCheckListKriteriaKeluarHCU = new javax.swing.JMenuItem();
@@ -1799,22 +1799,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnRMOperasi.add(MnSkorStewardPascaAnestesi);
-
-        MnSkorBromagePascaAnestesi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkorBromagePascaAnestesi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkorBromagePascaAnestesi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkorBromagePascaAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkorBromagePascaAnestesi.setText("Skor Bromage Pasca Anestesi");
-        MnSkorBromagePascaAnestesi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnSkorBromagePascaAnestesi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnSkorBromagePascaAnestesi.setName("MnSkorBromagePascaAnestesi"); // NOI18N
-        MnSkorBromagePascaAnestesi.setPreferredSize(new java.awt.Dimension(210, 26));
-        MnSkorBromagePascaAnestesi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkorBromagePascaAnestesiActionPerformed(evt);
-            }
-        });
-        MnRMOperasi.add(MnSkorBromagePascaAnestesi);
 
         MnDataRM.add(MnRMOperasi);
 
@@ -16066,7 +16050,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnSignInSebelumAnestesi;
     private javax.swing.JMenuItem MnSignOutSebelumMenutupLuka;
     private javax.swing.JMenuItem MnSkorAldrettePascaAnestesi;
-    private javax.swing.JMenuItem MnSkorBromagePascaAnestesi;
     private javax.swing.JMenuItem MnSkorStewardPascaAnestesi;
     private javax.swing.JMenuItem MnStatusAPS;
     private javax.swing.JMenuItem MnStatusBelumLengkap;
@@ -16246,7 +16229,8 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.TextBox ttlbiaya;
     private widget.TextBox ttlbiayapindah;
     // End of variables declaration//GEN-END:variables
-
+    private javax.swing.JMenuItem MnSkorBromagePascaAnestesi;
+    
     private void tampil() {
         if(R1.isSelected()==true){
             kmr=" kamar_inap.stts_pulang='-' and reg_periksa.status_bayar like '%"+cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua","")+"%' ";
@@ -16820,5 +16804,20 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             billing.beriobat.dlgobt.tampil();
             billing.beriobat.dlgobt.setVisible(true);
         } 
+    }
+    
+    private void initKamarInap(){
+        MnSkorBromagePascaAnestesi = new javax.swing.JMenuItem();
+        MnSkorBromagePascaAnestesi.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkorBromagePascaAnestesi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnSkorBromagePascaAnestesi.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkorBromagePascaAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png")));
+        MnSkorBromagePascaAnestesi.setText("Skor Bromage Pasca Anestesi");
+        MnSkorBromagePascaAnestesi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSkorBromagePascaAnestesi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSkorBromagePascaAnestesi.setName("MnSkorBromagePascaAnestesi");
+        MnSkorBromagePascaAnestesi.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnSkorBromagePascaAnestesi.addActionListener(this::MnSkorBromagePascaAnestesiActionPerformed);
+        MnRMOperasi.add(MnSkorBromagePascaAnestesi);
     }
 }
