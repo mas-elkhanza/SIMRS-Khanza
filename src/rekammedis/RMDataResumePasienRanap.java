@@ -13,7 +13,10 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -347,26 +350,30 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        carilaborat.addWindowListener(new WindowListener() {
+        carilaborat.getTable().addKeyListener(new KeyListener() {
             @Override
-            public void windowOpened(WindowEvent e) {}
+            public void keyTyped(KeyEvent e) {}
             @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(carilaborat.getTable().getSelectedRow()!= -1){
-                    HasilLaborat.append(carilaborat.getTable().getValueAt(carilaborat.getTable().getSelectedRow(),2).toString()+", ");
-                    HasilLaborat.requestFocus();
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    if(carilaborat.getTable().getSelectedRow()!= -1){
+                        HasilLaborat.append(carilaborat.getTable().getValueAt(carilaborat.getTable().getSelectedRow(),3).toString()+", ");
+                        HasilLaborat.requestFocus();
+                    }
                 }
             }
             @Override
-            public void windowIconified(WindowEvent e) {}
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        carilaborat.BtnKeluar.addActionListener(new ActionListener(){
             @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
+            public void actionPerformed(ActionEvent e) {
+                for (i= 0; i < carilaborat.getTable().getRowCount(); i++) {
+                    HasilLaborat.append(carilaborat.getTable().getValueAt(i,3).toString()+", ");
+                }
+                HasilLaborat.requestFocus();
+            }
         });
         
         caritindakan.addWindowListener(new WindowListener() {
@@ -391,26 +398,30 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        cariobat.addWindowListener(new WindowListener() {
+        cariobat.getTable().addKeyListener(new KeyListener() {
             @Override
-            public void windowOpened(WindowEvent e) {}
+            public void keyTyped(KeyEvent e) {}
             @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(cariobat.getTable().getSelectedRow()!= -1){
-                    ObatSelamaDiRS.append(cariobat.getTable().getValueAt(cariobat.getTable().getSelectedRow(),2).toString()+", ");
-                    ObatSelamaDiRS.requestFocus();
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    if(cariobat.getTable().getSelectedRow()!= -1){
+                        ObatSelamaDiRS.append(cariobat.getTable().getValueAt(cariobat.getTable().getSelectedRow(),3).toString()+", ");
+                        ObatSelamaDiRS.requestFocus();
+                    }
                 }
             }
             @Override
-            public void windowIconified(WindowEvent e) {}
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        cariobat.BtnKeluar.addActionListener(new ActionListener(){
             @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
+            public void actionPerformed(ActionEvent e) {
+                for (i= 0; i < cariobat.getTable().getRowCount(); i++) {
+                    ObatSelamaDiRS.append(cariobat.getTable().getValueAt(i,3).toString()+", ");
+                }
+                ObatSelamaDiRS.requestFocus();
+            }
         });
         
         caridiet.addWindowListener(new WindowListener() {

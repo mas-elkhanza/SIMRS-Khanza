@@ -46,22 +46,37 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Tanggal","Jam","Hasil Pemeriksaan"};
+        Object[] row={"P","Tanggal","Jam","Hasil Pemeriksaan"};
         tabMode=new DefaultTableModel(null,row){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
         };
         tbKamar.setModel(tabMode);
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (z= 0; z < 3; z++) {
+        for (z= 0; z < 4; z++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(z);
             if(z==0){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(20);
             }else if(z==1){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(65);
             }else if(z==2){
-                column.setPreferredWidth(750);
+                column.setPreferredWidth(50);
+            }else if(z==3){
+                column.setPreferredWidth(730);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -317,7 +332,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
-    private widget.Button BtnKeluar;
+    public widget.Button BtnKeluar;
     private widget.Label LCount;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -342,8 +357,8 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[] {
-                        rs.getString(1),rs.getString(2),rs.getString(3)+" : "+rs.getString(4)
+                    tabMode.addRow(new Object[] {
+                        false,rs.getString(1),rs.getString(2),rs.getString(3)+" : "+rs.getString(4)
                     });
                 }
             }catch(Exception ex){

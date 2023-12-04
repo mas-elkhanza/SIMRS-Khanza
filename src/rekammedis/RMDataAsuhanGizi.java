@@ -48,6 +48,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0,umur=0;    
+    private String finger="";
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, alergi_ikan, alergi_hazelnut,sttsumur="";
     
@@ -1706,6 +1707,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("diagnosa",DiagnosaMasukRanap.getText());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),31).toString():finger)+"\n"+TglAsuhan.getSelectedItem());
             Valid.MyReportqry("rptCetakAsuhanGizi.jasper","report","::[ Laporan Asuhan Gizi Pasien ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,asuhan_gizi.tanggal,"+
                         "asuhan_gizi.antropometri_bb,asuhan_gizi.antropometri_tb,asuhan_gizi.antropometri_imt,asuhan_gizi.antropometri_lla,"+
@@ -1713,10 +1716,9 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                         "asuhan_gizi.antropometri_tbperu,asuhan_gizi.antropometri_bbpertb,asuhan_gizi.antropometri_llaperu,asuhan_gizi.biokimia,"+
                         "asuhan_gizi.fisik_klinis,asuhan_gizi.alergi_telur,asuhan_gizi.alergi_susu_sapi,asuhan_gizi.alergi_kacang,asuhan_gizi.alergi_gluten,"+
                         "asuhan_gizi.alergi_udang,asuhan_gizi.alergi_ikan,asuhan_gizi.alergi_hazelnut,asuhan_gizi.pola_makan,asuhan_gizi.riwayat_personal,"+
-                        "asuhan_gizi.diagnosis,asuhan_gizi.intervensi_gizi,asuhan_gizi.monitoring_evaluasi,asuhan_gizi.nip,petugas.nama,reg_periksa.umurdaftar,reg_periksa.sttsumur, penjab.png_jawab "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join asuhan_gizi on reg_periksa.no_rawat=asuhan_gizi.no_rawat "+
-                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "asuhan_gizi.diagnosis,asuhan_gizi.intervensi_gizi,asuhan_gizi.monitoring_evaluasi,asuhan_gizi.nip,petugas.nama,reg_periksa.umurdaftar,"+
+                        "reg_periksa.sttsumur,penjab.png_jawab from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join asuhan_gizi on reg_periksa.no_rawat=asuhan_gizi.no_rawat inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "inner join petugas on asuhan_gizi.nip=petugas.nip where asuhan_gizi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnAsuhanGiziActionPerformed

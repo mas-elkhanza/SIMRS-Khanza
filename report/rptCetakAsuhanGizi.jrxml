@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -25,6 +25,7 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="diagnosa" class="java.lang.String"/>
+	<parameter name="finger" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,asuhan_gizi.tanggal,
 asuhan_gizi.antropometri_bb,asuhan_gizi.antropometri_tb,asuhan_gizi.antropometri_imt,asuhan_gizi.antropometri_lla,
@@ -378,19 +379,11 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="738" width="557" height="1" uuid="b33ba12e-e000-400c-8e7b-b8b517d15a08"/>
+				<reportElement x="0" y="802" width="557" height="1" uuid="b33ba12e-e000-400c-8e7b-b8b517d15a08"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="0" y="739" width="230" height="20" uuid="24c4d4b4-2817-4bc7-967f-96cadadb9b43"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[REKAM MEDIK PELAYANAN GIZI]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="6" y="115" width="70" height="14" uuid="d58606b1-d2ae-4414-8f0d-8bdea995d74f"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1191,6 +1184,35 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 				</textElement>
 				<text><![CDATA[V]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="380" y="713" width="172" height="11" uuid="f6c1a5bc-c9cb-44de-b979-dd0a39df9ce6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Petugas Gizi]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="380" y="789" width="174" height="11" uuid="dc0b10ac-e398-4706-954d-498f3412fae5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="380" y="725" width="172" height="62" isRemoveLineWhenBlank="true" uuid="70f17a83-d350-4417-b7c8-f885a9607a21">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
 		</band>
 	</title>
 </jasperReport>
