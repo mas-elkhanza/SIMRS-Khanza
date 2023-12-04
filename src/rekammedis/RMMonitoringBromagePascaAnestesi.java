@@ -571,12 +571,11 @@ public final class RMMonitoringBromagePascaAnestesi extends javax.swing.JDialog 
         FormInput.setPreferredSize(new java.awt.Dimension(100, 413));
         FormInput.setLayout(null);
 
-        PanelWall.setBackground(new java.awt.Color(29, 29, 29));
+        PanelWall.setBackground(new java.awt.Color(255, 255, 255));
         PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/bromage_score.png"))); // NOI18N
         PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         PanelWall.setPreferredSize(new java.awt.Dimension(200, 200));
         PanelWall.setRound(false);
-        PanelWall.setWarna(new java.awt.Color(110, 110, 110));
         PanelWall.setLayout(null);
         FormInput.add(PanelWall);
         PanelWall.setBounds(34, 120, 430, 233);
