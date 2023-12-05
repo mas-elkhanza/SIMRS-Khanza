@@ -440,7 +440,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Pre Induksi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Pre Anestesi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(467, 500));
@@ -702,7 +702,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2023 07:42:10" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023 06:03:24" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -721,7 +721,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         label12.setBounds(520, 80, 70, 23);
 
         TglOperasi.setForeground(new java.awt.Color(50, 70, 50));
-        TglOperasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2023 07:42:10" }));
+        TglOperasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023 06:03:25" }));
         TglOperasi.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglOperasi.setName("TglOperasi"); // NOI18N
         TglOperasi.setOpaque(false);
@@ -1340,7 +1340,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         label13.setBounds(520, 780, 70, 23);
 
         TglPuasa.setForeground(new java.awt.Color(50, 70, 50));
-        TglPuasa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2023 07:42:11" }));
+        TglPuasa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023 06:03:25" }));
         TglPuasa.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglPuasa.setName("TglPuasa"); // NOI18N
         TglPuasa.setOpaque(false);
@@ -1438,7 +1438,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1452,7 +1452,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2113,14 +2113,6 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         Valid.pindah(evt,MedisLainnya,AngkaASA);
     }//GEN-LAST:event_RencanaAnestesiKeyPressed
 
-    private void TglPuasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPuasaKeyPressed
-        Valid.pindah(evt,AngkaASA,RencanaPerawatan);
-    }//GEN-LAST:event_TglPuasaKeyPressed
-
-    private void AngkaASAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AngkaASAKeyPressed
-        Valid.pindah(evt,RencanaAnestesi,RencanaPerawatan);
-    }//GEN-LAST:event_AngkaASAKeyPressed
-
     private void RencanaPerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaPerawatanKeyPressed
         Valid.pindah(evt,AngkaASA,CatatanKhusus);
     }//GEN-LAST:event_RencanaPerawatanKeyPressed
@@ -2128,6 +2120,14 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
     private void CatatanKhususKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKhususKeyPressed
         Valid.pindah(evt,RencanaPerawatan,BtnSimpan);
     }//GEN-LAST:event_CatatanKhususKeyPressed
+
+    private void AngkaASAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AngkaASAKeyPressed
+        Valid.pindah(evt,RencanaAnestesi,RencanaPerawatan);
+    }//GEN-LAST:event_AngkaASAKeyPressed
+
+    private void TglPuasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPuasaKeyPressed
+        Valid.pindah(evt,AngkaASA,RencanaPerawatan);
+    }//GEN-LAST:event_TglPuasaKeyPressed
 
     /**
     * @param args the command line arguments

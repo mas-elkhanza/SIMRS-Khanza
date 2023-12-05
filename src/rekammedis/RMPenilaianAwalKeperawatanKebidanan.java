@@ -2586,12 +2586,12 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
         FormInput.add(RiwayatKB);
-        RiwayatKB.setBounds(109, 770, 117, 23);
+        RiwayatKB.setBounds(109, 770, 137, 23);
 
         jLabel115.setText("Lamanya :");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(235, 770, 60, 23);
+        jLabel115.setBounds(255, 770, 60, 23);
 
         LamanyaKB.setFocusTraversalPolicyProvider(true);
         LamanyaKB.setName("LamanyaKB"); // NOI18N
@@ -2601,7 +2601,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
         FormInput.add(LamanyaKB);
-        LamanyaKB.setBounds(299, 770, 60, 23);
+        LamanyaKB.setBounds(319, 770, 60, 23);
 
         KomplikasiKB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         KomplikasiKB.setName("KomplikasiKB"); // NOI18N
@@ -2611,12 +2611,12 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
         FormInput.add(KomplikasiKB);
-        KomplikasiKB.setBounds(441, 770, 100, 23);
+        KomplikasiKB.setBounds(461, 770, 100, 23);
 
         jLabel116.setText("Komplikasi :");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
-        jLabel116.setBounds(370, 770, 67, 23);
+        jLabel116.setBounds(390, 770, 67, 23);
 
         KeteranganKomplikasiKB.setFocusTraversalPolicyProvider(true);
         KeteranganKomplikasiKB.setName("KeteranganKomplikasiKB"); // NOI18N
@@ -2626,7 +2626,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
         FormInput.add(KeteranganKomplikasiKB);
-        KeteranganKomplikasiKB.setBounds(545, 770, 309, 23);
+        KeteranganKomplikasiKB.setBounds(565, 770, 289, 23);
 
         jLabel117.setText("Kapan Berhenti KB :");
         jLabel117.setName("jLabel117"); // NOI18N
