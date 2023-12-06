@@ -483,11 +483,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -896,7 +891,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         Informasi.setBounds(84, 70, 128, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022 23:53:44" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023 13:46:54" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1005,7 +1000,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1019,7 +1014,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1101,7 +1096,14 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                     Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),
                     Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),Kesimpulanpsikolog.getText()
                 })==true){
+                    tabMode.addRow(new String[]{
+                        TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
+                        Dikirimdari.getSelectedItem().toString(),TujuanPemeriksaan.getSelectedItem().toString(),Informasi.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),Bentuktubuh.getSelectedItem().toString(),
+                        Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),
+                        Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),Kesimpulanpsikolog.getText()
+                    });
                     emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1206,150 +1208,106 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                if(TCari.getText().trim().equals("")){
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
-                        "penilaian_psikologi.tanggal between ? and ? order by penilaian_psikologi.tanggal");
-                }else{
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
-                        "penilaian_psikologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_psikologi.nip like ? or petugas.nama like ?) order by penilaian_psikologi.tanggal");
-                }
-
-                try {
-                    if(TCari.getText().trim().equals("")){
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    }else{
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,"%"+TCari.getText()+"%");
-                        ps.setString(5,"%"+TCari.getText()+"%");
-                        ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,"%"+TCari.getText()+"%");
-                    }  
-                    rs=ps.executeQuery();
-                    htmlContent = new StringBuilder();
-                    htmlContent.append(                             
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Dikirim Dari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='62px'><b>Tujuan Pemeriksaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Informasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='165px'><b>Keterangan Informasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='71px'><b>Rupa</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='79px'><b>Bentuk Tubuh</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='103px'><b>Tindakan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='99px'><b>Pakaian</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Penyampaian/Ekspresi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='196px'><b>Berbicara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='185px'><b>Penggunaan Kata</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ciri Yang Menyolok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Hasil Psikotes</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kepribadian</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Psikodinamika</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kesimpulan Psikolog</b></td>"+
+                    "</tr>"
+                );
+                
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Dikirim Dari</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='62px'><b>Tujuan Pemeriksaan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Informasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='165px'><b>Keterangan Informasi</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='71px'><b>Rupa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='79px'><b>Bentuk Tubuh</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='103px'><b>Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='99px'><b>Pakaian</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Penyampaian/Ekspresi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='196px'><b>Berbicara</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='185px'><b>Penggunaan Kata</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ciri Yang Menyolok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Hasil Psikotes</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kepribadian</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Psikodinamika</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kesimpulan Psikolog</b></td>"+
-                        "</tr>"
-                    );
-                    while(rs.next()){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nip")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dikirim_dari")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tujuan_pemeriksaan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("anamnesis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ket_anamnesis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("rupa")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bentuk_tubuh")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tindakan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pakaian")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ekspresi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("berbicara")+"</td>"+
-                               "<td valign='top'>"+rs.getString("penggunaan_kata")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ciri_menyolok")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hasil_psikotes")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kepribadian")+"</td>"+
-                               "<td valign='top'>"+rs.getString("psikodinamika")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kesimpulan_psikolog")+"</td>"+
-                            "</tr>");
-                    }
-                    LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2900' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>"
-                    );
-
-                    File g = new File("file2.css");            
-                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                    bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                    );
-                    bg.close();
-
-                    File f = new File("DataPenilaianPsikolog.html");            
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='2900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' align='center'>"+
-                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOG<br><br></font>"+        
-                                        "</td>"+
-                                   "</tr>"+
-                                "</table>")
-                    );
-                    bw.close();                         
-                    Desktop.getDesktop().browse(f.toURI());
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                        "</tr>");
                 }
+                
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='2900' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
 
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataPenilaianPsikolog.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='2900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOG<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }
@@ -1429,12 +1387,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         }
 }//GEN-LAST:event_tbObatKeyPressed
-
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
 
     private void KetLokalisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLokalisKeyPressed
         Valid.pindah2(evt,Ciriyangmenyolok,Hasilpsikotes);
@@ -1854,9 +1806,32 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                 Bentuktubuh.getSelectedItem().toString(),Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),
                 Kesimpulanpsikolog.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
-               tampil();
-               emptTeks();
-               TabRawat.setSelectedIndex(1);
+                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+                tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
+                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
+                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
+                tbObat.setValueAt(Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(Dikirimdari.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(TujuanPemeriksaan.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(Informasi.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(KetAlloAuto.getText(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(Rupa.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(Bentuktubuh.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(Tindakan.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(Pakaian.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(Ekspresi.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(Berbicara.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(Penggunaankata.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(Ciriyangmenyolok.getText(),tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(Hasilpsikotes.getText(),tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(Kepribadian.getText(),tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(Psikodinamika.getText(),tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(Kesimpulanpsikolog.getText(),tbObat.getSelectedRow(),23);
+                emptTeks();
+                TabRawat.setSelectedIndex(1);
         }
     }
 }

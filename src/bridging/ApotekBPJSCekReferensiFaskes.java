@@ -350,9 +350,9 @@ public final class ApotekBPJSCekReferensiFaskes extends javax.swing.JDialog {
                 });
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
-                if(response.path("faskes").isArray()){
+                if(response.path("list").isArray()){
                     i=1;
-                    for(JsonNode list:response.path("faskes")){
+                    for(JsonNode list:response.path("list")){
                         tabMode.addRow(new Object[]{
                             i+".",list.path("kode").asText(),
                             list.path("nama").asText()
@@ -393,9 +393,9 @@ public final class ApotekBPJSCekReferensiFaskes extends javax.swing.JDialog {
                 });
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
-                if(response.path("faskes").isArray()){
+                if(response.path("list").isArray()){
                     i=1;
-                    for(JsonNode list:response.path("faskes")){
+                    for(JsonNode list:response.path("list")){
                         tabMode.addRow(new Object[]{
                             i+".",list.path("kode").asText(),
                             list.path("nama").asText()
