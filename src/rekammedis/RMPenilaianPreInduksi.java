@@ -99,9 +99,40 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        EKG.setDocument(new batasInput((byte)5).getKata(EKG));
-        Lain_lain.setDocument(new batasInput((byte)5).getKata(Lain_lain));
-        TD.setDocument(new batasInput((byte)8).getKata(TD));
+        TD.setDocument(new batasInput((int)8).getKata(TD));
+        Nadi.setDocument(new batasInput((int)5).getKata(Nadi));
+        RR.setDocument(new batasInput((int)5).getKata(EKG));
+        Suhu.setDocument(new batasInput((int)5).getKata(EKG));
+        RR.setDocument(new batasInput((int)5).getKata(EKG));
+        EKG.setDocument(new batasInput((int)5).getKata(EKG));
+        Lainlain.setDocument(new batasInput((int)5).getKata(EKG));
+        Perencanaan.setDocument(new batasInput((int)5).getKata(EKG));
+        InfusPerifier.setDocument(new batasInput((int)5).getKata(EKG));
+        CVC.setDocument(new batasInput((int)5).getKata(EKG));
+        KeteranganPremedikasi.setDocument(new batasInput((int)5).getKata(EKG));
+        KeteranganInfusInduksi.setDocument(new batasInput((int)5).getKata(EKG));
+        FaceMaskNo.setDocument(new batasInput((int)5).getKata(EKG));
+        NasopharingNo.setDocument(new batasInput((int)5).getKata(EKG));
+        ETTNo.setDocument(new batasInput((int)5).getKata(EKG));
+        ETTJenis.setDocument(new batasInput((int)5).getKata(EKG));
+        ETTFiksasi.setDocument(new batasInput((int)5).getKata(EKG));
+        LMANo.setDocument(new batasInput((int)5).getKata(EKG));
+        LMAJenis.setDocument(new batasInput((int)5).getKata(EKG));
+        Tracheostomi.setDocument(new batasInput((int)5).getKata(EKG));
+        BronchoscopiFiberoptik.setDocument(new batasInput((int)5).getKata(EKG));
+        Glidescopi.setDocument(new batasInput((int)5).getKata(EKG));
+        TatalaksanaLainlain.setDocument(new batasInput((int)5).getKata(EKG));
+        KeteranganIntubasi.setDocument(new batasInput((int)5).getKata(EKG));
+        IntubasiSulitVentilasi.setDocument(new batasInput((int)5).getKata(EKG));
+        IntubasiSulitIntubasi.setDocument(new batasInput((int)5).getKata(EKG));
+        Ventilasi.setDocument(new batasInput((int)5).getKata(EKG));
+        TeknikRegionalJenis.setDocument(new batasInput((int)5).getKata(EKG));
+        TeknikRegionalLokasi.setDocument(new batasInput((int)5).getKata(EKG));
+        TeknikReginalJenisJarum.setDocument(new batasInput((int)5).getKata(EKG));
+        TeknikRegionalKateterFiksasi.setDocument(new batasInput((int)5).getKata(EKG));
+        TeknikRegionalObatobatan.setDocument(new batasInput((int)5).getKata(EKG));
+        TeknikRegionalKomplikasi.setDocument(new batasInput((int)5).getKata(EKG));
+        TeknikRegionalHasil.setDocument(new batasInput((int)5).getKata(EKG));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -214,7 +245,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         EKG = new widget.TextBox();
         jLabel15 = new widget.Label();
         jLabel16 = new widget.Label();
-        Lain_lain = new widget.TextBox();
+        Lainlain = new widget.TextBox();
         jLabel22 = new widget.Label();
         TD = new widget.TextBox();
         jLabel23 = new widget.Label();
@@ -672,15 +703,15 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         FormInput.add(jLabel16);
         jLabel16.setBounds(12, 140, 70, 23);
 
-        Lain_lain.setFocusTraversalPolicyProvider(true);
-        Lain_lain.setName("Lain_lain"); // NOI18N
-        Lain_lain.addKeyListener(new java.awt.event.KeyAdapter() {
+        Lainlain.setFocusTraversalPolicyProvider(true);
+        Lainlain.setName("Lainlain"); // NOI18N
+        Lainlain.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Lain_lainKeyPressed(evt);
+                LainlainKeyPressed(evt);
             }
         });
-        FormInput.add(Lain_lain);
-        Lain_lain.setBounds(66, 140, 270, 23);
+        FormInput.add(Lainlain);
+        Lainlain.setBounds(66, 140, 270, 23);
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel22.setText("Tensi Darah");
@@ -2099,12 +2130,12 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         //Valid.pindah(evt,RencanaTindakan,BB);
     }//GEN-LAST:event_EKGKeyPressed
 
-    private void Lain_lainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Lain_lainKeyPressed
+    private void LainlainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainlainKeyPressed
         Valid.pindah(evt,EKG,TD);
-    }//GEN-LAST:event_Lain_lainKeyPressed
+    }//GEN-LAST:event_LainlainKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Lain_lain,IntubasiSulitIntubasi);
+        Valid.pindah(evt,Lainlain,IntubasiSulitIntubasi);
     }//GEN-LAST:event_TDKeyPressed
 
     private void IntubasiSulitIntubasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntubasiSulitIntubasiKeyPressed
@@ -2312,7 +2343,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextBox LMAJenis;
     private widget.TextBox LMANo;
-    private widget.TextBox Lain_lain;
+    private widget.TextBox Lainlain;
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnPenilaianMedis;
     private widget.TextBox Nadi;
@@ -2527,11 +2558,48 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        EKG.setText("");
-        Lain_lain.setText("");
         TD.setText("");
+        Nadi.setText("");
+        RR.setText("");
+        Suhu.setText("");
+        RR.setText("");
+        EKG.setText("");
+        Lainlain.setText("");
+        Perencanaan.setText("");
+        Asesmen.setSelectedIndex(0);
+        InfusPerifier.setText("");
+        CVC.setText("");
+        PosisiInfus.setSelectedIndex(0);
+        Premedikasi.setSelectedIndex(0);
+        KeteranganPremedikasi.setText("");
+        InfusInduksi.setSelectedIndex(0);
+        KeteranganInfusInduksi.setText("");
+        FaceMaskNo.setText("");
+        NasopharingNo.setText("");
+        ETTNo.setText("");
+        ETTJenis.setText("");
+        ETTFiksasi.setText("");
+        LMANo.setText("");
+        LMAJenis.setText("");
+        Tracheostomi.setText("");
+        BronchoscopiFiberoptik.setText("");
+        Glidescopi.setText("");
+        TatalaksanaLainlain.setText("");
+        IntubasiSesudahTidur.setSelectedIndex(0);
+        IntubasiOral.setSelectedIndex(0);
+        IntubasiTracheostomi.setSelectedIndex(0);
+        KeteranganIntubasi.setText("");
+        IntubasiSulitVentilasi.setText("");
         IntubasiSulitIntubasi.setText("");
         Ventilasi.setText("");
+        TeknikRegionalJenis.setText("");
+        TeknikRegionalLokasi.setText("");
+        TeknikReginalJenisJarum.setText("");
+        TeknikRegionalKateter.setSelectedIndex(0);
+        TeknikRegionalKateterFiksasi.setText("");
+        TeknikRegionalObatobatan.setText("");
+        TeknikRegionalKomplikasi.setText("");
+        TeknikRegionalHasil.setText("");
         TglAsuhan.setDate(new Date());
         TabRawat.setSelectedIndex(0);
     } 
