@@ -66,7 +66,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
             "Premedikasi","Keterangan Premedikasi","Induksi","Keterangan Induksi","Face Mask No","Oro/Nasopharing No","ETT No",
             "ETT Jenis","ETT Fiksasi","LMA No","LMA Jenis","Tracheostomi","Bronchoscopi Fiberoptik","Glidescopi","Tatalaksana Lain-lain",
             "Intubasi Sesudah Tidur","Intubasi Oral","Intubasi Tracheostomi","Keterangan Intubasi","Sulit Ventilasi","Sulit Intubasi",
-            "Ventilasi","T.R.Jenis","T.R.Lokasi","T.R.Jenis Jarum","T.R.Kateter","T.R.Kateter Fiksasi","T.R.Obat Obatan","T.R.Komplikasi",
+            "Ventilasi","T.R.Jenis","T.R.Lokasi","T.R.Jenis Jarum/No","T.R.Kateter","T.R.Kateter Fiksasi","T.R.Obat Obatan","T.R.Komplikasi",
             "T.R.Hasil"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -94,6 +94,88 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(60);
+            }else if(i==9){
+                column.setPreferredWidth(75);
+            }else if(i==10){
+                column.setPreferredWidth(67);
+            }else if(i==11){
+                column.setPreferredWidth(52);
+            }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(150);
+            }else if(i==14){
+                column.setPreferredWidth(215);
+            }else if(i==15){
+                column.setPreferredWidth(250);
+            }else if(i==16){
+                column.setPreferredWidth(250);
+            }else if(i==17){
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(95);
+            }else if(i==19){
+                column.setPreferredWidth(67);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(54);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(74);
+            }else if(i==24){
+                column.setPreferredWidth(106);
+            }else if(i==25){
+                column.setPreferredWidth(100);
+            }else if(i==26){
+                column.setPreferredWidth(100);
+            }else if(i==27){
+                column.setPreferredWidth(100);
+            }else if(i==28){
+                column.setPreferredWidth(100);
+            }else if(i==29){
+                column.setPreferredWidth(100);
+            }else if(i==30){
+                column.setPreferredWidth(170);
+            }else if(i==31){
+                column.setPreferredWidth(170);
+            }else if(i==32){
+                column.setPreferredWidth(170);
+            }else if(i==33){
+                column.setPreferredWidth(170);
+            }else if(i==34){
+                column.setPreferredWidth(120);
+            }else if(i==35){
+                column.setPreferredWidth(72);
+            }else if(i==36){
+                column.setPreferredWidth(118);
+            }else if(i==37){
+                column.setPreferredWidth(220);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(150);
+            }else if(i==40){
+                column.setPreferredWidth(150);
+            }else if(i==41){
+                column.setPreferredWidth(150);
+            }else if(i==42){
+                column.setPreferredWidth(120);
+            }else if(i==43){
+                column.setPreferredWidth(102);
+            }else if(i==44){
+                column.setPreferredWidth(65);
+            }else if(i==45){
+                column.setPreferredWidth(150);
+            }else if(i==46){
+                column.setPreferredWidth(250);
+            }else if(i==47){
+                column.setPreferredWidth(250);
+            }else if(i==48){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1744,16 +1826,18 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
-        }else if(RencanaTindakan.getText().trim().equals("")){
-            Valid.textKosong(RencanaTindakan,"Rencana Tindakan");
-        }else if(RencanaTindakan.getText().trim().equals("")){
-            Valid.textKosong(RencanaTindakan,"Rencana Tindakan");
+            Valid.textKosong(BtnDokter,"Dokter Anastesi");
+        }else if(Perencanaan.getText().trim().equals("")){
+            Valid.textKosong(Perencanaan,"Perencanaan");
+        }else if(InfusPerifier.getText().trim().equals("")){
+            Valid.textKosong(InfusPerifier,"Infus Perifier, Tempat & Ukuran");
+        }else if(TeknikRegionalObatobatan.getText().trim().equals("")){
+            Valid.textKosong(TeknikRegionalObatobatan,"Obat-obatan");
+        }else if(TeknikRegionalHasil.getText().trim().equals("")){
+            Valid.textKosong(TeknikRegionalHasil,"Hasil");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1768,7 +1852,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1908,7 +1992,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='4500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='4600px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1933,7 +2017,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='4500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='4600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
