@@ -22646,7 +22646,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<tr>"+
                                                "<td width='100%'>"+
                                                    "Infus Perifier : Tempat & Ukuran"+
-                                                   "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                   "<table width='99%' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                        "<tr>"+
                                                            "<td width='100%' colspan='2'>"+rs2.getString("infus_perifier").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                        "</tr>"+
@@ -22654,91 +22654,91 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                            "<td width='100%' colspan='2'>CVC : "+rs2.getString("cvc")+"</td>"+
                                                        "</tr>"+
                                                        "<tr>"+
-                                                           "<td width='34%'>Posisi : "+rs2.getString("posisi")+"</td>"+
+                                                           "<td width='34%' style='margin-left: 10px'>Posisi : "+rs2.getString("posisi")+"</td>"+
                                                            "<td width='66%'>Premedikasi : "+rs2.getString("premedikasi")+(rs2.getString("premedikasi_keterangan").equals("")?"":", "+rs2.getString("premedikasi_keterangan"))+"</td>"+
                                                        "</tr>"+
                                                        "<tr>"+
-                                                           "<td width='100%' colspan='2'>Induksi : "+rs2.getString("induksi")+(rs2.getString("induksi_keterangan").equals("")?"":", "+rs2.getString("induksi_keterangan"))+"</td>"+
+                                                           "<td width='100%' colspan='2' style='margin-left: 10px'>Induksi : "+rs2.getString("induksi")+(rs2.getString("induksi_keterangan").equals("")?"":", "+rs2.getString("induksi_keterangan"))+"</td>"+
                                                        "</tr>"+
                                                        "<tr>"+
-                                                           "<td width='100%' colspan='2'>"+
+                                                           "<td width='100%' colspan='2' style='margin-left: 10px'>"+
                                                                "Tata Laksana Jalan Nafas :"+
-                                                               "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                               "<table width='99%' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                                    "<tr>"+
-                                                                        "<td width='34%' border='0'>Face Mask No : "+rs2.getString("face_mask_no")+"</td>"+
-                                                                        "<td width='66%' border='0' colspan='2'>Oro/Nasopharing No : "+rs2.getString("nasopharing_no")+"</td>"+
+                                                                        "<td width='34%'>Face Mask No : "+rs2.getString("face_mask_no")+"</td>"+
+                                                                        "<td width='66%' colspan='2'>Oro/Nasopharing No : "+rs2.getString("nasopharing_no")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='34%' border='0'>ETT No : "+rs2.getString("ett_no")+"</td>"+
-                                                                        "<td width='33%' border='0'>ETT Jenis : "+rs2.getString("ett_jenis")+"</td>"+
-                                                                        "<td width='33%' border='0'>ETT Fiksasi : "+rs2.getString("ett_viksasi")+" cm</td>"+
+                                                                        "<td width='34%'>ETT No : "+rs2.getString("ett_no")+"</td>"+
+                                                                        "<td width='33%'>ETT Jenis : "+rs2.getString("ett_jenis")+"</td>"+
+                                                                        "<td width='33%'>ETT Fiksasi : "+rs2.getString("ett_viksasi")+" cm</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='34%' border='0'>LMA No : "+rs2.getString("lma_no")+"</td>"+
-                                                                        "<td width='66%' border='0' colspan='2'>LMA Jenis : "+rs2.getString("lma_jenis")+"</td>"+
+                                                                        "<td width='34%'>LMA No : "+rs2.getString("lma_no")+"</td>"+
+                                                                        "<td width='66%' colspan='2'>LMA Jenis : "+rs2.getString("lma_jenis")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Tracheostomi : "+rs2.getString("tracheostomi")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Tracheostomi : "+rs2.getString("tracheostomi")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Bronchoscopi Fiberoptik : "+rs2.getString("bronchoscopi_fiberoptik")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Bronchoscopi Fiberoptik : "+rs2.getString("bronchoscopi_fiberoptik")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Glidescopi : "+rs2.getString("glidescopi")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Glidescopi : "+rs2.getString("glidescopi")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Lain-lain : "+rs2.getString("lain_lain_tatalaksana")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Lain-lain : "+rs2.getString("lain_lain_tatalaksana")+"</td>"+
                                                                    "</tr>"+
                                                                "</table>"+
                                                            "</td>"+
                                                        "</tr>"+
                                                        "<tr>"+
-                                                           "<td width='100%' colspan='2'>"+
+                                                           "<td width='100%' colspan='2' style='margin-left: 10px'>"+
                                                                "Intubasi :"+
-                                                               "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                               "<table width='99%' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                                    "<tr>"+
-                                                                        "<td width='34%' border='0'>Sesudah Tidur : "+rs2.getString("intubasi_sesudah_tidur")+"</td>"+
-                                                                        "<td width='33%' border='0'>Oral : "+rs2.getString("intubasi_oral")+"</td>"+
-                                                                        "<td width='33%' border='0'>Tracheostomi : "+rs2.getString("intubasi_tracheostomi")+"</td>"+
+                                                                        "<td width='34%'>Sesudah Tidur : "+rs2.getString("intubasi_sesudah_tidur")+"</td>"+
+                                                                        "<td width='33%'>Oral : "+rs2.getString("intubasi_oral")+"</td>"+
+                                                                        "<td width='33%'>Tracheostomi : "+rs2.getString("intubasi_tracheostomi")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Keterangan : "+rs2.getString("intubasi_keterangan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Keterangan : "+rs2.getString("intubasi_keterangan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Sulit Ventilasi : "+rs2.getString("sulit_ventilasi")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Sulit Ventilasi : "+rs2.getString("sulit_ventilasi")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Sulit Intubasi : "+rs2.getString("sulit_intubasi")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Sulit Intubasi : "+rs2.getString("sulit_intubasi")+"</td>"+
                                                                    "</tr>"+
                                                                "</table>"+
                                                            "</td>"+
                                                        "</tr>"+
                                                        "<tr>"+
-                                                           "<td width='100%' colspan='2'>Ventilasi : "+rs2.getString("ventilasi")+" </td>"+
+                                                           "<td width='100%' colspan='2' style='margin-left: 10px'>Ventilasi : "+rs2.getString("ventilasi")+" </td>"+
                                                        "</tr>"+
                                                        "<tr>"+
-                                                           "<td width='100%' colspan='2'>"+
+                                                           "<td width='100%' colspan='2' style='margin-left: 10px'>"+
                                                                "Teknik Regional/Block Perifier :"+
-                                                               "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                               "<table width='99%' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Jenis : "+rs2.getString("teknik_regional_jenis")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Jenis : "+rs2.getString("teknik_regional_jenis")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='67%' border='0' colspan='2'>Lokasi : "+rs2.getString("teknik_regional_lokasi")+"</td>"+
-                                                                        "<td width='33%' border='0'>Jenis Jarum / No : "+rs2.getString("teknik_regional_jenis_jarum")+"</td>"+
+                                                                        "<td width='67%' colspan='2'>Lokasi : "+rs2.getString("teknik_regional_lokasi")+"</td>"+
+                                                                        "<td width='33%'>Jenis Jarum / No : "+rs2.getString("teknik_regional_jenis_jarum")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='34%' border='0'>Keteter : "+rs2.getString("teknik_regional_kateter")+"</td>"+
-                                                                        "<td width='33%' border='0' colspan='2'>Kateter Fiksasi : "+rs2.getString("teknik_regional_kateter_viksasi")+" cm</td>"+
+                                                                        "<td width='34%'>Keteter : "+rs2.getString("teknik_regional_kateter")+"</td>"+
+                                                                        "<td width='33%' colspan='2'>Kateter Fiksasi : "+rs2.getString("teknik_regional_kateter_viksasi")+" cm</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Obat-obatan : "+rs2.getString("teknik_regional_obat_obatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Obat-obatan : "+rs2.getString("teknik_regional_obat_obatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Komplikasi "+rs2.getString("teknik_regional_komplikasi")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Komplikasi "+rs2.getString("teknik_regional_komplikasi")+"</td>"+
                                                                    "</tr>"+
                                                                    "<tr>"+
-                                                                        "<td width='100%' border='0' colspan='3' align='justify'>Hasil : "+rs2.getString("teknik_regional_hasil")+"</td>"+
+                                                                        "<td width='100%' colspan='3' align='justify'>Hasil : "+rs2.getString("teknik_regional_hasil")+"</td>"+
                                                                    "</tr>"+
                                                                "</table>"+
                                                            "</td>"+

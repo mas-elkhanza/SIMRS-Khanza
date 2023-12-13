@@ -467,7 +467,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Pre Anestesi");
+        MnPenilaianMedis.setText("Laporan Penilaian Pre Induksi");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -738,7 +738,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2023 06:29:48" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2023 15:23:36" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -989,7 +989,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
         scrollPane2.setViewportView(InfusPerifier);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(44, 220, 680, 43);
+        scrollPane2.setBounds(12, 220, 712, 43);
 
         CVC.setFocusTraversalPolicyProvider(true);
         CVC.setName("CVC"); // NOI18N
@@ -999,18 +999,18 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
             }
         });
         FormInput.add(CVC);
-        CVC.setBounds(77, 270, 647, 23);
+        CVC.setBounds(45, 270, 679, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel24.setText("CVC");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(44, 270, 70, 23);
+        jLabel24.setBounds(12, 270, 70, 23);
 
         jLabel129.setText(":");
         jLabel129.setName("jLabel129"); // NOI18N
         FormInput.add(jLabel129);
-        jLabel129.setBounds(0, 270, 73, 23);
+        jLabel129.setBounds(0, 270, 41, 23);
 
         jLabel131.setText(":");
         jLabel131.setName("jLabel131"); // NOI18N
@@ -2140,19 +2140,18 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianPreAnestesi.jasper","report","::[ Laporan Penilaian Pre Anestesi ]::",
+            Valid.MyReportqry("rptCetakPenilaianPreInduksi.jasper","report","::[ Laporan Penilaian Pre Induksi ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_pre_induksi.tanggal,"+
-                "penilaian_pre_induksi.kd_dokter,DATE_FORMAT(penilaian_pre_induksi.tanggal_operasi,'%d-%m-%Y %H:%m:%s') as tanggal_operasi,penilaian_pre_induksi.diagnosa,"+
-                "penilaian_pre_induksi.rencana_tindakan,penilaian_pre_induksi.tb,penilaian_pre_induksi.bb,penilaian_pre_induksi.td,penilaian_pre_induksi.io2,"+
-                "penilaian_pre_induksi.nadi,penilaian_pre_induksi.pernapasan,penilaian_pre_induksi.suhu,penilaian_pre_induksi.fisik_cardiovasculer,penilaian_pre_induksi.fisik_paru,"+
-                "penilaian_pre_induksi.fisik_abdomen,penilaian_pre_induksi.fisik_extrimitas,penilaian_pre_induksi.fisik_endokrin,penilaian_pre_induksi.fisik_ginjal,"+
-                "penilaian_pre_induksi.fisik_obatobatan,penilaian_pre_induksi.fisik_laborat,penilaian_pre_induksi.fisik_penunjang,penilaian_pre_induksi.riwayat_penyakit_alergiobat,"+
-                "penilaian_pre_induksi.riwayat_penyakit_alergilainnya,penilaian_pre_induksi.riwayat_penyakit_terapi,penilaian_pre_induksi.riwayat_kebiasaan_merokok,"+
-                "penilaian_pre_induksi.riwayat_kebiasaan_ket_merokok,penilaian_pre_induksi.riwayat_kebiasaan_alkohol,penilaian_pre_induksi.riwayat_kebiasaan_ket_alkohol,"+
-                "penilaian_pre_induksi.riwayat_kebiasaan_obat,penilaian_pre_induksi.riwayat_kebiasaan_ket_obat,penilaian_pre_induksi.riwayat_medis_cardiovasculer,"+
-                "penilaian_pre_induksi.riwayat_medis_respiratory,penilaian_pre_induksi.riwayat_medis_endocrine,penilaian_pre_induksi.riwayat_medis_lainnya,"+
-                "penilaian_pre_induksi.asa,DATE_FORMAT(penilaian_pre_induksi.puasa,'%d-%m-%Y %H:%m:%s') as puasa,penilaian_pre_induksi.rencana_anestesi,penilaian_pre_induksi.rencana_perawatan,"+
-                "penilaian_pre_induksi.catatan_khusus,dokter.nm_dokter from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "penilaian_pre_induksi.kd_dokter,penilaian_pre_induksi.tensi,penilaian_pre_induksi.nadi,penilaian_pre_induksi.rr,penilaian_pre_induksi.suhu,penilaian_pre_induksi.ekg,"+
+                "penilaian_pre_induksi.lain_lain,penilaian_pre_induksi.asesmen,penilaian_pre_induksi.perencanaan,penilaian_pre_induksi.infus_perifier,penilaian_pre_induksi.cvc,"+
+                "penilaian_pre_induksi.posisi,penilaian_pre_induksi.premedikasi,penilaian_pre_induksi.premedikasi_keterangan,penilaian_pre_induksi.induksi,penilaian_pre_induksi.induksi_keterangan,"+
+                "penilaian_pre_induksi.face_mask_no,penilaian_pre_induksi.nasopharing_no,penilaian_pre_induksi.ett_no,penilaian_pre_induksi.ett_jenis,penilaian_pre_induksi.ett_viksasi,"+
+                "penilaian_pre_induksi.lma_no,penilaian_pre_induksi.lma_jenis,penilaian_pre_induksi.tracheostomi,penilaian_pre_induksi.bronchoscopi_fiberoptik,penilaian_pre_induksi.glidescopi,"+
+                "penilaian_pre_induksi.lain_lain_tatalaksana,penilaian_pre_induksi.intubasi_sesudah_tidur,penilaian_pre_induksi.intubasi_oral,penilaian_pre_induksi.intubasi_tracheostomi,"+
+                "penilaian_pre_induksi.intubasi_keterangan,penilaian_pre_induksi.sulit_ventilasi,penilaian_pre_induksi.sulit_intubasi,penilaian_pre_induksi.ventilasi,penilaian_pre_induksi.teknik_regional_jenis,"+
+                "penilaian_pre_induksi.teknik_regional_lokasi,penilaian_pre_induksi.teknik_regional_jenis_jarum,penilaian_pre_induksi.teknik_regional_kateter,penilaian_pre_induksi.teknik_regional_kateter_viksasi,"+
+                "penilaian_pre_induksi.teknik_regional_obat_obatan,penilaian_pre_induksi.teknik_regional_komplikasi,penilaian_pre_induksi.teknik_regional_hasil,dokter.nm_dokter "+
+                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_pre_induksi on reg_periksa.no_rawat=penilaian_pre_induksi.no_rawat "+
                 "inner join dokter on penilaian_pre_induksi.kd_dokter=dokter.kd_dokter where penilaian_pre_induksi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                 "and penilaian_pre_induksi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"'",param);
