@@ -5,7 +5,7 @@
     require_once('../../conf/conf.php');
 
     function getKey() {
-       $keyRS = "17af25d1e59dbc3689dd42d654923de4bfa8e5743acf60895e5d59b82b5f63d7";   
+       $keyRS = "8e85cd987ff61e63a8c253e29a29ddc35d16ef14dadf146066010c8b7598ab7a";   
        return $keyRS;
     }
 
