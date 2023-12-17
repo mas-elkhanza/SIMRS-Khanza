@@ -1179,7 +1179,7 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
-            if(Sequel.menyimpantf("hasil_pemeriksaan_usg","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",21,new String[]{
+            if(Sequel.menyimpantf("hasil_pemeriksaan_usg_urologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",21,new String[]{
                     TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
                     DiagnosaKlinis.getText(),KirimanDari.getText(),HTA.getText(),UkuranKantong.getText(),UkuranBokong.getText(),JenisPrestasi.getText(),
                     DiameterBiparietal.getText(),PanjangFemur.getText(),LingkarAbdomen.getText(),TafsiranBerat.getText(),UsiaKehamilan.getText(),
@@ -1290,31 +1290,31 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
             try{
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                            "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
-                            "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
-                            "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
-                            "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
-                            "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
-                            "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
-                            "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                            "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
-                            "hasil_pemeriksaan_usg.tanggal between ? and ? order by hasil_pemeriksaan_usg.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
+                            "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
+                            "hasil_pemeriksaan_usg_urologi.hta,hasil_pemeriksaan_usg_urologi.kantong_gestasi,hasil_pemeriksaan_usg_urologi.ukuran_bokongkepala,"+
+                            "hasil_pemeriksaan_usg_urologi.jenis_prestasi,hasil_pemeriksaan_usg_urologi.diameter_biparietal,hasil_pemeriksaan_usg_urologi.panjang_femur,"+
+                            "hasil_pemeriksaan_usg_urologi.lingkar_abdomen,hasil_pemeriksaan_usg_urologi.tafsiran_berat_janin,hasil_pemeriksaan_usg_urologi.usia_kehamilan,"+
+                            "hasil_pemeriksaan_usg_urologi.plasenta_berimplatansi,hasil_pemeriksaan_usg_urologi.derajat_maturitas,hasil_pemeriksaan_usg_urologi.jumlah_air_ketuban,"+
+                            "hasil_pemeriksaan_usg_urologi.indek_cairan_ketuban,hasil_pemeriksaan_usg_urologi.kelainan_kongenital,hasil_pemeriksaan_usg_urologi.peluang_sex,"+
+                            "hasil_pemeriksaan_usg_urologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
+                            "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where "+
+                            "hasil_pemeriksaan_usg_urologi.tanggal between ? and ? order by hasil_pemeriksaan_usg_urologi.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                            "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
-                            "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
-                            "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
-                            "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
-                            "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
-                            "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
-                            "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                            "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
-                            "hasil_pemeriksaan_usg.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                            "hasil_pemeriksaan_usg.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
+                            "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
+                            "hasil_pemeriksaan_usg_urologi.hta,hasil_pemeriksaan_usg_urologi.kantong_gestasi,hasil_pemeriksaan_usg_urologi.ukuran_bokongkepala,"+
+                            "hasil_pemeriksaan_usg_urologi.jenis_prestasi,hasil_pemeriksaan_usg_urologi.diameter_biparietal,hasil_pemeriksaan_usg_urologi.panjang_femur,"+
+                            "hasil_pemeriksaan_usg_urologi.lingkar_abdomen,hasil_pemeriksaan_usg_urologi.tafsiran_berat_janin,hasil_pemeriksaan_usg_urologi.usia_kehamilan,"+
+                            "hasil_pemeriksaan_usg_urologi.plasenta_berimplatansi,hasil_pemeriksaan_usg_urologi.derajat_maturitas,hasil_pemeriksaan_usg_urologi.jumlah_air_ketuban,"+
+                            "hasil_pemeriksaan_usg_urologi.indek_cairan_ketuban,hasil_pemeriksaan_usg_urologi.kelainan_kongenital,hasil_pemeriksaan_usg_urologi.peluang_sex,"+
+                            "hasil_pemeriksaan_usg_urologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
+                            "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where "+
+                            "hasil_pemeriksaan_usg_urologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                            "hasil_pemeriksaan_usg_urologi.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg_urologi.tanggal");
                 }
 
                 try {
@@ -1561,16 +1561,16 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
             Valid.MyReportqry("rptCetakHasilPemeriksaanUSG.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
-                "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
-                "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
-                "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
-                "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
-                "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
-                "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
+                "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
+                "hasil_pemeriksaan_usg_urologi.hta,hasil_pemeriksaan_usg_urologi.kantong_gestasi,hasil_pemeriksaan_usg_urologi.ukuran_bokongkepala,"+
+                "hasil_pemeriksaan_usg_urologi.jenis_prestasi,hasil_pemeriksaan_usg_urologi.diameter_biparietal,hasil_pemeriksaan_usg_urologi.panjang_femur,"+
+                "hasil_pemeriksaan_usg_urologi.lingkar_abdomen,hasil_pemeriksaan_usg_urologi.tafsiran_berat_janin,hasil_pemeriksaan_usg_urologi.usia_kehamilan,"+
+                "hasil_pemeriksaan_usg_urologi.plasenta_berimplatansi,hasil_pemeriksaan_usg_urologi.derajat_maturitas,hasil_pemeriksaan_usg_urologi.jumlah_air_ketuban,"+
+                "hasil_pemeriksaan_usg_urologi.indek_cairan_ketuban,hasil_pemeriksaan_usg_urologi.kelainan_kongenital,hasil_pemeriksaan_usg_urologi.peluang_sex,"+
+                "hasil_pemeriksaan_usg_urologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
+                "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg_urologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -1824,31 +1824,31 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                        "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
-                        "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
-                        "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
-                        "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
-                        "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
-                        "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                        "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_pemeriksaan_usg.tanggal between ? and ? order by hasil_pemeriksaan_usg.tanggal");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
+                        "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
+                        "hasil_pemeriksaan_usg_urologi.hta,hasil_pemeriksaan_usg_urologi.kantong_gestasi,hasil_pemeriksaan_usg_urologi.ukuran_bokongkepala,"+
+                        "hasil_pemeriksaan_usg_urologi.jenis_prestasi,hasil_pemeriksaan_usg_urologi.diameter_biparietal,hasil_pemeriksaan_usg_urologi.panjang_femur,"+
+                        "hasil_pemeriksaan_usg_urologi.lingkar_abdomen,hasil_pemeriksaan_usg_urologi.tafsiran_berat_janin,hasil_pemeriksaan_usg_urologi.usia_kehamilan,"+
+                        "hasil_pemeriksaan_usg_urologi.plasenta_berimplatansi,hasil_pemeriksaan_usg_urologi.derajat_maturitas,hasil_pemeriksaan_usg_urologi.jumlah_air_ketuban,"+
+                        "hasil_pemeriksaan_usg_urologi.indek_cairan_ketuban,hasil_pemeriksaan_usg_urologi.kelainan_kongenital,hasil_pemeriksaan_usg_urologi.peluang_sex,"+
+                        "hasil_pemeriksaan_usg_urologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
+                        "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_pemeriksaan_usg_urologi.tanggal between ? and ? order by hasil_pemeriksaan_usg_urologi.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg.tanggal,"+
-                        "hasil_pemeriksaan_usg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg.diagnosa_klinis,hasil_pemeriksaan_usg.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg.hta,hasil_pemeriksaan_usg.kantong_gestasi,hasil_pemeriksaan_usg.ukuran_bokongkepala,"+
-                        "hasil_pemeriksaan_usg.jenis_prestasi,hasil_pemeriksaan_usg.diameter_biparietal,hasil_pemeriksaan_usg.panjang_femur,"+
-                        "hasil_pemeriksaan_usg.lingkar_abdomen,hasil_pemeriksaan_usg.tafsiran_berat_janin,hasil_pemeriksaan_usg.usia_kehamilan,"+
-                        "hasil_pemeriksaan_usg.plasenta_berimplatansi,hasil_pemeriksaan_usg.derajat_maturitas,hasil_pemeriksaan_usg.jumlah_air_ketuban,"+
-                        "hasil_pemeriksaan_usg.indek_cairan_ketuban,hasil_pemeriksaan_usg.kelainan_kongenital,hasil_pemeriksaan_usg.peluang_sex,"+
-                        "hasil_pemeriksaan_usg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_pemeriksaan_usg on reg_periksa.no_rawat=hasil_pemeriksaan_usg.no_rawat "+
-                        "inner join dokter on hasil_pemeriksaan_usg.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_pemeriksaan_usg.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "hasil_pemeriksaan_usg.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg.tanggal");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
+                        "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
+                        "hasil_pemeriksaan_usg_urologi.hta,hasil_pemeriksaan_usg_urologi.kantong_gestasi,hasil_pemeriksaan_usg_urologi.ukuran_bokongkepala,"+
+                        "hasil_pemeriksaan_usg_urologi.jenis_prestasi,hasil_pemeriksaan_usg_urologi.diameter_biparietal,hasil_pemeriksaan_usg_urologi.panjang_femur,"+
+                        "hasil_pemeriksaan_usg_urologi.lingkar_abdomen,hasil_pemeriksaan_usg_urologi.tafsiran_berat_janin,hasil_pemeriksaan_usg_urologi.usia_kehamilan,"+
+                        "hasil_pemeriksaan_usg_urologi.plasenta_berimplatansi,hasil_pemeriksaan_usg_urologi.derajat_maturitas,hasil_pemeriksaan_usg_urologi.jumlah_air_ketuban,"+
+                        "hasil_pemeriksaan_usg_urologi.indek_cairan_ketuban,hasil_pemeriksaan_usg_urologi.kelainan_kongenital,hasil_pemeriksaan_usg_urologi.peluang_sex,"+
+                        "hasil_pemeriksaan_usg_urologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
+                        "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_pemeriksaan_usg_urologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "hasil_pemeriksaan_usg_urologi.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg_urologi.tanggal");
             }
                 
             try {
@@ -1981,10 +1981,10 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_usg());
-        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_usg());
-        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
-        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_usg());
+        BtnSimpan.setEnabled(akses.gethasil_usg_urologi());
+        BtnHapus.setEnabled(akses.gethasil_usg_urologi());
+        BtnEdit.setEnabled(akses.gethasil_usg_urologi());
+        BtnEdit.setEnabled(akses.gethasil_usg_urologi());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -2002,7 +2002,7 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from hasil_pemeriksaan_usg where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from hasil_pemeriksaan_usg_urologi where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2014,7 +2014,7 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("hasil_pemeriksaan_usg","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,hta=?,kantong_gestasi=?,ukuran_bokongkepala=?,"+
+        if(Sequel.mengedittf("hasil_pemeriksaan_usg_urologi","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,hta=?,kantong_gestasi=?,ukuran_bokongkepala=?,"+
                 "jenis_prestasi=?,diameter_biparietal=?,panjang_femur=?,lingkar_abdomen=?,tafsiran_berat_janin=?,usia_kehamilan=?,plasenta_berimplatansi=?,derajat_maturitas=?,"+
                 "jumlah_air_ketuban=?,indek_cairan_ketuban=?,kelainan_kongenital=?,peluang_sex=?,kesimpulan=?",22,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
@@ -2046,7 +2046,7 @@ public final class RMHasilPemeriksaanUSGUrologi extends javax.swing.JDialog {
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select hasil_pemeriksaan_usg_gambar.photo from hasil_pemeriksaan_usg_gambar where hasil_pemeriksaan_usg_gambar.no_rawat=?");
+                ps=koneksi.prepareStatement("select hasil_pemeriksaan_usg_urologi_gambar.photo from hasil_pemeriksaan_usg_urologi_gambar where hasil_pemeriksaan_usg_urologi_gambar.no_rawat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
