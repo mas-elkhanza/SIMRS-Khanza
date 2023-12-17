@@ -42670,7 +42670,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPreInduksi.addActionListener(this::btnPenilaianPreInduksiActionPerformed);
         
         btnHasilUSGUrologi = new widget.ButtonBig();
-        btnHasilUSGUrologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6217210_doctor_job_man_medical_people_icon.png")));
+        btnHasilUSGUrologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088090_disease_infected_infection_kidney_icon.png")));
         btnHasilUSGUrologi.setText("Hasil USG Urologi");
         btnHasilUSGUrologi.setIconTextGap(0);
         btnHasilUSGUrologi.setName("btnHasilUSGUrologi"); 
