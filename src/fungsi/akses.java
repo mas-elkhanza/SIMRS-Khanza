@@ -218,7 +218,7 @@ public final class akses {
             pembayaran_bank_mandiri=false,penilaian_ulang_nyeri=false,penilaian_terapi_wicara=false,bpjs_obat_23hari_apotek=false,pengkajian_restrain=false,
             bpjs_kunjungan_sep_apotek=false,bpjs_monitoring_klaim_apotek=false,bpjs_daftar_pelayanan_obat_apotek=false,penilaian_awal_medis_ralan_paru=false,
             catatan_keperawatan_ralan=false,catatan_persalinan=false,skor_aldrette_pasca_anestesi=false,skor_steward_pasca_anestesi=false,skor_bromage_pasca_anestesi=false,
-            penilaian_pre_induksi=false;
+            penilaian_pre_induksi=false,hasil_usg_urologi=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1237,6 +1237,7 @@ public final class akses {
                         akses.skor_steward_pasca_anestesi=true;
                         akses.skor_bromage_pasca_anestesi=true;
                         akses.penilaian_pre_induksi=true;
+                        akses.hasil_usg_urologi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2239,6 +2240,7 @@ public final class akses {
                         akses.skor_steward_pasca_anestesi=rs2.getBoolean("skor_steward_pasca_anestesi");
                         akses.skor_bromage_pasca_anestesi=rs2.getBoolean("skor_bromage_pasca_anestesi");
                         akses.penilaian_pre_induksi=rs2.getBoolean("penilaian_pre_induksi");
+                        akses.hasil_usg_urologi=rs2.getBoolean("hasil_usg_urologi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3239,6 +3241,7 @@ public final class akses {
                         akses.skor_steward_pasca_anestesi=false;
                         akses.skor_bromage_pasca_anestesi=false;
                         akses.penilaian_pre_induksi=false;
+                        akses.hasil_usg_urologi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4262,6 +4265,7 @@ public final class akses {
         akses.skor_steward_pasca_anestesi=false;
         akses.skor_bromage_pasca_anestesi=false;
         akses.penilaian_pre_induksi=false;
+        akses.hasil_usg_urologi=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5301,4 +5305,5 @@ public final class akses {
     public static boolean getskor_steward_pasca_anestesi(){return akses.skor_steward_pasca_anestesi;}
     public static boolean getskor_bromage_pasca_anestesi(){return akses.skor_bromage_pasca_anestesi;}
     public static boolean getpenilaian_pre_induksi(){return akses.penilaian_pre_induksi;}
+    public static boolean gethasil_usg_urologi(){return akses.hasil_usg_urologi;}
 }   
