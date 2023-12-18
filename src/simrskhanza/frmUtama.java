@@ -832,6 +832,7 @@ import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMEdukasiPasienKeluargaRawatJalan;
 import rekammedis.RMHasilPemeriksaanUSG;
+import rekammedis.RMHasilPemeriksaanUSGGynecologi;
 import rekammedis.RMHasilPemeriksaanUSGUrologi;
 import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
@@ -20871,6 +20872,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnHasilUSGGynecologiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMHasilPemeriksaanUSGGynecologi form=new RMHasilPemeriksaanUSGGynecologi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -21553,7 +21568,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
             btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain,btnBPJSKunjunganSEPApotek,btnBPJSMonitoringKlaimApotek,btnPenilaianAwalMedisRalanParu,
             btnBPJSDaftarPelayananObatApotek,btnCatatanKeperawatanRalan,btnCatatanPersalinan,btnSkorAldrettePascaAnestesi,btnSkorStewardPascaAnestesi,
-            btnSkorBromagePascaAnestesi,btnPenilaianPreInduksi,btnHasilUSGUrologi;
+            btnSkorBromagePascaAnestesi,btnPenilaianPreInduksi,btnHasilUSGUrologi,btnHasilUSGGynecologi;
     
     public void isWall(){
         try{            
@@ -25015,6 +25030,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gethasil_usg_urologi()==true){
                 Panelmenu.add(btnHasilUSGUrologi);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_usg_gynecologi()==true){
+                Panelmenu.add(btnHasilUSGGynecologi);
                 jmlmenu++;
             }
             
@@ -29949,6 +29969,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gethasil_usg_urologi()==true){
             Panelmenu.add(btnHasilUSGUrologi);
+            jmlmenu++;
+        }
+        
+        if(akses.gethasil_usg_gynecologi()==true){
+            Panelmenu.add(btnHasilUSGGynecologi);
             jmlmenu++;
         }
         
@@ -42676,5 +42701,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilUSGUrologi.setName("btnHasilUSGUrologi"); 
         btnHasilUSGUrologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilUSGUrologi.addActionListener(this::btnHasilUSGUrologiActionPerformed);
+        
+        btnHasilUSGGynecologi = new widget.ButtonBig();
+        btnHasilUSGGynecologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/375257_uterus_icon.png")));
+        btnHasilUSGGynecologi.setText("Hasil USG Gynecologi");
+        btnHasilUSGGynecologi.setIconTextGap(0);
+        btnHasilUSGGynecologi.setName("btnHasilUSGGynecologi"); 
+        btnHasilUSGGynecologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHasilUSGGynecologi.addActionListener(this::btnHasilUSGUrologiActionPerformed);
     }
 }

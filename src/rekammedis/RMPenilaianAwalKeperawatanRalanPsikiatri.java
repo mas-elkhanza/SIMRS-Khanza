@@ -5885,10 +5885,10 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_psikiatri());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_psikiatri());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_psikiatri());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_psikiatri());
         BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan());  
         BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan());  
         if(akses.getjml2()>=1){
