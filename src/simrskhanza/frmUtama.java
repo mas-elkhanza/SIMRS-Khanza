@@ -36238,6 +36238,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gethasil_usg_gynecologi()==true){
+            if(btnHasilUSGGynecologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHasilUSGGynecologi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_medis_ralan_tht()==true){
             if(btnPenilaianAwalMedisRalanTHT.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisRalanTHT);
@@ -42708,6 +42715,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilUSGGynecologi.setIconTextGap(0);
         btnHasilUSGGynecologi.setName("btnHasilUSGGynecologi"); 
         btnHasilUSGGynecologi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHasilUSGGynecologi.addActionListener(this::btnHasilUSGUrologiActionPerformed);
+        btnHasilUSGGynecologi.addActionListener(this::btnHasilUSGGynecologiActionPerformed);
     }
 }

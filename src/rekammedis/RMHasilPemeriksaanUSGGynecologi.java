@@ -66,7 +66,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Ginjal Kanan","Ginjal Kiri","Vesica Urinaria","Tambahan"
+                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Uterus","Parametrium","Ovarium","Doppler","Kesimpulan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -75,7 +75,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -102,6 +102,8 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(250);
             }else if(i==12){
+                column.setPreferredWidth(250);
+            }else if(i==13){
                 column.setPreferredWidth(250);
             }
         }
@@ -983,13 +985,13 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
         }else if(Uterus.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
-            if(Sequel.menyimpantf("hasil_pemeriksaan_usg_gynecologi","?,?,?,?,?,?,?,?,?","No.Rawat",9,new String[]{
+            if(Sequel.menyimpantf("hasil_pemeriksaan_usg_gynecologi","?,?,?,?,?,?,?,?,?,?","No.Rawat",10,new String[]{
                     TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                    DiagnosaKlinis.getText(),KirimanDari.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText()
+                    DiagnosaKlinis.getText(),KirimanDari.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText(),Kesimpulan.getText()
                 })==true){
                     tabMode.addRow(new String[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        KirimanDari.getText(),DiagnosaKlinis.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText()
+                        KirimanDari.getText(),DiagnosaKlinis.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText(),Kesimpulan.getText()
                     });
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
@@ -1049,9 +1051,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(Uterus.getText().trim().equals("")){
-            Valid.textKosong(Uterus,"Ginjal Kanan");
-        }else if(Parametrium.getText().trim().equals("")){
-            Valid.textKosong(Parametrium,"Ginjal Kiri");
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1106,10 +1106,11 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kiriman Dari</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Kanan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Kiri</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Vesica Urinaria</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tambahan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uterus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Parametrium</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ovarium</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Doppler</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1128,6 +1129,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1283,11 +1285,11 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGUrologi.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
+            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGGynecologi.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_gynecologi.tanggal,"+
                 "hasil_pemeriksaan_usg_gynecologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_gynecologi.diagnosa_klinis,hasil_pemeriksaan_usg_gynecologi.kiriman_dari,"+
-                "hasil_pemeriksaan_usg_gynecologi.ginjal_kanan,hasil_pemeriksaan_usg_gynecologi.ginjal_kiri,hasil_pemeriksaan_usg_gynecologi.vesica_urinaria,"+
-                "hasil_pemeriksaan_usg_gynecologi.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "hasil_pemeriksaan_usg_gynecologi.uterus,hasil_pemeriksaan_usg_gynecologi.parametrium,hasil_pemeriksaan_usg_gynecologi.ovarium,"+
+                "hasil_pemeriksaan_usg_gynecologi.doppler,hasil_pemeriksaan_usg_gynecologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join hasil_pemeriksaan_usg_gynecologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_gynecologi.no_rawat "+
                 "inner join dokter on hasil_pemeriksaan_usg_gynecologi.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg_gynecologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
@@ -1322,7 +1324,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("hasilpemeriksaanusgurologi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Valid.panggilUrl("hasilpemeriksaanusggynecologi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor()); 
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
@@ -1483,8 +1485,8 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_gynecologi.tanggal,"+
                         "hasil_pemeriksaan_usg_gynecologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_gynecologi.diagnosa_klinis,hasil_pemeriksaan_usg_gynecologi.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg_gynecologi.ginjal_kanan,hasil_pemeriksaan_usg_gynecologi.ginjal_kiri,hasil_pemeriksaan_usg_gynecologi.vesica_urinaria,"+
-                        "hasil_pemeriksaan_usg_gynecologi.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_pemeriksaan_usg_gynecologi.uterus,hasil_pemeriksaan_usg_gynecologi.parametrium,hasil_pemeriksaan_usg_gynecologi.ovarium,"+
+                        "hasil_pemeriksaan_usg_gynecologi.doppler,hasil_pemeriksaan_usg_gynecologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_pemeriksaan_usg_gynecologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_gynecologi.no_rawat "+
                         "inner join dokter on hasil_pemeriksaan_usg_gynecologi.kd_dokter=dokter.kd_dokter where "+
                         "hasil_pemeriksaan_usg_gynecologi.tanggal between ? and ? order by hasil_pemeriksaan_usg_gynecologi.tanggal");
@@ -1492,8 +1494,8 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_gynecologi.tanggal,"+
                         "hasil_pemeriksaan_usg_gynecologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_gynecologi.diagnosa_klinis,hasil_pemeriksaan_usg_gynecologi.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg_gynecologi.ginjal_kanan,hasil_pemeriksaan_usg_gynecologi.ginjal_kiri,hasil_pemeriksaan_usg_gynecologi.vesica_urinaria,"+
-                        "hasil_pemeriksaan_usg_gynecologi.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_pemeriksaan_usg_gynecologi.uterus,hasil_pemeriksaan_usg_gynecologi.parametrium,hasil_pemeriksaan_usg_gynecologi.ovarium,"+
+                        "hasil_pemeriksaan_usg_gynecologi.doppler,hasil_pemeriksaan_usg_gynecologi.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_pemeriksaan_usg_gynecologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_gynecologi.no_rawat "+
                         "inner join dokter on hasil_pemeriksaan_usg_gynecologi.kd_dokter=dokter.kd_dokter where "+
                         "hasil_pemeriksaan_usg_gynecologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
@@ -1517,7 +1519,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("ginjal_kanan"),rs.getString("ginjal_kiri"),rs.getString("vesica_urinaria"),rs.getString("tambahan")
+                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("uterus"),rs.getString("parametrium"),rs.getString("ovarium"),rs.getString("doppler"),rs.getString("kesimpulan")
                     });
                 }
             } catch (Exception e) {
@@ -1561,6 +1563,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
             Parametrium.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             Ovarium.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             Doppler.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
@@ -1636,9 +1639,9 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("hasil_pemeriksaan_usg_gynecologi","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,ginjal_kanan=?,ginjal_kiri=?,vesica_urinaria=?,tambahan=?",10,new String[]{
+        if(Sequel.mengedittf("hasil_pemeriksaan_usg_gynecologi","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,uterus=?,parametrium=?,ovarium=?,doppler=?,kesimpulan=?",11,new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                KirimanDari.getText(),DiagnosaKlinis.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                KirimanDari.getText(),DiagnosaKlinis.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1653,6 +1656,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                 tbObat.setValueAt(Parametrium.getText(),tbObat.getSelectedRow(),10);
                 tbObat.setValueAt(Ovarium.getText(),tbObat.getSelectedRow(),11);
                 tbObat.setValueAt(Doppler.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),13);
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
         }
@@ -1683,7 +1687,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgurologi/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgurologi/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusggynecologi/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusggynecologi/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
                         }  
                     }else{
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
