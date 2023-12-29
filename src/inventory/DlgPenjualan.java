@@ -529,7 +529,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
                 if(rs.next()){
                     notapenjualan=rs.getString("cetaknotasimpanpenjualan");
                     verifikasi_penjualan_di_kasir=rs.getString("verifikasi_penjualan_di_kasir");
-                    tampilkan_ppnobat_ralan=rs.getString("verifikasi_penjualan_di_kasir");
+                    tampilkan_ppnobat_ralan=rs.getString("tampilkan_ppnobat_ralan");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
