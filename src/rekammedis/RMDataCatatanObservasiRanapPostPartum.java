@@ -1032,7 +1032,7 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
                     "catatan_observasi_ranap_postpartum.nip,petugas.nama from catatan_observasi_ranap_postpartum inner join reg_periksa on catatan_observasi_ranap_postpartum.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_ranap_postpartum.nip=petugas.nip where "+
-                    "catatan_observasi_ranap_postpartum.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_ranap_postpartum.tgl_perawatan",param);
+                    "catatan_observasi_ranap_postpartum.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_ranap_postpartum.tgl_perawatan,catatan_observasi_ranap_postpartum.jam_rawat",param);
             }else{
                 Valid.MyReportqry("rptDataCatatanObservasiRanapPostPartum.jasper","report","::[ Data Catatan Observasi Rawat Inap Post Partum ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
@@ -1045,7 +1045,7 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
                     "catatan_observasi_ranap_postpartum.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
                     "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_observasi_ranap_postpartum.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by catatan_observasi_ranap_postpartum.tgl_perawatan ",param);
+                    "order by catatan_observasi_ranap_postpartum.tgl_perawatan,catatan_observasi_ranap_postpartum.jam_rawat ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1185,7 +1185,8 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
                     "catatan_observasi_ranap_postpartum.tfu,catatan_observasi_ranap_postpartum.kontraksi,catatan_observasi_ranap_postpartum.perdarahan,catatan_observasi_ranap_postpartum.keterangan,"+
                     "catatan_observasi_ranap_postpartum.nip,petugas.nama from catatan_observasi_ranap_postpartum inner join reg_periksa on catatan_observasi_ranap_postpartum.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ranap_postpartum.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on catatan_observasi_ranap_postpartum.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
+                    "order by catatan_observasi_ranap_postpartum.tgl_perawatan,catatan_observasi_ranap_postpartum.jam_rawat",param);
         }
     }//GEN-LAST:event_MnCatatanObservasiRanapPostPartumActionPerformed
 
@@ -1330,7 +1331,7 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
                     "catatan_observasi_ranap_postpartum.nip,petugas.nama from catatan_observasi_ranap_postpartum inner join reg_periksa on catatan_observasi_ranap_postpartum.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_ranap_postpartum.nip=petugas.nip where "+
-                    "catatan_observasi_ranap_postpartum.tgl_perawatan between ? and ? order by catatan_observasi_ranap_postpartum.tgl_perawatan");
+                    "catatan_observasi_ranap_postpartum.tgl_perawatan between ? and ? order by catatan_observasi_ranap_postpartum.tgl_perawatan,catatan_observasi_ranap_postpartum.jam_rawat");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
@@ -1341,7 +1342,7 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_ranap_postpartum.nip=petugas.nip where "+
                     "catatan_observasi_ranap_postpartum.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_observasi_ranap_postpartum.nip like ? or petugas.nama like ?) "+
-                    "order by catatan_observasi_ranap_postpartum.tgl_perawatan ");
+                    "order by catatan_observasi_ranap_postpartum.tgl_perawatan,catatan_observasi_ranap_postpartum.jam_rawat ");
             }
                 
             try {

@@ -894,7 +894,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                     "follow_up_dbd.nip,petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where "+
-                    "follow_up_dbd.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by follow_up_dbd.tgl_perawatan",param);
+                    "follow_up_dbd.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat",param);
             }else{
                 Valid.MyReportqry("rptDataFollowUpDBD.jasper","report","::[ Data Follow Up DBD ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
@@ -906,7 +906,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                     "follow_up_dbd.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
                     "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or follow_up_dbd.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by follow_up_dbd.tgl_perawatan ",param);
+                    "order by follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1040,7 +1040,8 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                     "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,"+
                     "petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
-                    "inner join petugas on follow_up_dbd.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on follow_up_dbd.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
+                    "order by follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat",param);
         }
     }//GEN-LAST:event_MnFollowUpDBDActionPerformed
 
@@ -1149,7 +1150,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                     "follow_up_dbd.nip,petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where "+
-                    "follow_up_dbd.tgl_perawatan between ? and ? order by follow_up_dbd.tgl_perawatan");
+                    "follow_up_dbd.tgl_perawatan between ? and ? order by follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
@@ -1159,7 +1160,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where "+
                     "follow_up_dbd.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or follow_up_dbd.nip like ? or petugas.nama like ?) "+
-                    "order by follow_up_dbd.tgl_perawatan ");
+                    "order by follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat ");
             }
                 
             try {

@@ -824,7 +824,7 @@ public final class RMDataCatatanKeperawatanRanap extends javax.swing.JDialog {
                     "catatan_keperawatan_ranap.nip,petugas.nama from catatan_keperawatan_ranap inner join reg_periksa on catatan_keperawatan_ranap.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_keperawatan_ranap.nip=petugas.nip where "+
-                    "catatan_keperawatan_ranap.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_keperawatan_ranap.tanggal",param);
+                    "catatan_keperawatan_ranap.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_keperawatan_ranap.tanggal,catatan_keperawatan_ranap.jam",param);
             }else{
                 Valid.MyReportqry("rptDataCatatanKeperawatanRanap.jasper","report","::[ Data Catatan Keperawatan Rawat Inap ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
@@ -835,7 +835,7 @@ public final class RMDataCatatanKeperawatanRanap extends javax.swing.JDialog {
                     "catatan_keperawatan_ranap.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
                     "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_keperawatan_ranap.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by catatan_keperawatan_ranap.tanggal ",param);
+                    "order by catatan_keperawatan_ranap.tanggal,catatan_keperawatan_ranap.jam ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -973,7 +973,8 @@ public final class RMDataCatatanKeperawatanRanap extends javax.swing.JDialog {
                     "pasien.jk,pasien.tgl_lahir,catatan_keperawatan_ranap.tanggal,catatan_keperawatan_ranap.jam,catatan_keperawatan_ranap.uraian,"+
                     "petugas.nama from catatan_keperawatan_ranap inner join reg_periksa on catatan_keperawatan_ranap.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_keperawatan_ranap.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on catatan_keperawatan_ranap.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
+                    "order by catatan_keperawatan_ranap.tanggal,catatan_keperawatan_ranap.jam",param);
         }
     }//GEN-LAST:event_MnCatatanKeperawatanRawatInapActionPerformed
 
@@ -1058,7 +1059,7 @@ public final class RMDataCatatanKeperawatanRanap extends javax.swing.JDialog {
                     "catatan_keperawatan_ranap.nip,petugas.nama from catatan_keperawatan_ranap inner join reg_periksa on catatan_keperawatan_ranap.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_keperawatan_ranap.nip=petugas.nip where "+
-                    "catatan_keperawatan_ranap.tanggal between ? and ? order by catatan_keperawatan_ranap.tanggal");
+                    "catatan_keperawatan_ranap.tanggal between ? and ? order by catatan_keperawatan_ranap.tanggal,catatan_keperawatan_ranap.jam");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
@@ -1067,7 +1068,7 @@ public final class RMDataCatatanKeperawatanRanap extends javax.swing.JDialog {
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_keperawatan_ranap.nip=petugas.nip where "+
                     "catatan_keperawatan_ranap.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_keperawatan_ranap.nip like ? or petugas.nama like ?) "+
-                    "order by catatan_keperawatan_ranap.tanggal ");
+                    "order by catatan_keperawatan_ranap.tanggal,catatan_keperawatan_ranap.jam ");
             }
                 
             try {
