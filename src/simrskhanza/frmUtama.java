@@ -831,6 +831,7 @@ import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMEdukasiPasienKeluargaRawatJalan;
+import rekammedis.RMHasilPemeriksaanEKG;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
 import rekammedis.RMHasilPemeriksaanUSGUrologi;
@@ -20886,6 +20887,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnHasilPemeriksaanEKGActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMHasilPemeriksaanEKG form=new RMHasilPemeriksaanEKG(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -21568,7 +21583,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanIGDPsikiatri,btnBPJSReferensiSettingPPKApotek,btnBPJSReferensiObatApotek,btnPembayaranBankMandiri,btnBPJSMapingObatApotek,
             btnPenilaianUlangNyeri,btnPenilaianTerapiWicara,btnPengkajianRestrain,btnBPJSKunjunganSEPApotek,btnBPJSMonitoringKlaimApotek,btnPenilaianAwalMedisRalanParu,
             btnBPJSDaftarPelayananObatApotek,btnCatatanKeperawatanRalan,btnCatatanPersalinan,btnSkorAldrettePascaAnestesi,btnSkorStewardPascaAnestesi,
-            btnSkorBromagePascaAnestesi,btnPenilaianPreInduksi,btnHasilUSGUrologi,btnHasilUSGGynecologi;
+            btnSkorBromagePascaAnestesi,btnPenilaianPreInduksi,btnHasilUSGUrologi,btnHasilUSGGynecologi,btnHasilPemeriksaanEKG;
     
     public void isWall(){
         try{            
@@ -25100,6 +25115,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_medis_ralan_hemodialisa()==true){
                 Panelmenu.add(btnPenilaianAwalMedisHemodialisa);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_pemeriksaan_ekg()==true){
+                Panelmenu.add(btnHasilPemeriksaanEKG);
                 jmlmenu++;
             }
             
@@ -30039,6 +30059,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_medis_ralan_hemodialisa()==true){
             Panelmenu.add(btnPenilaianAwalMedisHemodialisa);
+            jmlmenu++;
+        }
+            
+        if(akses.gethasil_pemeriksaan_ekg()==true){
+            Panelmenu.add(btnHasilPemeriksaanEKG);
             jmlmenu++;
         }
         
@@ -36332,6 +36357,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_medis_ralan_hemodialisa()==true){
             if(btnPenilaianAwalMedisHemodialisa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisHemodialisa);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gethasil_pemeriksaan_ekg()==true){
+            if(btnHasilPemeriksaanEKG.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHasilPemeriksaanEKG);
                 jmlmenu++;
             }                
         }
@@ -42716,5 +42748,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilUSGGynecologi.setName("btnHasilUSGGynecologi"); 
         btnHasilUSGGynecologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilUSGGynecologi.addActionListener(this::btnHasilUSGGynecologiActionPerformed);
+        
+        btnHasilPemeriksaanEKG = new widget.ButtonBig();
+        btnHasilPemeriksaanEKG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960620_cardiogram_tape_cardiology_electrocardiography_electrocardiogram_icon.png")));
+        btnHasilPemeriksaanEKG.setText("Hasil Pemeriksaan EKG");
+        btnHasilPemeriksaanEKG.setIconTextGap(0);
+        btnHasilPemeriksaanEKG.setName("btnHasilPemeriksaanEKG"); 
+        btnHasilPemeriksaanEKG.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHasilPemeriksaanEKG.addActionListener(this::btnHasilPemeriksaanEKGActionPerformed);
     }
 }

@@ -1,10 +1,11 @@
 /*
- * By Muanas RS Pelemonia Makasar
  */
 
 
 package rekammedis;
 
+import bridging.ApiOrthanc;
+import bridging.OrthancDICOM;
 import com.fasterxml.jackson.databind.JsonNode;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -44,7 +45,7 @@ import kepegawaian.DlgCariDokter;
  * @author perpustakaan
  */
 public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode,tabModeDicom;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -66,7 +67,6 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis",
             "Irama","Laju Jantung","Gelombang P","Interval PR","Axis","Kompleks QRS","Segmen ST","Gelombang T","Kesimpulan"
-  
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -108,15 +108,35 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(150);
             }else if(i==15){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(72);
             }else if(i==16){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(72);
             }else if(i==17){
                 column.setPreferredWidth(150);
             }
         }
         
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDicom=new DefaultTableModel(null,new Object[]{
+            "UUID Pasien","ID Studies","ID Series"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbListDicom.setModel(tabModeDicom);
+        tbListDicom.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbListDicom.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 3; i++) {
+            TableColumn column = tbListDicom.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(100);
+            }else if(i==1){
+                column.setPreferredWidth(270);
+            }else if(i==2){
+                column.setPreferredWidth(270);
+            }
+        }
+        tbListDicom.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KirimanDari.setDocument(new batasInput((int)50).getKata(KirimanDari));
@@ -295,6 +315,11 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         BtnRefreshPhoto1 = new widget.Button();
         Scroll5 = new widget.ScrollPane();
         LoadHTML2 = new widget.editorpane();
+        FormOrthan = new widget.PanelBiasa();
+        Scroll6 = new widget.ScrollPane();
+        tbListDicom = new widget.Table();
+        panelGlass7 = new widget.panelisi();
+        btnDicom = new widget.Button();
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -462,11 +487,6 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setPreferredSize(new java.awt.Dimension(457, 480));
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -479,7 +499,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(750, 363));
+        FormInput.setPreferredSize(new java.awt.Dimension(750, 403));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -570,7 +590,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023 08:36:07" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-01-2024 06:52:31" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -637,7 +657,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         FormInput.add(LajuJantung);
         LajuJantung.setBounds(454, 110, 270, 23);
 
-        jLabel35.setText("Laju Jantung:");
+        jLabel35.setText("Laju Jantung :");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
         jLabel35.setBounds(360, 110, 90, 23);
@@ -681,12 +701,12 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
             }
         });
         FormInput.add(SegmenST);
-        SegmenST.setBounds(230, 200, 110, 23);
+        SegmenST.setBounds(87, 200, 120, 23);
 
         jLabel126.setText("Segmen ST :");
         jLabel126.setName("jLabel126"); // NOI18N
         FormInput.add(jLabel126);
-        jLabel126.setBounds(100, 200, 120, 23);
+        jLabel126.setBounds(0, 200, 83, 23);
 
         Axis.setFocusTraversalPolicyProvider(true);
         Axis.setName("Axis"); // NOI18N
@@ -701,7 +721,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         jLabel43.setText("Axis :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(-10, 170, 90, 23);
+        jLabel43.setBounds(0, 170, 83, 23);
 
         jLabel127.setText("Gelombang T :");
         jLabel127.setName("jLabel127"); // NOI18N
@@ -716,19 +736,19 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
             }
         });
         FormInput.add(GelombangT);
-        GelombangT.setBounds(455, 200, 110, 23);
+        GelombangT.setBounds(455, 200, 120, 23);
 
         jLabel44.setText("Kesimpulan :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(0, 240, 165, 23);
+        jLabel44.setBounds(0, 230, 83, 23);
 
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
 
         Kesimpulan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Kesimpulan.setColumns(20);
-        Kesimpulan.setRows(5);
+        Kesimpulan.setRows(20);
         Kesimpulan.setName("Kesimpulan"); // NOI18N
         Kesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -738,7 +758,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         scrollPane17.setViewportView(Kesimpulan);
 
         FormInput.add(scrollPane17);
-        scrollPane17.setBounds(170, 240, 555, 63);
+        scrollPane17.setBounds(87, 230, 637, 153);
 
         jLabel45.setText("Kompleks QRS  :");
         jLabel45.setName("jLabel45"); // NOI18N
@@ -797,7 +817,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-01-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -811,7 +831,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-01-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -867,7 +887,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -887,6 +907,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
 
         TabData.setBackground(new java.awt.Color(254, 255, 254));
         TabData.setForeground(new java.awt.Color(50, 50, 50));
+        TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabData.setName("TabData"); // NOI18N
         TabData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -946,6 +967,42 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
 
         TabData.addTab("Gambar Pemeriksaan EKG", FormPhoto);
 
+        FormOrthan.setBackground(new java.awt.Color(255, 255, 255));
+        FormOrthan.setBorder(null);
+        FormOrthan.setName("FormOrthan"); // NOI18N
+        FormOrthan.setPreferredSize(new java.awt.Dimension(115, 73));
+        FormOrthan.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll6.setName("Scroll6"); // NOI18N
+        Scroll6.setOpaque(true);
+
+        tbListDicom.setName("tbListDicom"); // NOI18N
+        Scroll6.setViewportView(tbListDicom);
+
+        FormOrthan.add(Scroll6, java.awt.BorderLayout.CENTER);
+
+        panelGlass7.setBorder(null);
+        panelGlass7.setName("panelGlass7"); // NOI18N
+        panelGlass7.setPreferredSize(new java.awt.Dimension(115, 40));
+
+        btnDicom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        btnDicom.setMnemonic('T');
+        btnDicom.setText("Tampilkan DICOM");
+        btnDicom.setToolTipText("Alt+T");
+        btnDicom.setName("btnDicom"); // NOI18N
+        btnDicom.setPreferredSize(new java.awt.Dimension(150, 30));
+        btnDicom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDicomActionPerformed(evt);
+            }
+        });
+        panelGlass7.add(btnDicom);
+
+        FormOrthan.add(panelGlass7, java.awt.BorderLayout.PAGE_END);
+
+        TabData.addTab("Integrasi Orthanc", FormOrthan);
+
         PanelAccor.add(TabData, java.awt.BorderLayout.CENTER);
 
         internalFrame3.add(PanelAccor, java.awt.BorderLayout.EAST);
@@ -985,7 +1042,13 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
                     DiagnosaKlinis.getText(),KirimanDari.getText(),Irama.getText(),LajuJantung.getText(), GelombangP.getText(),IntervalPR.getText(),
                     Axis.getText(),KompleksQRS.getText(),SegmenST.getSelectedItem().toString(),GelombangT.getSelectedItem().toString(),Kesimpulan.getText()
                 })==true){
+                    tabMode.addRow(new String[]{
+                        TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                        KirimanDari.getText(),DiagnosaKlinis.getText(),Irama.getText(),LajuJantung.getText(), GelombangP.getText(),IntervalPR.getText(),Axis.getText(),KompleksQRS.getText(),SegmenST.getSelectedItem().toString(),
+                        GelombangT.getSelectedItem().toString(),Kesimpulan.getText()
+                    });
                     emptTeks();
+                    LCount.setText(""+tabMode.getRowCount());
             }
         }
     
@@ -995,7 +1058,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,TerapiPreOp,BtnBatal);
+            Valid.pindah(evt,Kesimpulan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1087,139 +1150,94 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                if(TCari.getText().trim().equals("")){
-                    ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_ekg.tanggal,"+
-                            "hasil_pemeriksaan_ekg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_ekg.diagnosa_klinis,hasil_pemeriksaan_ekg.kiriman_dari,"+
-                            "hasil_pemeriksaan_ekg.irama,hasil_pemeriksaan_ekg.laju_jantung,hasil_pemeriksaan_ekg.gelombangp,hasil_pemeriksaan_ekg.intervalpr,"+
-                            "hasil_pemeriksaan_ekg.axis,hasil_pemeriksaan_ekg.kompleksqrs,hasil_pemeriksaan_ekg.segmenst,hasil_pemeriksaan_ekg.gelombangt,"+
-                            "hasil_pemeriksaan_ekg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join hasil_pemeriksaan_ekg on reg_periksa.no_rawat=hasil_pemeriksaan_ekg.no_rawat "+
-                            "inner join dokter on hasil_pemeriksaan_ekg.kd_dokter=dokter.kd_dokter where "+
-                            "hasil_pemeriksaan_ekg.tanggal between ? and ? order by hasil_pemeriksaan_ekg.tanggal");
-                }else{
-                    ps=koneksi.prepareStatement(
-                             "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_ekg.tanggal,"+
-                            "hasil_pemeriksaan_ekg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_ekg.diagnosa_klinis,hasil_pemeriksaan_ekg.kiriman_dari,"+
-                            "hasil_pemeriksaan_ekg.irama,hasil_pemeriksaan_ekg.laju_jantung,hasil_pemeriksaan_ekg.gelombangp,hasil_pemeriksaan_ekg.intervalpr,"+
-                            "hasil_pemeriksaan_ekg.axis,hasil_pemeriksaan_ekg.kompleksqrs,hasil_pemeriksaan_ekg.segmenst,hasil_pemeriksaan_ekg.gelombangt,"+
-                            "hasil_pemeriksaan_ekg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join hasil_pemeriksaan_ekg on reg_periksa.no_rawat=hasil_pemeriksaan_ekg.no_rawat "+
-                            "inner join dokter on hasil_pemeriksaan_ekg.kd_dokter=dokter.kd_dokter where "+
-                            "hasil_pemeriksaan_ekg.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                            "hasil_pemeriksaan_ekg.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_ekg.tanggal");
-                }
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kiriman Dari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Klinis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Irama</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Laju Jantung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gelombang P</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Interval PR</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Axis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kompleks QRS</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Segment ST</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gelombang T</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesimpulan</b></td>"+
+                    "</tr>"
+                );
 
-                try {
-                    if(TCari.getText().trim().equals("")){
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    }else{
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,"%"+TCari.getText()+"%");
-                        ps.setString(5,"%"+TCari.getText()+"%");
-                        ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,"%"+TCari.getText()+"%");
-                    } 
-                    rs=ps.executeQuery();
-                    htmlContent = new StringBuilder();
-                    htmlContent.append(                             
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kiriman Dari</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Klinis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Irama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Laju Jantung</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gelombang P</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Interval PR</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Axis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kompleks QRS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Segment ST</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gelombang T</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesimpulan</b></td>"+
-                        "</tr>"
-                    );
-                    while(rs.next()){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kd_dokter")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_dokter")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kiriman_dari")+"</td>"+
-                               "<td valign='top'>"+rs.getString("diagnosa_klinis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("irama")+"</td>"+
-                               "<td valign='top'>"+rs.getString("laju_jantung")+"</td>"+
-                               "<td valign='top'>"+rs.getString("gelombangp")+"</td>"+
-                               "<td valign='top'>"+rs.getString("intervalpr")+"</td>"+
-                               "<td valign='top'>"+rs.getString("axis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kompleksqrs")+"</td>"+
-                               "<td valign='top'>"+rs.getString("segmenst")+"</td>"+
-                               "<td valign='top'>"+rs.getString("gelombangt")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kesimpulan")+"</td>"+
-                            "</tr>");
-                    }
-                    LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>"
-                    );
-
-                    File g = new File("file2.css");            
-                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                    bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                    );
-                    bg.close();
-
-                    File f = new File("DataHasilPemeriksaanEKG.html");            
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' align='center'>"+
-                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>HASIL PEMERIKSAAN EKG<br><br></font>"+        
-                                        "</td>"+
-                                   "</tr>"+
-                                "</table>")
-                    );
-                    bw.close();                         
-                    Desktop.getDesktop().browse(f.toURI());
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                        "</tr>");
                 }
+                
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataHasilPemeriksaanEKG.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>HASIL PEMERIKSAAN EKG<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
 
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
@@ -1315,12 +1333,6 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         //Valid.pindah(evt,Edukasi,Hubungan);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
-
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
         //Valid.pindah(evt,Edukasi,Anamnesis);
     }//GEN-LAST:event_TanggalKeyPressed
@@ -1371,24 +1383,28 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
     }//GEN-LAST:event_GelombangPKeyPressed
 
     private void IntervalPRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntervalPRKeyPressed
-        Valid.pindah(evt,GelombangP,KompleksQRS);
+        Valid.pindah(evt,GelombangP,Axis);
     }//GEN-LAST:event_IntervalPRKeyPressed
 
     private void SegmenSTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SegmenSTKeyPressed
-        Valid.pindah(evt,SegmenST,GelombangT);
+        Valid.pindah(evt,KompleksQRS,GelombangT);
     }//GEN-LAST:event_SegmenSTKeyPressed
 
     private void AxisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AxisKeyPressed
-        Valid.pindah(evt,GelombangP,Kesimpulan);
+        Valid.pindah(evt,IntervalPR,KompleksQRS);
     }//GEN-LAST:event_AxisKeyPressed
 
     private void GelombangTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GelombangTKeyPressed
-        Valid.pindah(evt,SegmenST,GelombangT);
+        Valid.pindah(evt,SegmenST,Kesimpulan);
     }//GEN-LAST:event_GelombangTKeyPressed
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        Valid.pindah2(evt,Axis,BtnSimpan);
+        Valid.pindah2(evt,GelombangT,BtnSimpan);
     }//GEN-LAST:event_KesimpulanKeyPressed
+
+    private void KompleksQRSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KompleksQRSKeyPressed
+        Valid.pindah(evt,Axis,SegmenST);
+    }//GEN-LAST:event_KompleksQRSKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
         if(tbObat.getSelectedRow()!= -1){
@@ -1407,8 +1423,8 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("hasilpemeriksaanekg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                this.setCursor(Cursor.getDefaultCursor()); 
+                Valid.panggilUrl("hasilpemeriksaanusg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
             }
@@ -1423,13 +1439,33 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
-    private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
-//        tampilOrthanc();
-    }//GEN-LAST:event_TabDataMouseClicked
+    private void btnDicomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDicomActionPerformed
+        if(tabModeDicom.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else {
+            if(tbListDicom.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                OrthancDICOM orthan=new OrthancDICOM(null,false);
+                orthan.setJudul("::[ DICOM Orthanc Pasien "+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+" "+tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()+", Series "+tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString()+" ]::",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().replaceAll("/",""),tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString());
+                try {
+                    orthan.loadURL(koneksiDB.URLORTHANC()+":"+koneksiDB.PORTORTHANC()+"/web-viewer/app/viewer.html?series="+tbListDicom.getValueAt(tbListDicom.getSelectedRow(),2).toString());
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                }
+                orthan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                orthan.setLocationRelativeTo(internalFrame1);
+                orthan.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+            }
+        }
+    }//GEN-LAST:event_btnDicomActionPerformed
 
-    private void KompleksQRSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KompleksQRSKeyPressed
-        Valid.pindah(evt,Axis,SegmenST);
-    }//GEN-LAST:event_KompleksQRSKeyPressed
+    private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
+        tampilOrthanc();
+    }//GEN-LAST:event_TabDataMouseClicked
 
     /**
     * @param args the command line arguments
@@ -1464,6 +1500,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.TextBox DiagnosaKlinis;
     private widget.PanelBiasa FormInput;
+    private widget.PanelBiasa FormOrthan;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
     private widget.TextBox GelombangP;
@@ -1483,6 +1520,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
     private widget.PanelBiasa PanelAccor;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
+    private widget.ScrollPane Scroll6;
     private widget.ComboBox SegmenST;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1493,6 +1531,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
     private widget.Button btnAmbil;
+    private widget.Button btnDicom;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -1517,10 +1556,12 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private widget.Label label11;
     private widget.Label label14;
+    private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane17;
+    private widget.Table tbListDicom;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
@@ -1533,8 +1574,8 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
                         "hasil_pemeriksaan_ekg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_ekg.diagnosa_klinis,hasil_pemeriksaan_ekg.kiriman_dari,"+
                         "hasil_pemeriksaan_ekg.irama,hasil_pemeriksaan_ekg.laju_jantung,hasil_pemeriksaan_ekg.gelombangp,"+
                         "hasil_pemeriksaan_ekg.intervalpr,hasil_pemeriksaan_ekg.axis,hasil_pemeriksaan_ekg.kompleksqrs,"+
-                        "hasil_pemeriksaan_ekg.segmenst,hasil_pemeriksaan_ekg.gelombangt,"+
-                        "hasil_pemeriksaan_ekg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_pemeriksaan_ekg.segmenst,hasil_pemeriksaan_ekg.gelombangt,hasil_pemeriksaan_ekg.kesimpulan "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_pemeriksaan_ekg on reg_periksa.no_rawat=hasil_pemeriksaan_ekg.no_rawat "+
                         "inner join dokter on hasil_pemeriksaan_ekg.kd_dokter=dokter.kd_dokter where "+
                         "hasil_pemeriksaan_ekg.tanggal between ? and ? order by hasil_pemeriksaan_ekg.tanggal");
@@ -1544,8 +1585,8 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
                         "hasil_pemeriksaan_ekg.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_ekg.diagnosa_klinis,hasil_pemeriksaan_ekg.kiriman_dari,"+
                         "hasil_pemeriksaan_ekg.irama,hasil_pemeriksaan_ekg.laju_jantung,hasil_pemeriksaan_ekg.gelombangp,"+
                         "hasil_pemeriksaan_ekg.intervalpr,hasil_pemeriksaan_ekg.axis,hasil_pemeriksaan_ekg.kompleksqrs,"+
-                        "hasil_pemeriksaan_ekg.segmenst,hasil_pemeriksaan_ekg.gelombangt,"+
-                        "hasil_pemeriksaan_ekg.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_pemeriksaan_ekg.segmenst,hasil_pemeriksaan_ekg.gelombangt,hasil_pemeriksaan_ekg.kesimpulan "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_pemeriksaan_ekg on reg_periksa.no_rawat=hasil_pemeriksaan_ekg.no_rawat "+
                         "inner join dokter on hasil_pemeriksaan_ekg.kd_dokter=dokter.kd_dokter where "+
                         "hasil_pemeriksaan_ekg.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
@@ -1691,7 +1732,8 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         if(Sequel.queryu2tf("delete from hasil_pemeriksaan_ekg where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
@@ -1705,9 +1747,26 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
                 DiagnosaKlinis.getText(),KirimanDari.getText(),Irama.getText(),LajuJantung.getText(),GelombangP.getText(),IntervalPR.getText(),Axis.getText(),
                 KompleksQRS.getText(),SegmenST.getSelectedItem().toString(),GelombangT.getSelectedItem().toString(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
-               tampil();
-               emptTeks();
-               TabRawat.setSelectedIndex(1);
+                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+                tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),4);
+                tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),5);
+                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
+                tbObat.setValueAt(KirimanDari.getText(),tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(DiagnosaKlinis.getText(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(Irama.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(LajuJantung.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt( GelombangP.getText(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(IntervalPR.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(Axis.getText(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(KompleksQRS.getText(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(SegmenST.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(GelombangT.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),17);
+                emptTeks();
+                TabRawat.setSelectedIndex(1);
         }
     }
     
@@ -1753,6 +1812,29 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
+            }
+        }
+    }
+    
+    private void tampilOrthanc() {
+        if(TabData.isVisible()==true){
+            if(tbObat.getSelectedRow()!= -1){
+                 if(TabData.getSelectedIndex()==1){
+                     try {
+                         Valid.tabelKosong(tabModeDicom);
+                         ApiOrthanc orthanc=new ApiOrthanc();
+                         root=orthanc.AmbilSeries(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),Valid.SetTgl(DTPCari1.getSelectedItem()+"").replaceAll("-",""),Valid.SetTgl(DTPCari2.getSelectedItem()+"").replaceAll("-",""));
+                         for(JsonNode list:root){
+                             for(JsonNode sublist:list.path("Series")){
+                                  tabModeDicom.addRow(new Object[]{
+                                       list.path("PatientMainDicomTags").path("PatientID").asText(),list.path("ID").asText(),sublist.asText()
+                                  });   
+                             }        
+                         }
+                     } catch (Exception e) {
+                         System.out.println("Notif : "+e);
+                     }
+                 }
             }
         }
     }
