@@ -1423,7 +1423,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("hasilpemeriksaanusg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Valid.panggilUrl("hasilpemeriksaanekg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
