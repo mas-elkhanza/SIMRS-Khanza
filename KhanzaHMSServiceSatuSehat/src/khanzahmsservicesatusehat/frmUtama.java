@@ -3327,7 +3327,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "}," +
                                                     "\"text\" : {" +
                                                         "\"status\" : \"additional\" ," +
-                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"\"" +
+                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"" +
                                                     "}" +
                                                 "}" +
                                             "]" +
@@ -3449,7 +3449,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "}," +
                                                     "\"text\" : {" +
                                                         "\"status\" : \"additional\" ," +
-                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"\"" +
+                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"" +
                                                     "}" +
                                                 "}" +
                                             "]" +
