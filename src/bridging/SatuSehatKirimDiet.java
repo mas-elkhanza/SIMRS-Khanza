@@ -561,17 +561,17 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
-                                    "\"resourceType\" : \"Composition\" ," +
+                                    "\"resourceType\" : \"Composition\"," +
                                     "\"identifier\" : {" +
-                                        "\"system\" : \"http://sys-ids.kemkes.go.id/composition/10000004\"," +
-                                        "\"value\" : \"P20240001\"" +
+                                        "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"value\" : \""+tbObat.getValueAt(i,2).toString()+"\"" +
                                     "}," +
                                     "\"status\" : \"final\"," +
                                     "\"type\" : {" +
                                         "\"coding\" : [" +
                                             "{" +
-                                                "\"system\" : \"http://loinc.org\" ," +
-                                                "\"code\" : \"18842-5\" ," +
+                                                "\"system\" : \"http://loinc.org\"," +
+                                                "\"code\" : \"18842-5\"," +
                                                 "\"display\" : \"Discharge summary\"" +
                                             "}" +
                                         "]" +
@@ -580,29 +580,29 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                                         "{" +
                                             "\"coding\" : [" +
                                                 "{" +
-                                                    "\"system\" : \"http://loinc.org\" ," +
-                                                    "\"code\" : \"LP173421-1\" ," +
+                                                    "\"system\" : \"http://loinc.org\"," +
+                                                    "\"code\" : \"LP173421-1\"," +
                                                     "\"display\" : \"Report\"" +
                                                 "}" +
                                             "]" +
                                         "}" +
                                     "]," +
                                     "\"subject\" : {" +
-                                        "\"reference\" : \"Patient/"+idpasien+"\" ," +
+                                        "\"reference\" : \"Patient/"+idpasien+"\"," +
                                         "\"display\" : \""+tbObat.getValueAt(i,4).toString()+"\"" +
                                     "}," +
                                     "\"encounter\" : {" +
                                         "\"reference\" : \"Encounter/"+tbObat.getValueAt(i,6).toString()+"\","+
                                         "\"display\" : \"Kunjungan "+tbObat.getValueAt(i,4).toString()+" pada tanggal "+tbObat.getValueAt(i,1).toString()+" dengan nomor kunjungan "+tbObat.getValueAt(i,2).toString()+"\""+
                                     "}," +
-                                    "\"date\" : \""+tbObat.getValueAt(i,10).toString().substring(0,10)+"\" ," +
+                                    "\"date\" : \""+tbObat.getValueAt(i,10).toString().replaceAll(" ","T")+"+07:00\" ," +
                                     "\"author\" : [" +
                                         "{" +
-                                            "\"reference\" : \"Practitioner/"+idpraktisi+"\" ," +
+                                            "\"reference\" : \"Practitioner/"+idpraktisi+"\"," +
                                             "\"display\" : \""+tbObat.getValueAt(i,8).toString()+"\"" +
                                         "}" +
                                     "]," +
-                                    "\"title\" : \"Modul Gizi\" ," +
+                                    "\"title\" : \"Modul Gizi\"," +
                                     "\"custodian\" : {" +
                                         "\"reference\" : \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                     "}," +
@@ -611,14 +611,14 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                                             "\"code\" : {" +
                                                 "\"coding\" : [" +
                                                     "{" +
-                                                        "\"system\" : \"http://loinc.org\" ," +
-                                                        "\"code\" : \"42344-2\" ," +
+                                                        "\"system\" : \"http://loinc.org\"," +
+                                                        "\"code\" : \"42344-2\"," +
                                                         "\"display\" : \"Discharge diet (narrative)\"" +
                                                     "}" +
                                                 "]" +
                                             "}," +
                                             "\"text\" : {" +
-                                                "\"status\" : \"additional\" ," +
+                                                "\"status\" : \"additional\"," +
                                                 "\"div\" : \""+tbObat.getValueAt(i,7).toString()+"\"" +
                                             "}" +
                                         "}" +
@@ -673,8 +673,8 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                                     "\"resourceType\" : \"Composition\"," +
                                     "\"id\": \""+tbObat.getValueAt(i,11).toString()+"\"," +
                                     "\"identifier\" : {" +
-                                        "\"system\" : \"http://sys-ids.kemkes.go.id/composition/10000004\"," +
-                                        "\"value\" : \"P20240001\"" +
+                                        "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"value\" : \""+tbObat.getValueAt(i,2).toString()+"\"" +
                                     "}," +
                                     "\"status\" : \"final\"," +
                                     "\"type\" : {" +
@@ -705,7 +705,7 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                                         "\"reference\" : \"Encounter/"+tbObat.getValueAt(i,6).toString()+"\","+
                                         "\"display\" : \"Kunjungan "+tbObat.getValueAt(i,4).toString()+" pada tanggal "+tbObat.getValueAt(i,1).toString()+" dengan nomor kunjungan "+tbObat.getValueAt(i,2).toString()+"\""+
                                     "}," +
-                                    "\"date\" : \""+tbObat.getValueAt(i,10).toString().substring(0,10)+"\" ," +
+                                    "\"date\" : \""+tbObat.getValueAt(i,10).toString().replaceAll(" ","T")+"+07:00\" ," +
                                     "\"author\" : [" +
                                         "{" +
                                             "\"reference\" : \"Practitioner/"+idpraktisi+"\" ," +

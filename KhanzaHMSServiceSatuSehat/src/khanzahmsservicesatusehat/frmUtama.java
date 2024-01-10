@@ -3269,17 +3269,17 @@ public class frmUtama extends javax.swing.JFrame {
                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                 headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                                 json = "{" +
-                                            "\"resourceType\" : \"Composition\" ," +
+                                            "\"resourceType\" : \"Composition\"," +
                                             "\"identifier\" : {" +
-                                                "\"system\" : \"http://sys-ids.kemkes.go.id/composition/10000004\"," +
-                                                "\"value\" : \"P20240001\"" +
+                                                "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"value\" : \""+rs.getString("no_rawat")+"\"" +
                                             "}," +
                                             "\"status\" : \"final\"," +
                                             "\"type\" : {" +
                                                 "\"coding\" : [" +
                                                     "{" +
-                                                        "\"system\" : \"http://loinc.org\" ," +
-                                                        "\"code\" : \"18842-5\" ," +
+                                                        "\"system\" : \"http://loinc.org\"," +
+                                                        "\"code\" : \"18842-5\"," +
                                                         "\"display\" : \"Discharge summary\"" +
                                                     "}" +
                                                 "]" +
@@ -3288,29 +3288,29 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "{" +
                                                     "\"coding\" : [" +
                                                         "{" +
-                                                            "\"system\" : \"http://loinc.org\" ," +
-                                                            "\"code\" : \"LP173421-1\" ," +
+                                                            "\"system\" : \"http://loinc.org\"," +
+                                                            "\"code\" : \"LP173421-1\"," +
                                                             "\"display\" : \"Report\"" +
                                                         "}" +
                                                     "]" +
                                                 "}" +
                                             "]," +
                                             "\"subject\" : {" +
-                                                "\"reference\" : \"Patient/"+idpasien+"\" ," +
+                                                "\"reference\" : \"Patient/"+idpasien+"\"," +
                                                 "\"display\" : \""+rs.getString("nm_pasien")+"\"" +
                                             "}," +
                                             "\"encounter\" : {" +
                                                 "\"reference\" : \"Encounter/"+rs.getString("id_encounter")+"\","+
                                                 "\"display\" : \"Kunjungan "+rs.getString("nm_pasien")+" pada tanggal "+rs.getString("tgl_registrasi")+" dengan nomor kunjungan "+rs.getString("no_rawat")+"\""+
                                             "}," +
-                                            "\"date\" : \""+rs.getString("tanggal").substring(0,10)+"\" ," +
+                                            "\"date\" : \""+rs.getString("tanggal").replaceAll(" ","T")+"+07:00\" ," +
                                             "\"author\" : [" +
                                                 "{" +
-                                                    "\"reference\" : \"Practitioner/"+iddokter+"\" ," +
+                                                    "\"reference\" : \"Practitioner/"+iddokter+"\"," +
                                                     "\"display\" : \""+rs.getString("nama")+"\"" +
                                                 "}" +
                                             "]," +
-                                            "\"title\" : \"Modul Gizi\" ," +
+                                            "\"title\" : \"Modul Gizi\"," +
                                             "\"custodian\" : {" +
                                                 "\"reference\" : \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                             "}," +
@@ -3319,14 +3319,14 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"code\" : {" +
                                                         "\"coding\" : [" +
                                                             "{" +
-                                                                "\"system\" : \"http://loinc.org\" ," +
+                                                                "\"system\" : \"http://loinc.org\"," +
                                                                 "\"code\" : \"42344-2\" ," +
                                                                 "\"display\" : \"Discharge diet (narrative)\"" +
                                                             "}" +
                                                         "]" +
                                                     "}," +
                                                     "\"text\" : {" +
-                                                        "\"status\" : \"additional\" ," +
+                                                        "\"status\" : \"additional\"," +
                                                         "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"" +
                                                     "}" +
                                                 "}" +
@@ -3393,8 +3393,8 @@ public class frmUtama extends javax.swing.JFrame {
                                 json = "{" +
                                             "\"resourceType\" : \"Composition\" ," +
                                             "\"identifier\" : {" +
-                                                "\"system\" : \"http://sys-ids.kemkes.go.id/composition/10000004\"," +
-                                                "\"value\" : \"P20240001\"" +
+                                                "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"value\" : \""+rs.getString("no_rawat")+"\"" +
                                             "}," +
                                             "\"status\" : \"final\"," +
                                             "\"type\" : {" +
@@ -3411,7 +3411,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"coding\" : [" +
                                                         "{" +
                                                             "\"system\" : \"http://loinc.org\" ," +
-                                                            "\"code\" : \"LP173421-1\" ," +
+                                                            "\"code\" : \"LP173421-1\"," +
                                                             "\"display\" : \"Report\"" +
                                                         "}" +
                                                     "]" +
@@ -3425,14 +3425,14 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\" : \"Encounter/"+rs.getString("id_encounter")+"\","+
                                                 "\"display\" : \"Kunjungan "+rs.getString("nm_pasien")+" pada tanggal "+rs.getString("tgl_registrasi")+" dengan nomor kunjungan "+rs.getString("no_rawat")+"\""+
                                             "}," +
-                                            "\"date\" : \""+rs.getString("tanggal").substring(0,10)+"\" ," +
+                                            "\"date\" : \""+rs.getString("tanggal").replaceAll(" ","T")+"+07:00\"," +
                                             "\"author\" : [" +
                                                 "{" +
-                                                    "\"reference\" : \"Practitioner/"+iddokter+"\" ," +
+                                                    "\"reference\" : \"Practitioner/"+iddokter+"\"," +
                                                     "\"display\" : \""+rs.getString("nama")+"\"" +
                                                 "}" +
                                             "]," +
-                                            "\"title\" : \"Modul Gizi\" ," +
+                                            "\"title\" : \"Modul Gizi\"," +
                                             "\"custodian\" : {" +
                                                 "\"reference\" : \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                             "}," +
@@ -3441,7 +3441,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"code\" : {" +
                                                         "\"coding\" : [" +
                                                             "{" +
-                                                                "\"system\" : \"http://loinc.org\" ," +
+                                                                "\"system\" : \"http://loinc.org\"," +
                                                                 "\"code\" : \"42344-2\" ," +
                                                                 "\"display\" : \"Discharge diet (narrative)\"" +
                                                             "}" +
