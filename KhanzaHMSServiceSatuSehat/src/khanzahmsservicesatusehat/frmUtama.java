@@ -3303,7 +3303,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\" : \"Encounter/"+rs.getString("id_encounter")+"\","+
                                                 "\"display\" : \"Kunjungan "+rs.getString("nm_pasien")+" pada tanggal "+rs.getString("tgl_registrasi")+" dengan nomor kunjungan "+rs.getString("no_rawat")+"\""+
                                             "}," +
-                                            "\"date\" : \""+rs.getString("tanggal").replaceAll(" ","T")+"+07:00\" ," +
+                                            "\"date\" : \""+rs.getString("tanggal").replaceAll(" ","T").replaceAll(".0","")+".001+07:00\" ," +
                                             "\"author\" : [" +
                                                 "{" +
                                                     "\"reference\" : \"Practitioner/"+iddokter+"\"," +
@@ -3425,7 +3425,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\" : \"Encounter/"+rs.getString("id_encounter")+"\","+
                                                 "\"display\" : \"Kunjungan "+rs.getString("nm_pasien")+" pada tanggal "+rs.getString("tgl_registrasi")+" dengan nomor kunjungan "+rs.getString("no_rawat")+"\""+
                                             "}," +
-                                            "\"date\" : \""+rs.getString("tanggal").replaceAll(" ","T")+"+07:00\"," +
+                                            "\"date\" : \""+rs.getString("tanggal").replaceAll(" ","T").replaceAll(".0","")+".001+07:00\"," +
                                             "\"author\" : [" +
                                                 "{" +
                                                     "\"reference\" : \"Practitioner/"+iddokter+"\"," +

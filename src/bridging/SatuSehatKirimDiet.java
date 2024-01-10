@@ -595,7 +595,7 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                                         "\"reference\" : \"Encounter/"+tbObat.getValueAt(i,6).toString()+"\","+
                                         "\"display\" : \"Kunjungan "+tbObat.getValueAt(i,4).toString()+" pada tanggal "+tbObat.getValueAt(i,1).toString()+" dengan nomor kunjungan "+tbObat.getValueAt(i,2).toString()+"\""+
                                     "}," +
-                                    "\"date\" : \""+tbObat.getValueAt(i,10).toString().replaceAll(" ","T")+"+07:00\" ," +
+                                    "\"date\" : \""+tbObat.getValueAt(i,10).toString().replaceAll(" ","T").replaceAll(".0","")+".001+07:00\" ," +
                                     "\"author\" : [" +
                                         "{" +
                                             "\"reference\" : \"Practitioner/"+idpraktisi+"\"," +
