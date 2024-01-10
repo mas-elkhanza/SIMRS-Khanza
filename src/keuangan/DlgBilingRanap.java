@@ -2659,12 +2659,12 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                         i=3;
                         break;
                     case "Data Pembayaran HtH BPD Papua":
-                        i=4;
+                        pilih=4;
                         break;
                     case "Data Pembayaran HtH BPD Jabar":
-                        i=5;
+                        pilih=5;
                     case "Data Pembayaran HtH Mandiri":
-                        i=6;
+                        pilih=6;
                         break;
                 }
             }catch(Exception e){
@@ -2697,7 +2697,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     billing.setAlwaysOnTop(false);
                     billing.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
-                } else if(i==4){
+                } else if(pilih==4){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgLhtBankPapua billing=new DlgLhtBankPapua(null,false);
                     billing.tampil();   
@@ -2706,7 +2706,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     billing.setAlwaysOnTop(false);
                     billing.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
-                }else if(i==5){
+                }else if(pilih==5){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgLhtBankJabar billing=new DlgLhtBankJabar(null,false);
                     billing.tampil();   
@@ -2715,7 +2715,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     billing.setAlwaysOnTop(false);
                     billing.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
-                }else if(i==6){
+                }else if(pilih==6){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgLhtBankMandiri billing=new DlgLhtBankMandiri(null,false);
                     billing.tampil();   
