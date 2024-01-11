@@ -7062,8 +7062,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             CmbJk.setSelectedItem(cekViaBPJS.sex);
             TNoPeserta.setText(cekViaBPJS.noKartu);
             Pekerjaan.setText(cekViaBPJS.jenisPesertaketerangan);
-            TUmurTh.setText(cekViaBPJS.umurumurSekarang);
             Valid.SetTgl(DTPLahir,cekViaBPJS.tglLahir);
+            DTPLahirItemStateChanged(null);
             this.setCursor(Cursor.getDefaultCursor());
         }   
     }//GEN-LAST:event_MnViaBPJSNikActionPerformed
@@ -7080,8 +7080,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             CmbJk.setSelectedItem(cekViaBPJSKartu.sex);
             TKtp.setText(cekViaBPJSKartu.nik);
             Pekerjaan.setText(cekViaBPJSKartu.jenisPesertaketerangan);
-            TUmurTh.setText(cekViaBPJSKartu.umurumurSekarang);
             Valid.SetTgl(DTPLahir,cekViaBPJSKartu.tglLahir);
+            DTPLahirItemStateChanged(null);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnViaBPJSNoKartuActionPerformed
@@ -8586,6 +8586,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             TNm.setText(cekViaSatuSehat.name);
             CmbJk.setSelectedItem(cekViaSatuSehat.gender.toUpperCase());
             Valid.SetTgl(DTPLahir,cekViaSatuSehat.birthDate);
+            DTPLahirItemStateChanged(null);
             Propinsi.setText(cekViaSatuSehat.provincename);
             PropinsiPj.setText(cekViaSatuSehat.provincename);
             Kabupaten.setText(cekViaSatuSehat.cityname);
