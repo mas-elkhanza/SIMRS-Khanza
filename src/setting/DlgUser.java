@@ -239,7 +239,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Mapping Obat Apotek BPJS","[K]Pembayaran Bank Mandiri","[M]Penilaian Ulang Nyeri","[M]Penilaian Terapi Wicara","[L]Obat 23 Hari Apotek BPJS","[M]Pengkajian Restrain",
                 "[L]Pencarian SEP Apotek BPJS","[L]Monitoring Klaim Apotek BPJS","[L]Daftar Pelayanan Obat Apotek BPJS","[M]Penilaian Awal Medis Ralan Paru","[M]Catatan Keperawatan Ralan",
                 "[M]Catatan Persalinan","[M]Skor Aldrette Pasca Anestesi","[M]Skor Steward Pasca Anestesi","[M]Skor Bromage Pasca Anestesi","[M]Penilaian Pre Induksi","[M]Hasil USG Urologi",
-                "[M]Hasil USG Gynecologi","[M]Hasil Pemeriksaan EKG","[L]Hapus/Edit SEP VClaim","[L]Kirim Diet Satu Sehat","[L]Mapping Obat Satu Sehat"
+                "[M]Hasil USG Gynecologi","[M]Hasil Pemeriksaan EKG","[L]Hapus/Edit SEP VClaim","[L]Kirim Diet Satu Sehat","[L]Mapping Obat/Alkes/BHP Satu Sehat"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2998,7 +2998,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(125);
                     break;
                 case 1004:
-                    column.setPreferredWidth(145);
+                    column.setPreferredWidth(197);
                     break;
                 default:
                     column.setPreferredWidth(134);

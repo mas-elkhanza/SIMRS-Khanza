@@ -3542,8 +3542,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[L]Kirim Diet Satu Sehat",satu_sehat_kirim_diet});
         }
         
-        if("[L]Mapping Obat Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[L]Mapping Obat Satu Sehat",satu_sehat_mapping_obat});
+        if("[L]Mapping Obat/Alkes/BHP Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[L]Mapping Obat/Alkes/BHP Satu Sehat",satu_sehat_mapping_obat});
         }
 
         if("[M]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7561,7 +7561,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_kirim_diet='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Mapping Obat Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Mapping Obat/Alkes/BHP Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_mapping_obat='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
