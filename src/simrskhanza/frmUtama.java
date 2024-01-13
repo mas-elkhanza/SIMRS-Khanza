@@ -24647,6 +24647,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnKirimDietSatuSehat);
                 jmlmenu++;
             }
+            
+            if(akses.getsatu_sehat_mapping_obat()==true){
+                Panelmenu.add(btnMappingObatSatuSehat);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==12){ 
             jmlmenu=0;
             if(akses.getperusahaan_pasien()==true){
@@ -29595,6 +29600,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_kirim_diet()==true){
             Panelmenu.add(btnKirimDietSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_mapping_obat()==true){
+            Panelmenu.add(btnMappingObatSatuSehat);
             jmlmenu++;
         }
 
@@ -35695,6 +35705,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_kirim_diet()==true){
             if(btnKirimDietSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKirimDietSatuSehat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsatu_sehat_mapping_obat()==true){
+            if(btnMappingObatSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMappingObatSatuSehat);
                 jmlmenu++;
             }                
         }
