@@ -218,7 +218,8 @@ public final class akses {
             pembayaran_bank_mandiri=false,penilaian_ulang_nyeri=false,penilaian_terapi_wicara=false,bpjs_obat_23hari_apotek=false,pengkajian_restrain=false,
             bpjs_kunjungan_sep_apotek=false,bpjs_monitoring_klaim_apotek=false,bpjs_daftar_pelayanan_obat_apotek=false,penilaian_awal_medis_ralan_paru=false,
             catatan_keperawatan_ralan=false,catatan_persalinan=false,skor_aldrette_pasca_anestesi=false,skor_steward_pasca_anestesi=false,skor_bromage_pasca_anestesi=false,
-            penilaian_pre_induksi=false,hasil_usg_urologi=false,hasil_usg_gynecologi=false,hasil_pemeriksaan_ekg=false,hapus_edit_sep_bpjs=false,satu_sehat_kirim_diet=false;
+            penilaian_pre_induksi=false,hasil_usg_urologi=false,hasil_usg_gynecologi=false,hasil_pemeriksaan_ekg=false,hapus_edit_sep_bpjs=false,satu_sehat_kirim_diet=false,
+            satu_sehat_mapping_obat=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1242,6 +1243,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_ekg=true;
                         akses.hapus_edit_sep_bpjs=true;
                         akses.satu_sehat_kirim_diet=true;
+                        akses.satu_sehat_mapping_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2249,6 +2251,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_ekg=rs2.getBoolean("hasil_pemeriksaan_ekg");
                         akses.hapus_edit_sep_bpjs=rs2.getBoolean("hapus_edit_sep_bpjs");
                         akses.satu_sehat_kirim_diet=rs2.getBoolean("satu_sehat_kirim_diet");
+                        akses.satu_sehat_mapping_obat=rs2.getBoolean("satu_sehat_mapping_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3254,6 +3257,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_ekg=false;
                         akses.hapus_edit_sep_bpjs=false;
                         akses.satu_sehat_kirim_diet=false;
+                        akses.satu_sehat_mapping_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4282,6 +4286,7 @@ public final class akses {
         akses.hasil_pemeriksaan_ekg=false;
         akses.hapus_edit_sep_bpjs=false;
         akses.satu_sehat_kirim_diet=false;
+        akses.satu_sehat_mapping_obat=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5326,4 +5331,5 @@ public final class akses {
     public static boolean gethasil_pemeriksaan_ekg(){return akses.hasil_pemeriksaan_ekg;}
     public static boolean gethapus_edit_sep_bpjs(){return akses.hapus_edit_sep_bpjs;}
     public static boolean getsatu_sehat_kirim_diet(){return akses.satu_sehat_kirim_diet;}
+    public static boolean getsatu_sehat_mapping_obat(){return akses.satu_sehat_mapping_obat;}
 }   
