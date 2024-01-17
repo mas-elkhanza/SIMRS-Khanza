@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="288" columnWidth="553" leftMargin="22" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00591f07-a5e6-4d2b-a277-98ca7f134ccd">
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="javascript" pageWidth="595" pageHeight="288" columnWidth="553" leftMargin="22" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00591f07-a5e6-4d2b-a277-98ca7f134ccd">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="171"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="829"/>
 	<parameter name="norujuk" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -23,60 +27,120 @@ if(bridging_rujukan_bpjs.jnsPelayanan='1','1. Rawat Inap','2. Rawat Jalan') as j
 bridging_rujukan_bpjs.tipeRujukan,bridging_rujukan_bpjs.catatan,
 bridging_rujukan_bpjs.diagRujukan,bridging_rujukan_bpjs.nama_diagRujukan,
 bridging_rujukan_bpjs.poliRujukan,bridging_rujukan_bpjs.nama_poliRujukan,bridging_sep.no_kartu,
-if(bridging_sep.jkel='L','Laki-Laki','Perempuan') as jkel  
+if(bridging_sep.jkel='L','Laki-Laki','Perempuan') as jkel,bridging_rujukan_bpjs.tglRencanaKunjungan,
+DATE_ADD(bridging_rujukan_bpjs.tglRujukan, INTERVAL 3 MONTH) as berlaku
 from bridging_sep inner join bridging_rujukan_bpjs on bridging_rujukan_bpjs.no_sep=bridging_sep.no_sep
 where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 	</queryString>
 	<field name="no_sep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_sep"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_sep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nomr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nomr"/>
+		<property name="com.jaspersoft.studio.field.label" value="nomr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tglRujukan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tglRujukan"/>
+		<property name="com.jaspersoft.studio.field.label" value="tglRujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rujukan"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ppkDirujuk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ppkDirujuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="ppkDirujuk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_ppkDirujuk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_ppkDirujuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_ppkDirujuk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jenis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jenis"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tipeRujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipeRujukan"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipeRujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="catatan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="catatan"/>
+		<property name="com.jaspersoft.studio.field.label" value="catatan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="diagRujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagRujukan"/>
+		<property name="com.jaspersoft.studio.field.label" value="diagRujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_diagRujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_diagRujukan"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_diagRujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="poliRujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="poliRujukan"/>
+		<property name="com.jaspersoft.studio.field.label" value="poliRujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_poliRujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_poliRujukan"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_poliRujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_kartu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_kartu"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_kartu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jkel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jkel"/>
+		<property name="com.jaspersoft.studio.field.label" value="jkel"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tglRencanaKunjungan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tglRencanaKunjungan"/>
+		<property name="com.jaspersoft.studio.field.label" value="tglRencanaKunjungan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="berlaku" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="berlaku"/>
+		<property name="com.jaspersoft.studio.field.label" value="berlaku"/>
 	</field>
 	<background>
 		<band/>
@@ -365,20 +429,20 @@ where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 				<textFieldExpression><![CDATA[$P{kotars}+", "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="1" y="146" width="338" height="14" uuid="9b9edd07-8e7b-4f3b-9c12-db1ac0784bdc"/>
+				<reportElement mode="Transparent" x="1" y="146" width="459" height="14" uuid="9b9edd07-8e7b-4f3b-9c12-db1ac0784bdc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["*) Rujukan Berlaku Sampai Dengan "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan}.getTime() + 90L*24*60*60*1000)]]></textFieldExpression>
+				<textFieldExpression><![CDATA["*) Rujukan Berlaku Sampai Dengan "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{berlaku})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="1" y="160" width="338" height="14" uuid="ffc63160-e00b-47af-bc11-40370cb25f06"/>
+				<reportElement mode="Transparent" x="1" y="160" width="449" height="14" uuid="ffc63160-e00b-47af-bc11-40370cb25f06"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["**) Tanggal Rencana Berkunjung  "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["**) Tanggal Rencana Berkunjung  "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRencanaKunjungan})]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

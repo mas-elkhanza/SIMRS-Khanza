@@ -546,8 +546,11 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                     if(Sequel.menyimpantf("satu_sehat_mapping_departemen","?,?","Kode Departemen",2,new String[]{
                             KodeDepartemen.getText(),response.asText()
                         })==true){
+                        tabMode.addRow(new String[]{
+                            KodeDepartemen.getText(),NamaDepartemen.getText(),response.asText()
+                        });
                         emptTeks();
-                        tampil();
+                        LCount.setText(""+tabMode.getRowCount());
                     }
                 }else{
                     JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
@@ -671,9 +674,11 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                     root = mapper.readTree(json);
                     response = root.path("id");
                     if(!response.asText().equals("")){
-                        Valid.hapusTable(tabMode,KodeDepartemen,"satu_sehat_mapping_departemen","dep_id");
-                        emptTeks();
-                        tampil();
+                        if(Valid.hapusTabletf(tabMode,KodeDepartemen,"satu_sehat_mapping_departemen","dep_id")==true){
+                            tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
+                            emptTeks();
+                            LCount.setText(""+tabMode.getRowCount());
+                        }
                     }else{
                         JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");
                     } 
@@ -792,8 +797,10 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                         if(Sequel.mengedittf("satu_sehat_mapping_departemen","dep_id=?","dep_id=?,id_organisasi_satusehat=?",3,new String[]{
                                 KodeDepartemen.getText(),response.asText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                             })==true){
+                            tabMode.setValueAt(KodeDepartemen.getText(),tbJnsPerawatan.getSelectedRow(),0);
+                            tabMode.setValueAt(NamaDepartemen.getText(),tbJnsPerawatan.getSelectedRow(),1);
+                            tabMode.setValueAt(response.asText(),tbJnsPerawatan.getSelectedRow(),3);
                             emptTeks();
-                            tampil();
                         }
                     }else{
                         JOptionPane.showMessageDialog(null,"Gagal melakukan mapping organisasi ke server Satu Sehat Kemenkes");

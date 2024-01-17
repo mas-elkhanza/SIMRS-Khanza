@@ -3340,7 +3340,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_diet","?,?,?","Diet/Gizi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_diet","?,?,?","Diet/Gizi",3,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tanggal"),response.asText()
                                     });
                                 }
@@ -3462,7 +3462,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan("satu_sehat_diet","?,?,?","Diet/Gizi",5,new String[]{
+                                    Sequel.menyimpan2("satu_sehat_diet","?,?,?","Diet/Gizi",3,new String[]{
                                         rs.getString("no_rawat"),rs.getString("tanggal"),response.asText()
                                     });
                                 }
