@@ -36,7 +36,7 @@ public class DapurRingkasanPengadaan extends javax.swing.JDialog {
     private ResultSet rs;
     private double tagihan=0;
     private int i;
-    private String order="order by ipsrsbarang.nama_brng";
+    private String order="order by dapurbarang.nama_brng";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -707,13 +707,9 @@ public class DapurRingkasanPengadaan extends javax.swing.JDialog {
         panelisi3.add(label13);
         label13.setBounds(305, 40, 80, 23);
 
+        kdsup.setEditable(false);
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
-        kdsup.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdsupKeyPressed(evt);
-            }
-        });
         panelisi3.add(kdsup);
         kdsup.setBounds(389, 10, 80, 23);
 
@@ -826,20 +822,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.pindah(evt,NoFaktur,kdsup);
     }//GEN-LAST:event_TglBeli1KeyPressed
 
-    private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());            
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
-            NoFaktur.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
-            kdptg.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnSuplierActionPerformed(null);
-        }
-    }//GEN-LAST:event_kdsupKeyPressed
-
     private void NoFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoFakturKeyPressed
         Valid.pindah(evt, BtnKeluar, kdsup);
     }//GEN-LAST:event_NoFakturKeyPressed
@@ -888,8 +870,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         TCari.setText("");
         NoFaktur.setText("");
         kdbar.setText("");
-        kdjenis.setText("");
-        nmjenis.setText("");
+        Jenis.setSelectedIndex(0);
         nmbar.setText("");
         kdsup.setText("");
         nmsup.setText("");
@@ -923,27 +904,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal2",Valid.SetTgl(TglBeli2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptRingkasanPengadaanNonMedis.jasper","report","::[ Laporan Ringkasan Pengadaan Barang Non Medis ]::",
-                    "select ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis as namajenis, "+
-                    "ipsrsdetailbeli.kode_sat,kodesatuan.satuan,sum(ipsrsdetailbeli.jumlah) as jumlah,sum(ipsrsdetailbeli.total) as total "+
-                    "from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
-                    " inner join ipsrsdetailbeli inner join ipsrsbarang inner join ipsrsjenisbarang "+
-                    " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
-                    " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                    " and ipsrspembelian.no_faktur=ipsrsdetailbeli.no_faktur "+
-                    " and ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
-                    " and ipsrspembelian.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                    " where ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrspembelian.no_faktur like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrspembelian.kode_suplier like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrssuplier.nama_suplier like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrspembelian.nip like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsbarang.jenis like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsdetailbeli.kode_brng like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsbarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsjenisbarang.nm_jenis like '%"+TCari.getText()+"%' or "+
-                    " ipsrspembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and ipsrspembelian.no_faktur like '%"+NoFaktur.getText()+"%' and ipsrssuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and ipsrsbarang.jenis like '%"+kdjenis.getText()+"%' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and kodesatuan.satuan like '%"+TCari.getText()+"%' "+
-                    " group by ipsrsdetailbeli.kode_brng "+order,param); 
+            Valid.MyReportqry("rptRingkasanPengadaanDapur.jasper","report","::[ Laporan Ringkasan Pengadaan Barang Dapur ]::",
+                    "select dapurdetailbeli.kode_brng,dapurbarang.nama_brng,dapurbarang.jenis as namajenis, "+
+                    "dapurdetailbeli.kode_sat,kodesatuan.satuan,sum(dapurdetailbeli.jumlah) as jumlah,sum(dapurdetailbeli.total) as total "+
+                    "from dapurpembelian inner join dapursuplier on dapurpembelian.kode_suplier=dapursuplier.kode_suplier "+
+                    "inner join petugas on dapurpembelian.nip=petugas.nip "+
+                    "inner join dapurdetailbeli on dapurpembelian.no_faktur=dapurdetailbeli.no_faktur "+
+                    "inner join dapurbarang on dapurdetailbeli.kode_brng=dapurbarang.kode_brng "+
+                    "inner join kodesatuan on dapurbarang.kode_sat=kodesatuan.kode_sat "+
+                    "where dapurpembelian.tgl_beli between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' and dapurpembelian.no_faktur like '%"+NoFaktur.getText()+"%' and dapursuplier.nama_suplier like '%"+nmsup.getText()+"%' and petugas.nama like '%"+nmptg.getText()+"%'  and dapurbarang.jenis like '%"+Jenis.getSelectedItem().toString().replaceAll("Semua","")+"%' and dapurbarang.nama_brng like '%"+nmbar.getText()+"%' and "+
+                    "(dapurpembelian.no_faktur like '%"+TCari.getText()+"%' or dapurpembelian.kode_suplier like '%"+TCari.getText()+"%' or dapursuplier.nama_suplier like '%"+TCari.getText()+"%' or dapurpembelian.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or dapurbarang.jenis like '%"+TCari.getText()+"%' or dapurdetailbeli.kode_brng like '%"+TCari.getText()+"%' or dapurbarang.nama_brng like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%') "+
+                    " group by dapurdetailbeli.kode_brng "+order,param); 
             
             this.setCursor(Cursor.getDefaultCursor());
         } 
@@ -962,32 +933,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_formWindowOpened
 
     private void MnKodeBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangDescActionPerformed
-        order="order by ipsrsbarang.kode_brng desc";
+        order="order by dapurbarang.kode_brng desc";
         tampil();
     }//GEN-LAST:event_MnKodeBarangDescActionPerformed
 
     private void MnKodeBarangAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangAscActionPerformed
-        order="order by ipsrsbarang.kode_brng asc";
+        order="order by dapurbarang.kode_brng asc";
         tampil();
     }//GEN-LAST:event_MnKodeBarangAscActionPerformed
 
     private void MnNamaBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaBarangDescActionPerformed
-        order="order by ipsrsbarang.nama_brng desc";
+        order="order by dapurbarang.nama_brng desc";
         tampil();
     }//GEN-LAST:event_MnNamaBarangDescActionPerformed
 
     private void MnNamaBarangAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaBarangAscActionPerformed
-        order="order by ipsrsbarang.nama_brng asc";
+        order="order by dapurbarang.nama_brng asc";
         tampil();
     }//GEN-LAST:event_MnNamaBarangAscActionPerformed
 
     private void MnKategoriAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKategoriAscActionPerformed
-        order="order by ipsrsjenisbarang.nm_jenis desc";
+        order="order by dapurbarang.jenis desc";
         tampil();
     }//GEN-LAST:event_MnKategoriAscActionPerformed
 
     private void MnKategoriDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKategoriDescActionPerformed
-        order="order by ipsrsjenisbarang.nm_jenis asc";
+        order="order by dapurbarang.jenis asc";
         tampil();
     }//GEN-LAST:event_MnKategoriDescActionPerformed
 
@@ -1002,27 +973,26 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_MnSatuanAscActionPerformed
 
     private void MnTotalAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTotalAscActionPerformed
-        order="order by sum(ipsrsdetailbeli.total) asc";
+        order="order by sum(dapurdetailbeli.total) asc";
         tampil();
     }//GEN-LAST:event_MnTotalAscActionPerformed
 
     private void MnTotalDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTotalDescActionPerformed
-        order="order by sum(ipsrsdetailbeli.total) desc";
+        order="order by sum(dapurdetailbeli.total) desc";
         tampil();
     }//GEN-LAST:event_MnTotalDescActionPerformed
 
     private void MnJumlahAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJumlahAscActionPerformed
-        order="order by sum(ipsrsdetailbeli.jumlah) asc";
+        order="order by sum(dapurdetailbeli.jumlah) asc";
         tampil();
     }//GEN-LAST:event_MnJumlahAscActionPerformed
 
     private void MnJumlahDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJumlahDescActionPerformed
-        order="order by sum(ipsrsdetailbeli.jumlah) desc";
+        order="order by sum(dapurdetailbeli.jumlah) desc";
         tampil();
     }//GEN-LAST:event_MnJumlahDescActionPerformed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        akses.setform("DlgCariPembelianDapur");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1032,9 +1002,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnBarangActionPerformed
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select dapurbarang.nama_brng from dapurbarang where dapurbarang.kode_brng=?", nmbar,kdbar.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Jenis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             TCari.requestFocus();
@@ -1114,107 +1082,33 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
        Valid.tabelKosong(tabMode);
         try{   
             tagihan=0;         
-            ps=koneksi.prepareStatement("select ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis as namajenis, "+
-                    "ipsrsdetailbeli.kode_sat,kodesatuan.satuan,sum(ipsrsdetailbeli.jumlah) as jumlah,sum(ipsrsdetailbeli.total) as total "+
-                    "from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
-                    " inner join ipsrsdetailbeli inner join ipsrsbarang inner join ipsrsjenisbarang "+
-                    " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
-                    " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                    " and ipsrspembelian.no_faktur=ipsrsdetailbeli.no_faktur "+
-                    " and ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
-                    " and ipsrspembelian.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis"+
-                    " where ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.no_faktur like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.kode_suplier like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrssuplier.nama_suplier like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.nip like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and petugas.nama like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailbeli.kode_brng like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                    " group by ipsrsdetailbeli.kode_brng "+order);
+            ps=koneksi.prepareStatement("select dapurdetailbeli.kode_brng,dapurbarang.nama_brng,dapurbarang.jenis as namajenis, "+
+                    "dapurdetailbeli.kode_sat,kodesatuan.satuan,sum(dapurdetailbeli.jumlah) as jumlah,sum(dapurdetailbeli.total) as total "+
+                    "from dapurpembelian inner join dapursuplier on dapurpembelian.kode_suplier=dapursuplier.kode_suplier "+
+                    "inner join petugas on dapurpembelian.nip=petugas.nip "+
+                    "inner join dapurdetailbeli on dapurpembelian.no_faktur=dapurdetailbeli.no_faktur "+
+                    "inner join dapurbarang on dapurdetailbeli.kode_brng=dapurbarang.kode_brng "+
+                    "inner join kodesatuan on dapurbarang.kode_sat=kodesatuan.kode_sat "+
+                    "where dapurpembelian.tgl_beli between ? and ? and dapurpembelian.no_faktur like ? and dapursuplier.nama_suplier like ? and petugas.nama like ?  and dapurbarang.jenis like ? and dapurbarang.nama_brng like ? and "+
+                    "(dapurpembelian.no_faktur like ? or dapurpembelian.kode_suplier like ? or dapursuplier.nama_suplier like ? or dapurpembelian.nip like ? or petugas.nama like ? or dapurbarang.jenis like ? or dapurdetailbeli.kode_brng like ? or "+
+                    "dapurbarang.nama_brng like ? or kodesatuan.satuan like ?) group by dapurdetailbeli.kode_brng "+order);
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
                 ps.setString(3,"%"+NoFaktur.getText()+"%");
                 ps.setString(4,"%"+nmsup.getText()+"%");
                 ps.setString(5,"%"+nmptg.getText()+"%");
-                ps.setString(6,"%"+kdjenis.getText()+"%");
+                ps.setString(6,"%"+Jenis.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 ps.setString(7,"%"+nmbar.getText()+"%");
                 ps.setString(8,"%"+TCari.getText()+"%");
-                ps.setString(9,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(11,"%"+NoFaktur.getText()+"%");
-                ps.setString(12,"%"+nmsup.getText()+"%");
-                ps.setString(13,"%"+nmptg.getText()+"%");
-                ps.setString(14,"%"+kdjenis.getText()+"%");
-                ps.setString(15,"%"+nmbar.getText()+"%");
+                ps.setString(9,"%"+TCari.getText()+"%");
+                ps.setString(10,"%"+TCari.getText()+"%");
+                ps.setString(11,"%"+TCari.getText()+"%");
+                ps.setString(12,"%"+TCari.getText()+"%");
+                ps.setString(13,"%"+TCari.getText()+"%");
+                ps.setString(14,"%"+TCari.getText()+"%");
+                ps.setString(15,"%"+TCari.getText()+"%");
                 ps.setString(16,"%"+TCari.getText()+"%");
-                ps.setString(17,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(19,"%"+NoFaktur.getText()+"%");
-                ps.setString(20,"%"+nmsup.getText()+"%");
-                ps.setString(21,"%"+nmptg.getText()+"%");
-                ps.setString(22,"%"+kdjenis.getText()+"%");
-                ps.setString(23,"%"+nmbar.getText()+"%");
-                ps.setString(24,"%"+TCari.getText()+"%");
-                ps.setString(25,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(27,"%"+NoFaktur.getText()+"%");
-                ps.setString(28,"%"+nmsup.getText()+"%");
-                ps.setString(29,"%"+nmptg.getText()+"%");
-                ps.setString(30,"%"+kdjenis.getText()+"%");
-                ps.setString(31,"%"+nmbar.getText()+"%");
-                ps.setString(32,"%"+TCari.getText()+"%");
-                ps.setString(33,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(34,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(35,"%"+NoFaktur.getText()+"%");
-                ps.setString(36,"%"+nmsup.getText()+"%");
-                ps.setString(37,"%"+nmptg.getText()+"%");
-                ps.setString(38,"%"+kdjenis.getText()+"%");
-                ps.setString(39,"%"+nmbar.getText()+"%");
-                ps.setString(40,"%"+TCari.getText()+"%");
-                ps.setString(41,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(42,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(43,"%"+NoFaktur.getText()+"%");
-                ps.setString(44,"%"+nmsup.getText()+"%");
-                ps.setString(45,"%"+nmptg.getText()+"%");
-                ps.setString(46,"%"+kdjenis.getText()+"%");
-                ps.setString(47,"%"+nmbar.getText()+"%");
-                ps.setString(48,"%"+TCari.getText()+"%");
-                ps.setString(49,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(50,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(51,"%"+NoFaktur.getText()+"%");
-                ps.setString(52,"%"+nmsup.getText()+"%");
-                ps.setString(53,"%"+nmptg.getText()+"%");
-                ps.setString(54,"%"+kdjenis.getText()+"%");
-                ps.setString(55,"%"+nmbar.getText()+"%");
-                ps.setString(56,"%"+TCari.getText()+"%");
-                ps.setString(57,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(58,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(59,"%"+NoFaktur.getText()+"%");
-                ps.setString(60,"%"+nmsup.getText()+"%");
-                ps.setString(61,"%"+nmptg.getText()+"%");
-                ps.setString(62,"%"+kdjenis.getText()+"%");
-                ps.setString(63,"%"+nmbar.getText()+"%");
-                ps.setString(64,"%"+TCari.getText()+"%");
-                ps.setString(65,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(66,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(67,"%"+NoFaktur.getText()+"%");
-                ps.setString(68,"%"+nmsup.getText()+"%");
-                ps.setString(69,"%"+nmptg.getText()+"%");
-                ps.setString(70,"%"+kdjenis.getText()+"%");
-                ps.setString(71,"%"+nmbar.getText()+"%");
-                ps.setString(72,"%"+TCari.getText()+"%");
-                ps.setString(73,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                ps.setString(74,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                ps.setString(75,"%"+NoFaktur.getText()+"%");
-                ps.setString(76,"%"+nmsup.getText()+"%");
-                ps.setString(77,"%"+nmptg.getText()+"%");
-                ps.setString(78,"%"+kdjenis.getText()+"%");
-                ps.setString(79,"%"+nmbar.getText()+"%");
-                ps.setString(80,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tagihan=tagihan+rs.getDouble("total");
@@ -1245,7 +1139,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(akses.getringkasan_pengadaan_nonmedis());
+        BtnPrint.setEnabled(akses.getdapur_ringkasan_pembelian());
     }
     
 }
