@@ -219,7 +219,7 @@ public final class akses {
             bpjs_kunjungan_sep_apotek=false,bpjs_monitoring_klaim_apotek=false,bpjs_daftar_pelayanan_obat_apotek=false,penilaian_awal_medis_ralan_paru=false,
             catatan_keperawatan_ralan=false,catatan_persalinan=false,skor_aldrette_pasca_anestesi=false,skor_steward_pasca_anestesi=false,skor_bromage_pasca_anestesi=false,
             penilaian_pre_induksi=false,hasil_usg_urologi=false,hasil_usg_gynecologi=false,hasil_pemeriksaan_ekg=false,hapus_edit_sep_bpjs=false,satu_sehat_kirim_diet=false,
-            satu_sehat_mapping_obat=false;
+            satu_sehat_mapping_obat=false,dapur_ringkasan_pembelian=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1244,6 +1244,7 @@ public final class akses {
                         akses.hapus_edit_sep_bpjs=true;
                         akses.satu_sehat_kirim_diet=true;
                         akses.satu_sehat_mapping_obat=true;
+                        akses.dapur_ringkasan_pembelian=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2252,6 +2253,7 @@ public final class akses {
                         akses.hapus_edit_sep_bpjs=rs2.getBoolean("hapus_edit_sep_bpjs");
                         akses.satu_sehat_kirim_diet=rs2.getBoolean("satu_sehat_kirim_diet");
                         akses.satu_sehat_mapping_obat=rs2.getBoolean("satu_sehat_mapping_obat");
+                        akses.dapur_ringkasan_pembelian=rs2.getBoolean("dapur_ringkasan_pembelian");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3258,6 +3260,7 @@ public final class akses {
                         akses.hapus_edit_sep_bpjs=false;
                         akses.satu_sehat_kirim_diet=false;
                         akses.satu_sehat_mapping_obat=false;
+                        akses.dapur_ringkasan_pembelian=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4287,6 +4290,7 @@ public final class akses {
         akses.hapus_edit_sep_bpjs=false;
         akses.satu_sehat_kirim_diet=false;
         akses.satu_sehat_mapping_obat=false;
+        akses.dapur_ringkasan_pembelian=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5332,4 +5336,5 @@ public final class akses {
     public static boolean gethapus_edit_sep_bpjs(){return akses.hapus_edit_sep_bpjs;}
     public static boolean getsatu_sehat_kirim_diet(){return akses.satu_sehat_kirim_diet;}
     public static boolean getsatu_sehat_mapping_obat(){return akses.satu_sehat_mapping_obat;}
+    public static boolean getdapur_ringkasan_pembelian(){return akses.dapur_ringkasan_pembelian;}
 }   
