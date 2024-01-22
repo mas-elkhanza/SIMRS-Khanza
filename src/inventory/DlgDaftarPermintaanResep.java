@@ -2,6 +2,7 @@ package inventory;
 import bridging.BPJSDataSEP;
 import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
+import fungsi.WarnaTableResepRalan;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -111,7 +112,16 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }
         }
-        tbResepRalan.setDefaultRenderer(Object.class, new WarnaTable());
+        try {
+            if(koneksiDB.RESEPRAJALKEPLAN().equals("yes")){
+                tbResepRalan.setDefaultRenderer(Object.class, new WarnaTableResepRalan());
+            }else{
+                tbResepRalan.setDefaultRenderer(Object.class, new WarnaTable());
+            }
+        } catch (Exception e) {
+            tbResepRalan.setDefaultRenderer(Object.class, new WarnaTable());
+        }
+//        tbResepRalan.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode2=new DefaultTableModel(null,new Object[]{
                 "No.Resep","Tgl.Resep","Poli/Unit","Status","Pasien","Dokter Peresep"

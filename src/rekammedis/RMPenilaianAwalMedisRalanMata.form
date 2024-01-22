@@ -332,9 +332,6 @@
                       <SubComponents>
                         <Component class="widget.TextBox" name="TNoRw">
                           <Properties>
-                            <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                              <ComponentRef name="null"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" value="TNoRw" noResource="true"/>
                           </Properties>
                           <Events>
@@ -349,9 +346,6 @@
                         <Component class="widget.TextBox" name="TPasien">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                              <ComponentRef name="null"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" value="TPasien" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -363,9 +357,6 @@
                         <Component class="widget.TextBox" name="TNoRM">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                              <ComponentRef name="null"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" value="TNoRM" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -455,9 +446,6 @@
                         <Component class="widget.TextBox" name="TglLahir">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                              <ComponentRef name="null"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" value="TglLahir" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -480,9 +468,6 @@
                         <Component class="widget.TextBox" name="Jk">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                              <ComponentRef name="null"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" value="Jk" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -919,7 +904,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="03-08-2023 19:58:19"/>
+                                <StringItem index="0" value="19-01-2024 23:34:07"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2870,7 +2855,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="03-08-2023"/>
+                            <StringItem index="0" value="19-01-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2898,7 +2883,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="03-08-2023"/>
+                            <StringItem index="0" value="19-01-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

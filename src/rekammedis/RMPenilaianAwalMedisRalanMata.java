@@ -3219,6 +3219,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         TCari.setText(norwt);
         DTPCari2.setDate(tgl2);    
         isRawat(); 
+        TTVAuto();
     }
     
     public void isCek(){
@@ -3250,6 +3251,19 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+    
+    public void TTVAuto(){
+        if(Sequel.cariInteger("select count(no_rawat) from pemeriksaan_ralan where no_rawat='"+TNoRw.getText()+"' ")>0){
+            KeluhanUtama.setText(Sequel.cariIsi("select keluhan from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+            Suhu.setText(Sequel.cariIsi("select suhu_tubuh from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+            TD.setText(Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+            BB.setText(Sequel.cariIsi("select berat from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+            Alergi.setText(Sequel.cariIsi("select alergi from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+            Nadi.setText(Sequel.cariIsi("select nadi from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+            RR.setText(Sequel.cariIsi("select respirasi from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+           
         }
     }
 

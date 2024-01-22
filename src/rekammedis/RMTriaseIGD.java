@@ -4794,6 +4794,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 while(rs.next()){
                     tabModePemeriksaan.addRow(new String[]{rs.getString(1),rs.getString(2)});
                 }
+                TTVAuto();
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -5153,6 +5154,26 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             PrimerNamaPetugas.setText(pegawai.tampil3(akses.getkode()));
             SekunderNamaPetugas.setText(PrimerNamaPetugas.getText());
         } 
+    }
+    
+        public void TTVAuto() {
+        TTVAuto(TNoRw.getText());
+    }
+    public void TTVAuto(String noRawat) {
+    if (Sequel.cariInteger("select count(no_rawat) from pemeriksaan_ralan where no_rawat='" + noRawat + "' ") > 0) {
+        PrimerKeluhanUtama.setText(Sequel.cariIsi("select keluhan from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+        PrimerSuhu.setText(Sequel.cariIsi("select suhu_tubuh from pemeriksaan_ralan where no_rawat=?", noRawat));
+        PrimerTensi.setText(Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?", noRawat));       
+        PrimerNadi.setText(Sequel.cariIsi("select nadi from pemeriksaan_ralan where no_rawat=?", noRawat));
+        PrimerRespirasi.setText(Sequel.cariIsi("select respirasi from pemeriksaan_ralan where no_rawat=?", noRawat));
+        PrimerSaturasi.setText(Sequel.cariIsi("select spo2 from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+        SekunderSuhu.setText(Sequel.cariIsi("select suhu_tubuh from pemeriksaan_ralan where no_rawat=?", noRawat));
+        SekunderTensi.setText(Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?", noRawat));       
+        SekunderNadi.setText(Sequel.cariIsi("select nadi from pemeriksaan_ralan where no_rawat=?", noRawat));
+        SekunderRespirasi.setText(Sequel.cariIsi("select respirasi from pemeriksaan_ralan where no_rawat=?", noRawat));
+        SekunderSaturasi.setText(Sequel.cariIsi("select spo2 from pemeriksaan_ralan where no_rawat=?", TNoRw.getText()));
+
+        }
     }
     
     private void getData() {
