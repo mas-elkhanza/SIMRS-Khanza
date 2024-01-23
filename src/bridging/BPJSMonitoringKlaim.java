@@ -36,7 +36,6 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private PreparedStatement ps,pssep;
     private ResultSet rs,rssep;
     private final Properties prop = new Properties();
@@ -964,14 +963,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rssep=pssep.executeQuery();
                             while(rssep.next()){
                                 tabMode.addRow(new Object[]{
-                                    rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                                    rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                                    rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),
-                                    rs.getString(13),rs.getString(14),rs.getString(14)+" "+rs.getString(15),rs.getString(16),
-                                    rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
-                                    rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24),
-                                    rs.getString(25),rs.getString(26),rs.getString(27),rs.getString(28),
-                                    rs.getString(29),rs.getString(30),rs.getString(31),
+                                    rssep.getString(1),rssep.getString(2),rssep.getString(3),rssep.getString(4),
+                                    rssep.getString(5),rssep.getString(6),rssep.getString(7),rssep.getString(8),
+                                    rssep.getString(9),rssep.getString(10),rssep.getString(11),rssep.getString(12),
+                                    rssep.getString(13),rssep.getString(14),rssep.getString(14)+" "+rssep.getString(15),rssep.getString(16),
+                                    rssep.getString(17),rssep.getString(18),rssep.getString(19),rssep.getString(20),
+                                    rssep.getString(21),rssep.getString(22),rssep.getString(23),rssep.getString(24),
+                                    rssep.getString(25),rssep.getString(26),rssep.getString(27),rssep.getString(28),
+                                    rssep.getString(29),rssep.getString(30),rssep.getString(31),
                                     list.path("Inacbg").path("kode").asText()+" "+list.path("Inacbg").path("nama").asText(),
                                     list.path("status").asText(),list.path("noFPK").asText(),
                                     Valid.SetAngka(list.path("biaya").path("byPengajuan").asDouble()),
@@ -1036,14 +1035,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rssep=pssep.executeQuery();
                             while(rssep.next()){
                                 tabMode.addRow(new Object[]{
-                                    rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                                    rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                                    rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),
-                                    rs.getString(13),rs.getString(14),rs.getString(14)+" "+rs.getString(15),rs.getString(16),
-                                    rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
-                                    rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24),
-                                    rs.getString(25),rs.getString(26),rs.getString(27),rs.getString(28),
-                                    rs.getString(29),rs.getString(30),rs.getString(31),
+                                    rssep.getString(1),rssep.getString(2),rssep.getString(3),rssep.getString(4),
+                                    rssep.getString(5),rssep.getString(6),rssep.getString(7),rssep.getString(8),
+                                    rssep.getString(9),rssep.getString(10),rssep.getString(11),rssep.getString(12),
+                                    rssep.getString(13),rssep.getString(14),rssep.getString(14)+" "+rssep.getString(15),rssep.getString(16),
+                                    rssep.getString(17),rssep.getString(18),rssep.getString(19),rssep.getString(20),
+                                    rssep.getString(21),rssep.getString(22),rssep.getString(23),rssep.getString(24),
+                                    rssep.getString(25),rssep.getString(26),rssep.getString(27),rssep.getString(28),
+                                    rssep.getString(29),rssep.getString(30),rssep.getString(31),
                                     list.path("Inacbg").path("kode").asText()+" "+list.path("Inacbg").path("nama").asText(),
                                     list.path("status").asText(),list.path("noFPK").asText(),
                                     Valid.SetAngka(list.path("biaya").path("byPengajuan").asDouble()),
