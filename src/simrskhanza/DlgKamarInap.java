@@ -7713,8 +7713,13 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 tbKamIn.requestFocus();
         }else{
             if(tbKamIn.getSelectedRow()>-1){
-                WindowCaraBayar.setLocationRelativeTo(internalFrame1);
-                WindowCaraBayar.setVisible(true);
+                if(Sequel.cariRegistrasi(norawat.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{
+                    WindowCaraBayar.setLocationRelativeTo(internalFrame1);
+                    WindowCaraBayar.setVisible(true);
+                }
             }
         }
     }//GEN-LAST:event_MnPenjabActionPerformed

@@ -590,7 +590,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT IMUNISASIbr><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT IMUNISAS<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -731,6 +731,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
             if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,8).toString().equals(""))&&(!tbObat.getValueAt(i,27).toString().equals(""))){
                 try {
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbObat.getValueAt(i,26).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
