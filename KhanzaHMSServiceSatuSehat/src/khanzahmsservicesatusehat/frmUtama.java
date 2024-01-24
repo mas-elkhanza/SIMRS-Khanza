@@ -214,15 +214,17 @@ public class frmUtama extends javax.swing.JFrame {
                     date = new Date();  
                     Tanggal1.setText(tanggalFormat.format(date)); 
                     Tanggal2.setText(tanggalFormat.format(date)); 
+                    medication();
                 }
                 
-                if((detik.equals("01")&&menit.equals("01"))||(detik.equals("01")&&menit.equals("30"))){
+                if((detik.equals("01")&&menit.equals("01"))){
                     encounter();
                     observationTTV();
                     vaksin();
                     prosedur();
                     condition();
                     clinicalimpression();
+                    dietgizi();
                 }
             }
         };
@@ -3240,7 +3242,13 @@ public class frmUtama extends javax.swing.JFrame {
                     ps.close();
                 }
             }
-            
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void dietgizi(){
+        try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
                    "pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,catatan_adime_gizi.instruksi,"+
@@ -3471,6 +3479,97 @@ public class frmUtama extends javax.swing.JFrame {
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void medication(){
+        try{
+            ps=koneksi.prepareStatement(
+                   "select satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,databarang.status,"+
+                   "satu_sehat_mapping_obat.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,"+
+                   "satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,ifnull(satu_sehat_medication.id_medication,'') as id_medication "+
+                   "from satu_sehat_mapping_obat inner join databarang on satu_sehat_mapping_obat.kode_brng=databarang.kode_brng "+
+                   "left join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
+                   "order by satu_sehat_mapping_obat.obat_display");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if(!rs.getString("id_medication").equals("")){
+                        try{
+                            headers = new HttpHeaders();
+                            headers.setContentType(MediaType.APPLICATION_JSON);
+                            headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                            json = "{" +
+                                        "\"resourceType\": \"Medication\"," +
+                                        "\"id\": \""+rs.getString("id_medication")+"\"," +
+                                        "\"meta\": {" +
+                                            "\"profile\": [" +
+                                                "\"https://fhir.kemkes.go.id/r4/StructureDefinition/Medication\"" +
+                                            "]" +
+                                        "}," +
+                                        "\"identifier\": [" +
+                                            "{" +
+                                                "\"system\" : \"http://sys-ids.kemkes.go.id/medication/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"use\": \"official\"," +
+                                                "\"value\" : \""+rs.getString("kode_brng")+"\"" +
+                                            "}" +
+                                        "]," +
+                                        "\"code\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \""+rs.getString("obat_system")+"\"," +
+                                                    "\"code\": \""+rs.getString("obat_code")+"\"," +
+                                                    "\"display\": \""+rs.getString("obat_display")+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}," +
+                                        "\"status\": \""+rs.getString("status").replaceAll("0","inactive").replaceAll("1","active")+"\"," +
+                                        "\"form\": {" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \""+rs.getString("form_system")+"\"," +
+                                                    "\"code\": \""+rs.getString("form_code")+"\"," +
+                                                    "\"display\": \""+rs.getString("form_display")+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}," +
+                                        "\"extension\": [" +
+                                            "{" +
+                                                "\"url\": \"https://fhir.kemkes.go.id/r4/StructureDefinition/MedicationType\"," +
+                                                    "\"valueCodeableConcept\": {" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.kemkes.go.id/CodeSystem/medication-type\"," +
+                                                            "\"code\": \"NC\"," +
+                                                            "\"display\": \"Non-compound\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "}" +
+                                        "]" +
+                                    "}";
+                            System.out.println("URL : "+link+"/Medication/"+rs.getString("id_medication"));
+                            System.out.println("Request JSON : "+json);
+                            requestEntity = new HttpEntity(json,headers);
+                            json=api.getRest().exchange(link+"/Medication/"+rs.getString("id_medication"), HttpMethod.PUT, requestEntity, String.class).getBody();
+                            System.out.println("Result JSON : "+json);
+                        }catch(Exception e){
+                            System.out.println("Notifikasi Bridging : "+e);
                         }
                     }
                 }
