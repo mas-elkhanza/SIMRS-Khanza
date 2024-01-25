@@ -63,7 +63,8 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocation(8,1);
-        setSize(885,674);
+        
+        WindowHitungPaket.setSize(425,120);
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "P","No.Rawat/No.Tagihan","Tgl.Piutang","Pasien","Status","Total Piutang",
@@ -240,6 +241,18 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         MnDetailPiutang = new javax.swing.JMenuItem();
         ppPilihSemua = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
+        ppKapitasiPaket = new javax.swing.JMenuItem();
+        WindowHitungPaket = new javax.swing.JDialog();
+        internalFrame8 = new widget.InternalFrame();
+        BtnCloseIn5 = new widget.Button();
+        BtnSimpan5 = new widget.Button();
+        jLabel39 = new widget.Label();
+        PiutangBelumDIbayar = new widget.TextBox();
+        NilaiKapitasiPaket = new widget.TextBox();
+        jLabel40 = new widget.Label();
+        jLabel41 = new widget.Label();
+        PersentaseBayarPaket = new widget.TextBox();
+        jLabel42 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -279,7 +292,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailPiutang.setText("Detail Piutang");
         MnDetailPiutang.setName("MnDetailPiutang"); // NOI18N
-        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(170, 26));
         MnDetailPiutang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDetailPiutangActionPerformed(evt);
@@ -295,7 +308,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppPilihSemua.setName("ppPilihSemua"); // NOI18N
-        ppPilihSemua.setPreferredSize(new java.awt.Dimension(150, 26));
+        ppPilihSemua.setPreferredSize(new java.awt.Dimension(170, 26));
         ppPilihSemua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppPilihSemuaActionPerformed(evt);
@@ -311,13 +324,109 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
-        ppBersihkan.setPreferredSize(new java.awt.Dimension(150, 26));
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(170, 26));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBersihkanActionPerformed(evt);
             }
         });
         jPopupMenu1.add(ppBersihkan);
+
+        ppKapitasiPaket.setBackground(new java.awt.Color(255, 255, 254));
+        ppKapitasiPaket.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppKapitasiPaket.setForeground(new java.awt.Color(50, 50, 50));
+        ppKapitasiPaket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppKapitasiPaket.setText("Hitung Kapitasi/Paket");
+        ppKapitasiPaket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppKapitasiPaket.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppKapitasiPaket.setName("ppKapitasiPaket"); // NOI18N
+        ppKapitasiPaket.setPreferredSize(new java.awt.Dimension(170, 26));
+        ppKapitasiPaket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppKapitasiPaketActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppKapitasiPaket);
+
+        WindowHitungPaket.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowHitungPaket.setName("WindowHitungPaket"); // NOI18N
+        WindowHitungPaket.setUndecorated(true);
+        WindowHitungPaket.setResizable(false);
+
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hitung Kapitasi/Paket Pembayaran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame8.setName("internalFrame8"); // NOI18N
+        internalFrame8.setLayout(null);
+
+        BtnCloseIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn5.setMnemonic('U');
+        BtnCloseIn5.setText("Tutup");
+        BtnCloseIn5.setToolTipText("Alt+U");
+        BtnCloseIn5.setName("BtnCloseIn5"); // NOI18N
+        BtnCloseIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn5ActionPerformed(evt);
+            }
+        });
+        internalFrame8.add(BtnCloseIn5);
+        BtnCloseIn5.setBounds(310, 70, 100, 30);
+
+        BtnSimpan5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
+        BtnSimpan5.setMnemonic('S');
+        BtnSimpan5.setText("Hitung");
+        BtnSimpan5.setToolTipText("Alt+S");
+        BtnSimpan5.setName("BtnSimpan5"); // NOI18N
+        BtnSimpan5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan5ActionPerformed(evt);
+            }
+        });
+        internalFrame8.add(BtnSimpan5);
+        BtnSimpan5.setBounds(310, 30, 100, 30);
+
+        jLabel39.setText("Piutang Belum Dibayar :");
+        jLabel39.setName("jLabel39"); // NOI18N
+        internalFrame8.add(jLabel39);
+        jLabel39.setBounds(0, 25, 140, 23);
+
+        PiutangBelumDIbayar.setEditable(false);
+        PiutangBelumDIbayar.setHighlighter(null);
+        PiutangBelumDIbayar.setName("PiutangBelumDIbayar"); // NOI18N
+        internalFrame8.add(PiutangBelumDIbayar);
+        PiutangBelumDIbayar.setBounds(144, 25, 150, 23);
+
+        NilaiKapitasiPaket.setHighlighter(null);
+        NilaiKapitasiPaket.setName("NilaiKapitasiPaket"); // NOI18N
+        NilaiKapitasiPaket.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NilaiKapitasiPaketKeyPressed(evt);
+            }
+        });
+        internalFrame8.add(NilaiKapitasiPaket);
+        NilaiKapitasiPaket.setBounds(144, 55, 150, 23);
+
+        jLabel40.setText("Nilai Kapitasi/Paket :");
+        jLabel40.setName("jLabel40"); // NOI18N
+        internalFrame8.add(jLabel40);
+        jLabel40.setBounds(0, 55, 140, 23);
+
+        jLabel41.setText("Persentase Pembayaran :");
+        jLabel41.setName("jLabel41"); // NOI18N
+        internalFrame8.add(jLabel41);
+        jLabel41.setBounds(0, 85, 140, 23);
+
+        PersentaseBayarPaket.setEditable(false);
+        PersentaseBayarPaket.setHighlighter(null);
+        PersentaseBayarPaket.setName("PersentaseBayarPaket"); // NOI18N
+        internalFrame8.add(PersentaseBayarPaket);
+        PersentaseBayarPaket.setBounds(144, 85, 60, 23);
+
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel42.setText("%");
+        jLabel42.setName("jLabel42"); // NOI18N
+        internalFrame8.add(jLabel42);
+        jLabel42.setBounds(206, 85, 60, 23);
+
+        WindowHitungPaket.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -711,7 +820,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 }//GEN-LAST:event_BtnCariKeyPressed
 
 private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDetailPiutangActionPerformed
-     if(tabMode.getRowCount()==0){
+    if(tabMode.getRowCount()==0){
         JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
         TCari.requestFocus();
     }else{
@@ -991,6 +1100,44 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
+    private void ppKapitasiPaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppKapitasiPaketActionPerformed
+        if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar terlebih dahulu");
+        }else if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else {
+            total=0;
+            for(i=0;i<tbBangsal.getRowCount();i++){
+                tbBangsal.setValueAt(true,i,0);
+                getdata(i);
+            }
+            row=tbBangsal.getRowCount();
+            for(i=0;i<row;i++){  
+                if(tbBangsal.getValueAt(i,0).toString().equals("true")){
+                     total=total+Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-
+                            (Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(i,7).toString()));     
+                }
+            }
+            LCount1.setText(Valid.SetAngka(total));     
+            WindowHitungPaket.setLocationRelativeTo(internalFrame1);
+            WindowHitungPaket.setVisible(true);
+        } 
+    }//GEN-LAST:event_ppKapitasiPaketActionPerformed
+
+    private void BtnCloseIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn5ActionPerformed
+        WindowHitungPaket.dispose();
+    }//GEN-LAST:event_BtnCloseIn5ActionPerformed
+
+    private void BtnSimpan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan5ActionPerformed
+        
+    }//GEN-LAST:event_BtnSimpan5ActionPerformed
+
+    private void NilaiKapitasiPaketKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiKapitasiPaketKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NilaiKapitasiPaketKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1013,20 +1160,31 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Button BtnAll1;
     private widget.Button BtnBayar;
     private widget.Button BtnCari;
+    private widget.Button BtnCloseIn5;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
+    private widget.Button BtnSimpan5;
     private javax.swing.JLabel LCount;
     private javax.swing.JLabel LCount1;
     private javax.swing.JMenuItem MnDetailPiutang;
+    private widget.TextBox NilaiKapitasiPaket;
+    private widget.TextBox PersentaseBayarPaket;
+    private widget.TextBox PiutangBelumDIbayar;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
     private widget.Tanggal Tanggal;
+    private javax.swing.JDialog WindowHitungPaket;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame8;
     private javax.swing.JLabel jLabel10;
     private widget.Label jLabel11;
     private javax.swing.JLabel jLabel12;
+    private widget.Label jLabel39;
+    private widget.Label jLabel40;
+    private widget.Label jLabel41;
+    private widget.Label jLabel42;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;
@@ -1038,6 +1196,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppKapitasiPaket;
     private javax.swing.JMenuItem ppPilihSemua;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
