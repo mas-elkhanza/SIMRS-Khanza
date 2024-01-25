@@ -784,7 +784,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"signa1\": "+signa1+"," +
                                                     "\"signa2\": "+signa2+"," +
                                                     "\"jmlObat\": "+rscari.getString("jml")+"," +
-                                                    "\"jmlPermintaan\": 0," +
+                                                    "\"jmlPermintaan\": "+rscari.getString("jml")+"," +
                                                     "\"nmObatNonDPHO\": \"-\"" +
                                                  "}";
                                                 TeksArea.append(requestJson+"\n");

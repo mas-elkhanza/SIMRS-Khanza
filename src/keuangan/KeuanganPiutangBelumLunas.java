@@ -43,7 +43,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
     private ResultSet rs;
     private DlgAkunPiutang penjab=new DlgAkunPiutang(null,false);
     private int row=0,i;
-    private String koderekening="",notagihan="";
+    private String koderekening="",notagihan="",nomorpemasukan="",carabayar="";
     private Jurnal jur=new Jurnal();
     private String status="",Diskon_Piutang="",Piutang_Tidak_Terbayar="",Lebih_Bayar_Piutang="";
     private double total=0,lebihbayar=0;
@@ -175,6 +175,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
                 if(penjab.getTable().getSelectedRow()!= -1){
                     kdpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
                     nmpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                    carabayar=penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),4).toString();
                     tampilperakun();
                 }      
                 kdpenjab.requestFocus();
@@ -204,7 +205,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         
         try {
             ps=koneksi.prepareStatement(
-                    "select set_akun.Diskon_Piutang,set_akun.Piutang_Tidak_Terbayar from set_akun");
+                    "select set_akun.Diskon_Piutang,set_akun.Piutang_Tidak_Terbayar,set_akun.Lebih_Bayar_Piutang from set_akun");
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -788,6 +789,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         TCari.setText("");
         kdpenjab.setText("");
         nmpenjab.setText("");
+        carabayar="";
         tampil();
 
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -966,7 +968,26 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             
             if(sukses==true){
                 if(lebihbayar>0){
-                    
+                    status=Sequel.cariIsi("select kategori_pemasukan_lain.kode_kategori from kategori_pemasukan_lain where kategori_pemasukan_lain.kd_rek='"+Lebih_Bayar_Piutang+"' and kategori_pemasukan_lain.kd_rek2='"+koderekening+"'");
+                    if(!status.equals("")){
+                        nomorpemasukan=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pemasukan_lain.no_masuk,3),signed)),0) from pemasukan_lain where pemasukan_lain.tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ","PL"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3);
+                        if(Sequel.menyimpantf("pemasukan_lain","?,?,?,?,?,?,?","Pemasukan",7,new String[]{
+                            nomorpemasukan,Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),status,Double.toString(lebihbayar),akses.getkode().replaceAll("Admin Utama","-"),carabayar,"Pendapatan Lebih Bayar Piutang Pasien"
+                        })==true){
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Lebih_Bayar_Piutang,"Lebih Bayar Piutang","0",Double.toString(lebihbayar)});
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{koderekening,AkunBayar.getSelectedItem().toString(),Double.toString(lebihbayar),"0"}); 
+                            sukses=jur.simpanJurnal(nomorpemasukan,"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
+                            if(sukses==true){
+                                lebihbayar=0;
+                                carabayar="";
+                            }
+                        }else{
+                            sukses=false;
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Akun Pendapatan Lebih Bayar Piutang dengan pembayaran "+AkunBayar.getSelectedItem().toString()+"\nbelum terdaftar di Kategori Pemasukan Lain-lain..!!!");
+                        sukses=false;
+                    }
                 }
             }
             
