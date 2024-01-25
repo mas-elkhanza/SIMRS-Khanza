@@ -71,6 +71,42 @@ import javax.swing.table.DefaultTableCellRenderer;
 //    }
 //}
 
+//public class WarnaTableResepRalan extends DefaultTableCellRenderer {
+//    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
+//        Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+//
+//        // Memeriksa apakah nilai sel pada kolom 1 hingga 13 bukan "BPJS"
+//        boolean isNonBPJS = true;
+//        for (int i = 1; i <= 13; i++) {
+//            String cellValue = table.getValueAt(row, i).toString();
+//            if ("BPJS".equals(cellValue)) {
+//                // Jika ditemukan "BPJS", set flag menjadi false
+//                isNonBPJS = false;
+//                break;
+//            }
+//        }
+//
+//        if (isNonBPJS) {
+//            // Warna untuk kondisi khusus (nilai pada kolom 1 hingga 13 bukan "BPJS")
+//            component.setBackground(new Color(251, 153, 0));
+//            component.setForeground(new Color(50, 50, 50));
+//            return component;
+//        }
+//
+//        if (row % 2 == 1){
+//            // Warna untuk baris ganjil
+//            component.setBackground(new Color(255, 244, 244));
+//        } else {
+//            // Warna untuk baris genap
+//            component.setBackground(new Color(251, 251, 255));
+//        }
+//
+//        // Set warna teks
+//        component.setForeground(new Color(50, 50, 50));
+//
+//        return component;
+//    }
+//}
 public class WarnaTableResepRalan extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
         Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
@@ -84,6 +120,13 @@ public class WarnaTableResepRalan extends DefaultTableCellRenderer {
                 isNonBPJS = false;
                 break;
             }
+        }
+
+        // Jika nilai pada kolom 14 (indeks 13) adalah "Sudah Dilayani", beri warna hijau
+        if (value != null && "Sudah Terlayani".equals(value.toString())) {
+            component.setBackground(new Color(144, 238, 144)); // Warna hijau
+            component.setForeground(new Color(50, 50, 50));
+            return component;
         }
 
         if (isNonBPJS) {
@@ -107,5 +150,6 @@ public class WarnaTableResepRalan extends DefaultTableCellRenderer {
         return component;
     }
 }
+
 
 
