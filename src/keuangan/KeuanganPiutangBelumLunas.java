@@ -64,7 +64,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         initComponents();
         this.setLocation(8,1);
         
-        WindowHitungPaket.setSize(425,153);
+        WindowHitungPaket.setSize(320,200);
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "P","No.Rawat/No.Tagihan","Tgl.Piutang","Pasien","Status","Total Piutang",
@@ -248,17 +248,19 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         ppKapitasiPaket = new javax.swing.JMenuItem();
         WindowHitungPaket = new javax.swing.JDialog();
         internalFrame8 = new widget.InternalFrame();
+        jLabel42 = new widget.Label();
+        panelisi5 = new widget.panelisi();
         BtnCloseHitungKapitasi = new widget.Button();
         BtnHitungKapitasi = new widget.Button();
-        jLabel39 = new widget.Label();
-        PiutangBelumDibayar = new widget.TextBox();
-        NilaiKapitasiPaket = new widget.TextBox();
-        jLabel40 = new widget.Label();
-        jLabel41 = new widget.Label();
-        PersentaseBayarPaket = new widget.TextBox();
-        jLabel42 = new widget.Label();
         jLabel43 = new widget.Label();
         LebihBayarPiutang = new widget.TextBox();
+        PersentaseBayarPaket = new widget.TextBox();
+        jLabel41 = new widget.Label();
+        NilaiKapitasiPaket = new widget.TextBox();
+        jLabel40 = new widget.Label();
+        jLabel39 = new widget.Label();
+        PiutangBelumDibayar = new widget.TextBox();
+        jLabel44 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -361,7 +363,16 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
 
         internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hitung Kapitasi/Paket Pembayaran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame8.setName("internalFrame8"); // NOI18N
-        internalFrame8.setLayout(null);
+        internalFrame8.setLayout(new java.awt.BorderLayout());
+
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel42.setText("%");
+        jLabel42.setName("jLabel42"); // NOI18N
+        internalFrame8.add(jLabel42, java.awt.BorderLayout.CENTER);
+
+        panelisi5.setName("panelisi5"); // NOI18N
+        panelisi5.setPreferredSize(new java.awt.Dimension(100, 44));
+        panelisi5.setLayout(null);
 
         BtnCloseHitungKapitasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
         BtnCloseHitungKapitasi.setMnemonic('U');
@@ -373,8 +384,8 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
                 BtnCloseHitungKapitasiActionPerformed(evt);
             }
         });
-        internalFrame8.add(BtnCloseHitungKapitasi);
-        BtnCloseHitungKapitasi.setBounds(310, 90, 100, 30);
+        panelisi5.add(BtnCloseHitungKapitasi);
+        BtnCloseHitungKapitasi.setBounds(200, 135, 100, 30);
 
         BtnHitungKapitasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
         BtnHitungKapitasi.setMnemonic('S');
@@ -386,20 +397,31 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
                 BtnHitungKapitasiActionPerformed(evt);
             }
         });
-        internalFrame8.add(BtnHitungKapitasi);
-        BtnHitungKapitasi.setBounds(310, 50, 100, 30);
+        panelisi5.add(BtnHitungKapitasi);
+        BtnHitungKapitasi.setBounds(10, 135, 100, 30);
 
-        jLabel39.setText("Piutang Belum Dibayar :");
-        jLabel39.setName("jLabel39"); // NOI18N
-        internalFrame8.add(jLabel39);
-        jLabel39.setBounds(0, 25, 140, 23);
+        jLabel43.setText("Lebih Bayar Piutang :");
+        jLabel43.setName("jLabel43"); // NOI18N
+        panelisi5.add(jLabel43);
+        jLabel43.setBounds(0, 100, 140, 23);
 
-        PiutangBelumDibayar.setEditable(false);
-        PiutangBelumDibayar.setText("0");
-        PiutangBelumDibayar.setHighlighter(null);
-        PiutangBelumDibayar.setName("PiutangBelumDibayar"); // NOI18N
-        internalFrame8.add(PiutangBelumDibayar);
-        PiutangBelumDibayar.setBounds(144, 25, 150, 23);
+        LebihBayarPiutang.setText("0");
+        LebihBayarPiutang.setHighlighter(null);
+        LebihBayarPiutang.setName("LebihBayarPiutang"); // NOI18N
+        panelisi5.add(LebihBayarPiutang);
+        LebihBayarPiutang.setBounds(144, 100, 150, 23);
+
+        PersentaseBayarPaket.setEditable(false);
+        PersentaseBayarPaket.setText("0");
+        PersentaseBayarPaket.setHighlighter(null);
+        PersentaseBayarPaket.setName("PersentaseBayarPaket"); // NOI18N
+        panelisi5.add(PersentaseBayarPaket);
+        PersentaseBayarPaket.setBounds(144, 70, 136, 23);
+
+        jLabel41.setText("Persentase Pembayaran :");
+        jLabel41.setName("jLabel41"); // NOI18N
+        panelisi5.add(jLabel41);
+        jLabel41.setBounds(0, 70, 140, 23);
 
         NilaiKapitasiPaket.setText("0");
         NilaiKapitasiPaket.setHighlighter(null);
@@ -409,42 +431,33 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
                 NilaiKapitasiPaketKeyPressed(evt);
             }
         });
-        internalFrame8.add(NilaiKapitasiPaket);
-        NilaiKapitasiPaket.setBounds(144, 55, 150, 23);
+        panelisi5.add(NilaiKapitasiPaket);
+        NilaiKapitasiPaket.setBounds(144, 40, 150, 23);
 
         jLabel40.setText("Nilai Kapitasi/Paket :");
         jLabel40.setName("jLabel40"); // NOI18N
-        internalFrame8.add(jLabel40);
-        jLabel40.setBounds(0, 55, 140, 23);
+        panelisi5.add(jLabel40);
+        jLabel40.setBounds(0, 40, 140, 23);
 
-        jLabel41.setText("Persentase Pembayaran :");
-        jLabel41.setName("jLabel41"); // NOI18N
-        internalFrame8.add(jLabel41);
-        jLabel41.setBounds(0, 85, 140, 23);
+        jLabel39.setText("Piutang Belum Dibayar :");
+        jLabel39.setName("jLabel39"); // NOI18N
+        panelisi5.add(jLabel39);
+        jLabel39.setBounds(0, 10, 140, 23);
 
-        PersentaseBayarPaket.setEditable(false);
-        PersentaseBayarPaket.setText("0");
-        PersentaseBayarPaket.setHighlighter(null);
-        PersentaseBayarPaket.setName("PersentaseBayarPaket"); // NOI18N
-        internalFrame8.add(PersentaseBayarPaket);
-        PersentaseBayarPaket.setBounds(144, 85, 136, 23);
+        PiutangBelumDibayar.setEditable(false);
+        PiutangBelumDibayar.setText("0");
+        PiutangBelumDibayar.setHighlighter(null);
+        PiutangBelumDibayar.setName("PiutangBelumDibayar"); // NOI18N
+        panelisi5.add(PiutangBelumDibayar);
+        PiutangBelumDibayar.setBounds(144, 10, 150, 23);
 
-        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel42.setText("%");
-        jLabel42.setName("jLabel42"); // NOI18N
-        internalFrame8.add(jLabel42);
-        jLabel42.setBounds(282, 85, 30, 23);
+        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel44.setText("%");
+        jLabel44.setName("jLabel44"); // NOI18N
+        panelisi5.add(jLabel44);
+        jLabel44.setBounds(280, 70, 50, 23);
 
-        jLabel43.setText("Lebih Bayar Piutang :");
-        jLabel43.setName("jLabel43"); // NOI18N
-        internalFrame8.add(jLabel43);
-        jLabel43.setBounds(0, 115, 140, 23);
-
-        LebihBayarPiutang.setText("0");
-        LebihBayarPiutang.setHighlighter(null);
-        LebihBayarPiutang.setName("LebihBayarPiutang"); // NOI18N
-        internalFrame8.add(LebihBayarPiutang);
-        LebihBayarPiutang.setBounds(144, 115, 150, 23);
+        internalFrame8.add(panelisi5, java.awt.BorderLayout.CENTER);
 
         WindowHitungPaket.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
@@ -1307,6 +1320,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Label jLabel41;
     private widget.Label jLabel42;
     private widget.Label jLabel43;
+    private widget.Label jLabel44;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;
@@ -1317,6 +1331,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
+    private widget.panelisi panelisi5;
     private javax.swing.JMenuItem ppBersihkan;
     private javax.swing.JMenuItem ppKapitasiPaket;
     private javax.swing.JMenuItem ppPilihSemua;
