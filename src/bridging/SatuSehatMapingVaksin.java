@@ -135,6 +135,7 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(barang.getTable().getSelectedRow()!= -1){                    
                     KodeBarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
+                    NamaBarang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
                 }
                 btnBarang.requestFocus();
             }
@@ -174,6 +175,7 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NamaBarang = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -215,6 +217,10 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
         DoseSystem = new widget.TextBox();
         DoseUnit = new widget.TextBox();
         VaksinSystem = new widget.TextBox();
+
+        NamaBarang.setEditable(false);
+        NamaBarang.setHighlighter(null);
+        NamaBarang.setName("NamaBarang"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -664,8 +670,13 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
                 KodeBarang.getText(),VaksinCode.getText(),VaksinSystem.getText(),VaksinDisplay.getText(),RouteCode.getText(),
                 RouteSystem.getText(),RouteDisplay.getText(),DoseCode.getText(),DoseSystem.getText(),DoseUnit.getText()
             })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    VaksinCode.getText(),VaksinSystem.getText(),KodeBarang.getText(),NamaBarang.getText(),VaksinDisplay.getText(),
+                    RouteCode.getText(),RouteSystem.getText(),RouteDisplay.getText(),DoseCode.getText(),DoseSystem.getText(),
+                    DoseUnit.getText()
+                });
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -687,9 +698,11 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,KodeBarang,"satu_sehat_mapping_vaksin","kode_brng");
-        tampil();
-        emptTeks();
+        if(Valid.hapusTabletf(tabMode,KodeBarang,"satu_sehat_mapping_vaksin","kode_brng")==true){
+            tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
+            emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -729,8 +742,17 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
                         RouteSystem.getText(),RouteDisplay.getText(),DoseCode.getText(),DoseSystem.getText(),DoseUnit.getText(),
                         tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()
                     })==true){
+                    tabMode.setValueAt(KodeBarang.getText(),tbJnsPerawatan.getSelectedRow(),0);
+                    tabMode.setValueAt(VaksinCode.getText(),tbJnsPerawatan.getSelectedRow(),1);
+                    tabMode.setValueAt(VaksinSystem.getText(),tbJnsPerawatan.getSelectedRow(),2);
+                    tabMode.setValueAt(VaksinDisplay.getText(),tbJnsPerawatan.getSelectedRow(),3);
+                    tabMode.setValueAt(RouteCode.getText(),tbJnsPerawatan.getSelectedRow(),4);
+                    tabMode.setValueAt(RouteSystem.getText(),tbJnsPerawatan.getSelectedRow(),5);
+                    tabMode.setValueAt(RouteDisplay.getText(),tbJnsPerawatan.getSelectedRow(),6);
+                    tabMode.setValueAt(DoseCode.getText(),tbJnsPerawatan.getSelectedRow(),7);
+                    tabMode.setValueAt(DoseSystem.getText(),tbJnsPerawatan.getSelectedRow(),8);
+                    tabMode.setValueAt(DoseUnit.getText(),tbJnsPerawatan.getSelectedRow(),9);
                     emptTeks();
-                    tampil();
                 }
             }                
         }
@@ -910,6 +932,7 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.TextBox KodeBarang;
     private widget.Label LCount;
+    private widget.TextBox NamaBarang;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox RouteCode;
     private widget.TextBox RouteDisplay;
@@ -986,6 +1009,7 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
         VaksinCode.setText("");
         VaksinSystem.setText("");
         KodeBarang.setText("");
+        NamaBarang.setText("");
         VaksinDisplay.setText("");
         RouteCode.setText("");
         RouteSystem.setText("");
@@ -1003,6 +1027,7 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
            VaksinCode.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
            VaksinSystem.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
            KodeBarang.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
+           NamaBarang.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
            VaksinDisplay.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
            RouteCode.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString());
            RouteSystem.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString());
