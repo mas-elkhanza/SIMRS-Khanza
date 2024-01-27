@@ -68,11 +68,10 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Stts Rawat","Stts Lanjut",
-                "ID Encounter","KFA Code","KFA System","Kode Barang","KFA Display","Form Code","Form System",
-                "Form Display","Numerator Code","Numerator System","Denomina Code","Denominator System","No.Batch",
-                "Tanggal & Jam Beri","Jumlah","Kapasitas","ID Lokasi Satu Sehat","Nama Unit/Poli","Dokter Penanggung Jawab",
-                "No.KTP Praktisi","ID Medication Satu Sehat","No.Faktur"
+                "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Dokter Penanggung Jawab","No.KTP Praktisi",
+                "ID Encounter","KFA Code","KFA System","Kode Barang","KFA Display","Form Code","Form System","Form Display",
+                "Route Code","Route System","Route Display","No.Batch","No.Faktur","Tanggal & Jam Beri","Jumlah","ID Medication",
+                "Aturan Pakai","No.Resep"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
