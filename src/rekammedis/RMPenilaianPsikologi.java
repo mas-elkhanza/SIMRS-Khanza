@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari M. Syukur RS. Jiwa Prov Sultra
+ * By Mas Elkhanza
  */
 
 
