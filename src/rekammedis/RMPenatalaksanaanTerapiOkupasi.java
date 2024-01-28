@@ -61,9 +61,9 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Psikolog","Tanggal","Dikirim Dari","Tujuan","Informasi","Keterangan Informasi",
-            "Rupa/Wajah","Bentuk Tubuh","Tindakan","Pakaian/Aksesoris","Penyampaian/Ekspresi","Berbicara","Penggunaan Kata","Ciri Yang Menyolok","Hasil Psikotes",
-            "Kepribadian","Psikodinamika","Kesimpulan Psikolog"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Petugas","Tanggal","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
+            "Anamnesa General","Tanda Vital","Pemeriksan Penunjang","Spesialisasi","Keterangan Spesialisasi","Pemeriksaan Okupasi Terapi","Aset","Limitasi",
+            "Diagnosis Terapi Okupasional","Rencana Intervensi Terapi Okupasional"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +72,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -91,36 +91,30 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(72);
+                column.setPreferredWidth(200);
             }else if(i==9){
-                column.setPreferredWidth(62);
+                column.setPreferredWidth(200);
             }else if(i==10){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(200);
             }else if(i==11){
-                column.setPreferredWidth(165);
+                column.setPreferredWidth(200);
             }else if(i==12){
-                column.setPreferredWidth(71);
+                column.setPreferredWidth(200);
             }else if(i==13){
-                column.setPreferredWidth(79);
+                column.setPreferredWidth(200);
             }else if(i==14){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(70);
             }else if(i==15){
-                column.setPreferredWidth(99);
+                column.setPreferredWidth(130);
             }else if(i==16){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==17){
-                column.setPreferredWidth(196);
+                column.setPreferredWidth(200);
             }else if(i==18){
-                column.setPreferredWidth(185);
+                column.setPreferredWidth(200);
             }else if(i==19){
                 column.setPreferredWidth(200);
             }else if(i==20){
-                column.setPreferredWidth(200);
-            }else if(i==21){
-                column.setPreferredWidth(200);
-            }else if(i==22){
-                column.setPreferredWidth(200);
-            }else if(i==23){
                 column.setPreferredWidth(200);
             }
         }
@@ -581,7 +575,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         FormInput.add(scrollPane6);
         scrollPane6.setBounds(44, 280, 810, 43);
 
-        Spesialisasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pediatri", "Dewasa", "Geriatri", "Psikososial", "-" }));
+        Spesialisasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Pediatri", "Dewasa", "Geriatri", "Psikososial" }));
         Spesialisasi.setName("Spesialisasi"); // NOI18N
         Spesialisasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -877,9 +871,13 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(0, 400, 108, 23);
 
-        KeteranganSpesialisasi.setEditable(false);
         KeteranganSpesialisasi.setName("KeteranganSpesialisasi"); // NOI18N
         KeteranganSpesialisasi.setPreferredSize(new java.awt.Dimension(80, 23));
+        KeteranganSpesialisasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganSpesialisasiKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganSpesialisasi);
         KeteranganSpesialisasi.setBounds(226, 400, 400, 23);
 
@@ -1068,37 +1066,37 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Ciriyangmenyolok.getText().trim().equals("")){
-            Valid.textKosong(Ciriyangmenyolok,"CIRI YANG MENYOLOK");
-        }else if(Hasilpsikotes.getText().trim().equals("")){
-            Valid.textKosong(Hasilpsikotes,"HASIL PSIKOTES");
-        }else if(Kepribadian.getText().trim().equals("")){
-            Valid.textKosong(Kepribadian,"KEPRIBADIAN DAN ASPEK-ASPEKNYA");
-        }else if(Psikodinamika.getText().trim().equals("")){
-            Valid.textKosong(Psikodinamika,"PSIKODINAMIKA");
-        }else if(Kesimpulanpsikolog.getText().trim().equals("")){
-            Valid.textKosong(Kesimpulanpsikolog,"KESIMPULAN PSIKOLOG");            
+        }else if(KeluhanUtama.getText().trim().equals("")){
+            Valid.textKosong(KeluhanUtama,"Keluhan Utama");
+        }else if(AnamnesaUmum.getText().trim().equals("")){
+            Valid.textKosong(AnamnesaUmum,"Anamnesa General");
+        }else if(TandaVital.getText().trim().equals("")){
+            Valid.textKosong(TandaVital,"Tanda Vital");
+        }else if(PemeriksaanOkupasiTerapi.getText().trim().equals("")){
+            Valid.textKosong(PemeriksaanOkupasiTerapi,"Pemeriksaan Okupasi Terapi");
+        }else if(DiagnosaOkupasi.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaOkupasi,"Diagnosa Terapi Okupasi");            
+        }else if(RencanaIntervensi.getText().trim().equals("")){
+            Valid.textKosong(RencanaIntervensi,"Rencana Intervensi Terapi Okupasi");            
         }else{
-            if(Sequel.menyimpantf("penatalaksanaan_terapi_okupasi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),Informasi.getSelectedItem().toString(),
-                    Dikirimdari.getSelectedItem().toString(),TujuanPemeriksaan.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),Bentuktubuh.getSelectedItem().toString(),
-                    Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),
-                    Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),Kesimpulanpsikolog.getText()
+            if(Sequel.menyimpantf("penatalaksanaan_terapi_okupasi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",16,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),KeluhanUtama.getText(),
+                    RPD.getText(),RPS.getText(),AnamnesaUmum.getText(),TandaVital.getText(),PemeriksaanPenunjang.getText(),Spesialisasi.getSelectedItem().toString(),
+                    KeteranganSpesialisasi.getText(),PemeriksaanOkupasiTerapi.getText(),Aset.getText(),Limitasi.getText(),DiagnosaOkupasi.getText(),RencanaIntervensi.getText()
                 })==true){
                     tabMode.addRow(new String[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
-                        Dikirimdari.getSelectedItem().toString(),TujuanPemeriksaan.getSelectedItem().toString(),Informasi.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),Bentuktubuh.getSelectedItem().toString(),
-                        Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),
-                        Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),Kesimpulanpsikolog.getText()
+                        KeluhanUtama.getText(),RPD.getText(),RPS.getText(),AnamnesaUmum.getText(),TandaVital.getText(),PemeriksaanPenunjang.getText(),Spesialisasi.getSelectedItem().toString(),KeteranganSpesialisasi.getText(),PemeriksaanOkupasiTerapi.getText(),
+                        Aset.getText(),Limitasi.getText(),DiagnosaOkupasi.getText(),RencanaIntervensi.getText()
                     });
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1145,20 +1143,22 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Ciriyangmenyolok.getText().trim().equals("")){
-            Valid.textKosong(Ciriyangmenyolok,"CIRI YANG MENYOLOK");
-        }else if(Hasilpsikotes.getText().trim().equals("")){
-            Valid.textKosong(Hasilpsikotes,"HASIL PSIKOTES");
-        }else if(Kepribadian.getText().trim().equals("")){
-            Valid.textKosong(Kepribadian,"KEPRIBADIAN DAN ASPEK-ASPEKNYA");
-        }else if(Psikodinamika.getText().trim().equals("")){
-            Valid.textKosong(Psikodinamika,"PSIKODINAMIKA");
-        }else if(Kesimpulanpsikolog.getText().trim().equals("")){
-            Valid.textKosong(Kesimpulanpsikolog,"KESIMPULAN PSIKOLOG");
+        }else if(KeluhanUtama.getText().trim().equals("")){
+            Valid.textKosong(KeluhanUtama,"Keluhan Utama");
+        }else if(AnamnesaUmum.getText().trim().equals("")){
+            Valid.textKosong(AnamnesaUmum,"Anamnesa General");
+        }else if(TandaVital.getText().trim().equals("")){
+            Valid.textKosong(TandaVital,"Tanda Vital");
+        }else if(PemeriksaanOkupasiTerapi.getText().trim().equals("")){
+            Valid.textKosong(PemeriksaanOkupasiTerapi,"Pemeriksaan Okupasi Terapi");
+        }else if(DiagnosaOkupasi.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaOkupasi,"Diagnosa Terapi Okupasi");            
+        }else if(RencanaIntervensi.getText().trim().equals("")){
+            Valid.textKosong(RencanaIntervensi,"Rencana Intervensi Terapi Okupasi");            
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1173,7 +1173,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1386,7 +1386,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     }//GEN-LAST:event_KetLokalisKeyPressed
 
     private void DiagnosaOkupasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaOkupasiKeyPressed
-        //Valid.pindah2(evt,Kepribadian,Kesimpulanpsikolog);
+        Valid.pindah2(evt,Limitasi,RencanaIntervensi);
     }//GEN-LAST:event_DiagnosaOkupasiKeyPressed
 
     private void RencanaIntervensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaIntervensiKeyPressed
@@ -1421,11 +1421,11 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
     private void SpesialisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpesialisasiKeyPressed
-        //Valid.pindah(evt,Dikirimdari,Pakaian);
+        Valid.pindah(evt,PemeriksaanPenunjang,KeteranganSpesialisasi);
     }//GEN-LAST:event_SpesialisasiKeyPressed
 
     private void TandaVitalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaVitalKeyPressed
-        //Valid.pindah2(evt,Berbicara,Hasilpsikotes);
+        Valid.pindah2(evt,RPD,PemeriksaanPenunjang);
     }//GEN-LAST:event_TandaVitalKeyPressed
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
@@ -1453,7 +1453,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
-        //Valid.pindah2(evt,Hubungan,RPS);
+        Valid.pindah2(evt,TglAsuhan,RPS);
     }//GEN-LAST:event_KeluhanUtamaKeyPressed
 
     private void AnamnesaUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesaUmumKeyPressed
@@ -1465,24 +1465,28 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     }//GEN-LAST:event_RPSKeyPressed
 
     private void RPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPDKeyPressed
-        //Valid.pindah2(evt,RPK,RPO);
+        Valid.pindah2(evt,AnamnesaUmum,TandaVital);
     }//GEN-LAST:event_RPDKeyPressed
 
     private void PemeriksaanPenunjangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanPenunjangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,TandaVital,Spesialisasi);
     }//GEN-LAST:event_PemeriksaanPenunjangKeyPressed
 
     private void AsetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsetKeyPressed
-        //Valid.pindah2(evt,Diagnosis2,Terapi);
+        Valid.pindah2(evt,PemeriksaanOkupasiTerapi,Limitasi);
     }//GEN-LAST:event_AsetKeyPressed
 
     private void LimitasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LimitasiKeyPressed
-        //Valid.pindah2(evt,Permasalahan,Tindakan);
+        Valid.pindah2(evt,Aset,DiagnosaOkupasi);
     }//GEN-LAST:event_LimitasiKeyPressed
 
     private void PemeriksaanOkupasiTerapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanOkupasiTerapiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KeteranganSpesialisasi,Aset);
     }//GEN-LAST:event_PemeriksaanOkupasiTerapiKeyPressed
+
+    private void KeteranganSpesialisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSpesialisasiKeyPressed
+        Valid.pindah(evt,Spesialisasi,PemeriksaanOkupasiTerapi);
+    }//GEN-LAST:event_KeteranganSpesialisasiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1601,18 +1605,22 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penatalaksanaan_terapi_okupasi.tanggal,"+
-                        "penatalaksanaan_terapi_okupasi.nip,penatalaksanaan_terapi_okupasi.anamnesis,penatalaksanaan_terapi_okupasi.dikirim_dari,penatalaksanaan_terapi_okupasi.tujuan_pemeriksaan,penatalaksanaan_terapi_okupasi.ket_anamnesis,penatalaksanaan_terapi_okupasi.rupa,penatalaksanaan_terapi_okupasi.bentuk_tubuh,penatalaksanaan_terapi_okupasi.tindakan,"+
-                        "penatalaksanaan_terapi_okupasi.pakaian,penatalaksanaan_terapi_okupasi.ekspresi,penatalaksanaan_terapi_okupasi.berbicara,penatalaksanaan_terapi_okupasi.penggunaan_kata,penatalaksanaan_terapi_okupasi.ciri_menyolok,penatalaksanaan_terapi_okupasi.hasil_psikotes,penatalaksanaan_terapi_okupasi.kepribadian,penatalaksanaan_terapi_okupasi.psikodinamika,penatalaksanaan_terapi_okupasi.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "penatalaksanaan_terapi_okupasi.nip,penatalaksanaan_terapi_okupasi.keluhan_utama,penatalaksanaan_terapi_okupasi.rpd,penatalaksanaan_terapi_okupasi.rps,"+
+                        "penatalaksanaan_terapi_okupasi.anamnesa_general,penatalaksanaan_terapi_okupasi.tanda_vital,penatalaksanaan_terapi_okupasi.pemeriksaan_penunjang,"+
+                        "penatalaksanaan_terapi_okupasi.spesialisasi,penatalaksanaan_terapi_okupasi.keterangan_spesialisasi,penatalaksanaan_terapi_okupasi.pemeriksaan_okupasi_terapi,"+
+                        "penatalaksanaan_terapi_okupasi.aset,penatalaksanaan_terapi_okupasi.limitasi,penatalaksanaan_terapi_okupasi.diagnosa_terapi_okupasi,penatalaksanaan_terapi_okupasi.rencana_intervensi,"+
+                        "petugas.nama from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penatalaksanaan_terapi_okupasi on reg_periksa.no_rawat=penatalaksanaan_terapi_okupasi.no_rawat "+
                         "inner join petugas on penatalaksanaan_terapi_okupasi.nip=petugas.nip where "+
                         "penatalaksanaan_terapi_okupasi.tanggal between ? and ? order by penatalaksanaan_terapi_okupasi.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penatalaksanaan_terapi_okupasi.tanggal,"+
-                        "penatalaksanaan_terapi_okupasi.nip,penatalaksanaan_terapi_okupasi.anamnesis,penatalaksanaan_terapi_okupasi.dikirim_dari,penatalaksanaan_terapi_okupasi.tujuan_pemeriksaan,penatalaksanaan_terapi_okupasi.ket_anamnesis,penatalaksanaan_terapi_okupasi.rupa,penatalaksanaan_terapi_okupasi.bentuk_tubuh,penatalaksanaan_terapi_okupasi.tindakan,"+
-                        "penatalaksanaan_terapi_okupasi.pakaian,penatalaksanaan_terapi_okupasi.ekspresi,penatalaksanaan_terapi_okupasi.berbicara,penatalaksanaan_terapi_okupasi.penggunaan_kata,penatalaksanaan_terapi_okupasi.ciri_menyolok,penatalaksanaan_terapi_okupasi.hasil_psikotes,penatalaksanaan_terapi_okupasi.kepribadian,penatalaksanaan_terapi_okupasi.psikodinamika,penatalaksanaan_terapi_okupasi.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "penatalaksanaan_terapi_okupasi.nip,penatalaksanaan_terapi_okupasi.keluhan_utama,penatalaksanaan_terapi_okupasi.rpd,penatalaksanaan_terapi_okupasi.rps,"+
+                        "penatalaksanaan_terapi_okupasi.anamnesa_general,penatalaksanaan_terapi_okupasi.tanda_vital,penatalaksanaan_terapi_okupasi.pemeriksaan_penunjang,"+
+                        "penatalaksanaan_terapi_okupasi.spesialisasi,penatalaksanaan_terapi_okupasi.keterangan_spesialisasi,penatalaksanaan_terapi_okupasi.pemeriksaan_okupasi_terapi,"+
+                        "penatalaksanaan_terapi_okupasi.aset,penatalaksanaan_terapi_okupasi.limitasi,penatalaksanaan_terapi_okupasi.diagnosa_terapi_okupasi,penatalaksanaan_terapi_okupasi.rencana_intervensi,"+
+                        "petugas.nama from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penatalaksanaan_terapi_okupasi on reg_periksa.no_rawat=penatalaksanaan_terapi_okupasi.no_rawat "+
                         "inner join petugas on penatalaksanaan_terapi_okupasi.nip=petugas.nip where "+
                         "penatalaksanaan_terapi_okupasi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
@@ -1636,8 +1644,8 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("anamnesis"),rs.getString("ket_anamnesis"),rs.getString("rupa"),rs.getString("bentuk_tubuh"),rs.getString("tindakan"),
-                        rs.getString("pakaian"),rs.getString("ekspresi"),rs.getString("berbicara"),rs.getString("penggunaan_kata"),rs.getString("ciri_menyolok"),rs.getString("hasil_psikotes"),rs.getString("kepribadian"),rs.getString("psikodinamika"),rs.getString("kesimpulan_psikolog")                     
+                        rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rps"),rs.getString("anamnesa_general"),rs.getString("tanda_vital"),rs.getString("pemeriksaan_penunjang"),rs.getString("spesialisasi"),
+                        rs.getString("keterangan_spesialisasi"),rs.getString("pemeriksaan_okupasi_terapi"),rs.getString("aset"),rs.getString("limitasi"),rs.getString("diagnosa_terapi_okupasi"),rs.getString("rencana_intervensi")                     
                     });
                 }
             } catch (Exception e) {
@@ -1658,25 +1666,22 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        /*Informasi.setSelectedIndex(0);
-        Dikirimdari.setSelectedIndex(0);
-        TujuanPemeriksaan.setSelectedIndex(0);
-        KetAlloAuto.setText("");
-        Rupa.setSelectedIndex(0);
-        Bentuktubuh.setSelectedIndex(0);
-        Tindakan.setSelectedIndex(0);
-        Pakaian.setSelectedIndex(0);
-        Ekspresi.setSelectedIndex(0);
-        Berbicara.setSelectedIndex(0);
-        Penggunaankata.setSelectedIndex(0);
-        Ciriyangmenyolok.setText("");
-        Hasilpsikotes.setText("");
-        Kepribadian.setText("");
-        Psikodinamika.setText("");
-        Kesimpulanpsikolog.setText("");
+        KeluhanUtama.setText("");
+        RPS.setText("");
+        AnamnesaUmum.setText("");
+        RPD.setText("");
+        TandaVital.setText("");
+        PemeriksaanPenunjang.setText("");
+        Spesialisasi.setSelectedIndex(0);
+        KeteranganSpesialisasi.setText("");
+        PemeriksaanOkupasiTerapi.setText("");
+        Aset.setText("");
+        Limitasi.setText("");
+        DiagnosaOkupasi.setText("");
+        RencanaIntervensi.setText("");
         TglAsuhan.setDate(new Date());
         TabRawat.setSelectedIndex(0);
-        TujuanPemeriksaan.requestFocus();*/
+        KeluhanUtama.requestFocus();
     } 
 
     private void getData() {
@@ -1778,10 +1783,9 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penatalaksanaan_terapi_okupasi","no_rawat=?","no_rawat=?,tanggal=?,nip=?,anamnesis=?,dikirim_dari=?,tujuan_pemeriksaan=?,ket_anamnesis=?,rupa=?,bentuk_tubuh=?,tindakan=?,pakaian=?,ekspresi=?,berbicara=?,penggunaan_kata=?,ciri_menyolok=?,hasil_psikotes=?,kepribadian=?,psikodinamika=?,kesimpulan_psikolog=?",20,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),Informasi.getSelectedItem().toString(),Dikirimdari.getSelectedItem().toString(),TujuanPemeriksaan.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),
-                Bentuktubuh.getSelectedItem().toString(),Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),
-                Kesimpulanpsikolog.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("penatalaksanaan_terapi_okupasi","no_rawat=?","no_rawat=?,tanggal=?,nip=?,keluhan_utama=?,rpd=?,rps=?,anamnesa_general=?,tanda_vital=?,pemeriksaan_penunjang=?,spesialisasi=?,keterangan_spesialisasi=?,pemeriksaan_okupasi_terapi=?,aset=?,limitasi=?,diagnosa_terapi_okupasi=?,rencana_intervensi=?",17,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),KeluhanUtama.getText(),RPD.getText(),RPS.getText(),AnamnesaUmum.getText(),TandaVital.getText(),PemeriksaanPenunjang.getText(),Spesialisasi.getSelectedItem().toString(),
+                KeteranganSpesialisasi.getText(),PemeriksaanOkupasiTerapi.getText(),Aset.getText(),Limitasi.getText(),DiagnosaOkupasi.getText(),RencanaIntervensi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1791,24 +1795,21 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                 tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                 tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                 tbObat.setValueAt(Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),7);
-                tbObat.setValueAt(Dikirimdari.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-                tbObat.setValueAt(TujuanPemeriksaan.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-                tbObat.setValueAt(Informasi.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-                tbObat.setValueAt(KetAlloAuto.getText(),tbObat.getSelectedRow(),11);
-                tbObat.setValueAt(Rupa.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-                tbObat.setValueAt(Bentuktubuh.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-                tbObat.setValueAt(Tindakan.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-                tbObat.setValueAt(Pakaian.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-                tbObat.setValueAt(Ekspresi.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-                tbObat.setValueAt(Berbicara.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-                tbObat.setValueAt(Penggunaankata.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-                tbObat.setValueAt(Ciriyangmenyolok.getText(),tbObat.getSelectedRow(),19);
-                tbObat.setValueAt(Hasilpsikotes.getText(),tbObat.getSelectedRow(),20);
-                tbObat.setValueAt(Kepribadian.getText(),tbObat.getSelectedRow(),21);
-                tbObat.setValueAt(Psikodinamika.getText(),tbObat.getSelectedRow(),22);
-                tbObat.setValueAt(Kesimpulanpsikolog.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(KeluhanUtama.getText(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(RPD.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(RPS.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(AnamnesaUmum.getText(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(TandaVital.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(PemeriksaanPenunjang.getText(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(Spesialisasi.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(KeteranganSpesialisasi.getText(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(PemeriksaanOkupasiTerapi.getText(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(Aset.getText(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(Limitasi.getText(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(DiagnosaOkupasi.getText(),tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(RencanaIntervensi.getText(),tbObat.getSelectedRow(),20);
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
-        }*/
+        }
     }
 }

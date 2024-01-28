@@ -517,11 +517,11 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="5">
-                                <StringItem index="0" value="Pediatri"/>
-                                <StringItem index="1" value="Dewasa"/>
-                                <StringItem index="2" value="Geriatri"/>
-                                <StringItem index="3" value="Psikososial"/>
-                                <StringItem index="4" value="-"/>
+                                <StringItem index="0" value="-"/>
+                                <StringItem index="1" value="Pediatri"/>
+                                <StringItem index="2" value="Dewasa"/>
+                                <StringItem index="3" value="Geriatri"/>
+                                <StringItem index="4" value="Psikososial"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Spesialisasi" noResource="true"/>
@@ -1166,12 +1166,14 @@
                         </Component>
                         <Component class="widget.TextBox" name="KeteranganSpesialisasi">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="KeteranganSpesialisasi" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[80, 23]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KeteranganSpesialisasiKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="226" y="400" width="400" height="23"/>
