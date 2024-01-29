@@ -70,8 +70,8 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new String[]{
                 "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Dokter Penanggung Jawab","No.KTP Praktisi",
                 "ID Encounter","KFA Code","KFA System","Kode Barang","KFA Display","Form Code","Form System","Form Display",
-                "Route Code","Route System","Route Display","No.Batch","No.Faktur","Tanggal & Jam Beri","Jumlah","ID Medication",
-                "Aturan Pakai","No.Resep"
+                "Route Code","Route System","Route Display","Denominator Code","Denominator System","Tanggal & Jam Beri","Jumlah",
+                "ID Medication","Aturan Pakai","No.Resep","ID Medication Request"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -86,7 +86,7 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
+                 java.lang.String.class,java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -99,7 +99,7 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 27; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -111,57 +111,6 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==4){
                 column.setPreferredWidth(150);
-            }else if(i==5){
-                column.setPreferredWidth(110);
-            }else if(i==6){
-                column.setPreferredWidth(63);
-            }else if(i==7){
-                column.setPreferredWidth(63);
-            }else if(i==8){
-                column.setPreferredWidth(210);
-            }else if(i==9){
-                column.setPreferredWidth(80);
-            }else if(i==10){
-                column.setPreferredWidth(170);
-            }else if(i==11){
-                column.setPreferredWidth(90);
-            }else if(i==12){
-                column.setPreferredWidth(170);
-            }else if(i==13){
-                column.setPreferredWidth(100);
-            }else if(i==14){
-                column.setPreferredWidth(170);
-            }else if(i==15){
-                column.setPreferredWidth(170);
-            }else if(i==16){
-                column.setPreferredWidth(85);
-            }else if(i==17){
-                column.setPreferredWidth(170);
-            }else if(i==18){
-                column.setPreferredWidth(85);
-            }else if(i==19){
-                column.setPreferredWidth(170);
-            }else if(i==20){
-                column.setPreferredWidth(70);
-            }else if(i==21){
-                column.setPreferredWidth(150);
-            }else if(i==22){
-                column.setPreferredWidth(50);
-            }else if(i==23){
-                column.setPreferredWidth(50);
-            }else if(i==24){
-                column.setPreferredWidth(210);
-            }else if(i==25){
-                column.setPreferredWidth(150);
-            }else if(i==26){
-                column.setPreferredWidth(150);
-            }else if(i==27){
-                column.setPreferredWidth(105);
-            }else if(i==28){
-                column.setPreferredWidth(210);
-            }else if(i==29){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -880,23 +829,11 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
         try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,reg_periksa.status_lanjut,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
-                   "satu_sehat_mapping_obat.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,"+
-                   "satu_sehat_mapping_obat.form_display,satu_sehat_mapping_obat.numerator_code,satu_sehat_mapping_obat.numerator_system,satu_sehat_mapping_obat.denominator_code,"+
-                   "satu_sehat_mapping_obat.denominator_system,detail_pemberian_obat.no_batch,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                   "detail_pemberian_obat.jml,databarang.kapasitas,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,poliklinik.nm_poli,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
-                   "ifnull(satu_sehat_medication.id_medication,'') as id_medication,detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
-                   "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=detail_pemberian_obat.kode_brng "+
-                   "inner join databarang on databarang.kode_brng=detail_pemberian_obat.kode_brng "+
-                   "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=reg_periksa.kd_poli "+
-                   "inner join poliklinik on poliklinik.kd_poli=satu_sehat_mapping_lokasi_ralan.kd_poli "+
-                   "inner join pegawai on reg_periksa.kd_dokter=pegawai.nik "+
-                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
-                   "left join satu_sehat_medication on satu_sehat_medication.no_rawat=detail_pemberian_obat.no_rawat and satu_sehat_medication.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
-                   "satu_sehat_medication.jam=detail_pemberian_obat.jam and satu_sehat_medication.kode_brng=detail_pemberian_obat.kode_brng and "+
-                   "satu_sehat_medication.no_batch=detail_pemberian_obat.no_batch and satu_sehat_medication.no_faktur=detail_pemberian_obat.no_faktur "+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "resep_dokter.kode_brng,satu_sehat_mapping_obat.obat_display,form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
+                   "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
+                   "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter.jml,satu_sehat_medication.id_medication,"+
+                   "resep_dokter.aturan_pakai,resep_dokter.no_resep,ifnull(satu_sehat_medication.id_medication,'') as id_medication from  "+
                    "where detail_pemberian_obat.no_batch<>'' and nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ? or "+
@@ -1000,8 +937,8 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_medication());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_medication());
+        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_medicationrequest());
+        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_medicationrequest());
     }
     
     public JTable getTable(){

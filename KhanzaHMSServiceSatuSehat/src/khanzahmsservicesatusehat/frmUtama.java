@@ -258,7 +258,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                                 json = "{" +
                                             "\"resourceType\": \"Encounter\"," +
-                                            "\"status\": \"finished\"," +
+                                            "\"status\": \"arrived\"," +
                                             "\"class\": {" +
                                                 "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
                                                 "\"code\": \""+(rs.getString("status_lanjut").equals("Ralan")?"AMB":"IMP")+"\"," +
@@ -300,7 +300,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "]," +
                                             "\"statusHistory\": [" +
                                                 "{" +
-                                                    "\"status\": \"finished\"," +
+                                                    "\"status\": \"arrived\"," +
                                                     "\"period\": {" +
                                                         "\"start\": \""+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+"\"," +
                                                         "\"end\": \""+rs.getString("pulang")+"\"" +
@@ -371,7 +371,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                                 json = "{" +
                                             "\"resourceType\": \"Encounter\"," +
-                                            "\"status\": \"finished\"," +
+                                            "\"status\": \"arrived\"," +
                                             "\"class\": {" +
                                                 "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
                                                 "\"code\": \""+(rs.getString("status_lanjut").equals("Ralan")?"AMB":"IMP")+"\"," +
@@ -413,7 +413,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "]," +
                                             "\"statusHistory\": [" +
                                                 "{" +
-                                                    "\"status\": \"finished\"," +
+                                                    "\"status\": \"arrived\"," +
                                                     "\"period\": {" +
                                                         "\"start\": \""+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+"\"," +
                                                         "\"end\": \""+rs.getString("pulang")+"\"" +

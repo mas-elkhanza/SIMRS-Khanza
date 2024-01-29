@@ -54,7 +54,6 @@ public final class SatuSehatKirimMedication extends javax.swing.JDialog {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
-    private SatuSehatCekNIK cekViaSatuSehat=new SatuSehatCekNIK();   
     private StringBuilder htmlContent;   
     
     /** Creates new form DlgKamar

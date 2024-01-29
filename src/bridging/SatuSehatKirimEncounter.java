@@ -580,7 +580,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
                                     "\"resourceType\": \"Encounter\"," +
-                                    "\"status\": \"finished\"," +
+                                    "\"status\": \"arrived\"," +
                                     "\"class\": {" +
                                         "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
                                         "\"code\": \""+(tbObat.getValueAt(i,13).toString().equals("Ralan")?"AMB":"IMP")+"\"," +
@@ -622,7 +622,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
                                     "]," +
                                     "\"statusHistory\": [" +
                                         "{" +
-                                            "\"status\": \"finished\"," +
+                                            "\"status\": \"arrived\"," +
                                             "\"period\": {" +
                                                 "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"," +
                                                 "\"end\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
@@ -694,7 +694,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
                                             "\"value\": \""+tbObat.getValueAt(i,2).toString()+"\"" +
                                         "}" +
                                     "]," +
-                                    "\"status\": \"finished\"," +
+                                    "\"status\": \"arrived\"," +
                                     "\"class\": {" +
                                         "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
                                         "\"code\": \""+(tbObat.getValueAt(i,11).toString().equals("Ralan")?"AMB":"IMP")+"\"," +
@@ -736,7 +736,7 @@ public final class SatuSehatKirimEncounter extends javax.swing.JDialog {
                                     "]," +
                                     "\"statusHistory\": [" +
                                         "{" +
-                                            "\"status\": \"finished\"," +
+                                            "\"status\": \"arrived\"," +
                                             "\"period\": {" +
                                                 "\"start\": \""+tbObat.getValueAt(i,1).toString()+"\"," +
                                                 "\"end\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
