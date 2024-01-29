@@ -245,7 +245,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         label14 = new widget.Label();
         KdPetugas = new widget.TextBox();
         NmPetugas = new widget.TextBox();
-        BtnDokter = new widget.Button();
+        BtnPetugas = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         Jk = new widget.TextBox();
@@ -625,23 +625,23 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         FormInput.add(NmPetugas);
         NmPetugas.setBounds(206, 40, 332, 23);
 
-        BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnDokter.setMnemonic('2');
-        BtnDokter.setToolTipText("Alt+2");
-        BtnDokter.setName("BtnDokter"); // NOI18N
-        BtnDokter.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnDokter.addActionListener(new java.awt.event.ActionListener() {
+        BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPetugas.setMnemonic('2');
+        BtnPetugas.setToolTipText("Alt+2");
+        BtnPetugas.setName("BtnPetugas"); // NOI18N
+        BtnPetugas.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDokterActionPerformed(evt);
+                BtnPetugasActionPerformed(evt);
             }
         });
-        BtnDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDokterKeyPressed(evt);
+                BtnPetugasKeyPressed(evt);
             }
         });
-        FormInput.add(BtnDokter);
-        BtnDokter.setBounds(541, 40, 28, 23);
+        FormInput.add(BtnPetugas);
+        BtnPetugas.setBounds(541, 40, 28, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -1069,7 +1069,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
+            Valid.textKosong(BtnPetugas,"Petugas");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(AnamnesaUmum.getText().trim().equals("")){
@@ -1146,7 +1146,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
+            Valid.textKosong(BtnPetugas,"Petugas");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(AnamnesaUmum.getText().trim().equals("")){
@@ -1204,30 +1204,27 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                 htmlContent = new StringBuilder();
                 htmlContent.append(                             
                     "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Dikirim Dari</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='62px'><b>Tujuan Pemeriksaan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Informasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='165px'><b>Keterangan Informasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='71px'><b>Rupa</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='79px'><b>Bentuk Tubuh</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='103px'><b>Tindakan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='99px'><b>Pakaian</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Penyampaian/Ekspresi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='196px'><b>Berbicara</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='185px'><b>Penggunaan Kata</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ciri Yang Menyolok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Hasil Psikotes</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kepribadian</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Psikodinamika</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kesimpulan Psikolog</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Utama</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Sekarang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Dahulu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesa General</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanda Vital</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksan Penunjang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Spesialisasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Spesialisasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan Okupasi Terapi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Aset</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Limitasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosis Terapi Okupasional</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rencana Intervensi Terapi Okupasional</b></td>"+
                     "</tr>"
                 );
                 
@@ -1255,9 +1252,6 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
-                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                         "</tr>");
                 }
                 
@@ -1284,7 +1278,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataPenilaianPsikolog.html");            
+                File f = new File("DataPenatalaksanaanTerapiOkupasi.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1294,7 +1288,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOG<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENATALAKSANAAN TERAPI OKUPASI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1432,24 +1426,24 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
         }else{
-            Valid.pindah(evt,TCari,BtnDokter);
+            Valid.pindah(evt,TCari,BtnPetugas);
         }
     }//GEN-LAST:event_TNoRwKeyPressed
 
-    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
+    private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
-    }//GEN-LAST:event_BtnDokterActionPerformed
+    }//GEN-LAST:event_BtnPetugasActionPerformed
 
-    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
+    private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
         Valid.pindah(evt,RencanaIntervensi,TglAsuhan);
-    }//GEN-LAST:event_BtnDokterKeyPressed
+    }//GEN-LAST:event_BtnPetugasKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
-        //Valid.pindah(evt,BtnDokter,Informasi);
+        //Valid.pindah(evt,BtnPetugas,Informasi);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
@@ -1510,10 +1504,10 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
-    private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Tanggal DTPCari1;
@@ -1686,28 +1680,25 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            /*TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            Dikirimdari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            TujuanPemeriksaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Informasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            KetAlloAuto.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Rupa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Bentuktubuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Tindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Pakaian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Ekspresi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Berbicara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Penggunaankata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Ciriyangmenyolok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Hasilpsikotes.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Kepribadian.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            Psikodinamika.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Kesimpulanpsikolog.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());*/
+            KeluhanUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            RPD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            RPS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            AnamnesaUmum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            TandaVital.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            PemeriksaanPenunjang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Spesialisasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            KeteranganSpesialisasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            PemeriksaanOkupasiTerapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Aset.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Limitasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            DiagnosaOkupasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            RencanaIntervensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
 
@@ -1756,7 +1747,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         BtnEdit.setEnabled(akses.getpenatalaksanaan_terapi_okupasi());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
-            BtnDokter.setEnabled(false);
+            BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
             NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
             if(NmPetugas.getText().equals("")){

@@ -280,6 +280,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanKeperawatanRalanGeriatri = new widget.CekBox();
         chkAsuhanFisioterapi = new widget.CekBox();
         chkAsuhanTerapiWicara = new widget.CekBox();
+        chkPenatalaksanaanTerapiOkupasi = new widget.CekBox();
         chkAsuhanPsikolog = new widget.CekBox();
         chkAsuhanKeperawatanRanap = new widget.CekBox();
         chkAsuhanKeperawatanRanapKandungan = new widget.CekBox();
@@ -641,7 +642,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2925));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2950));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -752,6 +753,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanTerapiWicara.setOpaque(false);
         chkAsuhanTerapiWicara.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanTerapiWicara);
+
+        chkPenatalaksanaanTerapiOkupasi.setSelected(true);
+        chkPenatalaksanaanTerapiOkupasi.setText("Tatalaksana Terapi Okupasi");
+        chkPenatalaksanaanTerapiOkupasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPenatalaksanaanTerapiOkupasi.setName("chkPenatalaksanaanTerapiOkupasi"); // NOI18N
+        chkPenatalaksanaanTerapiOkupasi.setOpaque(false);
+        chkPenatalaksanaanTerapiOkupasi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkPenatalaksanaanTerapiOkupasi);
 
         chkAsuhanPsikolog.setSelected(true);
         chkAsuhanPsikolog.setText("Penilaian Psikolog");
@@ -2188,6 +2197,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSGUrologi.setSelected(true);
             chkHasilPemeriksaanUSGGynecologi.setSelected(true);
             chkHasilPemeriksaanEKG.setSelected(true);
+            chkPenatalaksanaanTerapiOkupasi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2316,6 +2326,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkHasilPemeriksaanUSGUrologi.setSelected(false);
             chkHasilPemeriksaanUSGGynecologi.setSelected(false);
             chkHasilPemeriksaanEKG.setSelected(false);
+            chkPenatalaksanaanTerapiOkupasi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2483,6 +2494,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkPemeriksaanRadiologi;
     private widget.CekBox chkPemeriksaanRalan;
     private widget.CekBox chkPemeriksaanRanap;
+    private widget.CekBox chkPenatalaksanaanTerapiOkupasi;
     private widget.CekBox chkPenggunaanKamar;
     private widget.CekBox chkPenggunaanObatOperasi;
     private widget.CekBox chkPengkajianRestrain;
@@ -2941,6 +2953,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanFisioterapi(rs.getString("no_rawat"));
                     //menampilkan asuhan terapi wicara
                     menampilkanPenilaianTerapiWicara(rs.getString("no_rawat"));
+                    //menampilkan penatalaksanaan terapi okupasi
+                    menampilkanPenatalaksanaanTerapiOkupasi(rs.getString("no_rawat"));
                     //menampilkan asuhan psikolog
                     menampilkanAsuhanPsikolog(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis IGD
@@ -23104,6 +23118,122 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Hasil Pemeriksaan EKG : "+e);
+        }
+    }
+    
+    private void menampilkanPenatalaksanaanTerapiOkupasi(String norawat) {
+        try {
+            if(chkPenatalaksanaanTerapiOkupasi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penatalaksanaan_terapi_okupasi.tanggal,penatalaksanaan_terapi_okupasi.nip,penatalaksanaan_terapi_okupasi.keluhan_utama,penatalaksanaan_terapi_okupasi.rpd,"+
+                            "penatalaksanaan_terapi_okupasi.rps,penatalaksanaan_terapi_okupasi.anamnesa_general,penatalaksanaan_terapi_okupasi.tanda_vital,penatalaksanaan_terapi_okupasi.pemeriksaan_penunjang,"+
+                            "penatalaksanaan_terapi_okupasi.spesialisasi,penatalaksanaan_terapi_okupasi.keterangan_spesialisasi,penatalaksanaan_terapi_okupasi.pemeriksaan_okupasi_terapi,"+
+                            "penatalaksanaan_terapi_okupasi.aset,penatalaksanaan_terapi_okupasi.limitasi,penatalaksanaan_terapi_okupasi.diagnosa_terapi_okupasi,penatalaksanaan_terapi_okupasi.rencana_intervensi,"+
+                            "petugas.nama from penatalaksanaan_terapi_okupasi inner join petugas on penatalaksanaan_terapi_okupasi.nip=petugas.nip "+
+                            "where penatalaksanaan_terapi_okupasi.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penatalaksanaan Terapi Okupasi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='70%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. RIWAYAT KESEHATAN "+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Keluhan Utama : "+rs2.getString("keluhan_utama").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Penyakit Sekarang : "+rs2.getString("rps").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Penyakit Dahulu : "+rs2.getString("rpd").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Anamnesa General : "+rs2.getString("anamnesa_general").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. RIWAYAT PEMERIKSAAN "+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td width='100%' colspan='2'>Tanda Vital : "+rs2.getString("tanda_vital").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%' colspan='2'>Pemeriksan Penunjang : "+rs2.getString("pemeriksaan_penunjang").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%' colspan='2'>Spesialisasi : "+rs2.getString("spesialisasi")+(rs2.getString("keterangan_spesialisasi").equals("")?"":", "+rs2.getString("keterangan_spesialisasi"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='100%' colspan='2'>Pemeriksaan Okupasi Terapi : "+rs2.getString("pemeriksaan_okupasi_terapi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='50%' align='center'>Aset<br>"+rs2.getString("aset").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                               "<td width='50%' align='center'>Limitasi<br>"+rs2.getString("limitasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. DIAGNOSIS TERAPI OKUPASIONAL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("diagnosa_terapi_okupasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "IV. RENCANA INTERVENSI TERAPI OKUPASIONAL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("rencana_intervensi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );   
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Penatalaksanaan Terapi Okupasi : "+e);
         }
     }
 }

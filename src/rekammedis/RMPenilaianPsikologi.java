@@ -1078,7 +1078,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
+            Valid.textKosong(BtnDokter,"Petugas");
         }else if(Ciriyangmenyolok.getText().trim().equals("")){
             Valid.textKosong(Ciriyangmenyolok,"CIRI YANG MENYOLOK");
         }else if(Hasilpsikotes.getText().trim().equals("")){
@@ -1155,7 +1155,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
+            Valid.textKosong(BtnDokter,"Petugas");
         }else if(Ciriyangmenyolok.getText().trim().equals("")){
             Valid.textKosong(Ciriyangmenyolok,"CIRI YANG MENYOLOK");
         }else if(Hasilpsikotes.getText().trim().equals("")){
@@ -1217,7 +1217,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Dikirim Dari</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center' width='62px'><b>Tujuan Pemeriksaan</b></td>"+
