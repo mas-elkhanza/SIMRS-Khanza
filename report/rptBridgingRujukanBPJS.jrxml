@@ -165,7 +165,7 @@ where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipeRujukan}.replaceAll("0.","Rujukan").replaceAll("1.","Rujukan").replaceAll("2. ","")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipeRujukan}.replaceAll("0.","Rujukan").replaceAll("1.","Rujukan").replaceAll("2.","")]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

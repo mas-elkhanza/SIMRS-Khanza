@@ -111,6 +111,52 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==4){
                 column.setPreferredWidth(150);
+            }else if(i==5){
+                column.setPreferredWidth(110);
+            }else if(i==6){
+                column.setPreferredWidth(150);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(210);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(200);
+            }else if(i==11){
+                column.setPreferredWidth(85);
+            }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(80);
+            }else if(i==14){
+                column.setPreferredWidth(200);
+            }else if(i==15){
+                column.setPreferredWidth(150);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(200);
+            }else if(i==18){
+                column.setPreferredWidth(150);
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(115);
+            }else if(i==22){
+                column.setPreferredWidth(45);
+            }else if(i==23){
+                column.setPreferredWidth(210);
+            }else if(i==24){
+                column.setPreferredWidth(160);
+            }else if(i==25){
+                column.setPreferredWidth(110);
+            }else if(i==26){
+                column.setPreferredWidth(210);
+            }else if(i==27){
+                column.setPreferredWidth(80);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -830,14 +876,23 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
                    "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
-                   "resep_dokter.kode_brng,satu_sehat_mapping_obat.obat_display,form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
+                   "resep_dokter.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
                    "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
                    "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter.jml,satu_sehat_medication.id_medication,"+
-                   "resep_dokter.aturan_pakai,resep_dokter.no_resep,ifnull(satu_sehat_medication.id_medication,'') as id_medication from  "+
-                   "where detail_pemberian_obat.no_batch<>'' and nota_jalan.tanggal between ? and ? "+
+                   "resep_dokter.aturan_pakai,resep_dokter.no_resep,ifnull(satu_sehat_medicationrequest.id_medicationrequest,'') as id_medicationrequest "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
+                   "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join resep_dokter on resep_dokter.no_resep=resep_obat.no_resep "+
+                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=resep_dokter.kode_brng "+
+                   "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "left join satu_sehat_medicationrequest on satu_sehat_medicationrequest.no_resep=resep_dokter.no_resep and satu_sehat_medicationrequest.kode_brng=resep_dokter.kode_brng "+
+                   "where nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ? or "+
-                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ?) ")+
+                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -848,18 +903,15 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        false,rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00",rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("stts"),rs.getString("status_lanjut"),rs.getString("id_encounter"),rs.getString("obat_code"),rs.getString("obat_system"),
-                        rs.getString("kode_brng"),rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("numerator_code"),
-                        rs.getString("numerator_system"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("no_batch"),rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00",
-                        rs.getString("jml"),rs.getString("kapasitas"),rs.getString("id_lokasi_satusehat"),rs.getString("nm_poli"),rs.getString("nama"),rs.getString("ktppraktisi"),
-                        rs.getString("id_medication"),rs.getString("no_faktur")
+                        false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),
+                        rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("id_encounter"),rs.getString("obat_code"),rs.getString("obat_system"),rs.getString("kode_brng"),
+                        rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("route_code"),rs.getString("route_system"),
+                        rs.getString("route_display"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
+                        rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan_pakai"),rs.getString("no_resep"),rs.getString("id_medicationrequest"),""
                     });
                 }
             } catch (Exception e) {
@@ -875,27 +927,24 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
             
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,reg_periksa.status_lanjut,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
-                   "satu_sehat_mapping_obat.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,"+
-                   "satu_sehat_mapping_obat.form_display,satu_sehat_mapping_obat.numerator_code,satu_sehat_mapping_obat.numerator_system,satu_sehat_mapping_obat.denominator_code,"+
-                   "satu_sehat_mapping_obat.denominator_system,detail_pemberian_obat.no_batch,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                   "detail_pemberian_obat.jml,databarang.kapasitas,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,poliklinik.nm_poli,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
-                   "ifnull(satu_sehat_medication.id_medication,'') as id_medication,detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "resep_dokter.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
+                   "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
+                   "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter.jml,satu_sehat_medication.id_medication,"+
+                   "resep_dokter.aturan_pakai,resep_dokter.no_resep,ifnull(satu_sehat_medicationrequest.id_medicationrequest,'') as id_medicationrequest "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
+                   "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
-                   "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=detail_pemberian_obat.kode_brng "+
-                   "inner join databarang on databarang.kode_brng=detail_pemberian_obat.kode_brng "+
-                   "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=reg_periksa.kd_poli "+
-                   "inner join poliklinik on poliklinik.kd_poli=satu_sehat_mapping_lokasi_ralan.kd_poli "+
-                   "inner join pegawai on reg_periksa.kd_dokter=pegawai.nik "+
+                   "inner join resep_dokter on resep_dokter.no_resep=resep_obat.no_resep "+
+                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=resep_dokter.kode_brng "+
+                   "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
                    "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
-                   "left join satu_sehat_medication on satu_sehat_medication.no_rawat=detail_pemberian_obat.no_rawat and satu_sehat_medication.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
-                   "satu_sehat_medication.jam=detail_pemberian_obat.jam and satu_sehat_medication.kode_brng=detail_pemberian_obat.kode_brng and "+
-                   "satu_sehat_medication.no_batch=detail_pemberian_obat.no_batch and satu_sehat_medication.no_faktur=detail_pemberian_obat.no_faktur "+
-                   "where detail_pemberian_obat.no_batch<>'' and nota_inap.tanggal between ? and ? "+
+                   "left join satu_sehat_medicationrequest on satu_sehat_medicationrequest.no_resep=resep_dokter.no_resep and satu_sehat_medicationrequest.kode_brng=resep_dokter.kode_brng "+
+                   "where nota_inap.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ? or "+
-                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ?) ")+
+                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -906,18 +955,15 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        false,rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00",rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("stts"),rs.getString("status_lanjut"),rs.getString("id_encounter"),rs.getString("obat_code"),rs.getString("obat_system"),
-                        rs.getString("kode_brng"),rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("numerator_code"),
-                        rs.getString("numerator_system"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("no_batch"),rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00",
-                        rs.getString("jml"),rs.getString("kapasitas"),rs.getString("id_lokasi_satusehat"),rs.getString("nm_poli"),rs.getString("nama"),rs.getString("ktppraktisi"),
-                        rs.getString("id_medication"),rs.getString("no_faktur")
+                        false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),
+                        rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("id_encounter"),rs.getString("obat_code"),rs.getString("obat_system"),rs.getString("kode_brng"),
+                        rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("route_code"),rs.getString("route_system"),
+                        rs.getString("route_display"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
+                        rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan_pakai"),rs.getString("no_resep"),rs.getString("id_medicationrequest"),""
                     });
                 }
             } catch (Exception e) {
