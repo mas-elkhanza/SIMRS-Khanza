@@ -212,7 +212,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenatalaksanaanTerapiOkupasi = new javax.swing.JMenuItem();
         KetLokalis = new widget.TextArea();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -308,19 +308,19 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianMedis.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Psikolog");
-        MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
+        MnPenatalaksanaanTerapiOkupasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenatalaksanaanTerapiOkupasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenatalaksanaanTerapiOkupasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenatalaksanaanTerapiOkupasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenatalaksanaanTerapiOkupasi.setText("Laporan Penatalaksanaan Terapi Okupasi");
+        MnPenatalaksanaanTerapiOkupasi.setName("MnPenatalaksanaanTerapiOkupasi"); // NOI18N
+        MnPenatalaksanaanTerapiOkupasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPenatalaksanaanTerapiOkupasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianMedisActionPerformed(evt);
+                MnPenatalaksanaanTerapiOkupasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianMedis);
+        jPopupMenu1.add(MnPenatalaksanaanTerapiOkupasi);
 
         KetLokalis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         KetLokalis.setColumns(20);
@@ -515,7 +515,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         jLabel101.setText("II. RIWAYAT PEMERIKSAAN ");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 240, 190, 23);
+        jLabel101.setBounds(10, 230, 190, 23);
 
         scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane13.setName("scrollPane13"); // NOI18N
@@ -573,7 +573,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         scrollPane6.setViewportView(TandaVital);
 
         FormInput.add(scrollPane6);
-        scrollPane6.setBounds(44, 280, 810, 43);
+        scrollPane6.setBounds(44, 270, 810, 43);
 
         Spesialisasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Pediatri", "Dewasa", "Geriatri", "Psikososial" }));
         Spesialisasi.setName("Spesialisasi"); // NOI18N
@@ -583,7 +583,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Spesialisasi);
-        Spesialisasi.setBounds(112, 400, 110, 23);
+        Spesialisasi.setBounds(112, 390, 110, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
@@ -835,13 +835,13 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         jLabel37.setText("Tanda Vital :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(44, 260, 100, 23);
+        jLabel37.setBounds(44, 250, 100, 23);
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel38.setText("Pemeriksan Penunjang :");
         jLabel38.setName("jLabel38"); // NOI18N
         FormInput.add(jLabel38);
-        jLabel38.setBounds(44, 330, 190, 23);
+        jLabel38.setBounds(44, 320, 190, 23);
 
         scrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane8.setName("scrollPane8"); // NOI18N
@@ -858,18 +858,18 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         scrollPane8.setViewportView(PemeriksaanPenunjang);
 
         FormInput.add(scrollPane8);
-        scrollPane8.setBounds(44, 350, 810, 43);
+        scrollPane8.setBounds(44, 340, 810, 43);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel39.setText("Spesialisasi");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(44, 400, 70, 23);
+        jLabel39.setBounds(44, 390, 70, 23);
 
         jLabel35.setText(":");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(0, 400, 108, 23);
+        jLabel35.setBounds(0, 390, 108, 23);
 
         KeteranganSpesialisasi.setName("KeteranganSpesialisasi"); // NOI18N
         KeteranganSpesialisasi.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -879,13 +879,13 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(KeteranganSpesialisasi);
-        KeteranganSpesialisasi.setBounds(226, 400, 400, 23);
+        KeteranganSpesialisasi.setBounds(226, 390, 400, 23);
 
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel40.setText("Pemeriksaan Okupasi Terapi :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(44, 430, 190, 23);
+        jLabel40.setBounds(44, 420, 190, 23);
 
         scrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane9.setName("scrollPane9"); // NOI18N
@@ -902,7 +902,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         scrollPane9.setViewportView(PemeriksaanOkupasiTerapi);
 
         FormInput.add(scrollPane9);
-        scrollPane9.setBounds(44, 450, 810, 53);
+        scrollPane9.setBounds(44, 440, 810, 63);
 
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel41.setText("Limitasi");
@@ -1387,7 +1387,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
         Valid.pindah2(evt,DiagnosaOkupasi,BtnSimpan);
     }//GEN-LAST:event_RencanaIntervensiKeyPressed
 
-    private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
+    private void MnPenatalaksanaanTerapiOkupasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenatalaksanaanTerapiOkupasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1397,22 +1397,20 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            try {
-                param.put("lokalis",getClass().getResource("/picture/semua.png").openStream());
-            } catch (Exception e) {
-            } 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianPsikolog.jasper","report","::[ Laporan Penilaian Psikolog ]::",
+            Valid.MyReportqry("rptCetakPenatalaksanaanTerapiOkupasi.jasper","report","::[ Laporan Penatalaksanaan Terapi Okupasi ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penatalaksanaan_terapi_okupasi.tanggal,"+
-                        "penatalaksanaan_terapi_okupasi.nip,penatalaksanaan_terapi_okupasi.anamnesis,penatalaksanaan_terapi_okupasi.dikirim_dari,penatalaksanaan_terapi_okupasi.tujuan_pemeriksaan,penatalaksanaan_terapi_okupasi.ket_anamnesis,penatalaksanaan_terapi_okupasi.rupa,penatalaksanaan_terapi_okupasi.bentuk_tubuh,penatalaksanaan_terapi_okupasi.tindakan,"+
-                        "penatalaksanaan_terapi_okupasi.pakaian,penatalaksanaan_terapi_okupasi.ekspresi,penatalaksanaan_terapi_okupasi.berbicara,penatalaksanaan_terapi_okupasi.penggunaan_kata,penatalaksanaan_terapi_okupasi.ciri_menyolok,penatalaksanaan_terapi_okupasi.hasil_psikotes,penatalaksanaan_terapi_okupasi.kepribadian,penatalaksanaan_terapi_okupasi.psikodinamika,penatalaksanaan_terapi_okupasi.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "penatalaksanaan_terapi_okupasi.nip,penatalaksanaan_terapi_okupasi.keluhan_utama,penatalaksanaan_terapi_okupasi.rpd,penatalaksanaan_terapi_okupasi.rps,"+
+                        "penatalaksanaan_terapi_okupasi.anamnesa_general,penatalaksanaan_terapi_okupasi.tanda_vital,penatalaksanaan_terapi_okupasi.pemeriksaan_penunjang,"+
+                        "penatalaksanaan_terapi_okupasi.spesialisasi,penatalaksanaan_terapi_okupasi.keterangan_spesialisasi,penatalaksanaan_terapi_okupasi.pemeriksaan_okupasi_terapi,"+
+                        "penatalaksanaan_terapi_okupasi.aset,penatalaksanaan_terapi_okupasi.limitasi,penatalaksanaan_terapi_okupasi.diagnosa_terapi_okupasi,penatalaksanaan_terapi_okupasi.rencana_intervensi,"+
+                        "petugas.nama from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penatalaksanaan_terapi_okupasi on reg_periksa.no_rawat=penatalaksanaan_terapi_okupasi.no_rawat "+
                         "inner join petugas on penatalaksanaan_terapi_okupasi.nip=petugas.nip where penatalaksanaan_terapi_okupasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianMedisActionPerformed
+    }//GEN-LAST:event_MnPenatalaksanaanTerapiOkupasiActionPerformed
 
     private void SpesialisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpesialisasiKeyPressed
         Valid.pindah(evt,PemeriksaanPenunjang,KeteranganSpesialisasi);
@@ -1522,7 +1520,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextArea Limitasi;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private javax.swing.JMenuItem MnPenatalaksanaanTerapiOkupasi;
     private widget.TextBox NmPetugas;
     private widget.TextArea PemeriksaanOkupasiTerapi;
     private widget.TextArea PemeriksaanPenunjang;
