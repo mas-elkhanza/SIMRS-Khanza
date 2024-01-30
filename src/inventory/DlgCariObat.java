@@ -1557,7 +1557,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
                                             }
                                         } catch (Exception e) {
-                                            signa2="2";
+                                            signa2="1";
                                         } 
                                         simpanObatPCare(
                                             nokunjungan,"true",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbDetailObatRacikan.getValueAt(i,1).toString()),
