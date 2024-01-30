@@ -32,7 +32,7 @@ import org.springframework.http.MediaType;
 public class frmUtama extends javax.swing.JFrame {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
-    private String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="",sistole="0",diastole="0";
+    private String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="",sistole="0",diastole="0",signa1="1",signa2="1";
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -225,6 +225,7 @@ public class frmUtama extends javax.swing.JFrame {
                     condition();
                     clinicalimpression();
                     dietgizi();
+                    medicatinrequest();
                 }
             }
         };
@@ -3570,6 +3571,664 @@ public class frmUtama extends javax.swing.JFrame {
                             System.out.println("Result JSON : "+json);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void medicatinrequest(){
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "resep_dokter.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
+                   "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
+                   "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter.jml,satu_sehat_medication.id_medication,"+
+                   "resep_dokter.aturan_pakai,resep_dokter.no_resep,ifnull(satu_sehat_medicationrequest.id_medicationrequest,'') as id_medicationrequest "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
+                   "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join resep_dokter on resep_dokter.no_resep=resep_obat.no_resep "+
+                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=resep_dokter.kode_brng "+
+                   "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "left join satu_sehat_medicationrequest on satu_sehat_medicationrequest.no_resep=resep_dokter.no_resep and satu_sehat_medicationrequest.kode_brng=resep_dokter.kode_brng "+
+                   "where nota_jalan.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                            arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
+                            signa1="1";
+                            try {
+                                if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa1="1";
+                            }
+                            signa2="1";
+                            try {
+                                if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa2="1";
+                            } 
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"MedicationRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("kode_brng")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"completed\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                            "\"code\": \"outpatient\"," +
+                                                            "\"display\": \"Outpatient\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"medicationReference\": {" +
+                                                "\"reference\": \"Medication/"+rs.getString("id_medicationrequest")+"\"," +
+                                                "\"display\": \""+rs.getString("obat_display")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"dosageInstruction\": [" +
+                                                "{" +
+                                                    "\"sequence\": 1," +
+                                                    "\"patientInstruction\": \""+rs.getString("aturan_pakai")+"\"," +
+                                                    "\"timing\": {" +
+                                                        "\"repeat\": {" +
+                                                            "\"frequency\": "+signa2+"," +
+                                                            "\"period\": 1," +
+                                                            "\"periodUnit\": \"d\"" +
+                                                        "}" +
+                                                    "}," +
+                                                    "\"route\": {" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \""+rs.getString("route_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("route_code")+"\"," +
+                                                                "\"display\": \""+rs.getString("route_display")+"\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}," +
+                                                    "\"doseAndRate\": [" +
+                                                        "{" +
+                                                            "\"doseQuantity\": {" +
+                                                                "\"value\": "+signa1+"," +
+                                                                "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                                "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                            "}" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"dispenseRequest\": {" +
+                                                "\"quantity\": {" +
+                                                    "\"value\": "+rs.getString("jml")+"," +
+                                                    "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                    "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                    "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "}";
+                                System.out.println("URL : "+link+"/MedicationRequest");
+                                System.out.println("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                System.out.println("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_medicationrequest","?,?,?","Obat/Alkes",3,new String[]{
+                                        rs.getString("no_resep"),rs.getString("kode_brng"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "resep_dokter.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
+                   "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
+                   "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter.jml,satu_sehat_medication.id_medication,"+
+                   "resep_dokter.aturan_pakai,resep_dokter.no_resep,ifnull(satu_sehat_medicationrequest.id_medicationrequest,'') as id_medicationrequest "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
+                   "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join resep_dokter on resep_dokter.no_resep=resep_obat.no_resep "+
+                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=resep_dokter.kode_brng "+
+                   "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "left join satu_sehat_medicationrequest on satu_sehat_medicationrequest.no_resep=resep_dokter.no_resep and satu_sehat_medicationrequest.kode_brng=resep_dokter.kode_brng "+
+                   "where nota_inap.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                            arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
+                            signa1="1";
+                            try {
+                                if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa1="1";
+                            }
+                            signa2="1";
+                            try {
+                                if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa2="1";
+                            } 
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"MedicationRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("kode_brng")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"completed\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                            "\"code\": \"inpatient\"," +
+                                                            "\"display\": \"Inpatient\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"medicationReference\": {" +
+                                                "\"reference\": \"Medication/"+rs.getString("id_medicationrequest")+"\"," +
+                                                "\"display\": \""+rs.getString("obat_display")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"dosageInstruction\": [" +
+                                                "{" +
+                                                    "\"sequence\": 1," +
+                                                    "\"patientInstruction\": \""+rs.getString("aturan_pakai")+"\"," +
+                                                    "\"timing\": {" +
+                                                        "\"repeat\": {" +
+                                                            "\"frequency\": "+signa2+"," +
+                                                            "\"period\": 1," +
+                                                            "\"periodUnit\": \"d\"" +
+                                                        "}" +
+                                                    "}," +
+                                                    "\"route\": {" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \""+rs.getString("route_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("route_code")+"\"," +
+                                                                "\"display\": \""+rs.getString("route_display")+"\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}," +
+                                                    "\"doseAndRate\": [" +
+                                                        "{" +
+                                                            "\"doseQuantity\": {" +
+                                                                "\"value\": "+signa1+"," +
+                                                                "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                                "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                            "}" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"dispenseRequest\": {" +
+                                                "\"quantity\": {" +
+                                                    "\"value\": "+rs.getString("jml")+"," +
+                                                    "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                    "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                    "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "}";
+                                System.out.println("URL : "+link+"/MedicationRequest");
+                                System.out.println("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                System.out.println("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_medicationrequest","?,?,?","Obat/Alkes",3,new String[]{
+                                        rs.getString("no_resep"),rs.getString("kode_brng"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "resep_dokter_racikan_detail.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
+                   "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
+                   "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter_racikan_detail.jml,satu_sehat_medication.id_medication,"+
+                   "resep_dokter_racikan.aturan_pakai,resep_dokter_racikan.no_resep,ifnull(satu_sehat_medicationrequest_racikan.id_medicationrequest,'') as id_medicationrequest, "+
+                   "resep_dokter_racikan_detail.no_racik from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
+                   "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join resep_dokter_racikan on resep_dokter_racikan.no_resep=resep_obat.no_resep "+
+                   "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.no_resep=resep_dokter_racikan.no_resep and resep_dokter_racikan_detail.no_racik=resep_dokter_racikan.no_racik "+
+                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=resep_dokter_racikan_detail.kode_brng "+
+                   "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "left join satu_sehat_medicationrequest_racikan on satu_sehat_medicationrequest_racikan.no_resep=resep_dokter_racikan_detail.no_resep and "+
+                   "satu_sehat_medicationrequest_racikan.kode_brng=resep_dokter_racikan_detail.kode_brng and satu_sehat_medicationrequest_racikan.no_racik=resep_dokter_racikan_detail.no_racik "+
+                   "where nota_jalan.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                            arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
+                            signa1="1";
+                            try {
+                                if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa1="1";
+                            }
+                            signa2="1";
+                            try {
+                                if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa2="1";
+                            } 
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"MedicationRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"completed\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                            "\"code\": \"outpatient\"," +
+                                                            "\"display\": \"Outpatient\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"medicationReference\": {" +
+                                                "\"reference\": \"Medication/"+rs.getString("id_medicationrequest")+"\"," +
+                                                "\"display\": \""+rs.getString("obat_display")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"dosageInstruction\": [" +
+                                                "{" +
+                                                    "\"sequence\": 1," +
+                                                    "\"patientInstruction\": \""+rs.getString("aturan_pakai")+"\"," +
+                                                    "\"timing\": {" +
+                                                        "\"repeat\": {" +
+                                                            "\"frequency\": "+signa2+"," +
+                                                            "\"period\": 1," +
+                                                            "\"periodUnit\": \"d\"" +
+                                                        "}" +
+                                                    "}," +
+                                                    "\"route\": {" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \""+rs.getString("route_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("route_code")+"\"," +
+                                                                "\"display\": \""+rs.getString("route_display")+"\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}," +
+                                                    "\"doseAndRate\": [" +
+                                                        "{" +
+                                                            "\"doseQuantity\": {" +
+                                                                "\"value\": "+signa1+"," +
+                                                                "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                                "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                            "}" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"dispenseRequest\": {" +
+                                                "\"quantity\": {" +
+                                                    "\"value\": "+rs.getString("jml")+"," +
+                                                    "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                    "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                    "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "}";
+                                System.out.println("URL : "+link+"/MedicationRequest");
+                                System.out.println("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                System.out.println("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_medicationrequest_racikan","?,?,?,?","Obat/Alkes",4,new String[]{
+                                        rs.getString("no_resep"),rs.getString("kode_brng"),rs.getString("no_racik"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "resep_dokter_racikan_detail.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
+                   "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
+                   "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_dokter_racikan_detail.jml,satu_sehat_medication.id_medication,"+
+                   "resep_dokter_racikan.aturan_pakai,resep_dokter_racikan.no_resep,ifnull(satu_sehat_medicationrequest_racikan.id_medicationrequest,'') as id_medicationrequest, "+
+                   "resep_dokter_racikan_detail.no_racik from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
+                   "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join resep_dokter_racikan on resep_dokter_racikan.no_resep=resep_obat.no_resep "+
+                   "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.no_resep=resep_dokter_racikan.no_resep and resep_dokter_racikan_detail.no_racik=resep_dokter_racikan.no_racik "+
+                   "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=resep_dokter_racikan_detail.kode_brng "+
+                   "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "left join satu_sehat_medicationrequest_racikan on satu_sehat_medicationrequest_racikan.no_resep=resep_dokter_racikan_detail.no_resep and "+
+                   "satu_sehat_medicationrequest_racikan.kode_brng=resep_dokter_racikan_detail.kode_brng and satu_sehat_medicationrequest_racikan.no_racik=resep_dokter_racikan_detail.no_racik "+
+                   "where nota_inap.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_medicationrequest").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                            arrSplit = rs.getString("aturan_pakai").toLowerCase().split("x");
+                            signa1="1";
+                            try {
+                                if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa1="1";
+                            }
+                            signa2="1";
+                            try {
+                                if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                    signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                }
+                            } catch (Exception e) {
+                                signa2="1";
+                            } 
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"MedicationRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
+                                                "}," +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"completed\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                            "\"code\": \"inpatient\"," +
+                                                            "\"display\": \"Inpatient\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"medicationReference\": {" +
+                                                "\"reference\": \"Medication/"+rs.getString("id_medicationrequest")+"\"," +
+                                                "\"display\": \""+rs.getString("obat_display")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"dosageInstruction\": [" +
+                                                "{" +
+                                                    "\"sequence\": 1," +
+                                                    "\"patientInstruction\": \""+rs.getString("aturan_pakai")+"\"," +
+                                                    "\"timing\": {" +
+                                                        "\"repeat\": {" +
+                                                            "\"frequency\": "+signa2+"," +
+                                                            "\"period\": 1," +
+                                                            "\"periodUnit\": \"d\"" +
+                                                        "}" +
+                                                    "}," +
+                                                    "\"route\": {" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \""+rs.getString("route_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("route_code")+"\"," +
+                                                                "\"display\": \""+rs.getString("route_display")+"\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "}," +
+                                                    "\"doseAndRate\": [" +
+                                                        "{" +
+                                                            "\"doseQuantity\": {" +
+                                                                "\"value\": "+signa1+"," +
+                                                                "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                                "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                                "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                            "}" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"dispenseRequest\": {" +
+                                                "\"quantity\": {" +
+                                                    "\"value\": "+rs.getString("jml")+"," +
+                                                    "\"unit\": \""+rs.getString("denominator_code")+"\"," +
+                                                    "\"system\": \""+rs.getString("denominator_system")+"\"," +
+                                                    "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}" +
+                                            "}" +
+                                        "}";
+                                System.out.println("URL : "+link+"/MedicationRequest");
+                                System.out.println("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                System.out.println("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_medicationrequest_racikan","?,?,?,?","Obat/Alkes",4,new String[]{
+                                        rs.getString("no_resep"),rs.getString("kode_brng"),rs.getString("no_racik"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
                         }
                     }
                 }
