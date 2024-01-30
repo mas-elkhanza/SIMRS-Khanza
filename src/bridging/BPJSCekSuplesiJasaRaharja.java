@@ -233,7 +233,7 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
         jLabel18.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass6.add(jLabel18);
 
-        DTPTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2021" }));
+        DTPTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2024" }));
         DTPTanggal.setDisplayFormat("dd-MM-yyyy");
         DTPTanggal.setName("DTPTanggal"); // NOI18N
         DTPTanggal.setOpaque(false);
@@ -343,19 +343,6 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
 
-    private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
-        akses.setform("DlgBPJSCekSuplesiJasaRaharja");
-        pasien.emptTeks();
-        pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        pasien.setLocationRelativeTo(internalFrame1);
-        pasien.setVisible(true);
-    }//GEN-LAST:event_btnPasienActionPerformed
-
-    private void btnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPasienKeyPressed
-        Valid.pindah(evt,NoKartu,BtnPrint);
-    }//GEN-LAST:event_btnPasienKeyPressed
-
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(NoKartu.getText().trim().equals("")){
@@ -373,6 +360,19 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
             Valid.pindah(evt,NoKartu,BtnPrint);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
+
+    private void btnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPasienKeyPressed
+        Valid.pindah(evt,NoKartu,BtnPrint);
+    }//GEN-LAST:event_btnPasienKeyPressed
+
+    private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
+        akses.setform("DlgBPJSCekSuplesiJasaRaharja");
+        pasien.emptTeks();
+        pasien.isCek();
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.setLocationRelativeTo(internalFrame1);
+        pasien.setVisible(true);
+    }//GEN-LAST:event_btnPasienActionPerformed
 
     /**
     * @param args the command line arguments
@@ -449,6 +449,10 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
         NoKartu.setText(nokartu);
         NamaPasien.setText(namapasien);
         DTPTanggal.setDate(tanggal);
+    }
+    
+    public JTable getTable(){
+        return tbKamar;
     }
  
 }
