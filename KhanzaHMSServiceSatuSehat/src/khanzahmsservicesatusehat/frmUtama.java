@@ -3676,7 +3676,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"encounter\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
-                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"+07:00\"," +
                                             "\"requester\": {" +
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\": \""+rs.getString("nama")+"\"" +
@@ -3838,7 +3838,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"encounter\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
-                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"+07:00\"," +
                                             "\"requester\": {" +
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\": \""+rs.getString("nama")+"\"" +
@@ -4002,7 +4002,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"encounter\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
-                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"+07:00\"," +
                                             "\"requester\": {" +
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\": \""+rs.getString("nama")+"\"" +
@@ -4166,7 +4166,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"encounter\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
-                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"01+07:00\"," +
+                                            "\"authoredOn\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"+07:00\"," +
                                             "\"requester\": {" +
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\": \""+rs.getString("nama")+"\"" +
