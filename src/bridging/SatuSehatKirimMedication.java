@@ -547,7 +547,7 @@ public final class SatuSehatKirimMedication extends javax.swing.JDialog {
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
         for(i=0;i<tbObat.getRowCount();i++){
-            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,9).toString().equals(""))){
+            if(tbObat.getValueAt(i,0).toString().equals("true")&&tbObat.getValueAt(i,9).toString().equals("")){
                 try {
                     try{
                         headers = new HttpHeaders();
@@ -639,7 +639,7 @@ public final class SatuSehatKirimMedication extends javax.swing.JDialog {
 
     private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
         for(i=0;i<tbObat.getRowCount();i++){
-            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,8).toString().equals(""))&&(!tbObat.getValueAt(i,28).toString().equals(""))){
+            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,9).toString().equals(""))){
                 try {
                     try{
                         headers = new HttpHeaders();
