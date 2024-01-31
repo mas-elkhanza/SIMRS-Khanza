@@ -1166,19 +1166,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else {
-            total=0;
-            for(i=0;i<tbBangsal.getRowCount();i++){
-                tbBangsal.setValueAt(true,i,0);
-                getdata(i);
-            }
-            row=tbBangsal.getRowCount();
-            for(i=0;i<row;i++){  
-                if(tbBangsal.getValueAt(i,0).toString().equals("true")){
-                     total=total+Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-
-                            (Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+
-                            Double.parseDouble(tbBangsal.getValueAt(i,7).toString()));     
-                }
-            }
             LCount1.setText(Valid.SetAngka(total));  
             PiutangBelumDibayar.setText(Valid.SetAngka(total));
             NilaiKapitasiPaket.setText("");

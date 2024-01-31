@@ -1476,19 +1476,35 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
             JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar/penjamin terlebih dahulu");
         }else{
-            total=0;
-            jml=0;
-            for(i=0;i<tbBelumLunas.getRowCount();i++){
-                tbBelumLunas.setValueAt(true,i,0);
-            }
-            for(i=0;i<tbBelumLunas.getRowCount();i++){  
-                if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
-                     total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
-                     jml++;
+            if(TabRawat.getSelectedIndex()==0){
+                total=0;
+                jml=0;
+                for(i=0;i<tbBelumLunas.getRowCount();i++){
+                    tbBelumLunas.setValueAt(true,i,0);
                 }
+                for(i=0;i<tbBelumLunas.getRowCount();i++){  
+                    if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
+                         total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
+                         jml++;
+                    }
+                }
+                LCountDipilih1.setText(jml+"");
+                LCountDipilih2.setText(Valid.SetAngka(total));
+            }else if(TabRawat.getSelectedIndex()==1){
+                total=0;
+                jml=0;
+                for(i=0;i<tbBelumDitagihkan.getRowCount();i++){
+                    tbBelumDitagihkan.setValueAt(true,i,0);
+                }
+                for(i=0;i<tbBelumDitagihkan.getRowCount();i++){  
+                    if(tbBelumDitagihkan.getValueAt(i,0).toString().equals("true")){
+                         total=total+(Double.parseDouble(tbBelumDitagihkan.getValueAt(i,6).toString()));   
+                         jml++;
+                    }
+                }
+                LCountDipilih1.setText(jml+"");
+                LCountDipilih2.setText(Valid.SetAngka(total));
             }
-            LCountDipilih1.setText(jml+"");
-            LCountDipilih2.setText(Valid.SetAngka(total));
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppPilihSemuaActionPerformed
@@ -1501,19 +1517,35 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
             JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar/penjamin terlebih dahulu");
         }else{
-            total=0;
-            jml=0;
-            for(i=0;i<tbBelumLunas.getRowCount();i++){
-                tbBelumLunas.setValueAt(false,i,0);
-            }
-            for(i=0;i<tbBelumLunas.getRowCount();i++){  
-                if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
-                     total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
-                     jml++;
+            if(TabRawat.getSelectedIndex()==0){
+                total=0;
+                jml=0;
+                for(i=0;i<tbBelumLunas.getRowCount();i++){
+                    tbBelumLunas.setValueAt(false,i,0);
                 }
+                for(i=0;i<tbBelumLunas.getRowCount();i++){  
+                    if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
+                         total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
+                         jml++;
+                    }
+                }
+                LCountDipilih1.setText(jml+"");
+                LCountDipilih2.setText(Valid.SetAngka(total));
+            }else if(TabRawat.getSelectedIndex()==1){
+                total=0;
+                jml=0;
+                for(i=0;i<tbBelumDitagihkan.getRowCount();i++){
+                    tbBelumDitagihkan.setValueAt(false,i,0);
+                }
+                for(i=0;i<tbBelumDitagihkan.getRowCount();i++){  
+                    if(tbBelumDitagihkan.getValueAt(i,0).toString().equals("true")){
+                         total=total+(Double.parseDouble(tbBelumDitagihkan.getValueAt(i,6).toString()));   
+                         jml++;
+                    }
+                }
+                LCountDipilih1.setText(jml+"");
+                LCountDipilih2.setText(Valid.SetAngka(total));
             }
-            LCountDipilih1.setText(jml+"");
-            LCountDipilih2.setText(Valid.SetAngka(total));
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBersihkanActionPerformed
