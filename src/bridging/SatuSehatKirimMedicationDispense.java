@@ -72,7 +72,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                 "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Dokter Penanggung Jawab","No.KTP Praktisi",
                 "ID Encounter","KFA Code","KFA System","Kode Barang","KFA Display","Form Code","Form System","Form Display",
                 "Route Code","Route System","Route Display","Denominator Code","Denominator System","Tanggal & Jam Resep","Jumlah",
-                "ID Medication","Aturan Pakai","No.Resep","ID Medication Request","No.Batch","No.Faktur","Status"
+                "ID Medication","Aturan Pakai","No.Resep","ID Medication Request","No.Batch","No.Faktur","Tgl.Validasi","Status"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -87,7 +87,8 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -100,7 +101,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 31; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -161,6 +162,8 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
             }else if(i==28){
                 column.setPreferredWidth(70);
             }else if(i==29){
+                column.setPreferredWidth(110);
+            }else if(i==30){
                 column.setPreferredWidth(50);
             }
         }
@@ -663,7 +666,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                             headers.setContentType(MediaType.APPLICATION_JSON);
                             headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                             json = "{" +
-                                        "\"resourceType\": \"MedicationRequest\"," +
+                                        "\"resourceType\": \"MedicationDispense\"," +
                                         "\"identifier\": [" +
                                             "{" +
                                                 "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
@@ -746,10 +749,10 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                             "}" +
                                         "}" +
                                     "}";
-                            System.out.println("URL : "+link+"/MedicationRequest");
+                            System.out.println("URL : "+link+"/MedicationDispense");
                             System.out.println("Request JSON : "+json);
                             requestEntity = new HttpEntity(json,headers);
-                            json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                            json=api.getRest().exchange(link+"/MedicationDispense", HttpMethod.POST, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
                             root = mapper.readTree(json);
                             response = root.path("id");
@@ -769,7 +772,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                             headers.setContentType(MediaType.APPLICATION_JSON);
                             headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                             json = "{" +
-                                        "\"resourceType\": \"MedicationRequest\"," +
+                                        "\"resourceType\": \"MedicationDispense\"," +
                                         "\"identifier\": [" +
                                             "{" +
                                                 "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
@@ -852,10 +855,10 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                             "}" +
                                         "}" +
                                     "}";
-                            System.out.println("URL : "+link+"/MedicationRequest");
+                            System.out.println("URL : "+link+"/MedicationDispense");
                             System.out.println("Request JSON : "+json);
                             requestEntity = new HttpEntity(json,headers);
-                            json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                            json=api.getRest().exchange(link+"/MedicationDispense", HttpMethod.POST, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
                             root = mapper.readTree(json);
                             response = root.path("id");
@@ -918,7 +921,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                             headers.setContentType(MediaType.APPLICATION_JSON);
                             headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                             json = "{" +
-                                        "\"resourceType\": \"MedicationRequest\"," +
+                                        "\"resourceType\": \"MedicationDispense\"," +
                                         "\"id\": \""+tbObat.getValueAt(i,26).toString()+"\"," +
                                         "\"identifier\": [" +
                                             "{" +
@@ -1002,10 +1005,10 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                             "}" +
                                         "}" +
                                     "}";
-                            System.out.println("URL : "+link+"/MedicationRequest/"+tbObat.getValueAt(i,26).toString());
+                            System.out.println("URL : "+link+"/MedicationDispense/"+tbObat.getValueAt(i,26).toString());
                             System.out.println("Request JSON : "+json);
                             requestEntity = new HttpEntity(json,headers);
-                            json=api.getRest().exchange(link+"/MedicationRequest/"+tbObat.getValueAt(i,26).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                            json=api.getRest().exchange(link+"/MedicationDispense/"+tbObat.getValueAt(i,26).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
@@ -1016,7 +1019,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                             headers.setContentType(MediaType.APPLICATION_JSON);
                             headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                             json = "{" +
-                                        "\"resourceType\": \"MedicationRequest\"," +
+                                        "\"resourceType\": \"MedicationDispense\"," +
                                         "\"id\": \""+tbObat.getValueAt(i,26).toString()+"\"," +
                                         "\"identifier\": [" +
                                             "{" +
@@ -1100,10 +1103,10 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                             "}" +
                                         "}" +
                                     "}";
-                            System.out.println("URL : "+link+"/MedicationRequest/"+tbObat.getValueAt(i,26).toString());
+                            System.out.println("URL : "+link+"/MedicationDispense/"+tbObat.getValueAt(i,26).toString());
                             System.out.println("Request JSON : "+json);
                             requestEntity = new HttpEntity(json,headers);
-                            json=api.getRest().exchange(link+"/MedicationRequest/"+tbObat.getValueAt(i,26).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                            json=api.getRest().exchange(link+"/MedicationDispense/"+tbObat.getValueAt(i,26).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
@@ -1183,7 +1186,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                    "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
                    "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,detail_pemberian_obat.jml,satu_sehat_medication.id_medication,"+
                    "aturan_pakai.aturan,resep_obat.no_resep,ifnull(satu_sehat_medicationdispense.id_medicationdispanse,'') as id_medicationdispanse,detail_pemberian_obat.no_batch,"+
-                   "detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "detail_pemberian_obat.no_faktur,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
                    "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
