@@ -370,7 +370,9 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (i= 0; i < carilaborat.getTable().getRowCount(); i++) {
-                    HasilLaborat.append(carilaborat.getTable().getValueAt(i,3).toString()+", ");
+                    if(carilaborat.getTable().getValueAt(i,0).toString().equals("true")){
+                        HasilLaborat.append(carilaborat.getTable().getValueAt(i,3).toString()+", ");
+                    }
                 }
                 HasilLaborat.requestFocus();
             }
@@ -418,7 +420,9 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (i= 0; i < cariobat.getTable().getRowCount(); i++) {
-                    ObatSelamaDiRS.append(cariobat.getTable().getValueAt(i,3).toString()+", ");
+                    if(cariobat.getTable().getValueAt(i,0).toString().equals("true")){
+                        ObatSelamaDiRS.append(cariobat.getTable().getValueAt(i,3).toString()+", ");
+                    }
                 }
                 ObatSelamaDiRS.requestFocus();
             }

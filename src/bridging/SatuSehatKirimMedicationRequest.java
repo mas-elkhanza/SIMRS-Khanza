@@ -858,7 +858,7 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                                 if(Sequel.menyimpantf2("satu_sehat_medicationrequest_racikan","?,?,?,?","Obat/Alkes",4,new String[]{
                                     tbObat.getValueAt(i,25).toString(),tbObat.getValueAt(i,11).toString(),tbObat.getValueAt(i,11).toString(),response.asText()
                                 })==true){
-                                    tbObat.setValueAt(response.asText(),i,27);
+                                    tbObat.setValueAt(response.asText(),i,26);
                                 }
                             }
                         }catch(Exception e){
