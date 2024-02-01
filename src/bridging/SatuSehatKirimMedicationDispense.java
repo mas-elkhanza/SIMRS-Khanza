@@ -722,8 +722,8 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                     "},"+
                                     "\"quantity\": {" +
                                         "\"system\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
-                                        "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"" +
-                                        "\"value\": "+tbObat.getValueAt(i,22).toString()+"," +
+                                        "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
+                                        "\"value\": "+tbObat.getValueAt(i,22).toString()+
                                     "}," +
                                     "\"whenPrepared\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"+07:00\"," +
                                     "\"whenHandedOver\": \""+tbObat.getValueAt(i,29).toString().replaceAll(" ","T")+"+07:00\","+
@@ -1042,7 +1042,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                         rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("id_encounter"),rs.getString("obat_code"),rs.getString("obat_system"),rs.getString("kode_brng"),
                         rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("route_code"),rs.getString("route_system"),
                         rs.getString("route_display"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
-                        rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan_pakai"),rs.getString("no_resep"),rs.getString("id_medicationdispanse"),rs.getString("no_batch"),
+                        rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan"),rs.getString("no_resep"),rs.getString("id_medicationdispanse"),rs.getString("no_batch"),
                         rs.getString("no_faktur"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),"Ralan",rs.getString("id_lokasi_satusehat"),rs.getString("nm_bangsal")
                     });
                 }
@@ -1108,7 +1108,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                         rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("id_encounter"),rs.getString("obat_code"),rs.getString("obat_system"),rs.getString("kode_brng"),
                         rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("route_code"),rs.getString("route_system"),
                         rs.getString("route_display"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
-                        rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan_pakai"),rs.getString("no_resep"),rs.getString("id_medicationdispanse"),rs.getString("no_batch"),
+                        rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan"),rs.getString("no_resep"),rs.getString("id_medicationdispanse"),rs.getString("no_batch"),
                         rs.getString("no_faktur"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),"Ranap",rs.getString("id_lokasi_satusehat"),rs.getString("nm_bangsal")
                     });
                 }
