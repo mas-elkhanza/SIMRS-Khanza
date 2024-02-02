@@ -685,18 +685,15 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                         "}" +
                                     "]," +
                                     "\"status\": \"completed\"," +
-                                    "\"intent\": \"order\"," +
-                                    "\"category\": [" +
-                                        "{" +
-                                            "\"coding\": [" +
-                                                "{" +
-                                                    "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
-                                                    "\"code\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","outpatient").replaceAll("Ranap","inpatient")+"\"," +
-                                                    "\"display\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","Outpatient").replaceAll("Ranap","Inpatient")+"\"" +
-                                                "}" +
-                                            "]" +
-                                        "}" +
-                                    "]," +
+                                    "\"category\": {" +
+                                        "\"coding\": [" +
+                                            "{" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                "\"code\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","outpatient").replaceAll("Ranap","inpatient")+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","Outpatient").replaceAll("Ranap","Inpatient")+"\"" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
                                     "\"medicationReference\": {" +
                                         "\"reference\": \"Medication/"+tbObat.getValueAt(i,23).toString()+"\"," +
                                         "\"display\": \""+tbObat.getValueAt(i,12).toString()+"\"" +
@@ -725,8 +722,8 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                         "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                         "\"value\": "+tbObat.getValueAt(i,22).toString()+
                                     "}," +
-                                    "\"whenPrepared\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"+07:00\"," +
-                                    "\"whenHandedOver\": \""+tbObat.getValueAt(i,29).toString().replaceAll(" ","T")+"+07:00\","+
+                                    "\"whenPrepared\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"Z\"," +
+                                    "\"whenHandedOver\": \""+tbObat.getValueAt(i,29).toString().replaceAll(" ","T")+"Z\","+
                                     "\"dosageInstruction\": [" +
                                         "{" +
                                             "\"sequence\": 1," +
@@ -841,18 +838,15 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                         "}" +
                                     "]," +
                                     "\"status\": \"completed\"," +
-                                    "\"intent\": \"order\"," +
-                                    "\"category\": [" +
-                                        "{" +
-                                            "\"coding\": [" +
-                                                "{" +
-                                                    "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
-                                                    "\"code\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","outpatient").replaceAll("Ranap","inpatient")+"\"," +
-                                                    "\"display\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","Outpatient").replaceAll("Ranap","Inpatient")+"\"" +
-                                                "}" +
-                                            "]" +
-                                        "}" +
-                                    "]," +
+                                    "\"category\": {" +
+                                        "\"coding\": [" +
+                                            "{" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                "\"code\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","outpatient").replaceAll("Ranap","inpatient")+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","Outpatient").replaceAll("Ranap","Inpatient")+"\"" +
+                                            "}" +
+                                        "]" +
+                                    "}," +
                                     "\"medicationReference\": {" +
                                         "\"reference\": \"Medication/"+tbObat.getValueAt(i,23).toString()+"\"," +
                                         "\"display\": \""+tbObat.getValueAt(i,12).toString()+"\"" +
@@ -881,8 +875,8 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                         "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"" +
                                         "\"value\": "+tbObat.getValueAt(i,22).toString()+"," +
                                     "}," +
-                                    "\"whenPrepared\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"+07:00\"," +
-                                    "\"whenHandedOver\": \""+tbObat.getValueAt(i,29).toString().replaceAll(" ","T")+"+07:00\","+
+                                    "\"whenPrepared\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"Z\"," +
+                                    "\"whenHandedOver\": \""+tbObat.getValueAt(i,29).toString().replaceAll(" ","T")+"Z\","+
                                     "\"dosageInstruction\": [" +
                                         "{" +
                                             "\"sequence\": 1," +

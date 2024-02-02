@@ -4324,18 +4324,15 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"status\": \"completed\"," +
-                                            "\"intent\": \"order\"," +
-                                            "\"category\": [" +
-                                                "{" +
-                                                    "\"coding\": [" +
-                                                        "{" +
-                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
-                                                            "\"code\": \"outpatient\"," +
-                                                            "\"display\": \"Outpatient\"" +
-                                                        "}" +
-                                                    "]" +
-                                                "}" +
-                                            "]," +
+                                            "\"category\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                        "\"code\": \"outpatient\"," +
+                                                        "\"display\": \"Outpatient\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
                                             "\"medicationReference\": {" +
                                                 "\"reference\": \"Medication/"+rs.getString("id_medicationrequest")+"\"," +
                                                 "\"display\": \""+rs.getString("obat_display")+"\"" +
@@ -4364,8 +4361,8 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \""+rs.getString("denominator_code")+"\"," +
                                                 "\"value\": "+rs.getString("jml")+
                                             "}," +
-                                            "\"whenPrepared\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"+07:00\"," +
-                                            "\"whenHandedOver\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00\","+
+                                            "\"whenPrepared\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"Z\"," +
+                                            "\"whenHandedOver\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"Z\","+
                                             "\"dosageInstruction\": [" +
                                                 "{" +
                                                     "\"sequence\": 1," +
@@ -4504,18 +4501,15 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"status\": \"completed\"," +
-                                            "\"intent\": \"order\"," +
-                                            "\"category\": [" +
-                                                "{" +
-                                                    "\"coding\": [" +
-                                                        "{" +
-                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
-                                                            "\"code\": \"inpatient\"," +
-                                                            "\"display\": \"Inpatient\"" +
-                                                        "}" +
-                                                    "]" +
-                                                "}" +
-                                            "]," +
+                                            "\"category\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                        "\"code\": \"inpatient\"," +
+                                                        "\"display\": \"Inpatient\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
                                             "\"medicationReference\": {" +
                                                 "\"reference\": \"Medication/"+rs.getString("id_medicationrequest")+"\"," +
                                                 "\"display\": \""+rs.getString("obat_display")+"\"" +
@@ -4544,8 +4538,8 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"code\": \""+rs.getString("denominator_code")+"\"," +
                                                 "\"value\": "+rs.getString("jml")+
                                             "}," +
-                                            "\"whenPrepared\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"+07:00\"," +
-                                            "\"whenHandedOver\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00\","+
+                                            "\"whenPrepared\": \""+rs.getString("tgl_peresepan")+"T"+rs.getString("jam_peresepan")+"Z\"," +
+                                            "\"whenHandedOver\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"Z\","+
                                             "\"dosageInstruction\": [" +
                                                 "{" +
                                                     "\"sequence\": 1," +
