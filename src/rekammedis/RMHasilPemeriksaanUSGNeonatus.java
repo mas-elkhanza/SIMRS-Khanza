@@ -1316,8 +1316,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGNeonantus.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
+            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGNeonatus.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
                 "hasil_pemeriksaan_usg_neonatus.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_neonatus.diagnosa_klinis,hasil_pemeriksaan_usg_neonatus.kiriman_dari,"+
                 "hasil_pemeriksaan_usg_neonatus.ventrikal_sinistra,hasil_pemeriksaan_usg_neonatus.ventrikal_dextra,hasil_pemeriksaan_usg_neonatus.kesan,"+
@@ -1677,8 +1676,8 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
 
     private void ganti() {
         if(Sequel.mengedittf("hasil_pemeriksaan_usg_neonatus","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,ventrikal_sinistra=?,ventrikal_dextra=?,kesan=?,kesimpulan=?,saran=?",11,new String[]{
-                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                KirimanDari.getText(),DiagnosaKlinis.getText(),VentrikalSinistra.getText(),VentrikelDextra.getText(),Kesan.getText(),Kesimpulan.getText(),Saran.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),DiagnosaKlinis.getText(),KirimanDari.getText(),VentrikalSinistra.getText(),
+                VentrikelDextra.getText(),Kesan.getText(),Kesimpulan.getText(),Saran.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
