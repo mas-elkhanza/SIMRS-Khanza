@@ -66,7 +66,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Ginjal Kanan","Ginjal Kiri","Vesica Urinaria","Tambahan"
+                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Ventrikel Sinistra","Ventrikel Dextra","Kesan","Kesimpulan","Saran"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -75,7 +75,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -102,6 +102,8 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(250);
             }else if(i==12){
+                column.setPreferredWidth(250);
+            }else if(i==13){
                 column.setPreferredWidth(250);
             }
         }
@@ -130,10 +132,11 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KirimanDari.setDocument(new batasInput((int)50).getKata(KirimanDari));
         DiagnosaKlinis.setDocument(new batasInput((int)50).getKata(DiagnosaKlinis));
-        GinjalKanan.setDocument(new batasInput((int)200).getKata(GinjalKanan));
-        GinjalKiri.setDocument(new batasInput((int)200).getKata(GinjalKiri));
-        Vesica.setDocument(new batasInput((int)200).getKata(Vesica));
-        Tambahan.setDocument(new batasInput((int)300).getKata(Tambahan));
+        VentrikalSinistra.setDocument(new batasInput((int)200).getKata(VentrikalSinistra));
+        VentrikelDextra.setDocument(new batasInput((int)200).getKata(VentrikelDextra));
+        Kesan.setDocument(new batasInput((int)200).getKata(Kesan));
+        Kesimpulan.setDocument(new batasInput((int)300).getKata(Kesimpulan));
+        Saran.setDocument(new batasInput((int)200).getKata(Saran));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -262,16 +265,22 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         DiagnosaKlinis = new widget.TextBox();
         jLabel44 = new widget.Label();
         scrollPane17 = new widget.ScrollPane();
-        Tambahan = new widget.TextArea();
+        Kesimpulan = new widget.TextArea();
         jLabel45 = new widget.Label();
         scrollPane18 = new widget.ScrollPane();
-        GinjalKanan = new widget.TextArea();
+        VentrikalSinistra = new widget.TextArea();
         jLabel46 = new widget.Label();
         scrollPane19 = new widget.ScrollPane();
-        GinjalKiri = new widget.TextArea();
+        VentrikelDextra = new widget.TextArea();
         jLabel47 = new widget.Label();
         scrollPane20 = new widget.ScrollPane();
-        Vesica = new widget.TextArea();
+        Kesan = new widget.TextArea();
+        jLabel48 = new widget.Label();
+        scrollPane21 = new widget.ScrollPane();
+        Saran = new widget.TextArea();
+        jLabel49 = new widget.Label();
+        jLabel11 = new widget.Label();
+        jLabel12 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -323,7 +332,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG Neonatus ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG Kepala Neonatus ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(467, 500));
@@ -478,7 +487,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(750, 393));
+        FormInput.setPreferredSize(new java.awt.Dimension(750, 593));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -550,7 +559,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(644, 10, 80, 23);
 
-        jLabel10.setText("No.Rawat :");
+        jLabel10.setText(":");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
         jLabel10.setBounds(0, 10, 70, 23);
@@ -581,10 +590,11 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(594, 40, 130, 23);
 
-        jLabel30.setText("Kiriman Dari :");
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText("Kiriman Dari");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(0, 80, 95, 23);
+        jLabel30.setBounds(16, 80, 95, 23);
 
         KirimanDari.setFocusTraversalPolicyProvider(true);
         KirimanDari.setName("KirimanDari"); // NOI18N
@@ -594,7 +604,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             }
         });
         FormInput.add(KirimanDari);
-        KirimanDari.setBounds(99, 80, 255, 23);
+        KirimanDari.setBounds(87, 80, 255, 23);
 
         jLabel32.setText("Diagnosa Klinis :");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -611,93 +621,137 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         FormInput.add(DiagnosaKlinis);
         DiagnosaKlinis.setBounds(454, 80, 270, 23);
 
-        jLabel44.setText("Tambahan :");
+        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel44.setText("Kesimpulan :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(0, 320, 95, 23);
+        jLabel44.setBounds(44, 400, 95, 23);
 
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
 
-        Tambahan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Tambahan.setColumns(20);
-        Tambahan.setRows(5);
-        Tambahan.setName("Tambahan"); // NOI18N
-        Tambahan.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kesimpulan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Kesimpulan.setColumns(20);
+        Kesimpulan.setRows(5);
+        Kesimpulan.setName("Kesimpulan"); // NOI18N
+        Kesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TambahanKeyPressed(evt);
+                KesimpulanKeyPressed(evt);
             }
         });
-        scrollPane17.setViewportView(Tambahan);
+        scrollPane17.setViewportView(Kesimpulan);
 
         FormInput.add(scrollPane17);
-        scrollPane17.setBounds(99, 320, 625, 63);
+        scrollPane17.setBounds(44, 420, 680, 63);
 
-        jLabel45.setText("Ginjal Kanan :");
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel45.setText("Ventrikel Sinistra :");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
-        jLabel45.setBounds(0, 110, 95, 23);
+        jLabel45.setBounds(44, 130, 120, 23);
 
         scrollPane18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane18.setName("scrollPane18"); // NOI18N
 
-        GinjalKanan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        GinjalKanan.setColumns(20);
-        GinjalKanan.setRows(5);
-        GinjalKanan.setName("GinjalKanan"); // NOI18N
-        GinjalKanan.addKeyListener(new java.awt.event.KeyAdapter() {
+        VentrikalSinistra.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        VentrikalSinistra.setColumns(20);
+        VentrikalSinistra.setRows(5);
+        VentrikalSinistra.setName("VentrikalSinistra"); // NOI18N
+        VentrikalSinistra.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GinjalKananKeyPressed(evt);
+                VentrikalSinistraKeyPressed(evt);
             }
         });
-        scrollPane18.setViewportView(GinjalKanan);
+        scrollPane18.setViewportView(VentrikalSinistra);
 
         FormInput.add(scrollPane18);
-        scrollPane18.setBounds(99, 110, 625, 63);
+        scrollPane18.setBounds(44, 150, 680, 63);
 
-        jLabel46.setText("Ginjal Kiri :");
+        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel46.setText("Ventrikel Dextra :");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(0, 180, 95, 23);
+        jLabel46.setBounds(44, 220, 100, 23);
 
         scrollPane19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane19.setName("scrollPane19"); // NOI18N
 
-        GinjalKiri.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        GinjalKiri.setColumns(20);
-        GinjalKiri.setRows(5);
-        GinjalKiri.setName("GinjalKiri"); // NOI18N
-        GinjalKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+        VentrikelDextra.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        VentrikelDextra.setColumns(20);
+        VentrikelDextra.setRows(5);
+        VentrikelDextra.setName("VentrikelDextra"); // NOI18N
+        VentrikelDextra.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GinjalKiriKeyPressed(evt);
+                VentrikelDextraKeyPressed(evt);
             }
         });
-        scrollPane19.setViewportView(GinjalKiri);
+        scrollPane19.setViewportView(VentrikelDextra);
 
         FormInput.add(scrollPane19);
-        scrollPane19.setBounds(99, 180, 625, 63);
+        scrollPane19.setBounds(44, 240, 680, 63);
 
-        jLabel47.setText("Vesica Urinaria :");
+        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel47.setText("Kesan :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(0, 250, 95, 23);
+        jLabel47.setBounds(44, 310, 95, 23);
 
         scrollPane20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane20.setName("scrollPane20"); // NOI18N
 
-        Vesica.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Vesica.setColumns(20);
-        Vesica.setRows(5);
-        Vesica.setName("Vesica"); // NOI18N
-        Vesica.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kesan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Kesan.setColumns(20);
+        Kesan.setRows(5);
+        Kesan.setName("Kesan"); // NOI18N
+        Kesan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                VesicaKeyPressed(evt);
+                KesanKeyPressed(evt);
             }
         });
-        scrollPane20.setViewportView(Vesica);
+        scrollPane20.setViewportView(Kesan);
 
         FormInput.add(scrollPane20);
-        scrollPane20.setBounds(99, 250, 625, 63);
+        scrollPane20.setBounds(44, 330, 680, 63);
+
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel48.setText("Saran :");
+        jLabel48.setName("jLabel48"); // NOI18N
+        FormInput.add(jLabel48);
+        jLabel48.setBounds(44, 490, 95, 23);
+
+        scrollPane21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane21.setName("scrollPane21"); // NOI18N
+
+        Saran.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Saran.setColumns(20);
+        Saran.setRows(5);
+        Saran.setName("Saran"); // NOI18N
+        Saran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SaranKeyPressed(evt);
+            }
+        });
+        scrollPane21.setViewportView(Saran);
+
+        FormInput.add(scrollPane21);
+        scrollPane21.setBounds(44, 510, 680, 63);
+
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel49.setText("Pemeriksaan Sagital & Coronal :");
+        jLabel49.setName("jLabel49"); // NOI18N
+        FormInput.add(jLabel49);
+        jLabel49.setBounds(16, 110, 190, 23);
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("No.Rawat");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(16, 10, 70, 23);
+
+        jLabel12.setText(":");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(0, 80, 83, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -954,18 +1008,19 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
-        }else if(GinjalKanan.getText().trim().equals("")){
-            Valid.textKosong(GinjalKanan,"Ginjal Kanan");
-        }else if(GinjalKiri.getText().trim().equals("")){
-            Valid.textKosong(GinjalKiri,"Ginjal Kiri");
+        }else if(VentrikalSinistra.getText().trim().equals("")){
+            Valid.textKosong(VentrikalSinistra,"Ventrikel Sinistra");
+        }else if(VentrikelDextra.getText().trim().equals("")){
+            Valid.textKosong(VentrikelDextra,"Ventrikel Dextra");
         }else{
-            if(Sequel.menyimpantf("hasil_pemeriksaan_usg_neonatus","?,?,?,?,?,?,?,?,?","No.Rawat",9,new String[]{
+            if(Sequel.menyimpantf("hasil_pemeriksaan_usg_neonatus","?,?,?,?,?,?,?,?,?,?","No.Rawat",10,new String[]{
                     TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                    DiagnosaKlinis.getText(),KirimanDari.getText(),GinjalKanan.getText(),GinjalKiri.getText(),Vesica.getText(),Tambahan.getText()
+                    DiagnosaKlinis.getText(),KirimanDari.getText(),VentrikalSinistra.getText(),VentrikelDextra.getText(),Kesan.getText(),Kesimpulan.getText(),
+                    Saran.getText()
                 })==true){
                     tabMode.addRow(new String[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        KirimanDari.getText(),DiagnosaKlinis.getText(),GinjalKanan.getText(),GinjalKiri.getText(),Vesica.getText(),Tambahan.getText()
+                        KirimanDari.getText(),DiagnosaKlinis.getText(),VentrikalSinistra.getText(),VentrikelDextra.getText(),Kesan.getText(),Kesimpulan.getText(),Saran.getText()
                     });
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
@@ -978,7 +1033,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Tambahan,BtnBatal);
+            Valid.pindah(evt,Kesimpulan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1024,10 +1079,10 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
-        }else if(GinjalKanan.getText().trim().equals("")){
-            Valid.textKosong(GinjalKanan,"Ginjal Kanan");
-        }else if(GinjalKiri.getText().trim().equals("")){
-            Valid.textKosong(GinjalKiri,"Ginjal Kiri");
+        }else if(VentrikalSinistra.getText().trim().equals("")){
+            Valid.textKosong(VentrikalSinistra,"Ventrikel Sinistra");
+        }else if(VentrikelDextra.getText().trim().equals("")){
+            Valid.textKosong(VentrikelDextra,"Ventrikel Dextra");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1082,10 +1137,11 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kiriman Dari</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Kanan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Kiri</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Vesica Urinaria</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tambahan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ventrikel Sinistra</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ventrikel Dextra</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Saran</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1104,6 +1160,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1259,11 +1316,12 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGUrologi.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
+            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGNeonantus.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
                 "hasil_pemeriksaan_usg_neonatus.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_neonatus.diagnosa_klinis,hasil_pemeriksaan_usg_neonatus.kiriman_dari,"+
-                "hasil_pemeriksaan_usg_neonatus.ginjal_kanan,hasil_pemeriksaan_usg_neonatus.ginjal_kiri,hasil_pemeriksaan_usg_neonatus.vesica_urinaria,"+
-                "hasil_pemeriksaan_usg_neonatus.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "hasil_pemeriksaan_usg_neonatus.ventrikal_sinistra,hasil_pemeriksaan_usg_neonatus.ventrikal_dextra,hasil_pemeriksaan_usg_neonatus.kesan,"+
+                "hasil_pemeriksaan_usg_neonatus.kesimpulan,hasil_pemeriksaan_usg_neonatus.saran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join hasil_pemeriksaan_usg_neonatus on reg_periksa.no_rawat=hasil_pemeriksaan_usg_neonatus.no_rawat "+
                 "inner join dokter on hasil_pemeriksaan_usg_neonatus.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg_neonatus.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
@@ -1274,12 +1332,12 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     }//GEN-LAST:event_KirimanDariKeyPressed
 
     private void DiagnosaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKlinisKeyPressed
-        Valid.pindah(evt,KirimanDari,GinjalKanan);
+        Valid.pindah(evt,KirimanDari,VentrikalSinistra);
     }//GEN-LAST:event_DiagnosaKlinisKeyPressed
 
-    private void TambahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TambahanKeyPressed
-        Valid.pindah2(evt,Vesica,BtnSimpan);
-    }//GEN-LAST:event_TambahanKeyPressed
+    private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
+        Valid.pindah2(evt,Kesan,Saran);
+    }//GEN-LAST:event_KesimpulanKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
         if(tbObat.getSelectedRow()!= -1){
@@ -1298,7 +1356,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("hasilpemeriksaanusgurologi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Valid.panggilUrl("hasilpemeriksaanusgneonatus/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor()); 
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
@@ -1342,17 +1400,21 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         tampilOrthanc();
     }//GEN-LAST:event_TabDataMouseClicked
 
-    private void GinjalKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GinjalKananKeyPressed
-        Valid.pindah2(evt,DiagnosaKlinis,GinjalKiri);
-    }//GEN-LAST:event_GinjalKananKeyPressed
+    private void VentrikalSinistraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VentrikalSinistraKeyPressed
+        Valid.pindah2(evt,DiagnosaKlinis,VentrikelDextra);
+    }//GEN-LAST:event_VentrikalSinistraKeyPressed
 
-    private void GinjalKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GinjalKiriKeyPressed
-        Valid.pindah2(evt,GinjalKanan,Vesica);
-    }//GEN-LAST:event_GinjalKiriKeyPressed
+    private void VentrikelDextraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VentrikelDextraKeyPressed
+        Valid.pindah2(evt,VentrikalSinistra,Kesan);
+    }//GEN-LAST:event_VentrikelDextraKeyPressed
 
-    private void VesicaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VesicaKeyPressed
-        Valid.pindah2(evt,GinjalKiri,Tambahan);
-    }//GEN-LAST:event_VesicaKeyPressed
+    private void KesanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesanKeyPressed
+        Valid.pindah2(evt,VentrikelDextra,Kesimpulan);
+    }//GEN-LAST:event_KesanKeyPressed
+
+    private void SaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaranKeyPressed
+        Valid.pindah2(evt,Kesimpulan,BtnSimpan);
+    }//GEN-LAST:event_SaranKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1389,9 +1451,9 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     private widget.PanelBiasa FormOrthan;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
-    private widget.TextArea GinjalKanan;
-    private widget.TextArea GinjalKiri;
     private widget.TextBox KdDokter;
+    private widget.TextArea Kesan;
+    private widget.TextArea Kesimpulan;
     private widget.TextBox KirimanDari;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
@@ -1399,6 +1461,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnPenilaianMedis;
     private widget.TextBox NmDokter;
     private widget.PanelBiasa PanelAccor;
+    private widget.TextArea Saran;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
     private widget.ScrollPane Scroll6;
@@ -1408,16 +1471,18 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabData;
     private javax.swing.JTabbedPane TabRawat;
-    private widget.TextArea Tambahan;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
-    private widget.TextArea Vesica;
+    private widget.TextArea VentrikalSinistra;
+    private widget.TextArea VentrikelDextra;
     private widget.Button btnAmbil;
     private widget.Button btnDicom;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;
+    private widget.Label jLabel12;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel30;
@@ -1426,6 +1491,8 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     private widget.Label jLabel45;
     private widget.Label jLabel46;
     private widget.Label jLabel47;
+    private widget.Label jLabel48;
+    private widget.Label jLabel49;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -1441,6 +1508,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     private widget.ScrollPane scrollPane18;
     private widget.ScrollPane scrollPane19;
     private widget.ScrollPane scrollPane20;
+    private widget.ScrollPane scrollPane21;
     private widget.Table tbListDicom;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
@@ -1452,8 +1520,8 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
                         "hasil_pemeriksaan_usg_neonatus.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_neonatus.diagnosa_klinis,hasil_pemeriksaan_usg_neonatus.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg_neonatus.ginjal_kanan,hasil_pemeriksaan_usg_neonatus.ginjal_kiri,hasil_pemeriksaan_usg_neonatus.vesica_urinaria,"+
-                        "hasil_pemeriksaan_usg_neonatus.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_pemeriksaan_usg_neonatus.ventrikal_sinistra,hasil_pemeriksaan_usg_neonatus.ventrikal_dextra,hasil_pemeriksaan_usg_neonatus.kesan,"+
+                        "hasil_pemeriksaan_usg_neonatus.kesimpulan,hasil_pemeriksaan_usg_neonatus.saran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_pemeriksaan_usg_neonatus on reg_periksa.no_rawat=hasil_pemeriksaan_usg_neonatus.no_rawat "+
                         "inner join dokter on hasil_pemeriksaan_usg_neonatus.kd_dokter=dokter.kd_dokter where "+
                         "hasil_pemeriksaan_usg_neonatus.tanggal between ? and ? order by hasil_pemeriksaan_usg_neonatus.tanggal");
@@ -1461,8 +1529,8 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
                         "hasil_pemeriksaan_usg_neonatus.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_neonatus.diagnosa_klinis,hasil_pemeriksaan_usg_neonatus.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg_neonatus.ginjal_kanan,hasil_pemeriksaan_usg_neonatus.ginjal_kiri,hasil_pemeriksaan_usg_neonatus.vesica_urinaria,"+
-                        "hasil_pemeriksaan_usg_neonatus.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_pemeriksaan_usg_neonatus.ventrikal_sinistra,hasil_pemeriksaan_usg_neonatus.ventrikal_dextra,hasil_pemeriksaan_usg_neonatus.kesan,"+
+                        "hasil_pemeriksaan_usg_neonatus.kesimpulan,hasil_pemeriksaan_usg_neonatus.saran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_pemeriksaan_usg_neonatus on reg_periksa.no_rawat=hasil_pemeriksaan_usg_neonatus.no_rawat "+
                         "inner join dokter on hasil_pemeriksaan_usg_neonatus.kd_dokter=dokter.kd_dokter where "+
                         "hasil_pemeriksaan_usg_neonatus.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
@@ -1486,7 +1554,8 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("ginjal_kanan"),rs.getString("ginjal_kiri"),rs.getString("vesica_urinaria"),rs.getString("tambahan")
+                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("ventrikal_sinistra"),rs.getString("ventrikal_dextra"),rs.getString("kesan"),rs.getString("kesimpulan"),
+                        rs.getString("saran")
                     });
                 }
             } catch (Exception e) {
@@ -1509,10 +1578,11 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     public void emptTeks() {
         KirimanDari.setText("");
         DiagnosaKlinis.setText("");
-        GinjalKanan.setText("");
-        GinjalKiri.setText("");
-        Vesica.setText("");
-        Tambahan.setText("");
+        VentrikalSinistra.setText("");
+        VentrikelDextra.setText("");
+        Kesan.setText("");
+        Saran.setText("");
+        Kesimpulan.setText("");
         Tanggal.setDate(new Date());
         TabRawat.setSelectedIndex(0);
         KirimanDari.requestFocus();
@@ -1526,10 +1596,11 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             KirimanDari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             DiagnosaKlinis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            GinjalKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            GinjalKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Vesica.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Tambahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            VentrikalSinistra.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            VentrikelDextra.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Kesan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
@@ -1572,10 +1643,10 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_usg_urologi());
-        BtnHapus.setEnabled(akses.gethasil_usg_urologi());
-        BtnEdit.setEnabled(akses.gethasil_usg_urologi());
-        BtnEdit.setEnabled(akses.gethasil_usg_urologi());
+        BtnSimpan.setEnabled(akses.gethasil_usg_neonatus());
+        BtnHapus.setEnabled(akses.gethasil_usg_neonatus());
+        BtnEdit.setEnabled(akses.gethasil_usg_neonatus());
+        BtnEdit.setEnabled(akses.gethasil_usg_neonatus());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -1605,9 +1676,9 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("hasil_pemeriksaan_usg_neonatus","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,ginjal_kanan=?,ginjal_kiri=?,vesica_urinaria=?,tambahan=?",10,new String[]{
+        if(Sequel.mengedittf("hasil_pemeriksaan_usg_neonatus","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,ventrikal_sinistra=?,ventrikal_dextra=?,kesan=?,kesimpulan=?,saran=?",11,new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                KirimanDari.getText(),DiagnosaKlinis.getText(),GinjalKanan.getText(),GinjalKiri.getText(),Vesica.getText(),Tambahan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                KirimanDari.getText(),DiagnosaKlinis.getText(),VentrikalSinistra.getText(),VentrikelDextra.getText(),Kesan.getText(),Kesimpulan.getText(),Saran.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1618,10 +1689,11 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                 tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
                 tbObat.setValueAt(KirimanDari.getText(),tbObat.getSelectedRow(),7);
                 tbObat.setValueAt(DiagnosaKlinis.getText(),tbObat.getSelectedRow(),8);
-                tbObat.setValueAt(GinjalKanan.getText(),tbObat.getSelectedRow(),9);
-                tbObat.setValueAt(GinjalKiri.getText(),tbObat.getSelectedRow(),10);
-                tbObat.setValueAt(Vesica.getText(),tbObat.getSelectedRow(),11);
-                tbObat.setValueAt(Tambahan.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(VentrikalSinistra.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(VentrikelDextra.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(Kesan.getText(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(Saran.getText(),tbObat.getSelectedRow(),13);
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
         }
@@ -1652,7 +1724,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgurologi/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgurologi/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgneonatus/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanusgneonatus/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
                         }  
                     }else{
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
