@@ -323,7 +323,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG Urologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Hasil Pemeriksaan USG Neonatus ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(467, 500));
@@ -569,7 +569,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2023 17:20:56" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2024 09:58:52" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -740,7 +740,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -754,7 +754,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -959,7 +959,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         }else if(GinjalKiri.getText().trim().equals("")){
             Valid.textKosong(GinjalKiri,"Ginjal Kiri");
         }else{
-            if(Sequel.menyimpantf("hasil_pemeriksaan_usg_urologi","?,?,?,?,?,?,?,?,?","No.Rawat",9,new String[]{
+            if(Sequel.menyimpantf("hasil_pemeriksaan_usg_neonatus","?,?,?,?,?,?,?,?,?","No.Rawat",9,new String[]{
                     TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
                     DiagnosaKlinis.getText(),KirimanDari.getText(),GinjalKanan.getText(),GinjalKiri.getText(),Vesica.getText(),Tambahan.getText()
                 })==true){
@@ -1260,12 +1260,12 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
             Valid.MyReportqry("rptCetakHasilPemeriksaanUSGUrologi.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
-                "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
-                "hasil_pemeriksaan_usg_urologi.ginjal_kanan,hasil_pemeriksaan_usg_urologi.ginjal_kiri,hasil_pemeriksaan_usg_urologi.vesica_urinaria,"+
-                "hasil_pemeriksaan_usg_urologi.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
-                "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg_urologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
+                "hasil_pemeriksaan_usg_neonatus.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_neonatus.diagnosa_klinis,hasil_pemeriksaan_usg_neonatus.kiriman_dari,"+
+                "hasil_pemeriksaan_usg_neonatus.ginjal_kanan,hasil_pemeriksaan_usg_neonatus.ginjal_kiri,hasil_pemeriksaan_usg_neonatus.vesica_urinaria,"+
+                "hasil_pemeriksaan_usg_neonatus.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join hasil_pemeriksaan_usg_neonatus on reg_periksa.no_rawat=hasil_pemeriksaan_usg_neonatus.no_rawat "+
+                "inner join dokter on hasil_pemeriksaan_usg_neonatus.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_usg_neonatus.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -1450,23 +1450,23 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
-                        "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg_urologi.ginjal_kanan,hasil_pemeriksaan_usg_urologi.ginjal_kiri,hasil_pemeriksaan_usg_urologi.vesica_urinaria,"+
-                        "hasil_pemeriksaan_usg_urologi.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
-                        "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_pemeriksaan_usg_urologi.tanggal between ? and ? order by hasil_pemeriksaan_usg_urologi.tanggal");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
+                        "hasil_pemeriksaan_usg_neonatus.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_neonatus.diagnosa_klinis,hasil_pemeriksaan_usg_neonatus.kiriman_dari,"+
+                        "hasil_pemeriksaan_usg_neonatus.ginjal_kanan,hasil_pemeriksaan_usg_neonatus.ginjal_kiri,hasil_pemeriksaan_usg_neonatus.vesica_urinaria,"+
+                        "hasil_pemeriksaan_usg_neonatus.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join hasil_pemeriksaan_usg_neonatus on reg_periksa.no_rawat=hasil_pemeriksaan_usg_neonatus.no_rawat "+
+                        "inner join dokter on hasil_pemeriksaan_usg_neonatus.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_pemeriksaan_usg_neonatus.tanggal between ? and ? order by hasil_pemeriksaan_usg_neonatus.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_urologi.tanggal,"+
-                        "hasil_pemeriksaan_usg_urologi.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_urologi.diagnosa_klinis,hasil_pemeriksaan_usg_urologi.kiriman_dari,"+
-                        "hasil_pemeriksaan_usg_urologi.ginjal_kanan,hasil_pemeriksaan_usg_urologi.ginjal_kiri,hasil_pemeriksaan_usg_urologi.vesica_urinaria,"+
-                        "hasil_pemeriksaan_usg_urologi.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_pemeriksaan_usg_urologi on reg_periksa.no_rawat=hasil_pemeriksaan_usg_urologi.no_rawat "+
-                        "inner join dokter on hasil_pemeriksaan_usg_urologi.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_pemeriksaan_usg_urologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "hasil_pemeriksaan_usg_urologi.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg_urologi.tanggal");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_usg_neonatus.tanggal,"+
+                        "hasil_pemeriksaan_usg_neonatus.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_usg_neonatus.diagnosa_klinis,hasil_pemeriksaan_usg_neonatus.kiriman_dari,"+
+                        "hasil_pemeriksaan_usg_neonatus.ginjal_kanan,hasil_pemeriksaan_usg_neonatus.ginjal_kiri,hasil_pemeriksaan_usg_neonatus.vesica_urinaria,"+
+                        "hasil_pemeriksaan_usg_neonatus.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join hasil_pemeriksaan_usg_neonatus on reg_periksa.no_rawat=hasil_pemeriksaan_usg_neonatus.no_rawat "+
+                        "inner join dokter on hasil_pemeriksaan_usg_neonatus.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_pemeriksaan_usg_neonatus.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "hasil_pemeriksaan_usg_neonatus.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_usg_neonatus.tanggal");
             }
                 
             try {
@@ -1593,7 +1593,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from hasil_pemeriksaan_usg_urologi where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from hasil_pemeriksaan_usg_neonatus where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1605,7 +1605,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("hasil_pemeriksaan_usg_urologi","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,ginjal_kanan=?,ginjal_kiri=?,vesica_urinaria=?,tambahan=?",10,new String[]{
+        if(Sequel.mengedittf("hasil_pemeriksaan_usg_neonatus","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,ginjal_kanan=?,ginjal_kiri=?,vesica_urinaria=?,tambahan=?",10,new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                 KirimanDari.getText(),DiagnosaKlinis.getText(),GinjalKanan.getText(),GinjalKiri.getText(),Vesica.getText(),Tambahan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
@@ -1644,7 +1644,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select hasil_pemeriksaan_usg_urologi_gambar.photo from hasil_pemeriksaan_usg_urologi_gambar where hasil_pemeriksaan_usg_urologi_gambar.no_rawat=?");
+                ps=koneksi.prepareStatement("select hasil_pemeriksaan_usg_neonatus_gambar.photo from hasil_pemeriksaan_usg_neonatus_gambar where hasil_pemeriksaan_usg_neonatus_gambar.no_rawat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();

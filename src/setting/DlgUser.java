@@ -4603,7 +4603,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "satu_sehat_kirim_medicationrequest='"+tbUser.getValueAt(i,1007).toString()+"',"+
                     "penatalaksanaan_terapi_okupasi='"+tbUser.getValueAt(i,1008).toString()+"',"+
                     "satu_sehat_kirim_medicationdispense='"+tbUser.getValueAt(i,1009).toString()+"',"+
-                    "hasil_usg_nenonatus='"+tbUser.getValueAt(i,1010).toString()+"'")==true){
+                    "hasil_usg_neonatus='"+tbUser.getValueAt(i,1010).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5812,7 +5812,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "satu_sehat_kirim_medicationrequest='"+tbUser.getValueAt(barisdicopy,1007).toString()+"',"+
                                         "penatalaksanaan_terapi_okupasi='"+tbUser.getValueAt(barisdicopy,1008).toString()+"',"+
                                         "satu_sehat_kirim_medicationdispense='"+tbUser.getValueAt(barisdicopy,1009).toString()+"',"+
-                                        "hasil_usg_nenonatus='"+tbUser.getValueAt(barisdicopy,1010).toString()+"'");
+                                        "hasil_usg_neonatus='"+tbUser.getValueAt(barisdicopy,1010).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6103,7 +6103,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.bpjs_daftar_pelayanan_obat_apotek,user.penilaian_awal_medis_ralan_paru,user.catatan_keperawatan_ralan,user.catatan_persalinan,user.skor_aldrette_pasca_anestesi,"+
                 "user.skor_steward_pasca_anestesi,user.skor_bromage_pasca_anestesi,user.penilaian_pre_induksi,user.hasil_usg_urologi,user.hasil_usg_gynecologi,user.hasil_pemeriksaan_ekg,"+
                 "user.hapus_edit_sep_bpjs,user.satu_sehat_kirim_diet,user.satu_sehat_mapping_obat,user.dapur_ringkasan_pembelian,user.satu_sehat_kirim_medication,"+
-                "user.satu_sehat_kirim_medicationrequest,user.penatalaksanaan_terapi_okupasi,user.satu_sehat_kirim_medicationdispense,user.hasil_usg_nenonatus from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.satu_sehat_kirim_medicationrequest,user.penatalaksanaan_terapi_okupasi,user.satu_sehat_kirim_medicationdispense,user.hasil_usg_neonatus from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7126,7 +7126,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("satu_sehat_kirim_medicationrequest"),
                                rs.getBoolean("penatalaksanaan_terapi_okupasi"),
                                rs.getBoolean("satu_sehat_kirim_medicationdispense"),
-                               rs.getBoolean("hasil_usg_nenonatus")
+                               rs.getBoolean("hasil_usg_neonatus")
                             });
                         }   
                     } catch (Exception e) {
@@ -8138,7 +8138,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("satu_sehat_kirim_medicationrequest"),
                            rs.getBoolean("penatalaksanaan_terapi_okupasi"),
                            rs.getBoolean("satu_sehat_kirim_medicationdispense"),
-                           rs.getBoolean("hasil_usg_nenonatus")
+                           rs.getBoolean("hasil_usg_neonatus")
                         });
                     }                                             
                  }

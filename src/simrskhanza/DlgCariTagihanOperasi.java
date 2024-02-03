@@ -2944,7 +2944,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                 "pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.rtl,"+
                                 "pemeriksaan_ralan.penilaian from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+"' "+
                                 "and concat(pemeriksaan_ralan.tgl_perawatan,' ',pemeriksaan_ralan.jam_rawat) <= '"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"' "+
-                                "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat desc limit 1").executeQuery();
+                                "order by pemeriksaan_ralan.tgl_perawatan desc,pemeriksaan_ralan.jam_rawat desc limit 1").executeQuery();
                             if(rs.next()){
                                 param.put("tgl_perawatan",rs.getDate("tgl_perawatan"));
                                 param.put("jam_rawat",rs.getString("jam_rawat"));
@@ -2981,7 +2981,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                 "pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.rtl,"+
                                 "pemeriksaan_ranap.penilaian from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+"' "+
                                 "and concat(pemeriksaan_ranap.tgl_perawatan,' ',pemeriksaan_ranap.jam_rawat) <= '"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"' "+
-                                "order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat desc limit 1").executeQuery();
+                                "order by pemeriksaan_ranap.tgl_perawatan desc,pemeriksaan_ranap.jam_rawat desc limit 1").executeQuery();
                             if(rs.next()){
                                 param.put("tgl_perawatan",rs.getDate("tgl_perawatan"));
                                 param.put("jam_rawat",rs.getString("jam_rawat"));
