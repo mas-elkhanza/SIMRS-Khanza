@@ -346,9 +346,9 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Formulir Hasil Pemeriksaan USG");
+        MnPenilaianMedis.setText("Formulir Hasil Pemeriksaan Endoskopi Faring/Tele Laringoskopi");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(360, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianMedisActionPerformed(evt);
@@ -606,7 +606,7 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2024 13:17:16" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2024 17:54:23" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1341,7 +1341,7 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='1900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2300px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1366,7 +1366,7 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2300px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1472,11 +1472,11 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Edukasi,Hubungan);
+        Valid.pindah(evt,Saran,Tanggal);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        //Valid.pindah(evt,Edukasi,Anamnesis);
+        Valid.pindah(evt,BtnDokter,KirimanDari);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
@@ -1492,11 +1492,15 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakHasilPemeriksaanUSGUrologi.jasper","report","::[ Formulir Hasil Pemeriksaan USG ]::",
+            Valid.MyReportqry("rptCetakHasilEndoskipoFaringLaring.jasper","report","::[ Formulir Hasil Pemeriksaan Tele Endoskopi Faring/Tele Laringoskopi ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_faring_laring.tanggal,"+
                 "hasil_endoskopi_faring_laring.kd_dokter,dokter.nm_dokter,hasil_endoskopi_faring_laring.diagnosa_klinis,hasil_endoskopi_faring_laring.kiriman_dari,"+
-                "hasil_endoskopi_faring_laring.ginjal_kanan,hasil_endoskopi_faring_laring.ginjal_kiri,hasil_endoskopi_faring_laring.vesica_urinaria,"+
-                "hasil_endoskopi_faring_laring.tambahan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "hasil_endoskopi_faring_laring.faring_uvula,hasil_endoskopi_faring_laring.faring_arkus_faring,hasil_endoskopi_faring_laring.faring_dinding_posterior,"+
+                "hasil_endoskopi_faring_laring.faring_tonsil,hasil_endoskopi_faring_laring.laring_tonsil_lingual,hasil_endoskopi_faring_laring.laring_valekula,"+
+                "hasil_endoskopi_faring_laring.laring_sinus_piriformis,hasil_endoskopi_faring_laring.laring_epiglotis,hasil_endoskopi_faring_laring.laring_arytenoid,"+
+                "hasil_endoskopi_faring_laring.laring_plika_ventrikularis,hasil_endoskopi_faring_laring.laring_pita_suara,hasil_endoskopi_faring_laring.laring_rima_vocalis,"+
+                "hasil_endoskopi_faring_laring.laring_lainlain,hasil_endoskopi_faring_laring.kesan,hasil_endoskopi_faring_laring.saran "+
+                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join hasil_endoskopi_faring_laring on reg_periksa.no_rawat=hasil_endoskopi_faring_laring.no_rawat "+
                 "inner join dokter on hasil_endoskopi_faring_laring.kd_dokter=dokter.kd_dokter where hasil_endoskopi_faring_laring.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }

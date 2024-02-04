@@ -43130,7 +43130,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilUSGNeonatus.addActionListener(this::btnHasilUSGNeonatusActionPerformed);
         
         btnHasilEndoskopiFaringLaring = new widget.ButtonBig();
-        btnHasilEndoskopiFaringLaring.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2701103_buzz_ear_gossip_hear_listen_icon.png")));
+        btnHasilEndoskopiFaringLaring.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8725899_ear_icon.png")));
         btnHasilEndoskopiFaringLaring.setText("Hasil Endoskopi Faring/Laring");
         btnHasilEndoskopiFaringLaring.setIconTextGap(0);
         btnHasilEndoskopiFaringLaring.setName("btnHasilEndoskopiFaringLaring"); 
