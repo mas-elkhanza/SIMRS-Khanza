@@ -1293,10 +1293,21 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kiriman Dari</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Kanan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Kiri</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Vesica Urinaria</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tambahan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uvula</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arkus Faring</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dinding Posterior</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tonsil</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tonsil Lingual</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Valekula</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sinus Piriformis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Epiglotis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arytenoid</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ventrikularis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pita Suara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rima Vocalis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lain-lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Saran</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1315,6 +1326,17 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1340,7 +1362,7 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataHasilPemeriksaanUSG.html");            
+                File f = new File("DataHasilEndoskopiFaringLaring.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1350,7 +1372,7 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA HASIL PEMERIKSAAN USG<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA HASIL PEMERIKSAAN TELE ENDOSKOPI FARING/TELE LARINGOSKOPI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1826,8 +1848,21 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             KirimanDari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             DiagnosaKlinis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Kesan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Uvula.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            ArkusFaring.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            DindingPosterior.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Tonsil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            TonsilLingual.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Valekula.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            SinusPiriformis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Epiglitos.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Arytenoid.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            PlikaVentrikulais.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            PitaSuara.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            RimaVocalis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Lainlain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Kesan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
