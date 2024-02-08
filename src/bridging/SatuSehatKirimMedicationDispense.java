@@ -688,7 +688,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                     "\"category\": {" +
                                         "\"coding\": [" +
                                             "{" +
-                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                "\"system\": \"http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-category\"," +
                                                 "\"code\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","outpatient").replaceAll("Ranap","inpatient")+"\"," +
                                                 "\"display\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","Outpatient").replaceAll("Ranap","Inpatient")+"\"" +
                                             "}" +
@@ -841,7 +841,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                     "\"category\": {" +
                                         "\"coding\": [" +
                                             "{" +
-                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                "\"system\": \"http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-category\"," +
                                                 "\"code\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","outpatient").replaceAll("Ranap","inpatient")+"\"," +
                                                 "\"display\": \""+tbObat.getValueAt(i,30).toString().replaceAll("Ralan","Outpatient").replaceAll("Ranap","Inpatient")+"\"" +
                                             "}" +
