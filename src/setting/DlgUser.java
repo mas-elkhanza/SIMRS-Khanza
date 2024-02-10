@@ -3030,7 +3030,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(214);
                     break;
                 case 1013:
-                    column.setPreferredWidth(240);
+                    column.setPreferredWidth(231);
                     break;
                 default:
                     column.setPreferredWidth(134);
@@ -4617,7 +4617,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "hasil_usg_neonatus='"+tbUser.getValueAt(i,1010).toString()+"',"+
                     "hasil_endoskopi_faring_laring='"+tbUser.getValueAt(i,1011).toString()+"',"+
                     "satu_sehat_mapping_radiologi='"+tbUser.getValueAt(i,1012).toString()+"',"+
-                    "satu_sehat_kirim_service_request_radiologi='"+tbUser.getValueAt(i,1013).toString()+"'")==true){
+                    "satu_sehat_kirim_servicerequest_radiologi='"+tbUser.getValueAt(i,1013).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5829,7 +5829,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "hasil_usg_neonatus='"+tbUser.getValueAt(barisdicopy,1010).toString()+"',"+
                                         "hasil_endoskopi_faring_laring='"+tbUser.getValueAt(barisdicopy,1011).toString()+"',"+
                                         "satu_sehat_mapping_radiologi='"+tbUser.getValueAt(barisdicopy,1012).toString()+"',"+
-                                        "satu_sehat_kirim_service_request_radiologi='"+tbUser.getValueAt(barisdicopy,1013).toString()+"'");
+                                        "satu_sehat_kirim_servicerequest_radiologi='"+tbUser.getValueAt(barisdicopy,1013).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6121,7 +6121,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.skor_steward_pasca_anestesi,user.skor_bromage_pasca_anestesi,user.penilaian_pre_induksi,user.hasil_usg_urologi,user.hasil_usg_gynecologi,user.hasil_pemeriksaan_ekg,"+
                 "user.hapus_edit_sep_bpjs,user.satu_sehat_kirim_diet,user.satu_sehat_mapping_obat,user.dapur_ringkasan_pembelian,user.satu_sehat_kirim_medication,"+
                 "user.satu_sehat_kirim_medicationrequest,user.penatalaksanaan_terapi_okupasi,user.satu_sehat_kirim_medicationdispense,user.hasil_usg_neonatus,"+
-                "user.hasil_endoskopi_faring_laring,user.satu_sehat_mapping_radiologi,user.satu_sehat_kirim_service_request_radiologi from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.hasil_endoskopi_faring_laring,user.satu_sehat_mapping_radiologi,user.satu_sehat_kirim_servicerequest_radiologi from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7147,7 +7147,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("hasil_usg_neonatus"),
                                rs.getBoolean("hasil_endoskopi_faring_laring"),
                                rs.getBoolean("satu_sehat_mapping_radiologi"),
-                               rs.getBoolean("satu_sehat_kirim_service_request_radiologi")
+                               rs.getBoolean("satu_sehat_kirim_servicerequest_radiologi")
                             });
                         }   
                     } catch (Exception e) {
@@ -8162,7 +8162,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("hasil_usg_neonatus"),
                            rs.getBoolean("hasil_endoskopi_faring_laring"),
                            rs.getBoolean("satu_sehat_mapping_radiologi"),
-                           rs.getBoolean("satu_sehat_kirim_service_request_radiologi")
+                           rs.getBoolean("satu_sehat_kirim_servicerequest_radiologi")
                         });
                     }                                             
                  }
