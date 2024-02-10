@@ -702,6 +702,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                 tbObat.getValueAt(i,11).toString(),tbObat.getValueAt(i,19).toString(),tbObat.getValueAt(i,28).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,27);
+                                tbObat.setValueAt(false,i,0);
                             }
                         }
                     }catch(Exception e){
@@ -791,6 +792,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                         requestEntity = new HttpEntity(json,headers);
                         json=api.getRest().exchange(link+"/Immunization/"+tbObat.getValueAt(i,27).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
+                        tbObat.setValueAt(false,i,0);
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
                     }

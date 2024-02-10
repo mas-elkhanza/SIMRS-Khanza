@@ -636,6 +636,7 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                                 tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,10).toString().substring(0,19),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,11);
+                                tbObat.setValueAt(false,i,0);
                             }
                         }
                     }catch(Exception e){
@@ -740,6 +741,7 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
                         requestEntity = new HttpEntity(json,headers);
                         json=api.getRest().exchange(link+"/Composition/"+tbObat.getValueAt(i,11).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
+                        tbObat.setValueAt(false,i,0);
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
                     }

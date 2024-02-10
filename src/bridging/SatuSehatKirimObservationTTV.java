@@ -2149,6 +2149,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbSuhu.getValueAt(i,2).toString(),tbSuhu.getValueAt(i,13).toString(),tbSuhu.getValueAt(i,14).toString(),tbSuhu.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbSuhu.setValueAt(response.asText(),i,15);
+                                    tbSuhu.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2224,6 +2225,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbRespirasi.getValueAt(i,2).toString(),tbRespirasi.getValueAt(i,13).toString(),tbRespirasi.getValueAt(i,14).toString(),tbRespirasi.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbRespirasi.setValueAt(response.asText(),i,15);
+                                    tbRespirasi.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2299,6 +2301,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbNadi.getValueAt(i,2).toString(),tbNadi.getValueAt(i,13).toString(),tbNadi.getValueAt(i,14).toString(),tbNadi.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbNadi.setValueAt(response.asText(),i,15);
+                                    tbNadi.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2374,6 +2377,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbSpO2.getValueAt(i,2).toString(),tbSpO2.getValueAt(i,13).toString(),tbSpO2.getValueAt(i,14).toString(),tbSpO2.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbSpO2.setValueAt(response.asText(),i,15);
+                                    tbSpO2.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2448,6 +2452,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbGCS.getValueAt(i,2).toString(),tbGCS.getValueAt(i,13).toString(),tbGCS.getValueAt(i,14).toString(),tbGCS.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbGCS.setValueAt(response.asText(),i,15);
+                                    tbGCS.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2520,6 +2525,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbKesadaran.getValueAt(i,2).toString(),tbKesadaran.getValueAt(i,13).toString(),tbKesadaran.getValueAt(i,14).toString(),tbKesadaran.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbKesadaran.setValueAt(response.asText(),i,15);
+                                    tbKesadaran.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2643,6 +2649,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbTensi.getValueAt(i,2).toString(),tbTensi.getValueAt(i,13).toString(),tbTensi.getValueAt(i,14).toString(),tbTensi.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbTensi.setValueAt(response.asText(),i,15);
+                                    tbTensi.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2718,6 +2725,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbTB.getValueAt(i,2).toString(),tbTB.getValueAt(i,13).toString(),tbTB.getValueAt(i,14).toString(),tbTB.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbTB.setValueAt(response.asText(),i,15);
+                                    tbTB.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2793,6 +2801,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbBB.getValueAt(i,2).toString(),tbBB.getValueAt(i,13).toString(),tbBB.getValueAt(i,14).toString(),tbBB.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbBB.setValueAt(response.asText(),i,15);
+                                    tbBB.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -2868,6 +2877,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                     tbLP.getValueAt(i,2).toString(),tbLP.getValueAt(i,13).toString(),tbLP.getValueAt(i,14).toString(),tbLP.getValueAt(i,7).toString(),response.asText()
                                 })==true){
                                     tbLP.setValueAt(response.asText(),i,15);
+                                    tbLP.setValueAt(false,i,0);
                                 }
                             }
                         }catch(Exception e){
@@ -3035,6 +3045,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbSuhu.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbSuhu.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3102,6 +3113,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbRespirasi.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbRespirasi.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3169,6 +3181,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbNadi.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbNadi.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3236,6 +3249,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbSpO2.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbSpO2.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3302,6 +3316,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbGCS.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbGCS.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3366,6 +3381,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbKesadaran.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbKesadaran.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3464,6 +3480,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbTensi.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbTensi.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3531,6 +3548,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbTB.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbTB.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3598,6 +3616,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbBB.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbBB.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3665,6 +3684,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Observation/"+tbLP.getValueAt(i,15).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                             System.out.println("Result JSON : "+json);
+                            tbLP.setValueAt(false,i,0);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }

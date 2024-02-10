@@ -224,7 +224,7 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[SIGN-IN SEBELUM TINDAKAN ANESTESI]]></text>
+				<text><![CDATA[TIME-OUT SSEBELUM TINDAKAN INSISI]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="5" y="90" width="60" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="b2cdf71f-db7d-4272-8d62-f12f21abeefc"/>

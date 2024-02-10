@@ -656,6 +656,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                                 tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,14).toString(),tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,7).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,19);
+                                tbObat.setValueAt(false,i,0);
                             }
                         }
                     }catch(Exception e){
@@ -742,6 +743,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                         requestEntity = new HttpEntity(json,headers);
                         json=api.getRest().exchange(link+"/ClinicalImpression/"+tbObat.getValueAt(i,19).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
+                        tbObat.setValueAt(false,i,0);
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
                     }

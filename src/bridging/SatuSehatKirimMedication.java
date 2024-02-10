@@ -613,6 +613,7 @@ public final class SatuSehatKirimMedication extends javax.swing.JDialog {
                                 tbObat.getValueAt(i,3).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,9);
+                                tbObat.setValueAt(false,i,0);
                             }
                         }
                     }catch(Exception e){
@@ -699,6 +700,7 @@ public final class SatuSehatKirimMedication extends javax.swing.JDialog {
                         requestEntity = new HttpEntity(json,headers);
                         json=api.getRest().exchange(link+"/Medication/"+tbObat.getValueAt(i,9).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
+                        tbObat.setValueAt(false,i,0);
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
                     }
