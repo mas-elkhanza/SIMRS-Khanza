@@ -68,7 +68,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
 
         tabMode=new DefaultTableModel(null,new String[]{
                 "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Kode Dokter","Nama Dokter Perujuk",
-                "No.KTP Dokter","ID Encounter","No.Permintaan Radiologi","Tgl & Jam Permintaan","Diagnosa Klinis",
+                "No.KTP Dokter","ID Encounter","No.Permintaan","Tgl & Jam Permintaan","Diagnosa Klinis",
                 "Nama Pemeriksaan","Radiologi Code","Radiologi System","Radiologi Display","ID Service Request",
                 "Kode Pemeriksaan"
             }){
@@ -120,7 +120,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
             }else if(i==9){
                 column.setPreferredWidth(110);
             }else if(i==10){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(120);
             }else if(i==11){
                 column.setPreferredWidth(150);
             }else if(i==12){
