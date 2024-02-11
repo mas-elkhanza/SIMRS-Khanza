@@ -5378,5 +5378,5 @@ public final class akses {
     public static boolean gethasil_usg_neonatus(){return akses.hasil_usg_neonatus;}
     public static boolean gethasil_endoskopi_faring_laring(){return akses.hasil_endoskopi_faring_laring;}
     public static boolean getsatu_sehat_mapping_radiologi(){return akses.satu_sehat_mapping_radiologi;}
-    public static boolean getsatu_sehat_kirim_service_request_radiologi(){return akses.satu_sehat_kirim_servicerequest_radiologi;}
+    public static boolean getsatu_sehat_kirim_servicerequest_radiologi(){return akses.satu_sehat_kirim_servicerequest_radiologi;}
 }   
