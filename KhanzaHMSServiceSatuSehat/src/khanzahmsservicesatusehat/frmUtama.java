@@ -227,6 +227,7 @@ public class frmUtama extends javax.swing.JFrame {
                     dietgizi();
                     medicationrequest();
                     medicationdispense();
+                    servicerequestradiologi();
                 }
             }
         };
@@ -3342,11 +3343,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]" +
                                         "}";
-                                System.out.println("URL : "+link+"/Composition");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Composition");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Composition", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -3464,11 +3465,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]" +
                                         "}";
-                                System.out.println("URL : "+link+"/Composition");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/Composition");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/Composition", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -3565,11 +3566,11 @@ public class frmUtama extends javax.swing.JFrame {
                                             "}" +
                                         "]" +
                                     "}";
-                            System.out.println("URL : "+link+"/Medication/"+rs.getString("id_medication"));
-                            System.out.println("Request JSON : "+json);
+                            TeksArea.append("URL : "+link+"/Medication/"+rs.getString("id_medication"));
+                            TeksArea.append("Request JSON : "+json);
                             requestEntity = new HttpEntity(json,headers);
                             json=api.getRest().exchange(link+"/Medication/"+rs.getString("id_medication"), HttpMethod.PUT, requestEntity, String.class).getBody();
-                            System.out.println("Result JSON : "+json);
+                            TeksArea.append("Result JSON : "+json);
                         }catch(Exception e){
                             System.out.println("Notifikasi Bridging : "+e);
                         }
@@ -3723,11 +3724,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "}" +
                                         "}";
-                                System.out.println("URL : "+link+"/MedicationRequest");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/MedicationRequest");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -3885,11 +3886,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "}" +
                                         "}";
-                                System.out.println("URL : "+link+"/MedicationRequest");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/MedicationRequest");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -4049,11 +4050,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "}" +
                                         "}";
-                                System.out.println("URL : "+link+"/MedicationRequest");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/MedicationRequest");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -4213,11 +4214,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "}" +
                                         "}";
-                                System.out.println("URL : "+link+"/MedicationRequest");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/MedicationRequest");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/MedicationRequest", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -4396,11 +4397,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]" +
                                         "}";
-                                System.out.println("URL : "+link+"/MedicationDispense");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/MedicationDispense");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/MedicationDispense", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -4573,11 +4574,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]" +
                                         "}";
-                                System.out.println("URL : "+link+"/MedicationDispense");
-                                System.out.println("Request JSON : "+json);
+                                TeksArea.append("URL : "+link+"/MedicationDispense");
+                                TeksArea.append("Request JSON : "+json);
                                 requestEntity = new HttpEntity(json,headers);
                                 json=api.getRest().exchange(link+"/MedicationDispense", HttpMethod.POST, requestEntity, String.class).getBody();
-                                System.out.println("Result JSON : "+json);
+                                TeksArea.append("Result JSON : "+json);
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
@@ -4590,6 +4591,208 @@ public class frmUtama extends javax.swing.JFrame {
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void servicerequestradiologi() {
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_radiologi.noorder,permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan,permintaan_radiologi.diagnosa_klinis,"+
+                   "jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,satu_sehat_mapping_radiologi.display,"+
+                   "ifnull(satu_sehat_servicerequest_radiologi.id_servicerequest,'') as id_servicerequest,permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_pemeriksaan_radiologi on permintaan_pemeriksaan_radiologi.noorder=permintaan_radiologi.noorder "+
+                   "inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
+                   "inner join satu_sehat_mapping_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
+                   "left join satu_sehat_servicerequest_radiologi on satu_sehat_servicerequest_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder "+
+                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "where nota_jalan.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_servicerequest").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"ServiceRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"active\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \""+rs.getString("system")+"\"," +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"" +
+                                                    "}" +
+                                                "]," +
+                                                "\"text\": \""+rs.getString("nm_perawatan")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Permintaan "+rs.getString("nm_perawatan")+" atas nama pasien "+rs.getString("nm_pasien")+" No.RM "+rs.getString("no_rkm_medis")+" No.Rawat "+rs.getString("no_rawat")+", pada tanggal "+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\" : \""+rs.getString("tgl_permintaan")+"T"+rs.getString("jam_permintaan")+"+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"reasonCode\": [" +
+                                                "{" +
+                                                    "\"text\": \""+rs.getString("diagnosa_klinis")+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/ServiceRequest");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/ServiceRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_servicerequest_radiologi","?,?,?","No.Rawat",3,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_radiologi.noorder,permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan,permintaan_radiologi.diagnosa_klinis,"+
+                   "jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,satu_sehat_mapping_radiologi.display,"+
+                   "ifnull(satu_sehat_servicerequest_radiologi.id_servicerequest,'') as id_servicerequest,permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_pemeriksaan_radiologi on permintaan_pemeriksaan_radiologi.noorder=permintaan_radiologi.noorder "+
+                   "inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
+                   "inner join satu_sehat_mapping_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
+                   "left join satu_sehat_servicerequest_radiologi on satu_sehat_servicerequest_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder "+
+                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "where nota_inap.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_servicerequest").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"ServiceRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"active\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \""+rs.getString("system")+"\"," +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"" +
+                                                    "}" +
+                                                "]," +
+                                                "\"text\": \""+rs.getString("nm_perawatan")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Permintaan "+rs.getString("nm_perawatan")+" atas nama pasien "+rs.getString("nm_pasien")+" No.RM "+rs.getString("no_rkm_medis")+" No.Rawat "+rs.getString("no_rawat")+", pada tanggal "+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\" : \""+rs.getString("tgl_permintaan")+"T"+rs.getString("jam_permintaan")+"+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"reasonCode\": [" +
+                                                "{" +
+                                                    "\"text\": \""+rs.getString("diagnosa_klinis")+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/ServiceRequest");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/ServiceRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_servicerequest_radiologi","?,?,?","No.Rawat",3,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
                         }
                     }
                 }

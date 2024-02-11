@@ -474,7 +474,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Perujuk</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Dokter</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan Radiologi</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Permintaan</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pemeriksaan</b></td>"+
