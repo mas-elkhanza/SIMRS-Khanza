@@ -70,6 +70,7 @@ import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMHasilEndoskopiFaringLaring;
+import rekammedis.RMHasilEndoskopiHidung;
 import rekammedis.RMHasilPemeriksaanEKG;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
@@ -8593,6 +8594,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     } 
+    
+    private void BtnHasilEndoskopiHidungActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMHasilEndoskopiHidung form=new RMHasilEndoskopiHidung(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    } 
     /**
     * @param args the command line arguments
     */
@@ -8921,7 +8940,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbRawatDrPr;
     private widget.Table tbRawatPr;
     // End of variables declaration//GEN-END:variables
-    private widget.Button BtnSkorBromagePascaAnestesi,BtnPenilaianPreInduksi,BtnHasilPemeriksaanUSGUrologi,BtnHasilPemeriksaanUSGGynecologi,BtnHasilPemeriksaanEKG,BtnHasilPemeriksaanUSGNeonatus,BtnHasilEndoskopiFaringLaring;
+    private widget.Button BtnSkorBromagePascaAnestesi,BtnPenilaianPreInduksi,BtnHasilPemeriksaanUSGUrologi,BtnHasilPemeriksaanUSGGynecologi,BtnHasilPemeriksaanEKG,BtnHasilPemeriksaanUSGNeonatus,BtnHasilEndoskopiFaringLaring,BtnHasilEndoskopiHidung;
     
     public void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -9633,6 +9652,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.gethasil_endoskopi_faring_laring()==true){
             tinggi=tinggi+24;
         }
+        BtnHasilEndoskopiHidung.setVisible(akses.gethasil_endoskopi_faring_laring()); 
+        if(akses.gethasil_endoskopi_hidung()==true){
+            tinggi=tinggi+24;
+        }
         
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
         
@@ -10147,6 +10170,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnHasilEndoskopiFaringLaring.setRoundRect(false);
         BtnHasilEndoskopiFaringLaring.addActionListener(this::BtnHasilEndoskopiFaringLaringActionPerformed);
         
+        BtnHasilEndoskopiHidung = new widget.Button();
+        BtnHasilEndoskopiHidung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        BtnHasilEndoskopiHidung.setText("Hasil Endoskopi Hidung");
+        BtnHasilEndoskopiHidung.setFocusPainted(false);
+        BtnHasilEndoskopiHidung.setFont(new java.awt.Font("Tahoma", 0, 11));
+        BtnHasilEndoskopiHidung.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnHasilEndoskopiHidung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnHasilEndoskopiHidung.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnHasilEndoskopiHidung.setName("BtnHasilEndoskopiHidung");
+        BtnHasilEndoskopiHidung.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnHasilEndoskopiHidung.setRoundRect(false);
+        BtnHasilEndoskopiHidung.addActionListener(this::BtnHasilEndoskopiHidungActionPerformed);
+        
         FormMenu.add(BtnRiwayat);
         FormMenu.add(BtnResepObat);
         FormMenu.add(BtnCopyResep);
@@ -10195,6 +10231,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnHasilPemeriksaanUSGGynecologi);
         FormMenu.add(BtnHasilPemeriksaanEKG);
         FormMenu.add(BtnHasilEndoskopiFaringLaring);
+        FormMenu.add(BtnHasilEndoskopiHidung);
         FormMenu.add(BtnDokumentasiESWL);
         FormMenu.add(BtnCatatanPersalinan);
         FormMenu.add(BtnCatatan);

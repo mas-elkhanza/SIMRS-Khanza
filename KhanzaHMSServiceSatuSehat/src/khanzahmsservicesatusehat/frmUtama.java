@@ -2469,7 +2469,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 json = "{" +
                                             "\"resourceType\": \"ClinicalImpression\"," +
                                             "\"status\": \"completed\"," +
-                                            "\"description\" : \""+rs.getString("keluhan")+", "+rs.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"," +
+                                            "\"description\" : \""+rs.getString("keluhan")+", "+rs.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"," +
                                             "\"subject\" : {"+
                                                 "\"reference\" : \"Patient/"+idpasien+"\""+
                                             "},"+
@@ -2481,7 +2481,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"assessor\" : {"+
                                                 "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                             "},"+
-                                            "\"summary\" : \""+rs.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\","+
+                                            "\"summary\" : \""+rs.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\","+
                                             "\"finding\": [" +
                                                 "{" +
                                                     "\"itemCodeableConcept\": {"+
@@ -2574,7 +2574,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 json = "{" +
                                             "\"resourceType\": \"ClinicalImpression\"," +
                                             "\"status\": \"completed\"," +
-                                            "\"description\" : \""+rs.getString("keluhan")+", "+rs.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"," +
+                                            "\"description\" : \""+rs.getString("keluhan")+", "+rs.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"," +
                                             "\"subject\" : {"+
                                                 "\"reference\" : \"Patient/"+idpasien+"\""+
                                             "},"+
@@ -2586,7 +2586,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"assessor\" : {"+
                                                 "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                             "},"+
-                                            "\"summary\" : \""+rs.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\","+
+                                            "\"summary\" : \""+rs.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\","+
                                             "\"finding\": [" +
                                                 "{" +
                                                     "\"itemCodeableConcept\": {"+
@@ -3338,7 +3338,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "}," +
                                                     "\"text\" : {" +
                                                         "\"status\" : \"additional\"," +
-                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"" +
+                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                                     "}" +
                                                 "}" +
                                             "]" +
@@ -3460,7 +3460,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "}," +
                                                     "\"text\" : {" +
                                                         "\"status\" : \"additional\" ," +
-                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"\"" +
+                                                        "\"div\" : \""+rs.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                                     "}" +
                                                 "}" +
                                             "]" +
