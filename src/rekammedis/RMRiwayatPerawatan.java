@@ -356,6 +356,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkHasilPemeriksaanUSGGynecologi = new widget.CekBox();
         chkHasilPemeriksaanEKG = new widget.CekBox();
         chkHasilPemeriksaanEndoskopiFaringLaring = new widget.CekBox();
+        chkHasilPemeriksaanEndoskopiHidung = new widget.CekBox();
         chkCatatanPersalinan = new widget.CekBox();
         chkDokumentasiTindakanESWL = new widget.CekBox();
         chkPerencanaanPemulangan = new widget.CekBox();
@@ -644,7 +645,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3025));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3050));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1363,6 +1364,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkHasilPemeriksaanEndoskopiFaringLaring.setOpaque(false);
         chkHasilPemeriksaanEndoskopiFaringLaring.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkHasilPemeriksaanEndoskopiFaringLaring);
+
+        chkHasilPemeriksaanEndoskopiHidung.setSelected(true);
+        chkHasilPemeriksaanEndoskopiHidung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkHasilPemeriksaanEndoskopiHidung.setLabel("Hasil Pemeriksaan Endoskopi Hidung");
+        chkHasilPemeriksaanEndoskopiHidung.setName("chkHasilPemeriksaanEndoskopiHidung"); // NOI18N
+        chkHasilPemeriksaanEndoskopiHidung.setOpaque(false);
+        chkHasilPemeriksaanEndoskopiHidung.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkHasilPemeriksaanEndoskopiHidung);
 
         chkCatatanPersalinan.setSelected(true);
         chkCatatanPersalinan.setText("Catatan Persalinan");
@@ -2218,6 +2227,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkPenatalaksanaanTerapiOkupasi.setSelected(true);
             chkHasilPemeriksaanUSGNeonatus.setSelected(true);
             chkHasilPemeriksaanEndoskopiFaringLaring.setSelected(true);
+            chkHasilPemeriksaanEndoskopiHidung.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2349,6 +2359,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkPenatalaksanaanTerapiOkupasi.setSelected(false);
             chkHasilPemeriksaanUSGNeonatus.setSelected(false);
             chkHasilPemeriksaanEndoskopiFaringLaring.setSelected(false);
+            chkHasilPemeriksaanEndoskopiHidung.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2495,6 +2506,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkFollowUpDBD;
     private widget.CekBox chkHasilPemeriksaanEKG;
     private widget.CekBox chkHasilPemeriksaanEndoskopiFaringLaring;
+    private widget.CekBox chkHasilPemeriksaanEndoskopiHidung;
     private widget.CekBox chkHasilPemeriksaanUSG;
     private widget.CekBox chkHasilPemeriksaanUSGGynecologi;
     private widget.CekBox chkHasilPemeriksaanUSGNeonatus;
@@ -3111,6 +3123,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanHasilPemeriksaanEKG(rs.getString("no_rawat"));
                     //menampilkan hasil Endoskopi Laring Faring
                     menampilkanHasilEndoskopiFaringLaring(rs.getString("no_rawat"));
+                    //menampilkan hasil Endoskopi Hidung
+                    menampilkanHasilEndoskopiHidung(rs.getString("no_rawat"));
                     //menampilkan catatan persalinan
                     menampilkanCatatanPersalinan(rs.getString("no_rawat"));
                     //menampilkan dokumentasi tindakan ESWL
@@ -23510,6 +23524,140 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Hasil Pemeriksaan Endoskopi Faring/Laring : "+e);
+        }
+    }
+    
+    private void menampilkanHasilEndoskopiHidung(String norawat) {
+        try {
+            if(chkHasilPemeriksaanEndoskopiHidung.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select hasil_endoskopi_hidung.tanggal,hasil_endoskopi_hidung.kd_dokter,dokter.nm_dokter,hasil_endoskopi_hidung.diagnosa_klinis,hasil_endoskopi_hidung.kiriman_dari,"+
+                            "hasil_endoskopi_hidung.kondisi_hidung_kanan,hasil_endoskopi_hidung.kondisi_hidung_kiri,hasil_endoskopi_hidung.kavum_nasi_kanan,"+
+                            "hasil_endoskopi_hidung.kavum_nasi_kiri,hasil_endoskopi_hidung.konka_inferior_kanan,hasil_endoskopi_hidung.konka_inferior_kiri,"+
+                            "hasil_endoskopi_hidung.meatus_medius_kanan,hasil_endoskopi_hidung.meatus_medius_kiri,hasil_endoskopi_hidung.septum_kanan,"+
+                            "hasil_endoskopi_hidung.septum_kiri,hasil_endoskopi_hidung.nasofaring_kanan,hasil_endoskopi_hidung.nasofaring_kiri,"+
+                            "hasil_endoskopi_hidung.lainlain_kanan,hasil_endoskopi_hidung.lainlain_kiri,hasil_endoskopi_hidung.kesimpulan "+
+                            "from hasil_endoskopi_hidung inner join dokter on hasil_endoskopi_hidung.kd_dokter=dokter.kd_dokter where hasil_endoskopi_hidung.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Hasil Pemeriksaan Tele Endoskopi Hidung</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            file=Sequel.cariIsi("select hasil_endoskopi_hidung_gambar.photo from hasil_endoskopi_hidung_gambar where hasil_endoskopi_hidung_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='50%' border='0'>Dokter : "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Kiriman Dari : "+rs2.getString("kiriman_dari")+"</td>"+
+                                              "<td width='50%' border='0'>Diagnosa Klinis : "+rs2.getString("diagnosa_klinis")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                            
+                            if(!file.equals("")){
+                                htmlContent.append(
+                                    "<tr>"+
+                                        "<td valign='top'>"+
+                                           "PHOTO ENDOSKOPI"+  
+                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                              "<tr>"+
+                                                  "<td valign='top' border='0' width='100%' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanendoskopihidung/"+file+"'><img alt='Gambar Endoskopi' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanendoskopihidung/"+file+"' width='450' height='450'/></a></td>"+
+                                              "</tr>"+
+                                           "</table>"+
+                                        "</td>"+
+                                    "</tr>"
+                                );
+                            }
+                            
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "HASIL PEMERIKSAAN NASOLARINGOSKOPI :"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' align='center'>Pemeriksaan</td>"+
+                                              "<td width='35%' align='center'>Kanan</td>"+
+                                              "<td width='35%' align='center'>Kiri</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>Hidung</td>"+
+                                              "<td align='center'>"+rs2.getString("kondisi_hidung_kanan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("kondisi_hidung_kiri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>- Kavum Nasi</td>"+
+                                              "<td align='center'>"+rs2.getString("kavum_nasi_kanan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("kavum_nasi_kiri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>- Konka Inferior</td>"+
+                                              "<td align='center'>"+rs2.getString("konka_inferior_kanan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("konka_inferior_kiri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>- Meatus Medius</td>"+
+                                              "<td align='center'>"+rs2.getString("meatus_medius_kanan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("meatus_medius_kiri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>- Septum</td>"+
+                                              "<td align='center'>"+rs2.getString("septum_kanan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("septum_kiri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>- Nasofaring</td>"+
+                                              "<td align='center'>"+rs2.getString("nasofaring_kanan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nasofaring_kiri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>- Lain-lain</td>"+
+                                              "<td align='center'>"+rs2.getString("lainlain_kanan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("lainlain_kiri")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                    "<td valign='top'>"+
+                                       "KESIMPULAN :"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>"+rs2.getString("kesimpulan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Hasil Pemeriksaan Endoskopi Hidung : "+e);
         }
     }
 }

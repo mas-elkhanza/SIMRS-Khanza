@@ -496,7 +496,7 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="FormMenu" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[255, 3025]"/>
+                              <Dimension value="[255, 3050]"/>
                             </Property>
                           </Properties>
 
@@ -1570,6 +1570,18 @@
                                 <Property name="text" type="java.lang.String" value="Hasil Pemeriksaan Endoskopi Faring/Laring"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkHasilPemeriksaanEndoskopiFaringLaring" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[245, 22]"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="widget.CekBox" name="chkHasilPemeriksaanEndoskopiHidung">
+                              <Properties>
+                                <Property name="selected" type="boolean" value="true"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="label" type="java.lang.String" value="Hasil Pemeriksaan Endoskopi Hidung"/>
+                                <Property name="name" type="java.lang.String" value="chkHasilPemeriksaanEndoskopiHidung" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[245, 22]"/>
