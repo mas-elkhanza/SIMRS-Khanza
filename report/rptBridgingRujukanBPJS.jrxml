@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="javascript" pageWidth="595" pageHeight="288" columnWidth="553" leftMargin="22" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00591f07-a5e6-4d2b-a277-98ca7f134ccd">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="288" columnWidth="553" leftMargin="22" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00591f07-a5e6-4d2b-a277-98ca7f134ccd">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="171"/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="829"/>
 	<parameter name="norujuk" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -27,8 +25,7 @@ if(bridging_rujukan_bpjs.jnsPelayanan='1','1. Rawat Inap','2. Rawat Jalan') as j
 bridging_rujukan_bpjs.tipeRujukan,bridging_rujukan_bpjs.catatan,
 bridging_rujukan_bpjs.diagRujukan,bridging_rujukan_bpjs.nama_diagRujukan,
 bridging_rujukan_bpjs.poliRujukan,bridging_rujukan_bpjs.nama_poliRujukan,bridging_sep.no_kartu,
-if(bridging_sep.jkel='L','Laki-Laki','Perempuan') as jkel,bridging_rujukan_bpjs.tglRencanaKunjungan,
-DATE_ADD(bridging_rujukan_bpjs.tglRujukan, INTERVAL 3 MONTH) as berlaku
+if(bridging_sep.jkel='L','Laki-Laki','Perempuan') as jkel,bridging_rujukan_bpjs.tglRencanaKunjungan  
 from bridging_sep inner join bridging_rujukan_bpjs on bridging_rujukan_bpjs.no_sep=bridging_sep.no_sep
 where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 	</queryString>
@@ -138,10 +135,6 @@ where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_rujukan_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="berlaku" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.name" value="berlaku"/>
-		<property name="com.jaspersoft.studio.field.label" value="berlaku"/>
-	</field>
 	<background>
 		<band/>
 	</background>
@@ -165,7 +158,7 @@ where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipeRujukan}.replaceAll("0.","Rujukan").replaceAll("1.","Rujukan").replaceAll("2.","")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipeRujukan}.replaceAll("0.","Rujukan").replaceAll("1.","Rujukan").replaceAll("2. ","")]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -429,15 +422,15 @@ where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 				<textFieldExpression><![CDATA[$P{kotars}+", "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="1" y="146" width="459" height="14" uuid="9b9edd07-8e7b-4f3b-9c12-db1ac0784bdc"/>
+				<reportElement mode="Transparent" x="1" y="146" width="338" height="14" uuid="9b9edd07-8e7b-4f3b-9c12-db1ac0784bdc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["*) Rujukan Berlaku Sampai Dengan "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{berlaku})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["*) Rujukan Berlaku Sampai Dengan "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan}.getTime() + 90L*24*60*60*1000)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="1" y="160" width="449" height="14" uuid="ffc63160-e00b-47af-bc11-40370cb25f06"/>
+				<reportElement mode="Transparent" x="1" y="160" width="338" height="14" uuid="ffc63160-e00b-47af-bc11-40370cb25f06"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>

@@ -66,9 +66,9 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Uvula","Arkus Faring",
-                "Dinding Posterior","Tonsil","Tonsil Lingual","Valekula","Sinus Piriformis","Epiglotis","Arytenoid","Ventrikularis","Pita Suara",
-                "Rima Vocalis","Lain-lain","Kesan","Saran"
+                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Hidung Kanan",
+                "Hidung Kiri","Kavum Nasi Kanan","Kavum Nasi Kiri","Konka Inferior Kanan","Konka Inferior Kiri","Meatus Medius Kanan",
+                "Meatus Medius Kiri","Septum Kanan","Septum Kiri","Nasofaring Kanan","Nasofaring Kiri","Lain-lain Kanan","Lain-lain Kiri","Kesimpulan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -98,11 +98,33 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(150);
             }else if(i==9){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(100);
             }else if(i==10){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(100);
+            }else if(i==11){
+                column.setPreferredWidth(100);
+            }else if(i==12){
+                column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(120);
+            }else if(i==14){
+                column.setPreferredWidth(120);
+            }else if(i==15){
+                column.setPreferredWidth(120);
+            }else if(i==16){
+                column.setPreferredWidth(120);
+            }else if(i==17){
+                column.setPreferredWidth(90);
+            }else if(i==18){
+                column.setPreferredWidth(90);
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setPreferredWidth(100);
+            }else if(i==21){
+                column.setPreferredWidth(150);
             }else if(i==22){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(150);
             }else if(i==23){
                 column.setPreferredWidth(250);
             }
@@ -132,21 +154,9 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KirimanDari.setDocument(new batasInput((int)50).getKata(KirimanDari));
         DiagnosaKlinis.setDocument(new batasInput((int)50).getKata(DiagnosaKlinis));
-        DindingPosterior.setDocument(new batasInput((int)50).getKata(DindingPosterior));
-        Uvula.setDocument(new batasInput((int)50).getKata(Uvula));
-        ArkusFaring.setDocument(new batasInput((int)50).getKata(ArkusFaring));
-        Tonsil.setDocument(new batasInput((int)50).getKata(Tonsil));
-        TonsilLingual.setDocument(new batasInput((int)50).getKata(TonsilLingual));
-        Valekula.setDocument(new batasInput((int)50).getKata(Valekula));
-        SinusPiriformis.setDocument(new batasInput((int)50).getKata(SinusPiriformis));
-        Epiglitos.setDocument(new batasInput((int)50).getKata(Epiglitos));
-        PlikaVentrikulais.setDocument(new batasInput((int)50).getKata(PlikaVentrikulais));
-        Arytenoid.setDocument(new batasInput((int)50).getKata(Arytenoid));
-        RimaVocalis.setDocument(new batasInput((int)50).getKata(RimaVocalis));
-        PitaSuara.setDocument(new batasInput((int)50).getKata(PitaSuara));
-        Lainlain.setDocument(new batasInput((int)50).getKata(Lainlain));
-        Kesan.setDocument(new batasInput((int)300).getKata(Kesan));
-        Saran.setDocument(new batasInput((int)300).getKata(Saran));
+        Kesimpulan.setDocument(new batasInput((int)300).getKata(Kesimpulan));
+        LainlainKanan.setDocument(new batasInput((int)100).getKata(LainlainKanan));
+        LainlainKiri.setDocument(new batasInput((int)100).getKata(LainlainKiri));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -275,40 +285,38 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         DiagnosaKlinis = new widget.TextBox();
         jLabel44 = new widget.Label();
         scrollPane17 = new widget.ScrollPane();
-        Saran = new widget.TextArea();
-        jLabel47 = new widget.Label();
-        scrollPane20 = new widget.ScrollPane();
-        Kesan = new widget.TextArea();
+        Kesimpulan = new widget.TextArea();
         jLabel11 = new widget.Label();
         jLabel31 = new widget.Label();
         jLabel33 = new widget.Label();
         jLabel34 = new widget.Label();
-        DindingPosterior = new widget.TextBox();
+        KavumNasiKanan = new widget.ComboBox();
         jLabel35 = new widget.Label();
-        ArkusFaring = new widget.TextBox();
-        Uvula = new widget.TextBox();
-        Tonsil = new widget.TextBox();
-        jLabel36 = new widget.Label();
         jLabel37 = new widget.Label();
-        jLabel38 = new widget.Label();
+        HidungKiri = new widget.ComboBox();
+        HidungKanan = new widget.ComboBox();
+        jLabel36 = new widget.Label();
+        KonkaInferiorKanan = new widget.ComboBox();
+        MeatusMediusKanan = new widget.ComboBox();
         jLabel39 = new widget.Label();
-        TonsilLingual = new widget.TextBox();
+        SeptumKanan = new widget.ComboBox();
         jLabel40 = new widget.Label();
-        Valekula = new widget.TextBox();
         jLabel41 = new widget.Label();
-        SinusPiriformis = new widget.TextBox();
+        NasofaringKanan = new widget.ComboBox();
         jLabel42 = new widget.Label();
-        Epiglitos = new widget.TextBox();
+        LainlainKanan = new widget.TextBox();
         jLabel43 = new widget.Label();
-        PlikaVentrikulais = new widget.TextBox();
         jLabel45 = new widget.Label();
-        Arytenoid = new widget.TextBox();
         jLabel46 = new widget.Label();
-        RimaVocalis = new widget.TextBox();
+        jLabel47 = new widget.Label();
         jLabel48 = new widget.Label();
-        PitaSuara = new widget.TextBox();
         jLabel49 = new widget.Label();
-        Lainlain = new widget.TextBox();
+        KavumNasiKiri = new widget.ComboBox();
+        KonkaInferiorKiri = new widget.ComboBox();
+        MeatusMediusKiri = new widget.ComboBox();
+        SeptumKiri = new widget.ComboBox();
+        NasofaringKiri = new widget.ComboBox();
+        LainlainKiri = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -346,9 +354,9 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Formulir Hasil Pemeriksaan Endoskopi Faring/Tele Laringoskopi");
+        MnPenilaianMedis.setText("Formulir Hasil Pemeriksaan Endoskopi Hidung");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(360, 26));
+        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(280, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianMedisActionPerformed(evt);
@@ -515,7 +523,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(750, 543));
+        FormInput.setPreferredSize(new java.awt.Dimension(750, 433));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -606,7 +614,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2024 12:28:48" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2024 18:55:58" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -649,50 +657,27 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         DiagnosaKlinis.setBounds(454, 80, 270, 23);
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel44.setText("Saran :");
+        jLabel44.setText("Kesimpulan :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(16, 450, 95, 23);
+        jLabel44.setBounds(16, 320, 95, 23);
 
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
 
-        Saran.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Saran.setColumns(20);
-        Saran.setRows(5);
-        Saran.setName("Saran"); // NOI18N
-        Saran.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kesimpulan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Kesimpulan.setColumns(20);
+        Kesimpulan.setRows(5);
+        Kesimpulan.setName("Kesimpulan"); // NOI18N
+        Kesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaranKeyPressed(evt);
+                KesimpulanKeyPressed(evt);
             }
         });
-        scrollPane17.setViewportView(Saran);
+        scrollPane17.setViewportView(Kesimpulan);
 
         FormInput.add(scrollPane17);
-        scrollPane17.setBounds(34, 470, 690, 63);
-
-        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel47.setText("Kesan :");
-        jLabel47.setName("jLabel47"); // NOI18N
-        FormInput.add(jLabel47);
-        jLabel47.setBounds(16, 360, 95, 23);
-
-        scrollPane20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane20.setName("scrollPane20"); // NOI18N
-
-        Kesan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Kesan.setColumns(20);
-        Kesan.setRows(5);
-        Kesan.setName("Kesan"); // NOI18N
-        Kesan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KesanKeyPressed(evt);
-            }
-        });
-        scrollPane20.setViewportView(Kesan);
-
-        FormInput.add(scrollPane20);
-        scrollPane20.setBounds(34, 380, 690, 63);
+        scrollPane17.setBounds(34, 340, 690, 70);
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("No.Rawat");
@@ -707,211 +692,232 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         jLabel31.setBounds(16, 80, 95, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel33.setText("Pemeriksaan Faring :");
+        jLabel33.setText("Hidung Kanan");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(16, 110, 150, 23);
+        jLabel33.setBounds(16, 110, 80, 23);
 
-        jLabel34.setText("Dinding Posterior :");
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel34.setText("- Kavum Nasi");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(0, 130, 134, 23);
+        jLabel34.setBounds(40, 140, 90, 23);
 
-        DindingPosterior.setFocusTraversalPolicyProvider(true);
-        DindingPosterior.setName("DindingPosterior"); // NOI18N
-        DindingPosterior.addKeyListener(new java.awt.event.KeyAdapter() {
+        KavumNasiKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mukosa Pucat", "Mukosa Hiperemis", "Massa", "Polip" }));
+        KavumNasiKanan.setName("KavumNasiKanan"); // NOI18N
+        KavumNasiKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DindingPosteriorKeyPressed(evt);
+                KavumNasiKananKeyPressed(evt);
             }
         });
-        FormInput.add(DindingPosterior);
-        DindingPosterior.setBounds(138, 130, 260, 23);
+        FormInput.add(KavumNasiKanan);
+        KavumNasiKanan.setBounds(130, 140, 194, 23);
 
-        jLabel35.setText("Arkus Faring :");
+        jLabel35.setText(":");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(0, 160, 134, 23);
+        jLabel35.setBounds(0, 110, 91, 23);
 
-        ArkusFaring.setFocusTraversalPolicyProvider(true);
-        ArkusFaring.setName("ArkusFaring"); // NOI18N
-        ArkusFaring.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ArkusFaringKeyPressed(evt);
-            }
-        });
-        FormInput.add(ArkusFaring);
-        ArkusFaring.setBounds(138, 160, 260, 23);
-
-        Uvula.setFocusTraversalPolicyProvider(true);
-        Uvula.setName("Uvula"); // NOI18N
-        Uvula.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                UvulaKeyPressed(evt);
-            }
-        });
-        FormInput.add(Uvula);
-        Uvula.setBounds(464, 130, 260, 23);
-
-        Tonsil.setFocusTraversalPolicyProvider(true);
-        Tonsil.setName("Tonsil"); // NOI18N
-        Tonsil.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TonsilKeyPressed(evt);
-            }
-        });
-        FormInput.add(Tonsil);
-        Tonsil.setBounds(464, 160, 260, 23);
-
-        jLabel36.setText("Uvula :");
-        jLabel36.setName("jLabel36"); // NOI18N
-        FormInput.add(jLabel36);
-        jLabel36.setBounds(400, 130, 60, 23);
-
-        jLabel37.setText("Tonsil :");
+        jLabel37.setText("Hidung Kiri :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(400, 160, 60, 23);
+        jLabel37.setBounds(398, 110, 90, 23);
 
-        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel38.setText("Pemeriksaan Laring :");
-        jLabel38.setName("jLabel38"); // NOI18N
-        FormInput.add(jLabel38);
-        jLabel38.setBounds(16, 190, 150, 23);
+        HidungKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lapang", "Sempit", "Mukosa Edema" }));
+        HidungKiri.setName("HidungKiri"); // NOI18N
+        HidungKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HidungKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(HidungKiri);
+        HidungKiri.setBounds(492, 110, 194, 23);
 
-        jLabel39.setText("Tonsil Lingual :");
+        HidungKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lapang", "Sempit", "Mukosa Edema" }));
+        HidungKanan.setName("HidungKanan"); // NOI18N
+        HidungKanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HidungKananKeyPressed(evt);
+            }
+        });
+        FormInput.add(HidungKanan);
+        HidungKanan.setBounds(95, 110, 194, 23);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel36.setText("- Konka Inferior");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(40, 170, 90, 23);
+
+        KonkaInferiorKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eutrofi", "Hipertrofi", "Atrofi" }));
+        KonkaInferiorKanan.setName("KonkaInferiorKanan"); // NOI18N
+        KonkaInferiorKanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KonkaInferiorKananKeyPressed(evt);
+            }
+        });
+        FormInput.add(KonkaInferiorKanan);
+        KonkaInferiorKanan.setBounds(130, 170, 194, 23);
+
+        MeatusMediusKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Terbuka", "Tertutup", "Mukosa Edema", "Polip", "Sekret" }));
+        MeatusMediusKanan.setName("MeatusMediusKanan"); // NOI18N
+        MeatusMediusKanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MeatusMediusKananKeyPressed(evt);
+            }
+        });
+        FormInput.add(MeatusMediusKanan);
+        MeatusMediusKanan.setBounds(130, 200, 194, 23);
+
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel39.setText("- Meatus Medius");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(0, 210, 134, 23);
+        jLabel39.setBounds(40, 200, 90, 23);
 
-        TonsilLingual.setFocusTraversalPolicyProvider(true);
-        TonsilLingual.setName("TonsilLingual"); // NOI18N
-        TonsilLingual.addKeyListener(new java.awt.event.KeyAdapter() {
+        SeptumKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lurus", "Deviasi", "Spina" }));
+        SeptumKanan.setName("SeptumKanan"); // NOI18N
+        SeptumKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TonsilLingualKeyPressed(evt);
+                SeptumKananKeyPressed(evt);
             }
         });
-        FormInput.add(TonsilLingual);
-        TonsilLingual.setBounds(138, 210, 250, 23);
+        FormInput.add(SeptumKanan);
+        SeptumKanan.setBounds(130, 230, 194, 23);
 
-        jLabel40.setText("Valekula :");
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel40.setText("- Septum");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(400, 210, 70, 23);
+        jLabel40.setBounds(40, 230, 90, 23);
 
-        Valekula.setFocusTraversalPolicyProvider(true);
-        Valekula.setName("Valekula"); // NOI18N
-        Valekula.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ValekulaKeyPressed(evt);
-            }
-        });
-        FormInput.add(Valekula);
-        Valekula.setBounds(474, 210, 250, 23);
-
-        jLabel41.setText("Sinus Piriformis :");
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel41.setText("- Nasofaring");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
-        jLabel41.setBounds(0, 240, 134, 23);
+        jLabel41.setBounds(40, 260, 90, 23);
 
-        SinusPiriformis.setFocusTraversalPolicyProvider(true);
-        SinusPiriformis.setName("SinusPiriformis"); // NOI18N
-        SinusPiriformis.addKeyListener(new java.awt.event.KeyAdapter() {
+        NasofaringKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Adenoid", "Keradangan", "Massa" }));
+        NasofaringKanan.setName("NasofaringKanan"); // NOI18N
+        NasofaringKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SinusPiriformisKeyPressed(evt);
+                NasofaringKananKeyPressed(evt);
             }
         });
-        FormInput.add(SinusPiriformis);
-        SinusPiriformis.setBounds(138, 240, 250, 23);
+        FormInput.add(NasofaringKanan);
+        NasofaringKanan.setBounds(130, 260, 194, 23);
 
-        jLabel42.setText("Epiglotis :");
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel42.setText("- Lain-lain");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(400, 240, 70, 23);
+        jLabel42.setBounds(40, 290, 84, 23);
 
-        Epiglitos.setFocusTraversalPolicyProvider(true);
-        Epiglitos.setName("Epiglitos"); // NOI18N
-        Epiglitos.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainlainKanan.setFocusTraversalPolicyProvider(true);
+        LainlainKanan.setName("LainlainKanan"); // NOI18N
+        LainlainKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                EpiglitosKeyPressed(evt);
+                LainlainKananKeyPressed(evt);
             }
         });
-        FormInput.add(Epiglitos);
-        Epiglitos.setBounds(474, 240, 250, 23);
+        FormInput.add(LainlainKanan);
+        LainlainKanan.setBounds(130, 290, 194, 23);
 
-        jLabel43.setText("Plika Ventrikularis :");
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel43.setText("- Kavum Nasi");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(0, 270, 134, 23);
+        jLabel43.setBounds(440, 140, 90, 23);
 
-        PlikaVentrikulais.setFocusTraversalPolicyProvider(true);
-        PlikaVentrikulais.setName("PlikaVentrikulais"); // NOI18N
-        PlikaVentrikulais.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PlikaVentrikulaisKeyPressed(evt);
-            }
-        });
-        FormInput.add(PlikaVentrikulais);
-        PlikaVentrikulais.setBounds(138, 270, 250, 23);
-
-        jLabel45.setText("Arytenoid :");
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel45.setText("- Konka Inferior");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
-        jLabel45.setBounds(400, 270, 70, 23);
+        jLabel45.setBounds(440, 170, 90, 23);
 
-        Arytenoid.setFocusTraversalPolicyProvider(true);
-        Arytenoid.setName("Arytenoid"); // NOI18N
-        Arytenoid.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ArytenoidKeyPressed(evt);
-            }
-        });
-        FormInput.add(Arytenoid);
-        Arytenoid.setBounds(474, 270, 250, 23);
-
-        jLabel46.setText("Rima Vocalis :");
+        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel46.setText("- Meatus Medius");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(0, 300, 134, 23);
+        jLabel46.setBounds(440, 200, 90, 23);
 
-        RimaVocalis.setFocusTraversalPolicyProvider(true);
-        RimaVocalis.setName("RimaVocalis"); // NOI18N
-        RimaVocalis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RimaVocalisKeyPressed(evt);
-            }
-        });
-        FormInput.add(RimaVocalis);
-        RimaVocalis.setBounds(138, 300, 250, 23);
+        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel47.setText("- Septum");
+        jLabel47.setName("jLabel47"); // NOI18N
+        FormInput.add(jLabel47);
+        jLabel47.setBounds(440, 230, 90, 23);
 
-        jLabel48.setText("Pita Suara :");
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel48.setText("- Nasofaring");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(400, 300, 70, 23);
+        jLabel48.setBounds(440, 260, 90, 23);
 
-        PitaSuara.setFocusTraversalPolicyProvider(true);
-        PitaSuara.setName("PitaSuara"); // NOI18N
-        PitaSuara.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PitaSuaraKeyPressed(evt);
-            }
-        });
-        FormInput.add(PitaSuara);
-        PitaSuara.setBounds(474, 300, 250, 23);
-
-        jLabel49.setText("Lain-lain :");
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel49.setText("- Lain-lain");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(0, 330, 134, 23);
+        jLabel49.setBounds(440, 290, 84, 23);
 
-        Lainlain.setFocusTraversalPolicyProvider(true);
-        Lainlain.setName("Lainlain"); // NOI18N
-        Lainlain.addKeyListener(new java.awt.event.KeyAdapter() {
+        KavumNasiKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mukosa Pucat", "Mukosa Hiperemis", "Massa", "Polip" }));
+        KavumNasiKiri.setName("KavumNasiKiri"); // NOI18N
+        KavumNasiKiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LainlainKeyPressed(evt);
+                KavumNasiKiriKeyPressed(evt);
             }
         });
-        FormInput.add(Lainlain);
-        Lainlain.setBounds(138, 330, 586, 23);
+        FormInput.add(KavumNasiKiri);
+        KavumNasiKiri.setBounds(530, 140, 194, 23);
+
+        KonkaInferiorKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eutrofi", "Hipertrofi", "Atrofi" }));
+        KonkaInferiorKiri.setName("KonkaInferiorKiri"); // NOI18N
+        KonkaInferiorKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KonkaInferiorKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(KonkaInferiorKiri);
+        KonkaInferiorKiri.setBounds(530, 170, 194, 23);
+
+        MeatusMediusKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Terbuka", "Tertutup", "Mukosa Edema", "Polip", "Sekret" }));
+        MeatusMediusKiri.setName("MeatusMediusKiri"); // NOI18N
+        MeatusMediusKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MeatusMediusKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(MeatusMediusKiri);
+        MeatusMediusKiri.setBounds(530, 200, 194, 23);
+
+        SeptumKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lurus", "Deviasi", "Spina" }));
+        SeptumKiri.setName("SeptumKiri"); // NOI18N
+        SeptumKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SeptumKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(SeptumKiri);
+        SeptumKiri.setBounds(530, 230, 194, 23);
+
+        NasofaringKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Adenoid", "Keradangan", "Massa" }));
+        NasofaringKiri.setName("NasofaringKiri"); // NOI18N
+        NasofaringKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NasofaringKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(NasofaringKiri);
+        NasofaringKiri.setBounds(530, 260, 194, 23);
+
+        LainlainKiri.setFocusTraversalPolicyProvider(true);
+        LainlainKiri.setName("LainlainKiri"); // NOI18N
+        LainlainKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LainlainKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(LainlainKiri);
+        LainlainKiri.setBounds(530, 290, 194, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -954,7 +960,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -968,7 +974,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1168,19 +1174,24 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
-        }else if(Kesan.getText().trim().equals("")){
-            Valid.textKosong(Kesan,"Kesan");
+        }else if(Kesimpulan.getText().trim().equals("")){
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
-            if(Sequel.menyimpantf("hasil_endoskopi_faring_laring","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",20,new String[]{
+            if(Sequel.menyimpantf("hasil_endoskopi_hidung","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",20,new String[]{
                     TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                    DiagnosaKlinis.getText(),KirimanDari.getText(),Uvula.getText(),ArkusFaring.getText(),DindingPosterior.getText(),Tonsil.getText(),
-                    TonsilLingual.getText(),Valekula.getText(),SinusPiriformis.getText(),Epiglitos.getText(),Arytenoid.getText(),PlikaVentrikulais.getText(),
-                    PitaSuara.getText(),RimaVocalis.getText(),Lainlain.getText(),Kesan.getText(),Saran.getText()
+                    DiagnosaKlinis.getText(),KirimanDari.getText(),HidungKanan.getSelectedItem().toString(),HidungKiri.getSelectedItem().toString(),
+                    KavumNasiKanan.getSelectedItem().toString(),KavumNasiKiri.getSelectedItem().toString(),KonkaInferiorKanan.getSelectedItem().toString(),
+                    KonkaInferiorKiri.getSelectedItem().toString(),MeatusMediusKanan.getSelectedItem().toString(),MeatusMediusKiri.getSelectedItem().toString(),
+                    SeptumKanan.getSelectedItem().toString(),SeptumKiri.getSelectedItem().toString(),NasofaringKanan.getSelectedItem().toString(),
+                    NasofaringKiri.getSelectedItem().toString(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText()
                 })==true){
                     tabMode.addRow(new String[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        KirimanDari.getText(),DiagnosaKlinis.getText(),Uvula.getText(),ArkusFaring.getText(),DindingPosterior.getText(),Tonsil.getText(),TonsilLingual.getText(),Valekula.getText(),SinusPiriformis.getText(),
-                        Epiglitos.getText(),Arytenoid.getText(),PlikaVentrikulais.getText(),PitaSuara.getText(),RimaVocalis.getText(),Lainlain.getText(),Kesan.getText(),Saran.getText()
+                        KirimanDari.getText(),DiagnosaKlinis.getText(),HidungKanan.getSelectedItem().toString(),HidungKiri.getSelectedItem().toString(),
+                        KavumNasiKanan.getSelectedItem().toString(),KavumNasiKiri.getSelectedItem().toString(),KonkaInferiorKanan.getSelectedItem().toString(),
+                        KonkaInferiorKiri.getSelectedItem().toString(),MeatusMediusKanan.getSelectedItem().toString(),MeatusMediusKiri.getSelectedItem().toString(),
+                        SeptumKanan.getSelectedItem().toString(),SeptumKiri.getSelectedItem().toString(),NasofaringKanan.getSelectedItem().toString(),
+                        NasofaringKiri.getSelectedItem().toString(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText()
                     });
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
@@ -1193,7 +1204,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Saran,BtnBatal);
+            Valid.pindah(evt,Kesimpulan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1239,6 +1250,8 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(DiagnosaKlinis.getText().trim().equals("")){
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
+        }else if(Kesimpulan.getText().trim().equals("")){
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1293,21 +1306,21 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kiriman Dari</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uvula</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arkus Faring</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dinding Posterior</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tonsil</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tonsil Lingual</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Valekula</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sinus Piriformis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Epiglotis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arytenoid</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ventrikularis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pita Suara</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rima Vocalis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lain-lain</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Saran</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hidung Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hidung Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kavum Nasi Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kavum Nasi Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Konka Inferior Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Konka Inferior Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Meatus Medius Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Meatus Medius Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Septum Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Septum Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nasofaring Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nasofaring Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lain-lain Kanan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lain-lain Kiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1362,7 +1375,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataHasilEndoskopiFaringLaring.html");            
+                File f = new File("DataHasilEndoskopiHidung.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1372,7 +1385,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA HASIL PEMERIKSAAN TELE ENDOSKOPI FARING/TELE LARINGOSKOPI<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA HASIL PEMERIKSAAN TELE ENDOSKOPI HIDUNG<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1472,7 +1485,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        Valid.pindah(evt,Saran,Tanggal);
+        Valid.pindah(evt,Kesimpulan,Tanggal);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
@@ -1492,17 +1505,17 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakHasilEndoskipoFaringLaring.jasper","report","::[ Formulir Hasil Pemeriksaan Tele Endoskopi Faring/Tele Laringoskopi ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_faring_laring.tanggal,"+
-                "hasil_endoskopi_faring_laring.kd_dokter,dokter.nm_dokter,hasil_endoskopi_faring_laring.diagnosa_klinis,hasil_endoskopi_faring_laring.kiriman_dari,"+
-                "hasil_endoskopi_faring_laring.faring_uvula,hasil_endoskopi_faring_laring.faring_arkus_faring,hasil_endoskopi_faring_laring.faring_dinding_posterior,"+
-                "hasil_endoskopi_faring_laring.faring_tonsil,hasil_endoskopi_faring_laring.laring_tonsil_lingual,hasil_endoskopi_faring_laring.laring_valekula,"+
-                "hasil_endoskopi_faring_laring.laring_sinus_piriformis,hasil_endoskopi_faring_laring.laring_epiglotis,hasil_endoskopi_faring_laring.laring_arytenoid,"+
-                "hasil_endoskopi_faring_laring.laring_plika_ventrikularis,hasil_endoskopi_faring_laring.laring_pita_suara,hasil_endoskopi_faring_laring.laring_rima_vocalis,"+
-                "hasil_endoskopi_faring_laring.laring_lainlain,hasil_endoskopi_faring_laring.kesan,hasil_endoskopi_faring_laring.saran "+
+            Valid.MyReportqry("rptCetakHasilEndoskipoHidung.jasper","report","::[ Formulir Hasil Pemeriksaan Tele Endoskopi Hidung ]::",
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_hidung.tanggal,"+
+                "hasil_endoskopi_hidung.kd_dokter,dokter.nm_dokter,hasil_endoskopi_hidung.diagnosa_klinis,hasil_endoskopi_hidung.kiriman_dari,"+
+                "hasil_endoskopi_hidung.kondisi_hidung_kanan,hasil_endoskopi_hidung.kondisi_hidung_kiri,hasil_endoskopi_hidung.kavum_nasi_kanan,"+
+                "hasil_endoskopi_hidung.kavum_nasi_kiri,hasil_endoskopi_hidung.konka_inferior_kanan,hasil_endoskopi_hidung.konka_inferior_kiri,"+
+                "hasil_endoskopi_hidung.meatus_medius_kanan,hasil_endoskopi_hidung.meatus_medius_kiri,hasil_endoskopi_hidung.septum_kanan,"+
+                "hasil_endoskopi_hidung.septum_kiri,hasil_endoskopi_hidung.nasofaring_kanan,hasil_endoskopi_hidung.nasofaring_kiri,"+
+                "hasil_endoskopi_hidung.lainlain_kanan,hasil_endoskopi_hidung.lainlain_kiri,hasil_endoskopi_hidung.kesimpulan "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join hasil_endoskopi_faring_laring on reg_periksa.no_rawat=hasil_endoskopi_faring_laring.no_rawat "+
-                "inner join dokter on hasil_endoskopi_faring_laring.kd_dokter=dokter.kd_dokter where hasil_endoskopi_faring_laring.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join hasil_endoskopi_hidung on reg_periksa.no_rawat=hasil_endoskopi_hidung.no_rawat "+
+                "inner join dokter on hasil_endoskopi_hidung.kd_dokter=dokter.kd_dokter where hasil_endoskopi_hidung.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -1511,12 +1524,12 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     }//GEN-LAST:event_KirimanDariKeyPressed
 
     private void DiagnosaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKlinisKeyPressed
-        Valid.pindah(evt,KirimanDari,DindingPosterior);
+        Valid.pindah(evt,KirimanDari,HidungKanan);
     }//GEN-LAST:event_DiagnosaKlinisKeyPressed
 
-    private void SaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaranKeyPressed
-        Valid.pindah2(evt,Kesan,BtnSimpan);
-    }//GEN-LAST:event_SaranKeyPressed
+    private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
+        Valid.pindah2(evt,LainlainKiri,BtnSimpan);
+    }//GEN-LAST:event_KesimpulanKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
         if(tbObat.getSelectedRow()!= -1){
@@ -1535,7 +1548,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("hasilpemeriksaanendoskopifaringlaring/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Valid.panggilUrl("hasilpemeriksaanendoskopihidung/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor()); 
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Rawat terlebih dahulu..!!");
@@ -1579,61 +1592,61 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         tampilOrthanc();
     }//GEN-LAST:event_TabDataMouseClicked
 
-    private void KesanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesanKeyPressed
-        Valid.pindah2(evt,Lainlain,Saran);
-    }//GEN-LAST:event_KesanKeyPressed
+    private void KavumNasiKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KavumNasiKananKeyPressed
+        Valid.pindah(evt,HidungKiri,KavumNasiKiri);
+    }//GEN-LAST:event_KavumNasiKananKeyPressed
 
-    private void DindingPosteriorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DindingPosteriorKeyPressed
-        Valid.pindah(evt,DiagnosaKlinis,Uvula);
-    }//GEN-LAST:event_DindingPosteriorKeyPressed
+    private void HidungKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HidungKiriKeyPressed
+        Valid.pindah(evt,HidungKanan,KavumNasiKanan);
+    }//GEN-LAST:event_HidungKiriKeyPressed
 
-    private void ArkusFaringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ArkusFaringKeyPressed
-        Valid.pindah(evt,Uvula,Tonsil);
-    }//GEN-LAST:event_ArkusFaringKeyPressed
+    private void HidungKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HidungKananKeyPressed
+        Valid.pindah(evt,DiagnosaKlinis,HidungKiri);
+    }//GEN-LAST:event_HidungKananKeyPressed
 
-    private void UvulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UvulaKeyPressed
-        Valid.pindah(evt,DindingPosterior,ArkusFaring);
-    }//GEN-LAST:event_UvulaKeyPressed
+    private void KonkaInferiorKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonkaInferiorKananKeyPressed
+        Valid.pindah(evt,KavumNasiKiri,KonkaInferiorKiri);
+    }//GEN-LAST:event_KonkaInferiorKananKeyPressed
 
-    private void TonsilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TonsilKeyPressed
-        Valid.pindah(evt,ArkusFaring,TonsilLingual);
-    }//GEN-LAST:event_TonsilKeyPressed
+    private void MeatusMediusKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MeatusMediusKananKeyPressed
+        Valid.pindah(evt,KonkaInferiorKiri,MeatusMediusKiri);
+    }//GEN-LAST:event_MeatusMediusKananKeyPressed
 
-    private void TonsilLingualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TonsilLingualKeyPressed
-        Valid.pindah(evt,Tonsil,Valekula);
-    }//GEN-LAST:event_TonsilLingualKeyPressed
+    private void SeptumKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeptumKananKeyPressed
+        Valid.pindah(evt,MeatusMediusKiri,SeptumKiri);
+    }//GEN-LAST:event_SeptumKananKeyPressed
 
-    private void ValekulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ValekulaKeyPressed
-        Valid.pindah(evt,TonsilLingual,SinusPiriformis);
-    }//GEN-LAST:event_ValekulaKeyPressed
+    private void NasofaringKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NasofaringKananKeyPressed
+        Valid.pindah(evt,SeptumKiri,NasofaringKiri);
+    }//GEN-LAST:event_NasofaringKananKeyPressed
 
-    private void SinusPiriformisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SinusPiriformisKeyPressed
-        Valid.pindah(evt,Valekula,Epiglitos);
-    }//GEN-LAST:event_SinusPiriformisKeyPressed
+    private void LainlainKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainlainKananKeyPressed
+        Valid.pindah(evt,NasofaringKiri,LainlainKiri);
+    }//GEN-LAST:event_LainlainKananKeyPressed
 
-    private void EpiglitosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpiglitosKeyPressed
-        Valid.pindah(evt,SinusPiriformis,PlikaVentrikulais);
-    }//GEN-LAST:event_EpiglitosKeyPressed
+    private void KavumNasiKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KavumNasiKiriKeyPressed
+        Valid.pindah(evt,KavumNasiKanan,KonkaInferiorKanan);
+    }//GEN-LAST:event_KavumNasiKiriKeyPressed
 
-    private void PlikaVentrikulaisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PlikaVentrikulaisKeyPressed
-        Valid.pindah(evt,Epiglitos,Arytenoid);
-    }//GEN-LAST:event_PlikaVentrikulaisKeyPressed
+    private void KonkaInferiorKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonkaInferiorKiriKeyPressed
+        Valid.pindah(evt,KonkaInferiorKanan,MeatusMediusKanan);
+    }//GEN-LAST:event_KonkaInferiorKiriKeyPressed
 
-    private void ArytenoidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ArytenoidKeyPressed
-        Valid.pindah(evt,PlikaVentrikulais,RimaVocalis);
-    }//GEN-LAST:event_ArytenoidKeyPressed
+    private void MeatusMediusKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MeatusMediusKiriKeyPressed
+        Valid.pindah(evt,MeatusMediusKanan,SeptumKanan);
+    }//GEN-LAST:event_MeatusMediusKiriKeyPressed
 
-    private void RimaVocalisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RimaVocalisKeyPressed
-        Valid.pindah(evt,Arytenoid,PitaSuara);
-    }//GEN-LAST:event_RimaVocalisKeyPressed
+    private void SeptumKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeptumKiriKeyPressed
+        Valid.pindah(evt,SeptumKanan,NasofaringKanan);
+    }//GEN-LAST:event_SeptumKiriKeyPressed
 
-    private void PitaSuaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PitaSuaraKeyPressed
-        Valid.pindah(evt,RimaVocalis,Lainlain);
-    }//GEN-LAST:event_PitaSuaraKeyPressed
+    private void NasofaringKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NasofaringKiriKeyPressed
+        Valid.pindah(evt,NasofaringKanan,LainlainKanan);
+    }//GEN-LAST:event_NasofaringKiriKeyPressed
 
-    private void LainlainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainlainKeyPressed
-        Valid.pindah(evt,PitaSuara,Kesan);
-    }//GEN-LAST:event_LainlainKeyPressed
+    private void LainlainKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainlainKiriKeyPressed
+        Valid.pindah(evt,LainlainKanan,Kesimpulan);
+    }//GEN-LAST:event_LainlainKiriKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1652,8 +1665,6 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox ArkusFaring;
-    private widget.TextBox Arytenoid;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1668,30 +1679,36 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.TextBox DiagnosaKlinis;
-    private widget.TextBox DindingPosterior;
-    private widget.TextBox Epiglitos;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormOrthan;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
+    private widget.ComboBox HidungKanan;
+    private widget.ComboBox HidungKiri;
+    private widget.ComboBox KavumNasiKanan;
+    private widget.ComboBox KavumNasiKiri;
     private widget.TextBox KdDokter;
-    private widget.TextArea Kesan;
+    private widget.TextArea Kesimpulan;
     private widget.TextBox KirimanDari;
+    private widget.ComboBox KonkaInferiorKanan;
+    private widget.ComboBox KonkaInferiorKiri;
     private widget.Label LCount;
-    private widget.TextBox Lainlain;
+    private widget.TextBox LainlainKanan;
+    private widget.TextBox LainlainKiri;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
+    private widget.ComboBox MeatusMediusKanan;
+    private widget.ComboBox MeatusMediusKiri;
     private javax.swing.JMenuItem MnPenilaianMedis;
+    private widget.ComboBox NasofaringKanan;
+    private widget.ComboBox NasofaringKiri;
     private widget.TextBox NmDokter;
     private widget.PanelBiasa PanelAccor;
-    private widget.TextBox PitaSuara;
-    private widget.TextBox PlikaVentrikulais;
-    private widget.TextBox RimaVocalis;
-    private widget.TextArea Saran;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
     private widget.ScrollPane Scroll6;
-    private widget.TextBox SinusPiriformis;
+    private widget.ComboBox SeptumKanan;
+    private widget.ComboBox SeptumKiri;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1700,10 +1717,6 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
-    private widget.TextBox Tonsil;
-    private widget.TextBox TonsilLingual;
-    private widget.TextBox Uvula;
-    private widget.TextBox Valekula;
     private widget.Button btnAmbil;
     private widget.Button btnDicom;
     private widget.InternalFrame internalFrame1;
@@ -1721,7 +1734,6 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     private widget.Label jLabel35;
     private widget.Label jLabel36;
     private widget.Label jLabel37;
-    private widget.Label jLabel38;
     private widget.Label jLabel39;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
@@ -1745,7 +1757,6 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane17;
-    private widget.ScrollPane scrollPane20;
     private widget.Table tbListDicom;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
@@ -1755,31 +1766,31 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_faring_laring.tanggal,"+
-                        "hasil_endoskopi_faring_laring.kd_dokter,dokter.nm_dokter,hasil_endoskopi_faring_laring.diagnosa_klinis,hasil_endoskopi_faring_laring.kiriman_dari,"+
-                        "hasil_endoskopi_faring_laring.faring_uvula,hasil_endoskopi_faring_laring.faring_arkus_faring,hasil_endoskopi_faring_laring.faring_dinding_posterior,"+
-                        "hasil_endoskopi_faring_laring.faring_tonsil,hasil_endoskopi_faring_laring.laring_tonsil_lingual,hasil_endoskopi_faring_laring.laring_valekula,"+
-                        "hasil_endoskopi_faring_laring.laring_sinus_piriformis,hasil_endoskopi_faring_laring.laring_epiglotis,hasil_endoskopi_faring_laring.laring_arytenoid,"+
-                        "hasil_endoskopi_faring_laring.laring_plika_ventrikularis,hasil_endoskopi_faring_laring.laring_pita_suara,hasil_endoskopi_faring_laring.laring_rima_vocalis,"+
-                        "hasil_endoskopi_faring_laring.laring_lainlain,hasil_endoskopi_faring_laring.kesan,hasil_endoskopi_faring_laring.saran "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_hidung.tanggal,"+
+                        "hasil_endoskopi_hidung.kd_dokter,dokter.nm_dokter,hasil_endoskopi_hidung.diagnosa_klinis,hasil_endoskopi_hidung.kiriman_dari,"+
+                        "hasil_endoskopi_hidung.kondisi_hidung_kanan,hasil_endoskopi_hidung.kondisi_hidung_kiri,hasil_endoskopi_hidung.kavum_nasi_kanan,"+
+                        "hasil_endoskopi_hidung.kavum_nasi_kiri,hasil_endoskopi_hidung.konka_inferior_kanan,hasil_endoskopi_hidung.konka_inferior_kiri,"+
+                        "hasil_endoskopi_hidung.meatus_medius_kanan,hasil_endoskopi_hidung.meatus_medius_kiri,hasil_endoskopi_hidung.septum_kanan,"+
+                        "hasil_endoskopi_hidung.septum_kiri,hasil_endoskopi_hidung.nasofaring_kanan,hasil_endoskopi_hidung.nasofaring_kiri,"+
+                        "hasil_endoskopi_hidung.lainlain_kanan,hasil_endoskopi_hidung.lainlain_kiri,hasil_endoskopi_hidung.kesimpulan "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_endoskopi_faring_laring on reg_periksa.no_rawat=hasil_endoskopi_faring_laring.no_rawat "+
-                        "inner join dokter on hasil_endoskopi_faring_laring.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_endoskopi_faring_laring.tanggal between ? and ? order by hasil_endoskopi_faring_laring.tanggal");
+                        "inner join hasil_endoskopi_hidung on reg_periksa.no_rawat=hasil_endoskopi_hidung.no_rawat "+
+                        "inner join dokter on hasil_endoskopi_hidung.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_endoskopi_hidung.tanggal between ? and ? order by hasil_endoskopi_hidung.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_faring_laring.tanggal,"+
-                        "hasil_endoskopi_faring_laring.kd_dokter,dokter.nm_dokter,hasil_endoskopi_faring_laring.diagnosa_klinis,hasil_endoskopi_faring_laring.kiriman_dari,"+
-                        "hasil_endoskopi_faring_laring.faring_uvula,hasil_endoskopi_faring_laring.faring_arkus_faring,hasil_endoskopi_faring_laring.faring_dinding_posterior,"+
-                        "hasil_endoskopi_faring_laring.faring_tonsil,hasil_endoskopi_faring_laring.laring_tonsil_lingual,hasil_endoskopi_faring_laring.laring_valekula,"+
-                        "hasil_endoskopi_faring_laring.laring_sinus_piriformis,hasil_endoskopi_faring_laring.laring_epiglotis,hasil_endoskopi_faring_laring.laring_arytenoid,"+
-                        "hasil_endoskopi_faring_laring.laring_plika_ventrikularis,hasil_endoskopi_faring_laring.laring_pita_suara,hasil_endoskopi_faring_laring.laring_rima_vocalis,"+
-                        "hasil_endoskopi_faring_laring.laring_lainlain,hasil_endoskopi_faring_laring.kesan,hasil_endoskopi_faring_laring.saran "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_hidung.tanggal,"+
+                        "hasil_endoskopi_hidung.kd_dokter,dokter.nm_dokter,hasil_endoskopi_hidung.diagnosa_klinis,hasil_endoskopi_hidung.kiriman_dari,"+
+                        "hasil_endoskopi_hidung.kondisi_hidung_kanan,hasil_endoskopi_hidung.kondisi_hidung_kiri,hasil_endoskopi_hidung.kavum_nasi_kanan,"+
+                        "hasil_endoskopi_hidung.kavum_nasi_kiri,hasil_endoskopi_hidung.konka_inferior_kanan,hasil_endoskopi_hidung.konka_inferior_kiri,"+
+                        "hasil_endoskopi_hidung.meatus_medius_kanan,hasil_endoskopi_hidung.meatus_medius_kiri,hasil_endoskopi_hidung.septum_kanan,"+
+                        "hasil_endoskopi_hidung.septum_kiri,hasil_endoskopi_hidung.nasofaring_kanan,hasil_endoskopi_hidung.nasofaring_kiri,"+
+                        "hasil_endoskopi_hidung.lainlain_kanan,hasil_endoskopi_hidung.lainlain_kiri,hasil_endoskopi_hidung.kesimpulan "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_endoskopi_faring_laring on reg_periksa.no_rawat=hasil_endoskopi_faring_laring.no_rawat "+
-                        "inner join dokter on hasil_endoskopi_faring_laring.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_endoskopi_faring_laring.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "hasil_endoskopi_faring_laring.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_endoskopi_faring_laring.tanggal");
+                        "inner join hasil_endoskopi_hidung on reg_periksa.no_rawat=hasil_endoskopi_hidung.no_rawat "+
+                        "inner join dokter on hasil_endoskopi_hidung.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_endoskopi_hidung.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "hasil_endoskopi_hidung.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_endoskopi_hidung.tanggal");
             }
                 
             try {
@@ -1799,9 +1810,9 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("faring_uvula"),rs.getString("faring_arkus_faring"),rs.getString("faring_dinding_posterior"),rs.getString("faring_tonsil"),
-                        rs.getString("laring_tonsil_lingual"),rs.getString("laring_valekula"),rs.getString("laring_sinus_piriformis"),rs.getString("laring_epiglotis"),rs.getString("laring_arytenoid"),
-                        rs.getString("laring_plika_ventrikularis"),rs.getString("laring_pita_suara"),rs.getString("laring_rima_vocalis"),rs.getString("laring_lainlain"),rs.getString("kesan"),rs.getString("saran")
+                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("kondisi_hidung_kanan"),rs.getString("kondisi_hidung_kiri"),rs.getString("kavum_nasi_kanan"),rs.getString("kavum_nasi_kiri"),
+                        rs.getString("konka_inferior_kanan"),rs.getString("konka_inferior_kiri"),rs.getString("meatus_medius_kanan"),rs.getString("meatus_medius_kiri"),rs.getString("septum_kanan"),rs.getString("septum_kiri"),
+                        rs.getString("nasofaring_kanan"),rs.getString("nasofaring_kiri"),rs.getString("lainlain_kanan"),rs.getString("lainlain_kiri"),rs.getString("kesimpulan")
                     });
                 }
             } catch (Exception e) {
@@ -1824,21 +1835,21 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     public void emptTeks() {
         KirimanDari.setText("");
         DiagnosaKlinis.setText("");
-        DindingPosterior.setText("");
-        Uvula.setText("");
-        ArkusFaring.setText("");
-        Tonsil.setText("");
-        TonsilLingual.setText("");
-        Valekula.setText("");
-        SinusPiriformis.setText("");
-        Epiglitos.setText("");
-        PlikaVentrikulais.setText("");
-        Arytenoid.setText("");
-        RimaVocalis.setText("");
-        PitaSuara.setText("");
-        Lainlain.setText("");
-        Kesan.setText("");
-        Saran.setText("");
+        Kesimpulan.setText("");
+        HidungKanan.setSelectedIndex(0);
+        HidungKiri.setSelectedIndex(0);
+        KavumNasiKanan.setSelectedIndex(0);
+        KavumNasiKiri.setSelectedIndex(0);
+        KonkaInferiorKanan.setSelectedIndex(0);
+        KonkaInferiorKiri.setSelectedIndex(0);
+        MeatusMediusKanan.setSelectedIndex(0);
+        MeatusMediusKiri.setSelectedIndex(0);
+        SeptumKanan.setSelectedIndex(0);
+        SeptumKiri.setSelectedIndex(0);
+        NasofaringKanan.setSelectedIndex(0);
+        NasofaringKiri.setSelectedIndex(0);
+        LainlainKanan.setText("");
+        LainlainKiri.setText("");
         Tanggal.setDate(new Date());
         TabRawat.setSelectedIndex(0);
         KirimanDari.requestFocus();
@@ -1852,21 +1863,21 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             KirimanDari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             DiagnosaKlinis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Uvula.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            ArkusFaring.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            DindingPosterior.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Tonsil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            TonsilLingual.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Valekula.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            SinusPiriformis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Epiglitos.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Arytenoid.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            PlikaVentrikulais.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            PitaSuara.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            RimaVocalis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Lainlain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            Kesan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            HidungKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            HidungKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            KavumNasiKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            KavumNasiKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            KonkaInferiorKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            KonkaInferiorKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            MeatusMediusKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            MeatusMediusKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            SeptumKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            SeptumKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            NasofaringKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            NasofaringKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            LainlainKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            LainlainKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
@@ -1909,10 +1920,10 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_endoskopi_faring_laring());
-        BtnHapus.setEnabled(akses.gethasil_endoskopi_faring_laring());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_faring_laring());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_faring_laring());
+        BtnSimpan.setEnabled(akses.gethasil_endoskopi_hidung());
+        BtnHapus.setEnabled(akses.gethasil_endoskopi_hidung());
+        BtnEdit.setEnabled(akses.gethasil_endoskopi_hidung());
+        BtnEdit.setEnabled(akses.gethasil_endoskopi_hidung());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -1930,7 +1941,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from hasil_endoskopi_faring_laring where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from hasil_endoskopi_hidung where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1942,13 +1953,15 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("hasil_endoskopi_faring_laring","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,faring_uvula=?,faring_arkus_faring=?,faring_dinding_posterior=?,faring_tonsil=?,"+
-                "laring_tonsil_lingual=?,laring_valekula=?,laring_sinus_piriformis=?,laring_epiglotis=?,laring_arytenoid=?,laring_plika_ventrikularis=?,laring_pita_suara=?,laring_rima_vocalis=?,laring_lainlain=?,kesan=?,"+
-                "saran=?",21,new String[]{
+        if(Sequel.mengedittf("hasil_endoskopi_hidung","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,kondisi_hidung_kanan=?,kondisi_hidung_kiri=?,"+
+                "kavum_nasi_kanan=?,kavum_nasi_kiri=?,konka_inferior_kanan=?,konka_inferior_kiri=?,meatus_medius_kanan=?,meatus_medius_kiri=?,septum_kanan=?,septum_kiri=?,nasofaring_kanan=?,"+
+                "nasofaring_kiri=?,lainlain_kanan=?,lainlain_kiri=?,kesimpulan=?",21,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                DiagnosaKlinis.getText(),KirimanDari.getText(),Uvula.getText(),ArkusFaring.getText(),DindingPosterior.getText(),Tonsil.getText(),
-                TonsilLingual.getText(),Valekula.getText(),SinusPiriformis.getText(),Epiglitos.getText(),Arytenoid.getText(),PlikaVentrikulais.getText(),
-                PitaSuara.getText(),RimaVocalis.getText(),Lainlain.getText(),Kesan.getText(),Saran.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                DiagnosaKlinis.getText(),KirimanDari.getText(),HidungKanan.getSelectedItem().toString(),HidungKiri.getSelectedItem().toString(),
+                KavumNasiKanan.getSelectedItem().toString(),KavumNasiKiri.getSelectedItem().toString(),KonkaInferiorKanan.getSelectedItem().toString(),
+                KonkaInferiorKiri.getSelectedItem().toString(),MeatusMediusKanan.getSelectedItem().toString(),MeatusMediusKiri.getSelectedItem().toString(),
+                SeptumKanan.getSelectedItem().toString(),SeptumKiri.getSelectedItem().toString(),NasofaringKanan.getSelectedItem().toString(),
+                NasofaringKiri.getSelectedItem().toString(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1959,21 +1972,21 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                 tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
                 tbObat.setValueAt(KirimanDari.getText(),tbObat.getSelectedRow(),7);
                 tbObat.setValueAt(DiagnosaKlinis.getText(),tbObat.getSelectedRow(),8);
-                tbObat.setValueAt(Uvula.getText(),tbObat.getSelectedRow(),9);
-                tbObat.setValueAt(ArkusFaring.getText(),tbObat.getSelectedRow(),10);
-                tbObat.setValueAt(DindingPosterior.getText(),tbObat.getSelectedRow(),11);
-                tbObat.setValueAt(Tonsil.getText(),tbObat.getSelectedRow(),12);
-                tbObat.setValueAt(TonsilLingual.getText(),tbObat.getSelectedRow(),13);
-                tbObat.setValueAt(Valekula.getText(),tbObat.getSelectedRow(),14);
-                tbObat.setValueAt(SinusPiriformis.getText(),tbObat.getSelectedRow(),15);
-                tbObat.setValueAt(Epiglitos.getText(),tbObat.getSelectedRow(),16);
-                tbObat.setValueAt(Arytenoid.getText(),tbObat.getSelectedRow(),17);
-                tbObat.setValueAt(PlikaVentrikulais.getText(),tbObat.getSelectedRow(),18);
-                tbObat.setValueAt(PitaSuara.getText(),tbObat.getSelectedRow(),19);
-                tbObat.setValueAt(RimaVocalis.getText(),tbObat.getSelectedRow(),20);
-                tbObat.setValueAt(Lainlain.getText(),tbObat.getSelectedRow(),21);
-                tbObat.setValueAt(Kesan.getText(),tbObat.getSelectedRow(),22);
-                tbObat.setValueAt(Saran.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(HidungKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(HidungKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(KavumNasiKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(KavumNasiKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(KonkaInferiorKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(KonkaInferiorKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(MeatusMediusKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(MeatusMediusKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(SeptumKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(SeptumKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(NasofaringKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(NasofaringKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(LainlainKanan.getText(),tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(LainlainKiri.getText(),tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),23);
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
         }
@@ -1996,7 +2009,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select hasil_endoskopi_faring_laring_gambar.photo from hasil_endoskopi_faring_laring_gambar where hasil_endoskopi_faring_laring_gambar.no_rawat=?");
+                ps=koneksi.prepareStatement("select hasil_endoskopi_hidung_gambar.photo from hasil_endoskopi_hidung_gambar where hasil_endoskopi_hidung_gambar.no_rawat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -2004,7 +2017,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanendoskopifaringlaring/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanendoskopifaringlaring/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanendoskopihidung/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanendoskopihidung/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
                         }  
                     }else{
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");

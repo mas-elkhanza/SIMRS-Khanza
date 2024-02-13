@@ -32,7 +32,8 @@ import org.springframework.http.MediaType;
 public class frmUtama extends javax.swing.JFrame {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
-    private String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="",sistole="0",diastole="0",signa1="1",signa2="1";
+    private String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="",sistole="0",diastole="0",signa1="1",signa2="1",
+                   idorganisasiradiologi=Sequel.cariIsi("select satu_sehat_mapping_lokasi_ruangrad.id_organisasi_satusehat from satu_sehat_mapping_lokasi_ruangrad");
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -4670,6 +4671,10 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\": \""+rs.getString("nama")+"\"" +
                                             "}," +
+                                            "\"performer\": [{" +
+                                                "\"reference\": \"Organization/"+idorganisasiradiologi+"\"," +
+                                                "\"display\": \"Ruang Radiologi/Petugas Radilogi\"" +
+                                            "}]," +
                                             "\"reasonCode\": [" +
                                                 "{" +
                                                     "\"text\": \""+rs.getString("diagnosa_klinis")+"\"" +
@@ -4770,6 +4775,10 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\": \""+rs.getString("nama")+"\"" +
                                             "}," +
+                                            "\"performer\": [{" +
+                                                "\"reference\": \"Organization/"+idorganisasiradiologi+"\"," +
+                                                "\"display\": \"Ruang Radiologi/Petugas Radilogi\"" +
+                                            "}]," +
                                             "\"reasonCode\": [" +
                                                 "{" +
                                                     "\"text\": \""+rs.getString("diagnosa_klinis")+"\"" +

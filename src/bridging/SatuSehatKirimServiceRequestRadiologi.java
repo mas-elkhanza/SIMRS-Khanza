@@ -46,7 +46,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
     private PreparedStatement ps;
     private ResultSet rs;   
     private int i=0;
-    private String link="",json="",iddokter="",idpasien="";
+    private String link="",json="",iddokter="",idpasien="",idorganisasiradiologi=Sequel.cariIsi("select satu_sehat_mapping_lokasi_ruangrad.id_organisasi_satusehat from satu_sehat_mapping_lokasi_ruangrad");
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
@@ -619,6 +619,10 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                                         "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                         "\"display\": \""+tbObat.getValueAt(i,6).toString()+"\"" +
                                     "}," +
+                                    "\"performer\": [{" +
+                                        "\"reference\": \"Organization/"+idorganisasiradiologi+"\"," +
+                                        "\"display\": \"Ruang Radiologi/Petugas Radilogi\"" +
+                                    "}]," +
                                     "\"reasonCode\": [" +
                                         "{" +
                                             "\"text\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
@@ -705,6 +709,10 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                                         "\"reference\": \"Practitioner/"+iddokter+"\"," +
                                         "\"display\": \""+tbObat.getValueAt(i,6).toString()+"\"" +
                                     "}," +
+                                    "\"performer\": [{" +
+                                        "\"reference\": \"Organization/"+idorganisasiradiologi+"\"," +
+                                        "\"display\": \"Ruang Radiologi/Petugas Radilogi\"" +
+                                    "}]," +
                                     "\"reasonCode\": [" +
                                         "{" +
                                             "\"text\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
