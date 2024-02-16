@@ -738,6 +738,9 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                                                 "\"unit\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                                 "\"system\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                                 "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"" +
+                                            "}," +
+                                            "\"performer\": {" +
+                                                "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                             "}" +
                                         "}" +
                                     "}";
@@ -996,6 +999,9 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
                                                 "\"unit\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                                 "\"system\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                                 "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"" +
+                                            "}," +
+                                            "\"performer\": {" +
+                                                "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                             "}" +
                                         "}" +
                                     "}";

@@ -678,8 +678,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void tampil(){        
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from bangsal where status='1' and kd_bangsal like ? "+
-                    "or status='1' and nm_bangsal like ? order by kd_bangsal");
+            ps=koneksi.prepareStatement("select * from bangsal where bangsal.status='1' and bangsal.kd_bangsal like ? "+
+                    "or bangsal.status='1' and bangsal.nm_bangsal like ? order by bangsal.kd_bangsal");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -773,8 +773,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void tampil2(){        
         Valid.tabelKosong(tabMode2);
         try{
-            ps=koneksi.prepareStatement("select * from bangsal where status='1' and kd_bangsal like ? "+
-                    "or status='1' and nm_bangsal like ? order by kd_bangsal");
+            ps=koneksi.prepareStatement("select * from bangsal where bangsal.status='1' and bangsal.kd_bangsal like ? "+
+                    "or bangsal.status='1' and bangsal.nm_bangsal like ? order by bangsal.kd_bangsal");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

@@ -3722,6 +3722,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"unit\": \""+rs.getString("denominator_code")+"\"," +
                                                     "\"system\": \""+rs.getString("denominator_system")+"\"," +
                                                     "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}," +
+                                                "\"performer\": {" +
+                                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                                 "}" +
                                             "}" +
                                         "}";
@@ -3884,6 +3887,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"unit\": \""+rs.getString("denominator_code")+"\"," +
                                                     "\"system\": \""+rs.getString("denominator_system")+"\"," +
                                                     "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}," +
+                                                "\"performer\": {" +
+                                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                                 "}" +
                                             "}" +
                                         "}";
@@ -4048,6 +4054,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"unit\": \""+rs.getString("denominator_code")+"\"," +
                                                     "\"system\": \""+rs.getString("denominator_system")+"\"," +
                                                     "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}," +
+                                                "\"performer\": {" +
+                                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                                 "}" +
                                             "}" +
                                         "}";
@@ -4212,6 +4221,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"unit\": \""+rs.getString("denominator_code")+"\"," +
                                                     "\"system\": \""+rs.getString("denominator_system")+"\"," +
                                                     "\"code\": \""+rs.getString("denominator_code")+"\"" +
+                                                "}," +
+                                                "\"performer\": {" +
+                                                    "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
                                                 "}" +
                                             "}" +
                                         "}";
