@@ -155,10 +155,6 @@ import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMTriaseIGD;
 import rekammedis.RMUjiFungsiKFR;
-import simrskhanza.DlgCariPasien;
-import simrskhanza.DlgCatatan;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujukanPoliInternal;
 
 /**
  *
