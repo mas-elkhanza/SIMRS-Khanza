@@ -472,6 +472,14 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         tbListDicom = new widget.Table();
         panelGlass7 = new widget.panelisi();
         btnDicom = new widget.Button();
+        PanelDataDicari = new widget.panelisi();
+        label17 = new widget.Label();
+        NoRawatDicari = new widget.Label();
+        label19 = new widget.Label();
+        TglDicari = new widget.Label();
+        JamDicari = new widget.Label();
+        label20 = new widget.Label();
+        PasienDicari = new widget.Label();
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -1189,6 +1197,62 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
 
         PanelAccor.add(TabData, java.awt.BorderLayout.CENTER);
 
+        PanelDataDicari.setBackground(new java.awt.Color(255, 250, 250));
+        PanelDataDicari.setBorder(null);
+        PanelDataDicari.setName("PanelDataDicari"); // NOI18N
+        PanelDataDicari.setPreferredSize(new java.awt.Dimension(100, 44));
+        PanelDataDicari.setWarnaAtas(new java.awt.Color(255, 250, 250));
+        PanelDataDicari.setWarnaBawah(new java.awt.Color(255, 250, 250));
+        PanelDataDicari.setLayout(null);
+
+        label17.setText("No.Rawat :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(65, 23));
+        PanelDataDicari.add(label17);
+        label17.setBounds(0, 10, 74, 23);
+
+        NoRawatDicari.setBackground(new java.awt.Color(255, 255, 255));
+        NoRawatDicari.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        NoRawatDicari.setName("NoRawatDicari"); // NOI18N
+        NoRawatDicari.setPreferredSize(new java.awt.Dimension(105, 23));
+        PanelDataDicari.add(NoRawatDicari);
+        NoRawatDicari.setBounds(78, 10, 105, 23);
+
+        label19.setText("Tanggal :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(53, 23));
+        PanelDataDicari.add(label19);
+        label19.setBounds(185, 10, 55, 23);
+
+        TglDicari.setBackground(new java.awt.Color(255, 255, 255));
+        TglDicari.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TglDicari.setName("TglDicari"); // NOI18N
+        TglDicari.setPreferredSize(new java.awt.Dimension(65, 23));
+        PanelDataDicari.add(TglDicari);
+        TglDicari.setBounds(244, 10, 65, 23);
+
+        JamDicari.setBackground(new java.awt.Color(255, 255, 255));
+        JamDicari.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JamDicari.setName("JamDicari"); // NOI18N
+        JamDicari.setPreferredSize(new java.awt.Dimension(52, 23));
+        PanelDataDicari.add(JamDicari);
+        JamDicari.setBounds(311, 10, 52, 23);
+
+        label20.setText("Pasien :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(50, 23));
+        PanelDataDicari.add(label20);
+        label20.setBounds(368, 10, 51, 23);
+
+        PasienDicari.setBackground(new java.awt.Color(255, 255, 255));
+        PasienDicari.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        PasienDicari.setName("PasienDicari"); // NOI18N
+        PasienDicari.setPreferredSize(new java.awt.Dimension(470, 23));
+        PanelDataDicari.add(PasienDicari);
+        PasienDicari.setBounds(423, 10, 270, 23);
+
+        PanelAccor.add(PanelDataDicari, java.awt.BorderLayout.PAGE_START);
+
         internalFrame1.add(PanelAccor, java.awt.BorderLayout.EAST);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -1645,9 +1709,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where periksa_radiologi.no_rawat=? and periksa_radiologi.tgl_periksa=? "+
                             "and periksa_radiologi.jam=?"); 
                 try {
-                    ps2.setString(1,Kd2.getText());
-                    ps2.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
-                    ps2.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                    ps2.setString(1,NoRawatDicari.getText());
+                    ps2.setString(2,TglDicari.getText());
+                    ps2.setString(3,JamDicari.getText());
                     rs2=ps2.executeQuery();
                     while(rs2.next()){
                         pemeriksaan=rs2.getString("nm_perawatan")+", "+pemeriksaan;
@@ -1670,10 +1734,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             }          
             Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",NoRM,Kd2.getText());
             Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=? ",Jk,NoRM.getText());
-            Sequel.cariIsi("select umur from pasien where no_rkm_medis=?",Umur,NoRM.getText());
+            Sequel.cariIsi("select pasien.umur from pasien where pasien.no_rkm_medis=?",Umur,NoRM.getText());
             Sequel.cariIsi("select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat from pasien inner join kelurahan inner join kecamatan inner join kabupaten on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where no_rkm_medis=? ",Alamat,NoRM.getText());
             
-            kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat='"+Kd2.getText()+"' order by tgl_masuk desc limit 1");
+            kamar=Sequel.cariIsi("select ifnull(kamar_inap.kd_kamar,'') from kamar_inap where kamar_inap.no_rawat='"+Kd2.getText()+"' order by kamar_inap.tgl_masuk desc limit 1");
             if(!kamar.equals("")){
                 namakamar=kamar+", "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
                             " where kamar.kd_kamar='"+kamar+"' ");            
@@ -1752,18 +1816,15 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else{
             if(HasilPeriksa.getText().equals("")){
                 Sequel.queryu2("delete from hasil_radiologi where no_rawat=? and tgl_periksa=? and jam=?",3,new String[]{
-                    tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString()
+                    NoRawatDicari.getText(),TglDicari.getText(),JamDicari.getText()
                 });
             }else{
-                if(Sequel.menyimpantf2("hasil_radiologi","?,?,?,?","Hasil Pemeriksaan", 4,new String[]{
-                    tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),
-                    tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString(),HasilPeriksa.getText()
-                })==false){
-                    Sequel.queryu2("update hasil_radiologi set hasil=? where no_rawat=? and tgl_periksa=? and jam=?",4,new String[]{
-                        HasilPeriksa.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),
-                        tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString()
-                    });                
-                }
+                Sequel.queryu2("delete from hasil_radiologi where no_rawat=? and tgl_periksa=? and jam=?",3,new String[]{
+                    NoRawatDicari.getText(),TglDicari.getText(),JamDicari.getText()
+                });
+                Sequel.menyimpan("hasil_radiologi","?,?,?,?","Hasil Pemeriksaan", 4,new String[]{
+                    NoRawatDicari.getText(),TglDicari.getText(),JamDicari.getText(),HasilPeriksa.getText()
+                });
             }
                 
             JOptionPane.showMessageDialog(null,"Proses update selesai...!!!!"); 
@@ -1925,7 +1986,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu...!!!!"); 
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("radiologi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"&tanggal="+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString()+"&jam="+tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                Valid.panggilUrl("radiologi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+NoRawatDicari.getText()+"&tanggal="+TglDicari.getText()+"&jam="+JamDicari.getText());
                 this.setCursor(Cursor.getDefaultCursor()); 
             }         
         }
@@ -2047,6 +2108,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.PanelBiasa FormPass2;
     private widget.PanelBiasa FormPhoto;
     private widget.TextArea HasilPeriksa;
+    private widget.Label JamDicari;
     private widget.TextBox Jk;
     private widget.TextBox Kd2;
     private widget.TextBox KdPtgUbah;
@@ -2060,7 +2122,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox NmPtgUbah;
     private widget.TextBox NoRM;
     private widget.TextBox NoRawat;
+    private widget.Label NoRawatDicari;
     private widget.PanelBiasa PanelAccor;
+    private widget.panelisi PanelDataDicari;
+    private widget.Label PasienDicari;
     private widget.TextBox Penjab;
     private widget.TextBox Petugas;
     private widget.ScrollPane Scroll3;
@@ -2070,6 +2135,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private javax.swing.JTabbedPane TabData;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private widget.Label TglDicari;
     private widget.TextBox Umur;
     private javax.swing.JDialog WindowGantiDokterParamedis;
     private widget.Button btnAmbilPhoto;
@@ -2093,7 +2159,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label13;
     private widget.Label label15;
     private widget.Label label16;
+    private widget.Label label17;
     private widget.Label label18;
+    private widget.Label label19;
+    private widget.Label label20;
     private widget.Label label9;
     private widget.TextBox nmmem;
     private widget.TextBox nmptg;
@@ -2322,6 +2391,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
  
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
+            PanelDataDicari.setVisible(true);
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(internalFrame1.getWidth()-300,HEIGHT));
             TabData.setVisible(true);  
@@ -2330,6 +2400,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             TabData.setVisible(false);
+            PanelDataDicari.setVisible(false);
             ChkAccor.setVisible(true);
         }
     }
@@ -2338,6 +2409,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(TabData.isVisible()==true){
             if(tbDokter.getSelectedRow()!= -1){
                 if((!Kd2.getText().equals(""))&&(!Petugas.getText().equals(""))){
+                     NoRawatDicari.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                     PasienDicari.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
+                     TglDicari.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                     JamDicari.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
                      try {
                         ps=koneksi.prepareStatement("select gambar_radiologi.lokasi_gambar from gambar_radiologi where gambar_radiologi.no_rawat=? and gambar_radiologi.tgl_periksa=? and gambar_radiologi.jam=? ");
                         try {
@@ -2392,6 +2467,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         System.out.println("Notif : "+e);
                     } 
                 }else{
+                    NoRawatDicari.setText("");
+                    PasienDicari.setText("");
+                    TglDicari.setText("");
+                    JamDicari.setText("");
                     LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'></font></center></body></html>");
                     HasilPeriksa.setText("");
                 }
