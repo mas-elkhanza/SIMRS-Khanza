@@ -46,7 +46,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
     private PreparedStatement ps;
     private ResultSet rs;   
     private int i=0;
-    private String link="",json="",iddokter="",idpasien="",idorganisasiradiologi=Sequel.cariIsi("select satu_sehat_mapping_lokasi_ruangrad.id_organisasi_satusehat from satu_sehat_mapping_lokasi_ruangrad");
+    private String link="",json="",iddokter="",idpasien="";
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
@@ -620,8 +620,8 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                                         "\"display\": \""+tbObat.getValueAt(i,6).toString()+"\"" +
                                     "}," +
                                     "\"performer\": [{" +
-                                        "\"reference\": \"Organization/"+idorganisasiradiologi+"\"," +
-                                        "\"display\": \"Ruang Radiologi/Petugas Radilogi\"" +
+                                        "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"display\": \"Ruang Radiologi/Petugas Radiologi\"" +
                                     "}]," +
                                     "\"reasonCode\": [" +
                                         "{" +
@@ -710,8 +710,8 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                                         "\"display\": \""+tbObat.getValueAt(i,6).toString()+"\"" +
                                     "}," +
                                     "\"performer\": [{" +
-                                        "\"reference\": \"Organization/"+idorganisasiradiologi+"\"," +
-                                        "\"display\": \"Ruang Radiologi/Petugas Radilogi\"" +
+                                        "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"display\": \"Ruang Radiologi/Petugas Radiologi\"" +
                                     "}]," +
                                     "\"reasonCode\": [" +
                                         "{" +
