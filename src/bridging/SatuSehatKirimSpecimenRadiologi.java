@@ -780,7 +780,7 @@ public final class SatuSehatKirimSpecimenRadiologi extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("reg_periksa.no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("noorder"),
-                        rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("nm_perawatan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),
+                        rs.getString("tgl_sampel")+" "+rs.getString("jam_sampel"),rs.getString("nm_perawatan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),
                         rs.getString("id_servicerequest"),rs.getString("kd_jenis_prw"),rs.getString("id_specimen")
                     });
                 }
@@ -829,7 +829,7 @@ public final class SatuSehatKirimSpecimenRadiologi extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("reg_periksa.no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("noorder"),
-                        rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("nm_perawatan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),
+                        rs.getString("tgl_sampel")+" "+rs.getString("jam_sampel"),rs.getString("nm_perawatan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),
                         rs.getString("id_servicerequest"),rs.getString("kd_jenis_prw"),rs.getString("id_specimen")
                     });
                 }
