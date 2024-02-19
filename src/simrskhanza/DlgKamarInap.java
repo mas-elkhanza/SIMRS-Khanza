@@ -150,20 +150,6 @@ import rekammedis.RMSkriningNutrisiLansia;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMUjiFungsiKFR;
-import simrskhanza.DlgCariReg;
-import simrskhanza.DlgCatatan;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgInputResepPulang;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPeriksaLaboratorium;
-import simrskhanza.DlgPeriksaLaboratoriumMB;
-import simrskhanza.DlgPeriksaLaboratoriumPA;
-import simrskhanza.DlgPeriksaRadiologi;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujukMasuk;
-import simrskhanza.DlgTagihanOperasi;
 import surat.SuratKeteranganRawatInap;
 import surat.SuratPenolakanAnjuranMedis;
 import surat.SuratPernyataanPasienUmum;
@@ -17092,10 +17078,16 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             BangsalCari.setEditable(true);
         }
         
+        namadokter="";
         if(akses.getkode().equals("Admin Utama")){
             namadokter="";
         }else{
-            namadokter=billing.rawatinap.perawatan.dokter.tampil3(akses.getkode());
+            i=JOptionPane.showConfirmDialog(null, "Mau ditampilkan berdasarkan user login DPJP Rawat Inap..????","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if(i==JOptionPane.YES_OPTION){
+                namadokter=billing.rawatinap.perawatan.dokter.tampil3(akses.getkode());
+            }else{
+                namadokter="";
+            }
         }
                 
         BtnSimpan.setEnabled(akses.getkamar_inap());
