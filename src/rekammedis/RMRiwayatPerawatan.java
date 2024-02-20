@@ -15091,11 +15091,19 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         rs2.beforeFirst();
                         w=1;
                         while(rs2.next()){
-                            htmlContent.append(
-                                 "<tr>"+
-                                    "<td valign='top' align='center'>"+w+"</td>"+
-                                    "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs2.getString("lokasi_file")+"'>"+rs2.getString("nama")+"_"+rs2.getString("lokasi_file").replaceAll("pages/upload/","")+"</a></td>"+
-                                 "</tr>"); 
+                            if(rs2.getString("lokasi_file").toLowerCase().contains(".jpg")||rs2.getString("lokasi_file").toLowerCase().contains(".jpeg")){
+                                htmlContent.append(
+                                     "<tr>"+
+                                        "<td valign='top' align='center'>"+w+"</td>"+
+                                        "<td valign='top' align='center'>"+rs2.getString("nama")+"<br><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs2.getString("lokasi_file")+"'><img alt='Berkas Digital' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs2.getString("lokasi_file")+"' width='450' height='450'/></a></td>"+
+                                     "</tr>"); 
+                            }else{
+                                htmlContent.append(
+                                     "<tr>"+
+                                        "<td valign='top' align='center'>"+w+"</td>"+
+                                        "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs2.getString("lokasi_file")+"'>"+rs2.getString("nama")+"_"+rs2.getString("lokasi_file").replaceAll("pages/upload/","")+"</a></td>"+
+                                     "</tr>"); 
+                            }
                             w++;
                         }
                         htmlContent.append(
