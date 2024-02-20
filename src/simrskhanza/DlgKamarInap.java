@@ -636,8 +636,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgKamarInap")){
                     if(billing.rawatinap.perawatan.dokter.getTable().getSelectedRow()!= -1){  
-                        CrDokter3.setText(billing.rawatinap.perawatan.dokter.getTable().getValueAt(billing.rawatinap.perawatan.dokter.getTable().getSelectedRow(),1).toString());
-                        CrDokter3.requestFocus();
+                        if(i==1){
+                            CrDokter3.setText(billing.rawatinap.perawatan.dokter.getTable().getValueAt(billing.rawatinap.perawatan.dokter.getTable().getSelectedRow(),1).toString());
+                            CrDokter3.requestFocus();
+                        }else if(i==2){
+                            namadokter=billing.rawatinap.perawatan.dokter.getTable().getValueAt(billing.rawatinap.perawatan.dokter.getTable().getSelectedRow(),0).toString();
+                            tampil();
+                        }
                     }                
                 }
             }
@@ -794,6 +799,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnDataRM = new javax.swing.JMenu();
         MnPenilaianAwal = new javax.swing.JMenu();
+        MnUtamaDPJP = new javax.swing.JMenu();
         MnPenilaianAwalKeperawatanRanap = new javax.swing.JMenuItem();
         MnPenilaianAwalKeperawatanKebidanan = new javax.swing.JMenuItem();
         MnPenilaianAwalMedisRanap = new javax.swing.JMenuItem();
@@ -942,6 +948,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnGabungkanRanap = new javax.swing.JMenuItem();
         MnDPJP = new javax.swing.JMenuItem();
         MnDPJPRanap = new javax.swing.JMenuItem();
+        MnFilterDPJP = new javax.swing.JMenuItem();
         jSeparator13 = new javax.swing.JPopupMenu.Separator();
         MnRujukan = new javax.swing.JMenu();
         MnRujuk = new javax.swing.JMenuItem();
@@ -1554,6 +1561,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPenilaianAwal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPenilaianAwal.setName("MnPenilaianAwal"); // NOI18N
         MnPenilaianAwal.setPreferredSize(new java.awt.Dimension(200, 26));
+        
+        MnUtamaDPJP.setBackground(new java.awt.Color(255, 255, 254));
+        MnUtamaDPJP.setForeground(new java.awt.Color(50, 50, 50));
+        MnUtamaDPJP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnUtamaDPJP.setText("Dokter DPJP");
+        MnUtamaDPJP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnUtamaDPJP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnUtamaDPJP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnUtamaDPJP.setName("MnUtamaDPJP"); // NOI18N
+        MnUtamaDPJP.setPreferredSize(new java.awt.Dimension(200, 26));
 
         MnPenilaianAwalKeperawatanRanap.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianAwalKeperawatanRanap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -3818,33 +3835,51 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnDPJP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDPJP.setForeground(new java.awt.Color(50, 50, 50));
         MnDPJP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnDPJP.setText("Input Dokter P.J. Ranap");
+        MnDPJP.setText("Input Dokter");
         MnDPJP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnDPJP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDPJP.setName("MnDPJP"); // NOI18N
-        MnDPJP.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnDPJP.setPreferredSize(new java.awt.Dimension(160, 26));
         MnDPJP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDPJPActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnDPJP);
+        MnUtamaDPJP.add(MnDPJP);
 
         MnDPJPRanap.setBackground(new java.awt.Color(255, 255, 254));
         MnDPJPRanap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDPJPRanap.setForeground(new java.awt.Color(50, 50, 50));
         MnDPJPRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnDPJPRanap.setText("Tampilkan Dokter P.J. Ranap");
+        MnDPJPRanap.setText("Tampilkan Dokter");
         MnDPJPRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnDPJPRanap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDPJPRanap.setName("MnDPJPRanap"); // NOI18N
-        MnDPJPRanap.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnDPJPRanap.setPreferredSize(new java.awt.Dimension(160, 26));
         MnDPJPRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDPJPRanapActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnDPJPRanap);
+        MnUtamaDPJP.add(MnDPJPRanap);
+        
+        MnFilterDPJP.setBackground(new java.awt.Color(255, 255, 254));
+        MnFilterDPJP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnFilterDPJP.setForeground(new java.awt.Color(50, 50, 50));
+        MnFilterDPJP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnFilterDPJP.setText("Filter Dokter");
+        MnFilterDPJP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnFilterDPJP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnFilterDPJP.setName("MnFilterDPJP"); // NOI18N
+        MnFilterDPJP.setPreferredSize(new java.awt.Dimension(160, 26));
+        MnFilterDPJP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnFilterDPJPActionPerformed(evt);
+            }
+        });
+        MnUtamaDPJP.add(MnFilterDPJP);
+        
+        jPopupMenu1.add(MnUtamaDPJP);
 
         jSeparator13.setBackground(new java.awt.Color(190, 220, 180));
         jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
@@ -6066,6 +6101,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         cmbStatusBayar.setSelectedItem("Semua");
         order="order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
         terbitsep="";
+        namadokter="";
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -10645,6 +10681,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }//GEN-LAST:event_BtnKeluar4ActionPerformed
 
     private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
+        i=1;
         akses.setform("DlgKamarInap");
         billing.rawatinap.perawatan.dokter.isCek();
         billing.rawatinap.perawatan.dokter.TCari.requestFocus();
@@ -16313,6 +16350,15 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }
     
+    private void MnFilterDPJPActionPerformed(java.awt.event.ActionEvent evt) {      
+        i=2;
+        akses.setform("DlgKamarInap");
+        billing.rawatinap.perawatan.dokter.isCek();
+        billing.rawatinap.perawatan.dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        billing.rawatinap.perawatan.dokter.setLocationRelativeTo(internalFrame1);
+        billing.rawatinap.perawatan.dokter.setVisible(true);
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16397,6 +16443,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnChecklistPreOperasi;
     private javax.swing.JMenuItem MnDPJP;
     private javax.swing.JMenuItem MnDPJPRanap;
+    private javax.swing.JMenuItem MnFilterDPJP;
     private javax.swing.JMenu MnDataRM;
     private javax.swing.JMenuItem MnDataSEP;
     private javax.swing.JMenuItem MnDeposit;
@@ -16453,6 +16500,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnPenggunaanKamar;
     private javax.swing.JMenuItem MnPengkajianRestrain;
     private javax.swing.JMenu MnPenilaianAwal;
+    private javax.swing.JMenu MnUtamaDPJP;
     private javax.swing.JMenuItem MnPenilaianAwalKeperawatanKebidanan;
     private javax.swing.JMenuItem MnPenilaianAwalKeperawatanRanap;
     private javax.swing.JMenuItem MnPenilaianAwalMedisHemodialisa;
@@ -16744,7 +16792,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-               (namadokter.equals("")?"where "+key+" "+order:"inner join dpjp_ranap on dpjp_ranap.no_rawat=reg_periksa.no_rawat where dpjp_ranap.kd_dokter='"+akses.getkode()+"' and "+key+" "+order));
+               (namadokter.equals("")?"where "+key+" "+order:"inner join dpjp_ranap on dpjp_ranap.no_rawat=reg_periksa.no_rawat where dpjp_ranap.kd_dokter='"+namadokter+"' and "+key+" "+order));
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -17078,18 +17126,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             BangsalCari.setEditable(true);
         }
         
-        namadokter="";
-        if(akses.getkode().equals("Admin Utama")){
-            namadokter="";
-        }else{
-            i=JOptionPane.showConfirmDialog(null, "Mau ditampilkan berdasarkan user login DPJP Rawat Inap..????","Konfirmasi",JOptionPane.YES_NO_OPTION);
-            if(i==JOptionPane.YES_OPTION){
-                namadokter=billing.rawatinap.perawatan.dokter.tampil3(akses.getkode());
-            }else{
-                namadokter="";
-            }
-        }
-                
         BtnSimpan.setEnabled(akses.getkamar_inap());
         BtnSimpanpindah.setEnabled(akses.getkamar_inap());
         BtnPrint.setEnabled(akses.getkamar_inap());

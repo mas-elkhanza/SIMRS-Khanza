@@ -34,7 +34,7 @@
                 </tr>
                 <tr class="head">
                     <td width="25%" >Nama Berkas Digital</td><td width="">:</td>
-                    <td width="74%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="70" maxlength="100" pattern="[a-zA-Z 0-9-]{1,100}" title=" a-zA-Z 0-9- (Maksimal 100 karakter)" autocomplete="off" required>
+                    <td width="74%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="" size="70" maxlength="100" pattern="[a-zA-Z 0-9-]{1,100}" title=" a-zA-Z 0-9- (Maksimal 100 karakter)" autocomplete="off" required>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
