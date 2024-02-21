@@ -1484,11 +1484,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Rujuk", "APS", "+", "Meninggal", "Sembuh", "Membaik", "Pulang Paksa", "-", "Pindah Kamar", "Status Belum Lengkap", "Atas Persetujuan Dokter", "Atas Permintaan Sendiri", "Isoman", "Lain-lain" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-        cmbStatus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cmbStatusKeyPressed(evt);
-            }
-        });
         internalFrame2.add(cmbStatus);
         cmbStatus.setBounds(418, 175, 240, 23);
 
@@ -4794,11 +4789,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         JamMasuk.setForeground(new java.awt.Color(255, 255, 255));
         JamMasuk.setHighlighter(null);
         JamMasuk.setName("JamMasuk"); // NOI18N
-        JamMasuk.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JamMasukKeyPressed(evt);
-            }
-        });
 
         WindowPindahKamar.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowPindahKamar.setName("WindowPindahKamar"); // NOI18N
@@ -5685,11 +5675,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 DTPCari3ItemStateChanged(evt);
             }
         });
-        DTPCari3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari3KeyPressed(evt);
-            }
-        });
         panelCari.add(DTPCari3);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -5799,7 +5784,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else{
             Valid.pindah(evt,BtnCloseIn,kdkamar);
         }
-}//GEN-LAST:event_norawatKeyPressed
+    }//GEN-LAST:event_norawatKeyPressed
 
     private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkamarKeyPressed
        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -5814,22 +5799,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKamarActionPerformed(null);
         }
-}//GEN-LAST:event_kdkamarKeyPressed
+    }//GEN-LAST:event_kdkamarKeyPressed
 
     private void ttlbiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ttlbiayaKeyPressed
        // Valid.pindah(evt,TKdOb,BtnSimpan);
-}//GEN-LAST:event_ttlbiayaKeyPressed
+    }//GEN-LAST:event_ttlbiayaKeyPressed
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         akses.setform("DlgKamarInap");
         reg.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         reg.setLocationRelativeTo(internalFrame1);
         reg.setVisible(true);
-}//GEN-LAST:event_btnRegActionPerformed
+    }//GEN-LAST:event_btnRegActionPerformed
 
     private void btnRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRegKeyPressed
         Valid.pindah(evt,norawat,kdkamar);
-}//GEN-LAST:event_btnRegKeyPressed
+    }//GEN-LAST:event_btnRegKeyPressed
 
     private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarActionPerformed
         akses.setform("DlgKamarInap");
@@ -5841,11 +5826,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kamar.setLocationRelativeTo(internalFrame1);
         kamar.setVisible(true);
-}//GEN-LAST:event_btnKamarActionPerformed
+    }//GEN-LAST:event_btnKamarActionPerformed
 
     private void btnKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKamarKeyPressed
         Valid.pindah(evt,kdkamar,CmbTahun);
-}//GEN-LAST:event_btnKamarKeyPressed
+    }//GEN-LAST:event_btnKamarKeyPressed
 
     private void BtnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInActionPerformed
         norawat.setEditable(true);
@@ -5863,7 +5848,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         
         WindowInputKamar.setLocationRelativeTo(internalFrame1);
         WindowInputKamar.setVisible(true);
-}//GEN-LAST:event_BtnInActionPerformed
+    }//GEN-LAST:event_BtnInActionPerformed
 
     private void BtnInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnInKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -5871,7 +5856,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else{
             Valid.pindah(evt,TCari,BtnOut);
         }
-}//GEN-LAST:event_BtnInKeyPressed
+    }//GEN-LAST:event_BtnInKeyPressed
 
     private void BtnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOutActionPerformed
         if(tabMode.getRowCount()==0){
@@ -5921,7 +5906,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 WindowInputKamar.setLocationRelativeTo(internalFrame1);
                 WindowInputKamar.setVisible(true);
         }
-}//GEN-LAST:event_BtnOutActionPerformed
+    }//GEN-LAST:event_BtnOutActionPerformed
 
     private void BtnOutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnOutKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -5929,7 +5914,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else{
             Valid.pindah(evt,BtnIn,btnPindah);
         }
-}//GEN-LAST:event_BtnOutKeyPressed
+    }//GEN-LAST:event_BtnOutKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         WindowInputKamar.dispose();
@@ -5939,14 +5924,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowRanapGabung.dispose();
         WindowCaraBayar.dispose();
         dispose();
-}//GEN-LAST:event_BtnKeluarActionPerformed
+    }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             WindowInputKamar.dispose();
             dispose();
         }else{Valid.pindah(evt,BtnPrint,TCari);}
-}//GEN-LAST:event_BtnKeluarKeyPressed
+    }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         if(! TCari.getText().trim().equals("")){
@@ -6058,7 +6043,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     System.out.println("Notifikasi : "+e);
                 }      
         }
-}//GEN-LAST:event_BtnPrintActionPerformed
+    }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -6066,7 +6051,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else{
             Valid.pindah(evt, BtnAll, BtnKeluar);
         }
-}//GEN-LAST:event_BtnPrintKeyPressed
+    }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -6078,11 +6063,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             tbKamIn.requestFocus();
         }
-}//GEN-LAST:event_TCariKeyPressed
+    }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         tampil();
-}//GEN-LAST:event_BtnCariActionPerformed
+    }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -6090,7 +6075,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else{
             Valid.pindah(evt, TCari, BtnAll);
         }
-}//GEN-LAST:event_BtnCariKeyPressed
+    }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
@@ -6103,7 +6088,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         terbitsep="";
         namadokter="";
         tampil();
-}//GEN-LAST:event_BtnAllActionPerformed
+    }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -6111,11 +6096,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }else{
             Valid.pindah(evt, BtnCari, BtnIn);
         }
-}//GEN-LAST:event_BtnAllKeyPressed
+    }//GEN-LAST:event_BtnAllKeyPressed
 
     private void DTPTglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTglKeyPressed
       Valid.pindah(evt,kdkamar,cmbJam);
-}//GEN-LAST:event_DTPTglKeyPressed
+    }//GEN-LAST:event_DTPTglKeyPressed
 
     private void cmbDtkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbDtkKeyPressed
         Valid.pindah(evt,cmbMnt,diagnosaawal);
@@ -6262,15 +6247,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void DTPCari1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari1ItemStateChanged
          R2.setSelected(true);
        
-}//GEN-LAST:event_DTPCari1ItemStateChanged
+    }//GEN-LAST:event_DTPCari1ItemStateChanged
 
     private void DTPCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPCari1KeyPressed
         Valid.pindah(evt,BangsalCari,DTPCari2);
-}//GEN-LAST:event_DTPCari1KeyPressed
+    }//GEN-LAST:event_DTPCari1KeyPressed
 
     private void DTPCari2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPCari2KeyPressed
         Valid.pindah(evt,DTPCari1,BangsalCari);
-}//GEN-LAST:event_DTPCari2KeyPressed
+    }//GEN-LAST:event_DTPCari2KeyPressed
 
     private void diagnosaawalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diagnosaawalKeyPressed
         Valid.pindah(evt, cmbDtk, diagnosaakhir);
@@ -6312,7 +6297,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void TOutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TOutKeyPressed
         // TODO add your handling code here:
-}//GEN-LAST:event_TOutKeyPressed
+    }//GEN-LAST:event_TOutKeyPressed
 
     private void tbKamInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamInMouseClicked
         if(tabMode.getRowCount()!=0){
@@ -6437,7 +6422,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }
             }
         }
-}//GEN-LAST:event_tbKamInMouseClicked
+    }//GEN-LAST:event_tbKamInMouseClicked
 
     private void tbKamInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamInKeyPressed
         if(tabMode.getRowCount()!=0){
@@ -6543,22 +6528,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 TCari.requestFocus();
             }
         }
-}//GEN-LAST:event_tbKamInKeyPressed
+    }//GEN-LAST:event_tbKamInKeyPressed
 
-private void btnBangsalCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalCariActionPerformed
+    private void btnBangsalCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalCariActionPerformed
         akses.setform("DlgKamarInap");
         kamar.bangsal.isCek();
         kamar.bangsal.emptTeks();        
         kamar.bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kamar.bangsal.setLocationRelativeTo(internalFrame1);
         kamar.bangsal.setVisible(true);
-}//GEN-LAST:event_btnBangsalCariActionPerformed
+    }//GEN-LAST:event_btnBangsalCariActionPerformed
 
-private void btnBangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBangsalCariKeyPressed
-   Valid.pindah(evt,DTPCari2,TCari);
-}//GEN-LAST:event_btnBangsalCariKeyPressed
+    private void btnBangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBangsalCariKeyPressed
+       Valid.pindah(evt,DTPCari2,TCari);
+    }//GEN-LAST:event_btnBangsalCariKeyPressed
 
-private void BangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BangsalCariKeyPressed
+    private void BangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BangsalCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampil();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -6568,9 +6553,9 @@ private void BangsalCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             TCari.requestFocus();
         }
-}//GEN-LAST:event_BangsalCariKeyPressed
+    }//GEN-LAST:event_BangsalCariKeyPressed
 
-private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRawatInapActionPerformed
+    private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRawatInapActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -6658,9 +6643,9 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
               }   
           }
       } 
-}//GEN-LAST:event_MnRawatInapActionPerformed
+    }//GEN-LAST:event_MnRawatInapActionPerformed
 
-private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnResepPulangActionPerformed
+    private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnResepPulangActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -6744,9 +6729,9 @@ private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 }
           }
       } 
-}//GEN-LAST:event_MnResepPulangActionPerformed
+    }//GEN-LAST:event_MnResepPulangActionPerformed
 
-private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukActionPerformed
+    private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -6809,9 +6794,9 @@ private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
           }
       } 
-}//GEN-LAST:event_MnRujukActionPerformed
+    }//GEN-LAST:event_MnRujukActionPerformed
 
-private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObatActionPerformed
+    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObatActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -6893,9 +6878,9 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
                 }
           }
       } 
-}//GEN-LAST:event_MnPemberianObatActionPerformed
+    }//GEN-LAST:event_MnPemberianObatActionPerformed
 
-private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingActionPerformed
+    private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -6974,9 +6959,9 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }
           }
       }
-}//GEN-LAST:event_MnBillingActionPerformed
+    }//GEN-LAST:event_MnBillingActionPerformed
 
-private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDietActionPerformed
+    private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDietActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -7037,23 +7022,14 @@ private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     rawatinap.setVisible(true);
                 }
             }
-      } 
-                
-}//GEN-LAST:event_MnDietActionPerformed
+      }         
+    }//GEN-LAST:event_MnDietActionPerformed
 
-private void DTPCari3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari3ItemStateChanged
-   R3.setSelected(true);
-}//GEN-LAST:event_DTPCari3ItemStateChanged
-
-private void DTPCari3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPCari3KeyPressed
-// TODO add your handling code here:
-}//GEN-LAST:event_DTPCari3KeyPressed
-
-private void cmbStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbStatusKeyPressed
-// TODO add your handling code here:
-}//GEN-LAST:event_cmbStatusKeyPressed
-
-private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeriksaLabActionPerformed
+    private void DTPCari3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari3ItemStateChanged
+       R3.setSelected(true);
+    }//GEN-LAST:event_DTPCari3ItemStateChanged
+    
+    private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeriksaLabActionPerformed
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -7109,13 +7085,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
             }
         } 
-}//GEN-LAST:event_MnPeriksaLabActionPerformed
+    }//GEN-LAST:event_MnPeriksaLabActionPerformed
 
-private void JamMasukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamMasukKeyPressed
-// TODO add your handling code here:
-}//GEN-LAST:event_JamMasukKeyPressed
-
-private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnOperasiActionPerformed
+    private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnOperasiActionPerformed
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -7165,11 +7137,10 @@ private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     dlgro.setVisible(true);
                 }
             }
-        } 
-                
-}//GEN-LAST:event_MnOperasiActionPerformed
+        }       
+    }//GEN-LAST:event_MnOperasiActionPerformed
 
-private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusTagihanOperasiActionPerformed
+    private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusTagihanOperasiActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -7219,11 +7190,10 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
                 }
              }     
           }
-      } 
-               
-}//GEN-LAST:event_MnHapusTagihanOperasiActionPerformed
+      }        
+    }//GEN-LAST:event_MnHapusTagihanOperasiActionPerformed
 
-private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusObatOperasiActionPerformed
+    private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusObatOperasiActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -7272,9 +7242,9 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
              }  
           }
       } 
-}//GEN-LAST:event_MnHapusObatOperasiActionPerformed
+    }//GEN-LAST:event_MnHapusObatOperasiActionPerformed
 
-private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukMasukActionPerformed
+    private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukMasukActionPerformed
       if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -7339,7 +7309,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
           }
       } 
-}//GEN-LAST:event_MnRujukMasukActionPerformed
+    }//GEN-LAST:event_MnRujukMasukActionPerformed
 
     private void btnPindahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahActionPerformed
         if(tabMode.getRowCount()==0){
