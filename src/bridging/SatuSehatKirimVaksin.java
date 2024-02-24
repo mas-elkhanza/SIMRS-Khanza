@@ -662,7 +662,8 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                     "\"recorded\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                     "\"primarySource\": true," +
                                     "\"location\": {" +
-                                        "\"reference\": \"Location/"+tbObat.getValueAt(i,23).toString()+"\"" +
+                                        "\"reference\": \"Location/"+tbObat.getValueAt(i,23).toString()+"\"," +
+                                        "\"display\": \""+tbObat.getValueAt(i,24).toString()+"\"" +
                                     "}," +
                                     "\"lotNumber\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                     "\"route\": {" +
@@ -682,12 +683,36 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                     "}," +
                                     "\"performer\": [" +
                                         "{" +
+                                            "\"function\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0443\"," +
+                                                        "\"code\": \"AP\"," +
+                                                        "\"display\": \"Administering Provider\"" +
+                                                    "}" +
+                                                "]" +
+                                            "},"+
                                             "\"actor\": {" +
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"" +
                                             "}" +
                                         "}" +
-                                    "]" +
-                                    (tbObat.getValueAt(i,22).toString().equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
+                                    "],"+
+                                    "\"reasonCode\": [" +
+                                        "{" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"https://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
+                                                    "\"code\": \"IM-Program\"," +
+                                                    "\"display\" : \"Imunisasi Program\"" +
+                                                "}" +
+                                            "]" +
+                                        "}" +
+                                    "]," +
+                                    "\"protocolApplied\" : ["+
+                                        "{"+
+                                            "\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
+                                        "}"+
+                                    "]"+
                                 "}";
                         System.out.println("URL : "+link+"/Immunization");
                         System.out.println("Request JSON : "+json);
@@ -760,7 +785,8 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                     "\"recorded\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                     "\"primarySource\": true," +
                                     "\"location\": {" +
-                                        "\"reference\": \"Location/"+tbObat.getValueAt(i,23).toString()+"\"" +
+                                        "\"reference\": \"Location/"+tbObat.getValueAt(i,23).toString()+"\"," +
+                                        "\"display\": \""+tbObat.getValueAt(i,24).toString()+"\"" +
                                     "}," +
                                     "\"lotNumber\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                     "\"route\": {" +
@@ -780,12 +806,36 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                     "}," +
                                     "\"performer\": [" +
                                         "{" +
+                                            "\"function\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0443\"," +
+                                                        "\"code\": \"AP\"," +
+                                                        "\"display\": \"Administering Provider\"" +
+                                                    "}" +
+                                                "]" +
+                                            "},"+
                                             "\"actor\": {" +
                                                 "\"reference\": \"Practitioner/"+iddokter+"\"" +
                                             "}" +
                                         "}" +
-                                    "]" +
-                                    (tbObat.getValueAt(i,22).toString().equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
+                                    "],"+
+                                    "\"reasonCode\": [" +
+                                        "{" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"https://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
+                                                    "\"code\": \"IM-Program\"," +
+                                                    "\"display\" : \"Imunisasi Program\"" +
+                                                "}" +
+                                            "]" +
+                                        "}" +
+                                    "]," +
+                                    "\"protocolApplied\" : ["+
+                                        "{"+
+                                            "\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
+                                        "}"+
+                                    "]"+
                                 "}";
                         System.out.println("URL : "+link+"/Immunization/"+tbObat.getValueAt(i,27).toString());
                         System.out.println("Request JSON : "+json);

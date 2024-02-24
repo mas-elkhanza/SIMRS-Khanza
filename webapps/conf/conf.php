@@ -498,7 +498,7 @@
     function bukainput($sql){
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor,$sql)
-        or die(/*mysqli_error().*/"<br/><font color=red><b>Gagal..!!</b>");
+        or die(mysqli_error()."<br/><font color=red><b>Gagal..!!</b>");
         mysqli_close($konektor);
         return $result;
     }

@@ -2658,7 +2658,7 @@ public class frmUtama extends javax.swing.JFrame {
                    "satu_sehat_mapping_vaksin.kode_brng,satu_sehat_mapping_vaksin.vaksin_display,satu_sehat_mapping_vaksin.route_code,satu_sehat_mapping_vaksin.route_system,"+
                    "satu_sehat_mapping_vaksin.route_display,satu_sehat_mapping_vaksin.dose_quantity_code,satu_sehat_mapping_vaksin.dose_quantity_system,"+
                    "satu_sehat_mapping_vaksin.dose_quantity_unit,detail_pemberian_obat.no_batch,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                   "detail_pemberian_obat.jml,aturan_pakai.aturan,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,pegawai.no_ktp as ktppraktisi,"+
+                   "detail_pemberian_obat.jml,aturan_pakai.aturan,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,poliklinik.nm_poli,pegawai.no_ktp as ktppraktisi,"+
                    "ifnull(satu_sehat_immunization.id_immunization,'') as id_immunization,detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
@@ -2708,7 +2708,8 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"recorded\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
                                             "\"primarySource\": true," +
                                             "\"location\": {" +
-                                                "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"" +
+                                                "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"," +
+                                                "\"display\": \""+rs.getString("nm_poli")+"\"" +
                                             "}," +
                                             "\"lotNumber\": \""+rs.getString("no_batch")+"\"," +
                                             "\"route\": {" +
@@ -2728,12 +2729,36 @@ public class frmUtama extends javax.swing.JFrame {
                                             "}," +
                                             "\"performer\": [" +
                                                 "{" +
+                                                    "\"function\": {" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0443\"," +
+                                                                "\"code\": \"AP\"," +
+                                                                "\"display\": \"Administering Provider\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "},"+
                                                     "\"actor\": {" +
                                                         "\"reference\": \"Practitioner/"+iddokter+"\"" +
                                                     "}" +
                                                 "}" +
-                                            "]" +
-                                            (rs.getString("aturan").equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
+                                            "],"+
+                                            "\"reasonCode\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"https://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
+                                                            "\"code\": \"IM-Program\"," +
+                                                            "\"display\" : \"Imunisasi Program\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"protocolApplied\" : ["+
+                                                "{"+
+                                                    "\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
+                                                "}"+
+                                            "]"+
                                         "}";
                                 TeksArea.append("URL : "+link+"/Immunization"+"\n");
                                 TeksArea.append("Request JSON : "+json+"\n");
@@ -2771,7 +2796,7 @@ public class frmUtama extends javax.swing.JFrame {
                    "satu_sehat_mapping_vaksin.kode_brng,satu_sehat_mapping_vaksin.vaksin_display,satu_sehat_mapping_vaksin.route_code,satu_sehat_mapping_vaksin.route_system,"+
                    "satu_sehat_mapping_vaksin.route_display,satu_sehat_mapping_vaksin.dose_quantity_code,satu_sehat_mapping_vaksin.dose_quantity_system,"+
                    "satu_sehat_mapping_vaksin.dose_quantity_unit,detail_pemberian_obat.no_batch,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                   "detail_pemberian_obat.jml,aturan_pakai.aturan,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,pegawai.no_ktp as ktppraktisi,"+
+                   "detail_pemberian_obat.jml,aturan_pakai.aturan,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,poliklinik.nm_poli,pegawai.no_ktp as ktppraktisi,"+
                    "ifnull(satu_sehat_immunization.id_immunization,'') as id_immunization,detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
@@ -2821,7 +2846,8 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"recorded\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
                                             "\"primarySource\": true," +
                                             "\"location\": {" +
-                                                "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"" +
+                                                "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"," +
+                                                "\"display\": \""+rs.getString("nm_poli")+"\"" +
                                             "}," +
                                             "\"lotNumber\": \""+rs.getString("no_batch")+"\"," +
                                             "\"route\": {" +
@@ -2841,12 +2867,36 @@ public class frmUtama extends javax.swing.JFrame {
                                             "}," +
                                             "\"performer\": [" +
                                                 "{" +
+                                                    "\"function\": {" +
+                                                        "\"coding\": [" +
+                                                            "{" +
+                                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0443\"," +
+                                                                "\"code\": \"AP\"," +
+                                                                "\"display\": \"Administering Provider\"" +
+                                                            "}" +
+                                                        "]" +
+                                                    "},"+
                                                     "\"actor\": {" +
                                                         "\"reference\": \"Practitioner/"+iddokter+"\"" +
                                                     "}" +
                                                 "}" +
-                                            "]" +
-                                            (rs.getString("aturan").equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
+                                            "],"+
+                                            "\"reasonCode\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"https://terminology.kemkes.go.id/CodeSystem/immunization-reason\"," +
+                                                            "\"code\": \"IM-Program\"," +
+                                                            "\"display\" : \"Imunisasi Program\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"protocolApplied\" : ["+
+                                                "{"+
+                                                    "\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
+                                                "}"+
+                                            "]"+
                                         "}";
                                 TeksArea.append("URL : "+link+"/Immunization"+"\n");
                                 TeksArea.append("Request JSON : "+json+"\n");
