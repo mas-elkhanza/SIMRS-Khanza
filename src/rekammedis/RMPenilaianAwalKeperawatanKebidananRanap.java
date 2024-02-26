@@ -1773,7 +1773,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel30.setText("Keluhan Utama");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(44, 150, 90, 20);
+        jLabel30.setBounds(44, 150, 90, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -4457,7 +4457,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel200.setText(":");
         jLabel200.setName("jLabel200"); // NOI18N
         FormInput.add(jLabel200);
-        jLabel200.setBounds(0, 150, 125, 20);
+        jLabel200.setBounds(0, 150, 125, 23);
 
         jLabel212.setText(":");
         jLabel212.setName("jLabel212"); // NOI18N
