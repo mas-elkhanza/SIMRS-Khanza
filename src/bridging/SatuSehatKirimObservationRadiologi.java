@@ -67,8 +67,9 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","No.Permintaan","Tgl & Jam Sampel","Nama Pemeriksaan",
-                "Radiologi Code","Radiologi System","Radiologi Display","ID Service Request","Kode Pemeriksaan","ID Specimen"
+                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","No.Permintaan","Tgl & Jam Hasil","Nama Pemeriksaan",
+                "Radiologi Code","Radiologi System","Radiologi Display","Hasil Radiologi","Kode Pemeriksaan","ID Specimen",
+                "Kode Dokter","Nama Dokter","No.KTP Dokter","ID Observation"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -80,7 +81,8 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
              Class[] types = new Class[] {
                  java.lang.Boolean.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -93,7 +95,7 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 18; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -746,6 +748,9 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
+            /*"P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","No.Permintaan","Tgl & Jam Hasil","Nama Pemeriksaan",
+                "Radiologi Code","Radiologi System","Radiologi Display","Hasil Radiologi","Kode Pemeriksaan","ID Specimen",
+                "Kode Dokter","Nama Dokter","No.KTP Dokter","ID Observation"*/
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,permintaan_radiologi.noorder,"+
                    "permintaan_radiologi.tgl_sampel,permintaan_radiologi.jam_sampel,jns_perawatan_radiologi.nm_perawatan,"+
@@ -850,8 +855,8 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_specimen_radiologi());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_specimen_radiologi());
+        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_observation_radiologi());
+        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_observation_radiologi());
     }
     
     public JTable getTable(){
