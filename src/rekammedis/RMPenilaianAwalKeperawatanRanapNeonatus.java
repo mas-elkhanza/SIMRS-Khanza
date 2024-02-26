@@ -812,6 +812,10 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel47 = new widget.Label();
         G2 = new widget.TextBox();
         MacamKasus4 = new widget.ComboBox();
+        jLabel108 = new widget.Label();
+        Hidup1 = new widget.TextBox();
+        label21 = new widget.Label();
+        KetAnamnesis7 = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1943,7 +1947,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G2);
-        G2.setBounds(285, 360, 150, 23);
+        G2.setBounds(295, 360, 150, 23);
 
         MacamKasus4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Spontan", "Vacum Ekstraksi", "Forcep Ekstraksi", "Sectio Caesarea", "Lainnya" }));
         MacamKasus4.setName("MacamKasus4"); // NOI18N
@@ -1954,6 +1958,37 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(MacamKasus4);
         MacamKasus4.setBounds(162, 360, 130, 23);
+
+        jLabel108.setText("APGAR Score :");
+        jLabel108.setName("jLabel108"); // NOI18N
+        FormInput.add(jLabel108);
+        jLabel108.setBounds(450, 360, 80, 23);
+
+        Hidup1.setFocusTraversalPolicyProvider(true);
+        Hidup1.setName("Hidup1"); // NOI18N
+        Hidup1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hidup1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Hidup1);
+        Hidup1.setBounds(530, 360, 70, 23);
+
+        label21.setText("Letak :");
+        label21.setName("label21"); // NOI18N
+        label21.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label21);
+        label21.setBounds(592, 360, 60, 23);
+
+        KetAnamnesis7.setFocusTraversalPolicyProvider(true);
+        KetAnamnesis7.setName("KetAnamnesis7"); // NOI18N
+        KetAnamnesis7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KetAnamnesis7KeyPressed(evt);
+            }
+        });
+        FormInput.add(KetAnamnesis7);
+        KetAnamnesis7.setBounds(656, 360, 198, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3858,6 +3893,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         // TODO add your handling code here:
     }//GEN-LAST:event_MacamKasus4KeyPressed
 
+    private void Hidup1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hidup1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hidup1KeyPressed
+
+    private void KetAnamnesis7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetAnamnesis7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KetAnamnesis7KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3909,6 +3952,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox G1;
     private widget.TextBox G2;
     private widget.TextBox Hidup;
+    private widget.TextBox Hidup1;
     private widget.TextBox Jk;
     private widget.TextBox KdDPJP;
     private widget.TextBox KdPetugas;
@@ -3921,6 +3965,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox KetAnamnesis4;
     private widget.TextBox KetAnamnesis5;
     private widget.TextBox KetAnamnesis6;
+    private widget.TextBox KetAnamnesis7;
     private widget.TextBox KeteranganDiagnosaKhususGizi;
     private widget.TextBox KeteranganDiketahuiDietisen;
     private widget.Label LCount;
@@ -3970,6 +4015,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel105;
     private widget.Label jLabel106;
     private widget.Label jLabel107;
+    private widget.Label jLabel108;
     private widget.Label jLabel11;
     private widget.Label jLabel19;
     private widget.Label jLabel200;
@@ -4018,6 +4064,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label label18;
     private widget.Label label19;
     private widget.Label label20;
+    private widget.Label label21;
     private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
