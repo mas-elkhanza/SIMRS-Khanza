@@ -741,8 +741,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel38 = new widget.Label();
         jLabel94 = new widget.Label();
         jLabel9 = new widget.Label();
-        jLabel39 = new widget.Label();
         Alergi = new widget.TextBox();
+        jLabel39 = new widget.Label();
         scrollPane1 = new widget.ScrollPane();
         KeluhanUtama = new widget.TextArea();
         jLabel30 = new widget.Label();
@@ -830,8 +830,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         KeluhanHamilTua = new widget.ComboBox();
         jLabel116 = new widget.Label();
         RiwayatGenekologi = new widget.ComboBox();
-        jLabel117 = new widget.Label();
         RiwayatKB = new widget.ComboBox();
+        jLabel117 = new widget.Label();
         jLabel118 = new widget.Label();
         LamanyaKB = new widget.TextBox();
         KomplikasiKB = new widget.ComboBox();
@@ -1105,6 +1105,10 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         Masalah = new widget.TextArea();
         scrollPane5 = new widget.ScrollPane();
         Tindakan = new widget.TextArea();
+        jLabel200 = new widget.Label();
+        jLabel212 = new widget.Label();
+        jLabel213 = new widget.Label();
+        jLabel214 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1146,7 +1150,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2024" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1590,7 +1594,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         Anamnesis.setBounds(74, 100, 150, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023 05:46:07" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2024 09:34:55" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1732,11 +1736,6 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(jLabel9);
         jLabel9.setBounds(440, 200, 150, 23);
 
-        jLabel39.setText("Riwayat Alergi :");
-        jLabel39.setName("jLabel39"); // NOI18N
-        FormInput.add(jLabel39);
-        jLabel39.setBounds(0, 250, 122, 23);
-
         Alergi.setFocusTraversalPolicyProvider(true);
         Alergi.setName("Alergi"); // NOI18N
         Alergi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1746,6 +1745,12 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         });
         FormInput.add(Alergi);
         Alergi.setBounds(126, 250, 250, 23);
+
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel39.setText("Riwayat Alergi");
+        jLabel39.setName("jLabel39"); // NOI18N
+        FormInput.add(jLabel39);
+        jLabel39.setBounds(44, 250, 100, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -1764,10 +1769,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(scrollPane1);
         scrollPane1.setBounds(129, 150, 310, 43);
 
-        jLabel30.setText("Keluhan Utama :");
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText("Keluhan Utama");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(0, 150, 125, 20);
+        jLabel30.setBounds(44, 150, 90, 20);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -1786,10 +1792,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(scrollPane2);
         scrollPane2.setBounds(189, 200, 250, 43);
 
-        jLabel31.setText("Penyakit Selama Kehamilan :");
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("Penyakit Selama Kehamilan");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(0, 200, 185, 23);
+        jLabel31.setBounds(44, 200, 170, 23);
 
         scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane3.setName("scrollPane3"); // NOI18N
@@ -1943,10 +1950,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(KetSiklusMenstruasi);
         KetSiklusMenstruasi.setBounds(727, 300, 120, 23);
 
+        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel76.setText("Riwayat Menstruasi :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(0, 280, 146, 23);
+        jLabel76.setBounds(44, 280, 146, 23);
 
         jLabel78.setText("Banyaknya :");
         jLabel78.setName("jLabel78"); // NOI18N
@@ -1990,10 +1998,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(StatusKawin1);
         StatusKawin1.setBounds(729, 380, 125, 23);
 
+        jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel66.setText("Riwayat Perkawinan :");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
-        jLabel66.setBounds(0, 360, 149, 23);
+        jLabel66.setBounds(44, 360, 149, 23);
 
         jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel71.setText("tahun,");
@@ -2124,10 +2133,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(jLabel90);
         jLabel90.setBounds(399, 380, 30, 23);
 
+        jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel68.setText("Riwayat Persalinan & Nifas :");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
-        jLabel68.setBounds(0, 440, 182, 23);
+        jLabel68.setBounds(44, 440, 182, 23);
 
         jLabel101.setText("G :");
         jLabel101.setName("jLabel101"); // NOI18N
@@ -2224,10 +2234,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(BtnHapusRiwayatPersalinan);
         BtnHapusRiwayatPersalinan.setBounds(78, 520, 28, 23);
 
+        jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel73.setText("Riwayat Hamil Sekarang :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(0, 590, 169, 23);
+        jLabel73.setBounds(44, 590, 169, 23);
 
         jLabel92.setText("HPHT :");
         jLabel92.setName("jLabel92"); // NOI18N
@@ -2235,7 +2246,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel92.setBounds(0, 610, 110, 23);
 
         HPHT.setForeground(new java.awt.Color(50, 70, 50));
-        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
+        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2024" }));
         HPHT.setDisplayFormat("dd-MM-yyyy");
         HPHT.setName("HPHT"); // NOI18N
         HPHT.setOpaque(false);
@@ -2274,7 +2285,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel96.setBounds(452, 610, 40, 23);
 
         TP.setForeground(new java.awt.Color(50, 70, 50));
-        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
+        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2024" }));
         TP.setDisplayFormat("dd-MM-yyyy");
         TP.setName("TP"); // NOI18N
         TP.setOpaque(false);
@@ -2392,11 +2403,6 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(RiwayatGenekologi);
         RiwayatGenekologi.setBounds(709, 700, 145, 23);
 
-        jLabel117.setText("Riwayat Keluarga Berencana :");
-        jLabel117.setName("jLabel117"); // NOI18N
-        FormInput.add(jLabel117);
-        jLabel117.setBounds(0, 670, 190, 23);
-
         RiwayatKB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Belum Pernah", "Suntik", "Pil", "AKDR", "MOW", "Implan", "Kondom", "Kalender", "MAL", "Coitus Interuptus" }));
         RiwayatKB.setName("RiwayatKB"); // NOI18N
         RiwayatKB.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2406,6 +2412,12 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         });
         FormInput.add(RiwayatKB);
         RiwayatKB.setBounds(194, 670, 137, 23);
+
+        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel117.setText("Riwayat Keluarga Berencana");
+        jLabel117.setName("jLabel117"); // NOI18N
+        FormInput.add(jLabel117);
+        jLabel117.setBounds(44, 670, 160, 23);
 
         jLabel118.setText("Lamanya :");
         jLabel118.setName("jLabel118"); // NOI18N
@@ -2477,10 +2489,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(AlasanBerhentiKB);
         AlasanBerhentiKB.setBounds(329, 700, 210, 23);
 
+        jLabel122.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel122.setText("Riwayat Kebiasaan :");
         jLabel122.setName("jLabel122"); // NOI18N
         FormInput.add(jLabel122);
-        jLabel122.setBounds(0, 730, 143, 23);
+        jLabel122.setBounds(44, 730, 143, 23);
 
         jLabel123.setText("Obat/Vitamin :");
         jLabel123.setName("jLabel123"); // NOI18N
@@ -4441,6 +4454,26 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(scrollPane5);
         scrollPane5.setBounds(454, 2050, 400, 143);
 
+        jLabel200.setText(":");
+        jLabel200.setName("jLabel200"); // NOI18N
+        FormInput.add(jLabel200);
+        jLabel200.setBounds(0, 150, 125, 20);
+
+        jLabel212.setText(":");
+        jLabel212.setName("jLabel212"); // NOI18N
+        FormInput.add(jLabel212);
+        jLabel212.setBounds(0, 200, 185, 23);
+
+        jLabel213.setText(":");
+        jLabel213.setName("jLabel213"); // NOI18N
+        FormInput.add(jLabel213);
+        jLabel213.setBounds(0, 250, 122, 23);
+
+        jLabel214.setText(":");
+        jLabel214.setName("jLabel214"); // NOI18N
+        FormInput.add(jLabel214);
+        jLabel214.setBounds(0, 670, 190, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -4481,7 +4514,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4495,7 +4528,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -7074,6 +7107,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.Label jLabel198;
     private widget.Label jLabel199;
     private widget.Label jLabel20;
+    private widget.Label jLabel200;
     private widget.Label jLabel201;
     private widget.Label jLabel202;
     private widget.Label jLabel203;
@@ -7086,6 +7120,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.Label jLabel21;
     private widget.Label jLabel210;
     private widget.Label jLabel211;
+    private widget.Label jLabel212;
+    private widget.Label jLabel213;
+    private widget.Label jLabel214;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
     private widget.Label jLabel24;
