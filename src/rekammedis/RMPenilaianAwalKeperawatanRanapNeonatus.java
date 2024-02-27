@@ -845,6 +845,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         MacamKasus8 = new widget.ComboBox();
         G9 = new widget.TextBox();
         label22 = new widget.Label();
+        jLabel55 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2007,7 +2008,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         label21.setName("label21"); // NOI18N
         label21.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label21);
-        label21.setBounds(440, 440, 50, 23);
+        label21.setBounds(452, 440, 50, 23);
 
         KetAnamnesis7.setFocusTraversalPolicyProvider(true);
         KetAnamnesis7.setName("KetAnamnesis7"); // NOI18N
@@ -2200,7 +2201,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G8);
-        G8.setBounds(295, 440, 120, 23);
+        G8.setBounds(275, 440, 175, 23);
 
         MacamKasus8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "KPD > 12 Jam", "Asfiksia", "BBLR", "ISK", "UK < 37 Minggu", "Gemeli", "Keputihan", "Ibu Temperatur > 37° C" }));
         MacamKasus8.setName("MacamKasus8"); // NOI18N
@@ -2210,7 +2211,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(MacamKasus8);
-        MacamKasus8.setBounds(540, 440, 170, 23);
+        MacamKasus8.setBounds(506, 440, 170, 23);
 
         G9.setFocusTraversalPolicyProvider(true);
         G9.setName("G9"); // NOI18N
@@ -2220,13 +2221,19 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G9);
-        G9.setBounds(720, 440, 120, 23);
+        G9.setBounds(679, 440, 175, 23);
 
         label22.setText("Letak :");
         label22.setName("label22"); // NOI18N
         label22.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label22);
         label22.setBounds(525, 360, 50, 23);
+
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel55.setText("Kebutuhan Biologis :");
+        jLabel55.setName("jLabel55"); // NOI18N
+        FormInput.add(jLabel55);
+        jLabel55.setBounds(44, 470, 160, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -4357,6 +4364,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel52;
     private widget.Label jLabel53;
     private widget.Label jLabel54;
+    private widget.Label jLabel55;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
