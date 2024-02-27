@@ -601,51 +601,67 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
-                                    "\"resourceType\": \"ServiceRequest\"," +
-                                    "\"identifier\": [" +
-                                        "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"\"" +
-                                        "}" +
-                                    "]," +
-                                    "\"status\": \"active\"," +
-                                    "\"intent\": \"order\"," +
-                                    "\"code\": {" +
-                                        "\"coding\": [" +
-                                            "{" +
-                                                "\"system\": \""+tbObat.getValueAt(i,14).toString()+"\"," +
-                                                "\"code\": \""+tbObat.getValueAt(i,13).toString()+"\"," +
-                                                "\"display\": \""+tbObat.getValueAt(i,15).toString()+"\"" +
-                                            "}" +
-                                        "]," +
-                                        "\"text\": \""+tbObat.getValueAt(i,12).toString()+"\"" +
-                                    "}," +
-                                    "\"subject\": {" +
-                                        "\"reference\": \"Patient/"+idpasien+"\"" +
-                                    "}," +
-                                    "\"encounter\": {" +
-                                        "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"," +
-                                        "\"display\": \"Permintaan "+tbObat.getValueAt(i,12).toString()+" atas nama pasien "+tbObat.getValueAt(i,3).toString()+" No.RM "+tbObat.getValueAt(i,2).toString()+" No.Rawat "+tbObat.getValueAt(i,1).toString()+", pada tanggal "+tbObat.getValueAt(i,10).toString()+"\"" +
-                                    "}," +
-                                    "\"authoredOn\" : \""+tbObat.getValueAt(i,10).toString().replaceAll(" ","T")+"+07:00\"," +
-                                    "\"requester\": {" +
-                                        "\"reference\": \"Practitioner/"+iddokter+"\"," +
-                                        "\"display\": \""+tbObat.getValueAt(i,6).toString()+"\"" +
-                                    "}," +
-                                    "\"performer\": [{" +
-                                        "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                        "\"display\": \"Ruang Radiologi/Petugas Radiologi\"" +
-                                    "}]," +
-                                    "\"reasonCode\": [" +
-                                        "{" +
-                                            "\"text\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
-                                        "}" +
-                                    "]" +
+                                "    \"resourceType\": \"DiagnosticReport\"," +
+                                "    \"identifier\": [" +
+                                "        {" +
+                                "            \"system\": \"http://sys-ids.kemkes.go.id/diagnostic/{{Org_id}}/rad\"," +
+                                "            \"use\": \"official\"," +
+                                "            \"value\": \"5234342\"" +
+                                "        }" +
+                                "    ]," +
+                                "    \"status\": \"final\"," +
+                                "    \"category\": [" +
+                                "        {" +
+                                "            \"coding\": [" +
+                                "                {" +
+                                "                    \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0074\"," +
+                                "                    \"code\": \"RAD\"," +
+                                "                    \"display\": \"Radiology\"" +
+                                "                }" +
+                                "            ]" +
+                                "        }" +
+                                "    ]," +
+                                "    \"code\": {" +
+                                "        \"coding\": [" +
+                                "            {" +
+                                "                \"code\": \"42132-1\"," +
+                                "                \"display\": \"US Breast screening\"," +
+                                "                \"system\": \"http://loinc.org\"" +
+                                "            }" +
+                                "        ]" +
+                                "    }," +
+                                "    \"subject\": {" +
+                                "        \"reference\": \"Patient/100000030015\"" +
+                                "    }," +
+                                "    \"encounter\": {" +
+                                "        \"reference\": \"Encounter/{{Encounter1_uuid}}\"" +
+                                "    }," +
+                                "    \"effectiveDateTime\": \"2023-11-06T10:00:00+00:00\"," +
+                                "    \"issued\": \"2023-11-06T10:00:00+00:00\"," +
+                                "    \"performer\": [" +
+                                "        {" +
+                                "            \"reference\": \"Practitioner/N10000001\"" +
+                                "        }," +
+                                "        {" +
+                                "            \"reference\": \"Organization/{{Org_id}}\"" +
+                                "        }" +
+                                "    ]," +
+                                "    \"result\": [" +
+                                "        {" +
+                                "            \"reference\": \"Observation/bd7fbcf0-c06c-4718-ace5-cada666a75b1\"" +
+                                "        }" +
+                                "    ]," +
+                                "    \"basedOn\": [" +
+                                "        {" +
+                                "            \"reference\": \"ServiceRequest/8a376979-8ec0-400c-98c2-552ed2097e16\"" +
+                                "        }" +
+                                "    ]," +
+                                "    \"conclusion\": \"Lesi solid sugestif maligna di regio perisikatriks superior payudara kanan.\"" +
                                 "}";
-                        System.out.println("URL : "+link+"/ServiceRequest");
+                        System.out.println("URL : "+link+"/DiagnosticReport");
                         System.out.println("Request JSON : "+json);
                         requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/ServiceRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                        json=api.getRest().exchange(link+"/DiagnosticReport", HttpMethod.POST, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
                         root = mapper.readTree(json);
                         response = root.path("id");
