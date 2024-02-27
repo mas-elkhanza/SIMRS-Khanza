@@ -466,6 +466,7 @@ import bridging.PCareCekKartu;
 import bridging.PCareCekReferensiTACC;
 import bridging.SatuSehatKirimClinicalImpression;
 import bridging.SatuSehatKirimCondition;
+import bridging.SatuSehatKirimDiagnosticReportRadiologi;
 import bridging.SatuSehatKirimDiet;
 import bridging.SatuSehatKirimEncounter;
 import bridging.SatuSehatKirimMedication;
@@ -21131,6 +21132,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnKirimDiagnosticReportSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatKirimDiagnosticReportRadiologi aplikasi=new SatuSehatKirimDiagnosticReportRadiologi(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -21817,7 +21830,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkorBromagePascaAnestesi,btnPenilaianPreInduksi,btnHasilUSGUrologi,btnHasilUSGGynecologi,btnHasilPemeriksaanEKG,btnKirimDietSatuSehat,btnMappingObatSatuSehat,
             btnRingkasanPengadaanDapur,btnKirimMedicationSatuSehat,btnKirimMedicationRequestSatuSehat,btnPenatalaksanaanTerapiOkupasi,btnKirimMedicationDispenseSatuSehat,
             btnHasilUSGNeonatus,btnHasilEndoskopiFaringLaring,btnMappingRadiologiSatuSehat,btnKirimServiceRequestRadiologiSatuSehat,btnHasilEndoskopiHidung,btnKirimSpecimenRadiologiSatuSehat,
-            btnMasterMasalahKeperawatanNeonatus,btnMasterRencanaKeperawatanNeonatus,btnPenilaianAwalKeperawatanRanapNeonatus,btnKirimObservationRadiologiSatuSehat;
+            btnMasterMasalahKeperawatanNeonatus,btnMasterRencanaKeperawatanNeonatus,btnPenilaianAwalKeperawatanRanapNeonatus,btnKirimObservationRadiologiSatuSehat,
+            btnKirimDiagnosticReportSatuSehat;
     
     public void isWall(){
         try{            
@@ -24897,6 +24911,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_kirim_observation_radiologi()==true){
                 Panelmenu.add(btnKirimObservationRadiologiSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_kirim_diagnosticreport_radiologi()==true){
+                Panelmenu.add(btnKirimDiagnosticReportSatuSehat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){ 
@@ -29927,6 +29946,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_kirim_observation_radiologi()==true){
             Panelmenu.add(btnKirimObservationRadiologiSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_kirim_diagnosticreport_radiologi()==true){
+            Panelmenu.add(btnKirimDiagnosticReportSatuSehat);
             jmlmenu++;
         }
 
@@ -36132,6 +36156,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_kirim_observation_radiologi()==true){
             if(btnKirimObservationRadiologiSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKirimObservationRadiologiSatuSehat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsatu_sehat_kirim_diagnosticreport_radiologi()==true){
+            if(btnKirimDiagnosticReportSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKirimDiagnosticReportSatuSehat);
                 jmlmenu++;
             }                
         }
@@ -43415,5 +43446,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKirimObservationRadiologiSatuSehat.setName("btnKirimObservationRadiologiSatuSehat"); 
         btnKirimObservationRadiologiSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKirimObservationRadiologiSatuSehat.addActionListener(this::btnKirimObservationRadiologiSatuSehatActionPerformed);
+        
+        btnKirimDiagnosticReportSatuSehat = new widget.ButtonBig();
+        btnKirimDiagnosticReportSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnKirimDiagnosticReportSatuSehat.setText("Kirim Diagnostic Report Radiologi Satu Sehat");
+        btnKirimDiagnosticReportSatuSehat.setIconTextGap(0);
+        btnKirimDiagnosticReportSatuSehat.setName("btnKirimDiagnosticReportSatuSehat"); 
+        btnKirimDiagnosticReportSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKirimDiagnosticReportSatuSehat.addActionListener(this::btnKirimDiagnosticReportSatuSehatActionPerformed);
     }
 }

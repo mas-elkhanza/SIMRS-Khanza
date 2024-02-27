@@ -2264,7 +2264,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(MacamKasus9);
-        MacamKasus9.setBounds(117, 490, 110, 23);
+        MacamKasus9.setBounds(117, 490, 105, 23);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel56.setText("Nutrisi");
@@ -2280,12 +2280,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G10);
-        G10.setBounds(240, 490, 440, 23);
+        G10.setBounds(240, 490, 420, 23);
 
         jLabel119.setText(", Frekuensi");
         jLabel119.setName("jLabel119"); // NOI18N
         FormInput.add(jLabel119);
-        jLabel119.setBounds(680, 490, 60, 23);
+        jLabel119.setBounds(669, 490, 60, 23);
 
         G11.setFocusTraversalPolicyProvider(true);
         G11.setName("G11"); // NOI18N
@@ -2295,7 +2295,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G11);
-        G11.setBounds(740, 490, 45, 23);
+        G11.setBounds(732, 490, 50, 23);
 
         G12.setFocusTraversalPolicyProvider(true);
         G12.setName("G12"); // NOI18N
@@ -2305,19 +2305,19 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G12);
-        G12.setBounds(810, 490, 40, 23);
+        G12.setBounds(800, 490, 45, 23);
 
         jLabel120.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel120.setText("cc/");
         jLabel120.setName("jLabel120"); // NOI18N
         FormInput.add(jLabel120);
-        jLabel120.setBounds(790, 490, 22, 23);
+        jLabel120.setBounds(784, 490, 22, 23);
 
         jLabel122.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel122.setText("x");
         jLabel122.setName("jLabel122"); // NOI18N
         FormInput.add(jLabel122);
-        jLabel122.setBounds(850, 490, 22, 23);
+        jLabel122.setBounds(847, 490, 22, 23);
 
         label23.setText("BAK :");
         label23.setName("label23"); // NOI18N

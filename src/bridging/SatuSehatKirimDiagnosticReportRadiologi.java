@@ -908,8 +908,8 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_servicerequest_radiologi());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_servicerequest_radiologi());
+        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_radiologi());
+        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_radiologi());
     }
     
     public JTable getTable(){
