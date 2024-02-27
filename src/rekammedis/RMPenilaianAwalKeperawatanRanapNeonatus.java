@@ -864,6 +864,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         G14 = new widget.TextBox();
         jLabel121 = new widget.Label();
         jLabel123 = new widget.Label();
+        jLabel59 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2389,6 +2390,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel123.setName("jLabel123"); // NOI18N
         FormInput.add(jLabel123);
         jLabel123.setBounds(780, 490, 22, 23);
+
+        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel59.setText("Alergi/Reaksi (Pada Orang Tua) :");
+        jLabel59.setName("jLabel59"); // NOI18N
+        FormInput.add(jLabel59);
+        jLabel59.setBounds(44, 570, 240, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -4568,6 +4575,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel56;
     private widget.Label jLabel57;
     private widget.Label jLabel58;
+    private widget.Label jLabel59;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
