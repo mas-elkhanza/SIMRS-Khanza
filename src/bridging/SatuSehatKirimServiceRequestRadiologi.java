@@ -637,7 +637,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                         root = mapper.readTree(json);
                         response = root.path("id");
                         if(!response.asText().equals("")){
-                            if(Sequel.menyimpantf2("satu_sehat_servicerequest_radiologi","?,?,?","No.Rawat",3,new String[]{
+                            if(Sequel.menyimpantf2("satu_sehat_servicerequest_radiologi","?,?,?","No.Order",3,new String[]{
                                 tbObat.getValueAt(i,9).toString(),tbObat.getValueAt(i,17).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,16);

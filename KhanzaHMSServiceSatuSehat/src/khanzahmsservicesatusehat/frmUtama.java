@@ -4885,8 +4885,7 @@ public class frmUtama extends javax.swing.JFrame {
     private void specimenradiologi() {
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,permintaan_radiologi.noorder,"+
-                   "permintaan_radiologi.tgl_sampel,permintaan_radiologi.jam_sampel,jns_perawatan_radiologi.nm_perawatan,"+
+                   "select pasien.nm_pasien,pasien.no_ktp,permintaan_radiologi.noorder,permintaan_radiologi.tgl_sampel,permintaan_radiologi.jam_sampel,"+
                    "satu_sehat_mapping_radiologi.sampel_code,satu_sehat_mapping_radiologi.sampel_system,satu_sehat_mapping_radiologi.sampel_display,satu_sehat_servicerequest_radiologi.id_servicerequest,"+
                    "permintaan_pemeriksaan_radiologi.kd_jenis_prw,ifnull(satu_sehat_specimen_radiologi.id_specimen,'') as id_specimen "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
@@ -4976,8 +4975,7 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,permintaan_radiologi.noorder,"+
-                   "permintaan_radiologi.tgl_sampel,permintaan_radiologi.jam_sampel,jns_perawatan_radiologi.nm_perawatan,"+
+                   "select pasien.nm_pasien,pasien.no_ktp,permintaan_radiologi.noorder,permintaan_radiologi.tgl_sampel,permintaan_radiologi.jam_sampel,"+
                    "satu_sehat_mapping_radiologi.sampel_code,satu_sehat_mapping_radiologi.sampel_system,satu_sehat_mapping_radiologi.sampel_display,satu_sehat_servicerequest_radiologi.id_servicerequest,"+
                    "permintaan_pemeriksaan_radiologi.kd_jenis_prw,ifnull(satu_sehat_specimen_radiologi.id_specimen,'') as id_specimen "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
