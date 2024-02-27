@@ -70,7 +70,7 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                 "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Kode Dokter","Nama Dokter Perujuk",
                 "No.KTP Dokter","ID Encounter","No.Permintaan","Tgl & Jam Permintaan","Diagnosa Klinis",
                 "Nama Pemeriksaan","Radiologi Code","Radiologi System","Radiologi Display","ID Service Request",
-                "Kode Pemeriksaan"
+                "Kode Pemeriksaan","ID Specimen","ID Observation","ID Diagnostic Report"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -84,7 +84,8 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -97,7 +98,7 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 18; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -136,6 +137,12 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
             }else if(i==17){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(i==18){
+                column.setPreferredWidth(210);
+            }else if(i==19){
+                column.setPreferredWidth(210);
+            }else if(i==20){
+                column.setPreferredWidth(210);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -794,6 +801,7 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
+            //,"ID Specimen","ID Observation","ID Diagnostic Report"
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
                    "satu_sehat_encounter.id_encounter,permintaan_radiologi.noorder,permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan,permintaan_radiologi.diagnosa_klinis,"+
