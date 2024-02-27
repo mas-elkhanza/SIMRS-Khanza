@@ -2264,7 +2264,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(MacamKasus9);
-        MacamKasus9.setBounds(117, 490, 105, 23);
+        MacamKasus9.setBounds(117, 490, 110, 23);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel56.setText("Nutrisi");
@@ -2280,7 +2280,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G10);
-        G10.setBounds(240, 490, 420, 23);
+        G10.setBounds(230, 490, 443, 23);
 
         jLabel119.setText(", Frekuensi");
         jLabel119.setName("jLabel119"); // NOI18N
@@ -2323,7 +2323,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label23);
-        label23.setBounds(90, 540, 50, 23);
+        label23.setBounds(88, 540, 50, 23);
 
         MacamKasus10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada Keluhan", "Tidak Ada Keluhan" }));
         MacamKasus10.setName("MacamKasus10"); // NOI18N
@@ -2333,7 +2333,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(MacamKasus10);
-        MacamKasus10.setBounds(140, 540, 140, 23);
+        MacamKasus10.setBounds(142, 540, 140, 23);
 
         G13.setFocusTraversalPolicyProvider(true);
         G13.setName("G13"); // NOI18N
@@ -2375,7 +2375,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G14);
-        G14.setBounds(690, 540, 175, 23);
+        G14.setBounds(679, 540, 175, 23);
 
         scrollInput.setViewportView(FormInput);
 
