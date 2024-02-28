@@ -891,10 +891,18 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel69 = new widget.Label();
         MacamKasus16 = new widget.ComboBox();
         G19 = new widget.TextBox();
-        jLabel70 = new widget.Label();
         MacamKasus17 = new widget.ComboBox();
+        jLabel70 = new widget.Label();
         jLabel71 = new widget.Label();
         G20 = new widget.TextBox();
+        label28 = new widget.Label();
+        MacamKasus18 = new widget.ComboBox();
+        G21 = new widget.TextBox();
+        jLabel72 = new widget.Label();
+        jLabel73 = new widget.Label();
+        jLabel74 = new widget.Label();
+        MacamKasus19 = new widget.ComboBox();
+        G22 = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1204,7 +1212,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         Anamnesis.setBounds(79, 100, 105, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2024 20:50:49" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2024 16:31:24" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1979,7 +1987,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         label19.setBounds(365, 330, 60, 23);
 
         TglAsuhan1.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2024 20:50:50" }));
+        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2024 16:31:25" }));
         TglAsuhan1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan1.setName("TglAsuhan1"); // NOI18N
         TglAsuhan1.setOpaque(false);
@@ -2630,12 +2638,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(G19);
         G19.setBounds(247, 710, 607, 23);
 
-        jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel70.setText("Riwayat Tranfusi Darah");
-        jLabel70.setName("jLabel70"); // NOI18N
-        FormInput.add(jLabel70);
-        jLabel70.setBounds(44, 740, 140, 23);
-
         MacamKasus17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         MacamKasus17.setName("MacamKasus17"); // NOI18N
         MacamKasus17.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2645,6 +2647,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(MacamKasus17);
         MacamKasus17.setBounds(169, 740, 100, 23);
+
+        jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel70.setText("Riwayat Tranfusi Darah");
+        jLabel70.setName("jLabel70"); // NOI18N
+        FormInput.add(jLabel70);
+        jLabel70.setBounds(44, 740, 140, 23);
 
         jLabel71.setText(":");
         jLabel71.setName("jLabel71"); // NOI18N
@@ -2659,7 +2667,70 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(G20);
-        G20.setBounds(274, 740, 580, 23);
+        G20.setBounds(272, 740, 150, 23);
+
+        label28.setText("Jika Ada, Reaksi Tranfusi :");
+        label28.setName("label28"); // NOI18N
+        label28.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label28);
+        label28.setBounds(417, 740, 140, 23);
+
+        MacamKasus18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        MacamKasus18.setName("MacamKasus18"); // NOI18N
+        MacamKasus18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MacamKasus18KeyPressed(evt);
+            }
+        });
+        FormInput.add(MacamKasus18);
+        MacamKasus18.setBounds(561, 740, 100, 23);
+
+        G21.setFocusTraversalPolicyProvider(true);
+        G21.setName("G21"); // NOI18N
+        G21.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                G21KeyPressed(evt);
+            }
+        });
+        FormInput.add(G21);
+        G21.setBounds(664, 740, 190, 23);
+
+        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel72.setText("Kebiasaan Ibu :");
+        jLabel72.setName("jLabel72"); // NOI18N
+        FormInput.add(jLabel72);
+        jLabel72.setBounds(44, 770, 240, 23);
+
+        jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel73.setText("Obat-obatan Diminum");
+        jLabel73.setName("jLabel73"); // NOI18N
+        FormInput.add(jLabel73);
+        jLabel73.setBounds(74, 790, 120, 23);
+
+        jLabel74.setText(":");
+        jLabel74.setName("jLabel74"); // NOI18N
+        FormInput.add(jLabel74);
+        jLabel74.setBounds(0, 790, 189, 23);
+
+        MacamKasus19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Vitamin", "Jamu-jamuan", "Lainnya" }));
+        MacamKasus19.setName("MacamKasus19"); // NOI18N
+        MacamKasus19.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MacamKasus19KeyPressed(evt);
+            }
+        });
+        FormInput.add(MacamKasus19);
+        MacamKasus19.setBounds(193, 790, 120, 23);
+
+        G22.setFocusTraversalPolicyProvider(true);
+        G22.setName("G22"); // NOI18N
+        G22.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                G22KeyPressed(evt);
+            }
+        });
+        FormInput.add(G22);
+        G22.setBounds(330, 790, 240, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2701,7 +2772,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2715,7 +2786,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4708,6 +4779,22 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         // TODO add your handling code here:
     }//GEN-LAST:event_G20KeyPressed
 
+    private void MacamKasus18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MacamKasus18KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MacamKasus18KeyPressed
+
+    private void G21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_G21KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_G21KeyPressed
+
+    private void MacamKasus19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MacamKasus19KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MacamKasus19KeyPressed
+
+    private void G22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_G22KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_G22KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -4769,6 +4856,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox G19;
     private widget.TextBox G2;
     private widget.TextBox G20;
+    private widget.TextBox G21;
+    private widget.TextBox G22;
     private widget.TextBox G3;
     private widget.TextBox G4;
     private widget.TextBox G5;
@@ -4807,6 +4896,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.ComboBox MacamKasus15;
     private widget.ComboBox MacamKasus16;
     private widget.ComboBox MacamKasus17;
+    private widget.ComboBox MacamKasus18;
+    private widget.ComboBox MacamKasus19;
     private widget.ComboBox MacamKasus2;
     private widget.ComboBox MacamKasus3;
     private widget.ComboBox MacamKasus4;
@@ -4929,6 +5020,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel7;
     private widget.Label jLabel70;
     private widget.Label jLabel71;
+    private widget.Label jLabel72;
+    private widget.Label jLabel73;
+    private widget.Label jLabel74;
     private widget.Label jLabel8;
     private widget.Label jLabel94;
     private javax.swing.JSeparator jSeparator11;
@@ -4951,6 +5045,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label label25;
     private widget.Label label26;
     private widget.Label label27;
+    private widget.Label label28;
     private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
