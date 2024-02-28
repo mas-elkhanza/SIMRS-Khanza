@@ -921,6 +921,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel129 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel95 = new widget.Label();
+        jLabel79 = new widget.Label();
+        jLabel130 = new widget.Label();
+        KeadaanMentalUmum = new widget.ComboBox();
+        jLabel28 = new widget.Label();
+        GCS = new widget.TextBox();
+        jLabel22 = new widget.Label();
+        TD = new widget.TextBox();
+        jLabel23 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2877,6 +2885,62 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
         jLabel95.setBounds(10, 850, 180, 23);
+
+        jLabel79.setText("Kesadaran");
+        jLabel79.setName("jLabel79"); // NOI18N
+        FormInput.add(jLabel79);
+        jLabel79.setBounds(0, 870, 138, 23);
+
+        jLabel130.setText("Keadaan Umum :");
+        jLabel130.setName("jLabel130"); // NOI18N
+        FormInput.add(jLabel130);
+        jLabel130.setBounds(345, 870, 90, 23);
+
+        KeadaanMentalUmum.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Sedang", "Buruk" }));
+        KeadaanMentalUmum.setName("KeadaanMentalUmum"); // NOI18N
+        KeadaanMentalUmum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeadaanMentalUmumKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeadaanMentalUmum);
+        KeadaanMentalUmum.setBounds(439, 870, 90, 23);
+
+        jLabel28.setText("GCS(E,V,M) :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(552, 870, 70, 23);
+
+        GCS.setFocusTraversalPolicyProvider(true);
+        GCS.setName("GCS"); // NOI18N
+        GCS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GCSKeyPressed(evt);
+            }
+        });
+        FormInput.add(GCS);
+        GCS.setBounds(626, 870, 75, 23);
+
+        jLabel22.setText("TD :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(721, 870, 30, 23);
+
+        TD.setFocusTraversalPolicyProvider(true);
+        TD.setName("TD"); // NOI18N
+        TD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TDKeyPressed(evt);
+            }
+        });
+        FormInput.add(TD);
+        TD.setBounds(755, 870, 65, 23);
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("mmHg");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(823, 870, 40, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -4965,6 +5029,18 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         // TODO add your handling code here:
     }//GEN-LAST:event_G25KeyPressed
 
+    private void KeadaanMentalUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanMentalUmumKeyPressed
+        //Valid.pindah(evt,KesadaranMental,GCS);
+    }//GEN-LAST:event_KeadaanMentalUmumKeyPressed
+
+    private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
+        //Valid.pindah(evt,KeadaanMentalUmum,TD);
+    }//GEN-LAST:event_GCSKeyPressed
+
+    private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
+        //Valid.pindah(evt,GCS,Nadi);
+    }//GEN-LAST:event_TDKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -5038,12 +5114,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox G7;
     private widget.TextBox G8;
     private widget.TextBox G9;
+    private widget.TextBox GCS;
     private widget.TextBox Hidup;
     private widget.TextBox Hidup1;
     private widget.TextBox Jk;
     private widget.TextBox KdDPJP;
     private widget.TextBox KdPetugas;
     private widget.TextBox KdPetugas2;
+    private widget.ComboBox KeadaanMentalUmum;
     private widget.TextArea KeluhanUtama;
     private widget.TextBox KetAnamnesis;
     private widget.TextBox KetAnamnesis1;
@@ -5102,6 +5180,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox TCari;
     private widget.TextBox TCariMasalah;
     private widget.TextBox TCariRencana;
+    private widget.TextBox TD;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRM1;
     private widget.TextBox TNoRw;
@@ -5146,9 +5225,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel127;
     private widget.Label jLabel128;
     private widget.Label jLabel129;
+    private widget.Label jLabel130;
     private widget.Label jLabel19;
     private widget.Label jLabel200;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
     private widget.Label jLabel271;
     private widget.Label jLabel272;
     private widget.Label jLabel273;
@@ -5158,6 +5240,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel277;
     private widget.Label jLabel278;
     private widget.Label jLabel279;
+    private widget.Label jLabel28;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
     private widget.Label jLabel32;
@@ -5209,6 +5292,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel76;
     private widget.Label jLabel77;
     private widget.Label jLabel78;
+    private widget.Label jLabel79;
     private widget.Label jLabel8;
     private widget.Label jLabel94;
     private widget.Label jLabel95;
