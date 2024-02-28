@@ -630,9 +630,9 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
                                         "\"reference\": \"Encounter/"+tbObat.getValueAt(i,17).toString()+"\"," +
                                         "\"display\": \"Hasil Pemeriksaan Radiologi "+tbObat.getValueAt(i,7).toString()+" No.Rawat "+tbObat.getValueAt(i,1).toString()+", Atas Nama Pasien "+tbObat.getValueAt(i,3).toString()+", No.RM "+tbObat.getValueAt(i,2).toString()+", Pada Tanggal "+tbObat.getValueAt(i,6).toString()+"\"" +
                                     "}," +
-                                    "\"specimen\": {" +
+                                    "\"specimen\": [{" +
                                         "\"reference\": \"Specimen/"+tbObat.getValueAt(i,13).toString()+"\"" +
-                                    "}," +
+                                    "}]," +
                                     "\"effectiveDateTime\": \""+tbObat.getValueAt(i,6).toString().replaceAll(" ","T")+"+07:00\"," +
                                     "\"valueString\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
                                "}";

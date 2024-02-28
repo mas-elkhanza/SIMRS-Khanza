@@ -678,7 +678,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
                                     "\"resourceType\": \"ServiceRequest\"," +
-                                    "\"id\": \""+tbObat.getValueAt(i,15).toString()+"\"," +
+                                    "\"id\": \""+tbObat.getValueAt(i,16).toString()+"\"," +
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
