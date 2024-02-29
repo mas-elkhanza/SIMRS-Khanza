@@ -5341,8 +5341,8 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"coding\": [" +
                                                     "{" +
                                                         "\"code\": \""+rs.getString("code")+"\"," +
-                                                        "\"display\": \""+rs.getString("display")+"\"" +
-                                                        "\"system\": \""+rs.getString("system")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"," +
+                                                        "\"system\": \""+rs.getString("system")+"\"" +
                                                     "}" +
                                                 "]" +
                                             "}," +
@@ -5473,8 +5473,8 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"coding\": [" +
                                                     "{" +
                                                         "\"code\": \""+rs.getString("code")+"\"," +
-                                                        "\"display\": \""+rs.getString("display")+"\"" +
-                                                        "\"system\": \""+rs.getString("system")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"," +
+                                                        "\"system\": \""+rs.getString("system")+"\"" +
                                                     "}" +
                                                 "]" +
                                             "}," +

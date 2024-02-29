@@ -629,8 +629,8 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                                         "\"coding\": [" +
                                             "{" +
                                                 "\"code\": \""+tbObat.getValueAt(i,13).toString()+"\"," +
-                                                "\"display\": \""+tbObat.getValueAt(i,15).toString()+"\"" +
-                                                "\"system\": \""+tbObat.getValueAt(i,14).toString()+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,15).toString()+"\"," +
+                                                "\"system\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
                                             "}" +
                                         "]" +
                                     "}," +
@@ -735,8 +735,8 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                                         "\"coding\": [" +
                                             "{" +
                                                 "\"code\": \""+tbObat.getValueAt(i,13).toString()+"\"," +
-                                                "\"display\": \""+tbObat.getValueAt(i,15).toString()+"\"" +
-                                                "\"system\": \""+tbObat.getValueAt(i,14).toString()+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,15).toString()+"\"," +
+                                                "\"system\": \""+tbObat.getValueAt(i,14).toString()+"\"" +
                                             "}" +
                                         "]" +
                                     "}," +
