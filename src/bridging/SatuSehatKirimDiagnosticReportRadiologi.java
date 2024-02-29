@@ -660,7 +660,7 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                                             "\"reference\": \"ServiceRequest/"+tbObat.getValueAt(i,16).toString()+"\"" +
                                         "}" +
                                     "]," +
-                                    "\"conclusion\": \""+tbObat.getValueAt(i,21).toString()+"\"" +
+                                    "\"conclusion\": \""+tbObat.getValueAt(i,21).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                 "}";
                         System.out.println("URL : "+link+"/DiagnosticReport");
                         System.out.println("Request JSON : "+json);
@@ -766,7 +766,7 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                                             "\"reference\": \"ServiceRequest/"+tbObat.getValueAt(i,16).toString()+"\"" +
                                         "}" +
                                     "]," +
-                                    "\"conclusion\": \""+tbObat.getValueAt(i,21).toString()+"\"" +
+                                    "\"conclusion\": \""+tbObat.getValueAt(i,21).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                 "}";
                         System.out.println("URL : "+link+"/DiagnosticReport/"+tbObat.getValueAt(i,20).toString());
                         System.out.println("Request JSON : "+json);

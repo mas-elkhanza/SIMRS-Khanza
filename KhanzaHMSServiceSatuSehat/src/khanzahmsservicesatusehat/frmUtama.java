@@ -5122,7 +5122,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
-                                            "\"valueString\": \""+rs.getString("hasil")+"\"" +
+                                            "\"valueString\": \""+rs.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
                                 TeksArea.append("Request JSON : "+json);
@@ -5238,7 +5238,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
                                             "}," +
                                             "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
-                                            "\"valueString\": \""+rs.getString("hasil")+"\"" +
+                                            "\"valueString\": \""+rs.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                        "}";
                                 TeksArea.append("URL : "+link+"/Observation");
                                 TeksArea.append("Request JSON : "+json);
@@ -5372,7 +5372,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"reference\": \"ServiceRequest/"+rs.getString("id_servicerequest")+"\"" +
                                                 "}" +
                                             "]," +
-                                            "\"conclusion\": \""+rs.getString("hasil")+"\"" +
+                                            "\"conclusion\": \""+rs.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                         "}";
                                 TeksArea.append("URL : "+link+"/DiagnosticReport");
                                 TeksArea.append("Request JSON : "+json);
@@ -5504,7 +5504,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"reference\": \"ServiceRequest/"+rs.getString("id_servicerequest")+"\"" +
                                                 "}" +
                                             "]," +
-                                            "\"conclusion\": \""+rs.getString("hasil")+"\"" +
+                                            "\"conclusion\": \""+rs.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
                                         "}";
                                 TeksArea.append("URL : "+link+"/DiagnosticReport");
                                 TeksArea.append("Request JSON : "+json);
