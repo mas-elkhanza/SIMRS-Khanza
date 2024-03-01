@@ -66,9 +66,11 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Hidung Kanan",
-                "Hidung Kiri","Kavum Nasi Kanan","Kavum Nasi Kiri","Konka Inferior Kanan","Konka Inferior Kiri","Meatus Medius Kanan",
-                "Meatus Medius Kiri","Septum Kanan","Septum Kiri","Nasofaring Kanan","Nasofaring Kiri","Lain-lain Kanan","Lain-lain Kiri","Kesimpulan"
+                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Kiriman Dari","Diagnosa Klinis","Telinga Kanan","Telinga Kiri",
+                "Liang Telinga Kanan","Keterangan Liang Telinga Kanan","Liang Telinga Kiri","Keterangan Liang Telinga Kiri","Intak Kanan","Intak Kiri",
+                "Perforasi Kanan","Keterangan Perforasi Kanan","Perforasi Kiri","Keterangan Perforasi Kiri","Mukosa Kanan","Mukosa Kiri","Osikel Kanan","Osikel Kiri",
+                "Isthmus Kanan","Isthmus Kiri","Anterior Kanan","Anterior Kiri","Posterior Kanan","Posterior Kiri","Lain-lain Telinga Kanan","Lain-lain Telinga Kiri",
+                "Kesimpulan","Anjuran"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -77,7 +79,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 35; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -97,36 +99,6 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==8){
                 column.setPreferredWidth(150);
-            }else if(i==9){
-                column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(100);
-            }else if(i==11){
-                column.setPreferredWidth(100);
-            }else if(i==12){
-                column.setPreferredWidth(100);
-            }else if(i==13){
-                column.setPreferredWidth(120);
-            }else if(i==14){
-                column.setPreferredWidth(120);
-            }else if(i==15){
-                column.setPreferredWidth(120);
-            }else if(i==16){
-                column.setPreferredWidth(120);
-            }else if(i==17){
-                column.setPreferredWidth(90);
-            }else if(i==18){
-                column.setPreferredWidth(90);
-            }else if(i==19){
-                column.setPreferredWidth(100);
-            }else if(i==20){
-                column.setPreferredWidth(100);
-            }else if(i==21){
-                column.setPreferredWidth(150);
-            }else if(i==22){
-                column.setPreferredWidth(150);
-            }else if(i==23){
-                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -340,6 +312,8 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         jLabel63 = new widget.Label();
         scrollPane18 = new widget.ScrollPane();
         Anjuran = new widget.TextArea();
+        KeteranganLiangKanan = new widget.TextBox();
+        KeteranganLiangKiri = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -721,7 +695,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         jLabel33.setBounds(16, 110, 80, 23);
 
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel34.setText("- Liang Teliga");
+        jLabel34.setText("- Liang Telinga");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
         jLabel34.setBounds(30, 140, 90, 23);
@@ -734,7 +708,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             }
         });
         FormInput.add(LiangTelingaKanan);
-        LiangTelingaKanan.setBounds(107, 140, 130, 23);
+        LiangTelingaKanan.setBounds(113, 140, 130, 23);
 
         jLabel35.setText(":");
         jLabel35.setName("jLabel35"); // NOI18N
@@ -897,7 +871,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         jLabel49.setText(":");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(0, 140, 103, 23);
+        jLabel49.setBounds(0, 140, 109, 23);
 
         jLabel50.setText(":");
         jLabel50.setName("jLabel50"); // NOI18N
@@ -927,10 +901,10 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             }
         });
         FormInput.add(LiangTelingaKiri);
-        LiangTelingaKiri.setBounds(477, 140, 130, 23);
+        LiangTelingaKiri.setBounds(483, 140, 130, 23);
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel43.setText("- Liang Teliga");
+        jLabel43.setText("- Liang Telinga");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
         jLabel43.setBounds(400, 140, 90, 23);
@@ -938,7 +912,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         jLabel51.setText(":");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(370, 140, 103, 23);
+        jLabel51.setBounds(370, 140, 109, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel52.setText("- Membran Timpani :");
@@ -1110,6 +1084,26 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
 
         FormInput.add(scrollPane18);
         scrollPane18.setBounds(34, 550, 690, 53);
+
+        KeteranganLiangKanan.setFocusTraversalPolicyProvider(true);
+        KeteranganLiangKanan.setName("KeteranganLiangKanan"); // NOI18N
+        KeteranganLiangKanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganLiangKananKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganLiangKanan);
+        KeteranganLiangKanan.setBounds(246, 140, 108, 23);
+
+        KeteranganLiangKiri.setFocusTraversalPolicyProvider(true);
+        KeteranganLiangKiri.setName("KeteranganLiangKiri"); // NOI18N
+        KeteranganLiangKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganLiangKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganLiangKiri);
+        KeteranganLiangKiri.setBounds(616, 140, 108, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1360,7 +1354,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
 }//GEN-LAST:event_TNoRwKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRM.getText().trim().equals("")){
+        if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
@@ -1368,27 +1362,31 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Anjuran.getText().trim().equals("")){
+            Valid.textKosong(Anjuran,"Anjuran");
         }else{
-            if(Sequel.menyimpantf("hasil_endoskopi_hidung","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",20,new String[]{
+            if(Sequel.menyimpantf("hasil_endoskopi_telinga","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",31,new String[]{
                     TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                    DiagnosaKlinis.getText(),KirimanDari.getText(),HidungKanan.getSelectedItem().toString(),HidungKiri.getSelectedItem().toString(),
-                    KavumNasiKanan.getSelectedItem().toString(),KavumNasiKiri.getSelectedItem().toString(),KonkaInferiorKanan.getSelectedItem().toString(),
-                    KonkaInferiorKiri.getSelectedItem().toString(),MeatusMediusKanan.getSelectedItem().toString(),MeatusMediusKiri.getSelectedItem().toString(),
-                    SeptumKanan.getSelectedItem().toString(),SeptumKiri.getSelectedItem().toString(),NasofaringKanan.getSelectedItem().toString(),
-                    NasofaringKiri.getSelectedItem().toString(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText()
+                    DiagnosaKlinis.getText(),KirimanDari.getText(),TelingaKanan.getSelectedItem().toString(),TelingaKiri.getSelectedItem().toString(),
+                    LiangTelingaKanan.getSelectedItem().toString(),KeteranganLiangKanan.getText(),LiangTelingaKiri.getSelectedItem().toString(),KeteranganLiangKiri.getText(),
+                    IntakKanan.getSelectedItem().toString(),IntakKiri.getSelectedItem().toString(),PerforasiKanan.getSelectedItem().toString(),KeteranganPerforasiKanan.getText(),
+                    PerforasiKiri.getSelectedItem().toString(),KeteranganPerforasiKiri.getText(),MukosaKanan.getText(),MukosaKiri.getText(),OsikelKanan.getText(),
+                    OsikelKiri.getText(),IsthmusKanan.getText(),IsthmusKiri.getText(),AnteriorKanan.getText(),AnteriorKiri.getText(),PosteriorKanan.getText(),
+                    PosteriorKiri.getText(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText(),Anjuran.getText()
                 })==true){
                     tabMode.addRow(new String[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        KirimanDari.getText(),DiagnosaKlinis.getText(),HidungKanan.getSelectedItem().toString(),HidungKiri.getSelectedItem().toString(),
-                        KavumNasiKanan.getSelectedItem().toString(),KavumNasiKiri.getSelectedItem().toString(),KonkaInferiorKanan.getSelectedItem().toString(),
-                        KonkaInferiorKiri.getSelectedItem().toString(),MeatusMediusKanan.getSelectedItem().toString(),MeatusMediusKiri.getSelectedItem().toString(),
-                        SeptumKanan.getSelectedItem().toString(),SeptumKiri.getSelectedItem().toString(),NasofaringKanan.getSelectedItem().toString(),
-                        NasofaringKiri.getSelectedItem().toString(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText()
+                        KirimanDari.getText(),DiagnosaKlinis.getText(),TelingaKanan.getSelectedItem().toString(),TelingaKiri.getSelectedItem().toString(),
+                        LiangTelingaKanan.getSelectedItem().toString(),KeteranganLiangKanan.getText(),LiangTelingaKiri.getSelectedItem().toString(),KeteranganLiangKiri.getText(),
+                        IntakKanan.getSelectedItem().toString(),IntakKiri.getSelectedItem().toString(),PerforasiKanan.getSelectedItem().toString(),KeteranganPerforasiKanan.getText(),
+                        PerforasiKiri.getSelectedItem().toString(),KeteranganPerforasiKiri.getText(),MukosaKanan.getText(),MukosaKiri.getText(),OsikelKanan.getText(),
+                        OsikelKiri.getText(),IsthmusKanan.getText(),IsthmusKiri.getText(),AnteriorKanan.getText(),AnteriorKiri.getText(),PosteriorKanan.getText(),
+                        PosteriorKiri.getText(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText(),Anjuran.getText()
                     });
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
             }
-        }*/
+        }
     
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1444,6 +1442,8 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Anjuran.getText().trim().equals("")){
+            Valid.textKosong(Anjuran,"Anjuran");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1698,16 +1698,16 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
             Valid.MyReportqry("rptCetakHasilEndoskipoHidung.jasper","report","::[ Formulir Hasil Pemeriksaan Tele Endoskopi Hidung ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_hidung.tanggal,"+
-                "hasil_endoskopi_hidung.kd_dokter,dokter.nm_dokter,hasil_endoskopi_hidung.diagnosa_klinis,hasil_endoskopi_hidung.kiriman_dari,"+
-                "hasil_endoskopi_hidung.kondisi_hidung_kanan,hasil_endoskopi_hidung.kondisi_hidung_kiri,hasil_endoskopi_hidung.kavum_nasi_kanan,"+
-                "hasil_endoskopi_hidung.kavum_nasi_kiri,hasil_endoskopi_hidung.konka_inferior_kanan,hasil_endoskopi_hidung.konka_inferior_kiri,"+
-                "hasil_endoskopi_hidung.meatus_medius_kanan,hasil_endoskopi_hidung.meatus_medius_kiri,hasil_endoskopi_hidung.septum_kanan,"+
-                "hasil_endoskopi_hidung.septum_kiri,hasil_endoskopi_hidung.nasofaring_kanan,hasil_endoskopi_hidung.nasofaring_kiri,"+
-                "hasil_endoskopi_hidung.lainlain_kanan,hasil_endoskopi_hidung.lainlain_kiri,hasil_endoskopi_hidung.kesimpulan "+
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_telinga.tanggal,"+
+                "hasil_endoskopi_telinga.kd_dokter,dokter.nm_dokter,hasil_endoskopi_telinga.diagnosa_klinis,hasil_endoskopi_telinga.kiriman_dari,"+
+                "hasil_endoskopi_telinga.kondisi_hidung_kanan,hasil_endoskopi_telinga.kondisi_hidung_kiri,hasil_endoskopi_telinga.kavum_nasi_kanan,"+
+                "hasil_endoskopi_telinga.kavum_nasi_kiri,hasil_endoskopi_telinga.konka_inferior_kanan,hasil_endoskopi_telinga.konka_inferior_kiri,"+
+                "hasil_endoskopi_telinga.meatus_medius_kanan,hasil_endoskopi_telinga.meatus_medius_kiri,hasil_endoskopi_telinga.septum_kanan,"+
+                "hasil_endoskopi_telinga.septum_kiri,hasil_endoskopi_telinga.nasofaring_kanan,hasil_endoskopi_telinga.nasofaring_kiri,"+
+                "hasil_endoskopi_telinga.lainlain_kanan,hasil_endoskopi_telinga.lainlain_kiri,hasil_endoskopi_telinga.kesimpulan "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join hasil_endoskopi_hidung on reg_periksa.no_rawat=hasil_endoskopi_hidung.no_rawat "+
-                "inner join dokter on hasil_endoskopi_hidung.kd_dokter=dokter.kd_dokter where hasil_endoskopi_hidung.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join hasil_endoskopi_telinga on reg_periksa.no_rawat=hasil_endoskopi_telinga.no_rawat "+
+                "inner join dokter on hasil_endoskopi_telinga.kd_dokter=dokter.kd_dokter where hasil_endoskopi_telinga.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -1876,6 +1876,14 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_AnjuranKeyPressed
 
+    private void KeteranganLiangKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganLiangKananKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganLiangKananKeyPressed
+
+    private void KeteranganLiangKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganLiangKiriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganLiangKiriKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1920,6 +1928,8 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
     private widget.TextBox IsthmusKiri;
     private widget.TextBox KdDokter;
     private widget.TextArea Kesimpulan;
+    private widget.TextBox KeteranganLiangKanan;
+    private widget.TextBox KeteranganLiangKiri;
     private widget.TextBox KeteranganPerforasiKanan;
     private widget.TextBox KeteranganPerforasiKiri;
     private widget.TextBox KirimanDari;
@@ -2019,31 +2029,31 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_hidung.tanggal,"+
-                        "hasil_endoskopi_hidung.kd_dokter,dokter.nm_dokter,hasil_endoskopi_hidung.diagnosa_klinis,hasil_endoskopi_hidung.kiriman_dari,"+
-                        "hasil_endoskopi_hidung.kondisi_hidung_kanan,hasil_endoskopi_hidung.kondisi_hidung_kiri,hasil_endoskopi_hidung.kavum_nasi_kanan,"+
-                        "hasil_endoskopi_hidung.kavum_nasi_kiri,hasil_endoskopi_hidung.konka_inferior_kanan,hasil_endoskopi_hidung.konka_inferior_kiri,"+
-                        "hasil_endoskopi_hidung.meatus_medius_kanan,hasil_endoskopi_hidung.meatus_medius_kiri,hasil_endoskopi_hidung.septum_kanan,"+
-                        "hasil_endoskopi_hidung.septum_kiri,hasil_endoskopi_hidung.nasofaring_kanan,hasil_endoskopi_hidung.nasofaring_kiri,"+
-                        "hasil_endoskopi_hidung.lainlain_kanan,hasil_endoskopi_hidung.lainlain_kiri,hasil_endoskopi_hidung.kesimpulan "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_telinga.tanggal,"+
+                        "hasil_endoskopi_telinga.kd_dokter,dokter.nm_dokter,hasil_endoskopi_telinga.diagnosa_klinis,hasil_endoskopi_telinga.kiriman_dari,"+
+                        "hasil_endoskopi_telinga.kondisi_hidung_kanan,hasil_endoskopi_telinga.kondisi_hidung_kiri,hasil_endoskopi_telinga.kavum_nasi_kanan,"+
+                        "hasil_endoskopi_telinga.kavum_nasi_kiri,hasil_endoskopi_telinga.konka_inferior_kanan,hasil_endoskopi_telinga.konka_inferior_kiri,"+
+                        "hasil_endoskopi_telinga.meatus_medius_kanan,hasil_endoskopi_telinga.meatus_medius_kiri,hasil_endoskopi_telinga.septum_kanan,"+
+                        "hasil_endoskopi_telinga.septum_kiri,hasil_endoskopi_telinga.nasofaring_kanan,hasil_endoskopi_telinga.nasofaring_kiri,"+
+                        "hasil_endoskopi_telinga.lainlain_kanan,hasil_endoskopi_telinga.lainlain_kiri,hasil_endoskopi_telinga.kesimpulan "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_endoskopi_hidung on reg_periksa.no_rawat=hasil_endoskopi_hidung.no_rawat "+
-                        "inner join dokter on hasil_endoskopi_hidung.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_endoskopi_hidung.tanggal between ? and ? order by hasil_endoskopi_hidung.tanggal");
+                        "inner join hasil_endoskopi_telinga on reg_periksa.no_rawat=hasil_endoskopi_telinga.no_rawat "+
+                        "inner join dokter on hasil_endoskopi_telinga.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_endoskopi_telinga.tanggal between ? and ? order by hasil_endoskopi_telinga.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_hidung.tanggal,"+
-                        "hasil_endoskopi_hidung.kd_dokter,dokter.nm_dokter,hasil_endoskopi_hidung.diagnosa_klinis,hasil_endoskopi_hidung.kiriman_dari,"+
-                        "hasil_endoskopi_hidung.kondisi_hidung_kanan,hasil_endoskopi_hidung.kondisi_hidung_kiri,hasil_endoskopi_hidung.kavum_nasi_kanan,"+
-                        "hasil_endoskopi_hidung.kavum_nasi_kiri,hasil_endoskopi_hidung.konka_inferior_kanan,hasil_endoskopi_hidung.konka_inferior_kiri,"+
-                        "hasil_endoskopi_hidung.meatus_medius_kanan,hasil_endoskopi_hidung.meatus_medius_kiri,hasil_endoskopi_hidung.septum_kanan,"+
-                        "hasil_endoskopi_hidung.septum_kiri,hasil_endoskopi_hidung.nasofaring_kanan,hasil_endoskopi_hidung.nasofaring_kiri,"+
-                        "hasil_endoskopi_hidung.lainlain_kanan,hasil_endoskopi_hidung.lainlain_kiri,hasil_endoskopi_hidung.kesimpulan "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_telinga.tanggal,"+
+                        "hasil_endoskopi_telinga.kd_dokter,dokter.nm_dokter,hasil_endoskopi_telinga.diagnosa_klinis,hasil_endoskopi_telinga.kiriman_dari,"+
+                        "hasil_endoskopi_telinga.kondisi_hidung_kanan,hasil_endoskopi_telinga.kondisi_hidung_kiri,hasil_endoskopi_telinga.kavum_nasi_kanan,"+
+                        "hasil_endoskopi_telinga.kavum_nasi_kiri,hasil_endoskopi_telinga.konka_inferior_kanan,hasil_endoskopi_telinga.konka_inferior_kiri,"+
+                        "hasil_endoskopi_telinga.meatus_medius_kanan,hasil_endoskopi_telinga.meatus_medius_kiri,hasil_endoskopi_telinga.septum_kanan,"+
+                        "hasil_endoskopi_telinga.septum_kiri,hasil_endoskopi_telinga.nasofaring_kanan,hasil_endoskopi_telinga.nasofaring_kiri,"+
+                        "hasil_endoskopi_telinga.lainlain_kanan,hasil_endoskopi_telinga.lainlain_kiri,hasil_endoskopi_telinga.kesimpulan "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join hasil_endoskopi_hidung on reg_periksa.no_rawat=hasil_endoskopi_hidung.no_rawat "+
-                        "inner join dokter on hasil_endoskopi_hidung.kd_dokter=dokter.kd_dokter where "+
-                        "hasil_endoskopi_hidung.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "hasil_endoskopi_hidung.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_endoskopi_hidung.tanggal");
+                        "inner join hasil_endoskopi_telinga on reg_periksa.no_rawat=hasil_endoskopi_telinga.no_rawat "+
+                        "inner join dokter on hasil_endoskopi_telinga.kd_dokter=dokter.kd_dokter where "+
+                        "hasil_endoskopi_telinga.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "hasil_endoskopi_telinga.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_endoskopi_telinga.tanggal");
             }
                 
             try {
@@ -2105,8 +2115,31 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             KirimanDari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             DiagnosaKlinis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             TelingaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            TelingaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             LiangTelingaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            KeteranganLiangKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            LiangTelingaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            KeteranganLiangKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            IntakKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            IntakKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            PerforasiKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            KeteranganPerforasiKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            PerforasiKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            KeteranganPerforasiKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            MukosaKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            MukosaKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            OsikelKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            OsikelKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            IsthmusKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            IsthmusKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            AnteriorKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            AnteriorKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            PosteriorKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            PosteriorKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            LainlainKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            LainlainKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            Anjuran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
@@ -2149,10 +2182,10 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_endoskopi_hidung());
-        BtnHapus.setEnabled(akses.gethasil_endoskopi_hidung());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_hidung());
-        BtnEdit.setEnabled(akses.gethasil_endoskopi_hidung());
+        BtnSimpan.setEnabled(akses.gethasil_endoskopi_telinga());
+        BtnHapus.setEnabled(akses.gethasil_endoskopi_telinga());
+        BtnEdit.setEnabled(akses.gethasil_endoskopi_telinga());
+        BtnEdit.setEnabled(akses.gethasil_endoskopi_telinga());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -2170,7 +2203,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from hasil_endoskopi_hidung where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from hasil_endoskopi_telinga where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2182,15 +2215,18 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("hasil_endoskopi_hidung","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,kondisi_hidung_kanan=?,kondisi_hidung_kiri=?,"+
-                "kavum_nasi_kanan=?,kavum_nasi_kiri=?,konka_inferior_kanan=?,konka_inferior_kiri=?,meatus_medius_kanan=?,meatus_medius_kiri=?,septum_kanan=?,septum_kiri=?,nasofaring_kanan=?,"+
-                "nasofaring_kiri=?,lainlain_kanan=?,lainlain_kiri=?,kesimpulan=?",21,new String[]{
+        if(Sequel.mengedittf("hasil_endoskopi_telinga","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,diagnosa_klinis=?,kiriman_dari=?,bentuk_liang_telinga_kanan=?,bentuk_liang_telinga_kiri=?,"+
+                "kondisi_liang_telinga_kanan=?,keterangan_kondisi_liang_telinga_kanan=?,kondisi_liang_telinga_kiri=?,keterangan_kondisi_liang_telinga_kiri=?,membran_timpani_intak_kanan=?,"+
+                "membran_timpani_intak_kiri=?,membran_timpani_perforasi_kanan=?,keterangan_membran_timpani_perforasi_kanan=?,membran_timpani_perforasi_kiri=?,keterangan_membran_timpani_perforasi_kiri=?,"+
+                "kavum_timpani_mukosa_kanan=?,kavum_timpani_mukosa_kiri=?,kavum_timpani_osikel_kanan=?,kavum_timpani_osikel_kiri=?,kavum_timpani_isthmus_kanan=?,kavum_timpani_isthmus_kiri=?,"+
+                "kavum_timpani_anterior_kanan=?,kavum_timpani_anterior_kiri=?,kavum_timpani_posterior_kanan=?,kavum_timpani_posterior_kiri=?,lainlain_kanan=?,lainlain_kiri=?,kesimpulan=?,anjuran=?",32,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                DiagnosaKlinis.getText(),KirimanDari.getText(),HidungKanan.getSelectedItem().toString(),HidungKiri.getSelectedItem().toString(),
-                KavumNasiKanan.getSelectedItem().toString(),KavumNasiKiri.getSelectedItem().toString(),KonkaInferiorKanan.getSelectedItem().toString(),
-                KonkaInferiorKiri.getSelectedItem().toString(),MeatusMediusKanan.getSelectedItem().toString(),MeatusMediusKiri.getSelectedItem().toString(),
-                SeptumKanan.getSelectedItem().toString(),SeptumKiri.getSelectedItem().toString(),NasofaringKanan.getSelectedItem().toString(),
-                NasofaringKiri.getSelectedItem().toString(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                DiagnosaKlinis.getText(),KirimanDari.getText(),TelingaKanan.getSelectedItem().toString(),TelingaKiri.getSelectedItem().toString(),
+                LiangTelingaKanan.getSelectedItem().toString(),KeteranganLiangKanan.getText(),LiangTelingaKiri.getSelectedItem().toString(),KeteranganLiangKiri.getText(),
+                IntakKanan.getSelectedItem().toString(),IntakKiri.getSelectedItem().toString(),PerforasiKanan.getSelectedItem().toString(),KeteranganPerforasiKanan.getText(),
+                PerforasiKiri.getSelectedItem().toString(),KeteranganPerforasiKiri.getText(),MukosaKanan.getText(),MukosaKiri.getText(),OsikelKanan.getText(),
+                OsikelKiri.getText(),IsthmusKanan.getText(),IsthmusKiri.getText(),AnteriorKanan.getText(),AnteriorKiri.getText(),PosteriorKanan.getText(),
+                PosteriorKiri.getText(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText(),Anjuran.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2201,24 +2237,35 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
                 tbObat.setValueAt(KirimanDari.getText(),tbObat.getSelectedRow(),7);
                 tbObat.setValueAt(DiagnosaKlinis.getText(),tbObat.getSelectedRow(),8);
-                tbObat.setValueAt(HidungKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-                tbObat.setValueAt(HidungKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-                tbObat.setValueAt(KavumNasiKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-                tbObat.setValueAt(KavumNasiKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-                tbObat.setValueAt(KonkaInferiorKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-                tbObat.setValueAt(KonkaInferiorKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-                tbObat.setValueAt(MeatusMediusKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-                tbObat.setValueAt(MeatusMediusKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-                tbObat.setValueAt(SeptumKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-                tbObat.setValueAt(SeptumKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-                tbObat.setValueAt(NasofaringKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-                tbObat.setValueAt(NasofaringKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-                tbObat.setValueAt(LainlainKanan.getText(),tbObat.getSelectedRow(),21);
-                tbObat.setValueAt(LainlainKiri.getText(),tbObat.getSelectedRow(),22);
-                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(TelingaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(TelingaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(LiangTelingaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(KeteranganLiangKanan.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(LiangTelingaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(KeteranganLiangKiri.getText(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(IntakKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(IntakKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(PerforasiKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(KeteranganPerforasiKanan.getText(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(PerforasiKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(KeteranganPerforasiKiri.getText(),tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(MukosaKanan.getText(),tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(MukosaKiri.getText(),tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(OsikelKanan.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(OsikelKiri.getText(),tbObat.getSelectedRow(),24);
+                tbObat.setValueAt(IsthmusKanan.getText(),tbObat.getSelectedRow(),25);
+                tbObat.setValueAt(IsthmusKiri.getText(),tbObat.getSelectedRow(),26);
+                tbObat.setValueAt(AnteriorKanan.getText(),tbObat.getSelectedRow(),27);
+                tbObat.setValueAt(AnteriorKiri.getText(),tbObat.getSelectedRow(),28);
+                tbObat.setValueAt(PosteriorKanan.getText(),tbObat.getSelectedRow(),29);
+                tbObat.setValueAt(PosteriorKiri.getText(),tbObat.getSelectedRow(),30);
+                tbObat.setValueAt(LainlainKanan.getText(),tbObat.getSelectedRow(),31);
+                tbObat.setValueAt(LainlainKiri.getText(),tbObat.getSelectedRow(),32);
+                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),33);
+                tbObat.setValueAt(Anjuran.getText(),tbObat.getSelectedRow(),34);
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
-        }*/
+        }
     }
     
     private void isPhoto(){
@@ -2238,7 +2285,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select hasil_endoskopi_hidung_gambar.photo from hasil_endoskopi_hidung_gambar where hasil_endoskopi_hidung_gambar.no_rawat=?");
+                ps=koneksi.prepareStatement("select hasil_endoskopi_telinga_gambar.photo from hasil_endoskopi_telinga_gambar where hasil_endoskopi_telinga_gambar.no_rawat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();

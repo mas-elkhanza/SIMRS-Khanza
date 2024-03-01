@@ -584,7 +584,7 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
             if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,4).toString().equals(""))&&(!tbObat.getValueAt(i,16).toString().equals(""))&&tbObat.getValueAt(i,18).toString().equals("")){
                 try {
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,4).toString());
-                    iddokter=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,16).toString());
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbObat.getValueAt(i,16).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -678,7 +678,7 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
             if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,4).toString().equals(""))&&(!tbObat.getValueAt(i,16).toString().equals(""))&&(!tbObat.getValueAt(i,18).toString().equals(""))){
                 try {
                     idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,4).toString());
-                    iddokter=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,16).toString());
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbObat.getValueAt(i,16).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);

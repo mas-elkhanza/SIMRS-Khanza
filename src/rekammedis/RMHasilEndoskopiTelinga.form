@@ -672,7 +672,7 @@
                         <Component class="widget.Label" name="jLabel34">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="- Liang Teliga"/>
+                            <Property name="text" type="java.lang.String" value="- Liang Telinga"/>
                             <Property name="name" type="java.lang.String" value="jLabel34" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -701,7 +701,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="107" y="140" width="130" height="23"/>
+                              <AbsoluteConstraints x="113" y="140" width="130" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -997,7 +997,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="0" y="140" width="103" height="23"/>
+                              <AbsoluteConstraints x="0" y="140" width="109" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1063,14 +1063,14 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="477" y="140" width="130" height="23"/>
+                              <AbsoluteConstraints x="483" y="140" width="130" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
                         <Component class="widget.Label" name="jLabel43">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="- Liang Teliga"/>
+                            <Property name="text" type="java.lang.String" value="- Liang Telinga"/>
                             <Property name="name" type="java.lang.String" value="jLabel43" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1086,7 +1086,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="370" y="140" width="103" height="23"/>
+                              <AbsoluteConstraints x="370" y="140" width="109" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1401,6 +1401,34 @@
                             </Component>
                           </SubComponents>
                         </Container>
+                        <Component class="widget.TextBox" name="KeteranganLiangKanan">
+                          <Properties>
+                            <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
+                            <Property name="name" type="java.lang.String" value="KeteranganLiangKanan" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KeteranganLiangKananKeyPressed"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="246" y="140" width="108" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="widget.TextBox" name="KeteranganLiangKiri">
+                          <Properties>
+                            <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
+                            <Property name="name" type="java.lang.String" value="KeteranganLiangKiri" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KeteranganLiangKiriKeyPressed"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="616" y="140" width="108" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
