@@ -116,9 +116,13 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
             }else if(i==16){
                 column.setPreferredWidth(55);
             }else if(i==17){
-                column.setPreferredWidth(89);
+                column.setPreferredWidth(87);
             }else if(i==18){
-                column.setPreferredWidth(147);
+                column.setPreferredWidth(145);
+            }else if(i==19){
+                column.setPreferredWidth(82);
+            }else if(i==20){
+                column.setPreferredWidth(140);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
