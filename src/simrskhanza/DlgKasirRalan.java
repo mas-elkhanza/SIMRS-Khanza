@@ -87,6 +87,7 @@ import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMEdukasiPasienKeluargaRawatJalan;
 import rekammedis.RMHasilEndoskopiFaringLaring;
 import rekammedis.RMHasilEndoskopiHidung;
+import rekammedis.RMHasilEndoskopiTelinga;
 import rekammedis.RMHasilPemeriksaanEKG;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
@@ -14054,6 +14055,29 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     } 
     
+    private void MnHasilEndoskopiTelingaActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            //TNoReg.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMHasilEndoskopiTelinga form=new RMHasilEndoskopiTelinga(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -14492,8 +14516,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Table tbKasirRalan2;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JMenuItem MnPenilaianPreInduksi,MnHasilPemeriksaanUSG,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP,MnPenatalaksanaanTerapiOkupasi,MnHasilPemeriksaanUSGNeonatus,
-                                  MnHasilEndoskopiFaringLaring,MnHasilEndoskopiHidung;
-    private javax.swing.JMenu MnHasilUSG;
+                                  MnHasilEndoskopiFaringLaring,MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga;
+    private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi;
     
     private void tampilkasir() {     
         Valid.tabelKosong(tabModekasir);
@@ -14833,6 +14857,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnHasilPemeriksaanEKG.setEnabled(akses.gethasil_pemeriksaan_ekg());
         MnHasilEndoskopiFaringLaring.setEnabled(akses.gethasil_endoskopi_faring_laring());
         MnHasilEndoskopiHidung.setEnabled(akses.gethasil_endoskopi_hidung());
+        MnHasilEndoskopiTelinga.setEnabled(akses.gethasil_endoskopi_telinga());
         MnPenatalaksanaanTerapiOkupasi.setEnabled(akses.getpenatalaksanaan_terapi_okupasi());
         
         if(akses.getkode().equals("Admin Utama")){
@@ -15512,6 +15537,18 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnHasilEndoskopiHidung.setPreferredSize(new java.awt.Dimension(200, 26));
         MnHasilEndoskopiHidung.addActionListener(this::MnHasilEndoskopiHidungActionPerformed);
         
+        MnHasilEndoskopiTelinga = new javax.swing.JMenuItem();
+        MnHasilEndoskopiTelinga.setBackground(new java.awt.Color(255, 255, 254));
+        MnHasilEndoskopiTelinga.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnHasilEndoskopiTelinga.setForeground(new java.awt.Color(50, 50, 50));
+        MnHasilEndoskopiTelinga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnHasilEndoskopiTelinga.setText("Hasil Endoskopi Telinga");
+        MnHasilEndoskopiTelinga.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHasilEndoskopiTelinga.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHasilEndoskopiTelinga.setName("MnHasilEndoskopiTelinga");
+        MnHasilEndoskopiTelinga.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnHasilEndoskopiTelinga.addActionListener(this::MnHasilEndoskopiTelingaActionPerformed);
+        
         MnHasilUSG = new javax.swing.JMenu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilUSG.setForeground(new java.awt.Color(50, 50, 50));
@@ -15522,6 +15559,17 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnHasilUSG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHasilUSG.setName("MnHasilUSG"); 
         MnHasilUSG.setPreferredSize(new java.awt.Dimension(200, 26));
+        
+        MnHasilEndoskopi = new javax.swing.JMenu();
+        MnHasilEndoskopi.setBackground(new java.awt.Color(255, 255, 254));
+        MnHasilEndoskopi.setForeground(new java.awt.Color(50, 50, 50));
+        MnHasilEndoskopi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnHasilEndoskopi.setText("Hasil Endoskopi");
+        MnHasilEndoskopi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnHasilEndoskopi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHasilEndoskopi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHasilEndoskopi.setName("MnHasilEndoskopi"); 
+        MnHasilEndoskopi.setPreferredSize(new java.awt.Dimension(200, 26));
         
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
@@ -15561,13 +15609,15 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnRMRawatJalan.add(MnAwalKeperawatan);
         MnRMRawatJalan.add(MnAwalMedis);
         MnRMRawatJalan.add(MnHasilUSG);
+        MnRMRawatJalan.add(MnHasilEndoskopi);
         MnHasilUSG.add(MnHasilPemeriksaanUSG);
         MnHasilUSG.add(MnHasilPemeriksaanUSGUrologi);
         MnHasilUSG.add(MnHasilPemeriksaanUSGGynecologi);
         MnHasilUSG.add(MnHasilPemeriksaanUSGNeonatus);
         MnRMRawatJalan.add(MnHasilPemeriksaanEKG);
-        MnRMRawatJalan.add(MnHasilEndoskopiFaringLaring);
-        MnRMRawatJalan.add(MnHasilEndoskopiHidung);
+        MnHasilEndoskopi.add(MnHasilEndoskopiFaringLaring);
+        MnHasilEndoskopi.add(MnHasilEndoskopiHidung);
+        MnHasilEndoskopi.add(MnHasilEndoskopiTelinga);
         MnRMRawatJalan.add(MnDokumentasiTindakanESWL);
         MnRMRawatJalan.add(MnPenilaianFisioterapi);
         MnRMRawatJalan.add(MnPenilaianPsikolog);

@@ -97,6 +97,7 @@ import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMHasilEndoskopiFaringLaring;
 import rekammedis.RMHasilEndoskopiHidung;
+import rekammedis.RMHasilEndoskopiTelinga;
 import rekammedis.RMHasilPemeriksaanEKG;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
@@ -16320,6 +16321,75 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }
     
+    private void MnHasilEndoskopiTelingaActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
+                    try {
+                        psanak=koneksi.prepareStatement(
+                            "select ranap_gabung.no_rawat2 from ranap_gabung where ranap_gabung.no_rawat=?");            
+                        try {
+                            psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
+                            rs2=psanak.executeQuery();
+                            if(rs2.next()){
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                RMHasilEndoskopiTelinga form=new RMHasilEndoskopiTelinga(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
+                                if(R1.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                }else if(R2.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),DTPCari2.getDate());
+                                }else if(R3.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
+                                }
+                                form.emptTeks();
+                                form.tampil();
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                tbKamIn.requestFocus();
+                            }
+                        } catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }finally{
+                              if(rs2 != null){
+                                  rs2.close();
+                              }
+                              if(psanak != null){
+                                  psanak.close();
+                              }
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }else{
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    RMHasilEndoskopiTelinga form=new RMHasilEndoskopiTelinga(null,false);
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.setVisible(true);
+                    if(R1.isSelected()==true){
+                        form.setNoRm(norawat.getText(),new Date());
+                    }else if(R2.isSelected()==true){
+                        form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                    }else if(R3.isSelected()==true){
+                        form.setNoRm(norawat.getText(),DTPCari4.getDate());
+                    }  
+                    form.emptTeks();
+                    form.tampil();
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            }
+        }
+    }
+    
     private void MnFilterDPJPActionPerformed(java.awt.event.ActionEvent evt) {      
         i=2;
         akses.setform("DlgKamarInap");
@@ -16721,8 +16791,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.TextBox ttlbiayapindah;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JMenuItem MnSkorBromagePascaAnestesi,MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnBelumTerbitSEP,MnSudahTerbitSEP,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,
-                                  MnHasilEndoskopiHidung;
-    private javax.swing.JMenu MnHasilUSG;
+                                  MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga;
+    private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi;
     
     private void tampil() {
         if(R1.isSelected()==true){
@@ -17196,6 +17266,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilPemeriksaanUSGNeonatus.setEnabled(akses.gethasil_usg_neonatus());
         MnHasilEndoskopiFaringLaring.setEnabled(akses.gethasil_endoskopi_faring_laring());
         MnHasilEndoskopiHidung.setEnabled(akses.gethasil_endoskopi_hidung());
+        MnHasilEndoskopiTelinga.setEnabled(akses.gethasil_endoskopi_telinga());
         MnPernyataanPasienUmum.setEnabled(akses.getsurat_pernyataan_pasien_umum());
         MnKonselingFarmasi.setEnabled(akses.getkonseling_farmasi());
         MnPermintaanInformasiObat.setEnabled(akses.getpelayanan_informasi_obat());
@@ -17402,6 +17473,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilUSG.setName("MnHasilUSG"); 
         MnHasilUSG.setPreferredSize(new java.awt.Dimension(230, 26));
         
+        MnHasilEndoskopi = new javax.swing.JMenu();
+        MnHasilEndoskopi.setBackground(new java.awt.Color(255, 255, 254));
+        MnHasilEndoskopi.setForeground(new java.awt.Color(50, 50, 50));
+        MnHasilEndoskopi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnHasilEndoskopi.setText("Hasil Endoskopi");
+        MnHasilEndoskopi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnHasilEndoskopi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHasilEndoskopi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHasilEndoskopi.setName("MnHasilEndoskopi"); 
+        MnHasilEndoskopi.setPreferredSize(new java.awt.Dimension(230, 26));
+        
         MnHasilPemeriksaanUSGNeonatus = new javax.swing.JMenuItem();
         MnHasilPemeriksaanUSGNeonatus.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilPemeriksaanUSGNeonatus.setFont(new java.awt.Font("Tahoma", 0, 11)); 
@@ -17438,6 +17520,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilEndoskopiHidung.setPreferredSize(new java.awt.Dimension(200, 26));
         MnHasilEndoskopiHidung.addActionListener(this::MnHasilEndoskopiHidungActionPerformed);
         
+        MnHasilEndoskopiTelinga = new javax.swing.JMenuItem();
+        MnHasilEndoskopiTelinga.setBackground(new java.awt.Color(255, 255, 254));
+        MnHasilEndoskopiTelinga.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnHasilEndoskopiTelinga.setForeground(new java.awt.Color(50, 50, 50));
+        MnHasilEndoskopiTelinga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnHasilEndoskopiTelinga.setText("Hasil Endoskopi Telinga");
+        MnHasilEndoskopiTelinga.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHasilEndoskopiTelinga.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHasilEndoskopiTelinga.setName("MnHasilEndoskopiTelinga");
+        MnHasilEndoskopiTelinga.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnHasilEndoskopiTelinga.addActionListener(this::MnHasilEndoskopiTelingaActionPerformed);
+        
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
         MnRMOperasi.add(MnSignInSebelumAnestesi);
@@ -17463,8 +17557,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilUSG.add(MnHasilPemeriksaanUSGNeonatus);
         MnHasilUSG.add(MnHasilPemeriksaanUSGGynecologi);
         MnObservasi.add(MnHasilPemeriksaanEKG);
-        MnObservasi.add(MnHasilEndoskopiFaringLaring);
-        MnObservasi.add(MnHasilEndoskopiHidung);
+        MnObservasi.add(MnHasilEndoskopi);
+        MnHasilEndoskopi.add(MnHasilEndoskopiFaringLaring);
+        MnHasilEndoskopi.add(MnHasilEndoskopiHidung);
+        MnHasilEndoskopi.add(MnHasilEndoskopiTelinga);
         MnObservasi.add(MnDokumentasiTindakanESWL);
         MnObservasi.add(MnPenilaianUlangNyeri);
         MnObservasi.add(MnCatatanPersalinan);

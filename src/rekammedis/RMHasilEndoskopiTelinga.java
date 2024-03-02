@@ -99,6 +99,26 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==8){
                 column.setPreferredWidth(150);
+            }else if(i==9){
+                column.setPreferredWidth(78);
+            }else if(i==10){
+                column.setPreferredWidth(64);
+            }else if(i==11){
+                column.setPreferredWidth(108);
+            }else if(i==12){
+                column.setPreferredWidth(167);
+            }else if(i==13){
+                column.setPreferredWidth(93);
+            }else if(i==14){
+                column.setPreferredWidth(151);
+            }else if(i==15){
+                column.setPreferredWidth(68);
+            }else if(i==16){
+                column.setPreferredWidth(55);
+            }else if(i==17){
+                column.setPreferredWidth(89);
+            }else if(i==18){
+                column.setPreferredWidth(147);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1585,7 +1605,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2700px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1610,7 +1630,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -2070,12 +2090,19 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_telinga.tanggal,"+
                         "hasil_endoskopi_telinga.kd_dokter,dokter.nm_dokter,hasil_endoskopi_telinga.diagnosa_klinis,hasil_endoskopi_telinga.kiriman_dari,"+
-                        "hasil_endoskopi_telinga.kondisi_hidung_kanan,hasil_endoskopi_telinga.kondisi_hidung_kiri,hasil_endoskopi_telinga.kavum_nasi_kanan,"+
-                        "hasil_endoskopi_telinga.kavum_nasi_kiri,hasil_endoskopi_telinga.konka_inferior_kanan,hasil_endoskopi_telinga.konka_inferior_kiri,"+
-                        "hasil_endoskopi_telinga.meatus_medius_kanan,hasil_endoskopi_telinga.meatus_medius_kiri,hasil_endoskopi_telinga.septum_kanan,"+
-                        "hasil_endoskopi_telinga.septum_kiri,hasil_endoskopi_telinga.nasofaring_kanan,hasil_endoskopi_telinga.nasofaring_kiri,"+
-                        "hasil_endoskopi_telinga.lainlain_kanan,hasil_endoskopi_telinga.lainlain_kiri,hasil_endoskopi_telinga.kesimpulan "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_endoskopi_telinga.bentuk_liang_telinga_kanan,hasil_endoskopi_telinga.bentuk_liang_telinga_kiri,"+
+                        "hasil_endoskopi_telinga.kondisi_liang_telinga_kanan,hasil_endoskopi_telinga.keterangan_kondisi_liang_telinga_kanan,"+
+                        "hasil_endoskopi_telinga.kondisi_liang_telinga_kiri,hasil_endoskopi_telinga.keterangan_kondisi_liang_telinga_kiri,"+
+                        "hasil_endoskopi_telinga.membran_timpani_intak_kanan,hasil_endoskopi_telinga.membran_timpani_intak_kiri,"+
+                        "hasil_endoskopi_telinga.membran_timpani_perforasi_kanan,hasil_endoskopi_telinga.keterangan_membran_timpani_perforasi_kanan,"+
+                        "hasil_endoskopi_telinga.membran_timpani_perforasi_kiri,hasil_endoskopi_telinga.keterangan_membran_timpani_perforasi_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_mukosa_kanan,hasil_endoskopi_telinga.kavum_timpani_mukosa_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_osikel_kanan,hasil_endoskopi_telinga.kavum_timpani_osikel_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_isthmus_kanan,hasil_endoskopi_telinga.kavum_timpani_isthmus_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_anterior_kanan,hasil_endoskopi_telinga.kavum_timpani_anterior_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_posterior_kanan,hasil_endoskopi_telinga.kavum_timpani_posterior_kiri,"+
+                        "hasil_endoskopi_telinga.lainlain_kanan,hasil_endoskopi_telinga.lainlain_kiri,hasil_endoskopi_telinga.kesimpulan,"+
+                        "hasil_endoskopi_telinga.anjuran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_endoskopi_telinga on reg_periksa.no_rawat=hasil_endoskopi_telinga.no_rawat "+
                         "inner join dokter on hasil_endoskopi_telinga.kd_dokter=dokter.kd_dokter where "+
                         "hasil_endoskopi_telinga.tanggal between ? and ? order by hasil_endoskopi_telinga.tanggal");
@@ -2083,12 +2110,19 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_endoskopi_telinga.tanggal,"+
                         "hasil_endoskopi_telinga.kd_dokter,dokter.nm_dokter,hasil_endoskopi_telinga.diagnosa_klinis,hasil_endoskopi_telinga.kiriman_dari,"+
-                        "hasil_endoskopi_telinga.kondisi_hidung_kanan,hasil_endoskopi_telinga.kondisi_hidung_kiri,hasil_endoskopi_telinga.kavum_nasi_kanan,"+
-                        "hasil_endoskopi_telinga.kavum_nasi_kiri,hasil_endoskopi_telinga.konka_inferior_kanan,hasil_endoskopi_telinga.konka_inferior_kiri,"+
-                        "hasil_endoskopi_telinga.meatus_medius_kanan,hasil_endoskopi_telinga.meatus_medius_kiri,hasil_endoskopi_telinga.septum_kanan,"+
-                        "hasil_endoskopi_telinga.septum_kiri,hasil_endoskopi_telinga.nasofaring_kanan,hasil_endoskopi_telinga.nasofaring_kiri,"+
-                        "hasil_endoskopi_telinga.lainlain_kanan,hasil_endoskopi_telinga.lainlain_kiri,hasil_endoskopi_telinga.kesimpulan "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "hasil_endoskopi_telinga.bentuk_liang_telinga_kanan,hasil_endoskopi_telinga.bentuk_liang_telinga_kiri,"+
+                        "hasil_endoskopi_telinga.kondisi_liang_telinga_kanan,hasil_endoskopi_telinga.keterangan_kondisi_liang_telinga_kanan,"+
+                        "hasil_endoskopi_telinga.kondisi_liang_telinga_kiri,hasil_endoskopi_telinga.keterangan_kondisi_liang_telinga_kiri,"+
+                        "hasil_endoskopi_telinga.membran_timpani_intak_kanan,hasil_endoskopi_telinga.membran_timpani_intak_kiri,"+
+                        "hasil_endoskopi_telinga.membran_timpani_perforasi_kanan,hasil_endoskopi_telinga.keterangan_membran_timpani_perforasi_kanan,"+
+                        "hasil_endoskopi_telinga.membran_timpani_perforasi_kiri,hasil_endoskopi_telinga.keterangan_membran_timpani_perforasi_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_mukosa_kanan,hasil_endoskopi_telinga.kavum_timpani_mukosa_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_osikel_kanan,hasil_endoskopi_telinga.kavum_timpani_osikel_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_isthmus_kanan,hasil_endoskopi_telinga.kavum_timpani_isthmus_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_anterior_kanan,hasil_endoskopi_telinga.kavum_timpani_anterior_kiri,"+
+                        "hasil_endoskopi_telinga.kavum_timpani_posterior_kanan,hasil_endoskopi_telinga.kavum_timpani_posterior_kiri,"+
+                        "hasil_endoskopi_telinga.lainlain_kanan,hasil_endoskopi_telinga.lainlain_kiri,hasil_endoskopi_telinga.kesimpulan,"+
+                        "hasil_endoskopi_telinga.anjuran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join hasil_endoskopi_telinga on reg_periksa.no_rawat=hasil_endoskopi_telinga.no_rawat "+
                         "inner join dokter on hasil_endoskopi_telinga.kd_dokter=dokter.kd_dokter where "+
                         "hasil_endoskopi_telinga.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
@@ -2112,9 +2146,13 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("kondisi_hidung_kanan"),rs.getString("kondisi_hidung_kiri"),rs.getString("kavum_nasi_kanan"),rs.getString("kavum_nasi_kiri"),
-                        rs.getString("konka_inferior_kanan"),rs.getString("konka_inferior_kiri"),rs.getString("meatus_medius_kanan"),rs.getString("meatus_medius_kiri"),rs.getString("septum_kanan"),rs.getString("septum_kiri"),
-                        rs.getString("nasofaring_kanan"),rs.getString("nasofaring_kiri"),rs.getString("lainlain_kanan"),rs.getString("lainlain_kiri"),rs.getString("kesimpulan")
+                        rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("bentuk_liang_telinga_kanan"),rs.getString("bentuk_liang_telinga_kiri"),rs.getString("kondisi_liang_telinga_kanan"),
+                        rs.getString("keterangan_kondisi_liang_telinga_kanan"),rs.getString("kondisi_liang_telinga_kiri"),rs.getString("keterangan_kondisi_liang_telinga_kiri"),rs.getString("membran_timpani_intak_kanan"),
+                        rs.getString("membran_timpani_intak_kiri"),rs.getString("membran_timpani_perforasi_kanan"),rs.getString("keterangan_membran_timpani_perforasi_kanan"),rs.getString("membran_timpani_perforasi_kiri"),
+                        rs.getString("keterangan_membran_timpani_perforasi_kiri"),rs.getString("kavum_timpani_mukosa_kanan"),rs.getString("kavum_timpani_mukosa_kiri"),rs.getString("kavum_timpani_osikel_kanan"),
+                        rs.getString("kavum_timpani_osikel_kiri"),rs.getString("kavum_timpani_isthmus_kanan"),rs.getString("kavum_timpani_isthmus_kiri"),rs.getString("kavum_timpani_anterior_kanan"),
+                        rs.getString("kavum_timpani_anterior_kiri"),rs.getString("kavum_timpani_posterior_kanan"),rs.getString("kavum_timpani_posterior_kiri"),rs.getString("lainlain_kanan"),rs.getString("lainlain_kiri"),
+                        rs.getString("kesimpulan"),rs.getString("anjuran")
                     });
                 }
             } catch (Exception e) {
