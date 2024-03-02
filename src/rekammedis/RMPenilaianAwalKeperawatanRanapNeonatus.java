@@ -1026,8 +1026,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel153 = new widget.Label();
         KeadaanMentalUmum17 = new widget.ComboBox();
         GCS12 = new widget.TextBox();
-        jLabel154 = new widget.Label();
         KeadaanMentalUmum18 = new widget.ComboBox();
+        jLabel154 = new widget.Label();
         jLabel155 = new widget.Label();
         GCS13 = new widget.TextBox();
         jLabel156 = new widget.Label();
@@ -1040,6 +1040,13 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel159 = new widget.Label();
         KeadaanMentalUmum21 = new widget.ComboBox();
         GCS16 = new widget.TextBox();
+        jLabel160 = new widget.Label();
+        KeadaanMentalUmum22 = new widget.ComboBox();
+        jLabel161 = new widget.Label();
+        GCS17 = new widget.TextBox();
+        jLabel162 = new widget.Label();
+        KeadaanMentalUmum23 = new widget.ComboBox();
+        GCS18 = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -3776,12 +3783,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(GCS12);
         GCS12.setBounds(624, 1220, 230, 23);
 
-        jLabel154.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel154.setText("Tenggorokan");
-        jLabel154.setName("jLabel154"); // NOI18N
-        FormInput.add(jLabel154);
-        jLabel154.setBounds(74, 1250, 90, 23);
-
         KeadaanMentalUmum18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Ada Kelainan" }));
         KeadaanMentalUmum18.setName("KeadaanMentalUmum18"); // NOI18N
         KeadaanMentalUmum18.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3791,6 +3792,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(KeadaanMentalUmum18);
         KeadaanMentalUmum18.setBounds(148, 1250, 115, 23);
+
+        jLabel154.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel154.setText("Tenggorokan");
+        jLabel154.setName("jLabel154"); // NOI18N
+        FormInput.add(jLabel154);
+        jLabel154.setBounds(74, 1250, 90, 23);
 
         jLabel155.setText(":");
         jLabel155.setName("jLabel155"); // NOI18N
@@ -3836,7 +3843,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel157.setText("BAB");
         jLabel157.setName("jLabel157"); // NOI18N
         FormInput.add(jLabel157);
-        jLabel157.setBounds(74, 1280, 90, 23);
+        jLabel157.setBounds(74, 1280, 40, 23);
 
         KeadaanMentalUmum20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Konstipasi", "Melena", "Colostomy", "Diare", "Meco Pertama" }));
         KeadaanMentalUmum20.setName("KeadaanMentalUmum20"); // NOI18N
@@ -3846,12 +3853,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(KeadaanMentalUmum20);
-        KeadaanMentalUmum20.setBounds(148, 1280, 125, 23);
+        KeadaanMentalUmum20.setBounds(105, 1280, 125, 23);
 
         jLabel158.setText(":");
         jLabel158.setName("jLabel158"); // NOI18N
         FormInput.add(jLabel158);
-        jLabel158.setBounds(0, 1280, 144, 23);
+        jLabel158.setBounds(0, 1280, 101, 23);
 
         GCS15.setFocusTraversalPolicyProvider(true);
         GCS15.setName("GCS15"); // NOI18N
@@ -3861,7 +3868,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(GCS15);
-        GCS15.setBounds(266, 1280, 212, 23);
+        GCS15.setBounds(233, 1280, 237, 23);
 
         jLabel159.setText("Warna BAB :");
         jLabel159.setName("jLabel159"); // NOI18N
@@ -3887,6 +3894,62 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(GCS16);
         GCS16.setBounds(642, 1280, 212, 23);
+
+        jLabel160.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel160.setText("BAB");
+        jLabel160.setName("jLabel160"); // NOI18N
+        FormInput.add(jLabel160);
+        jLabel160.setBounds(74, 1310, 40, 23);
+
+        KeadaanMentalUmum22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Konstipasi", "Melena", "Colostomy", "Diare", "Meco Pertama" }));
+        KeadaanMentalUmum22.setName("KeadaanMentalUmum22"); // NOI18N
+        KeadaanMentalUmum22.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeadaanMentalUmum22KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeadaanMentalUmum22);
+        KeadaanMentalUmum22.setBounds(105, 1310, 125, 23);
+
+        jLabel161.setText(":");
+        jLabel161.setName("jLabel161"); // NOI18N
+        FormInput.add(jLabel161);
+        jLabel161.setBounds(0, 1310, 101, 23);
+
+        GCS17.setFocusTraversalPolicyProvider(true);
+        GCS17.setName("GCS17"); // NOI18N
+        GCS17.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GCS17KeyPressed(evt);
+            }
+        });
+        FormInput.add(GCS17);
+        GCS17.setBounds(233, 1310, 237, 23);
+
+        jLabel162.setText("Warna BAB :");
+        jLabel162.setName("jLabel162"); // NOI18N
+        FormInput.add(jLabel162);
+        jLabel162.setBounds(475, 1310, 70, 23);
+
+        KeadaanMentalUmum23.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kuning", "Dempul", "Coklat", "Hijau", "Lainnya" }));
+        KeadaanMentalUmum23.setName("KeadaanMentalUmum23"); // NOI18N
+        KeadaanMentalUmum23.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeadaanMentalUmum23KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeadaanMentalUmum23);
+        KeadaanMentalUmum23.setBounds(549, 1310, 90, 23);
+
+        GCS18.setFocusTraversalPolicyProvider(true);
+        GCS18.setName("GCS18"); // NOI18N
+        GCS18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GCS18KeyPressed(evt);
+            }
+        });
+        FormInput.add(GCS18);
+        GCS18.setBounds(642, 1310, 212, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -6191,6 +6254,22 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         // TODO add your handling code here:
     }//GEN-LAST:event_GCS16KeyPressed
 
+    private void KeadaanMentalUmum22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanMentalUmum22KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeadaanMentalUmum22KeyPressed
+
+    private void GCS17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS17KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GCS17KeyPressed
+
+    private void KeadaanMentalUmum23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanMentalUmum23KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeadaanMentalUmum23KeyPressed
+
+    private void GCS18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS18KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GCS18KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -6277,6 +6356,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox GCS14;
     private widget.TextBox GCS15;
     private widget.TextBox GCS16;
+    private widget.TextBox GCS17;
+    private widget.TextBox GCS18;
     private widget.TextBox GCS2;
     private widget.TextBox GCS3;
     private widget.TextBox GCS4;
@@ -6306,6 +6387,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.ComboBox KeadaanMentalUmum2;
     private widget.ComboBox KeadaanMentalUmum20;
     private widget.ComboBox KeadaanMentalUmum21;
+    private widget.ComboBox KeadaanMentalUmum22;
+    private widget.ComboBox KeadaanMentalUmum23;
     private widget.ComboBox KeadaanMentalUmum3;
     private widget.ComboBox KeadaanMentalUmum4;
     private widget.ComboBox KeadaanMentalUmum5;
@@ -6461,6 +6544,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel158;
     private widget.Label jLabel159;
     private widget.Label jLabel16;
+    private widget.Label jLabel160;
+    private widget.Label jLabel161;
+    private widget.Label jLabel162;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
