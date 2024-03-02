@@ -4063,12 +4063,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(GCS20);
-        GCS20.setBounds(266, 1390, 212, 23);
+        GCS20.setBounds(265, 1390, 209, 23);
 
         jLabel170.setText("Sklera :");
         jLabel170.setName("jLabel170"); // NOI18N
         FormInput.add(jLabel170);
-        jLabel170.setBounds(475, 1390, 70, 23);
+        jLabel170.setBounds(475, 1390, 50, 23);
 
         KeadaanMentalUmum27.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Ikterik", "Perdarahan", "Lainnya" }));
         KeadaanMentalUmum27.setName("KeadaanMentalUmum27"); // NOI18N
@@ -4078,7 +4078,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(KeadaanMentalUmum27);
-        KeadaanMentalUmum27.setBounds(549, 1390, 105, 23);
+        KeadaanMentalUmum27.setBounds(529, 1390, 113, 23);
 
         GCS21.setFocusTraversalPolicyProvider(true);
         GCS21.setName("GCS21"); // NOI18N
@@ -4088,7 +4088,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(GCS21);
-        GCS21.setBounds(642, 1390, 212, 23);
+        GCS21.setBounds(645, 1390, 209, 23);
 
         scrollInput.setViewportView(FormInput);
 
