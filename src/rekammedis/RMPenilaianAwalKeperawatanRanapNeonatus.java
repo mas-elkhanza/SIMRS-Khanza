@@ -1087,6 +1087,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KeadaanMentalUmum32 = new widget.ComboBox();
         KeadaanMentalUmum33 = new widget.ComboBox();
         jLabel182 = new widget.Label();
+        jLabel183 = new widget.Label();
+        jLabel202 = new widget.Label();
+        MacamKasus31 = new widget.ComboBox();
+        GCS26 = new widget.TextBox();
+        jLabel184 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1396,7 +1401,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         Anamnesis.setBounds(79, 100, 105, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2024 22:36:44" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2024 09:20:52" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2171,7 +2176,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         label19.setBounds(365, 330, 60, 23);
 
         TglAsuhan1.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2024 22:36:45" }));
+        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2024 09:20:53" }));
         TglAsuhan1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan1.setName("TglAsuhan1"); // NOI18N
         TglAsuhan1.setOpaque(false);
@@ -4298,6 +4303,43 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel182);
         jLabel182.setBounds(518, 1500, 140, 23);
 
+        jLabel183.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel183.setText("Reproduksi");
+        jLabel183.setName("jLabel183"); // NOI18N
+        FormInput.add(jLabel183);
+        jLabel183.setBounds(44, 1530, 70, 23);
+
+        jLabel202.setText(":");
+        jLabel202.setName("jLabel202"); // NOI18N
+        FormInput.add(jLabel202);
+        jLabel202.setBounds(0, 1530, 105, 23);
+
+        MacamKasus31.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Hipospadia", "Epispadia", "Fimosis", "Hidrokel", "Keputihan", "Vagina Skintag", "Lainnya" }));
+        MacamKasus31.setName("MacamKasus31"); // NOI18N
+        MacamKasus31.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MacamKasus31KeyPressed(evt);
+            }
+        });
+        FormInput.add(MacamKasus31);
+        MacamKasus31.setBounds(109, 1530, 125, 23);
+
+        GCS26.setFocusTraversalPolicyProvider(true);
+        GCS26.setName("GCS26"); // NOI18N
+        GCS26.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GCS26KeyPressed(evt);
+            }
+        });
+        FormInput.add(GCS26);
+        GCS26.setBounds(237, 1530, 617, 23);
+
+        jLabel184.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel184.setText("Sistem Muskuloskeletal :");
+        jLabel184.setName("jLabel184"); // NOI18N
+        FormInput.add(jLabel184);
+        jLabel184.setBounds(44, 1560, 170, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -4338,7 +4380,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4352,7 +4394,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -6697,6 +6739,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         // TODO add your handling code here:
     }//GEN-LAST:event_KeadaanMentalUmum33KeyPressed
 
+    private void MacamKasus31KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MacamKasus31KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MacamKasus31KeyPressed
+
+    private void GCS26KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS26KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GCS26KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -6793,6 +6843,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox GCS23;
     private widget.TextBox GCS24;
     private widget.TextBox GCS25;
+    private widget.TextBox GCS26;
     private widget.TextBox GCS3;
     private widget.TextBox GCS4;
     private widget.TextBox GCS5;
@@ -6880,6 +6931,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.ComboBox MacamKasus29;
     private widget.ComboBox MacamKasus3;
     private widget.ComboBox MacamKasus30;
+    private widget.ComboBox MacamKasus31;
     private widget.ComboBox MacamKasus4;
     private widget.ComboBox MacamKasus5;
     private widget.ComboBox MacamKasus6;
@@ -7016,10 +7068,13 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel180;
     private widget.Label jLabel181;
     private widget.Label jLabel182;
+    private widget.Label jLabel183;
+    private widget.Label jLabel184;
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel200;
     private widget.Label jLabel201;
+    private widget.Label jLabel202;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
