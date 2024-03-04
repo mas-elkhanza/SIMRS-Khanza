@@ -1162,6 +1162,43 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KeteranganHambatanPembelajaran = new widget.TextBox();
         jLabel224 = new widget.Label();
         jLabel225 = new widget.Label();
+        jLabel223 = new widget.Label();
+        HambatanCaraBicara = new widget.ComboBox();
+        HambatanBahasaIsyarat = new widget.ComboBox();
+        jLabel226 = new widget.Label();
+        jLabel227 = new widget.Label();
+        CaraBelajarDisukai = new widget.ComboBox();
+        jLabel228 = new widget.Label();
+        jLabel229 = new widget.Label();
+        KesediaanMenerimaInformasi = new widget.ComboBox();
+        KeteranganKesediaanMenerimaInformasi = new widget.TextBox();
+        jLabel230 = new widget.Label();
+        jLabel231 = new widget.Label();
+        CaraBelajarDisukai1 = new widget.ComboBox();
+        jLabel232 = new widget.Label();
+        CaraBelajarDisukai2 = new widget.ComboBox();
+        jLabel233 = new widget.Label();
+        jLabel234 = new widget.Label();
+        CaraBelajarDisukai3 = new widget.ComboBox();
+        CaraBelajarDisukai4 = new widget.ComboBox();
+        jLabel235 = new widget.Label();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel236 = new widget.Label();
+        SG1 = new widget.ComboBox();
+        jLabel237 = new widget.Label();
+        NilaiGizi3 = new widget.TextBox();
+        jLabel238 = new widget.Label();
+        SG2 = new widget.ComboBox();
+        NilaiGizi4 = new widget.TextBox();
+        jLabel239 = new widget.Label();
+        SG3 = new widget.ComboBox();
+        NilaiGizi5 = new widget.TextBox();
+        jLabel240 = new widget.Label();
+        TotalNilaiGizi = new widget.TextBox();
+        KeteranganKesediaanMenerimaInformasi1 = new widget.TextBox();
+        jLabel241 = new widget.Label();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel242 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -4933,6 +4970,316 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel225);
         jLabel225.setBounds(698, 1830, 30, 23);
 
+        jLabel223.setText(":");
+        jLabel223.setName("jLabel223"); // NOI18N
+        FormInput.add(jLabel223);
+        jLabel223.setBounds(0, 1890, 160, 23);
+
+        HambatanCaraBicara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Gangguan Bicara" }));
+        HambatanCaraBicara.setName("HambatanCaraBicara"); // NOI18N
+        HambatanCaraBicara.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HambatanCaraBicaraKeyPressed(evt);
+            }
+        });
+        FormInput.add(HambatanCaraBicara);
+        HambatanCaraBicara.setBounds(164, 1890, 150, 23);
+
+        HambatanBahasaIsyarat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        HambatanBahasaIsyarat.setName("HambatanBahasaIsyarat"); // NOI18N
+        HambatanBahasaIsyarat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HambatanBahasaIsyaratKeyPressed(evt);
+            }
+        });
+        FormInput.add(HambatanBahasaIsyarat);
+        HambatanBahasaIsyarat.setBounds(474, 1890, 90, 23);
+
+        jLabel226.setText("Hambatan Bahasa Isyarat :");
+        jLabel226.setName("jLabel226"); // NOI18N
+        FormInput.add(jLabel226);
+        jLabel226.setBounds(320, 1890, 150, 23);
+
+        jLabel227.setText("Cara Belajar Yang Disukai :");
+        jLabel227.setName("jLabel227"); // NOI18N
+        FormInput.add(jLabel227);
+        jLabel227.setBounds(570, 1890, 150, 23);
+
+        CaraBelajarDisukai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Audio", "Lisan", "Visual", "Demonstrasi", "Tulisan" }));
+        CaraBelajarDisukai.setName("CaraBelajarDisukai"); // NOI18N
+        CaraBelajarDisukai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraBelajarDisukaiKeyPressed(evt);
+            }
+        });
+        FormInput.add(CaraBelajarDisukai);
+        CaraBelajarDisukai.setBounds(724, 1890, 130, 23);
+
+        jLabel228.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel228.setText("Hambatan Cara Bicara");
+        jLabel228.setName("jLabel228"); // NOI18N
+        FormInput.add(jLabel228);
+        jLabel228.setBounds(44, 1890, 140, 23);
+
+        jLabel229.setText(":");
+        jLabel229.setName("jLabel229"); // NOI18N
+        FormInput.add(jLabel229);
+        jLabel229.setBounds(0, 1920, 202, 23);
+
+        KesediaanMenerimaInformasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        KesediaanMenerimaInformasi.setName("KesediaanMenerimaInformasi"); // NOI18N
+        KesediaanMenerimaInformasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KesediaanMenerimaInformasiKeyPressed(evt);
+            }
+        });
+        FormInput.add(KesediaanMenerimaInformasi);
+        KesediaanMenerimaInformasi.setBounds(206, 1920, 90, 23);
+
+        KeteranganKesediaanMenerimaInformasi.setFocusTraversalPolicyProvider(true);
+        KeteranganKesediaanMenerimaInformasi.setName("KeteranganKesediaanMenerimaInformasi"); // NOI18N
+        KeteranganKesediaanMenerimaInformasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKesediaanMenerimaInformasiKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganKesediaanMenerimaInformasi);
+        KeteranganKesediaanMenerimaInformasi.setBounds(299, 1920, 273, 23);
+
+        jLabel230.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel230.setText("Kesediaan Menerima Informasi");
+        jLabel230.setName("jLabel230"); // NOI18N
+        FormInput.add(jLabel230);
+        jLabel230.setBounds(44, 1920, 170, 23);
+
+        jLabel231.setText("Pemahaman Tentang Nutrisi/Diet :");
+        jLabel231.setName("jLabel231"); // NOI18N
+        FormInput.add(jLabel231);
+        jLabel231.setBounds(580, 1920, 180, 23);
+
+        CaraBelajarDisukai1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CaraBelajarDisukai1.setName("CaraBelajarDisukai1"); // NOI18N
+        CaraBelajarDisukai1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraBelajarDisukai1KeyPressed(evt);
+            }
+        });
+        FormInput.add(CaraBelajarDisukai1);
+        CaraBelajarDisukai1.setBounds(764, 1920, 90, 23);
+
+        jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel232.setText("Pemahaman Tentang Penyakit");
+        jLabel232.setName("jLabel232"); // NOI18N
+        FormInput.add(jLabel232);
+        jLabel232.setBounds(44, 1950, 180, 23);
+
+        CaraBelajarDisukai2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CaraBelajarDisukai2.setName("CaraBelajarDisukai2"); // NOI18N
+        CaraBelajarDisukai2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraBelajarDisukai2KeyPressed(evt);
+            }
+        });
+        FormInput.add(CaraBelajarDisukai2);
+        CaraBelajarDisukai2.setBounds(202, 1950, 90, 23);
+
+        jLabel233.setText(":");
+        jLabel233.setName("jLabel233"); // NOI18N
+        FormInput.add(jLabel233);
+        jLabel233.setBounds(0, 1950, 198, 23);
+
+        jLabel234.setText("Pemahaman Tentang Perawatan :");
+        jLabel234.setName("jLabel234"); // NOI18N
+        FormInput.add(jLabel234);
+        jLabel234.setBounds(580, 1950, 180, 23);
+
+        CaraBelajarDisukai3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CaraBelajarDisukai3.setName("CaraBelajarDisukai3"); // NOI18N
+        CaraBelajarDisukai3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraBelajarDisukai3KeyPressed(evt);
+            }
+        });
+        FormInput.add(CaraBelajarDisukai3);
+        CaraBelajarDisukai3.setBounds(764, 1950, 90, 23);
+
+        CaraBelajarDisukai4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CaraBelajarDisukai4.setName("CaraBelajarDisukai4"); // NOI18N
+        CaraBelajarDisukai4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraBelajarDisukai4KeyPressed(evt);
+            }
+        });
+        FormInput.add(CaraBelajarDisukai4);
+        CaraBelajarDisukai4.setBounds(486, 1950, 90, 23);
+
+        jLabel235.setText("Pemahaman Tentang Pengobatan :");
+        jLabel235.setName("jLabel235"); // NOI18N
+        FormInput.add(jLabel235);
+        jLabel235.setBounds(302, 1950, 180, 23);
+
+        jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator7.setName("jSeparator7"); // NOI18N
+        FormInput.add(jSeparator7);
+        jSeparator7.setBounds(0, 1980, 880, 1);
+
+        jLabel236.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel236.setText("V. SKRINING GIZI");
+        jLabel236.setName("jLabel236"); // NOI18N
+        FormInput.add(jLabel236);
+        jLabel236.setBounds(10, 1980, 380, 23);
+
+        SG1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SG1.setName("SG1"); // NOI18N
+        SG1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SG1ItemStateChanged(evt);
+            }
+        });
+        SG1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SG1KeyPressed(evt);
+            }
+        });
+        FormInput.add(SG1);
+        SG1.setBounds(700, 2000, 80, 23);
+
+        jLabel237.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel237.setText("1. Masalah Minum (ASI/PASI)");
+        jLabel237.setName("jLabel237"); // NOI18N
+        FormInput.add(jLabel237);
+        jLabel237.setBounds(44, 2000, 610, 23);
+
+        NilaiGizi3.setEditable(false);
+        NilaiGizi3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NilaiGizi3.setText("0");
+        NilaiGizi3.setFocusTraversalPolicyProvider(true);
+        NilaiGizi3.setName("NilaiGizi3"); // NOI18N
+        NilaiGizi3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NilaiGizi3KeyPressed(evt);
+            }
+        });
+        FormInput.add(NilaiGizi3);
+        NilaiGizi3.setBounds(794, 2000, 60, 23);
+
+        jLabel238.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel238.setText("2. Penurunan Berat Badan > 10% Dari BBL (Berat Badan Lahir)");
+        jLabel238.setName("jLabel238"); // NOI18N
+        FormInput.add(jLabel238);
+        jLabel238.setBounds(44, 2030, 610, 23);
+
+        SG2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SG2.setName("SG2"); // NOI18N
+        SG2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SG2ItemStateChanged(evt);
+            }
+        });
+        SG2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SG2KeyPressed(evt);
+            }
+        });
+        FormInput.add(SG2);
+        SG2.setBounds(700, 2030, 80, 23);
+
+        NilaiGizi4.setEditable(false);
+        NilaiGizi4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NilaiGizi4.setText("0");
+        NilaiGizi4.setFocusTraversalPolicyProvider(true);
+        NilaiGizi4.setName("NilaiGizi4"); // NOI18N
+        NilaiGizi4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NilaiGizi4KeyPressed(evt);
+            }
+        });
+        FormInput.add(NilaiGizi4);
+        NilaiGizi4.setBounds(794, 2030, 60, 23);
+
+        jLabel239.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel239.setText("3. Penyakit / Kelainan Yang Menyertai (Sepsis, Jantung, BBLR, Hipoglikemi, Diare, Lain–lain)");
+        jLabel239.setName("jLabel239"); // NOI18N
+        FormInput.add(jLabel239);
+        jLabel239.setBounds(44, 2060, 610, 23);
+
+        SG3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SG3.setName("SG3"); // NOI18N
+        SG3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SG3ItemStateChanged(evt);
+            }
+        });
+        SG3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SG3KeyPressed(evt);
+            }
+        });
+        FormInput.add(SG3);
+        SG3.setBounds(700, 2060, 80, 23);
+
+        NilaiGizi5.setEditable(false);
+        NilaiGizi5.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NilaiGizi5.setText("0");
+        NilaiGizi5.setFocusTraversalPolicyProvider(true);
+        NilaiGizi5.setName("NilaiGizi5"); // NOI18N
+        NilaiGizi5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NilaiGizi5KeyPressed(evt);
+            }
+        });
+        FormInput.add(NilaiGizi5);
+        NilaiGizi5.setBounds(794, 2060, 60, 23);
+
+        jLabel240.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel240.setText("Total Skor");
+        jLabel240.setName("jLabel240"); // NOI18N
+        FormInput.add(jLabel240);
+        jLabel240.setBounds(44, 2090, 100, 23);
+
+        TotalNilaiGizi.setEditable(false);
+        TotalNilaiGizi.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        TotalNilaiGizi.setText("0");
+        TotalNilaiGizi.setFocusTraversalPolicyProvider(true);
+        TotalNilaiGizi.setName("TotalNilaiGizi"); // NOI18N
+        TotalNilaiGizi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TotalNilaiGiziKeyPressed(evt);
+            }
+        });
+        FormInput.add(TotalNilaiGizi);
+        TotalNilaiGizi.setBounds(794, 2090, 60, 23);
+
+        KeteranganKesediaanMenerimaInformasi1.setFocusTraversalPolicyProvider(true);
+        KeteranganKesediaanMenerimaInformasi1.setName("KeteranganKesediaanMenerimaInformasi1"); // NOI18N
+        KeteranganKesediaanMenerimaInformasi1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKesediaanMenerimaInformasi1KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganKesediaanMenerimaInformasi1);
+        KeteranganKesediaanMenerimaInformasi1.setBounds(104, 2090, 390, 23);
+
+        jLabel241.setText(":");
+        jLabel241.setName("jLabel241"); // NOI18N
+        FormInput.add(jLabel241);
+        jLabel241.setBounds(0, 2090, 100, 23);
+
+        jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator8.setName("jSeparator8"); // NOI18N
+        FormInput.add(jSeparator8);
+        jSeparator8.setBounds(0, 2120, 880, 1);
+
+        jLabel242.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel242.setText("VI. PENILAIAN RISIKO JATUH");
+        jLabel242.setName("jLabel242"); // NOI18N
+        FormInput.add(jLabel242);
+        jLabel242.setBounds(10, 2120, 380, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -7464,6 +7811,87 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         //Valid.pindah(evt,KategoriHambatanPembelajaran,HambatanCaraBicara);
     }//GEN-LAST:event_KeteranganHambatanPembelajaranKeyPressed
 
+    private void HambatanCaraBicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HambatanCaraBicaraKeyPressed
+        //Valid.pindah(evt,KeteranganHambatanPembelajaran,HambatanBahasaIsyarat);
+    }//GEN-LAST:event_HambatanCaraBicaraKeyPressed
+
+    private void HambatanBahasaIsyaratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HambatanBahasaIsyaratKeyPressed
+        //Valid.pindah(evt,HambatanCaraBicara,CaraBelajarDisukai);
+    }//GEN-LAST:event_HambatanBahasaIsyaratKeyPressed
+
+    private void CaraBelajarDisukaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraBelajarDisukaiKeyPressed
+        //Valid.pindah(evt,HambatanBahasaIsyarat,KesediaanMenerimaInformasi);
+    }//GEN-LAST:event_CaraBelajarDisukaiKeyPressed
+
+    private void KesediaanMenerimaInformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesediaanMenerimaInformasiKeyPressed
+        //Valid.pindah(evt,CaraBelajarDisukai,KeteranganKesediaanMenerimaInformasi);
+    }//GEN-LAST:event_KesediaanMenerimaInformasiKeyPressed
+
+    private void KeteranganKesediaanMenerimaInformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKesediaanMenerimaInformasiKeyPressed
+        //Valid.pindah(evt,KesediaanMenerimaInformasi,KehilanganBeratBadan);
+    }//GEN-LAST:event_KeteranganKesediaanMenerimaInformasiKeyPressed
+
+    private void CaraBelajarDisukai1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraBelajarDisukai1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CaraBelajarDisukai1KeyPressed
+
+    private void CaraBelajarDisukai2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraBelajarDisukai2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CaraBelajarDisukai2KeyPressed
+
+    private void CaraBelajarDisukai3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraBelajarDisukai3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CaraBelajarDisukai3KeyPressed
+
+    private void CaraBelajarDisukai4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraBelajarDisukai4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CaraBelajarDisukai4KeyPressed
+
+    private void SG1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG1ItemStateChanged
+        //NilaiGizi1.setText(SG1.getSelectedIndex()+"");
+        //TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
+    }//GEN-LAST:event_SG1ItemStateChanged
+
+    private void SG1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG1KeyPressed
+        //Valid.pindah(evt,KetLapor,SG2);
+    }//GEN-LAST:event_SG1KeyPressed
+
+    private void NilaiGizi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NilaiGizi3KeyPressed
+
+    private void SG2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SG2ItemStateChanged
+
+    private void SG2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SG2KeyPressed
+
+    private void NilaiGizi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NilaiGizi4KeyPressed
+
+    private void SG3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG3ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SG3ItemStateChanged
+
+    private void SG3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SG3KeyPressed
+
+    private void NilaiGizi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NilaiGizi5KeyPressed
+
+    private void TotalNilaiGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalNilaiGiziKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TotalNilaiGiziKeyPressed
+
+    private void KeteranganKesediaanMenerimaInformasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKesediaanMenerimaInformasi1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganKesediaanMenerimaInformasi1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -7503,6 +7931,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Button BtnSimpan;
     private widget.Button BtnTambahMasalah;
     private widget.Button BtnTambahRencana;
+    private widget.ComboBox CaraBelajarDisukai;
+    private widget.ComboBox CaraBelajarDisukai1;
+    private widget.ComboBox CaraBelajarDisukai2;
+    private widget.ComboBox CaraBelajarDisukai3;
+    private widget.ComboBox CaraBelajarDisukai4;
     private widget.CekBox ChkAccor;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
@@ -7581,6 +8014,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox GCS7;
     private widget.TextBox GCS8;
     private widget.TextBox GCS9;
+    private widget.ComboBox HambatanBahasaIsyarat;
+    private widget.ComboBox HambatanCaraBicara;
     private widget.ComboBox HambatanPembelajaran;
     private widget.TextBox Hidup;
     private widget.TextBox Hidup1;
@@ -7636,6 +8071,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.ComboBox KeadaanMentalUmum9;
     private widget.TextArea KeluhanUtama;
     private widget.ComboBox KemampuanBacaTulis;
+    private widget.ComboBox KesediaanMenerimaInformasi;
     private widget.TextBox KetAnamnesis;
     private widget.TextBox KetAnamnesis1;
     private widget.TextBox KetAnamnesis10;
@@ -7650,6 +8086,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox KeteranganDiagnosaKhususGizi;
     private widget.TextBox KeteranganDiketahuiDietisen;
     private widget.TextBox KeteranganHambatanPembelajaran;
+    private widget.TextBox KeteranganKesediaanMenerimaInformasi;
+    private widget.TextBox KeteranganKesediaanMenerimaInformasi1;
     private widget.TextBox KeteranganPenerjamahLainnya;
     private widget.Label LCount;
     private widget.ComboBox MacamKasus;
@@ -7689,6 +8127,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextBox Nadi;
     private widget.TextBox NilaiGizi1;
     private widget.TextBox NilaiGizi2;
+    private widget.TextBox NilaiGizi3;
+    private widget.TextBox NilaiGizi4;
+    private widget.TextBox NilaiGizi5;
     private widget.TextBox NilaiGiziTotal;
     private widget.TextBox NmDPJP;
     private widget.TextBox NmPetugas;
@@ -7698,6 +8139,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.PanelBiasa PanelAccor;
     private widget.TextBox RR;
     private widget.TextArea Rencana;
+    private widget.ComboBox SG1;
+    private widget.ComboBox SG2;
+    private widget.ComboBox SG3;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll6;
     private widget.ScrollPane Scroll7;
@@ -7722,6 +8166,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Tanggal TglAsuhan;
     private widget.Tanggal TglAsuhan1;
     private widget.TextBox TglLahir;
+    private widget.TextBox TotalNilaiGizi;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -7860,10 +8305,28 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel220;
     private widget.Label jLabel221;
     private widget.Label jLabel222;
+    private widget.Label jLabel223;
     private widget.Label jLabel224;
     private widget.Label jLabel225;
+    private widget.Label jLabel226;
+    private widget.Label jLabel227;
+    private widget.Label jLabel228;
+    private widget.Label jLabel229;
     private widget.Label jLabel23;
+    private widget.Label jLabel230;
+    private widget.Label jLabel231;
+    private widget.Label jLabel232;
+    private widget.Label jLabel233;
+    private widget.Label jLabel234;
+    private widget.Label jLabel235;
+    private widget.Label jLabel236;
+    private widget.Label jLabel237;
+    private widget.Label jLabel238;
+    private widget.Label jLabel239;
     private widget.Label jLabel24;
+    private widget.Label jLabel240;
+    private widget.Label jLabel241;
+    private widget.Label jLabel242;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
     private widget.Label jLabel271;
@@ -7956,6 +8419,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label13;
