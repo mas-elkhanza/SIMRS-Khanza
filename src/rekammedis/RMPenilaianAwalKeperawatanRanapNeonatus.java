@@ -8105,10 +8105,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         // TODO add your handling code here:
     }//GEN-LAST:event_KeadaanMentalUmum39KeyPressed
 
-    private void MacamKasus33KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MacamKasus33KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MacamKasus33KeyPressed
-
     private void KeadaanMentalUmum40KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanMentalUmum40KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_KeadaanMentalUmum40KeyPressed
@@ -8446,6 +8442,10 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private void CaraBelajarDisukai7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraBelajarDisukai7KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_CaraBelajarDisukai7KeyPressed
+
+    private void MacamKasus33KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MacamKasus33KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MacamKasus33KeyPressed
 
     /**
     * @param args the command line arguments
