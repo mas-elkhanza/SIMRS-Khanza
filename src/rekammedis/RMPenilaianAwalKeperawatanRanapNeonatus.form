@@ -4005,7 +4005,7 @@
                                 <StringItem index="0" value="TAK"/>
                                 <StringItem index="1" value="Hydrocephalus"/>
                                 <StringItem index="2" value="Hematoma"/>
-                                <StringItem index="3" value="Lainnya "/>
+                                <StringItem index="3" value="Lainnya"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="KeadaanMentalUmum4" noResource="true"/>
