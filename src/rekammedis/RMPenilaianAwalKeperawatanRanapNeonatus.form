@@ -509,7 +509,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="06-03-2024 06:31:47"/>
+                                <StringItem index="0" value="06-03-2024 09:07:50"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1368,7 +1368,7 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="9">
-                                <StringItem index="0" value="-"/>
+                                <StringItem index="0" value="Tidak Ada"/>
                                 <StringItem index="1" value="DM"/>
                                 <StringItem index="2" value="Hipertensi"/>
                                 <StringItem index="3" value="Jantung"/>
@@ -1683,7 +1683,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="06-03-2024 06:31:48"/>
+                                <StringItem index="0" value="06-03-2024 09:07:51"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2114,7 +2114,7 @@
                         <Component class="widget.Label" name="jLabel52">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="Faktor Resiko Infeksi :"/>
+                            <Property name="text" type="java.lang.String" value="Faktor Risiko Infeksi :"/>
                             <Property name="name" type="java.lang.String" value="jLabel52" noResource="true"/>
                           </Properties>
                           <Constraints>

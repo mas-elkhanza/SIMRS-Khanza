@@ -2859,9 +2859,9 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_bedah_mulut());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_bedah_mulut());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_bedah_mulut());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
