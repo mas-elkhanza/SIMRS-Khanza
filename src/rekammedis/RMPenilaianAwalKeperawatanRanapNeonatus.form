@@ -7703,8 +7703,8 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
-                                <StringItem index="0" value="Otot Relaks, Wajah Tenang, Ekspresi Netral"/>
-                                <StringItem index="1" value="Meringis, Otot Wajah Tegang, Alis Berkerut (Ekspresi Wajah Negatif)"/>
+                                <StringItem index="0" value="Otot Relaks / Wajah Tenang / Ekspresi Netral"/>
+                                <StringItem index="1" value="Meringis / Otot Wajah Tegang / Alis Berkerut (Ekspresi Wajah Negatif)"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="SkalaResiko8" noResource="true"/>
@@ -7747,9 +7747,9 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="3">
-                                <StringItem index="0" value="Tenang, Tidak Menangis"/>
-                                <StringItem index="1" value="Merengek, Mengerang Lemah Intermiten"/>
-                                <StringItem index="2" value="Menangis Keras, Melengking Terus Menerus / Menangis Tanpa Suara Bila Bayi Intubasi"/>
+                                <StringItem index="0" value="Tenang / Tidak Menangis"/>
+                                <StringItem index="1" value="Merengek / Mengerang Lemah Intermiten"/>
+                                <StringItem index="2" value="Menangis Keras / Melengking Terus Menerus / Menangis Tanpa Suara Bila Bayi Intubasi"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="SkalaResiko9" noResource="true"/>
@@ -7792,8 +7792,8 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
-                                <StringItem index="0" value="Relaks, Bernapas Biasa"/>
-                                <StringItem index="1" value="Perubahan Napas / Tarikan Irreguler, Lebih Cepat Dibandingkan Biasa, Menahan Napas, Tersedak"/>
+                                <StringItem index="0" value="Relaks / Bernapas Biasa"/>
+                                <StringItem index="1" value="Perubahan Napas / Tarikan Irreguler / Lebih Cepat Dibandingkan Biasa / Menahan Napas / Tersedak"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="SkalaResiko10" noResource="true"/>
@@ -7836,7 +7836,7 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
-                                <StringItem index="0" value="Relaks / Tidak Ada Kekakuan Otot, Gerakan Tungkai Biasa"/>
+                                <StringItem index="0" value="Relaks / Tidak Ada Kekakuan Otot / Gerakan Tungkai Biasa"/>
                                 <StringItem index="1" value="Fleksi / Ekstensi Tegang Kaku"/>
                               </StringArray>
                             </Property>
@@ -7880,7 +7880,7 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
-                                <StringItem index="0" value="Tenang, Tidur Lelap / Bangun"/>
+                                <StringItem index="0" value="Tenang / Tidur Lelap / Bangun"/>
                                 <StringItem index="1" value="Gelisah"/>
                               </StringArray>
                             </Property>

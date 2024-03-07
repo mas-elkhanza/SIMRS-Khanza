@@ -5390,7 +5390,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel251);
         jLabel251.setBounds(44, 2400, 200, 23);
 
-        SkalaResiko8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Otot Relaks, Wajah Tenang, Ekspresi Netral", "Meringis, Otot Wajah Tegang, Alis Berkerut (Ekspresi Wajah Negatif)" }));
+        SkalaResiko8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Otot Relaks / Wajah Tenang / Ekspresi Netral", "Meringis / Otot Wajah Tegang / Alis Berkerut (Ekspresi Wajah Negatif)" }));
         SkalaResiko8.setName("SkalaResiko8"); // NOI18N
         SkalaResiko8.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5417,7 +5417,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(NilaiResiko9);
         NilaiResiko9.setBounds(814, 2430, 40, 23);
 
-        SkalaResiko9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenang, Tidak Menangis", "Merengek, Mengerang Lemah Intermiten", "Menangis Keras, Melengking Terus Menerus / Menangis Tanpa Suara Bila Bayi Intubasi" }));
+        SkalaResiko9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenang / Tidak Menangis", "Merengek / Mengerang Lemah Intermiten", "Menangis Keras / Melengking Terus Menerus / Menangis Tanpa Suara Bila Bayi Intubasi" }));
         SkalaResiko9.setName("SkalaResiko9"); // NOI18N
         SkalaResiko9.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5444,7 +5444,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(NilaiResiko10);
         NilaiResiko10.setBounds(814, 2460, 40, 23);
 
-        SkalaResiko10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Relaks, Bernapas Biasa", "Perubahan Napas / Tarikan Irreguler, Lebih Cepat Dibandingkan Biasa, Menahan Napas, Tersedak" }));
+        SkalaResiko10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Relaks / Bernapas Biasa", "Perubahan Napas / Tarikan Irreguler / Lebih Cepat Dibandingkan Biasa / Menahan Napas / Tersedak" }));
         SkalaResiko10.setName("SkalaResiko10"); // NOI18N
         SkalaResiko10.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5471,7 +5471,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(NilaiResiko11);
         NilaiResiko11.setBounds(814, 2490, 40, 23);
 
-        SkalaResiko11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Relaks / Tidak Ada Kekakuan Otot, Gerakan Tungkai Biasa", "Fleksi / Ekstensi Tegang Kaku" }));
+        SkalaResiko11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Relaks / Tidak Ada Kekakuan Otot / Gerakan Tungkai Biasa", "Fleksi / Ekstensi Tegang Kaku" }));
         SkalaResiko11.setName("SkalaResiko11"); // NOI18N
         SkalaResiko11.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5498,7 +5498,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(NilaiResiko12);
         NilaiResiko12.setBounds(814, 2520, 40, 23);
 
-        SkalaResiko12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenang, Tidur Lelap / Bangun", "Gelisah" }));
+        SkalaResiko12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenang / Tidur Lelap / Bangun", "Gelisah" }));
         SkalaResiko12.setName("SkalaResiko12"); // NOI18N
         SkalaResiko12.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
