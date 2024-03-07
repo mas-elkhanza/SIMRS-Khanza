@@ -2737,7 +2737,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "]," +
                                             "\"protocolApplied\" : ["+
                                                 "{"+
-                                                    "\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
+                                                    "\"doseNumberPositiveInt\" : "+rs.getString("aturan").replaceAll("[^0-9.]", "")+
                                                 "}"+
                                             "]"+
                                         "}";
@@ -2875,7 +2875,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "]," +
                                             "\"protocolApplied\" : ["+
                                                 "{"+
-                                                    "\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+
+                                                    "\"doseNumberPositiveInt\" : "+rs.getString("aturan").replaceAll("[^0-9.]", "")+
                                                 "}"+
                                             "]"+
                                         "}";

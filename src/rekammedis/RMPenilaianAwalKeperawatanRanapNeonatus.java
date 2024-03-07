@@ -69,24 +69,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
-            "Tgl.Asuhan","Macam Kasus","Anamnesis","Tiba Di Ruang Rawat","Cara Masuk","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
-            "Riwayat Penggunaan Obat","Riwayat Pembedahan","Riwayat Dirawat Di RS","Alat Bantu Yang Dipakai","Dalam Keadaan Hamil/Sedang Menyusui","Riwayat Transfusi Darah",
-            "Riwayat Alergi","Merokok","Batang/Hari","Alkohol","Gelas/Hari","Obat Tidur","Olah Raga","Kesadaran Mental","Keadaan Umum","GCS(E,V,M)","TD(mmHg)",
-            "Nadi(x/menit)","RR(x/menit)","Suhu(°C)","SpO2(%)","BB(Kg)","TB(cm)","Kepala","Wajah","Leher","Kejang","Sensorik","Pulsasi","Sirkulasi","Denyut Nadi",
-            "Retraksi","Pola Nafas","Suara Nafas","Batuk & Sekresi","Volume","Jenis Pernafasaan","Irama","Mulut","Lidah","Gigi","Tenggorokan","Abdomen","Peistatik Usus",
-            "Anus","Sensorik","Penglihatan","Alat Bantu Penglihatan","Motorik","Pendengaran","Bicara","Otot","Kulit","Warna Kulit","Turgor","Resiko Decubitas",
-            "Oedema","Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
-            "Lain-lain BAK","Mandi","Makan/Minum","Berpakaian","Eliminasi","Berpindah","Porsi Makan","Frekuensi Makan","Jenis Makanan","Lama Tidur","Gangguan Tidur",
-            "a. Aktifitas Sehari-hari","b. Berjalan","c. Aktifitas","d. Alat Ambulasi","e. Ekstremitas Atas","f. Ekstremitas Bawah","g. Kemampuan Menggenggam",
-            "h. Kemampuan Koordinasi","i. Kesimpulan Gangguan Fungsi","a. Kondisi Psikologis","b. Adakah Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan Pasien",
-            "e. Agama","f. Tinggal Dengan","g. Pekerjaan","h. Pembayaran","i. Nilai-nilai Kepercayaan","j. Bahasa Sehari-hari","k. Pendidikan Pasien","l. Pendidikan P.J.",
-            "m. Edukasi Diberikan Kepada","Nyeri","Penyebab Nyeri","Kualitas Nyeri","Lokasi Nyeri","Nyeri Menyebar","Skala Nyeri","Waktu / Durasi","Nyeri Hilang Bila",
-            "Diberitahukan Pada Dokter","Skala Morse 1","N.M. 1","Skala Morse 2","N.M. 2","Skala Morse 3","N.M. 3","Skala Morse 4","N.M. 4","Skala Morse 5","N.M. 5",
-            "Skala Morse 6","N.M. 6","T.M.","Skala Sydney 1","N.S. 1","Skala Sydney 2","N.S. 2","Skala Sydney 3","N.S. 3","Skala Sydney 4","N.S. 4",
-            "Skala Sydney 5","N.S. 5","Skala Sydney 6","N.S. 6","Skala Sydney 7","N.S. 7","Skala Sydney 8","N.S. 8","Skala Sydney 9","N.S. 9","Skala Sydney 10","N.S. 10",
-            "Skala Sydney 11","N.S. 11","T.S.","1. Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?","Skor 1","2. Apakah asupan makan berkurang karena tidak nafsu makan ?",
-            "Skor 2","Total Skor","Pasien dengan diagnosis khusus","Keterangan Diagnosa Khusus","Sudah dibaca dan diketahui oleh Dietisen","Jam Dibaca Dietisen",
-            "Rencana Keperawatan Lainnya"
+            "Tgl.Asuhan","Asal Pasien","Cara Masuk","Diperoleh Dari","Hubungan Dengan Pasien","Keluhan Utama","Prenatal G","Prenatal P","Prenatal A","Prenatal UK",
+            "Riwayat Penyakit Ibu","Keterangan Riwayat Penyakit Ibu","Riwayat Pengobatan Ibu Selama Hamil","Pernah Dirawat","Keterangan Pernah Dirawat","Status Gizi Ibu",
+            "Intranatal G","Intranatal P","Intranatal A","intranatal kondisi lahir","intranatal cara persalinan","intranatal cara persalinan keterangan","intranatal apgar","intranatal letak","intranatal tali pusat","intranatal ketuban","intranatal bb","intranatal pb","intranatal lk","intranatal ld","intranatal lp","risiko infeksi mayor","risiko infeksi mayor keterangan","risiko infeksi minor","risiko infeksi minor keterangan","kebutuhan biologis nutrisi","kebutuhan biologis nutrisi keterangan","kebutuhan biologis nutrisi frekuensi","kebutuhan biologis nutrisi kali","kebutuhan biologis bak","kebutuhan biologis bak keterangan","kebutuhan biologis bab","kebutuhan biologis bab keterangan","alergi obat","alergi obat keterangan","alergi obat reaksi","alergi makanan","alergi makanan keterangan","alergi makanan reaksi","alergi lainnya","alergi lainnya keterangan","alergi lainnya reaksi","riwayat penyakit keluarga","riwayat penyakit keluarga keterangan","riwayat imunisasi","riwayat imunisasi keterangan","riwayat tranfusi darah","riwayat tranfusi darah keterangan","riwayat tranfusi darah reaksi","riwayat tranfusi darah reaksi keterangan","kebiasan ibu obat diminum","kebiasan ibu obat diminum keterangan","kebiasan ibu narkoba","kebiasan ibu narkoba keterangan","kebiasan ibu merokok","kebiasan ibu merokok keterangan","kebiasan ibu alkohol","kebiasan ibu alkohol keterangan","kesadaran","keadaan umum","gcs","td","suhu","hr","rr","spo2","down score","bb","tb","lk","ld","lp","gd bayi","gd ibu","gd ayah","saraf pusat gerak bayi","saraf pusat kepala","saraf pusat kepala keterangan","saraf pusat ubunubun","saraf pusat ubunubun keterangan","saraf pusat wajah","saraf pusat wajah keterangan","saraf pusat kejang","saraf pusat kejang keterangan","saraf pusat refleks","saraf pusat refleks keterangan","saraf pusat tangisbayi","saraf pusat tangisbayi keterangan","kardiovaskular denyutnadi","kardiovaskular sirkulasi","kardiovaskular sirkulasi keterangan","kardiovaskular pulsasi","kardiovaskular pulsasi keterangan","respirasi polanafas","respirasi jenispernapasan","respirasi jenispernapasan keterangan","respirasi retraksi","respirasi airentry","respirasi merintih","respirasi suara napas","gastrointestinal mulut","gastrointestinal mulut keterangan","gastrointestinal lidah","gastrointestinal lidah keterangan","gastrointestinal tenggorakan","gastrointestinal tenggorakan keterangan","gastrointestinal abdomen","gastrointestinal abdomen keterangan","gastrointestinal bab","gastrointestinal bab keterangan","gastrointestinal warnabab","gastrointestinal warnabab keterangan","gastrointestinal bak","gastrointestinal bak keterangan","gastrointestinal bakwarna","gastrointestinal bakwarna keterangan","neurologi posisi mata","neurologi kelopak mata","neurologi kelopak mata keterangan","neurologi besar pupil","neurologi konjugtiva","neurologi konjugtiva keterangan","neurologi sklera","neurologi sklera keterangan","neurologi pendengaran","neurologi pendengaran keterangan","neurologi penciuman","neurologi penciuman keterangan","integument warna kulit","integument warna kulit keterangan","integument vernic kaseosa","integument vernic kaseosa keterangan","integument turgor","integument lanugo","integument kulit","integument risiko dekubitas","reproduksi","reproduksi keterangan","muskuloskeletal rekoil telinga","muskuloskeletal rekoil telinga keterangan","muskuloskeletal lengan","muskuloskeletal lengan keterangan","muskuloskeletal tungkai","muskuloskeletal tungkai keterangan","muskuloskeletal telapak kaki","kondisi psikologis","gangguan jiwa","menerima kondisi bayi","status menikah","masalah pernikahan","masalah pernikahan keterangan","pekerjaan","agama","nilai kepercayaan","nilai kepercayaan keterangan","suku","pendidikan","pembayaran","tinggal bersama","tinggal bersama keterangan","hubungan keluarga","respon emosi","bahasa sehari hari","kemampuan bacatulis","butuh penterjemah","butuh penterjemah keterangan","terdapat hambatan belajar","hambatan belajar","hambatan belajar keterangan","hambatan cara bicara","hambatan bahasa isyarat","cara belajar disukai","kesediaan menerima informasi","kesediaan menerima informasi keterangan","pemahaman nutrisi","pemahaman penyakit","pemahaman pengobatan","pemahaman perawatan","masalah gizi1","nilai gizi1","masalah gizi2","nilai gizi2","masalah gizi3","nilai gizi3","totalgizi","keterangan gizi","penilaian humptydumpty skala1","penilaian humptydumpty nilai1","penilaian humptydumpty skala2","penilaian humptydumpty nilai2","penilaian humptydumpty skala3","penilaian humptydumpty nilai3","penilaian humptydumpty skala4","penilaian humptydumpty nilai4","penilaian humptydumpty skala5","penilaian humptydumpty nilai5","penilaian humptydumpty skala6","penilaian humptydumpty nilai6","penilaian humptydumpty skala7","penilaian humptydumpty nilai7","penilaian humptydumpty totalnilai","penilaian humptydumpty hasil","skala nips1","skala nips1 nilai","skala nips2","skala nips2 nilai","skala nips3","skala nips3 nilai","skala nips4","skala nips4 nilai","skala nips5","skala nips5 nilai","skala nips total","skala nips keterangan","informasi perencanaan pulang","lama ratarata","perencanaan pulang","kondisi klinis pulang","perawatan lanjutan dirumah","cara transportasi pulang","transportasi digunakan","rencana"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -702,7 +687,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KdPetugas = new widget.TextBox();
         NmPetugas = new widget.TextBox();
         BtnPetugas = new widget.Button();
-        jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         Jk = new widget.TextBox();
         jLabel10 = new widget.Label();
@@ -786,7 +770,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         A1 = new widget.TextBox();
         jLabel45 = new widget.Label();
         label19 = new widget.Label();
-        TglAsuhan1 = new widget.Tanggal();
         label20 = new widget.Label();
         KetAnamnesis6 = new widget.TextBox();
         jLabel46 = new widget.Label();
@@ -1455,7 +1438,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         FormInput.add(TPasien);
-        TPasien.setBounds(314, 10, 255, 23);
+        TPasien.setBounds(314, 10, 410, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
@@ -1504,16 +1487,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(BtnPetugas);
         BtnPetugas.setBounds(393, 40, 28, 23);
 
-        jLabel8.setText("Tgl.Lahir :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        FormInput.add(jLabel8);
-        jLabel8.setBounds(580, 10, 60, 23);
-
         TglLahir.setEditable(false);
         TglLahir.setHighlighter(null);
         TglLahir.setName("TglLahir"); // NOI18N
         FormInput.add(TglLahir);
-        TglLahir.setBounds(644, 10, 80, 23);
+        TglLahir.setBounds(429, 330, 90, 23);
 
         Jk.setEditable(false);
         Jk.setHighlighter(null);
@@ -2197,24 +2175,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(label19);
         label19.setBounds(365, 330, 60, 23);
 
-        TglAsuhan1.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2024 09:07:51" }));
-        TglAsuhan1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
-        TglAsuhan1.setName("TglAsuhan1"); // NOI18N
-        TglAsuhan1.setOpaque(false);
-        TglAsuhan1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglAsuhan1KeyPressed(evt);
-            }
-        });
-        FormInput.add(TglAsuhan1);
-        TglAsuhan1.setBounds(429, 330, 135, 23);
-
         label20.setText("Kondisi Saat Lahir :");
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label20);
-        label20.setBounds(570, 330, 105, 23);
+        label20.setBounds(518, 330, 110, 23);
 
         KetAnamnesis6.setFocusTraversalPolicyProvider(true);
         KetAnamnesis6.setName("KetAnamnesis6"); // NOI18N
@@ -2224,7 +2189,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(KetAnamnesis6);
-        KetAnamnesis6.setBounds(679, 330, 175, 23);
+        KetAnamnesis6.setBounds(632, 330, 222, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel46.setText("Cara Persalinan");
@@ -7545,10 +7510,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         // TODO add your handling code here:
     }//GEN-LAST:event_A1KeyPressed
 
-    private void TglAsuhan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhan1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglAsuhan1KeyPressed
-
     private void KetAnamnesis6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetAnamnesis6KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_KetAnamnesis6KeyPressed
@@ -8742,7 +8703,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private javax.swing.JTabbedPane TabRawat;
     private javax.swing.JTabbedPane TabRencanaKeperawatan;
     private widget.Tanggal TglAsuhan;
-    private widget.Tanggal TglAsuhan1;
     private widget.Tanggal TglAsuhan2;
     private widget.TextBox TglLahir;
     private widget.Label TingkatResiko1;
@@ -8990,7 +8950,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel77;
     private widget.Label jLabel78;
     private widget.Label jLabel79;
-    private widget.Label jLabel8;
     private widget.Label jLabel80;
     private widget.Label jLabel81;
     private widget.Label jLabel82;
