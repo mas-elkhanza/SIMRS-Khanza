@@ -8957,6 +8957,27 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KeteranganNutrisi.setText("");
         NutrisiFrekuensi.setText("");
         NutrisiKali.setText("");
+        EliminasiBAK.setSelectedIndex(0);
+        KeteranganEliminasiBAK.setText("");
+        EliminasiBAB.setSelectedIndex(0);
+        KeteranganEliminasiBAB.setText("");
+        AlergiObat.setSelectedIndex(0);
+        KeteranganAlergiObat.setText("");
+        ReaksiAlergiObat.setText("");
+        AlergiMakanan.setSelectedIndex(0);
+        KeteranganAlergiMakanan.setText("");
+        ReaksiAlergiMakanan.setText("");
+        AlergiLainnya.setSelectedIndex(0);
+        KeteranganAlergiLainnya.setText("");
+        ReaksiAlergiLainnya.setText("");
+        RiwayatPenyakitKeluarga.setSelectedIndex(0);
+        KeteranganRiwayatPenyakitKeluarga.setText("");
+        RiwayatImunisasi.setSelectedIndex(0);
+        KeteranganRiwayatImunisasi.setText("");
+        TranfusiDarah.setSelectedIndex(0);
+        KeteranganTranfusiDarah.setText("");
+        ReaksiTranfusiDarah.setSelectedIndex(0);
+        KeteranganReaksiTranfusiDarah.setText("");
         
         Rencana.setText("");
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
