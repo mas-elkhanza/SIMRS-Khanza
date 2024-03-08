@@ -71,7 +71,31 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
             "Tgl.Asuhan","Asal Pasien","Cara Masuk","Diperoleh Dari","Hubungan Dengan Pasien","Keluhan Utama","Prenatal G","Prenatal P","Prenatal A","Prenatal UK",
             "Riwayat Penyakit Ibu","Keterangan Riwayat Penyakit Ibu","Riwayat Pengobatan Ibu Selama Hamil","Pernah Dirawat","Keterangan Pernah Dirawat","Status Gizi Ibu",
-            "Intranatal G","Intranatal P","Intranatal A","intranatal kondisi lahir","intranatal cara persalinan","intranatal cara persalinan keterangan","intranatal apgar","intranatal letak","intranatal tali pusat","intranatal ketuban","intranatal bb","intranatal pb","intranatal lk","intranatal ld","intranatal lp","risiko infeksi mayor","risiko infeksi mayor keterangan","risiko infeksi minor","risiko infeksi minor keterangan","kebutuhan biologis nutrisi","kebutuhan biologis nutrisi keterangan","kebutuhan biologis nutrisi frekuensi","kebutuhan biologis nutrisi kali","kebutuhan biologis bak","kebutuhan biologis bak keterangan","kebutuhan biologis bab","kebutuhan biologis bab keterangan","alergi obat","alergi obat keterangan","alergi obat reaksi","alergi makanan","alergi makanan keterangan","alergi makanan reaksi","alergi lainnya","alergi lainnya keterangan","alergi lainnya reaksi","riwayat penyakit keluarga","riwayat penyakit keluarga keterangan","riwayat imunisasi","riwayat imunisasi keterangan","riwayat tranfusi darah","riwayat tranfusi darah keterangan","riwayat tranfusi darah reaksi","riwayat tranfusi darah reaksi keterangan","kebiasan ibu obat diminum","kebiasan ibu obat diminum keterangan","kebiasan ibu narkoba","kebiasan ibu narkoba keterangan","kebiasan ibu merokok","kebiasan ibu merokok keterangan","kebiasan ibu alkohol","kebiasan ibu alkohol keterangan","kesadaran","keadaan umum","gcs","td","suhu","hr","rr","spo2","down score","bb","tb","lk","ld","lp","gd bayi","gd ibu","gd ayah","saraf pusat gerak bayi","saraf pusat kepala","saraf pusat kepala keterangan","saraf pusat ubunubun","saraf pusat ubunubun keterangan","saraf pusat wajah","saraf pusat wajah keterangan","saraf pusat kejang","saraf pusat kejang keterangan","saraf pusat refleks","saraf pusat refleks keterangan","saraf pusat tangisbayi","saraf pusat tangisbayi keterangan","kardiovaskular denyutnadi","kardiovaskular sirkulasi","kardiovaskular sirkulasi keterangan","kardiovaskular pulsasi","kardiovaskular pulsasi keterangan","respirasi polanafas","respirasi jenispernapasan","respirasi jenispernapasan keterangan","respirasi retraksi","respirasi airentry","respirasi merintih","respirasi suara napas","gastrointestinal mulut","gastrointestinal mulut keterangan","gastrointestinal lidah","gastrointestinal lidah keterangan","gastrointestinal tenggorakan","gastrointestinal tenggorakan keterangan","gastrointestinal abdomen","gastrointestinal abdomen keterangan","gastrointestinal bab","gastrointestinal bab keterangan","gastrointestinal warnabab","gastrointestinal warnabab keterangan","gastrointestinal bak","gastrointestinal bak keterangan","gastrointestinal bakwarna","gastrointestinal bakwarna keterangan","neurologi posisi mata","neurologi kelopak mata","neurologi kelopak mata keterangan","neurologi besar pupil","neurologi konjugtiva","neurologi konjugtiva keterangan","neurologi sklera","neurologi sklera keterangan","neurologi pendengaran","neurologi pendengaran keterangan","neurologi penciuman","neurologi penciuman keterangan","integument warna kulit","integument warna kulit keterangan","integument vernic kaseosa","integument vernic kaseosa keterangan","integument turgor","integument lanugo","integument kulit","integument risiko dekubitas","reproduksi","reproduksi keterangan","muskuloskeletal rekoil telinga","muskuloskeletal rekoil telinga keterangan","muskuloskeletal lengan","muskuloskeletal lengan keterangan","muskuloskeletal tungkai","muskuloskeletal tungkai keterangan","muskuloskeletal telapak kaki","kondisi psikologis","gangguan jiwa","menerima kondisi bayi","status menikah","masalah pernikahan","masalah pernikahan keterangan","pekerjaan","agama","nilai kepercayaan","nilai kepercayaan keterangan","suku","pendidikan","pembayaran","tinggal bersama","tinggal bersama keterangan","hubungan keluarga","respon emosi","bahasa sehari hari","kemampuan bacatulis","butuh penterjemah","butuh penterjemah keterangan","terdapat hambatan belajar","hambatan belajar","hambatan belajar keterangan","hambatan cara bicara","hambatan bahasa isyarat","cara belajar disukai","kesediaan menerima informasi","kesediaan menerima informasi keterangan","pemahaman nutrisi","pemahaman penyakit","pemahaman pengobatan","pemahaman perawatan","masalah gizi1","nilai gizi1","masalah gizi2","nilai gizi2","masalah gizi3","nilai gizi3","totalgizi","keterangan gizi","penilaian humptydumpty skala1","penilaian humptydumpty nilai1","penilaian humptydumpty skala2","penilaian humptydumpty nilai2","penilaian humptydumpty skala3","penilaian humptydumpty nilai3","penilaian humptydumpty skala4","penilaian humptydumpty nilai4","penilaian humptydumpty skala5","penilaian humptydumpty nilai5","penilaian humptydumpty skala6","penilaian humptydumpty nilai6","penilaian humptydumpty skala7","penilaian humptydumpty nilai7","penilaian humptydumpty totalnilai","penilaian humptydumpty hasil","skala nips1","skala nips1 nilai","skala nips2","skala nips2 nilai","skala nips3","skala nips3 nilai","skala nips4","skala nips4 nilai","skala nips5","skala nips5 nilai","skala nips total","skala nips keterangan","informasi perencanaan pulang","lama ratarata","perencanaan pulang","kondisi klinis pulang","perawatan lanjutan dirumah","cara transportasi pulang","transportasi digunakan","rencana"
+            "Intranatal G","Intranatal P","Intranatal A","Kondisi Lahir","Cara Persalinan","Keterangan Cara Persalinan","APGAR Score","Intranatal Letak","Tali Pusat",
+            "Ketuban","BB(gr)","PB(cm)","LK(cm)","LD(cm)","LP(cm)","Risiko Infeksi Mayor","Keterangan Risiko Infeksi Mayor","Risiko Infeksi Minor","Keterangan Risiko Infeksi Minor",
+            "Nutrisi","Keterangan Nutrisi","Frekuensi(cc)","Frekuenasi(x)","Eliminasi BAK","Keterangan Eliminasi BAK","Eliminasi BAB","Keterangan Eliminasi BAB","Alergi Obat",
+            "Keterangan Alergi Obat","Reaksi Alergi Obat","Alergi Makanan","Keterangan Alergi Makanan","Reaksi Alergi Makanan","Alergi Lainnya","Keterangan Alergi Lainnya",
+            "Reaksi Alergi Lainnya","Riwayat Penyakit Keluarga","Keterangan Riwayat Penyakit Keluarga","Riwayat Imunisasi","Keterangan Riwayat Imunisasi","Riwayat Tranfusi Darah",
+            "Keterangan Riwayat Tranfusi Darah","Reaksi Tranfusi Darah","Keterangan Reaksi Tranfusi Darah","Kebiasan Minum Obat","Keterangan Kebiasan Minum Obat",
+            "Kebiasan Obat Tidur/Narkoba","Keterangan Obat Tidur/Narkoba","Kebiasan Merokok","Keterangan Kebiasan Merokok","Kebiasan Alkohol","Keterangan Kebiasan Alkohol",
+            "Kesadaran","Keadaan Umum","GCS","TD(mmHg)","Suhu(°C)","HR(x/menit)","RR(x/menit)","SPO2(%)","Down Score","BB(Kg)","TB(cm)","LK(cm)","LD(cm)","LP(cm)","GD Bayi",
+            "GD Ibu","GD Ayah","Gerak Bayi","Kepala","Keterangan Kepala","Ubun-ubun","Keterangan Ubun-ubun","Wajah","Keterangan Wajah","Kejang","Keterangan Kejang",
+            "Refleks","Keterangan Refleks","Tangis Bayi","Keterangan Tangis Bayi","Denyut Nadi","Sirkulasi","Keterangan Sirkulasi","Pulsasi","Keterangan Pulsasi","Pola Napas",
+            "Jenis Pernapasan","Keterangan Jenis Pernapasan","Retraksi","Air Entry","Merintih","Suara Napas","Mulut","Keterangan Mulut","Lidah","Keterangan Lidah","Tenggorakan",
+            "Keterangan Tenggorokan","Abdomen","Keterangan Abdomen","BAB","Keterangan BAB","Warna BAB","Keterangan Warna BAB","BAK","Keterangan BAK","Warna BAK","Keterangan Warna BAK",
+            "Posisi Mata","Kelopak Mata","Keterangan Kelopak Mata","Besar Pupil","Konjugtiva","Keterangan Konjugtiva","Sklera","Keterangan Sklera","Pendengaran","Keterangan Pendengaran",
+            "Penciuman","Keterangan Penciuman","Warna Kulit","Keterangan Warna Kulit","Vernic Kaseosa","Keterangan Vernic Kaseosa","Turgor","Lanugo","Kulit","Kriteria Risiko Dekubitas",
+            "Reproduksi","Keterangan Reproduksi","Rekoil Telinga","Keterangan Rekoil Telinga","Lengan","Keterangan Lengan","Tungkai","Keterangan Tungkai","Telapak Kaki",
+            "Kondisi Psikologis","Gangguan Jiwa Di Masa Lalu","Menerima Kondisi Bayi","Status Menikah","Masalah Pernikahan","Keterangan Masalah Pernikahan","Pekerjaan",
+            "Agama","Nilai Kepercayaan","Keterangan Nilai Kepercayaan","Suku","Pendidikan","Pembayaran","Tinggal Bersama","Keterangan Tinggal Bersama","Hubungan Keluarga",
+            "Respon Emosi","Bahasa Sehari-hari","Baca & Tulis","Butuh Penerjemah","Keterangan Butuh Penerjemah","Terdapat Hambatan Belajar","Hambatan Belajar","Keterangan Hambatan Belajar",
+            "Hambatan Cara Bicara","Hambatan Bahasa Isyarat","Cara Belajar Disukai","Kesediaan Menerima Informasi","Keterangan Kesediaan Menerima Informasi","Pemahaman Nutrisi",
+            "Pemahaman Penyakit","Pemahaman Pengobatan","Pemahaman Perawatan","Masalah Gizi 1","N.Gizi 1","Masalah Gizi 2","N.Gizi 2","Masalah Gizi 3","N.Gizi 3","Total N.Gizi",
+            "Keterangan Skrining Gizi","Humpty Dumpty Skala 1","Nilai H.D.1","Humpty Dumpty Skala 2","Nilai H.D.2","Humpty Dumpty Skala 3","Nilai H.D.3","Humpty Dumpty Skala 4",
+            "Nilai H.D.4","Humpty Dumpty Skala 5","Nilai H.D.5","Humpty Dumpty Skala 6","Nilai H.D.6","Humpty Dumpty Skala 7","Nilai H.D.7","Total Nilai H.D.",
+            "Keterangan Hasil Penilaian H.D.","Skala NIPS 1","Nilai NIPS 1","Skala NIPS 2","Nilai NIPS 2","Skala NIPS 3","Nilai NIPS 3","Skala NIPS 4","Nilai NIPS 4",
+            "Skala NIPS 5","Nilai NIPS 5","Total NIPS","Keterangan Penilaian NIPS","Informasi Perencanaan Pulang","Rawat Rata-rata","Perencanaan Pulang","Kondisi Klinis Pulang",
+            "Perawatan Lanjutan Dirumah","Cara Transportasi Pulang","Transportasi Digunakan","Rencana Keperawatan Lainnya"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -107,332 +131,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 column.setPreferredWidth(150);
             }else if(i==11){
                 column.setPreferredWidth(117);
-            }else if(i==12){
-                column.setPreferredWidth(78);
-            }else if(i==13){
-                column.setPreferredWidth(150);
-            }else if(i==14){
-                column.setPreferredWidth(110);
-            }else if(i==15){
-                column.setPreferredWidth(70);
-            }else if(i==16){
-                column.setPreferredWidth(220);
-            }else if(i==17){
-                column.setPreferredWidth(170);
-            }else if(i==18){
-                column.setPreferredWidth(170);
-            }else if(i==19){
-                column.setPreferredWidth(170);
-            }else if(i==20){
-                column.setPreferredWidth(150);
-            }else if(i==21){
-                column.setPreferredWidth(150);
-            }else if(i==22){
-                column.setPreferredWidth(125);
-            }else if(i==23){
-                column.setPreferredWidth(210);
-            }else if(i==24){
-                column.setPreferredWidth(130);
-            }else if(i==25){
-                column.setPreferredWidth(130);
-            }else if(i==26){
-                column.setPreferredWidth(48);
-            }else if(i==27){
-                column.setPreferredWidth(65);
-            }else if(i==28){
-                column.setPreferredWidth(44);
-            }else if(i==29){
-                column.setPreferredWidth(59);
-            }else if(i==30){
-                column.setPreferredWidth(61);
-            }else if(i==31){
-                column.setPreferredWidth(59);
-            }else if(i==32){
-                column.setPreferredWidth(120);
-            }else if(i==33){
-                column.setPreferredWidth(85);
-            }else if(i==34){
-                column.setPreferredWidth(64);
-            }else if(i==35){
-                column.setPreferredWidth(60);
-            }else if(i==36){
-                column.setPreferredWidth(74);
-            }else if(i==37){
-                column.setPreferredWidth(67);
-            }else if(i==38){
-                column.setPreferredWidth(52);
-            }else if(i==39){
-                column.setPreferredWidth(52);
-            }else if(i==40){
-                column.setPreferredWidth(44);
-            }else if(i==41){
-                column.setPreferredWidth(44);
-            }else if(i==42){
-                column.setPreferredWidth(150);
-            }else if(i==43){
-                column.setPreferredWidth(150);
-            }else if(i==44){
-                column.setPreferredWidth(106);
-            }else if(i==45){
-                column.setPreferredWidth(130);
-            }else if(i==46){
-                column.setPreferredWidth(65);
-            }else if(i==47){
-                column.setPreferredWidth(50);
-            }else if(i==48){
-                column.setPreferredWidth(130);
-            }else if(i==49){
-                column.setPreferredWidth(72);
-            }else if(i==50){
-                column.setPreferredWidth(54);
-            }else if(i==51){
-                column.setPreferredWidth(63);
-            }else if(i==52){
-                column.setPreferredWidth(69);
-            }else if(i==53){
-                column.setPreferredWidth(97);
-            }else if(i==54){
-                column.setPreferredWidth(75);
-            }else if(i==55){
-                column.setPreferredWidth(170);
-            }else if(i==56){
-                column.setPreferredWidth(70);
-            }else if(i==57){
-                column.setPreferredWidth(140);
-            }else if(i==58){
-                column.setPreferredWidth(140);
-            }else if(i==59){
-                column.setPreferredWidth(140);
-            }else if(i==60){
-                column.setPreferredWidth(140);
-            }else if(i==61){
-                column.setPreferredWidth(140);
-            }else if(i==62){
-                column.setPreferredWidth(111);
-            }else if(i==63){
-                column.setPreferredWidth(60);
-            }else if(i==64){
-                column.setPreferredWidth(60);
-            }else if(i==65){
-                column.setPreferredWidth(140);
-            }else if(i==66){
-                column.setPreferredWidth(119);
-            }else if(i==67){
-                column.setPreferredWidth(65);
-            }else if(i==68){
-                column.setPreferredWidth(74);
-            }else if(i==69){
-                column.setPreferredWidth(140);
-            }else if(i==70){
-                column.setPreferredWidth(41);
-            }else if(i==71){
-                column.setPreferredWidth(91);
-            }else if(i==72){
-                column.setPreferredWidth(66);
-            }else if(i==73){
-                column.setPreferredWidth(44);
-            }else if(i==74){
-                column.setPreferredWidth(159);
-            }else if(i==75){
-                column.setPreferredWidth(140);
-            }else if(i==76){
-                column.setPreferredWidth(94);
-            }else if(i==77){
-                column.setPreferredWidth(79);
-            }else if(i==78){
-                column.setPreferredWidth(140);
-            }else if(i==79){
-                column.setPreferredWidth(140);
-            }else if(i==80){
-                column.setPreferredWidth(79);
-            }else if(i==81){
-                column.setPreferredWidth(80);
-            }else if(i==82){
-                column.setPreferredWidth(85);
-            }else if(i==83){
-                column.setPreferredWidth(80);
-            }else if(i==84){
-                column.setPreferredWidth(79);
-            }else if(i==85){
-                column.setPreferredWidth(80);
-            }else if(i==86){
-                column.setPreferredWidth(80);
-            }else if(i==87){
-                column.setPreferredWidth(80);
-            }else if(i==88){
-                column.setPreferredWidth(103);
-            }else if(i==89){
-                column.setPreferredWidth(103);
-            }else if(i==90){
-                column.setPreferredWidth(103);
-            }else if(i==91){
-                column.setPreferredWidth(103);
-            }else if(i==92){
-                column.setPreferredWidth(103);
-            }else if(i==93){
-                column.setPreferredWidth(68);
-            }else if(i==94){
-                column.setPreferredWidth(90);
-            }else if(i==95){
-                column.setPreferredWidth(140);
-            }else if(i==96){
-                column.setPreferredWidth(65);
-            }else if(i==97){
-                column.setPreferredWidth(108);
-            }else if(i==98){
-                column.setPreferredWidth(120);
-            }else if(i==99){
-                column.setPreferredWidth(180);
-            }else if(i==100){
-                column.setPreferredWidth(67);
-            }else if(i==101){
-                column.setPreferredWidth(104);
-            }else if(i==102){
-                column.setPreferredWidth(140);
-            }else if(i==103){
-                column.setPreferredWidth(140);
-            }else if(i==104){
-                column.setPreferredWidth(170);
-            }else if(i==105){
-                column.setPreferredWidth(170);
-            }else if(i==106){
-                column.setPreferredWidth(161);
-            }else if(i==107){
-                column.setPreferredWidth(106);
-            }else if(i==108){
-                column.setPreferredWidth(250);
-            }else if(i==109){
-                column.setPreferredWidth(157);
-            }else if(i==110){
-                column.setPreferredWidth(105);
-            }else if(i==111){
-                column.setPreferredWidth(55);
-            }else if(i==112){
-                column.setPreferredWidth(140);
-            }else if(i==113){
-                column.setPreferredWidth(90);
-            }else if(i==114){
-                column.setPreferredWidth(90);
-            }else if(i==115){
-                column.setPreferredWidth(150);
-            }else if(i==116){
-                column.setPreferredWidth(110);
-            }else if(i==117){
-                column.setPreferredWidth(110);
-            }else if(i==118){
-                column.setPreferredWidth(95);
-            }else if(i==119){
-                column.setPreferredWidth(150);
-            }else if(i==120){
-                column.setPreferredWidth(80);
-            }else if(i==121){
-                column.setPreferredWidth(140);
-            }else if(i==122){
-                column.setPreferredWidth(140);
-            }else if(i==123){
-                column.setPreferredWidth(100);
-            }else if(i==124){
-                column.setPreferredWidth(85);
-            }else if(i==125){
-                column.setPreferredWidth(65);
-            }else if(i==126){
-                column.setPreferredWidth(80);
-            }else if(i==127){
-                column.setPreferredWidth(140);
-            }else if(i==128){
-                column.setPreferredWidth(140);
-            }else if(i==129){
-                column.setPreferredWidth(77);
-            }else if(i==130){
-                column.setPreferredWidth(40);
-            }else if(i==131){
-                column.setPreferredWidth(77);
-            }else if(i==132){
-                column.setPreferredWidth(40);
-            }else if(i==133){
-                column.setPreferredWidth(177);
-            }else if(i==134){
-                column.setPreferredWidth(40);
-            }else if(i==135){
-                column.setPreferredWidth(77);
-            }else if(i==136){
-                column.setPreferredWidth(40);
-            }else if(i==137){
-                column.setPreferredWidth(162);
-            }else if(i==138){
-                column.setPreferredWidth(40);
-            }else if(i==139){
-                column.setPreferredWidth(162);
-            }else if(i==140){
-                column.setPreferredWidth(40);
-            }else if(i==141){
-                column.setPreferredWidth(40);
-            }else if(i==142){
-                column.setPreferredWidth(82);
-            }else if(i==143){
-                column.setPreferredWidth(40);
-            }else if(i==144){
-                column.setPreferredWidth(82);
-            }else if(i==145){
-                column.setPreferredWidth(40);
-            }else if(i==146){
-                column.setPreferredWidth(82);
-            }else if(i==147){
-                column.setPreferredWidth(40);
-            }else if(i==148){
-                column.setPreferredWidth(82);
-            }else if(i==149){
-                column.setPreferredWidth(40);
-            }else if(i==150){
-                column.setPreferredWidth(82);
-            }else if(i==151){
-                column.setPreferredWidth(40);
-            }else if(i==152){
-                column.setPreferredWidth(82);
-            }else if(i==153){
-                column.setPreferredWidth(40);
-            }else if(i==154){
-                column.setPreferredWidth(82);
-            }else if(i==155){
-                column.setPreferredWidth(40);
-            }else if(i==156){
-                column.setPreferredWidth(82);
-            }else if(i==157){
-                column.setPreferredWidth(40);
-            }else if(i==158){
-                column.setPreferredWidth(82);
-            }else if(i==159){
-                column.setPreferredWidth(40);
-            }else if(i==160){
-                column.setPreferredWidth(86);
-            }else if(i==161){
-                column.setPreferredWidth(44);
-            }else if(i==162){
-                column.setPreferredWidth(86);
-            }else if(i==163){
-                column.setPreferredWidth(44);
-            }else if(i==164){
-                column.setPreferredWidth(40);
-            }else if(i==165){
-                column.setPreferredWidth(380);
-            }else if(i==166){
-                column.setPreferredWidth(40);
-            }else if(i==167){
-                column.setPreferredWidth(317);
-            }else if(i==168){
-                column.setPreferredWidth(40);
-            }else if(i==169){
-                column.setPreferredWidth(58);
-            }else if(i==170){
-                column.setPreferredWidth(165);
-            }else if(i==171){
-                column.setPreferredWidth(149);
-            }else if(i==172){
-                column.setPreferredWidth(209);
-            }else if(i==173){
-                column.setPreferredWidth(107);
-            }else if(i==174){
-                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
