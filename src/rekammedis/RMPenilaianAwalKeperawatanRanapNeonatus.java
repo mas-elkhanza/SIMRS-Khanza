@@ -8930,6 +8930,33 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         PrenatalUK.setText("");
         RiwayatPenyakitIbu.setSelectedIndex(0);
         KeteranganRiwayatPenyakitIbu.setText("");
+        RiwayatPengobatanIbu.setText("");
+        PernahDirawat.setSelectedIndex(0);
+        KeteranganPernahDirawat.setText("");
+        StatusGiziIbu.setSelectedIndex(0);
+        IntranatalG.setText("");
+        IntranatalP.setText("");
+        IntranatalA.setText("");
+        KondisiSaatLahir.setText("");
+        CaraPersalinan.setSelectedIndex(0);
+        KeteranganCaraPersalinan.setText("");
+        ApgarScore.setText("");
+        IntranatalLetak.setText("");
+        TaliPusat.setSelectedIndex(0);
+        Ketuban.setSelectedIndex(0);
+        AntoBB.setText("");
+        AntoPB.setText("");
+        AntoLK.setText("");
+        AntoLD.setText("");
+        AntoLP.setText("");
+        RisikoInfeksiMayor.setSelectedIndex(0);
+        KeteranganRisikoInfeksiMayor.setText("");
+        RisikoInfeksiMinor.setSelectedIndex(0);
+        KeteranganRisikoInfeksiMinor.setText("");
+        Nutrisi.setSelectedIndex(0);
+        KeteranganNutrisi.setText("");
+        NutrisiFrekuensi.setText("");
+        NutrisiKali.setText("");
         
         Rencana.setText("");
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
