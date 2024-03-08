@@ -929,6 +929,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel268 = new widget.Label();
         KeteranganPenilaianNyeri = new widget.TextBox();
         jLabel269 = new widget.Label();
+        jLabel270 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -4817,7 +4818,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         NilaiGizi3.setBounds(794, 2060, 60, 23);
 
         jLabel240.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel240.setText("Total Skor");
+        jLabel240.setText("Keterangan");
         jLabel240.setName("jLabel240"); // NOI18N
         FormInput.add(jLabel240);
         jLabel240.setBounds(44, 2090, 100, 23);
@@ -4843,12 +4844,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(KeteranganSkriningGizi);
-        KeteranganSkriningGizi.setBounds(104, 2090, 390, 23);
+        KeteranganSkriningGizi.setBounds(111, 2090, 383, 23);
 
         jLabel241.setText(":");
         jLabel241.setName("jLabel241"); // NOI18N
         FormInput.add(jLabel241);
-        jLabel241.setBounds(0, 2090, 100, 23);
+        jLabel241.setBounds(0, 2090, 107, 23);
 
         jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
@@ -5410,6 +5411,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel269.setName("jLabel269"); // NOI18N
         FormInput.add(jLabel269);
         jLabel269.setBounds(0, 2550, 107, 23);
+
+        jLabel270.setText("Total :");
+        jLabel270.setName("jLabel270"); // NOI18N
+        FormInput.add(jLabel270);
+        jLabel270.setBounds(710, 2090, 70, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -8645,6 +8651,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.Label jLabel267;
     private widget.Label jLabel268;
     private widget.Label jLabel269;
+    private widget.Label jLabel270;
     private widget.Label jLabel271;
     private widget.Label jLabel272;
     private widget.Label jLabel28;
@@ -9016,6 +9023,139 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KeteranganRefleks.setText("");
         TangisBayi.setSelectedIndex(0);
         KeteranganTangisBayi.setText("");
+        DenyutNadi.setSelectedIndex(0);
+        Sirkulasi.setSelectedIndex(0);
+        KeteranganSirkulasi.setText("");
+        Pulsasi.setSelectedIndex(0);
+        KeteranganPulsasi.setText("");
+        PolaNapas.setSelectedIndex(0);
+        JenisPernapasan.setSelectedIndex(0);
+        KeteranganJenisPernapasan.setText("");
+        Retraksi.setSelectedIndex(0);
+        AirEntry.setSelectedIndex(0);
+        Merintih.setSelectedIndex(0);
+        SuaraNapas.setSelectedIndex(0);
+        Mulut.setSelectedIndex(0);
+        KeteranganMulut.setText("");
+        Lidah.setSelectedIndex(0);
+        KeteranganLidah.setText("");
+        Tenggorokan.setSelectedIndex(0);
+        KeteranganTenggorokan.setText("");
+        Abdomen.setSelectedIndex(0);
+        KeteranganAbdomen.setText("");
+        GastroBAB.setSelectedIndex(0);
+        KeteranganGastroBAB.setText("");
+        GastroWarnaBAB.setSelectedIndex(0);
+        KeteranganGastroWarnaBAB.setText("");
+        GastroBAK.setSelectedIndex(0);
+        KeteranganGastroBAK.setText("");
+        GastroWarnaBAK.setSelectedIndex(0);
+        KeteranganGastroWarnaBAK.setText("");
+        PosisiMata.setSelectedIndex(0);
+        KelopakMata.setSelectedIndex(0);
+        KeteranganKelopakMata.setText("");
+        BesarPupil.setSelectedIndex(0);
+        Konjungtiva.setSelectedIndex(0);
+        KeteranganKonjungtiva.setText("");
+        Sklera.setSelectedIndex(0);
+        KeteranganSklera.setText("");
+        Pendengaran.setSelectedIndex(0);
+        KeteranganPendengaran.setText("");
+        Penciuman.setSelectedIndex(0);
+        KeteranganPenciuman.setText("");
+        WarnaKulit.setSelectedIndex(0);
+        KeteranganWarnaKulit.setText("");
+        VernicKaseosa.setSelectedIndex(0);
+        KeteranganVernicKaseosa.setText("");
+        Turgor.setSelectedIndex(0);
+        Lanugo.setSelectedIndex(0);
+        Kulit.setSelectedIndex(0);
+        RisikoDekubitas.setSelectedIndex(0);
+        Reproduksi.setSelectedIndex(0);
+        KeteranganReproduksi.setText("");
+        RekoilTelinga.setSelectedIndex(0);
+        KeteranganRekoilTelinga.setText("");
+        Lengan.setSelectedIndex(0);
+        KeteranganLengan.setText("");
+        Tungkai.setSelectedIndex(0);
+        KeteranganTungkai.setText("");
+        GarisTelapakKaki.setSelectedIndex(0);
+        KondisiPsikologis.setSelectedIndex(0);
+        GangguanJiwa.setSelectedIndex(0);
+        MenerimaKondisiBayi.setSelectedIndex(0);
+        StatusMenikah.setSelectedIndex(0);
+        MasalahPernikahan.setSelectedIndex(0);
+        KeteranganMasalahPernikahan.setText("");
+        Pekerjaan.setText("");
+        Agama.setText("");
+        NilaiKepercayaan.setSelectedIndex(0);
+        KeteranganNilaiKepercayaan.setText("");
+        Suku.setText("");
+        Pendidikan.setText("");
+        Pembayaran.setText("");
+        TinggalBersama.setSelectedIndex(0);
+        KeteranganTinggalBersama.setText("");
+        HubunganAnggotaKeluarga.setSelectedIndex(0);
+        ResponEmosi.setSelectedIndex(0);
+        BahasaSehari.setText("");
+        KemampuanBacaTulis.setSelectedIndex(0);
+        ButuhPenerjemah.setSelectedIndex(0);
+        KeteranganButuhPenerjemah.setText("");
+        TerdapatHambatanBelajar.setSelectedIndex(0);
+        HambatanBelajar.setSelectedIndex(0);
+        KeteranganHambatanBelajar.setText("");
+        HambatanCaraBicara.setSelectedIndex(0);
+        HambatanBahasaIsyarat.setSelectedIndex(0);
+        CaraBelajarDisukai.setSelectedIndex(0);
+        KesediaanMenerimaInformasi.setSelectedIndex(0);
+        KeteranganKesediaanMenerimaInformasi.setText("");
+        PemahamanNutrisi.setSelectedIndex(0);
+        PemahamanPenyakit.setSelectedIndex(0);
+        PemahamanPengobatan.setSelectedIndex(0);
+        PemahamanPerawatan.setSelectedIndex(0);
+        SG1.setSelectedIndex(0);
+        SG2.setSelectedIndex(0);
+        SG3.setSelectedIndex(0);
+        NilaiGizi1.setText("");
+        NilaiGizi2.setText("");
+        NilaiGizi3.setText("");
+        KeteranganSkriningGizi.setText("");
+        TotalNilaiGizi.setText("");
+        SkalaResiko1.setSelectedIndex(0);
+        SkalaResiko2.setSelectedIndex(0);
+        SkalaResiko3.setSelectedIndex(0);
+        SkalaResiko4.setSelectedIndex(0);
+        SkalaResiko5.setSelectedIndex(0);
+        SkalaResiko6.setSelectedIndex(0);
+        SkalaResiko7.setSelectedIndex(0);
+        NilaiResiko1.setText("");
+        NilaiResiko2.setText("");
+        NilaiResiko3.setText("");
+        NilaiResiko4.setText("");
+        NilaiResiko5.setText("");
+        NilaiResiko6.setText("");
+        NilaiResiko7.setText("");
+        KeteranganTingkatRisiko.setText("");
+        NilaiResikoTotal.setText("");
+        SkalaNIPS1.setSelectedIndex(0);
+        SkalaNIPS2.setSelectedIndex(0);
+        SkalaNIPS3.setSelectedIndex(0);
+        SkalaNIPS4.setSelectedIndex(0);
+        SkalaNIPS5.setSelectedIndex(0);
+        NilaiNIPS1.setText("");
+        NilaiNIPS2.setText("");
+        NilaiNIPS3.setText("");
+        NilaiNIPS4.setText("");
+        NilaiNIPS5.setText("");
+        TotalNIPS.setText("");
+        KeteranganPenilaianNyeri.setText("");
+        InformasiPerencanaanPulang.setSelectedIndex(0);
+        LamaRatarata.setText("");
+        TanggalPulang.setDate(new Date());
+        KondisiPulang.setText("");
+        PerawatanLanjutan.setText("");
+        CaraTransportasiPulang.setSelectedIndex(0);
+        TransportasiYangDigunakan.setSelectedIndex(0);
         
         Rencana.setText("");
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
