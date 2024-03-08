@@ -8919,9 +8919,18 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
 
     public void emptTeks() {
         TglAsuhan.setDate(new Date());
+        AsalPasien.setSelectedIndex(0);
         CaraMasuk.setSelectedIndex(0);
         DiperolehDari.setText("");
-        AsalPasien.setSelectedIndex(0);
+        HubunganDenganPasien.setText("");
+        KeluhanUtama.setText("");
+        PrenatalG.setText("");
+        PrenatalP.setText("");
+        PrenatalA.setText("");
+        PrenatalUK.setText("");
+        RiwayatPenyakitIbu.setSelectedIndex(0);
+        KeteranganRiwayatPenyakitIbu.setText("");
+        
         Rencana.setText("");
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
@@ -9053,10 +9062,10 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap()); 
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_neonatus());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_neonatus());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_neonatus());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_neonatus()); 
         BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan_neonatus()); 
         BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan_neonatus()); 
         if(akses.getjml2()>=1){
