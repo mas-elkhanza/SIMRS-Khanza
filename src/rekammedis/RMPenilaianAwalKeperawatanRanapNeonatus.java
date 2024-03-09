@@ -231,7 +231,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KeteranganButuhPenerjemah.setDocument(new batasInput((int)20).getKata(KeteranganButuhPenerjemah));
         KeteranganHambatanBelajar.setDocument(new batasInput((int)40).getKata(KeteranganHambatanBelajar));
         KeteranganKesediaanMenerimaInformasi.setDocument(new batasInput((int)40).getKata(KeteranganKesediaanMenerimaInformasi));
-        KeteranganSkriningGizi.setDocument(new batasInput((int)40).getKata(KeteranganSkriningGizi));
+        KeteranganSkriningGizi.setDocument(new batasInput((int)50).getKata(KeteranganSkriningGizi));
         LamaRatarata.setDocument(new batasInput((int)3).getKata(LamaRatarata));
         KondisiPulang.setDocument(new batasInput((int)100).getKata(KondisiPulang));
         PerawatanLanjutan.setDocument(new batasInput((int)300).getKata(PerawatanLanjutan));
@@ -5475,6 +5475,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(TransportasiYangDigunakan);
         TransportasiYangDigunakan.setBounds(511, 2710, 140, 23);
 
+        KeteranganTingkatRisiko.setEditable(false);
         KeteranganTingkatRisiko.setFocusTraversalPolicyProvider(true);
         KeteranganTingkatRisiko.setName("KeteranganTingkatRisiko"); // NOI18N
         KeteranganTingkatRisiko.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -8025,8 +8026,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_PemahamanPengobatanKeyPressed
 
     private void SG1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG1ItemStateChanged
-        //NilaiGizi1.setText(SG1.getSelectedIndex()+"");
-        //TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
+        NilaiGizi1.setText(SG1.getSelectedIndex()+"");
+        isGizi();
     }//GEN-LAST:event_SG1ItemStateChanged
 
     private void SG1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG1KeyPressed
@@ -8038,7 +8039,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_NilaiGizi1KeyPressed
 
     private void SG2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG2ItemStateChanged
-        // TODO add your handling code here:
+        NilaiGizi2.setText(SG2.getSelectedIndex()+"");
+        isGizi();
     }//GEN-LAST:event_SG2ItemStateChanged
 
     private void SG2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG2KeyPressed
@@ -8050,7 +8052,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_NilaiGizi2KeyPressed
 
     private void SG3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG3ItemStateChanged
-        // TODO add your handling code here:
+        NilaiGizi3.setText(SG3.getSelectedIndex()+"");
+        isGizi();
     }//GEN-LAST:event_SG3ItemStateChanged
 
     private void SG3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG3KeyPressed
@@ -8070,7 +8073,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_KeteranganSkriningGiziKeyPressed
 
     private void SkalaResiko1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko1ItemStateChanged
-        /*if(SkalaResiko1.getSelectedIndex()==0){
+        if(SkalaResiko1.getSelectedIndex()==0){
             NilaiResiko1.setText("4");
         }else if(SkalaResiko1.getSelectedIndex()==1){
             NilaiResiko1.setText("3");
@@ -8079,7 +8082,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         }else{
             NilaiResiko1.setText("1");
         }
-        isTotalResikoJatuh();*/
+        isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko1ItemStateChanged
 
     private void SkalaResiko1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko1KeyPressed
@@ -8087,12 +8090,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko1KeyPressed
 
     private void SkalaResiko2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko2ItemStateChanged
-        /*if(SkalaResiko2.getSelectedIndex()==0){
+        if(SkalaResiko2.getSelectedIndex()==0){
             NilaiResiko2.setText("2");
         }else{
             NilaiResiko2.setText("1");
         }
-        isTotalResikoJatuh();*/
+        isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko2ItemStateChanged
 
     private void SkalaResiko2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko2KeyPressed
@@ -8100,7 +8103,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko2KeyPressed
 
     private void SkalaResiko3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko3ItemStateChanged
-        /*if(SkalaResiko3.getSelectedIndex()==0){
+        if(SkalaResiko3.getSelectedIndex()==0){
             NilaiResiko3.setText("4");
         }else if(SkalaResiko3.getSelectedIndex()==1){
             NilaiResiko3.setText("3");
@@ -8109,7 +8112,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         }else{
             NilaiResiko3.setText("1");
         }
-        isTotalResikoJatuh();*/
+        isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko3ItemStateChanged
 
     private void SkalaResiko3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko3KeyPressed
@@ -8117,14 +8120,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko3KeyPressed
 
     private void SkalaResiko4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko4ItemStateChanged
-        /*if(SkalaResiko4.getSelectedIndex()==0){
+        if(SkalaResiko4.getSelectedIndex()==0){
             NilaiResiko4.setText("3");
         }else if(SkalaResiko4.getSelectedIndex()==1){
             NilaiResiko4.setText("2");
         }else{
             NilaiResiko4.setText("1");
         }
-        isTotalResikoJatuh();*/
+        isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko4ItemStateChanged
 
     private void SkalaResiko4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko4KeyPressed
@@ -8132,7 +8135,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko4KeyPressed
 
     private void SkalaResiko5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko5ItemStateChanged
-        /*if(SkalaResiko5.getSelectedIndex()==0){
+        if(SkalaResiko5.getSelectedIndex()==0){
             NilaiResiko5.setText("4");
         }else if(SkalaResiko5.getSelectedIndex()==1){
             NilaiResiko5.setText("3");
@@ -8141,7 +8144,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         }else{
             NilaiResiko5.setText("1");
         }
-        isTotalResikoJatuh();*/
+        isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko5ItemStateChanged
 
     private void SkalaResiko5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko5KeyPressed
@@ -8149,14 +8152,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko5KeyPressed
 
     private void SkalaResiko6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko6ItemStateChanged
-        /*if(SkalaResiko6.getSelectedIndex()==0){
+        if(SkalaResiko6.getSelectedIndex()==0){
             NilaiResiko6.setText("3");
         }else if(SkalaResiko6.getSelectedIndex()==1){
             NilaiResiko6.setText("2");
         }else{
             NilaiResiko6.setText("1");
         }
-        isTotalResikoJatuh();*/
+        isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko6ItemStateChanged
 
     private void SkalaResiko6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko6KeyPressed
@@ -8164,14 +8167,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko6KeyPressed
 
     private void SkalaResiko7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko7ItemStateChanged
-        /*if(SkalaResiko7.getSelectedIndex()==0){
+        if(SkalaResiko7.getSelectedIndex()==0){
             NilaiResiko7.setText("3");
         }else if(SkalaResiko7.getSelectedIndex()==1){
             NilaiResiko7.setText("2");
         }else{
             NilaiResiko7.setText("1");
         }
-        isTotalResikoJatuh();*/
+        isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko7ItemStateChanged
 
     private void SkalaResiko7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko7KeyPressed
@@ -8179,7 +8182,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko7KeyPressed
 
     private void SkalaNIPS1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS1ItemStateChanged
-        // TODO add your handling code here:
+        NilaiNIPS1.setText(SkalaNIPS1.getSelectedIndex()+"");
+        isNyeri();
     }//GEN-LAST:event_SkalaNIPS1ItemStateChanged
 
     private void SkalaNIPS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS1KeyPressed
@@ -8187,7 +8191,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS1KeyPressed
 
     private void SkalaNIPS2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS2ItemStateChanged
-        // TODO add your handling code here:
+        NilaiNIPS2.setText(SkalaNIPS2.getSelectedIndex()+"");
+        isNyeri();
     }//GEN-LAST:event_SkalaNIPS2ItemStateChanged
 
     private void SkalaNIPS2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS2KeyPressed
@@ -8195,7 +8200,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS2KeyPressed
 
     private void SkalaNIPS3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS3ItemStateChanged
-        // TODO add your handling code here:
+        NilaiNIPS3.setText(SkalaNIPS3.getSelectedIndex()+"");
+        isNyeri();
     }//GEN-LAST:event_SkalaNIPS3ItemStateChanged
 
     private void SkalaNIPS3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS3KeyPressed
@@ -8203,7 +8209,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS3KeyPressed
 
     private void SkalaNIPS4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS4ItemStateChanged
-        // TODO add your handling code here:
+        NilaiNIPS4.setText(SkalaNIPS4.getSelectedIndex()+"");
+        isNyeri();
     }//GEN-LAST:event_SkalaNIPS4ItemStateChanged
 
     private void SkalaNIPS4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS4KeyPressed
@@ -8211,7 +8218,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS4KeyPressed
 
     private void SkalaNIPS5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS5ItemStateChanged
-        // TODO add your handling code here:
+        NilaiNIPS5.setText(SkalaNIPS5.getSelectedIndex()+"");
+        isNyeri();
     }//GEN-LAST:event_SkalaNIPS5ItemStateChanged
 
     private void SkalaNIPS5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS5KeyPressed
@@ -9718,6 +9726,52 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             myObj.close();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void isTotalResikoJatuh(){
+        try {
+            NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText())+Integer.parseInt(NilaiResiko7.getText()))+"");
+            if(Integer.parseInt(NilaiResikoTotal.getText())<12){
+                KeteranganTingkatRisiko.setText("Risiko Rendah 7 - 11");
+            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=12){
+                KeteranganTingkatRisiko.setText("Risiko Tinggi >=12");
+            }
+        } catch (Exception e) {
+            NilaiResikoTotal.setText("0");
+            KeteranganTingkatRisiko.setText("Risiko Rendah 7 - 11");
+        }
+    }
+    
+    private void isGizi(){
+        try {
+            TotalNilaiGizi.setText((Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText()))+"");
+            if(Integer.parseInt(TotalNilaiGizi.getText())<2){
+                KeteranganTingkatRisiko.setText("Diet Yang Diberikan : ASI / PASI Per Oral/NGT");
+            }else if(Integer.parseInt(TotalNilaiGizi.getText())>=2){
+                KeteranganTingkatRisiko.setText("Lapor DPJP / Asesmen Lanjut Oleh Ahli Gizi");
+            }
+        } catch (Exception e) {
+            TotalNilaiGizi.setText("0");
+            KeteranganTingkatRisiko.setText("Diet Yang Diberikan : ASI / PASI Per Oral/NGT");
+        }
+    }
+    
+    private void isNyeri(){
+        try {
+            TotalNIPS.setText((Integer.parseInt(NilaiNIPS1.getText())+Integer.parseInt(NilaiNIPS2.getText())+Integer.parseInt(NilaiNIPS3.getText())+Integer.parseInt(NilaiNIPS4.getText())+Integer.parseInt(NilaiNIPS5.getText()))+"");
+            if(Integer.parseInt(TotalNIPS.getText())==0){
+                KeteranganPenilaianNyeri.setText("0 : Tidak Nyeri");
+            }else if((Integer.parseInt(TotalNIPS.getText())==1)||(Integer.parseInt(TotalNIPS.getText())==2)){
+                KeteranganPenilaianNyeri.setText("1-2 : Nyeri Ringan");
+            }else if((Integer.parseInt(TotalNIPS.getText())==3)||(Integer.parseInt(TotalNIPS.getText())==4)){
+                KeteranganPenilaianNyeri.setText("3-4 : Nyeri Sedang");
+            }else if(Integer.parseInt(TotalNIPS.getText())>4){
+                KeteranganPenilaianNyeri.setText("> 4 : Nyeri Hebat");
+            }
+        } catch (Exception e) {
+            TotalNIPS.setText("0");
+            KeteranganPenilaianNyeri.setText("0 : Tidak Nyeri");
         }
     }
 }

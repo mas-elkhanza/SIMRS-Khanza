@@ -8258,6 +8258,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="KeteranganTingkatRisiko">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="KeteranganTingkatRisiko" noResource="true"/>
                           </Properties>
