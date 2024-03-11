@@ -7851,27 +7851,27 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_ReproduksiKeyPressed
 
     private void KeteranganReproduksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganReproduksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Reproduksi,RekoilTelinga);
     }//GEN-LAST:event_KeteranganReproduksiKeyPressed
 
     private void RekoilTelingaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekoilTelingaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganReproduksi,KeteranganRekoilTelinga);
     }//GEN-LAST:event_RekoilTelingaKeyPressed
 
     private void LenganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LenganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRekoilTelinga,KeteranganLengan);
     }//GEN-LAST:event_LenganKeyPressed
 
     private void KeteranganLenganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganLenganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Lengan,Tungkai);
     }//GEN-LAST:event_KeteranganLenganKeyPressed
 
     private void KeteranganRekoilTelingaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRekoilTelingaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RekoilTelinga,Lengan);
     }//GEN-LAST:event_KeteranganRekoilTelingaKeyPressed
 
     private void TungkaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TungkaiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganLengan,KeteranganTungkai);
     }//GEN-LAST:event_TungkaiKeyPressed
 
     private void GarisTelapakKakiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GarisTelapakKakiKeyPressed
