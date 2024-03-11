@@ -688,7 +688,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FisikTD = new widget.TextBox();
         jLabel23 = new widget.Label();
         jLabel201 = new widget.Label();
-        ComposMentis = new widget.ComboBox();
+        Kesadaran = new widget.ComboBox();
         jLabel80 = new widget.Label();
         jLabel18 = new widget.Label();
         FisikSuhu = new widget.TextBox();
@@ -2883,15 +2883,15 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel201);
         jLabel201.setBounds(0, 870, 102, 23);
 
-        ComposMentis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Compos Mentis", "Apatis", "Somnolen", "Sopor", "Soporcoma", "Coma" }));
-        ComposMentis.setName("ComposMentis"); // NOI18N
-        ComposMentis.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kesadaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Compos Mentis", "Apatis", "Somnolen", "Sopor", "Soporcoma", "Coma" }));
+        Kesadaran.setName("Kesadaran"); // NOI18N
+        Kesadaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ComposMentisKeyPressed(evt);
+                KesadaranKeyPressed(evt);
             }
         });
-        FormInput.add(ComposMentis);
-        ComposMentis.setBounds(106, 870, 125, 23);
+        FormInput.add(Kesadaran);
+        Kesadaran.setBounds(106, 870, 125, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel80.setText("Kesadaran");
@@ -7511,11 +7511,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_KeteranganObatobatanDiminumKeyPressed
 
     private void MerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganObatTidurNarkoba,JumlahMerokok);
     }//GEN-LAST:event_MerokokKeyPressed
 
     private void JumlahMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahMerokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Merokok,Alkohol);
     }//GEN-LAST:event_JumlahMerokokKeyPressed
 
     private void ObatTidurNarkobaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatTidurNarkobaKeyPressed
@@ -7523,171 +7523,171 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_ObatTidurNarkobaKeyPressed
 
     private void KeteranganObatTidurNarkobaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganObatTidurNarkobaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ObatTidurNarkoba,Merokok);
     }//GEN-LAST:event_KeteranganObatTidurNarkobaKeyPressed
 
     private void AlkoholKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlkoholKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,JumlahMerokok,JumlahAlkohol);
     }//GEN-LAST:event_AlkoholKeyPressed
 
     private void JumlahAlkoholKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahAlkoholKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Alkohol,Kesadaran);
     }//GEN-LAST:event_JumlahAlkoholKeyPressed
 
     private void KeadaanUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmumKeyPressed
-        //Valid.pindah(evt,KesadaranMental,GCS);
+        Valid.pindah(evt,Kesadaran,FisikGCS);
     }//GEN-LAST:event_KeadaanUmumKeyPressed
 
     private void FisikGCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikGCSKeyPressed
-        //Valid.pindah(evt,KeadaanMentalUmum,TD);
+        Valid.pindah(evt,KeadaanUmum,FisikTD);
     }//GEN-LAST:event_FisikGCSKeyPressed
 
     private void FisikTDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikTDKeyPressed
-        //Valid.pindah(evt,GCS,Nadi);
+        Valid.pindah(evt,FisikGCS,FisikSuhu);
     }//GEN-LAST:event_FisikTDKeyPressed
 
-    private void ComposMentisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComposMentisKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComposMentisKeyPressed
+    private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
+        Valid.pindah(evt,JumlahAlkohol,KeadaanUmum);
+    }//GEN-LAST:event_KesadaranKeyPressed
 
     private void FisikSuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikSuhuKeyPressed
-        //Valid.pindah(evt,RR,SpO2);
+        Valid.pindah(evt,FisikTD,FisikHR);
     }//GEN-LAST:event_FisikSuhuKeyPressed
 
     private void FisikHRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikHRKeyPressed
-        //Valid.pindah(evt,TD,RR);
+        Valid.pindah(evt,FisikSuhu,FisikRR);
     }//GEN-LAST:event_FisikHRKeyPressed
 
     private void FisikRRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikRRKeyPressed
-        //Valid.pindah(evt,Nadi,Suhu);
+        Valid.pindah(evt,FisikHR,FisikSPO);
     }//GEN-LAST:event_FisikRRKeyPressed
 
     private void FisikSPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikSPOKeyPressed
-        //Valid.pindah(evt,Suhu,BB);
+        Valid.pindah(evt,FisikRR,FisikDownScore);
     }//GEN-LAST:event_FisikSPOKeyPressed
 
     private void FisikBBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikBBKeyPressed
-        //Valid.pindah(evt,SpO2,TB);
+        Valid.pindah(evt,FisikDownScore,FisikTB);
     }//GEN-LAST:event_FisikBBKeyPressed
 
     private void FisikTBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikTBKeyPressed
-        //Valid.pindah(evt,BB,SistemSarafKepala);
+        Valid.pindah(evt,FisikBB,FisikLK);
     }//GEN-LAST:event_FisikTBKeyPressed
 
     private void FisikDownScoreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikDownScoreKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FisikSPO,FisikBB);
     }//GEN-LAST:event_FisikDownScoreKeyPressed
 
     private void FisikLKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikLKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FisikTB,FisikLD);
     }//GEN-LAST:event_FisikLKKeyPressed
 
     private void FisikLDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikLDKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FisikLK,FisikLP);
     }//GEN-LAST:event_FisikLDKeyPressed
 
     private void FisikLPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FisikLPKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FisikLD,GDBayi);
     }//GEN-LAST:event_FisikLPKeyPressed
 
     private void GDBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDBayiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FisikLP,GDIbu);
     }//GEN-LAST:event_GDBayiKeyPressed
 
     private void GDIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDIbuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GDBayi,GDAyah);
     }//GEN-LAST:event_GDIbuKeyPressed
 
     private void GDAyahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDAyahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GDIbu,GerakBayi);
     }//GEN-LAST:event_GDAyahKeyPressed
 
     private void GerakBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GerakBayiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GDAyah,KepalaBayi);
     }//GEN-LAST:event_GerakBayiKeyPressed
 
     private void KepalaBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KepalaBayiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GerakBayi,KeteranganKepalaBayi);
     }//GEN-LAST:event_KepalaBayiKeyPressed
 
     private void KeteranganKepalaBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKepalaBayiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KepalaBayi,Ubunubun);
     }//GEN-LAST:event_KeteranganKepalaBayiKeyPressed
 
     private void UbunubunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UbunubunKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKepalaBayi,KeteranganUbunubun);
     }//GEN-LAST:event_UbunubunKeyPressed
 
     private void KeteranganUbunubunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganUbunubunKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Ubunubun,Wajah);
     }//GEN-LAST:event_KeteranganUbunubunKeyPressed
 
     private void WajahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WajahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganUbunubun,KeteranganWajah);
     }//GEN-LAST:event_WajahKeyPressed
 
     private void KeteranganWajahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganWajahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Wajah,Kejang);
     }//GEN-LAST:event_KeteranganWajahKeyPressed
 
     private void KejangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KejangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganWajah,KeteranganKejang);
     }//GEN-LAST:event_KejangKeyPressed
 
     private void KeteranganKejangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKejangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kejang,Refleks);
     }//GEN-LAST:event_KeteranganKejangKeyPressed
 
     private void RefleksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RefleksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKejang,KeteranganRefleks);
     }//GEN-LAST:event_RefleksKeyPressed
 
     private void KeteranganRefleksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRefleksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Refleks,TangisBayi);
     }//GEN-LAST:event_KeteranganRefleksKeyPressed
 
     private void TangisBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TangisBayiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRefleks,KeteranganTangisBayi);
     }//GEN-LAST:event_TangisBayiKeyPressed
 
     private void KeteranganTangisBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTangisBayiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TangisBayi,DenyutNadi);
     }//GEN-LAST:event_KeteranganTangisBayiKeyPressed
 
     private void DenyutNadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DenyutNadiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganTangisBayi,Sirkulasi);
     }//GEN-LAST:event_DenyutNadiKeyPressed
 
     private void SirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SirkulasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DenyutNadi,KeteranganSirkulasi);
     }//GEN-LAST:event_SirkulasiKeyPressed
 
     private void KeteranganSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSirkulasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sirkulasi,Pulsasi);
     }//GEN-LAST:event_KeteranganSirkulasiKeyPressed
 
     private void PulsasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulsasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganSirkulasi,KeteranganPulsasi);
     }//GEN-LAST:event_PulsasiKeyPressed
 
     private void KeteranganPulsasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPulsasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pulsasi,PolaNapas);
     }//GEN-LAST:event_KeteranganPulsasiKeyPressed
 
     private void PolaNapasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaNapasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganPulsasi,JenisPernapasan);
     }//GEN-LAST:event_PolaNapasKeyPressed
 
     private void JenisPernapasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisPernapasanKeyPressed
-        // TODO add your handling code here:
+         Valid.pindah(evt,PolaNapas,KeteranganJenisPernapasan);
     }//GEN-LAST:event_JenisPernapasanKeyPressed
 
     private void KeteranganJenisPernapasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganJenisPernapasanKeyPressed
-        // TODO add your handling code here:
+         Valid.pindah(evt,JenisPernapasan,Retraksi);
     }//GEN-LAST:event_KeteranganJenisPernapasanKeyPressed
 
     private void RetraksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RetraksiKeyPressed
-        // TODO add your handling code here:
+         Valid.pindah(evt,KeteranganJenisPernapasan,AirEntry);
     }//GEN-LAST:event_RetraksiKeyPressed
 
     private void AirEntryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AirEntryKeyPressed
@@ -8308,7 +8308,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.ComboBox CaraPersalinan;
     private widget.ComboBox CaraTransportasiPulang;
     private widget.CekBox ChkAccor;
-    private widget.ComboBox ComposMentis;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox DenyutNadi;
@@ -8364,6 +8363,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private widget.TextArea KeluhanUtama;
     private widget.ComboBox KemampuanBacaTulis;
     private widget.ComboBox KepalaBayi;
+    private widget.ComboBox Kesadaran;
     private widget.ComboBox KesediaanMenerimaInformasi;
     private widget.TextBox KeteranganAbdomen;
     private widget.TextBox KeteranganAlergiLainnya;
@@ -9083,7 +9083,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KeteranganObatTidurNarkoba.setText("");
         Alkohol.setSelectedIndex(0);
         JumlahAlkohol.setText("");
-        ComposMentis.setSelectedIndex(0);
+        Kesadaran.setSelectedIndex(0);
         KeadaanUmum.setSelectedIndex(0);
         FisikGCS.setText("");
         FisikTD.setText("");

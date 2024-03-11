@@ -2686,6 +2686,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
                                             "\"occurrenceDateTime\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
+                                            "\"expirationDate\": \""+Sequel.cariIsi("SELECT data_batch.tgl_kadaluarsa FROM data_batch WHERE data_batch.no_batch='"+rs.getString("no_batch")+"' and data_batch.kode_brng='"+rs.getString("kode_brng")+"' and data_batch.no_faktur='"+rs.getString("no_faktur")+"'")+"\"," +
                                             "\"recorded\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
                                             "\"primarySource\": true," +
                                             "\"location\": {" +
@@ -2824,6 +2825,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
                                             "\"occurrenceDateTime\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
+                                            "\"expirationDate\": \""+Sequel.cariIsi("SELECT data_batch.tgl_kadaluarsa FROM data_batch WHERE data_batch.no_batch='"+rs.getString("no_batch")+"' and data_batch.kode_brng='"+rs.getString("kode_brng")+"' and data_batch.no_faktur='"+rs.getString("no_faktur")+"'")+"\"," +
                                             "\"recorded\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
                                             "\"primarySource\": true," +
                                             "\"location\": {" +
