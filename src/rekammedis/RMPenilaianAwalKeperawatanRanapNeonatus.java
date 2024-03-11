@@ -7811,43 +7811,43 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_PenciumanKeyPressed
 
     private void KeteranganPenciumanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenciumanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Penciuman,WarnaKulit);
     }//GEN-LAST:event_KeteranganPenciumanKeyPressed
 
     private void WarnaKulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WarnaKulitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganPenciuman,KeteranganWarnaKulit);
     }//GEN-LAST:event_WarnaKulitKeyPressed
 
     private void VernicKaseosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VernicKaseosaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganWarnaKulit,KeteranganVernicKaseosa);
     }//GEN-LAST:event_VernicKaseosaKeyPressed
 
     private void LanugoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LanugoKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Turgor,Kulit);
     }//GEN-LAST:event_LanugoKeyPressed
 
     private void KeteranganVernicKaseosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganVernicKaseosaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,VernicKaseosa,Turgor);
     }//GEN-LAST:event_KeteranganVernicKaseosaKeyPressed
 
     private void KeteranganWarnaKulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganWarnaKulitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,WarnaKulit,VernicKaseosa);
     }//GEN-LAST:event_KeteranganWarnaKulitKeyPressed
 
     private void TurgorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TurgorKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganVernicKaseosa,Lanugo);
     }//GEN-LAST:event_TurgorKeyPressed
 
     private void KulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KulitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Lanugo,RisikoDekubitas);
     }//GEN-LAST:event_KulitKeyPressed
 
     private void RisikoDekubitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoDekubitasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kulit,Reproduksi);
     }//GEN-LAST:event_RisikoDekubitasKeyPressed
 
     private void ReproduksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReproduksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoDekubitas,KeteranganReproduksi);
     }//GEN-LAST:event_ReproduksiKeyPressed
 
     private void KeteranganReproduksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganReproduksiKeyPressed
