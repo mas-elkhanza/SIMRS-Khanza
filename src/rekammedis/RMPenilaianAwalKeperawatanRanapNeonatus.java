@@ -7691,123 +7691,123 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_RetraksiKeyPressed
 
     private void AirEntryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AirEntryKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Retraksi,Merintih);
     }//GEN-LAST:event_AirEntryKeyPressed
 
     private void MerintihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerintihKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AirEntry,SuaraNapas);
     }//GEN-LAST:event_MerintihKeyPressed
 
     private void SuaraNapasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuaraNapasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Merintih,Mulut);
     }//GEN-LAST:event_SuaraNapasKeyPressed
 
     private void MulutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MulutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SuaraNapas,KeteranganMulut);
     }//GEN-LAST:event_MulutKeyPressed
 
     private void KeteranganMulutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganMulutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Mulut,Lidah);
     }//GEN-LAST:event_KeteranganMulutKeyPressed
 
     private void LidahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LidahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganMulut,KeteranganLidah);
     }//GEN-LAST:event_LidahKeyPressed
 
     private void KeteranganLidahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganLidahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Lidah,Tenggorokan);
     }//GEN-LAST:event_KeteranganLidahKeyPressed
 
     private void TenggorokanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TenggorokanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganLidah,KeteranganTenggorokan);
     }//GEN-LAST:event_TenggorokanKeyPressed
 
     private void KeteranganTenggorokanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTenggorokanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tenggorokan,Abdomen);
     }//GEN-LAST:event_KeteranganTenggorokanKeyPressed
 
     private void AbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AbdomenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganTenggorokan,KeteranganAbdomen);
     }//GEN-LAST:event_AbdomenKeyPressed
 
     private void KeteranganAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganAbdomenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Abdomen,GastroBAB);
     }//GEN-LAST:event_KeteranganAbdomenKeyPressed
 
     private void GastroBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastroBABKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganAbdomen,KeteranganGastroBAB);
     }//GEN-LAST:event_GastroBABKeyPressed
 
     private void KeteranganGastroBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGastroBABKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GastroBAB,GastroWarnaBAB);
     }//GEN-LAST:event_KeteranganGastroBABKeyPressed
 
     private void GastroWarnaBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastroWarnaBABKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganGastroBAB,KeteranganGastroWarnaBAB);
     }//GEN-LAST:event_GastroWarnaBABKeyPressed
 
     private void KeteranganGastroWarnaBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGastroWarnaBABKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GastroWarnaBAB,GastroBAK);
     }//GEN-LAST:event_KeteranganGastroWarnaBABKeyPressed
 
     private void GastroBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastroBAKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganGastroBAB,KeteranganGastroBAK);
     }//GEN-LAST:event_GastroBAKKeyPressed
 
     private void KeteranganGastroBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGastroBAKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GastroBAK,GastroWarnaBAK);
     }//GEN-LAST:event_KeteranganGastroBAKKeyPressed
 
     private void GastroWarnaBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastroWarnaBAKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganGastroBAK,KeteranganGastroWarnaBAK);
     }//GEN-LAST:event_GastroWarnaBAKKeyPressed
 
     private void KeteranganGastroWarnaBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGastroWarnaBAKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GastroWarnaBAK,PosisiMata);
     }//GEN-LAST:event_KeteranganGastroWarnaBAKKeyPressed
 
     private void PosisiMataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PosisiMataKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganGastroWarnaBAK,KelopakMata);
     }//GEN-LAST:event_PosisiMataKeyPressed
 
     private void KelopakMataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelopakMataKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PosisiMata,KeteranganKelopakMata);
     }//GEN-LAST:event_KelopakMataKeyPressed
 
     private void KeteranganKelopakMataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKelopakMataKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KelopakMata,BesarPupil);
     }//GEN-LAST:event_KeteranganKelopakMataKeyPressed
 
     private void BesarPupilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BesarPupilKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKelopakMata,Konjungtiva);
     }//GEN-LAST:event_BesarPupilKeyPressed
 
     private void KonjungtivaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonjungtivaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BesarPupil,KeteranganKonjungtiva);
     }//GEN-LAST:event_KonjungtivaKeyPressed
 
     private void KeteranganKonjungtivaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKonjungtivaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Konjungtiva,Sklera);
     }//GEN-LAST:event_KeteranganKonjungtivaKeyPressed
 
     private void SkleraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkleraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKonjungtiva,KeteranganSklera);
     }//GEN-LAST:event_SkleraKeyPressed
 
     private void KeteranganSkleraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSkleraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sklera,Pendengaran);
     }//GEN-LAST:event_KeteranganSkleraKeyPressed
 
     private void PendengaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendengaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganSklera,KeteranganPendengaran);
     }//GEN-LAST:event_PendengaranKeyPressed
 
     private void KeteranganPendengaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPendengaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pendengaran,Penciuman);
     }//GEN-LAST:event_KeteranganPendengaranKeyPressed
 
     private void PenciumanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenciumanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganPendengaran,KeteranganPenciuman);
     }//GEN-LAST:event_PenciumanKeyPressed
 
     private void KeteranganPenciumanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenciumanKeyPressed
