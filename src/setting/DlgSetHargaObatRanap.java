@@ -78,7 +78,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         }
         tbObatPenyakit.setDefaultRenderer(Object.class, new WarnaTable());
 
-        harga.setDocument(new batasInput((byte)3).getOnlyAngka(harga));
+        harga.setDocument(new batasInput((byte)4).getOnlyAngka(harga));
         kdpj.setDocument(new batasInput((byte)8).getKata(kdpj));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){

@@ -5447,11 +5447,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KeteranganTingkatRisiko.setEditable(false);
         KeteranganTingkatRisiko.setFocusTraversalPolicyProvider(true);
         KeteranganTingkatRisiko.setName("KeteranganTingkatRisiko"); // NOI18N
-        KeteranganTingkatRisiko.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganTingkatRisikoKeyPressed(evt);
-            }
-        });
         FormInput.add(KeteranganTingkatRisiko);
         KeteranganTingkatRisiko.setBounds(126, 2350, 368, 23);
 
@@ -5465,13 +5460,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel268);
         jLabel268.setBounds(0, 2090, 100, 23);
 
+        KeteranganPenilaianNyeri.setEditable(false);
         KeteranganPenilaianNyeri.setFocusTraversalPolicyProvider(true);
         KeteranganPenilaianNyeri.setName("KeteranganPenilaianNyeri"); // NOI18N
-        KeteranganPenilaianNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganPenilaianNyeriKeyPressed(evt);
-            }
-        });
         FormInput.add(KeteranganPenilaianNyeri);
         KeteranganPenilaianNyeri.setBounds(111, 2550, 383, 23);
 
@@ -7191,23 +7182,23 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_BtnCariMasalahActionPerformed
 
     private void BtnCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariMasalahKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilMasalah2();
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KeteranganDiketahuiDietisen.requestFocus();
-        }*/
+            TransportasiYangDigunakan.requestFocus();
+        }
     }//GEN-LAST:event_BtnCariMasalahKeyPressed
 
     private void TCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariMasalahKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilMasalah2();
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KeteranganDiketahuiDietisen.requestFocus();
-        }*/
+            TransportasiYangDigunakan.requestFocus();
+        }
     }//GEN-LAST:event_TCariMasalahKeyPressed
 
     private void BtnTambahRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRencanaActionPerformed
@@ -8005,7 +7996,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SG2ItemStateChanged
 
     private void SG2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SG1,SG3);
     }//GEN-LAST:event_SG2KeyPressed
 
     private void SG3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG3ItemStateChanged
@@ -8014,11 +8005,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SG3ItemStateChanged
 
     private void SG3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SG2,KeteranganSkriningGizi);
     }//GEN-LAST:event_SG3KeyPressed
 
     private void KeteranganSkriningGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSkriningGiziKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SG3,SkalaResiko1);
     }//GEN-LAST:event_KeteranganSkriningGiziKeyPressed
 
     private void SkalaResiko1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko1ItemStateChanged
@@ -8048,7 +8039,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko2ItemStateChanged
 
     private void SkalaResiko2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko2KeyPressed
-        //Valid.pindah(evt,SkalaResiko1,SkalaResiko3);
+        Valid.pindah(evt,SkalaResiko1,SkalaResiko3);
     }//GEN-LAST:event_SkalaResiko2KeyPressed
 
     private void SkalaResiko3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko3ItemStateChanged
@@ -8065,7 +8056,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko3ItemStateChanged
 
     private void SkalaResiko3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko3KeyPressed
-        //Valid.pindah(evt,SkalaResiko2,SkalaResiko4);
+        Valid.pindah(evt,SkalaResiko2,SkalaResiko4);
     }//GEN-LAST:event_SkalaResiko3KeyPressed
 
     private void SkalaResiko4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko4ItemStateChanged
@@ -8080,7 +8071,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko4ItemStateChanged
 
     private void SkalaResiko4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko4KeyPressed
-        //Valid.pindah(evt,SkalaResiko3,SkalaResiko5);
+        Valid.pindah(evt,SkalaResiko3,SkalaResiko5);
     }//GEN-LAST:event_SkalaResiko4KeyPressed
 
     private void SkalaResiko5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko5ItemStateChanged
@@ -8097,7 +8088,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko5ItemStateChanged
 
     private void SkalaResiko5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko5KeyPressed
-        //Valid.pindah(evt,SkalaResiko4,SkalaResiko6);
+        Valid.pindah(evt,SkalaResiko4,SkalaResiko6);
     }//GEN-LAST:event_SkalaResiko5KeyPressed
 
     private void SkalaResiko6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko6ItemStateChanged
@@ -8127,7 +8118,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko7ItemStateChanged
 
     private void SkalaResiko7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko7KeyPressed
-        //Valid.pindah(evt,SkalaResiko6,HasilSkrining);
+        Valid.pindah(evt,SkalaResiko6,SkalaNIPS1);
     }//GEN-LAST:event_SkalaResiko7KeyPressed
 
     private void SkalaNIPS1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS1ItemStateChanged
@@ -8136,7 +8127,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS1ItemStateChanged
 
     private void SkalaNIPS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SkalaResiko7,SkalaNIPS2);
     }//GEN-LAST:event_SkalaNIPS1KeyPressed
 
     private void SkalaNIPS2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS2ItemStateChanged
@@ -8145,7 +8136,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS2ItemStateChanged
 
     private void SkalaNIPS2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SkalaNIPS1,SkalaNIPS3);
     }//GEN-LAST:event_SkalaNIPS2KeyPressed
 
     private void SkalaNIPS3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS3ItemStateChanged
@@ -8154,7 +8145,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS3ItemStateChanged
 
     private void SkalaNIPS3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SkalaNIPS2,SkalaNIPS4);
     }//GEN-LAST:event_SkalaNIPS3KeyPressed
 
     private void SkalaNIPS4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS4ItemStateChanged
@@ -8163,7 +8154,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS4ItemStateChanged
 
     private void SkalaNIPS4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SkalaNIPS3,SkalaNIPS5);
     }//GEN-LAST:event_SkalaNIPS4KeyPressed
 
     private void SkalaNIPS5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaNIPS5ItemStateChanged
@@ -8172,48 +8163,40 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaNIPS5ItemStateChanged
 
     private void SkalaNIPS5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNIPS5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SkalaNIPS4,InformasiPerencanaanPulang);
     }//GEN-LAST:event_SkalaNIPS5KeyPressed
 
     private void InformasiPerencanaanPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiPerencanaanPulangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SkalaNIPS5,LamaRatarata);
     }//GEN-LAST:event_InformasiPerencanaanPulangKeyPressed
 
     private void KondisiPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiPulangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TanggalPulang,PerawatanLanjutan);
     }//GEN-LAST:event_KondisiPulangKeyPressed
 
     private void TanggalPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPulangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LamaRatarata,KondisiPulang);
     }//GEN-LAST:event_TanggalPulangKeyPressed
 
     private void LamaRatarataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LamaRatarataKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,InformasiPerencanaanPulang,TanggalPulang);
     }//GEN-LAST:event_LamaRatarataKeyPressed
 
     private void PerawatanLanjutanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerawatanLanjutanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KondisiPulang,CaraTransportasiPulang);
     }//GEN-LAST:event_PerawatanLanjutanKeyPressed
 
     private void CaraTransportasiPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraTransportasiPulangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerawatanLanjutan,TransportasiYangDigunakan);
     }//GEN-LAST:event_CaraTransportasiPulangKeyPressed
 
     private void TransportasiYangDigunakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransportasiYangDigunakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CaraTransportasiPulang,TransportasiYangDigunakan);
     }//GEN-LAST:event_TransportasiYangDigunakanKeyPressed
 
     private void StatusMenikahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusMenikahKeyPressed
-        Valid.pindah(evt,MenerimaKondisiBayi,MasalahPernikahan);
+        Valid.pindah(evt,MenerimaKondisiBayi,TCariMasalah);
     }//GEN-LAST:event_StatusMenikahKeyPressed
-
-    private void KeteranganTingkatRisikoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTingkatRisikoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganTingkatRisikoKeyPressed
-
-    private void KeteranganPenilaianNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenilaianNyeriKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganPenilaianNyeriKeyPressed
 
     /**
     * @param args the command line arguments
