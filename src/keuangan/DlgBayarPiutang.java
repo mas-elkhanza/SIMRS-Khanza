@@ -131,9 +131,9 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         NoRawat.setDocument(new batasInput((byte)17).getKata(NoRawat));
-        Cicilan.setDocument(new batasInput((byte)15).getKata(Cicilan));
-        DiskonBayar.setDocument(new batasInput((byte)15).getKata(DiskonBayar));
-        TidakTerbayar.setDocument(new batasInput((byte)15).getKata(TidakTerbayar));
+        Cicilan.setDocument(new batasInput((byte)15).getOnlyAngka(Cicilan));
+        DiskonBayar.setDocument(new batasInput((byte)15).getOnlyAngka(DiskonBayar));
+        TidakTerbayar.setDocument(new batasInput((byte)15).getOnlyAngka(TidakTerbayar));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         Kdmem.setDocument(new batasInput((byte)15).getKata(Kdmem));
         
