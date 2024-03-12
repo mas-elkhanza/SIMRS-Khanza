@@ -7875,79 +7875,79 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_TungkaiKeyPressed
 
     private void GarisTelapakKakiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GarisTelapakKakiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganTungkai,GarisTelapakKaki);
     }//GEN-LAST:event_GarisTelapakKakiKeyPressed
 
     private void KeteranganTungkaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTungkaiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tungkai,GarisTelapakKaki);
     }//GEN-LAST:event_KeteranganTungkaiKeyPressed
 
     private void KondisiPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiPsikologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GarisTelapakKaki,GangguanJiwa);
     }//GEN-LAST:event_KondisiPsikologisKeyPressed
 
     private void MenerimaKondisiBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenerimaKondisiBayiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GangguanJiwa,StatusMenikah);
     }//GEN-LAST:event_MenerimaKondisiBayiKeyPressed
 
     private void GangguanJiwaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GangguanJiwaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KondisiPsikologis,MenerimaKondisiBayi);
     }//GEN-LAST:event_GangguanJiwaKeyPressed
 
     private void MasalahPernikahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MasalahPernikahanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,StatusMenikah,KeteranganMasalahPernikahan);
     }//GEN-LAST:event_MasalahPernikahanKeyPressed
 
     private void KeteranganMasalahPernikahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganMasalahPernikahanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MasalahPernikahan,Pekerjaan);
     }//GEN-LAST:event_KeteranganMasalahPernikahanKeyPressed
 
     private void KeteranganTinggalBersamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTinggalBersamaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TinggalBersama,HubunganAnggotaKeluarga);
     }//GEN-LAST:event_KeteranganTinggalBersamaKeyPressed
 
     private void AgamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AgamaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pekerjaan,NilaiKepercayaan);
     }//GEN-LAST:event_AgamaKeyPressed
 
     private void NilaiKepercayaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiKepercayaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Agama,KeteranganNilaiKepercayaan);
     }//GEN-LAST:event_NilaiKepercayaanKeyPressed
 
     private void KeteranganNilaiKepercayaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganNilaiKepercayaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NilaiKepercayaan,Suku);
     }//GEN-LAST:event_KeteranganNilaiKepercayaanKeyPressed
 
     private void SukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SukuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganNilaiKepercayaan,Pendidikan);
     }//GEN-LAST:event_SukuKeyPressed
 
     private void PendidikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Suku,Pembayaran);
     }//GEN-LAST:event_PendidikanKeyPressed
 
     private void TinggalBersamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinggalBersamaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pembayaran,KeteranganTinggalBersama);
     }//GEN-LAST:event_TinggalBersamaKeyPressed
 
     private void ResponEmosiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResponEmosiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HubunganAnggotaKeluarga,BahasaSehari);
     }//GEN-LAST:event_ResponEmosiKeyPressed
 
     private void HubunganAnggotaKeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganAnggotaKeluargaKeyPressed
-        //Valid.pindah(evt,GangguanJiwa,TinggalDengan);
+        Valid.pindah(evt,KeteranganTinggalBersama,ResponEmosi);
     }//GEN-LAST:event_HubunganAnggotaKeluargaKeyPressed
 
     private void PekerjaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PekerjaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganMasalahPernikahan,Agama);
     }//GEN-LAST:event_PekerjaanKeyPressed
 
     private void PembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembayaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pendidikan,TinggalBersama);
     }//GEN-LAST:event_PembayaranKeyPressed
 
     private void BahasaSehariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaSehariKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ResponEmosi,KemampuanBacaTulis);
     }//GEN-LAST:event_BahasaSehariKeyPressed
 
     private void KemampuanBacaTulisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KemampuanBacaTulisKeyPressed
@@ -8240,7 +8240,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_TransportasiYangDigunakanKeyPressed
 
     private void StatusMenikahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusMenikahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MenerimaKondisiBayi,MasalahPernikahan);
     }//GEN-LAST:event_StatusMenikahKeyPressed
 
     private void KeteranganTingkatRisikoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTingkatRisikoKeyPressed

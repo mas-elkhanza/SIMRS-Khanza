@@ -40,7 +40,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private DlgJnsPerawatanRadiologi pemeriksaan=new DlgJnsPerawatanRadiologi(null,false);
+    private DlgCariTemplateLaborat pemeriksaan=new DlgCariTemplateLaborat(null,false);
 
     /** Creates new form DlgJnsPerawatanRalan
      * @param parent
@@ -53,7 +53,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Periksa Code","Pemeriksaan System","Kode Periksa","Nama Pemeriksaan","Pemeriksaan Display",
+                "Periksa Code","Pemeriksaan System","ID Detail","Detail Pemeriksaan","Pemeriksaan Display",
                 "Sampel Code","Sampel System","Sampel Display"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -125,8 +125,8 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(pemeriksaan.getTable().getSelectedRow()!= -1){                    
-                    KodePemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),1).toString());
-                    NamaPemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),2).toString());
+                    KodePemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),2).toString());
+                    NamaPemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),3).toString());
                 }
                 btnBarang.requestFocus();
             }
@@ -574,7 +574,6 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        pemeriksaan.isCek();
         pemeriksaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pemeriksaan.setLocationRelativeTo(internalFrame1);
         pemeriksaan.setVisible(true);
@@ -600,7 +599,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
         }else if(SampelDisplay.getText().trim().equals("")){
             Valid.textKosong(SampelDisplay,"Sampel Display");
         }else{
-            if(Sequel.menyimpantf("satu_sehat_mapping_radiologi","?,?,?,?,?,?,?","Mapping Tindakan Radiologi",7,new String[]{
+            if(Sequel.menyimpantf("satu_sehat_mapping_lab","?,?,?,?,?,?,?","Mapping Tindakan Radiologi",7,new String[]{
                 KodePemeriksaan.getText(),Code.getText(),RadiologiSystem.getText(),Display.getText(),SampelCode.getText(),SampelRadiologiSystem.getText(),SampelDisplay.getText()
             })==true){
                 tabMode.addRow(new String[]{
@@ -629,7 +628,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,KodePemeriksaan,"satu_sehat_mapping_radiologi","kd_jenis_prw")==true){
+        if(Valid.hapusTabletf(tabMode,KodePemeriksaan,"satu_sehat_mapping_lab","id_template")==true){
             tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
             emptTeks();
             LCount.setText(""+tabMode.getRowCount());
@@ -661,7 +660,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
             Valid.textKosong(SampelDisplay,"Sampel Display");
         }else{
             if(tbJnsPerawatan.getSelectedRow()>-1){
-                if(Sequel.mengedittf("satu_sehat_mapping_radiologi","kd_jenis_prw=?","kd_jenis_prw=?,code=?,system=?,display=?,sampel_code=?,sampel_system=?,sampel_display=?",8,new String[]{
+                if(Sequel.mengedittf("satu_sehat_mapping_lab","id_template=?","id_template=?,code=?,system=?,display=?,sampel_code=?,sampel_system=?,sampel_display=?",8,new String[]{
                         KodePemeriksaan.getText(),Code.getText(),RadiologiSystem.getText(),Display.getText(),SampelCode.getText(),SampelRadiologiSystem.getText(),SampelDisplay.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()
                     })==true){
                     tabMode.setValueAt(Code.getText(),tbJnsPerawatan.getSelectedRow(),0);
@@ -711,7 +710,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");
-                Valid.MyReport("rptMapingPemeriksaanRadiologiSatuSehat.jasper","report","::[ Mapping Pemeriksaan Radiologi Satu Sehat Kemenkes ]::",param);            
+                Valid.MyReport("rptMapingPemeriksaanLaboratSatuSehat.jasper","report","::[ Mapping Pemeriksaan Laboratorium Satu Sehat Kemenkes ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -867,12 +866,12 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
            ps=koneksi.prepareStatement(
-                   "select satu_sehat_mapping_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,"+
-                   "satu_sehat_mapping_radiologi.display,satu_sehat_mapping_radiologi.sampel_code,satu_sehat_mapping_radiologi.sampel_system,satu_sehat_mapping_radiologi.sampel_display "+
-                   "from satu_sehat_mapping_radiologi inner join jns_perawatan_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
-                   (TCari.getText().equals("")?"":"where satu_sehat_mapping_radiologi.kd_jenis_prw like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                   "satu_sehat_mapping_radiologi.code like ? or satu_sehat_mapping_radiologi.display like ? ")+
-                   " order by satu_sehat_mapping_radiologi.code");
+                   "select satu_sehat_mapping_lab.id_template,template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,"+
+                   "satu_sehat_mapping_lab.display,satu_sehat_mapping_lab.sampel_code,satu_sehat_mapping_lab.sampel_system,satu_sehat_mapping_lab.sampel_display "+
+                   "from satu_sehat_mapping_lab inner join template_laboratorium on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   (TCari.getText().equals("")?"":"where satu_sehat_mapping_lab.id_template like ? or template_laboratorium.Pemeriksaan like ? or "+
+                   "satu_sehat_mapping_lab.code like ? or satu_sehat_mapping_lab.display like ? ")+
+                   " order by satu_sehat_mapping_lab.code");
             try {
                 if(!TCari.getText().equals("")){
                     ps.setString(1,"%"+TCari.getText()+"%");
@@ -883,7 +882,7 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("code"),rs.getString("system"),rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("display"),rs.getString("sampel_code"),rs.getString("sampel_system"),rs.getString("sampel_display")
+                        rs.getString("code"),rs.getString("system"),rs.getString("id_template"),rs.getString("Pemeriksaan"),rs.getString("display"),rs.getString("sampel_code"),rs.getString("sampel_system"),rs.getString("sampel_display")
                     });
                 }
             } catch (Exception e) {
@@ -930,10 +929,10 @@ public final class SatuSehatMapingLaborat extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_radiologi());
-        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_radiologi());
-        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_radiologi());
-        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_radiologi());
+        BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_lab());
+        BtnHapus.setEnabled(akses.getsatu_sehat_mapping_lab());
+        BtnEdit.setEnabled(akses.getsatu_sehat_mapping_lab());
+        BtnPrint.setEnabled(akses.getsatu_sehat_mapping_lab());
     }
     
     public JTable getTable(){
