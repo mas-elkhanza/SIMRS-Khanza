@@ -9459,13 +9459,13 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             Valid.tabelKosong(tabModeMasalah);
             Valid.tabelKosong(tabModeRencana);
             for (i = 0; i < tbMasalahDetail.getRowCount(); i++) {
-                tabModeMasalah.addRow(new String[]{
-                    tabModeMasalah.getValueAt(i,0).toString(),tabModeMasalah.getValueAt(i,1).toString()
+                tabModeMasalah.addRow(new Object[]{
+                    true,tbMasalahDetail.getValueAt(i,0).toString(),tbMasalahDetail.getValueAt(i,1).toString()
                 });
             }
             for (i = 0; i < tbRencanaDetail.getRowCount(); i++) {
-                tabModeRencana.addRow(new String[]{
-                    tabModeRencana.getValueAt(i,0).toString(),tabModeRencana.getValueAt(i,1).toString()
+                tabModeRencana.addRow(new Object[]{
+                    true,tbRencanaDetail.getValueAt(i,0).toString(),tbRencanaDetail.getValueAt(i,1).toString()
                 });
             }
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
