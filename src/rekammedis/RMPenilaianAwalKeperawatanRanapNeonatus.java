@@ -5721,7 +5721,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                     KeteranganPenilaianNyeri.getText(),InformasiPerencanaanPulang.getSelectedItem().toString(),LamaRatarata.getText(),Valid.SetTgl(TanggalPulang.getSelectedItem()+""),KondisiPulang.getText(),PerawatanLanjutan.getText(),CaraTransportasiPulang.getSelectedItem().toString(),TransportasiYangDigunakan.getSelectedItem().toString(),Rencana.getText(),KdPetugas.getText(),KdPetugas2.getText(),KdDPJP.getText()
                 })==true){
                     tabMode.addRow(new String[]{
-                        TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),KdPetugas2.getText(),NmPetugas2.getText(),KdDPJP.getText(),NmDPJP.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),AsalPasien.getSelectedItem().toString(),CaraMasuk.getSelectedItem().toString(),DiperolehDari.getText(),HubunganDenganPasien.getText(),KeluhanUtama.getText(),PrenatalG.getText(),PrenatalP.getText(),PrenatalA.getText(),PrenatalUK.getText(),RiwayatPenyakitIbu.getSelectedItem().toString(),
+                        TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText().substring(0,1),KdPetugas.getText(),NmPetugas.getText(),KdPetugas2.getText(),NmPetugas2.getText(),KdDPJP.getText(),NmDPJP.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),AsalPasien.getSelectedItem().toString(),CaraMasuk.getSelectedItem().toString(),DiperolehDari.getText(),HubunganDenganPasien.getText(),KeluhanUtama.getText(),PrenatalG.getText(),PrenatalP.getText(),PrenatalA.getText(),PrenatalUK.getText(),RiwayatPenyakitIbu.getSelectedItem().toString(),
                         KeteranganRiwayatPenyakitIbu.getText(),RiwayatPengobatanIbu.getText(),PernahDirawat.getSelectedItem().toString(),KeteranganPernahDirawat.getText(),StatusGiziIbu.getSelectedItem().toString(),IntranatalG.getText(),IntranatalP.getText(),IntranatalA.getText(),KondisiSaatLahir.getText(),CaraPersalinan.getSelectedItem().toString(),KeteranganCaraPersalinan.getText(),ApgarScore.getText(),IntranatalLetak.getText(),TaliPusat.getSelectedItem().toString(),Ketuban.getSelectedItem().toString(),AntoBB.getText(),AntoPB.getText(),AntoLK.getText(),AntoLD.getText(),AntoLP.getText(),RisikoInfeksiMayor.getSelectedItem().toString(),
                         KeteranganRisikoInfeksiMayor.getText(),RisikoInfeksiMinor.getSelectedItem().toString(),KeteranganRisikoInfeksiMinor.getText(),Nutrisi.getSelectedItem().toString(),KeteranganNutrisi.getText(),NutrisiFrekuensi.getText(),NutrisiKali.getText(),EliminasiBAK.getSelectedItem().toString(),KeteranganEliminasiBAK.getText(),EliminasiBAB.getSelectedItem().toString(),KeteranganEliminasiBAB.getText(),AlergiObat.getSelectedItem().toString(),KeteranganAlergiObat.getText(),ReaksiAlergiObat.getText(),AlergiMakanan.getSelectedItem().toString(),KeteranganAlergiMakanan.getText(),ReaksiAlergiMakanan.getText(),
                         AlergiLainnya.getSelectedItem().toString(),KeteranganAlergiLainnya.getText(),ReaksiAlergiLainnya.getText(),RiwayatPenyakitKeluarga.getSelectedItem().toString(),KeteranganRiwayatPenyakitKeluarga.getText(),RiwayatImunisasi.getSelectedItem().toString(),KeteranganRiwayatImunisasi.getText(),TranfusiDarah.getSelectedItem().toString(),KeteranganTranfusiDarah.getText(),ReaksiTranfusiDarah.getSelectedItem().toString(),KeteranganReaksiTranfusiDarah.getText(),ObatobatanDiminum.getSelectedItem().toString(),KeteranganObatobatanDiminum.getText(),ObatTidurNarkoba.getSelectedItem().toString(),KeteranganObatTidurNarkoba.getText(),
@@ -7385,7 +7385,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_KeteranganRisikoInfeksiMinorKeyPressed
 
     private void NutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NutrisiKeyPressed
-        Valid.pindah(evt,KeteranganRisikoInfeksiMinor,KeteranganRisikoInfeksiMayor);
+        Valid.pindah(evt,KeteranganRisikoInfeksiMinor,KeteranganNutrisi);
     }//GEN-LAST:event_NutrisiKeyPressed
 
     private void KeteranganNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganNutrisiKeyPressed
@@ -7857,7 +7857,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_TungkaiKeyPressed
 
     private void GarisTelapakKakiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GarisTelapakKakiKeyPressed
-        Valid.pindah(evt,KeteranganTungkai,GarisTelapakKaki);
+        Valid.pindah(evt,KeteranganTungkai,KondisiPsikologis);
     }//GEN-LAST:event_GarisTelapakKakiKeyPressed
 
     private void KeteranganTungkaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTungkaiKeyPressed
@@ -8037,7 +8037,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko1ItemStateChanged
 
     private void SkalaResiko1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko1KeyPressed
-        //Valid.pindah(evt,btnPetugas,SkalaResiko2);
+        Valid.pindah(evt,KeteranganSkriningGizi,SkalaResiko2);
     }//GEN-LAST:event_SkalaResiko1KeyPressed
 
     private void SkalaResiko2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko2ItemStateChanged
@@ -8202,11 +8202,11 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     }//GEN-LAST:event_CaraTransportasiPulangKeyPressed
 
     private void TransportasiYangDigunakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransportasiYangDigunakanKeyPressed
-        Valid.pindah(evt,CaraTransportasiPulang,TransportasiYangDigunakan);
+        Valid.pindah(evt,CaraTransportasiPulang,TCariMasalah);
     }//GEN-LAST:event_TransportasiYangDigunakanKeyPressed
 
     private void StatusMenikahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusMenikahKeyPressed
-        Valid.pindah(evt,MenerimaKondisiBayi,TCariMasalah);
+        Valid.pindah(evt,MenerimaKondisiBayi,MasalahPernikahan);
     }//GEN-LAST:event_StatusMenikahKeyPressed
 
     /**
@@ -8882,8 +8882,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 "penilaian_awal_keperawatan_ranap_neonatus.skala_nips_keterangan,penilaian_awal_keperawatan_ranap_neonatus.informasi_perencanaan_pulang,penilaian_awal_keperawatan_ranap_neonatus.lama_ratarata,penilaian_awal_keperawatan_ranap_neonatus.perencanaan_pulang,"+
                 "penilaian_awal_keperawatan_ranap_neonatus.kondisi_klinis_pulang,penilaian_awal_keperawatan_ranap_neonatus.perawatan_lanjutan_dirumah,penilaian_awal_keperawatan_ranap_neonatus.cara_transportasi_pulang,penilaian_awal_keperawatan_ranap_neonatus.transportasi_digunakan,"+
                 "penilaian_awal_keperawatan_ranap_neonatus.rencana,penilaian_awal_keperawatan_ranap_neonatus.nip1,penilaian_awal_keperawatan_ranap_neonatus.nip2,penilaian_awal_keperawatan_ranap_neonatus.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,"+
-                "dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.agama,pasien.pekerjaan,pasien.pnd,penjab.png_jawab,bahasa_pasien.nama_bahasa "+
-                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_awal_keperawatan_ranap_neonatus on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap_neonatus.no_rawat "+
                 "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap_neonatus.nip1=pengkaji1.nip "+
                 "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap_neonatus.nip2=pengkaji2.nip "+
@@ -9160,38 +9159,38 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         SG1.setSelectedIndex(0);
         SG2.setSelectedIndex(0);
         SG3.setSelectedIndex(0);
-        NilaiGizi1.setText("");
-        NilaiGizi2.setText("");
-        NilaiGizi3.setText("");
+        NilaiGizi1.setText("0");
+        NilaiGizi2.setText("0");
+        NilaiGizi3.setText("0");
         KeteranganSkriningGizi.setText("");
-        TotalNilaiGizi.setText("");
-        SkalaResiko1.setSelectedIndex(0);
-        SkalaResiko2.setSelectedIndex(0);
-        SkalaResiko3.setSelectedIndex(0);
-        SkalaResiko4.setSelectedIndex(0);
-        SkalaResiko5.setSelectedIndex(0);
-        SkalaResiko6.setSelectedIndex(0);
-        SkalaResiko7.setSelectedIndex(0);
-        NilaiResiko1.setText("");
-        NilaiResiko2.setText("");
-        NilaiResiko3.setText("");
-        NilaiResiko4.setText("");
-        NilaiResiko5.setText("");
-        NilaiResiko6.setText("");
-        NilaiResiko7.setText("");
+        TotalNilaiGizi.setText("0");
+        SkalaResiko1.setSelectedIndex(3);
+        SkalaResiko2.setSelectedIndex(1);
+        SkalaResiko3.setSelectedIndex(3);
+        SkalaResiko4.setSelectedIndex(2);
+        SkalaResiko5.setSelectedIndex(3);
+        SkalaResiko6.setSelectedIndex(2);
+        SkalaResiko7.setSelectedIndex(2);
+        NilaiResiko1.setText("1");
+        NilaiResiko2.setText("1");
+        NilaiResiko3.setText("1");
+        NilaiResiko4.setText("1");
+        NilaiResiko5.setText("1");
+        NilaiResiko6.setText("1");
+        NilaiResiko7.setText("1");
         KeteranganTingkatRisiko.setText("");
-        NilaiResikoTotal.setText("");
+        NilaiResikoTotal.setText("7");
         SkalaNIPS1.setSelectedIndex(0);
         SkalaNIPS2.setSelectedIndex(0);
         SkalaNIPS3.setSelectedIndex(0);
         SkalaNIPS4.setSelectedIndex(0);
         SkalaNIPS5.setSelectedIndex(0);
-        NilaiNIPS1.setText("");
-        NilaiNIPS2.setText("");
-        NilaiNIPS3.setText("");
-        NilaiNIPS4.setText("");
-        NilaiNIPS5.setText("");
-        TotalNIPS.setText("");
+        NilaiNIPS1.setText("0");
+        NilaiNIPS2.setText("0");
+        NilaiNIPS3.setText("0");
+        NilaiNIPS4.setText("0");
+        NilaiNIPS5.setText("0");
+        TotalNIPS.setText("0");
         KeteranganPenilaianNyeri.setText("");
         InformasiPerencanaanPulang.setSelectedIndex(0);
         LamaRatarata.setText("");
@@ -9292,17 +9291,18 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,"+
-                    "bahasa_pasien.nama_bahasa,pasien.pnd,pasien.pekerjaan "+
-                    "from pasien inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                    "where pasien.no_rkm_medis=?");
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk, pasien.tgl_lahir,"+
+                    "reg_periksa.tgl_registrasi from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "where reg_periksa.no_rawat=?");
             try {
-                ps.setString(1,TNoRM.getText());
+                ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
                     TPasien.setText(rs.getString("nm_pasien"));
-                    Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
+                    Jk.setText(rs.getString("jk"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -9319,12 +9319,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         }
     }
     
-    public void setNoRm(String norwt, Date tgl2,String carabayar,String norm) {
+    public void setNoRm(String norwt,Date tgl2) {
         TNoRw.setText(norwt);
-        TNoRM.setText(norm);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
-        //CaraBayar.setText(carabayar);
         DTPCari2.setDate(tgl2);    
         isRawat(); 
     }
@@ -9685,13 +9682,13 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         try {
             TotalNilaiGizi.setText((Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText()))+"");
             if(Integer.parseInt(TotalNilaiGizi.getText())<2){
-                KeteranganTingkatRisiko.setText("Diet Yang Diberikan : ASI / PASI Per Oral/NGT");
+                KeteranganSkriningGizi.setText("Diet Yang Diberikan : ASI / PASI Per Oral/NGT");
             }else if(Integer.parseInt(TotalNilaiGizi.getText())>=2){
-                KeteranganTingkatRisiko.setText("Lapor DPJP / Asesmen Lanjut Oleh Ahli Gizi");
+                KeteranganSkriningGizi.setText("Lapor DPJP / Asesmen Lanjut Oleh Ahli Gizi");
             }
         } catch (Exception e) {
             TotalNilaiGizi.setText("0");
-            KeteranganTingkatRisiko.setText("Diet Yang Diberikan : ASI / PASI Per Oral/NGT");
+            KeteranganSkriningGizi.setText("Diet Yang Diberikan : ASI / PASI Per Oral/NGT");
         }
     }
     
