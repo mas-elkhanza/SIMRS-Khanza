@@ -243,8 +243,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Kirim Medication Satu Sehat","[L]Kirim Medication Request Satu Sehat","[M]Penatalaksanaan Terapi Okupasi","[L]Kirim Medication Dispense Satu Sehat","[M]Hasil USG Neonatus",
                 "[M]Hasil Endoskopi Faring/Laring","[L]Mapping Tindakan Radiologi Satu Sehat","[L]Kirim Service Request Radiologi Satu Sehat","[M]Hasil Endoskopi Hidung",
                 "[L]Kirim Specimen Radiologi Satu Sehat","[M]Master Masalah Keperawatan Neonatus","[M]Master Rencana Keperawatan Neonatus","[M]Penilaian Awal Keperawatan Ranap Neonatus",
-                "[L]Kirim Observation Radiologi Satu Sehat","[L]Kirim Diagnostic Report Radiologi Satu Sehat","[M]Hasil Endoskopi Telinga","[L]Mapping Tindakan Laborat Satu Sehat",
-                "[L]Kirim Service Request Laborat Satu Sehat"
+                "[L]Kirim Observation Radiologi Satu Sehat","[L]Kirim Diagnostic Report Radiologi Satu Sehat","[M]Hasil Endoskopi Telinga","[L]Mapping Tindakan Lab PK & MB Satu Sehat",
+                "[L]Kirim Service Request Lab PK Satu Sehat"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -3062,10 +3062,10 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(138);
                     break;
                 case 1022:
-                    column.setPreferredWidth(205);
+                    column.setPreferredWidth(226);
                     break;
                 case 1023:
-                    column.setPreferredWidth(235);
+                    column.setPreferredWidth(218);
                     break;
                 default:
                     column.setPreferredWidth(134);
@@ -5885,7 +5885,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "satu_sehat_kirim_diagnosticreport_radiologi='"+tbUser.getValueAt(barisdicopy,1020).toString()+"',"+
                                         "hasil_endoskopi_telinga='"+tbUser.getValueAt(barisdicopy,1021).toString()+"',"+
                                         "satu_sehat_mapping_lab='"+tbUser.getValueAt(barisdicopy,1022).toString()+"',"+
-                                        "satu_sehat_kirim_servicerequest_lab='"+tbUser.getValueAt(i,1023).toString()+"'");
+                                        "satu_sehat_kirim_servicerequest_lab='"+tbUser.getValueAt(barisdicopy,1023).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";

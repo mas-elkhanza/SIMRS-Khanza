@@ -43455,7 +43455,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnMappingLaboratSatuSehat = new widget.ButtonBig();
         btnMappingLaboratSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
-        btnMappingLaboratSatuSehat.setText("Mapping Tindakan Laborat Satu Sehat");
+        btnMappingLaboratSatuSehat.setText("Mapping Tindakan Lab PK & MB Satu Sehat");
         btnMappingLaboratSatuSehat.setIconTextGap(0);
         btnMappingLaboratSatuSehat.setName("btnMappingLaboratSatuSehat"); 
         btnMappingLaboratSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));

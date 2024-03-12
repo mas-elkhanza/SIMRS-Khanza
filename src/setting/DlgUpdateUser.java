@@ -3597,12 +3597,12 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[L]Kirim Diagnostic Report Radiologi Satu Sehat",satu_sehat_kirim_diagnosticreport_radiologi});
         }
         
-        if("[L]Mapping Tindakan Laborat Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[L]Mapping Tindakan Laborat Satu Sehat",satu_sehat_mapping_lab});
+        if("[L]Mapping Tindakan Lab PK & MB Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[L]Mapping Tindakan Lab PK & MB Satu Sehat",satu_sehat_mapping_lab});
         }
         
-        if("[L]Kirim Service Request Laborat Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[L]Kirim Service Request Laborat Satu Sehat",satu_sehat_kirim_servicerequest_lab});
+        if("[L]Kirim Service Request Lab PK Satu Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[L]Kirim Service Request Lab PK Satu Sehat",satu_sehat_kirim_servicerequest_lab});
         }
 
         if("[M]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7692,11 +7692,11 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_kirim_diagnosticreport_radiologi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Mapping Tindakan Laborat Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Mapping Tindakan Lab PK & MB Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_mapping_lab='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Kirim Service Request Laborat Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Kirim Service Request Lab PK Satu Sehat".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satu_sehat_kirim_servicerequest_lab='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
