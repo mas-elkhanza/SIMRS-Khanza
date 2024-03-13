@@ -77,7 +77,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             "Keterangan Alergi Obat","Reaksi Alergi Obat","Alergi Makanan","Keterangan Alergi Makanan","Reaksi Alergi Makanan","Alergi Lainnya","Keterangan Alergi Lainnya",
             "Reaksi Alergi Lainnya","Riwayat Penyakit Keluarga","Keterangan Riwayat Penyakit Keluarga","Riwayat Imunisasi","Keterangan Riwayat Imunisasi","Riwayat Tranfusi Darah",
             "Keterangan Riwayat Tranfusi Darah","Reaksi Tranfusi Darah","Keterangan Reaksi Tranfusi Darah","Obat-obatan Diminum","Keterangan Obat-obatan Diminum",
-            "Obat Tidur/Narkoba","Keterangan Obat Tidur/Narkoba","Merokok","Batang/Hari","Alkohol","Gelas/Hari","Kesadaran","Keadaan Umum","GCS","TD(mmHg)","Suhu(°C)",
+            "Obat Tidur/Narkoba","Keterangan Obat Tidur/Narkoba","Merokok","Batang/Hari","Alkohol","Gelas/Hari","Kesadaran","Keadaan Umum","GCS(E+V+M)","TD(mmHg)","Suhu(°C)",
             "HR(x/menit)","RR(x/menit)","SPO2(%)","Down Score","BB(Kg)","TB(cm)","LK(cm)","LD(cm)","LP(cm)","GD Bayi","GD Ibu","GD Ayah","Gerak Bayi","Kepala","Keterangan Kepala",
             "Ubun-ubun","Keterangan Ubun-ubun","Wajah","Keterangan Wajah","Kejang","Keterangan Kejang","Refleks","Keterangan Refleks","Tangis Bayi","Keterangan Tangis Bayi",
             "Denyut Nadi","Sirkulasi","Keterangan Sirkulasi","Pulsasi","Keterangan Pulsasi","Pola Napas","Jenis Pernapasan","Keterangan Jenis Pernapasan","Retraksi","Air Entry",
@@ -261,9 +261,17 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==76){
                 column.setPreferredWidth(67);
             }else if(i==77){
-                column.setPreferredWidth(47);
+                column.setPreferredWidth(45);
             }else if(i==78){
-                column.setPreferredWidth(56);
+                column.setPreferredWidth(60);
+            }else if(i==79){
+                column.setPreferredWidth(85);
+            }else if(i==80){
+                column.setPreferredWidth(100);
+            }else if(i==81){
+                column.setPreferredWidth(70);
+            }else if(i==82){
+                column.setPreferredWidth(70);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
