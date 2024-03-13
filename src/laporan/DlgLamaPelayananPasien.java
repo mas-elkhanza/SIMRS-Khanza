@@ -470,9 +470,9 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 ttlJRsdSB=0;ttlJRsdBP=0;ttlJRsdDP=0;ttlJRsdRDk=0;ttlJRsdRDv=0;ttlJRsdTB=0;ttlSBsdBP=0;ttlSBsdDP=0;ttlSBsdRDk=0;ttlSBsdRDv=0;ttlSBsdTB=0;
                 ttlBPsdDP=0;ttlBPsdRDk=0;ttlBPsdRDv=0;ttlBPsdTB=0;ttlDPsdRDk=0;ttlDPsdRDv=0;ttlDPsdTB=0;ttlRDksdRDv=0;ttlRDksdTB=0;ttlRDvsdTB=0;
                 while(rs.next()){
-                    dilayanipoli=Sequel.cariIsi("select date_format(jam_rawat,'%H:%i:%s') from pemeriksaan_ralan where no_rawat=? order by tgl_perawatan,jam_rawat asc limit 1",rs.getString("no_rawat"));
-                    resepdikirim=Sequel.cariIsi("select date_format(jam_peresepan,'%H:%i:%s') from resep_obat where no_rawat=? order by tgl_peresepan,jam_peresepan asc limit 1",rs.getString("no_rawat"));
-                    resepdivalidasi=Sequel.cariIsi("select date_format(jam,'%H:%i:%s') from resep_obat where no_rawat=? order by tgl_peresepan,jam_peresepan asc limit 1",rs.getString("no_rawat"));
+                    dilayanipoli=Sequel.cariIsi("select date_format(pemeriksaan_ralan.jam_rawat,'%H:%i:%s') from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat asc limit 1",rs.getString("no_rawat"));
+                    resepdikirim=Sequel.cariIsi("select date_format(resep_obat.jam_peresepan,'%H:%i:%s') from resep_obat where resep_obat.no_rawat=? order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan asc limit 1",rs.getString("no_rawat"));
+                    resepdivalidasi=Sequel.cariIsi("select date_format(resep_obat.jam,'%H:%i:%s') from resep_obat where resep_obat.no_rawat=? order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan asc limit 1",rs.getString("no_rawat"));
                     ttlJRsdSB=ttlJRsdSB+rs.getDouble("JRsdSB");
                     ttlJRsdBP=ttlJRsdBP+rs.getDouble("JRsdBP");
                     JRsdDP=Sequel.cariIsiAngka("select ifnull(round((TIME_TO_SEC('"+dilayanipoli+"')-TIME_TO_SEC('"+rs.getString("jam_reg")+"'))/60,2),'')");

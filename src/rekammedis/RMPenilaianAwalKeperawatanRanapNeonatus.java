@@ -71,7 +71,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
             "Tgl.Asuhan","Asal Pasien","Cara Masuk","Diperoleh Dari","Hubungan Dengan Pasien","Keluhan Utama","Prenatal G","Prenatal P","Prenatal A","Prenatal UK",
             "Riwayat Penyakit Ibu","Keterangan Riwayat Penyakit Ibu","Riwayat Pengobatan Ibu Selama Hamil","Pernah Dirawat","Keterangan Pernah Dirawat","Status Gizi Ibu",
-            "Intranatal G","Intranatal P","Intranatal A","Kondisi Lahir","Cara Persalinan","Keterangan Cara Persalinan","APGAR Score","Intranatal Letak","Tali Pusat",
+            "Intranatal G","Intranatal P","Intranatal A","Kondisi Lahir","Cara Persalinan","Keterangan Cara Persalinan","APGAR Score","Letak","Tali Pusat",
             "Ketuban","BB(gr)","PB(cm)","LK(cm)","LD(cm)","LP(cm)","Risiko Infeksi Mayor","Keterangan Risiko Infeksi Mayor","Risiko Infeksi Minor","Keterangan Risiko Infeksi Minor",
             "Nutrisi","Keterangan Nutrisi","Frekuensi(cc)","Frekuenasi(x)","Eliminasi BAK","Keterangan Eliminasi BAK","Eliminasi BAB","Keterangan Eliminasi BAB","Alergi Obat",
             "Keterangan Alergi Obat","Reaksi Alergi Obat","Alergi Makanan","Keterangan Alergi Makanan","Reaksi Alergi Makanan","Alergi Lainnya","Keterangan Alergi Lainnya",
@@ -170,9 +170,21 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==30){
                 column.setPreferredWidth(150);
             }else if(i==31){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(87);
             }else if(i==32){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(146);
+            }else if(i==33){
+                column.setPreferredWidth(74);
+            }else if(i==34){
+                column.setPreferredWidth(110);
+            }else if(i==35){
+                column.setPreferredWidth(60);
+            }else if(i==36){
+                column.setPreferredWidth(65);
+            }else if(i==37){
+                column.setPreferredWidth(50);
+            }else if(i==38){
+                column.setPreferredWidth(50);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
