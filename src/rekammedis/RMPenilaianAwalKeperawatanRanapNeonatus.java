@@ -222,10 +222,20 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==56){
                 column.setPreferredWidth(140);
             }else if(i==57){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(87);
             }else if(i==58){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(141);
             }else if(i==59){
+                column.setPreferredWidth(140);
+            }else if(i==60){
+                column.setPreferredWidth(80);
+            }else if(i==61){
+                column.setPreferredWidth(140);
+            }else if(i==62){
+                column.setPreferredWidth(140);
+            }else if(i==63){
+                column.setPreferredWidth(90);
+            }else if(i==64){
                 column.setPreferredWidth(140);
             }
         }
