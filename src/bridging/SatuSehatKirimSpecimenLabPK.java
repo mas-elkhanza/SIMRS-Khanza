@@ -67,8 +67,8 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","No.Permintaan","Tgl & Jam Sampel","Nama Pemeriksaan",
-                "Radiologi Code","Radiologi System","Radiologi Display","ID Service Request","Kode Pemeriksaan","ID Specimen"
+                "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","No.Permintaan","Tgl & Jam Sampel","Detail Pemeriksaan",
+                "Lab Code","Lab System","Lab Display","ID Service Request","ID Detail","ID Specimen","Kode Pemeriksaan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -80,7 +80,7 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
              Class[] types = new Class[] {
                  java.lang.Boolean.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -93,7 +93,7 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -124,6 +124,9 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }else if(i==13){
                 column.setPreferredWidth(210);
+            }else if(i==14){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -460,10 +463,10 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Sampel</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pemeriksaan</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi Code</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi System</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi Display</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Detail Pemeriksaan</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab Code</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab System</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab Display</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Service Request</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Specimen</b></td>"+
                 "</tr>"
@@ -508,7 +511,7 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
             );
             bg.close();
 
-            File f = new File("DataSatuSehatSpecimenRadiologi.html");            
+            File f = new File("DataSatuSehatSpecimenLabPK.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -518,7 +521,7 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT SPECIMEN RADIOLOGI<br><br></font>"+        
+                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT SPECIMEN LAB PK<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -603,8 +606,8 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                         root = mapper.readTree(json);
                         response = root.path("id");
                         if(!response.asText().equals("")){
-                            if(Sequel.menyimpantf2("satu_sehat_specimen_radiologi","?,?,?","No.Order",3,new String[]{
-                                tbObat.getValueAt(i,5).toString(),tbObat.getValueAt(i,12).toString(),response.asText()
+                            if(Sequel.menyimpantf2("satu_sehat_specimen_lab","?,?,?,?","No.Order",4,new String[]{
+                                tbObat.getValueAt(i,5).toString(),tbObat.getValueAt(i,14).toString(),tbObat.getValueAt(i,12).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,13);
                                 tbObat.setValueAt(false,i,0);
@@ -747,23 +750,23 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,permintaan_radiologi.noorder,"+
-                   "permintaan_radiologi.tgl_sampel,permintaan_radiologi.jam_sampel,jns_perawatan_radiologi.nm_perawatan,"+
-                   "satu_sehat_mapping_radiologi.sampel_code,satu_sehat_mapping_radiologi.sampel_system,satu_sehat_mapping_radiologi.sampel_display,satu_sehat_servicerequest_radiologi.id_servicerequest,"+
-                   "permintaan_pemeriksaan_radiologi.kd_jenis_prw,ifnull(satu_sehat_specimen_radiologi.id_specimen,'') as id_specimen "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
-                   "inner join permintaan_pemeriksaan_radiologi on permintaan_pemeriksaan_radiologi.noorder=permintaan_radiologi.noorder "+
-                   "inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_mapping_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_servicerequest_radiologi on satu_sehat_servicerequest_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "left join satu_sehat_specimen_radiologi on satu_sehat_servicerequest_radiologi.noorder=satu_sehat_specimen_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=satu_sehat_specimen_radiologi.kd_jenis_prw "+
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,permintaan_lab.noorder,"+
+                   "permintaan_lab.tgl_sampel,permintaan_lab.jam_sampel,template_laboratorium.Pemeriksaan,"+
+                   "satu_sehat_mapping_lab.sampel_code,satu_sehat_mapping_lab.sampel_system,satu_sehat_mapping_lab.sampel_display,satu_sehat_servicerequest_lab.id_servicerequest,"+
+                   "permintaan_detail_permintaan_lab.id_template,ifnull(satu_sehat_specimen_lab.id_specimen,'') as id_specimen,permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "left join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
                    "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "where nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                   "satu_sehat_mapping_radiologi.sampel_code like ? or permintaan_radiologi.noorder like ?)"));
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or template_laboratorium.Pemeriksaan like ? or "+
+                   "satu_sehat_mapping_lab.sampel_code like ? or permintaan_lab.noorder like ?)"));
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -780,8 +783,8 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("noorder"),
-                        rs.getString("tgl_sampel")+" "+rs.getString("jam_sampel"),rs.getString("nm_perawatan"),rs.getString("sampel_code"),rs.getString("sampel_system"),
-                        rs.getString("sampel_display"),rs.getString("id_servicerequest"),rs.getString("kd_jenis_prw"),rs.getString("id_specimen")
+                        rs.getString("tgl_sampel")+" "+rs.getString("jam_sampel"),rs.getString("Pemeriksaan"),rs.getString("sampel_code"),rs.getString("sampel_system"),
+                        rs.getString("sampel_display"),rs.getString("id_servicerequest"),rs.getString("id_template"),rs.getString("id_specimen"),rs.getString("kd_jenis_prw")
                     });
                 }
             } catch (Exception e) {
@@ -796,23 +799,23 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
             }
             
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,permintaan_radiologi.noorder,"+
-                   "permintaan_radiologi.tgl_sampel,permintaan_radiologi.jam_sampel,jns_perawatan_radiologi.nm_perawatan,"+
-                   "satu_sehat_mapping_radiologi.sampel_code,satu_sehat_mapping_radiologi.sampel_system,satu_sehat_mapping_radiologi.sampel_display,satu_sehat_servicerequest_radiologi.id_servicerequest,"+
-                   "permintaan_pemeriksaan_radiologi.kd_jenis_prw,ifnull(satu_sehat_specimen_radiologi.id_specimen,'') as id_specimen "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
-                   "inner join permintaan_pemeriksaan_radiologi on permintaan_pemeriksaan_radiologi.noorder=permintaan_radiologi.noorder "+
-                   "inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_mapping_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_servicerequest_radiologi on satu_sehat_servicerequest_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "left join satu_sehat_specimen_radiologi on satu_sehat_servicerequest_radiologi.noorder=satu_sehat_specimen_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=satu_sehat_specimen_radiologi.kd_jenis_prw "+
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,permintaan_lab.noorder,"+
+                   "permintaan_lab.tgl_sampel,permintaan_lab.jam_sampel,template_laboratorium.Pemeriksaan,"+
+                   "satu_sehat_mapping_lab.sampel_code,satu_sehat_mapping_lab.sampel_system,satu_sehat_mapping_lab.sampel_display,satu_sehat_servicerequest_lab.id_servicerequest,"+
+                   "permintaan_detail_permintaan_lab.id_template,ifnull(satu_sehat_specimen_lab.id_specimen,'') as id_specimen,permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "left join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
                    "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "where nota_inap.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                   "satu_sehat_mapping_radiologi.sampel_code like ? or permintaan_radiologi.noorder like ?)"));
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or template_laboratorium.Pemeriksaan like ? or "+
+                   "satu_sehat_mapping_lab.sampel_code like ? or permintaan_lab.noorder like ?)"));
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -829,8 +832,8 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("noorder"),
-                        rs.getString("tgl_sampel")+" "+rs.getString("jam_sampel"),rs.getString("nm_perawatan"),rs.getString("sampel_code"),rs.getString("sampel_system"),
-                        rs.getString("sampel_display"),rs.getString("id_servicerequest"),rs.getString("kd_jenis_prw"),rs.getString("id_specimen")
+                        rs.getString("tgl_sampel")+" "+rs.getString("jam_sampel"),rs.getString("Pemeriksaan"),rs.getString("sampel_code"),rs.getString("sampel_system"),
+                        rs.getString("sampel_display"),rs.getString("id_servicerequest"),rs.getString("id_template"),rs.getString("id_specimen"),rs.getString("kd_jenis_prw")
                     });
                 }
             } catch (Exception e) {
@@ -850,8 +853,8 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_specimen_radiologi());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_specimen_radiologi());
+        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_specimen_lab());
+        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_specimen_lab());
     }
     
     public JTable getTable(){
