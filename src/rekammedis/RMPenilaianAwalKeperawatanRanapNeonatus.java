@@ -76,26 +76,25 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             "Nutrisi","Keterangan Nutrisi","Frekuensi(cc)","Frekuenasi(x)","Eliminasi BAK","Keterangan Eliminasi BAK","Eliminasi BAB","Keterangan Eliminasi BAB","Alergi Obat",
             "Keterangan Alergi Obat","Reaksi Alergi Obat","Alergi Makanan","Keterangan Alergi Makanan","Reaksi Alergi Makanan","Alergi Lainnya","Keterangan Alergi Lainnya",
             "Reaksi Alergi Lainnya","Riwayat Penyakit Keluarga","Keterangan Riwayat Penyakit Keluarga","Riwayat Imunisasi","Keterangan Riwayat Imunisasi","Riwayat Tranfusi Darah",
-            "Keterangan Riwayat Tranfusi Darah","Reaksi Tranfusi Darah","Keterangan Reaksi Tranfusi Darah","Kebiasan Minum Obat","Keterangan Kebiasan Minum Obat",
-            "Kebiasan Obat Tidur/Narkoba","Keterangan Obat Tidur/Narkoba","Kebiasan Merokok","Keterangan Kebiasan Merokok","Kebiasan Alkohol","Keterangan Kebiasan Alkohol",
-            "Kesadaran","Keadaan Umum","GCS","TD(mmHg)","Suhu(°C)","HR(x/menit)","RR(x/menit)","SPO2(%)","Down Score","BB(Kg)","TB(cm)","LK(cm)","LD(cm)","LP(cm)","GD Bayi",
-            "GD Ibu","GD Ayah","Gerak Bayi","Kepala","Keterangan Kepala","Ubun-ubun","Keterangan Ubun-ubun","Wajah","Keterangan Wajah","Kejang","Keterangan Kejang",
-            "Refleks","Keterangan Refleks","Tangis Bayi","Keterangan Tangis Bayi","Denyut Nadi","Sirkulasi","Keterangan Sirkulasi","Pulsasi","Keterangan Pulsasi","Pola Napas",
-            "Jenis Pernapasan","Keterangan Jenis Pernapasan","Retraksi","Air Entry","Merintih","Suara Napas","Mulut","Keterangan Mulut","Lidah","Keterangan Lidah","Tenggorakan",
-            "Keterangan Tenggorokan","Abdomen","Keterangan Abdomen","BAB","Keterangan BAB","Warna BAB","Keterangan Warna BAB","BAK","Keterangan BAK","Warna BAK","Keterangan Warna BAK",
-            "Posisi Mata","Kelopak Mata","Keterangan Kelopak Mata","Besar Pupil","Konjugtiva","Keterangan Konjugtiva","Sklera","Keterangan Sklera","Pendengaran","Keterangan Pendengaran",
-            "Penciuman","Keterangan Penciuman","Warna Kulit","Keterangan Warna Kulit","Vernic Kaseosa","Keterangan Vernic Kaseosa","Turgor","Lanugo","Kulit","Kriteria Risiko Dekubitas",
-            "Reproduksi","Keterangan Reproduksi","Rekoil Telinga","Keterangan Rekoil Telinga","Lengan","Keterangan Lengan","Tungkai","Keterangan Tungkai","Telapak Kaki",
-            "Kondisi Psikologis","Gangguan Jiwa Di Masa Lalu","Menerima Kondisi Bayi","Status Menikah","Masalah Pernikahan","Keterangan Masalah Pernikahan","Pekerjaan",
-            "Agama","Nilai Kepercayaan","Keterangan Nilai Kepercayaan","Suku","Pendidikan","Pembayaran","Tinggal Bersama","Keterangan Tinggal Bersama","Hubungan Keluarga",
-            "Respon Emosi","Bahasa Sehari-hari","Baca & Tulis","Butuh Penerjemah","Keterangan Butuh Penerjemah","Terdapat Hambatan Belajar","Hambatan Belajar","Keterangan Hambatan Belajar",
-            "Hambatan Cara Bicara","Hambatan Bahasa Isyarat","Cara Belajar Disukai","Kesediaan Menerima Informasi","Keterangan Kesediaan Menerima Informasi","Pemahaman Nutrisi",
-            "Pemahaman Penyakit","Pemahaman Pengobatan","Pemahaman Perawatan","Masalah Gizi 1","N.Gizi 1","Masalah Gizi 2","N.Gizi 2","Masalah Gizi 3","N.Gizi 3","Total N.Gizi",
-            "Keterangan Skrining Gizi","Humpty Dumpty Skala 1","Nilai H.D.1","Humpty Dumpty Skala 2","Nilai H.D.2","Humpty Dumpty Skala 3","Nilai H.D.3","Humpty Dumpty Skala 4",
-            "Nilai H.D.4","Humpty Dumpty Skala 5","Nilai H.D.5","Humpty Dumpty Skala 6","Nilai H.D.6","Humpty Dumpty Skala 7","Nilai H.D.7","Total Nilai H.D.",
-            "Keterangan Hasil Penilaian H.D.","Skala NIPS 1","Nilai NIPS 1","Skala NIPS 2","Nilai NIPS 2","Skala NIPS 3","Nilai NIPS 3","Skala NIPS 4","Nilai NIPS 4",
-            "Skala NIPS 5","Nilai NIPS 5","Total NIPS","Keterangan Penilaian NIPS","Informasi Perencanaan Pulang","Rawat Rata-rata","Perencanaan Pulang","Kondisi Klinis Pulang",
-            "Perawatan Lanjutan Dirumah","Cara Transportasi Pulang","Transportasi Digunakan","Rencana Keperawatan Lainnya"
+            "Keterangan Riwayat Tranfusi Darah","Reaksi Tranfusi Darah","Keterangan Reaksi Tranfusi Darah","Obat-obatan Diminum","Keterangan Obat-obatan Diminum",
+            "Obat Tidur/Narkoba","Keterangan Obat Tidur/Narkoba","Merokok","Batang/Hari","Alkohol","Gelas/Hari","Kesadaran","Keadaan Umum","GCS","TD(mmHg)","Suhu(°C)",
+            "HR(x/menit)","RR(x/menit)","SPO2(%)","Down Score","BB(Kg)","TB(cm)","LK(cm)","LD(cm)","LP(cm)","GD Bayi","GD Ibu","GD Ayah","Gerak Bayi","Kepala","Keterangan Kepala",
+            "Ubun-ubun","Keterangan Ubun-ubun","Wajah","Keterangan Wajah","Kejang","Keterangan Kejang","Refleks","Keterangan Refleks","Tangis Bayi","Keterangan Tangis Bayi",
+            "Denyut Nadi","Sirkulasi","Keterangan Sirkulasi","Pulsasi","Keterangan Pulsasi","Pola Napas","Jenis Pernapasan","Keterangan Jenis Pernapasan","Retraksi","Air Entry",
+            "Merintih","Suara Napas","Mulut","Keterangan Mulut","Lidah","Keterangan Lidah","Tenggorakan","Keterangan Tenggorokan","Abdomen","Keterangan Abdomen","BAB","Keterangan BAB",
+            "Warna BAB","Keterangan Warna BAB","BAK","Keterangan BAK","Warna BAK","Keterangan Warna BAK","Posisi Mata","Kelopak Mata","Keterangan Kelopak Mata","Besar Pupil",
+            "Konjugtiva","Keterangan Konjugtiva","Sklera","Keterangan Sklera","Pendengaran","Keterangan Pendengaran","Penciuman","Keterangan Penciuman","Warna Kulit",
+            "Keterangan Warna Kulit","Vernic Kaseosa","Keterangan Vernic Kaseosa","Turgor","Lanugo","Kulit","Kriteria Risiko Dekubitas","Reproduksi","Keterangan Reproduksi",
+            "Rekoil Telinga","Keterangan Rekoil Telinga","Lengan","Keterangan Lengan","Tungkai","Keterangan Tungkai","Telapak Kaki","Kondisi Psikologis","Gangguan Jiwa Di Masa Lalu",
+            "Menerima Kondisi Bayi","Status Menikah","Masalah Pernikahan","Keterangan Masalah Pernikahan","Pekerjaan","Agama","Nilai Kepercayaan","Keterangan Nilai Kepercayaan","Suku",
+            "Pendidikan","Pembayaran","Tinggal Bersama","Keterangan Tinggal Bersama","Hubungan Keluarga","Respon Emosi","Bahasa Sehari-hari","Baca & Tulis","Butuh Penerjemah",
+            "Keterangan Butuh Penerjemah","Terdapat Hambatan Belajar","Hambatan Belajar","Keterangan Hambatan Belajar","Hambatan Cara Bicara","Hambatan Bahasa Isyarat","Cara Belajar Disukai",
+            "Kesediaan Menerima Informasi","Keterangan Kesediaan Menerima Informasi","Pemahaman Nutrisi","Pemahaman Penyakit","Pemahaman Pengobatan","Pemahaman Perawatan","Masalah Gizi 1",
+            "N.Gizi 1","Masalah Gizi 2","N.Gizi 2","Masalah Gizi 3","N.Gizi 3","Total N.Gizi","Keterangan Skrining Gizi","Humpty Dumpty Skala 1","Nilai H.D.1","Humpty Dumpty Skala 2",
+            "Nilai H.D.2","Humpty Dumpty Skala 3","Nilai H.D.3","Humpty Dumpty Skala 4","Nilai H.D.4","Humpty Dumpty Skala 5","Nilai H.D.5","Humpty Dumpty Skala 6","Nilai H.D.6",
+            "Humpty Dumpty Skala 7","Nilai H.D.7","Total Nilai H.D.","Keterangan Hasil Penilaian H.D.","Skala NIPS 1","Nilai NIPS 1","Skala NIPS 2","Nilai NIPS 2","Skala NIPS 3","Nilai NIPS 3",
+            "Skala NIPS 4","Nilai NIPS 4","Skala NIPS 5","Nilai NIPS 5","Total NIPS","Keterangan Penilaian NIPS","Informasi Perencanaan Pulang","Rawat Rata-rata","Perencanaan Pulang",
+            "Kondisi Klinis Pulang","Perawatan Lanjutan Dirumah","Cara Transportasi Pulang","Transportasi Digunakan","Rencana Keperawatan Lainnya"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -254,9 +253,17 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==72){
                 column.setPreferredWidth(175);
             }else if(i==73){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(105);
             }else if(i==74){
-                column.setPreferredWidth(175);
+                column.setPreferredWidth(165);
+            }else if(i==75){
+                column.setPreferredWidth(70);
+            }else if(i==76){
+                column.setPreferredWidth(80);
+            }else if(i==77){
+                column.setPreferredWidth(70);
+            }else if(i==79){
+                column.setPreferredWidth(80);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
