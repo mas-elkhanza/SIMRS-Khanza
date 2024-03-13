@@ -305,9 +305,41 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==98){
                 column.setPreferredWidth(100);
             }else if(i==99){
-                column.setPreferredWidth(64);
+                column.setPreferredWidth(62);
             }else if(i==100){
                 column.setPreferredWidth(121);
+            }else if(i==101){
+                column.setPreferredWidth(101);
+            }else if(i==102){
+                column.setPreferredWidth(130);
+            }else if(i==103){
+                column.setPreferredWidth(53);
+            }else if(i==104){
+                column.setPreferredWidth(130);
+            }else if(i==105){
+                column.setPreferredWidth(48);
+            }else if(i==106){
+                column.setPreferredWidth(130);
+            }else if(i==107){
+                column.setPreferredWidth(65);
+            }else if(i==108){
+                column.setPreferredWidth(130);
+            }else if(i==109){
+                column.setPreferredWidth(70);
+            }else if(i==110){
+                column.setPreferredWidth(70);
+            }else if(i==111){
+                column.setPreferredWidth(130);
+            }else if(i==112){
+                column.setPreferredWidth(44);
+            }else if(i==113){
+                column.setPreferredWidth(130);
+            }else if(i==114){
+                column.setPreferredWidth(80);
+            }else if(i==115){
+                column.setPreferredWidth(90);
+            }else if(i==116){
+                column.setPreferredWidth(130);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
