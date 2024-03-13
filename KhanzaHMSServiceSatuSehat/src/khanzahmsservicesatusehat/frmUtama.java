@@ -4690,6 +4690,17 @@ public class frmUtama extends javax.swing.JFrame {
                                             "]," +
                                             "\"status\": \"active\"," +
                                             "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://snomed.info/sct\"," +
+                                                            "\"code\": \"363679005\"," +
+                                                            "\"display\": \"Imaging\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "],"+
                                             "\"code\": {" +
                                                 "\"coding\": [" +
                                                     "{" +
@@ -4794,6 +4805,17 @@ public class frmUtama extends javax.swing.JFrame {
                                             "]," +
                                             "\"status\": \"active\"," +
                                             "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://snomed.info/sct\"," +
+                                                            "\"code\": \"363679005\"," +
+                                                            "\"display\": \"Imaging\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "],"+
                                             "\"code\": {" +
                                                 "\"coding\": [" +
                                                     "{" +

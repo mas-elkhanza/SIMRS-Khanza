@@ -597,6 +597,17 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                                     "]," +
                                     "\"status\": \"active\"," +
                                     "\"intent\": \"order\"," +
+                                    "\"category\": [" +
+                                        "{" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"363679005\"," +
+                                                    "\"display\": \"Imaging\"" +
+                                                "}" +
+                                            "]" +
+                                        "}" +
+                                    "],"+
                                     "\"code\": {" +
                                         "\"coding\": [" +
                                             "{" +
@@ -687,6 +698,17 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
                                     "]," +
                                     "\"status\": \"active\"," +
                                     "\"intent\": \"order\"," +
+                                    "\"category\": [" +
+                                        "{" +
+                                            "\"coding\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://snomed.info/sct\"," +
+                                                    "\"code\": \"363679005\"," +
+                                                    "\"display\": \"Imaging\"" +
+                                                "}" +
+                                            "]" +
+                                        "}" +
+                                    "],"+
                                     "\"code\": {" +
                                         "\"coding\": [" +
                                             "{" +
