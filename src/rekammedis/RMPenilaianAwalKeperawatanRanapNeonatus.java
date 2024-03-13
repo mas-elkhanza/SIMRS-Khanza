@@ -150,8 +150,14 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==20){
                 column.setPreferredWidth(67);
             }else if(i==21){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(110);
             }else if(i==22){
+                column.setPreferredWidth(170);
+            }else if(i==23){
+                column.setPreferredWidth(198);
+            }else if(i==24){
+                column.setPreferredWidth(85);
+            }else if(i==25){
                 column.setPreferredWidth(150);
             }
         }
