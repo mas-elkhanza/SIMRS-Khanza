@@ -531,7 +531,7 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
             );
             bg.close();
 
-            File f = new File("DataSatuSehatServiceRequestLabPK.html");            
+            File f = new File("DataSatuSehatServiceRequestLabMB.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -541,7 +541,7 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT SERVICE REQUEST LAB PK<br><br></font>"+        
+                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT SERVICE REQUEST LAB MB<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -651,7 +651,7 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
                         root = mapper.readTree(json);
                         response = root.path("id");
                         if(!response.asText().equals("")){
-                            if(Sequel.menyimpantf2("satu_sehat_servicerequest_lab","?,?,?,?","No.Order",4,new String[]{
+                            if(Sequel.menyimpantf2("satu_sehat_servicerequest_lab_mb","?,?,?,?","No.Order",4,new String[]{
                                 tbObat.getValueAt(i,9).toString(),tbObat.getValueAt(i,18).toString(),tbObat.getValueAt(i,17).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,16);
@@ -821,22 +821,22 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
         try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
-                   "satu_sehat_encounter.id_encounter,permintaan_lab.noorder,permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan,permintaan_lab.diagnosa_klinis,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_labmb.noorder,permintaan_labmb.tgl_permintaan,permintaan_labmb.jam_permintaan,permintaan_labmb.diagnosa_klinis,"+
                    "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
-                   "ifnull(satu_sehat_servicerequest_lab.id_servicerequest,'') as id_servicerequest,permintaan_detail_permintaan_lab.id_template,permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "ifnull(satu_sehat_servicerequest_lab_mb.id_servicerequest,'') as id_servicerequest,permintaan_detail_permintaan_labmb.id_template,permintaan_detail_permintaan_labmb.kd_jenis_prw "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
-                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
-                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_labmb on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_labmb on permintaan_detail_permintaan_labmb.noorder=permintaan_labmb.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
                    "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
-                   "left join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
-                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
-                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "left join satu_sehat_servicerequest_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=permintaan_detail_permintaan_labmb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=permintaan_detail_permintaan_labmb.kd_jenis_prw "+
                    "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "where nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or template_laboratorium.Pemeriksaan like ? or "+
-                   "satu_sehat_mapping_lab.code like ? or permintaan_lab.noorder like ?)"));
+                   "satu_sehat_mapping_lab.code like ? or permintaan_labmb.noorder like ?)"));
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -872,22 +872,22 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
             
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
-                   "satu_sehat_encounter.id_encounter,permintaan_lab.noorder,permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan,permintaan_lab.diagnosa_klinis,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_labmb.noorder,permintaan_labmb.tgl_permintaan,permintaan_labmb.jam_permintaan,permintaan_labmb.diagnosa_klinis,"+
                    "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
-                   "ifnull(satu_sehat_servicerequest_lab.id_servicerequest,'') as id_servicerequest,permintaan_detail_permintaan_lab.id_template,permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "ifnull(satu_sehat_servicerequest_lab_mb.id_servicerequest,'') as id_servicerequest,permintaan_detail_permintaan_labmb.id_template,permintaan_detail_permintaan_labmb.kd_jenis_prw "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
-                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
-                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_labmb on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_labmb on permintaan_detail_permintaan_labmb.noorder=permintaan_labmb.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
                    "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
-                   "left join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
-                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
-                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "left join satu_sehat_servicerequest_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=permintaan_detail_permintaan_labmb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=permintaan_detail_permintaan_labmb.kd_jenis_prw "+
                    "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "where nota_inap.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or template_laboratorium.Pemeriksaan like ? or "+
-                   "satu_sehat_mapping_lab.code like ? or permintaan_lab.noorder like ?)"));
+                   "satu_sehat_mapping_lab.code like ? or permintaan_labmb.noorder like ?)"));
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));

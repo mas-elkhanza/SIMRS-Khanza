@@ -232,6 +232,7 @@ public class frmUtama extends javax.swing.JFrame {
                     observationradiologi();
                     diagnosticreportradiologi();
                     servicerequestlabpk();
+                    servicerequestlabmb();
                 }
             }
         };
@@ -5697,6 +5698,240 @@ public class frmUtama extends javax.swing.JFrame {
                    "left join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
                    "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
                    "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "where nota_inap.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_servicerequest").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"ServiceRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"active\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://snomed.info/sct\"," +
+                                                            "\"code\": \"108252007\"," +
+                                                            "\"display\": \"Laboratory procedure\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "],"+
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \""+rs.getString("system")+"\"," +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"" +
+                                                    "}" +
+                                                "]," +
+                                                "\"text\": \""+rs.getString("Pemeriksaan")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Permintaan "+rs.getString("Pemeriksaan")+" atas nama pasien "+rs.getString("nm_pasien")+" No.RM "+rs.getString("no_rkm_medis")+" No.Rawat "+rs.getString("no_rawat")+", pada tanggal "+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\" : \""+rs.getString("tgl_permintaan")+"T"+rs.getString("jam_permintaan")+"+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"performer\": [{" +
+                                                "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"display\": \"Ruang Laborat/Petugas Laborat\"" +
+                                            "}]," +
+                                            "\"reasonCode\": [" +
+                                                "{" +
+                                                    "\"text\": \""+rs.getString("diagnosa_klinis")+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/ServiceRequest");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/ServiceRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_servicerequest_lab","?,?,?,?","No.Rawat",4,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),rs.getString("id_template"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void servicerequestlabmb() {
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_labmb.noorder,permintaan_labmb.tgl_permintaan,permintaan_labmb.jam_permintaan,permintaan_labmb.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "ifnull(satu_sehat_servicerequest_lab_mb.id_servicerequest,'') as id_servicerequest,permintaan_detail_permintaan_labmb.id_template,permintaan_detail_permintaan_labmb.kd_jenis_prw "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_labmb on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_labmb on permintaan_detail_permintaan_labmb.noorder=permintaan_labmb.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "left join satu_sehat_servicerequest_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=permintaan_detail_permintaan_labmb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=permintaan_detail_permintaan_labmb.kd_jenis_prw "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "where nota_jalan.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_servicerequest").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"ServiceRequest\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"active\"," +
+                                            "\"intent\": \"order\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://snomed.info/sct\"," +
+                                                            "\"code\": \"108252007\"," +
+                                                            "\"display\": \"Laboratory procedure\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "],"+
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \""+rs.getString("system")+"\"," +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"" +
+                                                    "}" +
+                                                "]," +
+                                                "\"text\": \""+rs.getString("Pemeriksaan")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Permintaan "+rs.getString("Pemeriksaan")+" atas nama pasien "+rs.getString("nm_pasien")+" No.RM "+rs.getString("no_rkm_medis")+" No.Rawat "+rs.getString("no_rawat")+", pada tanggal "+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"\"" +
+                                            "}," +
+                                            "\"authoredOn\" : \""+rs.getString("tgl_permintaan")+"T"+rs.getString("jam_permintaan")+"+07:00\"," +
+                                            "\"requester\": {" +
+                                                "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                "\"display\": \""+rs.getString("nama")+"\"" +
+                                            "}," +
+                                            "\"performer\": [{" +
+                                                "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                "\"display\": \"Ruang Laborat/Petugas Laborat\"" +
+                                            "}]," +
+                                            "\"reasonCode\": [" +
+                                                "{" +
+                                                    "\"text\": \""+rs.getString("diagnosa_klinis")+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/ServiceRequest");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/ServiceRequest", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_servicerequest_lab","?,?,?,?","No.Rawat",4,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),rs.getString("id_template"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_labmb.noorder,permintaan_labmb.tgl_permintaan,permintaan_labmb.jam_permintaan,permintaan_labmb.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "ifnull(satu_sehat_servicerequest_lab_mb.id_servicerequest,'') as id_servicerequest,permintaan_detail_permintaan_labmb.id_template,permintaan_detail_permintaan_labmb.kd_jenis_prw "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_labmb on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_labmb on permintaan_detail_permintaan_labmb.noorder=permintaan_labmb.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "left join satu_sehat_servicerequest_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=permintaan_detail_permintaan_labmb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=permintaan_detail_permintaan_labmb.kd_jenis_prw "+
                    "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "where nota_inap.tanggal between ? and ? ");
             try {
