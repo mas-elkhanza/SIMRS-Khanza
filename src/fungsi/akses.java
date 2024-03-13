@@ -224,7 +224,7 @@ public final class akses {
             satu_sehat_mapping_radiologi=false,satu_sehat_kirim_servicerequest_radiologi=false,hasil_endoskopi_hidung=false,satu_sehat_kirim_specimen_radiologi=false,
             master_masalah_keperawatan_neonatus=false,master_rencana_keperawatan_neonatus=false,penilaian_awal_keperawatan_ranap_neonatus=false,
             satu_sehat_kirim_observation_radiologi=false,satu_sehat_kirim_diagnosticreport_radiologi=false,hasil_endoskopi_telinga=false,satu_sehat_mapping_lab=false,
-            satu_sehat_kirim_servicerequest_lab=false;
+            satu_sehat_kirim_servicerequest_lab=false,satu_sehat_kirim_servicerequest_labmb=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1268,6 +1268,7 @@ public final class akses {
                         akses.hasil_endoskopi_telinga=true;
                         akses.satu_sehat_mapping_lab=true;
                         akses.satu_sehat_kirim_servicerequest_lab=true;
+                        akses.satu_sehat_kirim_servicerequest_labmb=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2295,6 +2296,7 @@ public final class akses {
                         akses.hasil_endoskopi_telinga=rs2.getBoolean("hasil_endoskopi_telinga");
                         akses.satu_sehat_mapping_lab=rs2.getBoolean("satu_sehat_mapping_lab");
                         akses.satu_sehat_kirim_servicerequest_lab=rs2.getBoolean("satu_sehat_kirim_servicerequest_lab");
+                        akses.satu_sehat_kirim_servicerequest_labmb=rs2.getBoolean("satu_sehat_kirim_servicerequest_labmb");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3320,6 +3322,7 @@ public final class akses {
                         akses.hasil_endoskopi_telinga=false;
                         akses.satu_sehat_mapping_lab=false;
                         akses.satu_sehat_kirim_servicerequest_lab=false;
+                        akses.satu_sehat_kirim_servicerequest_labmb=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4368,6 +4371,7 @@ public final class akses {
         akses.hasil_endoskopi_telinga=false;
         akses.satu_sehat_mapping_lab=false;
         akses.satu_sehat_kirim_servicerequest_lab=false;
+        akses.satu_sehat_kirim_servicerequest_labmb=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5432,4 +5436,5 @@ public final class akses {
     public static boolean gethasil_endoskopi_telinga(){return akses.hasil_endoskopi_telinga;}
     public static boolean getsatu_sehat_mapping_lab(){return akses.satu_sehat_mapping_lab;}
     public static boolean getsatu_sehat_kirim_servicerequest_lab(){return akses.satu_sehat_kirim_servicerequest_lab;}
+    public static boolean getsatu_sehat_kirim_servicerequest_labmb(){return akses.satu_sehat_kirim_servicerequest_labmb;}
 }   
