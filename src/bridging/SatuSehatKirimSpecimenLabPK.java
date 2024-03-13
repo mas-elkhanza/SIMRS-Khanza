@@ -760,8 +760,10 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                    "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
                    "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
                    "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
                    "left join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
                    "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_specimen_lab.kd_jenis_prw "+
                    "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "where nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
@@ -809,8 +811,10 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                    "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
                    "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
                    "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
                    "left join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
                    "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_specimen_lab.kd_jenis_prw "+
                    "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "where nota_inap.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
