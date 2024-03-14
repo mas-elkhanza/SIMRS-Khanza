@@ -852,7 +852,7 @@ public final class SatuSehatKirimObservationLabPK extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("noorder"),rs.getString("tgl_hasil")+" "+rs.getString("jam_hasil"),rs.getString("Pemeriksaan"),
-                        rs.getString("code"),rs.getString("system"),rs.getString("display"),"Hasil Laborat : "+rs.getString("nilai"),", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan")),
+                        rs.getString("code"),rs.getString("system"),rs.getString("display"),"Hasil Lab : "+rs.getString("nilai")+", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan")),
                         rs.getString("id_template"),rs.getString("id_specimen"),rs.getString("kd_dokter"),rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("id_encounter"),rs.getString("id_observation"),rs.getString("kd_jenis_prw")
                     });
                 }
@@ -910,7 +910,7 @@ public final class SatuSehatKirimObservationLabPK extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("noorder"),rs.getString("tgl_hasil")+" "+rs.getString("jam_hasil"),rs.getString("Pemeriksaan"),
-                        rs.getString("code"),rs.getString("system"),rs.getString("display"),"Hasil Laborat : "+rs.getString("nilai"),", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan")),
+                        rs.getString("code"),rs.getString("system"),rs.getString("display"),"Hasil Lab : "+rs.getString("nilai")+", Nilai Rujukan : "+rs.getString("nilai_rujukan")+(rs.getString("keterangan").equals("")?"":", Keterangan : "+rs.getString("keterangan")),
                         rs.getString("id_template"),rs.getString("id_specimen"),rs.getString("kd_dokter"),rs.getString("nama"),rs.getString("ktppraktisi"),rs.getString("id_encounter"),rs.getString("id_observation"),rs.getString("kd_jenis_prw")
                     });
                 }
