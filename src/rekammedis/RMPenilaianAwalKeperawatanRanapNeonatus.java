@@ -335,11 +335,61 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==113){
                 column.setPreferredWidth(130);
             }else if(i==114){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(74);
             }else if(i==115){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(95);
             }else if(i==116){
+                column.setPreferredWidth(152);
+            }else if(i==117){
+                column.setPreferredWidth(54);
+            }else if(i==118){
+                column.setPreferredWidth(122);
+            }else if(i==119){
+                column.setPreferredWidth(147);
+            }else if(i==120){
+                column.setPreferredWidth(70);
+            }else if(i==121){
+                column.setPreferredWidth(59);
+            }else if(i==122){
+                column.setPreferredWidth(120);
+            }else if(i==123){
+                column.setPreferredWidth(80);
+            }else if(i==124){
+                column.setPreferredWidth(120);
+            }else if(i==125){
+                column.setPreferredWidth(71);
+            }else if(i==126){
                 column.setPreferredWidth(130);
+            }else if(i==127){
+                column.setPreferredWidth(56);
+            }else if(i==128){
+                column.setPreferredWidth(120);
+            }else if(i==129){
+                column.setPreferredWidth(75);
+            }else if(i==130){
+                column.setPreferredWidth(120);
+            }else if(i==131){
+                column.setPreferredWidth(65);
+            }else if(i==132){
+                column.setPreferredWidth(122);
+            }else if(i==133){
+                column.setPreferredWidth(71);
+            }else if(i==134){
+                column.setPreferredWidth(120);
+            }else if(i==135){
+                column.setPreferredWidth(69);
+            }else if(i==136){
+                column.setPreferredWidth(122);
+            }else if(i==137){
+                column.setPreferredWidth(65);
+            }else if(i==138){
+                column.setPreferredWidth(74);
+            }else if(i==139){
+                column.setPreferredWidth(130);
+            }else if(i==140){
+                column.setPreferredWidth(74);
+            }else if(i==141){
+                column.setPreferredWidth(74);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
