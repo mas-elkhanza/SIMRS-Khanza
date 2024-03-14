@@ -441,7 +441,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==166){
                 column.setPreferredWidth(97);
             }else if(i==167){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(150);
+            }else if(i==168){
+                column.setPreferredWidth(120);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
