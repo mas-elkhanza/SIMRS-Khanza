@@ -104,7 +104,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 200; i++) {
+        for (i = 0; i < 230; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -495,9 +495,39 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }else if(i==193){
                 column.setPreferredWidth(160);
             }else if(i==194){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(219);
             }else if(i==195){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(104);
+            }else if(i==196){
+                column.setPreferredWidth(112);
+            }else if(i==197){
+                column.setPreferredWidth(130);
+            }else if(i==198){
+                column.setPreferredWidth(124);
+            }else if(i==199){
+                column.setPreferredWidth(79);
+            }else if(i==200){
+                column.setPreferredWidth(46);
+            }else if(i==201){
+                column.setPreferredWidth(79);
+            }else if(i==202){
+                column.setPreferredWidth(46);
+            }else if(i==203){
+                column.setPreferredWidth(79);
+            }else if(i==204){
+                column.setPreferredWidth(46);
+            }else if(i==205){
+                column.setPreferredWidth(66);
+            }else if(i==206){
+                column.setPreferredWidth(230);
+            }else if(i==207){
+                column.setPreferredWidth(125);
+            }else if(i==208){
+                column.setPreferredWidth(60);
+            }else if(i==209){
+                column.setPreferredWidth(125);
+            }else if(i==210){
+                column.setPreferredWidth(60);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
