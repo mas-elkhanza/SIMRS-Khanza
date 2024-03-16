@@ -1132,9 +1132,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         JumlahMerokok = new widget.TextBox();
         jLabel125 = new widget.Label();
         jLabel126 = new widget.Label();
-        jLabel76 = new widget.Label();
         jLabel77 = new widget.Label();
         ObatTidurNarkoba = new widget.ComboBox();
+        jLabel76 = new widget.Label();
         KeteranganObatTidurNarkoba = new widget.TextBox();
         jLabel78 = new widget.Label();
         Alkohol = new widget.ComboBox();
@@ -3200,12 +3200,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel126);
         jLabel126.setBounds(697, 790, 20, 23);
 
-        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel76.setText("Obat Tidur/Narkoba");
-        jLabel76.setName("jLabel76"); // NOI18N
-        FormInput.add(jLabel76);
-        jLabel76.setBounds(74, 820, 120, 23);
-
         jLabel77.setText(":");
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
@@ -3220,6 +3214,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(ObatTidurNarkoba);
         ObatTidurNarkoba.setBounds(181, 820, 100, 23);
+
+        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel76.setText("Obat Tidur/Narkoba");
+        jLabel76.setName("jLabel76"); // NOI18N
+        FormInput.add(jLabel76);
+        jLabel76.setBounds(74, 820, 120, 23);
 
         KeteranganObatTidurNarkoba.setFocusTraversalPolicyProvider(true);
         KeteranganObatTidurNarkoba.setName("KeteranganObatTidurNarkoba"); // NOI18N

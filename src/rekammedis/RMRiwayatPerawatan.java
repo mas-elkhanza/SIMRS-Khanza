@@ -647,7 +647,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3100));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3075));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -23978,10 +23978,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='38%' border='0'>: "+rs2.getString("nip1")+" "+rs2.getString("pengkaji1")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='11%' border='0'>Pengkaji 2</td>"+
-                                              "<td width='35%' border='0'>: "+rs2.getString("nip2")+" "+rs2.getString("pengkaji2")+"</td>"+
-                                              "<td width='16%' border='0'>DPJP</td>"+
+                                              "<td width='11%' border='0'>DPJP</td>"+
                                               "<td width='38%' border='0'>: "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                              "<td width='16%' border='0'>Pengkaji 2</td>"+
+                                              "<td width='35%' border='0'>: "+rs2.getString("nip2")+" "+rs2.getString("pengkaji2")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -23992,6 +23992,167 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='100%'>Keluhan Utama : "+rs2.getString("keluhan_utama").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Riwayat Prenatal : "+
+                                                 "<table width='99%' align='right' border='0' cellpadding='3px' cellspacing='0px' class='tbl_form'"+
+                                                    "<tr>"+
+                                                        "<td colspan='2' width='50%'>"+
+                                                            "Riwayat Obstetri : G "+rs2.getString("prenatal_g")+"&nbsp;&nbsp;&nbsp;&nbsp;P "+rs2.getString("prenatal_p")+"&nbsp;&nbsp;&nbsp;&nbsp;A "+rs2.getString("prenatal_a")+"&nbsp;&nbsp;&nbsp;&nbsp;UK "+rs2.getString("prenatal_uk")+
+                                                        "</td>"+
+                                                        "<td colspan='2' width='50%'>"+
+                                                            "Riwayat Penyakit Ibu : "+rs2.getString("prenatal_riwayat_penyakit_ibu")+(rs2.getString("prenatal_riwayat_penyakit_ibu_keterangan").equals("")?"":", "+rs2.getString("prenatal_riwayat_penyakit_ibu_keterangan"))+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                     "<tr>"+
+                                                        "<td colspan='4' width='100%'>"+
+                                                            "Riwayat Pengobatan Ibu Selama Hamil : "+rs2.getString("prenatal_riwayat_pengobatan_ibu_selama_hamil")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td colspan='3' width='75%'>"+
+                                                            "Pernah Dirawat : "+rs2.getString("prenatal_pernah_dirawat")+(rs2.getString("prenatal_pernah_dirawat_keterangan").equals("")?"":", "+rs2.getString("prenatal_pernah_dirawat_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='25%'>"+
+                                                            "Status Gizi Ibu : "+rs2.getString("prenatal_status_gizi_ibu")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Riwayat Intranatal : "+
+                                                 "<table width='99%' align='right' border='0' cellpadding='3px' cellspacing='0px' class='tbl_form'"+
+                                                    "<tr>"+
+                                                        "<td colspan='2' width='50%'>"+
+                                                            "Riwayat Obstetri : G "+rs2.getString("intranatal_g")+"&nbsp;&nbsp;&nbsp;&nbsp;P "+rs2.getString("intranatal_p")+"&nbsp;&nbsp;&nbsp;&nbsp;A "+rs2.getString("intranatal_a")+
+                                                        "</td>"+
+                                                        "<td colspan='2' width='50%'>"+
+                                                            "Kondisi Saat Lahir : "+rs2.getString("intranatal_kondisi_lahir")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td width='25%'>"+
+                                                            "Cara Persalinan : "+rs2.getString("intranatal_cara_persalinan")+(rs2.getString("intranatal_cara_persalinan_keterangan").equals("")?"":", "+rs2.getString("intranatal_cara_persalinan_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='25%'>"+
+                                                            "APGAR : "+rs2.getString("intranatal_apgar")+
+                                                        "</td>"+
+                                                        "<td width='25%'>"+
+                                                            "Letak : "+rs2.getString("intranatal_letak")+
+                                                        "</td>"+
+                                                        "<td width='25%'>"+
+                                                            "Tali Pusat : "+rs2.getString("intranatal_tali_pusat")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td width='25%'>"+
+                                                            "Ketuban "+rs2.getString("intranatal_ketuban")+
+                                                        "</td>"+
+                                                        "<td colspan='3' width='75%'>"+
+                                                            "Antopometri BBL : BB "+rs2.getString("intranatal_bb")+" gr, PB "+rs2.getString("intranatal_pb")+" cm, LK "+rs2.getString("intranatal_lk")+" cm, LD "+rs2.getString("intranatal_ld")+" cm, LP "+rs2.getString("intranatal_lp")+" cm"+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Faktor Risiko Infeksi : "+
+                                                 "<table width='99%' align='right' border='0' cellpadding='3px' cellspacing='0px' class='tbl_form'"+
+                                                    "<tr>"+
+                                                        "<td width='50%'>"+
+                                                            "Mayor : "+rs2.getString("risiko_infeksi_mayor")+(rs2.getString("risiko_infeksi_mayor_keterangan").equals("")?"":", "+rs2.getString("risiko_infeksi_mayor_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='50%'>"+
+                                                            "Minor : "+rs2.getString("risiko_infeksi_minor")+(rs2.getString("risiko_infeksi_minor_keterangan").equals("")?"":", "+rs2.getString("risiko_infeksi_minor_keterangan"))+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Kebutuhan Biologis : "+
+                                                 "<table width='99%' align='right' border='0' cellpadding='3px' cellspacing='0px' class='tbl_form'"+
+                                                    "<tr>"+
+                                                        "<td colspan='2' width='100%'>"+
+                                                            "Nutrisi : "+rs2.getString("kebutuhan_biologis_nutrisi")+(rs2.getString("kebutuhan_biologis_nutrisi_keterangan").equals("")?"":", "+rs2.getString("kebutuhan_biologis_nutrisi_keterangan"))+
+                                                            (rs2.getString("kebutuhan_biologis_nutrisi_frekuensi").equals("")?"":", Frekuensi : "+rs2.getString("kebutuhan_biologis_nutrisi_frekuensi")+" cc"+(rs2.getString("kebutuhan_biologis_nutrisi_kali").equals("")?"":"/ "+rs2.getString("kebutuhan_biologis_nutrisi_kali")+" x"))+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td colspan='2' width='100%' border='0'>Eliminasi :</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td width='50%' style='margin-left: 10px'>"+
+                                                            "Mayor : "+rs2.getString("kebutuhan_biologis_bak")+(rs2.getString("kebutuhan_biologis_bak_keterangan").equals("")?"":", "+rs2.getString("kebutuhan_biologis_bak_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='50%'>"+
+                                                            "Minor : "+rs2.getString("kebutuhan_biologis_bab")+(rs2.getString("kebutuhan_biologis_bab_keterangan").equals("")?"":", "+rs2.getString("kebutuhan_biologis_bab_keterangan"))+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Alergi/Reaksi (Pada Orang Tua) : "+
+                                                 "<table width='99%' align='right' border='0' cellpadding='3px' cellspacing='0px' class='tbl_form'"+
+                                                    "<tr>"+
+                                                        "<td width='50%'>"+
+                                                            "Alergi Obat : "+rs2.getString("alergi_obat")+(rs2.getString("alergi_obat_keterangan").equals("")?"":", "+rs2.getString("alergi_obat_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='50%'>"+
+                                                            "Jika Ada, Reaksi : "+rs2.getString("alergi_obat_reaksi")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td width='50%'>"+
+                                                            "Alergi Makanan "+rs2.getString("alergi_makanan")+(rs2.getString("alergi_makanan_keterangan").equals("")?"":", "+rs2.getString("alergi_makanan_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='50%'>"+
+                                                            "Jika Ada, Reaksi : "+rs2.getString("alergi_makanan_reaksi")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td width='50%'>"+
+                                                            "Alergi Lainnya : "+rs2.getString("alergi_lainnya")+(rs2.getString("alergi_lainnya_keterangan").equals("")?"":", "+rs2.getString("alergi_lainnya_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='50%'>"+
+                                                            "Jika Ada, Reaksi : "+rs2.getString("alergi_lainnya_reaksi")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Riwayat Penyakit Keluarga : "+rs2.getString("riwayat_penyakit_keluarga")+(rs2.getString("riwayat_penyakit_keluarga_keterangan").equals("")?"":", "+rs2.getString("riwayat_penyakit_keluarga_keterangan"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Riwayat Imunisasi : "+rs2.getString("riwayat_imunisasi")+(rs2.getString("riwayat_imunisasi_keterangan").equals("")?"":", "+rs2.getString("riwayat_imunisasi_keterangan"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Riwayat Tranfusi Darah : "+rs2.getString("riwayat_tranfusi_darah")+(rs2.getString("riwayat_tranfusi_darah_keterangan").equals("")?"":", "+rs2.getString("riwayat_tranfusi_darah_keterangan"))+(rs2.getString("riwayat_tranfusi_darah").equals("Ada")?". Reaksi Tranfusi : "+rs2.getString("riwayat_tranfusi_darah_reaksi")+(rs2.getString("riwayat_tranfusi_darah_reaksi_keterangan").equals("")?"":", "+rs2.getString("riwayat_tranfusi_darah_reaksi_keterangan")):"")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Kebiasaan Ibu : "+
+                                                 "<table width='99%' align='right' border='0' cellpadding='3px' cellspacing='0px' class='tbl_form'"+
+                                                    "<tr>"+
+                                                        "<td width='65%'>"+
+                                                            "Obat-obatan Diminum : "+rs2.getString("kebiasan_ibu_obat_diminum")+(rs2.getString("kebiasan_ibu_obat_diminum_keterangan").equals("")?"":", "+rs2.getString("kebiasan_ibu_obat_diminum_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='35%'>"+
+                                                            "Merokok : "+rs2.getString("kebiasan_ibu_merokok")+(rs2.getString("kebiasan_ibu_merokok_keterangan").equals("")?"":", "+rs2.getString("kebiasan_ibu_merokok_keterangan")+" batang/hari")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                        "<td width='65%'>"+
+                                                            "Obat Tidur/Narkoba : "+rs2.getString("kebiasan_ibu_narkoba")+(rs2.getString("kebiasan_ibu_narkoba_keterangan").equals("")?"":", "+rs2.getString("kebiasan_ibu_narkoba_keterangan"))+
+                                                        "</td>"+
+                                                        "<td width='35%'>"+
+                                                            "Alkohol : "+rs2.getString("kebiasan_ibu_alkohol")+(rs2.getString("kebiasan_ibu_alkohol_keterangan").equals("")?"":", "+rs2.getString("kebiasan_ibu_alkohol_keterangan")+" gelas/hari")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
