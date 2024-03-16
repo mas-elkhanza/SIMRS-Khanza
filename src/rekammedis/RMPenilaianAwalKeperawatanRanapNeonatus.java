@@ -1208,9 +1208,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel141 = new widget.Label();
         Kejang = new widget.ComboBox();
         KeteranganKejang = new widget.TextBox();
-        jLabel90 = new widget.Label();
         jLabel91 = new widget.Label();
         Refleks = new widget.ComboBox();
+        jLabel90 = new widget.Label();
         KeteranganRefleks = new widget.TextBox();
         jLabel142 = new widget.Label();
         TangisBayi = new widget.ComboBox();
@@ -3752,12 +3752,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(KeteranganKejang);
         KeteranganKejang.setBounds(610, 1010, 244, 23);
 
-        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel90.setText("Refleks");
-        jLabel90.setName("jLabel90"); // NOI18N
-        FormInput.add(jLabel90);
-        jLabel90.setBounds(74, 1040, 60, 23);
-
         jLabel91.setText(":");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
@@ -3772,6 +3766,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(Refleks);
         Refleks.setBounds(121, 1040, 95, 23);
+
+        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel90.setText("Refleks");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(74, 1040, 60, 23);
 
         KeteranganRefleks.setFocusTraversalPolicyProvider(true);
         KeteranganRefleks.setName("KeteranganRefleks"); // NOI18N
