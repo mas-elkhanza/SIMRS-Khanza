@@ -1398,8 +1398,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel230 = new widget.Label();
         jLabel231 = new widget.Label();
         PemahamanNutrisi = new widget.ComboBox();
-        jLabel232 = new widget.Label();
         PemahamanPenyakit = new widget.ComboBox();
+        jLabel232 = new widget.Label();
         jLabel233 = new widget.Label();
         jLabel234 = new widget.Label();
         PemahamanPerawatan = new widget.ComboBox();
@@ -4708,7 +4708,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         KondisiPsikologis.setBounds(141, 1660, 150, 23);
 
         jLabel192.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel192.setText("Kondisi Psikologis ");
+        jLabel192.setText("Kondisi Psikologis");
         jLabel192.setName("jLabel192"); // NOI18N
         FormInput.add(jLabel192);
         jLabel192.setBounds(44, 1660, 110, 23);
@@ -5197,12 +5197,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(PemahamanNutrisi);
         PemahamanNutrisi.setBounds(764, 1920, 90, 23);
 
-        jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel232.setText("Pemahaman Tentang Penyakit");
-        jLabel232.setName("jLabel232"); // NOI18N
-        FormInput.add(jLabel232);
-        jLabel232.setBounds(44, 1950, 180, 23);
-
         PemahamanPenyakit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         PemahamanPenyakit.setName("PemahamanPenyakit"); // NOI18N
         PemahamanPenyakit.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -5212,6 +5206,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(PemahamanPenyakit);
         PemahamanPenyakit.setBounds(202, 1950, 90, 23);
+
+        jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel232.setText("Pemahaman Tentang Penyakit");
+        jLabel232.setName("jLabel232"); // NOI18N
+        FormInput.add(jLabel232);
+        jLabel232.setBounds(44, 1950, 180, 23);
 
         jLabel233.setText(":");
         jLabel233.setName("jLabel233"); // NOI18N
