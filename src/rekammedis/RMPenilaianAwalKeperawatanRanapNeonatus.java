@@ -1461,7 +1461,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         TingkatResiko1 = new widget.Label();
         jLabel256 = new widget.Label();
         NilaiResikoTotal = new widget.TextBox();
-        TingkatResiko2 = new widget.Label();
         jLabel258 = new widget.Label();
         TotalNIPS = new widget.TextBox();
         jSeparator13 = new javax.swing.JSeparator();
@@ -1469,9 +1468,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         InformasiPerencanaanPulang = new widget.ComboBox();
         jLabel250 = new widget.Label();
         jLabel257 = new widget.Label();
-        jLabel259 = new widget.Label();
         jLabel260 = new widget.Label();
         KondisiPulang = new widget.TextBox();
+        jLabel259 = new widget.Label();
         label29 = new widget.Label();
         TanggalPulang = new widget.Tanggal();
         jLabel261 = new widget.Label();
@@ -1487,8 +1486,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         TransportasiYangDigunakan = new widget.ComboBox();
         KeteranganTingkatRisiko = new widget.TextBox();
         jLabel267 = new widget.Label();
-        jLabel268 = new widget.Label();
         KeteranganPenilaianNyeri = new widget.TextBox();
+        TingkatResiko2 = new widget.Label();
+        jLabel268 = new widget.Label();
         jLabel269 = new widget.Label();
         jLabel270 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
@@ -5732,13 +5732,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(NilaiResikoTotal);
         NilaiResikoTotal.setBounds(814, 2350, 40, 23);
 
-        TingkatResiko2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko2.setText("Keterangan");
-        TingkatResiko2.setToolTipText("");
-        TingkatResiko2.setName("TingkatResiko2"); // NOI18N
-        FormInput.add(TingkatResiko2);
-        TingkatResiko2.setBounds(44, 2550, 90, 23);
-
         jLabel258.setText("Total :");
         jLabel258.setName("jLabel258"); // NOI18N
         FormInput.add(jLabel258);
@@ -5784,12 +5777,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel257);
         jLabel257.setBounds(0, 2600, 347, 23);
 
-        jLabel259.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel259.setText("Kondisi Klinis Saat Pulang");
-        jLabel259.setName("jLabel259"); // NOI18N
-        FormInput.add(jLabel259);
-        jLabel259.setBounds(44, 2630, 180, 23);
-
         jLabel260.setText(":");
         jLabel260.setName("jLabel260"); // NOI18N
         FormInput.add(jLabel260);
@@ -5804,6 +5791,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(KondisiPulang);
         KondisiPulang.setBounds(180, 2630, 674, 23);
+
+        jLabel259.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel259.setText("Kondisi Klinis Saat Pulang");
+        jLabel259.setName("jLabel259"); // NOI18N
+        FormInput.add(jLabel259);
+        jLabel259.setBounds(44, 2630, 180, 23);
 
         label29.setText("Perencanaan Pulang :");
         label29.setName("label29"); // NOI18N
@@ -5914,16 +5907,23 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel267);
         jLabel267.setBounds(0, 2350, 122, 23);
 
-        jLabel268.setText(":");
-        jLabel268.setName("jLabel268"); // NOI18N
-        FormInput.add(jLabel268);
-        jLabel268.setBounds(0, 2090, 100, 23);
-
         KeteranganPenilaianNyeri.setEditable(false);
         KeteranganPenilaianNyeri.setFocusTraversalPolicyProvider(true);
         KeteranganPenilaianNyeri.setName("KeteranganPenilaianNyeri"); // NOI18N
         FormInput.add(KeteranganPenilaianNyeri);
         KeteranganPenilaianNyeri.setBounds(111, 2550, 383, 23);
+
+        TingkatResiko2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TingkatResiko2.setText("Keterangan");
+        TingkatResiko2.setToolTipText("");
+        TingkatResiko2.setName("TingkatResiko2"); // NOI18N
+        FormInput.add(TingkatResiko2);
+        TingkatResiko2.setBounds(44, 2550, 90, 23);
+
+        jLabel268.setText(":");
+        jLabel268.setName("jLabel268"); // NOI18N
+        FormInput.add(jLabel268);
+        jLabel268.setBounds(0, 2090, 100, 23);
 
         jLabel269.setText(":");
         jLabel269.setName("jLabel269"); // NOI18N

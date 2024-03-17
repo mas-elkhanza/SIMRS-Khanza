@@ -24351,7 +24351,70 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' colspan='2'>Keterangan & Total Poin : "+rs2.getString("penilaian_humptydumpty_hasil")+"</td>"+
-                                              "<td valign='top'>"+rs2.getString("penilaian_humptydumpty_totalnilai")+"&nbsp;&nbsp;</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("penilaian_humptydumpty_totalnilai")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VII. PENILAIAN TINGKAT NYERI (SKALA NIPS)"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                         "<tr class='isi'>"+
+                                              "<td width='30%' bgcolor='#FFFAF8' align='center'>Pengkajian</td>"+
+                                              "<td width='60%' bgcolor='#FFFAF8' align='center'>Parameter</td>"+
+                                              "<td width='10%' bgcolor='#FFFAF8' align='center'>Nilai</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>1. Ekspresi Wajah</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips1")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips1_nilai")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>2. Tangisan</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips2")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips2_nilai")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>3. Pola Nafas</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips3")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips3_nilai")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>4. Tungkai</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips4")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips4_nilai")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>5. Tingkat kesadaran</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips5")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skala_nips5_nilai")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' colspan='2'>Keterangan & Total Nilai : "+rs2.getString("skala_nips_keterangan")+"</td>"+
+                                              "<td valign='top' align='center'>"+rs2.getString("skala_nips_total")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VIII. PERENCANAAN PULANG (DISCHARGE PLANNING)"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' colspan='2' width='50%'>Ibu Bayi & Keluarga Diberikan Informasi Perencanaan Pulang ? "+rs2.getString("informasi_perencanaan_pulang")+"</td>"+
+                                              "<td valign='top' width='25%'>Lama Rawat Rata-rata : "+rs2.getString("lama_ratarata")+"</td>"+
+                                              "<td valign='top' width='25%'>Perencanaan Pulang :"+rs2.getString("perencanaan_pulang")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' colspan='4' width='100%'>Kondisi Klinis Saat Pulang : "+rs2.getString("kondisi_klinis_pulang")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' colspan='4' width='100%'>Perawatan Lanjutan Yang Diberikan Di Rumah : "+rs2.getString("perawatan_lanjutan_dirumah")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' colspan='2' width='50%'>Cara Transportasi Pulang : "+rs2.getString("cara_transportasi_pulang")+"</td>"+
+                                              "<td valign='top' colspan='2' width='50%'>Transportasi Yang Digunakan : "+rs2.getString("transportasi_digunakan")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
