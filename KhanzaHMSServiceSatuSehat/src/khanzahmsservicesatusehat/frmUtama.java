@@ -217,7 +217,7 @@ public class frmUtama extends javax.swing.JFrame {
                     medication();
                 }
                 
-                if((detik.equals("01")&&menit.equals("01"))){
+                if((nilai_jam%4==0)&&(detik.equals("01")&&menit.equals("01"))){
                     encounter();
                     observationTTV();
                     vaksin();

@@ -6412,13 +6412,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%' colspan='2'>Nilai</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>1</td>"+
+                                              "<td valign='top' align='center'>1</td>"+
                                               "<td valign='top'>Apakah ada penurunan berat badan yang tidak diinginkan selama enam bulan terakhir ?</td>"+
                                               "<td valign='top' align='center' width='20%'>"+rs2.getString("sg1")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai1")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>2</td>"+
+                                              "<td valign='top' align='center'>2</td>"+
                                               "<td valign='top'>Apakah nafsu makan berkurang karena tidak nafsu makan ?</td>"+
                                               "<td valign='top' align='center' width='20%'>"+rs2.getString("sg2")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai2")+"&nbsp;&nbsp;</td>"+
@@ -6692,13 +6692,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%' colspan='2'>Nilai</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>1</td>"+
+                                              "<td valign='top' align='center'>1</td>"+
                                               "<td valign='top'>Apakah ada penurunan berat badan yang tidak diinginkan selama enam bulan terakhir ?</td>"+
                                               "<td valign='top' align='center' width='20%'>"+rs2.getString("sg1")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai1")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>2</td>"+
+                                              "<td valign='top' align='center'>2</td>"+
                                               "<td valign='top'>Apakah nafsu makan berkurang karena tidak nafsu makan ?</td>"+
                                               "<td valign='top' align='center' width='20%'>"+rs2.getString("sg2")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai2")+"&nbsp;&nbsp;</td>"+
@@ -7416,25 +7416,25 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='20%' bgcolor='#FFFAF8' colspan='2' align='center' valign='middle'>Nilai</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>1</td>"+
+                                              "<td align='center'>1</td>"+
                                               "<td>Apakah pasien tampak kurus</td>"+
                                               "<td align='center'>"+rs2.getString("sg1")+"</td>"+
                                               "<td align='center'>"+rs2.getString("nilai1")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>2</td>"+
+                                              "<td align='center'>2</td>"+
                                               "<td>Apakah terdapat penurunan berat badan selama satu bulan terakhir? (berdasarkan penilaian objektif data berat badan bila ada atau untuk bayi < 1 tahun ; berat badan tidak naik selama 3 bulan terakhir</td>"+
                                               "<td align='center'>"+rs2.getString("sg2")+"</td>"+
                                               "<td align='center'>"+rs2.getString("nilai2")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>3</td>"+
+                                              "<td align='center'>3</td>"+
                                               "<td>Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari salam seminggu terakhir; Asupan makanan berkurang selama 1 minggu terakhir</td>"+
                                               "<td align='center'>"+rs2.getString("sg3")+"</td>"+
                                               "<td align='center'>"+rs2.getString("nilai3")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>4</td>"+
+                                              "<td align='center'>4</td>"+
                                               "<td>Apakah terdapat penyakit atau keadaan yang menyebabkan pasien beresiko mengalami malnutrisi?</td>"+
                                               "<td align='center'>"+rs2.getString("sg4")+"</td>"+
                                               "<td align='center'>"+rs2.getString("nilai4")+"</td>"+
@@ -7853,13 +7853,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%' colspan='2'>Nilai</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>1</td>"+
+                                              "<td valign='top' align='center'>1</td>"+
                                               "<td valign='top'>Apakah ada penurunan berat badanyang tidak diinginkan selama enam bulan terakhir ?</td>"+
                                               "<td valign='top' align='center' width='20%'>"+rs2.getString("sg1")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai1")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>2</td>"+
+                                              "<td valign='top' align='center'>2</td>"+
                                               "<td valign='top'>Apakah nafsu makan berkurang karena tidak nafsu makan ?</td>"+
                                               "<td valign='top' align='center' width='20%'>"+rs2.getString("sg2")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai2")+"&nbsp;&nbsp;</td>"+
@@ -8142,13 +8142,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%' colspan='2'>Nilai</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>1</td>"+
+                                              "<td valign='top' align='center'>1</td>"+
                                               "<td valign='top'>Apakah ada penurunan berat badan yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
                                               "<td valign='top' align='center' width='35%'>"+rs2.getString("sg1")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai1")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>2</td>"+
+                                              "<td valign='top' align='center'>2</td>"+
                                               "<td valign='top'>Apakah nafsu makan berkurang, karena tidak nafsu makan ?</td>"+
                                               "<td valign='top' align='center' width='35%'>"+rs2.getString("sg2")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai2")+"&nbsp;&nbsp;</td>"+
@@ -10865,13 +10865,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%' colspan='2'>Nilai</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>1</td>"+
+                                              "<td valign='top' align='center'>1</td>"+
                                               "<td valign='top'>Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
                                               "<td valign='top' align='center' width='35%'>"+rs2.getString("skrining_gizi1")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi1")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>2</td>"+
+                                              "<td valign='top' align='center'>2</td>"+
                                               "<td valign='top'>Apakah asupan makan berkurang karena tidak nafsu makan ?</td>"+
                                               "<td valign='top' align='center' width='35%'>"+rs2.getString("skrining_gizi2")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi2")+"&nbsp;&nbsp;</td>"+
@@ -15003,13 +15003,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%' colspan='2'>Nilai</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>1</td>"+
+                                              "<td valign='top' align='center'>1</td>"+
                                               "<td valign='top'>Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
                                               "<td valign='top' align='center' width='35%'>"+rs2.getString("skrining_gizi1")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi1")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top'>2</td>"+
+                                              "<td valign='top' align='center'>2</td>"+
                                               "<td valign='top'>Apakah asupan makan berkurang karena tidak nafsu makan ?</td>"+
                                               "<td valign='top' align='center' width='35%'>"+rs2.getString("skrining_gizi2")+"</td>"+
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi2")+"&nbsp;&nbsp;</td>"+
@@ -24109,12 +24109,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='100%' align='justify'>"+
-                                                  "Kesadaran : "+rs2.getString("kesadaran")+"&nbsp;&nbsp;&nbsp;&nbsp; Keadaan Umum : "+rs2.getString("keadaan_umum")+"&nbsp;&nbsp;&nbsp;&nbsp; GCS(E,V,M) : "+rs2.getString("gcs")+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "TD : "+rs2.getString("td")+" mmHg&nbsp;&nbsp;&nbsp;&nbsp; Suhu : "+rs2.getString("suhu")+" °C&nbsp;&nbsp;&nbsp;&nbsp; HR : "+rs2.getString("hr")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "RR : "+rs2.getString("rr")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp; SpO2 : "+rs2.getString("spo2")+" %&nbsp;&nbsp;&nbsp;&nbsp; Down Score : "+rs2.getString("down_score")+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "BB : "+rs2.getString("bb")+" Kg&nbsp;&nbsp;&nbsp;&nbsp; TB : "+rs2.getString("tb")+" cm&nbsp;&nbsp;&nbsp;&nbsp; LK : "+rs2.getString("lk")+" cm&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "LD : "+rs2.getString("ld")+" cm&nbsp;&nbsp;&nbsp;&nbsp; LP : "+rs2.getString("lp")+" cm&nbsp;&nbsp;&nbsp;&nbsp; Golongan Darah Bayi : "+rs2.getString("gd_bayi")+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Golongan Darah Ibu : "+rs2.getString("gd_ibu")+"&nbsp;&nbsp;&nbsp;&nbsp; Golongan Darah Ayah : "+rs2.getString("gd_ayah")+
+                                                  "Kesadaran : "+rs2.getString("kesadaran")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Keadaan Umum : "+rs2.getString("keadaan_umum")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GCS(E,V,M) : "+rs2.getString("gcs")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "TD : "+rs2.getString("td")+" mmHg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Suhu : "+rs2.getString("suhu")+" °C &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HR : "+rs2.getString("hr")+" x/menit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "RR : "+rs2.getString("rr")+" x/menit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SpO2 : "+rs2.getString("spo2")+" % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Down Score : "+rs2.getString("down_score")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "BB : "+rs2.getString("bb")+" Kg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TB : "+rs2.getString("tb")+" cm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LK : "+rs2.getString("lk")+" cm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "LD : "+rs2.getString("ld")+" cm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LP : "+rs2.getString("lp")+" cm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Golongan Darah Bayi : "+rs2.getString("gd_bayi")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Golongan Darah Ibu : "+rs2.getString("gd_ibu")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Golongan Darah Ayah : "+rs2.getString("gd_ayah")+
                                               "</td>"+
                                           "</tr>"+
                                           "<tr>"+
@@ -24246,11 +24246,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='100%' align='justify'>"+
-                                                  "Kondisi Psikologis : "+rs2.getString("kondisi_psikologis")+"&nbsp;&nbsp;&nbsp;&nbsp; Gangguan Jiwa Di Masa Lalu : "+rs2.getString("gangguan_jiwa")+"&nbsp;&nbsp;&nbsp;&nbsp; Menerima Kondisi Bayi Saat Ini : "+rs2.getString("menerima_kondisi_bayi")+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Status Menikah : "+rs2.getString("status_menikah")+"&nbsp;&nbsp;&nbsp;&nbsp; Masalah Pernikahan : "+rs2.getString("masalah_pernikahan")+(rs2.getString("masalah_pernikahan_keterangan").equals("")?"":", "+rs2.getString("masalah_pernikahan_keterangan"))+"&nbsp;&nbsp;&nbsp;&nbsp; Pekerjaan : "+rs2.getString("pekerjaan")+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Agama : "+rs2.getString("agama")+"&nbsp;&nbsp;&nbsp;&nbsp; Nilai-nilai Kepercayaan/Budaya Yang Perlu Diperhatikan : "+rs2.getString("nilai_kepercayaan")+(rs2.getString("nilai_kepercayaan_keterangan").equals("")?"":", "+rs2.getString("nilai_kepercayaan_keterangan"))+"&nbsp;&nbsp;&nbsp;&nbsp; Suku : "+rs2.getString("suku")+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Pendidikan : "+rs2.getString("pendidikan")+"&nbsp;&nbsp;&nbsp;&nbsp; Pembayaran : "+rs2.getString("pembayaran")+"&nbsp;&nbsp;&nbsp;&nbsp; Tinggal Bersama : "+rs2.getString("tinggal_bersama")+(rs2.getString("tinggal_bersama_keterangan").equals("")?"":", "+rs2.getString("tinggal_bersama_keterangan"))+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Hubungan Pasien dengan Anggota Keluarga : "+rs2.getString("hubungan_keluarga")+"&nbsp;&nbsp;&nbsp;&nbsp; Respon Emosi : "+rs2.getString("respon_emosi")+
+                                                  "Kondisi Psikologis : "+rs2.getString("kondisi_psikologis")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gangguan Jiwa Di Masa Lalu : "+rs2.getString("gangguan_jiwa")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Menerima Kondisi Bayi Saat Ini : "+rs2.getString("menerima_kondisi_bayi")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Status Menikah : "+rs2.getString("status_menikah")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Masalah Pernikahan : "+rs2.getString("masalah_pernikahan")+(rs2.getString("masalah_pernikahan_keterangan").equals("")?"":", "+rs2.getString("masalah_pernikahan_keterangan"))+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pekerjaan : "+rs2.getString("pekerjaan")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Agama : "+rs2.getString("agama")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nilai-nilai Kepercayaan/Budaya Yang Perlu Diperhatikan : "+rs2.getString("nilai_kepercayaan")+(rs2.getString("nilai_kepercayaan_keterangan").equals("")?"":", "+rs2.getString("nilai_kepercayaan_keterangan"))+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Suku : "+rs2.getString("suku")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Pendidikan : "+rs2.getString("pendidikan")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pembayaran : "+rs2.getString("pembayaran")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tinggal Bersama : "+rs2.getString("tinggal_bersama")+(rs2.getString("tinggal_bersama_keterangan").equals("")?"":", "+rs2.getString("tinggal_bersama_keterangan"))+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Hubungan Pasien dengan Anggota Keluarga : "+rs2.getString("hubungan_keluarga")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Respon Emosi : "+rs2.getString("respon_emosi")+
                                               "</td>"+
                                           "</tr>"+
                                        "</table>"+
@@ -24262,15 +24262,49 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='100%' align='justify'>"+
-                                                  "Bahasa Sehari-hari : "+rs2.getString("bahasa_sehari_hari")+"&nbsp;&nbsp;&nbsp;&nbsp; Kemampuan Baca & Tulis : "+rs2.getString("kemampuan_bacatulis")+"&nbsp;&nbsp;&nbsp;&nbsp; Butuh Penerjamah : "+rs2.getString("butuh_penterjemah")+(rs2.getString("butuh_penterjemah_keterangan").equals("")?"":", "+rs2.getString("butuh_penterjemah_keterangan"))+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Terdapat Hambatan Dalam Pembelajaran : "+rs2.getString("terdapat_hambatan_belajar")+"&nbsp;&nbsp;&nbsp;&nbsp; Hambatan Belajar : "+rs2.getString("hambatan_belajar")+(rs2.getString("hambatan_belajar_keterangan").equals("")?"":", "+rs2.getString("hambatan_belajar_keterangan"))+"&nbsp;&nbsp;&nbsp;&nbsp; Hambatan Cara Bicara : "+rs2.getString("hambatan_cara_bicara")+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Hambatan Bahasa Isyarat : "+rs2.getString("hambatan_bahasa_isyarat")+"&nbsp;&nbsp;&nbsp;&nbsp; Cara Belajar Yang Disukai : "+rs2.getString("cara_belajar_disukai")+"&nbsp;&nbsp;&nbsp;&nbsp; Kesediaan Menerima Informasi : "+rs2.getString("kesediaan_menerima_informasi")+(rs2.getString("kesediaan_menerima_informasi_keterangan").equals("")?"":", "+rs2.getString("kesediaan_menerima_informasi_keterangan"))+"&nbsp;&nbsp;&nbsp;&nbsp; "+
-                                                  "Pemahaman Tentang Nutrisi/Diet : "+rs2.getString("pemahaman_nutrisi")+"&nbsp;&nbsp;&nbsp;&nbsp; Pemahaman Tentang Penyakit : "+rs2.getString("pemahaman_penyakit")+"&nbsp;&nbsp;&nbsp;&nbsp; Pemahaman Tentang Pengobatan : "+rs2.getString("pemahaman_pengobatan")+"&nbsp;&nbsp;&nbsp;&nbsp; Pemahaman Tentang Perawatan : "+rs2.getString("pemahaman_perawatan")+
+                                                  "Bahasa Sehari-hari : "+rs2.getString("bahasa_sehari_hari")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kemampuan Baca & Tulis : "+rs2.getString("kemampuan_bacatulis")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Butuh Penerjamah : "+rs2.getString("butuh_penterjemah")+(rs2.getString("butuh_penterjemah_keterangan").equals("")?"":", "+rs2.getString("butuh_penterjemah_keterangan"))+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Terdapat Hambatan Dalam Pembelajaran : "+rs2.getString("terdapat_hambatan_belajar")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hambatan Belajar : "+rs2.getString("hambatan_belajar")+(rs2.getString("hambatan_belajar_keterangan").equals("")?"":", "+rs2.getString("hambatan_belajar_keterangan"))+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hambatan Cara Bicara : "+rs2.getString("hambatan_cara_bicara")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Hambatan Bahasa Isyarat : "+rs2.getString("hambatan_bahasa_isyarat")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cara Belajar Yang Disukai : "+rs2.getString("cara_belajar_disukai")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kesediaan Menerima Informasi : "+rs2.getString("kesediaan_menerima_informasi")+(rs2.getString("kesediaan_menerima_informasi_keterangan").equals("")?"":", "+rs2.getString("kesediaan_menerima_informasi_keterangan"))+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+                                                  "Pemahaman Tentang Nutrisi/Diet : "+rs2.getString("pemahaman_nutrisi")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pemahaman Tentang Penyakit : "+rs2.getString("pemahaman_penyakit")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pemahaman Tentang Pengobatan : "+rs2.getString("pemahaman_pengobatan")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pemahaman Tentang Perawatan : "+rs2.getString("pemahaman_perawatan")+
                                               "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"+ 
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "V. SKRINING GIZI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No</td>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70%'>Parameter</td>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%' colspan='2'>Nilai</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='center'>1</td>"+
+                                              "<td valign='top'>Masalah Minum (ASI/PASI)</td>"+
+                                              "<td valign='top' align='center' width='20%'>"+rs2.getString("masalah_gizi1")+"</td>"+
+                                              "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi1")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='center'>2</td>"+
+                                              "<td valign='top'>Penurunan Berat Badan > 10% Dari BBL (Berat Badan Lahir)</td>"+
+                                              "<td valign='top' align='center' width='20%'>"+rs2.getString("masalah_gizi2")+"</td>"+
+                                              "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi2")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='center'>3</td>"+
+                                              "<td valign='top'>Penyakit / Kelainan Yang Menyertai (Sepsis, Jantung, BBLR, Hipoglikemi, Diare, Lain–lain)</td>"+
+                                              "<td valign='top' align='center' width='20%'>"+rs2.getString("masalah_gizi3")+"</td>"+
+                                              "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi3")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' colspan='3'>Keterangan & Total Skor : "+rs2.getString("keterangan_gizi")+"</td>"+
+                                              "<td valign='top' align='right' width='5%'>"+rs2.getString("totalgizi")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
                                  "<tr>"+
                                     "<td valign='top'>"+
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
