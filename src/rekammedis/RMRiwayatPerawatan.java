@@ -24307,6 +24307,57 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>"+
                                  "<tr>"+
                                     "<td valign='top'>"+
+                                       "VI. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                         "<tr class='isi'>"+
+                                              "<td width='35%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>"+
+                                              "<td width='55%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
+                                              "<td width='10%' bgcolor='#FFFAF8' align='center'>Poin</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>1. Umur</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_skala1")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_nilai1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>2. Jenis Kelamin</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_skala2")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_nilai2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>3. Diagnosa</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_skala3")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_nilai3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>4. Gangguan Kognitif</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_skala4")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_nilai4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>5. Faktor Lingkungan</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_skala5")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_nilai5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>6. Efek Obat Penenang/Operasi/Anastesi</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_skala6")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_nilai6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>7. Penggunaan Obat</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_skala7")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("penilaian_humptydumpty_nilai7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' colspan='2'>Keterangan & Total Poin : "+rs2.getString("penilaian_humptydumpty_hasil")+"</td>"+
+                                              "<td valign='top'>"+rs2.getString("penilaian_humptydumpty_totalnilai")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>MASALAH KEPERAWATAN :</td>"+
