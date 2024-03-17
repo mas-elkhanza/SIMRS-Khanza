@@ -23962,12 +23962,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "<tr>"+
                                               "<td width='11%' border='0'>Tanggal</td>"+
                                               "<td width='35%' border='0'>: "+rs2.getString("tanggal")+"</td>"+
-                                              "<td width='16%' border='0'>Asal Pasien</td>"+
-                                              "<td width='38%' border='0'>: "+rs2.getString("asal_pasien")+"</td>"+
+                                              "<td width='16%' border='0'>Deperoleh Dari</td>"+
+                                              "<td width='38%' border='0'>: "+rs2.getString("diperoleh_dari")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='11%' border='0'>Deperoleh Dari</td>"+
-                                              "<td width='35%' border='0'>: "+rs2.getString("diperoleh_dari")+"</td>"+
+                                              "<td width='11%' border='0'>Asal Pasien</td>"+
+                                              "<td width='35%' border='0'>: "+rs2.getString("asal_pasien")+"</td>"+
                                               "<td width='16%' border='0'>Hubungan Dengan Pasien</td>"+
                                               "<td width='38%' border='0'>: "+rs2.getString("hubungan_dengan_pasien")+"</td>"+
                                           "</tr>"+

@@ -1,0 +1,1965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="diagnosa" class="java.lang.String"/>
+	<parameter name="lokalis" class="java.io.InputStream"/>
+	<parameter name="masalah" class="java.lang.String"/>
+	<parameter name="finger" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select penilaian_awal_keperawatan_ranap_neonatus.no_rawat,penilaian_awal_keperawatan_ranap_neonatus.tanggal,penilaian_awal_keperawatan_ranap_neonatus.asal_pasien,penilaian_awal_keperawatan_ranap_neonatus.cara_masuk,
+                penilaian_awal_keperawatan_ranap_neonatus.diperoleh_dari,penilaian_awal_keperawatan_ranap_neonatus.hubungan_dengan_pasien,penilaian_awal_keperawatan_ranap_neonatus.keluhan_utama,penilaian_awal_keperawatan_ranap_neonatus.prenatal_g,
+                penilaian_awal_keperawatan_ranap_neonatus.prenatal_p,penilaian_awal_keperawatan_ranap_neonatus.prenatal_a,penilaian_awal_keperawatan_ranap_neonatus.prenatal_uk,penilaian_awal_keperawatan_ranap_neonatus.prenatal_riwayat_penyakit_ibu,
+                penilaian_awal_keperawatan_ranap_neonatus.prenatal_riwayat_penyakit_ibu_keterangan,penilaian_awal_keperawatan_ranap_neonatus.prenatal_riwayat_pengobatan_ibu_selama_hamil,penilaian_awal_keperawatan_ranap_neonatus.prenatal_pernah_dirawat,
+                penilaian_awal_keperawatan_ranap_neonatus.prenatal_pernah_dirawat_keterangan,penilaian_awal_keperawatan_ranap_neonatus.prenatal_status_gizi_ibu,penilaian_awal_keperawatan_ranap_neonatus.intranatal_g,penilaian_awal_keperawatan_ranap_neonatus.intranatal_p,
+                penilaian_awal_keperawatan_ranap_neonatus.intranatal_a,penilaian_awal_keperawatan_ranap_neonatus.intranatal_kondisi_lahir,penilaian_awal_keperawatan_ranap_neonatus.intranatal_cara_persalinan,penilaian_awal_keperawatan_ranap_neonatus.intranatal_cara_persalinan_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.intranatal_apgar,penilaian_awal_keperawatan_ranap_neonatus.intranatal_letak,penilaian_awal_keperawatan_ranap_neonatus.intranatal_tali_pusat,penilaian_awal_keperawatan_ranap_neonatus.intranatal_ketuban,
+                penilaian_awal_keperawatan_ranap_neonatus.intranatal_bb,penilaian_awal_keperawatan_ranap_neonatus.intranatal_pb,penilaian_awal_keperawatan_ranap_neonatus.intranatal_lk,penilaian_awal_keperawatan_ranap_neonatus.intranatal_ld,
+                penilaian_awal_keperawatan_ranap_neonatus.intranatal_lp,penilaian_awal_keperawatan_ranap_neonatus.risiko_infeksi_mayor,penilaian_awal_keperawatan_ranap_neonatus.risiko_infeksi_mayor_keterangan,penilaian_awal_keperawatan_ranap_neonatus.risiko_infeksi_minor,
+                penilaian_awal_keperawatan_ranap_neonatus.risiko_infeksi_minor_keterangan,penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_nutrisi,penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_nutrisi_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_nutrisi_frekuensi,penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_nutrisi_kali,penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_bak,
+                penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_bak_keterangan,penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_bab,penilaian_awal_keperawatan_ranap_neonatus.kebutuhan_biologis_bab_keterangan,penilaian_awal_keperawatan_ranap_neonatus.alergi_obat,
+                penilaian_awal_keperawatan_ranap_neonatus.alergi_obat_keterangan,penilaian_awal_keperawatan_ranap_neonatus.alergi_obat_reaksi,penilaian_awal_keperawatan_ranap_neonatus.alergi_makanan,penilaian_awal_keperawatan_ranap_neonatus.alergi_makanan_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.alergi_makanan_reaksi,penilaian_awal_keperawatan_ranap_neonatus.alergi_lainnya,penilaian_awal_keperawatan_ranap_neonatus.alergi_lainnya_keterangan,penilaian_awal_keperawatan_ranap_neonatus.alergi_lainnya_reaksi,
+                penilaian_awal_keperawatan_ranap_neonatus.riwayat_penyakit_keluarga,penilaian_awal_keperawatan_ranap_neonatus.riwayat_penyakit_keluarga_keterangan,penilaian_awal_keperawatan_ranap_neonatus.riwayat_imunisasi,penilaian_awal_keperawatan_ranap_neonatus.riwayat_imunisasi_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.riwayat_tranfusi_darah,penilaian_awal_keperawatan_ranap_neonatus.riwayat_tranfusi_darah_keterangan,penilaian_awal_keperawatan_ranap_neonatus.riwayat_tranfusi_darah_reaksi,
+                penilaian_awal_keperawatan_ranap_neonatus.riwayat_tranfusi_darah_reaksi_keterangan,penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_obat_diminum,penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_obat_diminum_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_narkoba,penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_narkoba_keterangan,penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_merokok,penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_merokok_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_alkohol,penilaian_awal_keperawatan_ranap_neonatus.kebiasan_ibu_alkohol_keterangan,penilaian_awal_keperawatan_ranap_neonatus.kesadaran,penilaian_awal_keperawatan_ranap_neonatus.keadaan_umum,
+                penilaian_awal_keperawatan_ranap_neonatus.gcs,penilaian_awal_keperawatan_ranap_neonatus.td,penilaian_awal_keperawatan_ranap_neonatus.suhu,penilaian_awal_keperawatan_ranap_neonatus.hr,penilaian_awal_keperawatan_ranap_neonatus.rr,
+                penilaian_awal_keperawatan_ranap_neonatus.spo2,penilaian_awal_keperawatan_ranap_neonatus.down_score,penilaian_awal_keperawatan_ranap_neonatus.bb,penilaian_awal_keperawatan_ranap_neonatus.tb,penilaian_awal_keperawatan_ranap_neonatus.lk,
+                penilaian_awal_keperawatan_ranap_neonatus.ld,penilaian_awal_keperawatan_ranap_neonatus.lp,penilaian_awal_keperawatan_ranap_neonatus.gd_bayi,penilaian_awal_keperawatan_ranap_neonatus.gd_ibu,penilaian_awal_keperawatan_ranap_neonatus.gd_ayah,
+                penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_gerak_bayi,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_kepala,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_kepala_keterangan,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_ubunubun,
+                penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_ubunubun_keterangan,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_wajah,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_wajah_keterangan,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_kejang,
+                penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_kejang_keterangan,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_refleks,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_refleks_keterangan,penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_tangisbayi,
+                penilaian_awal_keperawatan_ranap_neonatus.saraf_pusat_tangisbayi_keterangan,penilaian_awal_keperawatan_ranap_neonatus.kardiovaskular_denyutnadi,penilaian_awal_keperawatan_ranap_neonatus.kardiovaskular_sirkulasi,penilaian_awal_keperawatan_ranap_neonatus.kardiovaskular_sirkulasi_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.kardiovaskular_pulsasi,penilaian_awal_keperawatan_ranap_neonatus.kardiovaskular_pulsasi_keterangan,penilaian_awal_keperawatan_ranap_neonatus.respirasi_polanafas,penilaian_awal_keperawatan_ranap_neonatus.respirasi_jenispernapasan,
+                penilaian_awal_keperawatan_ranap_neonatus.respirasi_jenispernapasan_keterangan,penilaian_awal_keperawatan_ranap_neonatus.respirasi_retraksi,penilaian_awal_keperawatan_ranap_neonatus.respirasi_airentry,penilaian_awal_keperawatan_ranap_neonatus.respirasi_merintih,
+                penilaian_awal_keperawatan_ranap_neonatus.respirasi_suara_napas,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_mulut,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_mulut_keterangan,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_lidah,
+                penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_tenggorakan,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_tenggorakan_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_bab,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_bab_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_warnabab,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_warnabab_keterangan,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_bak,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_bak_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_bakwarna,penilaian_awal_keperawatan_ranap_neonatus.gastrointestinal_bakwarna_keterangan,penilaian_awal_keperawatan_ranap_neonatus.neurologi_posisi_mata,penilaian_awal_keperawatan_ranap_neonatus.neurologi_kelopak_mata,
+                penilaian_awal_keperawatan_ranap_neonatus.neurologi_kelopak_mata_keterangan,penilaian_awal_keperawatan_ranap_neonatus.neurologi_besar_pupil,penilaian_awal_keperawatan_ranap_neonatus.neurologi_konjugtiva,penilaian_awal_keperawatan_ranap_neonatus.neurologi_konjugtiva_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.neurologi_sklera,penilaian_awal_keperawatan_ranap_neonatus.neurologi_sklera_keterangan,penilaian_awal_keperawatan_ranap_neonatus.neurologi_pendengaran,penilaian_awal_keperawatan_ranap_neonatus.neurologi_pendengaran_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.neurologi_penciuman,penilaian_awal_keperawatan_ranap_neonatus.neurologi_penciuman_keterangan,penilaian_awal_keperawatan_ranap_neonatus.integument_warna_kulit,penilaian_awal_keperawatan_ranap_neonatus.integument_warna_kulit_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.integument_vernic_kaseosa,penilaian_awal_keperawatan_ranap_neonatus.integument_vernic_kaseosa_keterangan,penilaian_awal_keperawatan_ranap_neonatus.integument_turgor,penilaian_awal_keperawatan_ranap_neonatus.integument_lanugo,
+                penilaian_awal_keperawatan_ranap_neonatus.integument_kulit,penilaian_awal_keperawatan_ranap_neonatus.integument_risiko_dekubitas,penilaian_awal_keperawatan_ranap_neonatus.reproduksi,penilaian_awal_keperawatan_ranap_neonatus.reproduksi_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.muskuloskeletal_rekoil_telinga,penilaian_awal_keperawatan_ranap_neonatus.muskuloskeletal_rekoil_telinga_keterangan,penilaian_awal_keperawatan_ranap_neonatus.muskuloskeletal_lengan,
+                penilaian_awal_keperawatan_ranap_neonatus.muskuloskeletal_lengan_keterangan,penilaian_awal_keperawatan_ranap_neonatus.muskuloskeletal_tungkai,penilaian_awal_keperawatan_ranap_neonatus.muskuloskeletal_tungkai_keterangan,penilaian_awal_keperawatan_ranap_neonatus.muskuloskeletal_telapak_kaki,
+                penilaian_awal_keperawatan_ranap_neonatus.kondisi_psikologis,penilaian_awal_keperawatan_ranap_neonatus.gangguan_jiwa,penilaian_awal_keperawatan_ranap_neonatus.menerima_kondisi_bayi,penilaian_awal_keperawatan_ranap_neonatus.status_menikah,
+                penilaian_awal_keperawatan_ranap_neonatus.masalah_pernikahan,penilaian_awal_keperawatan_ranap_neonatus.masalah_pernikahan_keterangan,penilaian_awal_keperawatan_ranap_neonatus.pekerjaan,penilaian_awal_keperawatan_ranap_neonatus.agama,
+                penilaian_awal_keperawatan_ranap_neonatus.nilai_kepercayaan,penilaian_awal_keperawatan_ranap_neonatus.nilai_kepercayaan_keterangan,penilaian_awal_keperawatan_ranap_neonatus.suku,penilaian_awal_keperawatan_ranap_neonatus.pendidikan,penilaian_awal_keperawatan_ranap_neonatus.pembayaran,
+                penilaian_awal_keperawatan_ranap_neonatus.tinggal_bersama,penilaian_awal_keperawatan_ranap_neonatus.tinggal_bersama_keterangan,penilaian_awal_keperawatan_ranap_neonatus.hubungan_keluarga,penilaian_awal_keperawatan_ranap_neonatus.respon_emosi,
+                penilaian_awal_keperawatan_ranap_neonatus.bahasa_sehari_hari,penilaian_awal_keperawatan_ranap_neonatus.kemampuan_bacatulis,penilaian_awal_keperawatan_ranap_neonatus.butuh_penterjemah,penilaian_awal_keperawatan_ranap_neonatus.butuh_penterjemah_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.terdapat_hambatan_belajar,penilaian_awal_keperawatan_ranap_neonatus.hambatan_belajar,penilaian_awal_keperawatan_ranap_neonatus.hambatan_belajar_keterangan,penilaian_awal_keperawatan_ranap_neonatus.hambatan_cara_bicara,
+                penilaian_awal_keperawatan_ranap_neonatus.hambatan_bahasa_isyarat,penilaian_awal_keperawatan_ranap_neonatus.cara_belajar_disukai,penilaian_awal_keperawatan_ranap_neonatus.kesediaan_menerima_informasi,penilaian_awal_keperawatan_ranap_neonatus.kesediaan_menerima_informasi_keterangan,
+                penilaian_awal_keperawatan_ranap_neonatus.pemahaman_nutrisi,penilaian_awal_keperawatan_ranap_neonatus.pemahaman_penyakit,penilaian_awal_keperawatan_ranap_neonatus.pemahaman_pengobatan,penilaian_awal_keperawatan_ranap_neonatus.pemahaman_perawatan,
+                penilaian_awal_keperawatan_ranap_neonatus.masalah_gizi1,penilaian_awal_keperawatan_ranap_neonatus.nilai_gizi1,penilaian_awal_keperawatan_ranap_neonatus.masalah_gizi2,penilaian_awal_keperawatan_ranap_neonatus.nilai_gizi2,penilaian_awal_keperawatan_ranap_neonatus.masalah_gizi3,
+                penilaian_awal_keperawatan_ranap_neonatus.nilai_gizi3,penilaian_awal_keperawatan_ranap_neonatus.totalgizi,penilaian_awal_keperawatan_ranap_neonatus.keterangan_gizi,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_skala1,
+                penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_nilai1,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_skala2,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_nilai2,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_skala3,
+                penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_nilai3,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_skala4,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_nilai4,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_skala5,
+                penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_nilai5,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_skala6,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_nilai6,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_skala7,
+                penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_nilai7,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_totalnilai,penilaian_awal_keperawatan_ranap_neonatus.penilaian_humptydumpty_hasil,penilaian_awal_keperawatan_ranap_neonatus.skala_nips1,
+                penilaian_awal_keperawatan_ranap_neonatus.skala_nips1_nilai,penilaian_awal_keperawatan_ranap_neonatus.skala_nips2,penilaian_awal_keperawatan_ranap_neonatus.skala_nips2_nilai,penilaian_awal_keperawatan_ranap_neonatus.skala_nips3,penilaian_awal_keperawatan_ranap_neonatus.skala_nips3_nilai,
+                penilaian_awal_keperawatan_ranap_neonatus.skala_nips4,penilaian_awal_keperawatan_ranap_neonatus.skala_nips4_nilai,penilaian_awal_keperawatan_ranap_neonatus.skala_nips5,penilaian_awal_keperawatan_ranap_neonatus.skala_nips5_nilai,penilaian_awal_keperawatan_ranap_neonatus.skala_nips_total,
+                penilaian_awal_keperawatan_ranap_neonatus.skala_nips_keterangan,penilaian_awal_keperawatan_ranap_neonatus.informasi_perencanaan_pulang,penilaian_awal_keperawatan_ranap_neonatus.lama_ratarata,penilaian_awal_keperawatan_ranap_neonatus.perencanaan_pulang,
+                penilaian_awal_keperawatan_ranap_neonatus.kondisi_klinis_pulang,penilaian_awal_keperawatan_ranap_neonatus.perawatan_lanjutan_dirumah,penilaian_awal_keperawatan_ranap_neonatus.cara_transportasi_pulang,penilaian_awal_keperawatan_ranap_neonatus.transportasi_digunakan,
+                penilaian_awal_keperawatan_ranap_neonatus.rencana,penilaian_awal_keperawatan_ranap_neonatus.nip1,penilaian_awal_keperawatan_ranap_neonatus.nip2,penilaian_awal_keperawatan_ranap_neonatus.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,
+                dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                inner join penilaian_awal_keperawatan_ranap_neonatus on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap_neonatus.no_rawat 
+                inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap_neonatus.nip1=pengkaji1.nip 
+                inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap_neonatus.nip2=pengkaji2.nip 
+                inner join dokter on penilaian_awal_keperawatan_ranap_neonatus.kd_dokter=dokter.kd_dokter]]>
+	</queryString>
+	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="tanggal" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="asal_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="asal_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="asal_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cara_masuk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cara_masuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="cara_masuk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diperoleh_dari" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diperoleh_dari"/>
+		<property name="com.jaspersoft.studio.field.label" value="diperoleh_dari"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hubungan_dengan_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hubungan_dengan_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="hubungan_dengan_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keluhan_utama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keluhan_utama"/>
+		<property name="com.jaspersoft.studio.field.label" value="keluhan_utama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="prenatal_g" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_g"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_g"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_p" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_p"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_p"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_a" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_a"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_a"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_uk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_uk"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_uk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_riwayat_penyakit_ibu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_riwayat_penyakit_ibu"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_riwayat_penyakit_ibu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_riwayat_penyakit_ibu_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_riwayat_penyakit_ibu_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_riwayat_penyakit_ibu_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_riwayat_pengobatan_ibu_selama_hamil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_riwayat_pengobatan_ibu_selama_hamil"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_riwayat_pengobatan_ibu_selama_hamil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_pernah_dirawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_pernah_dirawat"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_pernah_dirawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_pernah_dirawat_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_pernah_dirawat_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_pernah_dirawat_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenatal_status_gizi_ibu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenatal_status_gizi_ibu"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenatal_status_gizi_ibu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_g" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_g"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_g"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_p" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_p"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_p"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_a" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_a"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_a"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_kondisi_lahir" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_kondisi_lahir"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_kondisi_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_cara_persalinan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_cara_persalinan"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_cara_persalinan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_cara_persalinan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_cara_persalinan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_cara_persalinan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_apgar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_apgar"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_apgar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_letak" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_letak"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_letak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_tali_pusat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_tali_pusat"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_tali_pusat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_ketuban" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_ketuban"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_ketuban"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_bb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_bb"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_bb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_pb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_pb"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_pb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_lk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_lk"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_lk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_ld" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_ld"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_ld"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intranatal_lp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="intranatal_lp"/>
+		<property name="com.jaspersoft.studio.field.label" value="intranatal_lp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="risiko_infeksi_mayor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="risiko_infeksi_mayor"/>
+		<property name="com.jaspersoft.studio.field.label" value="risiko_infeksi_mayor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="risiko_infeksi_mayor_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="risiko_infeksi_mayor_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="risiko_infeksi_mayor_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="risiko_infeksi_minor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="risiko_infeksi_minor"/>
+		<property name="com.jaspersoft.studio.field.label" value="risiko_infeksi_minor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="risiko_infeksi_minor_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="risiko_infeksi_minor_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="risiko_infeksi_minor_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_nutrisi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_nutrisi"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_nutrisi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_nutrisi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_nutrisi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_nutrisi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_nutrisi_frekuensi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_nutrisi_frekuensi"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_nutrisi_frekuensi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_nutrisi_kali" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_nutrisi_kali"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_nutrisi_kali"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_bak" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_bak"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_bak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_bak_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_bak_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_bak_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_bab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_bab"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_bab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebutuhan_biologis_bab_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebutuhan_biologis_bab_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebutuhan_biologis_bab_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_obat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_obat"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_obat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_obat_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_obat_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_obat_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_obat_reaksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_obat_reaksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_obat_reaksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_makanan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_makanan"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_makanan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_makanan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_makanan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_makanan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_makanan_reaksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_makanan_reaksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_makanan_reaksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_lainnya" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_lainnya"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_lainnya"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_lainnya_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_lainnya_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_lainnya_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alergi_lainnya_reaksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi_lainnya_reaksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="alergi_lainnya_reaksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_penyakit_keluarga" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_penyakit_keluarga"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_penyakit_keluarga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_penyakit_keluarga_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_penyakit_keluarga_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_penyakit_keluarga_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_imunisasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_imunisasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_imunisasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_imunisasi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_imunisasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_imunisasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_tranfusi_darah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_tranfusi_darah"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_tranfusi_darah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_tranfusi_darah_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_tranfusi_darah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_tranfusi_darah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_tranfusi_darah_reaksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_tranfusi_darah_reaksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_tranfusi_darah_reaksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="riwayat_tranfusi_darah_reaksi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="riwayat_tranfusi_darah_reaksi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="riwayat_tranfusi_darah_reaksi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_obat_diminum" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_obat_diminum"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_obat_diminum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_obat_diminum_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_obat_diminum_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_obat_diminum_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_narkoba" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_narkoba"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_narkoba"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_narkoba_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_narkoba_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_narkoba_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_merokok_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_merokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_merokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_alkohol" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_alkohol"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_alkohol"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kebiasan_ibu_alkohol_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kebiasan_ibu_alkohol_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kebiasan_ibu_alkohol_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kesadaran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kesadaran"/>
+		<property name="com.jaspersoft.studio.field.label" value="kesadaran"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keadaan_umum" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keadaan_umum"/>
+		<property name="com.jaspersoft.studio.field.label" value="keadaan_umum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gcs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gcs"/>
+		<property name="com.jaspersoft.studio.field.label" value="gcs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="td" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="td"/>
+		<property name="com.jaspersoft.studio.field.label" value="td"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="suhu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="suhu"/>
+		<property name="com.jaspersoft.studio.field.label" value="suhu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="hr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hr"/>
+		<property name="com.jaspersoft.studio.field.label" value="hr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rr"/>
+		<property name="com.jaspersoft.studio.field.label" value="rr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="spo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="spo2"/>
+		<property name="com.jaspersoft.studio.field.label" value="spo2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="down_score" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="down_score"/>
+		<property name="com.jaspersoft.studio.field.label" value="down_score"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bb"/>
+		<property name="com.jaspersoft.studio.field.label" value="bb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="tb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tb"/>
+		<property name="com.jaspersoft.studio.field.label" value="tb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+	</field>
+	<field name="lk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lk"/>
+		<property name="com.jaspersoft.studio.field.label" value="lk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ld" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ld"/>
+		<property name="com.jaspersoft.studio.field.label" value="ld"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lp"/>
+		<property name="com.jaspersoft.studio.field.label" value="lp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gd_bayi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gd_bayi"/>
+		<property name="com.jaspersoft.studio.field.label" value="gd_bayi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gd_ibu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gd_ibu"/>
+		<property name="com.jaspersoft.studio.field.label" value="gd_ibu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gd_ayah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gd_ayah"/>
+		<property name="com.jaspersoft.studio.field.label" value="gd_ayah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_gerak_bayi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_gerak_bayi"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_gerak_bayi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_kepala" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_kepala"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_kepala"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_kepala_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_kepala_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_kepala_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_ubunubun" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_ubunubun"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_ubunubun"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_ubunubun_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_ubunubun_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_ubunubun_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_wajah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_wajah"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_wajah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_wajah_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_wajah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_wajah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_kejang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_kejang"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_kejang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_kejang_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_kejang_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_kejang_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_refleks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_refleks"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_refleks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_refleks_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_refleks_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_refleks_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_tangisbayi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_tangisbayi"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_tangisbayi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saraf_pusat_tangisbayi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="saraf_pusat_tangisbayi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="saraf_pusat_tangisbayi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kardiovaskular_denyutnadi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kardiovaskular_denyutnadi"/>
+		<property name="com.jaspersoft.studio.field.label" value="kardiovaskular_denyutnadi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kardiovaskular_sirkulasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kardiovaskular_sirkulasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="kardiovaskular_sirkulasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kardiovaskular_sirkulasi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kardiovaskular_sirkulasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kardiovaskular_sirkulasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kardiovaskular_pulsasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kardiovaskular_pulsasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="kardiovaskular_pulsasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kardiovaskular_pulsasi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kardiovaskular_pulsasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kardiovaskular_pulsasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respirasi_polanafas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi_polanafas"/>
+		<property name="com.jaspersoft.studio.field.label" value="respirasi_polanafas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respirasi_jenispernapasan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi_jenispernapasan"/>
+		<property name="com.jaspersoft.studio.field.label" value="respirasi_jenispernapasan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respirasi_jenispernapasan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi_jenispernapasan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="respirasi_jenispernapasan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respirasi_retraksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi_retraksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="respirasi_retraksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respirasi_airentry" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi_airentry"/>
+		<property name="com.jaspersoft.studio.field.label" value="respirasi_airentry"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respirasi_merintih" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi_merintih"/>
+		<property name="com.jaspersoft.studio.field.label" value="respirasi_merintih"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respirasi_suara_napas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi_suara_napas"/>
+		<property name="com.jaspersoft.studio.field.label" value="respirasi_suara_napas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_mulut" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_mulut"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_mulut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_mulut_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_mulut_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_mulut_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_lidah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_lidah"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_lidah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_lidah_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_lidah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_lidah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_tenggorakan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_tenggorakan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_tenggorakan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_tenggorakan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_tenggorakan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_tenggorakan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_abdomen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_abdomen"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_abdomen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_abdomen_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_abdomen_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_abdomen_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_bab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_bab"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_bab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_bab_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_bab_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_bab_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_warnabab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_warnabab"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_warnabab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_warnabab_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_warnabab_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_warnabab_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_bak" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_bak"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_bak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_bak_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_bak_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_bak_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_bakwarna" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_bakwarna"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_bakwarna"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastrointestinal_bakwarna_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gastrointestinal_bakwarna_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastrointestinal_bakwarna_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_posisi_mata" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_posisi_mata"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_posisi_mata"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_kelopak_mata" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_kelopak_mata"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_kelopak_mata"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_kelopak_mata_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_kelopak_mata_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_kelopak_mata_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_besar_pupil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_besar_pupil"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_besar_pupil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_konjugtiva" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_konjugtiva"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_konjugtiva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_konjugtiva_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_konjugtiva_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_konjugtiva_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_sklera" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_sklera"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_sklera"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_sklera_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_sklera_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_sklera_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_pendengaran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_pendengaran"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_pendengaran"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_pendengaran_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_pendengaran_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_pendengaran_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_penciuman" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_penciuman"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_penciuman"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="neurologi_penciuman_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="neurologi_penciuman_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="neurologi_penciuman_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_warna_kulit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_warna_kulit"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_warna_kulit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_warna_kulit_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_warna_kulit_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_warna_kulit_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_vernic_kaseosa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_vernic_kaseosa"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_vernic_kaseosa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_vernic_kaseosa_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_vernic_kaseosa_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_vernic_kaseosa_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_turgor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_turgor"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_turgor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_lanugo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_lanugo"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_lanugo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_kulit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_kulit"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_kulit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="integument_risiko_dekubitas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="integument_risiko_dekubitas"/>
+		<property name="com.jaspersoft.studio.field.label" value="integument_risiko_dekubitas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reproduksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reproduksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="reproduksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reproduksi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reproduksi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="reproduksi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="muskuloskeletal_rekoil_telinga" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="muskuloskeletal_rekoil_telinga"/>
+		<property name="com.jaspersoft.studio.field.label" value="muskuloskeletal_rekoil_telinga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="muskuloskeletal_rekoil_telinga_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="muskuloskeletal_rekoil_telinga_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="muskuloskeletal_rekoil_telinga_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="muskuloskeletal_lengan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="muskuloskeletal_lengan"/>
+		<property name="com.jaspersoft.studio.field.label" value="muskuloskeletal_lengan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="muskuloskeletal_lengan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="muskuloskeletal_lengan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="muskuloskeletal_lengan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="muskuloskeletal_tungkai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="muskuloskeletal_tungkai"/>
+		<property name="com.jaspersoft.studio.field.label" value="muskuloskeletal_tungkai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="muskuloskeletal_tungkai_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="muskuloskeletal_tungkai_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="muskuloskeletal_tungkai_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="muskuloskeletal_telapak_kaki" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="muskuloskeletal_telapak_kaki"/>
+		<property name="com.jaspersoft.studio.field.label" value="muskuloskeletal_telapak_kaki"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kondisi_psikologis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kondisi_psikologis"/>
+		<property name="com.jaspersoft.studio.field.label" value="kondisi_psikologis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gangguan_jiwa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gangguan_jiwa"/>
+		<property name="com.jaspersoft.studio.field.label" value="gangguan_jiwa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="menerima_kondisi_bayi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="menerima_kondisi_bayi"/>
+		<property name="com.jaspersoft.studio.field.label" value="menerima_kondisi_bayi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_menikah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status_menikah"/>
+		<property name="com.jaspersoft.studio.field.label" value="status_menikah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="masalah_pernikahan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="masalah_pernikahan"/>
+		<property name="com.jaspersoft.studio.field.label" value="masalah_pernikahan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="masalah_pernikahan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="masalah_pernikahan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="masalah_pernikahan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pekerjaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pekerjaan"/>
+		<property name="com.jaspersoft.studio.field.label" value="pekerjaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="agama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="agama"/>
+		<property name="com.jaspersoft.studio.field.label" value="agama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai_kepercayaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nilai_kepercayaan"/>
+		<property name="com.jaspersoft.studio.field.label" value="nilai_kepercayaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai_kepercayaan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nilai_kepercayaan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="nilai_kepercayaan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="suku" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="suku"/>
+		<property name="com.jaspersoft.studio.field.label" value="suku"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pendidikan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pendidikan"/>
+		<property name="com.jaspersoft.studio.field.label" value="pendidikan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pembayaran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pembayaran"/>
+		<property name="com.jaspersoft.studio.field.label" value="pembayaran"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tinggal_bersama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tinggal_bersama"/>
+		<property name="com.jaspersoft.studio.field.label" value="tinggal_bersama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tinggal_bersama_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tinggal_bersama_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="tinggal_bersama_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hubungan_keluarga" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hubungan_keluarga"/>
+		<property name="com.jaspersoft.studio.field.label" value="hubungan_keluarga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respon_emosi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respon_emosi"/>
+		<property name="com.jaspersoft.studio.field.label" value="respon_emosi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bahasa_sehari_hari" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bahasa_sehari_hari"/>
+		<property name="com.jaspersoft.studio.field.label" value="bahasa_sehari_hari"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kemampuan_bacatulis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kemampuan_bacatulis"/>
+		<property name="com.jaspersoft.studio.field.label" value="kemampuan_bacatulis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="butuh_penterjemah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="butuh_penterjemah"/>
+		<property name="com.jaspersoft.studio.field.label" value="butuh_penterjemah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="butuh_penterjemah_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="butuh_penterjemah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="butuh_penterjemah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="terdapat_hambatan_belajar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="terdapat_hambatan_belajar"/>
+		<property name="com.jaspersoft.studio.field.label" value="terdapat_hambatan_belajar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hambatan_belajar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hambatan_belajar"/>
+		<property name="com.jaspersoft.studio.field.label" value="hambatan_belajar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hambatan_belajar_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hambatan_belajar_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="hambatan_belajar_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hambatan_cara_bicara" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hambatan_cara_bicara"/>
+		<property name="com.jaspersoft.studio.field.label" value="hambatan_cara_bicara"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hambatan_bahasa_isyarat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hambatan_bahasa_isyarat"/>
+		<property name="com.jaspersoft.studio.field.label" value="hambatan_bahasa_isyarat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cara_belajar_disukai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cara_belajar_disukai"/>
+		<property name="com.jaspersoft.studio.field.label" value="cara_belajar_disukai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kesediaan_menerima_informasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kesediaan_menerima_informasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="kesediaan_menerima_informasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kesediaan_menerima_informasi_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kesediaan_menerima_informasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="kesediaan_menerima_informasi_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pemahaman_nutrisi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pemahaman_nutrisi"/>
+		<property name="com.jaspersoft.studio.field.label" value="pemahaman_nutrisi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pemahaman_penyakit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pemahaman_penyakit"/>
+		<property name="com.jaspersoft.studio.field.label" value="pemahaman_penyakit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pemahaman_pengobatan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pemahaman_pengobatan"/>
+		<property name="com.jaspersoft.studio.field.label" value="pemahaman_pengobatan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pemahaman_perawatan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pemahaman_perawatan"/>
+		<property name="com.jaspersoft.studio.field.label" value="pemahaman_perawatan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="masalah_gizi1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="masalah_gizi1"/>
+		<property name="com.jaspersoft.studio.field.label" value="masalah_gizi1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai_gizi1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nilai_gizi1"/>
+		<property name="com.jaspersoft.studio.field.label" value="nilai_gizi1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="masalah_gizi2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="masalah_gizi2"/>
+		<property name="com.jaspersoft.studio.field.label" value="masalah_gizi2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai_gizi2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nilai_gizi2"/>
+		<property name="com.jaspersoft.studio.field.label" value="nilai_gizi2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="masalah_gizi3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="masalah_gizi3"/>
+		<property name="com.jaspersoft.studio.field.label" value="masalah_gizi3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai_gizi3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nilai_gizi3"/>
+		<property name="com.jaspersoft.studio.field.label" value="nilai_gizi3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalgizi" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="totalgizi"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalgizi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keterangan_gizi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keterangan_gizi"/>
+		<property name="com.jaspersoft.studio.field.label" value="keterangan_gizi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_skala1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_skala1"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_skala1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_nilai1" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_nilai1"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_nilai1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_skala2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_skala2"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_skala2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_nilai2" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_nilai2"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_nilai2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_skala3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_skala3"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_skala3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_nilai3" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_nilai3"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_nilai3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_skala4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_skala4"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_skala4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_nilai4" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_nilai4"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_nilai4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_skala5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_skala5"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_skala5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_nilai5" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_nilai5"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_nilai5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_skala6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_skala6"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_skala6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_nilai6" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_nilai6"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_nilai6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_skala7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_skala7"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_skala7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_nilai7" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_nilai7"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_nilai7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_totalnilai" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_totalnilai"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_totalnilai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penilaian_humptydumpty_hasil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian_humptydumpty_hasil"/>
+		<property name="com.jaspersoft.studio.field.label" value="penilaian_humptydumpty_hasil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips1"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips1_nilai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips1_nilai"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips1_nilai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips2"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips2_nilai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips2_nilai"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips2_nilai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips3"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips3_nilai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips3_nilai"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips3_nilai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips4"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips4_nilai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips4_nilai"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips4_nilai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips5"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips5_nilai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips5_nilai"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips5_nilai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips_total" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="skala_nips_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nips_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="skala_nips_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="informasi_perencanaan_pulang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="informasi_perencanaan_pulang"/>
+		<property name="com.jaspersoft.studio.field.label" value="informasi_perencanaan_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lama_ratarata" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lama_ratarata"/>
+		<property name="com.jaspersoft.studio.field.label" value="lama_ratarata"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perencanaan_pulang" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="perencanaan_pulang"/>
+		<property name="com.jaspersoft.studio.field.label" value="perencanaan_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kondisi_klinis_pulang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kondisi_klinis_pulang"/>
+		<property name="com.jaspersoft.studio.field.label" value="kondisi_klinis_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perawatan_lanjutan_dirumah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perawatan_lanjutan_dirumah"/>
+		<property name="com.jaspersoft.studio.field.label" value="perawatan_lanjutan_dirumah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cara_transportasi_pulang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cara_transportasi_pulang"/>
+		<property name="com.jaspersoft.studio.field.label" value="cara_transportasi_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="transportasi_digunakan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="transportasi_digunakan"/>
+		<property name="com.jaspersoft.studio.field.label" value="transportasi_digunakan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rencana" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rencana"/>
+		<property name="com.jaspersoft.studio.field.label" value="rencana"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nip1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nip1"/>
+		<property name="com.jaspersoft.studio.field.label" value="nip1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nip2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nip2"/>
+		<property name="com.jaspersoft.studio.field.label" value="nip2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kd_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_dokter"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_ranap_neonatus"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_lahir"/>
+		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jk"/>
+		<property name="com.jaspersoft.studio.field.label" value="jk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="pengkaji1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="pengkaji1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
+	</field>
+	<field name="pengkaji2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="pengkaji2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
+	</field>
+	<field name="nm_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
+	</field>
+	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<detail>
+		<band height="50">
+			<textField>
+				<reportElement positionType="Float" x="0" y="36" width="555" height="14" uuid="bf7d158e-0e90-415a-aafb-0c77ec300b80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="26" width="555" height="14" uuid="69e906b1-20af-4ad2-86a4-4ed1a352d42f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="1" width="555" height="17" uuid="38db2163-298d-41aa-9fa3-e2ba2baf0afd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="15" width="555" height="14" uuid="09b1d62b-c413-412c-8421-28a16d95ff50"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" isUsingCache="true" onErrorType="Blank">
+				<reportElement positionType="Float" x="1" y="2" width="45" height="45" uuid="c0837649-0cb2-43a8-babb-d9a52c5a7642"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement positionType="Float" x="0" y="48" width="557" height="1" uuid="7de20fb0-220d-4445-9fca-62a146ea1759"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="55">
+			<textField>
+				<reportElement positionType="Float" x="62" y="41" width="185" height="11" uuid="2ac1e596-0f84-42bd-8dcd-a0df5f10875f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="321" y="29" width="49" height="11" uuid="bbb99264-5fad-4654-a530-ecb9fe07ba57">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jk}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement positionType="Float" x="321" y="41" width="49" height="11" uuid="da96c47b-e6a3-4a54-8af2-0f83ab653652">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Transparent" x="62" y="29" width="126" height="11" uuid="2bbdc15d-4c8d-488c-821f-d4f084834910">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="3" y="29" width="50" height="11" uuid="cd28c243-d3c2-4d8b-bb3c-0edf623632fa">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No. RM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="54" y="29" width="7" height="11" uuid="5f619111-7016-4096-b8aa-f72f20a5ac14">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="54" width="557" height="1" uuid="97315f86-43ce-4c32-b194-82dccedf749c"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="54" y="41" width="7" height="11" uuid="60e44a5b-07a3-46b8-91e7-40ec80eda143">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="3" y="41" width="50" height="11" uuid="5cdf3fc5-541d-4ce0-8e21-483fec6f24f7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="257" y="29" width="57" height="11" uuid="db5f84f0-1eaa-41f5-b678-b7e3257e3ef1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="257" y="41" width="57" height="11" uuid="ccbe018f-55a3-4ef8-8247-edd5e1721fcf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="314" y="29" width="7" height="11" uuid="8f77b945-4fd2-416e-afb2-e63cb99363dd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="314" y="41" width="7" height="11" uuid="e442fc00-8363-4c60-903a-065beecb5f60">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="9" width="556" height="17" backcolor="#F0F0DC" uuid="afaf9119-5f6e-4c97-8351-3dbd49e9f69c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[PENILAIAN AWAL KEPERAWATAN RAWAT INAP NEONATUS]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="26" width="557" height="1" uuid="d44767f9-659c-44ad-95b0-1775bd7bfa6d">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="374" y="27" width="1" height="27" uuid="b12f3a5c-f1a2-404e-8e74-24073aaae356">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="378" y="29" width="40" height="11" uuid="cbefd0f4-56fa-450e-8222-68f484a9f1ec">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="418" y="29" width="7" height="11" uuid="6cdf5439-1622-45f8-875c-8d80266a738b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="425" y="41" width="130" height="11" uuid="5937ca4e-0715-4f26-9fa0-dd5a5957deb9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anamnesis}+($F{hubungan}.equals("")?"":", "+$F{hubungan})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="418" y="41" width="7" height="11" uuid="afee6f63-d358-47d5-9fe0-1a60019153fc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="378" y="41" width="40" height="11" uuid="c722cefb-5058-42b3-8401-11ff013b45d0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Anamnesis]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement positionType="Float" x="425" y="29" width="130" height="11" uuid="9ae63d57-c205-4d91-add7-69d72f94eb7f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="6" width="557" height="1" uuid="483492ec-0acf-4554-922a-dcdc63633bc0">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="7" width="1" height="47" uuid="7276761b-bdef-4c07-ac89-81508aeaca02">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="556" y="7" width="1" height="47" uuid="177d9ad5-f6a7-4e74-9e79-9c5cb28110ea">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="41">
+			<staticText>
+				<reportElement positionType="Float" x="3" y="2" width="247" height="11" uuid="4d7531d0-4a68-4797-8ad9-c073b18018e7">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[I. RIWAYAT KESEHATAN]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="3" y="14" width="552" height="25" uuid="42f1006e-69ff-49aa-90f8-66fdfa6dd702">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Keluhan Utama : "+$F{keluhan_utama}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="40" width="557" height="1" uuid="9b350ba6-d025-4e50-85dc-cf5702e6e0af"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="40" uuid="1acb1cd4-400b-4bd2-9f6a-541e68517dd1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="556" y="0" width="1" height="40" uuid="04d49bae-6a4d-44f5-8154-143e0e3a548b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="60">
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="255" y="-1" width="1" height="59" uuid="9401d158-12aa-4fd8-a873-8c986116a35f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.4"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="3" y="3" width="250" height="11" uuid="9c57d95d-1666-418f-bf18-78999ad32a52">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal dan Jam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="259" y="3" width="295" height="11" uuid="2a16d508-41c0-42cc-8eed-10903852faa7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Dokter dan Tanda Tangan]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="16" width="557" height="1" uuid="6190be07-96e0-4a7a-a984-370d7abb2c19"/>
+				<graphicElement>
+					<pen lineWidth="0.4"/>
+				</graphicElement>
+			</line>
+			<textField pattern="MMM, dd/MM/yyyy hh:mm:ss z">
+				<reportElement positionType="Float" mode="Transparent" x="3" y="30" width="250" height="11" uuid="a0670254-9426-48c7-85ef-16fbaaf12674">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement positionType="Float" x="259" y="17" width="87" height="40" isRemoveLineWhenBlank="true" uuid="a7b3a105-9a9a-4bbe-adb2-f94c46e4251c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<textField>
+				<reportElement positionType="Float" mode="Transparent" x="259" y="45" width="295" height="11" uuid="9bae62ca-97f0-4b21-9138-27bae65faa58">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="59" width="557" height="1" uuid="7f2672a6-2166-4804-93dc-9a1ce78dd682">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="59" uuid="e4690b22-ed55-4d7f-a882-941dd3d814f4">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="556" y="0" width="1" height="59" uuid="fd90f726-d2c0-4b4b-8ecb-1f80c84f52f8">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
