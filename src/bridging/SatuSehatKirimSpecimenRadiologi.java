@@ -571,7 +571,7 @@ public final class SatuSehatKirimSpecimenRadiologi extends javax.swing.JDialog {
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"."+tbObat.getValueAt(i,12).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"available\"," +
@@ -647,7 +647,7 @@ public final class SatuSehatKirimSpecimenRadiologi extends javax.swing.JDialog {
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"."+tbObat.getValueAt(i,12).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"available\"," +

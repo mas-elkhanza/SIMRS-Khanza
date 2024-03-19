@@ -597,7 +597,7 @@ public final class SatuSehatKirimObservationLabPK extends javax.swing.JDialog {
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"."+tbObat.getValueAt(i,12).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"final\"," +
@@ -692,7 +692,7 @@ public final class SatuSehatKirimObservationLabPK extends javax.swing.JDialog {
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"."+tbObat.getValueAt(i,12).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"final\"," +

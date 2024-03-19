@@ -610,7 +610,7 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/rad\"," +
                                             "\"use\": \"official\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"."+tbObat.getValueAt(i,17).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"final\"," +
@@ -716,7 +716,7 @@ public final class SatuSehatKirimDiagnosticReportRadiologi extends javax.swing.J
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/rad\"," +
                                             "\"use\": \"official\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"."+tbObat.getValueAt(i,17).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"final\"," +

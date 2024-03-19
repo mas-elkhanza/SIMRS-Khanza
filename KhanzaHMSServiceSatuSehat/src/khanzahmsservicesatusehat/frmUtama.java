@@ -4691,7 +4691,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"active\"," +
@@ -4806,7 +4806,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"active\"," +
@@ -4922,7 +4922,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"available\"," +
@@ -5012,7 +5012,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"available\"," +
@@ -5112,7 +5112,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
@@ -5228,7 +5228,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
@@ -5352,7 +5352,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/rad\"," +
                                                     "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
@@ -5484,7 +5484,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/rad\"," +
                                                     "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
@@ -5606,7 +5606,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"active\"," +
@@ -5722,7 +5722,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"active\"," +
@@ -5840,7 +5840,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"active\"," +
@@ -5956,7 +5956,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"active\"," +
@@ -6075,7 +6075,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"available\"," +
@@ -6168,7 +6168,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"available\"," +
@@ -6263,7 +6263,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"available\"," +
@@ -6356,7 +6356,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"available\"," +
@@ -6459,7 +6459,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
@@ -6578,7 +6578,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
@@ -6699,7 +6699,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
@@ -6818,7 +6818,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"identifier\": [" +
                                                 "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"value\": \""+rs.getString("noorder")+"\"" +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"final\"," +
