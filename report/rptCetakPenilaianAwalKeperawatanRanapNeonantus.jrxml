@@ -2921,6 +2921,58 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kebutuhan_biologis_bab}+($F{kebutuhan_biologis_bab_keterangan}.equals("")?"":", "+$F{kebutuhan_biologis_bab_keterangan})]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="3" y="166" width="159" height="11" uuid="67beff3f-3348-421f-9c32-cc8bdc0199d4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Alergi/Reaksi (Pada Orang Tua) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="176" width="7" height="11" uuid="bc85f732-52bd-4372-9485-d1e8768deb5a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="176" width="45" height="11" uuid="80c4f1bb-b78a-4610-b064-4e800e5d9659">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Alergi Obat]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="67" y="176" width="297" height="11" uuid="bbc87d13-3c71-470b-a4db-95b2559aee34">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alergi_obat}+($F{alergi_obat_keterangan}.equals("")?"":", "+$F{alergi_obat_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="364" y="176" width="191" height="11" uuid="f9a53496-01d5-4bd8-94d6-49933ce4af6a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jika Ada, Reaksi : "+$F{alergi_obat_reaksi}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="50"/>
 		<band height="60">

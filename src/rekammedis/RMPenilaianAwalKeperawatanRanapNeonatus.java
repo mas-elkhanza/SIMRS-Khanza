@@ -1791,7 +1791,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         CaraMasuk.setBounds(79, 100, 105, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-03-2024 10:24:21" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-03-2024 22:00:28" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2862,7 +2862,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel59.setBounds(44, 570, 240, 23);
 
         jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel60.setText(" Alergi Obat");
+        jLabel60.setText("Alergi Obat");
         jLabel60.setName("jLabel60"); // NOI18N
         FormInput.add(jLabel60);
         jLabel60.setBounds(74, 590, 60, 23);
@@ -2870,7 +2870,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel61.setText(":");
         jLabel61.setName("jLabel61"); // NOI18N
         FormInput.add(jLabel61);
-        jLabel61.setBounds(0, 590, 140, 23);
+        jLabel61.setBounds(0, 590, 137, 23);
 
         AlergiObat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Tidak Diketahui", "Ada" }));
         AlergiObat.setName("AlergiObat"); // NOI18N
@@ -2880,7 +2880,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(AlergiObat);
-        AlergiObat.setBounds(144, 590, 130, 23);
+        AlergiObat.setBounds(141, 590, 130, 23);
 
         KeteranganAlergiObat.setFocusTraversalPolicyProvider(true);
         KeteranganAlergiObat.setName("KeteranganAlergiObat"); // NOI18N
@@ -2890,7 +2890,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             }
         });
         FormInput.add(KeteranganAlergiObat);
-        KeteranganAlergiObat.setBounds(277, 590, 240, 23);
+        KeteranganAlergiObat.setBounds(274, 590, 243, 23);
 
         label25.setText("Jika Ada, Reaksi :");
         label25.setName("label25"); // NOI18N
@@ -5805,7 +5805,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         label29.setBounds(630, 2600, 130, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-03-2024" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-03-2024" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -5975,7 +5975,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-03-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-03-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5989,7 +5989,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-03-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-03-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
