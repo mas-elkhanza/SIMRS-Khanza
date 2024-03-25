@@ -513,7 +513,7 @@
                                                                 );  
                                                                 http_response_code(201);
                                                             }else{
-                                                                $sisakuota=getOne2("select count(reg_periksa.no_rawat) from reg_periksa where reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.tgl_registrasi='".validTeks4($decode['tanggalperiksa'],20)."' ");
+                                                                $sisakuota=getOne2("select count(no_rawat) from reg_periksa where kd_poli='$kdpoli' and kd_dokter='$kddokter' and tgl_registrasi='".validTeks4($decode['tanggalperiksa'],20)."' ");
                                                                 if ($sisakuota < $jadwal['kuota']) {
                                                                     $datapeserta     = cekpasien(validTeks4($decode['nik'],20),validTeks4($decode['nomorkartu'],20));
                                                                     $noReg           = noRegPoli($kdpoli,$kddokter,validTeks4($decode['tanggalperiksa'],20));

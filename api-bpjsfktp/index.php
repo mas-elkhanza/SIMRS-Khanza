@@ -16,9 +16,9 @@
     
     if ($method == 'GET') {
         $hash_user = hash_pass($header['x-username'], 12);
-        $hash_pass = hash_pass($header['x-password'], 12);
         switch ($url[0]) {
             case "auth":
+                $hash_pass = hash_pass($header['x-password'], 12);
                 if((!empty($header['x-username'])) && (!empty($header['x-password']))){
                     $response=createtoken($header['x-username'],$header['x-password']);
                 }else{
