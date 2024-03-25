@@ -102,8 +102,8 @@
         return $result;
     }
 
-    function noRegPoli($kd_poli, $tanggal) {
-        $max    = getOne("select ifnull(MAX(CONVERT(no_reg,signed)),0)+1 from reg_periksa where kd_poli='$kd_poli' and tgl_registrasi='$tanggal'");
+    function noRegPoli($kd_poli,$kd_dokter, $tanggal) {
+        $max    = getOne("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0)+1 from reg_periksa where reg_periksa.kd_poli='$kd_poli' and reg_periksa.kd_dokter='$kd_dokter' and tgl_registrasi='$tanggal'");
         $no_reg = sprintf("%03s", $max);
         return $no_reg;
     }
