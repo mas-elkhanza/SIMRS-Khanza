@@ -2884,7 +2884,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_kdasistanestesi2KeyPressed
 
     private void BtnAsnes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAsnes1ActionPerformed
-        pilihan=14;
+        pilihan=16;
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
