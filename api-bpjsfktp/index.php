@@ -567,7 +567,7 @@
                     http_response_code(201);
                 }
                 break;
-            case "pasienbaru":
+            case "peserta":
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -1249,7 +1249,7 @@
         echo '      }'."\n";
         echo '   }'."\n\n";
         echo "6. Pasien Baru, methode POST\n";
-        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/pasienbaru \n";
+        echo "   gunakan URL http://ipserverws:port/api-bpjsfktl/peserta \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
