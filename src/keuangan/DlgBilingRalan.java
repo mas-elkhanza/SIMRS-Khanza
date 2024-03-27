@@ -4975,9 +4975,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnCariRadiologi.setEnabled(akses.getperiksa_radiologi());
         MnPenjualan.setEnabled(akses.getpenjualan_obat());        
         MnHapusTagihan.setEnabled(akses.gethapus_nota_salah());  
-        MnPoli.setEnabled(akses.getbilling_ralan());
-        MnDokter.setEnabled(akses.getbilling_ralan());
-        MnPenjab.setEnabled(akses.getbilling_ralan());
+        MnPoli.setEnabled(akses.getregistrasi());
+        MnDokter.setEnabled(akses.getregistrasi());
+        MnPenjab.setEnabled(akses.getregistrasi());
         if(Sequel.cariIsi("select tampilkan_tombol_nota_ralan from set_nota").equals("Yes")){
             BtnNota.setVisible(true);
         }else{

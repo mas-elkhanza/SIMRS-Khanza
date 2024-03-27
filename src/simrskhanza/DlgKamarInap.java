@@ -17250,7 +17250,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnRujukMasuk.setEnabled(akses.getrujukan_masuk());
         MnHapusTagihanOperasi.setEnabled(akses.getoperasi());
         MnHapusObatOperasi.setEnabled(akses.getoperasi());
-        MnPenjab.setEnabled(akses.getkamar_inap());
+        MnPenjab.setEnabled(akses.getregistrasi());
         MnStatusRujuk.setEnabled(akses.getkamar_inap());
         MnStatusAPS.setEnabled(akses.getkamar_inap());
         MnStatusPlus.setEnabled(akses.getkamar_inap());

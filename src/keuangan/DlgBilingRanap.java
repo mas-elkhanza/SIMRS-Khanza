@@ -5661,7 +5661,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnObatLangsung.setEnabled(akses.getberi_obat());
         MnReturJual.setEnabled(akses.getretur_dari_pembeli());
         MnHapusTagihan.setEnabled(akses.gethapus_nota_salah());
-        MnPenjab.setEnabled(akses.getbilling_ranap());
+        MnPenjab.setEnabled(akses.getregistrasi());
         MnTagihanOperasi.setEnabled(akses.getoperasi());
         MnDataObat.setEnabled(akses.getberi_obat());
         MnDataResepPulang.setEnabled(akses.getresep_pulang());
