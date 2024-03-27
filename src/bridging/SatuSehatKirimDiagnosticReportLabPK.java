@@ -69,8 +69,8 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
         tabMode=new DefaultTableModel(null,new String[]{
                 "P","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","Kode Dokter","Nama Dokter Perujuk",
                 "No.KTP Dokter","ID Encounter","No.Permintaan","Tgl & Jam Hasil","Diagnosa Klinis",
-                "Nama Pemeriksaan","Radiologi Code","Radiologi System","Radiologi Display","ID Service Request",
-                "Kode Pemeriksaan","ID Specimen","ID Observation","ID Diagnostic Report","Hasil Radiologi"
+                "Detail Pemeriksaan","Lab Code","Lab System","Lab Display","ID Service Request",
+                "ID Detail","ID Specimen","ID Observation","ID Diagnostic Report","Kesan Lab","Kode Pemeriksaan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -85,7 +85,7 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -98,7 +98,7 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 22; i++) {
+        for (i = 0; i < 23; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -145,6 +145,9 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                 column.setPreferredWidth(210);
             }else if(i==21){
                 column.setPreferredWidth(310);
+            }else if(i==22){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -486,15 +489,15 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Hasil</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Klinis</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pemeriksaan</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi Code</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi System</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi Display</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Detail Pemeriksaan</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab Code</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab System</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab Display</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Service Request</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Specimen</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Observation</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Diagnostic Report</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Radiologi</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesan Lab</b></td>"+
                 "</tr>"
             );
             for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -545,7 +548,7 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
             );
             bg.close();
 
-            File f = new File("DataSatuSehatDiagnosticReportRadiologi.html");            
+            File f = new File("DataSatuSehatDiagnosticReportLabPK.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -555,7 +558,7 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT DIAGNOSTIC REPORT RADIOLOGI<br><br></font>"+        
+                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT DIAGNOSTIC REPORT LAB PK<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -608,7 +611,7 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                                     "\"resourceType\": \"DiagnosticReport\"," +
                                     "\"identifier\": [" +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/rad\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/lab\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,9).toString()+"."+tbObat.getValueAt(i,17).toString()+"\"" +
                                         "}" +
@@ -619,8 +622,8 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                                             "\"coding\": [" +
                                                 "{" +
                                                     "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0074\"," +
-                                                    "\"code\": \"RAD\"," +
-                                                    "\"display\": \"Radiology\"" +
+                                                    "\"code\": \"LAB\"," +
+                                                    "\"display\": \"Laboratory\"" +
                                                 "}" +
                                             "]" +
                                         "}" +
@@ -670,8 +673,8 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                         root = mapper.readTree(json);
                         response = root.path("id");
                         if(!response.asText().equals("")){
-                            if(Sequel.menyimpantf2("satu_sehat_diagnosticreport_radiologi","?,?,?","No.Order",3,new String[]{
-                                tbObat.getValueAt(i,9).toString(),tbObat.getValueAt(i,17).toString(),response.asText()
+                            if(Sequel.menyimpantf2("satu_sehat_diagnosticreport_lab","?,?,?,?","No.Order",4,new String[]{
+                                tbObat.getValueAt(i,9).toString(),tbObat.getValueAt(i,22).toString(),tbObat.getValueAt(i,17).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,20);
                                 tbObat.setValueAt(false,i,0);
@@ -714,7 +717,7 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                                     "\"id\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                     "\"identifier\": [" +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/rad\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/lab\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,9).toString()+"."+tbObat.getValueAt(i,17).toString()+"\"" +
                                         "}" +
@@ -725,8 +728,8 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                                             "\"coding\": [" +
                                                 "{" +
                                                     "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0074\"," +
-                                                    "\"code\": \"RAD\"," +
-                                                    "\"display\": \"Radiology\"" +
+                                                    "\"code\": \"LAB\"," +
+                                                    "\"display\": \"Laboratory\"" +
                                                 "}" +
                                             "]" +
                                         "}" +
@@ -844,34 +847,38 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_radiologi.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
-                   "satu_sehat_encounter.id_encounter,permintaan_radiologi.noorder,permintaan_radiologi.tgl_hasil,permintaan_radiologi.jam_hasil,permintaan_radiologi.diagnosa_klinis,"+
-                   "jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,satu_sehat_mapping_radiologi.display,"+
-                   "satu_sehat_servicerequest_radiologi.id_servicerequest,permintaan_pemeriksaan_radiologi.kd_jenis_prw,satu_sehat_specimen_radiologi.id_specimen,"+
-                   "satu_sehat_observation_radiologi.id_observation,ifnull(satu_sehat_diagnosticreport_radiologi.id_diagnosticreport,'') as id_diagnosticreport,hasil_radiologi.hasil "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
-                   "inner join permintaan_pemeriksaan_radiologi on permintaan_pemeriksaan_radiologi.noorder=permintaan_radiologi.noorder "+
-                   "inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_mapping_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_servicerequest_radiologi on satu_sehat_servicerequest_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_specimen_radiologi on satu_sehat_servicerequest_radiologi.noorder=satu_sehat_specimen_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=satu_sehat_specimen_radiologi.kd_jenis_prw "+
-                   "inner join periksa_radiologi on periksa_radiologi.no_rawat=permintaan_radiologi.no_rawat and periksa_radiologi.tgl_periksa=permintaan_radiologi.tgl_hasil "+
-                   "and periksa_radiologi.jam=permintaan_radiologi.jam_hasil and periksa_radiologi.dokter_perujuk=permintaan_radiologi.dokter_perujuk "+
-                   "inner join hasil_radiologi on periksa_radiologi.no_rawat=hasil_radiologi.no_rawat and periksa_radiologi.tgl_periksa=hasil_radiologi.tgl_periksa "+
-                   "and periksa_radiologi.jam=hasil_radiologi.jam "+
-                   "inner join satu_sehat_observation_radiologi on satu_sehat_specimen_radiologi.noorder=satu_sehat_observation_radiologi.noorder "+
-                   "and satu_sehat_specimen_radiologi.kd_jenis_prw=satu_sehat_observation_radiologi.kd_jenis_prw "+
-                   "left join satu_sehat_diagnosticreport_radiologi on satu_sehat_servicerequest_radiologi.noorder=satu_sehat_diagnosticreport_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=satu_sehat_diagnosticreport_radiologi.kd_jenis_prw "+
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_lab.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_lab.noorder,permintaan_lab.tgl_hasil,permintaan_lab.jam_hasil,permintaan_lab.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "satu_sehat_servicerequest_lab.id_servicerequest,permintaan_detail_permintaan_lab.id_template,satu_sehat_specimen_lab.id_specimen,"+
+                   "satu_sehat_observation_lab.id_observation,ifnull(satu_sehat_diagnosticreport_lab.id_diagnosticreport,'') as id_diagnosticreport,saran_kesan_lab.kesan,"+
+                   "template_laboratorium.kd_jenis_prw from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "inner join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_specimen_lab.kd_jenis_prw "+
+                   "inner join periksa_lab on periksa_lab.no_rawat=permintaan_lab.no_rawat and periksa_lab.tgl_periksa=permintaan_lab.tgl_hasil "+
+                   "and periksa_lab.jam=permintaan_lab.jam_hasil and periksa_lab.dokter_perujuk=permintaan_lab.dokter_perujuk "+
+                   "inner join saran_kesan_lab on periksa_lab.no_rawat=saran_kesan_lab.no_rawat and periksa_lab.tgl_periksa=saran_kesan_lab.tgl_periksa "+
+                   "and periksa_lab.jam=saran_kesan_lab.jam "+
+                   "inner join satu_sehat_observation_lab on satu_sehat_specimen_lab.noorder=satu_sehat_observation_lab.noorder "+
+                   "and satu_sehat_specimen_lab.id_template=satu_sehat_observation_lab.id_template "+
+                   "and satu_sehat_specimen_lab.kd_jenis_prw=satu_sehat_observation_lab.kd_jenis_prw "+
+                   "left join satu_sehat_diagnosticreport_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_diagnosticreport_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_diagnosticreport_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_diagnosticreport_lab.kd_jenis_prw "+
                    "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pegawai on periksa_radiologi.kd_dokter=pegawai.nik "+
+                   "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
                    "where nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                   "satu_sehat_mapping_radiologi.code like ? or permintaan_radiologi.noorder like ?)"));
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or template_laboratorium.Pemeriksaan like ? or "+
+                   "satu_sehat_mapping_lab.code like ? or permintaan_lab.noorder like ?)"));
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -890,8 +897,9 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("kd_dokter"),
                         rs.getString("nama"),rs.getString("ktpdokter"),rs.getString("id_encounter"),rs.getString("noorder"),rs.getString("tgl_hasil")+" "+rs.getString("jam_hasil"),
-                        rs.getString("diagnosa_klinis"),rs.getString("nm_perawatan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),rs.getString("id_servicerequest"),
-                        rs.getString("kd_jenis_prw"),rs.getString("id_specimen"),rs.getString("id_observation"),rs.getString("id_diagnosticreport"),rs.getString("hasil")
+                        rs.getString("diagnosa_klinis"),rs.getString("Pemeriksaan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),rs.getString("id_servicerequest"),
+                        rs.getString("id_template"),rs.getString("id_specimen"),rs.getString("id_observation"),rs.getString("id_diagnosticreport"),rs.getString("kesan"),
+                        rs.getString("kd_jenis_prw")
                     });
                 }
             } catch (Exception e) {
@@ -906,34 +914,38 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
             }
             
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_radiologi.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
-                   "satu_sehat_encounter.id_encounter,permintaan_radiologi.noorder,permintaan_radiologi.tgl_hasil,permintaan_radiologi.jam_hasil,permintaan_radiologi.diagnosa_klinis,"+
-                   "jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,satu_sehat_mapping_radiologi.display,"+
-                   "satu_sehat_servicerequest_radiologi.id_servicerequest,permintaan_pemeriksaan_radiologi.kd_jenis_prw,satu_sehat_specimen_radiologi.id_specimen,"+
-                   "satu_sehat_observation_radiologi.id_observation,ifnull(satu_sehat_diagnosticreport_radiologi.id_diagnosticreport,'') as id_diagnosticreport,hasil_radiologi.hasil "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_radiologi on permintaan_radiologi.no_rawat=reg_periksa.no_rawat "+
-                   "inner join permintaan_pemeriksaan_radiologi on permintaan_pemeriksaan_radiologi.noorder=permintaan_radiologi.noorder "+
-                   "inner join jns_perawatan_radiologi on jns_perawatan_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_mapping_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_servicerequest_radiologi on satu_sehat_servicerequest_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=permintaan_pemeriksaan_radiologi.kd_jenis_prw "+
-                   "inner join satu_sehat_specimen_radiologi on satu_sehat_servicerequest_radiologi.noorder=satu_sehat_specimen_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=satu_sehat_specimen_radiologi.kd_jenis_prw "+
-                   "inner join periksa_radiologi on periksa_radiologi.no_rawat=permintaan_radiologi.no_rawat and periksa_radiologi.tgl_periksa=permintaan_radiologi.tgl_hasil "+
-                   "and periksa_radiologi.jam=permintaan_radiologi.jam_hasil and periksa_radiologi.dokter_perujuk=permintaan_radiologi.dokter_perujuk "+
-                   "inner join hasil_radiologi on periksa_radiologi.no_rawat=hasil_radiologi.no_rawat and periksa_radiologi.tgl_periksa=hasil_radiologi.tgl_periksa "+
-                   "and periksa_radiologi.jam=hasil_radiologi.jam "+
-                   "inner join satu_sehat_observation_radiologi on satu_sehat_specimen_radiologi.noorder=satu_sehat_observation_radiologi.noorder "+
-                   "and satu_sehat_specimen_radiologi.kd_jenis_prw=satu_sehat_observation_radiologi.kd_jenis_prw "+
-                   "left join satu_sehat_diagnosticreport_radiologi on satu_sehat_servicerequest_radiologi.noorder=satu_sehat_diagnosticreport_radiologi.noorder "+
-                   "and satu_sehat_servicerequest_radiologi.kd_jenis_prw=satu_sehat_diagnosticreport_radiologi.kd_jenis_prw "+
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_lab.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_lab.noorder,permintaan_lab.tgl_hasil,permintaan_lab.jam_hasil,permintaan_lab.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "satu_sehat_servicerequest_lab.id_servicerequest,permintaan_detail_permintaan_lab.id_template,satu_sehat_specimen_lab.id_specimen,"+
+                   "satu_sehat_observation_lab.id_observation,ifnull(satu_sehat_diagnosticreport_lab.id_diagnosticreport,'') as id_diagnosticreport,saran_kesan_lab.kesan,"+
+                   "template_laboratorium.kd_jenis_prw from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "inner join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_specimen_lab.kd_jenis_prw "+
+                   "inner join periksa_lab on periksa_lab.no_rawat=permintaan_lab.no_rawat and periksa_lab.tgl_periksa=permintaan_lab.tgl_hasil "+
+                   "and periksa_lab.jam=permintaan_lab.jam_hasil and periksa_lab.dokter_perujuk=permintaan_lab.dokter_perujuk "+
+                   "inner join saran_kesan_lab on periksa_lab.no_rawat=saran_kesan_lab.no_rawat and periksa_lab.tgl_periksa=saran_kesan_lab.tgl_periksa "+
+                   "and periksa_lab.jam=saran_kesan_lab.jam "+
+                   "inner join satu_sehat_observation_lab on satu_sehat_specimen_lab.noorder=satu_sehat_observation_lab.noorder "+
+                   "and satu_sehat_specimen_lab.id_template=satu_sehat_observation_lab.id_template "+
+                   "and satu_sehat_specimen_lab.kd_jenis_prw=satu_sehat_observation_lab.kd_jenis_prw "+
+                   "left join satu_sehat_diagnosticreport_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_diagnosticreport_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_diagnosticreport_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_diagnosticreport_lab.kd_jenis_prw "+
                    "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pegawai on periksa_radiologi.kd_dokter=pegawai.nik "+
+                   "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
                    "where nota_inap.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                   "satu_sehat_mapping_radiologi.code like ? or permintaan_radiologi.noorder like ?)"));
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or template_laboratorium.Pemeriksaan like ? or "+
+                   "satu_sehat_mapping_lab.code like ? or permintaan_lab.noorder like ?)"));
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -952,8 +964,9 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("kd_dokter"),
                         rs.getString("nama"),rs.getString("ktpdokter"),rs.getString("id_encounter"),rs.getString("noorder"),rs.getString("tgl_hasil")+" "+rs.getString("jam_hasil"),
-                        rs.getString("diagnosa_klinis"),rs.getString("nm_perawatan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),rs.getString("id_servicerequest"),
-                        rs.getString("kd_jenis_prw"),rs.getString("id_specimen"),rs.getString("id_observation"),rs.getString("id_diagnosticreport"),rs.getString("hasil")
+                        rs.getString("diagnosa_klinis"),rs.getString("Pemeriksaan"),rs.getString("code"),rs.getString("system"),rs.getString("display"),rs.getString("id_servicerequest"),
+                        rs.getString("id_template"),rs.getString("id_specimen"),rs.getString("id_observation"),rs.getString("id_diagnosticreport"),rs.getString("kesan"),
+                        rs.getString("kd_jenis_prw")
                     });
                 }
             } catch (Exception e) {
@@ -973,8 +986,8 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_radiologi());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_radiologi());
+        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
+        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
     }
     
     public JTable getTable(){
