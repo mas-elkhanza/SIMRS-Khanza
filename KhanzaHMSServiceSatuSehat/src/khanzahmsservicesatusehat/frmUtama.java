@@ -237,6 +237,8 @@ public class frmUtama extends javax.swing.JFrame {
                     specimenlabmb();
                     observationlabpk();
                     observationlabmb();
+                    diagnosticreportlabpk();
+                    diagnosticreportlabmb();
                 }
             }
         };
@@ -6869,6 +6871,554 @@ public class frmUtama extends javax.swing.JFrame {
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
                                     Sequel.menyimpan2("satu_sehat_observation_lab_mb","?,?,?,?","No.Order",4,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),rs.getString("id_template"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void diagnosticreportlabpk() {
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_lab.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_lab.noorder,permintaan_lab.tgl_hasil,permintaan_lab.jam_hasil,permintaan_lab.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "satu_sehat_servicerequest_lab.id_servicerequest,permintaan_detail_permintaan_lab.id_template,satu_sehat_specimen_lab.id_specimen,"+
+                   "satu_sehat_observation_lab.id_observation,ifnull(satu_sehat_diagnosticreport_lab.id_diagnosticreport,'') as id_diagnosticreport,saran_kesan_lab.kesan,"+
+                   "template_laboratorium.kd_jenis_prw from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "inner join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_specimen_lab.kd_jenis_prw "+
+                   "inner join periksa_lab on periksa_lab.no_rawat=permintaan_lab.no_rawat and periksa_lab.tgl_periksa=permintaan_lab.tgl_hasil "+
+                   "and periksa_lab.jam=permintaan_lab.jam_hasil and periksa_lab.dokter_perujuk=permintaan_lab.dokter_perujuk "+
+                   "inner join saran_kesan_lab on periksa_lab.no_rawat=saran_kesan_lab.no_rawat and periksa_lab.tgl_periksa=saran_kesan_lab.tgl_periksa "+
+                   "and periksa_lab.jam=saran_kesan_lab.jam "+
+                   "inner join satu_sehat_observation_lab on satu_sehat_specimen_lab.noorder=satu_sehat_observation_lab.noorder "+
+                   "and satu_sehat_specimen_lab.id_template=satu_sehat_observation_lab.id_template "+
+                   "and satu_sehat_specimen_lab.kd_jenis_prw=satu_sehat_observation_lab.kd_jenis_prw "+
+                   "left join satu_sehat_diagnosticreport_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_diagnosticreport_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_diagnosticreport_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_diagnosticreport_lab.kd_jenis_prw "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
+                   "where nota_jalan.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_diagnosticreport").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"DiagnosticReport\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/lab\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"final\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0074\"," +
+                                                            "\"code\": \"LAB\"," +
+                                                            "\"display\": \"Laboratory\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"," +
+                                                        "\"system\": \""+rs.getString("system")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"performer\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"specimen\": [{" +
+                                                "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
+                                            "}]," +
+                                            "\"result\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Observation/"+rs.getString("id_observation")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"basedOn\": [" +
+                                                "{" +
+                                                    "\"reference\": \"ServiceRequest/"+rs.getString("id_servicerequest")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"conclusion\": \""+rs.getString("kesan").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/DiagnosticReport");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/DiagnosticReport", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_diagnosticreport_lab","?,?,?,?","No.Order",4,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),rs.getString("id_template"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_lab.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_lab.noorder,permintaan_lab.tgl_hasil,permintaan_lab.jam_hasil,permintaan_lab.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "satu_sehat_servicerequest_lab.id_servicerequest,permintaan_detail_permintaan_lab.id_template,satu_sehat_specimen_lab.id_specimen,"+
+                   "satu_sehat_observation_lab.id_observation,ifnull(satu_sehat_diagnosticreport_lab.id_diagnosticreport,'') as id_diagnosticreport,saran_kesan_lab.kesan,"+
+                   "template_laboratorium.kd_jenis_prw from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_lab on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_lab on permintaan_detail_permintaan_lab.noorder=permintaan_lab.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab on satu_sehat_servicerequest_lab.noorder=permintaan_detail_permintaan_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=permintaan_detail_permintaan_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=permintaan_detail_permintaan_lab.kd_jenis_prw "+
+                   "inner join satu_sehat_specimen_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_specimen_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_specimen_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_specimen_lab.kd_jenis_prw "+
+                   "inner join periksa_lab on periksa_lab.no_rawat=permintaan_lab.no_rawat and periksa_lab.tgl_periksa=permintaan_lab.tgl_hasil "+
+                   "and periksa_lab.jam=permintaan_lab.jam_hasil and periksa_lab.dokter_perujuk=permintaan_lab.dokter_perujuk "+
+                   "inner join saran_kesan_lab on periksa_lab.no_rawat=saran_kesan_lab.no_rawat and periksa_lab.tgl_periksa=saran_kesan_lab.tgl_periksa "+
+                   "and periksa_lab.jam=saran_kesan_lab.jam "+
+                   "inner join satu_sehat_observation_lab on satu_sehat_specimen_lab.noorder=satu_sehat_observation_lab.noorder "+
+                   "and satu_sehat_specimen_lab.id_template=satu_sehat_observation_lab.id_template "+
+                   "and satu_sehat_specimen_lab.kd_jenis_prw=satu_sehat_observation_lab.kd_jenis_prw "+
+                   "left join satu_sehat_diagnosticreport_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_diagnosticreport_lab.noorder "+
+                   "and satu_sehat_servicerequest_lab.id_template=satu_sehat_diagnosticreport_lab.id_template "+
+                   "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_diagnosticreport_lab.kd_jenis_prw "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
+                   "where nota_inap.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_diagnosticreport").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"DiagnosticReport\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/lab\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"final\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0074\"," +
+                                                            "\"code\": \"LAB\"," +
+                                                            "\"display\": \"Laboratory\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"," +
+                                                        "\"system\": \""+rs.getString("system")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"performer\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"specimen\": [{" +
+                                                "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
+                                            "}]," +
+                                            "\"result\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Observation/"+rs.getString("id_observation")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"basedOn\": [" +
+                                                "{" +
+                                                    "\"reference\": \"ServiceRequest/"+rs.getString("id_servicerequest")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"conclusion\": \""+rs.getString("kesan").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/DiagnosticReport");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/DiagnosticReport", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_diagnosticreport_lab","?,?,?,?","No.Order",4,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),rs.getString("id_template"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void diagnosticreportlabmb() {
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_lab.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_labmb.noorder,permintaan_labmb.tgl_hasil,permintaan_labmb.jam_hasil,permintaan_labmb.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "satu_sehat_servicerequest_lab_mb.id_servicerequest,permintaan_detail_permintaan_labmb.id_template,satu_sehat_specimen_lab_mb.id_specimen,"+
+                   "satu_sehat_observation_lab_mb.id_observation,ifnull(satu_sehat_diagnosticreport_lab_mb.id_diagnosticreport,'') as id_diagnosticreport,saran_kesan_lab.kesan,"+
+                   "template_laboratorium.kd_jenis_prw from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_labmb on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_labmb on permintaan_detail_permintaan_labmb.noorder=permintaan_labmb.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=permintaan_detail_permintaan_labmb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=permintaan_detail_permintaan_labmb.kd_jenis_prw "+
+                   "inner join satu_sehat_specimen_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=satu_sehat_specimen_lab_mb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=satu_sehat_specimen_lab_mb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=satu_sehat_specimen_lab_mb.kd_jenis_prw "+
+                   "inner join periksa_lab on periksa_lab.no_rawat=permintaan_labmb.no_rawat and periksa_lab.tgl_periksa=permintaan_labmb.tgl_hasil "+
+                   "and periksa_lab.jam=permintaan_labmb.jam_hasil and periksa_lab.dokter_perujuk=permintaan_labmb.dokter_perujuk "+
+                   "inner join saran_kesan_lab on periksa_lab.no_rawat=saran_kesan_lab.no_rawat and periksa_lab.tgl_periksa=saran_kesan_lab.tgl_periksa "+
+                   "and periksa_lab.jam=saran_kesan_lab.jam "+
+                   "inner join satu_sehat_observation_lab_mb on satu_sehat_specimen_lab_mb.noorder=satu_sehat_observation_lab_mb.noorder "+
+                   "and satu_sehat_specimen_lab_mb.id_template=satu_sehat_observation_lab_mb.id_template "+
+                   "and satu_sehat_specimen_lab_mb.kd_jenis_prw=satu_sehat_observation_lab_mb.kd_jenis_prw "+
+                   "left join satu_sehat_diagnosticreport_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=satu_sehat_diagnosticreport_lab_mb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=satu_sehat_diagnosticreport_lab_mb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=satu_sehat_diagnosticreport_lab_mb.kd_jenis_prw "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
+                   "where nota_jalan.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_diagnosticreport").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"DiagnosticReport\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/lab\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"final\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0074\"," +
+                                                            "\"code\": \"LAB\"," +
+                                                            "\"display\": \"Laboratory\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"," +
+                                                        "\"system\": \""+rs.getString("system")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"performer\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"specimen\": [{" +
+                                                "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
+                                            "}]," +
+                                            "\"result\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Observation/"+rs.getString("id_observation")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"basedOn\": [" +
+                                                "{" +
+                                                    "\"reference\": \"ServiceRequest/"+rs.getString("id_servicerequest")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"conclusion\": \""+rs.getString("kesan").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/DiagnosticReport");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/DiagnosticReport", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_diagnosticreport_lab","?,?,?,?","No.Order",4,new String[]{
+                                        rs.getString("noorder"),rs.getString("kd_jenis_prw"),rs.getString("id_template"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,periksa_lab.kd_dokter,pegawai.nama,pegawai.no_ktp as ktpdokter,"+
+                   "satu_sehat_encounter.id_encounter,permintaan_labmb.noorder,permintaan_labmb.tgl_hasil,permintaan_labmb.jam_hasil,permintaan_labmb.diagnosa_klinis,"+
+                   "template_laboratorium.Pemeriksaan,satu_sehat_mapping_lab.code,satu_sehat_mapping_lab.system,satu_sehat_mapping_lab.display,"+
+                   "satu_sehat_servicerequest_lab_mb.id_servicerequest,permintaan_detail_permintaan_labmb.id_template,satu_sehat_specimen_lab_mb.id_specimen,"+
+                   "satu_sehat_observation_lab_mb.id_observation,ifnull(satu_sehat_diagnosticreport_lab_mb.id_diagnosticreport,'') as id_diagnosticreport,saran_kesan_lab.kesan,"+
+                   "template_laboratorium.kd_jenis_prw from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join permintaan_labmb on permintaan_labmb.no_rawat=reg_periksa.no_rawat "+
+                   "inner join permintaan_detail_permintaan_labmb on permintaan_detail_permintaan_labmb.noorder=permintaan_labmb.noorder "+
+                   "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "inner join satu_sehat_mapping_lab on satu_sehat_mapping_lab.id_template=template_laboratorium.id_template "+
+                   "inner join satu_sehat_servicerequest_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=permintaan_detail_permintaan_labmb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=permintaan_detail_permintaan_labmb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=permintaan_detail_permintaan_labmb.kd_jenis_prw "+
+                   "inner join satu_sehat_specimen_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=satu_sehat_specimen_lab_mb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=satu_sehat_specimen_lab_mb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=satu_sehat_specimen_lab_mb.kd_jenis_prw "+
+                   "inner join periksa_lab on periksa_lab.no_rawat=permintaan_labmb.no_rawat and periksa_lab.tgl_periksa=permintaan_labmb.tgl_hasil "+
+                   "and periksa_lab.jam=permintaan_labmb.jam_hasil and periksa_lab.dokter_perujuk=permintaan_labmb.dokter_perujuk "+
+                   "inner join saran_kesan_lab on periksa_lab.no_rawat=saran_kesan_lab.no_rawat and periksa_lab.tgl_periksa=saran_kesan_lab.tgl_periksa "+
+                   "and periksa_lab.jam=saran_kesan_lab.jam "+
+                   "inner join satu_sehat_observation_lab_mb on satu_sehat_specimen_lab_mb.noorder=satu_sehat_observation_lab_mb.noorder "+
+                   "and satu_sehat_specimen_lab_mb.id_template=satu_sehat_observation_lab_mb.id_template "+
+                   "and satu_sehat_specimen_lab_mb.kd_jenis_prw=satu_sehat_observation_lab_mb.kd_jenis_prw "+
+                   "left join satu_sehat_diagnosticreport_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=satu_sehat_diagnosticreport_lab_mb.noorder "+
+                   "and satu_sehat_servicerequest_lab_mb.id_template=satu_sehat_diagnosticreport_lab_mb.id_template "+
+                   "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=satu_sehat_diagnosticreport_lab_mb.kd_jenis_prw "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
+                   "where nota_inap.tanggal between ? and ? ");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_diagnosticreport").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"DiagnosticReport\"," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/diagnostic/"+koneksiDB.IDSATUSEHAT()+"/lab\"," +
+                                                    "\"use\": \"official\"," +
+                                                    "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"status\": \"final\"," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/v2-0074\"," +
+                                                            "\"code\": \"LAB\"," +
+                                                            "\"display\": \"Laboratory\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"code\": \""+rs.getString("code")+"\"," +
+                                                        "\"display\": \""+rs.getString("display")+"\"," +
+                                                        "\"system\": \""+rs.getString("system")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"effectiveDateTime\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"issued\": \""+rs.getString("tgl_hasil")+"T"+rs.getString("jam_hasil")+"+07:00\"," +
+                                            "\"performer\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"specimen\": [{" +
+                                                "\"reference\": \"Specimen/"+rs.getString("id_specimen")+"\"" +
+                                            "}]," +
+                                            "\"result\": [" +
+                                                "{" +
+                                                    "\"reference\": \"Observation/"+rs.getString("id_observation")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"basedOn\": [" +
+                                                "{" +
+                                                    "\"reference\": \"ServiceRequest/"+rs.getString("id_servicerequest")+"\"" +
+                                                "}" +
+                                            "]," +
+                                            "\"conclusion\": \""+rs.getString("kesan").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/DiagnosticReport");
+                                TeksArea.append("Request JSON : "+json);
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/DiagnosticReport", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json);
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_diagnosticreport_lab","?,?,?,?","No.Order",4,new String[]{
                                         rs.getString("noorder"),rs.getString("kd_jenis_prw"),rs.getString("id_template"),response.asText()
                                     });
                                 }
