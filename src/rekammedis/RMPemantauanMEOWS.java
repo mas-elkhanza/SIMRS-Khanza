@@ -199,8 +199,6 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             
         }); 
         
-        
-        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
