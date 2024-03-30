@@ -522,21 +522,19 @@ public final class DlgKepatuhanKelengkapanKeselamatanBedah extends javax.swing.J
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'>No.Rawat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Tanggal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Dokter Dituju</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Nomer RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Poliklinik</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='43px'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Triase IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Askep IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 10</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 9</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Operator</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nomer RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tindakan/Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Check List Pre Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sign-In Sebelum Anestesi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Time-Out Sebelum Insisi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sign-Out Sebelum Menutup Luka</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Check List Post Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kelengkapan</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -555,28 +553,26 @@ public final class DlgKepatuhanKelengkapanKeselamatanBedah extends javax.swing.J
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,10)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,11)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,12)+"</td>"+
-                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,13)+"</td>"+
-                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,14)+"</td>"+
                                     "</tr>"
                                 ); 
                             }            
 
-                            f = new File("StatusDataRM.html");            
+                            f = new File("KepatuhanKelengkapanKeselamatanBedah.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write("<html>"+
                                         "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
                                         "<body>"+
-                                            "<table width='1408px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 "<tr class='isi2'>"+
                                                     "<td valign='top' align='center'>"+
                                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                        "<font size='2' face='Tahoma'>REKAP STATUS DATA RM PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                                "<font size='2' face='Tahoma'>REKAP KEPATUHAN KELENGKAPAN KESELAMATAN BEDAH PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                                     "</td>"+
                                                "</tr>"+
                                             "</table>"+
-                                            "<table width='1408px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 htmlContent.toString()+
                                             "</table>"+
                                         "</body>"+                   
@@ -590,21 +586,19 @@ public final class DlgKepatuhanKelengkapanKeselamatanBedah extends javax.swing.J
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
                                 "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='105px'>No.Rawat</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Tanggal</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Dokter Dituju</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='65px'>Nomer RM</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Poliklinik</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='43px'>Status</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>SOAPI Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ralan</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Resume Ranap</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Triase IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='70px'>Askep IGD</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 10</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54px'>ICD 9</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Rawat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Operator</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nomer RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tindakan/Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Status</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Check List Pre Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sign-In Sebelum Anestesi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Time-Out Sebelum Insisi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sign-Out Sebelum Menutup Luka</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Check List Post Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kelengkapan</td>"+
                                 "</tr>"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
@@ -623,28 +617,26 @@ public final class DlgKepatuhanKelengkapanKeselamatanBedah extends javax.swing.J
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,10)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,11)+"</td>"+
                                         "<td valign='top' align='center'>"+tabMode.getValueAt(i,12)+"</td>"+
-                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,13)+"</td>"+
-                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,14)+"</td>"+
                                     "</tr>"
                                 ); 
                             }            
 
-                            f = new File("StatusDataRM.wps");            
+                            f = new File("KepatuhanKelengkapanKeselamatanBedah.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write("<html>"+
                                         "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
                                         "<body>"+
-                                            "<table width='1408px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 "<tr class='isi2'>"+
                                                     "<td valign='top' align='center'>"+
                                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                        "<font size='2' face='Tahoma'>REKAP STATUS DATA RM PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                        "<font size='2' face='Tahoma'>REKAP KEPATUHAN KELENGKAPAN KESELAMATAN BEDAH PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                                     "</td>"+
                                                "</tr>"+
                                             "</table>"+
-                                            "<table width='1408px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<table width='1600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                                 htmlContent.toString()+
                                             "</table>"+
                                         "</body>"+                   
@@ -657,17 +649,17 @@ public final class DlgKepatuhanKelengkapanKeselamatanBedah extends javax.swing.J
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Rawat\";\"Tanggal\";\"Dokter Dituju\";\"Nomer RM\";\"Pasien\";\"Poliklinik\";\"Status\";\"SOAPI Ralan\";\"SOAPI Ranap\";\"Resume Ralan\";\"Resume Ranap\";\"Triase IGD\";\"Askep IGD\";\"ICD 10\";\"ICD 9\"\n"
+                                "\"No.Rawat\";\"Tanggal\";\"Operator\";\"Nomer RM\";\"Pasien\";\"Tindakan/Operasi\";\"Status\";\"Check List Pre Operasi\";\"Sign-In Sebelum Anestesi\";\"Time-Out Sebelum Insisi\";\"Sign-Out Sebelum Menutup Luka\";\"Check List Post Operasi\";\"Kelengkapan\"\n"
                             ); 
                             for(i=0;i<tabMode.getRowCount();i++){  
                                 htmlContent.append(                             
                                     "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";"+
                                     "\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\";"+
-                                    "\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,11)+"\";\""+tabMode.getValueAt(i,12)+"\";\""+tabMode.getValueAt(i,13)+"\";\""+tabMode.getValueAt(i,14)+"\"\n"
+                                    "\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,11)+"\";\""+tabMode.getValueAt(i,12)+"\"\n"
                                 ); 
                             }            
 
-                            f = new File("StatusDataRM.csv");            
+                            f = new File("KepatuhanKelengkapanKeselamatanBedah.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
 
@@ -865,7 +857,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "select operasi.no_rawat,operasi.tgl_operasi,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.status "+
                 "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat inner join dokter on operasi.operator1=dokter.kd_dokter "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where  "+
+                "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where operasi.operator1<>'-' and "+
                 "concat(operasi.operator1,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? "+
                 "and operasi.tgl_operasi between ? and ? and operasi.status like ? "+
                 (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or "+
@@ -949,7 +941,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "","","","","","Status Data Tidak Ada/Tidak Lengkap",":",tidakadaCheckListPreOperasi,tidakadaSignInSebelumAnestesi,tidakadaTimeOutSebelumInsisi,tidakadaSignOutSebelumMenutupLuka,tidakadaCheckListPostOperasi,ketidaklengkapan
                     });
                     tabMode.addRow(new Object[]{
-                        "","","","","","Persentase Status Data Ada/Lengkap",":",tidakadaCheckListPreOperasi,tidakadaSignInSebelumAnestesi,tidakadaTimeOutSebelumInsisi,tidakadaSignOutSebelumMenutupLuka,tidakadaCheckListPostOperasi,ketidaklengkapan
+                        "","","","","","Persentase Status Data Ada/Lengkap",":",
+                        ((adaCheckListPreOperasi/(adaCheckListPreOperasi+tidakadaCheckListPreOperasi))*100)+" %",
+                        ((adaSignInSebelumAnestesi/(adaSignInSebelumAnestesi+tidakadaSignInSebelumAnestesi))*100)+" %",
+                        ((adaTimeOutSebelumInsisi/(adaTimeOutSebelumInsisi+tidakadaTimeOutSebelumInsisi))*100)+" %",
+                        ((adaSignOutSebelumMenutupLuka/(adaSignOutSebelumMenutupLuka+tidakadaSignOutSebelumMenutupLuka))*100)+" %",
+                        ((adaCheckListPostOperasi/(adaCheckListPostOperasi+tidakadaCheckListPostOperasi))*100)+" %",
+                        ((kelengkapan/(kelengkapan+ketidaklengkapan))*100)+" %"
                     });
                 }   
             } catch (Exception e) {
