@@ -28,10 +28,10 @@ public class WarnaTableKelengkapanOperasi extends DefaultTableCellRenderer {
         if (column == 12){
             if(table.getValueAt(row,12).toString().equals("Lengkap")){
                 component.setBackground(Color.GREEN);
-                component.setForeground(Color.YELLOW);
+                component.setForeground(Color.BLUE);
             }else if(table.getValueAt(row,12).toString().equals("Tidak Lengkap")){
                 component.setBackground(Color.YELLOW);
-                component.setForeground(Color.GREEN);
+                component.setForeground(Color.BLUE);
             }else if(table.getValueAt(row,12).toString().equals("Tidak Dikerjakan")){
                 component.setBackground(Color.RED);
                 component.setForeground(Color.WHITE);

@@ -857,7 +857,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "select operasi.no_rawat,operasi.tgl_operasi,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.status "+
                 "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat inner join dokter on operasi.operator1=dokter.kd_dokter "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where operasi.operator1<>'-' and "+
+                "inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where operasi.operator1<>'-' and paket_operasi.kategori='Operasi' and "+
                 "concat(operasi.operator1,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? "+
                 "and operasi.tgl_operasi between ? and ? and operasi.status like ? "+
                 (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or "+
