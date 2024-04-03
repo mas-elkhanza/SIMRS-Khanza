@@ -134,9 +134,9 @@ public final class DlgCariObat extends javax.swing.JDialog {
                 column.setPreferredWidth(45);
             }else if(i==2){
                 column.setPreferredWidth(75);
-            }else if(i==3){
-                column.setPreferredWidth(200);
-            }else if(i==4){
+            } else if (i == 3) {
+                column.setPreferredWidth(150);
+            } else if (i == 4) {
                 column.setPreferredWidth(45);
             }else if(i==5){
                 column.setMinWidth(0);
@@ -153,20 +153,21 @@ public final class DlgCariObat extends javax.swing.JDialog {
                 column.setPreferredWidth(40);
             }else if(i==11){
                 column.setPreferredWidth(130);
-            }else if(i==12){
-                column.setPreferredWidth(85);
-            }else if(i==13){
+            } else if (i == 12) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 13) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==14){
                 column.setPreferredWidth(85);
             }else if(i==15){
                 column.setPreferredWidth(85);
-            }else if(i==16){
-                column.setPreferredWidth(70);
-            }else if(i==17){
-                column.setPreferredWidth(100);
-            }else if(i==18){
+            } else if (i == 16) {
+                column.setPreferredWidth(50);
+            } else if (i == 17) {
+                column.setPreferredWidth(50);
+            } else if (i == 18) {
                 column.setPreferredWidth(65);
             }                 
         }
@@ -258,9 +259,9 @@ public final class DlgCariObat extends javax.swing.JDialog {
                 column.setPreferredWidth(25);
             }else if(i==1){
                 column.setPreferredWidth(75);
-            }else if(i==2){
-                column.setPreferredWidth(200);
-            }else if(i==3){
+            } else if (i == 2) {
+                column.setPreferredWidth(150);
+            } else if (i == 3) {
                 column.setPreferredWidth(45);
             }else if(i==4){
                 column.setPreferredWidth(70);
@@ -281,17 +282,18 @@ public final class DlgCariObat extends javax.swing.JDialog {
                 column.setPreferredWidth(40);
             }else if(i==12){
                 column.setPreferredWidth(40);
-            }else if(i==13){
-                column.setPreferredWidth(85);
-            }else if(i==14){
+            } else if (i == 13) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 14) {
                 column.setPreferredWidth(85);
             }else if(i==15){
                 column.setPreferredWidth(85);
-            }else if(i==16){
-                column.setPreferredWidth(70);
-            }else if(i==17){
-                column.setPreferredWidth(100);
-            }else if(i==18){
+            } else if (i == 16) {
+                column.setPreferredWidth(50);
+            } else if (i == 17) {
+                column.setPreferredWidth(50);
+            } else if (i == 18) {
                 column.setPreferredWidth(65);
             }
         }
