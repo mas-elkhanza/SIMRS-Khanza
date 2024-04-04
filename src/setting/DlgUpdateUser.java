@@ -3026,8 +3026,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[K]Nilai Piutang Per Cara Bayar Per Bulan",nilai_piutang_perjenis_bayar_per_bulan});
         }
         
-        if("[K]Ringkasan Piutang Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[K]Ringkasan Piutang Cara Bayar",ringkasan_piutang_jenis_bayar});
+        if("[K]Ringkasan Piutang Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[K]Ringkasan Piutang Per Cara Bayar",ringkasan_piutang_jenis_bayar});
         }
 
         if("[L]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7157,7 +7157,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","nilai_piutang_perjenis_bayar_per_bulan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[K]Ringkasan Piutang Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
+            if("[K]Ringkasan Piutang Per Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_piutang_jenis_bayar='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }

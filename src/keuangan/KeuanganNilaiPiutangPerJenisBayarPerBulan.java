@@ -391,8 +391,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabMode);
         try{   
             ps=koneksi.prepareStatement(
-                    "select penjab.kd_pj,penjab.png_jawab from penjab where "+
-                    "penjab.kd_pj like ? or penjab.png_jawab like ? order by penjab.png_jawab");
+                    "select penjab.kd_pj,penjab.png_jawab from penjab where penjab.kd_pj like ? or penjab.png_jawab like ? order by penjab.png_jawab");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

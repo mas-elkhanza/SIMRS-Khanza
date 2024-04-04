@@ -1,6 +1,6 @@
 /*
-  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
-  Software ini dalam bentuk apapun tanpa seijin pembuat software
+  Dilarang keras memperjualbelikan/mengambil keuntungan dari Software 
+  ini dalam bentuk apapun tanpa seijin pembuat software
   (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
   npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
   nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
