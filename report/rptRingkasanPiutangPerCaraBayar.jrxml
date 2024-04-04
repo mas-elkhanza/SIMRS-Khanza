@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="abd34390-5b47-48d5-845e-e3cf26adb451">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="742"/>
@@ -126,7 +126,7 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[RINGKASAN HUTANG VENDOR FARMASI]]></text>
+				<text><![CDATA[RINGKASAN PIUTANG PER JENIS/CARA BAYAR]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="35" width="548" height="14" uuid="022d9fef-ca48-4c94-8b95-47bd9944ee13"/>
@@ -183,7 +183,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Kode Suplier]]></text>
+				<text><![CDATA[Kode]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="85" y="2" width="355" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="34908776-db00-406c-a457-954a9851b32a"/>
@@ -191,7 +191,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Nama Supplier]]></text>
+				<text><![CDATA[Jenis/Cara Bayar]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="440" y="2" width="110" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="ee7b0dc4-32c5-4071-983f-c1b6750686ea"/>
