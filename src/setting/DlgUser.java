@@ -246,7 +246,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Kirim Observation Radiologi Satu Sehat","[L]Kirim Diagnostic Report Radiologi Satu Sehat","[M]Hasil Endoskopi Telinga","[L]Mapping Tindakan Lab PK & MB Satu Sehat",
                 "[L]Kirim Service Request Lab PK Satu Sehat","[L]Kirim Service Request Lab MB Satu Sehat","[L]Kirim Specimen Lab PK Satu Sehat","[L]Kirim Specimen Lab MB Satu Sehat",
                 "[L]Kirim Observation Lab PK Satu Sehat","[L]Kirim Observation Lab MB Satu Sehat","[L]Kirim Diagnostic Report Lab PK Satu Sehat","[L]Kirim Diagnostic Report Lab MB Satu Sehat",
-                "[J]Kepatuhan Kelengkapan Keselamatan Bedah","[K]Nilai Piutang Per Jenis Bayar Per Bulan"
+                "[J]Kepatuhan Kelengkapan Keselamatan Bedah","[K]Nilai Piutang Per Cara Bayar Per Bulan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -3095,7 +3095,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(237);
                     break;
                 case 1032:
-                    column.setPreferredWidth(210);
+                    column.setPreferredWidth(208);
                     break;
                 default:
                     column.setPreferredWidth(134);
