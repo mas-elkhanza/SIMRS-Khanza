@@ -5113,7 +5113,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"Observation\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/observation/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
@@ -5229,7 +5229,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"Observation\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/observation/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"value\": \""+rs.getString("noorder")+"."+rs.getString("kd_jenis_prw")+"\"" +
                                                 "}" +
                                             "]," +
@@ -6460,7 +6460,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"Observation\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/observation/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
@@ -6579,7 +6579,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"Observation\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/observation/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
@@ -6700,7 +6700,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"Observation\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/observation/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
@@ -6819,7 +6819,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"Observation\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/observation/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"value\": \""+rs.getString("noorder")+"."+rs.getString("id_template")+"\"" +
                                                 "}" +
                                             "]," +
