@@ -127,6 +127,7 @@ import rekammedis.RMPenilaianLanjutanRisikoJatuhGeriatri;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhLansia;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhPsikiatri;
 import rekammedis.RMPenilaianLanjutanSkriningFungsional;
+import rekammedis.RMPenilaianPasienImunitasRendah;
 import rekammedis.RMPenilaianPasienKeracunan;
 import rekammedis.RMPenilaianPasienPenyakitMenular;
 import rekammedis.RMPenilaianPasienTerminal;
@@ -1539,7 +1540,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianTambahanGeriatriActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianTambahanGeriatri);
 
         MnPenilaianTambahanBunuhDiri.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianTambahanBunuhDiri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1555,7 +1555,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianTambahanBunuhDiriActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianTambahanBunuhDiri);
 
         MnPenilaianTambahanPerilakuKekerasan.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianTambahanPerilakuKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1571,7 +1570,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianTambahanPerilakuKekerasanActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianTambahanPerilakuKekerasan);
 
         MnPenilaianTambahanMelarikanDiri.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianTambahanMelarikanDiri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1587,7 +1585,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianTambahanMelarikanDiriActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianTambahanMelarikanDiri);
 
         MnPenilaianPasienTerminal.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianPasienTerminal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1603,7 +1600,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianPasienTerminalActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianPasienTerminal);
 
         MnPenilaianKorbanKekerasan.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianKorbanKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1619,7 +1615,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianKorbanKekerasanActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianKorbanKekerasan);
 
         MnPenilaianPasienPenyakitMenular.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianPasienPenyakitMenular.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1635,7 +1630,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianPasienPenyakitMenularActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianPasienPenyakitMenular);
 
         MnPenilaianFisioterapi.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianFisioterapi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1651,7 +1645,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianFisioterapiActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianFisioterapi);
 
         MnPenilaianPsikolog.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianPsikolog.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1667,7 +1660,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnPenilaianPsikologActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnPenilaianPsikolog);
 
         MnHemodialisa.setBackground(new java.awt.Color(255, 255, 254));
         MnHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1683,7 +1675,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 MnHemodialisaActionPerformed(evt);
             }
         });
-        MnPenilaianLain.add(MnHemodialisa);
 
         MnDataRM.add(MnPenilaianLain);
 
@@ -10957,6 +10948,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         tampil();
     } 
     
+    private void MnPenilaianPasienImunitasRendahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianPasienPenyakitMenularActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianPasienImunitasRendah form=new RMPenilaianPasienImunitasRendah(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @data args the command line arguments
     */
@@ -11282,7 +11295,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem ppSuratPRI;
     private widget.Table tbPetugas;
     // End of variables declaration//GEN-END:variables
-    private javax.swing.JMenuItem MnPenilaianPreInduksi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP;
+    private javax.swing.JMenuItem MnPenilaianPreInduksi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP,MnPenilaianPasienImunitasRendah;
     
     private void tampil() {
         Valid.tabelKosong(tabMode);   
@@ -11681,6 +11694,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianPreInduksi.setEnabled(akses.getpenilaian_pre_induksi());
         MnGabungNoRawat.setEnabled(akses.getgabung_norawat()); 
         MnHasilPemeriksaanEKG.setEnabled(akses.gethasil_pemeriksaan_ekg());
+        MnPenilaianPasienImunitasRendah.setEnabled(akses.getpenilaian_pasien_imunitas_rendah());
     }
     
     private void isNumber(){
@@ -11907,6 +11921,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSudahTerbitSEP.setPreferredSize(new java.awt.Dimension(320, 26));
         MnSudahTerbitSEP.addActionListener(this::MnSudahTerbitSEPActionPerformed);
         
+        MnPenilaianPasienImunitasRendah = new javax.swing.JMenuItem();
+        MnPenilaianPasienImunitasRendah.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianPasienImunitasRendah.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPenilaianPasienImunitasRendah.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianPasienImunitasRendah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianPasienImunitasRendah.setText("Penilaian Pasien Imunitas Rendah");
+        MnPenilaianPasienImunitasRendah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianPasienImunitasRendah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianPasienImunitasRendah.setName("MnPenilaianPasienImunitasRendah");
+        MnPenilaianPasienImunitasRendah.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnPenilaianPasienImunitasRendah.addActionListener(this::MnPenilaianPasienImunitasRendahActionPerformed);
+        
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
         MnRMOperasi.add(MnSignInSebelumAnestesi);
@@ -11939,5 +11965,17 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnBridging.add(MnRiwayatPerawatanICareNoKartu);
         MnBridging.add(MnRiwayatPerawatanICareNIK1);
         MnBridging.add(MnRiwayatPerawatanICareNoKartu1);
+        
+        MnPenilaianLain.add(MnPenilaianTambahanGeriatri);
+        MnPenilaianLain.add(MnPenilaianTambahanBunuhDiri);
+        MnPenilaianLain.add(MnPenilaianTambahanPerilakuKekerasan);
+        MnPenilaianLain.add(MnPenilaianTambahanMelarikanDiri);
+        MnPenilaianLain.add(MnPenilaianPasienTerminal);
+        MnPenilaianLain.add(MnPenilaianKorbanKekerasan);
+        MnPenilaianLain.add(MnPenilaianPasienPenyakitMenular);
+        MnPenilaianLain.add(MnPenilaianPasienImunitasRendah);
+        MnPenilaianLain.add(MnPenilaianFisioterapi);
+        MnPenilaianLain.add(MnPenilaianPsikolog);
+        MnPenilaianLain.add(MnHemodialisa);
     }
 }
