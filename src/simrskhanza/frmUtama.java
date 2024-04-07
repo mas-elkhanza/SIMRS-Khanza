@@ -43984,7 +43984,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPiutangPerJenisBayar.addActionListener(this::btnRingkasanPiutangPerJenisBayarActionPerformed);
                
         btnPenilaianPasienImunitasRendah = new widget.ButtonBig();
-        btnPenilaianPasienImunitasRendah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5958343_disease_epidemic_infection_microscope virus_research_icon.png")));
+        btnPenilaianPasienImunitasRendah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5964813_chest_coronavirus_healthcare_medical_pain_icon.png")));
         btnPenilaianPasienImunitasRendah.setText("Penilaian Pasien Imunitas Rendah");
         btnPenilaianPasienImunitasRendah.setIconTextGap(0);
         btnPenilaianPasienImunitasRendah.setName("btnPenilaianPasienImunitasRendah"); 
