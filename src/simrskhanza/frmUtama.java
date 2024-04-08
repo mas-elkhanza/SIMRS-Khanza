@@ -845,6 +845,7 @@ import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataCatatanCekGDS;
 import rekammedis.RMDataCatatanKeperawatanRalan;
 import rekammedis.RMDataCatatanKeperawatanRanap;
+import rekammedis.RMDataCatatanKeseimbanganCairan;
 import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
@@ -21327,6 +21328,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnCatatanKeseimbanganCairanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataCatatanKeseimbanganCairan aplikasi=new RMDataCatatanKeseimbanganCairan(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22017,7 +22031,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnKirimDiagnosticReportSatuSehat,btnHasilEndoskopiTelinga,btnMappingLaboratSatuSehat,btnKirimServiceRequestLabPKSatuSehat,btnKirimServiceRequestLabMBSatuSehat,
             btnKirimSpecimenLabPKSatuSehat,btnKirimSpecimenLabMBSatuSehat,btnKirimObservationLabPKSatuSehat,btnKirimObservationLabMBSatuSehat,btnKirimDiagnosticReportLabPKSatuSehat,
             btnKirimDiagnosticReportLabMBSatuSehat,btnKepatuhanKelengkapanKeselamatanBedah,btnNilaiPiutangPerJenisBayarPerBulan,btnRingkasanPiutangPerJenisBayar,
-            btnPenilaianPasienImunitasRendah;
+            btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan;
     
     public void isWall(){
         try{            
@@ -25774,6 +25788,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getcatatan_observasi_ranap_postpartum()==true){
                 Panelmenu.add(btnCatatanObservasiRanapPostPartum);
+                jmlmenu++;
+            }
+            
+            if(akses.getbalance_cairan()==true){
+                Panelmenu.add(btnCatatanKeseimbanganCairan);
                 jmlmenu++;
             }
             
@@ -30878,6 +30897,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getcatatan_observasi_ranap_postpartum()==true){
             Panelmenu.add(btnCatatanObservasiRanapPostPartum);
+            jmlmenu++;
+        }
+        
+        if(akses.getbalance_cairan()==true){
+            Panelmenu.add(btnCatatanKeseimbanganCairan);
             jmlmenu++;
         }
         
@@ -37426,6 +37450,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getcatatan_observasi_ranap_postpartum()==true){
             if(btnCatatanObservasiRanapPostPartum.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanObservasiRanapPostPartum);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbalance_cairan()==true){
+            if(btnCatatanKeseimbanganCairan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanKeseimbanganCairan);
                 jmlmenu++;
             }                
         }
@@ -43990,5 +44021,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPasienImunitasRendah.setName("btnPenilaianPasienImunitasRendah"); 
         btnPenilaianPasienImunitasRendah.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianPasienImunitasRendah.addActionListener(this::btnPenilaianPasienImunitasRendahActionPerformed);
+        
+        btnCatatanKeseimbanganCairan = new widget.ButtonBig();
+        btnCatatanKeseimbanganCairan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7150134_water_drink_drop_blue_icon.png"))); 
+        btnCatatanKeseimbanganCairan.setText("Keseimbangan Cairan");
+        btnCatatanKeseimbanganCairan.setIconTextGap(0);
+        btnCatatanKeseimbanganCairan.setName("btnCatatanKeseimbanganCairan"); 
+        btnCatatanKeseimbanganCairan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanKeseimbanganCairan.addActionListener(this::btnCatatanKeseimbanganCairanActionPerformed);
     }
 }
