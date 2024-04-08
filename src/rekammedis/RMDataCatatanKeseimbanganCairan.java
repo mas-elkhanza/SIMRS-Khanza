@@ -58,8 +58,9 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","GDS",
-            "Insulin","Obat Gula","NIP","Nama Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tanggal","Jam","Infus",
+            "Tranfusi","Minum","Urine/Feses","Drain","NGT/Oral","IWL","Keseimbangan Cairan",
+            "Keterangan","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -69,7 +70,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -88,24 +89,42 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(50);
             }else if(i==9){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(50);
             }else if(i==10){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(50);
             }else if(i==11){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(70);
             }else if(i==12){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(50);
+            }else if(i==13){
+                column.setPreferredWidth(55);
+            }else if(i==14){
+                column.setPreferredWidth(50);
+            }else if(i==15){
+                column.setPreferredWidth(10);
+            }else if(i==16){
+                column.setPreferredWidth(200);
+            }else if(i==17){
+                column.setPreferredWidth(90);
+            }else if(i==18){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        GDP.setDocument(new batasInput((byte)5).getKata(GDP));
-        Insulin.setDocument(new batasInput((byte)30).getKata(Insulin));
-        ObatGula.setDocument(new batasInput((byte)30).getKata(ObatGula));
+        Infus.setDocument(new batasInput((byte)4).getOnlyAngka(Infus));
+        Tranfusi.setDocument(new batasInput((byte)4).getOnlyAngka(Tranfusi));
+        Minum.setDocument(new batasInput((byte)4).getOnlyAngka(Minum));
+        Urine.setDocument(new batasInput((byte)4).getOnlyAngka(Urine));
+        Drain.setDocument(new batasInput((byte)4).getOnlyAngka(Drain));
+        NGT.setDocument(new batasInput((byte)4).getOnlyAngka(NGT));
+        IWL.setDocument(new batasInput((byte)4).getOnlyAngka(IWL));
+        Keseimbangan.setDocument(new batasInput((byte)4).getOnlyAngka(Keseimbangan));
+        Keterangan.setDocument(new batasInput((int)200).getKata(Keterangan));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -213,11 +232,27 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
-        GDP = new widget.TextBox();
-        ObatGula = new widget.TextBox();
+        Infus = new widget.TextBox();
+        Minum = new widget.TextBox();
         jLabel20 = new widget.Label();
         jLabel23 = new widget.Label();
-        Insulin = new widget.TextBox();
+        Tranfusi = new widget.TextBox();
+        jLabel17 = new widget.Label();
+        jLabel22 = new widget.Label();
+        NGT = new widget.TextBox();
+        Drain = new widget.TextBox();
+        jLabel24 = new widget.Label();
+        Urine = new widget.TextBox();
+        jLabel13 = new widget.Label();
+        jLabel25 = new widget.Label();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel26 = new widget.Label();
+        IWL = new widget.TextBox();
+        jLabel28 = new widget.Label();
+        Keseimbangan = new widget.TextBox();
+        jLabel27 = new widget.Label();
+        jLabel29 = new widget.Label();
+        Keterangan = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -487,7 +522,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 124));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 174));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
@@ -537,11 +572,6 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
-        TNoRM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRMKeyPressed(evt);
-            }
-        });
         FormInput.add(TNoRM);
         TNoRM.setBounds(212, 10, 112, 23);
 
@@ -638,50 +668,168 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("GDS :");
+        jLabel12.setText("Infus :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 70, 70, 23);
+        jLabel12.setBounds(0, 90, 62, 23);
 
-        GDP.setFocusTraversalPolicyProvider(true);
-        GDP.setName("GDP"); // NOI18N
-        GDP.addKeyListener(new java.awt.event.KeyAdapter() {
+        Infus.setFocusTraversalPolicyProvider(true);
+        Infus.setName("Infus"); // NOI18N
+        Infus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GDPKeyPressed(evt);
+                InfusKeyPressed(evt);
             }
         });
-        FormInput.add(GDP);
-        GDP.setBounds(74, 70, 50, 23);
+        FormInput.add(Infus);
+        Infus.setBounds(66, 90, 50, 23);
 
-        ObatGula.setFocusTraversalPolicyProvider(true);
-        ObatGula.setName("ObatGula"); // NOI18N
-        ObatGula.addKeyListener(new java.awt.event.KeyAdapter() {
+        Minum.setFocusTraversalPolicyProvider(true);
+        Minum.setName("Minum"); // NOI18N
+        Minum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ObatGulaKeyPressed(evt);
+                MinumKeyPressed(evt);
             }
         });
-        FormInput.add(ObatGula);
-        ObatGula.setBounds(570, 70, 219, 23);
+        FormInput.add(Minum);
+        Minum.setBounds(282, 90, 50, 23);
 
-        jLabel20.setText("Obat Gula :");
+        jLabel20.setText("Minum :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(476, 70, 90, 23);
+        jLabel20.setBounds(228, 90, 50, 23);
 
-        jLabel23.setText("Insulin :");
+        jLabel23.setText("Tranfusi :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(186, 70, 50, 23);
+        jLabel23.setBounds(114, 90, 60, 23);
 
-        Insulin.setFocusTraversalPolicyProvider(true);
-        Insulin.setName("Insulin"); // NOI18N
-        Insulin.addKeyListener(new java.awt.event.KeyAdapter() {
+        Tranfusi.setFocusTraversalPolicyProvider(true);
+        Tranfusi.setName("Tranfusi"); // NOI18N
+        Tranfusi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                InsulinKeyPressed(evt);
+                TranfusiKeyPressed(evt);
             }
         });
-        FormInput.add(Insulin);
-        Insulin.setBounds(240, 70, 190, 23);
+        FormInput.add(Tranfusi);
+        Tranfusi.setBounds(178, 90, 50, 23);
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setText("Input :");
+        jLabel17.setName("jLabel17"); // NOI18N
+        jLabel17.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(14, 70, 70, 23);
+
+        jLabel22.setText("NGT/Oral :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(586, 90, 60, 23);
+
+        NGT.setFocusTraversalPolicyProvider(true);
+        NGT.setName("NGT"); // NOI18N
+        NGT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NGTKeyPressed(evt);
+            }
+        });
+        FormInput.add(NGT);
+        NGT.setBounds(650, 90, 50, 23);
+
+        Drain.setFocusTraversalPolicyProvider(true);
+        Drain.setName("Drain"); // NOI18N
+        Drain.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DrainKeyPressed(evt);
+            }
+        });
+        FormInput.add(Drain);
+        Drain.setBounds(533, 90, 50, 23);
+
+        jLabel24.setText("Drain :");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(489, 90, 40, 23);
+
+        Urine.setFocusTraversalPolicyProvider(true);
+        Urine.setName("Urine"); // NOI18N
+        Urine.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UrineKeyPressed(evt);
+            }
+        });
+        FormInput.add(Urine);
+        Urine.setBounds(435, 90, 50, 23);
+
+        jLabel13.setText("Urine/Feses :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(341, 90, 90, 23);
+
+        jLabel25.setText("Output :");
+        jLabel25.setName("jLabel25"); // NOI18N
+        jLabel25.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(340, 70, 50, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 70, 800, 1);
+
+        jLabel26.setText("IWL :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(695, 90, 40, 23);
+
+        IWL.setFocusTraversalPolicyProvider(true);
+        IWL.setName("IWL"); // NOI18N
+        IWL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IWLKeyPressed(evt);
+            }
+        });
+        FormInput.add(IWL);
+        IWL.setBounds(739, 90, 50, 23);
+
+        jLabel28.setText(":");
+        jLabel28.setName("jLabel28"); // NOI18N
+        jLabel28.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(0, 120, 128, 23);
+
+        Keseimbangan.setFocusTraversalPolicyProvider(true);
+        Keseimbangan.setName("Keseimbangan"); // NOI18N
+        Keseimbangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeseimbanganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keseimbangan);
+        Keseimbangan.setBounds(132, 120, 50, 23);
+
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel27.setText("Keseimbangan Cairan");
+        jLabel27.setName("jLabel27"); // NOI18N
+        jLabel27.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(14, 120, 130, 23);
+
+        jLabel29.setText("Keterangan :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(204, 120, 100, 23);
+
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(308, 120, 481, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -730,15 +878,33 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
+        }else if(Infus.getText().trim().equals("")){
+            Valid.textKosong(Infus,"Infus");
+        }else if(Tranfusi.getText().trim().equals("")){
+            Valid.textKosong(Tranfusi,"Tranfusi");
+        }else if(Minum.getText().trim().equals("")){
+            Valid.textKosong(Minum,"Minum");
+        }else if(Urine.getText().trim().equals("")){
+            Valid.textKosong(Urine,"Urine/Feses");
+        }else if(Drain.getText().trim().equals("")){
+            Valid.textKosong(Drain,"Drain");
+        }else if(NGT.getText().trim().equals("")){
+            Valid.textKosong(NGT,"NGT/Oral");
+        }else if(IWL.getText().trim().equals("")){
+            Valid.textKosong(IWL,"IWL");
+        }else if(Keseimbangan.getText().trim().equals("")){
+            Valid.textKosong(Keseimbangan,"Keseimbangan Cairan");
         }else{
-            if(Sequel.menyimpantf("catatan_cek_gds","?,?,?,?,?,?,?","Data",7,new String[]{
+            if(Sequel.menyimpantf("catatan_keseimbangan_cairan","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GDP.getText(),Insulin.getText(),ObatGula.getText(),NIP.getText()
+                Infus.getText(),Tranfusi.getText(),Minum.getText(),Urine.getText(),Drain.getText(),NGT.getText(),IWL.getText(),Keseimbangan.getText(),
+                Keterangan.getText(),NIP.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    GDP.getText(),Insulin.getText(),ObatGula.getText(),NIP.getText(),NamaPetugas.getText()
+                    Infus.getText(),Tranfusi.getText(),Minum.getText(),Urine.getText(),Drain.getText(),NGT.getText(),IWL.getText(),Keseimbangan.getText(),
+                    Keterangan.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -750,7 +916,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,ObatGula,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -771,7 +937,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -795,12 +961,28 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
-        }else{ 
+        }else if(Infus.getText().trim().equals("")){
+            Valid.textKosong(Infus,"Infus");
+        }else if(Tranfusi.getText().trim().equals("")){
+            Valid.textKosong(Tranfusi,"Tranfusi");
+        }else if(Minum.getText().trim().equals("")){
+            Valid.textKosong(Minum,"Minum");
+        }else if(Urine.getText().trim().equals("")){
+            Valid.textKosong(Urine,"Urine/Feses");
+        }else if(Drain.getText().trim().equals("")){
+            Valid.textKosong(Drain,"Drain");
+        }else if(NGT.getText().trim().equals("")){
+            Valid.textKosong(NGT,"NGT/Oral");
+        }else if(IWL.getText().trim().equals("")){
+            Valid.textKosong(IWL,"IWL");
+        }else if(Keseimbangan.getText().trim().equals("")){
+            Valid.textKosong(Keseimbangan,"Keseimbangan Cairan");
+        }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -849,24 +1031,24 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptDataCatatanCekGDS.jasper","report","::[ Data Catatan Cek GDS ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat,catatan_cek_gds.gdp,"+
-                    "catatan_cek_gds.insulin,catatan_cek_gds.obat_gula,catatan_cek_gds.nip,petugas.nama "+
-                    "from catatan_cek_gds inner join reg_periksa on catatan_cek_gds.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_cek_gds.nip=petugas.nip where "+
-                    "catatan_cek_gds.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat",param);
+                    "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where "+
+                    "catatan_keseimbangan_cairan.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat",param);
             }else{
                 Valid.MyReportqry("rptDataCatatanCekGDS.jasper","report","::[ Data Catatan Cek GDS ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat,catatan_cek_gds.gdp,"+
-                    "catatan_cek_gds.insulin,catatan_cek_gds.obat_gula,catatan_cek_gds.nip,petugas.nama "+
-                    "from catatan_cek_gds inner join reg_periksa on catatan_cek_gds.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_cek_gds.nip=petugas.nip where "+
-                    "catatan_cek_gds.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                    "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where "+
+                    "catatan_keseimbangan_cairan.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_cek_gds.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat ",param);
+                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_keseimbangan_cairan.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
+                    "order by catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -909,8 +1091,8 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            tampil();
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
         }
@@ -919,10 +1101,6 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
         Valid.pindah(evt,TCari,Jam);
 }//GEN-LAST:event_TanggalKeyPressed
-
-    private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
-        // Valid.pindah(evt, TNm, BtnSimpan);
-}//GEN-LAST:event_TNoRMKeyPressed
 
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
         if(tabMode.getRowCount()!=0){
@@ -966,7 +1144,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            GDP.requestFocus();
+            Infus.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -981,7 +1159,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,GDP);
+        Valid.pindah(evt,Detik,Infus);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnCatatanCekGDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanCekGDSActionPerformed
@@ -996,25 +1174,49 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptFormulirCatatanCekGDS.jasper","report","::[ Formulir Catatan Cek GDS ]::",
                     "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat,catatan_cek_gds.gdp,"+
-                    "catatan_cek_gds.insulin,catatan_cek_gds.obat_gula,catatan_cek_gds.nip,petugas.nama "+
-                    "from catatan_cek_gds inner join reg_periksa on catatan_cek_gds.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_cek_gds.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat",param);
+                    "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat",param);
         }
     }//GEN-LAST:event_MnCatatanCekGDSActionPerformed
 
-    private void GDPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDPKeyPressed
-        Valid.pindah(evt,btnPetugas,Insulin);
-    }//GEN-LAST:event_GDPKeyPressed
+    private void InfusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InfusKeyPressed
+        Valid.pindah(evt,btnPetugas,Tranfusi);
+    }//GEN-LAST:event_InfusKeyPressed
 
-    private void ObatGulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatGulaKeyPressed
-        Valid.pindah(evt,Insulin,BtnSimpan);
-    }//GEN-LAST:event_ObatGulaKeyPressed
+    private void MinumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MinumKeyPressed
+        Valid.pindah(evt,Tranfusi,Urine);
+    }//GEN-LAST:event_MinumKeyPressed
 
-    private void InsulinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InsulinKeyPressed
-        Valid.pindah(evt,GDP,ObatGula);
-    }//GEN-LAST:event_InsulinKeyPressed
+    private void TranfusiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TranfusiKeyPressed
+        Valid.pindah(evt,Infus,Minum);
+    }//GEN-LAST:event_TranfusiKeyPressed
+
+    private void NGTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NGTKeyPressed
+        Valid.pindah(evt,Drain,IWL);
+    }//GEN-LAST:event_NGTKeyPressed
+
+    private void DrainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DrainKeyPressed
+        Valid.pindah(evt,Urine,NGT);
+    }//GEN-LAST:event_DrainKeyPressed
+
+    private void UrineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrineKeyPressed
+        Valid.pindah(evt,Minum,Drain);
+    }//GEN-LAST:event_UrineKeyPressed
+
+    private void IWLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IWLKeyPressed
+        Valid.pindah(evt,NGT,Keseimbangan);
+    }//GEN-LAST:event_IWLKeyPressed
+
+    private void KeseimbanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeseimbanganKeyPressed
+        Valid.pindah(evt,IWL,Keterangan);
+    }//GEN-LAST:event_KeseimbanganKeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,Keseimbangan,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1046,17 +1248,21 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
+    private widget.TextBox Drain;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox GDP;
-    private widget.TextBox Insulin;
+    private widget.TextBox IWL;
+    private widget.TextBox Infus;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
+    private widget.TextBox Keseimbangan;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
+    private widget.TextBox Minum;
     private javax.swing.JMenuItem MnCatatanCekGDS;
+    private widget.TextBox NGT;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
-    private widget.TextBox ObatGula;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1065,22 +1271,34 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
+    private widget.TextBox Tranfusi;
     private widget.TextBox Umur;
+    private widget.TextBox Urine;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
     private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
     private widget.Label jLabel23;
+    private widget.Label jLabel24;
+    private widget.Label jLabel25;
+    private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JSeparator jSeparator2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;
@@ -1092,23 +1310,27 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat,catatan_cek_gds.gdp,"+
-                    "catatan_cek_gds.insulin,catatan_cek_gds.obat_gula,catatan_cek_gds.nip,petugas.nama "+
-                    "from catatan_cek_gds inner join reg_periksa on catatan_cek_gds.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.urine,catatan_keseimbangan_cairan.drain,"+
+                    "catatan_keseimbangan_cairan.ngt,catatan_keseimbangan_cairan.iwl,catatan_keseimbangan_cairan.keseimbangan,catatan_keseimbangan_cairan.keterangan,"+
+                    "catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_cek_gds.nip=petugas.nip where "+
-                    "catatan_cek_gds.tgl_perawatan between ? and ? order by catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat");
+                    "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where "+
+                    "catatan_keseimbangan_cairan.tgl_perawatan between ? and ? order by catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat,catatan_cek_gds.gdp,"+
-                    "catatan_cek_gds.insulin,catatan_cek_gds.obat_gula,catatan_cek_gds.nip,petugas.nama "+
-                    "from catatan_cek_gds inner join reg_periksa on catatan_cek_gds.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.urine,catatan_keseimbangan_cairan.drain,"+
+                    "catatan_keseimbangan_cairan.ngt,catatan_keseimbangan_cairan.iwl,catatan_keseimbangan_cairan.keseimbangan,catatan_keseimbangan_cairan.keterangan,"+
+                    "catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_cek_gds.nip=petugas.nip where "+
-                    "catatan_cek_gds.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? "+
-                    "or pasien.nm_pasien like ? or catatan_cek_gds.nip like ? or petugas.nama like ?) "+
-                    "order by catatan_cek_gds.tgl_perawatan,catatan_cek_gds.jam_rawat ");
+                    "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where "+
+                    "catatan_keseimbangan_cairan.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? "+
+                    "or pasien.nm_pasien like ? or catatan_keseimbangan_cairan.nip like ? or petugas.nama like ?) "+
+                    "order by catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat ");
             }
                 
             try {
@@ -1130,8 +1352,9 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("gdp"),rs.getString("insulin"),
-                        rs.getString("obat_gula"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("infus"),rs.getString("tranfusi"),
+                        rs.getString("minum"),rs.getString("urine"),rs.getString("drain"),rs.getString("ngt"),rs.getString("iwl"),
+                        rs.getString("keseimbangan"),rs.getString("keterangan"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1151,11 +1374,17 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        GDP.setText("");
-        Insulin.setText("");
-        ObatGula.setText("");
+        Infus.setText("0");
+        Tranfusi.setText("0");
+        Minum.setText("0");
+        Urine.setText("0");
+        Drain.setText("0");
+        NGT.setText("0");
+        IWL.setText("0");
+        Keseimbangan.setText("0");
+        Keterangan.setText("");
         Tanggal.setDate(new Date());
-        GDP.requestFocus();
+        Infus.requestFocus();
     } 
 
     private void getData() {
@@ -1169,9 +1398,15 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            GDP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Insulin.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            ObatGula.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Infus.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Tranfusi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Minum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Urine.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Drain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NGT.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            IWL.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Keseimbangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
@@ -1218,7 +1453,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,124));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,174));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1230,10 +1465,10 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getcatatan_cek_gds());
-        BtnHapus.setEnabled(akses.getcatatan_cek_gds());
-        BtnEdit.setEnabled(akses.getcatatan_cek_gds());
-        BtnPrint.setEnabled(akses.getcatatan_cek_gds()); 
+        BtnSimpan.setEnabled(akses.getbalance_cairan());
+        BtnHapus.setEnabled(akses.getbalance_cairan());
+        BtnEdit.setEnabled(akses.getbalance_cairan());
+        BtnPrint.setEnabled(akses.getbalance_cairan()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1300,10 +1535,12 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("catatan_cek_gds","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,gdp=?,insulin=?,obat_gula=?,nip=?",10,new String[]{
+        if(Sequel.mengedittf("catatan_keseimbangan_cairan","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,infus=?,"+
+                "tranfusi=?,minum=?,urine=?,drain=?,ngt=?,iwl=?,keseimbangan=?,keterangan=?,nip=?",16,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GDP.getText(),Insulin.getText(),ObatGula.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                Infus.getText(),Tranfusi.getText(),Minum.getText(),Urine.getText(),Drain.getText(),NGT.getText(),IWL.getText(),Keseimbangan.getText(),
+                Keterangan.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1313,19 +1550,23 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(GDP.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(Insulin.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(ObatGula.getText(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(Infus.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(Tranfusi.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(Minum.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(Urine.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(Drain.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(NGT.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(IWL.getText(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(Keseimbangan.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),18);
             emptTeks();
         }
-        if(tabMode.getRowCount()!=0){tampil();}
-        emptTeks();
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from catatan_cek_gds where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
+        if(Sequel.queryu2tf("delete from catatan_keseimbangan_cairan where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
