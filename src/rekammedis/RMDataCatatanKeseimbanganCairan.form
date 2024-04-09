@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnCatatanCekGDS">
+        <MenuItem class="javax.swing.JMenuItem" name="MnCatatanKeseimbanganCairan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -25,14 +25,15 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Catatan Cek GDS"/>
-            <Property name="name" type="java.lang.String" value="MnCatatanCekGDS" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Formulir Catatan Keseimbangan Cairan"/>
+            <Property name="actionCommand" type="java.lang.String" value="Formulir Catatan Keseimbangan Cairan"/>
+            <Property name="name" type="java.lang.String" value="MnCatatanKeseimbanganCairan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[230, 26]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnCatatanCekGDSActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnCatatanKeseimbanganCairanActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>

@@ -103,7 +103,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(50);
             }else if(i==15){
-                column.setPreferredWidth(10);
+                column.setPreferredWidth(120);
             }else if(i==16){
                 column.setPreferredWidth(200);
             }else if(i==17){
@@ -188,7 +188,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanCekGDS = new javax.swing.JMenuItem();
+        MnCatatanKeseimbanganCairan = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -257,19 +257,20 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanCekGDS.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanCekGDS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanCekGDS.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanCekGDS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanCekGDS.setText("Formulir Catatan Cek GDS");
-        MnCatatanCekGDS.setName("MnCatatanCekGDS"); // NOI18N
-        MnCatatanCekGDS.setPreferredSize(new java.awt.Dimension(230, 26));
-        MnCatatanCekGDS.addActionListener(new java.awt.event.ActionListener() {
+        MnCatatanKeseimbanganCairan.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanKeseimbanganCairan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanKeseimbanganCairan.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanKeseimbanganCairan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanKeseimbanganCairan.setText("Formulir Catatan Keseimbangan Cairan");
+        MnCatatanKeseimbanganCairan.setActionCommand("Formulir Catatan Keseimbangan Cairan");
+        MnCatatanKeseimbanganCairan.setName("MnCatatanKeseimbanganCairan"); // NOI18N
+        MnCatatanKeseimbanganCairan.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnCatatanKeseimbanganCairan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanCekGDSActionPerformed(evt);
+                MnCatatanKeseimbanganCairanActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanCekGDS);
+        jPopupMenu1.add(MnCatatanKeseimbanganCairan);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -1029,19 +1030,23 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanCekGDS.jasper","report","::[ Data Catatan Cek GDS ]::",
+                Valid.MyReportqry("rptDataCatatanKeseimbanganCairan.jasper","report","::[ Data Catatan Keseimbangan Cairan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
-                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.urine,catatan_keseimbangan_cairan.drain,"+
+                    "catatan_keseimbangan_cairan.ngt,catatan_keseimbangan_cairan.iwl,catatan_keseimbangan_cairan.keseimbangan,catatan_keseimbangan_cairan.keterangan,"+
+                    "catatan_keseimbangan_cairan.nip,petugas.nama "+
                     "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where "+
                     "catatan_keseimbangan_cairan.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanCekGDS.jasper","report","::[ Data Catatan Cek GDS ]::",
+                Valid.MyReportqry("rptDataCatatanKeseimbanganCairan.jasper","report","::[ Data Catatan Keseimbangan Cairan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
-                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.urine,catatan_keseimbangan_cairan.drain,"+
+                    "catatan_keseimbangan_cairan.ngt,catatan_keseimbangan_cairan.iwl,catatan_keseimbangan_cairan.keseimbangan,catatan_keseimbangan_cairan.keterangan,"+
+                    "catatan_keseimbangan_cairan.nip,petugas.nama "+
                     "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where "+
@@ -1162,7 +1167,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,Infus);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanCekGDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanCekGDSActionPerformed
+    private void MnCatatanKeseimbanganCairanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanKeseimbanganCairanActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1172,15 +1177,17 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanCekGDS.jasper","report","::[ Formulir Catatan Cek GDS ]::",
-                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+            Valid.MyReportqry("rptFormulirCatatanKeseimbanganCairan.jasper","report","::[ Formulir Catatan Keseimbangan Cairan ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat,catatan_keseimbangan_cairan.infus,"+
-                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.nip,petugas.nama "+
+                    "catatan_keseimbangan_cairan.tranfusi,catatan_keseimbangan_cairan.minum,catatan_keseimbangan_cairan.urine,catatan_keseimbangan_cairan.drain,"+
+                    "catatan_keseimbangan_cairan.ngt,catatan_keseimbangan_cairan.iwl,catatan_keseimbangan_cairan.keseimbangan,catatan_keseimbangan_cairan.keterangan,"+
+                    "catatan_keseimbangan_cairan.nip,petugas.nama "+
                     "from catatan_keseimbangan_cairan inner join reg_periksa on catatan_keseimbangan_cairan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_keseimbangan_cairan.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by catatan_keseimbangan_cairan.tgl_perawatan,catatan_keseimbangan_cairan.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanCekGDSActionPerformed
+    }//GEN-LAST:event_MnCatatanKeseimbanganCairanActionPerformed
 
     private void InfusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InfusKeyPressed
         Valid.pindah(evt,btnPetugas,Tranfusi);
@@ -1259,7 +1266,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.ComboBox Menit;
     private widget.TextBox Minum;
-    private javax.swing.JMenuItem MnCatatanCekGDS;
+    private javax.swing.JMenuItem MnCatatanKeseimbanganCairan;
     private widget.TextBox NGT;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
