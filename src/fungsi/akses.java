@@ -227,7 +227,7 @@ public final class akses {
             satu_sehat_kirim_servicerequest_lab=false,satu_sehat_kirim_servicerequest_labmb=false,satu_sehat_kirim_specimen_lab=false,satu_sehat_kirim_specimen_labmb=false,
             satu_sehat_kirim_observation_lab=false,satu_sehat_kirim_observation_labmb=false,satu_sehat_kirim_diagnosticreport_lab=false,satu_sehat_kirim_diagnosticreport_labmb=false,
             kepatuhan_kelengkapan_keselamatan_bedah=false,nilai_piutang_perjenis_bayar_per_bulan=false,ringkasan_piutang_jenis_bayar=false,penilaian_pasien_imunitas_rendah=false,
-            balance_cairan=false;
+            balance_cairan=false,catatan_observasi_chbp=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1283,6 +1283,7 @@ public final class akses {
                         akses.ringkasan_piutang_jenis_bayar=true;
                         akses.penilaian_pasien_imunitas_rendah=true;
                         akses.balance_cairan=true;
+                        akses.catatan_observasi_chbp=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2322,6 +2323,7 @@ public final class akses {
                         akses.ringkasan_piutang_jenis_bayar=rs2.getBoolean("ringkasan_piutang_jenis_bayar");
                         akses.penilaian_pasien_imunitas_rendah=rs2.getBoolean("penilaian_pasien_imunitas_rendah");
                         akses.balance_cairan=rs2.getBoolean("balance_cairan");
+                        akses.catatan_observasi_chbp=rs2.getBoolean("catatan_observasi_chbp");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3359,6 +3361,7 @@ public final class akses {
                         akses.ringkasan_piutang_jenis_bayar=false;
                         akses.penilaian_pasien_imunitas_rendah=false;
                         akses.balance_cairan=false;
+                        akses.catatan_observasi_chbp=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4419,6 +4422,7 @@ public final class akses {
         akses.ringkasan_piutang_jenis_bayar=false;
         akses.penilaian_pasien_imunitas_rendah=false;
         akses.balance_cairan=false;
+        akses.catatan_observasi_chbp=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5495,4 +5499,5 @@ public final class akses {
     public static boolean getringkasan_piutang_jenis_bayar(){return akses.ringkasan_piutang_jenis_bayar;}
     public static boolean getpenilaian_pasien_imunitas_rendah(){return akses.penilaian_pasien_imunitas_rendah;}
     public static boolean getbalance_cairan(){return akses.balance_cairan;}
+    public static boolean getcatatan_observasi_chbp(){return akses.catatan_observasi_chbp;}
 }   
