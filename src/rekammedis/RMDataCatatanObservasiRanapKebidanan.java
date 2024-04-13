@@ -1173,7 +1173,7 @@ public final class RMDataCatatanObservasiRanapKebidanan extends javax.swing.JDia
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            dpjp=Sequel.cariIsi("select dokter.nm_dokter from dpjp_ranap_kebidanan inner join dokter on dpjp_ranap_kebidanan.kd_dokter=dokter.kd_dokter where dpjp_ranap_kebidanan.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            dpjp=Sequel.cariIsi("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             if(dpjp.equals("")){
                 dpjp=Sequel.cariIsi("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             }

@@ -21,7 +21,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -70,7 +69,7 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -89,9 +88,23 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(60);
             }else if(i==9){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(76);
+            }else if(i==10){
+                column.setPreferredWidth(86);
+            }else if(i==11){
+                column.setPreferredWidth(55);
+            }else if(i==12){
+                column.setPreferredWidth(120);
+            }else if(i==13){
+                column.setPreferredWidth(90);
+            }else if(i==14){
+                column.setPreferredWidth(170);
+            }else if(i==15){
+                column.setPreferredWidth(90);
+            }else if(i==16){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -169,7 +182,7 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiRanapKebidanan = new javax.swing.JMenuItem();
+        MnCatatanObservasiCHBP = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -233,19 +246,19 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiRanapKebidanan.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanObservasiRanapKebidanan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanObservasiRanapKebidanan.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanObservasiRanapKebidanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiRanapKebidanan.setText("Formulir Catatan Observasi Rawat Inap Kebidanan");
-        MnCatatanObservasiRanapKebidanan.setName("MnCatatanObservasiRanapKebidanan"); // NOI18N
-        MnCatatanObservasiRanapKebidanan.setPreferredSize(new java.awt.Dimension(310, 26));
-        MnCatatanObservasiRanapKebidanan.addActionListener(new java.awt.event.ActionListener() {
+        MnCatatanObservasiCHBP.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanObservasiCHBP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanObservasiCHBP.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanObservasiCHBP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanObservasiCHBP.setText("Formulir Catatan Observasi CHBP");
+        MnCatatanObservasiCHBP.setName("MnCatatanObservasiCHBP"); // NOI18N
+        MnCatatanObservasiCHBP.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnCatatanObservasiCHBP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiRanapKebidananActionPerformed(evt);
+                MnCatatanObservasiCHBPActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiRanapKebidanan);
+        jPopupMenu1.add(MnCatatanObservasiCHBP);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -820,7 +833,7 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
-            if(Sequel.menyimpantf("catatan_observasi_chbp","?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
+            if(Sequel.menyimpantf("catatan_observasi_chbp","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 TD.getText(),Nadi.getText(),Suhu.getText(),DJJ.getText(),HIS.getText(),PPV.getText(),Keterangan.getText(),NIP.getText()
             })==true){
@@ -937,22 +950,20 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanObservasiRanapKebidanan.jasper","report","::[ Data Catatan Observasi Rawat Inap Kebidanan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.gcs,"+
-                    "catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.rr,catatan_observasi_chbp.suhu,catatan_observasi_chbp.spo2,"+
-                    "catatan_observasi_chbp.kontraksi,catatan_observasi_chbp.bjj,catatan_observasi_chbp.ppv,catatan_observasi_chbp.vt,"+
-                    "catatan_observasi_chbp.nip,petugas.nama from catatan_observasi_chbp inner join reg_periksa on catatan_observasi_chbp.no_rawat=reg_periksa.no_rawat "+
+                Valid.MyReportqry("rptDataCatatanObservasiCHBP.jasper","report","::[ Data Catatan Observasi CHBP ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.suhu,"+
+                    "catatan_observasi_chbp.djj,catatan_observasi_chbp.his,catatan_observasi_chbp.ppv,catatan_observasi_chbp.keterangan,catatan_observasi_chbp.nip,petugas.nama "+
+                    "from catatan_observasi_chbp inner join reg_periksa on catatan_observasi_chbp.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_chbp.nip=petugas.nip where "+
                     "catatan_observasi_chbp.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanObservasiRanapKebidanan.jasper","report","::[ Data Catatan Observasi Rawat Inap Kebidanan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.gcs,"+
-                    "catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.rr,catatan_observasi_chbp.suhu,catatan_observasi_chbp.spo2,"+
-                    "catatan_observasi_chbp.kontraksi,catatan_observasi_chbp.bjj,catatan_observasi_chbp.ppv,catatan_observasi_chbp.vt,"+
-                    "catatan_observasi_chbp.nip,petugas.nama from catatan_observasi_chbp inner join reg_periksa on catatan_observasi_chbp.no_rawat=reg_periksa.no_rawat "+
+                Valid.MyReportqry("rptDataCatatanObservasiCHBP.jasper","report","::[ Data Catatan Observasi CHBP ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.suhu,"+
+                    "catatan_observasi_chbp.djj,catatan_observasi_chbp.his,catatan_observasi_chbp.ppv,catatan_observasi_chbp.keterangan,catatan_observasi_chbp.nip,petugas.nama "+
+                    "from catatan_observasi_chbp inner join reg_periksa on catatan_observasi_chbp.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_chbp.nip=petugas.nip where "+
                     "catatan_observasi_chbp.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
@@ -1074,7 +1085,7 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,TD);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiRanapKebidananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiRanapKebidananActionPerformed
+    private void MnCatatanObservasiCHBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiCHBPActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1083,23 +1094,17 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            dpjp=Sequel.cariIsi("select dokter.nm_dokter from dpjp_ranap_kebidanan inner join dokter on dpjp_ranap_kebidanan.kd_dokter=dokter.kd_dokter where dpjp_ranap_kebidanan.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            if(dpjp.equals("")){
-                dpjp=Sequel.cariIsi("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            }
-            param.put("dpjp",dpjp);   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanObservasiRanapKebidanan.jasper","report","::[ Formulir Catatan Observasi Rawat Inap Kebidanan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.gcs,"+
-                    "catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.rr,catatan_observasi_chbp.suhu,catatan_observasi_chbp.spo2,"+
-                    "catatan_observasi_chbp.kontraksi,catatan_observasi_chbp.bjj,catatan_observasi_chbp.ppv,catatan_observasi_chbp.vt,"+
-                    "catatan_observasi_chbp.nip,petugas.nama from catatan_observasi_chbp inner join reg_periksa on catatan_observasi_chbp.no_rawat=reg_periksa.no_rawat "+
+            Valid.MyReportqry("rptFormulirCatatanObservasiCHBP.jasper","report","::[ Formulir Catatan Observasi CHBP ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                    "catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.suhu,"+
+                    "catatan_observasi_chbp.djj,catatan_observasi_chbp.his,catatan_observasi_chbp.ppv,catatan_observasi_chbp.keterangan,catatan_observasi_chbp.nip,petugas.nama "+
+                    "from catatan_observasi_chbp inner join reg_periksa on catatan_observasi_chbp.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_chbp.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiRanapKebidananActionPerformed
+    }//GEN-LAST:event_MnCatatanObservasiCHBPActionPerformed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
         Valid.pindah(evt,TD,Suhu);
@@ -1167,7 +1172,7 @@ public final class RMDataCatatanObservasiCHBP extends javax.swing.JDialog {
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiRanapKebidanan;
+    private javax.swing.JMenuItem MnCatatanObservasiCHBP;
     private widget.TextBox NIP;
     private widget.TextBox Nadi;
     private widget.TextBox NamaPetugas;

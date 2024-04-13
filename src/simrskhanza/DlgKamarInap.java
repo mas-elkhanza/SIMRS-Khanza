@@ -88,6 +88,7 @@ import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataCatatanCekGDS;
 import rekammedis.RMDataCatatanKeperawatanRanap;
 import rekammedis.RMDataCatatanKeseimbanganCairan;
+import rekammedis.RMDataCatatanObservasiCHBP;
 import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
 import rekammedis.RMDataCatatanObservasiRanapPostPartum;
@@ -16584,6 +16585,26 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } 
     }
     
+    private void MnCatatanObservasiCHBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMDataCatatanObservasiCHBP form=new RMDataCatatanObservasiCHBP(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16976,7 +16997,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.TextBox ttlbiayapindah;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JMenuItem MnSkorBromagePascaAnestesi,MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnBelumTerbitSEP,MnSudahTerbitSEP,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,
-                                  MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,MnPenilaianAwalKeperawatanRanapNeonatus,MnPenilaianPasienImunitasRendah,MnCatatanKeseimbanganCairan;
+                                  MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,MnPenilaianAwalKeperawatanRanapNeonatus,MnPenilaianPasienImunitasRendah,MnCatatanKeseimbanganCairan,MnCatatanObservasiCHBP;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi;
     
     private void tampil() {
@@ -17504,6 +17525,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilPemeriksaanUSGGynecologi.setEnabled(akses.gethasil_usg_gynecologi());
         MnHasilPemeriksaanEKG.setEnabled(akses.gethasil_pemeriksaan_ekg());
         MnCatatanKeseimbanganCairan.setEnabled(akses.getbalance_cairan());
+        MnCatatanObservasiCHBP.setEnabled(akses.getcatatan_observasi_chbp());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);
@@ -17756,6 +17778,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanKeseimbanganCairan.setPreferredSize(new java.awt.Dimension(210, 26));
         MnCatatanKeseimbanganCairan.addActionListener(this::MnCatatanKeseimbanganCairanActionPerformed);
         
+        MnCatatanObservasiCHBP = new javax.swing.JMenuItem();
+        MnCatatanObservasiCHBP.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanObservasiCHBP.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnCatatanObservasiCHBP.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanObservasiCHBP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnCatatanObservasiCHBP.setText("Catatan Observasi CHBP");
+        MnCatatanObservasiCHBP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCatatanObservasiCHBP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCatatanObservasiCHBP.setName("MnCatatanObservasiCHBP");
+        MnCatatanObservasiCHBP.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnCatatanObservasiCHBP.addActionListener(this::MnCatatanObservasiCHBPActionPerformed);
+        
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
         MnRMOperasi.add(MnSignInSebelumAnestesi);
@@ -17771,6 +17805,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnObservasi.add(MnCatatanObservasiRanap);
         MnObservasi.add(MnCatatanObservasiRanapKebidanan);
         MnObservasi.add(MnCatatanObservasiRanapPostPartum);
+        MnObservasi.add(MnCatatanObservasiCHBP);
         MnObservasi.add(MnFollowUpDBD);
         MnObservasi.add(MnCatatanKeperawatan);
         MnObservasi.add(MnCatatanCekGDS);
