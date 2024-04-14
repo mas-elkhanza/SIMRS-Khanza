@@ -10125,7 +10125,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
             TNoRM1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             DetailRencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),242).toString());
-            
             try {
                 Valid.tabelKosong(tabModeDetailMasalah);
                 ps=koneksi.prepareStatement(
@@ -10188,6 +10187,10 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         })==true){
             TNoRM1.setText("");
             TPasien1.setText("");
+            Sequel.meghapus("penilaian_awal_keperawatan_ranap_neonatus_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Sequel.meghapus("penilaian_awal_keperawatan_ranap_neonatus_rencana","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Valid.tabelKosong(tabModeDetailMasalah);
+            Valid.tabelKosong(tabModeDetailRencana);
             ChkAccor.setSelected(false);
             isMenu();
             tabMode.removeRow(tbObat.getSelectedRow());
