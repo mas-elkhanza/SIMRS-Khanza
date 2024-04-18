@@ -60,6 +60,10 @@ public final class sekuel {
     private Date tanggal=new Date();
     private boolean bool=false;
     private final DecimalFormat df2 = new DecimalFormat("####");
+    private SimpleDateFormat formattanggal = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private Date waktumulai,kegiatan;
+    private long bedawaktu=0;
+    
     public sekuel(){
         super();
     }
@@ -1322,6 +1326,48 @@ public final class sekuel {
         return angka;
     }
     
+    public boolean cekTanggalRegistrasi(String tanggalregistrasi,String tanggalinputdata){
+        bool=false;
+        try {
+            waktumulai = formattanggal.parse(tanggalregistrasi);
+            kegiatan = formattanggal.parse(tanggalinputdata);
+            bedawaktu = (kegiatan.getTime()-waktumulai.getTime())/1000;
+            if(bedawaktu<0){
+                bool=false;
+                JOptionPane.showMessageDialog(null,"Maaf, jam input data / perubahan data minimal di jam "+tanggalregistrasi+" !");
+            }else{
+                bool=true;
+            }
+        } catch (Exception ex) {
+            bool=false;
+            System.out.println("Notif : "+ex);
+        }
+        return bool;
+    }
+    
+    public boolean cekTanggal48jam(String tanggalmulai,String tanggalinputdata){
+        bool=false;
+        try {
+            waktumulai = formattanggal.parse(tanggalmulai);
+            kegiatan = formattanggal.parse(tanggalinputdata);
+            bedawaktu = (kegiatan.getTime()-waktumulai.getTime())/1000;
+            if(bedawaktu>172800){
+                bool=false;
+                JOptionPane.showMessageDialog(null,"Maaf, perubahan data / penghapusan data tidak boleh lebih dari 2 x 24 jam !");
+            }else{
+                bool=true;
+            }
+        } catch (Exception ex) {
+            bool=false;
+            System.out.println("Notif : "+ex);
+        }
+        return bool;
+    }
+    
+    public String ambiltanggalsekarang(){
+        return formattanggal.format(new Date());
+    }
+    
     public void cariIsi(String sql,JTextField txt,String kunci){
         try {
             ps=connect.prepareStatement(sql);
@@ -1902,7 +1948,7 @@ public final class sekuel {
             try {
                 ps=connect.prepareStatement("insert into trackersql values(now(),?,?)");
                 try{       
-                    ps.setString(1,sql);
+                    ps.setString(1,akses.getalamatip()+" "+sql);
                     ps.setString(2,akses.getkode());
                     ps.executeUpdate(); 
                  }catch(Exception e){
