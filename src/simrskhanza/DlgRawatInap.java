@@ -162,7 +162,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     private String Suspen_Piutang_Tindakan_Ranap="",Tindakan_Ranap="",Beban_Jasa_Medik_Dokter_Tindakan_Ranap="",Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",
             Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",Utang_KSO_Tindakan_Ranap="",
             Beban_Jasa_Sarana_Tindakan_Ranap="",Utang_Jasa_Sarana_Tindakan_Ranap="",Beban_Jasa_Menejemen_Tindakan_Ranap="",Utang_Jasa_Menejemen_Tindakan_Ranap="",
-            HPP_BHP_Tindakan_Ranap="",Persediaan_BHP_Tindakan_Ranap="",kode_poli="",kamar="",jenisbayar="";
+            HPP_BHP_Tindakan_Ranap="",Persediaan_BHP_Tindakan_Ranap="",kode_poli="",kamar="",jenisbayar="",TANGGALMUNDUR="yes";
 
     /** Creates new form DlgRawatInap
      * @param parent
@@ -1033,6 +1033,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         ChkAccor.setSelected(true);
         isMenu();
         jam();
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
         
         try {
             psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
@@ -9351,6 +9357,17 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             KdPeg.setText(akses.getkode());
             TPegawai.setText(pegawai.tampil3(KdPeg.getText()));
             Jabatan.setText(pegawai.tampilJbatan(KdPeg.getText()));
+        }
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                DTPTgl.setEditable(false);
+                DTPTgl.setEnabled(false);
+                ChkJln.setEnabled(false);
+                cmbJam.setEnabled(false);
+                cmbMnt.setEnabled(false);
+                cmbDtk.setEnabled(false);
+            }
         }
     }
     

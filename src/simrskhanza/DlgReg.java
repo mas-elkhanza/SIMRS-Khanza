@@ -237,7 +237,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private ResultSet rs;
     private int pilihan=0,i=0,kuota=0,jmlparsial=0;
     private boolean ceksukses=false;
-    private String nosisrute="",aktifkanparsial="no",BASENOREG="",finger="",
+    private String nosisrute="",aktifkanparsial="no",BASENOREG="",finger="",TANGGALMUNDUR="yes",
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",terbitsep="",
             validasiregistrasi=Sequel.cariIsi("select set_validasi_registrasi.wajib_closing_kasir from set_validasi_registrasi"),
             validasicatatan=Sequel.cariIsi("select set_validasi_catatan.tampilkan_catatan from set_validasi_catatan"),norawatdipilih="",normdipilih="",variabel="";
@@ -884,45 +884,47 @@ public final class DlgReg extends javax.swing.JDialog {
         DlgCatatan.setSize(595,34);        
                 
         try {
-            try {
-                aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
-            } catch (Exception e) {
-                aktifjadwal="nonaktif";
+            aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
+        } catch (Exception e) {
+            aktifjadwal="nonaktif";
+        }
+
+        try {
+            IPPRINTERTRACER=koneksiDB.IPPRINTERTRACER();
+        } catch (Exception e) {
+            IPPRINTERTRACER="127.0.0.1";
+        }
+
+        try {
+            URUTNOREG=koneksiDB.URUTNOREG();
+        } catch (Exception e) {
+            URUTNOREG="dokter";
+        }
+
+        try {
+            BASENOREG=koneksiDB.BASENOREG();
+        } catch (Exception e) {
+            BASENOREG="registrasi";
+        }
+
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
+
+        try {
+            aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
+        } catch (Exception e) {
+            aktifkanparsial="no";
+        }
+
+        try {
+            if(koneksiDB.MENUTRANSPARAN().equals("yes")){
+                DlgCatatan.setOpacity(0.77f);
             }
-            
-            try {
-                IPPRINTERTRACER=koneksiDB.IPPRINTERTRACER();
-            } catch (Exception e) {
-                IPPRINTERTRACER="127.0.0.1";
-            }
-            
-            try {
-                URUTNOREG=koneksiDB.URUTNOREG();
-            } catch (Exception e) {
-                URUTNOREG="dokter";
-            }
-            
-            try {
-                BASENOREG=koneksiDB.BASENOREG();
-            } catch (Exception e) {
-                BASENOREG="registrasi";
-            }
-            
-            try {
-                aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
-            } catch (Exception e) {
-                aktifkanparsial="no";
-            }
-                
-            try {
-                if(koneksiDB.MENUTRANSPARAN().equals("yes")){
-                    DlgCatatan.setOpacity(0.77f);
-                }
-            } catch (Exception e) {
-                System.out.println("Notif Tansparant : "+e);
-            }
-        } catch (Exception ex) {
-            System.out.println("Notif Load XML : "+ex);
+        } catch (Exception e) {
+            System.out.println("Notif Tansparant : "+e);
         }
         
         ChkInput.setSelected(false);
@@ -15792,6 +15794,17 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnHasilPemeriksaanEKG.setEnabled(akses.gethasil_pemeriksaan_ekg());
         MnPenatalaksanaanTerapiOkupasi.setEnabled(akses.getpenatalaksanaan_terapi_okupasi());
         MnCatatanKeseimbanganCairan.setEnabled(akses.getbalance_cairan());
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                DTPReg.setEditable(false);
+                DTPReg.setEnabled(false);
+                ChkJln.setEnabled(false);
+                CmbJam.setEnabled(false);
+                CmbMenit.setEnabled(false);
+                CmbDetik.setEnabled(false);
+            }
+        }
     }
     
     private void isNumber(){         

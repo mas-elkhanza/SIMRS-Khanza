@@ -179,7 +179,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,pstindakan,psset_tarif,psrekening;
     private ResultSet rs,rstindakan,rsset_tarif,rsrekening;
     private int i=0,jmlparsial=0,jml=0,index=0,tinggi=0;
-    private String aktifkanparsial="no",kode_poli="",kd_pj="",poli_ralan="No",cara_bayar_ralan="No",
+    private String aktifkanparsial="no",kode_poli="",kd_pj="",poli_ralan="No",cara_bayar_ralan="No",TANGGALMUNDUR="yes",
             Suspen_Piutang_Tindakan_Ralan="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",
             Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="",Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="",Beban_KSO_Tindakan_Ralan="",Utang_KSO_Tindakan_Ralan="",
             Beban_Jasa_Sarana_Tindakan_Ralan="",Utang_Jasa_Sarana_Tindakan_Ralan="",HPP_BHP_Tindakan_Ralan="",Persediaan_BHP_Tindakan_Ralan="",
@@ -1242,10 +1242,15 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jam();
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
         } catch (Exception ex) {            
             aktifkanparsial="no";
+        }
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
         }
         
         try {
@@ -10434,6 +10439,17 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             KdPeg.setText(akses.getkode());
             TPegawai.setText(pegawai.tampil3(KdPeg.getText()));
             Jabatan.setText(pegawai.tampilJbatan(KdPeg.getText()));
+        }
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                DTPTgl.setEditable(false);
+                DTPTgl.setEnabled(false);
+                ChkJln.setEnabled(false);
+                cmbJam.setEnabled(false);
+                cmbMnt.setEnabled(false);
+                cmbDtk.setEnabled(false);
+            }
         }
     }
 
