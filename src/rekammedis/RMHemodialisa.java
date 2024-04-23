@@ -56,6 +56,7 @@ public final class RMHemodialisa extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -228,6 +229,12 @@ public final class RMHemodialisa extends javax.swing.JDialog {
         namadokter.setText(dokter.tampil3(kddok.getText()));
         
         jam();
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -1727,6 +1734,24 @@ public final class RMHemodialisa extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.gethemodialisa());
         BtnEdit.setEnabled(akses.gethemodialisa());
         BtnPrint.setEnabled(akses.gethemodialisa()); 
+        
+        if(akses.getjml2()>=1){
+            kddok.setEditable(false);
+            btnDokter.setEnabled(false);
+            kddok.setText(akses.getkode());
+            namadokter.setText(dokter.tampil3(kddok.getText()));
+            if(namadokter.getText().equals("")){
+                kddok.setText("");
+                JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
+            }
+        }
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+            }
+        }
     }
 
     private void jam(){

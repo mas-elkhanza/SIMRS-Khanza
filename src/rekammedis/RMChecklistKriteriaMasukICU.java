@@ -53,6 +53,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private String finger="";
     private StringBuilder htmlContent;
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -174,6 +175,12 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -2637,6 +2644,12 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
             NamaPetugas.setText(pegawai.tampil3(akses.getkode()));
+        }
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+            }
         }
     }
 

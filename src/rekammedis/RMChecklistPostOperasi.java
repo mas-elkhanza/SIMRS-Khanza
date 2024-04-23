@@ -55,6 +55,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String finger="",finger2="";
     private StringBuilder htmlContent;
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -280,6 +281,12 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -2264,6 +2271,12 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getchecklist_post_operasi());
         BtnEdit.setEnabled(akses.getchecklist_post_operasi());
         BtnPrint.setEnabled(akses.getchecklist_post_operasi()); 
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+            }
+        }
     }
 
     private void ganti() {

@@ -51,6 +51,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private String finger="";
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, alergi_ikan, alergi_hazelnut,sttsumur="";
+    private String TANGGALMUNDUR="yes";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -245,6 +246,11 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm();
       
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -2202,7 +2208,13 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
-        }            
+        } 
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                TglAsuhan.setEditable(false);
+                TglAsuhan.setEnabled(false);
+            }
+        }
     }
     
     private void isBMI(){

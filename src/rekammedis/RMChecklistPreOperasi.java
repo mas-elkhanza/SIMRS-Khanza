@@ -55,6 +55,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String finger="",finger2="";
     private StringBuilder htmlContent;
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -268,6 +269,12 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -2120,6 +2127,11 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getchecklist_pre_operasi());
         BtnEdit.setEnabled(akses.getchecklist_pre_operasi());
         BtnPrint.setEnabled(akses.getchecklist_pre_operasi()); 
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
     private void ganti() {
