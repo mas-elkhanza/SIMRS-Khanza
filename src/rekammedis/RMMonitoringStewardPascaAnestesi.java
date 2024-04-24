@@ -49,6 +49,7 @@ public final class RMMonitoringStewardPascaAnestesi extends javax.swing.JDialog 
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String finger="",finger2="";
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -193,6 +194,12 @@ public final class RMMonitoringStewardPascaAnestesi extends javax.swing.JDialog 
         ChkInput.setSelected(false);
         isForm();
         jam();
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -1674,7 +1681,18 @@ public final class RMMonitoringStewardPascaAnestesi extends javax.swing.JDialog 
                 NIP.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
-        }            
+        } 
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+                ChkKejadian.setEnabled(false);
+                Jam.setEnabled(false);
+                Menit.setEnabled(false);
+                Detik.setEnabled(false);
+            }
+        }
     }
 
     private void jam(){

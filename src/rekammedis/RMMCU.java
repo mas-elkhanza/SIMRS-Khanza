@@ -48,6 +48,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String finger=""; 
     private StringBuilder htmlContent;
+    private String TANGGALMUNDUR="yes";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -328,6 +329,12 @@ public final class RMMCU extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -3819,7 +3826,14 @@ public final class RMMCU extends javax.swing.JDialog {
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
             }
-        }            
+        } 
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                TglAsuhan.setEditable(false);
+                TglAsuhan.setEnabled(false);
+            }
+        }
     }
 
     public void setTampil(){

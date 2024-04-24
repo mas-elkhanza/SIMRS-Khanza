@@ -55,6 +55,7 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -220,6 +221,12 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm();
         jam();
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -2242,6 +2249,16 @@ public final class RMPemantauanMEOWS extends javax.swing.JDialog {
             }
         }            
     
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+                ChkKejadian.setEnabled(false);
+                Jam.setEnabled(false);
+                Menit.setEnabled(false);
+                Detik.setEnabled(false);
+            }
+        }
     }
     private void jam(){
         ActionListener taskPerformer = new ActionListener(){
