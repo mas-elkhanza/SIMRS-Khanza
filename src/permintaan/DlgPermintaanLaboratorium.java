@@ -115,7 +115,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         
         tbDetailPK.setDefaultRenderer(Object.class, new WarnaTable());
         
-        Object[] row2={"P","Kode Periksa","Nama Pemeriksaan"};
+        Object[] row2={"P","Kode Periksa","Nama Pemeriksaan","tarif"};
         tabMode2=new DefaultTableModel(null,row2){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -125,7 +125,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -137,14 +137,23 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         tbTarifPK.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbTarifPK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 3; i++) {
+        for(i = 0; i < 4; i++) {
             TableColumn column = tbTarifPK.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
-                column.setPreferredWidth(100);
-            }else if(i==2){
-                column.setPreferredWidth(520);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(100);
+                    break;
+                case 2:
+                    column.setPreferredWidth(200);
+                    break;
+                case 3:
+                    column.setPreferredWidth(200);
+                    break;
+                default:
+                    break;
             }
         }
         tbTarifPK.setDefaultRenderer(Object.class, new WarnaTable());
