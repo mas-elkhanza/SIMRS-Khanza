@@ -47,7 +47,6 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
     private ResultSet rs;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private String dpjp="";
     private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
@@ -60,7 +59,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Obat","Cairan",
-            "Dosis","HIS","DJJ","Keterangan","NIP","Nama Petugas"
+            "Dosis","HIS","DJJ","Keterangan","NIP","Nama Bidan/Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -89,22 +88,20 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
             }else if(i==7){
                 column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(200);
             }else if(i==9){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(200);
             }else if(i==10){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(60);
             }else if(i==11){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(150);
             }else if(i==12){
                 column.setPreferredWidth(50);
             }else if(i==13){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(200);
             }else if(i==14){
                 column.setPreferredWidth(90);
             }else if(i==15){
-                column.setPreferredWidth(90);
-            }else if(i==16){
                 column.setPreferredWidth(160);
             }
         }
@@ -188,7 +185,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiRanapKebidanan = new javax.swing.JMenuItem();
+        MnCatatanObservasiInduksiPersalinan = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -248,19 +245,19 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiRanapKebidanan.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanObservasiRanapKebidanan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanObservasiRanapKebidanan.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanObservasiRanapKebidanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiRanapKebidanan.setText("Formulir Catatan Observasi Rawat Inap Kebidanan");
-        MnCatatanObservasiRanapKebidanan.setName("MnCatatanObservasiRanapKebidanan"); // NOI18N
-        MnCatatanObservasiRanapKebidanan.setPreferredSize(new java.awt.Dimension(310, 26));
-        MnCatatanObservasiRanapKebidanan.addActionListener(new java.awt.event.ActionListener() {
+        MnCatatanObservasiInduksiPersalinan.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanObservasiInduksiPersalinan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanObservasiInduksiPersalinan.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanObservasiInduksiPersalinan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanObservasiInduksiPersalinan.setText("Formulir Catatan Observasi Induksi Persalinan");
+        MnCatatanObservasiInduksiPersalinan.setName("MnCatatanObservasiInduksiPersalinan"); // NOI18N
+        MnCatatanObservasiInduksiPersalinan.setPreferredSize(new java.awt.Dimension(310, 26));
+        MnCatatanObservasiInduksiPersalinan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiRanapKebidananActionPerformed(evt);
+                MnCatatanObservasiInduksiPersalinanActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiRanapKebidanan);
+        jPopupMenu1.add(MnCatatanObservasiInduksiPersalinan);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -928,21 +925,19 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanObservasiRanapKebidanan.jasper","report","::[ Data Catatan Observasi Rawat Inap Kebidanan ]::",
+                Valid.MyReportqry("rptDataCatatanObservasiInduksiPersalinan.jasper","report","::[ Data Catatan Observasi Induksi Persalinan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_induksi_persalinan.tgl_perawatan,catatan_observasi_induksi_persalinan.jam_rawat,catatan_observasi_induksi_persalinan.obat,"+
                     "catatan_observasi_induksi_persalinan.cairan,catatan_observasi_induksi_persalinan.dosis,catatan_observasi_induksi_persalinan.his,catatan_observasi_induksi_persalinan.djj,catatan_observasi_induksi_persalinan.keterangan,"+
-                    "catatan_observasi_induksi_persalinan.kontraksi,catatan_observasi_induksi_persalinan.bjj,catatan_observasi_induksi_persalinan.ppv,catatan_observasi_induksi_persalinan.vt,"+
                     "catatan_observasi_induksi_persalinan.nip,petugas.nama from catatan_observasi_induksi_persalinan inner join reg_periksa on catatan_observasi_induksi_persalinan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_induksi_persalinan.nip=petugas.nip where "+
                     "catatan_observasi_induksi_persalinan.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_induksi_persalinan.tgl_perawatan,catatan_observasi_induksi_persalinan.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanObservasiRanapKebidanan.jasper","report","::[ Data Catatan Observasi Rawat Inap Kebidanan ]::",
+                Valid.MyReportqry("rptDataCatatanObservasiInduksiPersalinan.jasper","report","::[ Data Catatan Observasi Induksi Persalinan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_induksi_persalinan.tgl_perawatan,catatan_observasi_induksi_persalinan.jam_rawat,catatan_observasi_induksi_persalinan.obat,"+
                     "catatan_observasi_induksi_persalinan.cairan,catatan_observasi_induksi_persalinan.dosis,catatan_observasi_induksi_persalinan.his,catatan_observasi_induksi_persalinan.djj,catatan_observasi_induksi_persalinan.keterangan,"+
-                    "catatan_observasi_induksi_persalinan.kontraksi,catatan_observasi_induksi_persalinan.bjj,catatan_observasi_induksi_persalinan.ppv,catatan_observasi_induksi_persalinan.vt,"+
                     "catatan_observasi_induksi_persalinan.nip,petugas.nama from catatan_observasi_induksi_persalinan inner join reg_periksa on catatan_observasi_induksi_persalinan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_induksi_persalinan.nip=petugas.nip where "+
@@ -1067,7 +1062,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
         Valid.pindah(evt,Detik,Obat);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiRanapKebidananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiRanapKebidananActionPerformed
+    private void MnCatatanObservasiInduksiPersalinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiInduksiPersalinanActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1076,23 +1071,17 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            dpjp=Sequel.cariIsi("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            if(dpjp.equals("")){
-                dpjp=Sequel.cariIsi("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            }
-            param.put("dpjp",dpjp);   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanObservasiRanapKebidanan.jasper","report","::[ Formulir Catatan Observasi Rawat Inap Kebidanan ]::",
+            Valid.MyReportqry("rptFormulirCatatanObservasiInduksiPersalinan.jasper","report","::[ Formulir Catatan Observasi Induksi Persalinan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_induksi_persalinan.tgl_perawatan,catatan_observasi_induksi_persalinan.jam_rawat,catatan_observasi_induksi_persalinan.obat,"+
                     "catatan_observasi_induksi_persalinan.cairan,catatan_observasi_induksi_persalinan.dosis,catatan_observasi_induksi_persalinan.his,catatan_observasi_induksi_persalinan.djj,catatan_observasi_induksi_persalinan.keterangan,"+
-                    "catatan_observasi_induksi_persalinan.kontraksi,catatan_observasi_induksi_persalinan.bjj,catatan_observasi_induksi_persalinan.ppv,catatan_observasi_induksi_persalinan.vt,"+
                     "catatan_observasi_induksi_persalinan.nip,petugas.nama from catatan_observasi_induksi_persalinan inner join reg_periksa on catatan_observasi_induksi_persalinan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_induksi_persalinan.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by catatan_observasi_induksi_persalinan.tgl_perawatan,catatan_observasi_induksi_persalinan.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiRanapKebidananActionPerformed
+    }//GEN-LAST:event_MnCatatanObservasiInduksiPersalinanActionPerformed
 
     private void ObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatKeyPressed
         Valid.pindah(evt,btnPetugas,Cairan);
@@ -1158,7 +1147,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiRanapKebidanan;
+    private javax.swing.JMenuItem MnCatatanObservasiInduksiPersalinan;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private widget.TextBox Obat;
