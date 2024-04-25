@@ -53,7 +53,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
             psset_tarif;
     private ResultSet rstindakan,rstampil,rsset_tarif;
     private boolean[] pilih,pilih2; 
-    private String[] kode,nama,pemeriksaan2,satuan2,nilai_rujukan2,idtemplate2;
+    private String[] kode,nama,pemeriksaan2,satuan2,nilai_rujukan2,idtemplate2,tarif;
     private int jml=0,i=0,index=0,jml2=0,jml3=0,i2=0,index2=0,jmlparsial=0;
     private String aktifkanparsial="no",norawatibu="",kelas="",kamar,namakamar,cara_bayar_lab="Yes",kelas_lab="Yes",status="",la="",ld="",pa="",pd="",finger="";
     private boolean sukses=true;
@@ -2420,12 +2420,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             kode=new String[jml];
             nama=null;
             nama=new String[jml];
+            /* tarif by eko  */
+             tarif=null;
+            tarif=new String[jml];
             index=0; 
             for(i=0;i<tbTarifPK.getRowCount();i++){
                 if(tbTarifPK.getValueAt(i,0).toString().equals("true")){
                     pilih[index]=true;
                     kode[index]=tbTarifPK.getValueAt(i,1).toString();
                     nama[index]=tbTarifPK.getValueAt(i,2).toString();
+                     tarif[index]=tbTarifPK.getValueAt(i,3).toString(); /*Penambhanan nama tarif by eko budianto*/
                     index++;
                 }
             }
@@ -2433,18 +2437,18 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Valid.tabelKosong(tabMode2);
             
             for(i=0;i<jml;i++){
-                tabMode2.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+                tabMode2.addRow(new Object[] {pilih[i],kode[i],nama[i],tarif[i]});
             }       
         
             if(cara_bayar_lab.equals("Yes")&&kelas_lab.equals("No")){
                 pstindakan=koneksi.prepareStatement(
-                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,penjab.png_jawab "+
+                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,penjab.png_jawab "+
                     "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
                     "jns_perawatan_lab.kategori='PK' and jns_perawatan_lab.status='1' and (jns_perawatan_lab.kd_pj=? or jns_perawatan_lab.kd_pj='-') "+
                     "and (jns_perawatan_lab.kd_jenis_prw like ? or jns_perawatan_lab.nm_perawatan like ?) order by jns_perawatan_lab.kd_jenis_prw");
             }else if(cara_bayar_lab.equals("No")&&kelas_lab.equals("No")){
                 pstindakan=koneksi.prepareStatement(
-                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,penjab.png_jawab "+
+                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,penjab.png_jawab "+
                     "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
                     "jns_perawatan_lab.kategori='PK' and jns_perawatan_lab.status='1' and "+
                     "(jns_perawatan_lab.kd_jenis_prw like ? or jns_perawatan_lab.nm_perawatan like ?) order by jns_perawatan_lab.kd_jenis_prw"); 
@@ -2484,9 +2488,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     pstindakan.setString(3,"%"+Pemeriksaan.getText().trim()+"%");
                     rstindakan=pstindakan.executeQuery();
                 } 
-                            
+                   /*Penambahan getstring3 by eko */         
                 while(rstindakan.next()){                
-                    tabMode2.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2)});
+                    tabMode2.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getString(3)});
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
