@@ -315,6 +315,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanDokter = new widget.CekBox();
         chkCatatanObservasiIGD = new widget.CekBox();
         chkCatatanObservasiCHBP = new widget.CekBox();
+        chkCatatanObservasiInduksiPersalinan = new widget.CekBox();
         chkCatatanObservasiRanap = new widget.CekBox();
         chkCatatanObservasiRanapKebidanan = new widget.CekBox();
         chkCatatanObservasiRanapPostPartum = new widget.CekBox();
@@ -650,7 +651,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3155));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3180));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1041,6 +1042,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiCHBP.setOpaque(false);
         chkCatatanObservasiCHBP.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanObservasiCHBP);
+
+        chkCatatanObservasiInduksiPersalinan.setSelected(true);
+        chkCatatanObservasiInduksiPersalinan.setText("Catatan Observasi Induksi Persalinan");
+        chkCatatanObservasiInduksiPersalinan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanObservasiInduksiPersalinan.setName("chkCatatanObservasiInduksiPersalinan"); // NOI18N
+        chkCatatanObservasiInduksiPersalinan.setOpaque(false);
+        chkCatatanObservasiInduksiPersalinan.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkCatatanObservasiInduksiPersalinan);
 
         chkCatatanObservasiRanap.setSelected(true);
         chkCatatanObservasiRanap.setText("Catatan Observasi Ranap");
@@ -2278,6 +2287,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkPenilaianPasienImunitasRendah.setSelected(true);
             chkCatatanKeseimbanganCairan.setSelected(true);
             chkCatatanObservasiCHBP.setSelected(true);
+            chkCatatanObservasiInduksiPersalinan.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2415,6 +2425,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkPenilaianPasienImunitasRendah.setSelected(false);
             chkCatatanKeseimbanganCairan.setSelected(false);
             chkCatatanObservasiCHBP.setSelected(false);
+            chkCatatanObservasiInduksiPersalinan.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2548,6 +2559,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkCatatanKeseimbanganCairan;
     private widget.CekBox chkCatatanObservasiCHBP;
     private widget.CekBox chkCatatanObservasiIGD;
+    private widget.CekBox chkCatatanObservasiInduksiPersalinan;
     private widget.CekBox chkCatatanObservasiRanap;
     private widget.CekBox chkCatatanObservasiRanapKebidanan;
     private widget.CekBox chkCatatanObservasiRanapPostPartum;
@@ -10188,6 +10200,69 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi Observasi CHBP : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+            
+            //menampilkan catatan observasi Induksi Persalinan
+            if(chkCatatanObservasiInduksiPersalinan.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select catatan_observasi_induksi_persalinan.tgl_perawatan,catatan_observasi_induksi_persalinan.jam_rawat,catatan_observasi_induksi_persalinan.obat,"+
+                            "catatan_observasi_induksi_persalinan.cairan,catatan_observasi_induksi_persalinan.dosis,catatan_observasi_induksi_persalinan.his,catatan_observasi_induksi_persalinan.djj,catatan_observasi_induksi_persalinan.keterangan,"+
+                            "catatan_observasi_induksi_persalinan.nip,petugas.nama from catatan_observasi_induksi_persalinan inner join petugas on catatan_observasi_induksi_persalinan.nip=petugas.nip "+
+                            "where catatan_observasi_induksi_persalinan.no_rawat='"+norawat+"' order by catatan_observasi_induksi_persalinan.tgl_perawatan,catatan_observasi_induksi_persalinan.jam_rawat").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Catatan Observasi Induksi Persalinan</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>"+
+                                    "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>"+
+                                    "<td valign='top' width='63%' bgcolor='#FFFAF8' colspan='6'>Monitoring</td>"+
+                                    "<td valign='middle' width='18%' bgcolor='#FFFAF8' rowspan='2'>Petugas</td>"+
+                                 "</tr>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='middle' width='14%' bgcolor='#FFFAF8'>Obat</td>"+
+                                    "<td valign='middle' width='13%' bgcolor='#FFFAF8'>Cairan</td>"+
+                                    "<td valign='middle' width='5%' bgcolor='#FFFAF8'>Dosis</td>"+
+                                    "<td valign='middle' width='12%' bgcolor='#FFFAF8'>HIS</td>"+
+                                    "<td valign='middle' width='5%' bgcolor='#FFFAF8'>DJJ</td>"+
+                                    "<td valign='middle' width='14%' bgcolor='#FFFAF8'>Keterangan</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center' rowspan='2'>"+w+"</td>"+
+                                    "<td valign='top' rowspan='2'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("obat")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("cairan")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("dosis")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("his")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("djj")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("keterangan")+"</td>"+
+                                    "<td valign='top' rowspan='2'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                 "</tr>"
+                            );                                        
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi Observasi Induksi Persalinan : "+e);
                 } finally{
                     if(rs2!=null){
                         rs2.close();
