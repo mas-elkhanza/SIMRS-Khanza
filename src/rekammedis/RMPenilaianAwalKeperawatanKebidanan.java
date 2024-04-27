@@ -344,7 +344,6 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbRiwayatKehamilan.setModel(tabModeRiwayatKehamilan);
-
         tbRiwayatKehamilan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRiwayatKehamilan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
