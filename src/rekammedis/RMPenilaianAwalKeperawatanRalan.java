@@ -3975,59 +3975,19 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             PadaDokter.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
             KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
             Rencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            Valid.tabelKosong(tabModeMasalah);
+            Valid.tabelKosong(tabModeRencana);
+            for (i = 0; i < tbMasalahDetail.getRowCount(); i++) {
+                tabModeMasalah.addRow(new Object[]{
+                    true,tbMasalahDetail.getValueAt(i,0).toString(),tbMasalahDetail.getValueAt(i,1).toString()
+                });
+            }
+            for (i = 0; i < tbRencanaDetail.getRowCount(); i++) {
+                tabModeRencana.addRow(new Object[]{
+                    true,tbRencanaDetail.getValueAt(i,0).toString(),tbRencanaDetail.getValueAt(i,1).toString()
+                });
+            }
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            
-            try {
-                Valid.tabelKosong(tabModeMasalah);
-                ps=koneksi.prepareStatement(
-                        "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                        "where penilaian_awal_keperawatan_ralan_masalah.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah.kode_masalah");
-                try {
-                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        tabModeMasalah.addRow(new Object[]{true,rs.getString(1),rs.getString(2)});
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            }
-            
-            try {
-                Valid.tabelKosong(tabModeRencana);
-                ps=koneksi.prepareStatement(
-                        "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_rencana on penilaian_awal_keperawatan_ralan_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
-                        "where penilaian_awal_keperawatan_ralan_rencana.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana.kode_rencana");
-                try {
-                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        tabModeRencana.addRow(new Object[]{true,rs.getString(1),rs.getString(2)});
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            }
         }
     }
 
