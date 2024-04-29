@@ -2141,7 +2141,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,if(jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,"+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,if(jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
                     "reg_periksa.umurdaftar,reg_periksa.sttsumur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
             try {

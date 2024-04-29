@@ -438,8 +438,8 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
             try {   
                 rssetpj=pssetpj.executeQuery();
                 while(rssetpj.next()){
-                    KodePj.setText(rssetpj.getString(2));
-                    NmDokterPj.setText(dokter.tampil3(rssetpj.getString(2)));
+                    KodePj.setText(rssetpj.getString(1));
+                    NmDokterPj.setText(dokter.tampil3(rssetpj.getString(1)));
                 }
             } catch (Exception e) {
                 System.out.println(e);
