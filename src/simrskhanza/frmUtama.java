@@ -726,6 +726,7 @@ import kepegawaian.DlgAuditPenempatanPasien;
 import kepegawaian.DlgAuditPengelolaanLinenKotor;
 import kepegawaian.DlgAuditSterilisasiAlat;
 import kepegawaian.SKPKategoriPenilaian;
+import kepegawaian.SKPKriteriaPenilaian;
 import keuangan.DlgLhtBankJabar;
 import keuangan.DlgLhtBankMandiri;
 import keuangan.DlgLhtBankPapua;
@@ -21409,6 +21410,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSKPKriteriaPenilaianActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SKPKriteriaPenilaian form=new SKPKriteriaPenilaian(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22099,7 +22111,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnKirimDiagnosticReportSatuSehat,btnHasilEndoskopiTelinga,btnMappingLaboratSatuSehat,btnKirimServiceRequestLabPKSatuSehat,btnKirimServiceRequestLabMBSatuSehat,
             btnKirimSpecimenLabPKSatuSehat,btnKirimSpecimenLabMBSatuSehat,btnKirimObservationLabPKSatuSehat,btnKirimObservationLabMBSatuSehat,btnKirimDiagnosticReportLabPKSatuSehat,
             btnKirimDiagnosticReportLabMBSatuSehat,btnKepatuhanKelengkapanKeselamatanBedah,btnNilaiPiutangPerJenisBayarPerBulan,btnRingkasanPiutangPerJenisBayar,
-            btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan,btnCatatanObservasiCHBP,btnCatatanObservasiInduksiPersalinan,btnSKPKategoriPenilaian;
+            btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan,btnCatatanObservasiCHBP,btnCatatanObservasiInduksiPersalinan,btnSKPKategoriPenilaian,btnSKPKriteriaPenilaian;
     
     public void isWall(){
         try{            
@@ -22653,6 +22665,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskp_kategori_penilaian()==true){  
                 Panelmenu.add(btnSKPKategoriPenilaian);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getskp_kriteria_penilaian()==true){  
+                Panelmenu.add(btnSKPKriteriaPenilaian);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -27797,6 +27814,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskp_kategori_penilaian()==true){  
             Panelmenu.add(btnSKPKategoriPenilaian);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getskp_kriteria_penilaian()==true){  
+            Panelmenu.add(btnSKPKriteriaPenilaian);                 
             jmlmenu++;
         }
 
@@ -33094,6 +33116,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getskp_kategori_penilaian()==true){  
             if(btnSKPKategoriPenilaian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSKPKategoriPenilaian);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getskp_kriteria_penilaian()==true){  
+            if(btnSKPKriteriaPenilaian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSKPKriteriaPenilaian);                 
                 jmlmenu++;
             }                
         }
@@ -44172,5 +44201,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSKPKategoriPenilaian.setName("btnSKPKategoriPenilaian"); 
         btnSKPKategoriPenilaian.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSKPKategoriPenilaian.addActionListener(this::btnSKPKategoriPenilaianActionPerformed);
+        
+        btnSKPKriteriaPenilaian = new widget.ButtonBig();
+        btnSKPKriteriaPenilaian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9016856_safety_suit_virus_glove_covid-19_icon.png"))); 
+        btnSKPKriteriaPenilaian.setText("Kriteria Penilaian SKP");
+        btnSKPKriteriaPenilaian.setIconTextGap(0);
+        btnSKPKriteriaPenilaian.setName("btnSKPKriteriaPenilaian"); 
+        btnSKPKriteriaPenilaian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSKPKriteriaPenilaian.addActionListener(this::btnSKPKriteriaPenilaianActionPerformed);
     }
 }

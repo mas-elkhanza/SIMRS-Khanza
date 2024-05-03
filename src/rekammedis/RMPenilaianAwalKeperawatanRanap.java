@@ -9678,6 +9678,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                 DetailRencana.setText(Rencana.getText());
                 TNoRM1.setText(TNoRM.getText());
                 TPasien1.setText(TPasien.getText());
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
         }
     }
