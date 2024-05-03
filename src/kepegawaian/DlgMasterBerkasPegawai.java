@@ -31,7 +31,6 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import restore.DlgRestoreBangsal;
 
 /**
  *
