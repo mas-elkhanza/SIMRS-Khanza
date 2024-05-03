@@ -317,7 +317,6 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        //skp_kategori_penilaian.setModal(true);
         SKPKategoriPenilaian form=new SKPKategoriPenilaian(null,false);
         form.emptTeks();
         form.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
@@ -385,8 +384,15 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2) });
-                    iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"Kategori\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Sasaran\":\""+rs.getString(3).replaceAll("\"","")+"\"},";
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3).replaceAll("1","1. Mengidentifikasi Pasien Dengan Benar").
+                        replaceAll("2","2. Meningkatkan Komunikasi Yang Efektif").
+                        replaceAll("3","3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai").
+                        replaceAll("4","4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar").
+                        replaceAll("5","5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan").
+                        replaceAll("6","6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh")
+                    });
+                    iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"Kategori\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Sasaran\":\""+rs.getString(3).replaceAll("\"","").replaceAll("1","1. Mengidentifikasi Pasien Dengan Benar").replaceAll("2","2. Meningkatkan Komunikasi Yang Efektif").replaceAll("3","3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai").replaceAll("4","4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar").replaceAll("5","5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan").replaceAll("6","6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh")+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -435,7 +441,7 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
                     }
                 }else{
                     for(JsonNode list:response){
-                        if(list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        if(list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Sasaran").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                             tabMode.addRow(new Object[]{
                                 list.path("Kode").asText(),list.path("Kategori").asText(),list.path("Sasaran").asText()
                             });
