@@ -70,7 +70,7 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(500);
             }else if(i==2){
                 column.setPreferredWidth(400);
             }

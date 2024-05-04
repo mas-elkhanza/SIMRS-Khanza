@@ -72,11 +72,11 @@ public final class SKPKriteriaPenilaian extends javax.swing.JDialog {
         for (i = 0; i < 5; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==1){
                 column.setPreferredWidth(400);
             }else if(i==2){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==3){
                 column.setPreferredWidth(350);
             }else if(i==4){
