@@ -614,7 +614,7 @@ public final class SKPKriteriaPenilaian extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReport("rptSKPKategoriPenilaian.jasper",param,"::[ Kategori Penilaian Pasien ]::");
+            Valid.MyReport("rptSKPKriteriaPenilaian.jasper",param,"::[ Kriteria Penilaian Pasien ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
