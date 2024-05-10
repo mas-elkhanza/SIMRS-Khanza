@@ -2913,7 +2913,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     }
                     
                     Sequel.menyimpan("temporary_bayar_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                        "0",tabModeBilling.getValueAt(i,0).toString().replaceAll("'",""),
+                        ""+i,tabModeBilling.getValueAt(i,0).toString().replaceAll("'",""),
                         tabModeBilling.getValueAt(i,1).toString().replaceAll("'",""),
                         tabModeBilling.getValueAt(i,2).toString().replaceAll("'",""),
                         biaya,jmls,tambahan,totals,
@@ -2921,10 +2921,12 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                         akses.getkode(),"","","","","","","","",""
                     });                                                    
                 }
-
-                Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL TAGIHAN',':','','','','','"+TtlSemua.getText()+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
-                Sequel.menyimpan("temporary_bayar_ralan","'0','PPN',':','','','','','"+Valid.SetAngka(besarppn)+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
-                Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL BAYAR',':','','','','','"+TagihanPPN.getText()+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
+                i++;
+                Sequel.menyimpan("temporary_bayar_ralan","'"+i+"','TOTAL TAGIHAN',':','','','','','"+TtlSemua.getText()+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
+                i++;
+                Sequel.menyimpan("temporary_bayar_ralan","'"+i+"','PPN',':','','','','','"+Valid.SetAngka(besarppn)+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
+                i++;
+                Sequel.menyimpan("temporary_bayar_ralan","'"+i+"','TOTAL BAYAR',':','','','','','"+TagihanPPN.getText()+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
                 
                 i = 0;
                 try{
