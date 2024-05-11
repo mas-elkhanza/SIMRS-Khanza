@@ -460,6 +460,7 @@ import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
 import bridging.ICareRiwayatPerawatan;
 import bridging.INACBGPerawatanCorona;
+import bridging.MobileJKNFKTPReferensiDokter;
 import bridging.MobileJKNFKTPReferensiPoli;
 import bridging.MobileJKNPembatalanPendaftaran;
 import bridging.MobileJKNReferensiPendaftaran;
@@ -21433,6 +21434,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnReferensiDokterMobileJKNFKTPActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MobileJKNFKTPReferensiDokter form=new MobileJKNFKTPReferensiDokter(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22124,7 +22136,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnKirimSpecimenLabPKSatuSehat,btnKirimSpecimenLabMBSatuSehat,btnKirimObservationLabPKSatuSehat,btnKirimObservationLabMBSatuSehat,btnKirimDiagnosticReportLabPKSatuSehat,
             btnKirimDiagnosticReportLabMBSatuSehat,btnKepatuhanKelengkapanKeselamatanBedah,btnNilaiPiutangPerJenisBayarPerBulan,btnRingkasanPiutangPerJenisBayar,
             btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan,btnCatatanObservasiCHBP,btnCatatanObservasiInduksiPersalinan,btnSKPKategoriPenilaian,btnSKPKriteriaPenilaian,
-            btnReferensiPoliMobileJKNFKTP;
+            btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP;
     
     public void isWall(){
         try{            
@@ -25284,6 +25296,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getreferensi_poli_mobilejknfktp()==true){
                 Panelmenu.add(btnReferensiPoliMobileJKNFKTP);
+                jmlmenu++;
+            }
+            
+            if(akses.getreferensi_dokter_mobilejknfktp()==true){
+                Panelmenu.add(btnReferensiDokterMobileJKNFKTP);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){ 
@@ -30419,6 +30436,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getreferensi_poli_mobilejknfktp()==true){
             Panelmenu.add(btnReferensiPoliMobileJKNFKTP);
+            jmlmenu++;
+        }
+        
+        if(akses.getreferensi_dokter_mobilejknfktp()==true){
+            Panelmenu.add(btnReferensiDokterMobileJKNFKTP);
             jmlmenu++;
         }
 
@@ -36761,6 +36783,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getreferensi_poli_mobilejknfktp()==true){
             if(btnReferensiPoliMobileJKNFKTP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReferensiPoliMobileJKNFKTP);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getreferensi_dokter_mobilejknfktp()==true){
+            if(btnReferensiDokterMobileJKNFKTP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnReferensiDokterMobileJKNFKTP);
                 jmlmenu++;
             }                
         }
@@ -44247,5 +44276,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnReferensiPoliMobileJKNFKTP.setName("btnReferensiPoliMobileJKNFKTP"); 
         btnReferensiPoliMobileJKNFKTP.setPreferredSize(new java.awt.Dimension(200, 90));
         btnReferensiPoliMobileJKNFKTP.addActionListener(this::btnReferensiPoliMobileJKNFKTPActionPerformed);
+        
+        btnReferensiDokterMobileJKNFKTP = new widget.ButtonBig();
+        btnReferensiDokterMobileJKNFKTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5958331_disease_doctor_epidemic_hospital_infection_icon.png"))); 
+        btnReferensiDokterMobileJKNFKTP.setText("Referensi Dokter Mobile JKN FKTP");
+        btnReferensiDokterMobileJKNFKTP.setIconTextGap(0);
+        btnReferensiDokterMobileJKNFKTP.setName("btnReferensiDokterMobileJKNFKTP"); 
+        btnReferensiDokterMobileJKNFKTP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReferensiDokterMobileJKNFKTP.addActionListener(this::btnReferensiDokterMobileJKNFKTPActionPerformed);
     }
 }
