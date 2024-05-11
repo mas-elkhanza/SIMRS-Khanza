@@ -46,13 +46,13 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private ApiMobileJKNFKTP api=new ApiMobileJKNFKTP();
-    private String URL="",link="",otorisasi,utc="";
-    private HttpHeaders headers;
-    private HttpEntity requestEntity;
+    private String link="",otorisasi,utc="";
+    private HttpHeaders headers,headers2;
+    private HttpEntity requestEntity,requestEntity2;
     private ObjectMapper mapper = new ObjectMapper();
-    private JsonNode root;
-    private JsonNode nameNode;
-    private JsonNode response;
+    private JsonNode root,root2;
+    private JsonNode nameNode,nameNode2;
+    private JsonNode response,response2;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -63,7 +63,9 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
 
         this.setLocation(10,2);
         setSize(628,674);
-        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Unit/Poli","Nama Unit/Poli","Kode Sub","Nama Sub Spesialis"}){
+        tabMode=new DefaultTableModel(null,new String[]{
+                "No.","Kode Unit/Poli","Nama Unit/Poli","Kode Sub","Nama Sub Spesialis","Kode Dokter","Nama Dokter","Jam Praktek","Kapasitas"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -72,18 +74,26 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 9; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(40);
             }else if(i==1){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }else if(i==2){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
+            }else if(i==5){
+                column.setPreferredWidth(100);
+            }else if(i==6){
+                column.setPreferredWidth(200);
+            }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(60);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -151,7 +161,7 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Unit/Poliklinik Mobile JKN FKTP ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter Mobile JKN FKTP ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -174,20 +184,20 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
         panelGlass6.add(jLabel19);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
         Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass6.add(Tanggal);
 
-        jLabel16.setText("Kode/Nama Unit/Poli :");
+        jLabel16.setText("Kode/Nama Dokter :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(130, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass6.add(jLabel16);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(250, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -278,7 +288,11 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','"+
                                 tabMode.getValueAt(r,3).toString()+"','"+
-                                tabMode.getValueAt(r,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,4).toString()+"','"+
+                                tabMode.getValueAt(r,5).toString()+"','"+
+                                tabMode.getValueAt(r,6).toString()+"','"+
+                                tabMode.getValueAt(r,7).toString()+"','"+
+                                tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Pengadaan Ipsrs"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -290,7 +304,7 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptCariMobileJKNFKTPReferensiPoli.jasper","report","[ Pencarian Referensi Unit/Poli ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptCariMobileJKNFKTPReferensiDokter.jasper","report","[ Pencarian Referensi Dokter ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -362,8 +376,6 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
 
     public void tampil() {
         try {
-            URL = link+"/ref/poli/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
-
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",koneksiDB.CONSIDMOBILEJKNFKTP());
@@ -373,9 +385,9 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
             headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             headers.add("user_key",koneksiDB.USERKEYMOBILEJKNFKTP());
 	    requestEntity = new HttpEntity(headers);
-            System.out.println("URL : "+URL);
+            System.out.println("URL : "+link+"/ref/poli/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+""));
 	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            root = mapper.readTree(api.getRest().exchange(link+"/ref/poli/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+""), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metadata");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
@@ -385,12 +397,33 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
-                        if(list.path("kodepoli").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
-                                list.path("namapoli").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                i+".",list.path("kodepoli").asText(),list.path("namapoli").asText(),list.path("kdsubspesialis").asText(),list.path("nmsubspesialis").asText()
-                            });
-                            i++;
+                        headers2 = new HttpHeaders();
+                        headers2.setContentType(MediaType.APPLICATION_JSON);
+                        headers2.add("X-cons-id",koneksiDB.CONSIDMOBILEJKNFKTP());
+                        utc=String.valueOf(api.GetUTCdatetimeAsString());
+                        headers2.add("X-timestamp",utc);            
+                        headers2.add("X-signature",api.getHmac());
+                        headers2.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                        headers2.add("user_key",koneksiDB.USERKEYMOBILEJKNFKTP());
+                        requestEntity2 = new HttpEntity(headers2);
+                        System.out.println("URL : "+link+"/ref/dokter/kodepoli/"+list.path("kodepoli").asText()+"/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+""));
+                        //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                        root2 = mapper.readTree(api.getRest().exchange(link+"/ref/dokter/kodepoli/"+list.path("kodepoli").asText()+"/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+""), HttpMethod.GET, requestEntity2, String.class).getBody());
+                        nameNode2 = root2.path("metadata");
+                        if(nameNode2.path("message").asText().equals("OK")){
+                            response2 = mapper.readTree(api.Decrypt(root2.path("response").asText(),utc));
+                            if(response2.path("list").isArray()){
+                                for(JsonNode list2:response2.path("list")){
+                                    if(list2.path("kodedokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                            list2.path("namadokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                                        tabMode.addRow(new Object[]{
+                                            i+".",list.path("kodepoli").asText(),list.path("namapoli").asText(),list.path("kdsubspesialis").asText(),list.path("nmsubspesialis").asText(),
+                                            list2.path("kodedokter").asText(),list2.path("namadokter").asText(),list2.path("jampraktek").asText(),list2.path("kapasitas").asText()
+                                        });
+                                        i++;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
