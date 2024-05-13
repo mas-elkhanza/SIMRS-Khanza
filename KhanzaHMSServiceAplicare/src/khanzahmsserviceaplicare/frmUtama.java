@@ -163,11 +163,11 @@ public class frmUtama extends javax.swing.JFrame {
                 String jam = nol_jam + Integer.toString(nilai_jam);
                 String menit = nol_menit + Integer.toString(nilai_menit);
                 String detik = nol_detik + Integer.toString(nilai_detik);
-                if(menit.equals("01")&&detik.equals("01")){
-                    if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
-                        TeksArea.setText("");
-                    }
-                        
+                if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
+                    TeksArea.setText("");
+                }
+                
+                if((nilai_jam%4==0)&&(detik.equals("01")&&menit.equals("01"))){
                     try {
                         koneksi=koneksiDB.condb();
                         TeksArea.append("Memulai update aplicare\n");
