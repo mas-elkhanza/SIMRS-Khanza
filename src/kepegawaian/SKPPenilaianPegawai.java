@@ -8,6 +8,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -20,6 +21,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -31,6 +33,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
+    private sekuel Sequel=new sekuel();
     private int jml=0,i=0,row=0,index=0;
     private String[] KodeKriteria,Kriteria;
     private Boolean[] Ya,Tidak;
@@ -87,7 +90,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoPermintaan.setDocument(new batasInput((byte)15).getKata(NoPermintaan));
+        NoPenilaian.setDocument(new batasInput((byte)15).getKata(NoPenilaian));
         KdPenilai.setDocument(new batasInput((byte)25).getKata(KdPenilai));        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -207,7 +210,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
         tbDokter = new widget.Table();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
-        NoPermintaan = new widget.TextBox();
+        NoPenilaian = new widget.TextBox();
         label11 = new widget.Label();
         Tanggal = new widget.Tanggal();
         label13 = new widget.Label();
@@ -306,15 +309,15 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
         panelisi3.add(label15);
         label15.setBounds(0, 10, 82, 23);
 
-        NoPermintaan.setName("NoPermintaan"); // NOI18N
-        NoPermintaan.setPreferredSize(new java.awt.Dimension(207, 23));
-        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
+        NoPenilaian.setName("NoPenilaian"); // NOI18N
+        NoPenilaian.setPreferredSize(new java.awt.Dimension(207, 23));
+        NoPenilaian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoPermintaanKeyPressed(evt);
+                NoPenilaianKeyPressed(evt);
             }
         });
-        panelisi3.add(NoPermintaan);
-        NoPermintaan.setBounds(86, 10, 130, 23);
+        panelisi3.add(NoPenilaian);
+        NoPenilaian.setBounds(86, 10, 130, 23);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
@@ -647,7 +650,60 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-               
+        jml=0;
+        row=tbDokter.getRowCount();
+        for(i=0;i<row;i++){
+            if(tbDokter.getValueAt(i,2).toString().equals("true")||tbDokter.getValueAt(i,3).toString().equals("true")){
+                jml++;
+            }
+        }
+        if(NoPenilaian.getText().trim().equals("")){
+            Valid.textKosong(NoPenilaian,"No.Penilaian");
+        }else if(KdPenilai.getText().trim().equals("")||NmPenilai.getText().trim().equals("")){
+            Valid.textKosong(btnPenilai,"Yang Menilai");
+        }else if(KdDInilai.getText().trim().equals("")||NmDinilai.getText().trim().equals("")){
+            Valid.textKosong(btnDinilai,"Yang Dinilai");
+        }else if(Keterangan.getText().trim().equals("")){
+            Valid.textKosong(Keterangan,"Keterangan");
+        }else if(jml==0){
+            Valid.textKosong(TCari,"Data Penilaian");
+        }else{
+            index = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if (index == JOptionPane.YES_OPTION) {
+                Sequel.AutoComitFalse();
+                sukses=true;
+                if(Sequel.menyimpantf2("skp_penilaian","?,?,?,?,?,?","No.Permintaan",6,new String[]{
+                    NoPenilaian.getText(),KdPenilai.getText(),KdDInilai.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Keterangan.getText(),"Proses Penilaian"
+                    })==true){
+                    row=tbDokter.getRowCount();
+                    for(i=0;i<row;i++){
+                        if(tbDokter.getValueAt(i,2).toString().equals("true")||tbDokter.getValueAt(i,3).toString().equals("true")){
+                            if(Sequel.menyimpantf2("skp_detail_penilaian","?,?,?","Data",3,new String[]{
+                                    NoPenilaian.getText(),tbDokter.getValueAt(i,0).toString(),(tbDokter.getValueAt(i,2).toString().equals("true")?"Ya":"Tidak")
+                                })==false){
+                                sukses=false;
+                            }
+                        }
+                    }
+                }else{
+                    sukses=false;
+                }
+                if(sukses==true){
+                    Sequel.Commit();
+                    JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
+                    for(i=0;i<tbDokter.getRowCount();i++){ 
+                        tbDokter.setValueAt(false,i,2);
+                        tbDokter.setValueAt(false,i,3);
+                    }
+                    autoNomor();
+                    TCari.requestFocus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue(); 
+            }
+        }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -750,9 +806,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }//GEN-LAST:event_TanggalItemStateChanged
 
-    private void NoPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPermintaanKeyPressed
+    private void NoPenilaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPenilaianKeyPressed
         //Valid.pindah(evt, BtnSimpan, kdgudangTujuan);
-    }//GEN-LAST:event_NoPermintaanKeyPressed
+    }//GEN-LAST:event_NoPenilaianKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
@@ -856,7 +912,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NmDinilai;
     private widget.TextBox NmKategori;
     private widget.TextBox NmPenilai;
-    private widget.TextBox NoPermintaan;
+    private widget.TextBox NoPenilaian;
     private javax.swing.JPopupMenu Popup;
     private widget.ComboBox Sasaran;
     private widget.TextBox TCari;
@@ -1004,7 +1060,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(skp_penilaian.nomor_penilaian,3),signed)),0) from skp_penilaian where left(skp_penilaian.tanggal,10)='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "SKP"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),4,NoPermintaan); 
+                "SKP"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),4,NoPenilaian); 
     }
 
  
