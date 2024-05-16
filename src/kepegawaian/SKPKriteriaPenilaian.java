@@ -149,7 +149,6 @@ public final class SKPKriteriaPenilaian extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
     }
     
     /** This method is called from within the constructor to
