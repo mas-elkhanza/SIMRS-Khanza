@@ -90,8 +90,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoPenilaian.setDocument(new batasInput((byte)15).getKata(NoPenilaian));
-        KdPenilai.setDocument(new batasInput((byte)25).getKata(KdPenilai));        
+        NoPenilaian.setDocument(new batasInput((byte)20).getKata(NoPenilaian));    
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -346,6 +345,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
         panelisi3.add(label13);
         label13.setBounds(236, 10, 90, 23);
 
+        KdPenilai.setEditable(false);
         KdPenilai.setName("KdPenilai"); // NOI18N
         KdPenilai.setPreferredSize(new java.awt.Dimension(80, 23));
         KdPenilai.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -381,6 +381,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
         panelisi3.add(label17);
         label17.setBounds(236, 40, 90, 23);
 
+        KdDInilai.setEditable(false);
         KdDInilai.setName("KdDInilai"); // NOI18N
         KdDInilai.setPreferredSize(new java.awt.Dimension(80, 23));
         KdDInilai.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -622,19 +623,19 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        /*form.emptTeks(); 
+        SKPCariPenilaianPegawai form=new SKPCariPenilaianPegawai(null,false);
+        form.emptTeks(); 
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
-        form.setVisible(true);*/
+        form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        //form.dispose();
         pegawai.dispose();
-        //caribangsal.dispose();
+        kategori.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -723,15 +724,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariKeyPressed
 
 private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampil2();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kdgudangTujuan.requestFocus();
+            Keterangan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             tbDokter.requestFocus();
-        }*/
+        }
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
@@ -784,19 +785,19 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_btnPenilaiActionPerformed
 
     private void KdPenilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPenilaiKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             NmPenilai.setText(pegawai.tampil3(KdPenilai.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kdgudangTujuan.requestFocus();
+            NoPenilaian.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            BtnSimpan.requestFocus();
+            KdDInilai.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }*/
+            btnPenilaiActionPerformed(null);
+        }
     }//GEN-LAST:event_KdPenilaiKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        //Valid.pindah(evt,NoPermintaan,kdgudangTujuan);
+        Valid.pindah(evt,NoPenilaian,Keterangan);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
@@ -807,7 +808,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_TanggalItemStateChanged
 
     private void NoPenilaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPenilaianKeyPressed
-        //Valid.pindah(evt, BtnSimpan, kdgudangTujuan);
+        Valid.pindah(evt, BtnSimpan, KdPenilai);
     }//GEN-LAST:event_NoPenilaianKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
@@ -828,7 +829,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void KdDInilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDInilaiKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            NmDinilai.setText(pegawai.tampil3(KdDInilai.getText()));
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            KdDInilai.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            Keterangan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            btnDinilaiActionPerformed(null);
+        }
     }//GEN-LAST:event_KdDInilaiKeyPressed
 
     private void btnDinilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDinilaiActionPerformed
@@ -840,7 +849,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_btnDinilaiActionPerformed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, KdDInilai, TCari);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
@@ -855,7 +864,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_btnKategoriKeyPressed
 
     private void SasaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SasaranKeyPressed
-        //Valid.pindah(evt,Kode,Kategori);
+        Valid.pindah(evt,btnKategori,TCari);
     }//GEN-LAST:event_SasaranKeyPressed
 
     private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
