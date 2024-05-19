@@ -653,7 +653,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML2.getText().replaceAll("<head>","<head>"+
                     "<link href=\"filepenilaian.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                    "<table width='1000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                         "<tr class='isi2'>"+
                             "<td valign='top' align='center'>"+
                                 "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
