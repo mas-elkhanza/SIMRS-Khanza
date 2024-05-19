@@ -183,6 +183,8 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         tbDokter = new widget.Table();
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
+        jLabel11 = new widget.Label();
+        Sasaran1 = new widget.ComboBox();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -215,17 +217,10 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         btnDinilai = new widget.Button();
         NoPenilaian = new widget.TextBox();
         label15 = new widget.Label();
-        jLabel11 = new widget.Label();
-        Sasaran1 = new widget.ComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Data Penilaian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -260,13 +255,33 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
+        jLabel11.setText("Status :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(47, 23));
+        panelisi1.add(jLabel11);
+
+        Sasaran1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Proses Penilaian", "Keluar Hasil" }));
+        Sasaran1.setName("Sasaran1"); // NOI18N
+        Sasaran1.setPreferredSize(new java.awt.Dimension(130, 23));
+        Sasaran1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Sasaran1ItemStateChanged(evt);
+            }
+        });
+        Sasaran1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Sasaran1KeyPressed(evt);
+            }
+        });
+        panelisi1.add(Sasaran1);
+
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(60, 23));
+        label10.setPreferredSize(new java.awt.Dimension(62, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(235, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(155, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -293,13 +308,13 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
 
         label9.setText("Record :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(55, 23));
+        label9.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi1.add(label9);
 
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(50, 23));
+        LTotal.setPreferredSize(new java.awt.Dimension(47, 23));
         panelisi1.add(LTotal);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -388,17 +403,17 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         panelisi4.add(btnKategori);
-        btnKategori.setBounds(340, 10, 28, 23);
+        btnKategori.setBounds(360, 10, 28, 23);
 
         NmKategori.setEditable(false);
         NmKategori.setName("NmKategori"); // NOI18N
         panelisi4.add(NmKategori);
-        NmKategori.setBounds(138, 10, 200, 23);
+        NmKategori.setBounds(138, 10, 220, 23);
 
         jLabel10.setText("Sasaran :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelisi4.add(jLabel10);
-        jLabel10.setBounds(370, 10, 60, 23);
+        jLabel10.setBounds(390, 10, 60, 23);
 
         Sasaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Mengidentifikasi Pasien Dengan Benar", "2. Meningkatkan Komunikasi Yang Efektif", "3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai", "4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar", "5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan", "6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh" }));
         Sasaran.setName("Sasaran"); // NOI18N
@@ -413,7 +428,7 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Sasaran);
-        Sasaran.setBounds(434, 10, 282, 23);
+        Sasaran.setBounds(454, 10, 302, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -453,7 +468,7 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
-        label11.setBounds(0, 40, 82, 23);
+        label11.setBounds(0, 40, 60, 23);
 
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
@@ -463,14 +478,14 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal1);
-        Tanggal1.setBounds(86, 40, 90, 23);
+        Tanggal1.setBounds(64, 40, 90, 23);
 
         label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label12.setText("s.d.");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label12);
-        label12.setBounds(180, 40, 27, 23);
+        label12.setBounds(157, 40, 27, 23);
 
         Tanggal2.setDisplayFormat("dd-MM-yyyy");
         Tanggal2.setName("Tanggal2"); // NOI18N
@@ -480,30 +495,25 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal2);
-        Tanggal2.setBounds(211, 40, 90, 23);
+        Tanggal2.setBounds(187, 40, 90, 23);
 
         label13.setText("Yang Menilai :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label13);
-        label13.setBounds(360, 10, 90, 23);
+        label13.setBounds(290, 10, 90, 23);
 
         KdPenilai.setEditable(false);
         KdPenilai.setName("KdPenilai"); // NOI18N
         KdPenilai.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdPenilai.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPenilaiKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPenilai);
-        KdPenilai.setBounds(457, 10, 100, 23);
+        KdPenilai.setBounds(384, 10, 120, 23);
 
         NmPenilai.setEditable(false);
         NmPenilai.setName("NmPenilai"); // NOI18N
         NmPenilai.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmPenilai);
-        NmPenilai.setBounds(558, 10, 168, 23);
+        NmPenilai.setBounds(506, 10, 220, 23);
 
         btnPenilai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPenilai.setMnemonic('2');
@@ -522,24 +532,19 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label17);
-        label17.setBounds(360, 40, 90, 23);
+        label17.setBounds(290, 40, 90, 23);
 
         KdDInilai.setEditable(false);
         KdDInilai.setName("KdDInilai"); // NOI18N
         KdDInilai.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdDInilai.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdDInilaiKeyPressed(evt);
-            }
-        });
         FormInput.add(KdDInilai);
-        KdDInilai.setBounds(457, 40, 100, 23);
+        KdDInilai.setBounds(384, 40, 120, 23);
 
         NmDinilai.setEditable(false);
         NmDinilai.setName("NmDinilai"); // NOI18N
         NmDinilai.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmDinilai);
-        NmDinilai.setBounds(558, 40, 168, 23);
+        NmDinilai.setBounds(506, 40, 220, 23);
 
         btnDinilai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDinilai.setMnemonic('2');
@@ -562,33 +567,13 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoPenilaian);
-        NoPenilaian.setBounds(86, 10, 90, 23);
+        NoPenilaian.setBounds(64, 10, 213, 23);
 
         label15.setText("Nomor :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         FormInput.add(label15);
-        label15.setBounds(0, 10, 82, 23);
-
-        jLabel11.setText("Status :");
-        jLabel11.setName("jLabel11"); // NOI18N
-        FormInput.add(jLabel11);
-        jLabel11.setBounds(180, 10, 60, 23);
-
-        Sasaran1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Proses Penilaian", "Keluar Hasil" }));
-        Sasaran1.setName("Sasaran1"); // NOI18N
-        Sasaran1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                Sasaran1ItemStateChanged(evt);
-            }
-        });
-        Sasaran1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Sasaran1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Sasaran1);
-        Sasaran1.setBounds(240, 10, 100, 23);
+        label15.setBounds(0, 10, 60, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -692,10 +677,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
-
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
@@ -708,32 +689,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         //Valid.pindah(evt,NoPermintaan,KdBangsal);
     }//GEN-LAST:event_Tanggal1KeyPressed
 
-    private void KdPenilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPenilaiKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NmPenilai.setText(pegawai.tampil3(KdPenilai.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kdgudangTujuan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            BtnSimpan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }*/
-    }//GEN-LAST:event_KdPenilaiKeyPressed
-
     private void btnPenilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenilaiActionPerformed
-        //i=1;
+        i=1;
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
         pegawai.setVisible(true);
     }//GEN-LAST:event_btnPenilaiActionPerformed
 
-    private void KdDInilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDInilaiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdDInilaiKeyPressed
-
     private void btnDinilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDinilaiActionPerformed
-        //i=2;
+        i=2;
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
@@ -745,10 +710,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_NoPenilaianKeyPressed
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
-        /*kategori.isCek();
+        kategori.isCek();
         kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kategori.setLocationRelativeTo(internalFrame1);
-        kategori.setVisible(true);*/
+        kategori.setVisible(true);
     }//GEN-LAST:event_btnKategoriActionPerformed
 
     private void btnKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKategoriKeyPressed
@@ -847,7 +812,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,126));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,96));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
