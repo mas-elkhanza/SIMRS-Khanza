@@ -1,14 +1,19 @@
 package kepegawaian;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -211,6 +216,11 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Data Penilaian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -242,11 +252,6 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Proses Penilaian", "Keluar Hasil" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(130, 23));
-        Status.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                StatusItemStateChanged(evt);
-            }
-        });
         Status.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 StatusKeyPressed(evt);
@@ -394,11 +399,6 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
 
         Sasaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Mengidentifikasi Pasien Dengan Benar", "2. Meningkatkan Komunikasi Yang Efektif", "3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai", "4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar", "5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan", "6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh" }));
         Sasaran.setName("Sasaran"); // NOI18N
-        Sasaran.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SasaranItemStateChanged(evt);
-            }
-        });
         Sasaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SasaranKeyPressed(evt);
@@ -502,6 +502,11 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
                 btnPenilaiActionPerformed(evt);
             }
         });
+        btnPenilai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPenilaiKeyPressed(evt);
+            }
+        });
         FormInput.add(btnPenilai);
         btnPenilai.setBounds(728, 10, 28, 23);
 
@@ -531,6 +536,11 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         btnDinilai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDinilaiActionPerformed(evt);
+            }
+        });
+        btnDinilai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDinilaiKeyPressed(evt);
             }
         });
         FormInput.add(btnDinilai);
@@ -563,13 +573,16 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         pegawai.dispose();
+        kategori.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_SPACE){            
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){   
+            pegawai.dispose();
+            kategori.dispose();
             dispose();              
-        }else{Valid.pindah(evt,BtnPrint,kdbar);}*/
+        }else{Valid.pindah(evt,BtnPrint,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 /*
 private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
@@ -583,7 +596,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            BtnKeluar.requestFocus();
+            Status.requestFocus();
         }
     }//GEN-LAST:event_TCariKeyPressed
 
@@ -623,7 +636,39 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
+        try {
+            File g = new File("filepenilaian.css");            
+            BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+            bg.write(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+            );
+            bg.close();
+
+            File f = new File("LaporanPenilaianSKP.html");            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+            bw.write(LoadHTML2.getText().replaceAll("<head>","<head>"+
+                    "<link href=\"filepenilaian.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                    "<table width='1000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                        "<tr class='isi2'>"+
+                            "<td valign='top' align='center'>"+
+                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                "<font size='2' face='Tahoma'>Laporan Penilaian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien<br><br></font>"+        
+                            "</td>"+
+                       "</tr>"+
+                    "</table>")
+            );
+            bw.close();                         
+            Desktop.getDesktop().browse(f.toURI());
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -640,11 +685,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void Tanggal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Tanggal1,btnPenilai);
     }//GEN-LAST:event_Tanggal2KeyPressed
 
     private void Tanggal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal1KeyPressed
-        //Valid.pindah(evt,NoPermintaan,KdBangsal);
+        Valid.pindah2(evt,NoPenilaian,Tanggal2);
     }//GEN-LAST:event_Tanggal1KeyPressed
 
     private void btnPenilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenilaiActionPerformed
@@ -664,7 +709,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnDinilaiActionPerformed
 
     private void NoPenilaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPenilaianKeyPressed
-        //Valid.pindah(evt, BtnSimpan, kdgudangTujuan);
+        Valid.pindah(evt, TCari, btnPenilai);
     }//GEN-LAST:event_NoPenilaianKeyPressed
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
@@ -675,24 +720,37 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnKategoriActionPerformed
 
     private void btnKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKategoriKeyPressed
-        //Valid.pindah(evt,KdKategori,BtnSimpan);
+        Valid.pindah(evt,btnDinilai,Sasaran);
     }//GEN-LAST:event_btnKategoriKeyPressed
 
-    private void SasaranItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SasaranItemStateChanged
-        //tampil2();
-    }//GEN-LAST:event_SasaranItemStateChanged
-
     private void SasaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SasaranKeyPressed
-        //Valid.pindah(evt,Kode,Kategori);
+        Valid.pindah(evt,btnKategori,Status);
     }//GEN-LAST:event_SasaranKeyPressed
 
-    private void StatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StatusItemStateChanged
-        //tampil2();
-    }//GEN-LAST:event_StatusItemStateChanged
-
     private void StatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusKeyPressed
-        //Valid.pindah(evt,Kode,Kategori);
+        Valid.pindah(evt,Sasaran,TCari);
     }//GEN-LAST:event_StatusKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        htmlContent = new StringBuilder();
+        htmlContent.append(
+            "<tr class='head'>"+
+                "<td valign='top' bgcolor='#FFFAFA' align='center' width='95px'>No.Penilaian</td>"+
+                "<td valign='top' bgcolor='#FFFAFA' align='center' width='200px'>Yang Dinilai</td>"+
+                "<td valign='top' bgcolor='#FFFAFA' align='center' width='200px'>Yang Menilai</td>"+
+                "<td valign='top' bgcolor='#FFFAFA' align='center' width='105px'>Tanggal</td>"+
+                "<td valign='top' bgcolor='#FFFAFA' align='center' width='300px'>Keterangan</td>"+
+                "<td valign='top' bgcolor='#FFFAFA' align='center' width='100px'>Status</td>"+
+            "</tr>");
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnPenilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPenilaiKeyPressed
+        Valid.pindah(evt,NoPenilaian,btnDinilai);
+    }//GEN-LAST:event_btnPenilaiKeyPressed
+
+    private void btnDinilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDinilaiKeyPressed
+        Valid.pindah(evt,btnPenilai,btnKategori);
+    }//GEN-LAST:event_btnDinilaiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -864,7 +922,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void isCek(){
         TCari.requestFocus();
-        
     }
     
     private void isForm(){
