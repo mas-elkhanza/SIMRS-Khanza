@@ -3,7 +3,6 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -13,16 +12,12 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
@@ -39,7 +34,8 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
+        NoPenilaian.setDocument(new batasInput((int)20).getKata(NoPenilaian));  
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));          
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -772,23 +768,88 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "select skp_penilaian.nomor_penilaian,skp_penilaian.nik_dinilai,dinilai.nama as dinilai,skp_penilaian.nik_penilai,penilai.nama as penilai,skp_penilaian.tanggal,skp_penilaian.keterangan,"+
                     "skp_penilaian.status from skp_penilaian inner join pegawai as dinilai on skp_penilaian.nik_dinilai=dinilai.nik inner join pegawai as penilai on skp_penilaian.nik_penilai=penilai.nik "+
                     "where skp_penilaian.tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+" 23:59:59' "+
-                    (!Status.getSelectedItem().toString().equals("Semua")?"and skp_penilaian.status='"+Status.getSelectedItem().toString()+"'":"")+
-                    (!KdPenilai.getText().equals("")?"and skp_penilaian.nik_penilai='"+KdPenilai.getText()+"'":"")+
-                    (!KdDInilai.getText().equals("")?"and skp_penilaian.nik_dinilai='"+KdDInilai.getText()+"'":"")+
-                    (!NoPenilaian.getText().equals("")?"and skp_penilaian.nomor_penilaian='"+NoPenilaian.getText()+"'":""));
-            rs=ps.executeQuery();
-            while(rs.next()){
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                        "<td valign='top' align='center'>"+rs.getString("nomor_penilaian")+"</td>"+
-                        "<td valign='top' align='left'>"+rs.getString("nik_dinilai")+" "+rs.getString("dinilai")+"</td>"+
-                        "<td valign='top' align='left'>"+rs.getString("nik_penilai")+" "+rs.getString("penilai")+"</td>"+
-                        "<td valign='top' align='center'>"+rs.getString("tanggal")+"</td>"+
-                        "<td valign='top' align='left'>"+rs.getString("keterangan")+"</td>"+
-                        "<td valign='top' align='center'>"+rs.getString("status")+"</td>"+
-                    "</tr>");  
+                    (!Status.getSelectedItem().toString().equals("Semua")?"and skp_penilaian.status='"+Status.getSelectedItem().toString()+"' ":"")+
+                    (!KdPenilai.getText().equals("")?"and skp_penilaian.nik_penilai='"+KdPenilai.getText()+"' ":"")+
+                    (!KdDInilai.getText().equals("")?"and skp_penilaian.nik_dinilai='"+KdDInilai.getText()+"' ":"")+
+                    (!NoPenilaian.getText().equals("")?"and skp_penilaian.nomor_penilaian='"+NoPenilaian.getText()+"' ":"")+" order by skp_penilaian.tanggal");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top' align='center' rowspan='2'>"+rs.getString("nomor_penilaian")+"</td>"+
+                            "<td valign='top' align='left'>"+rs.getString("nik_dinilai")+" "+rs.getString("dinilai")+"</td>"+
+                            "<td valign='top' align='left'>"+rs.getString("nik_penilai")+" "+rs.getString("penilai")+"</td>"+
+                            "<td valign='top' align='center'>"+rs.getString("tanggal")+"</td>"+
+                            "<td valign='top' align='left'>"+rs.getString("keterangan")+"</td>"+
+                            "<td valign='top' align='center'>"+rs.getString("status")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+
+                            "<td valign='top' align='center' colspan='5'>"+
+                               "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                   "<tr class='isi'>"+
+                                        "<td valign='top' bgcolor='#FFFAFA' align='center' width='8%'>Kode</td>"+
+                                        "<td valign='top' bgcolor='#FFFAFA' align='center' width='37%'>Kriteria</td>"+
+                                        "<td valign='top' bgcolor='#FFFAFA' align='center' width='4%'>Skala</td>"+
+                                        "<td valign='top' bgcolor='#FFFAFA' align='center' width='26%'>Kategori</td>"+
+                                        "<td valign='top' bgcolor='#FFFAFA' align='center' width='25%'>Sasaran</td>"+
+                                   "</tr>"
+                    );
+                    ps2=koneksi.prepareStatement(
+                            "select skp_detail_penilaian.kode_kriteria,skp_kriteria_penilaian.nama_kriteria,skp_detail_penilaian.skala_penilaian,skp_kategori_penilaian.nama_kategori,"+
+                            "skp_kategori_penilaian.sasaran from skp_detail_penilaian inner join skp_kriteria_penilaian on skp_kriteria_penilaian.kode_kriteria=skp_detail_penilaian.kode_kriteria "+
+                            "inner join skp_kategori_penilaian on skp_kategori_penilaian.kode_kategori=skp_kriteria_penilaian.kode_kategori where skp_detail_penilaian.nomor_penilaian='"+rs.getString("nomor_penilaian")+"' "+
+                            (!Sasaran.getSelectedItem().toString().equals("Semua")?"and skp_kategori_penilaian.sasaran='"+Sasaran.getSelectedItem().toString().substring(0,1)+"' ":"")+
+                            (!KdKategori.getText().equals("")?"and skp_kategori_penilaian.kode_kategori='"+KdKategori.getText()+"' ":"")+(TCari.getText().trim().equals("")?"":" and "+
+                            "(skp_detail_penilaian.kode_kriteria like '%"+TCari.getText()+"%' or skp_kriteria_penilaian.nama_kriteria like '%"+TCari.getText()+"%')")+" order by skp_kategori_penilaian.sasaran");
+                    try {
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("kode_kriteria")+"</td>"+
+                                    "<td valign='top'>"+rs2.getString("nama_kriteria")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("skala_penilaian")+"</td>"+
+                                    "<td valign='top'>"+rs2.getString("nama_kategori")+"</td>"+
+                                    "<td valign='top'>"+
+                                        rs2.getString("sasaran").replaceAll("1","1. Mengidentifikasi Pasien Dengan Benar").
+                                        replaceAll("2","2. Meningkatkan Komunikasi Yang Efektif").
+                                        replaceAll("3","3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai").
+                                        replaceAll("4","4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar").
+                                        replaceAll("5","5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan").
+                                        replaceAll("6","6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh")+
+                                    "</td>"+
+                               "</tr>"
+                            );
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    htmlContent.append(
+                               "</table>"+
+                            "</td>"+
+                        "</tr>"
+                    );  
+
+                }
+                LTotal.setText(rs.getRow()+"");
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-            LTotal.setText(rs.getRow()+"");
             LoadHTML2.setText(
                     "<html>"+
                       "<table width='1000px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
