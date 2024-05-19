@@ -228,7 +228,7 @@ public final class akses {
             satu_sehat_kirim_observation_lab=false,satu_sehat_kirim_observation_labmb=false,satu_sehat_kirim_diagnosticreport_lab=false,satu_sehat_kirim_diagnosticreport_labmb=false,
             kepatuhan_kelengkapan_keselamatan_bedah=false,nilai_piutang_perjenis_bayar_per_bulan=false,ringkasan_piutang_jenis_bayar=false,penilaian_pasien_imunitas_rendah=false,
             balance_cairan=false,catatan_observasi_chbp=false,catatan_observasi_induksi_persalinan=false,skp_kategori_penilaian=false,skp_kriteria_penilaian=false,
-            skp_penilaian=false,referensi_poli_mobilejknfktp=false,referensi_dokter_mobilejknfktp=false;
+            skp_penilaian=false,referensi_poli_mobilejknfktp=false,referensi_dokter_mobilejknfktp=false,skp_rekapitulasi_penilaian=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1291,6 +1291,7 @@ public final class akses {
                         akses.skp_penilaian=true;
                         akses.referensi_poli_mobilejknfktp=true;
                         akses.referensi_dokter_mobilejknfktp=true;
+                        akses.skp_rekapitulasi_penilaian=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2337,6 +2338,7 @@ public final class akses {
                         akses.skp_penilaian=rs2.getBoolean("skp_penilaian");
                         akses.referensi_poli_mobilejknfktp=rs2.getBoolean("referensi_poli_mobilejknfktp");
                         akses.referensi_dokter_mobilejknfktp=rs2.getBoolean("referensi_dokter_mobilejknfktp");
+                        akses.skp_rekapitulasi_penilaian=rs2.getBoolean("skp_rekapitulasi_penilaian");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3381,6 +3383,7 @@ public final class akses {
                         akses.skp_penilaian=false;
                         akses.referensi_poli_mobilejknfktp=false;
                         akses.referensi_dokter_mobilejknfktp=false;
+                        akses.skp_rekapitulasi_penilaian=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4448,6 +4451,7 @@ public final class akses {
         akses.skp_penilaian=false;
         akses.referensi_poli_mobilejknfktp=false;
         akses.referensi_dokter_mobilejknfktp=false;
+        akses.skp_rekapitulasi_penilaian=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5531,4 +5535,5 @@ public final class akses {
     public static boolean getskp_penilaian(){return akses.skp_penilaian;}
     public static boolean getreferensi_poli_mobilejknfktp(){return akses.referensi_poli_mobilejknfktp;}
     public static boolean getreferensi_dokter_mobilejknfktp(){return akses.referensi_dokter_mobilejknfktp;}
+    public static boolean getskp_rekapitulasi_penilaian(){return akses.skp_rekapitulasi_penilaian;}
 }   
