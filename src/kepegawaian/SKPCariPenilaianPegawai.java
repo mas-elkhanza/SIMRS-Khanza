@@ -742,6 +742,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "<td valign='top' bgcolor='#FFFAFA' align='center' width='300px'>Keterangan</td>"+
                 "<td valign='top' bgcolor='#FFFAFA' align='center' width='100px'>Status</td>"+
             "</tr>");
+        LoadHTML2.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
     }//GEN-LAST:event_formWindowOpened
 
     private void btnPenilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPenilaiKeyPressed
@@ -910,7 +916,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
             LoadHTML2.setText(
                     "<html>"+
-                      "<table width='1000px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
