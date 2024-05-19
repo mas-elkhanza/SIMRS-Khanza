@@ -444,9 +444,7 @@ public final class SKPKategoriPenilaian extends javax.swing.JDialog {
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
-            }else{
-                Kode.requestFocus();
-            }            
+            }           
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 

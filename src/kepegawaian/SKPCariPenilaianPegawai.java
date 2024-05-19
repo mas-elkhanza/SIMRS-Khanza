@@ -1,3 +1,14 @@
+/*
+  Dilarang keras memperjualbelikan/mengambil keuntungan dari Software 
+  ini dalam bentuk apapun tanpa seijin pembuat software
+  (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
+  npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
+  nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
+  nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
+  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  karena telah berdoa buruk, semua ini kami lakukan karena kami ti
+  dak pernah rela karya kami dibajak tanpa ijin.
+ */
 package kepegawaian;
 import fungsi.akses;
 import fungsi.batasInput;
@@ -17,18 +28,20 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
-    private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
+    private final validasi Valid=new validasi();
+    private final Connection koneksi=koneksiDB.condb();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgCariSKPKategoriPenilaian kategori=new DlgCariSKPKategoriPenilaian(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
+    private final sekuel Sequel=new sekuel();
     private int i;
     private StringBuilder htmlContent;
 
@@ -212,6 +225,7 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         btnDinilai = new widget.Button();
         NoPenilaian = new widget.TextBox();
         label15 = new widget.Label();
+        BtnHapus = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -554,13 +568,26 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoPenilaian);
-        NoPenilaian.setBounds(64, 10, 213, 23);
+        NoPenilaian.setBounds(64, 10, 183, 23);
 
         label15.setText("Nomor :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         FormInput.add(label15);
         label15.setBounds(0, 10, 60, 23);
+
+        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapus.setMnemonic('H');
+        BtnHapus.setToolTipText("Alt+H");
+        BtnHapus.setName("BtnHapus"); // NOI18N
+        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnHapus);
+        BtnHapus.setBounds(249, 10, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -758,6 +785,20 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.pindah(evt,btnPenilai,btnKategori);
     }//GEN-LAST:event_btnDinilaiKeyPressed
 
+    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
+        if(NoPenilaian.getText().trim().equals("")){
+            Valid.textKosong(NoPenilaian,"No.Penilaian");
+        }else {
+            if(Valid.SetInteger(LTotal.getText())>0){
+                if(Sequel.meghapustf("skp_penilaian","nomor_penilaian",NoPenilaian.getText())==true){
+                    tampil();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Pastikan nomor penilaian yang mau dihapus sudah benar...!!!!");
+            }
+        }
+    }//GEN-LAST:event_BtnHapusActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -777,6 +818,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.CekBox ChkInput;
