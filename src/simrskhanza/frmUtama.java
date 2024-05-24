@@ -43860,7 +43860,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiObatApotek.addActionListener(this::btnBPJSReferensiObatApotekActionPerformed);
         
         btnPembayaranBankMandiri = new widget.ButtonBig();
-        btnPembayaranBankMandiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_wallet_3440917.png")));
+        btnPembayaranBankMandiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mandiri.png")));
         btnPembayaranBankMandiri.setText("Pembayaran Bank Mandiri");
         btnPembayaranBankMandiri.setIconTextGap(0);
         btnPembayaranBankMandiri.setName("btnPembayaranBankMandiri"); 

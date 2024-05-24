@@ -173,9 +173,9 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kategori.getTable().getSelectedRow()!= -1){
-                    KdKategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(),0).toString());
+                    /*KdKategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(),0).toString());
                     NmKategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(),1).toString());
-                    btnKategori.requestFocus();
+                    btnKategori.requestFocus();*/
                     tampil2();
                 }
             }
@@ -230,16 +230,8 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
         KdDInilai = new widget.TextBox();
         NmDinilai = new widget.TextBox();
         btnDinilai = new widget.Button();
-        label16 = new widget.Label();
-        Keterangan = new widget.TextBox();
         jPanel1 = new javax.swing.JPanel();
         panelisi4 = new widget.panelisi();
-        jLabel9 = new widget.Label();
-        KdKategori = new widget.TextBox();
-        btnKategori = new widget.Button();
-        NmKategori = new widget.TextBox();
-        jLabel10 = new widget.Label();
-        Sasaran = new widget.ComboBox();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         label10 = new widget.Label();
@@ -309,14 +301,14 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 103));
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 73));
         panelisi3.setLayout(null);
 
-        label15.setText("No.Rekap :");
+        label15.setText("No.Rekapitulasi :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 82, 23);
+        label15.setBounds(0, 10, 97, 23);
 
         NoPenilaian.setName("NoPenilaian"); // NOI18N
         NoPenilaian.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -326,13 +318,13 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoPenilaian);
-        NoPenilaian.setBounds(86, 10, 130, 23);
+        NoPenilaian.setBounds(101, 10, 130, 23);
 
-        label11.setText("Tanggal :");
+        label11.setText("Tanggal Rekap :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label11);
-        label11.setBounds(0, 40, 82, 23);
+        label11.setBounds(0, 40, 97, 23);
 
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
@@ -347,7 +339,7 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Tanggal);
-        Tanggal.setBounds(86, 40, 130, 23);
+        Tanggal.setBounds(101, 40, 130, 23);
 
         label13.setText("Yang Menilai :");
         label13.setName("label13"); // NOI18N
@@ -421,86 +413,16 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
         panelisi3.add(btnDinilai);
         btnDinilai.setBounds(688, 40, 28, 23);
 
-        label16.setText("Keterangan :");
-        label16.setName("label16"); // NOI18N
-        label16.setPreferredSize(new java.awt.Dimension(80, 23));
-        panelisi3.add(label16);
-        label16.setBounds(0, 70, 82, 23);
-
-        Keterangan.setName("Keterangan"); // NOI18N
-        Keterangan.setPreferredSize(new java.awt.Dimension(207, 23));
-        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganKeyPressed(evt);
-            }
-        });
-        panelisi3.add(Keterangan);
-        Keterangan.setBounds(86, 70, 600, 23);
-
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(816, 130));
         jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi4.setName("panelisi4"); // NOI18N
-        panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
+        panelisi4.setPreferredSize(new java.awt.Dimension(100, 74));
         panelisi4.setLayout(null);
-
-        jLabel9.setText("Kategori :");
-        jLabel9.setName("jLabel9"); // NOI18N
-        panelisi4.add(jLabel9);
-        jLabel9.setBounds(0, 10, 62, 23);
-
-        KdKategori.setEditable(false);
-        KdKategori.setHighlighter(null);
-        KdKategori.setName("KdKategori"); // NOI18N
-        panelisi4.add(KdKategori);
-        KdKategori.setBounds(66, 10, 70, 23);
-
-        btnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnKategori.setMnemonic('1');
-        btnKategori.setToolTipText("Alt+1");
-        btnKategori.setName("btnKategori"); // NOI18N
-        btnKategori.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKategoriActionPerformed(evt);
-            }
-        });
-        btnKategori.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnKategoriKeyPressed(evt);
-            }
-        });
-        panelisi4.add(btnKategori);
-        btnKategori.setBounds(340, 10, 28, 23);
-
-        NmKategori.setEditable(false);
-        NmKategori.setName("NmKategori"); // NOI18N
-        panelisi4.add(NmKategori);
-        NmKategori.setBounds(138, 10, 200, 23);
-
-        jLabel10.setText("Sasaran :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        panelisi4.add(jLabel10);
-        jLabel10.setBounds(370, 10, 60, 23);
-
-        Sasaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Mengidentifikasi Pasien Dengan Benar", "2. Meningkatkan Komunikasi Yang Efektif", "3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai", "4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar", "5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan", "6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh" }));
-        Sasaran.setName("Sasaran"); // NOI18N
-        Sasaran.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SasaranItemStateChanged(evt);
-            }
-        });
-        Sasaran.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SasaranKeyPressed(evt);
-            }
-        });
-        panelisi4.add(Sasaran);
-        Sasaran.setBounds(434, 10, 282, 23);
-
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
         panelisi1.setName("panelisi1"); // NOI18N
@@ -660,7 +582,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        jml=0;
+        /*jml=0;
         row=tbDokter.getRowCount();
         for(i=0;i<row;i++){
             if(tbDokter.getValueAt(i,2).toString().equals("true")||tbDokter.getValueAt(i,3).toString().equals("true")){
@@ -713,7 +635,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 Sequel.AutoComitTrue(); 
             }
-        }
+        }*/
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -733,7 +655,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariKeyPressed
 
 private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampil2();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
@@ -741,7 +663,7 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
             Keterangan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             tbDokter.requestFocus();
-        }
+        }*/
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
@@ -806,7 +728,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_KdPenilaiKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah(evt,NoPenilaian,Keterangan);
+       // Valid.pindah(evt,NoPenilaian,Keterangan);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
@@ -821,12 +743,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_NoPenilaianKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        TCari.setText("");
+        /*TCari.setText("");
         KdKategori.setText("");
         NmKategori.setText("");
         Sasaran.setSelectedIndex(0);
         tampil();
-        tampil2();
+        tampil2();*/
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -838,7 +760,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void KdDInilaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDInilaiKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             NmDinilai.setText(pegawai.tampil3(KdDInilai.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             KdDInilai.requestFocus();
@@ -846,7 +768,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             Keterangan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDinilaiActionPerformed(null);
-        }
+        }*/
     }//GEN-LAST:event_KdDInilaiKeyPressed
 
     private void btnDinilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDinilaiActionPerformed
@@ -856,25 +778,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         pegawai.setAlwaysOnTop(false);
         pegawai.setVisible(true);
     }//GEN-LAST:event_btnDinilaiActionPerformed
-
-    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        Valid.pindah(evt, KdDInilai, TCari);
-    }//GEN-LAST:event_KeteranganKeyPressed
-
-    private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
-        kategori.isCek();
-        kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        kategori.setLocationRelativeTo(internalFrame1);
-        kategori.setVisible(true);
-    }//GEN-LAST:event_btnKategoriActionPerformed
-
-    private void btnKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKategoriKeyPressed
-        Valid.pindah(evt,KdKategori,BtnSimpan);
-    }//GEN-LAST:event_btnKategoriKeyPressed
-
-    private void SasaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SasaranKeyPressed
-        Valid.pindah(evt,btnKategori,TCari);
-    }//GEN-LAST:event_SasaranKeyPressed
 
     private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
         if(tabMode.getRowCount()!=0){
@@ -895,10 +798,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         }
     }//GEN-LAST:event_tbDokterMouseClicked
-
-    private void SasaranItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SasaranItemStateChanged
-        tampil2();
-    }//GEN-LAST:event_SasaranItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -924,29 +823,21 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button BtnSimpan;
     private widget.Button BtnTambah;
     private widget.TextBox KdDInilai;
-    private widget.TextBox KdKategori;
     private widget.TextBox KdPenilai;
-    private widget.TextBox Keterangan;
     private widget.TextBox NmDinilai;
-    private widget.TextBox NmKategori;
     private widget.TextBox NmPenilai;
     private widget.TextBox NoPenilaian;
     private javax.swing.JPopupMenu Popup;
-    private widget.ComboBox Sasaran;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
     private widget.Button btnDinilai;
-    private widget.Button btnKategori;
     private widget.Button btnPenilai;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel10;
-    private widget.Label jLabel9;
     private javax.swing.JPanel jPanel1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label13;
     private widget.Label label15;
-    private widget.Label label16;
     private widget.Label label17;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -992,7 +883,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     private void tampil2() {
-        try{
+        /*try{
             row=tbDokter.getRowCount();
             jml=0;
             for(i=0;i<row;i++){
@@ -1058,7 +949,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-        }
+        }*/
     }
 
     
