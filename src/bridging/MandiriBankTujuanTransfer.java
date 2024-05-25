@@ -65,7 +65,7 @@ public final class MandiriBankTujuanTransfer extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(550);
+                column.setPreferredWidth(420);
             }
         }
         tbJabatan.setDefaultRenderer(Object.class, new WarnaTable());
