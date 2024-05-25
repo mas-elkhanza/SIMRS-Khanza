@@ -298,12 +298,20 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptHtHBankMandiri.jasper","report","::[ Data Pembayaran Bank Mandiri ]::",
-               "select * from tagihan_mandiri where tagihan_mandiri.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' "+
-               (TCari.getText().equals("")?"":"and (tagihan_mandiri.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-               "tagihan_mandiri.no_nota like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.referensi like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-               "tagihan_mandiri.status_lanjut like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.status_bayar like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.kasir like '%"+TCari.getText().trim()+"%' or "+
-               "tagihan_mandiri.referensi like '%"+TCari.getText().trim()+"%' or tagihan_mandiri.no_id like '%"+TCari.getText().trim()+"%') ")+"order by tagihan_mandiri.tgl_closing",param);
+            Valid.MyReportqry("rptPembayaranPihakke3BankMandiri.jasper","report","::[ Data Pembayaran Pihak Ke 3 Bank Mandiri ]::",
+               "select pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,pembayaran_pihak_ke3_bankmandiri.no_rekening_sumber,"+
+               "pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.kota_atas_nama_rekening_tujuan,"+
+               "pembayaran_pihak_ke3_bankmandiri.nominal_pembayaran,pembayaran_pihak_ke3_bankmandiri.nomor_tagihan,pembayaran_pihak_ke3_bankmandiri.kode_metode,metode_pembayaran_bankmandiri.nama_metode,"+
+               "pembayaran_pihak_ke3_bankmandiri.kode_bank,bank_tujuan_transfer_bankmandiri.nama_bank,pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
+               "from pembayaran_pihak_ke3_bankmandiri inner join metode_pembayaran_bankmandiri on metode_pembayaran_bankmandiri.kode_metode=pembayaran_pihak_ke3_bankmandiri.kode_metode "+
+               "inner join bank_tujuan_transfer_bankmandiri on bank_tujuan_transfer_bankmandiri.kode_bank=pembayaran_pihak_ke3_bankmandiri.kode_bank where "+
+               "pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' "+
+               (TCari.getText().equals("")?"":"and (pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan like '%"+TCari.getText().trim()+"%' "+
+               "or pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.status_transaksi like '%"+TCari.getText().trim()+"%' "+
+               "or pembayaran_pihak_ke3_bankmandiri.nomor_tagihan like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.kode_metode like '%"+TCari.getText().trim()+"%' "+
+               "or metode_pembayaran_bankmandiri.nama_metode like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.kode_bank like '%"+TCari.getText().trim()+"%' or "+
+               "bank_tujuan_transfer_bankmandiri.nama_bank like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.asal_transaksi like '%"+TCari.getText().trim()+"%') ")+
+               "order by pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
