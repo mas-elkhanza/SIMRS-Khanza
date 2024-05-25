@@ -580,9 +580,9 @@ public final class DlgJabatan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select kd_jbtn, nm_jbtn "+
-                    " from jabatan where  kd_jbtn like ? or "+
-                    " nm_jbtn like ? order by kd_jbtn");
+            ps=koneksi.prepareStatement("select jabatan.kd_jbtn, jabatan.nm_jbtn "+
+                    " from jabatan where  jabatan.kd_jbtn like ? or "+
+                    " jabatan.nm_jbtn like ? order by jabatan.kd_jbtn");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

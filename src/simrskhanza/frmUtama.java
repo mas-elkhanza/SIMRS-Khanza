@@ -460,6 +460,7 @@ import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
 import bridging.ICareRiwayatPerawatan;
 import bridging.INACBGPerawatanCorona;
+import bridging.MandiriMetodePembayaran;
 import bridging.MobileJKNFKTPReferensiDokter;
 import bridging.MobileJKNFKTPReferensiPoli;
 import bridging.MobileJKNPembatalanPendaftaran;
@@ -21458,6 +21459,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnMandiriMetodePembayaranActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MandiriMetodePembayaran form=new MandiriMetodePembayaran(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22149,7 +22161,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnKirimSpecimenLabPKSatuSehat,btnKirimSpecimenLabMBSatuSehat,btnKirimObservationLabPKSatuSehat,btnKirimObservationLabMBSatuSehat,btnKirimDiagnosticReportLabPKSatuSehat,
             btnKirimDiagnosticReportLabMBSatuSehat,btnKepatuhanKelengkapanKeselamatanBedah,btnNilaiPiutangPerJenisBayarPerBulan,btnRingkasanPiutangPerJenisBayar,
             btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan,btnCatatanObservasiCHBP,btnCatatanObservasiInduksiPersalinan,btnSKPKategoriPenilaian,btnSKPKriteriaPenilaian,
-            btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP,btnSKPPenilaianPegawai;
+            btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP,btnSKPPenilaianPegawai,btnMandiriMetodePembayaran;
     
     public void isWall(){
         try{            
@@ -25159,6 +25171,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getakun_host_to_host_bank_mandiri()==true){
                 Panelmenu.add(btnHostToHostBankMandiri);
+                jmlmenu++;
+            }
+            
+            if(akses.getmetode_pembayaran_bankmandiri()==true){
+                Panelmenu.add(btnMandiriMetodePembayaran);
                 jmlmenu++;
             }
             
@@ -30307,6 +30324,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getmetode_pembayaran_bankmandiri()==true){
+            Panelmenu.add(btnMandiriMetodePembayaran);
+            jmlmenu++;
+        }
+
         if(akses.getsatu_sehat_referensi_dokter()==true){
             Panelmenu.add(btnReferensiDokterSatuSehat);
             jmlmenu++;
@@ -36596,6 +36618,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getakun_host_to_host_bank_mandiri()==true){
             if(btnHostToHostBankMandiri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHostToHostBankMandiri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmetode_pembayaran_bankmandiri()==true){
+            if(btnMandiriMetodePembayaran.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMandiriMetodePembayaran);
                 jmlmenu++;
             }                
         }
@@ -44322,5 +44351,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSKPPenilaianPegawai.setName("btnSKPPenilaianPegawai"); 
         btnSKPPenilaianPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSKPPenilaianPegawai.addActionListener(this::btnSKPPenilaianPegawaiActionPerformed);
+        
+        btnMandiriMetodePembayaran = new widget.ButtonBig();
+        btnMandiriMetodePembayaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mandiri.png")));
+        btnMandiriMetodePembayaran.setText("Metode Pembayaran Bank Mandiri");
+        btnMandiriMetodePembayaran.setIconTextGap(0);
+        btnMandiriMetodePembayaran.setName("btnMandiriMetodePembayaran"); 
+        btnMandiriMetodePembayaran.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMandiriMetodePembayaran.addActionListener(this::btnMandiriMetodePembayaranActionPerformed);
     }
 }
