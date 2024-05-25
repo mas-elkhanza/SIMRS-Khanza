@@ -3863,39 +3863,39 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/akunpiutang.iyem")>6){
+            if(Valid.daysOld("./cache/akunpiutang.iyem")>30){
                 tampilAkunPiutang3();
             }
             
-            if(Valid.daysOld("./cache/akunbayar.iyem")>6){
+            if(Valid.daysOld("./cache/akunbayar.iyem")>30){
                 tampilAkunBayar3();
             }
             
-            if(Valid.daysOld("./cache/akunbankjateng.iyem")>6){
+            if(Valid.daysOld("./cache/akunbankjateng.iyem")>30){
                 tampilAkunBankJateng();
             }else{
                 tampilAkunBankJateng2();
             }
             
-            if(Valid.daysOld("./cache/akunbankpapua.iyem")>6){
+            if(Valid.daysOld("./cache/akunbankpapua.iyem")>30){
                 tampilAkunBankPapua();
             }else{
                 tampilAkunBankPapua2();
             }
             
-            if(Valid.daysOld("./cache/akunbankjabar.iyem")>6){
+            if(Valid.daysOld("./cache/akunbankjabar.iyem")>30){
                 tampilAkunBankJabar();
             }else{
                 tampilAkunBankJabar2();
             }
             
-            if(Valid.daysOld("./cache/akunbankbri.iyem")>6){
+            if(Valid.daysOld("./cache/akunbankbri.iyem")>30){
                 tampilAkunBankBRI();
             }else{
                 tampilAkunBankBRI2();
             }
             
-            if(Valid.daysOld("./cache/akunbankmandiri.iyem")>6){
+            if(Valid.daysOld("./cache/akunbankmandiri.iyem")>30){
                 tampilAkunBankMandiri();
             }else{
                 tampilAkunBankMandiri2();
@@ -5334,7 +5334,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
              file.createNewFile();
              fileWriter = new FileWriter(file);
              Host_to_Host_Bank_Mandiri=Sequel.cariIsi("select set_akun_mandiri.kd_rek from set_akun_mandiri");
-             fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\"}");
+             fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\",\"kodemcm\":\""+Sequel.cariIsi("select set_akun_mandiri.kode_mcm from set_akun_mandiri")+"\"}");
              fileWriter.flush();
              fileWriter.close();
         } catch (Exception e) {
