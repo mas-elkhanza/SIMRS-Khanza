@@ -248,7 +248,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Kirim Observation Lab PK Satu Sehat","[L]Kirim Observation Lab MB Satu Sehat","[L]Kirim Diagnostic Report Lab PK Satu Sehat","[L]Kirim Diagnostic Report Lab MB Satu Sehat",
                 "[J]Kepatuhan Kelengkapan Keselamatan Bedah","[K]Nilai Piutang Per Cara Bayar Per Bulan","[K]Ringkasan Piutang Per Cara Bayar","[M]Penilaian Pasien Imunitas Rendah",
                 "[M]Keseimbangan Cairan","[M]Catatan Observasi CHBP","[M]Catatan Observasi Induksi Persalinan","[C]Kategori Penilaian SKP","[C]Kriteria Penilaian SKP","[C]Penilaian SKP Petugas/Dokter",
-                "[L]Referensi Poli Mobile JKN FKTP","[L]Referensi Dokter Mobile JKN FKTP","[C]Rekapitulasi Penilaian SKP","[K]Pembayaran Pihak Ke 3 Bank Mandiri","[L]Metode Pembayaran Bank Mandiri"
+                "[L]Referensi Poli Mobile JKN FKTP","[L]Referensi Dokter Mobile JKN FKTP","[C]Rekapitulasi Penilaian SKP","[K]Pembayaran Pihak Ke 3 Bank Mandiri","[L]Metode Pembayaran Bank Mandiri",
+                "[L]Bank Tujuan Transfer Bank Mandiri"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -537,7 +538,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
-                java.lang.Boolean.class
+                java.lang.Boolean.class,java.lang.Boolean.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -550,7 +551,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1046;i++) {
+        for (i = 0; i < 1047;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3142,6 +3143,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1045:
                     column.setPreferredWidth(184);
                     break;
+                case 1046:
+                    column.setPreferredWidth(189);
+                    break;
                 default:
                     column.setPreferredWidth(134);
                     break;
@@ -3641,7 +3645,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3668,7 +3672,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false
+                    false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4761,7 +4765,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "referensi_dokter_mobilejknfktp='"+tbUser.getValueAt(i,1042).toString()+"',"+
                     "skp_rekapitulasi_penilaian='"+tbUser.getValueAt(i,1043).toString()+"',"+
                     "pembayaran_pihak_ke3_bankmandiri='"+tbUser.getValueAt(i,1044).toString()+"',"+
-                    "metode_pembayaran_bankmandiri='"+tbUser.getValueAt(i,1045).toString()+"'")==true){
+                    "metode_pembayaran_bankmandiri='"+tbUser.getValueAt(i,1045).toString()+"',"+
+                    "bank_tujuan_transfer_bankmandiri='"+tbUser.getValueAt(i,1046).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6005,7 +6010,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "referensi_dokter_mobilejknfktp='"+tbUser.getValueAt(barisdicopy,1042).toString()+"',"+
                                         "skp_rekapitulasi_penilaian='"+tbUser.getValueAt(barisdicopy,1043).toString()+"',"+
                                         "pembayaran_pihak_ke3_bankmandiri='"+tbUser.getValueAt(barisdicopy,1044).toString()+"',"+
-                                        "metode_pembayaran_bankmandiri='"+tbUser.getValueAt(barisdicopy,1045).toString()+"'");
+                                        "metode_pembayaran_bankmandiri='"+tbUser.getValueAt(barisdicopy,1045).toString()+"',"+
+                                        "bank_tujuan_transfer_bankmandiri='"+tbUser.getValueAt(barisdicopy,1046).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6305,7 +6311,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.kepatuhan_kelengkapan_keselamatan_bedah,user.nilai_piutang_perjenis_bayar_per_bulan,user.ringkasan_piutang_jenis_bayar,user.penilaian_pasien_imunitas_rendah,"+
                 "user.balance_cairan,user.catatan_observasi_chbp,user.catatan_observasi_induksi_persalinan,user.skp_kategori_penilaian,user.skp_kriteria_penilaian,"+
                 "user.skp_penilaian,user.referensi_poli_mobilejknfktp,user.referensi_dokter_mobilejknfktp,user.skp_rekapitulasi_penilaian,user.pembayaran_pihak_ke3_bankmandiri,"+
-                "user.metode_pembayaran_bankmandiri from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.metode_pembayaran_bankmandiri,user.bank_tujuan_transfer_bankmandiri from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7363,7 +7369,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("referensi_dokter_mobilejknfktp"),
                                rs.getBoolean("skp_rekapitulasi_penilaian"),
                                rs.getBoolean("pembayaran_pihak_ke3_bankmandiri"),
-                               rs.getBoolean("metode_pembayaran_bankmandiri")
+                               rs.getBoolean("metode_pembayaran_bankmandiri"),
+                               rs.getBoolean("bank_tujuan_transfer_bankmandiri")
                             });
                         }   
                     } catch (Exception e) {
@@ -8410,7 +8417,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("referensi_dokter_mobilejknfktp"),
                            rs.getBoolean("skp_rekapitulasi_penilaian"),
                            rs.getBoolean("pembayaran_pihak_ke3_bankmandiri"),
-                           rs.getBoolean("metode_pembayaran_bankmandiri")
+                           rs.getBoolean("metode_pembayaran_bankmandiri"),
+                           rs.getBoolean("bank_tujuan_transfer_bankmandiri")
                         });
                     }                                             
                  }
