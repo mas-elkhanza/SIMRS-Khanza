@@ -45,7 +45,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
         setSize(885,674);
         Object[] rowRwJlDr={
             "No.Pembayaran","Tgl.Pembayaran","No.Rekening Sumber","No.Rekening Tujuan","Nama Rekening Tujuan","Kota/Kabupaten",
-            "Nominal Pembayaran","Nomor Tagihan","Metode Pembayaran","Bank Tujuan","Asal Transaksi","Status Transaksi"
+            "Nominal","Nomor Tagihan","Metode Pembayaran","Bank Tujuan","Asal Transaksi","Status Transaksi"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -74,13 +74,13 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
             }else if(i==7){
                 column.setPreferredWidth(120);
             }else if(i==8){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(150);
             }else if(i==9){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(200);
             }else if(i==10){
                 column.setPreferredWidth(150);
             }else if(i==11){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
