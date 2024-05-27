@@ -1,12 +1,13 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * DlgJnsPerawatanRalan.java
- *
- * Created on May 22, 2010, 11:58:21 PM
+  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
+  Software ini dalam bentuk apapun tanpa seijin pembuat software
+  (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
+  npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
+  nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
+  nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
+  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  karena telah berdoa buruk, semua ini kami lakukan karena kami ti
+  dak pernah rela karya kami dibajak tanpa ijin.
  */
 
 package bridging;
@@ -32,7 +33,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariDokter;
 
 /**
  *
@@ -46,8 +46,8 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private DlgCariDokter poli=new DlgCariDokter(null,false);
-    private PCareCekReferensiDokter polipcare=new PCareCekReferensiDokter(null,false);
+    private MandiriCariMetodePembayaran metodepembayaran=new MandiriCariMetodePembayaran(null,false);
+    private MandiriCariBankTujuanTransfer banktujuan=new MandiriCariBankTujuanTransfer(null,false);
     
 
     /** Creates new form DlgJnsPerawatanRalan
@@ -61,7 +61,7 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Kode Dokter RS","Nama Dokter RS","Kode Dokter PCare","Nama Dokter PCare"}){
+            "Kode Metode Pembyaran","Nama Metode Pembyaran","Kode Bank Tujuan Transaksi","Nama Bank Tujuan Transaksi"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbJnsPerawatan.setModel(tabMode);
@@ -108,18 +108,18 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
             });
         }  
         
-        poli.addWindowListener(new WindowListener() {
+        metodepembayaran.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(poli.getTable().getSelectedRow()!= -1){                    
-                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                if(metodepembayaran.getTable().getSelectedRow()!= -1){                    
+                    KodeMetode.setText(metodepembayaran.getTable().getValueAt(metodepembayaran.getTable().getSelectedRow(),0).toString());
+                    MetodePembayaran.setText(metodepembayaran.getTable().getValueAt(metodepembayaran.getTable().getSelectedRow(),1).toString());
                 }
-                kdpoli.requestFocus();
+                KodeMetode.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -131,30 +131,30 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
             public void windowDeactivated(WindowEvent e) {}
         }); 
         
-        poli.getTable().addKeyListener(new KeyListener() {
+        metodepembayaran.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    poli.dispose();
+                    metodepembayaran.dispose();
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
         
-        polipcare.addWindowListener(new WindowListener() {
+        banktujuan.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(polipcare.getTable().getSelectedRow()!= -1){                   
-                    KdPoliPCare.setText(polipcare.getTable().getValueAt(polipcare.getTable().getSelectedRow(),1).toString());
-                    NmPoliPCare.setText(polipcare.getTable().getValueAt(polipcare.getTable().getSelectedRow(),2).toString());
-                    KdPoliPCare.requestFocus();
+                if(banktujuan.getTable().getSelectedRow()!= -1){                   
+                    KodeBank.setText(banktujuan.getTable().getValueAt(banktujuan.getTable().getSelectedRow(),1).toString());
+                    BankTujuan.setText(banktujuan.getTable().getValueAt(banktujuan.getTable().getSelectedRow(),2).toString());
+                    KodeBank.requestFocus();
                 }                  
             }
             @Override
@@ -167,13 +167,13 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        polipcare.getTable().addKeyListener(new KeyListener() {
+        banktujuan.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    polipcare.dispose();
+                    banktujuan.dispose();
                 }
             }
             @Override
@@ -211,14 +211,14 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         LCount = new widget.Label();
         FormInput = new widget.PanelBiasa();
         jLabel4 = new widget.Label();
-        kdpoli = new widget.TextBox();
-        TPoli = new widget.TextBox();
+        KodeMetode = new widget.TextBox();
+        MetodePembayaran = new widget.TextBox();
         btnPoliRS = new widget.Button();
         jLabel19 = new widget.Label();
-        KdPoliPCare = new widget.TextBox();
-        NmPoliPCare = new widget.TextBox();
+        KodeBank = new widget.TextBox();
+        BankTujuan = new widget.TextBox();
         btnPoliBPJS = new widget.Button();
-        KdPoliPCare1 = new widget.TextBox();
+        KodeTransaksi = new widget.TextBox();
         jLabel20 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -449,17 +449,17 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 10, 125, 23);
 
-        kdpoli.setEditable(false);
-        kdpoli.setHighlighter(null);
-        kdpoli.setName("kdpoli"); // NOI18N
-        FormInput.add(kdpoli);
-        kdpoli.setBounds(129, 10, 75, 23);
+        KodeMetode.setEditable(false);
+        KodeMetode.setHighlighter(null);
+        KodeMetode.setName("KodeMetode"); // NOI18N
+        FormInput.add(KodeMetode);
+        KodeMetode.setBounds(129, 10, 75, 23);
 
-        TPoli.setEditable(false);
-        TPoli.setHighlighter(null);
-        TPoli.setName("TPoli"); // NOI18N
-        FormInput.add(TPoli);
-        TPoli.setBounds(207, 10, 380, 23);
+        MetodePembayaran.setEditable(false);
+        MetodePembayaran.setHighlighter(null);
+        MetodePembayaran.setName("MetodePembayaran"); // NOI18N
+        FormInput.add(MetodePembayaran);
+        MetodePembayaran.setBounds(207, 10, 380, 23);
 
         btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliRS.setMnemonic('1');
@@ -483,16 +483,16 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         FormInput.add(jLabel19);
         jLabel19.setBounds(0, 40, 125, 23);
 
-        KdPoliPCare.setEditable(false);
-        KdPoliPCare.setHighlighter(null);
-        KdPoliPCare.setName("KdPoliPCare"); // NOI18N
-        FormInput.add(KdPoliPCare);
-        KdPoliPCare.setBounds(129, 40, 75, 23);
+        KodeBank.setEditable(false);
+        KodeBank.setHighlighter(null);
+        KodeBank.setName("KodeBank"); // NOI18N
+        FormInput.add(KodeBank);
+        KodeBank.setBounds(129, 40, 75, 23);
 
-        NmPoliPCare.setEditable(false);
-        NmPoliPCare.setName("NmPoliPCare"); // NOI18N
-        FormInput.add(NmPoliPCare);
-        NmPoliPCare.setBounds(207, 40, 380, 23);
+        BankTujuan.setEditable(false);
+        BankTujuan.setName("BankTujuan"); // NOI18N
+        FormInput.add(BankTujuan);
+        BankTujuan.setBounds(207, 40, 380, 23);
 
         btnPoliBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliBPJS.setMnemonic('3');
@@ -506,11 +506,11 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         FormInput.add(btnPoliBPJS);
         btnPoliBPJS.setBounds(590, 40, 28, 23);
 
-        KdPoliPCare1.setEditable(false);
-        KdPoliPCare1.setHighlighter(null);
-        KdPoliPCare1.setName("KdPoliPCare1"); // NOI18N
-        FormInput.add(KdPoliPCare1);
-        KdPoliPCare1.setBounds(129, 70, 190, 23);
+        KodeTransaksi.setEditable(false);
+        KodeTransaksi.setHighlighter(null);
+        KodeTransaksi.setName("KodeTransaksi"); // NOI18N
+        FormInput.add(KodeTransaksi);
+        KodeTransaksi.setBounds(129, 70, 190, 23);
 
         jLabel20.setText("Kode Transaksi Bank :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -525,10 +525,10 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPoliRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliRSActionPerformed
-        poli.isCek();        
-        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        poli.setLocationRelativeTo(internalFrame1);
-        poli.setVisible(true);
+        metodepembayaran.isCek();        
+        metodepembayaran.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        metodepembayaran.setLocationRelativeTo(internalFrame1);
+        metodepembayaran.setVisible(true);
 }//GEN-LAST:event_btnPoliRSActionPerformed
 
     private void btnPoliRSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliRSKeyPressed
@@ -536,13 +536,13 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
 }//GEN-LAST:event_btnPoliRSKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(kdpoli.getText().trim().equals("")||TPoli.getText().trim().equals("")){
-            Valid.textKosong(kdpoli,"Dokter RS");
-        }else if(KdPoliPCare.getText().trim().equals("")||NmPoliPCare.getText().trim().equals("")){
-            Valid.textKosong(KdPoliPCare,"Dokter PCare");
+        if(KodeMetode.getText().trim().equals("")||MetodePembayaran.getText().trim().equals("")){
+            Valid.textKosong(KodeMetode,"Metode Pembyaran");
+        }else if(KodeBank.getText().trim().equals("")||BankTujuan.getText().trim().equals("")){
+            Valid.textKosong(KodeBank,"Bank Tujuan Transaksi");
         }else{
-            if(Sequel.menyimpantf("maping_dokter_pcare","?,?,?","Mapping Dokter",3,new String[]{
-                kdpoli.getText(),KdPoliPCare.getText(),NmPoliPCare.getText()
+            if(Sequel.menyimpantf("kodetransaksi_tujuan_transfer_bankmandiri","?,?,?","Mapping Dokter",3,new String[]{
+                KodeMetode.getText(),KodeBank.getText(),BankTujuan.getText()
             })==true){
                 tampil();
                 emptTeks();
@@ -567,7 +567,7 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,kdpoli,"maping_dokter_pcare","kd_dokter");
+        Valid.hapusTable(tabMode,KodeMetode,"kodetransaksi_tujuan_transfer_bankmandiri","kd_dokter");
         tampil();
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -581,14 +581,14 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(kdpoli.getText().trim().equals("")||TPoli.getText().trim().equals("")){
-            Valid.textKosong(kdpoli,"Dokter RS");
-        }else if(KdPoliPCare.getText().trim().equals("")||NmPoliPCare.getText().trim().equals("")){
-            Valid.textKosong(KdPoliPCare,"Dokter PCare");
+        if(KodeMetode.getText().trim().equals("")||MetodePembayaran.getText().trim().equals("")){
+            Valid.textKosong(KodeMetode,"Metode Pembyaran");
+        }else if(KodeBank.getText().trim().equals("")||BankTujuan.getText().trim().equals("")){
+            Valid.textKosong(KodeBank,"Bank Tujuan Transaksi");
         }else{
             if(tbJnsPerawatan.getSelectedRow()>-1){
-                if(Sequel.mengedittf("maping_dokter_pcare","kd_dokter=?","kd_dokter=?,kd_dokter_pcare=?,nm_dokter_pcare=?",4,new String[]{
-                        kdpoli.getText(),KdPoliPCare.getText(),NmPoliPCare.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                if(Sequel.mengedittf("kodetransaksi_tujuan_transfer_bankmandiri","kd_dokter=?","kd_dokter=?,kd_dokter_pcare=?,nm_dokter_pcare=?",4,new String[]{
+                        KodeMetode.getText(),KodeBank.getText(),BankTujuan.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
                     })==true){
                     emptTeks();
                     tampil();
@@ -630,7 +630,7 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");   
-                Valid.MyReport("rptMapingDokterPCare.jasper","report","::[ Mapping Dokter RS & PCare ]::",param);            
+                Valid.MyReport("rptMapingDokterPCare.jasper","report","::[ Mapping Metode Pembyaran & PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -700,9 +700,9 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
 private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliBPJSActionPerformed
-    polipcare.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-    polipcare.setLocationRelativeTo(internalFrame1);
-    polipcare.setVisible(true);
+    banktujuan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+    banktujuan.setLocationRelativeTo(internalFrame1);
+    banktujuan.setVisible(true);
 }//GEN-LAST:event_btnPoliBPJSActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -727,6 +727,7 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox BankTujuan;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -736,13 +737,13 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox KdPoliPCare;
-    private widget.TextBox KdPoliPCare1;
+    private widget.TextBox KodeBank;
+    private widget.TextBox KodeMetode;
+    private widget.TextBox KodeTransaksi;
     private widget.Label LCount;
-    private widget.TextBox NmPoliPCare;
+    private widget.TextBox MetodePembayaran;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.TextBox TPoli;
     private widget.Button btnPoliBPJS;
     private widget.Button btnPoliRS;
     private widget.InternalFrame internalFrame1;
@@ -752,7 +753,6 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private widget.TextBox kdpoli;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbJnsPerawatan;
@@ -762,9 +762,9 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         Valid.tabelKosong(tabMode);
         try{
            ps=koneksi.prepareStatement(
-                   "select maping_dokter_pcare.kd_dokter,dokter.nm_dokter,maping_dokter_pcare.kd_dokter_pcare,maping_dokter_pcare.nm_dokter_pcare "+
-                   "from maping_dokter_pcare inner join dokter on maping_dokter_pcare.kd_dokter=dokter.kd_dokter where "+
-                   "maping_dokter_pcare.kd_dokter like ? or dokter.nm_dokter like ? or maping_dokter_pcare.kd_dokter_pcare like ? or maping_dokter_pcare.nm_dokter_pcare like ? order by dokter.nm_dokter");
+                   "select kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter,dokter.nm_dokter,kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter_pcare,kodetransaksi_tujuan_transfer_bankmandiri.nm_dokter_pcare "+
+                   "from kodetransaksi_tujuan_transfer_bankmandiri inner join dokter on kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter=dokter.kd_dokter where "+
+                   "kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter like ? or dokter.nm_dokter like ? or kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter_pcare like ? or kodetransaksi_tujuan_transfer_bankmandiri.nm_dokter_pcare like ? order by dokter.nm_dokter");
             try {
                 ps.setString(1,"%"+TCari.getText()+"%");
                 ps.setString(2,"%"+TCari.getText()+"%");
@@ -793,28 +793,28 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
 
     public void emptTeks() {
-        kdpoli.setText("");
-        TPoli.setText("");
-        KdPoliPCare.setText("");
-        NmPoliPCare.setText("");
-        kdpoli.requestFocus();
+        KodeMetode.setText("");
+        MetodePembayaran.setText("");
+        KodeBank.setText("");
+        BankTujuan.setText("");
+        KodeMetode.requestFocus();
     }
 
     private void getData() {
        if(tbJnsPerawatan.getSelectedRow()!= -1){
-           kdpoli.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
-           TPoli.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
-           KdPoliPCare.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
-           NmPoliPCare.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
+           KodeMetode.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+           MetodePembayaran.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
+           KodeBank.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
+           BankTujuan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
         }
     }
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpcare_mapping_dokter());
-        BtnHapus.setEnabled(akses.getpcare_mapping_dokter());
-        BtnEdit.setEnabled(akses.getpcare_mapping_dokter());
-        BtnPrint.setEnabled(akses.getpcare_mapping_dokter());
+        BtnSimpan.setEnabled(akses.getkodetransaksi_tujuan_transfer_bankmandiri());
+        BtnHapus.setEnabled(akses.getkodetransaksi_tujuan_transfer_bankmandiri());
+        BtnEdit.setEnabled(akses.getkodetransaksi_tujuan_transfer_bankmandiri());
+        BtnPrint.setEnabled(akses.getkodetransaksi_tujuan_transfer_bankmandiri());
     }
     
     public JTable getTable(){
