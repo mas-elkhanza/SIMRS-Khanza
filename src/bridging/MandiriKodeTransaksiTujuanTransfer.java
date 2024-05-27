@@ -61,7 +61,7 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Kode Metode Pembyaran","Nama Metode Pembyaran","Kode Bank Tujuan Transaksi","Nama Bank Tujuan Transaksi"}){
+            "Kode Metode","Metode Pembayaran","Kode Bank","Bank Tujuan Transaksi","Kode Transaksi"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbJnsPerawatan.setModel(tabMode);
@@ -69,16 +69,18 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < 5; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(260);
+                column.setPreferredWidth(230);
             }else if(i==2){
                 column.setPreferredWidth(100);
             }else if(i==3){
-                column.setPreferredWidth(260);
+                column.setPreferredWidth(230);
+            }else if(i==4){
+                column.setPreferredWidth(100);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -541,11 +543,14 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         }else if(KodeBank.getText().trim().equals("")||BankTujuan.getText().trim().equals("")){
             Valid.textKosong(KodeBank,"Bank Tujuan Transaksi");
         }else{
-            if(Sequel.menyimpantf("kodetransaksi_tujuan_transfer_bankmandiri","?,?,?","Mapping Dokter",3,new String[]{
-                KodeMetode.getText(),KodeBank.getText(),BankTujuan.getText()
+            if(Sequel.menyimpantf("kodetransaksi_tujuan_transfer_bankmandiri","?,?,?","Data",3,new String[]{
+                KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText()
             })==true){
-                tampil();
+                tabMode.addRow(new Object[]{
+                    KodeMetode.getText(),MetodePembayaran.getText(),KodeBank.getText(),BankTujuan.getText(),KodeTransaksi.getText()
+                });
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -567,9 +572,19 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,KodeMetode,"kodetransaksi_tujuan_transfer_bankmandiri","kd_dokter");
-        tampil();
-        emptTeks();
+        if(tbJnsPerawatan.getSelectedRow()!= -1){
+            if(Sequel.queryu2tf("delete from kodetransaksi_tujuan_transfer_bankmandiri where kode_metode=? and kode_bank=?",2,new String[]{
+                tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()
+                })==true){
+                tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, gagal menghapus...!!!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus...!!!!");
+        } 
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -587,11 +602,15 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
             Valid.textKosong(KodeBank,"Bank Tujuan Transaksi");
         }else{
             if(tbJnsPerawatan.getSelectedRow()>-1){
-                if(Sequel.mengedittf("kodetransaksi_tujuan_transfer_bankmandiri","kd_dokter=?","kd_dokter=?,kd_dokter_pcare=?,nm_dokter_pcare=?",4,new String[]{
-                        KodeMetode.getText(),KodeBank.getText(),BankTujuan.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                if(Sequel.mengedittf("kodetransaksi_tujuan_transfer_bankmandiri","kode_metode=? and kode_bank=?","kode_metode=?,kode_bank=?,kode_transaksi=?",5,new String[]{
+                        KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString()
                     })==true){
+                    tabMode.setValueAt(KodeMetode.getText(),tbJnsPerawatan.getSelectedRow(),0);
+                    tabMode.setValueAt(MetodePembayaran.getText(),tbJnsPerawatan.getSelectedRow(),1);
+                    tabMode.setValueAt(KodeBank.getText(),tbJnsPerawatan.getSelectedRow(),2);
+                    tabMode.setValueAt(BankTujuan.getText(),tbJnsPerawatan.getSelectedRow(),3);
+                    tabMode.setValueAt(KodeTransaksi.getText(),tbJnsPerawatan.getSelectedRow(),4);
                     emptTeks();
-                    tampil();
                 }
             }                
         }
@@ -700,6 +719,7 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
 private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliBPJSActionPerformed
+    banktujuan.isCek();
     banktujuan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     banktujuan.setLocationRelativeTo(internalFrame1);
     banktujuan.setVisible(true);
@@ -762,9 +782,12 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         Valid.tabelKosong(tabMode);
         try{
            ps=koneksi.prepareStatement(
-                   "select kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter,dokter.nm_dokter,kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter_pcare,kodetransaksi_tujuan_transfer_bankmandiri.nm_dokter_pcare "+
-                   "from kodetransaksi_tujuan_transfer_bankmandiri inner join dokter on kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter=dokter.kd_dokter where "+
-                   "kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter like ? or dokter.nm_dokter like ? or kodetransaksi_tujuan_transfer_bankmandiri.kd_dokter_pcare like ? or kodetransaksi_tujuan_transfer_bankmandiri.nm_dokter_pcare like ? order by dokter.nm_dokter");
+                   "select kodetransaksi_tujuan_transfer_bankmandiri.kode_metode,metode_pembayaran_bankmandiri.nama_metode,kodetransaksi_tujuan_transfer_bankmandiri.kode_bank,bank_tujuan_transfer_bankmandiri.nama_bank "+
+                   "kodetransaksi_tujuan_transfer_bankmandiri.kode_transaksi from kodetransaksi_tujuan_transfer_bankmandiri inner join metode_pembayaran_bankmandiri "+
+                   "on kodetransaksi_tujuan_transfer_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode inner join bank_tujuan_transfer_bankmandiri "+
+                   "on bank_tujuan_transfer_bankmandiri.kode_bank=kodetransaksi_tujuan_transfer_bankmandiri.kode_bank where kodetransaksi_tujuan_transfer_bankmandiri.kode_metode like ? "+
+                   "or metode_pembayaran_bankmandiri.nama_metode like ? or kodetransaksi_tujuan_transfer_bankmandiri.kode_bank like ? or bank_tujuan_transfer_bankmandiri.nama_bank like ? "+
+                   "order by kodetransaksi_tujuan_transfer_bankmandiri.kode_metode");
             try {
                 ps.setString(1,"%"+TCari.getText()+"%");
                 ps.setString(2,"%"+TCari.getText()+"%");
@@ -773,11 +796,11 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("kd_dokter_pcare"),rs.getString("nm_dokter_pcare")
+                        rs.getString("kode_metode"),rs.getString("nama_metode"),rs.getString("kode_bank"),rs.getString("nama_bank"),rs.getString("kode_transaksi")
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif Ketersediaan : "+e);
+                System.out.println("Notif Kode Transaksi : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -806,6 +829,7 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
            MetodePembayaran.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
            KodeBank.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
            BankTujuan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
+           KodeTransaksi.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
         }
     }
     
