@@ -9,7 +9,7 @@
  * Created on May 23, 2010, 12:57:16 AM
  */
 
-package simrskhanza;
+package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +27,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -37,12 +36,12 @@ import javax.swing.table.TableColumn;
  *
  * @author dosen
  */
-public final class DlgCariDiet extends javax.swing.JDialog {
+public final class MandiriCariMetodePembayaran extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps;
     private ResultSet rs;
+    private PreparedStatement ps;
     private File file;
     private FileWriter fileWriter;
     private String iyem;
@@ -53,13 +52,13 @@ public final class DlgCariDiet extends javax.swing.JDialog {
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
-    public DlgCariDiet(java.awt.Frame parent, boolean modal) {
+    public MandiriCariMetodePembayaran(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Diet","Nama Diet"};
+        Object[] row={"Kode","Metode Pembayaran","Biaya Transaksi"};
         
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -72,9 +71,11 @@ public final class DlgCariDiet extends javax.swing.JDialog {
         for (int i = 0; i < 2; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(60);
             }else if(i==1){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(350);
+            }else if(i==2){
+                column.setPreferredWidth(100);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -138,7 +139,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Diet ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Metode Pembayaran Bank Mandiri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -294,13 +295,12 @@ public final class DlgCariDiet extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgDiet diet=new DlgDiet(null,false);
-        diet.emptTeks();
-        diet.isCek();
-        diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        diet.setLocationRelativeTo(internalFrame1);
-        diet.setAlwaysOnTop(false);
-        diet.setVisible(true);
+        MandiriMetodePembayaran form=new MandiriMetodePembayaran(null,false);
+        form.emptTeks();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setAlwaysOnTop(false);
+        form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
         
     }//GEN-LAST:event_BtnTambahActionPerformed
@@ -311,7 +311,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/diet.iyem")<30){
+            if(Valid.daysOld("./cache/mandirimetodepembayaran.iyem")<30){
                 tampil2();
             }else{
                 tampil();
@@ -336,7 +336,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgCariDiet dialog = new DlgCariDiet(new javax.swing.JFrame(), true);
+            MandiriCariMetodePembayaran dialog = new MandiriCariMetodePembayaran(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -365,19 +365,19 @@ public final class DlgCariDiet extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            file=new File("./cache/diet.iyem");
+            file=new File("./cache/mandirimetodepembayaran.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select diet.kd_diet, diet.nama_diet from diet order by diet.nama_diet");
+            ps=koneksi.prepareStatement("select * from metode_pembayaran_bankmandiri order by metode_pembayaran_bankmandiri.kode_metode");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"KodeDiet\":\""+rs.getString(1)+"\",\"NamaDiet\":\""+rs.getString(2)+"\"},";
+                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"MetodePembayaran\":\""+rs.getString(2)+"\",\"BiayaTransaksi\":\""+rs.getString(3)+"\"},";
                 }
             } catch (Exception e) {
-                System.out.println("Notif : "+e);
+                System.out.println("Notifikasi : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -386,7 +386,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"diet\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.write("{\"mandirimetodepembayaran\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
             iyem=null;
@@ -395,25 +395,25 @@ public final class DlgCariDiet extends javax.swing.JDialog {
         }
         LCount.setText(""+tabMode.getRowCount());
     }
-    
+
     private void tampil2() {
         try {
-            myObj = new FileReader("./cache/diet.iyem");
+            myObj = new FileReader("./cache/mandirimetodepembayaran.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
-            response = root.path("diet");
+            response = root.path("mandirimetodepembayaran");
             if(response.isArray()){
                 if(TCari.getText().trim().equals("")){
                     for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
-                            list.path("KodeDiet").asText(),list.path("NamaDiet").asText()
+                            list.path("Kode").asText(),list.path("MetodePembayaran").asText(),list.path("BiayaTransaksi").asText()
                         }); 
                     }
                 }else{
                     for(JsonNode list:response){
-                        if(list.path("KodeDiet").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDiet").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        if(list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("MetodePembayaran").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                             tabMode.addRow(new Object[]{
-                                list.path("KodeDiet").asText(),list.path("NamaDiet").asText()
+                                list.path("Kode").asText(),list.path("MetodePembayaran").asText(),list.path("BiayaTransaksi").asText()
                             });                    
                         }
                     }
@@ -424,18 +424,18 @@ public final class DlgCariDiet extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
-    } 
-
+    }
+    
     public void emptTeks() {
         TCari.requestFocus();
     }
 
-    
+
     public JTable getTable(){
         return tbKamar;
     }
     
     public void isCek(){        
-       BtnTambah.setEnabled(akses.getdiet_pasien());
+        BtnTambah.setEnabled(akses.getmetode_pembayaran_bankmandiri());
     }
 }

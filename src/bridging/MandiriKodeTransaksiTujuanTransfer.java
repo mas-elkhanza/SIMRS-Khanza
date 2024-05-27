@@ -201,12 +201,12 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnPrint = new widget.Button();
-        BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
         FormInput = new widget.PanelBiasa();
@@ -218,6 +218,8 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         KdPoliPCare = new widget.TextBox();
         NmPoliPCare = new widget.TextBox();
         btnPoliBPJS = new widget.Button();
+        KdPoliPCare1 = new widget.TextBox();
+        jLabel20 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -351,24 +353,6 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         });
         panelGlass8.add(BtnPrint);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnAll);
-
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -399,7 +383,7 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(450, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(340, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -424,6 +408,23 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         });
         panelGlass9.add(BtnCari);
 
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(BtnAll);
+
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(75, 23));
@@ -440,25 +441,25 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 44));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 104));
         FormInput.setLayout(null);
 
-        jLabel4.setText("Dokter RS :");
+        jLabel4.setText("Metode Pembayaran :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 66, 23);
+        jLabel4.setBounds(0, 10, 125, 23);
 
         kdpoli.setEditable(false);
         kdpoli.setHighlighter(null);
         kdpoli.setName("kdpoli"); // NOI18N
         FormInput.add(kdpoli);
-        kdpoli.setBounds(69, 10, 80, 23);
+        kdpoli.setBounds(129, 10, 75, 23);
 
         TPoli.setEditable(false);
         TPoli.setHighlighter(null);
         TPoli.setName("TPoli"); // NOI18N
         FormInput.add(TPoli);
-        TPoli.setBounds(151, 10, 170, 23);
+        TPoli.setBounds(207, 10, 380, 23);
 
         btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliRS.setMnemonic('1');
@@ -475,23 +476,23 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
             }
         });
         FormInput.add(btnPoliRS);
-        btnPoliRS.setBounds(323, 10, 28, 23);
+        btnPoliRS.setBounds(590, 10, 28, 23);
 
-        jLabel19.setText("Dokter PCare :");
+        jLabel19.setText("Bank Tujuan Tansfer :");
         jLabel19.setName("jLabel19"); // NOI18N
         FormInput.add(jLabel19);
-        jLabel19.setBounds(363, 10, 80, 23);
+        jLabel19.setBounds(0, 40, 125, 23);
 
         KdPoliPCare.setEditable(false);
         KdPoliPCare.setHighlighter(null);
         KdPoliPCare.setName("KdPoliPCare"); // NOI18N
         FormInput.add(KdPoliPCare);
-        KdPoliPCare.setBounds(446, 10, 70, 23);
+        KdPoliPCare.setBounds(129, 40, 75, 23);
 
         NmPoliPCare.setEditable(false);
         NmPoliPCare.setName("NmPoliPCare"); // NOI18N
         FormInput.add(NmPoliPCare);
-        NmPoliPCare.setBounds(518, 10, 170, 23);
+        NmPoliPCare.setBounds(207, 40, 380, 23);
 
         btnPoliBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliBPJS.setMnemonic('3');
@@ -503,7 +504,18 @@ public final class MandiriKodeTransaksiTujuanTransfer extends javax.swing.JDialo
             }
         });
         FormInput.add(btnPoliBPJS);
-        btnPoliBPJS.setBounds(690, 10, 28, 23);
+        btnPoliBPJS.setBounds(590, 40, 28, 23);
+
+        KdPoliPCare1.setEditable(false);
+        KdPoliPCare1.setHighlighter(null);
+        KdPoliPCare1.setName("KdPoliPCare1"); // NOI18N
+        FormInput.add(KdPoliPCare1);
+        KdPoliPCare1.setBounds(129, 70, 190, 23);
+
+        jLabel20.setText("Kode Transaksi Bank :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(0, 70, 125, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -725,6 +737,7 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button BtnSimpan;
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdPoliPCare;
+    private widget.TextBox KdPoliPCare1;
     private widget.Label LCount;
     private widget.TextBox NmPoliPCare;
     private widget.ScrollPane Scroll;
@@ -734,6 +747,7 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button btnPoliRS;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
