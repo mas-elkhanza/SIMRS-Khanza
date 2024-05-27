@@ -415,8 +415,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps=koneksi.prepareStatement(
                    "select pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,pembayaran_pihak_ke3_bankmandiri.no_rekening_sumber,"+
                    "pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.kota_atas_nama_rekening_tujuan,"+
-                   "pembayaran_pihak_ke3_bankmandiri.nominal_pembayaran,pembayaran_pihak_ke3_bankmandiri.nomor_tagihan,pembayaran_pihak_ke3_bankmandiri.kode_metode,metode_pembayaran_bankmandiri.nama_metode,"+
-                   "pembayaran_pihak_ke3_bankmandiri.kode_bank,bank_tujuan_transfer_bankmandiri.nama_bank,pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
+                   "pembayaran_pihak_ke3_bankmandiri.nominal_pembayaran,pembayaran_pihak_ke3_bankmandiri.nomor_tagihan,metode_pembayaran_bankmandiri.nama_metode,bank_tujuan_transfer_bankmandiri.nama_bank,"+
+                   "pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
                    "from pembayaran_pihak_ke3_bankmandiri inner join metode_pembayaran_bankmandiri on metode_pembayaran_bankmandiri.kode_metode=pembayaran_pihak_ke3_bankmandiri.kode_metode "+
                    "inner join bank_tujuan_transfer_bankmandiri on bank_tujuan_transfer_bankmandiri.kode_bank=pembayaran_pihak_ke3_bankmandiri.kode_bank where pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran between ? and ? "+
                    (TCari.getText().equals("")?"":"and (pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran like ? or pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan like ? or "+
@@ -445,7 +445,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     total=total+rs.getDouble("nominal_pembayaran");
                     tabMode.addRow(new Object[]{
                         rs.getString("nomor_pembayaran"),rs.getString("tgl_pembayaran"),rs.getString("no_rekening_sumber"),rs.getString("no_rekening_tujuan"),rs.getString("atas_nama_rekening_tujuan"),rs.getString("kota_atas_nama_rekening_tujuan"),
-                        rs.getString("nominal_pembayaran"),rs.getString("nomor_tagihan"),rs.getString("kode_metode")+" "+rs.getString("nama_metode"),rs.getString("kode_bank")+" "+rs.getString("nama_bank"),rs.getString("asal_transaksi"),
+                        rs.getString("nominal_pembayaran"),rs.getString("nomor_tagihan"),rs.getString("nama_metode"),rs.getString("nama_bank"),rs.getString("asal_transaksi"),
                         rs.getString("status_transaksi")
                     });
                 }
