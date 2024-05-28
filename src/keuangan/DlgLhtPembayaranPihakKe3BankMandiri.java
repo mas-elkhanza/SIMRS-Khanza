@@ -45,7 +45,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
         setSize(885,674);
         Object[] rowRwJlDr={
             "No.Pembayaran","Tgl.Pembayaran","No.Rekening Sumber","No.Rekening Tujuan","Nama Rekening Tujuan","Kota/Kabupaten",
-            "Nominal","Nomor Tagihan","Metode Pembayaran","Bank Tujuan","Asal Transaksi","Status Transaksi"
+            "Nominal","Nomor Tagihan","Metode Pembayaran","Bank Tujuan","Kode Transaksi","Asal Transaksi","Status Transaksi"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -55,7 +55,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(120);
@@ -78,8 +78,10 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
             }else if(i==9){
                 column.setPreferredWidth(200);
             }else if(i==10){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(90);
             }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
                 column.setPreferredWidth(90);
             }
         }
@@ -302,14 +304,14 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
                "select pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,pembayaran_pihak_ke3_bankmandiri.no_rekening_sumber,"+
                "pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.kota_atas_nama_rekening_tujuan,"+
                "pembayaran_pihak_ke3_bankmandiri.nominal_pembayaran,pembayaran_pihak_ke3_bankmandiri.nomor_tagihan,pembayaran_pihak_ke3_bankmandiri.kode_metode,metode_pembayaran_bankmandiri.nama_metode,"+
-               "pembayaran_pihak_ke3_bankmandiri.kode_bank,bank_tujuan_transfer_bankmandiri.nama_bank,pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
+               "pembayaran_pihak_ke3_bankmandiri.kode_bank,bank_tujuan_transfer_bankmandiri.nama_bank,pembayaran_pihak_ke3_bankmandiri.kode_transaksi,pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
                "from pembayaran_pihak_ke3_bankmandiri inner join metode_pembayaran_bankmandiri on metode_pembayaran_bankmandiri.kode_metode=pembayaran_pihak_ke3_bankmandiri.kode_metode "+
                "inner join bank_tujuan_transfer_bankmandiri on bank_tujuan_transfer_bankmandiri.kode_bank=pembayaran_pihak_ke3_bankmandiri.kode_bank where "+
                "pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' "+
                (TCari.getText().equals("")?"":"and (pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan like '%"+TCari.getText().trim()+"%' "+
                "or pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.status_transaksi like '%"+TCari.getText().trim()+"%' "+
                "or pembayaran_pihak_ke3_bankmandiri.nomor_tagihan like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.kode_metode like '%"+TCari.getText().trim()+"%' "+
-               "or metode_pembayaran_bankmandiri.nama_metode like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.kode_bank like '%"+TCari.getText().trim()+"%' or "+
+               "or metode_pembayaran_bankmandiri.nama_metode like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.kode_transaksi like '%"+TCari.getText().trim()+"%' or "+
                "bank_tujuan_transfer_bankmandiri.nama_bank like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.asal_transaksi like '%"+TCari.getText().trim()+"%') ")+
                "order by pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran",param);
         }
@@ -416,12 +418,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    "select pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,pembayaran_pihak_ke3_bankmandiri.no_rekening_sumber,"+
                    "pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.kota_atas_nama_rekening_tujuan,"+
                    "pembayaran_pihak_ke3_bankmandiri.nominal_pembayaran,pembayaran_pihak_ke3_bankmandiri.nomor_tagihan,metode_pembayaran_bankmandiri.nama_metode,bank_tujuan_transfer_bankmandiri.nama_bank,"+
-                   "pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
+                   "pembayaran_pihak_ke3_bankmandiri.kode_transaksi,pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
                    "from pembayaran_pihak_ke3_bankmandiri inner join metode_pembayaran_bankmandiri on metode_pembayaran_bankmandiri.kode_metode=pembayaran_pihak_ke3_bankmandiri.kode_metode "+
                    "inner join bank_tujuan_transfer_bankmandiri on bank_tujuan_transfer_bankmandiri.kode_bank=pembayaran_pihak_ke3_bankmandiri.kode_bank where pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran between ? and ? "+
                    (TCari.getText().equals("")?"":"and (pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran like ? or pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan like ? or "+
                    "pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan like ? or pembayaran_pihak_ke3_bankmandiri.status_transaksi like ? or pembayaran_pihak_ke3_bankmandiri.nomor_tagihan like ? or "+
-                   "pembayaran_pihak_ke3_bankmandiri.kode_metode like ? or metode_pembayaran_bankmandiri.nama_metode like ? or pembayaran_pihak_ke3_bankmandiri.kode_bank like ? or "+
+                   "pembayaran_pihak_ke3_bankmandiri.kode_metode like ? or metode_pembayaran_bankmandiri.nama_metode like ? or pembayaran_pihak_ke3_bankmandiri.kode_transaksi like ? or "+
                    "bank_tujuan_transfer_bankmandiri.nama_bank like ? or pembayaran_pihak_ke3_bankmandiri.asal_transaksi like ?) ")+"order by pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
@@ -445,13 +447,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     total=total+rs.getDouble("nominal_pembayaran");
                     tabMode.addRow(new Object[]{
                         rs.getString("nomor_pembayaran"),rs.getString("tgl_pembayaran"),rs.getString("no_rekening_sumber"),rs.getString("no_rekening_tujuan"),rs.getString("atas_nama_rekening_tujuan"),rs.getString("kota_atas_nama_rekening_tujuan"),
-                        rs.getString("nominal_pembayaran"),rs.getString("nomor_tagihan"),rs.getString("nama_metode"),rs.getString("nama_bank"),rs.getString("asal_transaksi"),
-                        rs.getString("status_transaksi")
+                        Valid.SetAngka(rs.getDouble("nominal_pembayaran")),rs.getString("nomor_tagihan"),rs.getString("nama_metode"),rs.getString("nama_bank"),rs.getString("kode_transaksi"),rs.getString("asal_transaksi"),rs.getString("status_transaksi")
                     });
                 }
                 if(total>0){
                     tabMode.addRow(new Object[]{
-                        "Total :","","","","","",Valid.SetAngka(total),"","","","",""
+                        "Total :","","","","","",Valid.SetAngka(total),"","","","","",""
                     });
                 }
             } catch (Exception e) {
