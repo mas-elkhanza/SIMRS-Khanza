@@ -68,12 +68,12 @@ public final class MandiriCariMetodePembayaran extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(420);
             }else if(i==2){
                 column.setPreferredWidth(100);
             }
@@ -167,7 +167,7 @@ public final class MandiriCariMetodePembayaran extends javax.swing.JDialog {
         panelisi3.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(312, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(262, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -373,7 +373,7 @@ public final class MandiriCariMetodePembayaran extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
                     iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"MetodePembayaran\":\""+rs.getString(2)+"\",\"BiayaTransaksi\":\""+rs.getString(3)+"\"},";
                 }
             } catch (Exception e) {

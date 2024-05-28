@@ -381,9 +381,9 @@ public final class MobileJKNFKTPReferensiPoli extends javax.swing.JDialog {
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                if(response.path("list").isArray()){
+                if(response.isArray()){
                     i=1;
-                    for(JsonNode list:response.path("list")){
+                    for(JsonNode list:response){
                         if(list.path("kodepoli").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
                                 list.path("namapoli").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                             tabMode.addRow(new Object[]{

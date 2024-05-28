@@ -58,9 +58,7 @@ public final class MandiriCariBankTujuanTransfer extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Spesialis","Nama Spesialis"};
-        
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new String[]{"Kode Bank","Nama Bank"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -73,7 +71,7 @@ public final class MandiriCariBankTujuanTransfer extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(110);
             }else if(i==1){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(480);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -165,7 +163,7 @@ public final class MandiriCariBankTujuanTransfer extends javax.swing.JDialog {
         panelisi3.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(312, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(262, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);

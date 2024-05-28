@@ -394,9 +394,9 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                if(response.path("list").isArray()){
+                if(response.isArray()){
                     i=1;
-                    for(JsonNode list:response.path("list")){
+                    for(JsonNode list:response){
                         headers2 = new HttpHeaders();
                         headers2.setContentType(MediaType.APPLICATION_JSON);
                         headers2.add("X-cons-id",koneksiDB.CONSIDMOBILEJKNFKTP());
@@ -412,8 +412,8 @@ public final class MobileJKNFKTPReferensiDokter extends javax.swing.JDialog {
                         nameNode2 = root2.path("metadata");
                         if(nameNode2.path("message").asText().equals("OK")){
                             response2 = mapper.readTree(api.Decrypt(root2.path("response").asText(),utc));
-                            if(response2.path("list").isArray()){
-                                for(JsonNode list2:response2.path("list")){
+                            if(response2.isArray()){
+                                for(JsonNode list2:response2){
                                     if(list2.path("kodedokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
                                             list2.path("namadokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                                         tabMode.addRow(new Object[]{

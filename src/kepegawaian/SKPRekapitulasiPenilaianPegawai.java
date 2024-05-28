@@ -232,13 +232,38 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
         btnDinilai = new widget.Button();
         jPanel1 = new javax.swing.JPanel();
         panelisi4 = new widget.panelisi();
+        label16 = new widget.Label();
+        KodeTransaksi = new widget.TextBox();
+        jLabel20 = new widget.Label();
+        KodeTransaksi1 = new widget.TextBox();
+        jLabel21 = new widget.Label();
+        jLabel22 = new widget.Label();
+        KodeTransaksi2 = new widget.TextBox();
+        jLabel23 = new widget.Label();
+        jLabel24 = new widget.Label();
+        jLabel25 = new widget.Label();
+        jLabel26 = new widget.Label();
+        jLabel27 = new widget.Label();
+        jLabel28 = new widget.Label();
+        KodeTransaksi3 = new widget.TextBox();
+        KodeTransaksi4 = new widget.TextBox();
+        KodeTransaksi5 = new widget.TextBox();
+        jLabel29 = new widget.Label();
+        jLabel30 = new widget.Label();
+        jLabel31 = new widget.Label();
+        scrollPane7 = new widget.ScrollPane();
+        RPS = new widget.TextArea();
+        label18 = new widget.Label();
+        label19 = new widget.Label();
+        scrollPane8 = new widget.ScrollPane();
+        RPS1 = new widget.TextArea();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
         BtnAll = new widget.Button();
-        BtnTambah = new widget.Button();
+        jLabel32 = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
 
@@ -362,7 +387,7 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
         NmPenilai.setName("NmPenilai"); // NOI18N
         NmPenilai.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(NmPenilai);
-        NmPenilai.setBounds(462, 10, 224, 23);
+        NmPenilai.setBounds(462, 10, 229, 23);
 
         btnPenilai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPenilai.setMnemonic('2');
@@ -375,7 +400,7 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnPenilai);
-        btnPenilai.setBounds(688, 10, 28, 23);
+        btnPenilai.setBounds(694, 10, 28, 23);
 
         label17.setText("Yang Dinilai :");
         label17.setName("label17"); // NOI18N
@@ -398,7 +423,7 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
         NmDinilai.setName("NmDinilai"); // NOI18N
         NmDinilai.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(NmDinilai);
-        NmDinilai.setBounds(462, 40, 224, 23);
+        NmDinilai.setBounds(462, 40, 229, 23);
 
         btnDinilai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDinilai.setMnemonic('2');
@@ -411,18 +436,175 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnDinilai);
-        btnDinilai.setBounds(688, 40, 28, 23);
+        btnDinilai.setBounds(694, 40, 28, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 130));
+        jPanel1.setPreferredSize(new java.awt.Dimension(816, 170));
         jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi4.setName("panelisi4"); // NOI18N
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 74));
         panelisi4.setLayout(null);
+
+        label16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label16.setText("Kesimpulan :");
+        label16.setName("label16"); // NOI18N
+        label16.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelisi4.add(label16);
+        label16.setBounds(360, 0, 135, 23);
+
+        KodeTransaksi.setHighlighter(null);
+        KodeTransaksi.setName("KodeTransaksi"); // NOI18N
+        panelisi4.add(KodeTransaksi);
+        KodeTransaksi.setBounds(100, 20, 50, 23);
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText("SKP Pertama");
+        jLabel20.setName("jLabel20"); // NOI18N
+        panelisi4.add(jLabel20);
+        jLabel20.setBounds(30, 20, 80, 23);
+
+        KodeTransaksi1.setHighlighter(null);
+        KodeTransaksi1.setName("KodeTransaksi1"); // NOI18N
+        panelisi4.add(KodeTransaksi1);
+        KodeTransaksi1.setBounds(100, 50, 50, 23);
+
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel21.setText("SKP Kedua");
+        jLabel21.setName("jLabel21"); // NOI18N
+        panelisi4.add(jLabel21);
+        jLabel21.setBounds(30, 50, 80, 23);
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel22.setText("SKP Ketiga");
+        jLabel22.setName("jLabel22"); // NOI18N
+        panelisi4.add(jLabel22);
+        jLabel22.setBounds(30, 80, 80, 23);
+
+        KodeTransaksi2.setHighlighter(null);
+        KodeTransaksi2.setName("KodeTransaksi2"); // NOI18N
+        panelisi4.add(KodeTransaksi2);
+        KodeTransaksi2.setBounds(100, 80, 50, 23);
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("%");
+        jLabel23.setName("jLabel23"); // NOI18N
+        panelisi4.add(jLabel23);
+        jLabel23.setBounds(153, 20, 30, 23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("%");
+        jLabel24.setName("jLabel24"); // NOI18N
+        panelisi4.add(jLabel24);
+        jLabel24.setBounds(153, 50, 30, 23);
+
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel25.setText("%");
+        jLabel25.setName("jLabel25"); // NOI18N
+        panelisi4.add(jLabel25);
+        jLabel25.setBounds(153, 80, 30, 23);
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("SKP Keempat");
+        jLabel26.setName("jLabel26"); // NOI18N
+        panelisi4.add(jLabel26);
+        jLabel26.setBounds(193, 20, 80, 23);
+
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel27.setText("SKP Kelima");
+        jLabel27.setName("jLabel27"); // NOI18N
+        panelisi4.add(jLabel27);
+        jLabel27.setBounds(193, 50, 80, 23);
+
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel28.setText("SKP Keenam");
+        jLabel28.setName("jLabel28"); // NOI18N
+        panelisi4.add(jLabel28);
+        jLabel28.setBounds(193, 80, 80, 23);
+
+        KodeTransaksi3.setHighlighter(null);
+        KodeTransaksi3.setName("KodeTransaksi3"); // NOI18N
+        panelisi4.add(KodeTransaksi3);
+        KodeTransaksi3.setBounds(265, 80, 50, 23);
+
+        KodeTransaksi4.setHighlighter(null);
+        KodeTransaksi4.setName("KodeTransaksi4"); // NOI18N
+        panelisi4.add(KodeTransaksi4);
+        KodeTransaksi4.setBounds(265, 50, 50, 23);
+
+        KodeTransaksi5.setHighlighter(null);
+        KodeTransaksi5.setName("KodeTransaksi5"); // NOI18N
+        panelisi4.add(KodeTransaksi5);
+        KodeTransaksi5.setBounds(265, 20, 50, 23);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText("%");
+        jLabel29.setName("jLabel29"); // NOI18N
+        panelisi4.add(jLabel29);
+        jLabel29.setBounds(318, 20, 30, 23);
+
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText("%");
+        jLabel30.setName("jLabel30"); // NOI18N
+        panelisi4.add(jLabel30);
+        jLabel30.setBounds(318, 50, 30, 23);
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("%");
+        jLabel31.setName("jLabel31"); // NOI18N
+        panelisi4.add(jLabel31);
+        jLabel31.setBounds(318, 80, 30, 23);
+
+        scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane7.setName("scrollPane7"); // NOI18N
+
+        RPS.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RPS.setColumns(20);
+        RPS.setRows(10);
+        RPS.setName("RPS"); // NOI18N
+        RPS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RPSKeyPressed(evt);
+            }
+        });
+        scrollPane7.setViewportView(RPS);
+
+        panelisi4.add(scrollPane7);
+        scrollPane7.setBounds(360, 20, 172, 83);
+
+        label18.setText("Rekapitulasi Kepatuhan :");
+        label18.setName("label18"); // NOI18N
+        label18.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelisi4.add(label18);
+        label18.setBounds(0, 0, 135, 23);
+
+        label19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label19.setText("Rekomendasi :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelisi4.add(label19);
+        label19.setBounds(547, 0, 135, 23);
+
+        scrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane8.setName("scrollPane8"); // NOI18N
+
+        RPS1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RPS1.setColumns(20);
+        RPS1.setRows(10);
+        RPS1.setName("RPS1"); // NOI18N
+        RPS1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RPS1KeyPressed(evt);
+            }
+        });
+        scrollPane8.setViewportView(RPS1);
+
+        panelisi4.add(scrollPane8);
+        scrollPane8.setBounds(547, 20, 172, 83);
+
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
         panelisi1.setName("panelisi1"); // NOI18N
@@ -496,17 +678,10 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
         });
         panelisi1.add(BtnAll);
 
-        BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
-        BtnTambah.setMnemonic('3');
-        BtnTambah.setToolTipText("Alt+3");
-        BtnTambah.setName("BtnTambah"); // NOI18N
-        BtnTambah.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTambahActionPerformed(evt);
-            }
-        });
-        panelisi1.add(BtnTambah);
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel32.setName("jLabel32"); // NOI18N
+        jLabel32.setPreferredSize(new java.awt.Dimension(25, 23));
+        panelisi1.add(jLabel32);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -697,16 +872,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        SKPKriteriaPenilaian form=new SKPKriteriaPenilaian(null, false);
-        form.emptTeks();
-        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.setLocationRelativeTo(internalFrame1);
-        form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnTambahActionPerformed
-
     private void btnPenilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenilaiActionPerformed
         i=1;
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -799,6 +964,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }//GEN-LAST:event_tbDokterMouseClicked
 
+    private void RPSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPSKeyPressed
+        //Valid.pindah2(evt,KeluhanUtama,RPK);
+    }//GEN-LAST:event_RPSKeyPressed
+
+    private void RPS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPS1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RPS1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -821,29 +994,54 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
-    private widget.Button BtnTambah;
     private widget.TextBox KdDInilai;
     private widget.TextBox KdPenilai;
+    private widget.TextBox KodeTransaksi;
+    private widget.TextBox KodeTransaksi1;
+    private widget.TextBox KodeTransaksi2;
+    private widget.TextBox KodeTransaksi3;
+    private widget.TextBox KodeTransaksi4;
+    private widget.TextBox KodeTransaksi5;
     private widget.TextBox NmDinilai;
     private widget.TextBox NmPenilai;
     private widget.TextBox NoPenilaian;
     private javax.swing.JPopupMenu Popup;
+    private widget.TextArea RPS;
+    private widget.TextArea RPS1;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
     private widget.Button btnDinilai;
     private widget.Button btnPenilai;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel20;
+    private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
+    private widget.Label jLabel24;
+    private widget.Label jLabel25;
+    private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
     private javax.swing.JPanel jPanel1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label13;
     private widget.Label label15;
+    private widget.Label label16;
     private widget.Label label17;
+    private widget.Label label18;
+    private widget.Label label19;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private javax.swing.JMenuItem ppBersihkan;
     private widget.ScrollPane scrollPane1;
+    private widget.ScrollPane scrollPane7;
+    private widget.ScrollPane scrollPane8;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
@@ -962,7 +1160,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             btnPenilai.setEnabled(false);
             KdPenilai.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getskp_penilaian());
-            BtnTambah.setEnabled(akses.getskp_kriteria_penilaian());
             NmPenilai.setText(pegawai.tampil3(KdPenilai.getText()));
         }        
     }
