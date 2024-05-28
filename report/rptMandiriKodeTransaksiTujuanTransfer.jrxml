@@ -58,14 +58,14 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="84" splitType="Stretch">
+		<band height="75" splitType="Stretch">
 			<staticText>
 				<reportElement x="65" y="52" width="424" height="23" uuid="85335d8e-6419-4921-86af-fc7f2fc0c17c"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Kode Transaksi Bank Tujuan Tranfser Bank Mandiri]]></text>
+				<text><![CDATA[Kode Transaksi Bank Tujuan Transfer Bank Mandiri]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="0" width="553" height="17" uuid="f57217dc-863a-4342-9117-99f6f6b9b67f"/>
