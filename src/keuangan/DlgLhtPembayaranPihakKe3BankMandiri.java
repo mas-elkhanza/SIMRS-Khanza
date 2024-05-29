@@ -78,7 +78,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
             }else if(i==9){
                 column.setPreferredWidth(200);
             }else if(i==10){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(86);
             }else if(i==11){
                 column.setPreferredWidth(150);
             }else if(i==12){
@@ -145,11 +145,6 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pembayaran Pihak Ke 3 Bank Mandiri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -371,10 +366,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.pindah(evt, TKd, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
