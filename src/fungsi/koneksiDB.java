@@ -1484,4 +1484,14 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String KUNCIDOKTERRANAP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("KUNCIDOKTERRANAP"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }
