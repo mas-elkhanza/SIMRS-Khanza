@@ -68,7 +68,7 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
