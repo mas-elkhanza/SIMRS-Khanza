@@ -137,9 +137,6 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -311,10 +308,6 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
         
     }//GEN-LAST:event_BtnTambahActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        emptTeks();
-    }//GEN-LAST:event_formWindowActivated
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(Valid.daysOld("./cache/kodetransaksitujuantransfer.iyem")<30){
@@ -384,7 +377,7 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
                     iyem=iyem+"{\"KodeMetode\":\""+rs.getString(1)+"\",\"MetodePembayaran\":\""+rs.getString(2)+"\",\"BiayaTransaksi\":\""+rs.getString(3)+"\",\"KodeBank\":\""+rs.getString(4)+"\",\"NamaBank\":\""+rs.getString(5)+"\",\"KodeTransaksi\":\""+rs.getString(6)+"\"},";
                 }
             } catch (Exception e) {
@@ -437,7 +430,8 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
         LCount.setText(""+tabMode.getRowCount());
     }
     
-    public void emptTeks() {
+    public void setCari(String data) {
+        TCari.setText(data);
         TCari.requestFocus();
     }
 
