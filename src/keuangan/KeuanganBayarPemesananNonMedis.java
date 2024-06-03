@@ -408,33 +408,18 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
         NoRekening.setEditable(false);
         NoRekening.setHighlighter(null);
         NoRekening.setName("NoRekening"); // NOI18N
-        NoRekening.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRekeningKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(NoRekening);
         NoRekening.setBounds(84, 10, 130, 23);
 
         RekeningAtasNama.setEditable(false);
         RekeningAtasNama.setHighlighter(null);
         RekeningAtasNama.setName("RekeningAtasNama"); // NOI18N
-        RekeningAtasNama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RekeningAtasNamaKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(RekeningAtasNama);
         RekeningAtasNama.setBounds(217, 10, 200, 23);
 
         KotaAtasNamaRekening.setEditable(false);
         KotaAtasNamaRekening.setHighlighter(null);
         KotaAtasNamaRekening.setName("KotaAtasNamaRekening"); // NOI18N
-        KotaAtasNamaRekening.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KotaAtasNamaRekeningKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KotaAtasNamaRekening);
         KotaAtasNamaRekening.setBounds(420, 10, 120, 23);
 
@@ -458,33 +443,18 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
         BiayaTransaksi.setEditable(false);
         BiayaTransaksi.setHighlighter(null);
         BiayaTransaksi.setName("BiayaTransaksi"); // NOI18N
-        BiayaTransaksi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BiayaTransaksiKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(BiayaTransaksi);
         BiayaTransaksi.setBounds(399, 40, 110, 23);
 
         KodeMetode.setEditable(false);
         KodeMetode.setHighlighter(null);
         KodeMetode.setName("KodeMetode"); // NOI18N
-        KodeMetode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeMetodeKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KodeMetode);
         KodeMetode.setBounds(84, 40, 64, 23);
 
         MetodePembayaran.setEditable(false);
         MetodePembayaran.setHighlighter(null);
         MetodePembayaran.setName("MetodePembayaran"); // NOI18N
-        MetodePembayaran.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MetodePembayaranKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(MetodePembayaran);
         MetodePembayaran.setBounds(151, 40, 245, 23);
 
@@ -496,33 +466,18 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
         KodeBank.setEditable(false);
         KodeBank.setHighlighter(null);
         KodeBank.setName("KodeBank"); // NOI18N
-        KodeBank.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeBankKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KodeBank);
         KodeBank.setBounds(84, 70, 64, 23);
 
         BankTujuan.setEditable(false);
         BankTujuan.setHighlighter(null);
         BankTujuan.setName("BankTujuan"); // NOI18N
-        BankTujuan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BankTujuanKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(BankTujuan);
         BankTujuan.setBounds(151, 70, 245, 23);
 
         KodeTransaksi.setEditable(false);
         KodeTransaksi.setHighlighter(null);
         KodeTransaksi.setName("KodeTransaksi"); // NOI18N
-        KodeTransaksi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeTransaksiKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KodeTransaksi);
         KodeTransaksi.setBounds(399, 70, 141, 23);
 
@@ -1367,13 +1322,9 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_TglCari2KeyPressed
 
     private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmsup,kdsup.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmsup,kdsup.getText());
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select penjab.png_jawab from penjab where penjab.kd_pj=?", nmsup,kdsup.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
@@ -1503,18 +1454,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     }//GEN-LAST:event_BtnSimpanMandiriKeyPressed
 
-    private void NoRekeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRekeningKeyPressed
-
-    }//GEN-LAST:event_NoRekeningKeyPressed
-
-    private void RekeningAtasNamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekeningAtasNamaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RekeningAtasNamaKeyPressed
-
-    private void KotaAtasNamaRekeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotaAtasNamaRekeningKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KotaAtasNamaRekeningKeyPressed
-
     private void BtnPetugas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugas1ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         kodetransaksibank.setCari(BankTujuan.getText());
@@ -1525,30 +1464,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         kodetransaksibank.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPetugas1ActionPerformed
-
-    private void BiayaTransaksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaTransaksiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BiayaTransaksiKeyPressed
-
-    private void KodeMetodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeMetodeKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KodeMetodeKeyPressed
-
-    private void MetodePembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MetodePembayaranKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MetodePembayaranKeyPressed
-
-    private void KodeBankKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeBankKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KodeBankKeyPressed
-
-    private void BankTujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BankTujuanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BankTujuanKeyPressed
-
-    private void KodeTransaksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeTransaksiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KodeTransaksiKeyPressed
 
     /**
     * @param args the command line arguments
