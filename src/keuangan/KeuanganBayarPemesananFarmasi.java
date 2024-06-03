@@ -115,7 +115,7 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(140);
             }else if(i==7){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(130);
             }else if(i==8){
                 column.setPreferredWidth(90);
             }else if(i==9){
