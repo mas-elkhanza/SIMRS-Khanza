@@ -1135,6 +1135,11 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }else{
                 tampilAkunBayar();
             }
+            if(Valid.daysOld("./cache/akunbankmandiri.iyem")<30){
+                tampilAkunBankMandiri2();
+            }else{
+                tampilAkunBankMandiri();
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_formWindowOpened
