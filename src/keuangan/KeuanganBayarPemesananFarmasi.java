@@ -1455,10 +1455,8 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                             NoBukti.getText()
                         })==true){
                         if(Sequel.menyimpantf2("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","Data", 12,new String[]{
-                                NoBukti.getText(),"no_rekening_sumber","no_rekening_tujuan","atas_nama_rekening_tujuan","kota_atas_nama_rekening_tujuan","nominal_pembayaran","nomor_tagihan","kode_metode","kode_bank","kode_transaksi","asal_transaksi","status_transaksi"
-                            })==true){
-                            
-                        }else{
+                                NoBukti.getText(),norekening,NoRekening.getText(),RekeningAtasNama.getText(),KotaAtasNamaRekening.getText(),BesarBayar.getText(),NoFaktur.getText(),KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText(),"Bayar Pesan Obat/BHP","Baru"
+                            })==false){
                             sukses=false;
                         }
                     }else{
