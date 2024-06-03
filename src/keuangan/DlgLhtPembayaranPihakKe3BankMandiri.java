@@ -58,7 +58,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
         for (int i = 0; i < 13; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
             }else if(i==1){
                 column.setPreferredWidth(115);
             }else if(i==2){

@@ -113,9 +113,9 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(140);
             }else if(i==6){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(170);
             }else if(i==7){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==8){
                 column.setPreferredWidth(90);
             }else if(i==9){
@@ -134,7 +134,7 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
         
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
         BesarBayar.setDocument(new batasInput((byte)15).getKata(BesarBayar));
-        NoBukti.setDocument(new batasInput((byte)20).getKata(NoBukti));
+        NoBukti.setDocument(new batasInput((byte)30).getKata(NoBukti));
         nip.setDocument(new batasInput((byte)20).getKata(nip));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         
