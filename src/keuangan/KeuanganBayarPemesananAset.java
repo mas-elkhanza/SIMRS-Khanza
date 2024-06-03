@@ -76,8 +76,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
     public KeuanganBayarPemesananAset(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(10,2);
-        setSize(628,674);
+        DlgBayarMandiri.setSize(562,163);
 
         Object[] row={"Tgl.Bayar","Tgl.Faktur","Tgl.Datang","Tgl.Tempo","No.Faktur","Supplier","Akun Bayar","No.Bukti","Pembayaran","Keterangan","Petugas","Nip","Nama"};
         tabMode=new DefaultTableModel(null,row){
