@@ -65,7 +65,7 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
     private boolean sukses=false;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Bayar_Pemesanan_Obat=Sequel.cariIsi("select Bayar_Pemesanan_Obat from set_akun"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
+    private String iyem,Bayar_Pemesanan_Obat=Sequel.cariIsi("select set_akun.Bayar_Pemesanan_Obat from set_akun"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;

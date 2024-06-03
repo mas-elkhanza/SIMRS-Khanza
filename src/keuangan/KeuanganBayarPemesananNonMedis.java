@@ -63,7 +63,7 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Bayar_Pemesanan_Non_Medis=Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun");
+    private String iyem,Bayar_Pemesanan_Non_Medis=Sequel.cariIsi("select set_akun.Bayar_Pemesanan_Non_Medis from set_akun"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1141,6 +1141,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
         tampilAkunBayar();
+        tampilAkunBankMandiri();
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
     /**
@@ -1388,4 +1389,65 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             System.out.println("Notifikasi : "+ex);
         }
     } 
+    
+    private void tampilAkunBankMandiri() { 
+        try{     
+            ps=koneksi.prepareStatement(
+                    "select set_akun_mandiri.kd_rek,set_akun_mandiri.kd_rek_biaya,set_akun_mandiri.kode_mcm,set_akun_mandiri.no_rekening from set_akun_mandiri");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    file=new File("./cache/akunbankmandiri.iyem");
+                    file.createNewFile();
+                    fileWriter = new FileWriter(file);
+                    Host_to_Host_Bank_Mandiri=rs.getString("kd_rek");
+                    Akun_Biaya_Mandiri=rs.getString("kd_rek_biaya");
+                    kodemcm=rs.getString("kode_mcm");
+                    norekening=rs.getString("no_rekening");
+                    fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\",\"kodemcm\":\""+kodemcm+"\",\"akunbiayabankmandiri\":\""+Akun_Biaya_Mandiri+"\",\"norekening\":\""+norekening+"\"}");
+                    fileWriter.flush();
+                    fileWriter.close();
+                }
+            } catch (Exception e) {
+                Host_to_Host_Bank_Mandiri="";
+                Akun_Biaya_Mandiri="";
+                kodemcm="";
+                norekening="";
+                System.out.println("Notif Set Nota : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+             Host_to_Host_Bank_Mandiri="";
+             Akun_Biaya_Mandiri="";
+             kodemcm="";
+             norekening="";
+        }
+    }
+    
+    private void tampilAkunBankMandiri2() { 
+        try{      
+             myObj = new FileReader("./cache/akunbankmandiri.iyem");
+             root = mapper.readTree(myObj);
+             response = root.path("akunbankmandiri");
+             Host_to_Host_Bank_Mandiri=response.asText();
+             response = root.path("akunbiayabankmandiri");
+             Akun_Biaya_Mandiri=response.asText();
+             response = root.path("kodemcm");
+             kodemcm=response.asText();
+             response = root.path("norekening");
+             norekening=response.asText();
+             myObj.close();
+        } catch (Exception e) {
+             Host_to_Host_Bank_Mandiri="";
+             Akun_Biaya_Mandiri="";
+             kodemcm="";
+             norekening="";
+        }
+    }
 }
