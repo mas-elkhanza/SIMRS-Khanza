@@ -1086,21 +1086,35 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     sukses=false;
                 } 
                 
-                Sequel.queryu("delete from tampjurnal");
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    koderekening,AkunBayar.getSelectedItem().toString(),BesarBayar.getText(),"0"
-                });    
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA","0",BesarBayar.getText()
-                }); 
-                sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode()); 
+                if(koderekening.equals("")){
+                    sukses=false; 
+                }else{
+                    total=0;
+                    if(koderekening.equals(Host_to_Host_Bank_Mandiri)){
+                        total=Sequel.cariIsiAngka("select metode_pembayaran_bankmandiri.biaya_transaksi from metode_pembayaran_bankmandiri inner join pembayaran_pihak_ke3_bankmandiri on pembayaran_pihak_ke3_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode where pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran=?",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                        Sequel.meghapus("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                    }
+                    Sequel.queryu("delete from tampjurnal");
+                    if(total>0){
+                        Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
+                        });
+                    }
+                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        koderekening,AkunBayar.getSelectedItem().toString(),(Valid.SetAngka(BesarBayar.getText())+total)+"","0"
+                    });  
+                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA","0",BesarBayar.getText()
+                    }); 
+                    sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode()); 
+                }
             }else{
                 sukses=false;
             }
                            
             if(sukses==true){
                 Sequel.Commit();
-                BtnCariActionPerformed(evt);
+                tabMode.removeRow(tbKamar.getSelectedRow());
                 emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -1409,7 +1423,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA",BesarBayar.getText(),"0"
                 });                     
                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    koderekening,AkunBayar.getSelectedItem().toString(),"0",(Valid.SetInteger(BiayaTransaksi.getText())+Valid.SetInteger(BesarBayar.getText()))+""
+                    koderekening,AkunBayar.getSelectedItem().toString(),"0",(Valid.SetAngka(BiayaTransaksi.getText())+Valid.SetAngka(BesarBayar.getText()))+""
                 });    
                 sukses=jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN BARANG ASET/INVENTARIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode());
 
@@ -1424,7 +1438,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                             BesarBayar.getText(),keterangan.getText(),AkunBayar.getSelectedItem().toString(),
                             NoBukti.getText()
                         })==true){
-                        if(Sequel.menyimpantf2("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","Data", 12,new String[]{
+                        if(Sequel.menyimpantf("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","No.Bukti", 12,new String[]{
                                 NoBukti.getText(),norekening,NoRekening.getText(),RekeningAtasNama.getText(),KotaAtasNamaRekening.getText(),BesarBayar.getText(),NoFaktur.getText(),KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText(),"Bayar Pesan Aset/Inventaris","Baru"
                             })==false){
                             sukses=false;
@@ -1438,6 +1452,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     Sequel.Commit();
                     BtnCariActionPerformed(evt);
                     emptTeks();
+                    DlgBayarMandiri.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
