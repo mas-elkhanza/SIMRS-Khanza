@@ -38,12 +38,10 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int pilihan=0;
     private File file;
     private FileWriter fileWriter;
     private String iyem;
@@ -249,6 +247,7 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         tampil();
+        tampilAkunBankMandiri();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -283,6 +282,9 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
                 tampil2();
             }else{
                 tampil();
+            }
+            if(Valid.daysOld("./cache/akunbankmandiri.iyem")>30){
+                tampilAkunBankMandiri();
             }
         } catch (Exception e) {
         }
@@ -383,6 +385,35 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
 
     public JTable getTabel(){
         return tbKamar;
+    }
+    
+    private void tampilAkunBankMandiri() { 
+        try{     
+            ps=koneksi.prepareStatement(
+                    "select set_akun_mandiri.kd_rek,set_akun_mandiri.kd_rek_biaya,set_akun_mandiri.kode_mcm,set_akun_mandiri.no_rekening from set_akun_mandiri");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    file=new File("./cache/akunbankmandiri.iyem");
+                    file.createNewFile();
+                    fileWriter = new FileWriter(file);
+                    fileWriter.write("{\"akunbankmandiri\":\""+rs.getString("kd_rek")+"\",\"kodemcm\":\""+rs.getString("kode_mcm")+"\",\"akunbiayabankmandiri\":\""+rs.getString("kd_rek_biaya")+"\",\"norekening\":\""+rs.getString("no_rekening")+"\"}");
+                    fileWriter.flush();
+                    fileWriter.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Mandiri : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+             System.out.println("Notif Mandiri : "+e);
+        }
     }
     
     public void isCek(){

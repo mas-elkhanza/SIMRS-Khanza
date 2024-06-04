@@ -1278,7 +1278,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<30){
                 tampilAkunBayar2();
             }else{
                 tampilAkunBayar();
