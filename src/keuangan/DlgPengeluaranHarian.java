@@ -680,14 +680,13 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                 try {
                     Sequel.queryu("delete from tampjurnal");
                     psakun=koneksi.prepareStatement(
-                        "select kd_rek,'Akun',"+
-                        "kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kode_kategori=?");
+                        "select kategori_pengeluaran_harian.kd_rek,kategori_pengeluaran_harian.kd_rek2 from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
                     try {
                         psakun.setString(1,KdKategori.getText());
                         rs=psakun.executeQuery();
                         if(rs.next()){
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),Pengeluaran.getText(),"0"});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",Pengeluaran.getText()}); 
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek"),"Akun",Pengeluaran.getText(),"0"});
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek2"),"Kontra","0",Pengeluaran.getText()}); 
                             sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
                         } 
                     } catch (Exception e) {
@@ -722,7 +721,9 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             
             Sequel.AutoComitTrue();
             if(sukses==true){
-                tampil();
+                tabMode.addRow(new Object[]{
+                    Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
+                });
                 emptTeks();
             }
         }
@@ -803,7 +804,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
 
                 Sequel.AutoComitTrue();
                 if(sukses==true){
-                    tampil();
+                    tabMode.removeRow(tbResep.getSelectedRow());
                     emptTeks();
                 }
             }                
@@ -1150,7 +1151,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from pengeluaran_harian where tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengeluaran_harian.no_keluar,3),signed)),0) from pengeluaran_harian where pengeluaran_harian.tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
                 "PH"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,Nomor); 
     }
     
