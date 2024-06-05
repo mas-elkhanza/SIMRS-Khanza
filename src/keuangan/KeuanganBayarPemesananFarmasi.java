@@ -113,9 +113,9 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(140);
             }else if(i==6){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(170);
             }else if(i==7){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==8){
                 column.setPreferredWidth(90);
             }else if(i==9){
@@ -134,7 +134,7 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
         
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
         BesarBayar.setDocument(new batasInput((byte)15).getKata(BesarBayar));
-        NoBukti.setDocument(new batasInput((byte)20).getKata(NoBukti));
+        NoBukti.setDocument(new batasInput((byte)30).getKata(NoBukti));
         nip.setDocument(new batasInput((byte)20).getKata(nip));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         
@@ -410,33 +410,18 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
         NoRekening.setEditable(false);
         NoRekening.setHighlighter(null);
         NoRekening.setName("NoRekening"); // NOI18N
-        NoRekening.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRekeningKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(NoRekening);
         NoRekening.setBounds(84, 10, 130, 23);
 
         RekeningAtasNama.setEditable(false);
         RekeningAtasNama.setHighlighter(null);
         RekeningAtasNama.setName("RekeningAtasNama"); // NOI18N
-        RekeningAtasNama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RekeningAtasNamaKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(RekeningAtasNama);
         RekeningAtasNama.setBounds(217, 10, 200, 23);
 
         KotaAtasNamaRekening.setEditable(false);
         KotaAtasNamaRekening.setHighlighter(null);
         KotaAtasNamaRekening.setName("KotaAtasNamaRekening"); // NOI18N
-        KotaAtasNamaRekening.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KotaAtasNamaRekeningKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KotaAtasNamaRekening);
         KotaAtasNamaRekening.setBounds(420, 10, 120, 23);
 
@@ -460,33 +445,18 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
         BiayaTransaksi.setEditable(false);
         BiayaTransaksi.setHighlighter(null);
         BiayaTransaksi.setName("BiayaTransaksi"); // NOI18N
-        BiayaTransaksi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BiayaTransaksiKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(BiayaTransaksi);
         BiayaTransaksi.setBounds(399, 40, 110, 23);
 
         KodeMetode.setEditable(false);
         KodeMetode.setHighlighter(null);
         KodeMetode.setName("KodeMetode"); // NOI18N
-        KodeMetode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeMetodeKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KodeMetode);
         KodeMetode.setBounds(84, 40, 64, 23);
 
         MetodePembayaran.setEditable(false);
         MetodePembayaran.setHighlighter(null);
         MetodePembayaran.setName("MetodePembayaran"); // NOI18N
-        MetodePembayaran.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MetodePembayaranKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(MetodePembayaran);
         MetodePembayaran.setBounds(151, 40, 245, 23);
 
@@ -498,33 +468,18 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
         KodeBank.setEditable(false);
         KodeBank.setHighlighter(null);
         KodeBank.setName("KodeBank"); // NOI18N
-        KodeBank.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeBankKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KodeBank);
         KodeBank.setBounds(84, 70, 64, 23);
 
         BankTujuan.setEditable(false);
         BankTujuan.setHighlighter(null);
         BankTujuan.setName("BankTujuan"); // NOI18N
-        BankTujuan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BankTujuanKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(BankTujuan);
         BankTujuan.setBounds(151, 70, 245, 23);
 
         KodeTransaksi.setEditable(false);
         KodeTransaksi.setHighlighter(null);
         KodeTransaksi.setName("KodeTransaksi"); // NOI18N
-        KodeTransaksi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeTransaksiKeyPressed(evt);
-            }
-        });
         panelBiasa2.add(KodeTransaksi);
         KodeTransaksi.setBounds(399, 70, 141, 23);
 
@@ -1123,21 +1078,35 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
                     sukses=false;
                 } 
                 
-                Sequel.queryu("delete from tampjurnal");
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    koderekening,AkunBayar.getSelectedItem().toString(),BesarBayar.getText(),"0"
-                });    
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Bayar_Pemesanan_Obat,"HUTANG USAHA","0",BesarBayar.getText()
-                }); 
-                sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode());  
+                if(koderekening.equals("")){
+                    sukses=false; 
+                }else{
+                    total=0;
+                    if(koderekening.equals(Host_to_Host_Bank_Mandiri)){
+                        total=Sequel.cariIsiAngka("select metode_pembayaran_bankmandiri.biaya_transaksi from metode_pembayaran_bankmandiri inner join pembayaran_pihak_ke3_bankmandiri on pembayaran_pihak_ke3_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode where pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran=?",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                        Sequel.meghapus("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                    }
+                    Sequel.queryu("delete from tampjurnal");
+                    if(total>0){
+                        Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
+                        });
+                    }
+                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        koderekening,AkunBayar.getSelectedItem().toString(),(Valid.SetAngka(BesarBayar.getText())+total)+"","0"
+                    });    
+                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        Bayar_Pemesanan_Obat,"HUTANG USAHA","0",BesarBayar.getText()
+                    }); 
+                    sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode()); 
+                }
             }else{
                 sukses=false;
             }
              
             if(sukses==true){
                 Sequel.Commit();
-                BtnCariActionPerformed(evt);
+                tabMode.removeRow(tbKamar.getSelectedRow());
                 emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -1439,7 +1408,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     Bayar_Pemesanan_Obat,"HUTANG USAHA",BesarBayar.getText(),"0"
                 });                     
                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    koderekening,AkunBayar.getSelectedItem().toString(),"0",(Valid.SetInteger(BiayaTransaksi.getText())+Valid.SetInteger(BesarBayar.getText()))+""
+                    koderekening,AkunBayar.getSelectedItem().toString(),"0",(Valid.SetAngka(BiayaTransaksi.getText())+Valid.SetAngka(BesarBayar.getText()))+""
                 });    
                 sukses=jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode());
 
@@ -1454,7 +1423,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                             BesarBayar.getText(),Keterangan.getText(),AkunBayar.getSelectedItem().toString(),
                             NoBukti.getText()
                         })==true){
-                        if(Sequel.menyimpantf2("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","Data", 12,new String[]{
+                        if(Sequel.menyimpantf("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","No.Bukti", 12,new String[]{
                                 NoBukti.getText(),norekening,NoRekening.getText(),RekeningAtasNama.getText(),KotaAtasNamaRekening.getText(),BesarBayar.getText(),NoFaktur.getText(),KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText(),"Bayar Pesan Obat/BHP","Baru"
                             })==false){
                             sukses=false;
@@ -1468,6 +1437,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     Sequel.Commit();
                     BtnCariActionPerformed(evt);
                     emptTeks();
+                    DlgBayarMandiri.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
@@ -1484,18 +1454,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
     }//GEN-LAST:event_BtnSimpanMandiriKeyPressed
 
-    private void NoRekeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRekeningKeyPressed
-        
-    }//GEN-LAST:event_NoRekeningKeyPressed
-
-    private void RekeningAtasNamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekeningAtasNamaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RekeningAtasNamaKeyPressed
-
-    private void KotaAtasNamaRekeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotaAtasNamaRekeningKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KotaAtasNamaRekeningKeyPressed
-
     private void BtnPetugas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugas1ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         kodetransaksibank.setCari(BankTujuan.getText());
@@ -1506,30 +1464,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         kodetransaksibank.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPetugas1ActionPerformed
-
-    private void BiayaTransaksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaTransaksiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BiayaTransaksiKeyPressed
-
-    private void KodeMetodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeMetodeKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KodeMetodeKeyPressed
-
-    private void MetodePembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MetodePembayaranKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MetodePembayaranKeyPressed
-
-    private void KodeBankKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeBankKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KodeBankKeyPressed
-
-    private void BankTujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BankTujuanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BankTujuanKeyPressed
-
-    private void KodeTransaksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeTransaksiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KodeTransaksiKeyPressed
 
     /**
     * @param args the command line arguments
