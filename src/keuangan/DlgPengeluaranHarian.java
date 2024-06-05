@@ -27,7 +27,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +55,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
     private double total=0;
     private boolean sukses=true;
     private String nopengajuanbiaya="",akun="",kontrakun="";
+    private int i=0;
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -83,7 +83,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 8; i++) {
+        for (i = 0; i < 8; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(150);
@@ -789,7 +789,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         btnKategori.setBounds(409, 12, 28, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2024 10:47:32" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-06-2024 11:55:32" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -955,6 +955,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                             Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
                         });
                         emptTeks();
+                        hitung();
                     }
                 }
             }
@@ -1051,6 +1052,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                     if(sukses==true){
                         tabMode.removeRow(tbResep.getSelectedRow());
                         emptTeks();
+                        hitung();
                     }
                 }
             }                
@@ -1301,7 +1303,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 tabMode.addRow(new Object[]{
                     Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
                 });
+                DlgBayarMandiri.dispose();
                 emptTeks();
+                hitung();
             }
         }
     }//GEN-LAST:event_BtnSimpanMandiriActionPerformed
@@ -1415,7 +1419,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{     
-            total=0;
             ps=koneksi.prepareStatement(
                     "select pengeluaran_harian.no_keluar,pengeluaran_harian.tanggal, pengeluaran_harian.keterangan, pengeluaran_harian.biaya, pengeluaran_harian.nip, "+
                     "petugas.nama,pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori "+
@@ -1443,7 +1446,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("biaya"),rs.getString("keterangan"),
                         rs.getString("kode_kategori"),rs.getString("nip")
                     });
-                    total=total+rs.getDouble("biaya");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1455,12 +1457,25 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps.close();
                 }
             }
-            if(total>0){
-                tabMode.addRow(new Object[]{"",">> Total Pengeluaran :","","",total,"","",""}); 
-            }        
-            LCount.setText((""+(tabMode.getRowCount()-1)).replaceAll("-1","0"));                        
-        }catch(SQLException e){
+            hitung();                      
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }        
+    }
+    
+    public void hitung(){
+        total=0;
+        for(i=0;i<tabMode.getRowCount();i++){
+            if(!tbResep.getValueAt(i,0).toString().equals("")){
+                total=total+Valid.SetAngka(tbResep.getValueAt(i,4).toString());
+            }else{
+                tabMode.removeRow(i);
+                i--;
+            }
+        }
+        LCount.setText(""+tabMode.getRowCount());
+        if(total>0){
+            tabMode.addRow(new Object[]{"",">> Total Pengeluaran :","","",total,"","",""}); 
         }        
     }
 
