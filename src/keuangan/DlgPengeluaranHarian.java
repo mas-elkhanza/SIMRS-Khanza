@@ -952,7 +952,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                     Sequel.AutoComitTrue();
                     if(sukses==true){
                         tabMode.addRow(new Object[]{
-                            Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
+                            Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdKategori.getText()+" "+NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
                         });
                         emptTeks();
                         hitung();
@@ -1301,7 +1301,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Sequel.AutoComitTrue();
             if(sukses==true){
                 tabMode.addRow(new Object[]{
-                    Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
+                    Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdKategori.getText()+" "+NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
                 });
                 DlgBayarMandiri.dispose();
                 emptTeks();
