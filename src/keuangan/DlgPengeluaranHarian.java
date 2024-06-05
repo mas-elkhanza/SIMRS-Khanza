@@ -86,11 +86,11 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         for (int i = 0; i < 8; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==1){
                 column.setPreferredWidth(120);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(240);
             }else if(i==3){
                 column.setPreferredWidth(200);
             }else if(i==4){
