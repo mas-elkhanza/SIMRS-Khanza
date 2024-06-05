@@ -1001,15 +1001,25 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                     tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
                 })==true){
                     try {
-                        Sequel.queryu("delete from tampjurnal");
                         psakun=koneksi.prepareStatement(
-                            "select kategori_pengeluaran_harian.kd_rek,'Akun',kategori_pengeluaran_harian.kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
+                            "select kategori_pengeluaran_harian.kd_rek,kategori_pengeluaran_harian.kd_rek2 from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
                         try {
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();
                             if(rs.next()){
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",Pengeluaran.getText()});
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),Pengeluaran.getText(),"0"}); 
+                                total=0;
+                                if(rs.getString("kd_rek2").equals(kategori.Host_to_Host_Bank_Mandiri)){
+                                    total=Sequel.cariIsiAngka("select metode_pembayaran_bankmandiri.biaya_transaksi from metode_pembayaran_bankmandiri inner join pembayaran_pihak_ke3_bankmandiri on pembayaran_pihak_ke3_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode where pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran=?",tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
+                                    Sequel.meghapus("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran",tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
+                                }
+                                Sequel.queryu("delete from tampjurnal");
+                                if(total>0){
+                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                        kategori.Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
+                                    });
+                                }
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek"),"Akun","0",Pengeluaran.getText()});
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek2"),"Kontra Akun",(Valid.SetAngka(Pengeluaran.getText())+total)+"","0"}); 
                                 sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {
