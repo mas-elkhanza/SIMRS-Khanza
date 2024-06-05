@@ -1535,9 +1535,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "select pemesanan.no_faktur,pemesanan.no_order,datasuplier.nama_suplier, "+
                     "petugas.nama,pemesanan.tgl_tempo,pemesanan.tgl_pesan,pemesanan.tgl_faktur,bangsal.nm_bangsal,pemesanan.tagihan,"+
                     "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where bayar_pemesanan.no_faktur=pemesanan.no_faktur) as bayar, "+
-                    "datasuplier.nama_bank,datasuplier.rekening from pemesanan inner join datasuplier inner join bangsal inner join petugas "+
-                    "on pemesanan.kode_suplier=datasuplier.kode_suplier "+
-                    "and pemesanan.nip=petugas.nip and pemesanan.kd_bangsal=bangsal.kd_bangsal where "+
+                    "datasuplier.nama_bank,datasuplier.rekening from pemesanan inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "+
+                    "inner join bangsal on pemesanan.kd_bangsal=bangsal.kd_bangsal inner join petugas on pemesanan.nip=petugas.nip where "+
                     tanggaldatang+tanggaltempo+"(pemesanan.status='Belum Dibayar' or pemesanan.status='Belum Lunas') and datasuplier.nama_suplier like ? "+
                     (TCari.getText().trim().equals("")?"":"and (pemesanan.no_faktur like ? or pemesanan.no_order like ? or pemesanan.tgl_tempo like ? or "+
                     "datasuplier.nama_suplier like ? or bangsal.nm_bangsal like ? or petugas.nama like ?) ")+"order by pemesanan.tgl_tempo ");
@@ -1610,7 +1609,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select photo from bukti_pemesanan where no_faktur=?");
+                ps=koneksi.prepareStatement("select bukti_pemesanan.photo from bukti_pemesanan where bukti_pemesanan.no_faktur=?");
                 try {
                     ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
                     rs=ps.executeQuery();
