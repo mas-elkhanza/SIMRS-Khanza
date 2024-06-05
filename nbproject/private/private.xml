@@ -20,12 +20,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganBayarPemesananNonMedis.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganBayarPemesananFarmasi.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/DlgPengeluaranHarian.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganBayarPesanToko.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganBayarPemesananAset.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/DlgCariKategoriPengeluaran.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganHutangObatBelumLunas.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganHutangNonMedisBelumLunas.java</file>
         </group>
     </open-files>
 </project-private>
