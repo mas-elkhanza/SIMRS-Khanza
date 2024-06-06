@@ -1223,11 +1223,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         try {
                             myObj = new FileReader("./cache/suplierobat.iyem");
                             root = mapper.readTree(myObj);
-                            Valid.tabelKosong(tabMode);
                             response = root.path("suplierobat");
                             if(response.isArray()){
                                 for(JsonNode list:response){
-                                    if(list.path("KodeSupplier").asText().toLowerCase().contains(KodeSuplier.getText())){
+                                    System.out.println("Data : "+list.path("NamaSupplier").asText());
+                                    if(list.path("KodeSupplier").asText().equals(KodeSuplier.getText())){
                                         RekeningAtasNama.setText(list.path("NamaSupplier").asText());
                                         KotaAtasNamaRekening.setText(list.path("Kota").asText());
                                         NoRekening.setText(list.path("NoRekening").asText());
@@ -1245,7 +1245,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }else{
                     Sequel.AutoComitFalse();
                     sukses=true;
-
                     row=tabMode.getRowCount();
                     for(int i=0;i<row;i++){  
                         if(tabMode.getValueAt(i,0).toString().equals("true")){
@@ -1292,6 +1291,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         for(i=0;i<tbBangsal.getRowCount();i++){  
                             if(tbBangsal.getValueAt(i,0).toString().equals("true")){
                                 tabMode.removeRow(i);
+                                i--;
                             }
                         }
                     }else{
@@ -1508,6 +1508,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     for(i=0;i<tbBangsal.getRowCount();i++){  
                         if(tbBangsal.getValueAt(i,0).toString().equals("true")){
                             tabMode.removeRow(i);
+                            i--;
                         }
                     }
                 }else{
