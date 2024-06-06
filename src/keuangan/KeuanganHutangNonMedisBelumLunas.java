@@ -306,7 +306,7 @@ public final class KeuanganHutangNonMedisBelumLunas extends javax.swing.JDialog 
         NoRekening = new widget.TextBox();
         RekeningAtasNama = new widget.TextBox();
         KotaAtasNamaRekening = new widget.TextBox();
-        BtnPetugas1 = new widget.Button();
+        BtnMetode = new widget.Button();
         jLabel102 = new widget.Label();
         BiayaTransaksi = new widget.TextBox();
         KodeMetode = new widget.TextBox();
@@ -470,17 +470,17 @@ public final class KeuanganHutangNonMedisBelumLunas extends javax.swing.JDialog 
         panelBiasa2.add(KotaAtasNamaRekening);
         KotaAtasNamaRekening.setBounds(420, 10, 120, 23);
 
-        BtnPetugas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPetugas1.setMnemonic('1');
-        BtnPetugas1.setToolTipText("ALt+1");
-        BtnPetugas1.setName("BtnPetugas1"); // NOI18N
-        BtnPetugas1.addActionListener(new java.awt.event.ActionListener() {
+        BtnMetode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnMetode.setMnemonic('1');
+        BtnMetode.setToolTipText("ALt+1");
+        BtnMetode.setName("BtnMetode"); // NOI18N
+        BtnMetode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPetugas1ActionPerformed(evt);
+                BtnMetodeActionPerformed(evt);
             }
         });
-        panelBiasa2.add(BtnPetugas1);
-        BtnPetugas1.setBounds(512, 40, 28, 23);
+        panelBiasa2.add(BtnMetode);
+        BtnMetode.setBounds(512, 40, 28, 23);
 
         jLabel102.setText("Metode :");
         jLabel102.setName("jLabel102"); // NOI18N
@@ -1563,10 +1563,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnSimpanMandiriActionPerformed
 
     private void BtnSimpanMandiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanMandiriKeyPressed
-
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnMetode, BtnKeluarMandiri);
+        }
     }//GEN-LAST:event_BtnSimpanMandiriKeyPressed
 
-    private void BtnPetugas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugas1ActionPerformed
+    private void BtnMetodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMetodeActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         kodetransaksibank.setCari(BankTujuan.getText());
         kodetransaksibank.isCek();
@@ -1575,7 +1579,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         kodetransaksibank.setAlwaysOnTop(false);
         kodetransaksibank.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnPetugas1ActionPerformed
+    }//GEN-LAST:event_BtnMetodeActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1603,8 +1607,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnKeluarMandiri;
+    private widget.Button BtnMetode;
     private widget.Button BtnPetugas;
-    private widget.Button BtnPetugas1;
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
     private widget.Button BtnSimpanMandiri;
@@ -1854,7 +1858,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps=koneksi.prepareStatement(
                     "select ipsrspemesanan.no_faktur,ipsrspemesanan.no_order,ipsrssuplier.nama_suplier,ipsrspemesanan.kode_suplier, "+
                     "petugas.nama,ipsrspemesanan.tgl_tempo,ipsrspemesanan.tgl_pesan,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tagihan,"+
-                    "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_non_medis where bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur) as bayar, "+
+                    "(SELECT ifnull(SUM(bayar_pemesanan_non_medis.besar_bayar),0) FROM bayar_pemesanan_non_medis where bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur) as bayar, "+
                     "ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrspemesanan "+
                     "inner join ipsrssuplier on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
                     "inner join petugas on ipsrspemesanan.nip=petugas.nip "+
