@@ -102,7 +102,7 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 15; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(22);
@@ -174,6 +174,10 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
                 if(suplier.getTable().getSelectedRow()!= -1){
                     KodeSuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());
                     NamaSuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
+                    RekeningAtasNama.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
+                    KotaAtasNamaRekening.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),3).toString());
+                    NoRekening.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),6).toString());
+                    BankTujuan.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),5).toString());
                     tampil();
                 }      
                 KodeSuplier.requestFocus();
@@ -1220,27 +1224,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if(KodeSuplier.getText().trim().equals("")||NamaSuplier.getText().trim().equals("")){
                         Valid.textKosong(KodeSuplier,"Suplier");
                     }else{
-                        try {
-                            myObj = new FileReader("./cache/suplierobat.iyem");
-                            root = mapper.readTree(myObj);
-                            response = root.path("suplierobat");
-                            if(response.isArray()){
-                                for(JsonNode list:response){
-                                    System.out.println("Data : "+list.path("NamaSupplier").asText());
-                                    if(list.path("KodeSupplier").asText().equals(KodeSuplier.getText())){
-                                        RekeningAtasNama.setText(list.path("NamaSupplier").asText());
-                                        KotaAtasNamaRekening.setText(list.path("Kota").asText());
-                                        NoRekening.setText(list.path("NoRekening").asText());
-                                        BankTujuan.setText(list.path("NamaBank").asText());
-                                    }
-                                }
-                            }
-                            myObj.close();
-                            DlgBayarMandiri.setLocationRelativeTo(internalFrame1);
-                            DlgBayarMandiri.setVisible(true);
-                        } catch (Exception ex) {
-                            System.out.println("Notifikasi : "+ex);
-                        }
+                        DlgBayarMandiri.setLocationRelativeTo(internalFrame1);
+                        DlgBayarMandiri.setVisible(true);
                     }
                 }else{
                     Sequel.AutoComitFalse();
@@ -1511,6 +1496,18 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             i--;
                         }
                     }
+                    NoBukti.setText("");
+                    Keterangan.setText("");
+                    NoRekening.setText("");
+                    RekeningAtasNama.setText("");
+                    KotaAtasNamaRekening.setText("");
+                    KodeMetode.setText("");
+                    MetodePembayaran.setText("");
+                    BiayaTransaksi.setText("0");
+                    KodeBank.setText("");
+                    BankTujuan.setText("");
+                    KodeTransaksi.setText("");
+                    DlgBayarMandiri.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
