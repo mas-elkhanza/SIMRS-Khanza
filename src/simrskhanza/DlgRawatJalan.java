@@ -10787,6 +10787,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         TDokter.setText(namadokter);
         TDokter2.setText(namadokter); 
         TDokter3.setText(namadokter); 
+        TabRawatMouseClicked(null);
     }
     
     public void SetPoli(String KodePoli){

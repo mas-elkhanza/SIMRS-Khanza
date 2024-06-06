@@ -171,10 +171,6 @@ public final class KeuanganHutangNonMedisBelumLunas extends javax.swing.JDialog 
                 if(suplier.getTable().getSelectedRow()!= -1){
                     KodeSuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());
                     NamaSuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                    RekeningAtasNama.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                    KotaAtasNamaRekening.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),3).toString());
-                    NoRekening.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),6).toString());
-                    BankTujuan.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),5).toString());
                     tampil();
                 }      
                 KodeSuplier.requestFocus();
@@ -1206,6 +1202,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.textKosong(AkunBayar,"Akun Bayar");
         }else if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda bayar...!!!!");
+        }else if(bayar==0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih tagihan yang mau dibayar...!!!!");
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else if(tabMode.getRowCount()!=0){
@@ -1233,8 +1231,26 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if(KodeSuplier.getText().trim().equals("")||NamaSuplier.getText().trim().equals("")){
                         Valid.textKosong(KodeSuplier,"Suplier");
                     }else{
-                        DlgBayarMandiri.setLocationRelativeTo(internalFrame1);
-                        DlgBayarMandiri.setVisible(true);
+                        try {
+                            myObj = new FileReader("./cache/suplieripsrs.iyem");
+                            root = mapper.readTree(myObj);
+                            response = root.path("suplieripsrs");
+                            if(response.isArray()){
+                                for(JsonNode list:response){
+                                    if(list.path("KodeSupplier").asText().equals(KodeSuplier.getText())){
+                                        RekeningAtasNama.setText(list.path("NamaSupplier").asText());
+                                        KotaAtasNamaRekening.setText(list.path("Kota").asText());
+                                        NoRekening.setText(list.path("NoRekening").asText());
+                                        BankTujuan.setText(list.path("NamaBank").asText());
+                                    }
+                                }
+                            }
+                            myObj.close();
+                            DlgBayarMandiri.setLocationRelativeTo(internalFrame1);
+                            DlgBayarMandiri.setVisible(true);
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        }
                     }
                 }else{
                     Sequel.AutoComitFalse();
