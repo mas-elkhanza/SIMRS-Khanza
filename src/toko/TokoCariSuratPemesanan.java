@@ -29,7 +29,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  TokoSuplier suplier=new TokoSuplier(null,false);
+    public  TokoCariSuplier suplier=new TokoCariSuplier(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     public  TokoBarang barang=new TokoBarang(null,false);
     private PreparedStatement ps,ps2;

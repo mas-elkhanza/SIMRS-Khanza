@@ -30,7 +30,7 @@ public class TokoCariReturBeli extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  TokoSuplier suplier=new TokoSuplier(null,false);
+    public  TokoCariSuplier suplier=new TokoCariSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  TokoBarang barang=new TokoBarang(null,false);
     private riwayattoko Trackbarang=new riwayattoko();
