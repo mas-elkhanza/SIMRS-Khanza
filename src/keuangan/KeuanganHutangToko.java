@@ -1367,7 +1367,82 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else if(BankTujuan.getText().trim().equals("")){
             Valid.textKosong(BankTujuan,"Bank Tujuan");
         }else{
-            
+            try{
+                Sequel.AutoComitFalse();
+                sukses=true;
+                row=tabMode.getRowCount();
+                for(int i=0;i<row;i++){  
+                    if(tabMode.getValueAt(i,0).toString().equals("true")){
+                        if(Double.parseDouble(tbBangsal.getValueAt(i,10).toString())>0){
+                            if(Sequel.menyimpantf("toko_bayar_pemesanan","?,?,?,?,?,?,?","Data", 7,new String[]{
+                                Valid.SetTgl(TglBayar.getSelectedItem()+""),tabMode.getValueAt(i,1).toString(),Nip.getText(),
+                                tabMode.getValueAt(i,10).toString(),Keterangan.getText(),AkunBayar.getSelectedItem().toString(),
+                                NoBukti.getText()
+                            })==true){
+                                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,6),signed)),0) from pembayaran_pihak_ke3_bankmandiri where left(pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,10)='"+Valid.SetTgl(TglBayar.getSelectedItem()+"")+"' ",kodemcm+"14"+TglBayar.getSelectedItem().toString().replaceAll("-",""),6,NoBukti); 
+                                if((Double.parseDouble(tabMode.getValueAt(i,9).toString())<=0)||(Double.parseDouble(tabMode.getValueAt(i,9).toString())<=-0)){
+                                    Sequel.mengedit("tokopemesanan","no_faktur='"+tabMode.getValueAt(i,1).toString()+"'","status='Sudah Dibayar'");
+                                }else{
+                                    Sequel.mengedit("tokopemesanan","no_faktur='"+tabMode.getValueAt(i,1).toString()+"'","status='Belum Lunas'");
+                                } 
+                                if(Sequel.menyimpantf("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","No.Bukti", 12,new String[]{
+                                        NoBukti.getText(),norekening,NoRekening.getText(),RekeningAtasNama.getText(),KotaAtasNamaRekening.getText(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,1).toString(),KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText(),"Bayar Pesan Aset/Inventaris","Baru"
+                                    })==false){
+                                    sukses=false;
+                                }else{
+                                    Sequel.queryu("delete from tampjurnal");
+                                    if(Valid.SetInteger(BiayaTransaksi.getText())>0){
+                                        Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                            Akun_Biaya_Mandiri,"BIAYA TRANSAKSI",BiayaTransaksi.getText(),"0"
+                                        });
+                                    }
+                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                        Bayar_Pemesanan_Toko,"HUTANG BARANG TOKO",tabMode.getValueAt(i,10).toString(),"0"
+                                    });                     
+                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                        koderekening,AkunBayar.getSelectedItem().toString(),"0",(Valid.SetAngka(BiayaTransaksi.getText())+Valid.SetAngka(tabMode.getValueAt(i,10).toString()))+""
+                                    });    
+                                    if(jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN HUTANG TOKO NO.FAKTUR "+tabMode.getValueAt(i,1).toString()+", OLEH "+akses.getkode())==false){
+                                        sukses=false;
+                                    } 
+                                }                                                   
+                            }else{
+                                sukses=false;
+                            }
+                        }                        
+                    }
+                }
+
+                if(sukses==true){
+                    Sequel.Commit();
+                    bayar=0;
+                    LCount1.setText("0");
+                    for(i=0;i<tbBangsal.getRowCount();i++){  
+                        if(tbBangsal.getValueAt(i,0).toString().equals("true")){
+                            tabMode.removeRow(i);
+                            i--;
+                        }
+                    }
+                    NoBukti.setText("");
+                    Keterangan.setText("");
+                    NoRekening.setText("");
+                    RekeningAtasNama.setText("");
+                    KotaAtasNamaRekening.setText("");
+                    KodeMetode.setText("");
+                    MetodePembayaran.setText("");
+                    BiayaTransaksi.setText("0");
+                    KodeBank.setText("");
+                    BankTujuan.setText("");
+                    KodeTransaksi.setText("");
+                    DlgBayarMandiri.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();
+            }catch (Exception ex) {
+               System.out.println("Notif Simpan Mandiri : "+ex);
+            }
         }
     }//GEN-LAST:event_BtnSimpanMandiriActionPerformed
 
