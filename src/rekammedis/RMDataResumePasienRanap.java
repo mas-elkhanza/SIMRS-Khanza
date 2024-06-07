@@ -671,6 +671,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         scrollPane12 = new widget.ScrollPane();
         ObatSelamaDiRS = new widget.TextArea();
         jLabel13 = new widget.Label();
+        BtnDokter6 = new widget.Button();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -1909,6 +1910,19 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 502, 220, 23);
 
+        BtnDokter6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter6.setMnemonic('2');
+        BtnDokter6.setToolTipText("Alt+2");
+        BtnDokter6.setName("BtnDokter6"); // NOI18N
+        BtnDokter6.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokter6ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDokter6);
+        BtnDokter6.setBounds(192, 300, 28, 23);
+
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -2573,6 +2587,16 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         Valid.pindah2(evt,TindakanSelamaDiRS,DiagnosaUtama);
     }//GEN-LAST:event_ObatSelamaDiRSKeyPressed
 
+    private void BtnDokter6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter6ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
+        resume.setNoRm(TNoRM.getText(),TPasien.getText());
+        resume.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        resume.setLocationRelativeTo(internalFrame1);
+        resume.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnDokter6ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2605,6 +2629,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Button BtnDokter20;
     private widget.Button BtnDokter3;
     private widget.Button BtnDokter5;
+    private widget.Button BtnDokter6;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
