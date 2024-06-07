@@ -104,7 +104,7 @@ public final class KeuanganHutangToko extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(22);
             }else if(i==1){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(95);
             }else if(i==2){
                 column.setPreferredWidth(85);
             }else if(i==3){
@@ -1303,12 +1303,27 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         for(row=0;row<tbBangsal.getRowCount();row++){
             tbBangsal.setValueAt(false,row,0);
         }
+        bayar=0;
+        LCount1.setText("0");
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void ppSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaActionPerformed
         for(row=0;row<tbBangsal.getRowCount();row++){
             tbBangsal.setValueAt(true,row,0);
+            if(tbBangsal.getValueAt(row,10).toString().equals("0")){
+                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(row,11).toString()), row,10);
+            }
+            if(tbBangsal.getValueAt(row,0).toString().equals("true")){
+                tbBangsal.setValueAt(
+                    (Double.parseDouble(tbBangsal.getValueAt(row,11).toString())-
+                    Double.parseDouble(tbBangsal.getValueAt(row,10).toString()))
+                    ,row,9);
+            }else if(tbBangsal.getValueAt(row,0).toString().equals("false")){
+                tbBangsal.setValueAt(0,row,10);
+                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(row,11).toString()),row,9);
+            }
         }
+        getData();
     }//GEN-LAST:event_ppSemuaActionPerformed
 
     private void tbBangsalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbBangsalPropertyChange
