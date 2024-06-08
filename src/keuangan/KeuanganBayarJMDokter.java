@@ -369,7 +369,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         DlgBayarMandiri.setUndecorated(true);
         DlgBayarMandiri.setResizable(false);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Pembayaran Pihak Ke 3 Bank Mandir ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Pembayaran Pihak Ke 3 Bank Mandiri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1051,27 +1051,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }else{
                     if(form.koderekening.equals(form.Host_to_Host_Bank_Mandiri)){
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,6),signed)),0) from pembayaran_pihak_ke3_bankmandiri where left(pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,10)='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",form.kodemcm+"14"+Tanggal.getSelectedItem().toString().substring(0,10).replaceAll("-",""),6,NoTagihan); 
-                        ps=koneksi.prepareStatement(
-                                "select pegawai.nama,pegawai.kota,pegawai.bpd,pegawai.rekening where pegawai.nik=?");
-                        try{
-                            ps.setString(1,kddokter.getText());
-                            rs=ps.executeQuery();
-                            if(rs.next()){
-                                RekeningAtasNama.setText(rs.getString("nama"));
-                                KotaAtasNamaRekening.setText(rs.getString("kota"));
-                                NoRekening.setText(rs.getString("rekening"));
-                                BankTujuan.setText(rs.getString("bpd"));
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif : "+e);
-                        } finally{
-                            if(rs!=null){
-                                rs.close();
-                            }
-                            if(ps!=null){
-                                ps.close();
+                        form.myObj = new FileReader("./cache/pegawai.iyem");
+                        form.root = form.mapper.readTree(form.myObj);
+                        Valid.tabelKosong(tabMode);
+                        form.response = form.root.path("pegawai");
+                        if(form.response.isArray()){
+                            for(JsonNode list:form.response){
+                                if(list.path("NIP").asText().equals(kddokter.getText())){
+                                    RekeningAtasNama.setText(list.path("Nama").asText());
+                                    KotaAtasNamaRekening.setText(list.path("Kota").asText());
+                                    NoRekening.setText(list.path("Rekening").asText());
+                                    BankTujuan.setText(list.path("BPD").asText());
+                                }
                             }
                         }
+                        form.myObj.close();
                         DlgBayarMandiri.setLocationRelativeTo(internalFrame1);
                         DlgBayarMandiri.setVisible(true);
                     }else{
@@ -1891,6 +1885,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     bayar=0;totalrawatjalan=0;totalrawatinap=0;totallabrawatjalan=0;totallabrawatinap=0;totalradrawatjalan=0;totalradrawatinap=0;totaloperasirawatjalan=0;totaloperasirawatinap=0;
                     LCount1.setText("0");
                     Sequel.Commit();
+                    DlgBayarMandiri.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();

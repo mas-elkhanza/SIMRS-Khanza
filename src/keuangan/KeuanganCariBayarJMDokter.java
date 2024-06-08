@@ -682,6 +682,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             } 
                             
                             if(sukses==true){
+                                totaltagihan=0;
+                                if(koderekening.equals(Host_to_Host_Bank_Mandiri)){
+                                    totaltagihan=Sequel.cariIsiAngka("select metode_pembayaran_bankmandiri.biaya_transaksi from metode_pembayaran_bankmandiri inner join pembayaran_pihak_ke3_bankmandiri on pembayaran_pihak_ke3_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode where pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                                    Sequel.meghapus("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                                }
                                 Sequel.queryu("delete from tampjurnal"); 
                                 if(rs.getDouble("rawatjalan")>0){
                                     Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','"+rs.getDouble("rawatjalan")+"','0'","debet=debet+'"+rs.getDouble("rawatjalan")+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"'");                               
@@ -715,9 +720,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"','Beban Jasa Medik Dokter Operasi Ranap','"+rs.getDouble("operasiranap")+"','0'","debet=debet+'"+rs.getDouble("operasiranap")+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"'");     
                                     Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"','Utang Jasa Medik Dokter Operasi Ranap','0','"+rs.getDouble("operasiranap")+"'","kredit=kredit+'"+rs.getDouble("operasiranap")+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"'");                             
                                 }
+                                if(totaltagihan>0){
+                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                        Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",totaltagihan+""
+                                    });
+                                }
                                 if(rs.getDouble("besar_bayar")>0){
                                     Sequel.menyimpan("tampjurnal","'"+Bayar_JM_Dokter+"','Bayar JM Dokter','0','"+rs.getDouble("besar_bayar")+"'","kredit=kredit+'"+(rs.getDouble("besar_bayar"))+"'","kd_rek='"+Bayar_JM_Dokter+"'");       
-                                    Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+rs.getString("nama_bayar")+"','"+rs.getDouble("besar_bayar")+"','0'","debet=debet+'"+(rs.getDouble("besar_bayar"))+"'","kd_rek='"+koderekening+"'");  
+                                    Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+rs.getString("nama_bayar")+"','"+(totaltagihan+rs.getDouble("besar_bayar"))+"','0'","debet=debet+'"+(totaltagihan+rs.getDouble("besar_bayar"))+"'","kd_rek='"+koderekening+"'");  
                                 }
                                 sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMBAYARAN JASA MEDIS DOKTER "+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString()+" "+tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString()+", OLEH "+akses.getkode());
                             }
