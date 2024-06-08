@@ -810,7 +810,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(rs.next()){        
                 Sequel.AutoComitFalse();
                 sukses=true;
-                ps2=koneksi.prepareStatement("select kode_brng,jml_retur,no_batch,no_faktur from detreturjual where no_retur_jual=? ");
+                ps2=koneksi.prepareStatement("select detreturjual.kode_brng,detreturjual.jml_retur,detreturjual.no_batch,detreturjual.no_faktur from detreturjual where detreturjual.no_retur_jual=? ");
                 try {
                     ps2.setString(1,rs.getString(1));
                     rs2=ps2.executeQuery();
