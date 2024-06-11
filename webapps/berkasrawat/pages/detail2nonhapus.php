@@ -87,17 +87,26 @@
                     $no_rawat           = validTeks(trim($_POST['no_rawat']));
                     $kode               = validTeks(trim($_POST['kode']));
                     $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
-                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                        if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
-                            switch($action) {
-                                case "TAMBAH":
-                                    Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."''>";
-                                    break;
+                    if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-4))==".pdf")||(strtolower(substr($dokumen,-5))==".jpeg")){
+                        if(($_FILES['dokumen']['type'] == 'application/pdf')||($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
+                            if((mime_content_type($_FILES['dokumen']['tmp_name'])== 'application/pdf')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
+                                if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
+                                    switch($action) {
+                                        case "TAMBAH":
+                                            if(Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " )){
+                                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                            }
+                                            echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."''>";
+                                            break;
+                                    }
+                                }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
+                                    echo 'Semua field harus isi..!!!';
+                                }
+                            }else{
+                                echo "Berkas harus pdf/JPG";
                             }
-                        }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
-                            echo 'Semua field harus isi..!!!';
+                        }else{
+                            echo "Berkas harus pdf/JPG";
                         }
                     }else{
                         echo "Berkas harus pdf/JPG";

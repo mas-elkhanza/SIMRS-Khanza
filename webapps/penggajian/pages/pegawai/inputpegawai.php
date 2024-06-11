@@ -635,52 +635,56 @@
                     $kode_kelompok  = validTeks4(trim($_POST['kode_kelompok']),3);
                     $kode_resiko    = validTeks4(trim($_POST['kode_resiko']),3);
                     $kode_emergency = validTeks4(trim($_POST['kode_emergency']),3);
-
                     $mulai_kontrak  = validTeks(trim($_POST['ThnKontrak'])."-".trim($_POST['BlnKontrak'])."-".trim($_POST['TglKontrak']));
                     $photo          = "pages/pegawai/photo/".validTeks($_FILES['photo']['name']);
                     $no_ktp         = validTeks(trim($_POST['no_ktp']));
-                    
-                    if(($photo!="pages/pegawai/photo/")&&(strtolower(substr($photo,-3))!="jpg")){
-                        echo "Berkas harus JPEG/JPG";
-                        echo "<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=TAMBAH'></head><body></body></html>";
-                    }else{
-                        if ((!empty($nik))&&(!empty($jnj_jabatan))&&(!empty($departemen))&&(!empty($bidang))&&(!empty($stts_wp))&&(!empty($stts_kerja))&&
-                            (!empty($pendidikan))&&(!empty($tgl_lahir))&&(!empty($mulai_kerja))&&(!empty($indexins))&&(!empty($bpd))&&(!empty($kode_kelompok))&&
-                             (!empty($kode_resiko))&&(!empty($kode_emergency))) {
-                            move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
-                            switch($action) {
-                                case "TAMBAH":
-                                    Tambah(" pegawai ","'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
-                                           '$departemen','$bidang','$stts_wp','$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
-                                           '$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif','$wajibmasuk','0','0',
-                                           '$mulai_kontrak','0','0','$photo','$no_ktp'", " pegawai " );
-                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=TAMBAH'></head><body></body></html>";
-                                    break;
-                                case "UBAH":
-                                    if($photo=="pages/pegawai/photo/"){
-                                        $ph="";
-                                    }else if($photo<>"pages/pegawai/photo/"){
-                                        $ph=",photo='$photo'";
-                                    }
+                    if((strtolower(substr($photo,-4))==".jpg")||(strtolower(substr($photo,-5))==".jpeg")){
+                        if(($_FILES['photo']['type'] == 'image/jpeg')||($_FILES['photo']['type'] == 'image/jpg')){
+                            if((mime_content_type($_FILES['photo']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['photo']['tmp_name'])== 'image/jpg')){
+                                if ((!empty($nik))&&(!empty($jnj_jabatan))&&(!empty($departemen))&&(!empty($bidang))&&(!empty($stts_wp))&&(!empty($stts_kerja))&&
+                                    (!empty($pendidikan))&&(!empty($tgl_lahir))&&(!empty($mulai_kerja))&&(!empty($indexins))&&(!empty($bpd))&&(!empty($kode_kelompok))&&
+                                     (!empty($kode_resiko))&&(!empty($kode_emergency))) {
+                                    switch($action) {
+                                        case "TAMBAH":
+                                            if(Tambah(" pegawai ","'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
+                                                   '$departemen','$bidang','$stts_wp','$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
+                                                   '$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif','$wajibmasuk','0','0',
+                                                   '$mulai_kontrak','0','0','$photo','$no_ktp'", " pegawai " )){
+                                                move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
+                                            }
+                                            echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=TAMBAH'></head><body></body></html>";
+                                            break;
+                                        case "UBAH":
+                                            if($photo=="pages/pegawai/photo/"){
+                                                $ph="";
+                                            }else if($photo<>"pages/pegawai/photo/"){
+                                                $ph=",photo='$photo'";
+                                            }
 
-                                    Ubah2(" dokter ","nm_dokter='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
-                                            tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',almt_tgl='$alamat' where kd_dokter='$nik2'");
-                                    Ubah2(" petugas ","nama='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
-                                            tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',alamat='$alamat' where nip='$nik2' ");
-                                    Ubah(" pegawai "," nik='$nik',nama='$nama',jk='$jk',jbtn='$jbtn',jnj_jabatan='$jnj_jabatan',departemen='$departemen',
-                                           bidang='$bidang',stts_wp='$stts_wp',stts_kerja='$stts_kerja',npwp='$npwp',pendidikan='$pendidikan',
-                                           tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',alamat='$alamat',kota='$kota',mulai_kontrak='$mulai_kontrak',
-                                           mulai_kerja='$mulai_kerja',ms_kerja='$ms_kerja',indexins='$indexins',bpd='$bpd',rekening='$rekening',
-                                           stts_aktif='$stts_aktif',no_ktp='$no_ktp',wajibmasuk='$wajibmasuk',kode_kelompok='$kode_kelompok',
-                                           kode_resiko='$kode_resiko',kode_emergency='$kode_emergency' ".$ph." WHERE id='$id' ", " pegawai ");
-                                    echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=UBAH&id=$id'></head><body></body></html>";
-                                    break;
+                                            Ubah2(" dokter ","nm_dokter='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
+                                                    tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',almt_tgl='$alamat' where kd_dokter='$nik2'");
+                                            Ubah2(" petugas ","nama='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
+                                                    tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',alamat='$alamat' where nip='$nik2' ");
+                                            Ubah(" pegawai "," nik='$nik',nama='$nama',jk='$jk',jbtn='$jbtn',jnj_jabatan='$jnj_jabatan',departemen='$departemen',
+                                                   bidang='$bidang',stts_wp='$stts_wp',stts_kerja='$stts_kerja',npwp='$npwp',pendidikan='$pendidikan',
+                                                   tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',alamat='$alamat',kota='$kota',mulai_kontrak='$mulai_kontrak',
+                                                   mulai_kerja='$mulai_kerja',ms_kerja='$ms_kerja',indexins='$indexins',bpd='$bpd',rekening='$rekening',
+                                                   stts_aktif='$stts_aktif',no_ktp='$no_ktp',wajibmasuk='$wajibmasuk',kode_kelompok='$kode_kelompok',
+                                                   kode_resiko='$kode_resiko',kode_emergency='$kode_emergency' ".$ph." WHERE id='$id' ", " pegawai ");
+                                            echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=UBAH&id=$id'></head><body></body></html>";
+                                            break;
+                                    }
+                                }else if (empty($nik)||empty($jnj_jabatan)||empty($departemen)||empty($bidang)||empty($stts_wp)||empty($stts_kerja)||
+                                           empty($pendidikan)||empty($tgl_lahir)||empty($mulai_kerja)||empty($indexins)||empty($bpd)||empty($kode_kelompok)||
+                                             empty($kode_emergency)||empty($kode_resiko)) {
+                                    echo 'Semua field harus isi..!!';
+                                }
                             }
-                        }else if (empty($nik)||empty($jnj_jabatan)||empty($departemen)||empty($bidang)||empty($stts_wp)||empty($stts_kerja)||
-                                   empty($pendidikan)||empty($tgl_lahir)||empty($mulai_kerja)||empty($indexins)||empty($bpd)||empty($kode_kelompok)||
-                                     empty($kode_emergency)||empty($kode_resiko)) {
-                            echo 'Semua field harus isi..!!';
+                        }else{
+                            echo "Berkas harus JPEG/JPG";
                         }
+                    }else{
+                        echo "Berkas harus JPEG/JPG";
                     }
                 }
             ?>

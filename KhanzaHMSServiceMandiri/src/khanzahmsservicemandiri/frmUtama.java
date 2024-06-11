@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.Timer;
 import com.jcraft.jsch.*;
+import java.util.Properties;
 
 /**
  *
@@ -31,8 +32,7 @@ public class frmUtama extends javax.swing.JFrame {
     private Channel channel;
     private ChannelSftp sftpChannel;
     private String path;
-    
-    
+    private Properties config;
 
     /**
      * Creates new form frmUtama
@@ -174,18 +174,26 @@ public class frmUtama extends javax.swing.JFrame {
                             if(rs.next()){
                                 jsch = new JSch();
                                 session = jsch.getSession(koneksiDB.SFTPMANDIRIUSER(),koneksiDB.SFTPMANDIRIHOST(),Integer.valueOf(koneksiDB.SFTPMANDIRIPORT()));
-                                session.setConfig("StrictHostKeyChecking", "no");
+                                config = new Properties();
+                                config.put("StrictHostKeyChecking", "no");
+                                config.put("PreferredAuthentications", "publickey,keyboard-interactive,password");
+                                session.setConfig(config);
                                 session.setPassword(koneksiDB.SFTPMANDIRIPAS());
                                 session.connect();
                                 channel = session.openChannel("sftp");
                                 sftpChannel = (ChannelSftp) channel;
                                 sftpChannel.cd(koneksiDB.SFTPMANDIRIPATHPEMBAYARANPIHAKKETIGA());
-                                path = sftpChannel.ls(rs.getString("nomor_pembayaran")+".txt").toString();
-                                if (!path.contains(rs.getString("nomor_pembayaran")+".txt")) {
-                                    System.out.println("File doesn't exist.");
-                                } else{
-                                    System.out.println("File already exist.");
+                                rs.beforeFirst();
+                                while(rs.next()){
+                                    path = sftpChannel.ls(rs.getString("nomor_pembayaran")+".txt").toString();
+                                    if (!path.contains(rs.getString("nomor_pembayaran")+".txt")) {
+                                        System.out.println("File doesn't exist.");
+                                    } else{
+                                        System.out.println("File already exist.");
+                                    }
                                 }
+                                sftpChannel.disconnect();
+                                session.disconnect();
                             }
                         } catch (Exception ex) {
                             System.out.println("Notif : "+ex);

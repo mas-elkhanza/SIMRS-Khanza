@@ -36,13 +36,22 @@
                 if (isset($BtnSimpan)) {
                     $no_inventaris = validTeks4(trim($_POST['no_inventaris']),30);
                     $gambar        = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
-                    if((strtolower(substr($gambar,-3))=="jpg")||(strtolower(substr($gambar,-4))=="jpeg")){
-                        if ((!empty($no_inventaris))&&(!empty($gambar))) {
-                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
-                            Tambah(" inventaris_gambar "," '$no_inventaris','$gambar'", " Gambar Inventaris " );
-                            echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_inventaris=$no_inventaris'>";                              
-                        }else if ((empty($no_inventaris))||(empty($gambar))){
-                            echo 'Semua field harus isi..!!!';
+                    if((strtolower(substr($gambar,-4))==".jpg")||(strtolower(substr($gambar,-5))==".jpeg")){
+                        if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
+                            if((mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
+                                if ((!empty($no_inventaris))&&(!empty($gambar))) {
+                                    if(Tambah(" inventaris_gambar "," '$no_inventaris','$gambar'", " Gambar Inventaris " )){
+                                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                    }
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_inventaris=$no_inventaris'>";                              
+                                }else if ((empty($no_inventaris))||(empty($gambar))){
+                                    echo 'Semua field harus isi..!!!';
+                                }
+                            }else{
+                                echo "Berkas harus JPEG/JPG";
+                            }
+                        }else{
+                            echo "Berkas harus JPEG/JPG";
                         }
                     }else{
                         echo "Berkas harus JPEG/JPG";

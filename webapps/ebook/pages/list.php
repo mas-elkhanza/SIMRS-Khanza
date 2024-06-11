@@ -150,12 +150,12 @@
                     </select>
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                 </td>
-                <td width="15%" >File Ebook</td>
+                <td width="15%" >File Ebook(PDF)</td>
                 <td width="35%">
                 <?php if($action == "UBAH"){ ?>
-                        :&nbsp;<input name="berkas" class="text" type="file" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200" accept="application/pdf">
+                        :&nbsp;<input name="berkas" class="text" type="file" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200" accept="application/pdf"/>
                 <?php }else{ ?>
-                        :&nbsp;<input name="berkas" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type="file" id="TxtIsi9" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200" accept="application/pdf">
+                        :&nbsp;<input name="berkas" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type=file id="TxtIsi9" class="inputbox" value="<?php echo isset($berkas)?$berkas:NULL;?>" size="40" maxlength="200" accept="application/pdf"/>
                         <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
                 <?php } ?>
                 </td>
@@ -178,10 +178,19 @@
                 if ((!empty($kode_ebook))&&(!empty($judul_ebook))&&(!empty($jml_halaman))&&(!empty($kode_penerbit))&&(!empty($kode_pengarang))&&(!empty($id_jenis))&&(!empty($id_kategori))&&(!empty($berkas))) {
                     switch($action) {
                         case "TAMBAH":
-                            if(strtolower(substr($berkas,-3))=="pdf"){
-                                move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
-                                Tambah(" perpustakaan_ebook "," '$kode_ebook', '$judul_ebook', '$jml_halaman', '$kode_penerbit', '$kode_pengarang', '$thn_terbit', '$id_kategori', '$id_jenis', '$berkas'", " Koleksi Ebook " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
+                            if(strtolower(substr($berkas,-4))==".pdf"){
+                                if($_FILES['berkas']['type'] == 'application/pdf'){
+                                    if(mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
+                                        if(Tambah(" perpustakaan_ebook "," '$kode_ebook', '$judul_ebook', '$jml_halaman', '$kode_penerbit', '$kode_pengarang', '$thn_terbit', '$id_kategori', '$id_jenis', '$berkas'", " Koleksi Ebook " )){
+                                            move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
+                                            echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
+                                        }
+                                    }else{
+                                        echo "Berkas harus pdf";
+                                    }
+                                }else{
+                                    echo "Berkas harus pdf";
+                                }
                             }else{
                                 echo "Berkas harus pdf";
                             }   
@@ -191,10 +200,23 @@
                                 $ph="";
                             }else if($berkas<>"pages/upload/"){
                                 $ph=",berkas='$berkas'";
-                                move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
                             }
-                            Ubah(" perpustakaan_ebook ","kode_ebook='$kode_ebook',judul_ebook='$judul_ebook',jml_halaman='$jml_halaman',kode_penerbit='$kode_penerbit',kode_pengarang='$kode_pengarang',thn_terbit='$thn_terbit',id_kategori='$id_kategori',id_jenis='$id_jenis' $ph where kode_ebook='$kode_ebook2'", " Koleksi Ebook " );
-                            echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
+                            if(strtolower(substr($berkas,-4))==".pdf"){
+                                if($_FILES['berkas']['type'] == 'application/pdf'){
+                                    if(mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
+                                        if(Ubah(" perpustakaan_ebook ","kode_ebook='$kode_ebook',judul_ebook='$judul_ebook',jml_halaman='$jml_halaman',kode_penerbit='$kode_penerbit',kode_pengarang='$kode_pengarang',thn_terbit='$thn_terbit',id_kategori='$id_kategori',id_jenis='$id_jenis' $ph where kode_ebook='$kode_ebook2'", " Koleksi Ebook " )){
+                                            move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
+                                            echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
+                                        }
+                                    }else{
+                                        echo "Berkas harus pdf";
+                                    }
+                                }else{
+                                    echo "Berkas harus pdf";
+                                }
+                            }else{
+                                echo "Berkas harus pdf";
+                            } 
                             break;
                     }                        
                 }else if ((empty($kode_ebook))||(empty($judul_ebook))||(empty($jml_halaman))||(empty($kode_penerbit))||(empty($kode_pengarang))||(empty($id_jenis))||(empty($id_kategori))||(empty($berkas))){

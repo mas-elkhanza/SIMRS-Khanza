@@ -63,10 +63,19 @@
                 if ((!empty($nik))&&(!empty($kode))&&(!empty($dokumen))) {
                     switch($action) {
                         case "TAMBAH":
-                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")||(strtolower(substr($dokumen,-3))=="pdf")){
-                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                                Tambah(" berkas_pegawai "," '$nik','$tgl_uploud','$kode','$dokumen'", " Berkas Pegawai " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori)."'>";
+                            if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-4))==".pdf")||(strtolower(substr($dokumen,-5))==".jpeg")){
+                                if(($_FILES['dokumen']['type'] == 'application/pdf')||($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
+                                    if((mime_content_type($_FILES['dokumen']['tmp_name'])== 'application/pdf')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
+                                        if(Tambah(" berkas_pegawai "," '$nik','$tgl_uploud','$kode','$dokumen'", " Berkas Pegawai " )){
+                                            move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                        }
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori)."'>";
+                                    }else{
+                                        echo "Berkas harus JPEG/JPG/PDF";
+                                    }
+                                }else{
+                                    echo "Berkas harus JPEG/JPG/PDF";
+                                } 
                             }else{
                                 echo "Berkas harus JPEG/JPG/PDF";
                             } 

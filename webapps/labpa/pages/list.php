@@ -60,13 +60,22 @@
                     $jam          = validTeks4(trim($_POST['jam']),14);
                     $kd_jenis_prw = validTeks4(trim($_POST['kd_jenis_prw']),20);
                     $gambar       = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
-                    if((strtolower(substr($gambar,-3))=="jpg")||(strtolower(substr($gambar,-4))=="jpeg")){
-                        if ((!empty($no_rawat))&&(!empty($kd_jenis_prw))&&(!empty($gambar))) {
-                            move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
-                            Tambah(" detail_periksa_labpa_gambar "," '$no_rawat','$kd_jenis_prw','$tanggal','$jam','$gambar'", " Gambar Lab PA " );
-                            echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw'>";                              
-                        }else if ((empty($no_rawat))||(empty($gambar))||(empty($kd_jenis_prw))){
-                            echo 'Semua field harus isi..!!!';
+                    if((strtolower(substr($gambar,-4))==".jpg")||(strtolower(substr($gambar,-5))==".jpeg")){
+                        if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
+                            if((mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
+                                if ((!empty($no_rawat))&&(!empty($kd_jenis_prw))&&(!empty($gambar))) {
+                                    if(Tambah(" detail_periksa_labpa_gambar "," '$no_rawat','$kd_jenis_prw','$tanggal','$jam','$gambar'", " Gambar Lab PA " )){
+                                        move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
+                                    }
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw'>";                              
+                                }else if ((empty($no_rawat))||(empty($gambar))||(empty($kd_jenis_prw))){
+                                    echo 'Semua field harus isi..!!!';
+                                }
+                            }else{
+                                echo "Berkas harus JPEG/JPG";
+                            }
+                        }else{
+                            echo "Berkas harus JPEG/JPG";
                         }
                     }else{
                         echo "Berkas harus JPEG/JPG";
