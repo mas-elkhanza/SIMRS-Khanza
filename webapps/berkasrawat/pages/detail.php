@@ -114,7 +114,7 @@
                 if (isset($BtnSimpan)) {
                     $no_rawat           = validTeks(trim($_POST['no_rawat']));
                     $kode               = validTeks(trim($_POST['kode']));
-                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
+                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".str_replace("/","",$no_rawat)."-".$_FILES['dokumen']['name']));
                     if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
                         move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                         if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
