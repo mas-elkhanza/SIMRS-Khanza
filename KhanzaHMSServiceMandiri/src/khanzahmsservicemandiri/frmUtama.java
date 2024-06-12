@@ -185,8 +185,10 @@ public class frmUtama extends javax.swing.JFrame {
                                 sftpChannel.cd(koneksiDB.SFTPMANDIRIPATHPEMBAYARANPIHAKKETIGA());
                                 rs.beforeFirst();
                                 while(rs.next()){
+                                    TeksArea.append("Memeriksa file baru "+rs.getString("nomor_pembayaran")+"\n");
                                     path = sftpChannel.ls(rs.getString("nomor_pembayaran")+".txt").toString();
                                     if (!path.contains(rs.getString("nomor_pembayaran")+".txt")) {
+                                        TeksArea.append("File baru "+rs.getString("nomor_pembayaran")+" tidak ditemukan, dilakukan proses generate file\n");
                                         System.out.println("File doesn't exist.");
                                     } else{
                                         System.out.println("File already exist.");
