@@ -10,7 +10,7 @@
     }
 
     function getUrlWS() {
-        $UrlWS = "http://117.102.75.166:8185/E-Klaim/ws.php";
+        $UrlWS = "http://localhost/E-Klaim/ws.php";
         return $UrlWS;
     }
     

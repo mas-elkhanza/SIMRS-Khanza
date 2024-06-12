@@ -142,10 +142,19 @@
                 if ((!empty($id))&&(!empty($pendidikan))&&(!empty($sekolah))) {
                     switch($action) {
                         case "TAMBAH":
-                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")){
-                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                                Tambah(" riwayat_pendidikan "," '$id','$pendidikan','$sekolah','$jurusan','$thn_lulus','$kepala','$pendanaan','$keterangan','$status','$dokumen'", " Riwayat Pendidikan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPendidikan&action=TAMBAH&id=$id'>";
+                            if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-5))==".jpeg")){
+                                if(($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
+                                    if((mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
+                                        if(Tambah(" riwayat_pendidikan "," '$id','$pendidikan','$sekolah','$jurusan','$thn_lulus','$kepala','$pendanaan','$keterangan','$status','$dokumen'", " Riwayat Pendidikan " )){
+                                            move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                        }
+                                        echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPendidikan&action=TAMBAH&id=$id'>";
+                                    }else{
+                                        echo "Berkas harus JPEG/JPG";
+                                    } 
+                                }else{
+                                    echo "Berkas harus JPEG/JPG";
+                                } 
                             }else{
                                 echo "Berkas harus JPEG/JPG";
                             } 
