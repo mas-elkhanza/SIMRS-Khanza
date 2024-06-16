@@ -305,7 +305,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
                "pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' "+
                (TCari.getText().equals("")?"":"and (pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan like '%"+TCari.getText().trim()+"%' "+
                "or pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.status_transaksi like '%"+TCari.getText().trim()+"%' "+
-               "or pembayaran_pihak_ke3_bankmandiri.nomor_tagihan like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.kode_metode like '%"+TCari.getText().trim()+"%' "+
+               "or pembayaran_pihak_ke3_bankmandiri.nomor_tagihan like '%"+TCari.getText().trim()+"%' "+
                "or metode_pembayaran_bankmandiri.nama_metode like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.kode_transaksi like '%"+TCari.getText().trim()+"%' or "+
                "bank_tujuan_transfer_bankmandiri.nama_bank like '%"+TCari.getText().trim()+"%' or pembayaran_pihak_ke3_bankmandiri.asal_transaksi like '%"+TCari.getText().trim()+"%') ")+
                "order by pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran",param);
@@ -414,7 +414,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    "inner join bank_tujuan_transfer_bankmandiri on bank_tujuan_transfer_bankmandiri.kode_bank=pembayaran_pihak_ke3_bankmandiri.kode_bank where pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran between ? and ? "+
                    (TCari.getText().equals("")?"":"and (pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran like ? or pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan like ? or "+
                    "pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan like ? or pembayaran_pihak_ke3_bankmandiri.status_transaksi like ? or pembayaran_pihak_ke3_bankmandiri.nomor_tagihan like ? or "+
-                   "pembayaran_pihak_ke3_bankmandiri.kode_metode like ? or metode_pembayaran_bankmandiri.nama_metode like ? or pembayaran_pihak_ke3_bankmandiri.kode_transaksi like ? or "+
+                   "metode_pembayaran_bankmandiri.nama_metode like ? or pembayaran_pihak_ke3_bankmandiri.kode_transaksi like ? or "+
                    "bank_tujuan_transfer_bankmandiri.nama_bank like ? or pembayaran_pihak_ke3_bankmandiri.asal_transaksi like ?) ")+"order by pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
@@ -429,7 +429,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
                     ps.setString(10,"%"+TCari.getText().trim()+"%");
                     ps.setString(11,"%"+TCari.getText().trim()+"%");
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();

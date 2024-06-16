@@ -16,6 +16,8 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.Timer;
 import com.jcraft.jsch.*;
+import fungsi.sekuel;
+import java.io.FileWriter;
 import java.util.Properties;
 
 /**
@@ -26,13 +28,15 @@ public class frmUtama extends javax.swing.JFrame {
     private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private File f;
     private JSch jsch;
     private Session session;
     private Channel channel;
     private ChannelSftp sftpChannel;
     private String path;
     private Properties config;
+    private File file;
+    private FileWriter fileWriter;
+    private sekuel Sequel=new sekuel();
 
     /**
      * Creates new form frmUtama
@@ -166,7 +170,7 @@ public class frmUtama extends javax.swing.JFrame {
                             "select pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,pembayaran_pihak_ke3_bankmandiri.no_rekening_sumber,"+
                             "pembayaran_pihak_ke3_bankmandiri.no_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.atas_nama_rekening_tujuan,pembayaran_pihak_ke3_bankmandiri.kota_atas_nama_rekening_tujuan,"+
                             "pembayaran_pihak_ke3_bankmandiri.nominal_pembayaran,pembayaran_pihak_ke3_bankmandiri.nomor_tagihan,metode_pembayaran_bankmandiri.nama_metode,bank_tujuan_transfer_bankmandiri.nama_bank,"+
-                            "pembayaran_pihak_ke3_bankmandiri.kode_transaksi,pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi "+
+                            "pembayaran_pihak_ke3_bankmandiri.kode_transaksi,pembayaran_pihak_ke3_bankmandiri.asal_transaksi,pembayaran_pihak_ke3_bankmandiri.status_transaksi,pembayaran_pihak_ke3_bankmandiri.kode_metode "+
                             "from pembayaran_pihak_ke3_bankmandiri inner join metode_pembayaran_bankmandiri on metode_pembayaran_bankmandiri.kode_metode=pembayaran_pihak_ke3_bankmandiri.kode_metode "+
                             "inner join bank_tujuan_transfer_bankmandiri on bank_tujuan_transfer_bankmandiri.kode_bank=pembayaran_pihak_ke3_bankmandiri.kode_bank where pembayaran_pihak_ke3_bankmandiri.status_transaksi='Baru'");
                         try {
@@ -188,10 +192,36 @@ public class frmUtama extends javax.swing.JFrame {
                                     TeksArea.append("Memeriksa file baru "+rs.getString("nomor_pembayaran")+"\n");
                                     path = sftpChannel.ls(rs.getString("nomor_pembayaran")+".txt").toString();
                                     if (!path.contains(rs.getString("nomor_pembayaran")+".txt")) {
-                                        TeksArea.append("File baru "+rs.getString("nomor_pembayaran")+" tidak ditemukan, dilakukan proses generate file\n");
-                                        System.out.println("File doesn't exist.");
+                                        TeksArea.append("File "+rs.getString("nomor_pembayaran")+".txt tidak ditemukan, dilakukan proses generate file\n");
+                                        file=new File("./cache/"+rs.getString("nomor_pembayaran")+".txt");
+                                        file.createNewFile();
+                                        fileWriter = new FileWriter(file);
+                                        fileWriter.write(
+                                            "P;"+rs.getString("tgl_pembayaran").substring(0,10).replaceAll("-","")+";"+rs.getString("no_rekening_sumber")+";1;"+rs.getString("nominal_pembayaran")+"\r\n"+
+                                            rs.getString("no_rekening_tujuan")+";"+rs.getString("atas_nama_rekening_tujuan")+";"+rs.getString("kota_atas_nama_rekening_tujuan")+";;;IDR;"+rs.getString("nominal_pembayaran")+";"+rs.getString("nomor_tagihan")+";"+rs.getString("nomor_pembayaran")+";"+rs.getString("kode_metode")+";"+rs.getString("kode_transaksi")+";"+rs.getString("nama_bank")+";;;;;;;;;;;;;;;;;;;;;;;;;;;;;EPD1;;;"
+                                        );
+                                        fileWriter.flush();
+                                        fileWriter.close();
+                                        TeksArea.append("Proses uploud "+rs.getString("nomor_pembayaran")+".txt ke server tujuan\n");
+                                        sftpChannel.put("./cache/"+rs.getString("nomor_pembayaran")+".txt",koneksiDB.SFTPMANDIRIPATHPEMBAYARANPIHAKKETIGA());
+                                        file.delete();
                                     } else{
-                                        System.out.println("File already exist.");
+                                        TeksArea.append("File "+rs.getString("nomor_pembayaran")+".txt ditemukan, dilakukan proses validasi transaksi\n");
+                                        path = sftpChannel.ls(rs.getString("nomor_pembayaran")+".ack").toString();
+                                        if (path.contains(rs.getString("nomor_pembayaran")+".ack")) {
+                                            TeksArea.append("File baru "+rs.getString("nomor_pembayaran")+".ack ditemukan, update status data menjadi Menunggu Persetujuan\n");
+                                            Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Menunggu Persetujuan'",1,new String[]{
+                                                rs.getString("nomor_pembayaran")
+                                            });
+                                        }else{
+                                            path = sftpChannel.ls(rs.getString("nomor_pembayaran")+".nack").toString();
+                                            if (path.contains(rs.getString("nomor_pembayaran")+".nack")) {
+                                                TeksArea.append("File baru "+rs.getString("nomor_pembayaran")+".nack ditemukan, update status data menjadi Gagal Terkirim\n");
+                                                Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Gagal Terkirim'",1,new String[]{
+                                                    rs.getString("nomor_pembayaran")
+                                                });
+                                            }
+                                        }
                                     }
                                 }
                                 sftpChannel.disconnect();
