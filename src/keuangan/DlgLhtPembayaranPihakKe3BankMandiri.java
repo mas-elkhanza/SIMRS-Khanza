@@ -2,6 +2,8 @@
 
 package keuangan;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -11,11 +13,14 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -34,6 +39,12 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
     private PreparedStatement ps;
     private ResultSet rs;
     private double total=0;
+    private Scanner sc;
+    private StringBuffer data;
+    private String f,json="";
+    private javax.swing.JFileChooser jfc = new JFileChooser();   
+    private JsonNode root;
+    private ObjectMapper mapper = new ObjectMapper();
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -123,6 +134,8 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
     private void initComponents() {
 
         TKd = new widget.TextBox();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppMT940 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -142,6 +155,24 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppMT940.setBackground(new java.awt.Color(255, 255, 254));
+        ppMT940.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppMT940.setForeground(new java.awt.Color(50, 50, 50));
+        ppMT940.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppMT940.setText("Eksekusi File MT940");
+        ppMT940.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppMT940.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppMT940.setName("ppMT940"); // NOI18N
+        ppMT940.setPreferredSize(new java.awt.Dimension(160, 26));
+        ppMT940.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppMT940ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppMT940);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -150,9 +181,11 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
@@ -367,6 +400,54 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
+    private void ppMT940ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppMT940ActionPerformed
+        jfc.setAcceptAllFileFilterUsed(false);
+        if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            f = jfc.getSelectedFile().toString();
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {
+                sc = new Scanner(new File(f));  
+                sc.useDelimiter(":");
+                data=new StringBuffer();
+                json="";
+                while (sc.hasNext()){  
+                    json=sc.nextLine();
+                    if(json.contains(":61:")||json.contains(":86:")){
+                        data.append(json+";");
+                    }
+                }   
+                json="{"+data.toString().replaceAll(";:86:","\",\"referensi\":\"").replaceAll(";:61:","\"},{\"transaksi\":\"").replaceAll(":61:","\"transaksi\":\"")+"}";
+                json="{\"data\":["+json.substring(0,json.length()-2)+"\"}]}";
+                sc.close();   
+                System.out.println(json);
+                if(!json.equals("")){
+                    root = mapper.readTree(json);
+                    if(root.path("data").isArray()){
+                        for(JsonNode list:root.path("data")){
+                            if(list.path("transaksi").asText().substring(6,7).equals("D")){
+                                System.out.println("Melakukan pemrosesan \"Terkonfirmasi\" transaksi "+list.path("referensi").asText());
+                                Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Terkonfirmasi'",1,new String[]{
+                                    list.path("referensi").asText()
+                                });
+                            }else if(list.path("transaksi").asText().substring(6,7).equals("R")){
+                                if(list.path("transaksi").asText().substring(7,8).equals("D")){
+                                    System.out.println("Melakukan pemrosesan \"Pembayaran Gagal\" transaksi "+list.path("referensi").asText());
+                                    Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Pembayaran Gagal'",1,new String[]{
+                                        list.path("referensi").asText()
+                                    });
+                                }
+                            }
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null,"Proses eksekusi file MT940 sudah selesai, silahkan cek kembali daftar transaksi..");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ppMT940ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -395,10 +476,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
     private widget.panelisi panelGlass5;
+    private javax.swing.JMenuItem ppMT940;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 

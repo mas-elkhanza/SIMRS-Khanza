@@ -47,7 +47,9 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private int row=0,i;
-    private String koderekening="",norawatbayi="";
+    private Scanner sc;
+    private StringBuffer data;
+    private String koderekening="",norawatbayi="",f;
     private Jurnal jur=new Jurnal();
     private String status="",tampilkan_administrasi_di_billingranap="",tampilkan_ppnobat_ralan="",tampilkan_ppnobat_ranap="",
                    Piutang_BPJS_RVP="",Kerugian_Klaim_BPJS_RVP="",Lebih_Bayar_Klaim_BPJS_RVP="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",
@@ -1956,12 +1958,12 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         jfc.setAcceptAllFileFilterUsed(false);
         jfc.addChoosableFileFilter(excelFilter);
         if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            String f = jfc.getSelectedFile().toString();
+            f = jfc.getSelectedFile().toString();
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             try {
-                Scanner sc = new Scanner(new File(f));  
+                sc = new Scanner(new File(f));  
                 sc.useDelimiter(";");
-                StringBuffer data=new StringBuffer();
+                data=new StringBuffer();
                 while (sc.hasNext()){  
                     data.append(sc.nextLine()+"},{\"nosep\":\"");
                 }   
