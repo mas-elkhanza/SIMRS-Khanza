@@ -2450,7 +2450,6 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
                 }
             }
         }
-    
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
