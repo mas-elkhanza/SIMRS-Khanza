@@ -18,10 +18,10 @@
     if(!empty($url[0])){
         if($method == 'GET'){
             if ((!empty($header['x-username'])) && (!empty($header['x-password']))) {
-                $hash_user = hash_pass($header['x-username'], 12);
-                $hash_pass = hash_pass($header['x-password'], 12);
+                $hash_user = hash_pass(validTeks4($header['x-username'],20), 12);
+                $hash_pass = hash_pass(validTeks4($header['x-password'],20), 12);
                 if($url[0]=="auth"){
-                    $response=createtoken($header['x-username'],$header['x-password']);
+                    $response=createtoken(validTeks4($header['x-username'],20),validTeks4($header['x-password'],20));
                 }else{
                     $response = array(
                         'metadata' => array(
@@ -42,8 +42,8 @@
             }
         }else if ($method == 'POST') {
             if ((!empty($header['x-username'])) && (!empty($header['x-token']))) {
-                $hash_user = hash_pass($header['x-username'], 12);
-                if(!(USERNAME==$header['x-username'])){
+                $hash_user = hash_pass(validTeks4($header['x-username'],20), 12);
+                if(!(USERNAME==validTeks4($header['x-username'],20))){
                     $response = array(
                         'metadata' => array(
                             'message' => 'Username salah..!!',
@@ -59,7 +59,7 @@
                         )
                     );
                     http_response_code(201);
-                }else if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                }else if((!empty($header['x-token'])) && (USERNAME==validTeks4($header['x-username'],20)) && (cektoken($header['x-token'])=='true')){
                     $konten = trim(file_get_contents("php://input"));
                     $decode = json_decode($konten, true);
                     switch ($url[0]) {

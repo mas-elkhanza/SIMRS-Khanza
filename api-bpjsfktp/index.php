@@ -15,12 +15,12 @@
     $method = $_SERVER['REQUEST_METHOD'];
     
     if ($method == 'GET') {
-        $hash_user = hash_pass($header['x-username'], 12);
+        $hash_user = hash_pass(validTeks4($header['x-username'],20), 12);
         switch ($url[0]) {
             case "auth":
-                $hash_pass = hash_pass($header['x-password'], 12);
+                $hash_pass = hash_pass(validTeks4($header['x-username'],20), 12);
                 if((!empty($header['x-username'])) && (!empty($header['x-password']))){
-                    $response=createtoken($header['x-username'],$header['x-password']);
+                    $response=createtoken(validTeks4($header['x-username'],20),validTeks4($header['x-password'],20));
                 }else{
                     $response = array(
                         'metadata' => array(
@@ -33,7 +33,7 @@
                 break;
             case "antrean":
                     if (!empty($url[1]) and $url[1] == "status") {
-                        if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                        if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==validTeks4($header['x-username'],20)) && (cektoken($header['x-token'])=='true')){
                             $kodepolipcare=isset($url[2])?$url[2]:null;
                             $tanggaldaftar=isset($url[3])?$url[3]:null;
                             if(strpos($kodepolipcare,"'")||strpos($kodepolipcare,"\\")){
@@ -128,7 +128,7 @@
                     }
 
                     if (!empty($url[1]) and $url[1] == "sisapeserta") {
-                        if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                        if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==validTeks4($header['x-username'],20)) && (cektoken($header['x-token'])=='true')){
                             $no_peserta=isset($url[2])?$url[2]:null;
                             $kodepolipcare=isset($url[3])?$url[3]:null;
                             $tanggaldaftar=isset($url[4])?$url[4]:null;
@@ -243,13 +243,13 @@
     }
   
     if (($method == 'POST') && (!empty($header['x-username'])) && (!empty($header['x-token']))) {
-        $hash_user = hash_pass($header['x-username'], 12);
+        $hash_user = hash_pass(validTeks4($header['x-username'],20), 12);
         switch ($url[0]) {
             case "antrean":
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
                 
-                if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==validTeks4($header['x-username'],20)) && (cektoken($header['x-token'])=='true')){
                     if (empty($decode['nomorkartu'])){ 
                         $response = array(
                             'metadata' => array(
@@ -570,7 +570,7 @@
             case "peserta":
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==validTeks4($header['x-username'],20)) && (cektoken($header['x-token'])=='true')){
                     if (empty($decode['nomorkartu'])){ 
                         $response = array(
                             'metadata' => array(
@@ -997,14 +997,14 @@
     }
     
     if (($method == 'PUT') && (!empty($header['x-username'])) && (!empty($header['x-token']))) {
-        $hash_user = hash_pass($header['x-username'], 12);
+        $hash_user = hash_pass(validTeks4($header['x-username'],20), 12);
         switch ($url[0]) {
             case "antrean":
                 if (!empty($url[1]) and $url[1] == "batal") {
                     $konten = trim(file_get_contents("php://input"));
                     $decode = json_decode($konten, true);
 
-                    if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
+                    if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==validTeks4($header['x-username'],20)) && (cektoken($header['x-token'])=='true')){
                         if (empty($decode['nomorkartu'])){ 
                             $response = array(
                                 'metadata' => array(

@@ -76,7 +76,7 @@
                         );
                         http_response_code(401);
                     }else{
-                        if(($decode['grant_type']=="password")&&($decode['username']==USERNAME)&&($decode['password']==PASSWORD)&&($decode['client_id']==CLIENTID)&&($decode['client_secret']==CLIENTSECRET)){
+                        if(($decode['grant_type']=="password")&&(validTeks4($decode['username'],20)==USERNAME)&&(validTeks4($decode['password'],20)==PASSWORD)&&(validTeks4($decode['client_id'],20)==CLIENTID)&&(validTeks4($decode['client_secret'],20)==CLIENTSECRET)){
                             $response = array(
                                 'access_token' => createtoken(),
                                 'token_type' => 'bearer',

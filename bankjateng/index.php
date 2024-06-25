@@ -26,7 +26,7 @@
                     $konten 	= trim(file_get_contents("php://input"));
                     $decode 	= json_decode($konten, true);
                     $response = array();
-                    if (($header['X-User']==$bpj['username']) && ($header['X-Pass']==$bpj['password'])) {
+                    if ((validTeks4($header['X-User'],20)==$bpj['username']) && (validTeks4($header['X-Pass'],20)==$bpj['password'])) {
                         $response = array(
                             'response' => array(
                                 'token' => $token
