@@ -468,6 +468,8 @@ public class frmUtama extends javax.swing.JFrame {
                                                     }
                                                 }
                                             }
+                                        }else{
+                                            TeksArea.append("Mapping poli/dokter tidak ditemukan...\n");
                                         }
                                     }
                                 } catch (Exception ex) {
