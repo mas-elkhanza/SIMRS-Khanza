@@ -337,13 +337,12 @@ public final class PCareCekReferensiAlergi extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.ComboBox Jenis;
+    public widget.ComboBox Jenis;
     private widget.ScrollPane Scroll;
     private widget.TextBox diagnosa;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
-    private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.panelisi panelGlass6;
     private widget.Table tbKamar;

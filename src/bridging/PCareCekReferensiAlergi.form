@@ -121,6 +121,9 @@
                   <Dimension value="[115, 23]"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="widget.Label" name="jLabel16">
               <Properties>

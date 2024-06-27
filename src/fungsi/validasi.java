@@ -1054,6 +1054,14 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
+    
+    public void pindah(java.awt.event.KeyEvent evt,JButton kiri,JCheckBox kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
 
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JComboBox kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
