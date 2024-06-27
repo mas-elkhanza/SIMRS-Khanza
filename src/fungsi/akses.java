@@ -230,7 +230,7 @@ public final class akses {
             balance_cairan=false,catatan_observasi_chbp=false,catatan_observasi_induksi_persalinan=false,skp_kategori_penilaian=false,skp_kriteria_penilaian=false,
             skp_penilaian=false,referensi_poli_mobilejknfktp=false,referensi_dokter_mobilejknfktp=false,skp_rekapitulasi_penilaian=false,pembayaran_pihak_ke3_bankmandiri=false,
             metode_pembayaran_bankmandiri=false,bank_tujuan_transfer_bankmandiri=false,kodetransaksi_tujuan_transfer_bankmandiri=false,konsultasi_medik=false,jawaban_konsultasi_medik=false,
-            pcare_cek_alergi=false;
+            pcare_cek_alergi=false,pcare_cek_prognosa=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1301,6 +1301,7 @@ public final class akses {
                         akses.konsultasi_medik=true;
                         akses.jawaban_konsultasi_medik=true;
                         akses.pcare_cek_alergi=true;
+                        akses.pcare_cek_prognosa=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2355,6 +2356,7 @@ public final class akses {
                         akses.konsultasi_medik=rs2.getBoolean("konsultasi_medik");
                         akses.jawaban_konsultasi_medik=rs2.getBoolean("jawaban_konsultasi_medik");
                         akses.pcare_cek_alergi=rs2.getBoolean("pcare_cek_alergi");
+                        akses.pcare_cek_prognosa=rs2.getBoolean("pcare_cek_prognosa");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3407,6 +3409,7 @@ public final class akses {
                         akses.konsultasi_medik=false;
                         akses.jawaban_konsultasi_medik=false;
                         akses.pcare_cek_alergi=false;
+                        akses.pcare_cek_prognosa=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4482,6 +4485,7 @@ public final class akses {
         akses.konsultasi_medik=false;
         akses.jawaban_konsultasi_medik=false;
         akses.pcare_cek_alergi=false;
+        akses.pcare_cek_prognosa=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5573,4 +5577,5 @@ public final class akses {
     public static boolean getkonsultasi_medik(){return akses.konsultasi_medik;}
     public static boolean getjawaban_konsultasi_medik(){return akses.jawaban_konsultasi_medik;}
     public static boolean getpcare_cek_alergi(){return akses.pcare_cek_alergi;}
+    public static boolean getpcare_cek_prognosa(){return akses.pcare_cek_prognosa;}
 }   
