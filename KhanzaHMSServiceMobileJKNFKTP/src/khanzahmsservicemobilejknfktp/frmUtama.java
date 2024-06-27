@@ -302,8 +302,8 @@ public class frmUtama extends javax.swing.JFrame {
                                                     headers.add("user_key",koneksiDB.USERKEYMOBILEJKNFKTP());
                                                     requestJson ="{" +
                                                                     "\"nomorkartu\": \"\"," +
-                                                                    "\"nik\": \"\"," +
-                                                                    "\"nohp\": \"\"," +
+                                                                    "\"nik\": \""+rs.getString("no_ktp")+"\"," +
+                                                                    "\"nohp\": \""+rs.getString("no_tlp")+"\"," +
                                                                     "\"kodepoli\": \""+kodepoli+"\"," +
                                                                     "\"namapoli\": \""+rs.getString("nm_poli")+"\"," +
                                                                     "\"norm\": \""+rs.getString("no_rkm_medis")+"\"," +
@@ -471,6 +471,8 @@ public class frmUtama extends javax.swing.JFrame {
                                         }else{
                                             TeksArea.append("Mapping poli/dokter tidak ditemukan...\n");
                                         }
+                                    }else{
+                                        TeksArea.append("Jadwal poli/dokter tidak ditemukan...\n");
                                     }
                                 } catch (Exception ex) {
                                     System.out.println("Notif : "+ex);
