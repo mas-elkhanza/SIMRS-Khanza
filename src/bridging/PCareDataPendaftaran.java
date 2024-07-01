@@ -6585,7 +6585,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi,"+
                         "pemeriksaan_ralan.berat,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan,pemeriksaan_ralan.lingkar_perut,"+
-                        "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.alergi from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? "+
+                        "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.alergi,pemeriksaan_ralan.suhu_tubuh from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? "+
                         "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat desc limit 1");
                 try{
                     ps.setString(1,norwt);
@@ -6614,6 +6614,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         BeratBadan.setText(rs.getString("berat"));
                         Keluhan.setText(rs.getString("keluhan"));
                         NmSadar.setText(rs.getString("kesadaran"));
+                        TSuhu.setText(rs.getString("suhu_tubuh"));
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){
@@ -6719,6 +6720,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         NmAlergiUdara.setText("Tidak Ada");
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
+                        TSuhu.setText("0");
                     }
                 }catch(Exception ex){
                     System.out.println(ex);
@@ -6767,7 +6769,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 
                 ps=koneksi.prepareStatement(
                         "select pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,"+
-                        "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.alergi from pemeriksaan_ranap "+
+                        "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.alergi,pemeriksaan_ranap.suhu_tubuh from pemeriksaan_ranap "+
                         "where pemeriksaan_ranap.no_rawat=? order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat desc limit 1");
                 try{
                     ps.setString(1,norwt);
@@ -6796,6 +6798,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         LingkarPerut.setText("40");
                         Keluhan.setText(rs.getString("keluhan"));
                         NmSadar.setText(rs.getString("kesadaran"));
+                        TSuhu.setText(rs.getString("suhu_tubuh"));
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){
@@ -6901,6 +6904,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         NmAlergiUdara.setText("Tidak Ada");
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
+                        TSuhu.setText("0");
                     }
                 }catch(Exception ex){
                     System.out.println(ex);
@@ -7082,7 +7086,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi,"+
                         "pemeriksaan_ralan.berat,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan,pemeriksaan_ralan.lingkar_perut,"+
-                        "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.alergi from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? "+
+                        "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.alergi,pemeriksaan_ralan.suhu_tubuh from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? "+
                         "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat desc limit 1");
                 try{
                     ps.setString(1,norwt);
@@ -7111,6 +7115,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         LingkarPerut.setText(rs.getString("lingkar_perut"));
                         Keluhan.setText(rs.getString("keluhan"));
                         NmSadar.setText(rs.getString("kesadaran"));
+                        TSuhu.setText(rs.getString("suhu_tubuh"));
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){
@@ -7136,6 +7141,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(rs.getString("penilaian").toLowerCase().equals("dubia ad malam")||rs.getString("penilaian").toLowerCase().equals("tidak tentu")||rs.getString("penilaian").toLowerCase().equals("ragu")){
                             KdPrognosa.setText("05");
                             NmPrognosa.setText("Dubia Ad Malam (Tidak tentu/Ragu-ragu, Cenderung Sembuh/Baik)");
+                        }else{
+                            KdPrognosa.setText("02");
+                            NmPrognosa.setText("Bonam (Baik)");
                         }
                         
                         if(rs.getString("alergi").toLowerCase().contains("seafood")){
@@ -7216,6 +7224,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         NmAlergiUdara.setText("Tidak Ada");
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
+                        TSuhu.setText("0");
                     }
                 }catch(Exception ex){
                     System.out.println(ex);
@@ -7265,7 +7274,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi,"+
                         "pemeriksaan_ranap.berat,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.penilaian,"+
-                        "pemeriksaan_ranap.alergi from pemeriksaan_ranap "+
+                        "pemeriksaan_ranap.alergi,pemeriksaan_ranap.suhu_tubuh from pemeriksaan_ranap "+
                         "where pemeriksaan_ranap.no_rawat=? order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat desc limit 1");
                 try{
                     ps.setString(1,norwt);
@@ -7294,6 +7303,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         LingkarPerut.setText("40");
                         Keluhan.setText(rs.getString("keluhan"));
                         NmSadar.setText(rs.getString("kesadaran"));
+                        TSuhu.setText("suhu_tubuh");
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){
@@ -7319,6 +7329,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(rs.getString("penilaian").toLowerCase().equals("dubia ad malam")||rs.getString("penilaian").toLowerCase().equals("tidak tentu")||rs.getString("penilaian").toLowerCase().equals("ragu")){
                             KdPrognosa.setText("05");
                             NmPrognosa.setText("Dubia Ad Malam (Tidak tentu/Ragu-ragu, Cenderung Sembuh/Baik)");
+                        }else{
+                            KdPrognosa.setText("02");
+                            NmPrognosa.setText("Bonam (Baik)");
                         }
                         
                         if(rs.getString("alergi").toLowerCase().contains("seafood")){
@@ -7399,6 +7412,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         NmAlergiUdara.setText("Tidak Ada");
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
+                        TSuhu.setText("0");
                     }
                 }catch(Exception ex){
                     System.out.println(ex);
@@ -7490,6 +7504,16 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             NmDiagnosa2.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),27).toString());
             KdDiagnosa3.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),28).toString());
             NmDiagnosa3.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),29).toString());
+            KdAlergiMakanan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),30).toString());
+            NmAlergiMakanan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),31).toString());
+            KdAlergiUdara.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),32).toString());
+            NmAlergiUdara.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),33).toString());
+            KdAlergiObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),34).toString());
+            NmAlergiObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),35).toString());
+            KdPrognosa.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),36).toString());
+            NmPrognosa.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),37).toString());
+            TerapiNonObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),38).toString());
+            BMHP.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),39).toString());
             Valid.SetTgl(TanggalPulang,tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),21).toString());
             TglLahir.setText(Sequel.cariIsi("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
         }
@@ -7536,6 +7560,16 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             KdTACC.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),37).toString());
             NmTACC.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),38).toString());
             AlasanTACC.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),39).toString());
+            KdAlergiMakanan.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),40).toString());
+            NmAlergiMakanan.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),41).toString());
+            KdAlergiUdara.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),42).toString());
+            NmAlergiUdara.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),43).toString());
+            KdAlergiObat.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),44).toString());
+            NmAlergiObat.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),45).toString());
+            KdPrognosa.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),46).toString());
+            NmPrognosa.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),47).toString());
+            TerapiNonObat.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),48).toString());
+            BMHP.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),49).toString());
             Valid.SetTgl(TanggalPulang,tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),21).toString());
             Valid.SetTgl(TanggalEstRujuk,tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),30).toString());
             TglLahir.setText(Sequel.cariIsi("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
