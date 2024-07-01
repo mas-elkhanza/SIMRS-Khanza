@@ -43,7 +43,7 @@ import org.springframework.http.MediaType;
  * @author dosen
  */
 public final class PCareCekReferensiAlergi extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    public final DefaultTableModel tabMode;
     private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
