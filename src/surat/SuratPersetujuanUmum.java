@@ -595,7 +595,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         FormInput.add(jLabel10);
         jLabel10.setBounds(0, 90, 85, 23);
 
-        BertindakAtas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Saudara", "Keponakan", "Cucu", "Kakek", "Nenek", "Kakak", "Adik", "Diri Sendiri" }));
+        BertindakAtas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Saudara", "Keponakan", "Cucu", "Kakek", "Nenek", "Kakak", "Adik", "Ibu", "Diri Sendiri" }));
         BertindakAtas.setName("BertindakAtas"); // NOI18N
         BertindakAtas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
