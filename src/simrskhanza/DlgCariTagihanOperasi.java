@@ -28,6 +28,7 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import laporan.DlgBerkasRawat;
 import rekammedis.MasterCariTemplateLaporanOperasi;
+import java.util.Date;
 
 public class DlgCariTagihanOperasi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -3508,6 +3509,11 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     
     public void setPasien(String pasien){
         NoRawat.setText(pasien);
+    }
+    
+    public void setPasien(String pasien, Date tanggal){
+        NoRawat.setText(pasien);
+        Tgl1.setDate(tanggal);
     }
  
 }

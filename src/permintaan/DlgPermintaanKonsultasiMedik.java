@@ -45,7 +45,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String finger="";
+    private String finger="",sql="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
     
@@ -58,9 +58,9 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Pertanyaan","Metode",
-                "Penanya","Status Penanya","No.Telp Penanya","Jenis Pertanyaan","Ket.Jenis Pertanyaan","Uraian Pertanyaan","Jawaban Pertanyaan",
-                "Referensi Jawaban","Penyampaian","Metode Jawaban","Tanggal Jawaban","NIP","Nama Apoteker"
+                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Konsultasi","Permintaan",
+                "Kode Dokter Konsul","Nama Dokter Konsul","Kode Dokter Dikonsuli","Nama Dokter Dikonsuli","Diagnosa Kerja Konsul",
+                "Uraian Konsultasi","Tanggal Jawaban","Diagnosa Kerja Dikonsuli","Jawaban Konsultasi"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,7 +70,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 23; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -108,16 +108,6 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
                 column.setPreferredWidth(220);
             }else if(i==17){
                 column.setPreferredWidth(220);
-            }else if(i==18){
-                column.setPreferredWidth(92);
-            }else if(i==19){
-                column.setPreferredWidth(92);
-            }else if(i==20){
-                column.setPreferredWidth(115);
-            }else if(i==21){
-                column.setPreferredWidth(90);
-            }else if(i==22){
-                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -287,6 +277,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         jLabel31 = new widget.Label();
         NoPermintaan1 = new widget.TextBox();
         jLabel32 = new widget.Label();
+        jLabel10 = new widget.Label();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         ScrollMenu = new widget.ScrollPane();
@@ -371,12 +362,12 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(NoPermintaanJawaban);
-        NoPermintaanJawaban.setBounds(99, 20, 130, 23);
+        NoPermintaanJawaban.setBounds(99, 20, 109, 23);
 
         label1.setText("Tanggal :");
         label1.setName("label1"); // NOI18N
         internalFrame2.add(label1);
-        label1.setBounds(230, 20, 55, 23);
+        label1.setBounds(210, 20, 55, 23);
 
         TanggalJawab.setForeground(new java.awt.Color(50, 70, 50));
         TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2024 14:24:09" }));
@@ -389,7 +380,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(TanggalJawab);
-        TanggalJawab.setBounds(289, 20, 130, 23);
+        TanggalJawab.setBounds(269, 20, 130, 23);
 
         jLabel42.setText("Jawaban :");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -427,12 +418,12 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(JawabanDiagnosaKerja);
-        JawabanDiagnosaKerja.setBounds(515, 20, 205, 23);
+        JawabanDiagnosaKerja.setBounds(495, 20, 225, 23);
 
         label3.setText("Diagnosa Kerja :");
         label3.setName("label3"); // NOI18N
         internalFrame2.add(label3);
-        label3.setBounds(421, 20, 90, 23);
+        label3.setBounds(401, 20, 90, 23);
 
         WindowInput.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
 
@@ -766,7 +757,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         FormInput.add(NoRM);
         NoRM.setBounds(200, 10, 86, 23);
 
-        jLabel5.setText("No.Rawat :");
+        jLabel5.setText(":");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
         jLabel5.setBounds(0, 10, 69, 23);
@@ -784,12 +775,12 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoPermintaan);
-        NoPermintaan.setBounds(498, 40, 120, 23);
+        NoPermintaan.setBounds(509, 40, 109, 23);
 
         jLabel9.setText("No.Permintaan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(404, 40, 90, 23);
+        jLabel9.setBounds(415, 40, 90, 23);
 
         TanggalPermintaan.setForeground(new java.awt.Color(50, 70, 50));
         TanggalPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2024 14:24:09" }));
@@ -807,7 +798,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         jLabel39.setText("Permintaan :");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(198, 40, 80, 23);
+        jLabel39.setBounds(199, 40, 77, 23);
 
         Metode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Konsultasi", "Evaluasi", "Rawat Bersama", "Alih Rawat", "Pre/Post Operasi" }));
         Metode.setName("Metode"); // NOI18N
@@ -817,7 +808,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
             }
         });
         FormInput.add(Metode);
-        Metode.setBounds(282, 40, 120, 23);
+        Metode.setBounds(280, 40, 135, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -980,6 +971,12 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         FormInput.add(jLabel32);
         jLabel32.setBounds(0, 150, 96, 23);
 
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("No.Rawat");
+        jLabel10.setName("jLabel10"); // NOI18N
+        FormInput.add(jLabel10);
+        jLabel10.setBounds(16, 10, 69, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -1101,7 +1098,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
                 Metode.getSelectedItem().toString(),Penanya.getText(),StatusPenanya.getSelectedItem().toString(),NoTelp.getText(),JenisPertanyaan.getSelectedItem().toString(),
                 KeteranganJenisPertanyaan.getText(),UraianPertanyaan.getText()
             })==true){
-                if(akses.getjawaban_pio_apoteker()==true){
+                if(akses.getjawaban_konsultasi_medik()==true){
                     i=JOptionPane.showConfirmDialog(null, "Apakah akan langsung diberikan jawaban..????","Konfirmasi",JOptionPane.YES_NO_OPTION);
                     if(i==JOptionPane.YES_OPTION){
                         NoPermintaanJawaban.setText(NoPermintaan.getText());
@@ -1192,7 +1189,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
                         "konsultasi_medik.status_penanya,konsultasi_medik.no_telp_penanya,konsultasi_medik.jenis_pertanyaan,konsultasi_medik.keterangan_jenis_pertanyaan,"+
                         "konsultasi_medik.uraian_pertanyaan from konsultasi_medik inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
-                        "where konsultasi_medik.no_permintaan not in (select DISTINCT jawaban_pio_apoteker.no_permintaan from jawaban_pio_apoteker) "+
+                        "where konsultasi_medik.no_permintaan not in (select DISTINCT jawaban_konsultasi_medik.no_permintaan from jawaban_konsultasi_medik) "+
                         (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
                         "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.metode like ? or konsultasi_medik.penanya like ? "+
                         "or konsultasi_medik.status_penanya like ?)")+" order by konsultasi_medik.tanggal");
@@ -1305,11 +1302,11 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
                         "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
                         "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal,konsultasi_medik.metode,konsultasi_medik.penanya,"+
                         "konsultasi_medik.status_penanya,konsultasi_medik.no_telp_penanya,konsultasi_medik.jenis_pertanyaan,konsultasi_medik.keterangan_jenis_pertanyaan,"+
-                        "konsultasi_medik.uraian_pertanyaan,jawaban_pio_apoteker.tanggal_jawab,jawaban_pio_apoteker.metode,jawaban_pio_apoteker.penyampaian_jawaban,"+
-                        "jawaban_pio_apoteker.jawaban,jawaban_pio_apoteker.referensi,jawaban_pio_apoteker.nip,petugas.nama from konsultasi_medik "+
+                        "konsultasi_medik.uraian_pertanyaan,jawaban_konsultasi_medik.tanggal_jawab,jawaban_konsultasi_medik.metode,jawaban_konsultasi_medik.penyampaian_jawaban,"+
+                        "jawaban_konsultasi_medik.jawaban,jawaban_konsultasi_medik.referensi,jawaban_konsultasi_medik.nip,petugas.nama from konsultasi_medik "+
                         "inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_pio_apoteker on jawaban_pio_apoteker.no_permintaan=konsultasi_medik.no_permintaan "+
-                        "inner join petugas on jawaban_pio_apoteker.nip=petugas.nip where jawaban_pio_apoteker.tanggal_jawab between ? and ? "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_konsultasi_medik on jawaban_konsultasi_medik.no_permintaan=konsultasi_medik.no_permintaan "+
+                        "inner join petugas on jawaban_konsultasi_medik.nip=petugas.nip where jawaban_konsultasi_medik.tanggal_jawab between ? and ? "+
                         (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
                         "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.metode like ? or konsultasi_medik.penanya like ? "+
                         "or konsultasi_medik.status_penanya like ?)")+" order by konsultasi_medik.tanggal");
@@ -1598,11 +1595,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             "select pasien.tgl_lahir,konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
                             "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal,konsultasi_medik.metode,konsultasi_medik.penanya,"+
                             "konsultasi_medik.status_penanya,konsultasi_medik.no_telp_penanya,konsultasi_medik.jenis_pertanyaan,konsultasi_medik.keterangan_jenis_pertanyaan,"+
-                            "konsultasi_medik.uraian_pertanyaan,jawaban_pio_apoteker.tanggal_jawab,jawaban_pio_apoteker.metode as metodejawab,jawaban_pio_apoteker.penyampaian_jawaban,"+
-                            "jawaban_pio_apoteker.jawaban,jawaban_pio_apoteker.referensi,jawaban_pio_apoteker.nip,petugas.nama from konsultasi_medik "+
+                            "konsultasi_medik.uraian_pertanyaan,jawaban_konsultasi_medik.tanggal_jawab,jawaban_konsultasi_medik.metode as metodejawab,jawaban_konsultasi_medik.penyampaian_jawaban,"+
+                            "jawaban_konsultasi_medik.jawaban,jawaban_konsultasi_medik.referensi,jawaban_konsultasi_medik.nip,petugas.nama from konsultasi_medik "+
                             "inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_pio_apoteker on jawaban_pio_apoteker.no_permintaan=konsultasi_medik.no_permintaan "+
-                            "inner join petugas on jawaban_pio_apoteker.nip=petugas.nip where konsultasi_medik.no_permintaan='"+NoPermintaan.getText()+"' ",param);
+                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_konsultasi_medik on jawaban_konsultasi_medik.no_permintaan=konsultasi_medik.no_permintaan "+
+                            "inner join petugas on jawaban_konsultasi_medik.nip=petugas.nip where konsultasi_medik.no_permintaan='"+NoPermintaan.getText()+"' ",param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }else{
                     JOptionPane.showMessageDialog(null,"Maaf, belum ada jawaban apoteker...!!!!");
@@ -1679,7 +1676,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(Referensi.getText().trim().equals("")){
             Valid.textKosong(Referensi,"Referensi Jawaban");
         }else{
-            if(Sequel.menyimpantf("jawaban_pio_apoteker","?,?,?,?,?,?,?",7,new String[]{
+            if(Sequel.menyimpantf("jawaban_konsultasi_medik","?,?,?,?,?,?,?",7,new String[]{
                     NoPermintaan.getText(),Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),
                     MetodeJawab.getSelectedItem().toString(),PenyampaianJawaban.getSelectedItem().toString(),Jawaban.getText(),Referensi.getText(),
                     KdPetugas.getText()
@@ -1833,6 +1830,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
+    private widget.Label jLabel10;
     private widget.Label jLabel15;
     private widget.Label jLabel19;
     private widget.Label jLabel25;
@@ -1868,17 +1866,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void tampil() {     
         Valid.tabelKosong(tabMode);
         try{ 
+            sql="";
+            if(akses.getjml2()>=1){
+                sql="(konsultasi_medik.kd_dokter='"+akses.getkode()+"' or konsultasi_medik.kd_dokter_dikonsuli='"+akses.getkode()+"') and ";
+            }
+            
             if(R1.isSelected()==true){
-                ps=koneksi.prepareStatement(
+               ps=koneksi.prepareStatement(
                     "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal,konsultasi_medik.metode,konsultasi_medik.penanya,"+
-                    "konsultasi_medik.status_penanya,konsultasi_medik.no_telp_penanya,konsultasi_medik.jenis_pertanyaan,konsultasi_medik.keterangan_jenis_pertanyaan,"+
-                    "konsultasi_medik.uraian_pertanyaan from konsultasi_medik inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat "+
+                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal as tanggalkonsultasi,konsultasi_medik.jenis_permintaan,"+
+                    "konsultasi_medik.kd_dokter,dokterkonsul.nm_dokter as dokterkonsul,konsultasi_medik.kd_dokter_dikonsuli,dokterdikonsuli.nm_dokter as dokterdikonsuli,"+
+                    "konsultasi_medik.diagnosa_kerja as diagnosakerjakonsul,konsultasi_medik.uraian_konsultasi from konsultasi_medik inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
-                    "where konsultasi_medik.no_permintaan not in (select DISTINCT jawaban_pio_apoteker.no_permintaan from jawaban_pio_apoteker) "+
+                    "inner join dokter as dokterkonsul on konsultasi_medik.kd_dokter=dokterkonsul.kd_dokter "+
+                    "inner join dokter as dokterdikonsuli on konsultasi_medik.kd_dokter_dikonsuli=dokterdikonsuli.kd_dokter "+
+                    "where "+sql+"konsultasi_medik.no_permintaan not in (select DISTINCT jawaban_konsultasi_medik.no_permintaan from jawaban_konsultasi_medik) "+
                     (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                    "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.metode like ? or konsultasi_medik.penanya like ? "+
-                    "or konsultasi_medik.status_penanya like ?)")+" order by konsultasi_medik.tanggal");
+                    "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.jenis_permintaan like ?)")+" order by konsultasi_medik.tanggal");
                 try {
                     if(!TCari.getText().equals("")){
                         ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -1887,15 +1891,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         ps.setString(4,"%"+TCari.getText().trim()+"%");
                         ps.setString(5,"%"+TCari.getText().trim()+"%");
                         ps.setString(6,"%"+TCari.getText().trim()+"%");
-                        ps.setString(7,"%"+TCari.getText().trim()+"%");
-                        ps.setString(8,"%"+TCari.getText().trim()+"%");
                     }
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new String[]{
                             rs.getString("no_permintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("metode"),rs.getString("penanya"),rs.getString("status_penanya"),rs.getString("no_telp_penanya"),
-                            rs.getString("jenis_pertanyaan"),rs.getString("keterangan_jenis_pertanyaan"),rs.getString("uraian_pertanyaan"),"","","","","","",""
+                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggalkonsultasi"),rs.getString("jenis_permintaan"),rs.getString("kd_dokter"),rs.getString("dokterkonsul"),
+                            rs.getString("kd_dokter_dikonsuli"),rs.getString("dokterdikonsuli"),rs.getString("diagnosakerjakonsul"),rs.getString("uraian_konsultasi"),"","",""
                         });
                     }
                 } catch (Exception e) {
@@ -1909,18 +1911,26 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                 }
             }else if(R2.isSelected()==true){
+                /*
+                        "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Konsultasi","Permintaan",
+                        "Kode Dokter Konsul","Nama Dokter Konsul","Kode Dokter Dikonsuli","Nama Dokter Dikonsuli","Diagnosa Kerja Konsul",
+                        "Uraian Konsultasi","Tanggal Jawaban","Diagnosa Kerja Dikonsuli","Jawaban Konsultasi"
+                        */
+                        
                 ps=koneksi.prepareStatement(
                     "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal,konsultasi_medik.metode,konsultasi_medik.penanya,"+
-                    "konsultasi_medik.status_penanya,konsultasi_medik.no_telp_penanya,konsultasi_medik.jenis_pertanyaan,konsultasi_medik.keterangan_jenis_pertanyaan,"+
-                    "konsultasi_medik.uraian_pertanyaan,jawaban_pio_apoteker.tanggal_jawab,jawaban_pio_apoteker.metode as metodejawab,jawaban_pio_apoteker.penyampaian_jawaban,"+
-                    "jawaban_pio_apoteker.jawaban,jawaban_pio_apoteker.referensi,jawaban_pio_apoteker.nip,petugas.nama from konsultasi_medik "+
-                    "inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_pio_apoteker on jawaban_pio_apoteker.no_permintaan=konsultasi_medik.no_permintaan "+
-                    "inner join petugas on jawaban_pio_apoteker.nip=petugas.nip where jawaban_pio_apoteker.tanggal_jawab between ? and ? "+
+                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal as tanggalkonsultasi,konsultasi_medik.jenis_permintaan,"+
+                    "konsultasi_medik.kd_dokter,dokterkonsul.nm_dokter as dokterkonsul,konsultasi_medik.kd_dokter_dikonsuli,dokterdikonsuli.nm_dokter as dokterdikonsuli,"+
+                    "konsultasi_medik.diagnosa_kerja as diagnosakerjakonsul,konsultasi_medik.uraian_konsultasi,jawaban_konsultasi_medik.tanggal as tanggaljawaban,"+
+                    "jawaban_konsultasi_medik.diagnosa_kerja as diagnosakerjajawaban,jawaban_konsultasi_medik.uraian_jawaban "+
+                    "from konsultasi_medik inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
+                    "inner join dokter as dokterkonsul on konsultasi_medik.kd_dokter=dokterkonsul.kd_dokter "+
+                    "inner join dokter as dokterdikonsuli on konsultasi_medik.kd_dokter_dikonsuli=dokterdikonsuli.kd_dokter "+
+                    "inner join jawaban_konsultasi_medik on jawaban_konsultasi_medik.no_permintaan=konsultasi_medik.no_permintaan "+
+                    "where "+sql+"jawaban_konsultasi_medik.tanggal_jawab between ? and ? "+
                     (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                    "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.metode like ? or konsultasi_medik.penanya like ? "+
-                    "or konsultasi_medik.status_penanya like ?)")+" order by konsultasi_medik.tanggal");
+                    "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.jenis_permintaan like ?)")+" order by konsultasi_medik.tanggal");
                 try {
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
@@ -1931,8 +1941,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         ps.setString(6,"%"+TCari.getText().trim()+"%");
                         ps.setString(7,"%"+TCari.getText().trim()+"%");
                         ps.setString(8,"%"+TCari.getText().trim()+"%");
-                        ps.setString(9,"%"+TCari.getText().trim()+"%");
-                        ps.setString(10,"%"+TCari.getText().trim()+"%");
                     }
                     rs=ps.executeQuery();
                     while(rs.next()){
@@ -2027,6 +2035,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
+                dispose();
             }
         }
     }
@@ -2048,7 +2057,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(konsultasi_medik.no_permintaan,4),signed)),0) from konsultasi_medik where konsultasi_medik.tanggal='"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"")+"' ","PIO"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"").replaceAll("-",""),4,NoPermintaan);           
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(konsultasi_medik.no_permintaan,4),signed)),0) from konsultasi_medik where konsultasi_medik.tanggal='"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"")+"' ","KM"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"").replaceAll("-",""),4,NoPermintaan);           
     }
 
     private void ganti() {

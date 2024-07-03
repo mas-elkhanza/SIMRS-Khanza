@@ -3,8 +3,6 @@ Options All -Indexes
 <FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf|pdf)$">
   Header set Cache-Control "max-age=2592000"
 </FilesMatch>
-RewriteCond %{HTTP:Authorization} ^(.*)
-RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-d
