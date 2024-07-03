@@ -1158,255 +1158,95 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                if(R1.isSelected()==true){
-                    ps=koneksi.prepareStatement(
-                        "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal,konsultasi_medik.metode,konsultasi_medik.penanya,"+
-                        "konsultasi_medik.status_penanya,konsultasi_medik.no_telp_penanya,konsultasi_medik.jenis_pertanyaan,konsultasi_medik.keterangan_jenis_pertanyaan,"+
-                        "konsultasi_medik.uraian_pertanyaan from konsultasi_medik inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
-                        "where konsultasi_medik.no_permintaan not in (select DISTINCT jawaban_konsultasi_medik.no_permintaan from jawaban_konsultasi_medik) "+
-                        (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                        "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.metode like ? or konsultasi_medik.penanya like ? "+
-                        "or konsultasi_medik.status_penanya like ?)")+" order by konsultasi_medik.tanggal");
-                    try {
-                        htmlContent = new StringBuilder();
-                        htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Bayar</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Pertanyaan</b></td>"+
-                            "</tr>"
-                        );
-                        if(!TCari.getText().equals("")){
-                            ps.setString(1,"%"+TCari.getText().trim()+"%");
-                            ps.setString(2,"%"+TCari.getText().trim()+"%");
-                            ps.setString(3,"%"+TCari.getText().trim()+"%");
-                            ps.setString(4,"%"+TCari.getText().trim()+"%");
-                            ps.setString(5,"%"+TCari.getText().trim()+"%");
-                            ps.setString(6,"%"+TCari.getText().trim()+"%");
-                            ps.setString(7,"%"+TCari.getText().trim()+"%");
-                            ps.setString(8,"%"+TCari.getText().trim()+"%");
-                        }
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                   "<td valign='top'>"+rs.getString("no_permintaan")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_tlp")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("png_jawab")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("metode")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("penanya")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("status_penanya")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_telp_penanya")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("jenis_pertanyaan")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("keterangan_jenis_pertanyaan")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("uraian_pertanyaan")+"</td>"+
-                                "</tr>");
-                        }
-                        LoadHTML.setText(
-                            "<html>"+
-                              "<table width='1900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                               htmlContent.toString()+
-                              "</table>"+
-                            "</html>"
-                        );
-
-                        File g = new File("file2.css");            
-                        BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                        bg.write(
-                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                            ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                            ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                            ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                            ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                            ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                            ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                        );
-                        bg.close();
-
-                        File f = new File("PermintaanInformasiObat.html");            
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                        bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                    "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                    "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td valign='top' align='center'>"+
-                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                "<font size='2' face='Tahoma'>DATA PERMINTAAN PELAYANAN INFORMASI OBAT BELUM TERLAYANI<br><br></font>"+        
-                                            "</td>"+
-                                       "</tr>"+
-                                    "</table>")
-                        );
-                        bw.close();                         
-                        Desktop.getDesktop().browse(f.toURI());
-                    } catch (Exception e) {
-                        System.out.println("Notif Kamar : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                }else if(R2.isSelected()==true){
-                    ps=koneksi.prepareStatement(
-                        "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal,konsultasi_medik.metode,konsultasi_medik.penanya,"+
-                        "konsultasi_medik.status_penanya,konsultasi_medik.no_telp_penanya,konsultasi_medik.jenis_pertanyaan,konsultasi_medik.keterangan_jenis_pertanyaan,"+
-                        "konsultasi_medik.uraian_pertanyaan,jawaban_konsultasi_medik.tanggal_jawab,jawaban_konsultasi_medik.metode,jawaban_konsultasi_medik.penyampaian_jawaban,"+
-                        "jawaban_konsultasi_medik.jawaban,jawaban_konsultasi_medik.referensi,jawaban_konsultasi_medik.nip,petugas.nama from konsultasi_medik "+
-                        "inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join jawaban_konsultasi_medik on jawaban_konsultasi_medik.no_permintaan=konsultasi_medik.no_permintaan "+
-                        "inner join petugas on jawaban_konsultasi_medik.nip=petugas.nip where jawaban_konsultasi_medik.tanggal_jawab between ? and ? "+
-                        (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                        "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.metode like ? or konsultasi_medik.penanya like ? "+
-                        "or konsultasi_medik.status_penanya like ?)")+" order by konsultasi_medik.tanggal");
-                    try {
-                        htmlContent = new StringBuilder();
-                        htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Bayar</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp Penanya</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ket.Jenis Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jawaban Pertanyaan</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Referensi Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyampaian Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Metode Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Jawaban</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
-                                "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Apoteker</b></td>"+
-                            "</tr>"
-                        );
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        if(!TCari.getText().equals("")){
-                            ps.setString(3,"%"+TCari.getText().trim()+"%");
-                            ps.setString(4,"%"+TCari.getText().trim()+"%");
-                            ps.setString(5,"%"+TCari.getText().trim()+"%");
-                            ps.setString(6,"%"+TCari.getText().trim()+"%");
-                            ps.setString(7,"%"+TCari.getText().trim()+"%");
-                            ps.setString(8,"%"+TCari.getText().trim()+"%");
-                            ps.setString(9,"%"+TCari.getText().trim()+"%");
-                            ps.setString(10,"%"+TCari.getText().trim()+"%");
-                        }
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                   "<td valign='top'>"+rs.getString("no_permintaan")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("umurdaftar")+" "+rs.getString("sttsumur")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_tlp")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("png_jawab")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("metode")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("penanya")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("status_penanya")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("no_telp_penanya")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("jenis_pertanyaan")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("keterangan_jenis_pertanyaan")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("uraian_pertanyaan")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("jawaban")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("referensi")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("penyampaian_jawaban")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("metode")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("tanggal_jawab")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("nip")+"</td>"+
-                                   "<td valign='top'>"+rs.getString("nama")+"</td>"+
-                                "</tr>");
-                        }
-                        LoadHTML.setText(
-                            "<html>"+
-                              "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                               htmlContent.toString()+
-                              "</table>"+
-                            "</html>"
-                        );
-
-                        File g = new File("file2.css");            
-                        BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                        bg.write(
-                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                            ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                            ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                            ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                            ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                            ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                            ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                        );
-                        bg.close();
-
-                        File f = new File("PermintaanInformasiObat.html");            
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                        bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                    "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                    "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td valign='top' align='center'>"+
-                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                "<font size='2' face='Tahoma'>DATA PERMINTAAN PELAYANAN INFORMASI OBAT BELUM TERLAYANI<br><br></font>"+        
-                                            "</td>"+
-                                       "</tr>"+
-                                    "</table>")
-                        );
-                        bw.close();                         
-                        Desktop.getDesktop().browse(f.toURI());
-                    } catch (Exception e) {
-                        System.out.println("Notif Kamar : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Bayar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Konsultasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Permintaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Konsul</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Konsul</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Dikonsuli</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Dikonsuli</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Kerja Konsul</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Konsultasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Jawaban</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Kerja Dikonsuli</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jawaban Konsultasi</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                        "</tr>");
                 }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataKonsultasiMedik.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA KONSULTASI MEDIK<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
+
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }
