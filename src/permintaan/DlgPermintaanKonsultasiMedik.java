@@ -358,11 +358,6 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
 
         NoPermintaanJawaban.setEditable(false);
         NoPermintaanJawaban.setName("NoPermintaanJawaban"); // NOI18N
-        NoPermintaanJawaban.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoPermintaanJawabanKeyPressed(evt);
-            }
-        });
         internalFrame2.add(NoPermintaanJawaban);
         NoPermintaanJawaban.setBounds(99, 20, 109, 23);
 
@@ -872,11 +867,6 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         KdDokter.setEditable(false);
         KdDokter.setName("KdDokter"); // NOI18N
         KdDokter.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdDokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdDokterKeyPressed(evt);
-            }
-        });
         FormInput.add(KdDokter);
         KdDokter.setBounds(133, 80, 123, 23);
 
@@ -931,11 +921,6 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         KdDokterDikonsuli.setEditable(false);
         KdDokterDikonsuli.setName("KdDokterDikonsuli"); // NOI18N
         KdDokterDikonsuli.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdDokterDikonsuli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdDokterDikonsuliKeyPressed(evt);
-            }
-        });
         FormInput.add(KdDokterDikonsuli);
         KdDokterDikonsuli.setBounds(133, 110, 123, 23);
 
@@ -1090,6 +1075,8 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
             Valid.textKosong(NoPermintaan,"No.Permintaan");
         }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter Konsul");
+        }else if(KdDokter.getText().equals(KdDokterDikonsuli.getText())){
+           JOptionPane.showMessageDialog(null,"Maaf, Dokter yang dikonsuli jangan diri sendiri...!");
         }else if(KdDokterDikonsuli.getText().trim().equals("")||NmDokterDikonsuli.getText().trim().equals("")){
             Valid.textKosong(BtnDokterDIkonsuli,"Dokter Dikonsuli");
         }else if(DiagnosaKerja.getText().trim().equals("")){
@@ -1497,23 +1484,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_ChkInputActionPerformed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(NoRw.getText().trim().equals("")||NoRM.getText().trim().equals("")||NmPasien.getText().trim().equals("")){
+        if(NoRw.getText().trim().equals("")||NoRM.getText().trim().equals("")||NmPasien.getText().trim().equals("")){
             Valid.textKosong(TCari,"Pasien");
         }else if(NoPermintaan.getText().trim().equals("")){
             Valid.textKosong(NoPermintaan,"No.Permintaan");
-        }else if(Penanya.getText().trim().equals("")){
-            Valid.textKosong(Penanya,"Penanya");
-        }else if(NoTelp.getText().trim().equals("")){
-            Valid.textKosong(NoTelp,"No.Telp");
-        }else if(UraianPertanyaan.getText().trim().equals("")){
-            Valid.textKosong(UraianPertanyaan,"Uraian Pertanyaan");
+        }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter Konsul");
+        }else if(KdDokterDikonsuli.getText().trim().equals("")||NmDokterDikonsuli.getText().trim().equals("")){
+            Valid.textKosong(BtnDokterDIkonsuli,"Dokter Dikonsuli");
+        }else if(KdDokter.getText().equals(KdDokterDikonsuli.getText())){
+           JOptionPane.showMessageDialog(null,"Maaf, Dokter yang dikonsuli jangan diri sendiri...!");
+        }else if(DiagnosaKerja.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaKerja,"Diagnosa Kerja");
+        }else if(UraianKonsultasi.getText().trim().equals("")){
+            Valid.textKosong(UraianKonsultasi,"Uraian Konsultasi");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(!tbObat.getValueAt(tbObat.getSelectedRow(),21).toString().equals("")){
-                        JOptionPane.showMessageDialog(null,"Sudah ada jawaban apoteker, data tidak bisa diubah ..!!");
+                    if(!tbObat.getValueAt(tbObat.getSelectedRow(),18).toString().equals("")){
+                        JOptionPane.showMessageDialog(null,"Sudah ada jawaban dokter yang dikonsuli, data tidak bisa diubah ..!!");
                     }else{
                         ganti();
                     }
@@ -1521,7 +1512,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             } 
-        }*/
+        }
     }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1557,6 +1548,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 NoPermintaanJawaban.setText(NoPermintaan.getText());
                 WindowInput.setAlwaysOnTop(false);
                 WindowInput.setVisible(true);
+                JawabanDiagnosaKerja.requestFocus();
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");
             }
@@ -1647,54 +1639,51 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnCloseInKeyPressed
 
     private void BtnSimpanJawabanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanJawabanActionPerformed
-        /*if(NoRw.getText().trim().equals("")||NoRM.getText().trim().equals("")||NmPasien.getText().trim().equals("")){
+        if(NoRw.getText().trim().equals("")||NoRM.getText().trim().equals("")||NmPasien.getText().trim().equals("")){
             Valid.textKosong(TCari,"Pasien");
         }else if(NoPermintaan.getText().trim().equals("")){
             Valid.textKosong(NoPermintaan,"No.Permintaan");
-        }else if(Penanya.getText().trim().equals("")){
-            Valid.textKosong(Penanya,"Penanya");
-        }else if(NoTelp.getText().trim().equals("")){
-            Valid.textKosong(NoTelp,"No.Telp");
-        }else if(UraianPertanyaan.getText().trim().equals("")){
-            Valid.textKosong(UraianPertanyaan,"Uraian Pertanyaan");
+        }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter Konsul");
+        }else if(KdDokterDikonsuli.getText().trim().equals("")||NmDokterDikonsuli.getText().trim().equals("")){
+            Valid.textKosong(BtnDokterDIkonsuli,"Dokter Dikonsuli");
+        }else if(DiagnosaKerja.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaKerja,"Diagnosa Kerja");
+        }else if(UraianKonsultasi.getText().trim().equals("")){
+            Valid.textKosong(UraianKonsultasi,"Uraian Konsultasi");
+        }else if(JawabanDiagnosaKerja.getText().trim().equals("")){
+            Valid.textKosong(JawabanDiagnosaKerja,"Jawaban Diagnosa Kerja");
         }else if(NoPermintaanJawaban.getText().trim().equals("")){
-            Valid.textKosong(NoPermintaanJawaban,"No.Permintaan Jawaban");
-        }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(NmPetugas,"Petugas Apoteker");
-        }else if(Jawaban.getText().trim().equals("")){
-            Valid.textKosong(Jawaban,"Jawaban Apoteker");
-        }else if(Referensi.getText().trim().equals("")){
-            Valid.textKosong(Referensi,"Referensi Jawaban");
+            Valid.textKosong(NoPermintaanJawaban,"No.Permintaan dijawab");
+        }else if(JawabanKonsultasi.getText().trim().equals("")){
+            Valid.textKosong(JawabanKonsultasi,"Jawaban Konsultasi");
+        }else if(KdDokter.getText().equals(KdDokterDikonsuli.getText())){
+           JOptionPane.showMessageDialog(null,"Maaf, Dokter yang dikonsuli jangan diri sendiri...!");
         }else{
-            if(Sequel.menyimpantf("jawaban_konsultasi_medik","?,?,?,?,?,?,?",7,new String[]{
-                    NoPermintaan.getText(),Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),
-                    MetodeJawab.getSelectedItem().toString(),PenyampaianJawaban.getSelectedItem().toString(),Jawaban.getText(),Referensi.getText(),
-                    KdPetugas.getText()
-                },"no_permintaan=?","tanggal_jawab=?,metode=?,penyampaian_jawaban=?,jawaban=?,referensi=?,nip=?",7,new String[]{
-                    Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),
-                    MetodeJawab.getSelectedItem().toString(),PenyampaianJawaban.getSelectedItem().toString(),Jawaban.getText(),Referensi.getText(),
-                    KdPetugas.getText(),NoPermintaan.getText()
+            if(Sequel.menyimpantf("jawaban_konsultasi_medik","?,?,?,?",4,new String[]{
+                    NoPermintaan.getText(),Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),JawabanDiagnosaKerja.getText(),JawabanKonsultasi.getText()
+                },"no_permintaan=?","tanggal=?,diagnosa_kerja=?,uraian_jawaban=?",4,new String[]{
+                    Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),JawabanDiagnosaKerja.getText(),JawabanKonsultasi.getText(),NoPermintaan.getText()
                 })==true){
                     R2.setSelected(true);
                     tampil();
                     emptTeks();
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan atau mengedit jawaban pelayanan informasi obat...!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan atau mengedit jawaban konsultasi medik...!!!");
                 R1.setSelected(true);
                 tampil();
                 emptTeks();
             }
-        }*/
+        }
     }//GEN-LAST:event_BtnSimpanJawabanActionPerformed
 
     private void BtnSimpanJawabanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanJawabanKeyPressed
-        //Valid.pindah(evt,cmbDtk,BtnBatal);
+        Valid.pindah(evt,JawabanKonsultasi,BtnBatal);
     }//GEN-LAST:event_BtnSimpanJawabanKeyPressed
 
     private void BtnBatalJawabanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalJawabanActionPerformed
         TanggalJawab.setDate(new Date());
         JawabanDiagnosaKerja.setText("");
-        JawabanKonsultasi.setText("");
         JawabanKonsultasi.setText("");
     }//GEN-LAST:event_BtnBatalJawabanActionPerformed
 
@@ -1704,21 +1693,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else{Valid.pindah(evt, BtnSimpan, BtnCloseIn);}
     }//GEN-LAST:event_BtnBatalJawabanKeyPressed
 
-    private void NoPermintaanJawabanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPermintaanJawabanKeyPressed
-        
-    }//GEN-LAST:event_NoPermintaanJawabanKeyPressed
-
     private void TanggalJawabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalJawabKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnSimpanJawaban,JawabanDiagnosaKerja);
     }//GEN-LAST:event_TanggalJawabKeyPressed
 
     private void JawabanKonsultasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JawabanKonsultasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,DiagnosaKerja,BtnSimpanJawaban);
     }//GEN-LAST:event_JawabanKonsultasiKeyPressed
-
-    private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
-
-    }//GEN-LAST:event_KdDokterKeyPressed
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         i=1;
@@ -1754,16 +1735,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_BtnDokterDIkonsuliKeyPressed
 
-    private void KdDokterDikonsuliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterDikonsuliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdDokterDikonsuliKeyPressed
-
     private void DiagnosaKerjaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKerjaKeyPressed
         Valid.pindah(evt,BtnDokterDIkonsuli,UraianKonsultasi);
     }//GEN-LAST:event_DiagnosaKerjaKeyPressed
 
     private void JawabanDiagnosaKerjaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JawabanDiagnosaKerjaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TanggalJawab,JawabanKonsultasi);
     }//GEN-LAST:event_JawabanDiagnosaKerjaKeyPressed
 
     /**
@@ -1915,12 +1892,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                 }
             }else if(R2.isSelected()==true){
-                /*
-                        "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Konsultasi","Permintaan",
-                        "Kode Dokter Konsul","Nama Dokter Konsul","Kode Dokter Dikonsuli","Nama Dokter Dikonsuli","Diagnosa Kerja Konsul",
-                        "Uraian Konsultasi","Tanggal Jawaban","Diagnosa Kerja Dikonsuli","Jawaban Konsultasi"
-                        */
-                        
                 ps=koneksi.prepareStatement(
                     "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
                     "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal as tanggalkonsultasi,konsultasi_medik.jenis_permintaan,"+
@@ -1996,10 +1967,16 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             NoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()); 
             NmPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Permintaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            KdDokterDikonsuli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NmDokterDikonsuli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            DiagnosaKerja.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             UraianKonsultasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            JawabanKonsultasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            JawabanDiagnosaKerja.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            JawabanKonsultasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             Valid.SetTgl2(TanggalPermintaan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Valid.SetTgl2(TanggalJawab,tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Valid.SetTgl2(TanggalJawab,tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
         }
     }
     
@@ -2061,18 +2038,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(konsultasi_medik.no_permintaan,4),signed)),0) from konsultasi_medik where konsultasi_medik.tanggal='"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"")+"' ","KM"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"").replaceAll("-",""),4,NoPermintaan);           
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(konsultasi_medik.no_permintaan,4),signed)),0) from konsultasi_medik where left(konsultasi_medik.tanggal,10)='"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"")+"' ","KM"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"").replaceAll("-",""),4,NoPermintaan);           
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("konsultasi_medik","no_permintaan=?","no_permintaan=?,no_rawat=?,tanggal=?,metode=?,penanya=?,status_penanya=?,no_telp_penanya=?,jenis_pertanyaan=?,keterangan_jenis_pertanyaan=?,uraian_pertanyaan=?",11,new String[]{
+        if(Sequel.mengedittf("konsultasi_medik","no_permintaan=?","no_permintaan=?,no_rawat=?,tanggal=?,jenis_permintaan=?,kd_dokter=?,kd_dokter_dikonsuli=?,diagnosa_kerja=?,uraian_konsultasi=?",9,new String[]{
                 NoPermintaan.getText(),NoRw.getText(),Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"")+" "+TanggalPermintaan.getSelectedItem().toString().substring(11,19),
-                Metode.getSelectedItem().toString(),Penanya.getText(),StatusPenanya.getSelectedItem().toString(),NoTelp.getText(),JenisPertanyaan.getSelectedItem().toString(),
-                KeteranganJenisPertanyaan.getText(),UraianPertanyaan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                Permintaan.getSelectedItem().toString(),KdDokter.getText(),KdDokterDikonsuli.getText(),DiagnosaKerja.getText(),UraianKonsultasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
              })==true){
                 tampil();
                 emptTeks();
-        }*/
+        }
     }
     
 }
