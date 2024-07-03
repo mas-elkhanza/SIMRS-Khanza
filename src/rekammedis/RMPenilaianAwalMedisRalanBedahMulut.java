@@ -644,11 +644,6 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setPreferredSize(new java.awt.Dimension(457, 480));
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -1139,7 +1134,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2024 20:16:56" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2024 11:26:20" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1770,7 +1765,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1784,7 +1779,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2273,12 +2268,6 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
     private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
         Valid.pindah(evt,BB,StatusNutrisi);
     }//GEN-LAST:event_TBKeyPressed
-
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
 
     private void RPSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPSKeyPressed
         Valid.pindah2(evt,KeluhanUtama,RPK);
@@ -2966,7 +2955,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
                tbObat.setValueAt(Kelenjar.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
                tbObat.setValueAt(KeteranganKelenjar.getText(),tbObat.getSelectedRow(),33);
                tbObat.setValueAt(Dada.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
-               tbObat.setValueAt( KeteranganDada.getText(),tbObat.getSelectedRow(),35);
+               tbObat.setValueAt(KeteranganDada.getText(),tbObat.getSelectedRow(),35);
                tbObat.setValueAt(Perut.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
                tbObat.setValueAt(KeteranganPerut.getText(),tbObat.getSelectedRow(),37);
                tbObat.setValueAt(Ekstremitas.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
@@ -2997,6 +2986,15 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
                 KeteranganDada.getText(),Perut.getSelectedItem().toString(),KeteranganPerut.getText(),Ekstremitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),Wajah.getText(),IntraOral.getText(),GigiGeligi.getText(),
                 Laborat.getText(),Radiologi.getText(),Penunjang.getText(),AsesmenKerja.getText(),AsesmenBanding.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
             })==true){
+                tabMode.addRow(new String[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
+                    Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPK.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),Nyeri.getSelectedItem().toString(),
+                    TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),TB.getText(),StatusNutrisi.getText(),Kulit.getSelectedItem().toString(),KeteranganKulit.getText(),Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),
+                    Mata.getSelectedItem().toString(),KeteranganMata.getText(),Leher.getSelectedItem().toString(),KeteranganLeher.getText(),Kelenjar.getSelectedItem().toString(),KeteranganKelenjar.getText(),Dada.getSelectedItem().toString(),
+                    KeteranganDada.getText(),Perut.getSelectedItem().toString(),KeteranganPerut.getText(),Ekstremitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),Wajah.getText(),IntraOral.getText(),GigiGeligi.getText(),Laborat.getText(),
+                    Radiologi.getText(),Penunjang.getText(),AsesmenKerja.getText(),AsesmenBanding.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
         }
     }
