@@ -216,7 +216,6 @@
             </Component>
             <Component class="widget.TextBox" name="JawabanDiagnosaKerja">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="JawabanDiagnosaKerja" noResource="true"/>
               </Properties>
               <Events>

@@ -407,7 +407,6 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         internalFrame2.add(label2);
         label2.setBounds(0, 20, 95, 23);
 
-        JawabanDiagnosaKerja.setEditable(false);
         JawabanDiagnosaKerja.setName("JawabanDiagnosaKerja"); // NOI18N
         JawabanDiagnosaKerja.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1545,10 +1544,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()!= -1){
-                NoPermintaanJawaban.setText(NoPermintaan.getText());
-                WindowInput.setAlwaysOnTop(false);
-                WindowInput.setVisible(true);
-                JawabanDiagnosaKerja.requestFocus();
+                if(akses.getkode().equals("Admin Utama")){
+                    NoPermintaanJawaban.setText(NoPermintaan.getText());
+                    WindowInput.setAlwaysOnTop(false);
+                    WindowInput.setVisible(true);
+                    JawabanDiagnosaKerja.requestFocus();
+                }else{
+                    if(KdDokterDikonsuli.getText().equals(akses.getkode())){
+                        NoPermintaanJawaban.setText(NoPermintaan.getText());
+                        WindowInput.setAlwaysOnTop(false);
+                        WindowInput.setVisible(true);
+                        JawabanDiagnosaKerja.requestFocus();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Maaf, hanya bisa dijawab oleh dokter yang dikonsuli...!!!!");
+                    }
+                }
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");
             }
@@ -1903,7 +1913,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "inner join dokter as dokterkonsul on konsultasi_medik.kd_dokter=dokterkonsul.kd_dokter "+
                     "inner join dokter as dokterdikonsuli on konsultasi_medik.kd_dokter_dikonsuli=dokterdikonsuli.kd_dokter "+
                     "inner join jawaban_konsultasi_medik on jawaban_konsultasi_medik.no_permintaan=konsultasi_medik.no_permintaan "+
-                    "where "+sql+"jawaban_konsultasi_medik.tanggal_jawab between ? and ? "+
+                    "where "+sql+"jawaban_konsultasi_medik.tanggal between ? and ? "+
                     (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
                     "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.jenis_permintaan like ?)")+" order by konsultasi_medik.tanggal");
                 try {
