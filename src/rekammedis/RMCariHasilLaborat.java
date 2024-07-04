@@ -35,7 +35,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private String norawat="";
+    private String norawat="",sql="";
     private int z=0;
     /** Creates new form DlgPenyakit
      * @param parent
@@ -118,6 +118,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppPilihSemua = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
+        ppNilaiTinggi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -163,6 +164,22 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppBersihkan);
+
+        ppNilaiTinggi.setBackground(new java.awt.Color(255, 255, 254));
+        ppNilaiTinggi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppNilaiTinggi.setForeground(new java.awt.Color(50, 50, 50));
+        ppNilaiTinggi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppNilaiTinggi.setText("Tampilkan Tidak Normal");
+        ppNilaiTinggi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppNilaiTinggi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppNilaiTinggi.setName("ppNilaiTinggi"); // NOI18N
+        ppNilaiTinggi.setPreferredSize(new java.awt.Dimension(170, 26));
+        ppNilaiTinggi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppNilaiTinggiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppNilaiTinggi);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -297,6 +314,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        sql="";
         tampil();
 }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -310,6 +328,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        sql="";
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -364,6 +383,11 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
+    private void ppNilaiTinggiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppNilaiTinggiActionPerformed
+        sql="and ((LOWER(detail_periksa_lab.keterangan)='l') or (LOWER(detail_periksa_lab.keterangan)='t') or (LOWER(detail_periksa_lab.keterangan)='h')) ";
+        tampil();
+    }//GEN-LAST:event_ppNilaiTinggiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -393,6 +417,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
     private widget.Label label9;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppNilaiTinggi;
     private javax.swing.JMenuItem ppPilihSemua;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
@@ -403,7 +428,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai "+
                     "from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template where "+
-                    "detail_periksa_lab.no_rawat=? and (detail_periksa_lab.tgl_periksa like ? or template_laboratorium.Pemeriksaan like ?) "+
+                    "detail_periksa_lab.no_rawat=? and (detail_periksa_lab.tgl_periksa like ? or template_laboratorium.Pemeriksaan like ?) "+sql+
                     "order by detail_periksa_lab.tgl_periksa, detail_periksa_lab.jam");
             try{
                 ps.setString(1,norawat);
