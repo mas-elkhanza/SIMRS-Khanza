@@ -1,4 +1,5 @@
 <?php
+    header("X-Robots-Tag: noindex", true);
     session_start();
     require_once('conf/conf.php');
     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
@@ -18,6 +19,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta name="robots" content="noindex,nofollow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Edukasi, Konfirmasi & Persetujuan</title>
     <link href="css/login.css" rel="stylesheet" type="text/css" />

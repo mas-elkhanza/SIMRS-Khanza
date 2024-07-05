@@ -15,6 +15,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Selamat Datang di Aplikasi E-Dokter <?=$_SESSION["nama_instansi"];?></title>
