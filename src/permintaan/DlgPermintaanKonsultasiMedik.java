@@ -1420,12 +1420,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());  
-                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-                    param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString())); 
+                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+                    param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),10).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())); 
+                    finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+                    param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),12).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()));
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     Valid.MyReportqry("rptDokumentasiKonsultasiMedik.jasper","report","::[ Dokumentasi Konsultasi Medik ]::",
                         "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal as tanggalkonsultasi,konsultasi_medik.jenis_permintaan,"+
+                        "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal as tanggalkonsultasi,konsultasi_medik.jenis_permintaan,pasien.tgl_lahir,"+
                         "konsultasi_medik.kd_dokter,dokterkonsul.nm_dokter as dokterkonsul,konsultasi_medik.kd_dokter_dikonsuli,dokterdikonsuli.nm_dokter as dokterdikonsuli,"+
                         "konsultasi_medik.diagnosa_kerja as diagnosakerjakonsul,konsultasi_medik.uraian_konsultasi,jawaban_konsultasi_medik.tanggal as tanggaljawaban,"+
                         "jawaban_konsultasi_medik.diagnosa_kerja as diagnosakerjajawaban,jawaban_konsultasi_medik.uraian_jawaban "+
