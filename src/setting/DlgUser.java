@@ -250,7 +250,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Keseimbangan Cairan","[M]Catatan Observasi CHBP","[M]Catatan Observasi Induksi Persalinan","[C]Kategori Penilaian SKP","[C]Kriteria Penilaian SKP","[C]Penilaian SKP Petugas/Dokter",
                 "[L]Referensi Poli Mobile JKN FKTP","[L]Referensi Dokter Mobile JKN FKTP","[C]Rekapitulasi Penilaian SKP","[K]Pembayaran Pihak Ke 3 Bank Mandiri","[L]Metode Pembayaran Bank Mandiri",
                 "[L]Bank Tujuan Transfer Bank Mandiri","[L]Kode Transaksi Tujuan Transfer Bank Mandiri","[M]Konsultasi Medik","[M]Jawaban Konsultasi Medik","[L]Referensi Alergi PCare",
-                "[L]Referensi Prognosa PCare"
+                "[L]Referensi Prognosa PCare","[J]Data Sasaran Usia Produktif"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -540,7 +540,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -553,7 +553,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1052;i++) {
+        for (i = 0; i < 1053;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3163,6 +3163,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1051:
                     column.setPreferredWidth(148);
                     break;
+                case 1052:
+                    column.setPreferredWidth(157);
+                    break;
                 default:
                     column.setPreferredWidth(134);
                     break;
@@ -3662,7 +3665,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3689,7 +3692,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4788,7 +4791,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "konsultasi_medik='"+tbUser.getValueAt(i,1048).toString()+"',"+
                     "jawaban_konsultasi_medik='"+tbUser.getValueAt(i,1049).toString()+"',"+
                     "pcare_cek_alergi='"+tbUser.getValueAt(i,1050).toString()+"',"+
-                    "pcare_cek_prognosa='"+tbUser.getValueAt(i,1051).toString()+"'")==true){
+                    "pcare_cek_prognosa='"+tbUser.getValueAt(i,1051).toString()+"',"+
+                    "data_sasaran_usiaproduktif='"+tbUser.getValueAt(i,1052).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6038,7 +6042,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "konsultasi_medik='"+tbUser.getValueAt(barisdicopy,1048).toString()+"',"+
                                         "jawaban_konsultasi_medik='"+tbUser.getValueAt(barisdicopy,1049).toString()+"',"+
                                         "pcare_cek_alergi='"+tbUser.getValueAt(barisdicopy,1050).toString()+"',"+
-                                        "pcare_cek_prognosa='"+tbUser.getValueAt(barisdicopy,1051).toString()+"'");
+                                        "pcare_cek_prognosa='"+tbUser.getValueAt(barisdicopy,1051).toString()+"',"+
+                                        "data_sasaran_usiaproduktif='"+tbUser.getValueAt(barisdicopy,1052).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6339,7 +6344,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.balance_cairan,user.catatan_observasi_chbp,user.catatan_observasi_induksi_persalinan,user.skp_kategori_penilaian,user.skp_kriteria_penilaian,"+
                 "user.skp_penilaian,user.referensi_poli_mobilejknfktp,user.referensi_dokter_mobilejknfktp,user.skp_rekapitulasi_penilaian,user.pembayaran_pihak_ke3_bankmandiri,"+
                 "user.metode_pembayaran_bankmandiri,user.bank_tujuan_transfer_bankmandiri,user.kodetransaksi_tujuan_transfer_bankmandiri,user.konsultasi_medik,user.jawaban_konsultasi_medik,"+
-                "user.pcare_cek_alergi,user.pcare_cek_prognosa from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.pcare_cek_alergi,user.pcare_cek_prognosa,user.data_sasaran_usiaproduktif from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7403,7 +7408,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("konsultasi_medik"),
                                rs.getBoolean("jawaban_konsultasi_medik"),
                                rs.getBoolean("pcare_cek_alergi"),
-                               rs.getBoolean("pcare_cek_prognosa")
+                               rs.getBoolean("pcare_cek_prognosa"),
+                               rs.getBoolean("data_sasaran_usiaproduktif")
                             });
                         }   
                     } catch (Exception e) {
@@ -8456,7 +8462,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("konsultasi_medik"),
                            rs.getBoolean("jawaban_konsultasi_medik"),
                            rs.getBoolean("pcare_cek_alergi"),
-                           rs.getBoolean("pcare_cek_prognosa")
+                           rs.getBoolean("pcare_cek_prognosa"),
+                           rs.getBoolean("data_sasaran_usiaproduktif")
                         });
                     }                                             
                  }

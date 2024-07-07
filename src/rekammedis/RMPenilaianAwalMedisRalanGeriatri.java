@@ -2731,6 +2731,14 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
                 RisikoJatuh.getSelectedItem().toString(),Nutrisi.getSelectedItem().toString(),Lainnya.getText(),Lab.getText(),Rad.getText(),PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),
                 Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
             })==true){
+                tabMode.addRow(new String[]{
+                    "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
+                    "Riwayat Penggunakan Obat","Riwayat Alergi","Kondisi Umum","TD(mmHg)","Nadi(x/menit)","Suhu","RR(x/menit)","Tulang Belakang","Kepala","Keterangan Kepala","Thoraks","Keterangan Thoraks",
+                    "Abdomen","Keterangan Abdomen","Ekstremitas","Keterangan Ekstremitas","In.Kebersihan","In.Warna","In.Kelembaban","In.Gangguan","Lainnya","Kondisi Sosial","Status Psikologis (GDS)",
+                    "Status Kognitif (MMSE)","Status Nutrisi (MNA)","Skrinning Risiko Jatuh (OMS)","Status Fungsional (ADL: BARTHEL INDEX)","Laboratorium","Radiologi","Pemeriksaan","Diagnosis",
+                    "Diagnosis Banding","Permasalahan","Terapi","Tindakan","Edukasi"
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
         }
     }
