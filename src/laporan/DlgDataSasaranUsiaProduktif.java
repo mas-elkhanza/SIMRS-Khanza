@@ -718,24 +718,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         "</table>"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
-                                "<td valign='middle' width='20%'>Kabupaten</td>"+
-                                "<td valign='middle' width='30%'>: "+nmkabupaten.getText()+"</td>"+
-                                "<td valign='middle' width='20%'>Layanan</td>"+
-                                "<td valign='middle' width='30%'> : "+nmpoli.getText()+"</td>"+
+                                "<td valign='middle' width='15%'>Kabupaten</td>"+
+                                "<td valign='middle' width='35%'>: "+nmkabupaten.getText()+"</td>"+
+                                "<td valign='middle' width='15%'>Layanan</td>"+
+                                "<td valign='middle' width='35%'> : "+nmpoli.getText()+"</td>"+
                             "</tr>"+
                             "<tr class='isi2'>"+
-                                "<td valign='middle' width='20%'>Kecamatan</td>"+
-                                "<td valign='middle' width='30%'>: "+nmkecamatan.getText()+"</td>"+
-                                "<td valign='middle' width='20%'>Dokter</td>"+
-                                "<td valign='middle' width='30%'> : "+nmdokter.getText()+"</td>"+
+                                "<td valign='middle' width='15%'>Kecamatan</td>"+
+                                "<td valign='middle' width='35%'>: "+nmkecamatan.getText()+"</td>"+
+                                "<td valign='middle' width='15%'>Dokter</td>"+
+                                "<td valign='middle' width='35%'> : "+nmdokter.getText()+"</td>"+
                             "</tr>"+
                             "<tr class='isi2'>"+
-                                "<td valign='middle' width='20%'>Kelurahan</td>"+
-                                "<td valign='middle' width='30%'>: "+nmkelurahan.getText()+"</td>"+
-                                "<td valign='middle' width='20%'>Cara Bayar</td>"+
-                                "<td valign='middle' width='30%'> : "+nmpenjab.getText()+"</td>"+
+                                "<td valign='middle' width='15%'>Kelurahan</td>"+
+                                "<td valign='middle' width='35%'>: "+nmkelurahan.getText()+"</td>"+
+                                "<td valign='middle' width='15%'>Cara Bayar</td>"+
+                                "<td valign='middle' width='35%'> : "+nmpenjab.getText()+"</td>"+
                             "</tr>"+
-                        "</table>")
+                        "</table><br>")
             );
             bw.close();                         
             Desktop.getDesktop().browse(f.toURI());
@@ -990,7 +990,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='21%' rowspan='2'>Nama</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>J.K.</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%' rowspan='2'>Tgl.Lahir</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54%' colspan='12'>Kunjungan Usia Produktif/Lansia</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='54%' colspan='12'>Kunjungan Usia Produktif</td>"+
                 "</tr>"+                          
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jan</td>"+
