@@ -752,6 +752,7 @@ import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
 import laporan.DlgDaftarPasienRanapTNI;
 import laporan.DlgDataKlasifikasiPasienRanap;
+import laporan.DlgDataSasaranUsiaProduktif;
 import laporan.DlgDemografiUmurKunjungan;
 import laporan.DlgDosisRadiologi;
 import rekammedis.RMDataResumePasien;
@@ -21556,6 +21557,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void btnDataSasaranUsiaProduktifActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataSasaranUsiaProduktif form=new DlgDataSasaranUsiaProduktif(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22248,7 +22261,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnKirimDiagnosticReportLabMBSatuSehat,btnKepatuhanKelengkapanKeselamatanBedah,btnNilaiPiutangPerJenisBayarPerBulan,btnRingkasanPiutangPerJenisBayar,
             btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan,btnCatatanObservasiCHBP,btnCatatanObservasiInduksiPersalinan,btnSKPKategoriPenilaian,btnSKPKriteriaPenilaian,
             btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP,btnSKPPenilaianPegawai,btnMandiriMetodePembayaran,btnMandiriBankTujuanTRansfer,btnPembayaranPihakKe3BankMandiri,
-            btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik;
+            btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif;
     
     public void isWall(){
         try{            
@@ -24290,6 +24303,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemeriksaan_fisik_ralan_per_penyakit()==true){
                 Panelmenu.add(btnPemeriksaanFisikRalanPerPenyakit);
+                jmlmenu++;
+            }
+            
+            if(akses.getdata_sasaran_usiaproduktif()==true){
+                Panelmenu.add(btnDataSasaranUsiaProduktif);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==10){   
@@ -29477,6 +29495,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemeriksaan_fisik_ralan_per_penyakit()==true){
             Panelmenu.add(btnPemeriksaanFisikRalanPerPenyakit);
+            jmlmenu++;
+        }
+        
+        if(akses.getdata_sasaran_usiaproduktif()==true){
+            Panelmenu.add(btnDataSasaranUsiaProduktif);
             jmlmenu++;
         }
 
@@ -35424,6 +35447,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpemeriksaan_fisik_ralan_per_penyakit()==true){  
             if(btnPemeriksaanFisikRalanPerPenyakit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemeriksaanFisikRalanPerPenyakit);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdata_sasaran_usiaproduktif()==true){  
+            if(btnDataSasaranUsiaProduktif.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDataSasaranUsiaProduktif);                 
                 jmlmenu++;
             }                
         }
@@ -44621,5 +44651,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKonsultasiMedik.setName("btnKonsultasiMedik"); 
         btnKonsultasiMedik.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKonsultasiMedik.addActionListener(this::btnKonsultasiMedikActionPerformed);
+        
+        btnDataSasaranUsiaProduktif = new widget.ButtonBig();
+        btnDataSasaranUsiaProduktif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/49607_product_report_sales_icon.png"))); 
+        btnDataSasaranUsiaProduktif.setText("Data Sasaran Usia Produktif");
+        btnDataSasaranUsiaProduktif.setIconTextGap(0);
+        btnDataSasaranUsiaProduktif.setName("btnDataSasaranUsiaProduktif"); 
+        btnDataSasaranUsiaProduktif.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataSasaranUsiaProduktif.addActionListener(this::btnDataSasaranUsiaProduktifActionPerformed);
     }
 }
