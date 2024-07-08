@@ -1041,51 +1041,51 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 rs=ps.executeQuery();
                 while(rs.next()){
                     jan="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-01' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         jan="Ya";
                     }
                     feb="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-02' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         feb="Ya";
                     }
                     mar="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-03' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         mar="Ya";
                     }
                     apr="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-04' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         apr="Ya";
                     }
                     mei="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-05' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         mei="Ya";
                     }
                     jun="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-06' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         jun="Ya";
                     }
                     jul="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-07' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         jul="Ya";
                     }
                     agu="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-08' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         agu="Ya";
                     }
                     sep="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-09' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         sep="Ya";
                     }
                     okt="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-10' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         okt="Ya";
                     }
                     nov="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-11' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         nov="Ya";
                     }
                     des="Tidak";
-                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-12' "+querydokter+querypoli+querycarabayar)>0){
+                    if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where left(reg_periksa.tgl_registrasi,7)='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' "+querydokter+querypoli+querycarabayar)>0){
                         des="Ya";
                     }
                     htmlContent.append(
