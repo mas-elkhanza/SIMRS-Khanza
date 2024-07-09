@@ -107,8 +107,8 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        Hemo.setDocument(new batasInput((byte)3).getKata(Hemo));
-        Hema.setDocument(new batasInput((byte)3).getKata(Hema));
+        Hemo.setDocument(new batasInput((byte)5).getKata(Hemo));
+        Hema.setDocument(new batasInput((byte)5).getKata(Hema));
         Leo.setDocument(new batasInput((byte)7).getKata(Leo));
         Trombo.setDocument(new batasInput((byte)10).getKata(Trombo));
         TerapiCairan.setDocument(new batasInput((int)100).getKata(TerapiCairan));
