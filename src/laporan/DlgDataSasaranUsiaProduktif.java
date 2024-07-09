@@ -2,6 +2,7 @@ package laporan;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.batasInput;
 import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.Desktop;
@@ -39,7 +40,7 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
     private final sekuel Sequel = new sekuel();
     private PreparedStatement ps;
     private ResultSet rs;
-    private String querydokter,querypoli,querycarabayar,querykabupaten,querykecamatan,querykelurahan,jan,feb,mar,apr,mei,jun,jul,agu,sep,okt,nov,des;
+    private String querydokter,querypoli,querycarabayar,querykabupaten,querykecamatan,querykelurahan,jan,feb,mar,apr,mei,jun,jul,agu,sep,okt,nov,des,queryalamat,querycari;
     private StringBuilder htmlContent;
     
     /** Creates new form DlgProgramStudi
@@ -266,6 +267,9 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
+        Alamat.setDocument(new batasInput((int)100).getKata(Alamat));
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        
         ChkInput.setSelected(false);
         isForm();
         
@@ -290,6 +294,10 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
         panelisi1 = new widget.panelisi();
         label11 = new widget.Label();
         ThnCari = new widget.ComboBox();
+        jLabel7 = new widget.Label();
+        Alamat = new widget.TextBox();
+        jLabel6 = new widget.Label();
+        TCari = new widget.TextBox();
         btnCari = new widget.Button();
         BtnAll = new widget.Button();
         label9 = new widget.Label();
@@ -354,14 +362,42 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tahun Pelayanan :");
+        label11.setText("Tahun :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(105, 23));
+        label11.setPreferredSize(new java.awt.Dimension(45, 23));
         panelisi1.add(label11);
 
         ThnCari.setName("ThnCari"); // NOI18N
-        ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
+        ThnCari.setPreferredSize(new java.awt.Dimension(76, 23));
         panelisi1.add(ThnCari);
+
+        jLabel7.setText("Alamat :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi1.add(jLabel7);
+
+        Alamat.setName("Alamat"); // NOI18N
+        Alamat.setPreferredSize(new java.awt.Dimension(132, 23));
+        Alamat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlamatKeyPressed(evt);
+            }
+        });
+        panelisi1.add(Alamat);
+
+        jLabel6.setText("Key Word :");
+        jLabel6.setName("jLabel6"); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(63, 23));
+        panelisi1.add(jLabel6);
+
+        TCari.setName("TCari"); // NOI18N
+        TCari.setPreferredSize(new java.awt.Dimension(132, 23));
+        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCariKeyPressed(evt);
+            }
+        });
+        panelisi1.add(TCari);
 
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         btnCari.setMnemonic('2');
@@ -399,7 +435,7 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
 
         label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(100, 30));
+        label9.setPreferredSize(new java.awt.Dimension(10, 30));
         panelisi1.add(label9);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -506,11 +542,6 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
                 BtnSeek2ActionPerformed(evt);
             }
         });
-        BtnSeek2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek2KeyPressed(evt);
-            }
-        });
         FormInput.add(BtnSeek2);
         BtnSeek2.setBounds(396, 10, 28, 23);
 
@@ -540,11 +571,6 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
         BtnSeek3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSeek3ActionPerformed(evt);
-            }
-        });
-        BtnSeek3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek3KeyPressed(evt);
             }
         });
         FormInput.add(BtnSeek3);
@@ -578,11 +604,6 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
                 BtnSeek4ActionPerformed(evt);
             }
         });
-        BtnSeek4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek4KeyPressed(evt);
-            }
-        });
         FormInput.add(BtnSeek4);
         BtnSeek4.setBounds(396, 40, 28, 23);
 
@@ -606,11 +627,6 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
         BtnSeek5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSeek5ActionPerformed(evt);
-            }
-        });
-        BtnSeek5.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek5KeyPressed(evt);
             }
         });
         FormInput.add(BtnSeek5);
@@ -638,11 +654,6 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
                 BtnSeek6ActionPerformed(evt);
             }
         });
-        BtnSeek6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek6KeyPressed(evt);
-            }
-        });
         FormInput.add(BtnSeek6);
         BtnSeek6.setBounds(782, 40, 28, 23);
 
@@ -654,11 +665,6 @@ public class DlgDataSasaranUsiaProduktif extends javax.swing.JDialog {
         BtnSeek7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSeek7ActionPerformed(evt);
-            }
-        });
-        BtnSeek7.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek7KeyPressed(evt);
             }
         });
         FormInput.add(BtnSeek7);
@@ -769,11 +775,11 @@ private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_btnCariActionPerformed
 
 private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             btnCariActionPerformed(null);
         }else{
-            Valid.pindah(evt, Tgl2, BtnPrint);
-        }*/
+            Valid.pindah(evt, ThnCari, BtnPrint);
+        }
 }//GEN-LAST:event_btnCariKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -788,10 +794,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         poli.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed
 
-    private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek2KeyPressed
-        //Valid.pindah(evt,DTPCari2,TCari);
-    }//GEN-LAST:event_BtnSeek2KeyPressed
-
     private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
         penjab.isCek();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -799,10 +801,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnSeek3ActionPerformed
-
-    private void BtnSeek3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek3KeyPressed
-        //Valid.pindah(evt,DTPCari2,TCari);
-    }//GEN-LAST:event_BtnSeek3KeyPressed
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
         dokter.isCek();
@@ -812,20 +810,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnSeek4ActionPerformed
 
-    private void BtnSeek4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSeek4KeyPressed
-
     private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
         kabupaten.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kabupaten.setLocationRelativeTo(internalFrame1);
         kabupaten.setAlwaysOnTop(false);
         kabupaten.setVisible(true);
     }//GEN-LAST:event_BtnSeek5ActionPerformed
-
-    private void BtnSeek5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek5KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSeek5KeyPressed
 
     private void BtnSeek6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek6ActionPerformed
         if(nmkabupaten.getText().equals("")){
@@ -838,10 +828,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         }
     }//GEN-LAST:event_BtnSeek6ActionPerformed
 
-    private void BtnSeek6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek6KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSeek6KeyPressed
-
     private void BtnSeek7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek7ActionPerformed
         if(nmkecamatan.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih Kecamatan terlebih dahulu..!!");
@@ -852,10 +838,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             kelurahan.setVisible(true);
         }
     }//GEN-LAST:event_BtnSeek7ActionPerformed
-
-    private void BtnSeek7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek7KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSeek7KeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         kdpoli.setText("");
@@ -870,6 +852,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         nmkecamatan.setText("");
         KdKel.setText("");
         nmkelurahan.setText("");
+        Alamat.setText("");
+        TCari.setText("");
         prosesCari();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -877,7 +861,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
         }else{
-
+            Valid.pindah(evt, TCari, BtnPrint);
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -920,6 +904,20 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         } 
     }//GEN-LAST:event_formWindowOpened
 
+    private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AlamatKeyPressed
+
+    private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            btnCariActionPerformed(null);
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            btnCari.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnKeluar.requestFocus();
+        }
+    }//GEN-LAST:event_TCariKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -937,6 +935,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Alamat;
     private widget.Button BtnAll;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
@@ -955,9 +954,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.editorpane LoadHTML;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
+    private widget.TextBox TCari;
     private widget.ComboBox ThnCari;
     private widget.Button btnCari;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel6;
+    private widget.Label jLabel7;
     private widget.TextBox kddokter;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;
@@ -1031,12 +1033,20 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             if(!nmkabupaten.getText().equals("")){
                 querykabupaten=" and pasien.kd_kab='"+KdKab.getText()+"' ";
             }
+            queryalamat="";
+            if(!Alamat.getText().equals("")){
+                queryalamat=" and pasien.alamat like '%"+Alamat.getText()+"%' ";
+            }
+            querycari="";
+            if(!TCari.getText().equals("")){
+                querycari=" and (pasien.nm_pasien like '%"+TCari.getText()+"%' or pasien.no_ktp like '%"+TCari.getText()+"%') ";
+            }
 
             i=1;
             ps=koneksi.prepareStatement(
                     "select pasien.no_ktp,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir from pasien "+
                     "where substring(pasien.umur,4,2)='Th' and ifnull(CONVERT(left(pasien.umur,2),signed),0) between '19' and '59' "+
-                    querykabupaten+querykecamatan+querykelurahan);
+                    querykabupaten+querykecamatan+querykelurahan+queryalamat+querycari);
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
