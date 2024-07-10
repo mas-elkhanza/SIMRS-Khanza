@@ -915,6 +915,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         ApakahAndaMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya, Setiap Hari", "Ya, Kadang-kadang", "Pernah Mencoba Walau Hanya 1 Hisapan", "Tidak Merokok/Tidak Pernah Mencoba" }));
         ApakahAndaMerokok.setName("ApakahAndaMerokok"); // NOI18N
+        ApakahAndaMerokok.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ApakahAndaMerokokItemStateChanged(evt);
+            }
+        });
         FormInput.add(ApakahAndaMerokok);
         ApakahAndaMerokok.setBounds(539, 120, 250, 23);
 
@@ -1110,8 +1115,13 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         FormInput.add(jLabel92);
         jLabel92.setBounds(44, 330, 20, 23);
 
-        KeinginanBerhentiMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        KeinginanBerhentiMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak", " " }));
         KeinginanBerhentiMerokok.setName("KeinginanBerhentiMerokok"); // NOI18N
+        KeinginanBerhentiMerokok.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KeinginanBerhentiMerokokItemStateChanged(evt);
+            }
+        });
         FormInput.add(KeinginanBerhentiMerokok);
         KeinginanBerhentiMerokok.setBounds(709, 330, 80, 23);
 
@@ -1887,6 +1897,38 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private void HasilPemeriksaanCOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilPemeriksaanCOKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_HasilPemeriksaanCOKeyPressed
+
+    private void ApakahAndaMerokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ApakahAndaMerokokItemStateChanged
+        if(ApakahAndaMerokok.getSelectedIndex()>1){
+            JumlahRokok.setText("");
+            SatuanRokok.setSelectedIndex(2);
+            JenisRokokDigunakan.setSelectedIndex(4);
+            KeteranganJenisRokokDigunakan.setText("");
+            UsiaMulaiMerokok.setText("");
+            AlasanUtamaMerokok.setSelectedIndex(7);
+            KeteranganAlasanUtamaMerokok.setText("");
+            LamaMerokok.setText("");
+            CaraMendapatkanRokok.setSelectedIndex(4);
+            KeteranganCaraMendapatkanRokok.setText("");
+            KeinginanBerhentiMerokok.setSelectedIndex(2);
+            AlasanUtamaBerhentiMerokok.setSelectedIndex(5);
+            KeteranganAlasanUtamaBerhentiMerokok.setText("");
+        }else{
+            SatuanRokok.setSelectedIndex(0);
+            JenisRokokDigunakan.setSelectedIndex(0);
+            AlasanUtamaMerokok.setSelectedIndex(0);
+            CaraMendapatkanRokok.setSelectedIndex(0);
+            KeinginanBerhentiMerokok.setSelectedIndex(0);
+            AlasanUtamaBerhentiMerokok.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_ApakahAndaMerokokItemStateChanged
+
+    private void KeinginanBerhentiMerokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KeinginanBerhentiMerokokItemStateChanged
+        if(KeinginanBerhentiMerokok.getSelectedIndex()==1){
+            AlasanUtamaBerhentiMerokok.setSelectedIndex(5);
+            KeteranganAlasanUtamaBerhentiMerokok.setText("");
+        }
+    }//GEN-LAST:event_KeinginanBerhentiMerokokItemStateChanged
 
     /**
     * @param args the command line arguments

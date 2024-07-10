@@ -1085,6 +1085,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="ApakahAndaMerokok" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ApakahAndaMerokokItemStateChanged"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="539" y="120" width="250" height="23"/>
@@ -1503,13 +1506,17 @@
                     <Component class="widget.ComboBox" name="KeinginanBerhentiMerokok">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="3">
                             <StringItem index="0" value="Ya"/>
                             <StringItem index="1" value="Tidak"/>
+                            <StringItem index="2" value=" "/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="KeinginanBerhentiMerokok" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KeinginanBerhentiMerokokItemStateChanged"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="709" y="330" width="80" height="23"/>
