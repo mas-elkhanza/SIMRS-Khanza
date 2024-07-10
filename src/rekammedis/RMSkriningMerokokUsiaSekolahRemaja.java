@@ -204,7 +204,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                     KdAsalSekolah.setText(sekolah.getTable().getValueAt(sekolah.getTable().getSelectedRow(),0).toString());
                     NmAsalSekolah.setText(sekolah.getTable().getValueAt(sekolah.getTable().getSelectedRow(),1).toString());
                 }  
-                KdAsalSekolah.requestFocus();
+                btnAsalSekolah.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -297,11 +297,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
-        BB = new widget.TextBox();
-        SG1 = new widget.ComboBox();
+        Umur = new widget.TextBox();
+        Kelas = new widget.ComboBox();
         jLabel75 = new widget.Label();
         jLabel76 = new widget.Label();
-        BB1 = new widget.TextBox();
+        JK = new widget.TextBox();
         jLabel14 = new widget.Label();
         jLabel20 = new widget.Label();
         KdAsalSekolah = new widget.TextBox();
@@ -778,11 +778,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         KdPetugas.setEditable(false);
         KdPetugas.setHighlighter(null);
         KdPetugas.setName("KdPetugas"); // NOI18N
-        KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugas);
         KdPetugas.setBounds(474, 70, 94, 23);
 
@@ -823,30 +818,26 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         FormInput.add(jLabel12);
         jLabel12.setBounds(0, 40, 75, 23);
 
-        BB.setFocusTraversalPolicyProvider(true);
-        BB.setName("BB"); // NOI18N
-        BB.addKeyListener(new java.awt.event.KeyAdapter() {
+        Umur.setEditable(false);
+        Umur.setFocusTraversalPolicyProvider(true);
+        Umur.setName("Umur"); // NOI18N
+        Umur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BBKeyPressed(evt);
+                UmurKeyPressed(evt);
             }
         });
-        FormInput.add(BB);
-        BB.setBounds(79, 40, 50, 23);
+        FormInput.add(Umur);
+        Umur.setBounds(79, 40, 50, 23);
 
-        SG1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        SG1.setName("SG1"); // NOI18N
-        SG1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG1ItemStateChanged(evt);
-            }
-        });
-        SG1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        Kelas.setName("Kelas"); // NOI18N
+        Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG1KeyPressed(evt);
+                KelasKeyPressed(evt);
             }
         });
-        FormInput.add(SG1);
-        SG1.setBounds(303, 40, 62, 23);
+        FormInput.add(Kelas);
+        Kelas.setBounds(303, 40, 62, 23);
 
         jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel75.setText("a.");
@@ -860,15 +851,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         FormInput.add(jLabel76);
         jLabel76.setBounds(57, 120, 430, 23);
 
-        BB1.setFocusTraversalPolicyProvider(true);
-        BB1.setName("BB1"); // NOI18N
-        BB1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BB1KeyPressed(evt);
-            }
-        });
-        FormInput.add(BB1);
-        BB1.setBounds(187, 40, 48, 23);
+        JK.setEditable(false);
+        JK.setFocusTraversalPolicyProvider(true);
+        JK.setName("JK"); // NOI18N
+        FormInput.add(JK);
+        JK.setBounds(187, 40, 48, 23);
 
         jLabel14.setText("Kelas :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -883,11 +870,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         KdAsalSekolah.setEditable(false);
         KdAsalSekolah.setHighlighter(null);
         KdAsalSekolah.setName("KdAsalSekolah"); // NOI18N
-        KdAsalSekolah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdAsalSekolahKeyPressed(evt);
-            }
-        });
         FormInput.add(KdAsalSekolah);
         KdAsalSekolah.setBounds(474, 40, 51, 23);
 
@@ -918,6 +900,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         ApakahAndaMerokok.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ApakahAndaMerokokItemStateChanged(evt);
+            }
+        });
+        ApakahAndaMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ApakahAndaMerokokKeyPressed(evt);
             }
         });
         FormInput.add(ApakahAndaMerokok);
@@ -955,6 +942,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         SatuanRokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Batang/Hari", "Batang/Minggu", " " }));
         SatuanRokok.setName("SatuanRokok"); // NOI18N
+        SatuanRokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SatuanRokokKeyPressed(evt);
+            }
+        });
         FormInput.add(SatuanRokok);
         SatuanRokok.setBounds(669, 150, 120, 23);
 
@@ -992,6 +984,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         JenisRokokDigunakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rokok Konvensional : Rokok Filter/Putih, Kretek, Tingwe, dll", "Rokok Elektronik : Vape, IQOS, dll", "Keduanya", "Lainnya", " " }));
         JenisRokokDigunakan.setName("JenisRokokDigunakan"); // NOI18N
+        JenisRokokDigunakan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JenisRokokDigunakanKeyPressed(evt);
+            }
+        });
         FormInput.add(JenisRokokDigunakan);
         JenisRokokDigunakan.setBounds(356, 180, 340, 23);
 
@@ -1036,6 +1033,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         AlasanUtamaMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ikut-ikutan Teman", "Pengaruh Keluarga", "Rasa Ingin Tahu", "Terpaksa Oleh Teman/Lingkungan", "Mengisi Waktu Luang", "Menghilangkan Stress", "Lainnya", " " }));
         AlasanUtamaMerokok.setName("AlasanUtamaMerokok"); // NOI18N
+        AlasanUtamaMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlasanUtamaMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(AlasanUtamaMerokok);
         AlasanUtamaMerokok.setBounds(441, 240, 215, 23);
 
@@ -1090,6 +1092,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         CaraMendapatkanRokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Beli Batangan", "Beli Bungkusan", "Dapat Dari Teman/Saudara/Keluarga", "Lainnya", " " }));
         CaraMendapatkanRokok.setName("CaraMendapatkanRokok"); // NOI18N
+        CaraMendapatkanRokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraMendapatkanRokokKeyPressed(evt);
+            }
+        });
         FormInput.add(CaraMendapatkanRokok);
         CaraMendapatkanRokok.setBounds(426, 300, 230, 23);
 
@@ -1122,6 +1129,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                 KeinginanBerhentiMerokokItemStateChanged(evt);
             }
         });
+        KeinginanBerhentiMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeinginanBerhentiMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(KeinginanBerhentiMerokok);
         KeinginanBerhentiMerokok.setBounds(709, 330, 80, 23);
 
@@ -1137,6 +1149,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         AlasanUtamaBerhentiMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kondisi Kesehatan", "Motivasi Diri Sendiri", "Disarankan Orangtua/Guru/Teman", "Tidak Mampu Beli/Mahal", "Lainnya", " " }));
         AlasanUtamaBerhentiMerokok.setName("AlasanUtamaBerhentiMerokok"); // NOI18N
+        AlasanUtamaBerhentiMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlasanUtamaBerhentiMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(AlasanUtamaBerhentiMerokok);
         AlasanUtamaBerhentiMerokok.setBounds(438, 360, 218, 23);
 
@@ -1179,6 +1196,16 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         TahuDampakKesehatanMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         TahuDampakKesehatanMerokok.setName("TahuDampakKesehatanMerokok"); // NOI18N
+        TahuDampakKesehatanMerokok.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TahuDampakKesehatanMerokokItemStateChanged(evt);
+            }
+        });
+        TahuDampakKesehatanMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahuDampakKesehatanMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(TahuDampakKesehatanMerokok);
         TahuDampakKesehatanMerokok.setBounds(709, 410, 80, 23);
 
@@ -1196,6 +1223,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         DampakKesehatanMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kecanduan", "Batuk", "Gigi Kuning & Mulut Berbau", "Sistem Pernapasan Terganggu", " " }));
         DampakKesehatanMerokok.setName("DampakKesehatanMerokok"); // NOI18N
+        DampakKesehatanMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DampakKesehatanMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(DampakKesehatanMerokok);
         DampakKesehatanMerokok.setBounds(589, 440, 200, 23);
 
@@ -1213,6 +1245,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         PintuMasukNarkoba.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         PintuMasukNarkoba.setName("PintuMasukNarkoba"); // NOI18N
+        PintuMasukNarkoba.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PintuMasukNarkobaKeyPressed(evt);
+            }
+        });
         FormInput.add(PintuMasukNarkoba);
         PintuMasukNarkoba.setBounds(709, 470, 80, 23);
 
@@ -1243,6 +1280,16 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         MerokokDiPendidikan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         MerokokDiPendidikan.setName("MerokokDiPendidikan"); // NOI18N
+        MerokokDiPendidikan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MerokokDiPendidikanItemStateChanged(evt);
+            }
+        });
+        MerokokDiPendidikan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MerokokDiPendidikanKeyPressed(evt);
+            }
+        });
         FormInput.add(MerokokDiPendidikan);
         MerokokDiPendidikan.setBounds(709, 520, 80, 23);
 
@@ -1260,6 +1307,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         YangPalingSeringMerokokDiSekolah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Teman/Kakak Kelas", "Guru/Kepala Sekolah", "Satpam/Supir/Penjaga Kantin", "Lainnya", " " }));
         YangPalingSeringMerokokDiSekolah.setName("YangPalingSeringMerokokDiSekolah"); // NOI18N
+        YangPalingSeringMerokokDiSekolah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                YangPalingSeringMerokokDiSekolahKeyPressed(evt);
+            }
+        });
         FormInput.add(YangPalingSeringMerokokDiSekolah);
         YangPalingSeringMerokokDiSekolah.setBounds(476, 550, 195, 23);
 
@@ -1287,6 +1339,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         AnggotaKeluargaMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         AnggotaKeluargaMerokok.setName("AnggotaKeluargaMerokok"); // NOI18N
+        AnggotaKeluargaMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AnggotaKeluargaMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(AnggotaKeluargaMerokok);
         AnggotaKeluargaMerokok.setBounds(709, 580, 80, 23);
 
@@ -1298,6 +1355,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         TemanDekatMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         TemanDekatMerokok.setName("TemanDekatMerokok"); // NOI18N
+        TemanDekatMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TemanDekatMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(TemanDekatMerokok);
         TemanDekatMerokok.setBounds(709, 610, 80, 23);
 
@@ -1334,6 +1396,11 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         DilakukanPemeriksaanCO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak, Alat & BMHP Tidak Tersedia", "Tidak, BMHP Tidak Tersedia" }));
         DilakukanPemeriksaanCO.setName("DilakukanPemeriksaanCO"); // NOI18N
+        DilakukanPemeriksaanCO.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DilakukanPemeriksaanCOKeyPressed(evt);
+            }
+        });
         FormInput.add(DilakukanPemeriksaanCO);
         DilakukanPemeriksaanCO.setBounds(571, 660, 218, 23);
 
@@ -1424,14 +1491,14 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,cmbSkor3,BtnBatal);
+            Valid.pindah(evt,HasilPemeriksaanCO,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        emptTeks();
         ChkInput.setSelected(true);
         isForm(); 
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -1777,18 +1844,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         Valid.pindah(evt,Menit,btnPetugas);
     }//GEN-LAST:event_DetikKeyPressed
 
-    private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Detik.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Alergi.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }*/
-    }//GEN-LAST:event_KdPetugasKeyPressed
-
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         petugas.emptTeks();
         petugas.isCek();
@@ -1798,7 +1853,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,BB);
+        Valid.pindah(evt,Detik,Umur);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnSkriningNutrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningNutrisiActionPerformed
@@ -1827,29 +1882,17 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         }
     }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
 
-    private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
+    private void UmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurKeyPressed
         //Valid.pindah(evt,btnPetugas,TBPB);
-    }//GEN-LAST:event_BBKeyPressed
+    }//GEN-LAST:event_UmurKeyPressed
 
-    private void SG1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG1ItemStateChanged
-        //Nilai1.setText(SG1.getSelectedIndex()+"");
-    }//GEN-LAST:event_SG1ItemStateChanged
-
-    private void SG1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG1KeyPressed
-        //Valid.pindah(evt,Alergi,SG2);
-    }//GEN-LAST:event_SG1KeyPressed
+    private void KelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelasKeyPressed
+        Valid.pindah(evt,TCari,btnAsalSekolah);
+    }//GEN-LAST:event_KelasKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
-
-    private void BB1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BB1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BB1KeyPressed
-
-    private void KdAsalSekolahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdAsalSekolahKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdAsalSekolahKeyPressed
 
     private void btnAsalSekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsalSekolahActionPerformed
         sekolah.emptTeks();
@@ -1859,43 +1902,43 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     }//GEN-LAST:event_btnAsalSekolahActionPerformed
 
     private void btnAsalSekolahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAsalSekolahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kelas,ApakahAndaMerokok);
     }//GEN-LAST:event_btnAsalSekolahKeyPressed
 
     private void JumlahRokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahRokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ApakahAndaMerokok,SatuanRokok);
     }//GEN-LAST:event_JumlahRokokKeyPressed
 
     private void KeteranganJenisRokokDigunakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganJenisRokokDigunakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,JenisRokokDigunakan,UsiaMulaiMerokok);
     }//GEN-LAST:event_KeteranganJenisRokokDigunakanKeyPressed
 
     private void UsiaMulaiMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaMulaiMerokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganJenisRokokDigunakan,AlasanUtamaMerokok);
     }//GEN-LAST:event_UsiaMulaiMerokokKeyPressed
 
     private void KeteranganAlasanUtamaMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganAlasanUtamaMerokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AlasanUtamaMerokok,LamaMerokok);
     }//GEN-LAST:event_KeteranganAlasanUtamaMerokokKeyPressed
 
     private void LamaMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LamaMerokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganAlasanUtamaMerokok,CaraMendapatkanRokok);
     }//GEN-LAST:event_LamaMerokokKeyPressed
 
     private void KeteranganCaraMendapatkanRokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCaraMendapatkanRokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CaraMendapatkanRokok,KeinginanBerhentiMerokok);
     }//GEN-LAST:event_KeteranganCaraMendapatkanRokokKeyPressed
 
     private void KeteranganAlasanUtamaBerhentiMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganAlasanUtamaBerhentiMerokokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AlasanUtamaBerhentiMerokok,TahuDampakKesehatanMerokok);
     }//GEN-LAST:event_KeteranganAlasanUtamaBerhentiMerokokKeyPressed
 
     private void KeteranganYangPalingSeringMerokokDiSekolahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganYangPalingSeringMerokokDiSekolahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MerokokDiPendidikan,AnggotaKeluargaMerokok);
     }//GEN-LAST:event_KeteranganYangPalingSeringMerokokDiSekolahKeyPressed
 
     private void HasilPemeriksaanCOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilPemeriksaanCOKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DilakukanPemeriksaanCO,BtnSimpan);
     }//GEN-LAST:event_HasilPemeriksaanCOKeyPressed
 
     private void ApakahAndaMerokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ApakahAndaMerokokItemStateChanged
@@ -1927,8 +1970,102 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         if(KeinginanBerhentiMerokok.getSelectedIndex()==1){
             AlasanUtamaBerhentiMerokok.setSelectedIndex(5);
             KeteranganAlasanUtamaBerhentiMerokok.setText("");
+        }else{
+            AlasanUtamaBerhentiMerokok.setSelectedIndex(0);
         }
     }//GEN-LAST:event_KeinginanBerhentiMerokokItemStateChanged
+
+    private void SatuanRokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SatuanRokokKeyPressed
+        Valid.pindah(evt,JumlahRokok,JenisRokokDigunakan);
+    }//GEN-LAST:event_SatuanRokokKeyPressed
+
+    private void AlasanUtamaMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasanUtamaMerokokKeyPressed
+        Valid.pindah(evt,UsiaMulaiMerokok,KeteranganAlasanUtamaMerokok);
+    }//GEN-LAST:event_AlasanUtamaMerokokKeyPressed
+
+    private void CaraMendapatkanRokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraMendapatkanRokokKeyPressed
+        Valid.pindah(evt,LamaMerokok,KeteranganCaraMendapatkanRokok);
+    }//GEN-LAST:event_CaraMendapatkanRokokKeyPressed
+
+    private void KeinginanBerhentiMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeinginanBerhentiMerokokKeyPressed
+        if(KeinginanBerhentiMerokok.getSelectedIndex()==1){
+            Valid.pindah(evt,KeteranganCaraMendapatkanRokok,TahuDampakKesehatanMerokok);
+        }else{
+            Valid.pindah(evt,KeteranganCaraMendapatkanRokok,AlasanUtamaBerhentiMerokok);
+        }
+    }//GEN-LAST:event_KeinginanBerhentiMerokokKeyPressed
+
+    private void AlasanUtamaBerhentiMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasanUtamaBerhentiMerokokKeyPressed
+        Valid.pindah(evt,KeinginanBerhentiMerokok,KeteranganAlasanUtamaBerhentiMerokok);
+    }//GEN-LAST:event_AlasanUtamaBerhentiMerokokKeyPressed
+
+    private void TahuDampakKesehatanMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahuDampakKesehatanMerokokKeyPressed
+        if(TahuDampakKesehatanMerokok.getSelectedIndex()==1){
+            Valid.pindah(evt,KeteranganAlasanUtamaBerhentiMerokok,PintuMasukNarkoba);
+        }else{
+            Valid.pindah(evt,KeteranganAlasanUtamaBerhentiMerokok,DampakKesehatanMerokok);
+        }
+    }//GEN-LAST:event_TahuDampakKesehatanMerokokKeyPressed
+
+    private void TahuDampakKesehatanMerokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TahuDampakKesehatanMerokokItemStateChanged
+        if(TahuDampakKesehatanMerokok.getSelectedIndex()==1){
+            DampakKesehatanMerokok.setSelectedIndex(4);
+        }else{
+            DampakKesehatanMerokok.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_TahuDampakKesehatanMerokokItemStateChanged
+
+    private void DampakKesehatanMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DampakKesehatanMerokokKeyPressed
+        Valid.pindah(evt,TahuDampakKesehatanMerokok,PintuMasukNarkoba);
+    }//GEN-LAST:event_DampakKesehatanMerokokKeyPressed
+
+    private void PintuMasukNarkobaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PintuMasukNarkobaKeyPressed
+        Valid.pindah(evt,DampakKesehatanMerokok,MerokokDiPendidikan);
+    }//GEN-LAST:event_PintuMasukNarkobaKeyPressed
+
+    private void MerokokDiPendidikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerokokDiPendidikanKeyPressed
+        if(MerokokDiPendidikan.getSelectedIndex()==1){
+            Valid.pindah(evt,PintuMasukNarkoba,AnggotaKeluargaMerokok);
+        }else{
+            Valid.pindah(evt,PintuMasukNarkoba,YangPalingSeringMerokokDiSekolah);
+        }
+    }//GEN-LAST:event_MerokokDiPendidikanKeyPressed
+
+    private void YangPalingSeringMerokokDiSekolahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YangPalingSeringMerokokDiSekolahKeyPressed
+        Valid.pindah(evt,MerokokDiPendidikan,KeteranganYangPalingSeringMerokokDiSekolah);
+    }//GEN-LAST:event_YangPalingSeringMerokokDiSekolahKeyPressed
+
+    private void AnggotaKeluargaMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnggotaKeluargaMerokokKeyPressed
+        Valid.pindah(evt,KeteranganYangPalingSeringMerokokDiSekolah,TemanDekatMerokok);
+    }//GEN-LAST:event_AnggotaKeluargaMerokokKeyPressed
+
+    private void TemanDekatMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TemanDekatMerokokKeyPressed
+        Valid.pindah(evt,AnggotaKeluargaMerokok,DilakukanPemeriksaanCO);
+    }//GEN-LAST:event_TemanDekatMerokokKeyPressed
+
+    private void DilakukanPemeriksaanCOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DilakukanPemeriksaanCOKeyPressed
+        Valid.pindah(evt,TemanDekatMerokok,HasilPemeriksaanCO);
+    }//GEN-LAST:event_DilakukanPemeriksaanCOKeyPressed
+
+    private void JenisRokokDigunakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisRokokDigunakanKeyPressed
+        Valid.pindah(evt,SatuanRokok,KeteranganJenisRokokDigunakan);
+    }//GEN-LAST:event_JenisRokokDigunakanKeyPressed
+
+    private void ApakahAndaMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApakahAndaMerokokKeyPressed
+        if(ApakahAndaMerokok.getSelectedIndex()>1){
+            Valid.pindah(evt,btnAsalSekolah,TahuDampakKesehatanMerokok);
+        }else{
+            Valid.pindah(evt,btnAsalSekolah,JumlahRokok);
+        }
+    }//GEN-LAST:event_ApakahAndaMerokokKeyPressed
+
+    private void MerokokDiPendidikanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerokokDiPendidikanItemStateChanged
+        if(MerokokDiPendidikan.getSelectedIndex()==1){
+            YangPalingSeringMerokokDiSekolah.setSelectedIndex(4);
+        }else{
+            YangPalingSeringMerokokDiSekolah.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_MerokokDiPendidikanItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -1951,8 +2088,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.ComboBox AlasanUtamaMerokok;
     private widget.ComboBox AnggotaKeluargaMerokok;
     private widget.ComboBox ApakahAndaMerokok;
-    private widget.TextBox BB;
-    private widget.TextBox BB1;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1971,12 +2106,14 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.ComboBox DilakukanPemeriksaanCO;
     private widget.PanelBiasa FormInput;
     private widget.TextBox HasilPemeriksaanCO;
+    private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.ComboBox JenisRokokDigunakan;
     private widget.TextBox JumlahRokok;
     private widget.TextBox KdAsalSekolah;
     private widget.TextBox KdPetugas;
     private widget.ComboBox KeinginanBerhentiMerokok;
+    private widget.ComboBox Kelas;
     private widget.TextBox KeteranganAlasanUtamaBerhentiMerokok;
     private widget.TextBox KeteranganAlasanUtamaMerokok;
     private widget.TextBox KeteranganCaraMendapatkanRokok;
@@ -1992,7 +2129,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PintuMasukNarkoba;
-    private widget.ComboBox SG1;
     private widget.ComboBox SatuanRokok;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -2003,6 +2139,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.Tanggal Tanggal;
     private widget.ComboBox TemanDekatMerokok;
     private widget.TextBox TglLahir;
+    private widget.TextBox Umur;
     private widget.TextBox UsiaMulaiMerokok;
     private widget.ComboBox YangPalingSeringMerokokDiSekolah;
     private widget.Button btnAsalSekolah;
@@ -2150,26 +2287,35 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     }
     
     public void emptTeks() {
-        BB.setText("");
-        /*TBPB.setText("");
-        TD.setText("");
-        HR.setText("");
-        RR.setText("");
-        Suhu.setText("");
-        SpO2.setText("");
-        Alergi.setText("");
+        Kelas.setSelectedIndex(0);
+        KdAsalSekolah.setText("");
+        NmAsalSekolah.setText("");
         Tanggal.setDate(new Date());
-        SG1.setSelectedIndex(0);
-        Nilai1.setText("0");
-        SG2.setSelectedIndex(0);
-        Nilai2.setText("0");
-        SG3.setSelectedIndex(0);
-        Nilai3.setText("0");
-        SG4.setSelectedIndex(0);
-        Nilai4.setText("0");
-        TotalHasil.setText("0");
-        LabelSkrining.setText("Status Gizi Normal");*/
-        BB.requestFocus();
+        ApakahAndaMerokok.setSelectedIndex(0);
+        JumlahRokok.setText("");
+        SatuanRokok.setSelectedIndex(0);
+        JenisRokokDigunakan.setSelectedIndex(0);
+        KeteranganJenisRokokDigunakan.setText("");
+        UsiaMulaiMerokok.setText("");
+        AlasanUtamaMerokok.setSelectedIndex(0);
+        KeteranganAlasanUtamaMerokok.setText("");
+        LamaMerokok.setText("");
+        CaraMendapatkanRokok.setSelectedIndex(0);
+        KeteranganCaraMendapatkanRokok.setText("");
+        KeinginanBerhentiMerokok.setSelectedIndex(0);
+        AlasanUtamaBerhentiMerokok.setSelectedIndex(0);
+        KeteranganAlasanUtamaBerhentiMerokok.setText("");
+        TahuDampakKesehatanMerokok.setSelectedIndex(0);
+        DampakKesehatanMerokok.setSelectedIndex(0);
+        PintuMasukNarkoba.setSelectedIndex(0);
+        MerokokDiPendidikan.setSelectedIndex(0);
+        YangPalingSeringMerokokDiSekolah.setSelectedIndex(0);
+        KeteranganYangPalingSeringMerokokDiSekolah.setText("");
+        AnggotaKeluargaMerokok.setSelectedIndex(0);
+        TemanDekatMerokok.setSelectedIndex(0);
+        DilakukanPemeriksaanCO.setSelectedIndex(0);
+        HasilPemeriksaanCO.setText("");
+        Kelas.requestFocus();
     } 
 
     private void getData() {
@@ -2181,7 +2327,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
-            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             /*TBPB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             HR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
