@@ -274,7 +274,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
         BB = new widget.TextBox();
-        jLabel13 = new widget.Label();
         SG1 = new widget.ComboBox();
         jLabel75 = new widget.Label();
         jLabel76 = new widget.Label();
@@ -288,6 +287,72 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         jLabel15 = new widget.Label();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
+        jLabel77 = new widget.Label();
+        jLabel78 = new widget.Label();
+        SG3 = new widget.ComboBox();
+        KdPetugas2 = new widget.TextBox();
+        jLabel79 = new widget.Label();
+        jLabel80 = new widget.Label();
+        KdPetugas3 = new widget.TextBox();
+        SG4 = new widget.ComboBox();
+        jLabel81 = new widget.Label();
+        jLabel82 = new widget.Label();
+        KdPetugas4 = new widget.TextBox();
+        jLabel83 = new widget.Label();
+        jLabel84 = new widget.Label();
+        jLabel85 = new widget.Label();
+        SG5 = new widget.ComboBox();
+        KdPetugas5 = new widget.TextBox();
+        jLabel86 = new widget.Label();
+        jLabel87 = new widget.Label();
+        KdPetugas6 = new widget.TextBox();
+        jLabel88 = new widget.Label();
+        jLabel89 = new widget.Label();
+        jLabel90 = new widget.Label();
+        SG6 = new widget.ComboBox();
+        KdPetugas7 = new widget.TextBox();
+        jLabel91 = new widget.Label();
+        jLabel92 = new widget.Label();
+        SG7 = new widget.ComboBox();
+        KdPetugas8 = new widget.TextBox();
+        SG8 = new widget.ComboBox();
+        jLabel93 = new widget.Label();
+        jLabel94 = new widget.Label();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel100 = new widget.Label();
+        jLabel95 = new widget.Label();
+        jLabel96 = new widget.Label();
+        SG9 = new widget.ComboBox();
+        jLabel97 = new widget.Label();
+        jLabel98 = new widget.Label();
+        SG10 = new widget.ComboBox();
+        jLabel101 = new widget.Label();
+        jLabel102 = new widget.Label();
+        SG11 = new widget.ComboBox();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel103 = new widget.Label();
+        jLabel104 = new widget.Label();
+        jLabel105 = new widget.Label();
+        SG12 = new widget.ComboBox();
+        jLabel106 = new widget.Label();
+        jLabel107 = new widget.Label();
+        SG13 = new widget.ComboBox();
+        KdPetugas9 = new widget.TextBox();
+        jLabel108 = new widget.Label();
+        jLabel109 = new widget.Label();
+        SG14 = new widget.ComboBox();
+        jLabel110 = new widget.Label();
+        SG15 = new widget.ComboBox();
+        jLabel111 = new widget.Label();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel112 = new widget.Label();
+        jLabel113 = new widget.Label();
+        jLabel114 = new widget.Label();
+        SG16 = new widget.ComboBox();
+        jLabel115 = new widget.Label();
+        KdPetugas10 = new widget.TextBox();
+        jLabel116 = new widget.Label();
+        jLabel117 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -553,7 +618,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 386));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 446));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -583,7 +648,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 363));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 723));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -744,12 +809,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         FormInput.add(BB);
         BB.setBounds(79, 40, 50, 23);
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel13.setText("Kg");
-        jLabel13.setName("jLabel13"); // NOI18N
-        FormInput.add(jLabel13);
-        jLabel13.setBounds(150, 240, 30, 23);
-
         SG1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         SG1.setName("SG1"); // NOI18N
         SG1.addItemListener(new java.awt.event.ItemListener() {
@@ -766,16 +825,16 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         SG1.setBounds(303, 40, 62, 23);
 
         jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel75.setText("1.");
+        jLabel75.setText("a.");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(34, 120, 20, 23);
+        jLabel75.setBounds(44, 120, 20, 23);
 
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel76.setText("Apakah Anda merokok ? (Bila jawaban 3 dan 4, langsung ke bagian Bagian II)");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(47, 120, 530, 23);
+        jLabel76.setBounds(57, 120, 430, 23);
 
         BB1.setFocusTraversalPolicyProvider(true);
         BB1.setName("BB1"); // NOI18N
@@ -832,18 +891,8 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         SG2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya, Setiap Hari", "Ya, Kadang-kadang", "Pernah Mencoba Walau Hanya 1 Hisapan", "Tidak Merokok/Tidak Pernah Mencoba" }));
         SG2.setName("SG2"); // NOI18N
-        SG2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG2ItemStateChanged(evt);
-            }
-        });
-        SG2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG2KeyPressed(evt);
-            }
-        });
         FormInput.add(SG2);
-        SG2.setBounds(529, 120, 260, 23);
+        SG2.setBounds(539, 120, 250, 23);
 
         jLabel15.setText("J.K. :");
         jLabel15.setName("jLabel15"); // NOI18N
@@ -861,7 +910,425 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         jLabel99.setText("I. PERILAKU MEROKOK");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
-        jLabel99.setBounds(10, 100, 180, 23);
+        jLabel99.setBounds(10, 100, 200, 23);
+
+        jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel77.setText("b.");
+        jLabel77.setName("jLabel77"); // NOI18N
+        FormInput.add(jLabel77);
+        jLabel77.setBounds(44, 150, 20, 23);
+
+        jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel78.setText("Berapa jumlah batang rokok yang Anda hisap setiap hari atau minggu ?");
+        jLabel78.setName("jLabel78"); // NOI18N
+        FormInput.add(jLabel78);
+        jLabel78.setBounds(57, 150, 470, 23);
+
+        SG3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Batang/Hari", "Batang/Minggu", " " }));
+        SG3.setName("SG3"); // NOI18N
+        FormInput.add(SG3);
+        SG3.setBounds(669, 150, 120, 23);
+
+        KdPetugas2.setHighlighter(null);
+        KdPetugas2.setName("KdPetugas2"); // NOI18N
+        KdPetugas2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas2KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas2);
+        KdPetugas2.setBounds(616, 150, 50, 23);
+
+        jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel79.setText("Jika jawaban a adalah 1 dan 2, jenis rokok yang digunakan ?");
+        jLabel79.setName("jLabel79"); // NOI18N
+        FormInput.add(jLabel79);
+        jLabel79.setBounds(57, 180, 310, 23);
+
+        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel80.setText("c.");
+        jLabel80.setName("jLabel80"); // NOI18N
+        FormInput.add(jLabel80);
+        jLabel80.setBounds(44, 180, 20, 23);
+
+        KdPetugas3.setHighlighter(null);
+        KdPetugas3.setName("KdPetugas3"); // NOI18N
+        KdPetugas3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas3KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas3);
+        KdPetugas3.setBounds(699, 180, 90, 23);
+
+        SG4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rokok Konvensional : Rokok Filter/Putih, Kretek, Tingwe, dll", "Rokok Elektronik : Vape, IQOS, dll", "Keduanya", "Lainnya", " " }));
+        SG4.setName("SG4"); // NOI18N
+        FormInput.add(SG4);
+        SG4.setBounds(356, 180, 340, 23);
+
+        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel81.setText("Berapa usia Anda mulai merokok ?");
+        jLabel81.setName("jLabel81"); // NOI18N
+        FormInput.add(jLabel81);
+        jLabel81.setBounds(57, 210, 310, 23);
+
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("d.");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(44, 210, 20, 23);
+
+        KdPetugas4.setHighlighter(null);
+        KdPetugas4.setName("KdPetugas4"); // NOI18N
+        KdPetugas4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas4KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas4);
+        KdPetugas4.setBounds(699, 210, 57, 23);
+
+        jLabel83.setText("Tahun");
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(749, 210, 40, 23);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("e.");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(44, 240, 20, 23);
+
+        jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel85.setText("Apa alasan utama Anda mulai merokok ?");
+        jLabel85.setName("jLabel85"); // NOI18N
+        FormInput.add(jLabel85);
+        jLabel85.setBounds(57, 240, 310, 23);
+
+        SG5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ikut-ikutan Teman", "Pengaruh Keluarga", "Rasa Ingin Tahu", "Terpaksa Oleh Teman/Lingkungan", "Mengisi Waktu Luang", "Menghilangkan Stress", "Lainnya", " " }));
+        SG5.setName("SG5"); // NOI18N
+        FormInput.add(SG5);
+        SG5.setBounds(441, 240, 215, 23);
+
+        KdPetugas5.setHighlighter(null);
+        KdPetugas5.setName("KdPetugas5"); // NOI18N
+        KdPetugas5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas5KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas5);
+        KdPetugas5.setBounds(659, 240, 130, 23);
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel86.setText("Sudah berapa lama Anda merokok ?");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(57, 270, 310, 23);
+
+        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel87.setText("f.");
+        jLabel87.setName("jLabel87"); // NOI18N
+        FormInput.add(jLabel87);
+        jLabel87.setBounds(44, 270, 20, 23);
+
+        KdPetugas6.setHighlighter(null);
+        KdPetugas6.setName("KdPetugas6"); // NOI18N
+        KdPetugas6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas6KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas6);
+        KdPetugas6.setBounds(702, 270, 57, 23);
+
+        jLabel88.setText("Bulan");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(749, 270, 40, 23);
+
+        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel89.setText("g.");
+        jLabel89.setName("jLabel89"); // NOI18N
+        FormInput.add(jLabel89);
+        jLabel89.setBounds(44, 300, 20, 23);
+
+        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel90.setText("Bagaimana biasanya (paling sering) kamu mendapatkan rokok ?");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(57, 300, 340, 23);
+
+        SG6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Beli Batangan", "Beli Bungkusan", "Dapat Dari Teman/Saudara/Keluarga", "Lainnya", " " }));
+        SG6.setName("SG6"); // NOI18N
+        FormInput.add(SG6);
+        SG6.setBounds(426, 300, 230, 23);
+
+        KdPetugas7.setHighlighter(null);
+        KdPetugas7.setName("KdPetugas7"); // NOI18N
+        KdPetugas7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas7KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas7);
+        KdPetugas7.setBounds(659, 300, 130, 23);
+
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel91.setText("Apakah ada keinginan Anda untuk berhenti merokok ? (Jika Tidak, langsung ke Bagian II)");
+        jLabel91.setName("jLabel91"); // NOI18N
+        FormInput.add(jLabel91);
+        jLabel91.setBounds(57, 330, 480, 23);
+
+        jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel92.setText("h.");
+        jLabel92.setName("jLabel92"); // NOI18N
+        FormInput.add(jLabel92);
+        jLabel92.setBounds(44, 330, 20, 23);
+
+        SG7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SG7.setName("SG7"); // NOI18N
+        FormInput.add(SG7);
+        SG7.setBounds(709, 330, 80, 23);
+
+        KdPetugas8.setHighlighter(null);
+        KdPetugas8.setName("KdPetugas8"); // NOI18N
+        KdPetugas8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas8KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas8);
+        KdPetugas8.setBounds(659, 360, 130, 23);
+
+        SG8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kondisi Kesehatan", "Motivasi Diri Sendiri", "Disarankan Orangtua/Guru/Teman", "Tidak Mampu Beli/Mahal", "Lainnya", " " }));
+        SG8.setName("SG8"); // NOI18N
+        FormInput.add(SG8);
+        SG8.setBounds(438, 360, 218, 23);
+
+        jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel93.setText("Jika Ya apa alasan utama Anda mau berhenti merokok ?");
+        jLabel93.setName("jLabel93"); // NOI18N
+        FormInput.add(jLabel93);
+        jLabel93.setBounds(57, 360, 340, 23);
+
+        jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel94.setText("i.");
+        jLabel94.setName("jLabel94"); // NOI18N
+        FormInput.add(jLabel94);
+        jLabel94.setBounds(44, 360, 20, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 390, 807, 1);
+
+        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel100.setText("II. PENGETAHUAN TENTANG ROKOK");
+        jLabel100.setName("jLabel100"); // NOI18N
+        FormInput.add(jLabel100);
+        jLabel100.setBounds(10, 390, 260, 23);
+
+        jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel95.setText("a.");
+        jLabel95.setName("jLabel95"); // NOI18N
+        FormInput.add(jLabel95);
+        jLabel95.setBounds(44, 410, 20, 23);
+
+        jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel96.setText("Apakah Anda tahu dampak kesehatan dari merokok ?");
+        jLabel96.setName("jLabel96"); // NOI18N
+        FormInput.add(jLabel96);
+        jLabel96.setBounds(57, 410, 480, 23);
+
+        SG9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SG9.setName("SG9"); // NOI18N
+        FormInput.add(SG9);
+        SG9.setBounds(709, 410, 80, 23);
+
+        jLabel97.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel97.setText("Jika Ya, pilihlah menurut Anda dampak kesehatan dari merokok yang Anda ketahui ?");
+        jLabel97.setName("jLabel97"); // NOI18N
+        FormInput.add(jLabel97);
+        jLabel97.setBounds(57, 440, 480, 23);
+
+        jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel98.setText("b.");
+        jLabel98.setName("jLabel98"); // NOI18N
+        FormInput.add(jLabel98);
+        jLabel98.setBounds(44, 440, 20, 23);
+
+        SG10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kecanduan", "Batuk", "Gigi Kuning & Mulut Berbau", "Sistem Pernapasan Terganggu", " " }));
+        SG10.setName("SG10"); // NOI18N
+        FormInput.add(SG10);
+        SG10.setBounds(589, 440, 200, 23);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("Apakah Anda tahu merokok menjadi pintu masuk penggunaan narkoba ?");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(57, 470, 480, 23);
+
+        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel102.setText("c.");
+        jLabel102.setName("jLabel102"); // NOI18N
+        FormInput.add(jLabel102);
+        jLabel102.setBounds(44, 470, 20, 23);
+
+        SG11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SG11.setName("SG11"); // NOI18N
+        FormInput.add(SG11);
+        SG11.setBounds(709, 470, 80, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 500, 807, 1);
+
+        jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel103.setText("III. SUMBER PAPARAN PERILAKU MEROKOK");
+        jLabel103.setName("jLabel103"); // NOI18N
+        FormInput.add(jLabel103);
+        jLabel103.setBounds(10, 500, 260, 23);
+
+        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel104.setText("Apakah Anda pernah melihat orang yang merokok di satuan pendidikan?");
+        jLabel104.setName("jLabel104"); // NOI18N
+        FormInput.add(jLabel104);
+        jLabel104.setBounds(57, 520, 480, 23);
+
+        jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel105.setText("a.");
+        jLabel105.setName("jLabel105"); // NOI18N
+        FormInput.add(jLabel105);
+        jLabel105.setBounds(44, 520, 20, 23);
+
+        SG12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SG12.setName("SG12"); // NOI18N
+        FormInput.add(SG12);
+        SG12.setBounds(709, 520, 80, 23);
+
+        jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel106.setText("b.");
+        jLabel106.setName("jLabel106"); // NOI18N
+        FormInput.add(jLabel106);
+        jLabel106.setBounds(44, 550, 20, 23);
+
+        jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel107.setText("Jika Ya sebutkan orang yang paling sering Anda lihat merokok di satuan pendidikan !");
+        jLabel107.setName("jLabel107"); // NOI18N
+        FormInput.add(jLabel107);
+        jLabel107.setBounds(57, 550, 430, 23);
+
+        SG13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Teman/Kakak Kelas", "Guru/Kepala Sekolah", "Satpam/Supir/Penjaga Kantin", "Lainnya", " " }));
+        SG13.setName("SG13"); // NOI18N
+        FormInput.add(SG13);
+        SG13.setBounds(476, 550, 195, 23);
+
+        KdPetugas9.setHighlighter(null);
+        KdPetugas9.setName("KdPetugas9"); // NOI18N
+        KdPetugas9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas9KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas9);
+        KdPetugas9.setBounds(674, 550, 115, 23);
+
+        jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel108.setText("c.");
+        jLabel108.setName("jLabel108"); // NOI18N
+        FormInput.add(jLabel108);
+        jLabel108.setBounds(44, 580, 20, 23);
+
+        jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel109.setText("Apakah ada anggota keluarga di rumah yang merokok ?");
+        jLabel109.setName("jLabel109"); // NOI18N
+        FormInput.add(jLabel109);
+        jLabel109.setBounds(57, 580, 480, 23);
+
+        SG14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SG14.setName("SG14"); // NOI18N
+        FormInput.add(SG14);
+        SG14.setBounds(709, 580, 80, 23);
+
+        jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel110.setText("Apakah teman-teman dekatmu banyak yang merokok ?");
+        jLabel110.setName("jLabel110"); // NOI18N
+        FormInput.add(jLabel110);
+        jLabel110.setBounds(57, 610, 480, 23);
+
+        SG15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SG15.setName("SG15"); // NOI18N
+        FormInput.add(SG15);
+        SG15.setBounds(709, 610, 80, 23);
+
+        jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel111.setText("d.");
+        jLabel111.setName("jLabel111"); // NOI18N
+        FormInput.add(jLabel111);
+        jLabel111.setBounds(44, 610, 20, 23);
+
+        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator4.setName("jSeparator4"); // NOI18N
+        FormInput.add(jSeparator4);
+        jSeparator4.setBounds(0, 640, 807, 1);
+
+        jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel112.setText("IV. PEMERIKSAAN KADAR CO PERNAPASAN");
+        jLabel112.setName("jLabel112"); // NOI18N
+        FormInput.add(jLabel112);
+        jLabel112.setBounds(10, 640, 380, 23);
+
+        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel113.setText("a.");
+        jLabel113.setName("jLabel113"); // NOI18N
+        FormInput.add(jLabel113);
+        jLabel113.setBounds(44, 660, 20, 23);
+
+        jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel114.setText("Apakah dilakukan pemeriksaan kadar CO pernapasan?");
+        jLabel114.setName("jLabel114"); // NOI18N
+        FormInput.add(jLabel114);
+        jLabel114.setBounds(57, 660, 480, 23);
+
+        SG16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak, Alat & BMHP Tidak Tersedia", "Tidak, BMHP Tidak Tersedia" }));
+        SG16.setName("SG16"); // NOI18N
+        FormInput.add(SG16);
+        SG16.setBounds(571, 660, 218, 23);
+
+        jLabel115.setText("Ppm");
+        jLabel115.setName("jLabel115"); // NOI18N
+        FormInput.add(jLabel115);
+        jLabel115.setBounds(749, 690, 40, 23);
+
+        KdPetugas10.setHighlighter(null);
+        KdPetugas10.setName("KdPetugas10"); // NOI18N
+        KdPetugas10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugas10KeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugas10);
+        KdPetugas10.setBounds(708, 690, 57, 23);
+
+        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel116.setText("Hasil pemeriksaan kadar CO pernapasan");
+        jLabel116.setName("jLabel116"); // NOI18N
+        FormInput.add(jLabel116);
+        jLabel116.setBounds(57, 690, 310, 23);
+
+        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel117.setText("b.");
+        jLabel117.setName("jLabel117"); // NOI18N
+        FormInput.add(jLabel117);
+        jLabel117.setBounds(44, 690, 20, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1358,13 +1825,41 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPetugas1KeyPressed
 
-    private void SG2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG2ItemStateChanged
+    private void KdPetugas2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG2ItemStateChanged
+    }//GEN-LAST:event_KdPetugas2KeyPressed
 
-    private void SG2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG2KeyPressed
+    private void KdPetugas3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG2KeyPressed
+    }//GEN-LAST:event_KdPetugas3KeyPressed
+
+    private void KdPetugas4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugas4KeyPressed
+
+    private void KdPetugas5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugas5KeyPressed
+
+    private void KdPetugas6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugas6KeyPressed
+
+    private void KdPetugas7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugas7KeyPressed
+
+    private void KdPetugas8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugas8KeyPressed
+
+    private void KdPetugas9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugas9KeyPressed
+
+    private void KdPetugas10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugas10KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugas10KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1402,6 +1897,15 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
     private widget.TextBox KdPetugas1;
+    private widget.TextBox KdPetugas10;
+    private widget.TextBox KdPetugas2;
+    private widget.TextBox KdPetugas3;
+    private widget.TextBox KdPetugas4;
+    private widget.TextBox KdPetugas5;
+    private widget.TextBox KdPetugas6;
+    private widget.TextBox KdPetugas7;
+    private widget.TextBox KdPetugas8;
+    private widget.TextBox KdPetugas9;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
@@ -1410,7 +1914,21 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.TextBox NmPetugas1;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox SG1;
+    private widget.ComboBox SG10;
+    private widget.ComboBox SG11;
+    private widget.ComboBox SG12;
+    private widget.ComboBox SG13;
+    private widget.ComboBox SG14;
+    private widget.ComboBox SG15;
+    private widget.ComboBox SG16;
     private widget.ComboBox SG2;
+    private widget.ComboBox SG3;
+    private widget.ComboBox SG4;
+    private widget.ComboBox SG5;
+    private widget.ComboBox SG6;
+    private widget.ComboBox SG7;
+    private widget.ComboBox SG8;
+    private widget.ComboBox SG9;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1422,8 +1940,25 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.Button btnPetugas1;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel100;
+    private widget.Label jLabel101;
+    private widget.Label jLabel102;
+    private widget.Label jLabel103;
+    private widget.Label jLabel104;
+    private widget.Label jLabel105;
+    private widget.Label jLabel106;
+    private widget.Label jLabel107;
+    private widget.Label jLabel108;
+    private widget.Label jLabel109;
+    private widget.Label jLabel110;
+    private widget.Label jLabel111;
+    private widget.Label jLabel112;
+    private widget.Label jLabel113;
+    private widget.Label jLabel114;
+    private widget.Label jLabel115;
+    private widget.Label jLabel116;
+    private widget.Label jLabel117;
     private widget.Label jLabel12;
-    private widget.Label jLabel13;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
@@ -1436,11 +1971,36 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.Label jLabel7;
     private widget.Label jLabel75;
     private widget.Label jLabel76;
+    private widget.Label jLabel77;
+    private widget.Label jLabel78;
+    private widget.Label jLabel79;
     private widget.Label jLabel8;
+    private widget.Label jLabel80;
+    private widget.Label jLabel81;
+    private widget.Label jLabel82;
+    private widget.Label jLabel83;
+    private widget.Label jLabel84;
+    private widget.Label jLabel85;
+    private widget.Label jLabel86;
+    private widget.Label jLabel87;
+    private widget.Label jLabel88;
+    private widget.Label jLabel89;
+    private widget.Label jLabel90;
+    private widget.Label jLabel91;
+    private widget.Label jLabel92;
+    private widget.Label jLabel93;
+    private widget.Label jLabel94;
+    private widget.Label jLabel95;
+    private widget.Label jLabel96;
+    private widget.Label jLabel97;
+    private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1597,17 +2157,10 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>558){
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,386));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }else{
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+            FormInput.setVisible(true);      
+            ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
