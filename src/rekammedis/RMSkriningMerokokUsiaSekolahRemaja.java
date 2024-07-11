@@ -1420,7 +1420,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         jLabel113.setBounds(44, 660, 20, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel114.setText("Apakah dilakukan pemeriksaan kadar CO pernapasan?");
+        jLabel114.setText("Apakah dilakukan pemeriksaan kadar CO pernapasan ?");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
         jLabel114.setBounds(57, 660, 480, 23);

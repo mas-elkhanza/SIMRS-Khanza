@@ -2045,7 +2045,7 @@
                     <Component class="widget.Label" name="jLabel114">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah dilakukan pemeriksaan kadar CO pernapasan?"/>
+                        <Property name="text" type="java.lang.String" value="Apakah dilakukan pemeriksaan kadar CO pernapasan ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel114" noResource="true"/>
                       </Properties>
                       <Constraints>
