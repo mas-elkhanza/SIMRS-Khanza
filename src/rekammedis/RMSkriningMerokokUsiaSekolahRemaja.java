@@ -69,11 +69,15 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "BB(Kg)","TB/PB(Cm)","TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu","SpO2","Alergi",
-            "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Skrining Gizi 3","Nilai 3",
-            "Skrining Gizi 4","Nilai 4","Total Skor","Hasil Skrining","Diketahui Dietisien/Dokter","Jam Lapor"
-        }){
+                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Umur","Kelas","Kode Sekolah","Asal Sekolah",
+                "Kode Petugas","Nama Petugas","Tanggal","Apakah Anda Merokok","Jml.Rokok","Satuan Rokok", 
+                "Jenis Rokok Yang Digunakan","Keterangan Jenis Rokok","Usia Merokok","Alasan Mulai Merokok", 
+                "Keterangan Alasan Mulai Merokok","Lama Merokok","Biasanya Mendapatkan Rokok","Keterangan Biasanya Mendapatkan Rokok", 
+                "Ingin Berhenti","Alasan Ingin Berhenti","Keterangan Alasan Ingin Berhenti","Tahu Dampak Kesehatan Merokok", 
+                "Dampak Merokok Yang Diketahui","Pintu Masuk Narkoba","Melihat Orang Merokok Di Sekolah","Paling Sering Merokok Di Sekolah", 
+                "Keterangan Paling Sering Merokok Di Sekolah","Anggota Keluarga Di Rumah Merokok","Teman Dekat Merokok", 
+                "Pemeriksaan Kadar CO", "Hasil Pemeriksaan CO Pernapasan"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
@@ -82,7 +86,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 28; i++) {
+        for (i = 0; i < 36; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -93,53 +97,69 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(30);
             }else if(i==5){
-                column.setPreferredWidth(80);
-            }else if(i==6){
-                column.setPreferredWidth(150);
-            }else if(i==7){
-                column.setPreferredWidth(115);
-            }else if(i==8){
                 column.setPreferredWidth(40);
+            }else if(i==6){
+                column.setPreferredWidth(40);
+            }else if(i==7){
+                column.setPreferredWidth(70);
+            }else if(i==8){
+                column.setPreferredWidth(170);
             }else if(i==9){
-                column.setPreferredWidth(58);
+                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(60);
-            }else if(i==11){
-                column.setPreferredWidth(68);
-            }else if(i==12){
-                column.setPreferredWidth(68);
-            }else if(i==13){
-                column.setPreferredWidth(37);
-            }else if(i==14){
-                column.setPreferredWidth(37);
-            }else if(i==15){
                 column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(115);
+            }else if(i==12){
+                column.setPreferredWidth(200);
+            }else if(i==13){
+                column.setPreferredWidth(65);
+            }else if(i==14){
+                column.setPreferredWidth(75);
+            }else if(i==15){
+                column.setPreferredWidth(300);
             }else if(i==16){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(170);
             }else if(i==17){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(77);
             }else if(i==18){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==19){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(180);
             }else if(i==20){
                 column.setPreferredWidth(80);
             }else if(i==21){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(160);
             }else if(i==22){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(214);
             }else if(i==23){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(80);
             }else if(i==24){
-                column.setPreferredWidth(61);
+                column.setPreferredWidth(150);
             }else if(i==25){
-                column.setPreferredWidth(77);
+                column.setPreferredWidth(180);
             }else if(i==26){
-                column.setPreferredWidth(138);
+                column.setPreferredWidth(176);
             }else if(i==27){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(170);
+            }else if(i==28){
+                column.setPreferredWidth(110);
+            }else if(i==29){
+                column.setPreferredWidth(165);
+            }else if(i==30){
+                column.setPreferredWidth(170);
+            }else if(i==31){
+                column.setPreferredWidth(230);
+            }else if(i==32){
+                column.setPreferredWidth(190);
+            }else if(i==33){
+                column.setPreferredWidth(120);
+            }else if(i==34){
+                column.setPreferredWidth(120);
+            }else if(i==35){
+                column.setPreferredWidth(170);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1594,30 +1614,30 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             try{
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                        "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                        "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                        "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                        "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                        "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                        "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                        "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                        "where skrining_nutrisi_anak.tanggal between ? and ? order by skrining_nutrisi_anak.tanggal ");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.td,skrining_perilaku_merokok_sekolah_remaja.hr,skrining_perilaku_merokok_sekolah_remaja.rr,skrining_perilaku_merokok_sekolah_remaja.suhu,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.bb,skrining_perilaku_merokok_sekolah_remaja.tbpb,skrining_perilaku_merokok_sekolah_remaja.spo2,skrining_perilaku_merokok_sekolah_remaja.alergi,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.sg1,skrining_perilaku_merokok_sekolah_remaja.nilai1,skrining_perilaku_merokok_sekolah_remaja.sg2,skrining_perilaku_merokok_sekolah_remaja.nilai2,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.sg3,skrining_perilaku_merokok_sekolah_remaja.nilai3,skrining_perilaku_merokok_sekolah_remaja.sg4,skrining_perilaku_merokok_sekolah_remaja.nilai4,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.total_hasil,skrining_perilaku_merokok_sekolah_remaja.skor_nutrisi,skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,"+
+                        "pasien.jk,skrining_perilaku_merokok_sekolah_remaja.diketahui_dietisien,skrining_perilaku_merokok_sekolah_remaja.keterangan_diketahui_dietisien "+
+                        "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
+                        "where skrining_perilaku_merokok_sekolah_remaja.tanggal between ? and ? order by skrining_perilaku_merokok_sekolah_remaja.tanggal ");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                        "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                        "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                        "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                        "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                        "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                        "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                        "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                        "where skrining_nutrisi_anak.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                        "pasien.nm_pasien like ? or skrining_nutrisi_anak.alergi like ? or skrining_nutrisi_anak.nip like ? or petugas.nama like ?) "+
-                        "order by skrining_nutrisi_anak.tanggal ");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.td,skrining_perilaku_merokok_sekolah_remaja.hr,skrining_perilaku_merokok_sekolah_remaja.rr,skrining_perilaku_merokok_sekolah_remaja.suhu,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.bb,skrining_perilaku_merokok_sekolah_remaja.tbpb,skrining_perilaku_merokok_sekolah_remaja.spo2,skrining_perilaku_merokok_sekolah_remaja.alergi,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.sg1,skrining_perilaku_merokok_sekolah_remaja.nilai1,skrining_perilaku_merokok_sekolah_remaja.sg2,skrining_perilaku_merokok_sekolah_remaja.nilai2,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.sg3,skrining_perilaku_merokok_sekolah_remaja.nilai3,skrining_perilaku_merokok_sekolah_remaja.sg4,skrining_perilaku_merokok_sekolah_remaja.nilai4,"+
+                        "skrining_perilaku_merokok_sekolah_remaja.total_hasil,skrining_perilaku_merokok_sekolah_remaja.skor_nutrisi,skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,"+
+                        "pasien.jk,skrining_perilaku_merokok_sekolah_remaja.diketahui_dietisien,skrining_perilaku_merokok_sekolah_remaja.keterangan_diketahui_dietisien "+
+                        "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
+                        "where skrining_perilaku_merokok_sekolah_remaja.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                        "pasien.nm_pasien like ? or skrining_perilaku_merokok_sekolah_remaja.alergi like ? or skrining_perilaku_merokok_sekolah_remaja.nip like ? or petugas.nama like ?) "+
+                        "order by skrining_perilaku_merokok_sekolah_remaja.tanggal ");
                 }
 
                 try {
@@ -1868,15 +1888,15 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningNutrisiAnak.jasper","report","::[ Formulir Skrining Nutrisi Pasien Anak ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                    "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                    "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                    "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                    "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                    "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                    "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                    "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.td,skrining_perilaku_merokok_sekolah_remaja.hr,skrining_perilaku_merokok_sekolah_remaja.rr,skrining_perilaku_merokok_sekolah_remaja.suhu,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.bb,skrining_perilaku_merokok_sekolah_remaja.tbpb,skrining_perilaku_merokok_sekolah_remaja.spo2,skrining_perilaku_merokok_sekolah_remaja.alergi,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.sg1,skrining_perilaku_merokok_sekolah_remaja.nilai1,skrining_perilaku_merokok_sekolah_remaja.sg2,skrining_perilaku_merokok_sekolah_remaja.nilai2,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.sg3,skrining_perilaku_merokok_sekolah_remaja.nilai3,skrining_perilaku_merokok_sekolah_remaja.sg4,skrining_perilaku_merokok_sekolah_remaja.nilai4,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.total_hasil,skrining_perilaku_merokok_sekolah_remaja.skor_nutrisi,skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,"+
+                    "pasien.jk,skrining_perilaku_merokok_sekolah_remaja.diketahui_dietisien,skrining_perilaku_merokok_sekolah_remaja.keterangan_diketahui_dietisien "+
+                    "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
@@ -2218,30 +2238,48 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                    "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                    "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                    "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                    "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                    "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                    "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                    "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                    "where skrining_nutrisi_anak.tanggal between ? and ? order by skrining_nutrisi_anak.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.kelas,skrining_perilaku_merokok_sekolah_remaja.kd_sekolah,master_sekolah.nm_sekolah,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.apakah_anda_merokok,skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok_hariminggu,skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan_keterangan,skrining_perilaku_merokok_sekolah_remaja.usia_mulai_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.sudah_berapa_lama_merokok,skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok_keterangan,skrining_perilaku_merokok_sekolah_remaja.keinginan_berhenti_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.tahu_dampak_kesehatan_merokok,skrining_perilaku_merokok_sekolah_remaja.dampak_kesehatan_dari_merokok_yang_diketahui,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.tahu_merokok_pintu_masuk_narkoba,skrining_perilaku_merokok_sekolah_remaja.melihat_orang_merokok_di_sekolah,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah,skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.ada_anggota_keluarga_di_rumah_yang_merokok,skrining_perilaku_merokok_sekolah_remaja.teman_dekat_banyakyang_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.dilakukan_pemeriksaan_kadar_co_pernapasan,skrining_perilaku_merokok_sekolah_remaja.hasil_pemeriksaan_co_pernapasan "+
+                    "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
+                    "inner join master_sekolah on master_sekolah.kd_sekolah=skrining_perilaku_merokok_sekolah_remaja.kd_sekolah "+
+                    "where skrining_perilaku_merokok_sekolah_remaja.tanggal between ? and ? order by skrining_perilaku_merokok_sekolah_remaja.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                    "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                    "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                    "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                    "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                    "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                    "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                    "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                    "where skrining_nutrisi_anak.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_nutrisi_anak.alergi like ? or skrining_nutrisi_anak.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_nutrisi_anak.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.kelas,skrining_perilaku_merokok_sekolah_remaja.kd_sekolah,master_sekolah.nm_sekolah,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.apakah_anda_merokok,skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok_hariminggu,skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan_keterangan,skrining_perilaku_merokok_sekolah_remaja.usia_mulai_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.sudah_berapa_lama_merokok,skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok_keterangan,skrining_perilaku_merokok_sekolah_remaja.keinginan_berhenti_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.tahu_dampak_kesehatan_merokok,skrining_perilaku_merokok_sekolah_remaja.dampak_kesehatan_dari_merokok_yang_diketahui,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.tahu_merokok_pintu_masuk_narkoba,skrining_perilaku_merokok_sekolah_remaja.melihat_orang_merokok_di_sekolah,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah,skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.ada_anggota_keluarga_di_rumah_yang_merokok,skrining_perilaku_merokok_sekolah_remaja.teman_dekat_banyakyang_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.dilakukan_pemeriksaan_kadar_co_pernapasan,skrining_perilaku_merokok_sekolah_remaja.hasil_pemeriksaan_co_pernapasan "+
+                    "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
+                    "inner join master_sekolah on master_sekolah.kd_sekolah=skrining_perilaku_merokok_sekolah_remaja.kd_sekolah "+
+                    "where skrining_perilaku_merokok_sekolah_remaja.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or master_sekolah.nm_sekolah like ? or skrining_perilaku_merokok_sekolah_remaja.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_perilaku_merokok_sekolah_remaja.tanggal ");
             }
                 
             try {
@@ -2263,11 +2301,16 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
-                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("bb"),rs.getString("tbpb"),rs.getString("td"),
-                        rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("alergi"),rs.getString("sg1"),
-                        rs.getString("nilai1"),rs.getString("sg2"),rs.getString("nilai2"),rs.getString("sg3"),rs.getString("nilai3"),rs.getString("sg4"),
-                        rs.getString("nilai4"),rs.getString("total_hasil"),rs.getString("skor_nutrisi"),rs.getString("diketahui_dietisien"),
-                        rs.getString("keterangan_diketahui_dietisien")
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("kelas"),rs.getString("kd_sekolah"),rs.getString("nm_sekolah"),
+                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("apakah_anda_merokok"),rs.getString("jumlah_batang_rokok"),
+                        rs.getString("jumlah_batang_rokok_hariminggu"),rs.getString("jenis_rokok_yang_digunakan"),rs.getString("jenis_rokok_yang_digunakan_keterangan"),
+                        rs.getString("usia_mulai_merokok"),rs.getString("alasan_mulai_merokok"),rs.getString("alasan_mulai_merokok_keterangan"),rs.getString("sudah_berapa_lama_merokok"),
+                        rs.getString("bagaimana_biasanya_mendapatkan_rokok"),rs.getString("bagaimana_biasanya_mendapatkan_rokok_keterangan"),rs.getString("keinginan_berhenti_merokok"),
+                        rs.getString("alasan_utama_berhenti_merokok"),rs.getString("alasan_utama_berhenti_merokok_keterangan"),rs.getString("tahu_dampak_kesehatan_merokok"),
+                        rs.getString("dampak_kesehatan_dari_merokok_yang_diketahui"),rs.getString("tahu_merokok_pintu_masuk_narkoba"),rs.getString("melihat_orang_merokok_di_sekolah"),
+                        rs.getString("orang_yang_paling_sering_merokok_disekolah"),rs.getString("orang_yang_paling_sering_merokok_disekolah_keterangan"),
+                        rs.getString("ada_anggota_keluarga_di_rumah_yang_merokok"),rs.getString("teman_dekat_banyakyang_merokok"),rs.getString("dilakukan_pemeriksaan_kadar_co_pernapasan"),
+                        rs.getString("hasil_pemeriksaan_co_pernapasan")
                     });
                 }
             } catch (Exception e) {
@@ -2354,7 +2397,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,"+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, pasien.jk,pasien.tgl_lahir,"+
                     "reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
@@ -2390,6 +2433,8 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         TCari.setText(norwt);
         DTPCari2.setDate(tgl2);    
         isRawat(); 
+        ChkInput.setSelected(true);
+        isForm();
     }
     
     private void isForm(){
@@ -2407,10 +2452,10 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_nutrisi_anak());
-        BtnHapus.setEnabled(akses.getskrining_nutrisi_anak());
-        BtnEdit.setEnabled(akses.getskrining_nutrisi_anak());
-        BtnPrint.setEnabled(akses.getskrining_nutrisi_anak()); 
+        BtnSimpan.setEnabled(akses.getskrining_perilaku_merokok_sekolah_remaja());
+        BtnHapus.setEnabled(akses.getskrining_perilaku_merokok_sekolah_remaja());
+        BtnEdit.setEnabled(akses.getskrining_perilaku_merokok_sekolah_remaja());
+        BtnPrint.setEnabled(akses.getskrining_perilaku_merokok_sekolah_remaja()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2488,7 +2533,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     }
 
     private void ganti() {
-        /*Sequel.mengedit("skrining_nutrisi_anak","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,"+
+        /*Sequel.mengedit("skrining_perilaku_merokok_sekolah_remaja","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,"+
                 "nilai2=?,sg3=?,nilai3=?,sg4=?,nilai4=?,total_hasil=?,skor_nutrisi=?,diketahui_dietisien=?,keterangan_diketahui_dietisien=?,nip=?",24,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
@@ -2502,7 +2547,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_nutrisi_anak where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_perilaku_merokok_sekolah_remaja where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2515,13 +2560,25 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     
     private void simpan() {
         if(Sequel.menyimpantf("skrining_perilaku_merokok_sekolah_remaja","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",29,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdAsalSekolah.getText(),
-            Kelas.getSelectedItem().toString(),ApakahAndaMerokok.getSelectedItem().toString(), "jumlah_batang_rokok", "jumlah_batang_rokok_hariminggu", "jenis_rokok_yang_digunakan", "jenis_rokok_yang_digunakan_keterangan", "usia_mulai_merokok", "alasan_mulai_merokok", "alasan_mulai_merokok_keterangan", "sudah_berapa_lama_merokok", "bagaimana_biasanya_mendapatkan_rokok", "bagaimana_biasanya_mendapatkan_rokok_keterangan", "keinginan_berhenti_merokok", "alasan_utama_berhenti_merokok", "alasan_utama_berhenti_merokok_keterangan", "tahu_dampak_kesehatan_merokok", "dampak_kesehatan_dari_merokok_yang_diketahui", "tahu_merokok_pintu_masuk_narkoba", "melihat_orang_merokok_di_sekolah", "orang_yang_paling_sering_merokok_disekolah", "orang_yang_paling_sering_merokok_disekolah_keterangan", "ada_anggota_keluarga_di_rumah_yang_merokok", "teman_dekat_banyakyang_merokok", "dilakukan_pemeriksaan_kadar_co_pernapasan", "hasil_pemeriksaan_co_pernapasan", "nip"
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdAsalSekolah.getText(),
+            Kelas.getSelectedItem().toString(),ApakahAndaMerokok.getSelectedItem().toString(),JumlahRokok.getText(),SatuanRokok.getSelectedItem().toString(),JenisRokokDigunakan.getSelectedItem().toString(), 
+            KeteranganJenisRokokDigunakan.getText(),UsiaMulaiMerokok.getText(),AlasanUtamaMerokok.getSelectedItem().toString(),KeteranganAlasanUtamaMerokok.getText(), 
+            LamaMerokok.getText(),CaraMendapatkanRokok.getSelectedItem().toString(),KeteranganCaraMendapatkanRokok.getText(),KeinginanBerhentiMerokok.getSelectedItem().toString(),
+            AlasanUtamaBerhentiMerokok.getSelectedItem().toString(),KeteranganAlasanUtamaBerhentiMerokok.getText(),TahuDampakKesehatanMerokok.getSelectedItem().toString(), 
+            DampakKesehatanMerokok.getSelectedItem().toString(),PintuMasukNarkoba.getSelectedItem().toString(),MerokokDiPendidikan.getSelectedItem().toString(),
+            YangPalingSeringMerokokDiSekolah.getSelectedItem().toString(),KeteranganYangPalingSeringMerokokDiSekolah.getText(),AnggotaKeluargaMerokok.getSelectedItem().toString(), 
+            TemanDekatMerokok.getSelectedItem().toString(),DilakukanPemeriksaanCO.getSelectedItem().toString(),HasilPemeriksaanCO.getText(),KdPetugas.getText()
         })==true){
-            /*tabMode.addRow(new String[]{
-                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
-                Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem()
-            });*/
+            tabMode.addRow(new String[]{
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),Umur.getText(),Kelas.getSelectedItem().toString(),KdAsalSekolah.getText(),NmAsalSekolah.getText(),KdPetugas.getText(),
+                NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),ApakahAndaMerokok.getSelectedItem().toString(),
+                JumlahRokok.getText(),SatuanRokok.getSelectedItem().toString(),JenisRokokDigunakan.getSelectedItem().toString(),KeteranganJenisRokokDigunakan.getText(),UsiaMulaiMerokok.getText(),
+                AlasanUtamaMerokok.getSelectedItem().toString(), KeteranganAlasanUtamaMerokok.getText(),CaraMendapatkanRokok.getSelectedItem().toString(),KeteranganCaraMendapatkanRokok.getText(), 
+                KeinginanBerhentiMerokok.getSelectedItem().toString(),AlasanUtamaBerhentiMerokok.getSelectedItem().toString(),KeteranganAlasanUtamaBerhentiMerokok.getText(),TahuDampakKesehatanMerokok.getSelectedItem().toString(), 
+                DampakKesehatanMerokok.getSelectedItem().toString(),PintuMasukNarkoba.getSelectedItem().toString(),MerokokDiPendidikan.getSelectedItem().toString(),YangPalingSeringMerokokDiSekolah.getSelectedItem().toString(), 
+                KeteranganYangPalingSeringMerokokDiSekolah.getName(),AnggotaKeluargaMerokok.getSelectedItem().toString(),TemanDekatMerokok.getSelectedItem().toString(),DilakukanPemeriksaanCO.getSelectedItem().toString(), 
+                HasilPemeriksaanCO.getText()
+            });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         } 
