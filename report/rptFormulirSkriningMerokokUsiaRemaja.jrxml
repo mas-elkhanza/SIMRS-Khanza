@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f505995-42c1-4cc5-b34d-0896041d3a11">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -8,7 +8,6 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
-	<parameter name="diagnosa" class="java.lang.String"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -18,15 +17,24 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="finger" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,
-                    skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,
-                    skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,
-                    skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,
-                    skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,
-                    skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,
-                    pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien 
-                    from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat 
-                    inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip]]>
+		<![CDATA[select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,
+                    skrining_perilaku_merokok_sekolah_remaja.kelas,skrining_perilaku_merokok_sekolah_remaja.kd_sekolah,master_sekolah.nm_sekolah,
+                    skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,skrining_perilaku_merokok_sekolah_remaja.tanggal,
+                    skrining_perilaku_merokok_sekolah_remaja.apakah_anda_merokok,skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok,
+                    skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok_hariminggu,skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan,
+                    skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan_keterangan,skrining_perilaku_merokok_sekolah_remaja.usia_mulai_merokok,
+                    skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok_keterangan,
+                    skrining_perilaku_merokok_sekolah_remaja.sudah_berapa_lama_merokok,skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok,
+                    skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok_keterangan,skrining_perilaku_merokok_sekolah_remaja.keinginan_berhenti_merokok,
+                    skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok_keterangan,
+                    skrining_perilaku_merokok_sekolah_remaja.tahu_dampak_kesehatan_merokok,skrining_perilaku_merokok_sekolah_remaja.dampak_kesehatan_dari_merokok_yang_diketahui,
+                    skrining_perilaku_merokok_sekolah_remaja.tahu_merokok_pintu_masuk_narkoba,skrining_perilaku_merokok_sekolah_remaja.melihat_orang_merokok_di_sekolah,
+                    skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah,skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah_keterangan,
+                    skrining_perilaku_merokok_sekolah_remaja.ada_anggota_keluarga_di_rumah_yang_merokok,skrining_perilaku_merokok_sekolah_remaja.teman_dekat_banyakyang_merokok,
+                    skrining_perilaku_merokok_sekolah_remaja.dilakukan_pemeriksaan_kadar_co_pernapasan,skrining_perilaku_merokok_sekolah_remaja.hasil_pemeriksaan_co_pernapasan 
+                    from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat 
+                    inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip 
+                    inner join master_sekolah on master_sekolah.kd_sekolah=skrining_perilaku_merokok_sekolah_remaja.kd_sekolah]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
@@ -48,150 +56,205 @@
 		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
-	<field name="tanggal" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
-		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jk"/>
+		<property name="com.jaspersoft.studio.field.label" value="jk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
-	<field name="td" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="td"/>
-		<property name="com.jaspersoft.studio.field.label" value="td"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="umurdaftar" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="umurdaftar"/>
+		<property name="com.jaspersoft.studio.field.label" value="umurdaftar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="hr" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="hr"/>
-		<property name="com.jaspersoft.studio.field.label" value="hr"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="sttsumur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sttsumur"/>
+		<property name="com.jaspersoft.studio.field.label" value="sttsumur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="rr" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="rr"/>
-		<property name="com.jaspersoft.studio.field.label" value="rr"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="kelas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kelas"/>
+		<property name="com.jaspersoft.studio.field.label" value="kelas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="suhu" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="suhu"/>
-		<property name="com.jaspersoft.studio.field.label" value="suhu"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="kd_sekolah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_sekolah"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_sekolah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="bb" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="bb"/>
-		<property name="com.jaspersoft.studio.field.label" value="bb"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="tbpb" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tbpb"/>
-		<property name="com.jaspersoft.studio.field.label" value="tbpb"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="spo2" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="spo2"/>
-		<property name="com.jaspersoft.studio.field.label" value="spo2"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="alergi" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="alergi"/>
-		<property name="com.jaspersoft.studio.field.label" value="alergi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-	</field>
-	<field name="sg1" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sg1"/>
-		<property name="com.jaspersoft.studio.field.label" value="sg1"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nilai1" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nilai1"/>
-		<property name="com.jaspersoft.studio.field.label" value="nilai1"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="sg2" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sg2"/>
-		<property name="com.jaspersoft.studio.field.label" value="sg2"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nilai2" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nilai2"/>
-		<property name="com.jaspersoft.studio.field.label" value="nilai2"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="sg3" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sg3"/>
-		<property name="com.jaspersoft.studio.field.label" value="sg3"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nilai3" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nilai3"/>
-		<property name="com.jaspersoft.studio.field.label" value="nilai3"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="sg4" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="sg4"/>
-		<property name="com.jaspersoft.studio.field.label" value="sg4"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nilai4" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nilai4"/>
-		<property name="com.jaspersoft.studio.field.label" value="nilai4"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="total_hasil" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="total_hasil"/>
-		<property name="com.jaspersoft.studio.field.label" value="total_hasil"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="skor_nutrisi" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="skor_nutrisi"/>
-		<property name="com.jaspersoft.studio.field.label" value="skor_nutrisi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="nm_sekolah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_sekolah"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_sekolah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="master_sekolah"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nip" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nip"/>
 		<property name="com.jaspersoft.studio.field.label" value="nip"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
 	</field>
 	<field name="nama" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nama"/>
 		<property name="com.jaspersoft.studio.field.label" value="nama"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
 	</field>
-	<field name="jk" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="jk"/>
-		<property name="com.jaspersoft.studio.field.label" value="jk"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	<field name="tanggal" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
 	</field>
-	<field name="diketahui_dietisien" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="diketahui_dietisien"/>
-		<property name="com.jaspersoft.studio.field.label" value="diketahui_dietisien"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="apakah_anda_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apakah_anda_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="apakah_anda_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="keterangan_diketahui_dietisien" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="keterangan_diketahui_dietisien"/>
-		<property name="com.jaspersoft.studio.field.label" value="keterangan_diketahui_dietisien"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_nutrisi_anak"/>
+	<field name="jumlah_batang_rokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jumlah_batang_rokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="jumlah_batang_rokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jumlah_batang_rokok_hariminggu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jumlah_batang_rokok_hariminggu"/>
+		<property name="com.jaspersoft.studio.field.label" value="jumlah_batang_rokok_hariminggu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jenis_rokok_yang_digunakan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jenis_rokok_yang_digunakan"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis_rokok_yang_digunakan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jenis_rokok_yang_digunakan_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jenis_rokok_yang_digunakan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis_rokok_yang_digunakan_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usia_mulai_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="usia_mulai_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="usia_mulai_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alasan_mulai_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alasan_mulai_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="alasan_mulai_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alasan_mulai_merokok_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alasan_mulai_merokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="alasan_mulai_merokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sudah_berapa_lama_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sudah_berapa_lama_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="sudah_berapa_lama_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bagaimana_biasanya_mendapatkan_rokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bagaimana_biasanya_mendapatkan_rokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="bagaimana_biasanya_mendapatkan_rokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bagaimana_biasanya_mendapatkan_rokok_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bagaimana_biasanya_mendapatkan_rokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="bagaimana_biasanya_mendapatkan_rokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keinginan_berhenti_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keinginan_berhenti_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="keinginan_berhenti_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alasan_utama_berhenti_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alasan_utama_berhenti_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="alasan_utama_berhenti_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alasan_utama_berhenti_merokok_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alasan_utama_berhenti_merokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="alasan_utama_berhenti_merokok_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tahu_dampak_kesehatan_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tahu_dampak_kesehatan_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="tahu_dampak_kesehatan_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dampak_kesehatan_dari_merokok_yang_diketahui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dampak_kesehatan_dari_merokok_yang_diketahui"/>
+		<property name="com.jaspersoft.studio.field.label" value="dampak_kesehatan_dari_merokok_yang_diketahui"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tahu_merokok_pintu_masuk_narkoba" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tahu_merokok_pintu_masuk_narkoba"/>
+		<property name="com.jaspersoft.studio.field.label" value="tahu_merokok_pintu_masuk_narkoba"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="melihat_orang_merokok_di_sekolah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="melihat_orang_merokok_di_sekolah"/>
+		<property name="com.jaspersoft.studio.field.label" value="melihat_orang_merokok_di_sekolah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="orang_yang_paling_sering_merokok_disekolah" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="orang_yang_paling_sering_merokok_disekolah"/>
+		<property name="com.jaspersoft.studio.field.label" value="orang_yang_paling_sering_merokok_disekolah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="orang_yang_paling_sering_merokok_disekolah_keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="orang_yang_paling_sering_merokok_disekolah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="orang_yang_paling_sering_merokok_disekolah_keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ada_anggota_keluarga_di_rumah_yang_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ada_anggota_keluarga_di_rumah_yang_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="ada_anggota_keluarga_di_rumah_yang_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="teman_dekat_banyakyang_merokok" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="teman_dekat_banyakyang_merokok"/>
+		<property name="com.jaspersoft.studio.field.label" value="teman_dekat_banyakyang_merokok"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dilakukan_pemeriksaan_kadar_co_pernapasan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dilakukan_pemeriksaan_kadar_co_pernapasan"/>
+		<property name="com.jaspersoft.studio.field.label" value="dilakukan_pemeriksaan_kadar_co_pernapasan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hasil_pemeriksaan_co_pernapasan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="hasil_pemeriksaan_co_pernapasan"/>
+		<property name="com.jaspersoft.studio.field.label" value="hasil_pemeriksaan_co_pernapasan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_perilaku_merokok_sekolah_remaja"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="420" splitType="Stretch">
+		<band height="676" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="0" y="54" width="552" height="23" uuid="ac6b5ade-def5-4da3-a9ec-6b5ba71a59b8"/>
@@ -199,39 +262,39 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[SKRINING NUTRISI PASIEN ANAK]]></text>
+				<text><![CDATA[Skrining Perilaku Merokok Bagi Anak Usia Sekolah]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="5" y="87" width="60" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="b2cdf71f-db7d-4272-8d62-f12f21abeefc"/>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Nama Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="390" y="87" width="80" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3236cf36-103e-46d4-9899-59f27cdde081">
+				<reportElement mode="Transparent" x="350" y="87" width="30" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3236cf36-103e-46d4-9899-59f27cdde081">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[No. Rekam Medis :]]></text>
+				<text><![CDATA[Umur]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="470" y="87" width="78" height="14" uuid="e895e828-344b-4070-a63d-9a55d5c6707e"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement positionType="Float" x="384" y="87" width="66" height="14" uuid="e895e828-344b-4070-a63d-9a55d5c6707e"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{umurdaftar}+" "+$F{sttsumur}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="70" y="87" width="176" height="14" uuid="fe286446-47d7-4409-827a-27798355f33b">
+				<reportElement positionType="Float" x="71" y="87" width="176" height="14" uuid="fe286446-47d7-4409-827a-27798355f33b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -244,10 +307,10 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="274" y="87" width="106" height="14" uuid="2968fada-116f-49a6-96b7-f62bfc77c5ec">
+				<reportElement positionType="Float" x="274" y="87" width="76" height="14" uuid="2968fada-116f-49a6-96b7-f62bfc77c5ec">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -255,49 +318,38 @@
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="5" y="105" width="60" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="7a7bf6f5-ae25-4817-90b4-6345d5201650"/>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Tanggal Lahir]]></text>
+				<text><![CDATA[Tgl. Lahir]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="254" y="87" width="18" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="89482fee-9044-480f-8806-a383293ab5ca">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[JK :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="70" y="105" width="177" height="14" uuid="7dd40592-503c-46e9-97ef-935c16e50183"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement positionType="Float" x="71" y="105" width="177" height="14" uuid="7dd40592-503c-46e9-97ef-935c16e50183"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tgl_lahir})]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="126" width="552" height="1" uuid="16e9bae6-6e07-45d0-8856-db2643093370"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="140" width="552" height="1" uuid="16e9bae6-6e07-45d0-8856-db2643093370"/>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="204" y="155" width="342" height="15" uuid="b36c028c-bfbc-40ee-a7ea-e84d7876a778">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Alergi : "+$F{alergi}]]></textFieldExpression>
-			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="83" width="1" height="337" uuid="9dc6fc44-0a20-46c2-a659-b10fd68cf311">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="83" width="1" height="593" uuid="9dc6fc44-0a20-46c2-a659-b10fd68cf311">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -305,24 +357,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="552" y="83" width="1" height="337" uuid="bc504372-aece-4974-afd4-7fb7aeff76e1">
+				<reportElement positionType="FixRelativeToBottom" x="552" y="83" width="1" height="593" uuid="bc504372-aece-4974-afd4-7fb7aeff76e1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="5" y="130" width="87" height="15" uuid="f3882825-3fad-4371-979f-ec0ead081020">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["BB(Kg) : "+$F{bb}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="2" y="14" width="553" height="14" uuid="f5d3d08d-0809-410f-8756-9e31a7699a9d"/>
 				<textElement textAlignment="Center">
@@ -366,123 +407,41 @@
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="254" y="105" width="74" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fd6279fb-dfa2-4df9-b965-f3a245e9c7f6">
+				<reportElement mode="Transparent" x="5" y="123" width="60" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fd6279fb-dfa2-4df9-b965-f3a245e9c7f6">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Tanggal Skrining :]]></text>
+				<text><![CDATA[Tgl. Skrining]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="329" y="105" width="210" height="14" uuid="638393c7-92bc-478a-aae7-82e4f49a2049"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement positionType="Float" x="71" y="123" width="177" height="14" uuid="638393c7-92bc-478a-aae7-82e4f49a2049"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMM yyyy H:m:s", new java.util.Locale("id")).format($F{tanggal})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="102" y="130" width="92" height="15" uuid="b176363d-bdc4-4145-a382-6b2c06cb55b1">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["TB/PB(Cm) : "+$F{tbpb}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="204" y="130" width="106" height="15" uuid="e9deb1a2-2553-4c38-8fed-bf95461cc24c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["TD(mmHg) : "+$F{td}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="321" y="130" width="106" height="15" uuid="5adb7c52-7b4b-4925-a863-32647552ab12">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["HR(x/menit) : "+$F{hr}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="441" y="130" width="106" height="15" uuid="f3d86999-20fa-45ca-bddc-42188759e383">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["RR(x/menit) : "+$F{rr}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="5" y="155" width="87" height="15" uuid="05870c76-1533-4d4a-af09-ff03c13e29a0">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Suhu(°C) : "+$F{suhu}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="102" y="155" width="92" height="15" uuid="ec57b27f-2957-43c6-9141-0dcc12b618cd">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["SpO2(%) : "+$F{spo2}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="5" y="180" width="540" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="97cd9aa1-4f37-4bee-8222-b91a78ce43ec"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement mode="Opaque" x="1" y="141" width="550" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="e04fb8f9-245d-49cf-91cf-4c305c192c6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[SKRINING GIZI AWAL DENGAN STRONG-KIDS :]]></text>
+				<text><![CDATA[I. PERILAKU MEROKOK]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="5" y="202" width="174" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="e04fb8f9-245d-49cf-91cf-4c305c192c6f"/>
+				<reportElement mode="Transparent" x="22" y="160" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="ea90c8ab-072b-42f2-93c6-6566ae3858f0"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Parameter]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="501" y="202" width="44" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="4944d6e3-4d2b-4413-aab4-e8055e719907"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Skor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="5" y="225" width="384" height="26" forecolor="#000000" backcolor="#F0F0DC" uuid="ea90c8ab-072b-42f2-93c6-6566ae3858f0"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[1. Apakah pasien tampak kurus?]]></text>
+				<text><![CDATA[Apakah Anda merokok ? (Bila jawaban 3 dan 4, langsung ke bagian Bagian II)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="501" y="225" width="44" height="26" uuid="e35a2cec-475d-4fdb-8e93-6a781b2dd052">
+				<reportElement positionType="Float" x="350" y="160" width="195" height="22" uuid="93694e5a-148c-4a47-8a28-20e3f23e06bf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -490,87 +449,11 @@
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nilai1}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="390" y="225" width="111" height="26" uuid="93694e5a-148c-4a47-8a28-20e3f23e06bf">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sg1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="390" y="202" width="111" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="24b6ca9e-15e0-45f4-a045-ba34659404fa"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Pilihan]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="5" y="261" width="384" height="26" forecolor="#000000" backcolor="#F0F0DC" uuid="881a8ffa-9c56-4cef-a336-558504895b1e"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[2. Apakah terdapat penurunan berat badan selama satu bulan terakhir? (berdasarkan penilaian objektif data berat badan bila ada atau untuk bayi < 1 tahun ; berat badan tidak naik selama 3 bulan terakhir)]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="390" y="261" width="111" height="26" uuid="657c7f03-0de4-4b01-a45d-041eba29b44d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sg2}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="501" y="261" width="44" height="26" uuid="6a1a181e-8477-48f4-8127-8e1460db8bab">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nilai2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement mode="Transparent" x="5" y="373" width="384" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="d5fc8bd0-9cab-4a1c-8129-350b8ff9119f"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Tahoma" size="9" isBold="false" isItalic="true"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Hasil Skrining : "+$F{skor_nutrisi}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="390" y="373" width="111" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="08bb7893-e51a-420f-8de8-647b910be91c"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9" isBold="true" isItalic="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Total Skor]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="501" y="373" width="44" height="15" uuid="d546cf9d-3800-42cf-94a3-a8bf5eab7fa2">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9" isBold="true"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{total_hasil}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{apakah_anda_merokok}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="65" y="87" width="4" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="d3f57154-5c5d-44ad-b9fb-abed72d80385"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -578,80 +461,745 @@
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="65" y="105" width="4" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="7c49ace0-934c-4cfc-9900-18b0228848da"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="5" y="297" width="384" height="26" forecolor="#000000" backcolor="#F0F0DC" uuid="5a6a40d9-661f-4f9c-8c6d-495beb9832a0"/>
-				<textElement verticalAlignment="Top">
+				<reportElement mode="Transparent" x="307" y="105" width="4" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="b6aefa7c-b85e-4b2e-87f6-7338235816cc"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[3. Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari dalam seminggu terakhir; Asupan makanan berkurang selama 1 minggu terakhir]]></text>
+				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="390" y="297" width="111" height="26" uuid="0bdae489-1744-42f2-9bdb-2abee28b48f8">
+				<reportElement positionType="Float" x="312" y="105" width="239" height="32" uuid="c6ba54b9-0074-43e3-b660-f8986447edb2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sg3}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="501" y="297" width="44" height="26" uuid="669aa3e4-7da1-44ad-8404-c5b55c82bd2b">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nilai3}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="501" y="333" width="44" height="26" uuid="e5ba22c9-6c85-4baa-be6b-72eeefcd56f4">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nilai4}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="390" y="333" width="111" height="26" uuid="c9022e7b-bf52-44f8-9952-77c70b3cd923">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sg4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nm_sekolah}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="5" y="333" width="384" height="26" forecolor="#000000" backcolor="#F0F0DC" uuid="f83282ea-6b3b-46d3-acad-be2557fb4962"/>
+				<reportElement mode="Transparent" x="254" y="105" width="53" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3f87ba38-bf17-4a7c-bbe2-d7463bdad07e"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[4. Apakah terdapat penyakit atau keadaan yang menyebabkan pasien beresiko mengalami malnutrisi?]]></text>
+				<text><![CDATA[Asal Sekolah]]></text>
 			</staticText>
-			<textField>
-				<reportElement mode="Transparent" x="5" y="400" width="539" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="a9c30270-7974-4d6e-b9e4-0dd9fcfa6fa4"/>
+			<staticText>
+				<reportElement mode="Transparent" x="380" y="87" width="4" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="71826424-198c-4166-b035-e4e93d3bd85f"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="491" y="87" width="60" height="14" uuid="efe3547e-8c64-42b2-aaf7-2d0604ed2f31"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kelas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="486" y="87" width="4" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="39af58c7-b318-49a8-8104-a80b1a157345"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="456" y="87" width="30" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="4f6dbb38-6a68-40f7-8503-0950796dc1f5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Diketahui Dietisien/Dilaporkan Kepada Dokter ? "+$F{diketahui_dietisien}+"                Jam dilaporkan : "+$F{keterangan_diketahui_dietisien}]]></textFieldExpression>
+				<text><![CDATA[Kelas]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="157" width="552" height="1" uuid="2ee985f2-577a-46ea-864c-66118742287d"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="183" width="552" height="1" uuid="2d6f5c12-edda-45b8-9216-da9d8a354b1b"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="18" y="158" width="1" height="233" uuid="bdfbf5a3-0965-4a1d-806f-2fcfdc7ae9d7"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="345" y="158" width="1" height="233" uuid="084af85a-679a-4597-bb0f-02b6e43bf94d"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="160" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="324e1fc9-a2cd-4135-b59a-f4ec938dc8de"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[a.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="186" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="e572c6c7-0f54-44dc-ac1d-b7cc962d45e8"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[b.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="209" width="552" height="1" uuid="f099b350-447e-4e7a-8d47-15970bb4f233"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="186" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="d43d89e0-ac02-4616-afe9-aec1564c2335"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Berapa jumlah batang rokok yang Anda hisap setiap hari atau minggu ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="186" width="195" height="22" uuid="afd33d2a-6afa-4b40-8344-3337a3581a3e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jumlah_batang_rokok}+" "+$F{jumlah_batang_rokok_hariminggu}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="65" y="123" width="4" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="d0a3778a-eca2-4f5a-b8d2-0d8063ff7164"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="235" width="552" height="1" uuid="58c6c8aa-24ca-4f5b-9196-3b57f578e24d"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="212" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="fc053cad-60dc-4cb2-8d7d-6a33e063fd28"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[c.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="212" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="7cec2761-c236-4bbf-9ac4-ea2a0a1636a7"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jika jawaban a adalah 1 dan 2, jenis rokok yang digunakan ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="212" width="195" height="22" uuid="8a6b32f6-0822-4e88-ba17-03771a2d7148">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_rokok_yang_digunakan}+($F{jenis_rokok_yang_digunakan_keterangan}.equals("")?"":", "+$F{jenis_rokok_yang_digunakan_keterangan})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="261" width="552" height="1" uuid="59817f8f-37b6-4571-aa53-de5c86cafc42"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="238" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="8b8712fd-a371-4ac4-bc6d-354a122754e2"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[d.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="238" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="aea6699a-375f-47f6-8c76-17e64cafd7ba"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Berapa usia Anda mulai merokok ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="238" width="195" height="22" uuid="b92d4b0b-d4a9-426f-a250-2d8c5a5aa3b8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usia_mulai_merokok}+" Tahun"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="287" width="552" height="1" uuid="f2d31073-298c-41f3-9681-590cf9f5c550"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="264" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="cb8ae8f9-8898-4ee1-8d9a-9a9d34c87dad"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[e.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="264" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="9782b638-2c22-4a68-8814-d4fac3d49585"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apa alasan utama Anda mulai merokok ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="264" width="195" height="22" uuid="013c77a0-2be3-4fea-90e1-9a3ef9914123">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alasan_mulai_merokok}+($F{alasan_mulai_merokok_keterangan}.equals("")?"":", "+$F{alasan_mulai_merokok_keterangan})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="313" width="552" height="1" uuid="25c8d19a-ada0-469e-bc10-a3668cc02fc5"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="290" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="1a0e0c71-815c-479e-8c5d-57bfd483a081"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="290" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="4c838a4d-dc35-495a-a4ed-19372a8fe553"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Sudah berapa lama Anda merokok ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="290" width="195" height="22" uuid="abafdf22-b088-4117-b02b-9a1c7e7fa557">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sudah_berapa_lama_merokok}+" Bulan"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="339" width="552" height="1" uuid="152ea6d4-4d14-4ead-92ab-9a60e76786f1"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="316" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="da655a5c-93f6-4fa9-ba55-34165665fee5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[g.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="316" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="abc4bfa4-1b07-4647-b1fb-1d71bcfb88f0"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Bagaimana biasanya (paling sering) kamu mendapatkan rokok ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="316" width="195" height="22" uuid="00c0bb9b-5d65-41c3-9c6f-96c702c99d2a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bagaimana_biasanya_mendapatkan_rokok}+($F{bagaimana_biasanya_mendapatkan_rokok_keterangan}.equals("")?"":", "+$F{bagaimana_biasanya_mendapatkan_rokok_keterangan})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="342" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="b203dd2b-aa23-4aad-85e1-7e5f5deba874"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[h.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="342" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="0c9425f3-5e55-4456-98ed-d23a39105215"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apakah ada keinginan Anda untuk berhenti merokok ? (Jika Tidak, langsung ke Bagian II)]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="342" width="195" height="22" uuid="04cc5d8c-68dc-4f6c-9a50-239c46eaf62d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keinginan_berhenti_merokok}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="365" width="552" height="1" uuid="86f5b7cc-f752-4fd3-a97e-88a398181896"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="368" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="b06ebd98-e709-481e-a34d-96470d365f0e"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[i.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="391" width="552" height="1" uuid="43ab3626-1fe5-41d7-acc5-bf034020e271"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="368" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="89a08c7b-3457-434b-86fb-039a01b08340"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jika Ya apa alasan utama Anda mau berhenti merokok ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="368" width="195" height="22" uuid="56cd13ec-da6d-4551-805a-7e0964f3af4c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alasan_utama_berhenti_merokok}+($F{alasan_utama_berhenti_merokok_keterangan}.equals("")?"":", "+$F{alasan_utama_berhenti_merokok_keterangan})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="408" width="552" height="1" uuid="8663ae65-10b6-4ba5-9271-006eb7df94cf"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="392" width="550" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="a653ee16-034b-42f5-849d-4db5e78d23ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[II. PENGETAHUAN TENTANG ROKOK]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="433" width="552" height="1" uuid="3940677d-746d-4d89-a93a-dd1b28229b3e"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="410" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="ed7a43f6-9488-4986-9e48-65629c8edafd"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[a.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="410" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="f222bd3f-2aee-4e8f-90c8-d44b24a42327"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apakah Anda tahu dampak kesehatan dari merokok ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="410" width="195" height="22" uuid="55a07902-99e0-4e48-ab89-bee26056fe38">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tahu_dampak_kesehatan_merokok}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="345" y="409" width="1" height="76" uuid="e5c8848a-dc20-4606-84d9-04f2d9142811"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="18" y="409" width="1" height="77" uuid="f9b1773a-cc15-4c97-81f8-7cc01b28f94f"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="436" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="79593a3a-d57a-4d38-971d-923bab35698b"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[b.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="436" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="6fefbf4f-47ee-465b-9174-0990866fead8"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jika Ya, pilihlah menurut Anda dampak kesehatan dari merokok yang Anda ketahui ?]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="459" width="552" height="1" uuid="05c60632-7a80-4be3-9074-620d10363d6a"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="436" width="195" height="22" uuid="774b4314-4bcb-4ab8-9dc1-4412d13ddf4a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dampak_kesehatan_dari_merokok_yang_diketahui}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="462" width="195" height="22" uuid="1955ea7d-3fc7-4090-a964-03468cd6b09b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tahu_merokok_pintu_masuk_narkoba}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="485" width="552" height="1" uuid="91786015-9742-4d78-a741-16a0d9a47f1e"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="462" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="57dfddae-57c1-495f-a272-c465ab47e5fd"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apakah Anda tahu merokok menjadi pintu masuk penggunaan narkoba ?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="462" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="7b3e58fb-7bb4-456c-8e7a-77fee5b2038c"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[c.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="502" width="552" height="1" uuid="f7fc26b7-c7b0-40cc-9f6b-f70cbc49ef21"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="486" width="550" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="dd3aa987-a195-4a6b-ae3b-25b37073775d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[III. SUMBER PAPARAN PERILAKU MEROKOK]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="18" y="503" width="1" height="104" uuid="971dc3fc-387e-4576-8d1c-0432aa5de5cc"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="505" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="dad869a9-d3a0-4001-863d-f5d30060179a"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[a.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="531" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="6f251711-ff7d-4013-b318-24f57b2ecfb1"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[b.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="528" width="552" height="1" uuid="8cd4d71c-be00-43aa-ae98-90f55ca244c8"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="505" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="aba39d40-c9e2-4388-b242-3fc552ed623a"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apakah Anda pernah melihat orang yang merokok di satuan pendidikan?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="505" width="195" height="22" uuid="d8cfe7da-100f-46a0-8c18-1cde08a89645">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{melihat_orang_merokok_di_sekolah}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="531" width="195" height="22" uuid="898f97b2-423d-4b03-8bd6-335d81c1bcbc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orang_yang_paling_sering_merokok_disekolah}+($F{orang_yang_paling_sering_merokok_disekolah_keterangan}.equals("")?"":", "+$F{orang_yang_paling_sering_merokok_disekolah_keterangan})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="345" y="503" width="1" height="104" uuid="c0819052-d997-4fd9-9d13-2fd85168e474"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="554" width="552" height="1" uuid="c6bbb938-473d-438b-b4f0-cd8ed16e556b"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="531" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="13ee5c52-53bc-4554-9677-171d8abec3b4"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jika Ya sebutkan orang yang paling sering Anda lihat merokok di satuan pendidikan !]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="557" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="f05242f9-30fa-4270-8560-fe6aa41012a8"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[c.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="580" width="552" height="1" uuid="6ce82577-6cb3-401f-a6cc-f8db8b670885"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="557" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="b2037c6a-aa31-4ad6-91ad-24b0ae5ecee7"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apakah ada anggota keluarga di rumah yang merokok ?]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="557" width="195" height="22" uuid="6d76edb1-e9f2-4985-bf7a-0eed69eaf7b4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ada_anggota_keluarga_di_rumah_yang_merokok}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="583" width="195" height="22" uuid="1f4c8b3c-01e0-442c-bfaf-2758cef3ae5e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{teman_dekat_banyakyang_merokok}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="606" width="552" height="1" uuid="0c7124f6-3bef-4d69-806b-e692b186e0ae"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="583" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="594a16d4-76e7-4671-9d5b-21011a4133cb"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apakah teman-teman dekatmu banyak yang merokok ?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="583" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="8e9901f8-92ee-4cbf-8291-64a8d9351ac4"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[d.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="607" width="550" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="bca1aa3b-9047-43fd-90c1-93338218face"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[IV. PEMERIKSAAN KADAR CO PERNAPASAN]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="623" width="552" height="1" uuid="ab027b8a-0029-463a-80c3-27d20636eec7"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="18" y="624" width="1" height="52" uuid="43301c1d-5d6d-473c-8c67-35694365c4ce"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="626" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="71c021f2-1e24-45c3-b50b-f617e2af08fe"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[a.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="626" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="201f54be-775e-4baf-b89f-dc1acac0decb"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Apakah dilakukan pemeriksaan kadar CO pernapasan?]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="649" width="552" height="1" uuid="049b4049-d0d2-472f-b5b8-f8a69a60ce25"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="345" y="624" width="1" height="52" uuid="b10c1971-9821-48fe-927a-4f665e812909"/>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="626" width="195" height="22" uuid="cf446b73-6342-400b-946a-18b26b09d94d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dilakukan_pemeriksaan_kadar_co_pernapasan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="652" width="195" height="22" uuid="b3bab188-9a2c-417f-b45e-bc8c582f7aae">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hasil_pemeriksaan_co_pernapasan}+" Ppm"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="652" width="318" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="3a816f6f-d8f5-42db-8c94-ae0cb3567164"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Hasil pemeriksaan kadar CO pernapasan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="3" y="652" width="14" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="37010ce8-07b0-4b32-afaa-f7f294052ec6"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[b.]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -661,7 +1209,7 @@
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<summary>
-		<band height="146" splitType="Stretch">
+		<band height="113" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="371" y="14" width="169" height="14" uuid="c1fbf8b7-e738-49a7-95b4-a424b7f1e65c"/>
@@ -680,7 +1228,7 @@
 				<textFieldExpression><![CDATA[$P{kotars}+", "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format(new Date())]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="371" y="28" width="167" height="74" isRemoveLineWhenBlank="true" uuid="2e125df9-83d7-4563-b5cf-20b2194a8e5c">
+				<reportElement x="371" y="28" width="166" height="62" isRemoveLineWhenBlank="true" uuid="2e125df9-83d7-4563-b5cf-20b2194a8e5c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -688,7 +1236,7 @@
 				</jr:QRCode>
 			</componentElement>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="371" y="106" width="169" height="15" uuid="6ea48481-f15a-4169-9e1b-675850c6d206"/>
+				<reportElement stretchType="RelativeToBandHeight" x="371" y="92" width="169" height="15" uuid="6ea48481-f15a-4169-9e1b-675850c6d206"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -696,13 +1244,13 @@
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="145" width="552" height="1" uuid="b35d09e2-735e-423d-bb20-89032a3d3310"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="112" width="552" height="1" uuid="b35d09e2-735e-423d-bb20-89032a3d3310"/>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="1" height="145" uuid="6dd99e86-2f0c-4195-9bbe-d796439d5a5c">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="1" height="111" uuid="6dd99e86-2f0c-4195-9bbe-d796439d5a5c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -710,9 +1258,15 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="552" y="0" width="1" height="145" uuid="508f344a-6103-4529-a89d-40f04154497f">
+				<reportElement positionType="FixRelativeToBottom" x="552" y="0" width="1" height="113" uuid="508f344a-6103-4529-a89d-40f04154497f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="552" height="1" uuid="d47cf208-3ce4-4050-b0c1-b96f317bd37e"/>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
