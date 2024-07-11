@@ -1845,18 +1845,27 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningNutrisiAnak.jasper","report","::[ Formulir Skrining Nutrisi Pasien Anak ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
-                    "skrining_perilaku_merokok_sekolah_remaja.td,skrining_perilaku_merokok_sekolah_remaja.hr,skrining_perilaku_merokok_sekolah_remaja.rr,skrining_perilaku_merokok_sekolah_remaja.suhu,"+
-                    "skrining_perilaku_merokok_sekolah_remaja.bb,skrining_perilaku_merokok_sekolah_remaja.tbpb,skrining_perilaku_merokok_sekolah_remaja.spo2,skrining_perilaku_merokok_sekolah_remaja.alergi,"+
-                    "skrining_perilaku_merokok_sekolah_remaja.sg1,skrining_perilaku_merokok_sekolah_remaja.nilai1,skrining_perilaku_merokok_sekolah_remaja.sg2,skrining_perilaku_merokok_sekolah_remaja.nilai2,"+
-                    "skrining_perilaku_merokok_sekolah_remaja.sg3,skrining_perilaku_merokok_sekolah_remaja.nilai3,skrining_perilaku_merokok_sekolah_remaja.sg4,skrining_perilaku_merokok_sekolah_remaja.nilai4,"+
-                    "skrining_perilaku_merokok_sekolah_remaja.total_hasil,skrining_perilaku_merokok_sekolah_remaja.skor_nutrisi,skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,"+
-                    "pasien.jk,skrining_perilaku_merokok_sekolah_remaja.diketahui_dietisien,skrining_perilaku_merokok_sekolah_remaja.keterangan_diketahui_dietisien "+
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),9).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            Valid.MyReportqry("rptFormulirSkriningMerokokUsiaRemaja.jasper","report","::[ Formulir Skrining Perilaku Merokok Bagi Anak Usia Sekolah ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.kelas,skrining_perilaku_merokok_sekolah_remaja.kd_sekolah,master_sekolah.nm_sekolah,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.apakah_anda_merokok,skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.jumlah_batang_rokok_hariminggu,skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.jenis_rokok_yang_digunakan_keterangan,skrining_perilaku_merokok_sekolah_remaja.usia_mulai_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_mulai_merokok_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.sudah_berapa_lama_merokok,skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.bagaimana_biasanya_mendapatkan_rokok_keterangan,skrining_perilaku_merokok_sekolah_remaja.keinginan_berhenti_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok,skrining_perilaku_merokok_sekolah_remaja.alasan_utama_berhenti_merokok_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.tahu_dampak_kesehatan_merokok,skrining_perilaku_merokok_sekolah_remaja.dampak_kesehatan_dari_merokok_yang_diketahui,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.tahu_merokok_pintu_masuk_narkoba,skrining_perilaku_merokok_sekolah_remaja.melihat_orang_merokok_di_sekolah,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah,skrining_perilaku_merokok_sekolah_remaja.orang_yang_paling_sering_merokok_disekolah_keterangan,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.ada_anggota_keluarga_di_rumah_yang_merokok,skrining_perilaku_merokok_sekolah_remaja.teman_dekat_banyakyang_merokok,"+
+                    "skrining_perilaku_merokok_sekolah_remaja.dilakukan_pemeriksaan_kadar_co_pernapasan,skrining_perilaku_merokok_sekolah_remaja.hasil_pemeriksaan_co_pernapasan "+
                     "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
+                    "inner join master_sekolah on master_sekolah.kd_sekolah=skrining_perilaku_merokok_sekolah_remaja.kd_sekolah "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningMerokokActionPerformed
