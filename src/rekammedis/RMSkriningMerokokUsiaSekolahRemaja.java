@@ -159,7 +159,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             }else if(i==34){
                 column.setPreferredWidth(120);
             }else if(i==35){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(175);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -278,7 +278,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningNutrisi = new javax.swing.JMenuItem();
+        MnSkriningMerokok = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
@@ -408,19 +408,19 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningNutrisi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningNutrisi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningNutrisi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningNutrisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningNutrisi.setText("Formulir Skrining Nutrisi Pasien Anak");
-        MnSkriningNutrisi.setName("MnSkriningNutrisi"); // NOI18N
-        MnSkriningNutrisi.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnSkriningNutrisi.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningMerokok.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningMerokok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningMerokok.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningMerokok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningMerokok.setText("Formulir Skrining Merokok Usia Sekolah & Remaja");
+        MnSkriningMerokok.setName("MnSkriningMerokok"); // NOI18N
+        MnSkriningMerokok.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnSkriningMerokok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningNutrisiActionPerformed(evt);
+                MnSkriningMerokokActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningNutrisi);
+        jPopupMenu1.add(MnSkriningMerokok);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1531,8 +1531,10 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
-                    hapus();
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString())){
+                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString(),Sequel.ambiltanggalsekarang())==true){
+                        hapus();
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
                 }
@@ -1551,39 +1553,34 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(KdPetugas,"Petugas");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"Berat Badan");
-        }else if(TBPB.getText().trim().equals("")){
-            Valid.textKosong(TBPB,"TB/PB");
-        }else if(TD.getText().trim().equals("")){
-            Valid.textKosong(TD,"TD");
-        }else if(HR.getText().trim().equals("")){
-            Valid.textKosong(HR,"HR");
-        }else if(RR.getText().trim().equals("")){
-            Valid.textKosong(RR,"RR");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu");
-        }else if(SpO2.getText().trim().equals("")){
-            Valid.textKosong(SpO2,"SpO2");
-        }else{  
+            Valid.textKosong(btnPetugas,"Petugas");
+        }else if(KdAsalSekolah.getText().trim().equals("")||NmAsalSekolah.getText().trim().equals("")){
+            Valid.textKosong(btnAsalSekolah,"Petugas");
+        }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
-                        ganti();
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString())){
+                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString(),Sequel.ambiltanggalsekarang())==true){
+                            if(TanggalRegistrasi.getText().equals("")){
+                                TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                            }
+                            if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                                ganti();
+                            }
+                        }
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
                     }
                 }
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-            } 
-        }*/
+            }
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1612,165 +1609,128 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                if(TCari.getText().trim().equals("")){
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.td,skrining_perilaku_merokok_sekolah_remaja.hr,skrining_perilaku_merokok_sekolah_remaja.rr,skrining_perilaku_merokok_sekolah_remaja.suhu,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.bb,skrining_perilaku_merokok_sekolah_remaja.tbpb,skrining_perilaku_merokok_sekolah_remaja.spo2,skrining_perilaku_merokok_sekolah_remaja.alergi,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.sg1,skrining_perilaku_merokok_sekolah_remaja.nilai1,skrining_perilaku_merokok_sekolah_remaja.sg2,skrining_perilaku_merokok_sekolah_remaja.nilai2,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.sg3,skrining_perilaku_merokok_sekolah_remaja.nilai3,skrining_perilaku_merokok_sekolah_remaja.sg4,skrining_perilaku_merokok_sekolah_remaja.nilai4,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.total_hasil,skrining_perilaku_merokok_sekolah_remaja.skor_nutrisi,skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,"+
-                        "pasien.jk,skrining_perilaku_merokok_sekolah_remaja.diketahui_dietisien,skrining_perilaku_merokok_sekolah_remaja.keterangan_diketahui_dietisien "+
-                        "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
-                        "where skrining_perilaku_merokok_sekolah_remaja.tanggal between ? and ? order by skrining_perilaku_merokok_sekolah_remaja.tanggal ");
-                }else{
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_perilaku_merokok_sekolah_remaja.tanggal,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.td,skrining_perilaku_merokok_sekolah_remaja.hr,skrining_perilaku_merokok_sekolah_remaja.rr,skrining_perilaku_merokok_sekolah_remaja.suhu,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.bb,skrining_perilaku_merokok_sekolah_remaja.tbpb,skrining_perilaku_merokok_sekolah_remaja.spo2,skrining_perilaku_merokok_sekolah_remaja.alergi,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.sg1,skrining_perilaku_merokok_sekolah_remaja.nilai1,skrining_perilaku_merokok_sekolah_remaja.sg2,skrining_perilaku_merokok_sekolah_remaja.nilai2,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.sg3,skrining_perilaku_merokok_sekolah_remaja.nilai3,skrining_perilaku_merokok_sekolah_remaja.sg4,skrining_perilaku_merokok_sekolah_remaja.nilai4,"+
-                        "skrining_perilaku_merokok_sekolah_remaja.total_hasil,skrining_perilaku_merokok_sekolah_remaja.skor_nutrisi,skrining_perilaku_merokok_sekolah_remaja.nip,petugas.nama,"+
-                        "pasien.jk,skrining_perilaku_merokok_sekolah_remaja.diketahui_dietisien,skrining_perilaku_merokok_sekolah_remaja.keterangan_diketahui_dietisien "+
-                        "from skrining_perilaku_merokok_sekolah_remaja inner join reg_periksa on skrining_perilaku_merokok_sekolah_remaja.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
-                        "where skrining_perilaku_merokok_sekolah_remaja.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                        "pasien.nm_pasien like ? or skrining_perilaku_merokok_sekolah_remaja.alergi like ? or skrining_perilaku_merokok_sekolah_remaja.nip like ? or petugas.nama like ?) "+
-                        "order by skrining_perilaku_merokok_sekolah_remaja.tanggal ");
-                }
-
-                try {
-                    if(TCari.getText().trim().equals("")){
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    }else{
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,"%"+TCari.getText()+"%");
-                        ps.setString(5,"%"+TCari.getText()+"%");
-                        ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,"%"+TCari.getText()+"%");
-                        ps.setString(8,"%"+TCari.getText()+"%");
-                    }
-                    rs=ps.executeQuery();
-                    htmlContent = new StringBuilder();
-                    htmlContent.append(                             
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sekolah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asal Sekolah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah Anda Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Rokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Satuan Rokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Rokok Yang Digunakan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Jenis Rokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alasan Mulai Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Alasan Mulai Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Biasanya Mendapatkan Rokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Biasanya Mendapatkan Rokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ingin Berhenti</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alasan Ingin Berhenti</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Alasan Ingin Berhenti</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tahu Dampak Kesehatan Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dampak Merokok Yang Diketahui</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pintu Masuk Narkoba</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Melihat Orang Merokok Di Sekolah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Paling Sering Merokok Di Sekolah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Paling Sering Merokok Di Sekolah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anggota Keluarga Di Rumah Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Teman Dekat Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan Kadar CO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pemeriksaan CO Pernapasan</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Petugas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Petugas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB(Kg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TB/PB(Cm)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>HR(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SpO2</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 1</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 1</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 2</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 2</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 3</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 3</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skrining Gizi 4</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai 4</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total Skor</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hasil Skrining</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diketahui Dietisien/Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Jam Lapor</b></td>"+
-                        "</tr>"
-                    );
-                    while(rs.next()){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nip")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bb")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tbpb")+"</td>"+
-                               "<td valign='top'>"+rs.getString("td")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hr")+"</td>"+
-                               "<td valign='top'>"+rs.getString("rr")+"</td>"+
-                               "<td valign='top'>"+rs.getString("suhu")+"</td>"+
-                               "<td valign='top'>"+rs.getString("spo2")+"</td>"+
-                               "<td valign='top'>"+rs.getString("alergi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sg1")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nilai1")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sg2")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nilai2")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sg3")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nilai3")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sg4")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nilai4")+"</td>"+
-                               "<td valign='top'>"+rs.getString("total_hasil")+"</td>"+
-                               "<td valign='top'>"+rs.getString("skor_nutrisi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("diketahui_dietisien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_diketahui_dietisien")+"</td>"+
-                            "</tr>");
-                    }
-                    LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>"
-                    );
-
-                    File g = new File("file2.css");            
-                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                    bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                    );
-                    bg.close();
-
-                    File f = new File("DataSkriningNutrisiAnak.html");            
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' align='center'>"+
-                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA SKRINING NUTRISI PASIEN ANAK<br><br></font>"+        
-                                        "</td>"+
-                                   "</tr>"+
-                                "</table>")
-                    );
-                    bw.close();                         
-                    Desktop.getDesktop().browse(f.toURI());
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
+                        "</tr>");
                 }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='4600px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataSkriningMerokokUsiaSekolahRemaja.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='4600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING PERILAKU MEROKOK BAGI USIA SEKOLAH DAN REMAJA<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
 
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
@@ -1875,7 +1835,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         Valid.pindah(evt,Detik,Umur);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningNutrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningNutrisiActionPerformed
+    private void MnSkriningMerokokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningMerokokActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1899,7 +1859,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_perilaku_merokok_sekolah_remaja.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
+    }//GEN-LAST:event_MnSkriningMerokokActionPerformed
 
     private void UmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurKeyPressed
         //Valid.pindah(evt,btnPetugas,TBPB);
@@ -2143,7 +2103,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private widget.ComboBox MerokokDiPendidikan;
-    private javax.swing.JMenuItem MnSkriningNutrisi;
+    private javax.swing.JMenuItem MnSkriningMerokok;
     private widget.TextBox NmAsalSekolah;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
@@ -2367,30 +2327,41 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
-            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
-            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            /*TBPB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            HR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            SpO2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            SG1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Nilai1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            SG2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Nilai2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            SG3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Nilai3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            SG4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Nilai4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            LabelSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            Lapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  */
+            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            Kelas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            KdAsalSekolah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            NmAsalSekolah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(14,15));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(17,19));
+            ApakahAndaMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            JumlahRokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            SatuanRokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            JenisRokokDigunakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            KeteranganJenisRokokDigunakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            UsiaMulaiMerokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            AlasanUtamaMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            KeteranganAlasanUtamaMerokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            LamaMerokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            CaraMendapatkanRokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            KeteranganCaraMendapatkanRokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            KeinginanBerhentiMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            AlasanUtamaBerhentiMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            KeteranganAlasanUtamaBerhentiMerokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            TahuDampakKesehatanMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            DampakKesehatanMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            PintuMasukNarkoba.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            MerokokDiPendidikan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            YangPalingSeringMerokokDiSekolah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            KeteranganYangPalingSeringMerokokDiSekolah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            AnggotaKeluargaMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            TemanDekatMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            DilakukanPemeriksaanCO.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            HasilPemeriksaanCO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
         }
     }
     
@@ -2533,17 +2504,58 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     }
 
     private void ganti() {
-        /*Sequel.mengedit("skrining_perilaku_merokok_sekolah_remaja","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,"+
-                "nilai2=?,sg3=?,nilai3=?,sg4=?,nilai4=?,total_hasil=?,skor_nutrisi=?,diketahui_dietisien=?,keterangan_diketahui_dietisien=?,nip=?",24,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
-                Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),SG3.getSelectedItem().toString(),Nilai3.getText(),SG4.getSelectedItem().toString(),
-                Nilai4.getText(),TotalHasil.getText(),LabelSkrining.getText(),Lapor.getSelectedItem().toString(),KetLapor.getText(),KdPetugas.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        });*/
-            
-        if(tabMode.getRowCount()!=0){tampil();}
-        emptTeks();
+        if(Sequel.mengedittf("skrining_perilaku_merokok_sekolah_remaja","no_rawat=?","no_rawat=?,tanggal=?,kd_sekolah=?,kelas=?,apakah_anda_merokok=?,jumlah_batang_rokok=?,jumlah_batang_rokok_hariminggu=?,jenis_rokok_yang_digunakan=?,"+
+                "jenis_rokok_yang_digunakan_keterangan=?,usia_mulai_merokok=?,alasan_mulai_merokok=?,alasan_mulai_merokok_keterangan=?,sudah_berapa_lama_merokok=?,bagaimana_biasanya_mendapatkan_rokok=?,bagaimana_biasanya_mendapatkan_rokok_keterangan=?,"+
+                "keinginan_berhenti_merokok=?,alasan_utama_berhenti_merokok=?,alasan_utama_berhenti_merokok_keterangan=?,tahu_dampak_kesehatan_merokok=?,dampak_kesehatan_dari_merokok_yang_diketahui=?,tahu_merokok_pintu_masuk_narkoba=?,"+
+                "melihat_orang_merokok_di_sekolah=?,orang_yang_paling_sering_merokok_disekolah=?,orang_yang_paling_sering_merokok_disekolah_keterangan=?,ada_anggota_keluarga_di_rumah_yang_merokok=?,teman_dekat_banyakyang_merokok=?,"+
+                "dilakukan_pemeriksaan_kadar_co_pernapasan=?,hasil_pemeriksaan_co_pernapasan=?,nip=?",30,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdAsalSekolah.getText(),
+                Kelas.getSelectedItem().toString(),ApakahAndaMerokok.getSelectedItem().toString(),JumlahRokok.getText(),SatuanRokok.getSelectedItem().toString(),JenisRokokDigunakan.getSelectedItem().toString(), 
+                KeteranganJenisRokokDigunakan.getText(),UsiaMulaiMerokok.getText(),AlasanUtamaMerokok.getSelectedItem().toString(),KeteranganAlasanUtamaMerokok.getText(), 
+                LamaMerokok.getText(),CaraMendapatkanRokok.getSelectedItem().toString(),KeteranganCaraMendapatkanRokok.getText(),KeinginanBerhentiMerokok.getSelectedItem().toString(),
+                AlasanUtamaBerhentiMerokok.getSelectedItem().toString(),KeteranganAlasanUtamaBerhentiMerokok.getText(),TahuDampakKesehatanMerokok.getSelectedItem().toString(), 
+                DampakKesehatanMerokok.getSelectedItem().toString(),PintuMasukNarkoba.getSelectedItem().toString(),MerokokDiPendidikan.getSelectedItem().toString(),
+                YangPalingSeringMerokokDiSekolah.getSelectedItem().toString(),KeteranganYangPalingSeringMerokokDiSekolah.getText(),AnggotaKeluargaMerokok.getSelectedItem().toString(), 
+                TemanDekatMerokok.getSelectedItem().toString(),DilakukanPemeriksaanCO.getSelectedItem().toString(),HasilPemeriksaanCO.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            })==true){
+               tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+               tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+               tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+               tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+               tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
+               tbObat.setValueAt(Umur.getText(),tbObat.getSelectedRow(),5);
+               tbObat.setValueAt(Kelas.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+               tbObat.setValueAt(KdAsalSekolah.getText(),tbObat.getSelectedRow(),7);
+               tbObat.setValueAt(NmAsalSekolah.getText(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(ApakahAndaMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(JumlahRokok.getText(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(SatuanRokok.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(JenisRokokDigunakan.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(KeteranganJenisRokokDigunakan.getText(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(UsiaMulaiMerokok.getText(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(AlasanUtamaMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(KeteranganAlasanUtamaMerokok.getText(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(LamaMerokok.getText(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(CaraMendapatkanRokok.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(KeteranganCaraMendapatkanRokok.getText(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(KeinginanBerhentiMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(AlasanUtamaBerhentiMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(KeteranganAlasanUtamaBerhentiMerokok.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(TahuDampakKesehatanMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(DampakKesehatanMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(PintuMasukNarkoba.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
+               tbObat.setValueAt(MerokokDiPendidikan.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
+               tbObat.setValueAt(YangPalingSeringMerokokDiSekolah.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
+               tbObat.setValueAt(KeteranganYangPalingSeringMerokokDiSekolah.getText(),tbObat.getSelectedRow(),31);
+               tbObat.setValueAt(AnggotaKeluargaMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
+               tbObat.setValueAt(TemanDekatMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),33);
+               tbObat.setValueAt(DilakukanPemeriksaanCO.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
+               tbObat.setValueAt(HasilPemeriksaanCO.getText(),tbObat.getSelectedRow(),35);
+               emptTeks();
+        }
     }
 
     private void hapus() {
@@ -2573,10 +2585,10 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),Umur.getText(),Kelas.getSelectedItem().toString(),KdAsalSekolah.getText(),NmAsalSekolah.getText(),KdPetugas.getText(),
                 NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),ApakahAndaMerokok.getSelectedItem().toString(),
                 JumlahRokok.getText(),SatuanRokok.getSelectedItem().toString(),JenisRokokDigunakan.getSelectedItem().toString(),KeteranganJenisRokokDigunakan.getText(),UsiaMulaiMerokok.getText(),
-                AlasanUtamaMerokok.getSelectedItem().toString(), KeteranganAlasanUtamaMerokok.getText(),CaraMendapatkanRokok.getSelectedItem().toString(),KeteranganCaraMendapatkanRokok.getText(), 
+                AlasanUtamaMerokok.getSelectedItem().toString(), KeteranganAlasanUtamaMerokok.getText(),LamaMerokok.getText(),CaraMendapatkanRokok.getSelectedItem().toString(),KeteranganCaraMendapatkanRokok.getText(), 
                 KeinginanBerhentiMerokok.getSelectedItem().toString(),AlasanUtamaBerhentiMerokok.getSelectedItem().toString(),KeteranganAlasanUtamaBerhentiMerokok.getText(),TahuDampakKesehatanMerokok.getSelectedItem().toString(), 
                 DampakKesehatanMerokok.getSelectedItem().toString(),PintuMasukNarkoba.getSelectedItem().toString(),MerokokDiPendidikan.getSelectedItem().toString(),YangPalingSeringMerokokDiSekolah.getSelectedItem().toString(), 
-                KeteranganYangPalingSeringMerokokDiSekolah.getName(),AnggotaKeluargaMerokok.getSelectedItem().toString(),TemanDekatMerokok.getSelectedItem().toString(),DilakukanPemeriksaanCO.getSelectedItem().toString(), 
+                KeteranganYangPalingSeringMerokokDiSekolah.getText(),AnggotaKeluargaMerokok.getSelectedItem().toString(),TemanDekatMerokok.getSelectedItem().toString(),DilakukanPemeriksaanCO.getSelectedItem().toString(), 
                 HasilPemeriksaanCO.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
