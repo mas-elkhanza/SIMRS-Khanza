@@ -250,7 +250,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Keseimbangan Cairan","[M]Catatan Observasi CHBP","[M]Catatan Observasi Induksi Persalinan","[C]Kategori Penilaian SKP","[C]Kriteria Penilaian SKP","[C]Penilaian SKP Petugas/Dokter",
                 "[L]Referensi Poli Mobile JKN FKTP","[L]Referensi Dokter Mobile JKN FKTP","[C]Rekapitulasi Penilaian SKP","[K]Pembayaran Pihak Ke 3 Bank Mandiri","[L]Metode Pembayaran Bank Mandiri",
                 "[L]Bank Tujuan Transfer Bank Mandiri","[L]Kode Transaksi Tujuan Transfer Bank Mandiri","[M]Konsultasi Medik","[M]Jawaban Konsultasi Medik","[L]Referensi Alergi PCare",
-                "[L]Referensi Prognosa PCare","[J]Data Sasaran Usia Produktif","[J]Data Sasaran Usia Lansia","[M]Skrining Merokok Usia Sekolah & Remaja"
+                "[L]Referensi Prognosa PCare","[J]Data Sasaran Usia Produktif","[J]Data Sasaran Usia Lansia","[M]Skrining Merokok Usia Sekolah & Remaja","[M]Skrining Kekerasan Pada Perempuan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -541,7 +541,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
-                java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -554,7 +554,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1055;i++) {
+        for (i = 0; i < 1056;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3173,6 +3173,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1054:
                     column.setPreferredWidth(220);
                     break;
+                case 1055:
+                    column.setPreferredWidth(200);
+                    break;
                 default:
                     column.setPreferredWidth(134);
                     break;
@@ -3672,7 +3675,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3699,7 +3702,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4801,7 +4804,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pcare_cek_prognosa='"+tbUser.getValueAt(i,1051).toString()+"',"+
                     "data_sasaran_usiaproduktif='"+tbUser.getValueAt(i,1052).toString()+"',"+
                     "data_sasaran_usialansia='"+tbUser.getValueAt(i,1053).toString()+"',"+
-                    "skrining_perilaku_merokok_sekolah_remaja='"+tbUser.getValueAt(i,1054).toString()+"'")==true){
+                    "skrining_perilaku_merokok_sekolah_remaja='"+tbUser.getValueAt(i,1054).toString()+"',"+
+                    "skrining_kekerasan_pada_perempuan='"+tbUser.getValueAt(i,1055).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6054,7 +6058,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "pcare_cek_prognosa='"+tbUser.getValueAt(barisdicopy,1051).toString()+"',"+
                                         "data_sasaran_usiaproduktif='"+tbUser.getValueAt(barisdicopy,1052).toString()+"',"+
                                         "data_sasaran_usialansia='"+tbUser.getValueAt(barisdicopy,1053).toString()+"',"+
-                                        "skrining_perilaku_merokok_sekolah_remaja='"+tbUser.getValueAt(barisdicopy,1054).toString()+"'");
+                                        "skrining_perilaku_merokok_sekolah_remaja='"+tbUser.getValueAt(barisdicopy,1054).toString()+"',"+
+                                        "skrining_kekerasan_pada_perempuan='"+tbUser.getValueAt(barisdicopy,1055).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6355,7 +6360,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.balance_cairan,user.catatan_observasi_chbp,user.catatan_observasi_induksi_persalinan,user.skp_kategori_penilaian,user.skp_kriteria_penilaian,"+
                 "user.skp_penilaian,user.referensi_poli_mobilejknfktp,user.referensi_dokter_mobilejknfktp,user.skp_rekapitulasi_penilaian,user.pembayaran_pihak_ke3_bankmandiri,"+
                 "user.metode_pembayaran_bankmandiri,user.bank_tujuan_transfer_bankmandiri,user.kodetransaksi_tujuan_transfer_bankmandiri,user.konsultasi_medik,user.jawaban_konsultasi_medik,"+
-                "user.pcare_cek_alergi,user.pcare_cek_prognosa,user.data_sasaran_usiaproduktif,user.data_sasaran_usialansia,user.skrining_perilaku_merokok_sekolah_remaja from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.pcare_cek_alergi,user.pcare_cek_prognosa,user.data_sasaran_usiaproduktif,user.data_sasaran_usialansia,user.skrining_perilaku_merokok_sekolah_remaja,"+
+                "user.skrining_kekerasan_pada_perempuan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7422,7 +7428,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pcare_cek_prognosa"),
                                rs.getBoolean("data_sasaran_usiaproduktif"),
                                rs.getBoolean("data_sasaran_usialansia"),
-                               rs.getBoolean("skrining_perilaku_merokok_sekolah_remaja")
+                               rs.getBoolean("skrining_perilaku_merokok_sekolah_remaja"),
+                               rs.getBoolean("skrining_kekerasan_pada_perempuan")
                             });
                         }   
                     } catch (Exception e) {
@@ -8478,7 +8485,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pcare_cek_prognosa"),
                            rs.getBoolean("data_sasaran_usiaproduktif"),
                            rs.getBoolean("data_sasaran_usialansia"),
-                           rs.getBoolean("skrining_perilaku_merokok_sekolah_remaja")
+                           rs.getBoolean("skrining_perilaku_merokok_sekolah_remaja"),
+                           rs.getBoolean("skrining_kekerasan_pada_perempuan")
                         });
                     }                                             
                  }
