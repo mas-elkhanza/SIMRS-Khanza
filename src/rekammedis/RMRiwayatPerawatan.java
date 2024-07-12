@@ -25263,8 +25263,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "III. INTERPRETASI"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='66%' bgcolor='#FFFAF8' align='center'>Hasil Skrining : "+rs2.getString("hasil_skrining")+"</td>"+
-                                              "<td valign='top' width='30%' align='right'>Total Skor :</td>"+
+                                              "<td width='96%' align='left'>Hasil Skrining : "+rs2.getString("hasil_skrining")+"</td>"+
                                               "<td valign='top' width='4%' align='center'>"+rs2.getString("totalskor")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
