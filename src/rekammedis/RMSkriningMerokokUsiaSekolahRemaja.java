@@ -1596,6 +1596,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         petugas.dispose();
+        sekolah.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -2341,8 +2342,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             Kelas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             KdAsalSekolah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             NmAsalSekolah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString().substring(17,19));
