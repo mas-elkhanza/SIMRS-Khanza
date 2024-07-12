@@ -1209,7 +1209,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,cmbSkor3,BtnBatal);
+            Valid.pindah(evt,PertanyaanLanjutan6,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1618,7 +1618,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanAwal1ItemStateChanged
 
     private void PertanyaanAwal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal1KeyPressed
-        //Valid.pindah(evt,Alergi,SG2);
+        Valid.pindah(evt,TCari,PertanyaanAwal2);
     }//GEN-LAST:event_PertanyaanAwal1KeyPressed
 
     private void PertanyaanAwal2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal2ItemStateChanged
@@ -1649,7 +1649,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan2ItemStateChanged
 
     private void PertanyaanLanjutan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan2KeyPressed
-        //Valid.pindah(evt,SG3,SG5);
+        Valid.pindah(evt,PertanyaanLanjutan1,PertanyaanLanjutan3);
     }//GEN-LAST:event_PertanyaanLanjutan2KeyPressed
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
@@ -1662,7 +1662,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan3ItemStateChanged
 
     private void PertanyaanLanjutan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PertanyaanLanjutan2,PertanyaanLanjutan4);
     }//GEN-LAST:event_PertanyaanLanjutan3KeyPressed
 
     private void PertanyaanLanjutan4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4ItemStateChanged
@@ -1671,7 +1671,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan4ItemStateChanged
 
     private void PertanyaanLanjutan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PertanyaanLanjutan3,PertanyaanLanjutan5);
     }//GEN-LAST:event_PertanyaanLanjutan4KeyPressed
 
     private void PertanyaanLanjutan5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5ItemStateChanged
@@ -1680,7 +1680,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan5ItemStateChanged
 
     private void PertanyaanLanjutan5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PertanyaanLanjutan4,PertanyaanLanjutan6);
     }//GEN-LAST:event_PertanyaanLanjutan5KeyPressed
 
     private void PertanyaanLanjutan6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6ItemStateChanged
@@ -1689,7 +1689,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan6ItemStateChanged
 
     private void PertanyaanLanjutan6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PertanyaanLanjutan5,BtnSimpan);
     }//GEN-LAST:event_PertanyaanLanjutan6KeyPressed
 
     /**
@@ -1970,10 +1970,10 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_nutrisi_anak());
-        BtnHapus.setEnabled(akses.getskrining_nutrisi_anak());
-        BtnEdit.setEnabled(akses.getskrining_nutrisi_anak());
-        BtnPrint.setEnabled(akses.getskrining_nutrisi_anak()); 
+        BtnSimpan.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
+        BtnHapus.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
+        BtnEdit.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
+        BtnPrint.setEnabled(akses.getskrining_kekerasan_pada_perempuan()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
