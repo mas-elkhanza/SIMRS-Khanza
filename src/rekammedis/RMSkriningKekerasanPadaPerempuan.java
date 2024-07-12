@@ -1298,21 +1298,21 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Secara umum, bagaimana Anda menggambarkan hubungan Anda ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Secara umum, bagaimana Anda<br>menggambarkan hubungan Anda ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.A.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Seperti apa saat Anda dan pasangan berdebat ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Seperti apa saat Anda<br>dan pasangan berdebat ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.A.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pertengkaran pernah membuat Anda merasa sedih atau buruk tentang diri sendiri ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pertengkaran pernah membuat Anda merasa<br>sedih atau buruk tentang diri sendiri ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pertengkaran pernah menghasilkan pukulan, tendangan, atau dorongan ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pertengkaran pernah menghasilkan<br>pukulan, tendangan, atau dorongan ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah Anda pernah merasa takut dengan apa yang pasangan Anda katakan atau lakukan ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah Anda pernah merasa takut dengan apa<br>yang pasangan Anda katakan atau lakukan ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pasangan Anda pernah melecehkan Anda secara fisik ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pasangan Anda pernah<br>melecehkan Anda secara fisik ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernahkah pasangan Anda melecehkan Anda secara emosional ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernahkah pasangan Anda melecehkan<br>Anda secara emosional ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pasangan Anda pernah melecehkan Anda secara seksual ?</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pasangan Anda pernah<br>melecehkan Anda secara seksual ?</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.6</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
@@ -1351,7 +1351,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2600px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1376,7 +1376,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
