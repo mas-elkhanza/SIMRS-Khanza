@@ -1613,7 +1613,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
 
     private void PertanyaanAwal1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal1ItemStateChanged
-        NilaiPertanyaanAwal1.setText(PertanyaanAwal1.getSelectedIndex()+"");
+        NilaiPertanyaanAwal1.setText((PertanyaanAwal1.getSelectedIndex()+1)+"");
         isTotal();
     }//GEN-LAST:event_PertanyaanAwal1ItemStateChanged
 
@@ -1622,7 +1622,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanAwal1KeyPressed
 
     private void PertanyaanAwal2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal2ItemStateChanged
-        NilaiPertanyaanAwal2.setText(PertanyaanAwal2.getSelectedIndex()+"");
+        NilaiPertanyaanAwal2.setText((PertanyaanAwal2.getSelectedIndex()+1)+"");
         isTotal();
     }//GEN-LAST:event_PertanyaanAwal2ItemStateChanged
 
@@ -1635,7 +1635,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void PertanyaanLanjutan1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan1ItemStateChanged
-        NilaiPertanyaanLanjutan1.setText(PertanyaanLanjutan1.getSelectedIndex()+"");
+        NilaiPertanyaanLanjutan1.setText((PertanyaanLanjutan1.getSelectedIndex()+1)+"");
         isTotal();
     }//GEN-LAST:event_PertanyaanLanjutan1ItemStateChanged
 
@@ -1657,7 +1657,8 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
     private void PertanyaanLanjutan3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan3ItemStateChanged
-        // TODO add your handling code here:
+        NilaiPertanyaanLanjutan3.setText((PertanyaanLanjutan3.getSelectedIndex()+1)+"");
+        isTotal();
     }//GEN-LAST:event_PertanyaanLanjutan3ItemStateChanged
 
     private void PertanyaanLanjutan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan3KeyPressed
@@ -1665,7 +1666,8 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan3KeyPressed
 
     private void PertanyaanLanjutan4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4ItemStateChanged
-        // TODO add your handling code here:
+        NilaiPertanyaanLanjutan4.setText((PertanyaanLanjutan4.getSelectedIndex()+1)+"");
+        isTotal();
     }//GEN-LAST:event_PertanyaanLanjutan4ItemStateChanged
 
     private void PertanyaanLanjutan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4KeyPressed
@@ -1673,7 +1675,8 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan4KeyPressed
 
     private void PertanyaanLanjutan5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5ItemStateChanged
-        // TODO add your handling code here:
+        NilaiPertanyaanLanjutan5.setText((PertanyaanLanjutan5.getSelectedIndex()+1)+"");
+        isTotal();
     }//GEN-LAST:event_PertanyaanLanjutan5ItemStateChanged
 
     private void PertanyaanLanjutan5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5KeyPressed
@@ -1681,7 +1684,8 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanLanjutan5KeyPressed
 
     private void PertanyaanLanjutan6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6ItemStateChanged
-        // TODO add your handling code here:
+        NilaiPertanyaanLanjutan6.setText((PertanyaanLanjutan6.getSelectedIndex()+1)+"");
+        isTotal();
     }//GEN-LAST:event_PertanyaanLanjutan6ItemStateChanged
 
     private void PertanyaanLanjutan6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6KeyPressed
@@ -1880,15 +1884,24 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     public void emptTeks() {
         Tanggal.setDate(new Date());
         PertanyaanAwal1.setSelectedIndex(0);
-        NilaiPertanyaanAwal1.setText("0");
+        NilaiPertanyaanAwal1.setText("1");
         PertanyaanAwal2.setSelectedIndex(0);
-        NilaiPertanyaanAwal2.setText("0");
+        NilaiPertanyaanAwal2.setText("1");
         PertanyaanLanjutan1.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan1.setText("0");
+        NilaiPertanyaanLanjutan1.setText("1");
         PertanyaanLanjutan2.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan2.setText("0");
-        TotalHasil.setText("0");
-        //LabelSkrining.setText("Status Gizi Normal");
+        NilaiPertanyaanLanjutan2.setText("1");
+        PertanyaanLanjutan3.setSelectedIndex(0);
+        NilaiPertanyaanLanjutan3.setText("1");
+        PertanyaanLanjutan4.setSelectedIndex(0);
+        NilaiPertanyaanLanjutan4.setText("1");
+        PertanyaanLanjutan5.setSelectedIndex(0);
+        NilaiPertanyaanLanjutan5.setText("1");
+        PertanyaanLanjutan6.setSelectedIndex(0);
+        NilaiPertanyaanLanjutan6.setText("1");
+        TotalHasil.setText("8");
+        HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+        PertanyaanAwal1.requestFocus();
     } 
 
     private void getData() {
@@ -2053,17 +2066,16 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }
 
     private void isTotal() {
-        /*try {
-            TotalHasil.setText(""+(Integer.parseInt(Nilai1.getText())+Integer.parseInt(Nilai2.getText())+Integer.parseInt(Nilai3.getText())+Integer.parseInt(Nilai4.getText())));
-            if((Integer.parseInt(TotalHasil.getText())>=4)&&(Integer.parseInt(TotalHasil.getText())<=5)){
-                LabelSkrining.setText("Risikio Berat");
-            }else if((Integer.parseInt(TotalHasil.getText())>=1)&&(Integer.parseInt(TotalHasil.getText())<=3)){
-                LabelSkrining.setText("Risiko Sedang");
-            }else if(Integer.parseInt(TotalHasil.getText())==0){
-                LabelSkrining.setText("Risiko Rendah");
+        try {
+            TotalHasil.setText(""+(Integer.parseInt(NilaiPertanyaanAwal1.getText())+Integer.parseInt(NilaiPertanyaanAwal2.getText())+Integer.parseInt(NilaiPertanyaanLanjutan1.getText())+Integer.parseInt(NilaiPertanyaanLanjutan2.getText())+Integer.parseInt(NilaiPertanyaanLanjutan3.getText())+Integer.parseInt(NilaiPertanyaanLanjutan4.getText())+Integer.parseInt(NilaiPertanyaanLanjutan5.getText())+Integer.parseInt(NilaiPertanyaanLanjutan6.getText())));
+            if(Integer.parseInt(TotalHasil.getText())>12){
+                HasilSkrining.setText("Pasien Terindikasi Mengalami Kekerasan");
+            }else{
+                HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
             }
         } catch (Exception e) {
-        }*/
+            HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+        }
     }
     
 }
